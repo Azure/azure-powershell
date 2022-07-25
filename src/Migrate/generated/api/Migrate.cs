@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/databaseInstances/(?<databaseInstanceName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/databaseInstances/(?<databaseInstanceName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databaseInstances/{databaseInstanceName}'");
@@ -274,7 +274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/databaseInstances$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/databaseInstances$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databaseInstances'");
@@ -460,7 +460,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/databases/(?<databaseName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/databases/(?<databaseName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databases/{databaseName}'");
@@ -650,7 +650,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/databases$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/databases$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/databases'");
@@ -832,7 +832,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/migrateEvents/(?<eventName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/migrateEvents/(?<eventName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents/{eventName}'");
@@ -998,7 +998,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/migrateEvents/(?<eventName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/migrateEvents/(?<eventName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents/{eventName}'");
@@ -1180,7 +1180,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/migrateEvents$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/migrateEvents$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/migrateEvents'");
@@ -1364,7 +1364,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/clusters/(?<clusterName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/clusters/{clusterName}'");
@@ -1432,7 +1432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.461\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.492\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -1537,7 +1537,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/clusters/(?<clusterName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/clusters/(?<clusterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/clusters/{clusterName}'");
@@ -1705,7 +1705,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/clusters$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/clusters$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/clusters'");
@@ -1877,7 +1877,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/hosts/(?<hostName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/hosts/(?<hostName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/hosts/{hostName}'");
@@ -1945,7 +1945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.461\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.492\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -2050,7 +2050,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/hosts/(?<hostName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/hosts/(?<hostName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/hosts/{hostName}'");
@@ -2218,7 +2218,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/hosts$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/hosts$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/hosts'");
@@ -2384,7 +2384,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/jobs/(?<jobName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/jobs/(?<jobName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/jobs/{jobName}'");
@@ -2548,7 +2548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/jobs$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/jobs$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/jobs'");
@@ -2710,7 +2710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/machines/(?<machineName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/machines/(?<machineName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/machines/{machineName}'");
@@ -2890,7 +2890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/machines$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/machines$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/machines'");
@@ -3066,7 +3066,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/operationsStatus/(?<operationStatusName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/operationsStatus/(?<operationStatusName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/operationsStatus/{operationStatusName}'");
@@ -3232,7 +3232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/runAsAccounts/(?<accountName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/runAsAccounts/(?<accountName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/runAsAccounts/{accountName}'");
@@ -3396,7 +3396,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/runAsAccounts$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/runAsAccounts$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/runAsAccounts'");
@@ -3563,7 +3563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}'");
@@ -3737,7 +3737,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}'");
@@ -3944,7 +3944,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/healthSummary$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/healthSummary$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/healthSummary'");
@@ -4104,7 +4104,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/summary$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/summary$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/summary'");
@@ -4222,7 +4222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}'");
@@ -4381,7 +4381,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/refresh$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)/refresh$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}/refresh'");
@@ -4443,7 +4443,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.461\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.492\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -4548,7 +4548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/HyperVSites/(?<siteName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/HyperVSites/{siteName}'");
@@ -4723,7 +4723,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/jobs/(?<jobName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/jobs/(?<jobName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/jobs/{jobName}'");
@@ -4887,7 +4887,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/jobs$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/jobs$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/jobs'");
@@ -5093,7 +5093,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/machines/(?<machineName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/machines/(?<machineName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/machines/{machineName}'");
@@ -5215,7 +5215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/machines/(?<machineName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/machines/(?<machineName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/machines/{machineName}'");
@@ -5443,7 +5443,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/machines$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/machines$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/machines'");
@@ -5573,7 +5573,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/machines$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/machines$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/machines'");
@@ -5750,7 +5750,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/machines/(?<machineName>[^/]+)/start$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/machines/(?<machineName>[^/]+)/start$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/machines/{machineName}/start'");
@@ -5815,7 +5815,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.461\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.492\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -5918,7 +5918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/machines/(?<machineName>[^/]+)/stop$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/machines/(?<machineName>[^/]+)/stop$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/machines/{machineName}/stop'");
@@ -5983,7 +5983,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.461\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.492\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -6090,7 +6090,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}'");
@@ -6256,7 +6256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}'");
@@ -6432,7 +6432,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}'");
@@ -6621,7 +6621,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}'");
@@ -6808,7 +6808,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/refreshSummary$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/refreshSummary$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/refreshSummary'");
@@ -6991,7 +6991,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/registerTool$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/registerTool$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/registerTool'");
@@ -7177,7 +7177,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)/migrationRecoveryPoints/(?<migrationRecoveryPointName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)/migrationRecoveryPoints/(?<migrationRecoveryPointName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrationRecoveryPoints/{migrationRecoveryPointName}'");
@@ -7365,7 +7365,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)/migrationRecoveryPoints$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)/migrationRecoveryPoints$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrationRecoveryPoints'");
@@ -7664,7 +7664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/operations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/operations'");
@@ -7777,7 +7777,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.OffAzure/operations$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/providers/Microsoft.OffAzure/operations$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/providers/Microsoft.OffAzure/operations'");
@@ -7934,7 +7934,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/recoveryPoints/(?<recoveryPointName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/recoveryPoints/(?<recoveryPointName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/recoveryPoints/{recoveryPointName}'");
@@ -8122,7 +8122,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/recoveryPoints$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/recoveryPoints$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/recoveryPoints'");
@@ -8307,7 +8307,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationAlertSettings/(?<alertSettingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationAlertSettings/(?<alertSettingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}'");
@@ -8480,7 +8480,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationAlertSettings/(?<alertSettingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationAlertSettings/(?<alertSettingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings/{alertSettingName}'");
@@ -8644,7 +8644,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationAlertSettings$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationAlertSettings$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationAlertSettings'");
@@ -8808,7 +8808,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<virtualMachineName>[^/]+)/providers/Microsoft.RecoveryServices/replicationEligibilityResults/default$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<virtualMachineName>[^/]+)/providers/Microsoft.RecoveryServices/replicationEligibilityResults/default$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.RecoveryServices/replicationEligibilityResults/default'");
@@ -8972,7 +8972,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<virtualMachineName>[^/]+)/providers/Microsoft.RecoveryServices/replicationEligibilityResults$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Compute/virtualMachines/(?<virtualMachineName>[^/]+)/providers/Microsoft.RecoveryServices/replicationEligibilityResults$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.RecoveryServices/replicationEligibilityResults'");
@@ -9134,7 +9134,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationEvents/(?<eventName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationEvents/(?<eventName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationEvents/{eventName}'");
@@ -9302,7 +9302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationEvents$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationEvents$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationEvents'");
@@ -9469,7 +9469,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/checkConsistency$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/checkConsistency$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/checkConsistency'");
@@ -9623,6 +9623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -9741,7 +9742,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}'");
@@ -9897,6 +9898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -10013,7 +10015,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/remove$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/remove$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/remove'");
@@ -10167,6 +10169,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -10283,7 +10286,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}'");
@@ -10451,7 +10454,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics'");
@@ -10614,7 +10617,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/migratetoaad$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/migratetoaad$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/migratetoaad'");
@@ -10768,6 +10771,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -10880,7 +10884,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}'");
@@ -11033,6 +11037,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -11156,7 +11161,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/reassociateGateway$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/reassociateGateway$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/reassociateGateway'");
@@ -11316,6 +11321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -11438,7 +11444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/renewCertificate$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/renewCertificate$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/renewCertificate'");
@@ -11596,6 +11602,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -11712,7 +11719,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationJobs/(?<jobName>[^/]+)/cancel$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationJobs/(?<jobName>[^/]+)/cancel$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/cancel'");
@@ -11866,6 +11873,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -11986,7 +11994,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationJobs/export$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationJobs/export$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/export'");
@@ -12141,6 +12149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -12254,7 +12263,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationJobs/(?<jobName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationJobs/(?<jobName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}'");
@@ -12422,7 +12431,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationJobs$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationJobs$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs'");
@@ -12589,7 +12598,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationJobs/(?<jobName>[^/]+)/restart$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationJobs/(?<jobName>[^/]+)/restart$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/restart'");
@@ -12743,6 +12752,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -12862,7 +12872,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationJobs/(?<jobName>[^/]+)/resume$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationJobs/(?<jobName>[^/]+)/resume$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationJobs/{jobName}/resume'");
@@ -13020,6 +13030,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -13138,7 +13149,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationLogicalNetworks/(?<logicalNetworkName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationLogicalNetworks/(?<logicalNetworkName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationLogicalNetworks/{logicalNetworkName}'");
@@ -13310,7 +13321,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationLogicalNetworks$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationLogicalNetworks$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationLogicalNetworks'");
@@ -13491,7 +13502,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}'");
@@ -13653,6 +13664,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -13782,7 +13794,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}'");
@@ -13943,6 +13955,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -14067,7 +14080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}'");
@@ -14310,7 +14323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems'");
@@ -14455,7 +14468,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationMigrationItems$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationMigrationItems$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationMigrationItems'");
@@ -14642,7 +14655,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)/migrate$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)/migrate$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/migrate'");
@@ -14806,6 +14819,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -14938,7 +14952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)/resync$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)/resync$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/resync'");
@@ -15102,6 +15116,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -15290,7 +15305,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)/testMigrateCleanup$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)/testMigrateCleanup$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/testMigrateCleanup'");
@@ -15456,6 +15471,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -15532,7 +15548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)/testMigrate$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)/testMigrate$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}/testMigrate'");
@@ -15698,6 +15714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -15829,7 +15846,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationMigrationItems/(?<migrationItemName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationMigrationItems/{migrationItemName}'");
@@ -15991,6 +16008,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -16122,7 +16140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks/(?<networkName>[^/]+)/replicationNetworkMappings/(?<networkMappingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks/(?<networkName>[^/]+)/replicationNetworkMappings/(?<networkMappingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}'");
@@ -16284,6 +16302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -16409,7 +16428,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks/(?<networkName>[^/]+)/replicationNetworkMappings/(?<networkMappingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks/(?<networkName>[^/]+)/replicationNetworkMappings/(?<networkMappingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}'");
@@ -16568,6 +16587,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -16690,7 +16710,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks/(?<networkName>[^/]+)/replicationNetworkMappings/(?<networkMappingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks/(?<networkName>[^/]+)/replicationNetworkMappings/(?<networkMappingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}'");
@@ -16912,7 +16932,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks/(?<networkName>[^/]+)/replicationNetworkMappings$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks/(?<networkName>[^/]+)/replicationNetworkMappings$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings'");
@@ -17042,7 +17062,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationNetworkMappings$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationNetworkMappings$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworkMappings'");
@@ -17216,7 +17236,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks/(?<networkName>[^/]+)/replicationNetworkMappings/(?<networkMappingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks/(?<networkName>[^/]+)/replicationNetworkMappings/(?<networkMappingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}'");
@@ -17378,6 +17398,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -17500,7 +17521,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks/(?<networkName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks/(?<networkName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}'");
@@ -17714,7 +17735,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationNetworks$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks'");
@@ -17839,7 +17860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationNetworks$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationNetworks$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationNetworks'");
@@ -18007,7 +18028,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationPolicies/(?<policyName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationPolicies/(?<policyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}'");
@@ -18163,6 +18184,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -18278,7 +18300,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationPolicies/(?<policyName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationPolicies/(?<policyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}'");
@@ -18431,6 +18453,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -18543,7 +18566,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationPolicies/(?<policyName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationPolicies/(?<policyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}'");
@@ -18707,7 +18730,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationPolicies$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationPolicies$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies'");
@@ -18875,7 +18898,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationPolicies/(?<policyName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationPolicies/(?<policyName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationPolicies/{policyName}'");
@@ -19031,6 +19054,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -19152,7 +19176,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectableItems/(?<protectableItemName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectableItems/(?<protectableItemName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectableItems/{protectableItemName}'");
@@ -19344,7 +19368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectableItems$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectableItems$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectableItems'");
@@ -19543,7 +19567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/addDisks$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/addDisks$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/addDisks'");
@@ -19707,6 +19731,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -19843,7 +19868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/applyRecoveryPoint$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/applyRecoveryPoint$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/applyRecoveryPoint'");
@@ -20009,6 +20034,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -20140,7 +20166,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}'");
@@ -20302,6 +20328,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -20438,7 +20465,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/remove$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/remove$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/remove'");
@@ -20602,6 +20629,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -20728,7 +20756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/failoverCancel$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/failoverCancel$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/failoverCancel'");
@@ -20890,6 +20918,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -21013,7 +21042,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/failoverCommit$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/failoverCommit$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/failoverCommit'");
@@ -21175,6 +21204,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -21297,7 +21327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}'");
@@ -21525,7 +21555,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems'");
@@ -21657,7 +21687,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationProtectedItems$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationProtectedItems$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectedItems'");
@@ -21840,7 +21870,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/plannedFailover$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/plannedFailover$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/plannedFailover'");
@@ -22006,6 +22036,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -22137,7 +22168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}'");
@@ -22296,6 +22327,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -22425,7 +22457,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/removeDisks$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/removeDisks$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/removeDisks'");
@@ -22591,6 +22623,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -22721,7 +22754,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/repairReplication$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/repairReplication$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/repairReplication'");
@@ -22883,6 +22916,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -23016,7 +23050,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/reProtect$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/reProtect$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/reProtect'");
@@ -23180,6 +23214,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -23312,7 +23347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/resolveHealthErrors$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/resolveHealthErrors$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/resolveHealthErrors'");
@@ -23478,6 +23513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -23666,7 +23702,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/testFailoverCleanup$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/testFailoverCleanup$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/testFailoverCleanup'");
@@ -23832,6 +23868,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -23908,7 +23945,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/testFailover$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/testFailover$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/testFailover'");
@@ -24074,6 +24111,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -24206,7 +24244,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/unplannedFailover$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/unplannedFailover$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/unplannedFailover'");
@@ -24372,6 +24410,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -24567,7 +24606,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicationProtectedItemName>[^/]+)/updateMobilityService$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicationProtectedItemName>[^/]+)/updateMobilityService$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicationProtectedItemName}/updateMobilityService'");
@@ -24733,6 +24772,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -24811,7 +24851,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}'");
@@ -24973,6 +25013,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -25104,7 +25145,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectionContainerMappings/(?<mappingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectionContainerMappings/(?<mappingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}'");
@@ -25268,6 +25309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -25400,7 +25442,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectionContainerMappings/(?<mappingName>[^/]+)/remove$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectionContainerMappings/(?<mappingName>[^/]+)/remove$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}/remove'");
@@ -25566,6 +25608,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -25691,7 +25734,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectionContainerMappings/(?<mappingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectionContainerMappings/(?<mappingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}'");
@@ -25915,7 +25958,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectionContainerMappings$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectionContainerMappings$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings'");
@@ -26045,7 +26088,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationProtectionContainerMappings$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationProtectionContainerMappings$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainerMappings'");
@@ -26215,7 +26258,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectionContainerMappings/(?<mappingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectionContainerMappings/(?<mappingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}'");
@@ -26376,6 +26419,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -26504,7 +26548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectionContainerMappings/(?<mappingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectionContainerMappings/(?<mappingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}'");
@@ -26668,6 +26712,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -26796,7 +26841,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}'");
@@ -26957,6 +27002,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -27078,7 +27124,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/remove$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/remove$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/remove'");
@@ -27237,6 +27283,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -27365,7 +27412,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/discoverProtectableItem$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/discoverProtectableItem$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/discoverProtectableItem'");
@@ -27528,6 +27575,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -27648,7 +27696,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}'");
@@ -27862,7 +27910,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers'");
@@ -27987,7 +28035,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationProtectionContainers$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationProtectionContainers$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionContainers'");
@@ -28163,7 +28211,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/switchprotection$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/switchprotection$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/switchprotection'");
@@ -28326,6 +28374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -28449,7 +28498,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationProtectionIntents/(?<intentObjectName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationProtectionIntents/(?<intentObjectName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionIntents/{intentObjectName}'");
@@ -28622,7 +28671,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationProtectionIntents/(?<intentObjectName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationProtectionIntents/(?<intentObjectName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionIntents/{intentObjectName}'");
@@ -28794,7 +28843,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationProtectionIntents$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationProtectionIntents$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationProtectionIntents'");
@@ -28970,7 +29019,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}'");
@@ -29126,6 +29175,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -29241,7 +29291,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}'");
@@ -29394,6 +29444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -29507,7 +29558,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/failoverCancel$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/failoverCancel$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/failoverCancel'");
@@ -29663,6 +29714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -29776,7 +29828,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/failoverCommit$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/failoverCommit$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/failoverCommit'");
@@ -29932,6 +29984,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -30044,7 +30097,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}'");
@@ -30208,7 +30261,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans'");
@@ -30377,7 +30430,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/plannedFailover$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/plannedFailover$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/plannedFailover'");
@@ -30537,6 +30590,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -30653,7 +30707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/reProtect$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/reProtect$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/reProtect'");
@@ -30807,6 +30861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -30976,7 +31031,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/testFailoverCleanup$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/testFailoverCleanup$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/testFailoverCleanup'");
@@ -31136,6 +31191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -31208,7 +31264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/testFailover$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/testFailover$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/testFailover'");
@@ -31368,6 +31424,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -31490,7 +31547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/unplannedFailover$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)/unplannedFailover$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}/unplannedFailover'");
@@ -31650,6 +31707,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -31771,7 +31829,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryPlans/(?<recoveryPlanName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}'");
@@ -31927,6 +31985,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -32051,7 +32110,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationRecoveryServicesProviders/(?<providerName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationRecoveryServicesProviders/(?<providerName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}'");
@@ -32212,6 +32271,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -32337,7 +32397,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationRecoveryServicesProviders/(?<providerName>[^/]+)/remove$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationRecoveryServicesProviders/(?<providerName>[^/]+)/remove$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}/remove'");
@@ -32496,6 +32556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -32613,7 +32674,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationRecoveryServicesProviders/(?<providerName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationRecoveryServicesProviders/(?<providerName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}'");
@@ -32829,7 +32890,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationRecoveryServicesProviders$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationRecoveryServicesProviders$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders'");
@@ -32954,7 +33015,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryServicesProviders$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationRecoveryServicesProviders$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryServicesProviders'");
@@ -33125,7 +33186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationRecoveryServicesProviders/(?<providerName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationRecoveryServicesProviders/(?<providerName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}'");
@@ -33283,6 +33344,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -33401,7 +33463,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationRecoveryServicesProviders/(?<providerName>[^/]+)/refreshProvider$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationRecoveryServicesProviders/(?<providerName>[^/]+)/refreshProvider$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationRecoveryServicesProviders/{providerName}/refreshProvider'");
@@ -33560,6 +33622,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -33686,7 +33749,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationStorageClassifications/(?<storageClassificationName>[^/]+)/replicationStorageClassificationMappings/(?<storageClassificationMappingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationStorageClassifications/(?<storageClassificationName>[^/]+)/replicationStorageClassificationMappings/(?<storageClassificationMappingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings/{storageClassificationMappingName}'");
@@ -33850,6 +33913,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -33975,7 +34039,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationStorageClassifications/(?<storageClassificationName>[^/]+)/replicationStorageClassificationMappings/(?<storageClassificationMappingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationStorageClassifications/(?<storageClassificationName>[^/]+)/replicationStorageClassificationMappings/(?<storageClassificationMappingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings/{storageClassificationMappingName}'");
@@ -34136,6 +34200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -34258,7 +34323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationStorageClassifications/(?<storageClassificationName>[^/]+)/replicationStorageClassificationMappings/(?<storageClassificationMappingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationStorageClassifications/(?<storageClassificationName>[^/]+)/replicationStorageClassificationMappings/(?<storageClassificationMappingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings/{storageClassificationMappingName}'");
@@ -34482,7 +34547,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationStorageClassifications/(?<storageClassificationName>[^/]+)/replicationStorageClassificationMappings$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationStorageClassifications/(?<storageClassificationName>[^/]+)/replicationStorageClassificationMappings$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}/replicationStorageClassificationMappings'");
@@ -34612,7 +34677,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationStorageClassificationMappings$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationStorageClassificationMappings$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationStorageClassificationMappings'");
@@ -34779,7 +34844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationStorageClassifications/(?<storageClassificationName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationStorageClassifications/(?<storageClassificationName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications/{storageClassificationName}'");
@@ -34995,7 +35060,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationStorageClassifications$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationStorageClassifications$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationStorageClassifications'");
@@ -35120,7 +35185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationStorageClassifications$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationStorageClassifications$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationStorageClassifications'");
@@ -35282,7 +35347,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationVaultHealth$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationVaultHealth$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth'");
@@ -35442,7 +35507,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationVaultHealth/default/refresh$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationVaultHealth/default/refresh$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultHealth/default/refresh'");
@@ -35593,6 +35658,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -35709,7 +35775,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationVaultSettings/(?<vaultSettingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationVaultSettings/(?<vaultSettingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}'");
@@ -35865,6 +35931,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -35980,7 +36047,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationVaultSettings/(?<vaultSettingName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationVaultSettings/(?<vaultSettingName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings/{vaultSettingName}'");
@@ -36148,7 +36215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationVaultSettings$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationVaultSettings$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationVaultSettings'");
@@ -36319,7 +36386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationvCenters/(?<vcenterName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationvCenters/(?<vcenterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}'");
@@ -36478,6 +36545,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -36598,7 +36666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationvCenters/(?<vcenterName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationvCenters/(?<vcenterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}'");
@@ -36754,6 +36822,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -36871,7 +36940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationvCenters/(?<vcenterName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationvCenters/(?<vcenterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}'");
@@ -37085,7 +37154,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationvCenters$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationvCenters$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters'");
@@ -37210,7 +37279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationvCenters$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationvCenters$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationvCenters'");
@@ -37381,7 +37450,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationvCenters/(?<vcenterName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationvCenters/(?<vcenterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationvCenters/{vcenterName}'");
@@ -37540,6 +37609,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -37657,7 +37727,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/runAsAccounts/(?<accountName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/runAsAccounts/(?<accountName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/runAsAccounts/{accountName}'");
@@ -37821,7 +37891,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/runAsAccounts$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/runAsAccounts$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/runAsAccounts'");
@@ -37988,7 +38058,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}'");
@@ -38162,7 +38232,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}'");
@@ -38369,7 +38439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/healthSummary$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/healthSummary$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/healthSummary'");
@@ -38529,7 +38599,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/summary$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/summary$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/summary'");
@@ -38647,7 +38717,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}'");
@@ -38806,7 +38876,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/refresh$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/refresh$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/refresh'");
@@ -38868,7 +38938,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.461\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.492\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -38973,7 +39043,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}'");
@@ -39149,7 +39219,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions/(?<solutionName>[^/]+)/cleanupData$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions/(?<solutionName>[^/]+)/cleanupData$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}/cleanupData'");
@@ -39324,7 +39394,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions/(?<solutionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions/(?<solutionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}'");
@@ -39499,7 +39569,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions/(?<solutionName>[^/]+)/getConfig$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions/(?<solutionName>[^/]+)/getConfig$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}/getConfig'");
@@ -39666,7 +39736,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions/(?<solutionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions/(?<solutionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}'");
@@ -39830,7 +39900,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions'");
@@ -40002,7 +40072,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions/(?<solutionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions/(?<solutionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}'");
@@ -40183,7 +40253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions/(?<solutionName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Migrate/migrateProjects/(?<migrateProjectName>[^/]+)/solutions/(?<solutionName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Migrate/migrateProjects/{migrateProjectName}/solutions/{solutionName}'");
@@ -40365,7 +40435,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationSupportedOperatingSystems$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationSupportedOperatingSystems$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationSupportedOperatingSystems'");
@@ -40538,7 +40608,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/targetComputeSizes$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.RecoveryServices/vaults/(?<resourceName>[^/]+)/replicationFabrics/(?<fabricName>[^/]+)/replicationProtectionContainers/(?<protectionContainerName>[^/]+)/replicationProtectedItems/(?<replicatedProtectedItemName>[^/]+)/targetComputeSizes$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/targetComputeSizes'");
@@ -40723,7 +40793,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/vCenters/(?<vcenterName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/vCenters/(?<vcenterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/vCenters/{vcenterName}'");
@@ -40791,7 +40861,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
                         case global::System.Net.HttpStatusCode.Accepted:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.461\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
+                            await onAccepted(_response,null /* deserializeFromResponse doesn't support '-header-' C:\Users\VssAdministrator\.autorest\@autorest_powershell@3.0.492\node_modules\@autorest\powershell\dist\llcsharp\schema\object.js*/);
                             break;
                         }
                         default:
@@ -40898,7 +40968,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/vCenters/(?<vcenterName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/vCenters/(?<vcenterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/vCenters/{vcenterName}'");
@@ -41071,7 +41141,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/vCenters/(?<vcenterName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/vCenters/(?<vcenterName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/vCenters/{vcenterName}'");
@@ -41239,7 +41309,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/vCenters$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/vCenters$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/vCenters'");
@@ -41405,7 +41475,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate
             {
                 // verify that Identity format is an exact match for uri
 
-                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/operationsStatus/(?<operationStatusName>[^/]+)$").Match(viaIdentity);
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.OffAzure/VMwareSites/(?<siteName>[^/]+)/operationsStatus/(?<operationStatusName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
                 if (!_match.Success)
                 {
                     throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/operationsStatus/{operationStatusName}'");

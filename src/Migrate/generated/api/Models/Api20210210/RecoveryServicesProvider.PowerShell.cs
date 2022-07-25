@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="RecoveryServicesProvider" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="RecoveryServicesProvider" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProvider FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,49 +101,178 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.RecoveryServicesProviderPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderDetails) content.GetValueForProperty("AuthenticationIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderDetails) content.GetValueForProperty("ResourceAccessIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderDetails) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVersionDetails) content.GetValueForProperty("ProviderVersionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VersionDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricType = (string) content.GetValueForProperty("FabricType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersion = (string) content.GetValueForProperty("ProviderVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ServerVersion = (string) content.GetValueForProperty("ServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ServerVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionState = (string) content.GetValueForProperty("ProviderVersionState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("ProviderVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricFriendlyName = (string) content.GetValueForProperty("FabricFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).LastHeartBeat = (global::System.DateTime?) content.GetValueForProperty("LastHeartBeat",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).LastHeartBeat, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ConnectionStatus = (string) content.GetValueForProperty("ConnectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ConnectionStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProtectedItemCount = (int?) content.GetValueForProperty("ProtectedItemCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProtectedItemCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AllowedScenario = (string[]) content.GetValueForProperty("AllowedScenario",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AllowedScenario, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).HealthErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).HealthErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DraIdentifier = (string) content.GetValueForProperty("DraIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DraIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).BiosId = (string) content.GetValueForProperty("BiosId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).BiosId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailTenantId = (string) content.GetValueForProperty("AuthenticationIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailApplicationId = (string) content.GetValueForProperty("AuthenticationIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailObjectId = (string) content.GetValueForProperty("AuthenticationIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAudience = (string) content.GetValueForProperty("AuthenticationIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAadAuthority = (string) content.GetValueForProperty("AuthenticationIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAadAuthority, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailTenantId = (string) content.GetValueForProperty("ResourceAccessIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailApplicationId = (string) content.GetValueForProperty("ResourceAccessIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailObjectId = (string) content.GetValueForProperty("ResourceAccessIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAudience = (string) content.GetValueForProperty("ResourceAccessIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAadAuthority = (string) content.GetValueForProperty("ResourceAccessIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAadAuthority, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailTenantId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailApplicationId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailObjectId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAudience = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAadAuthority = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAadAuthority, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailVersion = (string) content.GetValueForProperty("ProviderVersionDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailExpiryDate = (global::System.DateTime?) content.GetValueForProperty("ProviderVersionDetailExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailStatus = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus?) content.GetValueForProperty("ProviderVersionDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailStatus, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus.CreateFrom);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.RecoveryServicesProviderPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderDetails) content.GetValueForProperty("AuthenticationIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ResourceAccessIdentityDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderDetails) content.GetValueForProperty("ResourceAccessIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderDetails) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProviderVersionDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVersionDetails) content.GetValueForProperty("ProviderVersionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VersionDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FabricType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricType = (string) content.GetValueForProperty("FabricType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricType, global::System.Convert.ToString);
+            }
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersion = (string) content.GetValueForProperty("ProviderVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServerVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ServerVersion = (string) content.GetValueForProperty("ServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ServerVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderVersionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionState = (string) content.GetValueForProperty("ProviderVersionState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderVersionExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("ProviderVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("FabricFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricFriendlyName = (string) content.GetValueForProperty("FabricFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastHeartBeat"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).LastHeartBeat = (global::System.DateTime?) content.GetValueForProperty("LastHeartBeat",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).LastHeartBeat, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ConnectionStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ConnectionStatus = (string) content.GetValueForProperty("ConnectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ConnectionStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProtectedItemCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProtectedItemCount = (int?) content.GetValueForProperty("ProtectedItemCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProtectedItemCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AllowedScenario"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AllowedScenario = (string[]) content.GetValueForProperty("AllowedScenario",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AllowedScenario, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("HealthErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).HealthErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).HealthErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DraIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DraIdentifier = (string) content.GetValueForProperty("DraIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DraIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BiosId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).BiosId = (string) content.GetValueForProperty("BiosId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).BiosId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityDetailTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailTenantId = (string) content.GetValueForProperty("AuthenticationIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityDetailApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailApplicationId = (string) content.GetValueForProperty("AuthenticationIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityDetailObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailObjectId = (string) content.GetValueForProperty("AuthenticationIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityDetailAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAudience = (string) content.GetValueForProperty("AuthenticationIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityDetailAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAadAuthority = (string) content.GetValueForProperty("AuthenticationIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAadAuthority, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityDetailTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailTenantId = (string) content.GetValueForProperty("ResourceAccessIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityDetailApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailApplicationId = (string) content.GetValueForProperty("ResourceAccessIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityDetailObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailObjectId = (string) content.GetValueForProperty("ResourceAccessIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityDetailAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAudience = (string) content.GetValueForProperty("ResourceAccessIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityDetailAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAadAuthority = (string) content.GetValueForProperty("ResourceAccessIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAadAuthority, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityDetailTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailTenantId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityDetailApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailApplicationId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityDetailObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailObjectId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityDetailAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAudience = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityDetailAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAadAuthority = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAadAuthority, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderVersionDetailVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailVersion = (string) content.GetValueForProperty("ProviderVersionDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderVersionDetailExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailExpiryDate = (global::System.DateTime?) content.GetValueForProperty("ProviderVersionDetailExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ProviderVersionDetailStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailStatus = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus?) content.GetValueForProperty("ProviderVersionDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailStatus, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -159,49 +290,178 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.RecoveryServicesProviderPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderDetails) content.GetValueForProperty("AuthenticationIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderDetails) content.GetValueForProperty("ResourceAccessIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderDetails) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVersionDetails) content.GetValueForProperty("ProviderVersionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VersionDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricType = (string) content.GetValueForProperty("FabricType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersion = (string) content.GetValueForProperty("ProviderVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ServerVersion = (string) content.GetValueForProperty("ServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ServerVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionState = (string) content.GetValueForProperty("ProviderVersionState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("ProviderVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricFriendlyName = (string) content.GetValueForProperty("FabricFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).LastHeartBeat = (global::System.DateTime?) content.GetValueForProperty("LastHeartBeat",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).LastHeartBeat, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ConnectionStatus = (string) content.GetValueForProperty("ConnectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ConnectionStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProtectedItemCount = (int?) content.GetValueForProperty("ProtectedItemCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProtectedItemCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AllowedScenario = (string[]) content.GetValueForProperty("AllowedScenario",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AllowedScenario, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).HealthErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).HealthErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DraIdentifier = (string) content.GetValueForProperty("DraIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DraIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).BiosId = (string) content.GetValueForProperty("BiosId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).BiosId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailTenantId = (string) content.GetValueForProperty("AuthenticationIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailApplicationId = (string) content.GetValueForProperty("AuthenticationIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailObjectId = (string) content.GetValueForProperty("AuthenticationIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAudience = (string) content.GetValueForProperty("AuthenticationIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAadAuthority = (string) content.GetValueForProperty("AuthenticationIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAadAuthority, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailTenantId = (string) content.GetValueForProperty("ResourceAccessIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailApplicationId = (string) content.GetValueForProperty("ResourceAccessIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailObjectId = (string) content.GetValueForProperty("ResourceAccessIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAudience = (string) content.GetValueForProperty("ResourceAccessIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAadAuthority = (string) content.GetValueForProperty("ResourceAccessIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAadAuthority, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailTenantId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailApplicationId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailObjectId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAudience = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAadAuthority = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAadAuthority, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailVersion = (string) content.GetValueForProperty("ProviderVersionDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailExpiryDate = (global::System.DateTime?) content.GetValueForProperty("ProviderVersionDetailExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailStatus = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus?) content.GetValueForProperty("ProviderVersionDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailStatus, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus.CreateFrom);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.RecoveryServicesProviderPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderDetails) content.GetValueForProperty("AuthenticationIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ResourceAccessIdentityDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderDetails) content.GetValueForProperty("ResourceAccessIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderDetails) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProviderVersionDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVersionDetails) content.GetValueForProperty("ProviderVersionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VersionDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FabricType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricType = (string) content.GetValueForProperty("FabricType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricType, global::System.Convert.ToString);
+            }
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersion = (string) content.GetValueForProperty("ProviderVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServerVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ServerVersion = (string) content.GetValueForProperty("ServerVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ServerVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderVersionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionState = (string) content.GetValueForProperty("ProviderVersionState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionState, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderVersionExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("ProviderVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("FabricFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricFriendlyName = (string) content.GetValueForProperty("FabricFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).FabricFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastHeartBeat"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).LastHeartBeat = (global::System.DateTime?) content.GetValueForProperty("LastHeartBeat",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).LastHeartBeat, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ConnectionStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ConnectionStatus = (string) content.GetValueForProperty("ConnectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ConnectionStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProtectedItemCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProtectedItemCount = (int?) content.GetValueForProperty("ProtectedItemCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProtectedItemCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AllowedScenario"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AllowedScenario = (string[]) content.GetValueForProperty("AllowedScenario",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AllowedScenario, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("HealthErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).HealthErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).HealthErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DraIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DraIdentifier = (string) content.GetValueForProperty("DraIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DraIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).MachineName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BiosId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).BiosId = (string) content.GetValueForProperty("BiosId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).BiosId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityDetailTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailTenantId = (string) content.GetValueForProperty("AuthenticationIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityDetailApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailApplicationId = (string) content.GetValueForProperty("AuthenticationIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityDetailObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailObjectId = (string) content.GetValueForProperty("AuthenticationIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityDetailAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAudience = (string) content.GetValueForProperty("AuthenticationIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityDetailAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAadAuthority = (string) content.GetValueForProperty("AuthenticationIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).AuthenticationIdentityDetailAadAuthority, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityDetailTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailTenantId = (string) content.GetValueForProperty("ResourceAccessIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityDetailApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailApplicationId = (string) content.GetValueForProperty("ResourceAccessIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityDetailObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailObjectId = (string) content.GetValueForProperty("ResourceAccessIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityDetailAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAudience = (string) content.GetValueForProperty("ResourceAccessIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityDetailAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAadAuthority = (string) content.GetValueForProperty("ResourceAccessIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ResourceAccessIdentityDetailAadAuthority, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityDetailTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailTenantId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityDetailApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailApplicationId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityDetailObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailObjectId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityDetailAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAudience = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityDetailAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAadAuthority = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityDetailAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).DataPlaneAuthenticationIdentityDetailAadAuthority, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderVersionDetailVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailVersion = (string) content.GetValueForProperty("ProviderVersionDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderVersionDetailExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailExpiryDate = (global::System.DateTime?) content.GetValueForProperty("ProviderVersionDetailExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ProviderVersionDetailStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailStatus = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus?) content.GetValueForProperty("ProviderVersionDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryServicesProviderInternal)this).ProviderVersionDetailStatus, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 
