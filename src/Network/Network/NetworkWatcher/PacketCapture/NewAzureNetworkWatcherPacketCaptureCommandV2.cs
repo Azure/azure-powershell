@@ -36,7 +36,6 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public PSNetworkWatcher NetworkWatcher { get; set; }
 
-        [Alias("Name")]
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
@@ -63,12 +62,13 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateNotNull]
         public string Location { get; set; }
 
+        [Alias("PacketCaptureName")]
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The packet capture name.")]
         [ValidateNotNullOrEmpty]
-        public string PacketCaptureName { get; set; }
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -120,7 +120,7 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Time limit in seconds.")]
         [ValidateNotNull]
         [ValidateRange(1, int.MaxValue)]
-        public int? TimeLimitInSeconds { get; set; }
+        public int? TimeLimitInSecond { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -172,13 +172,13 @@ namespace Microsoft.Azure.Commands.Network
                 name = this.NetworkWatcherName;
             }
 
-            var present = this.IsPacketCapturePresent(resourceGroupName, name, this.PacketCaptureName);
+            var present = this.IsPacketCapturePresent(resourceGroupName, name, this.Name);
 
             if (!present)
             {
                 ConfirmAction(
                     Properties.Resources.CreatingResourceMessage,
-                    this.PacketCaptureName,
+                    this.Name,
                     () =>
                     {
                         var packetCapture = CreatePacketCapture(resourceGroupName, name);
@@ -201,9 +201,9 @@ namespace Microsoft.Azure.Commands.Network
                 packetCaptureProperties.TotalBytesPerSession = this.TotalBytesPerSession;
             }
 
-            if (this.TimeLimitInSeconds != null)
+            if (this.TimeLimitInSecond != null)
             {
-                packetCaptureProperties.TimeLimitInSeconds = this.TimeLimitInSeconds;
+                packetCaptureProperties.TimeLimitInSeconds = this.TimeLimitInSecond;
             }
 
             packetCaptureProperties.Target = this.TargetId;
@@ -243,8 +243,8 @@ namespace Microsoft.Azure.Commands.Network
             PSPacketCaptureResult getPacketCapture = new PSPacketCaptureResult();
 
             // Execute the Create NetworkWatcher call
-            this.PacketCaptures.Create(resourceGroupName, networkWatcherName, this.PacketCaptureName, packetCaptureProperties);
-            getPacketCapture = this.GetPacketCapture(resourceGroupName, networkWatcherName, this.PacketCaptureName);
+            this.PacketCaptures.Create(resourceGroupName, networkWatcherName, this.Name, packetCaptureProperties);
+            getPacketCapture = this.GetPacketCapture(resourceGroupName, networkWatcherName, this.Name);
 
             return getPacketCapture;
         }

@@ -646,7 +646,7 @@ function Test-PacketCaptureV2
         $s1 = New-AzPacketCaptureScopeConfig -Include "0", "1"
 
         #Create packet capture
-        $job = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -PacketCaptureName $pcName -TargetId $vmss.Id -TargetType "azurevmss" -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob
+        $job = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -Name $pcName -TargetId $vmss.Id -TargetType "azurevmss" -LocalFilePath C:\tmp\Capture.cap -Filter $f1, $f2 -AsJob -TimeLimitInSecond 1200
         $job | Wait-Job
         $job2 = New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $nw -PacketCaptureName $pcName2 -TargetId $vmss.Id -TargetType "azurevmss" -Scope $s1 -LocalFilePath C:\tmp\Capture.cap -AsJob
         $job2 | Wait-Job

@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Network.dll-Help.xml
 Module Name: Az.Network
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.network/new-aznetworkwatcherpacketcapturev2
 schema: 2.0.0
 ---
 
@@ -14,9 +14,9 @@ V2 Version of Packet Capture Cmdlet which creates a new packet capture resource 
 
 ### SetByResource (Default)
 ```
-New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher <PSNetworkWatcher> -PacketCaptureName <String>
+New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher <PSNetworkWatcher> -Name <String>
  -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
- [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>] [-TimeLimitInSeconds <Int32>]
+ [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -24,18 +24,18 @@ New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher <PSNetworkWatcher> -PacketCa
 ### SetByName
 ```
 New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcherName <String> -ResourceGroupName <String>
- -PacketCaptureName <String> -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>]
+ -Name <String> -TargetId <String> [-StorageAccountId <String>] [-StoragePath <String>]
  [-LocalFilePath <String>] [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>]
- [-TimeLimitInSeconds <Int32>] [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>]
+ [-TimeLimitInSecond <Int32>] [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>]
  [-Filter <PSPacketCaptureFilter[]>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### SetByLocation
 ```
-New-AzNetworkWatcherPacketCaptureV2 -Location <String> -PacketCaptureName <String> -TargetId <String>
+New-AzNetworkWatcherPacketCaptureV2 -Location <String> -Name <String> -TargetId <String>
  [-StorageAccountId <String>] [-StoragePath <String>] [-LocalFilePath <String>]
- [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>] [-TimeLimitInSeconds <Int32>]
+ [-BytesToCapturePerPacket <Int32>] [-TotalBytesPerSession <Int32>] [-TimeLimitInSecond <Int32>]
  [-Scope <PSPacketCaptureMachineScope>] [-TargetType <String>] [-Filter <PSPacketCaptureFilter[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -48,7 +48,7 @@ Filters can be applied to a given packet capture session, allowing you to custom
 ## EXAMPLES
 
 ### Example 1: Create a Packet Capture on a VM
-```
+```powershell
 $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 
@@ -56,14 +56,50 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName contosoResourceGroup -
 
 $filter1 = New-AzPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
 $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP 
-New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -TargetId $vm.Id -TargetType "azurevm" -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
+New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -TargetId $vm.Id -TargetType "azurevm" -Name "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSecond 60 -Filter $filter1, $filter2
+```
+
+```output
+Name                    : PacketCaptureTest
+Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_eastus/packetCaptures/PacketCaptureTest
+Etag                    : W/"0b3c52cb-aa63-4647-93d3-3221c13ccdd2"
+ProvisioningState       : Succeeded
+Target                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoResourceGroup/providers/Microsoft.Compute/virtualMachines/SampleVM
+TargetType              : AzureVM
+BytesToCapturePerPacket : 0
+TotalBytesPerSession    : 1073741824
+TimeLimitInSeconds      : 18000
+StorageLocation         : {
+                            "StorageId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoResourceGroup/providers/Microsoft.Storage/storageAccounts/contosostorage123",
+                            "StoragePath": "https://contosostorage123.blob.core.windows.net/network-watcher-logs/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/contosoResourceGroup/providers/microsoft.compute/virtualmachines/SampleVM/2022/07/21/packetcapture_09_20_07_166.cap"
+                          }
+Filters                 : [
+                            {
+                              "Protocol": "TCP",
+                              "RemoteIPAddress": "1.1.1.1-255.255.255",
+                              "LocalIPAddress": "10.0.0.3",
+                              "LocalPort": "1-65535",
+                              "RemotePort": "20;80;443"
+                            },
+                            {
+                              "Protocol": "UDP",
+                              "RemoteIPAddress": "",
+                              "LocalIPAddress": "",
+                              "LocalPort": "",
+                              "RemotePort": ""
+                            }
+                          ]
+Scope                   : {
+                            "Include": [],
+                            "Exclude": []
+                          }
 ```
 
 In this example we create a packet capture named "PacketCaptureTest" with multiple filters and a time limit. Once the session is complete, it will be saved to the specified storage account. 
 Note: The Azure Network Watcher extension must be installed on the target virtual machine to create packet captures.
 
 ### Example 2: Create a Packet Capture on a VMSS
-```
+```powershell
 $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 
@@ -71,14 +107,50 @@ $storageAccount = Get-AzStorageAccount -ResourceGroupName contosoResourceGroup -
 
 $filter1 = New-AzPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
 $filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP 
-New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -TargetId $vmss.Id -TargetType "azurevmss" -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
+New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -TargetId $vmss.Id -TargetType "azurevmss" -Name "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSecond 60 -Filter $filter1, $filter2
+```
+
+```output
+Name                    : PacketCaptureTest
+Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_eastus/packetCaptures/PacketCaptureTest
+Etag                    : W/"0b3c52cb-aa63-4647-93d3-3221c13ccdd2"
+ProvisioningState       : Succeeded
+Target                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/SampleVMSS
+TargetType              : AzureVMSS
+BytesToCapturePerPacket : 0
+TotalBytesPerSession    : 1073741824
+TimeLimitInSeconds      : 60
+StorageLocation         : {
+                            "StorageId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoResourceGroup/providers/Microsoft.Storage/storageAccounts/contosostorage123",
+                            "StoragePath": "https://contosostorage123.blob.core.windows.net/network-watcher-logs/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/contosoResourceGroup/providers/microsoft.compute/virtualmachinescalesets/SampleVMSS/2022/07/21/packetcapture_09_20_07_166.cap"
+                          }
+Filters                 : [
+                            {
+                              "Protocol": "TCP",
+                              "RemoteIPAddress": "1.1.1.1-255.255.255",
+                              "LocalIPAddress": "10.0.0.3",
+                              "LocalPort": "1-65535",
+                              "RemotePort": "20;80;443"
+                            },
+                            {
+                              "Protocol": "UDP",
+                              "RemoteIPAddress": "",
+                              "LocalIPAddress": "",
+                              "LocalPort": "",
+                              "RemotePort": ""
+                            }
+                          ]
+Scope                   : {
+                            "Include": [],
+                            "Exclude": []
+                          }
 ```
 
 In this example we create a packet capture named "PacketCaptureTest" with multiple filters and a time limit. Once the session is complete, it will be saved to the specified storage account. 
 Note: The Azure Network Watcher extension must be installed on the target virtual machine scale set and all the respective instances adhering to the latest vmss model, to create packet captures.
 
 ### Example 3: Create a Packet Capture on few Instances of VMSS
-```
+```powershell
 $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 
@@ -91,8 +163,48 @@ $instance1 = $vmssInstance1.Name
 $instance2 = $vmssInstance2.Name
 $scope = New-AzPacketCaptureScopeConfig -Include $instance1, $instance2
 
-New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -TargetId $vmss.Id -TargetType "azurevmss" -Scope $scope -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
+New-AzNetworkWatcherPacketCaptureV2 -NetworkWatcher $networkWatcher -TargetId $vmss.Id -TargetType "azurevmss" -Scope $scope -Name "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSecond 60 -Filter $filter1, $filter2
 ```
+
+```output
+Name                    : PacketCaptureTest
+Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatchers/NetworkWatcher_eastus/packetCaptures/PacketCaptureTest
+Etag                    : W/"0b3c52cb-aa63-4647-93d3-3221c13ccdd2"
+ProvisioningState       : Succeeded
+Target                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/SampleVMSS
+TargetType              : AzureVMSS
+BytesToCapturePerPacket : 0
+TotalBytesPerSession    : 1073741824
+TimeLimitInSeconds      : 18000
+StorageLocation         : {
+                            "StorageId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoResourceGroup/providers/Microsoft.Storage/storageAccounts/contosostorage123",
+                            "StoragePath": "https://contosostorage123.blob.core.windows.net/network-watcher-logs/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/contosoResourceGroup/providers/microsoft.compute/virtualmachinescalesets/SampleVMSS/2022/07/21/packetcapture_09_20_07_166.cap"
+                          }
+Filters                 : [
+                            {
+                              "Protocol": "TCP",
+                              "RemoteIPAddress": "1.1.1.1-255.255.255",
+                              "LocalIPAddress": "10.0.0.3",
+                              "LocalPort": "1-65535",
+                              "RemotePort": "20;80;443"
+                            },
+                            {
+                              "Protocol": "UDP",
+                              "RemoteIPAddress": "",
+                              "LocalIPAddress": "",
+                              "LocalPort": "",
+                              "RemotePort": ""
+                            }
+                          ]
+Scope                   : {
+                            "Include": [
+                              "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/SampleVMSS/virtualMachines/0",
+                              "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/contosoResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/SampleVMSS/virtualMachines/1"
+                            ],
+                            "Exclude": []
+                          }
+```
+
 
 In this example we create a packet capture named "PacketCaptureTest" with multiple filters and a time limit. Once the session is complete, it will be saved to the specified storage account. 
 Note: The Azure Network Watcher extension must be installed on the target virtual machine scale set and on the respective instances in include scope adhering to the latest vmss model, to create packet captures.
@@ -219,7 +331,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PacketCaptureName
+### -Name
 The packet capture name.
 
 ```yaml
@@ -324,7 +436,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TimeLimitInSeconds
+### -TimeLimitInSecond
 Time limit in seconds.
 
 ```yaml
@@ -403,3 +515,60 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+
+[New-AzNetworkWatcher](./New-AzNetworkWatcher.md)
+
+[Get-AzNetworkWatcher](./Get-AzNetworkWatcher.md)
+
+[Remove-AzNetworkWatcher](./Remove-AzNetworkWatcher.md)
+
+[Get-AzNetworkWatcherNextHop](./Get-AzNetworkWatcherNextHop.md)
+
+[Get-AzNetworkWatcherSecurityGroupView](./Get-AzNetworkWatcherSecurityGroupView.md)
+
+[Get-AzNetworkWatcherTopology](./Get-AzNetworkWatcherTopology.md)
+
+[Start-AzNetworkWatcherResourceTroubleshooting](./Start-AzNetworkWatcherResourceTroubleshooting.md)
+
+[New-AzNetworkWatcherPacketCapture](./New-AzNetworkWatcherPacketCapture.md)
+
+[New-AzPacketCaptureFilterConfig](./New-AzPacketCaptureFilterConfig.md)
+
+[New-AzNetworkWatcherPacketCapture](./New-AzNetworkWatcherPacketCapture.md)
+
+[Get-AzNetworkWatcherPacketCapture](./Get-AzNetworkWatcherPacketCapture.md)
+
+[Remove-AzNetworkWatcherPacketCapture](./Remove-AzNetworkWatcherPacketCapture.md)
+
+[Stop-AzNetworkWatcherPacketCapture](./Stop-AzNetworkWatcherPacketCapture.md)
+
+[New-AzNetworkWatcherProtocolConfiguration](./New-AzNetworkWatcherProtocolConfiguration.md)
+
+[Test-AzNetworkWatcherIPFlow](./Test-AzNetworkWatcherIPFlow.md)
+
+[Test-AzNetworkWatcherConnectivity](./Test-AzNetworkWatcherConnectivity.md)
+
+[Stop-AzNetworkWatcherConnectionMonitor](./Stop-AzNetworkWatcherConnectionMonitor.md)
+
+[Start-AzNetworkWatcherConnectionMonitor](./Start-AzNetworkWatcherConnectionMonitor.md)
+
+[Set-AzNetworkWatcherConnectionMonitor](./Set-AzNetworkWatcherConnectionMonitor.md)
+
+[Set-AzNetworkWatcherConfigFlowLog](./Set-AzNetworkWatcherConfigFlowLog.md)
+
+[Remove-AzNetworkWatcherConnectionMonitor](./Remove-AzNetworkWatcherConnectionMonitor.md)
+
+[New-AzNetworkWatcherConnectionMonitor](./New-AzNetworkWatcherConnectionMonitor.md)
+
+[Get-AzNetworkWatcherTroubleshootingResult](./Get-AzNetworkWatcherTroubleshootingResult.md)
+
+[Get-AzNetworkWatcherReachabilityReport](./Get-AzNetworkWatcherReachabilityReport.md)
+
+[Get-AzNetworkWatcherReachabilityProvidersList](./Get-AzNetworkWatcherReachabilityProvidersList.md)
+
+[Get-AzNetworkWatcherFlowLogStatus](./Get-AzNetworkWatcherFlowLogStatus.md)
+
+[Get-AzNetworkWatcherConnectionMonitorReport](./Get-AzNetworkWatcherConnectionMonitorReport.md)
+
+[Get-AzNetworkWatcherConnectionMonitor](./Get-AzNetworkWatcherConnectionMonitor.md)
