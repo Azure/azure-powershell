@@ -14,9 +14,10 @@ This command creates a new Azure SQL Database Failover Group.
 
 ```
 New-AzSqlDatabaseFailoverGroup [-ServerName] <String> -FailoverGroupName <String>
- [-PartnerResourceGroupName <String>] -PartnerServerName <String> [-FailoverPolicy <FailoverPolicy>]
- [-GracePeriodWithDataLossHours <Int32>] [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>]
- [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-PartnerSubscriptionId <String>] [-PartnerResourceGroupName <String>] -PartnerServerName <String>
+ [-FailoverPolicy <FailoverPolicy>] [-GracePeriodWithDataLossHours <Int32>]
+ [-AllowReadOnlyFailoverToPrimary <AllowReadOnlyFailoverToPrimary>] [-ResourceGroupName] <String>
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -40,6 +41,13 @@ $failoverGroup = New-AzSqlDatabaseFailoverGroup -ResourceGroupName rg1 -ServerNa
 ```
 
 This command creates a new Failover Group with failover policy 'Manual' for two servers in different resource groups.
+
+### Example 3
+```powershell
+$failoverGroup = New-AzSqlDatabaseFailoverGroup -ResourceGroupName rg1 -ServerName primaryserver -PartnerSubscriptionId subscription2 -PartnerServerName secondaryserver1 -FailoverGroupName fg -FailoverPolicy Manual
+```
+
+This command creates a new Failover Group with failover policy 'Manual' for two servers in different subscriptions.
 
 ## PARAMETERS
 
@@ -144,6 +152,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PartnerSubscriptionId
+The name of the secondary subscription id of the Azure SQL Database Failover Group.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
