@@ -285,6 +285,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         public ResourceIdParser(int resourceLevel, string resourceId, string expectedResourceType)
         {
+            //Resource Level indicates the hierarchy of a resource in a resource id
+            //level 1 :TopLevelResource would be an eventhub namespace
+            //Level 2 :ChildResource of the TopLevel Resource. EventHubEntities
+            //and so on.
             if(resourceLevel == 1)
             {
                 //TopLevelResource within resource group

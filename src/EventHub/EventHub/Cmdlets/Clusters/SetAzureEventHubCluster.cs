@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         public string ResourceGroupName { get; set; }
 
 
-        [CmdletParameterBreakingChange("Name", ChangeDescription = "Name Parameter is being deprecated from " + ClusterResourceIdParameterSet + " without being replaced. ResourceId's are implicit of resource name.")]
+        [CmdletParameterBreakingChange("Name", ChangeDescription = "'Name' Parameter is being deprecated from " + ClusterResourceIdParameterSet + " without being replaced. ResourceId's are implicit of resource name.")]
         [Parameter(Mandatory = true, ParameterSetName = ClusterPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Cluster Name")]
         [Parameter(Mandatory = false, ParameterSetName = ClusterResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Cluster Name")]
         [ValidateNotNullOrEmpty]
