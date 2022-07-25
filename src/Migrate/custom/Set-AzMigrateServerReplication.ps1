@@ -506,14 +506,12 @@ function Set-AzMigrateServerReplication {
                 }
             }
 
-            $TargetResourceGroupName = $ProviderSpecificDetails.TargetResourceGroupId.Split('/')[4]
-
             if ($HasTargetVMName) {
                 if ($TargetVMName.length -gt 64 -or $TargetVMName.length -eq 0) {
                     throw "The target virtual machine name must be between 1 and 64 characters long."
                 }
-
-                $VMNamePresentinRg = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $TargetVMName -ResourceType "Microsoft.Compute/virtualMachines" -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                $vmId = $ProviderSpecificDetails.TargetResourceGroupId + "/providers/Microsoft.Compute/virtualMachines/" + $TargetVMName
+                $VMNamePresentinRg = Get-AzResource -ResourceId $vmId -ErrorVariable notPresent -ErrorAction SilentlyContinue
                 if ($VMNamePresentinRg) {
                     throw "The target virtual machine name must be unique in the target resource group."
                 }
@@ -533,7 +531,8 @@ function Set-AzMigrateServerReplication {
                 $duplicateDiskName = New-Object System.Collections.Generic.HashSet[String]
                 $uniqueDiskUuids = [System.Collections.Generic.HashSet[String]]::new([StringComparer]::InvariantCultureIgnoreCase)
                 foreach($DiskObject in $DiskToUpdate) {
-                    $diskNamePresent = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $DiskObject.TargetDiskName -ResourceType "Microsoft.Compute/disks" -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                    $diskId = $ProviderSpecificDetails.TargetResourceGroupId + "/providers/Microsoft.Compute/disks/" + $DiskObject.TargetDiskName
+                    $diskNamePresent = Get-AzResource -ResourceId $diskId -ErrorVariable notPresent -ErrorAction SilentlyContinue
                     if ($diskNamePresent) {
                         $diskNamePresentinRg.Add($DiskObject.TargetDiskName)
                     }
@@ -563,7 +562,9 @@ function Set-AzMigrateServerReplication {
                     throw "The disk name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens."
                 }
 
-                $diskNamePresent = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $TargetDiskName -ResourceType "Microsoft.Compute/disks" -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                $diskId = $ProviderSpecificDetails.TargetResourceGroupId + "/providers/Microsoft.Compute/disks/" + $TargetDiskName
+                $diskNamePresent = Get-AzResource -ResourceId $diskId -ErrorVariable notPresent -ErrorAction SilentlyContinue
+
                 if ($diskNamePresent) {
                     throw "A disk with name $($TargetDiskName)' already exists in the target resource group."
                 }
@@ -618,7 +619,8 @@ function Set-AzMigrateServerReplication {
                         $updateNic.TargetSubnetName = $matchingUserInputNic.TargetSubnetName
                     }
                     if ($null -ne $matchingUserInputNic.TargetNicName) {
-                        $nicNamePresent = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $matchingUserInputNic.TargetNicName -ResourceType "Microsoft.Network/networkInterfaces" -ErrorVariable notPresent -ErrorAction SilentlyContinue
+                        $nicId = $ProviderSpecificDetails.TargetResourceGroupId + "/providers/Microsoft.Network/networkInterfaces/" + $matchingUserInputNic.TargetNicName
+                        $nicNamePresent = Get-AzResource -ResourceId $nicId -ErrorVariable notPresent -ErrorAction SilentlyContinue
 
                         if ($nicNamePresent) {
                             $nicNamePresentinRg.Add($matchingUserInputNic.TargetNicName)

@@ -617,8 +617,8 @@ public static int hashForArtifact(String artifact)
         }
 
         Import-Module Az.Resources
-        $TargetResourceGroupName = $ProviderSpecificDetails.TargetResourceGroupId.Split('/')[4]
-        $VMNamePresentinRg = Get-AzResource -ResourceGroupName $TargetResourceGroupName -Name $TargetVMName -ResourceType "Microsoft.Compute/virtualMachines" -ErrorVariable notPresent -ErrorAction SilentlyContinue
+        $vmId = $ProviderSpecificDetails.TargetResourceGroupId + "/providers/Microsoft.Compute/virtualMachines/" + $TargetVMName
+        $VMNamePresentinRg = Get-AzResource -ResourceId $vmId -ErrorVariable notPresent -ErrorAction SilentlyContinue
         if ($VMNamePresentinRg) {
             throw "The target virtual machine name must be unique in the target resource group."
         }
