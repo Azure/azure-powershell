@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         public SwitchParameter SupportsScaling { get; set; }
 
 
-        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "ResourceId Parameter is being deprecated from without being replaced.")]
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "ResourceId Parameter is being deprecated without being replaced.")]
         [Parameter(Mandatory = true, ParameterSetName = ClusterResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Resource ID of Cluster")]
         [Parameter(Mandatory = false, ParameterSetName = ClusterPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of Cluster")]
         [ValidateNotNullOrEmpty]
@@ -69,12 +69,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
         public override void ExecuteCmdlet()
         {
-            if(ParameterSetName.Equals(ClusterPropertiesParameterSet) && ResourceId != null)
-            {
-                throw new PSNotImplementedException("-ResourceId parameter would be deprecated for New-AzEventHubCluster");
-            }
-
-            if (ParameterSetName.Equals(ClusterResourceIdParameterSet))
+            if (ResourceId != null)
             {
                 ResourceIdParser resourceIdParser = new ResourceIdParser(1, ResourceId, ClusterURL);
                 ResourceGroupName = resourceIdParser.ResourceGroupName;

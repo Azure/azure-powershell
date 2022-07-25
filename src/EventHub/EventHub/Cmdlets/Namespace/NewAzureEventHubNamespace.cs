@@ -85,49 +85,76 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.Namespace
         [Parameter(Mandatory = true, ParameterSetName = AutoInflateParameterSet, HelpMessage = "Indicates whether AutoInflate is enabled")]
         public SwitchParameter EnableAutoInflate { get; set; }
 
-        
+
+        /// <summary>
+        /// Upper limit of throughput units when AutoInflate is enabled.
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 6, HelpMessage = "Upper limit of throughput units when AutoInflate is enabled, value should be within 0 to 20 throughput units.")]
         [ValidateRange(0, 40)]
         public int? MaximumThroughputUnits { get; set; }
 
-        
+
+        /// <summary>
+        /// Indicates whether Kafka is enabled.
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Kafka for namespace")]
         public SwitchParameter EnableKafka { get; set; }
 
-        
+
+        /// <summary>
+        /// Indicates whether ZoneRedundant is enabled.
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling Zone Redundant for namespace")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling Zone Redundant for namespace")]
         public SwitchParameter ZoneRedundant { get; set; }
 
-        
+
+        /// <summary>
+        /// Cluster ARM ID
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "ARM ID of Cluster where namespace is to be created")]
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "ARM ID of Cluster where namespace is to be created")]
         [ValidateNotNullOrEmpty]
         public string ClusterARMId { get; set; }
 
-        
+
+        /// <summary>
+        /// Indicates whether DisableLocalAuth is enabled.
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, HelpMessage = "enabling or disabling  SAS authentication for namespace")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, HelpMessage = "enabling or disabling SAS authentication for namespace")]
         public SwitchParameter DisableLocalAuth { get; set; }
 
 
+        /// <summary>
+        /// Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned', 'None')
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned', 'None')")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Identity Type ('SystemAssigned', 'UserAssigned', 'SystemAssigned', 'UserAssigned', 'None')")]
         [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
         public string IdentityType { get; set; }
 
 
+        /// <summary>
+        /// User Assigned Identity Id's
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
         public string[] IdentityId { get; set; }
 
 
+        /// <summary>
+        /// List of KeyVaultProperties
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
         public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
 
 
+        /// <summary>
+        /// List of KeyVaultProperties
+        /// </summary>
         [Parameter(Mandatory = false, ParameterSetName = AutoInflateParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The minimum TLS version for the namespace to support, e.g. '1.2'")]
         [Parameter(Mandatory = false, ParameterSetName = NamespaceParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "The minimum TLS version for the namespace to support, e.g. '1.2'")]
         [ValidateSet("1.0", "1.1", "1.2", IgnoreCase = true)]
