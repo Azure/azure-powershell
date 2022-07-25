@@ -23,6 +23,7 @@ The Remove-AzEnvironment cmdlet removes endpoints and metadata information for c
 ## EXAMPLES
 
 ### Example 1: Creating and removing a test environment
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Add-AzEnvironment -Name TestEnvironment `
         -ActiveDirectoryEndpoint TestADEndpoint `

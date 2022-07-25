@@ -93,6 +93,7 @@ The second command uploads the file that is named ContosoPlanning to the contain
 The blob includes the metadata stored in $Metadata, and has PremiumPageBlobTier as P10.
 
 ### Example 6: Upload a file to blob with specified blob properties, and set StandardBlobTier as Cool
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $filepath = "c:\temp\index.html"
 PS C:\> Set-AzStorageBlobContent -File $filepath -Container "contosouploads" -Properties @{"ContentType" = [System.Web.MimeMapping]::GetMimeMapping($filepath); "ContentMD5" = "i727sP7HigloQDsqadNLHw=="} -StandardBlobTier Cool
@@ -108,6 +109,7 @@ This command uploads the file c:\temp\index.html to the container named contosou
 This command gets ContentType value set to blob properties by [System.Web.MimeMapping]::GetMimeMapping() API.
 
 ### Example 7: Upload a file to a blob with Encryption Scope
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $blob = Set-AzStorageBlobContent  -File "mylocalfile" -Container "mycontainer" -Blob "myblob"  -EncryptionScope "myencryptscope"
 

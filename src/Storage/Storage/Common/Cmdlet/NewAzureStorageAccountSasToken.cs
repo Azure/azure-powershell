@@ -90,6 +90,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            if (Channel != null && Channel.StorageContext != null && !Channel.StorageContext.StorageAccount.Credentials.IsSharedKey)
+            {
+                throw new ArgumentException("Storage account SAS token must be secured with the storage account key.", "Context");
+            }
             if (!UseTrack2Sdk()) // Track1
             {
                 var sharedAccessPolicy = new SharedAccessAccountPolicy()
@@ -120,7 +124,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
                 }
                 this.WriteObject(sasToken);
             }
-        
+
         }
 
         /// <summary>
