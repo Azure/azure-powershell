@@ -38,6 +38,10 @@
     "alias": "VM Snapshots"
   },
   {
+    "regex": "Orbital",
+    "alias": "Orbital"
+  },
+  {
     "regex": "FluidRelay",
     "alias": "Fluid Relay"
   },
