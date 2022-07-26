@@ -46,7 +46,7 @@ https://docs.microsoft.com/powershell/module/az.storagemover/remove-azstoragemov
 #>
 function Unregister-AzStorageMoverAgent {
     [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName = 'Delete', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'Delete', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
     [Parameter(ParameterSetName = 'Delete', Mandatory)]
     [Alias('AgentName')]

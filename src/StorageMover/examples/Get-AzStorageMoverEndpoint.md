@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get all endpoints in a Storage mover
 ```powershell
 Get-AzStorageMoverEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover
 ```
@@ -39,14 +39,14 @@ Type                         : microsoft.storagemover/storagemovers/endpoints
 
 This command gets all the endpoints under a Storage mover.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a specific endpoint
 ```powershell
-Get-AzStorageMoverEndpoint -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMoverName -Name myEndpointName
+Get-AzStorageMoverEndpoint -ResourceGroupName myResourceGroupName -StorageMoverName myStorageMoverName -Name myEndpoint
 ```
 
 ```output
-Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpointName
-Name                         : myEndpointName
+Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint
+Name                         : myEndpoint
 Property                     : {
                                  "endpointType": "NfsMount",
                                  "provisioningState": "Succeeded",

@@ -1,6 +1,6 @@
 ### Example 1: Create a NFS endpoint
 ```powershell
- New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "x.x.x.x" -Export "/" -NfsVersion NFSv3 -Description "Description"
+ New-AzStorageMoverNfsEndpoint -Name myEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Host "10.0.0.1" -Export "/" -NfsVersion NFSv3 -Description "Description"
 ```
 
 ```output
@@ -9,7 +9,7 @@ Name                         : myEndpoint
 Property                     : {
                                  "endpointType": "NfsMount",
                                  "provisioningState": "Succeeded",
-                                 "host": "x.x.x.x",
+                                 "host": "10.0.0.1",
                                  "export": "/"
                                }
 SystemDataCreatedAt          : 7/18/2022 7:28:30 AM

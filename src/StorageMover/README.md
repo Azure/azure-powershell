@@ -45,14 +45,23 @@ title: StorageMover
 subject-prefix: $(service-name)
 nested-object-to-string: true
 identity-correction-for-post: true 
-# If there are post APIs for some kinds of actions in the RP, you may need to 
-# uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
 
 directive:
   - where:
       verb: Set
     remove: true
+  - where:
+      model-name: StorageMover
+    set:
+      suppress-format: true
+  - where:
+      model-name: JobDefinition
+    set:
+      suppress-format: true
+  - where:
+      model-name: Project
+    set:
+      suppress-format: true
   - where:
       model-name: Endpoint
     set:
@@ -112,6 +121,21 @@ directive:
       verb: Update
       subject: Endpoint
     hide: true
+  - where:
+      model-name: Agent
+      property-name: NumberOfCore
+    set:
+      property-name: NumberOfCores
+  - where:
+      model-name: Agent
+      property-name: UptimeInSecond
+    set:
+      property-name: UptimeInSeconds
+  - where:
+      model-name: Agent
+      property-name: Status
+    set:
+      property-name: AgentStatus
   # Rename property Code to ErrorCode in JobRun model 
   - where:
       model-name: JobRun

@@ -30,7 +30,7 @@ Deletes an endpoint resource.
 
 ## EXAMPLES
 
-### Example 1: remove an endpoint
+### Example 1: Remove an endpoint
 ```powershell
 Remove-AzStorageMoverEndpoint -ResourceGroupName myResourceGroup -StorageMoverName myStorageMover -Name myEndpoint
 ```

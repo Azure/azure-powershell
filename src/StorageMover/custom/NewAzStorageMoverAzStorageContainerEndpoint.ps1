@@ -38,7 +38,7 @@ https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemovere
 #>
 function New-AzStorageMoverAzStorageContainerEndpoint {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]
-[CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Alias('EndpointName')]
@@ -135,26 +135,19 @@ function New-AzStorageMoverAzStorageContainerEndpoint {
 
         if ($PSBoundParameters.ContainsKey('BlobContainerName')) {
             $Properties.BlobContainerName = $BlobContainerName
+            $null = $PSBoundParameters.Remove("BlobContainerName")
         }
         if ($PSBoundParameters.ContainsKey('StorageAccountResourceId')) {
             $Properties.StorageAccountResourceId = $StorageAccountResourceId
+            $null = $PSBoundParameters.Remove("StorageAccountResourceId")
         }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description
+            $null = $PSBoundParameters.Remove("Description")
         }
 
         $Properties.EndpointType = "AzureStorageBlobContainer"
         $PSBoundParameters.Add("Property", $Properties)
-
-        if ($PSBoundParameters.ContainsKey('BlobContainerName')) {
-            $null = $PSBoundParameters.Remove("BlobContainerName")
-        }
-        if ($PSBoundParameters.ContainsKey('StorageAccountResourceId')) {
-            $null = $PSBoundParameters.Remove("StorageAccountResourceId")
-        }
-        if ($PSBoundParameters.ContainsKey('Description')) {
-            $null = $PSBoundParameters.Remove("Description")
-        }
 
         Az.StorageMover.internal\New-AzStorageMoverEndpoint @PSBoundParameters
     }

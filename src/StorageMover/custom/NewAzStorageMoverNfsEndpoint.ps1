@@ -38,7 +38,7 @@ https://docs.microsoft.com/powershell/module/az.storagemover/new-azstoragemovere
 #>
 function New-AzStorageMoverNfsEndpoint {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.IEndpoint])]
-[CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+    [CmdletBinding(DefaultParameterSetName = 'CreateExpanded', PositionalBinding =$false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
         [Alias('EndpointName')]
@@ -140,33 +140,24 @@ function New-AzStorageMoverNfsEndpoint {
         $Properties = [Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Models.Api20220701Preview.NfsMountEndpointProperties]::New()
         if ($PSBoundParameters.ContainsKey('Host')) {
             $Properties.Host = $Host
+            $null = $PSBoundParameters.Remove("Host")
         }
         if ($PSBoundParameters.ContainsKey('NfsVersion')) {
             $Properties.NfsVersion = $NfsVersion
+            $null = $PSBoundParameters.Remove("NfsVersion")
         }
         if ($PSBoundParameters.ContainsKey('Export')) {
             $Properties.Export = $Export
+            $null = $PSBoundParameters.Remove("Export")
         }
         if ($PSBoundParameters.ContainsKey('Description')) {
             $Properties.Description = $Description
+            $null = $PSBoundParameters.Remove("Description")
         }
 
         $Properties.EndpointType = "NfsMount"
         $PSBoundParameters.Add("Property", $Properties)
-        
-        if ($PSBoundParameters.ContainsKey('Host')) {
-            $null = $PSBoundParameters.Remove("Host")
-        }
-        if ($PSBoundParameters.ContainsKey('NfsVersion')) {
-            $null = $PSBoundParameters.Remove("NfsVersion")
-        }
-        if ($PSBoundParameters.ContainsKey('Export')) {
-            $null = $PSBoundParameters.Remove("Export")
-        }
-        if ($PSBoundParameters.ContainsKey('Description')) {
-            $null = $PSBoundParameters.Remove("Description")
-        }
-        
+
         Az.StorageMover.internal\New-AzStorageMoverEndpoint @PSBoundParameters
     }
 

@@ -5,7 +5,7 @@ New-AzStorageMoverAzStorageContainerEndpoint -Name myEndpoint -ResourceGroupName
 
 ```output
 Id                           : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.StorageMover/storageMovers/myStorageMover/endpoints/myEndpoint
-Name                         : containerEndpointo3q8xlbr
+Name                         : myEndpoint
 Property                     : {
                                  "endpointType": "AzureStorageBlobContainer",
                                  "provisioningState": "Succeeded",
