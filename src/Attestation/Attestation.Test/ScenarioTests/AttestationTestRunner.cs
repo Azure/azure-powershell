@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
                 var connectionInfo = new ConnectionString(Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION"));
                 string servicePrincipal = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalKey);
                 string servicePrincipalSecret = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalSecretKey);
-                string aadTenant = connectionInfo.GetValue<string>(ConnectionStringKeys.AADTenantKey);
+                string aadTenant = connectionInfo.GetValue<string>(ConnectionStringKeys.TenantIdKey);
 
                 // Create credentials
                 var clientCredentials = new ClientCredential(servicePrincipal, servicePrincipalSecret);

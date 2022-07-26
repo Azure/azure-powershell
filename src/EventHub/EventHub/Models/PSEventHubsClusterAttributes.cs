@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.EventHub.Models;
-using System;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.EventHub.Models
@@ -36,6 +35,10 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                 UpdatedAt = cluster.UpdatedAt;
                 Status = cluster.Status;
                 Sku = new PSEventHubsClusterSkuAttributes(cluster.Sku);
+                SupportsScaling = cluster.SupportsScaling;
+                Capacity = cluster?.Sku?.Capacity;
+                MetricId = cluster.MetricId;
+                Type = cluster.Type;
                 if (cluster.Tags != null)
                 {
                     Tags = new Dictionary<string, string>(cluster.Tags);
@@ -76,5 +79,11 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public PSEventHubsClusterSkuAttributes Sku { get; set; }
 
         public Dictionary<string, string> Tags = new Dictionary<string, string>();
+
+        public bool? SupportsScaling { get; set; }
+
+        public int? Capacity { get; set; }
+
+        public string Type { get; set; }
     }
 }

@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                     {
                         if (ShouldProcess(target: Name, action: string.Format(Resources.DRNew, Name, getParamGeoDR.ResourceName)))
                         {
-                            WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                            WriteObject(UtilityClient.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
                         }
                     }
                 }
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                     {
                         if (ShouldProcess(target: Name, action: string.Format(Resources.DRNew, Name, getParamGeoDR.ResourceName)))
                         {
-                            WriteObject(Client.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
+                            WriteObject(UtilityClient.CreateEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name, drConfiguration));
                         }
                     }
                 }
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                 {
                     if (ShouldProcess(target: Name, action: string.Format(Resources.DRNew, Name, Namespace)))
                     {
-                        WriteObject(Client.CreateEventHubDRConfiguration(ResourceGroupName, Namespace, Name, drConfiguration));
+                        WriteObject(UtilityClient.CreateEventHubDRConfiguration(ResourceGroupName, Namespace, Name, drConfiguration));
                     }
                 }
             }

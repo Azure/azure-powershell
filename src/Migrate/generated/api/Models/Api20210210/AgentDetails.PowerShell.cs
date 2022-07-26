@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -66,11 +68,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).AgentId = (string) content.GetValueForProperty("AgentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).AgentId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).MachineId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).BiosId = (string) content.GetValueForProperty("BiosId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).BiosId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Fqdn = (string) content.GetValueForProperty("Fqdn",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Fqdn, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Disk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDiskDetails[]) content.GetValueForProperty("Disk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Disk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.AgentDiskDetailsTypeConverter.ConvertFrom));
+            if (content.Contains("AgentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).AgentId = (string) content.GetValueForProperty("AgentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).AgentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).MachineId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BiosId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).BiosId = (string) content.GetValueForProperty("BiosId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).BiosId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Fqdn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Fqdn = (string) content.GetValueForProperty("Fqdn",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Fqdn, global::System.Convert.ToString);
+            }
+            if (content.Contains("Disk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Disk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDiskDetails[]) content.GetValueForProperty("Disk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Disk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.AgentDiskDetailsTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -88,11 +105,26 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).AgentId = (string) content.GetValueForProperty("AgentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).AgentId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).MachineId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).BiosId = (string) content.GetValueForProperty("BiosId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).BiosId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Fqdn = (string) content.GetValueForProperty("Fqdn",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Fqdn, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Disk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDiskDetails[]) content.GetValueForProperty("Disk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Disk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.AgentDiskDetailsTypeConverter.ConvertFrom));
+            if (content.Contains("AgentId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).AgentId = (string) content.GetValueForProperty("AgentId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).AgentId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).MachineId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BiosId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).BiosId = (string) content.GetValueForProperty("BiosId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).BiosId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Fqdn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Fqdn = (string) content.GetValueForProperty("Fqdn",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Fqdn, global::System.Convert.ToString);
+            }
+            if (content.Contains("Disk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Disk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDiskDetails[]) content.GetValueForProperty("Disk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetailsInternal)this).Disk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.AgentDiskDetailsTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -126,7 +158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="AgentDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="AgentDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAgentDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

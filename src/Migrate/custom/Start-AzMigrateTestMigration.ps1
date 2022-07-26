@@ -131,10 +131,14 @@ function Start-AzMigrateTestMigration {
             Import-module -Name Az.Compute
             Import-module -Name Az.Network
             $AvSetName = $AvSetId.Split("/")[-1];
-            $AvSetRg = $AvSetId.Split("/")[-5];
+            $AvSetRg = $AvSetId.Split("/")[-5];            
+            $TargetSubscriptionId = $AvSetId.Split("/")[-7];
+            $SourceSubscriptionId = (Get-AzContext -ErrorVariable notPresent -ErrorAction SilentlyContinue).Subscription.Id
+            Set-AzContext -SubscriptionId $TargetSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
             $AvSet = Get-AzAvailabilitySet -ResourceGroupName $AvSetRg -Name $AvSetName -ErrorVariable notPresent -ErrorAction SilentlyContinue
             if (!$AvSet)
             {
+                Set-AzContext -SubscriptionId $SourceSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
                 throw "Availability Set '$($AvSetId)' does not exist."
             }
             if ($AvSet.VirtualMachinesReferences -And ($AvSet.VirtualMachinesReferences.Count -gt 0))
@@ -156,11 +160,13 @@ function Start-AzMigrateTestMigration {
 
                         if ($TestNetworkID -ne $VnetID)
                         {
+                            Set-AzContext -SubscriptionId $SourceSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
                             throw "Virtual Machines in the availability set '$AvSetName' can only be connected to virtual network '$VnetID'. Change the virtual network selected for the test or update the availability set for the machines, and retry the operation."
                         }
                     }
                 }
             }
+            Set-AzContext -SubscriptionId $SourceSubscriptionId -ErrorVariable notPresent -ErrorAction SilentlyContinue
         }
 
         if ($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'TestMigrate' )) {

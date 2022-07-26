@@ -9,9 +9,10 @@
                 AnalysisOutput
         Functions:  Get-ExamplesDetailsFromMd
                     Get-NonExceptionRecord
+                    Get-RecordsNotInAllowList
                     Measure-SectionMissingAndOutputScript
-                    Measure-NotInWhiteList
                     Get-ScriptAnalyzerResult
+                    Redo-ImportModule
 #>
 
 $SYNOPSIS_HEADING = "## SYNOPSIS"
@@ -149,7 +150,7 @@ function Get-ExamplesDetailsFromMd {
 }
 <#
     .SYNOPSIS
-    Except the suppressed records
+    Except the suppressed records. It is independent of ExampleIssues.cs.
 #>
 function Get-NonExceptionRecord{
     param(
@@ -178,6 +179,32 @@ function Get-NonExceptionRecord{
 
 <#
     .SYNOPSIS
+    Get AnalysisOutput entries not in the allow list.
+#>
+function Get-RecordsNotInAllowList{
+    param (
+        [AnalysisOutput[]]$records
+    )
+    return $records | Where-Object {
+        # Skip the unexpected error caused by using <xxx> to assign parameters
+        if($_.RuleName -eq "RedirectionNotSupported"){
+            return $false
+        }
+        # Skip the invaild cmdlet "<"
+        $CommandName = ($_.Description -split " ")[0]
+        if($CommandName -eq "<"){
+            return $false
+        }
+        # Skip NeedDeleting in Storage
+        if($_.RuleName -eq "NeedDeleting" -and $_.Module -eq "Storage.Management"){
+            return $false
+        }
+        return $true
+    }
+}
+
+<#
+    .SYNOPSIS
     Tests whether the script is integral, outputs examples in ".md" to "TempScript.ps1" 
     and records the Scale, Missing,  DeletePromptAndSeparateOutput class.
 #>
@@ -190,7 +217,7 @@ function Measure-SectionMissingAndOutputScript {
         [string]$OutputFolder
     )
     $results = @()
-    $missingSeverity = 2
+    $missingSeverity = 1
 
     $fileContent = Get-Content $MarkdownPath -Raw
 
@@ -207,7 +234,6 @@ function Measure-SectionMissingAndOutputScript {
     $missingExampleOutput = 0
     $missingExampleDescription = 0
     $needDeleting = 0
-    $needSplitting = 0
 
     # If Synopsis section exists
     if ($indexOfSynopsis -ne -1) {
@@ -371,7 +397,7 @@ function Measure-SectionMissingAndOutputScript {
                         ProblemID = 5051
                         Remediation = "Delete the prompt of example."
                     }
-                    $results += $result
+                    $results += $result 
                     $newCode = $exampleCodes -replace "`n([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*", "`n"
                     $newCode = $newCode -replace "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1"
                     $exampleCodes = $newCode
@@ -382,7 +408,7 @@ function Measure-SectionMissingAndOutputScript {
             # Output example codes to "TempScript.ps1"
             if ($OutputScriptsInFile.IsPresent) {
                 $cmdletExamplesScriptPath = "$OutputFolder\TempScript.ps1"
-                if($exampleCodes -ne $null){
+                if($null -ne $exampleCodes -and $exampleCodes -ne ""){
                     $exampleCodes = $exampleCodes.Trim()
                     $functionHead = "function $Module-$Cmdlet-$exampleNumber{"
                     Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionHead
@@ -393,39 +419,8 @@ function Measure-SectionMissingAndOutputScript {
             }
         }
     }
-
-    # ScaleTable
-    $examples = $examplesDetails.Count
-    $scale = [Scale]@{
-        Module = $module
-        Cmdlet = $cmdlet
-        Examples = $examples
-    }
-
-    # MissingTable
-    if ($missingSynopsis -ne 0 -or $missingDescription -ne 0 -or $missingExampleTitle -ne 0 -or $missingExampleCode -ne 0 -or $missingExampleOutput -ne 0 -or $missingExampleDescription -ne 0) {
-        $missing = [Missing]@{
-            Module = $module
-            Cmdlet = $cmdlet
-            MissingSynopsis = $missingSynopsis
-            MissingDescription = $missingDescription
-            MissingExampleTitle = $missingExampleTitle
-            MissingExampleCode = $missingExampleCode
-            MissingExampleOutput = $missingExampleOutput
-            MissingExampleDescription = $missingExampleDescription
-        }
-    }
-
-    # DeletePromptAndSeparateOutputTable
-    if ($needDeleting -ne 0 -or $needSplitting -ne 0) {
-        $deletePromptAndSeparateOutput = [DeletePromptAndSeparateOutput]@{
-            Module = $module
-            Cmdlet = $cmdlet
-            NeedDeleting = $needDeleting
-            NeedSplitting = $needSplitting
-        }
-    }
-
+    # Except records in allow list
+    $results = Get-RecordsNotInAllowList $results
     # Except the suppressed records
     $results = Get-NonExceptionRecord $results
 
@@ -435,26 +430,6 @@ function Measure-SectionMissingAndOutputScript {
         DeletePromptAndSeparateOutput = $deletePromptAndSeparateOutput
         Errors = $results
     }
-}
-
-<#
-    .SYNOPSIS
-    Measure whether the AnalysisOutput entry is in white list.
-#>
-function Measure-InAllowList{
-    param (
-        [AnalysisOutput]$result
-    )
-    # Skip the unexpected error caused by using <xxx> to assign parameters
-    if($result.RuleName -eq "RedirectionNotSupported"){
-        return $false
-    }
-    # Skip the invaild cmdlet "<"
-    $CommandName = ($result.Description -split " ")[0]
-    if($CommandName -eq "<"){
-        return $false
-    }
-    return $true
 }
 
 <#
@@ -484,16 +459,16 @@ function Get-ScriptAnalyzerResult {
     $results = @()
     foreach($analysisResult in $analysisResults){
         if($analysisResult.Severity -eq "ParseError"){
-            $Severity = 2
+            $Severity = 1
         }
         elseif($analysisResult.Severity -eq "Error"){
-            $Severity = 2
+            $Severity = 1
         }
         elseif($analysisResult.Severity -eq "Warning"){
-            $Severity = 3
+            $Severity = 2
         }
         elseif($analysisResult.Severity -eq "Information"){
-            $Severity = 4
+            $Severity = 3
         }
         if($analysisResult.RuleSuppressionID -ge 5000 -and $analysisResult.RuleSuppressionID -le 5199){
             $result = [AnalysisOutput]@{
@@ -519,15 +494,34 @@ function Get-ScriptAnalyzerResult {
                 Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 ProblemID = 5200
                 Remediation = "Unexpected Error! Please check your example or contact the Azure Powershell Team. (Appeared in Line $($analysisResult.Line))"
-                }
             }
-        # Measure whether the result is in the white list
-        if(Measure-InAllowList $result){
-           $results += $result 
         }
+        $results += $result 
     }
-    #Except the suppressed records
+    # Except records in allow list
+    $results = Get-RecordsNotInAllowList $results
+    # Except the suppressed records
     $results = Get-NonExceptionRecord $results
 
     return $results
+}
+
+<#
+    .SYNOPSIS
+    Retry import-module
+#>
+function Redo-ImportModule {
+    param (
+        [string]$CommandName
+    )
+    $modulePath = "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1"
+    Get-Item $modulePath | Import-Module -Global
+    $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
+    if ($null -eq $GetCommand) {
+        return $false
+    }
+    else{
+        Write-Debug "Succeed by retrying import-module"
+        return $true
+    }
 }

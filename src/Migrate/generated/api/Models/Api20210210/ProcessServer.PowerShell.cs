@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="ProcessServer" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ProcessServer" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServer FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,45 +101,162 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVersionDetails) content.GetValueForProperty("AgentVersionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VersionDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).IPAddress = (string) content.GetValueForProperty("IPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).IPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersion = (string) content.GetValueForProperty("AgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).LastHeartbeat = (global::System.DateTime?) content.GetValueForProperty("LastHeartbeat",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).LastHeartbeat, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).VersionStatus = (string) content.GetValueForProperty("VersionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).VersionStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MobilityServiceUpdate = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMobilityServiceUpdate[]) content.GetValueForProperty("MobilityServiceUpdate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MobilityServiceUpdate, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMobilityServiceUpdate>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.MobilityServiceUpdateTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HostId = (string) content.GetValueForProperty("HostId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HostId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MachineCount = (string) content.GetValueForProperty("MachineCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MachineCount, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ReplicationPairCount = (string) content.GetValueForProperty("ReplicationPairCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ReplicationPairCount, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoad = (string) content.GetValueForProperty("SystemLoad",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoad, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoadStatus = (string) content.GetValueForProperty("SystemLoadStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoadStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoad = (string) content.GetValueForProperty("CpuLoad",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoad, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoadStatus = (string) content.GetValueForProperty("CpuLoadStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoadStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalMemoryInByte = (long?) content.GetValueForProperty("TotalMemoryInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalMemoryInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableMemoryInByte = (long?) content.GetValueForProperty("AvailableMemoryInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableMemoryInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MemoryUsageStatus = (string) content.GetValueForProperty("MemoryUsageStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MemoryUsageStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalSpaceInByte = (long?) content.GetValueForProperty("TotalSpaceInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalSpaceInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableSpaceInByte = (long?) content.GetValueForProperty("AvailableSpaceInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableSpaceInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SpaceUsageStatus = (string) content.GetValueForProperty("SpaceUsageStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SpaceUsageStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsServiceStatus = (string) content.GetValueForProperty("PsServiceStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsServiceStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryDate = (global::System.DateTime?) content.GetValueForProperty("SslCertExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryRemainingDay = (int?) content.GetValueForProperty("SslCertExpiryRemainingDay",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryRemainingDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HealthError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HealthError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Health = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth?) content.GetValueForProperty("Health",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Health, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsStatsRefreshTime = (global::System.DateTime?) content.GetValueForProperty("PsStatsRefreshTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsStatsRefreshTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputUploadPendingDataInByte = (long?) content.GetValueForProperty("ThroughputUploadPendingDataInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputUploadPendingDataInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInMBps = (long?) content.GetValueForProperty("ThroughputInMBps",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInMBps, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInByte = (long?) content.GetValueForProperty("ThroughputInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputStatus = (string) content.GetValueForProperty("ThroughputStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsCommunicationStatus = (string) content.GetValueForProperty("MarsCommunicationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsCommunicationStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsRegistrationStatus = (string) content.GetValueForProperty("MarsRegistrationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsRegistrationStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailVersion = (string) content.GetValueForProperty("AgentVersionDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentVersionDetailExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailStatus = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus?) content.GetValueForProperty("AgentVersionDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailStatus, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus.CreateFrom);
+            if (content.Contains("AgentVersionDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVersionDetails) content.GetValueForProperty("AgentVersionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VersionDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("IPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).IPAddress = (string) content.GetValueForProperty("IPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).IPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSType, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersion = (string) content.GetValueForProperty("AgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastHeartbeat"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).LastHeartbeat = (global::System.DateTime?) content.GetValueForProperty("LastHeartbeat",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).LastHeartbeat, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("VersionStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).VersionStatus = (string) content.GetValueForProperty("VersionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).VersionStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityServiceUpdate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MobilityServiceUpdate = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMobilityServiceUpdate[]) content.GetValueForProperty("MobilityServiceUpdate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MobilityServiceUpdate, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMobilityServiceUpdate>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.MobilityServiceUpdateTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HostId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HostId = (string) content.GetValueForProperty("HostId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HostId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MachineCount = (string) content.GetValueForProperty("MachineCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MachineCount, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReplicationPairCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ReplicationPairCount = (string) content.GetValueForProperty("ReplicationPairCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ReplicationPairCount, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemLoad"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoad = (string) content.GetValueForProperty("SystemLoad",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoad, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemLoadStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoadStatus = (string) content.GetValueForProperty("SystemLoadStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoadStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("CpuLoad"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoad = (string) content.GetValueForProperty("CpuLoad",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoad, global::System.Convert.ToString);
+            }
+            if (content.Contains("CpuLoadStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoadStatus = (string) content.GetValueForProperty("CpuLoadStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoadStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("TotalMemoryInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalMemoryInByte = (long?) content.GetValueForProperty("TotalMemoryInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalMemoryInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("AvailableMemoryInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableMemoryInByte = (long?) content.GetValueForProperty("AvailableMemoryInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableMemoryInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("MemoryUsageStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MemoryUsageStatus = (string) content.GetValueForProperty("MemoryUsageStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MemoryUsageStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("TotalSpaceInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalSpaceInByte = (long?) content.GetValueForProperty("TotalSpaceInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalSpaceInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("AvailableSpaceInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableSpaceInByte = (long?) content.GetValueForProperty("AvailableSpaceInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableSpaceInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("SpaceUsageStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SpaceUsageStatus = (string) content.GetValueForProperty("SpaceUsageStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SpaceUsageStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("PsServiceStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsServiceStatus = (string) content.GetValueForProperty("PsServiceStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsServiceStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("SslCertExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryDate = (global::System.DateTime?) content.GetValueForProperty("SslCertExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SslCertExpiryRemainingDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryRemainingDay = (int?) content.GetValueForProperty("SslCertExpiryRemainingDay",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryRemainingDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("OSVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("HealthError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HealthError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HealthError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AgentExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Health"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Health = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth?) content.GetValueForProperty("Health",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Health, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth.CreateFrom);
+            }
+            if (content.Contains("PsStatsRefreshTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsStatsRefreshTime = (global::System.DateTime?) content.GetValueForProperty("PsStatsRefreshTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsStatsRefreshTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ThroughputUploadPendingDataInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputUploadPendingDataInByte = (long?) content.GetValueForProperty("ThroughputUploadPendingDataInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputUploadPendingDataInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ThroughputInMBps"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInMBps = (long?) content.GetValueForProperty("ThroughputInMBps",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInMBps, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ThroughputInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInByte = (long?) content.GetValueForProperty("ThroughputInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ThroughputStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputStatus = (string) content.GetValueForProperty("ThroughputStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarsCommunicationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsCommunicationStatus = (string) content.GetValueForProperty("MarsCommunicationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsCommunicationStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarsRegistrationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsRegistrationStatus = (string) content.GetValueForProperty("MarsRegistrationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsRegistrationStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentVersionDetailVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailVersion = (string) content.GetValueForProperty("AgentVersionDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentVersionDetailExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentVersionDetailExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("AgentVersionDetailStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailStatus = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus?) content.GetValueForProperty("AgentVersionDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailStatus, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -155,45 +274,162 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVersionDetails) content.GetValueForProperty("AgentVersionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VersionDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).IPAddress = (string) content.GetValueForProperty("IPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).IPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersion = (string) content.GetValueForProperty("AgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).LastHeartbeat = (global::System.DateTime?) content.GetValueForProperty("LastHeartbeat",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).LastHeartbeat, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).VersionStatus = (string) content.GetValueForProperty("VersionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).VersionStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MobilityServiceUpdate = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMobilityServiceUpdate[]) content.GetValueForProperty("MobilityServiceUpdate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MobilityServiceUpdate, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMobilityServiceUpdate>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.MobilityServiceUpdateTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HostId = (string) content.GetValueForProperty("HostId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HostId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MachineCount = (string) content.GetValueForProperty("MachineCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MachineCount, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ReplicationPairCount = (string) content.GetValueForProperty("ReplicationPairCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ReplicationPairCount, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoad = (string) content.GetValueForProperty("SystemLoad",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoad, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoadStatus = (string) content.GetValueForProperty("SystemLoadStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoadStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoad = (string) content.GetValueForProperty("CpuLoad",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoad, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoadStatus = (string) content.GetValueForProperty("CpuLoadStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoadStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalMemoryInByte = (long?) content.GetValueForProperty("TotalMemoryInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalMemoryInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableMemoryInByte = (long?) content.GetValueForProperty("AvailableMemoryInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableMemoryInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MemoryUsageStatus = (string) content.GetValueForProperty("MemoryUsageStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MemoryUsageStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalSpaceInByte = (long?) content.GetValueForProperty("TotalSpaceInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalSpaceInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableSpaceInByte = (long?) content.GetValueForProperty("AvailableSpaceInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableSpaceInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SpaceUsageStatus = (string) content.GetValueForProperty("SpaceUsageStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SpaceUsageStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsServiceStatus = (string) content.GetValueForProperty("PsServiceStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsServiceStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryDate = (global::System.DateTime?) content.GetValueForProperty("SslCertExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryRemainingDay = (int?) content.GetValueForProperty("SslCertExpiryRemainingDay",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryRemainingDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HealthError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HealthError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Health = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth?) content.GetValueForProperty("Health",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Health, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsStatsRefreshTime = (global::System.DateTime?) content.GetValueForProperty("PsStatsRefreshTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsStatsRefreshTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputUploadPendingDataInByte = (long?) content.GetValueForProperty("ThroughputUploadPendingDataInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputUploadPendingDataInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInMBps = (long?) content.GetValueForProperty("ThroughputInMBps",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInMBps, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInByte = (long?) content.GetValueForProperty("ThroughputInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputStatus = (string) content.GetValueForProperty("ThroughputStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsCommunicationStatus = (string) content.GetValueForProperty("MarsCommunicationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsCommunicationStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsRegistrationStatus = (string) content.GetValueForProperty("MarsRegistrationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsRegistrationStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailVersion = (string) content.GetValueForProperty("AgentVersionDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentVersionDetailExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailStatus = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus?) content.GetValueForProperty("AgentVersionDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailStatus, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus.CreateFrom);
+            if (content.Contains("AgentVersionDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVersionDetails) content.GetValueForProperty("AgentVersionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VersionDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("IPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).IPAddress = (string) content.GetValueForProperty("IPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).IPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSType, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersion = (string) content.GetValueForProperty("AgentVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastHeartbeat"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).LastHeartbeat = (global::System.DateTime?) content.GetValueForProperty("LastHeartbeat",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).LastHeartbeat, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("VersionStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).VersionStatus = (string) content.GetValueForProperty("VersionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).VersionStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityServiceUpdate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MobilityServiceUpdate = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMobilityServiceUpdate[]) content.GetValueForProperty("MobilityServiceUpdate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MobilityServiceUpdate, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMobilityServiceUpdate>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.MobilityServiceUpdateTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HostId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HostId = (string) content.GetValueForProperty("HostId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HostId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MachineCount = (string) content.GetValueForProperty("MachineCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MachineCount, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReplicationPairCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ReplicationPairCount = (string) content.GetValueForProperty("ReplicationPairCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ReplicationPairCount, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemLoad"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoad = (string) content.GetValueForProperty("SystemLoad",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoad, global::System.Convert.ToString);
+            }
+            if (content.Contains("SystemLoadStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoadStatus = (string) content.GetValueForProperty("SystemLoadStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SystemLoadStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("CpuLoad"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoad = (string) content.GetValueForProperty("CpuLoad",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoad, global::System.Convert.ToString);
+            }
+            if (content.Contains("CpuLoadStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoadStatus = (string) content.GetValueForProperty("CpuLoadStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).CpuLoadStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("TotalMemoryInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalMemoryInByte = (long?) content.GetValueForProperty("TotalMemoryInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalMemoryInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("AvailableMemoryInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableMemoryInByte = (long?) content.GetValueForProperty("AvailableMemoryInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableMemoryInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("MemoryUsageStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MemoryUsageStatus = (string) content.GetValueForProperty("MemoryUsageStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MemoryUsageStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("TotalSpaceInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalSpaceInByte = (long?) content.GetValueForProperty("TotalSpaceInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).TotalSpaceInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("AvailableSpaceInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableSpaceInByte = (long?) content.GetValueForProperty("AvailableSpaceInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AvailableSpaceInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("SpaceUsageStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SpaceUsageStatus = (string) content.GetValueForProperty("SpaceUsageStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SpaceUsageStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("PsServiceStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsServiceStatus = (string) content.GetValueForProperty("PsServiceStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsServiceStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("SslCertExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryDate = (global::System.DateTime?) content.GetValueForProperty("SslCertExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("SslCertExpiryRemainingDay"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryRemainingDay = (int?) content.GetValueForProperty("SslCertExpiryRemainingDay",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).SslCertExpiryRemainingDay, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("OSVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSVersion = (string) content.GetValueForProperty("OSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).OSVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("HealthError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HealthError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).HealthError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AgentExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("Health"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Health = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth?) content.GetValueForProperty("Health",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).Health, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth.CreateFrom);
+            }
+            if (content.Contains("PsStatsRefreshTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsStatsRefreshTime = (global::System.DateTime?) content.GetValueForProperty("PsStatsRefreshTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).PsStatsRefreshTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ThroughputUploadPendingDataInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputUploadPendingDataInByte = (long?) content.GetValueForProperty("ThroughputUploadPendingDataInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputUploadPendingDataInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ThroughputInMBps"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInMBps = (long?) content.GetValueForProperty("ThroughputInMBps",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInMBps, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ThroughputInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInByte = (long?) content.GetValueForProperty("ThroughputInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ThroughputStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputStatus = (string) content.GetValueForProperty("ThroughputStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).ThroughputStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarsCommunicationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsCommunicationStatus = (string) content.GetValueForProperty("MarsCommunicationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsCommunicationStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("MarsRegistrationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsRegistrationStatus = (string) content.GetValueForProperty("MarsRegistrationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).MarsRegistrationStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentVersionDetailVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailVersion = (string) content.GetValueForProperty("AgentVersionDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentVersionDetailExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentVersionDetailExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("AgentVersionDetailStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailStatus = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus?) content.GetValueForProperty("AgentVersionDetailStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProcessServerInternal)this).AgentVersionDetailStatus, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentVersionStatus.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

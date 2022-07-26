@@ -8,11 +8,11 @@ namespace Microsoft.Azure.Commands.Network.Models
     public class PSPrivateEndpointIPConfiguration
     {
 
-        public string Name { get; internal set; }
+        public string Name { get; set; }
 
-        public string GroupId { get; internal set; }
+        public string GroupId { get; set; }
 
-        public string MemberName { get; internal set; }
+        public string MemberName { get; set; }
 
         [Newtonsoft.Json.JsonProperty("PrivateIpAddress")]
         public string PrivateIPAddress { get; internal set; }

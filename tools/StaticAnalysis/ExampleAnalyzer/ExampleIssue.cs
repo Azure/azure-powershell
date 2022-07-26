@@ -41,6 +41,7 @@ namespace StaticAnalysis.ExampleAnalyzer
                 Module, Cmdlet, Example, RuleName, ProblemId, Severity, Description, Extent, Remediation);
         }
 
+        // The code that excludes exceptions is in tools/StaticAnalysis/ExampleAnalyzer/utils.ps1 Get-NonExceptionRecord.
         public bool Match(IReportRecord other)
         {
             var result = false;
@@ -50,7 +51,6 @@ namespace StaticAnalysis.ExampleAnalyzer
                 result = (record.Module == Module)&&
                 (record.Cmdlet == Cmdlet)&&
                 (record.Example == Example)&&
-                (record.ProblemId == ProblemId)&&
                 (record.Description == Description);
             }
             return result;

@@ -25,6 +25,7 @@ using System;
 using Microsoft.Azure.Commands.Profile.Context;
 using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.Azure.Commands.TestFx.Mocks;
 
 namespace Microsoft.Azure.Commands.Profile.Test
 {

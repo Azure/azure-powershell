@@ -20,26 +20,12 @@ Get the child resources of a resource on which user has eligible access
 .Description
 Get the child resources of a resource on which user has eligible access
 .Example
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-PS C:\> Get-AzRoleEligibleChildResource -Scope $scope                              
-
-Name                                               Type
-----                                               ----
-AnujRG                                             resourcegroup
-ARPJ-TESTRG-01                                     resourcegroup
-AnujRG2                                            resourcegroup
-asghodke-rg                                        resourcegroup
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+Get-AzRoleEligibleChildResource -Scope $scope                              
 .Example
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-PS C:\> $filter = "resoureType eq 'resourcegroup'"
-PS C:\> Get-AzRoleEligibleChildResource -Scope $scope -Filter $filter
-
-Name                                               Type
-----                                               ----
-AnujRG                                             resourcegroup
-ARPJ-TESTRG-01                                     resourcegroup
-AnujRG2                                            resourcegroup
-asghodke-rg                                        resourcegroup
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+$filter = "resoureType eq 'resourcegroup'"
+Get-AzRoleEligibleChildResource -Scope $scope -Filter $filter
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity

@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
                         isEnabled = IsEnabled.IsPresent;
                     }
 
-                    WriteObject(Client.CreateApplicationGroup(resourceGroupName: ResourceGroupName,
+                    WriteObject(UtilityClient.CreateApplicationGroup(resourceGroupName: ResourceGroupName,
                                                               namespaceName: NamespaceName,
                                                               appGroupName: Name,
                                                               clientAppGroupIdentifier: ClientAppGroupIdentifier,

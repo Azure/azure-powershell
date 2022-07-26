@@ -71,7 +71,7 @@ You can use this cmdlet to modify the account type, update a customer domain, or
 
 ### Example 1: Set the Storage account type
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Type "Standard_RAGRS"
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName "Standard_RAGRS"
 ```
 
 This command sets the Storage account type to Standard_RAGRS.

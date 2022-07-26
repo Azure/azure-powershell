@@ -7,13 +7,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "9e60fa09-7783-44cb-b968-0fb4b992b5d8"
+          "855c3e9f-9b76-4b59-b131-fbb1042e4356"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.26002",
+          "FxVersion/4.700.22.30802",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.EventHub.EventHubManagementClient/5.0.0.0"
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "3f956905-3154-4097-9152-249aebce9ec1_M1CH3_M1CH3"
+          "56d11c75-6a6f-46fe-affd-cec5294c9b0f_M2SN1_M2SN1"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -40,10 +40,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "f0c92a59-0499-46f8-bf19-2692a2458a31"
+          "7166ff4e-5f0e-4988-80cd-1e5a2d663fa9"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220625T155116Z:f0c92a59-0499-46f8-bf19-2692a2458a31"
+          "SOUTHINDIA:20220723T182053Z:7166ff4e-5f0e-4988-80cd-1e5a2d663fa9"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -52,7 +52,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 25 Jun 2022 15:51:15 GMT"
+          "Sat, 23 Jul 2022 18:20:53 GMT"
         ],
         "Content-Length": [
           "45381"
@@ -74,13 +74,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a3474595-4c97-43d4-9a0f-fe5b1a5431a9"
+          "7b0762df-44e9-4907-bdcf-66eb0698c891"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.26002",
+          "FxVersion/4.700.22.30802",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.EventHub.EventHubManagementClient/5.0.0.0"
@@ -94,23 +94,23 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "9fc0baf6-ab35-4601-9383-2b9f13aeaad5_M6SN1_M6SN1"
+          "29a53654-561f-4ee7-a5e2-cce8e888d84e_M3SN1_M3SN1"
         ],
         "Server-SB": [
-          "Service-Bus-Resource-Provider/CH3"
+          "Service-Bus-Resource-Provider/SN1"
         ],
         "Server": [
-          "Service-Bus-Resource-Provider/CH3",
+          "Service-Bus-Resource-Provider/SN1",
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "fe37fc9a-6f22-49f5-99b4-7f6303df7fc1"
+          "9696a52c-c05f-4690-8d13-2d73a1bf5bfd"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220625T155119Z:fe37fc9a-6f22-49f5-99b4-7f6303df7fc1"
+          "SOUTHINDIA:20220723T182059Z:9696a52c-c05f-4690-8d13-2d73a1bf5bfd"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -119,7 +119,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 25 Jun 2022 15:51:19 GMT"
+          "Sat, 23 Jul 2022 18:20:58 GMT"
         ],
         "Content-Length": [
           "81213"
@@ -141,13 +141,13 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "317f4d11-4c12-4d40-9786-e4d57507e0fb"
+          "1de9177b-ee58-4a73-a4e4-392eb0a8a577"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.26002",
+          "FxVersion/4.700.22.30802",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.EventHub.EventHubManagementClient/5.0.0.0"
@@ -161,7 +161,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "6afa45fd-452e-45eb-b8ec-871c3d188193_M8CH3_M8CH3"
+          "8112bdf6-47df-42f7-9b5f-a48a40a28ac3_M1SN1_M1SN1"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -174,10 +174,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "03eb488e-e690-4304-8872-e2614c60b67e"
+          "bb63cdc0-53d8-4c8b-a85c-22c07816e673"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220625T155121Z:03eb488e-e690-4304-8872-e2614c60b67e"
+          "SOUTHINDIA:20220723T182101Z:bb63cdc0-53d8-4c8b-a85c-22c07816e673"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -186,7 +186,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 25 Jun 2022 15:51:21 GMT"
+          "Sat, 23 Jul 2022 18:21:00 GMT"
         ],
         "Content-Length": [
           "45381"
@@ -208,13 +208,13 @@
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"clientAppGroupIdentifier\": \"SASKeyName=test\",\r\n    \"policies\": [\r\n      {\r\n        \"type\": \"ThrottlingPolicy\",\r\n        \"rateLimitThreshold\": 10000,\r\n        \"metricId\": \"IncomingMessages\",\r\n        \"name\": \"t1\"\r\n      }\r\n    ]\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "57ba4d25-ca3d-4ede-8a9c-1dd2b136eeb6"
+          "a3de4c03-ad24-483f-a1a3-788d7d9a0e3c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.26002",
+          "FxVersion/4.700.22.30802",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.Management.EventHub.EventHubManagementClient/5.0.0.0"
@@ -234,7 +234,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "8d6d4c3e-db92-49ce-a482-2083f1b6316f_M5CH3_M5CH3"
+          "b9e0fe93-bca6-4418-852c-ebbf2ba51faf_M3SN1_M3SN1"
         ],
         "Server-SB": [
           "Service-Bus-Resource-Provider/SN1"
@@ -244,13 +244,13 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+          "1198"
         ],
         "x-ms-correlation-request-id": [
-          "c08f5243-1559-4b47-97d0-69d5f38395e9"
+          "631f7b26-6e4e-40c2-9702-cfe2b5a65faa"
         ],
         "x-ms-routing-request-id": [
-          "SOUTHINDIA:20220625T155124Z:c08f5243-1559-4b47-97d0-69d5f38395e9"
+          "SOUTHINDIA:20220723T182104Z:631f7b26-6e4e-40c2-9702-cfe2b5a65faa"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -259,7 +259,7 @@
           "nosniff"
         ],
         "Date": [
-          "Sat, 25 Jun 2022 15:51:23 GMT"
+          "Sat, 23 Jul 2022 18:21:04 GMT"
         ],
         "Content-Length": [
           "137"
@@ -271,7 +271,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"message\": \"Maximum allowed Application groups is 100 CorrelationId: c08f5243-1559-4b47-97d0-69d5f38395e9\",\r\n    \"code\": \"BadRequest\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"message\": \"Maximum allowed Application groups is 100 CorrelationId: 631f7b26-6e4e-40c2-9702-cfe2b5a65faa\",\r\n    \"code\": \"BadRequest\"\r\n  }\r\n}",
       "StatusCode": 400
     }
   ],
