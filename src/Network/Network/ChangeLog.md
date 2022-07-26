@@ -19,28 +19,13 @@
 --->
 
 ## Upcoming Release
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 * Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
     - `New-AzFirewallPolicyExplicitProxy`
     - `New-AzFirewallPolicy`
     - `Set-AzFirewallPolicy`
->>>>>>> eadb0bcc502180368a14439565972ddf57f61735
 * Added new cmdlets to create packet captures for Network Watcher:
     - `New-AzNetworkWatcherPacketCaptureV2`
     - `New-AzPacketCaptureScopeConfig`
-=======
-* Made properties `ApplicationSecurityGroups` and `IpConfigurations` for `PrivateEndpoint` updatable in the cmdlet `Set-AzPrivateEndpoint`
-* Onboarded Device Update for IoT Hub to Private Link Common Cmdlets
-
-## Version 4.18.0
->>>>>>> 4a1f1e41ce731fdc39dc48549d7e7efa1c6c6980
-* Added support for CustomV2 ssl policies for Application Gateway.
-    - Added `CustomV2` to the validation set of `PolicyType`
-    - Added `TLSv1_3` to the validation set of `MinProtocolVersion`
-    - Removed validation for null or empty cipher suites list since there can be empty cipher suites list for min protocol version of tls1.3
-<<<<<<< HEAD
 * Network Watcher Feature Change: Added new paramenter i.e. AzureVMSS as source endpoint in ConnectionMonitor.
     - `New-AzNetworkWatcherConnectionMonitorEndpointObject`
 * Added `IdentifyTopFatFlow` parameter to `AzureFirewall`
@@ -74,7 +59,29 @@
     - `New-AzFirewall`
     - `New-AzFirewallPolicy`
     - `Set-AzFirewallPolicy`
-=======
+* Added new cmdlets for RoutingIntent child resource of VirtualHub.
+    -`Add-AzRoutingPolicy`
+    -`Get-AzRoutingPolicy`
+    -`New-AzRoutingPolicy`
+    -`Remove-AzRoutingPolicy`
+    -`Set-AzRoutingPolicy`
+    -`Get-AzRoutingIntent`
+    -`New-AzRoutingIntent`
+    -`Remove-AzRoutingIntent`
+    -`Set-AzRoutingIntent`
+* Updated cmdlets to add new option of `HubRoutingPreference` in RouteServer.
+    - `New-AzRouteServer`
+    - `Update-AzRouteServer`
+* Fixed bug that can't parse CustomIpPrefixParent parameter from swagger to powershell.
+* Added "Any" operator in New-AzApplicationGatewayFirewallCondition
+* Made properties `ApplicationSecurityGroups` and `IpConfigurations` for `PrivateEndpoint` updatable in the cmdlet `Set-AzPrivateEndpoint`
+* Onboarded Device Update for IoT Hub to Private Link Common Cmdlets
+
+## Version 4.18.0
+* Added support for CustomV2 ssl policies for Application Gateway.
+    - Added `CustomV2` to the validation set of `PolicyType`
+    - Added `TLSv1_3` to the validation set of `MinProtocolVersion`
+    - Removed validation for null or empty cipher suites list since there can be empty cipher suites list for min protocol version of tls1.3
 * [Breaking Change] Changed default value of `-PrivateEndpointNetworkPoliciesFlag` to `Disabled` in `Add-AzVirtualNetworkSubnetConfig` and `New-AzVirtualNetworkSubnetConfig`
 * Fixed bugs that cannot parse virtual network encryption paramemters when updating exsiting vnet.
 
@@ -82,7 +89,7 @@
 * Supported `Microsoft.Network/privateLinkServices` in `Get-AzPrivateEndpointConnection` [#16984].
 * Provided friendly message if resource type is not supported for private endpoint connection features [#17091].
 * Added `DisableIPsecProtection` to `Virtual Network Gateway`.
->>>>>>> 4a1f1e41ce731fdc39dc48549d7e7efa1c6c6980
+
 * Added new cmdlets to create/manage authorization objects for ExpressRoutePort:
     - `Add-AzExpressRoutePortAuthorization`
     - `Get-AzExpressRoutePortAuthorization`
@@ -104,21 +111,6 @@
     - `New-AzVpnServerConfigurationPolicyGroup`
     - `Update-AzVpnServerConfigurationPolicyGroup`
     - `Remove-AzVpnServerConfigurationPolicyGroup`
-* Added new cmdlets for RoutingIntent child resource of VirtualHub.
-    -`Add-AzRoutingPolicy`
-    -`Get-AzRoutingPolicy`
-    -`New-AzRoutingPolicy`
-    -`Remove-AzRoutingPolicy`
-    -`Set-AzRoutingPolicy`
-    -`Get-AzRoutingIntent`
-    -`New-AzRoutingIntent`
-    -`Remove-AzRoutingIntent`
-    -`Set-AzRoutingIntent`
-* Updated cmdlets to add new option of `HubRoutingPreference` in RouteServer.
-    - `New-AzRouteServer`
-    - `Update-AzRouteServer`
-* Fixed bug that can't parse CustomIpPrefixParent parameter from swagger to powershell.
-* Added "Any" operator in New-AzApplicationGatewayFirewallCondition
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
