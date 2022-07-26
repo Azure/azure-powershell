@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
         protected virtual string GetResourceId(M model)
         {
             var serverProperty = model.GetType().GetProperty("ServerName");
-            var serverName = (serverProperty == null)? string.Empty: serverProperty.GetValue(model).ToString();
+            var serverName = (serverProperty == null) ? string.Empty : serverProperty.GetValue(model).ToString();
 
             var databaseProperty = model.GetType().GetProperty("DatabaseName");
             var databaseName = (databaseProperty == null) ? string.Empty : databaseProperty.GetValue(model).ToString();
@@ -145,7 +145,16 @@ namespace Microsoft.Azure.Commands.Sql.Common
             M model = GetEntity();
             M updatedModel = ApplyUserInputToModel(model);
             M responseModel = default(M);
-            ConfirmAction(GetForceParameter(), GetContinueActionMessage(), GetConfirmActionProcessMessage(), GetResourceId(updatedModel), () => { responseModel = PersistChanges(updatedModel); }, UseShouldContinue());
+            var actionConfirmed = false;
+            ConfirmAction(GetForceParameter(), GetContinueActionMessage(), GetConfirmActionProcessMessage(), GetResourceId(updatedModel), () =>
+                {
+                    actionConfirmed = true;
+                    responseModel = PersistChanges(updatedModel);
+                },
+                UseShouldContinue()
+            );
+
+            if (!actionConfirmed) return;
 
             if (responseModel != null)
             {
