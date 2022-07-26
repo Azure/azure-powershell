@@ -42,6 +42,8 @@ Data Collection Rules (DCR) define data coming into Azure Monitor and specify wh
 Remove-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr"
 ```
 
+Delete data collection rule with name and resource group parameters
+
 ### Example 2: Delete data collection rule with name and resource group return bool
 ```powershell
 Remove-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr" -PassThru
@@ -51,15 +53,21 @@ Remove-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr" -
 True
 ```
 
+Delete data collection rule with name and resource group return bool
+
 ### Example 3: Delete data collection rule from InputObject
 ```powershell
 Get-AzDataCollectionRule -ResourceGroupName "testdcr" -RuleName "dcrFromPipe95" | Remove-AzDataCollectionRule
 ```
 
+Delete data collection rule from InputObject
+
 ### Example 4: Delete data collection rule from resource id
 ```powershell
 Remove-AzDataCollectionRule -RuleId "/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/{dcrName}"
 ```
+
+Delete data collection rule from resource id
 
 ## PARAMETERS
 

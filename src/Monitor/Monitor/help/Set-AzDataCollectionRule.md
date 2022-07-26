@@ -184,6 +184,8 @@ Location          : East US 2 EUAP
 Tags              : {[tag2, value2], [tag1, value1]}
 ```
 
+Update data collection rule from object
+
 ## PARAMETERS
 
 ### -DefaultProfile
