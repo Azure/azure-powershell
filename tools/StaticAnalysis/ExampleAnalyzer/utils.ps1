@@ -12,7 +12,6 @@
                     Get-RecordsNotInAllowList
                     Measure-SectionMissingAndOutputScript
                     Get-ScriptAnalyzerResult
-                    Redo-ImportModule
 #>
 $DebugPreference = 'Continue'
 
@@ -505,30 +504,4 @@ function Get-ScriptAnalyzerResult {
     $results = Get-NonExceptionRecord $results
 
     return $results
-}
-
-<#
-    .SYNOPSIS
-    Retry import-module
-#>
-function Redo-ImportModule {
-    param (
-        [string]$CommandName,
-        [string]$moduleName
-    )
-    $modulePath = "$PSScriptRoot\..\..\..\artifacts\Debug\$moduleName\$moduleName.psd1"
-    if(!(Test-Path $modulePath)){
-        Write-Debug "Cannot find path $modulePath."
-        return $false
-    }
-    Get-Item $modulePath | Import-Module -Global
-    $GetCommandName = Get-Command -ListImported | Where-Object {$_.Name -eq $CommandName}
-    if ($null -eq $GetCommandName) {
-        Write-Debug "$CommandName is still invalid"
-        return $false
-    }
-    else{
-        Write-Debug "Succeed by retrying import-module"
-        return $true
-    }
 }
