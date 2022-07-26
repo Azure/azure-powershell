@@ -8,14 +8,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     using static Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Extensions;
     using System;
 
-    /// <summary>Description for Creates or updates an App Service Plan.</summary>
+    /// <summary>Creates or updates an App Service Plan.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Web/serverfarms/{name}"
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Set, @"AzFunctionAppPlan_UpdateExpanded", SupportsShouldProcess = true)]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan))]
-    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Description for Creates or updates an App Service Plan.")]
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Creates or updates an App Service Plan.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Generated]
     public partial class SetAzFunctionAppPlan_UpdateExpanded : global::System.Management.Automation.PSCmdlet,
         Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener
@@ -29,16 +29,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// <summary>A unique id generatd for the this cmdlet when ProcessRecord() is called.</summary>
         private string __processRecordId;
 
+        /// <summary>App Service plan.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan _appServicePlanBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServicePlan();
+
         /// <summary>
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
-
-        /// <summary>Backing field for <see cref="AppServicePlanBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan _appServicePlanBody= new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.AppServicePlan();
-
-        /// <summary>App Service plan.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlan AppServicePlanBody { get => this._appServicePlanBody; set => this._appServicePlanBody = value; }
 
         /// <summary>when specified, runs this cmdlet as a PowerShell job</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Run the command as a job")]
@@ -59,7 +56,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Current number of instances assigned to the resource.",
         SerializedName = @"capacity",
         PossibleTypes = new [] { typeof(int) })]
-        public int Capacity { get => AppServicePlanBody.Capacity ?? default(int); set => AppServicePlanBody.Capacity = value; }
+        public int Capacity { get => _appServicePlanBody.Capacity ?? default(int); set => _appServicePlanBody.Capacity = value; }
 
         /// <summary>The reference to the client API class.</summary>
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Functions Client => Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.ClientAPI;
@@ -82,7 +79,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"The time when the server farm free offer expires.",
         SerializedName = @"freeOfferExpirationTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime FreeOfferExpirationTime { get => AppServicePlanBody.FreeOfferExpirationTime ?? default(global::System.DateTime); set => AppServicePlanBody.FreeOfferExpirationTime = value; }
+        public global::System.DateTime FreeOfferExpirationTime { get => _appServicePlanBody.FreeOfferExpirationTime ?? default(global::System.DateTime); set => _appServicePlanBody.FreeOfferExpirationTime = value; }
 
         /// <summary>Resource ID of the App Service Environment.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Resource ID of the App Service Environment.")]
@@ -93,7 +90,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Resource ID of the App Service Environment.",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
-        public string HostingEnvironmentProfileId { get => AppServicePlanBody.HostingEnvironmentProfileId ?? null; set => AppServicePlanBody.HostingEnvironmentProfileId = value; }
+        public string HostingEnvironmentProfileId { get => _appServicePlanBody.HostingEnvironmentProfileId ?? null; set => _appServicePlanBody.HostingEnvironmentProfileId = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -118,7 +115,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.",
         SerializedName = @"hyperV",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter HyperV { get => AppServicePlanBody.HyperV ?? default(global::System.Management.Automation.SwitchParameter); set => AppServicePlanBody.HyperV = value; }
+        public global::System.Management.Automation.SwitchParameter HyperV { get => _appServicePlanBody.HyperV ?? default(global::System.Management.Automation.SwitchParameter); set => _appServicePlanBody.HyperV = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -132,7 +129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"If <code>true</code>, this App Service Plan owns spot instances.",
         SerializedName = @"isSpot",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter IsSpot { get => AppServicePlanBody.IsSpot ?? default(global::System.Management.Automation.SwitchParameter); set => AppServicePlanBody.IsSpot = value; }
+        public global::System.Management.Automation.SwitchParameter IsSpot { get => _appServicePlanBody.IsSpot ?? default(global::System.Management.Automation.SwitchParameter); set => _appServicePlanBody.IsSpot = value; }
 
         /// <summary>
         /// Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
@@ -145,7 +142,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.",
         SerializedName = @"isXenon",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter IsXenon { get => AppServicePlanBody.IsXenon ?? default(global::System.Management.Automation.SwitchParameter); set => AppServicePlanBody.IsXenon = value; }
+        public global::System.Management.Automation.SwitchParameter IsXenon { get => _appServicePlanBody.IsXenon ?? default(global::System.Management.Automation.SwitchParameter); set => _appServicePlanBody.IsXenon = value; }
 
         /// <summary>Kind of resource.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Kind of resource.")]
@@ -156,7 +153,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Kind of resource.",
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(string) })]
-        public string Kind { get => AppServicePlanBody.Kind ?? null; set => AppServicePlanBody.Kind = value; }
+        public string Kind { get => _appServicePlanBody.Kind ?? null; set => _appServicePlanBody.Kind = value; }
 
         /// <summary>Resource Location.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource Location.")]
@@ -167,7 +164,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Resource Location.",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => AppServicePlanBody.Location ?? null; set => AppServicePlanBody.Location = value; }
+        public string Location { get => _appServicePlanBody.Location ?? null; set => _appServicePlanBody.Location = value; }
 
         /// <summary>
         /// Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
@@ -180,14 +177,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan",
         SerializedName = @"maximumElasticWorkerCount",
         PossibleTypes = new [] { typeof(int) })]
-        public int MaximumElasticWorkerCount { get => AppServicePlanBody.MaximumElasticWorkerCount ?? default(int); set => AppServicePlanBody.MaximumElasticWorkerCount = value; }
+        public int MaximumElasticWorkerCount { get => _appServicePlanBody.MaximumElasticWorkerCount ?? default(int); set => _appServicePlanBody.MaximumElasticWorkerCount = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
@@ -224,7 +221,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"If <code>true</code>, apps assigned to this App Service plan can be scaled independently.If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.",
         SerializedName = @"perSiteScaling",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter PerSiteScaling { get => AppServicePlanBody.PerSiteScaling ?? default(global::System.Management.Automation.SwitchParameter); set => AppServicePlanBody.PerSiteScaling = value; }
+        public global::System.Management.Automation.SwitchParameter PerSiteScaling { get => _appServicePlanBody.PerSiteScaling ?? default(global::System.Management.Automation.SwitchParameter); set => _appServicePlanBody.PerSiteScaling = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.HttpPipeline" /> that the remote call will use.
@@ -256,7 +253,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"If Linux app service plan <code>true</code>, <code>false</code> otherwise.",
         SerializedName = @"reserved",
         PossibleTypes = new [] { typeof(global::System.Management.Automation.SwitchParameter) })]
-        public global::System.Management.Automation.SwitchParameter Reserved { get => AppServicePlanBody.Reserved ?? default(global::System.Management.Automation.SwitchParameter); set => AppServicePlanBody.Reserved = value; }
+        public global::System.Management.Automation.SwitchParameter Reserved { get => _appServicePlanBody.Reserved ?? default(global::System.Management.Automation.SwitchParameter); set => _appServicePlanBody.Reserved = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -282,7 +279,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Capabilities of the SKU, e.g., is traffic manager enabled",
         SerializedName = @"capabilities",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[] SkuCapability { get => AppServicePlanBody.SkuCapability ?? null /* arrayOf */; set => AppServicePlanBody.SkuCapability = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICapability[] SkuCapability { get => _appServicePlanBody.SkuCapability ?? null /* arrayOf */; set => _appServicePlanBody.SkuCapability = value; }
 
         /// <summary>Default number of workers for this App Service plan SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Default number of workers for this App Service plan SKU.")]
@@ -293,7 +290,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Default number of workers for this App Service plan SKU.",
         SerializedName = @"default",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacityDefault { get => AppServicePlanBody.SkuCapacityDefault ?? default(int); set => AppServicePlanBody.SkuCapacityDefault = value; }
+        public int SkuCapacityDefault { get => _appServicePlanBody.SkuCapacityDefault ?? default(int); set => _appServicePlanBody.SkuCapacityDefault = value; }
 
         /// <summary>Maximum number of workers for this App Service plan SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Maximum number of workers for this App Service plan SKU.")]
@@ -304,7 +301,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Maximum number of workers for this App Service plan SKU.",
         SerializedName = @"maximum",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacityMaximum { get => AppServicePlanBody.SkuCapacityMaximum ?? default(int); set => AppServicePlanBody.SkuCapacityMaximum = value; }
+        public int SkuCapacityMaximum { get => _appServicePlanBody.SkuCapacityMaximum ?? default(int); set => _appServicePlanBody.SkuCapacityMaximum = value; }
 
         /// <summary>Minimum number of workers for this App Service plan SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Minimum number of workers for this App Service plan SKU.")]
@@ -315,7 +312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Minimum number of workers for this App Service plan SKU.",
         SerializedName = @"minimum",
         PossibleTypes = new [] { typeof(int) })]
-        public int SkuCapacityMinimum { get => AppServicePlanBody.SkuCapacityMinimum ?? default(int); set => AppServicePlanBody.SkuCapacityMinimum = value; }
+        public int SkuCapacityMinimum { get => _appServicePlanBody.SkuCapacityMinimum ?? default(int); set => _appServicePlanBody.SkuCapacityMinimum = value; }
 
         /// <summary>Available scale configurations for an App Service plan.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Available scale configurations for an App Service plan.")]
@@ -326,7 +323,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Available scale configurations for an App Service plan.",
         SerializedName = @"scaleType",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuCapacityScaleType { get => AppServicePlanBody.SkuCapacityScaleType ?? null; set => AppServicePlanBody.SkuCapacityScaleType = value; }
+        public string SkuCapacityScaleType { get => _appServicePlanBody.SkuCapacityScaleType ?? null; set => _appServicePlanBody.SkuCapacityScaleType = value; }
 
         /// <summary>Family code of the resource SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Family code of the resource SKU.")]
@@ -337,7 +334,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Family code of the resource SKU.",
         SerializedName = @"family",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuFamily { get => AppServicePlanBody.SkuFamily ?? null; set => AppServicePlanBody.SkuFamily = value; }
+        public string SkuFamily { get => _appServicePlanBody.SkuFamily ?? null; set => _appServicePlanBody.SkuFamily = value; }
 
         /// <summary>Locations of the SKU.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -349,7 +346,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Locations of the SKU.",
         SerializedName = @"locations",
         PossibleTypes = new [] { typeof(string) })]
-        public string[] SkuLocation { get => AppServicePlanBody.SkuLocation ?? null /* arrayOf */; set => AppServicePlanBody.SkuLocation = value; }
+        public string[] SkuLocation { get => _appServicePlanBody.SkuLocation ?? null /* arrayOf */; set => _appServicePlanBody.SkuLocation = value; }
 
         /// <summary>Name of the resource SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Name of the resource SKU.")]
@@ -360,7 +357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Name of the resource SKU.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuName { get => AppServicePlanBody.SkuName ?? null; set => AppServicePlanBody.SkuName = value; }
+        public string SkuName { get => _appServicePlanBody.SkuName ?? null; set => _appServicePlanBody.SkuName = value; }
 
         /// <summary>Size specifier of the resource SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Size specifier of the resource SKU.")]
@@ -371,7 +368,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Size specifier of the resource SKU.",
         SerializedName = @"size",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuSize { get => AppServicePlanBody.SkuSize ?? null; set => AppServicePlanBody.SkuSize = value; }
+        public string SkuSize { get => _appServicePlanBody.SkuSize ?? null; set => _appServicePlanBody.SkuSize = value; }
 
         /// <summary>Service tier of the resource SKU.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Service tier of the resource SKU.")]
@@ -382,7 +379,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Service tier of the resource SKU.",
         SerializedName = @"tier",
         PossibleTypes = new [] { typeof(string) })]
-        public string SkuTier { get => AppServicePlanBody.SkuTier ?? null; set => AppServicePlanBody.SkuTier = value; }
+        public string SkuTier { get => _appServicePlanBody.SkuTier ?? null; set => _appServicePlanBody.SkuTier = value; }
 
         /// <summary>The time when the server farm expires. Valid only if it is a spot server farm.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The time when the server farm expires. Valid only if it is a spot server farm.")]
@@ -393,7 +390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"The time when the server farm expires. Valid only if it is a spot server farm.",
         SerializedName = @"spotExpirationTime",
         PossibleTypes = new [] { typeof(global::System.DateTime) })]
-        public global::System.DateTime SpotExpirationTime { get => AppServicePlanBody.SpotExpirationTime ?? default(global::System.DateTime); set => AppServicePlanBody.SpotExpirationTime = value; }
+        public global::System.DateTime SpotExpirationTime { get => _appServicePlanBody.SpotExpirationTime ?? default(global::System.DateTime); set => _appServicePlanBody.SpotExpirationTime = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -425,7 +422,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Resource tags.",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags Tag { get => AppServicePlanBody.Tag ?? null /* object */; set => AppServicePlanBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IResourceTags Tag { get => _appServicePlanBody.Tag ?? null /* object */; set => _appServicePlanBody.Tag = value; }
 
         /// <summary>Scaling worker count.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Scaling worker count.")]
@@ -436,7 +433,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Scaling worker count.",
         SerializedName = @"targetWorkerCount",
         PossibleTypes = new [] { typeof(int) })]
-        public int TargetWorkerCount { get => AppServicePlanBody.TargetWorkerCount ?? default(int); set => AppServicePlanBody.TargetWorkerCount = value; }
+        public int TargetWorkerCount { get => _appServicePlanBody.TargetWorkerCount ?? default(int); set => _appServicePlanBody.TargetWorkerCount = value; }
 
         /// <summary>Scaling worker size ID.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Scaling worker size ID.")]
@@ -447,7 +444,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Scaling worker size ID.",
         SerializedName = @"targetWorkerSizeId",
         PossibleTypes = new [] { typeof(int) })]
-        public int TargetWorkerSizeId { get => AppServicePlanBody.TargetWorkerSizeId ?? default(int); set => AppServicePlanBody.TargetWorkerSizeId = value; }
+        public int TargetWorkerSizeId { get => _appServicePlanBody.TargetWorkerSizeId ?? default(int); set => _appServicePlanBody.TargetWorkerSizeId = value; }
 
         /// <summary>Target worker tier assigned to the App Service plan.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Target worker tier assigned to the App Service plan.")]
@@ -458,7 +455,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Target worker tier assigned to the App Service plan.",
         SerializedName = @"workerTierName",
         PossibleTypes = new [] { typeof(string) })]
-        public string WorkerTierName { get => AppServicePlanBody.WorkerTierName ?? null; set => AppServicePlanBody.WorkerTierName = value; }
+        public string WorkerTierName { get => _appServicePlanBody.WorkerTierName ?? null; set => _appServicePlanBody.WorkerTierName = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
@@ -489,6 +486,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -514,7 +516,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
             clone.ProxyUseDefaultCredentials = this.ProxyUseDefaultCredentials;
             clone.HttpPipelinePrepend = this.HttpPipelinePrepend;
             clone.HttpPipelineAppend = this.HttpPipelineAppend;
-            clone.AppServicePlanBody = this.AppServicePlanBody;
+            clone._appServicePlanBody = this._appServicePlanBody;
             clone.ResourceGroupName = this.ResourceGroupName;
             clone.Name = this.Name;
             clone.SubscriptionId = this.SubscriptionId;
@@ -524,7 +526,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -657,7 +659,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -672,12 +673,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.AppServicePlansCreateOrUpdate(ResourceGroupName, Name, SubscriptionId, AppServicePlanBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.AppServicePlansCreateOrUpdate(ResourceGroupName, Name, SubscriptionId, _appServicePlanBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=AppServicePlanBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  ResourceGroupName=ResourceGroupName,Name=Name,SubscriptionId=SubscriptionId,body=_appServicePlanBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -731,14 +732,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IDefaultErrorResponse>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=AppServicePlanBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_appServicePlanBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=AppServicePlanBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=_appServicePlanBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });

@@ -29,7 +29,7 @@ New-AzNetAppFilesBackupPolicy -Name <String> [-Enabled] [-DailyBackupsToKeep <In
 ```
 
 ## DESCRIPTION
-The **New-AzNetAppFilesActiveDirectory** cmdlet creates a new backup policy for an ANF account.
+The **New-AzNetAppFilesBackupPolicy** cmdlet creates a new backup policy for an ANF account.
 
 ## EXAMPLES
 
@@ -267,3 +267,16 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetAppFilesBackupPolicy](./Get-AzNetAppFilesBackupPolicy.md)
+[Update-AzNetAppFilesBackupPolicy](./Update-AzNetAppFilesBackupPolicy.md)
+[Remove-AzNetAppFilesBackupPolicy](./Remove-AzNetAppFilesBackupPolicy.md)
+[Set-AzNetAppFilesBackupPolicy](./Set-AzNetAppFilesBackupPolicy.md)
+[Get-AzNetAppFilesBackup](./Get-AzNetAppFilesBackup.md)
+[New-AzNetAppFilesBackup](./New-AzNetAppFilesBackup.md)
+[Remove-AzNetAppFilesBackup](./Remove-AzNetAppFilesBackup.md)
+[Update-AzNetAppFilesBackup](./Update-AzNetAppFilesBackup.md)
+[Get-AzNetAppFilesVolume](./Get-AzNetAppFilesVolume.md)
+[New-AzNetAppFilesVolume](./New-AzNetAppFilesVolume.md)
+[Update-AzNetAppFilesVolume](./Update-AzNetAppFilesVolume.md)
+[Remove-AzNetAppFilesVolume](./Remove-AzNetAppFilesVolume.md)

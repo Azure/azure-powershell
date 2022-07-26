@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.Sql.DataMasking.Cmdlet
         /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
         /// object to the REST endpoint
         /// </summary>
-        /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
+        /// <param name="rules">The model object with the data to be sent to the REST endpoints</param>
         protected override IEnumerable<DatabaseDataMaskingRuleModel> PersistChanges(IEnumerable<DatabaseDataMaskingRuleModel> rules)
         {
             DatabaseDataMaskingRuleModel model = rules.First();

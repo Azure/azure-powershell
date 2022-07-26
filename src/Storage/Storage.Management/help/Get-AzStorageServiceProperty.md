@@ -23,6 +23,7 @@ The **Get-AzStorageServiceProperty** cmdlet gets the properties for Azure Storag
 ## EXAMPLES
 
 ### Example 1: Get  Azure Storage services property of the Blob service
+<!-- Skip: Output cannot be splitted from code -->
 ```
 C:\PS>Get-AzStorageServiceProperty -ServiceType Blob
 

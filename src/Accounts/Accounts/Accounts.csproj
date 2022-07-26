@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Accounts</PsModuleName>
@@ -41,12 +41,19 @@
 
   <ItemGroup>
     <EmbeddedResource Include="AzureRmAlias\Mappings.json" />
+    <EmbeddedResource Include="Utilities\CommandMappings.json" />
   </ItemGroup>
    
   <ItemGroup>
     <ProjectReference Include="..\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
     <ProjectReference Include="..\Authentication\Authentication.csproj" />
     <ProjectReference Include="..\Authenticators\Authenticators.csproj" />  
+  </ItemGroup>
+   
+  <ItemGroup>
+    <Reference Include="FuzzySharp">
+      <HintPath>..\..\lib\FuzzySharp.dll</HintPath>
+    </Reference>
   </ItemGroup>
    
   <ItemGroup>
@@ -63,5 +70,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>

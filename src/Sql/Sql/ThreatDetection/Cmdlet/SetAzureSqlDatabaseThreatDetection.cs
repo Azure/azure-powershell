@@ -14,17 +14,15 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
-using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
     /// Updates the advanced threat protection properties for a specific database.
     /// </summary>
-    [GenericBreakingChange("Set-AzSqlDatabaseAdvancedThreatProtectionSettings alias will be removed in an upcoming breaking change release", "3.0.0")]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAdvancedThreatProtectionSetting", SupportsShouldProcess = true), OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
-    [Alias("Set-AzSqlDatabaseAdvancedThreatProtectionSettings")]
     public class SetAzureSqlDatabaseThreatDetection : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>
@@ -36,12 +34,14 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <summary>
         /// Gets or sets the Threat Detection Email Addresses
         /// </summary>
+        [CmdletParameterBreakingChange("NotificationRecipientsEmails", deprecateByVersion: "9.0.0")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "A semicolon separated list of email addresses to send the alerts to")]
         public string NotificationRecipientsEmails { get; set; }
 
         /// <summary>
         /// Gets or sets the whether to email administrators.
         /// </summary>
+        [CmdletParameterBreakingChange("EmailAdmins", deprecateByVersion: "9.0.0")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Defines whether to email administrators")]
         [ValidateNotNullOrEmpty]
         public bool? EmailAdmins { get; set; }
@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <summary>
         /// Gets or sets the names of the detection types to filter.
         /// </summary>
+        [CmdletParameterBreakingChange("ExcludedDetectionType", deprecateByVersion: "9.0.0")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Detection types to exclude")]
         [PSArgumentCompleter(DetectionType.None,
             DetectionType.Sql_Injection,
@@ -62,6 +63,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <summary>
         /// Gets or sets the name of the storage account to use.
         /// </summary>
+        [CmdletParameterBreakingChange("StorageAccountName", deprecateByVersion: "9.0.0")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The name of the storage account")]
         [ValidateNotNullOrEmpty]
         public string StorageAccountName { get; set; }
@@ -69,6 +71,7 @@ namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
         /// <summary>
         /// Gets or sets the number of retention days for the audit logs table.
         /// </summary>
+        [CmdletParameterBreakingChange("RetentionInDays", deprecateByVersion: "9.0.0")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The number of retention days for the audit logs")]
         [ValidateNotNullOrEmpty]

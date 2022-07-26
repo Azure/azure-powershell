@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+## Version 3.0.2
+* Added optional parameter `Location` for Adding/Update action group cmdlet
 
 ## Version 3.0.1
 * Fixed an issue where users could not correctly ignore warning messages after setting environment variables [#17013]

@@ -116,5 +116,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Encryption type of the capacity pool (Single, Double), set encryption type for data at rest for this pool and all volumes in it. This value can only be set when creating new pool.
         /// </value>
         public string EncryptionType { get; set; }
+
+        /// <summary>
+        /// Gets or sets System Data
+        /// </summary>
+        public PSSystemData SystemData { get; set; }
     }
 }

@@ -205,7 +205,7 @@ DNS servers to forward the DNS query to.
 To construct, see NOTES section for TARGETDNSSERVER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ITargetDnsServer[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ITargetDnsServer[]
 Parameter Sets: (All)
 Aliases:
 
@@ -256,7 +256,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule
 
 ## NOTES
 
@@ -267,7 +267,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
+`INPUTOBJECT <IDnsResolverIdentity>`: Identity Parameter
   - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
   - `[DnsResolverName <String>]`: The name of the DNS resolver.
   - `[ForwardingRuleName <String>]`: The name of the forwarding rule.
@@ -279,8 +279,8 @@ INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
   - `[VirtualNetworkLinkName <String>]`: The name of the virtual network link.
   - `[VirtualNetworkName <String>]`: The name of the virtual network.
 
-TARGETDNSSERVER <ITargetDnsServer[]>: DNS servers to forward the DNS query to.
-  - `[IPAddress <String>]`: DNS server IP address.
+`TARGETDNSSERVER <ITargetDnsServer[]>`: DNS servers to forward the DNS query to.
+  - `IPAddress <String>`: DNS server IP address.
   - `[Port <Int32?>]`: DNS server port.
 
 ## RELATED LINKS

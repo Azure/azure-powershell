@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Commands.DataMigration.Cmdlets
         /// Helper method to throw the appropriate exception based on the error returned by the SDK
         /// </summary>
         /// <param name="ex"></param>
-        /// <param name="customMessages"></param>
+        /// <param name="customObjects"></param>
         protected void ThrowAppropriateException(ApiErrorException ex, List<string> customObjects = null)
         {
             string message = "DMS API Error " + ReturnApiErrorMessage(ex);

@@ -41,10 +41,11 @@ Updates a Bot Service
 ```powershell
 Update-AzBotService -Name 'youri-apptest' -ResourceGroupName 'youriBotTest' -kind Bot
 ```
+
 ```output
 Etag                                   Kind Location Name            SkuName SkuTier Type
 ----                                   ---- -------- ----            ------- ------- ----
-"0700e71b-0000-1800-0000-5fd73ed80000" Bot  global   youri-apptest                 Microsoft.BotService/botServices
+"0700e71b-0000-1800-0000-5fd73ed80000" Bot  global   youri-apptest                   Microsoft.BotService/botServices
 ```
 
 Update the Bot by Name and ResourceGroupName
@@ -54,10 +55,11 @@ Update the Bot by Name and ResourceGroupName
 $getAzbot = Get-AzBotService -Name 'youri-apptest' -ResourceGroupName 'youriBotTest'
 Update-AzBotService -InputObject $getAzbot -kind sdk
 ```
+
 ```output
 Etag                                   Kind Location Name            SkuName SkuTier Type
 ----                                   ---- -------- ----            ------- ------- ----
-"07008b1c-0000-1800-0000-5fd73f9e0000" sdk  global   youri-apptest                 Microsoft.BotService/botServices
+"07008b1c-0000-1800-0000-5fd73f9e0000" sdk  global   youri-apptest                   Microsoft.BotService/botServices
 ```
 
 Update the Bot by InputObject
@@ -417,7 +419,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IBotServiceIdentity>: Identity Parameter
+INPUTOBJECT `<IBotServiceIdentity>`: Identity Parameter
   - `[ChannelName <ChannelName?>]`: The name of the Channel resource.
   - `[ConnectionName <String>]`: The name of the Bot Service Connection Setting resource
   - `[Id <String>]`: Resource identity path

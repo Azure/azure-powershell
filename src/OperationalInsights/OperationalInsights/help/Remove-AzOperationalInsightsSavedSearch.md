@@ -25,7 +25,7 @@ The **Remove-AzOperationalInsightsSavedSearch** cmdlet removes a saved search fr
 
 ### Example 1: Remove a saved search
 ```powershell
-Remove-AzOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -SavedSearchId "ContosoSavedSearchId" -Force
+Remove-AzOperationalInsightsSavedSearch -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace" -SavedSearchId "ContosoSavedSearchId"
 ```
 
 This command removes a saved search from the workspace.

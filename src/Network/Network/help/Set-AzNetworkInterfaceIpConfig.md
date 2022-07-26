@@ -54,8 +54,7 @@ $subnet = Get-AzVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
 
 $nic = Get-AzNetworkInterface -Name nic1 -ResourceGroupName myrg
 
-$nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet
-    -Primary
+$nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet -Primary
 
 $nic | Set-AzNetworkInterface
 ```
@@ -75,8 +74,7 @@ $asg = Get-AzApplicationSecurityGroup -Name myasg -ResourceGroupName myrg
 
 $nic = Get-AzNetworkInterface -Name nic1 -ResourceGroupName myrg
 
-$nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet -ApplicationSecurityGroup $asg
-    -Primary
+$nic | Set-AzNetworkInterfaceIpConfig -Name ipconfig1 -PrivateIpAddress 10.0.0.11 -Subnet $subnet -ApplicationSecurityGroup $asg -Primary
 
 $nic | Set-AzNetworkInterface
 ```

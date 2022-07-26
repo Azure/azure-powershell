@@ -31,8 +31,10 @@ The **Get-AzCosmosDbClientEncryptionKey** cmdlet gets the list of all existing C
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCosmosDbClientEncryptionKey -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName
+Get-AzCosmosDbClientEncryptionKey -AccountName myAccountName -DatabaseName myDatabaseName -ResourceGroupName myRgName
+```
 
+```output
 Name                     : {clientEncryptionKeyName}
 Id                       : Id
 Resource                 : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlClientEncryptionKeyGetPropertiesResource

@@ -35,8 +35,7 @@ This is expected service behavior.
 
 ### Example 1: Remove-AzConnectedNetworkVendorSku via Sku name and Vendor name
 ```powershell
-PS C:\> Remove-AzConnectedNetworkVendorSku -SkuName MySku -VendorName MyVendor
-
+Remove-AzConnectedNetworkVendorSku -SkuName MySku -VendorName MyVendor
 ```
 
 Deleting the sku MySku with Vendor name MyVendor.
@@ -44,8 +43,7 @@ Deleting the sku MySku with Vendor name MyVendor.
 ### Example 2: Remove-AzConnectedNetworkVendorSku via Identity
 ```powershell
 $sku = Get-AzConnectedNetworkVendorSku -SkuName MySku1 -VendorName MyVendor
-PS C:\> Remove-AzConnectedNetworkVendorSku -InputObject $sku
-
+Remove-AzConnectedNetworkVendorSku -InputObject $sku
 ```
 
 Creating an identity with sku name MySku1 and vendor name MyVendor.
@@ -225,7 +223,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
   - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.

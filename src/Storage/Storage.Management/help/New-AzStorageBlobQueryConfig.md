@@ -29,6 +29,7 @@ The **New-AzStorageBlobQueryConfig** cmdlet creates a blob query configuration o
 ## EXAMPLES
 
 ### Example 1: Create blob query configures , and query a blob
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> $inputconfig = New-AzStorageBlobQueryConfig -AsCsv -ColumnSeparator "," -QuotationCharacter """" -EscapeCharacter "\" -RecordSeparator "`n" -HasHeader
 

@@ -15,6 +15,7 @@
 using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Resources.ManagementGroups.Common;
+using Microsoft.Azure.Commands.Resources.Models.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups;
 using Microsoft.Azure.Management.ManagementGroups.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -24,7 +25,7 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
     /// <summary>
     /// Add-AzManagementGroupSubscription Cmdlet
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupSubscription",DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,SupportsShouldProcess = true), OutputType(typeof(bool))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ManagementGroupSubscription",DefaultParameterSetName = Constants.ParameterSetNames.GroupOperationsParameterSet,SupportsShouldProcess = true), OutputType(typeof(PSManagementGroupSubscription))]
     public class NewAzureRmManagementGroupSubscription : AzureManagementGroupsCmdletBase
     {
         [Alias("GroupId")]
@@ -53,12 +54,9 @@ namespace Microsoft.Azure.Commands.Resources.ManagementGroups
                     PreregisterSubscription();
                     PreregisterSubscription(SubscriptionId.ToString());
                     
-                    ManagementGroupsApiClient.ManagementGroupSubscriptions.Create(GroupName, SubscriptionId.ToString());
+                    var response = ManagementGroupsApiClient.ManagementGroupSubscriptions.Create(GroupName, SubscriptionId.ToString());
 
-                    if (PassThru.IsPresent)
-                    {
-                        WriteObject(true);
-                    }
+                    WriteObject(new PSManagementGroupSubscription(response));
                 }
             }
             catch (ErrorResponseException ex)

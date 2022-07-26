@@ -214,6 +214,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint[] Endpoint { get => this._endpoint; set => this._endpoint = value; }
 
+        /// <summary>Backing field for <see cref="FederatedIdentityCredentials" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[] _federatedIdentityCredentials;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[] FederatedIdentityCredentials { get => this._federatedIdentityCredentials; set => this._federatedIdentityCredentials = value; }
+
         /// <summary>Backing field for <see cref="HomeRealmDiscoveryPolicy" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphHomeRealmDiscoveryPolicy[] _homeRealmDiscoveryPolicy;
 
@@ -542,7 +549,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
         /// <returns>
-        /// A < see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener)
         {
@@ -740,6 +747,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         SerializedName = @"endpoints",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint) })]
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint[] Endpoint { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
+        SerializedName = @"federatedIdentityCredentials",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[] FederatedIdentityCredentials { get; set; }
         /// <summary>
         /// The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
         /// </summary>
@@ -1096,6 +1111,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// that other applications can discover and use in their experiences.
         /// </summary>
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEndpoint[] Endpoint { get; set; }
+
+        Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[] FederatedIdentityCredentials { get; set; }
         /// <summary>
         /// The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
         /// </summary>

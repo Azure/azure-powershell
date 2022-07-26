@@ -20,7 +20,7 @@ The operation to create or update the extension.
 .Description
 The operation to create or update the extension.
 .Example
-PS C:\> $splat = @{
+$splat = @{
             ResourceGroupName = "connectedMachines"
             MachineName = "linux-eastus1_1"
             Name = "customScript"
@@ -28,50 +28,34 @@ PS C:\> $splat = @{
                 commandToExecute = "ls -l"
             }
         }
-PS C:\> Update-AzConnectedMachineExtension @splat
-
-Name         Location ProvisioningState
-----         -------- -----------------
-customScript eastus   Succeeded
+Update-AzConnectedMachineExtension @splat
 .Example
-PS C:\> $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
-PS C:\> $extToUpdate | Update-AzConnectedMachineExtension -Settings @{
+$extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
+$extToUpdate | Update-AzConnectedMachineExtension -Settings @{
                 commandToExecute = "ls -l"
             }
-
-Name         Location ProvisioningState
-----         -------- -----------------
-customScript eastus   Succeeded
 .Example
-PS C:\> $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
-PS C:\> # Update the settings on the object that will be used via the pipeline
-PS C:\> $extToUpdate.Setting.commandToExecute = "ls -l"
-PS C:\> $splat = @{
+$extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
+# Update the settings on the object that will be used via the pipeline
+$extToUpdate.Setting.commandToExecute = "ls -l"
+$splat = @{
             ResourceGroupName = "connectedMachines"
             MachineName = "linux-eastus1_1"
             Name = "customScript"
         }
-PS C:\> $extToUpdate | Update-AzConnectedMachineExtension @splat
-
-Name         Location ProvisioningState
-----         -------- -----------------
-customScript eastus   Succeeded
+$extToUpdate | Update-AzConnectedMachineExtension @splat
 .Example
-PS C:\> $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
-PS C:\> # Update the settings on the object that will be used via the pipeline
-PS C:\> $extToUpdate.Setting.commandToExecute = "ls -l"
-PS C:\> $extToUpdate | Update-AzConnectedMachineExtension -ExtensionParameter $extToUpdate
-
-Name         Location ProvisioningState
-----         -------- -----------------
-customScript eastus   Succeeded
+$extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
+# Update the settings on the object that will be used via the pipeline
+$extToUpdate.Setting.commandToExecute = "ls -l"
+$extToUpdate | Update-AzConnectedMachineExtension -ExtensionParameter $extToUpdate
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtensionUpdate
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtensionUpdate
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IConnectedMachineIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtension
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -83,9 +67,11 @@ EXTENSIONPARAMETER <IMachineExtensionUpdate>: Describes a Machine Extension Upda
   [AutoUpgradeMinorVersion <Boolean?>]: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
   [EnableAutomaticUpgrade <Boolean?>]: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
   [ForceUpdateTag <String>]: How the extension handler should be forced to update even if the extension configuration has not changed.
-  [ProtectedSetting <IAny>]: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+  [ProtectedSetting <IMachineExtensionUpdatePropertiesProtectedSettings>]: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
+    [(Any) <Object>]: This indicates any property can be added to this object.
   [Publisher <String>]: The name of the extension handler publisher.
-  [Setting <IAny>]: Json formatted public settings for the extension.
+  [Setting <IMachineExtensionUpdatePropertiesSettings>]: Json formatted public settings for the extension.
+    [(Any) <Object>]: This indicates any property can be added to this object.
   [Type <String>]: Specifies the type of the extension; an example is "CustomScriptExtension".
   [TypeHandlerVersion <String>]: Specifies the version of the script handler.
 
@@ -104,7 +90,7 @@ INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.connectedmachine/update-azconnectedmachineextension
 #>
 function Update-AzConnectedMachineExtension {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtension])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtension])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Update', Mandatory)]
@@ -149,7 +135,7 @@ param(
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='UpdateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IMachineExtensionUpdate]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtensionUpdate]
     # Describes a Machine Extension Update.
     # To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
     ${ExtensionParameter},
@@ -180,7 +166,8 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Alias('ProtectedSettings')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAny]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtensionUpdatePropertiesProtectedSettings]))]
+    [System.Collections.Hashtable]
     # The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
     ${ProtectedSetting},
 
@@ -195,14 +182,15 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Alias('Settings')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.IAny]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IMachineExtensionUpdatePropertiesSettings]))]
+    [System.Collections.Hashtable]
     # Json formatted public settings for the extension.
     ${Setting},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IResourceUpdateTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IResourceUpdateTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
@@ -288,6 +276,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Update = 'Az.ConnectedMachine.private\Update-AzConnectedMachineExtension_Update';
             UpdateExpanded = 'Az.ConnectedMachine.private\Update-AzConnectedMachineExtension_UpdateExpanded';
@@ -304,6 +310,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -312,15 +319,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

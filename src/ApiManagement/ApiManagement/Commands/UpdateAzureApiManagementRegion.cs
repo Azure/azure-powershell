@@ -70,6 +70,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             " This can also be used to standup a new region in Passive mode, test it and then make it Live later.")]
         public bool? DisableGateway { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments")]
+        public string PublicIpAddressId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecuteCmdLetWrap(
@@ -81,7 +84,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                         Capacity, 
                         VirtualNetwork, 
                         Zone, 
-                        DisableGateway);
+                        DisableGateway,
+                        PublicIpAddressId);
 
                     return ApiManagement;
                 },

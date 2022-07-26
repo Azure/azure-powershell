@@ -264,6 +264,10 @@
                 <Label>BaseBlob.TierToCool.DaysAfterLastAccessTimeGreaterThan</Label>
               </ListItem>
               <ListItem>
+                <ScriptBlock>$_.BaseBlob.TierToCool.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>BaseBlob.TierToCool.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
                 <ScriptBlock>$_.BaseBlob.EnableAutoTierToHotFromCool</ScriptBlock>
                 <Label>BaseBlob.EnableAutoTierToHotFromCool</Label>
               </ListItem>
@@ -276,6 +280,10 @@
                 <Label>BaseBlob.TierToArchive.DaysAfterLastAccessTimeGreaterThan</Label>
               </ListItem>
               <ListItem>
+                <ScriptBlock>$_.BaseBlob.TierToArchive.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>BaseBlob.TierToArchive.DaysAfterCreationGreaterThan</Label>
+              </ListItem>
+              <ListItem>
                 <ScriptBlock>$_.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan</ScriptBlock>
                 <Label>BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan</Label>
               </ListItem>
@@ -286,6 +294,10 @@
               <ListItem>
                 <ScriptBlock>$_.BaseBlob.Delete.DaysAfterLastAccessTimeGreaterThan</ScriptBlock>
                 <Label>BaseBlob.Delete.DaysAfterLastAccessTimeGreaterThan</Label>
+              </ListItem>
+              <ListItem>
+                <ScriptBlock>$_.BaseBlob.Delete.DaysAfterCreationGreaterThan</ScriptBlock>
+                <Label>BaseBlob.Delete.DaysAfterCreationGreaterThan</Label>
               </ListItem>
               <ListItem>
                 <ScriptBlock>$_.Snapshot.TierToCool.DaysAfterCreationGreaterThan</ScriptBlock>

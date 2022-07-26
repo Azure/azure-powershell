@@ -18,17 +18,6 @@
 Lists entities from groups or get entity from groups by key
 .Description
 Lists entities from groups or get entity from groups by key
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/get-azadgroup
 #>

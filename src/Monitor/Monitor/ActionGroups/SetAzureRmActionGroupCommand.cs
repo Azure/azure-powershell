@@ -81,13 +81,22 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
         public SwitchParameter DisableGroup { get; set; }
 
         /// <summary>
-        /// Gets or sets the Tags of the activity log alert resource
+        /// Gets or sets the Tags of the action group resource
         /// </summary>
         [Parameter(ParameterSetName = ByPropertyName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the action group resource")]
         [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The tags of the action group resource")]
         [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The tags of the action group resource")]
         [ValidateNotNullOrEmpty]
         public IDictionary<string, string> Tag { get; set; }
+
+        /// <summary>
+        /// Gets or sets the location of the action group resource
+        /// </summary>
+        [Parameter(ParameterSetName = ByPropertyName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the action group resource")]
+        [Parameter(ParameterSetName = ByResourceId, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The location of the action group resource")]
+        [Parameter(ParameterSetName = ByInputObject, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The location of the action group resource")]
+        [ValidateNotNullOrEmpty]
+        public string Location { get; set; }
 
         /// <summary>
         /// Gets or sets the resource id parameter.
@@ -129,6 +138,10 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
                     if (this.Tag == null)
                     {
                         this.Tag = this.InputObject.Tags;
+                    }
+                    if (this.Location == null)
+                    {
+                        this.Location = this.InputObject.Location;
                     }
                     this.Receiver = new List<PSActionGroupReceiverBase>();
                     this.Receiver.AddRange(this.InputObject.EmailReceivers);
@@ -224,7 +237,7 @@ namespace Microsoft.Azure.Commands.Insights.ActionGroups
 
                 ActionGroupResource actionGroup = new ActionGroupResource
                                                   {
-                                                      Location = "Global",
+                                                      Location = this.Location ?? "Global",
                                                       GroupShortName = this.ShortName,
                                                       Enabled = !this.DisableGroup.IsPresent || !this.DisableGroup,
                                                       Tags = this.Tag,
