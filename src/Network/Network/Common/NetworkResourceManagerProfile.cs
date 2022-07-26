@@ -264,6 +264,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.BgpServiceCommunity, CNM.PSBgpServiceCommunity>();
                 cfg.CreateMap<MNM.BGPCommunity, CNM.PSBgpCommunity>();
 
+                // Virtual Network Encryption
+                cfg.CreateMap<CNM.PSVirtualNetworkEncryption, MNM.VirtualNetworkEncryption>();
+                cfg.CreateMap<MNM.VirtualNetworkEncryption, CNM.PSVirtualNetworkEncryption>();
+
                 // Subnet
                 // CNM to MNM
                 cfg.CreateMap<CNM.PSDhcpOptions, MNM.DhcpOptions>();
@@ -1381,6 +1385,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Azure Firewall Policies
                 // CNM to MNM
+                cfg.CreateMap<CNM.PSAzureFirewallPolicyExplicitProxy, MNM.ExplicitProxy>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>().ForCtorParam("dnsSettings", opt =>
                 {
@@ -1391,6 +1396,7 @@ namespace Microsoft.Azure.Commands.Network
                 });
 
                 // MNM to CNM
+                cfg.CreateMap<MNM.ExplicitProxy, CNM.PSAzureFirewallPolicyExplicitProxy>();
                 cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>().AfterMap((src, dst) =>
                 {
@@ -1404,12 +1410,8 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.VirtualNetworkTap, CNM.PSVirtualNetworkTap>();
 
-                cfg.CreateMap<CNM.PSPrivateEndpoint, MNM.PrivateEndpoint>()
-                    .ForMember(dest => dest.ApplicationSecurityGroups, opt => opt.MapFrom(src => src._psApplicationSecurityGroups))
-                    .ForMember(dest => dest.IpConfigurations, opt => opt.MapFrom(src => src._psIpConfigurations));
-                cfg.CreateMap<MNM.PrivateEndpoint, CNM.PSPrivateEndpoint>()
-                    .ForMember(dest => dest._psApplicationSecurityGroups, opt => opt.MapFrom(src => src.ApplicationSecurityGroups))
-                    .ForMember(dest => dest._psIpConfigurations, opt => opt.MapFrom(src => src.IpConfigurations));
+                cfg.CreateMap<CNM.PSPrivateEndpoint, MNM.PrivateEndpoint>();
+                cfg.CreateMap<MNM.PrivateEndpoint, CNM.PSPrivateEndpoint>();
                 cfg.CreateMap<CNM.PSPrivateEndpointIPConfiguration, MNM.PrivateEndpointIPConfiguration>();
                 cfg.CreateMap<MNM.PrivateEndpointIPConfiguration, CNM.PSPrivateEndpointIPConfiguration>();
                 cfg.CreateMap<CNM.PSPrivateDnsZoneGroup, MNM.PrivateDnsZoneGroup>();

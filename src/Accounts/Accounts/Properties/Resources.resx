@@ -428,7 +428,7 @@
   </data>
   <data name="ClientAssertionWarning" xml:space="preserve">
     <value>The provided client id and assertion will be included in the '{0}' file found in the user profile ( {1} ). Please ensure that this directory has appropriate protections.</value>
-  </data> 
+  </data>
   <data name="MSITenantDomainNotFound" xml:space="preserve">
     <value>Please ensure that the managed service identity found on this machine has proper permissions to the provided tenant domain.</value>
   </data>
@@ -536,5 +536,39 @@
   </data>
   <data name="TokenCachePersistenceCheckError" xml:space="preserve">
     <value>Persistence check fails due to unknown error</value>
+  </data>
+  <data name="SubscriptionNotFouldPleaseCheckConfig" xml:space="preserve">
+    <value>If a subscription is not specified, please check the configs by `Get-AzConfig`.</value>
+  </data>
+  <data name="CommandNotFoundAzureRM" xml:space="preserve">
+    <value>The command {0} is in the AzureRM PowerShell module, which is outdated. See {1} for instructions to migrate to Az.</value>
+    <comment>0: command name; 1: link to AzureRM migration guide</comment>
+  </data>
+  <data name="CommandNotFoundDeprecated" xml:space="preserve">
+    <value>The command {0} has been deprecated in {1}.</value>
+    <comment>0: deprecated command name; 1: release name</comment>
+  </data>
+  <data name="CommandNotFoundReplaced" xml:space="preserve">
+    <value>The command {0} has been deprecated and replaced by {1} in {2}.</value>
+    <comment>0: deprecated command name; 1: command that replaced the deprecated one; 2: release name</comment>
+  </data>
+  <data name="SeeMigrationGuide" xml:space="preserve">
+    <value>Please refer to the migration guide {0}.</value>
+    <comment>0: link to migration guide</comment>
+  </data>
+  <data name="CommandNotFoundFuzzyStringPlural" xml:space="preserve">
+    <value>{0} is not found. The most similar Azure PowerShell commands are:</value>
+    <comment>0: command name</comment>
+  </data>
+  <data name="CommandNotFoundFuzzyStringSingle" xml:space="preserve">
+    <value>{0} is not found. The most similar Azure PowerShell command is:</value>
+    <comment>0: command name</comment>
+  </data>
+  <data name="AzureRMToAzMigrationGuideLink" xml:space="preserve">
+    <value>https://go.microsoft.com/fwlink/?linkid=2202029</value>
+  </data>
+  <data name="CommandNotFoundModuleNotInstalled" xml:space="preserve">
+    <value>The command {0} is part of Azure PowerShell module "{1}" and it is not installed. Run "Install-Module {1}" to install it.</value>
+    <comment>0: command being not found; 1: its module</comment>
   </data>
 </root>

@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model;
 using System.Collections.Generic;
 using System.Linq;
@@ -103,7 +117,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Services
         /// <summary>
         /// Convert a Management.Sql.Models.DistributedAvailabilityGroup to AzureSqlManagedInstanceLinkModel
         /// </summary>
-        /// <param name="resp">The management client distributed availiability group response to convert</param>
+        /// <param name="resourceGroupName">Resource group used by the managed instance</param>
+        /// <param name="instanceName">Name of the managed instance</param>
+        /// <param name="managedInstanceLink">The management client distributed availiability group response to convert</param>
         /// <returns>The converted managed instance link model</returns>
         private static AzureSqlManagedInstanceLinkModel CreateManagedInstanceLinkModelFromResponse(string resourceGroupName, string instanceName, Management.Sql.Models.DistributedAvailabilityGroup managedInstanceLink)
         {

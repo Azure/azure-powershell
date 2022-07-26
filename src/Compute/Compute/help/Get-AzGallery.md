@@ -171,8 +171,7 @@ Get all galleries in subscription that start with "gallery".
 
 ### Example 5
 ```powershell
-PS C:\> Get-AzGallery -Name galleryName -ResourceGroupName rg -Expand SharingProfile/Groups
-
+Get-AzGallery -Name galleryName -ResourceGroupName rg -Expand SharingProfile/Groups
 ```
 
 Get a gallery's sharing profile.
@@ -191,6 +190,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Expand
+The expand query option to apply on the operation. Possible value(s): "SharingProfile/Groups"
+
+```yaml
+Type: System.String
+Parameter Sets: DefaultParameter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -275,21 +289,6 @@ Specifies galleries shared to subscription or tenant.
 ```yaml
 Type: System.String
 Parameter Sets: SharedGalleryParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Expand
-The expand query option to apply on the operation. Possible value(s): "SharingProfile/Groups"
-
-```yaml
-Type: System.String
-Parameter Sets: DefaultParameter
 Aliases:
 
 Required: False

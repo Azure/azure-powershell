@@ -48,8 +48,7 @@ namespace Microsoft.Azure.Commands.Sql.TransparentDataEncryption.Adapter
         /// <summary>
         /// Constructs a Transparent Data Encryption adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlDatabaseTransparentDataEncryptionArmAdapter(IAzureContext context)
         {
             Context = context;

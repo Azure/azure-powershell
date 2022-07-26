@@ -460,4 +460,7 @@
     <value>The role assignment creation operation failed with the error: '{0}'
 This means the role assignment was not able to be created. Please assign a role manually with help of the Service Principal Id</value>
   </data>
+  <data name="SuccessfullRARemove" xml:space="preserve">
+    <value>Succesfully removed role assignment for AD object '{0}' on scope '{1}' with role definition '{2}'</value>
+  </data>
 </root>

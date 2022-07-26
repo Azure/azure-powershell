@@ -24,9 +24,11 @@ Creates or Updates a data source
 
 ### Example 1: Create a data source
 ```powershell
-PS C:\> $obj = New-AzPurviewAzureStorageDataSourceObject -Kind 'AzureStorage' -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint https://datascantest.blob.core.windows.net/
+$obj = New-AzPurviewAzureStorageDataSourceObject -Kind 'AzureStorage' -CollectionReferenceName parv-brs-2 -CollectionType 'CollectionReference' -Endpoint https://datascantest.blob.core.windows.net/
 New-AzPurviewDataSource -Endpoint 'https://parv-brs-2.purview.azure.com/' -Name 'NewDataSource' -Body $obj
+```
 
+```output
 CollectionLastModifiedAt : 2/15/2022 10:36:25 AM
 CollectionReferenceName  : parv-brs-2
 CollectionType           : CollectionReference
@@ -160,7 +162,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <IDataSource>: .
+BODY `<IDataSource>`: .
   - `Kind <DataSourceType>`: 
 
 ## RELATED LINKS

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
             {
                 try
                 {
-                    WriteObject(Client.BeginCreateNamespaceSchemaGroup(resourceGroupName: ResourceGroupName,
+                    WriteObject(UtilityClient.BeginCreateNamespaceSchemaGroup(resourceGroupName: ResourceGroupName,
                             namespaceName: Namespace, 
                             schemaGroupName: Name, 
                             schemaCompatibility: SchemaCompatibility, 

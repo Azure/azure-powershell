@@ -17,42 +17,38 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
 {
-    public class GremlinOperationsTests
+    public class GremlinOperationsTests : CosmosDBTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public GremlinOperationsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public GremlinOperationsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGremlinOperationsCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GremlinOperationsCmdlets");
+            TestRunner.RunTestScript("Test-GremlinOperationsCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGremlinOperationsCmdletsUsingInputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GremlinOperationsCmdletsUsingInputObject");
+            TestRunner.RunTestScript("Test-GremlinOperationsCmdletsUsingInputObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGremlinThroughputCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GremlinThroughputCmdlets");
+            TestRunner.RunTestScript("Test-GremlinThroughputCmdlets");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGremlinMigrateThroughputCmdlets()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GremlinMigrateThroughputCmdlets");
+            TestRunner.RunTestScript("Test-GremlinMigrateThroughputCmdlets");
         }
     }
 }

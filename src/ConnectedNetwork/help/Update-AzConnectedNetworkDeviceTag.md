@@ -31,10 +31,11 @@ Updates device tags.
 
 ### Example 1: Update-AzConnectedNetworkDeviceTag via Resource name and Device name
 ```powershell
-PS C:\> $tags = @{ NewTag = "NewTagValue"}
-PS C:\> Update-AzConnectedNetworkDeviceTag -DeviceName "myMecDevice" -ResourceGroupName "myResources" -Tag $tags
+$tags = @{ NewTag = "NewTagValue"}
+Update-AzConnectedNetworkDeviceTag -DeviceName "myMecDevice" -ResourceGroupName "myResources" -Tag $tags
+```
 
-
+```output
 DeviceType                   : AzureStackEdge
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/myMecDevice
 Location                     : eastus
@@ -58,10 +59,12 @@ Updating the tag of device with resource name myMecDevice in resource group myRe
 
 ### Example 2: Update-AzConnectedNetworkDeviceTag via Identity
 ```powershell
-PS C:\> $tags = @{ NewTag1 = "NewTagValue1"}
-PS C:\> $mecDevice = @{ DeviceName = "myMecDevice1"; Location = "eastus"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
-PS C:\> Update-AzConnectedNetworkDeviceTag -InputObject $mecDevice -Tag $tags
+$tags = @{ NewTag1 = "NewTagValue1"}
+$mecDevice = @{ DeviceName = "myMecDevice1"; Location = "eastus"; ResourceGroupName = "myResources"; SubscriptionId = "xxxxx-00000-xxxxx-00000"}
+Update-AzConnectedNetworkDeviceTag -InputObject $mecDevice -Tag $tags
+```
 
+```output
 DeviceType                   : AzureStackEdge
 Id                           : /subscriptions/xxxxx-00000-xxxxx-00000/resourceGroups/myResources/providers/Microsoft.HybridNetwork/devices/mec_2111_09
 Location                     : eastus
@@ -230,7 +233,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
   - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.

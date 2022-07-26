@@ -43,9 +43,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// <summary>
         /// Initializes a new instance of the NWRuleSetIpRules class.
         /// </summary>
-        /// <param name="ipMask">IP Mask</param>
-        /// <param name="action">The IP Filter Action. Possible values include:
-        /// 'Allow'</param>
+        /// <param name="nwiprules"></param>
         public PSNWRuleSetIpRulesAttributes(NWRuleSetIpRules nwiprules)
         {
             IpMask = nwiprules.IpMask;
@@ -59,7 +57,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
 
         /// <summary>
         /// Gets or sets the IP Filter Action. Possible values include: 'Allow'
-        /// </summary>        
+        /// </summary>
         public string Action { get; set; }
 
     }

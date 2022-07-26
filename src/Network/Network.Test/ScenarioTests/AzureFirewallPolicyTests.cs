@@ -14,8 +14,8 @@
 
 using System;
 using Microsoft.Azure.Commands.Network.Test.ScenarioTests;
+using Microsoft.Azure.Commands.TestFx;
 using Microsoft.Azure.Test.HttpRecorder;
-using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
@@ -148,12 +148,21 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-AzureFirewallPolicyPrivateRangeCRUD");
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallPolicyBasicSku()
         {
             TestRunner.RunTestScript("Test-AzureFirewallPolicyBasicSku");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallPolicyExplicitProxyCRUD()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallPolicyExplicitProxyCRUD");
         }
     }
 }

@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Profile;
 using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Test;
 using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.TestFx.Mocks;
 using Microsoft.Azure.Management.ResourceManager.Version2021_01_01.Models;
 using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.Rest;
@@ -61,11 +62,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                 Guid.NewGuid().ToString(), DefaultTenant.ToString());
             var subscriptionList = new Queue<List<string>>(subscriptionLists);
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
-            var mock = new MockClientFactory(new List<object>
+            var mock = new MockClientFactory(null, new List<object>
             {
                 clientFactory.GetSubscriptionClientVerLatest(),
                 clientFactory.GetSubscriptionClientVer2016()
-            }, true);
+            });
             mock.MoqClients = true;
             AzureSession.Instance.ClientFactory = mock;
             var sub = new AzureSubscription()
@@ -89,11 +90,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             AzureSession.Instance.AuthenticationFactory = new AuthenticationFactory();
             var subscriptionList = new Queue<List<string>>(subscriptionLists);
             var clientFactory = new MockSubscriptionClientFactory(tenants, subscriptionList);
-            var mock = new MockClientFactory(new List<object>
+            var mock = new MockClientFactory(null, new List<object>
             {
                 clientFactory.GetSubscriptionClientVerLatest(),
                 clientFactory.GetSubscriptionClientVer2016()
-            }, true);
+            });
             mock.MoqClients = true;
             AzureSession.Instance.ClientFactory = mock;
             var sub = new AzureSubscription()

@@ -25,7 +25,7 @@ The **Add-AzVirtualRouterPeer** cmdlet adds a VirtualRouter Peer to an Azure Vir
 
 ### Example 1
 ```powershell
-Add-AzVirtualRouterPeer 1ResourceGroupName virtualRouterRG -PeerName csr -PeerIp 10.0.1.5 -PeerAsn 63000  -VirtualRouterName virtualRouter
+Add-AzVirtualRouterPeer -ResourceGroupName virtualRouterRG -PeerName csr -PeerIp 10.0.1.5 -PeerAsn 63000  -VirtualRouterName virtualRouter
 ```
 
 ## PARAMETERS

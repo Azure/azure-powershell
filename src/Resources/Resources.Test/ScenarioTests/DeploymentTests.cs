@@ -19,7 +19,7 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class DeploymentTests : ResourceTestRunner
+    public class DeploymentTests : ResourcesTestRunner
     {
         public DeploymentTests(ITestOutputHelper output) : base(output)
         {
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
             TestRunner.RunTestScript("Test-NewFailedSubscriptionDeploymentFromTemplateSpec");
         }
 
-        [Fact]
+        [Fact(Skip = "Need to update the Resources")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.RunType, Category.CoreOnly)]
         public void TestNewMGDeploymentTemplateSpec()

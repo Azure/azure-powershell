@@ -172,6 +172,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             public const string TargetVNetName = "Name of the VNet in which the target VM should be created, in the case of Alternate Location restore to a new VM";
             public const string TargetVNetResourceGroup = "Name of the resource group which contains the target VNet, in the case of Alternate Location restore to a new VM";
             public const string TargetSubnetName = "Name of the subnet in which the target VM should be created, in the case of Alternate Location restore to a new VM";
+            public const string TargetSubscriptionId = "ID of the target subscription to which the resource should be restored. Use this parameter for Cross subscription restore";
         }
 
         internal static class RestoreFS
@@ -228,6 +229,13 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 " used to encrypt newly created disks.";
             public const string UseSystemAssignedIdentity = "Boolean flag to indicate if SystemAssigned Identity will be used for CMK encryption";
             public const string UserAssignedIdentity = "ARM Id of UserAssigned Identity to be used for CMK encryption. Provide this parameter if UseSystemAssignedIdentity is $false";
+        }
+
+        internal static class ResourceGuard
+        {
+            public const string ResourceGuardMappingName = "Resource guard mapping Name to be fetched";
+            public const string AuxiliaryAccessToken = "Auxiliary access token for authenticating critical operation to resource guard subscription";
+            public const string ResourceGuardId = "ResourceGuardId of the ResourceGuard to be mapped with RecoveryServicesVault";
         }
     }
 }

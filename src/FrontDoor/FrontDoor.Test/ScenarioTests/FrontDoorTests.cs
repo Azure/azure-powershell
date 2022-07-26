@@ -17,42 +17,38 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
 {
-    public class FrontDoorTests
+    public class FrontDoorTests : FrontDoorTestRunner
     {
-        private readonly ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public FrontDoorTests(Xunit.Abstractions.ITestOutputHelper output)
+        public FrontDoorTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFrontDoorCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrud");
+            TestRunner.RunTestScript("Test-FrontDoorCrud");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFrontDoorCrudDefaults()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudDefaults");
+            TestRunner.RunTestScript("Test-FrontDoorCrudDefaults");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFrontDoorCrudWithPiping()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudWithPiping");
+            TestRunner.RunTestScript("Test-FrontDoorCrudWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFrontDoorRulesEngineCrud()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorRulesEngineCrud");
+            TestRunner.RunTestScript("Test-FrontDoorRulesEngineCrud");
         }
 
         //[Fact]
@@ -66,28 +62,28 @@ namespace Microsoft.Azure.Commands.FrontDoor.Test.ScenarioTests.ScenarioTest
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFrontDoorEndpointCustomDomainHTTPSByocSpecificVersion()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorEndpointCustomDomainHTTPS-BYOC-SpecificVersion");
+            TestRunner.RunTestScript("Test-FrontDoorEndpointCustomDomainHTTPS-BYOC-SpecificVersion");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFrontDoorEndpointCustomDomainHTTPSByocLatestVersion()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorEndpointCustomDomainHTTPS-BYOC-LatestVersion");
+            TestRunner.RunTestScript("Test-FrontDoorEndpointCustomDomainHTTPS-BYOC-LatestVersion");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFrontDoorCrudRedirect()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudRedirect");
+            TestRunner.RunTestScript("Test-FrontDoorCrudRedirect");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestFrontDoorCrudPrivateLink()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-FrontDoorCrudPrivateLink");
+            TestRunner.RunTestScript("Test-FrontDoorCrudPrivateLink");
         }
     }
 }

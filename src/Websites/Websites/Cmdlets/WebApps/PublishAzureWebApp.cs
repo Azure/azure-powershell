@@ -74,6 +74,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
 
             Action zipDeployAction = () =>
             {
+                if (!Path.IsPathRooted(ArchivePath))
+                    ArchivePath = Path.Combine(this.SessionState.Path.CurrentFileSystemLocation.Path, ArchivePath);
                 using (var s = File.OpenRead(ArchivePath))
                 {
                     HttpClient client = new HttpClient();
@@ -88,6 +90,15 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.WebApps
                     HttpContent fileContent = new StreamContent(s);
                     fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/zip");
                     r = client.PostAsync(deployUrl, fileContent).Result;
+
+                    // Checking the response of the post request. If the post request fails with 502 or 503 HTTP status 
+                    // then deployments/latest endpoint may give false postive result.  
+                    if (r.StatusCode != HttpStatusCode.OK && r.StatusCode != HttpStatusCode.Accepted)
+                    {
+                        var rec = new ErrorRecord(new Exception("Deployment failed with status code " + r.StatusCode), string.Empty, ErrorCategory.InvalidResult, null);
+                        WriteError(rec);
+                        return;
+                    }
 
                     int numChecks = 0;
                     do

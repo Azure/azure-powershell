@@ -744,6 +744,7 @@
   <data name="VirtualNetworkGatewayNatRuleNotFound" xml:space="preserve">
     <value>The VirtualNetworkGatewayNatRule could not be found</value>
   </data>
+<<<<<<< HEAD
   <data name="RemoveRoutingIntentWarning" xml:space="preserve">
     <value>Removing this Routing Intent resource will remove all routing policies present in this and may affect the routing in your VirtualHub</value>
   </data>
@@ -752,5 +753,12 @@
   </data>
   <data name="SameTypeChildResourceAlreadyPresentInResourceGroup" xml:space="preserve">
     <value>Only one child allowed. A resource with name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead.</value>
+=======
+  <data name="UnsupportPrivateEndpointConnectionType" xml:space="preserve">
+    <value>{0} doesn't support private endpoint connection.</value>
+  </data>
+  <data name="UnsupportPrivateLinkResourceType" xml:space="preserve">
+    <value>{0} doesn't support private link resource.</value>
+>>>>>>> 4a1f1e41ce731fdc39dc48549d7e7efa1c6c6980
   </data>
 </root>

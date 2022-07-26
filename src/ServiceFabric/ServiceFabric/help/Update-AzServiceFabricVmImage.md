@@ -93,7 +93,7 @@ Specify common target vmImage to be used for the cluster.
 Type: Microsoft.Azure.Commands.ServiceFabric.Models.VmImageKind
 Parameter Sets: (All)
 Aliases:
-Accepted values: Windows, Linux, Ubuntu, Ubuntu18_04
+Accepted values: Windows, Linux, Ubuntu, Ubuntu18_04, Ubuntu20_04
 
 Required: True
 Position: Named

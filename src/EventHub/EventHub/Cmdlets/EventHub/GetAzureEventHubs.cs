@@ -69,20 +69,20 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a EventHub
-                    PSEventHubAttributes eventHub = Client.GetEventHub(ResourceGroupName, Namespace, Name);
+                    PSEventHubAttributes eventHub = UtilityClient.GetEventHub(ResourceGroupName, Namespace, Name);
                     WriteObject(eventHub);
                 }
                 else
                 {
                     if (MaxCount.HasValue)
                     {
-                        IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace, MaxCount);
+                        IEnumerable<PSEventHubAttributes> eventHubsList = UtilityClient.ListAllEventHubs(ResourceGroupName, Namespace, MaxCount);
                         WriteObject(eventHubsList.ToList(), true);
                     }
                     else
                     {
                         // Get all EventHubs
-                        IEnumerable<PSEventHubAttributes> eventHubsList = Client.ListAllEventHubs(ResourceGroupName, Namespace);
+                        IEnumerable<PSEventHubAttributes> eventHubsList = UtilityClient.ListAllEventHubs(ResourceGroupName, Namespace);
                         WriteObject(eventHubsList.ToList(), true);
                     }
                 }

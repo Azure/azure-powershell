@@ -463,7 +463,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common.Cmdlet
         /// </summary>
         /// <param name="storageAccountName">Storage account name, it's used for build end point</param>
         /// <param name="useHttps"></param>
-        /// <param name="storageEndpoint"></param>
+        /// <param name="azureEnvironmentName"></param>
         /// <returns>A storage account</returns>
         internal CloudStorageAccount GetStorageAccountByOAuthFromAzureEnvironment(string storageAccountName, bool useHttps, string azureEnvironmentName = "")
         {

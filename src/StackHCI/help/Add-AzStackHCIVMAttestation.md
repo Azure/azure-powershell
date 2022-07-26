@@ -1,7 +1,7 @@
 ---
-external help file: Az.StackHCI-help.xml
+external help file:
 Module Name: Az.StackHCI
-online version: https://docs.microsoft.com/powershell/module/az.stackhci/add-AzStackHCIVMAttestation
+online version: https://docs.microsoft.com/powershell/module/az.stackhci/add-azstackhcivmattestation
 schema: 2.0.0
 ---
 
@@ -14,17 +14,17 @@ Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestatio
 
 ### VMName (Default)
 ```
-Add-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### VMObject
-```
-Add-AzStackHCIVMAttestation [-VM] <Object[]> [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzStackHCIVMAttestation [-VMName] <String[]> [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AddAll
 ```
-Add-AzStackHCIVMAttestation [-AddAll] [-Force] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzStackHCIVMAttestation -AddAll [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### VMObject
+```
+Add-AzStackHCIVMAttestation [-VM] <Object[]> [-Force] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,16 +32,42 @@ Add-AzStackHCIVMAttestation configures guests for AzureStack HCI IMDS Attestatio
 
 ## EXAMPLES
 
-### EXAMPLE 1
+### Example 1: 
 ```powershell
 Add-AzStackHCIVMAttestation -AddAll
 ```
 
+```output
+Name        AttestationHost    Status
+----        ---------------    ------
+183hcinode1 HCINODE2        Connected
+bhat2       HCINODE2        Connected
+ppnt3n1     HCINODE2        Connected
+ppt3n0      HCINODE2        Connected
+ppt5pn0     HCINODE2        Connected
+ppt6pn0     HCINODE2        Connected
+ppt7pn0     HCINODE2        Connected
+```
+
 Adding all guests on current node
 
-### EXAMPLE 2
+### Example 2: 
 ```powershell
-Invoke-Command -ScriptBlock {Add-AzStackHCIVMAttestation -VMName "guest1", "guest2"} -ComputerName "node1"
+Invoke-Command -ScriptBlock {Add-AzStackHCIVMAttestation -VMName "bhat2", "ppt7pn0"} -ComputerName "HCINODE2"
+```
+
+```output
+Name            : bhat2
+AttestationHost : HCINODE2
+Status          : Connected
+PSComputerName  : HCINODE2
+RunspaceId      : 1ec3f1f5-832d-47d3-a5db-2a43ef3fdfdf
+
+Name            : ppt7pn0
+AttestationHost : HCINODE2
+Status          : Connected
+PSComputerName  : HCINODE2
+RunspaceId      : 1ec3f1f5-832d-47d3-a5db-2a43ef3fdfdf
 ```
 
 Invoking from the management node/WAC
@@ -58,13 +84,13 @@ Aliases:
 
 Required: True
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Force
-No Confirmation
+No confirmations.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -73,7 +99,7 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -87,7 +113,7 @@ Parameter Sets: VMObject
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -102,7 +128,7 @@ Parameter Sets: VMName
 Aliases:
 
 Required: True
-Position: 1
+Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
@@ -144,12 +170,17 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### System.Object[]
+
+### System.String[]
+
 ## OUTPUTS
 
-### PSCustomObject. Returns following Properties in PSCustomObject
-### Name:            Name of the VM.
-### AttestationHost: Host that VM is currently connected.
-### Status:          Connection status.
+### System.Management.Automation.PSObject
+
 ## NOTES
 
+ALIASES
+
 ## RELATED LINKS
+

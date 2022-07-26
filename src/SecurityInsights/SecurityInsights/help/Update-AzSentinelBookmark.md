@@ -45,7 +45,7 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 
 ### Example 1
 ```powershell
-Update-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -BookmarkId "MyBookmarkId" -Notes "Found something interesting"
+Update-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -BookmarkId "MyBookmarkId" -Note "Found something interesting"
 ```
 
 The command updates the Bookmark by setting the *Notes* property.  All other properties stay the same.
@@ -53,7 +53,7 @@ The command updates the Bookmark by setting the *Notes* property.  All other pro
 ### Example 2
 ```powershell
 $Bookmark = Get-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceNAme" -BookmarkId "MyBookmarkId"
-$Bookmark | Set-AzSentinelBookmark -Notes "Found something interesting"
+$Bookmark | Update-AzSentinelBookmark -Note "Found something interesting"
 ```
 
 The first command gets the Bookmark by *BookmarkId* from the specified workspace, and then stores it in the $Bookmark variable.

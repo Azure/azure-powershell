@@ -37,7 +37,7 @@ The **Remove-AzVirtualNetworkTap** cmdlet removes an Azure virtual network tap.
 
 ### Example 1: Remove a virtual network tap
 ```powershell
-Remove-AzNetworkInterface -Name "VirtualNetworkTap1" -ResourceGroup "ResourceGroup1"
+Remove-AzNetworkInterface -Name "VirtualNetworkTap1" -ResourceGroupName "ResourceGroup1"
 ```
 
 This command removes the VirtualNetworkTap1 in resource group ResourceGroup1.

@@ -13,57 +13,58 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventGrid.Test.ScenarioTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.EventGrid.Tests.ScenarioTests
 {
-    public class DomainTests : RMTestBase
+    public class DomainTests : EventGridTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public DomainTests(ITestOutputHelper output)
+        public DomainTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_DomainsCreateGetAndDelete()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "DomainTests");
+            TestRunner.RunTestScript("DomainTests");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void EventGrid_DomainsidentityTests()
+        {
+            TestRunner.RunTestScript("DomainIdentityTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_DomainsGetKey()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "DomainGetKeyTests");
+            TestRunner.RunTestScript("DomainGetKeyTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_DomainsNewKey()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "DomainNewKeyTests");
+            TestRunner.RunTestScript("DomainNewKeyTests");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_DomainsInputMappingCreateGetAndDelete()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "DomainInputMappingTests");
+            TestRunner.RunTestScript("DomainInputMappingTests");
         }
 
-        [Fact]
+        /*[Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void EventGrid_DomainTopics()
         {
-            EventGridController.NewInstance.RunPsTest(_logger, "DomainTopicTests");
-        }
+            TestRunner.RunTestScript("DomainTopicTests");
+        }*/
     }
 }

@@ -25,7 +25,7 @@ New-AzManagementGroup [-GroupName] <String> [-DisplayName <String>] [-DefaultPro
 ```
 
 ## DESCRIPTION
-The **New-AzManagementGroup** cmdlet creates a management group.
+The **New-AzManagementGroup** cmdlet creates a management group with name **GroupName**. The **DisplayName** and **ParentId** can also be set when creating a new Management Group.
 
 ## EXAMPLES
 

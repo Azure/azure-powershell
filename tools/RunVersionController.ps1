@@ -139,7 +139,7 @@ function Get-ReleaseNotes
     )
 
     $ProjectPaths = @( "$RootPath\src" )
-    
+
     .($PSScriptRoot + "\PreloadToolDll.ps1")
     $ModuleManifestFile = $ProjectPaths | % { Get-ChildItem -Path $_ -Filter "*.psd1" -Recurse | where { $_.Name.Replace(".psd1", "") -eq $Module -and `
     # Skip psd1 of generated modules in HYBRID modules because they are not really used
@@ -149,11 +149,11 @@ function Get-ReleaseNotes
                                                                                                           $_.FullName -notlike "*Netcore*" -and `
                                                                                                           $_.FullName -notlike "*dll-Help.psd1*" -and `
                                                                                                           (-not [Tools.Common.Utilities.ModuleFilter]::IsAzureStackModule($_.FullName)) } }
-    
+
     if($ModuleManifestFile.Count -gt 1)
     {
         $ModuleManifestFile = $ModuleManifestFile[0]
-    }                                                                                                      
+    }
     Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $ModuleManifestFile.DirectoryName -FileName $ModuleManifestFile.Name
     return $ModuleMetadata.PrivateData.PSData.ReleaseNotes
 }
@@ -280,35 +280,20 @@ function Generate-AzPreview
 {
     # The version of AzPrview aligns with Az
     $AzPrviewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
-    $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
+
     $requiredModulesString = "RequiredModules = @("
     $rawRequiredModulesString = "RequiredModules = @\("
-    foreach ($ModuleName in $(Get-ChildItem $SrcPath -Directory).Name)
-    {
-        $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $ModuleName)
-        $Psd1FileName = "Az.{0}.psd1" -f $ModuleName
-        $Psd1FilePath = Get-ChildItem $ModulePath -Depth 2 -Recurse -Filter $Psd1FileName | Where-Object {
-            # Skip psd1 of generated modules in HYBRID modules because they are not really used
-            # This is based on an assumption that the path of the REAL psd1 of a HYBRID module should always not contain "Autorest"
-            $_.FullName -inotlike "*autorest*"
-        }
-        if ($null -ne $Psd1FilePath)
+    foreach ($Psd1FilePath in (Get-Psd1Path)) {
+        $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
+        $moduleName = [System.IO.Path]::GetFileName($Psd1FilePath) -replace ".psd1"
+        $moduleVersion = $Psd1Object.ModuleVersion.ToString()
+        if('Az.Accounts' -eq $moduleName)
         {
-            if($Psd1FilePath.Count -gt 1)
-            {
-                $Psd1FilePath = $Psd1FilePath[0]
-            }
-            $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
-            $moduleName = "Az.${ModuleName}"
-            $moduleVersion = $Psd1Object.ModuleVersion.ToString()
-            if('Az.Accounts' -eq $moduleName)
-            {
-                $requiredModulesString += "@{ModuleName = '$moduleName'; ModuleVersion = '$moduleVersion'; }, `n            "
-            }
-            else
-            {
-                $requiredModulesString += "@{ModuleName = '$moduleName'; RequiredVersion = '$moduleVersion'; }, `n            "
-            }            
+            $requiredModulesString += "@{ModuleName = '$moduleName'; ModuleVersion = '$moduleVersion'; }, `n            "
+        }
+        else
+        {
+            $requiredModulesString += "@{ModuleName = '$moduleName'; RequiredVersion = '$moduleVersion'; }, `n            "
         }
     }
     $requiredModulesString = $requiredModulesString.Trim()
@@ -326,6 +311,60 @@ function Generate-AzPreview
     Set-Content -Path $AzPrviewPsd1.FullName -Value $AzPreviewPsd1Content -Encoding UTF8
 }
 
+function New-CommandMappingFile
+{
+    $MappingsFilePath = "$PSScriptRoot\..\src\Accounts\Accounts\Utilities\CommandMappings.json"
+    Write-Host "Generating command mapping file at $MappingsFilePath"
+    $content = Get-Content $MappingsFilePath | ConvertFrom-Json -Depth 10
+    $content.modules = [ordered]@{}
+
+    foreach ($Psd1FilePath in (Get-Psd1Path))
+    {
+        $Psd1Object = Import-PowerShellDataFile $Psd1FilePath
+        $moduleName = [System.IO.Path]::GetFileName($Psd1FilePath) -replace ".psd1"
+        $moduleObject = [ordered]@{}
+        $Psd1Object.CmdletsToExport | Where-Object {$null -ne $_ -and "*" -ne $_} | ForEach-Object {
+            $moduleObject[$_] = @{}
+        }
+        $Psd1Object.FunctionsToExport | Where-Object {$null -ne $_ -and "*" -ne $_} | ForEach-Object {
+            $moduleObject[$_] = @{}
+        }
+        $Psd1Object.AliasesToExport | Where-Object {$null -ne $_ -and "*" -ne $_}| ForEach-Object {
+            $moduleObject[$_] = @{}
+        }
+        if ($moduleObject.Count -gt 0) {
+            $content.modules[$moduleName] = $moduleObject
+        }
+    }
+
+    Set-Content -Path $MappingsFilePath -Value ($content | ConvertTo-Json -Depth 10) -Encoding UTF8
+    Write-Host "Done generating command mapping file"
+}
+
+function Get-Psd1Path {
+    $paths = @()
+    $SrcPath = Join-Path -Path $PSScriptRoot -ChildPath "..\src"
+    foreach ($DirName in $(Get-ChildItem $SrcPath -Directory).Name)
+    {
+        $ModulePath = $(Join-Path -Path $SrcPath -ChildPath $DirName)
+        $Psd1FileName = "Az.{0}.psd1" -f $DirName
+        $Psd1FilePath = Get-ChildItem $ModulePath -Depth 2 -Recurse -Filter $Psd1FileName | Where-Object {
+            # Skip psd1 of generated modules in HYBRID modules because they are not really used
+            # This is based on an assumption that the path of the REAL psd1 of a HYBRID module should always not contain "Autorest"
+            $_.FullName -inotlike "*autorest*"
+        }
+        if ($null -ne $Psd1FilePath)
+        {
+            if($Psd1FilePath.Count -gt 1)
+            {
+                $Psd1FilePath = $Psd1FilePath[0]
+            }
+            $paths += $Psd1FilePath
+        }
+    }
+    return $paths
+}
+
 switch ($PSCmdlet.ParameterSetName)
 {
     "ReleaseSingleModule"
@@ -338,7 +377,7 @@ switch ($PSCmdlet.ParameterSetName)
     {
         $Release = "$MonthName $Year"
     }
-    
+
     {$PSItem.StartsWith("ReleaseAz")}
     {        
         # clean the unnecessary SerializedCmdlets json file
@@ -383,10 +422,14 @@ switch ($PSCmdlet.ParameterSetName)
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
 
         Bump-AzVersion
-
-        Generate-AzPreview
-
-        # Generate dotnet csv
-        &$PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot\AzPreview\AzPreview.psd1" -CustomSource "https://www.powershellgallery.com/api/v2/"
     }
 }
+
+# Each release needs to update AzPreview.psd1 and dotnet csv
+# Refresh AzPreview.psd1
+Generate-AzPreview
+
+New-CommandMappingFile
+
+# Generate dotnet csv
+&$PSScriptRoot/Docs/GenerateDotNetCsv.ps1 -FeedPsd1FullPath "$PSScriptRoot\AzPreview\AzPreview.psd1" -CustomSource "https://www.powershellgallery.com/api/v2/"

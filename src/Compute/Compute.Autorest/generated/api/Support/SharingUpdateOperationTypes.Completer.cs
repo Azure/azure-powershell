@@ -41,6 +41,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Reset'", "Reset", global::System.Management.Automation.CompletionResultType.ParameterValue, "Reset");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "EnableCommunity".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'EnableCommunity'", "EnableCommunity", global::System.Management.Automation.CompletionResultType.ParameterValue, "EnableCommunity");
+            }
         }
     }
 }

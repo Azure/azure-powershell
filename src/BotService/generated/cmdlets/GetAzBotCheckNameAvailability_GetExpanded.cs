@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Extensions;
+    using System;
 
     /// <summary>Check whether a bot name is available.</summary>
     /// <remarks>
@@ -32,6 +33,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         /// The <see cref="global::System.Threading.CancellationTokenSource" /> for this operation.
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
+
+        /// <summary>
+        /// The request body for a request to Bot Service Management to check availability of a bot name.
+        /// </summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ICheckNameAvailabilityRequestBody _parametersBody = new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.CheckNameAvailabilityRequestBody();
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -66,11 +72,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>the name of the bot for which availability needs to be checked.</summary>
@@ -82,15 +88,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         Description = @"the name of the bot for which availability needs to be checked.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
-        public string Name { get => ParametersBody.Name ?? null; set => ParametersBody.Name = value; }
-
-        /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ICheckNameAvailabilityRequestBody _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.CheckNameAvailabilityRequestBody();
-
-        /// <summary>
-        /// The request body for a request to Bot Service Management to check availability of a bot name.
-        /// </summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ICheckNameAvailabilityRequestBody ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
+        public string Name { get => _parametersBody.Name ?? null; set => _parametersBody.Name = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.HttpPipeline" /> that the remote call will use.
@@ -122,15 +120,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         Description = @"the type of the bot for which availability needs to be checked",
         SerializedName = @"type",
         PossibleTypes = new [] { typeof(string) })]
-        public string Type { get => ParametersBody.Type ?? null; set => ParametersBody.Type = value; }
+        public string Type { get => _parametersBody.Type ?? null; set => _parametersBody.Type = value; }
 
         /// <summary>
         /// <c>overrideOnDefault</c> will be called before the regular onDefault has been processed, allowing customization of what
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
@@ -141,8 +139,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ICheckNameAvailabilityResponseBody"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ICheckNameAvailabilityResponseBody">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ICheckNameAvailabilityResponseBody</see>
+        /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
@@ -153,6 +151,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.BotService.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -164,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>
@@ -275,7 +278,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.BotService.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -290,12 +292,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
                 try
                 {
                     await ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
-                    await this.Client.BotsGetCheckNameAvailability(ParametersBody, onOk, onDefault, this, Pipeline);
+                    await this.Client.BotsGetCheckNameAvailability(_parametersBody, onOk, onDefault, this, Pipeline);
                     await ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=ParametersBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_parametersBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });
@@ -318,8 +320,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
@@ -341,14 +343,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
                 {
                     // Unrecognized Response. Create an error record based on what we have.
                     var ex = new Microsoft.Azure.PowerShell.Cmdlets.BotService.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.IError>(responseMessage, await response);
-                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
                     });
                 }
                 else
                 {
-                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=ParametersBody })
+                    WriteError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception($"[{code}] : {message}"), code?.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new { body=_parametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(message) { RecommendedAction = global::System.String.Empty }
                     });
@@ -358,8 +360,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ICheckNameAvailabilityResponseBody"
-        /// /> from the remote call</param>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ICheckNameAvailabilityResponseBody">Microsoft.Azure.PowerShell.Cmdlets.BotService.Models.Api20180712.ICheckNameAvailabilityResponseBody</see>
+        /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
