@@ -240,7 +240,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private string ProcessSinglePattern(string pattern)
         {
-            return pattern.Replace("**", ".*").Replace("{ModuleName}", "(?<ModuleName>[^/]+)");
+            return pattern.Replace(".", "\\.").Replace("*", ".*").Replace("{ModuleName}", "(?<ModuleName>[^/]+)");
         }
 
         private Dictionary<string, HashSet<string>> CalculateInfluencedModuleInfoForEachPhase(List<(Regex, List<string>)> ruleList, Dictionary<string, string[]> csprojMap)
@@ -462,17 +462,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 }
                 else
                 {
-                    Dictionary<string, HashSet<string>> influencedModuleInfo = new Dictionary<string, HashSet<string>>
-                    {
-                        [BUILD_PHASE] = new HashSet<string>() { ACCOUNT_MODULE_NAME },
-                        [ANALYSIS_BREAKING_CHANGE_PHASE] = new HashSet<string>() { ACCOUNT_MODULE_NAME },
-                        [ANALYSIS_DEPENDENCY_PHASE] = new HashSet<string>() { ACCOUNT_MODULE_NAME },
-                        [ANALYSIS_HELP_PHASE] = new HashSet<string>() { ACCOUNT_MODULE_NAME },
-                        [ANALYSIS_SIGNATURE_PHASE] = new HashSet<string>() { ACCOUNT_MODULE_NAME },
-                        [TEST_PHASE] = new HashSet<string>() { ACCOUNT_MODULE_NAME }
-                    };
-                    FilterTaskResult.PhaseInfo = CalculateCsprojForBuildAndTest(influencedModuleInfo, csprojMap);
-                    return true;
+                    return false;
                 }
             }
             return true;
