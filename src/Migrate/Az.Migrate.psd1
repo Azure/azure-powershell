@@ -11,6 +11,7 @@
 # Script module or binary module file associated with this manifest.
 RootModule = './Az.Migrate.psm1'
 
+# test
 # Version number of this module.
 ModuleVersion = '1.1.2'
 
