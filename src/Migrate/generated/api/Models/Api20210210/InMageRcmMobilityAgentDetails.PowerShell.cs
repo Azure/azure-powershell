@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="InMageRcmMobilityAgentDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="InMageRcmMobilityAgentDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,16 +103,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).Version, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestVersion = (string) content.GetValueForProperty("LatestVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestAgentReleaseDate = (string) content.GetValueForProperty("LatestAgentReleaseDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestAgentReleaseDate, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersion = (string) content.GetValueForProperty("DriverVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestUpgradableVersionWithoutReboot = (string) content.GetValueForProperty("LatestUpgradableVersionWithoutReboot",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestUpgradableVersionWithoutReboot, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).AgentVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).AgentVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("DriverVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LastHeartbeatUtc = (global::System.DateTime?) content.GetValueForProperty("LastHeartbeatUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LastHeartbeatUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).ReasonsBlockingUpgrade = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason[]) content.GetValueForProperty("ReasonsBlockingUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).ReasonsBlockingUpgrade, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).IsUpgradeable = (string) content.GetValueForProperty("IsUpgradeable",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).IsUpgradeable, global::System.Convert.ToString);
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).Version, global::System.Convert.ToString);
+            }
+            if (content.Contains("LatestVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestVersion = (string) content.GetValueForProperty("LatestVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("LatestAgentReleaseDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestAgentReleaseDate = (string) content.GetValueForProperty("LatestAgentReleaseDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestAgentReleaseDate, global::System.Convert.ToString);
+            }
+            if (content.Contains("DriverVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersion = (string) content.GetValueForProperty("DriverVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("LatestUpgradableVersionWithoutReboot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestUpgradableVersionWithoutReboot = (string) content.GetValueForProperty("LatestUpgradableVersionWithoutReboot",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestUpgradableVersionWithoutReboot, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentVersionExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).AgentVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).AgentVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("DriverVersionExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("DriverVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastHeartbeatUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LastHeartbeatUtc = (global::System.DateTime?) content.GetValueForProperty("LastHeartbeatUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LastHeartbeatUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ReasonsBlockingUpgrade"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).ReasonsBlockingUpgrade = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason[]) content.GetValueForProperty("ReasonsBlockingUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).ReasonsBlockingUpgrade, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason.CreateFrom));
+            }
+            if (content.Contains("IsUpgradeable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).IsUpgradeable = (string) content.GetValueForProperty("IsUpgradeable",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).IsUpgradeable, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -128,16 +160,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).Version, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestVersion = (string) content.GetValueForProperty("LatestVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestAgentReleaseDate = (string) content.GetValueForProperty("LatestAgentReleaseDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestAgentReleaseDate, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersion = (string) content.GetValueForProperty("DriverVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestUpgradableVersionWithoutReboot = (string) content.GetValueForProperty("LatestUpgradableVersionWithoutReboot",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestUpgradableVersionWithoutReboot, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).AgentVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).AgentVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("DriverVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LastHeartbeatUtc = (global::System.DateTime?) content.GetValueForProperty("LastHeartbeatUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LastHeartbeatUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).ReasonsBlockingUpgrade = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason[]) content.GetValueForProperty("ReasonsBlockingUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).ReasonsBlockingUpgrade, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).IsUpgradeable = (string) content.GetValueForProperty("IsUpgradeable",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).IsUpgradeable, global::System.Convert.ToString);
+            if (content.Contains("Version"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).Version = (string) content.GetValueForProperty("Version",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).Version, global::System.Convert.ToString);
+            }
+            if (content.Contains("LatestVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestVersion = (string) content.GetValueForProperty("LatestVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("LatestAgentReleaseDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestAgentReleaseDate = (string) content.GetValueForProperty("LatestAgentReleaseDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestAgentReleaseDate, global::System.Convert.ToString);
+            }
+            if (content.Contains("DriverVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersion = (string) content.GetValueForProperty("DriverVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("LatestUpgradableVersionWithoutReboot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestUpgradableVersionWithoutReboot = (string) content.GetValueForProperty("LatestUpgradableVersionWithoutReboot",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LatestUpgradableVersionWithoutReboot, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentVersionExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).AgentVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("AgentVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).AgentVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("DriverVersionExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("DriverVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).DriverVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastHeartbeatUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LastHeartbeatUtc = (global::System.DateTime?) content.GetValueForProperty("LastHeartbeatUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).LastHeartbeatUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ReasonsBlockingUpgrade"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).ReasonsBlockingUpgrade = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason[]) content.GetValueForProperty("ReasonsBlockingUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).ReasonsBlockingUpgrade, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason.CreateFrom));
+            }
+            if (content.Contains("IsUpgradeable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).IsUpgradeable = (string) content.GetValueForProperty("IsUpgradeable",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetailsInternal)this).IsUpgradeable, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
