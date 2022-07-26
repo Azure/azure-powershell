@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -331,6 +331,15 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to continue?.
+        /// </summary>
+        internal static string BaseContinueActionMessage {
+            get {
+                return ResourceManager.GetString("BaseContinueActionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You cannot change hardware family..
         /// </summary>
         internal static string CannotChangeHardwareFamily {
@@ -349,7 +358,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Creating a new instance link named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Creating a new instance link.
         /// </summary>
         internal static string CreateAzureSqlInstanceLinkDescription {
             get {
@@ -358,29 +367,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to create a new instance link named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
-        /// </summary>
-        internal static string CreateAzureSqlInstanceLinkWarning {
-            get {
-                return ResourceManager.GetString("CreateAzureSqlInstanceLinkWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Creating a new SQL Server trust certificate named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Creating a new SQL Server trust certificate.
         /// </summary>
         internal static string CreateAzureSqlInstanceServerTrustCertificateDescription {
             get {
                 return ResourceManager.GetString("CreateAzureSqlInstanceServerTrustCertificateDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to create a new SQL Server trust certificate named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
-        /// </summary>
-        internal static string CreateAzureSqlInstanceServerTrustCertificateWarning {
-            get {
-                return ResourceManager.GetString("CreateAzureSqlInstanceServerTrustCertificateWarning", resourceCulture);
             }
         }
         
@@ -692,8 +683,8 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Invalid format of the resource identifier. A long term retention backup resource Id should follow one of the following formats:
-        /// subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
-        /// subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseN [rest of string was truncated]&quot;;.
+        /// /subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+        /// /subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databas [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string InvalidLongTermRetentionBackupResourceIdFormat {
             get {
@@ -1008,7 +999,7 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Permanently removing instance link named &apos;{2}&apos; from managed instance &apos;{1}&apos; in resource group &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Permanently removing instance link.
         /// </summary>
         internal static string RemoveAzureSqlInstanceLinkDescription {
             get {
@@ -1017,29 +1008,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove the instance link named &apos;{2}&apos; from managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
-        /// </summary>
-        internal static string RemoveAzureSqlInstanceLinkWarning {
-            get {
-                return ResourceManager.GetString("RemoveAzureSqlInstanceLinkWarning", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Permanently removing SQL Server trust certificate named &apos;{2}&apos; from managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Permanently removing SQL Server trust certificate.
         /// </summary>
         internal static string RemoveAzureSqlInstanceServerTrustCertificateDescription {
             get {
                 return ResourceManager.GetString("RemoveAzureSqlInstanceServerTrustCertificateDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to remove SQL Server trust certificate named &apos;{2}&apos; from managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
-        /// </summary>
-        internal static string RemoveAzureSqlInstanceServerTrustCertificateWarning {
-            get {
-                return ResourceManager.GetString("RemoveAzureSqlInstanceServerTrustCertificateWarning", resourceCulture);
             }
         }
         
@@ -1539,20 +1512,11 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Updating instance link named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;..
+        ///   Looks up a localized string similar to Updating instance link.
         /// </summary>
         internal static string SetAzureSqlInstanceLinkDescription {
             get {
                 return ResourceManager.GetString("SetAzureSqlInstanceLinkDescription", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to update instance link named &apos;{2}&apos; on managed instance &apos;{1}&apos; located in resource group &apos;{0}&apos;?.
-        /// </summary>
-        internal static string SetAzureSqlInstanceLinkWarning {
-            get {
-                return ResourceManager.GetString("SetAzureSqlInstanceLinkWarning", resourceCulture);
             }
         }
         

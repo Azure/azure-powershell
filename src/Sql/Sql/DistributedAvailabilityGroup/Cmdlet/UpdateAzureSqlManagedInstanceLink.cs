@@ -99,6 +99,25 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         public AzureSqlManagedInstanceLinkModel InputObject { get; set; }
 
         /// <summary>
+        /// Prompt message describing the action we're performing
+        /// </summary>
+        /// <returns></returns>
+        protected override string GetConfirmActionProcessMessage()
+        {
+            return Properties.Resources.SetAzureSqlInstanceLinkDescription;
+        }
+
+        /// <summary>
+        /// Returns an Id of the resource, to be used with the confirmation prompt message - as the action target
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        protected override string GetResourceId(IEnumerable<AzureSqlManagedInstanceLinkModel> model)
+        {
+            return model.First().Id;
+        }
+
+        /// <summary>
         /// Get the entities from the service
         /// </summary>
         /// <returns>The list of entities</returns>
@@ -137,14 +156,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     break;
             }
 
-            // messages describing behavior with -WhatIf and -Confirm flags
-            if (ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceLinkDescription, ResourceGroupName, InstanceName, Name),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.SetAzureSqlInstanceLinkWarning, ResourceGroupName, InstanceName, Name),
-                Properties.Resources.ShouldProcessCaption))
-            {
-                base.ExecuteCmdlet();
-            }
+            base.ExecuteCmdlet();
         }
 
         /// <summary>

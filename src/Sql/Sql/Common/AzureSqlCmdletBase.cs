@@ -113,6 +113,29 @@ namespace Microsoft.Azure.Commands.Sql.Common
             return Properties.Resources.BaseConfirmActionProcessMessage;
         }
 
+        protected virtual string GetContinueActionMessage()
+        {
+            return Properties.Resources.BaseContinueActionMessage;
+        }
+
+        /// <summary>
+        /// Returns Force parameter if exits for cmdlets that implement it - to be used for skipping confirmation prompts. False by default
+        /// </summary>
+        protected virtual bool GetForceParameter()
+        {
+            return default;
+        }
+
+        /// <summary>
+        /// Optional UseShouldContinue predicate determines whether SHouldContinue should be called for this
+        /// particular action (e.g. a resource is being overwritten). By default, ShouldContinue will not be executed
+        /// </summary>
+        /// <returns></returns>
+        protected virtual Func<bool> UseShouldContinue()
+        {
+            return () => false;
+        }
+
         /// <summary>
         /// Executes the cmdlet
         /// </summary>
@@ -122,10 +145,7 @@ namespace Microsoft.Azure.Commands.Sql.Common
             M model = GetEntity();
             M updatedModel = ApplyUserInputToModel(model);
             M responseModel = default(M);
-            ConfirmAction(GetConfirmActionProcessMessage(), GetResourceId(updatedModel), () =>
-            {
-                responseModel = PersistChanges(updatedModel);
-            });
+            ConfirmAction(GetForceParameter(), GetContinueActionMessage(), GetConfirmActionProcessMessage(), GetResourceId(updatedModel), () => { responseModel = PersistChanges(updatedModel); }, UseShouldContinue());
 
             if (responseModel != null)
             {

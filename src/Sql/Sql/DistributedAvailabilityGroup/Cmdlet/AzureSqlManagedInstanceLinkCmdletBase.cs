@@ -29,5 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         {
             return new AzureSqlManagedInstanceLinkAdapter(DefaultContext);
         }
+
+        protected const string ResourceType = "Microsoft.Sql/managedInstances/distributedAvailabilityGroups";
     }
 }

@@ -29,5 +29,7 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         {
             return new AzureSqlInstanceServerTrustCertificateAdapter(DefaultContext);
         }
+
+        protected const string ResourceType = "Microsoft.Sql/managedInstances/serverTrustCertificates";
     }
 }

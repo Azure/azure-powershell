@@ -108,6 +108,25 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         }
 
         /// <summary>
+        /// Prompt message describing the action we're performing
+        /// </summary>
+        /// <returns></returns>
+        protected override string GetConfirmActionProcessMessage()
+        {
+            return string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateDescription, ResourceGroupName, InstanceName, Name);
+        }
+
+        /// <summary>
+        /// Returns an Id of the resource, to be used with the confirmation prompt message - as the action target
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        protected override string GetResourceId(IEnumerable<AzureSqlInstanceServerTrustCertificateModel> model)
+        {
+            return model.First().Id;
+        }
+
+        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
@@ -139,14 +158,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
                     break;
             }
 
-            // messages describing behavior with -WhatIf and -Confirm flags
-            if (ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateDescription, ResourceGroupName, InstanceName, Name),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceServerTrustCertificateWarning, ResourceGroupName, InstanceName, Name),
-                Properties.Resources.ShouldProcessCaption))
-            {
-                base.ExecuteCmdlet();
-            }
+            base.ExecuteCmdlet();
+
         }
 
         /// <summary>

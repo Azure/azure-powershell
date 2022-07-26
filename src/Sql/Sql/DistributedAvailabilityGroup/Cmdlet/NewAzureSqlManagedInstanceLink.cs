@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Model;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Globalization;
@@ -106,6 +107,32 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         public SwitchParameter AsJob { get; set; }
 
         /// <summary>
+        /// Prompt message describing the action we're performing
+        /// </summary>
+        /// <returns></returns>
+        protected override string GetConfirmActionProcessMessage()
+        {
+            return Properties.Resources.CreateAzureSqlInstanceLinkDescription;
+        }
+
+        /// <summary>
+        /// Returns an Id of the resource, to be used with the confirmation prompt message - as the action target
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        protected override string GetResourceId(IEnumerable<AzureSqlManagedInstanceLinkModel> model)
+        {
+            return new ResourceIdentifier()
+            {
+                ResourceName = model.First().Name,
+                ResourceGroupName = ResourceGroupName,
+                ResourceType = ResourceType,
+                ParentResource = InstanceName,
+                Subscription = DefaultContext.Subscription.Id
+            }.ToString();
+        }
+
+        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
@@ -123,16 +150,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                 default:
                     break;
             }
+            base.ExecuteCmdlet();
 
-            // messages describing behavior with -WhatIf and -Confirm flags
-            if (ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceLinkDescription, ResourceGroupName, InstanceName, Name),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceLinkWarning, ResourceGroupName, InstanceName, Name),
-                Properties.Resources.ShouldProcessCaption))
-            {
-                base.ExecuteCmdlet();
-            }
-                        
         }
 
         /// <summary>

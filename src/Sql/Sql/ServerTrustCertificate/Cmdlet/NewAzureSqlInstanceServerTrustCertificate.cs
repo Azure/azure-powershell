@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Model;
 using Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Model;
+using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Rest.Azure;
 using System.Collections.Generic;
 using System.Globalization;
@@ -79,6 +80,32 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
         public AzureSqlManagedInstanceModel InstanceObject { get; set; }
 
         /// <summary>
+        /// Prompt message describing the action we're performing
+        /// </summary>
+        /// <returns></returns>
+        protected override string GetConfirmActionProcessMessage()
+        {
+            return string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceServerTrustCertificateDescription, ResourceGroupName, InstanceName, Name);
+        }
+
+        /// <summary>
+        /// Returns an Id of the resource, to be used with the confirmation prompt message - as the action target
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        protected override string GetResourceId(IEnumerable<AzureSqlInstanceServerTrustCertificateModel> model)
+        {
+            return new ResourceIdentifier()
+            {
+                ResourceName = model.First().Name,
+                ResourceGroupName = ResourceGroupName,
+                ResourceType = ResourceType,
+                ParentResource = InstanceName,
+                Subscription = DefaultContext.Subscription.Id
+            }.ToString();
+        }
+
+        /// <summary>
         /// Entry point for the cmdlet
         /// </summary>
         public override void ExecuteCmdlet()
@@ -95,15 +122,6 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Cmdlet
                     break;
                 default:
                     break;
-            }
-
-            // messages describing behavior with -WhatIf and -Confirm flags
-            if (!ShouldProcess(
-              string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceServerTrustCertificateDescription, ResourceGroupName, InstanceName, Name),
-              string.Format(CultureInfo.InvariantCulture, Properties.Resources.CreateAzureSqlInstanceServerTrustCertificateWarning, ResourceGroupName, InstanceName, Name),
-              Properties.Resources.ShouldProcessCaption))
-            {
-                return;
             }
 
             base.ExecuteCmdlet();

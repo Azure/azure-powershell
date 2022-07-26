@@ -669,8 +669,8 @@
   </data>
   <data name="InvalidLongTermRetentionBackupResourceIdFormat" xml:space="preserve">
     <value>Invalid format of the resource identifier. A long term retention backup resource Id should follow one of the following formats:
-/subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
-/subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+ /subscriptions/&lt;subscriptionId&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
+ /subscriptions/&lt;subscriptionId&gt;/resourceGroups/&lt;resourceGroupName&gt;/providers/Microsoft.Sql/locations/&lt;location&gt;/longTermRetentionServers/&lt;serverName&gt;/longTermRetentionDatabases/&lt;databaseName&gt;/longTermRetentionBackups/&lt;backupName&gt;
                     "ResourceId"</value>
   </data>
   <data name="MissingExternalAdmin" xml:space="preserve">
@@ -698,42 +698,30 @@
     <value>Certificate with name '{0}' already exists on managed instance '{1}'.</value>
   </data>
   <data name="RemoveAzureSqlInstanceServerTrustCertificateDescription" xml:space="preserve">
-    <value>Permanently removing SQL Server trust certificate named '{2}' from managed instance '{1}' located in resource group '{0}'.</value>
-  </data>
-  <data name="RemoveAzureSqlInstanceServerTrustCertificateWarning" xml:space="preserve">
-    <value>Are you sure you want to remove SQL Server trust certificate named '{2}' from managed instance '{1}' located in resource group '{0}'?</value>
+    <value>Permanently removing SQL Server trust certificate</value>
   </data>
   <data name="RemoveAzureSqlInstanceLinkDescription" xml:space="preserve">
-    <value>Permanently removing instance link named '{2}' from managed instance '{1}' in resource group '{0}'.</value>
-  </data>
-  <data name="RemoveAzureSqlInstanceLinkWarning" xml:space="preserve">
-    <value>Are you sure you want to remove the instance link named '{2}' from managed instance '{1}' located in resource group '{0}'?</value>
+    <value>Permanently removing instance link</value>
   </data>
   <data name="CreateAzureSqlInstanceServerTrustCertificateDescription" xml:space="preserve">
-    <value>Creating a new SQL Server trust certificate named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
-  </data>
-  <data name="CreateAzureSqlInstanceServerTrustCertificateWarning" xml:space="preserve">
-    <value>Are you sure you want to create a new SQL Server trust certificate named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+    <value>Creating a new SQL Server trust certificate</value>
   </data>
   <data name="SetAzSqlDatabaseBackupShortTermRetentionInvalidParameters" xml:space="preserve">
     <value>Invalid parameters, '{0}' and '{1}' can't both be null.</value>
   </data>
   <data name="CreateAzureSqlInstanceLinkDescription" xml:space="preserve">
-    <value>Creating a new instance link named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
-  </data>
-  <data name="CreateAzureSqlInstanceLinkWarning" xml:space="preserve">
-    <value>Are you sure you want to create a new instance link named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+    <value>Creating a new instance link</value>
   </data>
   <data name="RemoveAzureSqlInstanceLinkAllowDataLoss" xml:space="preserve">
     <value>This operation may cause data loss if replica's last hardened LSN is not in sync with the primary. Are you sure you want to proceed?</value>
   </data>
   <data name="SetAzureSqlInstanceLinkDescription" xml:space="preserve">
-    <value>Updating instance link named '{2}' on managed instance '{1}' located in resource group '{0}'.</value>
-  </data>
-  <data name="SetAzureSqlInstanceLinkWarning" xml:space="preserve">
-    <value>Are you sure you want to update instance link named '{2}' on managed instance '{1}' located in resource group '{0}'?</value>
+    <value>Updating instance link</value>
   </data>
   <data name="StopLogReplayErrorDatabaseOrigin" xml:space="preserve">
     <value>Cannot stop the log replay as database {0} on the instance {1} in the resource group {2} was not created with log replay service.</value>
+  </data>
+  <data name="BaseContinueActionMessage" xml:space="preserve">
+    <value>Do you want to continue?</value>
   </data>
 </root>

@@ -102,8 +102,46 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
         /// Returns true if the model object that was constructed by this cmdlet should be written out.
         /// </summary>
         protected override bool WriteResult()
-        { 
+        {
             return PassThru.IsPresent;
+        }
+
+        /// <summary>
+        /// Prompt message describing the action we're performing
+        /// </summary>
+        /// <returns></returns>
+        protected override string GetConfirmActionProcessMessage()
+        {
+            return Properties.Resources.RemoveAzureSqlInstanceLinkDescription;
+        }
+
+        /// <summary>
+        /// Returns an Id of the resource, to be used with the confirmation prompt message - as the action target
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        protected override string GetResourceId(IEnumerable<AzureSqlManagedInstanceLinkModel> model)
+        {
+            return model.First().Id;
+        }
+
+        /// <summary>
+        /// Continue prompt message
+        /// </summary>
+        /// <returns></returns>
+        protected override string GetContinueActionMessage()
+        {
+            return Properties.Resources.RemoveAzureSqlInstanceLinkAllowDataLoss;
+        }
+
+        protected override bool GetForceParameter()
+        {
+            return Force;
+        }
+
+        protected override Func<bool> UseShouldContinue()
+        {
+            return () => !Force;
         }
 
         /// <summary>
@@ -139,18 +177,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstanceHybridLink.Cmdlet
                     break;
             }
 
-            // messages describing behavior with -WhatIf and -Confirm flags
-            if (ShouldProcess(
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceLinkDescription, ResourceGroupName, InstanceName, Name),
-                string.Format(CultureInfo.InvariantCulture, Properties.Resources.RemoveAzureSqlInstanceLinkWarning, ResourceGroupName, InstanceName, Name),
-                Properties.Resources.ShouldProcessCaption))
-            {
-                // message prompt requiring the customer to explicitly confirm the delete operation
-                if (Force || ShouldContinue(Properties.Resources.RemoveAzureSqlInstanceLinkAllowDataLoss, Properties.Resources.ShouldProcessCaption))
-                {
-                    base.ExecuteCmdlet();
-                }
-            }            
+            base.ExecuteCmdlet();
         }
 
 
