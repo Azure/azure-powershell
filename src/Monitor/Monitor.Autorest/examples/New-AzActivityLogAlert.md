@@ -1,5 +1,6 @@
 ### Example 1: Create activity log alert
 ```powershell
+$SubscriptionId = (Get-AzContext).Subscription.ID
 $actiongroup=New-AzActionGroupObject -Id $ActionGroupResourceId -WebhookProperty @{"sampleWebhookProperty"="SamplePropertyValue"}
 $condition1=New-AzAlertRuleAnyOfOrLeafConditionObject -Equal Administrative -Field category
 $condition2=New-AzAlertRuleAnyOfOrLeafConditionObject -Equal Error -Field level
