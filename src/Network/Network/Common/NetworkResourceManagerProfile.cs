@@ -1381,6 +1381,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Azure Firewall Policies
                 // CNM to MNM
+                cfg.CreateMap<CNM.PSAzureFirewallPolicyExplicitProxy, MNM.ExplicitProxy>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>().ForCtorParam("dnsSettings", opt =>
                 {
@@ -1391,6 +1392,7 @@ namespace Microsoft.Azure.Commands.Network
                 });
 
                 // MNM to CNM
+                cfg.CreateMap<MNM.ExplicitProxy, CNM.PSAzureFirewallPolicyExplicitProxy>();
                 cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>().AfterMap((src, dst) =>
                 {

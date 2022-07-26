@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
+    - `New-AzFirewallPolicyExplicitProxy`
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
 * Added new cmdlets to create packet captures for Network Watcher:
     - `New-AzNetworkWatcherPacketCaptureV2`
     - `New-AzPacketCaptureScopeConfig`

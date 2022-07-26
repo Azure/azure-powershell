@@ -13,13 +13,22 @@
 // limitations under the License.
 //
 
-using System.Collections.Generic;
+using System;
 
 namespace Microsoft.Azure.Commands.Network.Models
 {
-    public class PSAzureFirewallPolicySNAT
+    public class PSAzureFirewallPolicyExplicitProxy
     {
-        public IList<string> PrivateRanges { get; set; }
-        public string AutoLearnPrivateRanges { get; set; }
+        public bool? EnableExplicitProxy { get; set; }
+
+        public int? HttpPort { get; set; }
+
+        public int? HttpsPort { get; set; }
+
+        public bool? EnablePacFile { get; set; }
+
+        public int? PacFilePort { get; set; }
+
+        public string PacFile { get; set; }
     }
 }
