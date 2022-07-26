@@ -1,53 +1,55 @@
 ---
 external help file:
 Module Name: Az.RedisEnterpriseCache
-online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/remove-azredisenterprisecachedatabase
+online version: https://docs.microsoft.com/powershell/module/az.redisenterprisecache/invoke-azredisenterprisecacheforcedatabaseunlink
 schema: 2.0.0
 ---
 
-# Remove-AzRedisEnterpriseCacheDatabase
+# Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink
 
 ## SYNOPSIS
-Deletes a single database in a Redis Enterprise cache.
+Forcibly removes the link to the specified database resource.
 
 ## SYNTAX
 
-### Delete (Default)
+### ForceExpanded (Default)
 ```
-Remove-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
+ -Id <String[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Force
 ```
-Remove-AzRedisEnterpriseCacheDatabase -InputObject <IRedisEnterpriseCacheIdentity>
+Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ClusterName <String> -ResourceGroupName <String>
+ -Parameter <IForceUnlinkParameters> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### ForceViaIdentity
+```
+Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -InputObject <IRedisEnterpriseCacheIdentity>
+ -Parameter <IForceUnlinkParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
+```
+
+### ForceViaIdentityExpanded
+```
+Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -InputObject <IRedisEnterpriseCacheIdentity> -Id <String[]>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes a single database in a Redis Enterprise cache.
+Forcibly removes the link to the specified database resource.
 
 ## EXAMPLES
 
-### Example 1: Remove a database in a Redis Enterprise cache and return the result
+### Example 1: Unlink database
 ```powershell
-Remove-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup" -PassThru
+Invoke-AzRedisEnterpriseCacheForceDatabaseUnlink -ResourceGroupName "MyGroup" -ClusterName "MyCache3" -Id @("databaseId")
 ```
 
-```output
-True
-```
-
-This command removes a database in a Redis Enterprise cache and displays whether the operation is successful.
-
-### Example 2: Remove a database in a Redis Enterprise cache and do not display the result
-```powershell
-Remove-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
-```
-
-This command removes a database in a Redis Enterprise cache.
-Because the PassThru parameter is not specified, the result of the operation is not displayed.
+Forcibly removes the link to the database resource whose id is given, from the georeplication group the specified cache belongs to
 
 ## PARAMETERS
 
@@ -67,12 +69,12 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-The name of the Redis Enterprise cluster.
+The name of the RedisEnterprise cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: Name
+Parameter Sets: Force, ForceExpanded
+Aliases:
 
 Required: True
 Position: Named
@@ -96,13 +98,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+The resource IDs of the database resources to be unlinked.
+
+```yaml
+Type: System.String[]
+Parameter Sets: ForceExpanded, ForceViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: ForceViaIdentity, ForceViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -127,6 +144,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Parameter
+Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IForceUnlinkParameters
+Parameter Sets: Force, ForceViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -148,7 +181,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Force, ForceExpanded
 Aliases:
 
 Required: True
@@ -163,7 +196,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Force, ForceExpanded
 Aliases:
 
 Required: False
@@ -209,6 +242,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IForceUnlinkParameters
+
 ### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.IRedisEnterpriseCacheIdentity
 
 ## OUTPUTS
@@ -233,6 +268,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[PrivateEndpointConnectionName <String>]`: The name of the private endpoint connection associated with the Azure resource
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
+
+`PARAMETER <IForceUnlinkParameters>`: Parameters for a Redis Enterprise Active Geo Replication Force Unlink operation.
+  - `Id <String[]>`: The resource IDs of the database resources to be unlinked.
 
 ## RELATED LINKS
 
