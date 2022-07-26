@@ -14,6 +14,7 @@
                     Get-ScriptAnalyzerResult
                     Redo-ImportModule
 #>
+$DebugPreference = 'Continue'
 
 $SYNOPSIS_HEADING = "## SYNOPSIS"
 $SYNTAX_HEADING = "## SYNTAX"
@@ -196,7 +197,7 @@ function Get-RecordsNotInAllowList{
             return $false
         }
         # Skip NeedDeleting in Storage
-        if($_.RuleName -eq "NeedDeleting" -and $_.Module -eq "Storage.Management"){
+        if($_.RuleName -eq "NeedDeleting" -and $_.Module -eq "Storage"){
             return $false
         }
         return $true
@@ -512,12 +513,18 @@ function Get-ScriptAnalyzerResult {
 #>
 function Redo-ImportModule {
     param (
-        [string]$CommandName
+        [string]$CommandName,
+        [string]$moduleName
     )
-    $modulePath = "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1"
+    $modulePath = "$PSScriptRoot\..\..\..\artifacts\Debug\$moduleName\$moduleName.psd1"
+    if(!(Test-Path $modulePath)){
+        Write-Debug "Cannot find path $modulePath."
+        return $false
+    }
     Get-Item $modulePath | Import-Module -Global
-    $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
-    if ($null -eq $GetCommand) {
+    $GetCommandName = Get-Command -ListImported | Where-Object {$_.Name -eq $CommandName}
+    if ($null -eq $GetCommandName) {
+        Write-Debug "$CommandName is still invalid"
         return $false
     }
     else{

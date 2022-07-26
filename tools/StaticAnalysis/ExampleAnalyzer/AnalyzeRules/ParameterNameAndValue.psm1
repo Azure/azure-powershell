@@ -4,6 +4,8 @@
     .NOTES
     File: ParameterNameAndValue.psm1
 #>
+Get-Item "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1" | Import-Module -Global
+
 . $PSScriptRoot\..\utils.ps1
 
 enum RuleNames {
@@ -348,10 +350,6 @@ function Measure-ParameterNameAndValue {
         [System.Management.Automation.Language.ScriptBlockAst]
         $ScriptBlockAst
     )
-    begin{
-        $modulePath = "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1"
-        Get-Item $modulePath | Import-Module -Global
-    }
     process {
         $Results = @()
         $global:CommandParameterPair = @()
@@ -367,7 +365,6 @@ function Measure-ParameterNameAndValue {
             [ScriptBlock]$Predicate = {
                 param([System.Management.Automation.Language.Ast]$Ast)
                 $global:Ast = $Ast
-
                 if ($Ast -is [System.Management.Automation.Language.AssignmentStatementAst]) {
                     [System.Management.Automation.Language.AssignmentStatementAst]$AssignmentStatementAst = $Ast
                     if($AssignmentStatementAst.Left -is [System.Management.Automation.Language.ConvertExpressionAst]){
@@ -402,13 +399,8 @@ function Measure-ParameterNameAndValue {
 
                     $CommandName = $CommandAst.CommandElements[0].Extent.Text
                     $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
-
-                    # Skip parameters for invaild cmdlet
-                    if ($null -eq $GetCommand) {
-                        # Redo import-module
-                        if(!(Redo-ImportModule $CommandName)){
-                            return $false
-                        }
+                    if($null -eq $GetCommand){
+                        return $false
                     }
                     # Get command from alias
                     if ($GetCommand.CommandType -eq "Alias") {
