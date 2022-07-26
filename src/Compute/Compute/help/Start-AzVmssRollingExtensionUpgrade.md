@@ -12,7 +12,7 @@ This cmdlet starts a rolling upgrade for all extensions on the given Virtual Mac
 
 ## SYNTAX
 
-### DefaultParameter
+### DefaultParameter (Default)
 ```
 Start-AzVmssRollingExtensionUpgrade -ResourceGroupName <String> -VMScaleSetName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

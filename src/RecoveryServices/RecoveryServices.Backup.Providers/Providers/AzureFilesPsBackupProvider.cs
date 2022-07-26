@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultResourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             bool deleteBackupData = ProviderData.ContainsKey(ItemParams.DeleteBackupData) ?
                 (bool)ProviderData[ItemParams.DeleteBackupData] : false;
-
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token]: null;
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
 
             AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
@@ -119,7 +119,9 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 containerUri,
                                 protectedItemUri,
                                 vaultName: vaultName,
-                                resourceGroupName: vaultResourceGroupName);
+                                resourceGroupName: vaultResourceGroupName,
+                                auxiliaryAccessToken,
+                                item.Id);
         }
 
         public RestAzureNS.AzureOperationResponse<ProtectedItemResource> UndeleteProtection()
@@ -337,6 +339,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             string policyName = ProviderData.ContainsKey(PolicyParams.PolicyName) ?
                 (string)ProviderData[PolicyParams.PolicyName] : null;
+
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
+            ProtectionPolicyResource existingPolicy = ProviderData.ContainsKey(PolicyParams.ExistingPolicy) ? (ProtectionPolicyResource)ProviderData[PolicyParams.ExistingPolicy] : null;
+
             RetentionPolicyBase retentionPolicy =
                 ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ?
                 (RetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] :
@@ -396,7 +403,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
 
                 // Now validate both RetentionPolicy and SchedulePolicy matches or not
-                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
                     (CmdletModel.LongTermRetentionPolicy)((AzureFileSharePolicy)policy).RetentionPolicy,
                     (CmdletModel.SimpleSchedulePolicy)((AzureFileSharePolicy)policy).SchedulePolicy);
                 Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
@@ -443,7 +450,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug("Copy of RetentionTime from with SchedulePolicy to RetentionPolicy is successful");
                 
                 // Now validate both RetentionPolicy and SchedulePolicy together
-                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
                                     (CmdletModel.LongTermRetentionPolicy)retentionPolicy,
                                     (CmdletModel.SimpleSchedulePolicy)schedulePolicy);
                 Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
@@ -470,12 +477,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 
                 serviceClientRequest.Properties = azureFileShareProtectionPolicy;
             }
-            
+
+            // check for MUA
+            bool isMUAProtected = false;
+            if (existingPolicy != null)
+            {
+                isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(existingPolicy, serviceClientRequest, isMUAOperation);
+            }
+
             return ServiceClientAdapter.CreateOrUpdateProtectionPolicy(
                 policyName = policyName ?? policy.Name,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
+                resourceGroupName: resourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected);
         }
 
         public RPMountScriptDetails ProvisionItemLevelRecoveryAccess()
@@ -891,6 +907,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             AzureFileShareItem item = (AzureFileShareItem)ProviderData[ItemParams.Item];
 
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
+
+            ProtectionPolicyResource oldPolicy = null;
+            ProtectionPolicyResource newPolicy = null;
+            if (parameterSetName.Contains("Modify"))
+            {
+                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.PolicyId);
+                string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, item.PolicyId);
+
+                keyValueDict = HelperUtils.ParseUri(policy.Id);
+                string newPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policy.Id);
+
+                // fetch old and new Policy 
+                oldPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                    oldPolicyName,
+                    vaultName: vaultName,
+                    resourceGroupName: vaultResourceGroupName);
+
+                newPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                    newPolicyName,
+                    vaultName: vaultName,
+                    resourceGroupName: vaultResourceGroupName);
+            }
+
             string containerUri = "";
             string protectedItemUri = "";
             string sourceResourceId = null;
@@ -961,12 +1002,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Properties = properties
             };
 
+            // check for MUA
+            bool isMUAProtected = false;
+            if (parameterSetName.Contains("Modify") && oldPolicy != null && newPolicy != null)
+            {
+                isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(oldPolicy, newPolicy, isMUAOperation);
+            }
+
             return ServiceClientAdapter.CreateOrUpdateProtectedItem(
                 containerUri,
                 protectedItemUri,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: vaultResourceGroupName);
+                resourceGroupName: vaultResourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected);
         }
 
         private void ValidateAzureStorageBackupManagementType(

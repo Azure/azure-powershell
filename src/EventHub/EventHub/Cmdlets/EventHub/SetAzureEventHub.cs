@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             {
                 try
                 {
-                    WriteObject(Client.CreateOrUpdateEventHub(ResourceGroupName, Namespace, Name, eventHub));
+                    WriteObject(UtilityClient.CreateOrUpdateEventHub(ResourceGroupName, Namespace, Name, eventHub));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

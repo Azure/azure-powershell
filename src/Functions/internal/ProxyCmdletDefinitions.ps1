@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Creates a backup of an app.
+Creates a backup of an app.
 .Description
-Description for Creates a backup of an app.
+Creates a backup of an app.
 .Example
 {{ Add code here }}
 .Example
@@ -291,6 +291,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Backup = 'Az.Functions.private\Backup-AzFunctionApp_Backup';
             BackupExpanded = 'Az.Functions.private\Backup-AzFunctionApp_BackupExpanded';
@@ -306,6 +307,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -314,17 +316,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -504,6 +509,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzAppInsightsApiKey_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzAppInsightsApiKey_GetViaIdentity';
@@ -518,6 +524,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -526,17 +533,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -709,6 +719,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzAppInsights_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzAppInsights_GetViaIdentity';
@@ -724,6 +735,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -732,24 +744,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Get a list of available geographical regions.
+Get a list of available geographical regions.
 .Description
-Description for Get a list of available geographical regions.
+Get a list of available geographical regions.
 .Example
 Get-AzFunctionAppAvailableLocation
 .Example
@@ -855,6 +870,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzFunctionAppAvailableLocation_List';
         }
@@ -867,6 +883,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -875,24 +892,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Get an App Service plan.
+Get an App Service plan.
 .Description
-Description for Get an App Service plan.
+Get an App Service plan.
 .Example
 Get-AzFunctionAppPlan
 .Example
@@ -1076,6 +1096,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunctionAppPlan_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzFunctionAppPlan_GetViaIdentity';
@@ -1091,6 +1112,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -1099,24 +1121,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets the details of a web, mobile, or API app.
+Gets the details of a web, mobile, or API app.
 .Description
-Description for Gets the details of a web, mobile, or API app.
+Gets the details of a web, mobile, or API app.
 .Example
 Get-AzFunctionApp
 .Example
@@ -1301,6 +1326,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunctionApp_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzFunctionApp_GetViaIdentity';
@@ -1316,6 +1342,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -1324,24 +1351,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Get function information by its ID for web site, or a deployment slot.
+Get function information by its ID for web site, or a deployment slot.
 .Description
-Description for Get function information by its ID for web site, or a deployment slot.
+Get function information by its ID for web site, or a deployment slot.
 .Example
 {{ Add code here }}
 .Example
@@ -1518,6 +1548,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunction_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzFunction_GetViaIdentity';
@@ -1532,6 +1563,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -1540,17 +1572,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -1658,6 +1693,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzStorageAccountKey_List';
         }
@@ -1670,6 +1706,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -1678,17 +1715,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -1783,6 +1823,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzStorageAccount_List';
             List1 = 'Az.Functions.private\Get-AzStorageAccount_List1';
@@ -1796,6 +1837,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -1804,17 +1846,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -1986,6 +2031,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzUserAssignedIdentity_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzUserAssignedIdentity_GetViaIdentity';
@@ -2001,6 +2047,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2009,24 +2056,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets the application settings of an app.
+Gets the application settings of an app.
 .Description
-Description for Gets the application settings of an app.
+Gets the application settings of an app.
 .Example
 {{ Add code here }}
 .Example
@@ -2124,6 +2174,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppApplicationSettingSlot_List';
         }
@@ -2136,6 +2187,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2144,24 +2196,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets the application settings of an app.
+Gets the application settings of an app.
 .Description
-Description for Gets the application settings of an app.
+Gets the application settings of an app.
 .Example
 {{ Add code here }}
 .Example
@@ -2252,6 +2307,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppApplicationSetting_List';
         }
@@ -2264,6 +2320,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2272,24 +2329,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Description
-Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Example
 {{ Add code here }}
 .Example
@@ -2462,6 +2522,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfigurationSlot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfigurationSlot_GetViaIdentity';
@@ -2476,6 +2537,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2484,25 +2546,28 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets a list of web app configuration snapshots identifiers.
+Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Description
-Description for Gets a list of web app configuration snapshots identifiers.
+Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Example
 {{ Add code here }}
@@ -2601,6 +2666,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotInfoSlot_List';
         }
@@ -2613,6 +2679,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2621,25 +2688,28 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets a list of web app configuration snapshots identifiers.
+Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Description
-Description for Gets a list of web app configuration snapshots identifiers.
+Gets a list of web app configuration snapshots identifiers.
 Each element of the list contains a timestamp and the ID of the snapshot.
 .Example
 {{ Add code here }}
@@ -2731,6 +2801,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotInfo_List';
         }
@@ -2743,6 +2814,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2751,24 +2823,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets a snapshot of the configuration of an app at a previous point in time.
+Gets a snapshot of the configuration of an app at a previous point in time.
 .Description
-Description for Gets a snapshot of the configuration of an app at a previous point in time.
+Gets a snapshot of the configuration of an app at a previous point in time.
 .Example
 {{ Add code here }}
 .Example
@@ -2943,6 +3018,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotSlot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshotSlot_GetViaIdentity';
@@ -2956,6 +3032,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -2964,24 +3041,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets a snapshot of the configuration of an app at a previous point in time.
+Gets a snapshot of the configuration of an app at a previous point in time.
 .Description
-Description for Gets a snapshot of the configuration of an app at a previous point in time.
+Gets a snapshot of the configuration of an app at a previous point in time.
 .Example
 {{ Add code here }}
 .Example
@@ -3149,6 +3229,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshot_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfigurationSnapshot_GetViaIdentity';
@@ -3162,6 +3243,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -3170,24 +3252,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Description
-Description for Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
+Gets the configuration of an app, such as platform version and bitness, default documents, virtual applications, Always On, etc.
 .Example
 {{ Add code here }}
 .Example
@@ -3352,6 +3437,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzWebAppConfiguration_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzWebAppConfiguration_GetViaIdentity';
@@ -3366,6 +3452,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -3374,17 +3461,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -3644,6 +3734,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzAppInsights_Create';
             CreateExpanded = 'Az.Functions.private\New-AzAppInsights_CreateExpanded';
@@ -3659,6 +3750,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -3667,24 +3759,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Description
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Example
 New-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                       -Name MyPremiumPlan `
@@ -4100,6 +4195,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunctionAppPlan_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunctionAppPlan_CreateExpanded';
@@ -4115,6 +4211,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -4123,41 +4220,44 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Description
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Example
 New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -ResourceGroupName MyResourceGroupName `
                   -Location centralUS `
-                  -StorageAccount MyStorageAccountName `
+                  -StorageAccountName MyStorageAccountName `
                   -Runtime PowerShell
 .Example
 New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -ResourceGroupName MyResourceGroupName `
                   -PlanName MyPlanName `
-                  -StorageAccount MyStorageAccountName `
+                  -StorageAccountName MyStorageAccountName `
                   -Runtime PowerShell
 .Example
 New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -ResourceGroupName MyResourceGroupName `
                   -PlanName MyPlanName `
-                  -StorageAccount MyStorageAccountName `
+                  -StorageAccountName MyStorageAccountName `
                   -DockerImageName myacr.azurecr.io/myimage:tag
 
 .Inputs
@@ -4238,6 +4338,8 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -4372,6 +4474,8 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
+    [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+    [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -4873,6 +4977,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunctionApp_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunctionApp_CreateExpanded';
@@ -4888,6 +4993,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -4896,24 +5002,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Create function for web site, or a deployment slot.
+Create function for web site, or a deployment slot.
 .Description
-Description for Create function for web site, or a deployment slot.
+Create function for web site, or a deployment slot.
 .Example
 {{ Add code here }}
 .Example
@@ -5224,6 +5333,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzFunction_Create';
             CreateExpanded = 'Az.Functions.private\New-AzFunction_CreateExpanded';
@@ -5239,6 +5349,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -5247,17 +5358,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -5460,6 +5574,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzUserAssignedIdentity_Create';
             CreateExpanded = 'Az.Functions.private\New-AzUserAssignedIdentity_CreateExpanded';
@@ -5475,6 +5590,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -5483,24 +5599,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
 {{ Add code here }}
 .Example
@@ -5625,6 +5744,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -5810,6 +5931,20 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Minimum time the process must executebefore taking the action
     ${ActionMinProcessExecutionTime},
@@ -6393,6 +6528,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzWebAppConfigurationSlot_Create';
             CreateExpanded = 'Az.Functions.private\New-AzWebAppConfigurationSlot_CreateExpanded';
@@ -6408,6 +6544,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -6416,24 +6553,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
 {{ Add code here }}
 .Example
@@ -6558,6 +6698,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -6735,6 +6877,20 @@ param(
     [Parameter(ParameterSetName='CreateExpanded')]
     [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Minimum time the process must executebefore taking the action
     ${ActionMinProcessExecutionTime},
@@ -7318,6 +7474,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.Functions.private\New-AzWebAppConfiguration_Create';
             CreateExpanded = 'Az.Functions.private\New-AzWebAppConfiguration_CreateExpanded';
@@ -7333,6 +7490,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -7341,24 +7499,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Delete an App Service plan.
+Delete an App Service plan.
 .Description
-Description for Delete an App Service plan.
+Delete an App Service plan.
 .Example
 Get-AzFunctionAppPlan -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionAppPlan -Force
 .Example
@@ -7526,6 +7687,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzFunctionAppPlan_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunctionAppPlan_DeleteViaIdentity';
@@ -7539,6 +7701,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -7547,24 +7710,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Deletes a web, mobile, or API app, or one of the deployment slots.
+Deletes a web, mobile, or API app, or one of the deployment slots.
 .Description
-Description for Deletes a web, mobile, or API app, or one of the deployment slots.
+Deletes a web, mobile, or API app, or one of the deployment slots.
 .Example
 Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Remove-AzFunctionApp -Force
 .Example
@@ -7745,6 +7911,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzFunctionApp_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunctionApp_DeleteViaIdentity';
@@ -7758,6 +7925,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -7766,24 +7934,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Delete a function for web site, or a deployment slot.
+Delete a function for web site, or a deployment slot.
 .Description
-Description for Delete a function for web site, or a deployment slot.
+Delete a function for web site, or a deployment slot.
 .Example
 {{ Add code here }}
 .Example
@@ -7957,6 +8128,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzFunction_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzFunction_DeleteViaIdentity';
@@ -7970,6 +8142,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -7978,17 +8151,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -8163,6 +8339,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Delete = 'Az.Functions.private\Remove-AzUserAssignedIdentity_Delete';
             DeleteViaIdentity = 'Az.Functions.private\Remove-AzUserAssignedIdentity_DeleteViaIdentity';
@@ -8176,6 +8353,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -8184,24 +8362,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Restarts an app (or deployment slot, if specified).
+Restarts an app (or deployment slot, if specified).
 .Description
-Description for Restarts an app (or deployment slot, if specified).
+Restarts an app (or deployment slot, if specified).
 .Example
 Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Restart-AzFunctionApp -Force
 .Example
@@ -8383,6 +8564,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Restart = 'Az.Functions.private\Restart-AzFunctionApp_Restart';
             RestartViaIdentity = 'Az.Functions.private\Restart-AzFunctionApp_RestartViaIdentity';
@@ -8396,6 +8578,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -8404,24 +8587,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Restores a specific backup to another app (or deployment slot, if specified).
+Restores a specific backup to another app (or deployment slot, if specified).
 .Description
-Description for Restores a specific backup to another app (or deployment slot, if specified).
+Restores a specific backup to another app (or deployment slot, if specified).
 .Example
 {{ Add code here }}
 .Example
@@ -8737,6 +8923,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Restore = 'Az.Functions.private\Restore-AzFunctionApp_Restore';
             RestoreExpanded = 'Az.Functions.private\Restore-AzFunctionApp_RestoreExpanded';
@@ -8752,6 +8939,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -8760,24 +8948,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Description
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Example
 {{ Add code here }}
 .Example
@@ -9091,6 +9282,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzFunctionAppPlan_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzFunctionAppPlan_UpdateExpanded';
@@ -9104,6 +9296,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -9112,24 +9305,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Description
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Example
 {{ Add code here }}
 .Example
@@ -9153,6 +9349,8 @@ HOSTNAMESSLSTATE <IHostNameSslState[]>: Hostname SSL states are used to manage t
   [VirtualIP <String>]: Virtual IP address assigned to the hostname if IP based SSL is enabled.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -9287,6 +9485,8 @@ SITEENVELOPE <ISite>: A web app, a mobile app backend, or an API app.
   [CloningInfoTrafficManagerProfileId <String>]: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   [CloningInfoTrafficManagerProfileName <String>]: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   [Config <ISiteConfig>]: Configuration of the app.
+    [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+    [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -9743,6 +9943,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzFunctionApp_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzFunctionApp_UpdateExpanded';
@@ -9756,6 +9957,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -9764,17 +9966,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -9903,6 +10108,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzUserAssignedIdentity_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzUserAssignedIdentity_UpdateExpanded';
@@ -9916,6 +10122,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -9924,24 +10131,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Replaces the application settings of an app.
+Replaces the application settings of an app.
 .Description
-Description for Replaces the application settings of an app.
+Replaces the application settings of an app.
 .Example
 {{ Add code here }}
 .Example
@@ -10070,6 +10280,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppApplicationSettingSlot_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppApplicationSettingSlot_UpdateExpanded';
@@ -10083,6 +10294,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -10091,24 +10303,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Replaces the application settings of an app.
+Replaces the application settings of an app.
 .Description
-Description for Replaces the application settings of an app.
+Replaces the application settings of an app.
 .Example
 {{ Add code here }}
 .Example
@@ -10230,6 +10445,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppApplicationSetting_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppApplicationSetting_UpdateExpanded';
@@ -10243,6 +10459,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -10251,24 +10468,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
 {{ Add code here }}
 .Example
@@ -10333,6 +10553,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -10504,6 +10726,18 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Minimum time the process must executebefore taking the action
     ${ActionMinProcessExecutionTime},
@@ -11016,6 +11250,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppConfigurationSlot_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppConfigurationSlot_UpdateExpanded';
@@ -11029,6 +11264,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -11037,24 +11273,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
 {{ Add code here }}
 .Example
@@ -11119,6 +11358,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -11283,6 +11524,18 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Minimum time the process must executebefore taking the action
     ${ActionMinProcessExecutionTime},
@@ -11795,6 +12048,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Set-AzWebAppConfiguration_Update';
             UpdateExpanded = 'Az.Functions.private\Set-AzWebAppConfiguration_UpdateExpanded';
@@ -11808,6 +12062,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -11816,24 +12071,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Starts an app (or deployment slot, if specified).
+Starts an app (or deployment slot, if specified).
 .Description
-Description for Starts an app (or deployment slot, if specified).
+Starts an app (or deployment slot, if specified).
 .Example
 Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Start-AzFunctionApp
 .Example
@@ -12001,6 +12259,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Start = 'Az.Functions.private\Start-AzFunctionApp_Start';
             StartViaIdentity = 'Az.Functions.private\Start-AzFunctionApp_StartViaIdentity';
@@ -12014,6 +12273,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -12022,24 +12282,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Stops an app (or deployment slot, if specified).
+Stops an app (or deployment slot, if specified).
 .Description
-Description for Stops an app (or deployment slot, if specified).
+Stops an app (or deployment slot, if specified).
 .Example
 Get-AzFunctionApp -Name MyAppName -ResourceGroupName MyResourceGroupName | Stop-AzFunctionApp -Force
 .Example
@@ -12207,6 +12470,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Stop = 'Az.Functions.private\Stop-AzFunctionApp_Stop';
             StopViaIdentity = 'Az.Functions.private\Stop-AzFunctionApp_StopViaIdentity';
@@ -12220,6 +12484,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -12228,24 +12493,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Syncs function trigger metadata to the management database
+Syncs function trigger metadata to the management database
 .Description
-Description for Syncs function trigger metadata to the management database
+Syncs function trigger metadata to the management database
 .Example
 {{ Add code here }}
 .Example
@@ -12413,6 +12681,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Sync = 'Az.Functions.private\Sync-AzFunction_Sync';
             SyncViaIdentity = 'Az.Functions.private\Sync-AzFunction_SyncViaIdentity';
@@ -12426,6 +12695,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -12434,24 +12704,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Check if a resource name is available.
+Check if a resource name is available.
 .Description
-Description for Check if a resource name is available.
+Check if a resource name is available.
 .Example
 {{ Add code here }}
 .Example
@@ -12640,6 +12913,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Check = 'Az.Functions.private\Test-AzNameAvailability_Check';
             CheckExpanded = 'Az.Functions.private\Test-AzNameAvailability_CheckExpanded';
@@ -12655,6 +12929,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -12663,24 +12938,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Description
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Example
 Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
                          -Name MyPremiumPlan `
@@ -12708,7 +12986,7 @@ APPSERVICEPLAN <IAppServicePlanPatchResource>: ARM resource for a app service pl
   [IsXenon <Boolean?>]: Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
   [MaximumElasticWorkerCount <Int32?>]: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   [PerSiteScaling <Boolean?>]: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
-  [Reserved <Boolean?>]: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+  [Reserved <Boolean?>]: This needs to set to <code>true</code> when creating a Linux App Service Plan, along with <code>kind</code> set to <code>Linux</code>. It should be <code>false</code> otherwise.
   [SpotExpirationTime <DateTime?>]: The time when the server farm expires. Valid only if it is a spot server farm.
   [TargetWorkerCount <Int32?>]: Scaling worker count.
   [TargetWorkerSizeId <Int32?>]: Scaling worker size ID.
@@ -12878,7 +13156,9 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+    # This needs to set to <code>true</code>
+    # when creating a Linux App Service Plan, along with <code>kind</code> set to <code>Linux</code>.
+    # It should be <code>false</code> otherwise.
     ${Reserved},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -12965,6 +13245,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzFunctionAppPlan_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzFunctionAppPlan_UpdateExpanded';
@@ -12980,6 +13261,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -12988,24 +13270,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Description
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Example
 Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -PlanName NewPlanName -Force
 .Example
@@ -13093,6 +13378,8 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -13246,6 +13533,8 @@ SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [SiteConfig <ISiteConfig>]: Configuration of the app.
+    [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+    [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -13698,6 +13987,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzFunctionApp_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzFunctionApp_UpdateExpanded';
@@ -13713,6 +14003,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -13721,17 +14012,20 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
@@ -13934,6 +14228,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzUserAssignedIdentity_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzUserAssignedIdentity_UpdateExpanded';
@@ -13949,6 +14244,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -13957,24 +14253,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
 {{ Add code here }}
 .Example
@@ -14099,6 +14398,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -14284,6 +14585,20 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Minimum time the process must executebefore taking the action
     ${ActionMinProcessExecutionTime},
@@ -14867,6 +15182,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzWebAppConfigurationSlot_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzWebAppConfigurationSlot_UpdateExpanded';
@@ -14882,6 +15198,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -14890,24 +15207,27 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }
 
 <#
 .Synopsis
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Description
-Description for Updates the configuration of an app.
+Updates the configuration of an app.
 .Example
 {{ Add code here }}
 .Example
@@ -15032,6 +15352,8 @@ SCMIPSECURITYRESTRICTION <IIPSecurityRestriction[]>: IP security restrictions fo
 
 SITECONFIG <ISiteConfigResource>: Web app configuration ARM resource.
   [Kind <String>]: Kind of resource.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -15209,6 +15531,20 @@ param(
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Flag to use Managed Identity Creds for ACR pull
+    ${AcrUseManagedIdentityCred},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
+    [System.String]
+    # If using user managed identity, the user managed identity ClientId
+    ${AcrUserManagedIdentityId},
+
+    [Parameter(ParameterSetName='UpdateExpanded')]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.String]
     # Minimum time the process must executebefore taking the action
     ${ActionMinProcessExecutionTime},
@@ -15792,6 +16128,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzWebAppConfiguration_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzWebAppConfiguration_UpdateExpanded';
@@ -15807,6 +16144,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -15815,15 +16153,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

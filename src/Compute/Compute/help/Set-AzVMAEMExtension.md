@@ -16,8 +16,8 @@ Enables support for monitoring for SAP systems.
 ```
 Set-AzVMAEMExtension [-ResourceGroupName] <String> [-VMName] <String> [-EnableWAD]
  [[-WADStorageAccountName] <String>] [[-OSType] <String>] [-SkipStorage] [-NoWait]
- [-SetAccessToIndividualResources] [-InstallNewExtension] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-SetAccessToIndividualResources] [-InstallNewExtension] [[-ProxyURI] <String>] [-DebugExtension]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,6 +35,21 @@ This command configures the virtual machine named contoso-server to use the AEM 
 The command specifies the storage account named stdstorage.
 
 ## PARAMETERS
+
+### -DebugExtension
+Enable debug mode for the VM Extension.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 8
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with azure.
@@ -108,6 +123,21 @@ Aliases:
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProxyURI
+Configures the proxy URI that should be used by the VM Extension for SAP.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: 7
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

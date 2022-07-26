@@ -158,6 +158,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
         public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphExtensionProperty[] ExtensionProperty { get => this._extensionProperty; }
 
+        /// <summary>Backing field for <see cref="FederatedIdentityCredentials" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[] _federatedIdentityCredentials;
+
+        /// <summary>
+        /// Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Origin(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.PropertyOrigin.Owned)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.DoNotFormat]
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[] FederatedIdentityCredentials { get => this._federatedIdentityCredentials; set => this._federatedIdentityCredentials = value; }
+
         /// <summary>Backing field for <see cref="GroupMembershipClaim" /> property.</summary>
         private string _groupMembershipClaim;
 
@@ -446,7 +456,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> instance that will receive validation
         /// events.</param>
         /// <returns>
-        /// A < see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
+        /// A <see cref = "global::System.Threading.Tasks.Task" /> that will be complete when validation is completed.
         /// </returns>
         public async global::System.Threading.Tasks.Task Validate(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener eventListener)
         {
@@ -593,6 +603,16 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         SerializedName = @"extensionProperties",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphExtensionProperty) })]
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphExtensionProperty[] ExtensionProperty { get;  }
+        /// <summary>
+        /// Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).",
+        SerializedName = @"federatedIdentityCredentials",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[] FederatedIdentityCredentials { get; set; }
         /// <summary>
         /// Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute,
         /// use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all
@@ -883,6 +903,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         string DisabledByMicrosoftStatus { get; set; }
         /// <summary>Read-only. Nullable.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphExtensionProperty[] ExtensionProperty { get; set; }
+        /// <summary>
+        /// Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphFederatedIdentityCredential[] FederatedIdentityCredentials { get; set; }
         /// <summary>
         /// Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute,
         /// use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all

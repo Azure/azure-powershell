@@ -31,7 +31,7 @@ Remove-AzSqlInstance [-ResourceId] <String> [-Force] [-AsJob] [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-The **Remove-AzSqlInstance** cmdlet removes an Azure SQL Database Managed Instance.
+The **Remove-AzSqlInstance** cmdlet removes an Azure SQL Managed Instance.
 
 ## EXAMPLES
 

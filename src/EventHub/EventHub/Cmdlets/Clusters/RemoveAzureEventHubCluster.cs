@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             {
                 try
                 {
-                    var result = Client.DeleteEventHubCluster(ResourceGroupName,Name);
+                    var result = UtilityClient.DeleteEventHubCluster(ResourceGroupName,Name);
 
                     if (PassThru.IsPresent)
                     {

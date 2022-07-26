@@ -25,7 +25,7 @@ Creates peering service.
 
 ### Example 1
 ```powershell
-New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -Location $loc -PeeringServiceProvider $provider
+New-AzPeeringService -ResourceGroupName $resourceGroup -Name $name -PeeringServiceProvider $provider
 ```
 
 ```output

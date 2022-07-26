@@ -25,14 +25,14 @@ The **Get-AzApplicationGatewayCustomError** cmdlet gets custom error(s) from a h
 
 ### Example 1: Gets a custom error in a http listener
 ```powershell
-$ce = Get-AzApplicationGatewayCustomError -HttpListener $listener01 -StatusCode HttpStatus502
+$ce = Get-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502
 ```
 
 This command gets and returns the custom error of http status code 502 from the http listener $listener01.
 
 ### Example 2: Gets the list of all custom errors in a http listener
 ```powershell
-$ces = Get-AzApplicationGatewayCustomError -HttpListener $listener01
+$ces = Get-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01
 ```
 
 This command gets and returns the list of all custom errors from the http listener $listener01.

@@ -83,7 +83,12 @@ CmdletsToExport = 'New-AzEventGridTopic', 'Get-AzEventGridTopic',
                'Get-AzEventGridDomain', 'Get-AzEventGridDomainTopic', 
                'Get-AzEventGridDomainKey', 'New-AzEventGridDomainKey', 
                'Remove-AzEventGridDomain', 'New-AzEventGridDomainTopic', 
-               'Remove-AzEventGridDomainTopic'
+               'Remove-AzEventGridDomainTopic', 'Get-AzEventGridSystemTopic',
+               'New-AzEventGridSystemTopic','Update-AzEventGridSystemTopic',
+               'Remove-AzEventGridSystemTopic', 'New-AzEventGridSystemTopicEventSubscription', 
+               'Update-AzEventGridSystemTopicEventSubscription', 'Get-AzEventGridSystemTopicEventSubscription', 
+               'Remove-AzEventGridSystemTopicEventSubscription', 'Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute', 
+               'Get-AzEventGridFullUrlForSystemTopicEventSubscription'
 
 # Variables to export from this module
 # VariablesToExport = @()

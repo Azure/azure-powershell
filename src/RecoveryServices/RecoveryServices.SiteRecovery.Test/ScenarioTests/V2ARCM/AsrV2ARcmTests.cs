@@ -12,133 +12,156 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace RecoveryServices.SiteRecovery.Test
 {
-    public class AsrV2ARCMTests : AsrV2ARCMTestsBase
+    public class AsrV2ARCMTests : RecoveryServicesSiteRecoveryTestRunner
     {
-        public XunitTracingInterceptor _logger;
+        private readonly string _testModule = $"ScenarioTests/V2ARCM/AsrV2ARcmTests.ps1";
 
-        public AsrV2ARCMTests(
-            ITestOutputHelper output)
+        public AsrV2ARCMTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            this.PowershellFile = Path.Combine(
-                AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "V2ARCM", "AsrV2ARcmTests.ps1");
-            this.Initialize();
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMFabric()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMFabric");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMFabric");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMPolicy()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMPolicy");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMPolicy");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMContainer()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMContainer");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMContainer");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMContainerMapping()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMContainerMapping");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMContainerMapping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestV2ARCMEnableDR()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMEnableDR");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMEnableDR");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMUpdateProtection()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMUpdateProtection");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMUpdateProtection");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMTestFailover()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMTestFailover");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMTestFailover");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMFailover()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMFailover");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMFailover");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMCommit()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMCommit");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMCommit");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMReprotect()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMReprotect");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMReprotect");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMFailback()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMFailback");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMFailback");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMCancelFailover()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMCancelFailover");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMCancelFailover");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestV2ARCM540Reprotect()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCM540Reprotect");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCM540Reprotect");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMRecoveryPlan()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMRecoveryPlan");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMRecoveryPlan");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestV2ARCMSwitchAppliance()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-V2ARCMSwitchAppliance");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-V2ARCMSwitchAppliance");
         }
     }
 }

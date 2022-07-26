@@ -44,7 +44,7 @@ This example removes the firewall policy named "firewallpolicy" in the resourceg
 
 ### Example 2
 ```powershell
-Remove-AzFirewallPolicy -Name firewallpolicy -ResourceId "/subscriptions/12345/resourceGroups/TestRg/providers/Microsoft.Network/firewallpolicies/firewallPolicy1"
+Remove-AzFirewallPolicy -ResourceId "/subscriptions/12345/resourceGroups/TestRg/providers/Microsoft.Network/firewallpolicies/firewallPolicy1"
 ```
 
 This example removes the firewall policy by the Id.

@@ -30,6 +30,7 @@ Remove-AzDdosProtectionPlan -ResourceGroupName ResourceGroupName -Name DdosProte
 In this case, we remove a DDoS protection plan as specified.
 
 ### Example 2: Remove a DDoS protection plan associated with a virtual network
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $vnet = Get-AzVirtualNetwork -Name VnetName -ResourceGroupName ResourceGroupName
 $vnet.DdosProtectionPlan = $null

@@ -99,6 +99,7 @@ $flowLog.Format.Version = 2
 $flowLog | Set-AzNetworkWatcherFlowLog -Force
 ```
 
+```output
 Name                       : pstest
 Id                         : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NetworkWatcherRG/provid
                              ers/Microsoft.Network/networkWatchers/NetworkWatcher_eastus/FlowLogs/pstest
@@ -119,6 +120,7 @@ Format                     : {
                                "Version": 2
                              }
 FlowAnalyticsConfiguration : {}
+```
 
 ### Example 2
 

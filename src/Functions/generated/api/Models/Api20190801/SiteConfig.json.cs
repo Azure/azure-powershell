@@ -20,7 +20,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         partial void AfterFromJson(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject json);
 
         /// <summary>
-        /// <c>AfterToJson</c> will be called after the json erialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject"
+        /// <c>AfterToJson</c> will be called after the json serialization has finished, allowing customization of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonObject"
         /// /> before it is returned. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <summary>
         /// <c>BeforeFromJson</c> will be called before the json deserialization has commenced, allowing complete customization of
         /// the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name= "returnNow" />
+        /// output parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="json">The JsonNode that should be deserialized into this object.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
         /// <summary>
         /// <c>BeforeToJson</c> will be called before the json serialization has commenced, allowing complete customization of the
         /// object before it is serialized.
-        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default serialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="container">The JSON container that the serialization result will be placed in.</param>
@@ -97,6 +99,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             {_remoteDebuggingEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("remoteDebuggingEnabled"), out var __jsonRemoteDebuggingEnabled) ? (bool?)__jsonRemoteDebuggingEnabled : RemoteDebuggingEnabled;}
             {_remoteDebuggingVersion = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("remoteDebuggingVersion"), out var __jsonRemoteDebuggingVersion) ? (string)__jsonRemoteDebuggingVersion : (string)RemoteDebuggingVersion;}
             {_httpLoggingEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("httpLoggingEnabled"), out var __jsonHttpLoggingEnabled) ? (bool?)__jsonHttpLoggingEnabled : HttpLoggingEnabled;}
+            {_acrUseManagedIdentityCred = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("acrUseManagedIdentityCreds"), out var __jsonAcrUseManagedIdentityCreds) ? (bool?)__jsonAcrUseManagedIdentityCreds : AcrUseManagedIdentityCred;}
+            {_acrUserManagedIdentityId = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("acrUserManagedIdentityID"), out var __jsonAcrUserManagedIdentityId) ? (string)__jsonAcrUserManagedIdentityId : (string)AcrUserManagedIdentityId;}
             {_logsDirectorySizeLimit = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber>("logsDirectorySizeLimit"), out var __jsonLogsDirectorySizeLimit) ? (int?)__jsonLogsDirectorySizeLimit : LogsDirectorySizeLimit;}
             {_detailedErrorLoggingEnabled = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean>("detailedErrorLoggingEnabled"), out var __jsonDetailedErrorLoggingEnabled) ? (bool?)__jsonDetailedErrorLoggingEnabled : DetailedErrorLoggingEnabled;}
             {_publishingUsername = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString>("publishingUsername"), out var __jsonPublishingUsername) ? (string)__jsonPublishingUsername : (string)PublishingUsername;}
@@ -185,6 +189,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801
             AddIf( null != this._remoteDebuggingEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._remoteDebuggingEnabled) : null, "remoteDebuggingEnabled" ,container.Add );
             AddIf( null != (((object)this._remoteDebuggingVersion)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._remoteDebuggingVersion.ToString()) : null, "remoteDebuggingVersion" ,container.Add );
             AddIf( null != this._httpLoggingEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._httpLoggingEnabled) : null, "httpLoggingEnabled" ,container.Add );
+            AddIf( null != this._acrUseManagedIdentityCred ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._acrUseManagedIdentityCred) : null, "acrUseManagedIdentityCreds" ,container.Add );
+            AddIf( null != (((object)this._acrUserManagedIdentityId)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._acrUserManagedIdentityId.ToString()) : null, "acrUserManagedIdentityID" ,container.Add );
             AddIf( null != this._logsDirectorySizeLimit ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNumber((int)this._logsDirectorySizeLimit) : null, "logsDirectorySizeLimit" ,container.Add );
             AddIf( null != this._detailedErrorLoggingEnabled ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode)new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonBoolean((bool)this._detailedErrorLoggingEnabled) : null, "detailedErrorLoggingEnabled" ,container.Add );
             AddIf( null != (((object)this._publishingUsername)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Json.JsonString(this._publishingUsername.ToString()) : null, "publishingUsername" ,container.Add );

@@ -43,7 +43,7 @@ Backup Policy object.
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupPolicy
 
 ## NOTES
 
@@ -87,7 +87,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-POLICY <IBackupPolicy>: Backup Policy object.
+POLICY `<IBackupPolicy>`: Backup Policy object.
   - `DatasourceType <String[]>`: Type of datasource for the backup management
   - `ObjectType <String>`: 
   - `PolicyRule <IBasePolicyRule[]>`: Policy rule dictionary that contains rules for each backuptype i.e Full/Incremental/Logs etc

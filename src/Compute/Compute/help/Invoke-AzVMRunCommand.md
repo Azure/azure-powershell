@@ -15,22 +15,22 @@ Run a command on the VM.
 ### DefaultParameter (Default)
 ```
 Invoke-AzVMRunCommand [-ResourceGroupName] <String> [-VMName] <String> -CommandId <String>
- [-ScriptPath <String>] [-Parameter <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-ScriptPath <String>] [-ScriptString <String>] [-Parameter <Hashtable>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
-Invoke-AzVMRunCommand -CommandId <String> [-ScriptPath <String>] [-Parameter <Hashtable>]
- [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzVMRunCommand -CommandId <String> [-ScriptPath <String>] [-ScriptString <String>]
+ [-Parameter <Hashtable>] [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### VMParameter
 ```
-Invoke-AzVMRunCommand -CommandId <String> [-ScriptPath <String>] [-Parameter <Hashtable>]
- [-VM] <PSVirtualMachine> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Invoke-AzVMRunCommand -CommandId <String> [-ScriptPath <String>] [-ScriptString <String>]
+ [-Parameter <Hashtable>] [-VM] <PSVirtualMachine> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +46,7 @@ Invoke-AzVMRunCommand -ResourceGroupName 'rgname' -VMName 'vmname' -CommandId 'R
 Invoke a run command 'RunPowerShellScript' with overriding the script 'sample.ps1' on a Windows VM named 'vmname' in resource group 'rgname'. Var1 and var2 are defined as parameters in the sample.ps1. Parameter value can be string type only and script is responsible for converting them to other types if needed. 
 
 ### Example 2: Invoke a command on Linux
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 export param1=var1 param2=var2
 set -- var1 var2 var3
@@ -153,6 +154,21 @@ Accept wildcard characters: False
 ### -ScriptPath
 Path of the script to be executed. When this value is given, the given script will override the default script of the command.
 Path should point to a file from a local file system. The command will load it and send it for execution.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScriptString
+{{ Fill ScriptString Description }}
 
 ```yaml
 Type: System.String

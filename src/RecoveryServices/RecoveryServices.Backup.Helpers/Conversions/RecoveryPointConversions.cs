@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
         /// filter move readness based on target tier
         /// </summary>
         /// <param name="recoveryPointList"></param>
-        /// <param name="TargetTier"></param>
-        /// <param name="IsReadyForMove"></param>
+        /// <param name="targetTier"></param>
+        /// <param name="isReadyForMove"></param>
         /// <returns></returns>
         public static List<RecoveryPointBase> CheckRPMoveReadiness(List<RecoveryPointBase> recoveryPointList, RecoveryPointTier targetTier, bool isReadyForMove)
         {
@@ -220,7 +220,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return result;
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert ps recovery point model from service response.
         /// </summary>
         public static RecoveryPointBase GetPSAzureRecoveryPoints(
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
             return result;
         }
 
-        // <summary>
+        /// <summary>
         /// Helper function to convert ps recovery point model from service response.
         /// </summary>
         public static RecoveryPointBase GetPSAzureRecoveryPointsFromSecondaryRegion(

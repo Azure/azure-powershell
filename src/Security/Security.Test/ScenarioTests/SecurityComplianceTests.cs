@@ -12,43 +12,36 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SecurityComplianceTests
+    public class SecurityComplianceTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public SecurityComplianceTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SecurityComplianceTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityCompliance-SubscriptionScope");
+            TestRunner.RunTestScript("Get-AzureRmSecurityCompliance-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityCompliance-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Get-AzureRmSecurityCompliance-SubscriptionLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmSecurityCompliance-ResourceId");
+            TestRunner.RunTestScript("Get-AzureRmSecurityCompliance-ResourceId");
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Model
         /// </summary>
         /// <param name="resourceGroup">Resource group</param>
         /// <param name="managedInstanceName">Managed Instance name</param>
-        /// <param name="managedDatabaseName">Managed Instance name</param>
+        /// <param name="managedDatabaseName">Managed Database name</param>
         /// <param name="managedBackupRetentionPolicy">Managed Database object</param>
         /// <param name="deletionDate">Deletion date of the database, if it is deleted</param>
         public AzureSqlManagedDatabaseBackupShortTermRetentionPolicyModel(string resourceGroup, string managedInstanceName, string managedDatabaseName, ManagedBackupShortTermRetentionPolicy managedBackupRetentionPolicy, DateTime? deletionDate = null)

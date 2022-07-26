@@ -12,35 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public class ScheduledQueryRulesTests : RMTestBase
+    public class ScheduledQueryRulesTests : MonitorTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public ScheduledQueryRulesTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ScheduledQueryRulesTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewGetUpdateSetRemoveScheduledQueryRule()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-NewGetUpdateSetRemoveScheduledQueryRule");
+            TestRunner.RunTestScript("Test-NewGetUpdateSetRemoveScheduledQueryRule");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestPipingRemoveSetUpdateScheduledQueryRule()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-PipingRemoveSetUpdateScheduledQueryRule");
+            TestRunner.RunTestScript("Test-PipingRemoveSetUpdateScheduledQueryRule");
         }
     }
 }

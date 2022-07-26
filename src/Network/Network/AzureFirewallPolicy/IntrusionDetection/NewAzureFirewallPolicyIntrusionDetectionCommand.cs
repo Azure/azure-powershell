@@ -55,6 +55,12 @@ namespace Microsoft.Azure.Commands.Network
          )]
         public PSAzureFirewallPolicyIntrusionDetectionBypassTrafficSetting[] BypassTraffic { get; set; }
 
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = "List of IDPS Private IP ranges."
+         )]
+        public string[] PrivateRange { get; set; }
+
         public override void Execute()
         {
             base.Execute();
@@ -64,12 +70,13 @@ namespace Microsoft.Azure.Commands.Network
                 Mode = this.Mode
             };
 
-            if (this.SignatureOverride?.Count() > 0 || this.BypassTraffic?.Count() > 0)
+            if (this.SignatureOverride?.Count() > 0 || this.BypassTraffic?.Count() > 0 || this.PrivateRange?.Count() > 0)
             {
                 intrusionDetection.Configuration = new PSAzureFirewallPolicyIntrusionDetectionConfiguration
                 {
                     SignatureOverrides = this.SignatureOverride?.ToList(),
-                    BypassTrafficSettings = this.BypassTraffic?.ToList()
+                    BypassTrafficSettings = this.BypassTraffic?.ToList(),
+                    PrivateRanges = this.PrivateRange?.ToList()
                 };
             }
 

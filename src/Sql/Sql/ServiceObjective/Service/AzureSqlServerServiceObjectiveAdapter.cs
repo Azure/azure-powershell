@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceObjective.Adapter
         /// <summary>
         /// Constructs a ServiceObjective adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServerServiceObjectiveAdapter(IAzureContext context)
         {
             Context = context;

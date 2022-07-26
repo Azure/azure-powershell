@@ -14,4 +14,6 @@
     <PackageReference Include="Microsoft.Azure.Management.TrafficManager" Version="2.5.4" />
   </ItemGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

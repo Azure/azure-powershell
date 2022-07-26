@@ -29,12 +29,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using System.Threading;
     using global::Azure.Storage.Blobs;
     using global::Azure.Storage;
+    using global::Azure.Storage.Files.DataLake;
 
     internal class SasTokenHelper
     {
         /// <summary>
         /// Validate the container access policy
         /// </summary>
+        /// <param name="channel">IStorageBlobManagement channel object</param>
+        /// <param name="containerName">Container name</param>
         /// <param name="policy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
         public static bool ValidateContainerAccessPolicy(IStorageBlobManagement channel, string containerName,
@@ -66,8 +69,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Validate the file share access policy
         /// </summary>
-        /// <param name="policy">SharedAccessFilePolicy object</param>
+        /// <param name="channel">IStorageFileManagement channel object</param>
+        /// <param name="shareName">A string containing the name of the share.</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
+        /// <param name="shouldNoPermission"></param>
+        /// <param name="shouldNoStartTime"></param>
+        /// <param name="shouldNoExpiryTime"></param>
         public static bool ValidateShareAccessPolicy(IStorageFileManagement channel, string shareName,
              string policyIdentifier, bool shouldNoPermission, bool shouldNoStartTime, bool shouldNoExpiryTime)
         {
@@ -108,6 +115,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Validate the queue access policy
         /// </summary>
+        /// <param name="channel">IStorageQueueManagement channel object</param>
+        /// <param name="queueName">Queue name</param>
         /// <param name="policy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
         public static bool ValidateQueueAccessPolicy(IStorageQueueManagement channel, string queueName,
@@ -138,6 +147,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Validate the table access policy
         /// </summary>
+        /// <param name="channel">IStorageTableManagement channel object</param>
+        /// <param name="tableName">Table name</param>
         /// <param name="policy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
         internal static bool ValidateTableAccessPolicy(IStorageTableManagement channel,
@@ -488,6 +499,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 global::Azure.Storage.Blobs.Models.UserDelegationKey userDelegationKey = null;
                 BlobServiceClient oauthService = new BlobServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, ClientOptions);
+
+                Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
+
+                userDelegationKey = oauthService.GetUserDelegationKey(
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
+                    cancellationToken: cancelToken);
+
+                return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
+            }
+            else
+            {
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credentail.");
+            }
+        }
+
+        /// <summary>
+        /// Get SAS string for DatalakeGen2
+        /// </summary>
+        public static string GetDatalakeGen2SharedAccessSignature(AzureStorageContext context, DataLakeSasBuilder sasBuilder, bool generateUserDelegationSas, DataLakeClientOptions clientOptions, CancellationToken cancelToken)
+        {
+            if (context != null && context.StorageAccount.Credentials.IsSharedKey)
+            {
+                return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+            }
+            if (generateUserDelegationSas)
+            {
+                global::Azure.Storage.Files.DataLake.Models.UserDelegationKey userDelegationKey = null;
+                DataLakeServiceClient oauthService = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, clientOptions);
 
                 Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
 

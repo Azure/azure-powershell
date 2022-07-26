@@ -27,14 +27,14 @@ The New-AzDataMigrationSyncSelectedDB cmdlet creates a database info object spec
 ### Example 1
 ```powershell
 $tableMap = New-Object 'system.collections.hashtable'
-	$tableMap.Add("dbo.TestTable1", "dbo.TestTable1")
-	$tableMap.Add("dbo.TestTable2","dbo.TestTable2")
+$tableMap.Add("dbo.TestTable1", "dbo.TestTable1")
+$tableMap.Add("dbo.TestTable2","dbo.TestTable2")
 
-	$selectedDbs = New-AzDataMigrationSyncSelectedDBObject 
-		-TargetDatabaseName DatabaseName `
-		-SchemaName dbo `
-		-TableMap $tableMap `
-		-SourceDatabaseName DatabaseName
+$selectedDbs = New-AzDataMigrationSyncSelectedDBObject `
+	-TargetDatabaseName DatabaseName `
+	-SchemaName dbo `
+	-TableMap $tableMap `
+	-SourceDatabaseName DatabaseName
 ```
 
 This example creates a database metadata object describing the migrating settings for $DatabaseName to database $DatabaseName.  

@@ -106,8 +106,8 @@ StartDate         :
 ExpirationDate    :
 EndDate           :
 NotificationDate  :
-PrimaryKey        : 5e48532634114fe999a6979ce0d63a64
-SecondaryKey      : 0a8efaf85a664aa0a412241015c7c8f6
+PrimaryKey        :
+SecondaryKey      :
 StateComment      :
 AllowTracing      : False
 Id                : /subscriptions/subid/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/contoso/subscriptions/allApScope
@@ -136,8 +136,8 @@ StartDate         : 9/12/2017 12:00:00 AM
 ExpirationDate    :
 EndDate           :
 NotificationDate  :
-PrimaryKey        : 7e64ef904b194706835febf87f729bb0
-SecondaryKey      : 0354fccef73e43feb82e5c5da17674d5
+PrimaryKey        :
+SecondaryKey      :
 StateComment      :
 AllowTracing      : True
 Id                : /subscriptions/subid/resourceGroups/Api-Default-East-US/providers/Microsoft.ApiManagement/service/contoso/subscriptions/59b872f38a82741750c8da56

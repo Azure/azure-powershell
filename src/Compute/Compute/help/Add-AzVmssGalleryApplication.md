@@ -1,7 +1,7 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version:https://docs.microsoft.com/powershell/module/az.compute/add-azvmssgalleryapplication
+online version: https://docs.microsoft.com/powershell/module/az.compute/add-azvmssgalleryapplication
 schema: 2.0.0
 ---
 
@@ -14,8 +14,8 @@ Add a GalleryApplication object to the PSVirtualMachineProfile object.
 
 ```
 Add-AzVmssGalleryApplication -VirtualMachineScaleSetVM <PSVirtualMachineScaleSetVMProfile>
- -GalleryApplication <PSVMGalleryApplication> [-Order <Int32>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ -GalleryApplication <PSVMGalleryApplication> [-TreatFailureAsDeploymentFailure] [-Order <Int32>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -79,6 +79,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -TreatFailureAsDeploymentFailure
+If true, any failure for any operation in the VmApplication will fail the deployment. Defaults to false if not specified.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -VirtualMachineScaleSetVM
 The PSVirtualMachineScaleSetVMProfile object to add a Gallery Application Reference ID.
 
@@ -88,6 +103,36 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs. The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

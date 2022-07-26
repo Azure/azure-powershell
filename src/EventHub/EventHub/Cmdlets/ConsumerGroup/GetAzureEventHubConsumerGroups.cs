@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
                 if (!string.IsNullOrEmpty(Name))
                 {
                     // Get a ConsumnerGroup
-                    PSConsumerGroupAttributes consumergroupAttributesList = Client.GetConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
+                    PSConsumerGroupAttributes consumergroupAttributesList = UtilityClient.GetConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
                     WriteObject(consumergroupAttributesList);
                 }
                 else
@@ -84,13 +84,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
                     if (MaxCount.HasValue)
                     {
                         // Get all ConsumnerGroups
-                        IEnumerable<PSConsumerGroupAttributes> consumergroupAttributesList = Client.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub, MaxCount);
+                        IEnumerable<PSConsumerGroupAttributes> consumergroupAttributesList = UtilityClient.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub, MaxCount);
                         WriteObject(consumergroupAttributesList.ToList(), true);
                     }
                     else
                     {
                         // Get all ConsumnerGroups
-                        IEnumerable<PSConsumerGroupAttributes> consumergroupAttributesList = Client.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub);
+                        IEnumerable<PSConsumerGroupAttributes> consumergroupAttributesList = UtilityClient.ListAllConsumerGroup(ResourceGroupName, Namespace, EventHub);
                         WriteObject(consumergroupAttributesList.ToList(), true);
                     }
                 }

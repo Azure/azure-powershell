@@ -19,27 +19,25 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class DatabaseActivationTests : SqlTestsBase
+    public class DatabaseActivationTests : SqlTestRunner
     {
         public DatabaseActivationTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
+
         }
 
         [Fact(Skip = "The test takes the longest time to run. Skip it to workaround timeout temporarily.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabasePauseResume()
         {
-            RunPowerShellTest("Test-DatabasePauseResume");
+            TestRunner.RunTestScript("Test-DatabasePauseResume");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabasePauseResumePiped()
         {
-            RunPowerShellTest("Test-DatabasePauseResumePiped");
+            TestRunner.RunTestScript("Test-DatabasePauseResumePiped");
         }
     }
 }
