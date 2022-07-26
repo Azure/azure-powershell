@@ -198,6 +198,7 @@ directive:
 
   # DatabaseName parameter to have value 'default'
   - where:
+      subject: ForceDatabaseUnlink
       parameter-name: DatabaseName
     hide: true
     set:
