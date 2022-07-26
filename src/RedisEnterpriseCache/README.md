@@ -195,9 +195,14 @@ directive:
   - where:
       subject: PrivateEndpointConnection|PrivateLinkResource
     hide: true
+
+  # DatabaseName parameter to have value 'default'
   - where:
-      subject: ForceDatabaseUnlink
-    hide: True
+      parameter-name: DatabaseName
+    hide: true
+    set:
+      default:
+        script: '"default"'
 
   # Fix bugs in generated code from namespace conflict
   - from: source-file-csharp
