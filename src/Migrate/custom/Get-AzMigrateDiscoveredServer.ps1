@@ -22,6 +22,7 @@ Get Azure migrate server commandlet fetches all servers in a migrate project.
 https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratediscoveredserver
 #>
 
+# 
 function Get-AzMigrateDiscoveredServer {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachine])]
     [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
