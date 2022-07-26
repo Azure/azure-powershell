@@ -9,10 +9,12 @@
                 AnalysisOutput
         Functions:  Get-ExamplesDetailsFromMd
                     Get-NonExceptionRecord
+                    Get-RecordsNotInAllowList
                     Measure-SectionMissingAndOutputScript
-                    Measure-NotInWhiteList
                     Get-ScriptAnalyzerResult
+                    Redo-ImportModule
 #>
+$DebugPreference = 'Continue'
 
 $SYNOPSIS_HEADING = "## SYNOPSIS"
 $SYNTAX_HEADING = "## SYNTAX"
@@ -149,7 +151,7 @@ function Get-ExamplesDetailsFromMd {
 }
 <#
     .SYNOPSIS
-    Except the suppressed records
+    Except the suppressed records. It is independent of ExampleIssues.cs.
 #>
 function Get-NonExceptionRecord{
     param(
@@ -174,6 +176,32 @@ function Get-NonExceptionRecord{
         }
     }
     return $results
+}
+
+<#
+    .SYNOPSIS
+    Get AnalysisOutput entries not in the allow list.
+#>
+function Get-RecordsNotInAllowList{
+    param (
+        [AnalysisOutput[]]$records
+    )
+    return $records | Where-Object {
+        # Skip the unexpected error caused by using <xxx> to assign parameters
+        if($_.RuleName -eq "RedirectionNotSupported"){
+            return $false
+        }
+        # Skip the invaild cmdlet "<"
+        $CommandName = ($_.Description -split " ")[0]
+        if($CommandName -eq "<"){
+            return $false
+        }
+        # Skip NeedDeleting in Storage
+        if($_.RuleName -eq "NeedDeleting" -and $_.Module -eq "Storage"){
+            return $false
+        }
+        return $true
+    }
 }
 
 <#
@@ -327,7 +355,7 @@ function Measure-SectionMissingAndOutputScript {
                     }
                     $results += $result
                 }
-                {$exampleDetails.Outputs.Count -eq 0 -or $_missingExampleOutput -ne 0} {
+                {($exampleDetails.OutputBlocks.Count -ne 0 -and $exampleDetails.Outputs.Count -eq 0) -or $_missingExampleOutput -ne 0} {
                     $missingExampleOutput++
                     $result = [AnalysisOutput]@{
                         Module = $Module
@@ -370,7 +398,7 @@ function Measure-SectionMissingAndOutputScript {
                         ProblemID = 5051
                         Remediation = "Delete the prompt of example."
                     }
-                    $results += $result
+                    $results += $result 
                     $newCode = $exampleCodes -replace "`n([A-Za-z \t\\:>])*(PS|[A-Za-z]:)(\w|[\\/\[\].\- ])*(>|&gt;)+( PS)*[ \t]*", "`n"
                     $newCode = $newCode -replace "(?<=[A-Za-z]\w+-[A-Za-z]\w+)\.ps1"
                     $exampleCodes = $newCode
@@ -381,7 +409,7 @@ function Measure-SectionMissingAndOutputScript {
             # Output example codes to "TempScript.ps1"
             if ($OutputScriptsInFile.IsPresent) {
                 $cmdletExamplesScriptPath = "$OutputFolder\TempScript.ps1"
-                if($null -ne $exampleCodes){
+                if($null -ne $exampleCodes -and $exampleCodes -ne ""){
                     $exampleCodes = $exampleCodes.Trim()
                     $functionHead = "function $Module-$Cmdlet-$exampleNumber{"
                     Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionHead
@@ -392,7 +420,8 @@ function Measure-SectionMissingAndOutputScript {
             }
         }
     }
-
+    # Except records in allow list
+    $results = Get-RecordsNotInAllowList $results
     # Except the suppressed records
     $results = Get-NonExceptionRecord $results
 
@@ -402,26 +431,6 @@ function Measure-SectionMissingAndOutputScript {
         DeletePromptAndSeparateOutput = $deletePromptAndSeparateOutput
         Errors = $results
     }
-}
-
-<#
-    .SYNOPSIS
-    Measure whether the AnalysisOutput entry is in white list.
-#>
-function Measure-InAllowList{
-    param (
-        [AnalysisOutput]$result
-    )
-    # Skip the unexpected error caused by using <xxx> to assign parameters
-    if($result.RuleName -eq "RedirectionNotSupported"){
-        return $false
-    }
-    # Skip the invaild cmdlet "<"
-    $CommandName = ($result.Description -split " ")[0]
-    if($CommandName -eq "<"){
-        return $false
-    }
-    return $true
 }
 
 <#
@@ -449,6 +458,7 @@ function Get-ScriptAnalyzerResult {
         $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -CustomRulePath $RulePath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
     }
     $results = @()
+    # $analysisResults | Out-File res.txt -Append
     foreach($analysisResult in $analysisResults){
         if($analysisResult.Severity -eq "ParseError"){
             $Severity = 1
@@ -486,15 +496,40 @@ function Get-ScriptAnalyzerResult {
                 Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 ProblemID = 5200
                 Remediation = "Unexpected Error! Please check your example or contact the Azure Powershell Team. (Appeared in Line $($analysisResult.Line))"
-                }
             }
-        # Measure whether the result is in the white list
-        if(Measure-InAllowList $result){
-           $results += $result 
         }
+        $results += $result 
     }
-    #Except the suppressed records
+    # Except records in allow list
+    $results = Get-RecordsNotInAllowList $results
+    # Except the suppressed records
     $results = Get-NonExceptionRecord $results
 
     return $results
+}
+
+<#
+    .SYNOPSIS
+    Retry import-module
+#>
+function Redo-ImportModule {
+    param (
+        [string]$CommandName,
+        [string]$moduleName
+    )
+    $modulePath = "$PSScriptRoot\..\..\..\artifacts\Debug\$moduleName\$moduleName.psd1"
+    if(!(Test-Path $modulePath)){
+        Write-Debug "Cannot find path $modulePath."
+        return $false
+    }
+    Get-Item $modulePath | Import-Module -Global
+    $GetCommandName = Get-Command -ListImported | Where-Object {$_.Name -eq $CommandName}
+    if ($null -eq $GetCommandName) {
+        Write-Debug "$CommandName is still invalid"
+        return $false
+    }
+    else{
+        Write-Debug "Succeed by retrying import-module"
+        return $true
+    }
 }

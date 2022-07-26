@@ -1,14 +1,14 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
-online version:https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubcluster
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubcluster
 schema: 2.0.0
 ---
 
 # Set-AzEventHubCluster
 
 ## SYNOPSIS
-Updates the Tag for the given Cluster
+Updates the Tag or Capacity for the given Cluster
 
 ## SYNTAX
 
@@ -20,7 +20,7 @@ Set-AzEventHubCluster [-ResourceGroupName] <String> [-Name] <String> [-Location 
 
 ### ClusterResourceIdParameterSet
 ```
-Set-AzEventHubCluster [-Name] <String> [-ResourceId] <String> [-Tag <Hashtable>]
+Set-AzEventHubCluster [[-Name] <String>] [-Capacity <Int32>] [-ResourceId] <String> [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -61,7 +61,7 @@ Cluster Capacity (CU), curerntrly, allowed value = 1
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: ClusterPropertiesSet
+Parameter Sets: ClusterPropertiesSet, ClusterResourceIdParameterSet
 Aliases:
 
 Required: False
@@ -121,10 +121,22 @@ Cluster Name
 
 ```yaml
 Type: System.String
-Parameter Sets: ClusterPropertiesSet, ClusterResourceIdParameterSet
+Parameter Sets: ClusterPropertiesSet
 Aliases:
 
 Required: True
+Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+```yaml
+Type: System.String
+Parameter Sets: ClusterResourceIdParameterSet
+Aliases:
+
+Required: False
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -162,7 +174,7 @@ Accept wildcard characters: False
 ```
 
 ### -Tag
-Hashtables which represents resource Tag for Clusters
+Hashtables which represents resource Tags for Clusters
 
 ```yaml
 Type: System.Collections.Hashtable

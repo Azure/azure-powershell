@@ -114,6 +114,7 @@ New-AzVirtualHubVnetConnection -EnableInternetSecurity -Name 'testvnetconnection
 
 
 ### Example 3
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $rgName = "testRg"
 $virtualHubName = "testHub"

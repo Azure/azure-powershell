@@ -61,7 +61,6 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Fixtures
         {
             using (this.Context = new HpcCacheTestContext(this.GetType().Name))
             {
-                this.Context = new HpcCacheTestContext(this.GetType().Name);
                 try
                 {
                     StorageCacheManagementClient storagecacheMgmtClient = this.Context.GetClient<StorageCacheManagementClient>();

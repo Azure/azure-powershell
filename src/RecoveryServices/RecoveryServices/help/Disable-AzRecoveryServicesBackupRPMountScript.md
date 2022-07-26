@@ -23,6 +23,7 @@ The Disable-AzRecoveryServicesBackupRPMountScript cmdlet dismounts the files of 
 ## EXAMPLES
 
 ### Example 1: Dismount a recovery point
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $namedContainer = Get-AzRecoveryServicesBackupContainer  -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
 $backupitem = Get-AzRecoveryServicesBackupItem -Container $namedContainer  -WorkloadType "AzureVM"

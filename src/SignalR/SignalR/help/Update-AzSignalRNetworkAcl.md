@@ -39,6 +39,7 @@ Update the Network ACL of a SignalR service, including the default action and th
 ## EXAMPLES
 
 ### Allow RESTAPI,ClientConnection for public network and set default action to Deny
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $networkAcl = Update-AzSignalRNetworkAcl -Name pssignalr -ResourceGroupName test_resource_group -DefaultAction Deny -PublicNetwork -Allow RESTAPI,ClientConnection
 

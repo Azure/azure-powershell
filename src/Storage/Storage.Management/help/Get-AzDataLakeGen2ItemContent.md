@@ -33,6 +33,7 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: Download a file without prompt
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Get-AzDataLakeGen2ItemContent -FileSystem "filesystem1" -Path "dir1/file1" -Destination $localDestFile -Force
 
@@ -46,6 +47,7 @@ dir1/file1           False        1024            2020-03-23 09:29:18Z rwx---rwx
 This command downloads a file to a local file without prompt.
 
 ### Example 2: Get a file, then pipeline to download the file to a local file
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Get-AzDataLakeGen2Item -FileSystem "filesystem1" -Path "dir1/file1" |  Get-AzDataLakeGen2ItemContent -Destination $localDestFile 
 

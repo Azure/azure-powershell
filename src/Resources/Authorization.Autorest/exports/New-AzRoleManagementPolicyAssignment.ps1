@@ -20,10 +20,8 @@ Create a role management policy assignment
 .Description
 Create a role management policy assignment
 .Example
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-PS C:\> New-AzRoleManagementPolicyAssignment -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
-
-The requested resource does not support http method 'PUT'.
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+New-AzRoleManagementPolicyAssignment -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.Api20201001Preview.IRoleManagementPolicyAssignment

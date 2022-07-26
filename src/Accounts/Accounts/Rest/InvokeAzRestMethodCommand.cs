@@ -100,7 +100,7 @@ namespace Microsoft.Azure.Commands.Profile.Rest
             this.ValidateParameters();
 
             context = DefaultContext;
-            AzureOperationResponse<string> response;
+            AzureOperationResponse<string> response = null;
 
             if (ByParameters.Equals(this.ParameterSetName))
             {
@@ -158,24 +158,36 @@ namespace Microsoft.Azure.Commands.Profile.Rest
                     .GetResourceWithFullResponse(this.Path, this.ApiVersion);
                     break;
                 case "POST":
-                    response = serviceClient
-                    .Operations
-                    .PostResourceWithFullResponse(this.Path, this.ApiVersion, this.Payload);
+                    if (this.ShouldProcess(Path, "POST"))
+                    {
+                        response = serviceClient
+                        .Operations
+                        .PostResourceWithFullResponse(this.Path, this.ApiVersion, this.Payload);
+                    }                    
                     break;
                 case "PUT":
-                    response = serviceClient
-                    .Operations
-                    .PutResourceWithFullResponse(this.Path, this.ApiVersion, this.Payload);
+                    if (this.ShouldProcess(Path, "PUT"))
+                    {
+                        response = serviceClient
+                        .Operations
+                        .PutResourceWithFullResponse(this.Path, this.ApiVersion, this.Payload);
+                    }
                     break;
                 case "PATCH":
-                    response = serviceClient
-                    .Operations
-                    .PatchResourceWithFullResponse(this.Path, this.ApiVersion, this.Payload);
+                    if (this.ShouldProcess(Path, "PATCH"))
+                    {
+                        response = serviceClient
+                        .Operations
+                        .PatchResourceWithFullResponse(this.Path, this.ApiVersion, this.Payload);
+                    }
                     break;
                 case "DELETE":
-                    response = serviceClient
-                    .Operations
-                    .DeleteResourceWithFullResponse(this.Path, this.ApiVersion);
+                    if (this.ShouldProcess(Path, "DELETE"))
+                    {
+                        response = serviceClient
+                        .Operations
+                        .DeleteResourceWithFullResponse(this.Path, this.ApiVersion);
+                    }                    
                     break;
                 default:
                     throw new AzPSArgumentException("Invalid HTTP Method", nameof(Method));

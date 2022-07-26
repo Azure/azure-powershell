@@ -2,6 +2,11 @@
   {
     "alias": "Container Apps",
     "module": "App"
+  }, 
+  {
+    "alias": "Dashboard",
+    "module": "Dashboard",
+    "group": "Grafana"
   },  
   {
     "alias": "Confidential Ledger",
@@ -36,6 +41,10 @@
     "regex": "Snapshot",
     "group": "Virtual Machines",
     "alias": "VM Snapshots"
+  },
+  {
+    "module": "Orbital",
+    "alias": "Orbital"
   },
   {
     "regex": "FluidRelay",

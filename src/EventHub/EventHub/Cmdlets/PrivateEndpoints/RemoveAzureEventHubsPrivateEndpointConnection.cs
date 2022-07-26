@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
             {
                 try
                 {
-                    Client.DeletePrivateEndpointConnection(ResourceGroupName, NamespaceName, Name);
+                    UtilityClient.DeletePrivateEndpointConnection(ResourceGroupName, NamespaceName, Name);
                     if (PassThru)
                     {
                         WriteObject(true);

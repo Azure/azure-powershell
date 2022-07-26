@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                 {
                     try
                     {
-                        Client.DeleteEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
+                        UtilityClient.DeleteEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
                         if (PassThru)
                         {
                             WriteObject(true);

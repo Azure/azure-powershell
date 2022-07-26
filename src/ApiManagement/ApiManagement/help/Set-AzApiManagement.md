@@ -72,6 +72,7 @@ Set-AzApiManagement -InputObject $apim -PassThru
 ```
 
 ### Example 5: Add Managed Certificate to an APIM Service
+<!-- Skip: Output cannot be splitted from code -->
 
 ```powershell
 $gateway=New-AzApiManagementCustomHostnameConfiguration -Hostname freecertCanary.contoso.api -HostnameType Proxy -ManagedCertificate

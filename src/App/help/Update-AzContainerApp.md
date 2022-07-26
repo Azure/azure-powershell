@@ -616,7 +616,7 @@ INGRESSTRAFFIC <ITrafficWeight[]>: Traffic weights for app's revisions
   - `[RevisionName <String>]`: Name of a revision
   - `[Weight <Int32?>]`: Traffic weight assigned to a revision
 
-INPUTOBJECT <IAppIdentity>: Identity Parameter
+INPUTOBJECT `<IAppIdentity>`: Identity Parameter
   - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
   - `[CertificateName <String>]`: Name of the Certificate.
   - `[ComponentName <String>]`: Name of the Dapr Component.

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed a cross-subscription issue
 
 ## Version 1.1.2
 * Added check for invalid IP address

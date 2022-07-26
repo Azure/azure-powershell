@@ -63,6 +63,7 @@ Scale Units          : 10
 Updates BastionHost resource with Basic Sku and 2 Scale Units to Standard Sku and 10 Scale Units
 
 ### Example 2
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $bastionObj = Get-AzBastion -ResourceGroupName "MyRg" -Name "MyBastion"
 $bastionObj

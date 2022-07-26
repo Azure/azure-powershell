@@ -19,10 +19,10 @@ d:\workspace\powershell\build.proj(511,5): error MSB3073: The command "d:\worksp
 ## Where to find StaticAnalysis reports
 
 The StaticAnalysis reports could show up in two different places in the CI build:
-- On the status page in Jenkins, under the Build Artifacts: the relevant files are `BreakingChangeIssues.csv`, `SignatureIssues.csv`, and/or `HelpIssues.csv`.
-- On the status page in Jenkins, click Build Artifacts then navigate to artifacts.  You will see `BreakingChangeIssues.csv`, `SignatureIssues.csv`, and/or `HelpIssues.csv`.
+- On the status page in Jenkins, under the Build Artifacts: the relevant files are `BreakingChangeIssues.csv`, `SignatureIssues.csv`, `HelpIssues.csv` and/or `ExampleIssues.csv`.
+- On the status page in Jenkins, click Build Artifacts then navigate to artifacts.  You will see `BreakingChangeIssues.csv`, `SignatureIssues.csv`, `HelpIssues.csv` and/or `ExampleIssues.csv`.
 
-Locally, the StaticAnalysis report will show up under Azure-PowerShell/artifacts. You will see `BreakingChangeIssues.csv`, `SignatureIssues.csv`, and/or `HelpIssues.csv`.  You can generate these files by running
+Locally, the StaticAnalysis report will show up under Azure-PowerShell/artifacts. You will see `BreakingChangeIssues.csv`, `SignatureIssues.csv`, `HelpIssues.csv` and/or `ExampleIssues.csv`.  You can generate these files by running
 ```
 msbuild build.proj
 ```
@@ -55,11 +55,12 @@ Signature issues occur when your cmdlets do not follow PowerShell standards.  Pl
 Most help issues that cause StaticAnalysis to fail occur when help has not been added for a particular cmdlet.  If you have not generated help for your new cmdlets, please follow the instructions [here](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/help-generation.md). If this is not the issue, follow the steps listed under "Remediation" for each violation listed in HelpIssues.csv.
 
 ### Example Issues
-Example issues occur when your changed markdown files in the `help` folder (_e.g.,_ `src/Accounts/Accounts/help`) violate PowerShell language best practices. Please follow the suggestion displayed in "Remediation" entry for each violation listed in `ExampleIssues.csv`. If you have an issue with severity 0 or 1 that has been approved by the Azure PowerShell team, you can suppress them following these steps:
+Example issues occur when your changed markdown files in the `help` folder (_e.g.,_ `src/Accounts/Accounts/help`) violate PowerShell language best practices. Please follow the suggestion displayed in "Remediation" entry for each violation listed in `ExampleIssues.csv`. Issues with severity 0 or 1 must be addressed, while issues with severity 2 are advisory. To better standardize the writing of documents, please also check the warning issues with severity 2 in log or download the `ExampleIssues.csv` file. If you have an issue with severity 0 or 1 that has been approved by the Azure PowerShell team, you can suppress them following these steps:
+
 - Download the `ExampleIssues.csv` file from the CI pipeline artifacts
 - Open the file using a text editor (such as VS Code) and copy each of the errors you'd like to suppress
 - Paste each of these errors into the `ExampleIssues.csv` file found in their respective [module folder](../tools/StaticAnalysis/Exceptions) (_e.g.,_ if an example issue is being suppressed for Accounts, then you would paste the corresponding line(s) in the `tools/StaticAnalysis/Exceptions/Az.Accounts/ExampleIssue.csv` file) using the same text editor
 - Copy each of the errors you would like to suppress directly from the ExampleIssues.csv file output in the CI pipeline artifacts
 - Push the changes to the .csv file and ensure the errors no longer show up in the `ExampleIssues.csv` file output from the CI pipeline artifacts.
 
-To better standardize the writing of documents, please also check the warning issues with severity 2 by downloading the `ExampleIssues.csv` file.
+If you have unexpected errors, please check whether you have splitted outputs from codes. If outputs cannot be separated from codes, then please add the tag `<!-- Skip: Output cannot be splitted from code -->` to the next line of the example title and in front of the code block.

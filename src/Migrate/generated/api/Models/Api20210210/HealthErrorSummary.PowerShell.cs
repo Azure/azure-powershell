@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="HealthErrorSummary" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="HealthErrorSummary" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,13 +101,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryCode = (string) content.GetValueForProperty("SummaryCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Category = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory?) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Category, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Severity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.Severity?) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Severity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.Severity.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryMessage = (string) content.GetValueForProperty("SummaryMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceType = (string) content.GetValueForProperty("AffectedResourceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceSubtype = (string) content.GetValueForProperty("AffectedResourceSubtype",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceSubtype, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceCorrelationId = (string[]) content.GetValueForProperty("AffectedResourceCorrelationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceCorrelationId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("SummaryCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryCode = (string) content.GetValueForProperty("SummaryCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Category = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory?) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Category, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory.CreateFrom);
+            }
+            if (content.Contains("Severity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Severity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.Severity?) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Severity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.Severity.CreateFrom);
+            }
+            if (content.Contains("SummaryMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryMessage = (string) content.GetValueForProperty("SummaryMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("AffectedResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceType = (string) content.GetValueForProperty("AffectedResourceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("AffectedResourceSubtype"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceSubtype = (string) content.GetValueForProperty("AffectedResourceSubtype",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceSubtype, global::System.Convert.ToString);
+            }
+            if (content.Contains("AffectedResourceCorrelationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceCorrelationId = (string[]) content.GetValueForProperty("AffectedResourceCorrelationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceCorrelationId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -123,13 +146,34 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryCode = (string) content.GetValueForProperty("SummaryCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Category = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory?) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Category, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Severity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.Severity?) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Severity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.Severity.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryMessage = (string) content.GetValueForProperty("SummaryMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceType = (string) content.GetValueForProperty("AffectedResourceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceSubtype = (string) content.GetValueForProperty("AffectedResourceSubtype",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceSubtype, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceCorrelationId = (string[]) content.GetValueForProperty("AffectedResourceCorrelationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceCorrelationId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("SummaryCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryCode = (string) content.GetValueForProperty("SummaryCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("Category"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Category = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory?) content.GetValueForProperty("Category",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Category, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.HealthErrorCategory.CreateFrom);
+            }
+            if (content.Contains("Severity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Severity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.Severity?) content.GetValueForProperty("Severity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).Severity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.Severity.CreateFrom);
+            }
+            if (content.Contains("SummaryMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryMessage = (string) content.GetValueForProperty("SummaryMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).SummaryMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("AffectedResourceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceType = (string) content.GetValueForProperty("AffectedResourceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("AffectedResourceSubtype"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceSubtype = (string) content.GetValueForProperty("AffectedResourceSubtype",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceSubtype, global::System.Convert.ToString);
+            }
+            if (content.Contains("AffectedResourceCorrelationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceCorrelationId = (string[]) content.GetValueForProperty("AffectedResourceCorrelationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummaryInternal)this).AffectedResourceCorrelationId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 
