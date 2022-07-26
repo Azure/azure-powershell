@@ -58,7 +58,7 @@ Update the NetworkRuleSet using -IPRule and -VirtualNetworkRule parameters
 
 ### Example 2
 ```powershell
-$getresult = Get-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375
+$getresult = Get-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Namespace ServiceBus-Namespace1-1375
 Set-AzServiceBusNetworkRuleSet -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-1375 -InputObject $getresult
 ```
 

@@ -12,50 +12,43 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Support.Test.ScenarioTests
 {
-    public class ServiceTests
+    public class ServiceTests : SupportTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public ServiceTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ServiceTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportServiceNoParameter()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportServiceNoParameter");
+            TestRunner.RunTestScript("Get-AzSupportServiceNoParameter");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportServiceByNameParameterSetUsingNameAlias()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportServiceByNameParameterSetUsingNameAlias");
+            TestRunner.RunTestScript("Get-AzSupportServiceByNameParameterSetUsingNameAlias");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportServiceByNameParameterSetUsingId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportServiceByNameParameterSetUsingId");
+            TestRunner.RunTestScript("Get-AzSupportServiceByNameParameterSetUsingId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAzSupportServiceByNameParameterSetUsingCompleteResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSupportServiceByNameParameterSetUsingCompleteResourceId");
+            TestRunner.RunTestScript("Get-AzSupportServiceByNameParameterSetUsingCompleteResourceId");
         }
     }
 }

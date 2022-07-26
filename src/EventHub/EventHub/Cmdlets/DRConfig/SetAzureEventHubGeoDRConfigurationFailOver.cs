@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
             {
                 try
                 {
-                    Client.SetEventHubDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
+                    UtilityClient.SetEventHubDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
                     if (PassThru)
                     {
                         WriteObject(true);

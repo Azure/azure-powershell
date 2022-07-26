@@ -37,6 +37,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// </summary>
         private global::System.Threading.CancellationTokenSource _cancellationTokenSource = new global::System.Threading.CancellationTokenSource();
 
+        /// <summary>An Application Insights component definition.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent _insightPropertiesBody = new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ApplicationInsightsComponent();
+
         /// <summary>Type of application being monitored.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Type of application being monitored.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Body)]
@@ -47,7 +50,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"Application_Type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType ApplicationType { get => InsightPropertiesBody.ApplicationType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType)""); set => InsightPropertiesBody.ApplicationType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType ApplicationType { get => _insightPropertiesBody.ApplicationType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.ApplicationType)""); set => _insightPropertiesBody.ApplicationType = value; }
 
         /// <summary>Wait for .NET debugger to attach</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "Wait for .NET debugger to attach")]
@@ -79,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"Flow_Type",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FlowType) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FlowType))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FlowType FlowType { get => InsightPropertiesBody.FlowType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FlowType)""); set => InsightPropertiesBody.FlowType = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FlowType FlowType { get => _insightPropertiesBody.FlowType ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.FlowType)""); set => _insightPropertiesBody.FlowType = value; }
 
         /// <summary>
         /// The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.
@@ -92,7 +95,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"The unique application ID created when a new application is added to HockeyApp, used for communications with HockeyApp.",
         SerializedName = @"HockeyAppId",
         PossibleTypes = new [] { typeof(string) })]
-        public string HockeyAppId { get => InsightPropertiesBody.HockeyAppId ?? null; set => InsightPropertiesBody.HockeyAppId = value; }
+        public string HockeyAppId { get => _insightPropertiesBody.HockeyAppId ?? null; set => _insightPropertiesBody.HockeyAppId = value; }
 
         /// <summary>SendAsync Pipeline Steps to be appended to the front of the pipeline</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, DontShow = true, HelpMessage = "SendAsync Pipeline Steps to be appended to the front of the pipeline")]
@@ -114,12 +117,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ParameterCategory.Path)]
         public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity InputObject { get => this._inputObject; set => this._inputObject = value; }
 
-        /// <summary>Backing field for <see cref="InsightPropertiesBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent _insightPropertiesBody= new Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.ApplicationInsightsComponent();
-
-        /// <summary>An Application Insights component definition.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IApplicationInsightsComponent InsightPropertiesBody { get => this._insightPropertiesBody; set => this._insightPropertiesBody = value; }
-
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
 
@@ -135,7 +132,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"The kind of application that this component refers to, used to customize UI. This value is a freeform string, values should typically be one of the following: web, ios, other, store, java, phone.",
         SerializedName = @"kind",
         PossibleTypes = new [] { typeof(string) })]
-        public string Kind { get => InsightPropertiesBody.Kind ?? null; set => InsightPropertiesBody.Kind = value; }
+        public string Kind { get => _insightPropertiesBody.Kind ?? null; set => _insightPropertiesBody.Kind = value; }
 
         /// <summary>Resource location</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Resource location")]
@@ -146,14 +143,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Resource location",
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
-        public string Location { get => InsightPropertiesBody.Location ?? null; set => InsightPropertiesBody.Location = value; }
+        public string Location { get => _insightPropertiesBody.Location ?? null; set => _insightPropertiesBody.Location = value; }
 
         /// <summary>
-        /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
+        /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
 
-        /// <summary><see cref="IEventListener" /> cancellation token.</summary>
+        /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
         /// <summary>
@@ -190,7 +187,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         SerializedName = @"Request_Source",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource) })]
         [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource))]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource RequestSource { get => InsightPropertiesBody.RequestSource ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource)""); set => InsightPropertiesBody.RequestSource = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource RequestSource { get => _insightPropertiesBody.RequestSource ?? ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Support.RequestSource)""); set => _insightPropertiesBody.RequestSource = value; }
 
         /// <summary>
         /// Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.
@@ -203,7 +200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Percentage of the data produced by the application being monitored that is being sampled for Application Insights telemetry.",
         SerializedName = @"SamplingPercentage",
         PossibleTypes = new [] { typeof(double) })]
-        public double SamplingPercentage { get => InsightPropertiesBody.SamplingPercentage ?? default(double); set => InsightPropertiesBody.SamplingPercentage = value; }
+        public double SamplingPercentage { get => _insightPropertiesBody.SamplingPercentage ?? default(double); set => _insightPropertiesBody.SamplingPercentage = value; }
 
         /// <summary>Resource tags</summary>
         [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.ExportAs(typeof(global::System.Collections.Hashtable))]
@@ -215,7 +212,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         Description = @"Resource tags",
         SerializedName = @"tags",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentsResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentsResourceTags Tag { get => InsightPropertiesBody.Tag ?? null /* object */; set => InsightPropertiesBody.Tag = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20150501.IComponentsResourceTags Tag { get => _insightPropertiesBody.Tag ?? null /* object */; set => _insightPropertiesBody.Tag = value; }
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
@@ -234,6 +231,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -245,7 +247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -356,7 +358,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.Functions.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -373,7 +374,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletBeforeAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                     if (InputObject?.Id != null)
                     {
-                        await this.Client.ComponentsCreateOrUpdateViaIdentity(InputObject.Id, InsightPropertiesBody, onOk, this, Pipeline);
+                        await this.Client.ComponentsCreateOrUpdateViaIdentity(InputObject.Id, _insightPropertiesBody, onOk, this, Pipeline);
                     }
                     else
                     {
@@ -390,13 +391,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
                         {
                             ThrowTerminatingError( new global::System.Management.Automation.ErrorRecord(new global::System.Exception("InputObject has null value for InputObject.ResourceName"),string.Empty, global::System.Management.Automation.ErrorCategory.InvalidArgument, InputObject) );
                         }
-                        await this.Client.ComponentsCreateOrUpdate(InputObject.ResourceGroupName ?? null, InputObject.SubscriptionId ?? null, InputObject.ResourceName ?? null, InsightPropertiesBody, onOk, this, Pipeline);
+                        await this.Client.ComponentsCreateOrUpdate(InputObject.ResourceGroupName ?? null, InputObject.SubscriptionId ?? null, InputObject.ResourceName ?? null, _insightPropertiesBody, onOk, this, Pipeline);
                     }
                     await ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.Events.CmdletAfterAPICall); if( ((Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 }
                 catch (Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.UndeclaredResponseException urexception)
                 {
-                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=InsightPropertiesBody})
+                    WriteError(new global::System.Management.Automation.ErrorRecord(urexception, urexception.StatusCode.ToString(), global::System.Management.Automation.ErrorCategory.InvalidOperation, new {  body=_insightPropertiesBody})
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(urexception.Message) { RecommendedAction = urexception.Action }
                     });

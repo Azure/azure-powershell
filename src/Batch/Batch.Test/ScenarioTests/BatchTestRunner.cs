@@ -25,9 +25,22 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    // Needs more initialize parameters after setup HttpMockServer.
     public class BatchTestRunner
     {
+        internal static string BatchAccount;
+        internal static string BatchAccountKey;
+        internal static string BatchAccountUrl;
+        internal static string BatchResourceGroup;
+        internal static string Subscription;
+
+        public ResourceManagementClient ResourceManagementClient { get; private set; }
+
+        public BatchManagementClient BatchManagementClient { get; private set; }
+
+        public NetworkManagementClient NetworkManagementClient { get; private set; }
+
+        public AzureRestClient AzureRestClient { get; private set; }
+
         protected readonly ITestRunner TestRunner;
 
         protected BatchTestRunner(ITestOutputHelper output)
@@ -59,7 +72,65 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                         {"Microsoft.Authorization", null}
                     }
                 )
+                .WithManagementClients(
+                    GetResourceManagementClient,
+                    GetBatchManagementClient,
+                    GetNetworkManagementClient,
+                    GetAzureRestClient
+                )
                 .Build();
+        }
+
+        private ResourceManagementClient GetResourceManagementClient(MockContext context)
+        {
+            var client = context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            ResourceManagementClient = client;
+            return client;
+        }
+
+        private BatchManagementClient GetBatchManagementClient(MockContext context)
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            {
+                BatchAccount = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountName);
+                BatchAccountKey = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountKey);
+                BatchAccountUrl = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountEndpoint);
+                BatchResourceGroup = Environment.GetEnvironmentVariable(ScenarioTestHelpers.BatchAccountResourceGroup);
+
+                HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountName] = BatchAccount;
+                HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountEndpoint] = BatchAccountUrl;
+                HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountResourceGroup] = BatchResourceGroup;
+            }
+            else if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                BatchAccount = HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountName];
+                BatchAccountKey = "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000==";
+                BatchAccountUrl = HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountEndpoint];
+
+                if (HttpMockServer.Variables.ContainsKey(ScenarioTestHelpers.BatchAccountResourceGroup))
+                {
+                    BatchResourceGroup = HttpMockServer.Variables[ScenarioTestHelpers.BatchAccountResourceGroup];
+                }
+            }
+
+            var client = context.GetServiceClient<BatchManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            Subscription = client.SubscriptionId;
+            BatchManagementClient = client;
+            return client;
+        }
+
+        private NetworkManagementClient GetNetworkManagementClient(MockContext context)
+        {
+            var client = context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            NetworkManagementClient = client;
+            return client;
+        }
+
+        private AzureRestClient GetAzureRestClient(MockContext context)
+        {
+            var client = context.GetServiceClient<AzureRestClient>(TestEnvironmentFactory.GetTestEnvironment());
+            AzureRestClient = client;
+            return client;
         }
     }
 }

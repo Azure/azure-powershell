@@ -15,6 +15,7 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Linq;
 using System.Management.Automation;
 
@@ -81,10 +82,17 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                 {
                     if (ParameterSetName.Equals(NetwrokruleSetPropertiesParameterSet))
                     {
-                        WriteObject(Client.UpdateNetworkRuleSet(resourceGroupName: ResourceGroupName,
+                        bool? trustedServiceAccessEnabled = null;
+                            
+                        if(this.IsParameterBound(c => c.TrustedServiceAccessEnabled) == true)
+                        {
+                            trustedServiceAccessEnabled = TrustedServiceAccessEnabled.IsPresent;
+                        }
+
+                        WriteObject(UtilityClient.UpdateNetworkRuleSet(resourceGroupName: ResourceGroupName,
                                                                 namespaceName: Name,
                                                                 publicNetworkAccess: PublicNetworkAccess,
-                                                                trustedServiceAccessEnabled: TrustedServiceAccessEnabled,
+                                                                trustedServiceAccessEnabled: trustedServiceAccessEnabled,
                                                                 defaultAction: DefaultAction,
                                                                 iPRule: IPRule,
                                                                 virtualNetworkRule: VirtualNetworkRule));
@@ -92,20 +100,20 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
 
                     if (ParameterSetName.Equals(NetwrokruleSetInputObjectParameterSet))
                     {
-                        WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, InputObject));
+                        WriteObject(UtilityClient.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, InputObject));
                     }
 
                     if (ParameterSetName.Equals("NetworkRuleSetResourceIdParameterSet"))
                     {
                         ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
 
-                        PSNetworkRuleSetAttributes getNWRuleSet = Client.GetNetworkRuleSet(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource);
+                        PSNetworkRuleSetAttributes getNWRuleSet = UtilityClient.GetNetworkRuleSet(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource);
 
                         if (ResourceGroupName != null && getParamGeoDR.ResourceName != null)
                         {
                             if (ShouldProcess(target: Name, action: string.Format("updating NetwrokruleSet", Name, ResourceGroupName)))
                             {
-                                WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, getNWRuleSet));
+                                WriteObject(UtilityClient.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, getNWRuleSet));
                             }
                         }
                     }

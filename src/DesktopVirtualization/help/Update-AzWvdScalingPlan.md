@@ -342,7 +342,7 @@ HOSTPOOLREFERENCE <IScalingHostPoolReference[]>: List of ScalingHostPoolReferenc
   - `[HostPoolArmPath <String>]`: Arm path of referenced hostpool.
   - `[ScalingPlanEnabled <Boolean?>]`: Is the scaling plan enabled for this hostpool.
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+INPUTOBJECT `<IDesktopVirtualizationIdentity>`: Identity Parameter
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group

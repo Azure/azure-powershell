@@ -15,21 +15,15 @@
 namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
 {
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
 
     /// <summary>
     /// Scenario tests for integration account certificate commands.
     /// </summary>
-    public class IntegrationAccountCertificateTests : RMTestBase
+    public class IntegrationAccountCertificateTests : LogicAppTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IntegrationAccountCertificateTests(Xunit.Abstractions.ITestOutputHelper output)
+        public IntegrationAccountCertificateTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         /// <summary>
@@ -39,7 +33,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateCertificate()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountCertificate");
+            TestRunner.RunTestScript("Test-CreateIntegrationAccountCertificate");
         }
 
         /// <summary>
@@ -49,7 +43,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateCertificatePrivateKey()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountCertificatePrivateKey");
+            TestRunner.RunTestScript("Test-CreateIntegrationAccountCertificatePrivateKey");
         }
 
         /// <summary>
@@ -59,7 +53,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetCertificate()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-GetIntegrationAccountCertificate");
+            TestRunner.RunTestScript("Test-GetIntegrationAccountCertificate");
         }
 
         /// <summary>
@@ -69,7 +63,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoveCertificate()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-RemoveIntegrationAccountCertificate");
+            TestRunner.RunTestScript("Test-RemoveIntegrationAccountCertificate");
         }
 
         /// <summary>
@@ -79,7 +73,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateCertificate()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-UpdateIntegrationAccountCertificate");
+            TestRunner.RunTestScript("Test-UpdateIntegrationAccountCertificate");
         }
 
         /// <summary>
@@ -89,7 +83,7 @@ namespace Microsoft.Azure.Commands.LogicApp.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateCertificatePublicKey()
         {
-            WorkflowController.NewInstance.RunPowerShellTest(_logger, "Test-CreateIntegrationAccountCertificatePublicKey");
+            TestRunner.RunTestScript("Test-CreateIntegrationAccountCertificatePublicKey");
         }
     }
 }

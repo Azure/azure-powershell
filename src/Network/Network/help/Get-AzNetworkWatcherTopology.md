@@ -39,7 +39,7 @@ Note: If resources from multiple regions reside in the resource group, only the 
 ### Example 1: Get an Azure Topology
 ```powershell
 $networkWatcher = Get-AzNetworkWatcher -Name NetworkWatcher_westcentralus -ResourceGroupName NetworkWatcherRG 
-Get-AzNetworkWatcherTopology -NetworkWatcher $networkWatcher -ResourceGroupName testresourcegroup
+Get-AzNetworkWatcherTopology -NetworkWatcher $networkWatcher -TargetResourceGroupName testresourcegroup
 ```
 
 ```output

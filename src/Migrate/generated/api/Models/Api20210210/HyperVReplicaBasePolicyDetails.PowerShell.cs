@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="HyperVReplicaBasePolicyDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="HyperVReplicaBasePolicyDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,17 +103,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).RecoveryPoint = (int?) content.GetValueForProperty("RecoveryPoint",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).RecoveryPoint, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ApplicationConsistentSnapshotFrequencyInHour = (int?) content.GetValueForProperty("ApplicationConsistentSnapshotFrequencyInHour",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ApplicationConsistentSnapshotFrequencyInHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).Compression = (string) content.GetValueForProperty("Compression",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).Compression, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).InitialReplicationMethod = (string) content.GetValueForProperty("InitialReplicationMethod",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).InitialReplicationMethod, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OnlineReplicationStartTime = (string) content.GetValueForProperty("OnlineReplicationStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OnlineReplicationStartTime, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationImportPath = (string) content.GetValueForProperty("OfflineReplicationImportPath",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationImportPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationExportPath = (string) content.GetValueForProperty("OfflineReplicationExportPath",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationExportPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicationPort = (int?) content.GetValueForProperty("ReplicationPort",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicationPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).AllowedAuthenticationType = (int?) content.GetValueForProperty("AllowedAuthenticationType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).AllowedAuthenticationType, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicaDeletionOption = (string) content.GetValueForProperty("ReplicaDeletionOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicaDeletionOption, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicyProviderSpecificDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicyProviderSpecificDetailsInternal)this).InstanceType, global::System.Convert.ToString);
+            if (content.Contains("RecoveryPoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).RecoveryPoint = (int?) content.GetValueForProperty("RecoveryPoint",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).RecoveryPoint, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ApplicationConsistentSnapshotFrequencyInHour"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ApplicationConsistentSnapshotFrequencyInHour = (int?) content.GetValueForProperty("ApplicationConsistentSnapshotFrequencyInHour",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ApplicationConsistentSnapshotFrequencyInHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Compression"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).Compression = (string) content.GetValueForProperty("Compression",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).Compression, global::System.Convert.ToString);
+            }
+            if (content.Contains("InitialReplicationMethod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).InitialReplicationMethod = (string) content.GetValueForProperty("InitialReplicationMethod",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).InitialReplicationMethod, global::System.Convert.ToString);
+            }
+            if (content.Contains("OnlineReplicationStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OnlineReplicationStartTime = (string) content.GetValueForProperty("OnlineReplicationStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OnlineReplicationStartTime, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfflineReplicationImportPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationImportPath = (string) content.GetValueForProperty("OfflineReplicationImportPath",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationImportPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfflineReplicationExportPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationExportPath = (string) content.GetValueForProperty("OfflineReplicationExportPath",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationExportPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReplicationPort"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicationPort = (int?) content.GetValueForProperty("ReplicationPort",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicationPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AllowedAuthenticationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).AllowedAuthenticationType = (int?) content.GetValueForProperty("AllowedAuthenticationType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).AllowedAuthenticationType, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ReplicaDeletionOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicaDeletionOption = (string) content.GetValueForProperty("ReplicaDeletionOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicaDeletionOption, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicyProviderSpecificDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicyProviderSpecificDetailsInternal)this).InstanceType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -129,17 +164,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).RecoveryPoint = (int?) content.GetValueForProperty("RecoveryPoint",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).RecoveryPoint, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ApplicationConsistentSnapshotFrequencyInHour = (int?) content.GetValueForProperty("ApplicationConsistentSnapshotFrequencyInHour",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ApplicationConsistentSnapshotFrequencyInHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).Compression = (string) content.GetValueForProperty("Compression",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).Compression, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).InitialReplicationMethod = (string) content.GetValueForProperty("InitialReplicationMethod",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).InitialReplicationMethod, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OnlineReplicationStartTime = (string) content.GetValueForProperty("OnlineReplicationStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OnlineReplicationStartTime, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationImportPath = (string) content.GetValueForProperty("OfflineReplicationImportPath",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationImportPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationExportPath = (string) content.GetValueForProperty("OfflineReplicationExportPath",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationExportPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicationPort = (int?) content.GetValueForProperty("ReplicationPort",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicationPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).AllowedAuthenticationType = (int?) content.GetValueForProperty("AllowedAuthenticationType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).AllowedAuthenticationType, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicaDeletionOption = (string) content.GetValueForProperty("ReplicaDeletionOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicaDeletionOption, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicyProviderSpecificDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicyProviderSpecificDetailsInternal)this).InstanceType, global::System.Convert.ToString);
+            if (content.Contains("RecoveryPoint"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).RecoveryPoint = (int?) content.GetValueForProperty("RecoveryPoint",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).RecoveryPoint, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ApplicationConsistentSnapshotFrequencyInHour"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ApplicationConsistentSnapshotFrequencyInHour = (int?) content.GetValueForProperty("ApplicationConsistentSnapshotFrequencyInHour",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ApplicationConsistentSnapshotFrequencyInHour, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Compression"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).Compression = (string) content.GetValueForProperty("Compression",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).Compression, global::System.Convert.ToString);
+            }
+            if (content.Contains("InitialReplicationMethod"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).InitialReplicationMethod = (string) content.GetValueForProperty("InitialReplicationMethod",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).InitialReplicationMethod, global::System.Convert.ToString);
+            }
+            if (content.Contains("OnlineReplicationStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OnlineReplicationStartTime = (string) content.GetValueForProperty("OnlineReplicationStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OnlineReplicationStartTime, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfflineReplicationImportPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationImportPath = (string) content.GetValueForProperty("OfflineReplicationImportPath",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationImportPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("OfflineReplicationExportPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationExportPath = (string) content.GetValueForProperty("OfflineReplicationExportPath",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).OfflineReplicationExportPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReplicationPort"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicationPort = (int?) content.GetValueForProperty("ReplicationPort",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicationPort, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AllowedAuthenticationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).AllowedAuthenticationType = (int?) content.GetValueForProperty("AllowedAuthenticationType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).AllowedAuthenticationType, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ReplicaDeletionOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicaDeletionOption = (string) content.GetValueForProperty("ReplicaDeletionOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaBasePolicyDetailsInternal)this).ReplicaDeletionOption, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicyProviderSpecificDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPolicyProviderSpecificDetailsInternal)this).InstanceType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

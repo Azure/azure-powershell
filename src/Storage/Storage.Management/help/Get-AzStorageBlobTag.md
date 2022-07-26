@@ -42,6 +42,7 @@ The **Get-AzStorageBlobTag** gets blob tags of a specific blob.
 ## EXAMPLES
 
 ### Example 1: Get blob tags on a specific blob
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Get-AzStorageBlobTag -Container "containername" -Blob testblob
 
@@ -54,6 +55,7 @@ tag2                           value2
 This command gets blob tags on a specific blob.
 
 ### Example 2: Get blob tags on a specific blob with tag condition
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> Get-AzStorageBlobTag -Container "containername" -Blob testblob -TagCondition """tag1""='value1'"
 

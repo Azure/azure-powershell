@@ -27,7 +27,7 @@ The **Disable-AzSqlInstanceAdvancedDataSecurity** cmdlet disables Advanced Data 
 ```powershell
 Disable-AzSqlInstanceAdvancedDataSecurity `
             -ResourceGroupName "ResourceGroup01" `
-            -InstanceName "ManagedInstance01" `
+            -InstanceName "ManagedInstance01"
 ```
 
 ```output

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 {
                     if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyNamesapce, Name, Namespace)))
                     {
-                        WriteObject(Client.SetRegenerateKeys(ResourceGroupName, Namespace, Name, RegenerateKey, KeyValue));
+                        WriteObject(UtilityClient.SetRegenerateKeys(ResourceGroupName, Namespace, Name, RegenerateKey, KeyValue));
                     }
                 }
 
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 {
                     if (ShouldProcess(target: RegenerateKey, action: string.Format(Resources.RegenerateKeyEventHub, Name, EventHub)))
                     {
-                        WriteObject(Client.SetRegenerateKeys(ResourceGroupName, Namespace, EventHub, Name, RegenerateKey, KeyValue));
+                        WriteObject(UtilityClient.SetRegenerateKeys(ResourceGroupName, Namespace, EventHub, Name, RegenerateKey, KeyValue));
                     }
                 }
             }

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Get an App Service plan.
+Get an App Service plan.
 .Description
-Description for Get an App Service plan.
+Get an App Service plan.
 .Example
 Get-AzFunctionAppPlan
 .Example
@@ -202,6 +202,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.Functions.private\Get-AzFunctionAppPlan_Get';
             GetViaIdentity = 'Az.Functions.private\Get-AzFunctionAppPlan_GetViaIdentity';
@@ -217,6 +218,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -225,15 +227,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

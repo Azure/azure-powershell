@@ -14,9 +14,10 @@ Creates or updates a BackupVault resource belonging to a resource group.
 
 ```
 New-AzDataProtectionBackupVault -Location <String> -ResourceGroupName <String>
- -StorageSetting <IStorageSetting[]> -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>]
- [-ETag <String>] [-IdentityType <String>] [-NoWait] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -StorageSetting <IStorageSetting[]> -VaultName <String> [-AsJob]
+ [-AzureMonitorAlertsForAllJobFailure <AlertsState>] [-DefaultProfile <PSObject>] [-ETag <String>]
+ [-IdentityType <String>] [-NoWait] [-SubscriptionId <String>] [-Tag <Hashtable>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,22 @@ This command creates a new backup vault.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AzureMonitorAlertsForAllJobFailure
+Parameter to Enable or Disable built-in azure monitor alerts for job failures.
+Security alerts cannot be disabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState
 Parameter Sets: (All)
 Aliases:
 
@@ -152,7 +169,7 @@ Use New-AzDataProtectionBackupVaultStorageSetting Cmdlet to Create.
 To construct, see NOTES section for STORAGESETTING properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSetting[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IStorageSetting[]
 Parameter Sets: (All)
 Aliases:
 

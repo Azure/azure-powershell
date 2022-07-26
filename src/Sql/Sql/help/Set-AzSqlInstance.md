@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzSqlInstance
 
 ## SYNOPSIS
-Sets properties for an Azure SQL Database Managed Instance.
+Sets properties for an Azure SQL Managed Instance.
 
 ## SYNTAX
 
@@ -49,7 +49,7 @@ Set-AzSqlInstance [-ResourceId] <String> [-AdministratorPassword <SecureString>]
 ```
 
 ## DESCRIPTION
-The **Set-AzSqlInstance** cmdlet modifies properties of an Azure SQL Database Managed instance.
+The **Set-AzSqlInstance** cmdlet modifies properties of an Azure SQL Managed instance.
 
 ## EXAMPLES
 
@@ -159,6 +159,7 @@ DnsZone                    : ad35cna0mw
 InstancePoolName           :
 MinimalTlsVersion          :
 BackupStorageRedundancy    : Geo
+CurrentBackupStorageRedundancy    : Geo
 MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_WestUS_MI_2
 ```
 
@@ -193,6 +194,7 @@ DnsZone                    : ad35cna0mw
 InstancePoolName           :
 MinimalTlsVersion          :
 BackupStorageRedundancy    : Geo
+CurrentBackupStorageRedundancy    : Geo
 MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default
 ```
 
@@ -227,6 +229,7 @@ DnsZone                    : ad35cna0mw
 InstancePoolName           :
 MinimalTlsVersion          :
 BackupStorageRedundancy    : Geo
+CurrentBackupStorageRedundancy    : Geo
 MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default
 ```
 
@@ -261,11 +264,49 @@ DnsZone                    : ad35cna0mw
 InstancePoolName           :
 MinimalTlsVersion          :
 BackupStorageRedundancy    : Geo
+CurrentBackupStorageRedundancy    : Geo
 MaintenanceConfigurationId : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default
 ZoneRedundant              : true
 ```
 
 This command moves managed instance to another subnet
+
+### Example 8: Update backup storage redundancy on existing instance
+```powershell
+Set-AzSqlInstance -Name "managediInstance1" -ResourceGroupName "Resourcegroup01" -BackupStorageRedundancy Local -Force
+```
+
+```output
+Location                         : westus
+Id                               : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1
+ResourceGroupName                : resourcegroup01
+ManagedInstanceName              : managedInstance1
+Tags                             :
+Identity                         :
+Sku                              : Microsoft.Azure.Management.Internal.Resources.Models.Sku
+FullyQualifiedDomainName         : managedInstance1.wusxxxxxxxxxxxxx.database.windows.net
+AdministratorLogin               : adminLogin1
+AdministratorPassword            :
+SubnetId                         : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/target_subnet_name
+LicenseType                      : LicenseIncluded
+VCores                           : 8
+StorageSizeInGB                  : 256
+Collation                        : SQL_Latin1_General_CP1_CI_AS
+PublicDataEndpointEnabled        : False
+ProxyOverride                    :
+TimezoneId                       : UTC
+DnsZonePartner                   :
+DnsZone                          : ad35cna0mw
+InstancePoolName                 :
+MinimalTlsVersion                :
+BackupStorageRedundancy          : Geo
+CurrentBackupStorageRedundancy   : Geo
+RequestedBackupStorageRedundancy : Local
+MaintenanceConfigurationId       : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default
+ZoneRedundant                    : False
+```
+
+This command changes backups storage redundancy type for managed instance
 
 ## PARAMETERS
 

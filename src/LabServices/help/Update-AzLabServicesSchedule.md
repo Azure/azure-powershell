@@ -340,7 +340,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-LAB <Lab>: 
+LAB `<Lab>`: 
   - `Location <String>`: The geo-location where the resource lives
   - `[AdditionalCapabilityInstallGpuDriver <EnableState?>]`: Flag to pre-install dedicated GPU drivers.
   - `[AdminUserPassword <String>]`: The password for the user. This is required for the TemplateVM createOption.

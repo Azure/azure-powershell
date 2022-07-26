@@ -25,12 +25,12 @@ New-AzDnsResolver -Name sampleResolver -ResourceGroupName powershell-test-rg -Vi
 New-AzDnsResolver -Name sampleResolver -ResourceGroupName powershell-test-rg -VirtualNetworkId /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname16y71mjc -Location westus2 -Tag @{"key0" = "value0"}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver
+Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver
 .Link
 https://docs.microsoft.com/powershell/module/az.dnsresolver/new-azdnsresolver
 #>
 function New-AzDnsResolver {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -75,18 +75,18 @@ param(
     # The geo-location where the resource lives
     ${Location},
 
+    [Parameter(Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
+    [System.String]
+    # Resource ID.
+    ${VirtualNetworkId},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20.ITrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Category('Body')]
-    [System.String]
-    # Resource ID.
-    ${VirtualNetworkId},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -155,6 +155,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             CreateExpanded = 'Az.DnsResolver.private\New-AzDnsResolver_CreateExpanded';
         }
@@ -168,6 +186,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -176,15 +195,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

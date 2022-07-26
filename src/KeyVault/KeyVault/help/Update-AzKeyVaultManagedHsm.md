@@ -75,7 +75,7 @@ Updates tags for the managed Hsm using piping syntax.
 
 ### Example 3: Enable purge protection for a managed Hsm
 ```powershell
-PS C:\> Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName -EnablePurgeProtection | fl
+Update-AzKeyVaultManagedHsm -Name $hsmName -ResourceGroupName $resourceGroupName -EnablePurgeProtection | Format-List
 ```
 
 ```output

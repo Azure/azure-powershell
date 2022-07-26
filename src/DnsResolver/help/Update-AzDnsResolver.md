@@ -53,6 +53,7 @@ Location Name                      Type                           Etag
 -------- ----                      ----                           ----
 westus2  psdnsresolvername33nmy1fz Microsoft.Network/dnsResolvers "0000efd6-0000-0800-0000-60401c7c0000"
 ```
+
 This command updates an existing DNS Resolver by identity ( removing tag ).
 
 ## PARAMETERS
@@ -236,7 +237,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver
 
 ## NOTES
 
@@ -247,7 +248,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDnsResolverIdentity>: Identity Parameter
+`INPUTOBJECT <IDnsResolverIdentity>`: Identity Parameter
   - `[DnsForwardingRulesetName <String>]`: The name of the DNS forwarding ruleset.
   - `[DnsResolverName <String>]`: The name of the DNS resolver.
   - `[ForwardingRuleName <String>]`: The name of the forwarding rule.

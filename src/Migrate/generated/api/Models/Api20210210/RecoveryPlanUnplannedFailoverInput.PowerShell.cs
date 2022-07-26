@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="RecoveryPlanUnplannedFailoverInput" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="RecoveryPlanUnplannedFailoverInput" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInput FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,10 +105,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.RecoveryPlanUnplannedFailoverInputPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).FailoverDirection = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections) content.GetValueForProperty("FailoverDirection",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).FailoverDirection, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).SourceSiteOperation = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SourceSiteOperations) content.GetValueForProperty("SourceSiteOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).SourceSiteOperation, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SourceSiteOperations.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).ProviderSpecificDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanProviderSpecificFailoverInput[]) content.GetValueForProperty("ProviderSpecificDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).ProviderSpecificDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanProviderSpecificFailoverInput>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.RecoveryPlanProviderSpecificFailoverInputTypeConverter.ConvertFrom));
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.RecoveryPlanUnplannedFailoverInputPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FailoverDirection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).FailoverDirection = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections) content.GetValueForProperty("FailoverDirection",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).FailoverDirection, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections.CreateFrom);
+            }
+            if (content.Contains("SourceSiteOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).SourceSiteOperation = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SourceSiteOperations) content.GetValueForProperty("SourceSiteOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).SourceSiteOperation, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SourceSiteOperations.CreateFrom);
+            }
+            if (content.Contains("ProviderSpecificDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).ProviderSpecificDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanProviderSpecificFailoverInput[]) content.GetValueForProperty("ProviderSpecificDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).ProviderSpecificDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanProviderSpecificFailoverInput>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.RecoveryPlanProviderSpecificFailoverInputTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -122,10 +138,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.RecoveryPlanUnplannedFailoverInputPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).FailoverDirection = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections) content.GetValueForProperty("FailoverDirection",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).FailoverDirection, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).SourceSiteOperation = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SourceSiteOperations) content.GetValueForProperty("SourceSiteOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).SourceSiteOperation, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SourceSiteOperations.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).ProviderSpecificDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanProviderSpecificFailoverInput[]) content.GetValueForProperty("ProviderSpecificDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).ProviderSpecificDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanProviderSpecificFailoverInput>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.RecoveryPlanProviderSpecificFailoverInputTypeConverter.ConvertFrom));
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.RecoveryPlanUnplannedFailoverInputPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FailoverDirection"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).FailoverDirection = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections) content.GetValueForProperty("FailoverDirection",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).FailoverDirection, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PossibleOperationsDirections.CreateFrom);
+            }
+            if (content.Contains("SourceSiteOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).SourceSiteOperation = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SourceSiteOperations) content.GetValueForProperty("SourceSiteOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).SourceSiteOperation, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SourceSiteOperations.CreateFrom);
+            }
+            if (content.Contains("ProviderSpecificDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).ProviderSpecificDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanProviderSpecificFailoverInput[]) content.GetValueForProperty("ProviderSpecificDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanUnplannedFailoverInputInternal)this).ProviderSpecificDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IRecoveryPlanProviderSpecificFailoverInput>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.RecoveryPlanProviderSpecificFailoverInputTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -40,6 +40,7 @@ The **Set-AzStorageObjectReplicationPolicy** cmdlet creates or updates the speci
 ## EXAMPLES
 
 ### Example 1: Set object replication policy to both destination and source account.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $rule1 = New-AzStorageObjectReplicationPolicyRule -SourceContainer src1 -DestinationContainer dest1 
 

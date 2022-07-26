@@ -116,7 +116,7 @@ TunnelConnectionStatus  : []
 ### Example 3: Add/Remove natRules to an existing VirtualNetworkGatewayConnection
 ```powershell
 $conn = Get-AzVirtualNetworkGatewayConnection -Name 1 -ResourceGroupName myRG
-$egressNatrule = Get-azVirtualNetworkGatewayNatRule -ResourceGroupName myRG -Name "natRule1" -ParentResourceName "gw1"
+$egressNatrule = Get-AzVirtualNetworkGatewayNatRule -ResourceGroupName myRG -Name "natRule1" -ParentResourceName "gw1"
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $conn -IngressNatRule @() -EgressNatRule $egressNatrule
 ```
 

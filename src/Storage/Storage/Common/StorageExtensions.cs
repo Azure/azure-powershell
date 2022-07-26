@@ -26,7 +26,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     {
         private const int CopySASLifeTimeInMinutes = 7 * 24 * 60;
 
-        // The Oauth delegate SAS expire time must be in 7 days. 
+        // The Oauth delegate SAS expire time must be in 7 days.
         // As client and server has time difference, to make it more stable, the time will be 2 hour less than 7 days.
         private const int CopySASLifeTimeInMinutesOauth = 7 * 24 * 60 - 2 * 60;
 
@@ -164,6 +164,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// Append an auto generated SAS to a blob uri.
         /// </summary>
         /// <param name="blob">Blob to append SAS.</param>
+        /// <param name="context">The storage context for the storage account</param>
         /// <returns>Blob Uri with SAS appended.</returns>
         internal static Uri GenerateUriWithCredentials(
             this BlobBaseClient blob, AzureStorageContext context)

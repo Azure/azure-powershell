@@ -71,12 +71,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
 
                 if (string.IsNullOrEmpty(Name))
                 {
-                    IEnumerable<PSEventHubsSchemaRegistryAttributes> schemaGroups = Client.ListSchemaGroupByNamespace(ResourceGroupName, Namespace);
+                    IEnumerable<PSEventHubsSchemaRegistryAttributes> schemaGroups = UtilityClient.ListSchemaGroupByNamespace(ResourceGroupName, Namespace);
                     WriteObject(schemaGroups.ToList(), true);
                 }
                 else if (!string.IsNullOrEmpty(Name))
                 {
-                    PSEventHubsSchemaRegistryAttributes schemaGroup = Client.GetSchemaGroup(ResourceGroupName, Namespace, Name);
+                    PSEventHubsSchemaRegistryAttributes schemaGroup = UtilityClient.GetSchemaGroup(ResourceGroupName, Namespace, Name);
                     WriteObject(schemaGroup);
                 }
 

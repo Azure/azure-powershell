@@ -1,0 +1,12 @@
+{
+  "AadTenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "SubscriptionId": "ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb",
+  "ClusterName": "pwsh-Clusterqvip",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "ArcSettingName": "default",
+  "ResourceGroup": "azurestackhci-pwsh-rg-h2",
+  "AadClientId": "0f3bfc4e-a233-4570-9b77-2a1dd759cc9b",
+  "ExtensionName": "MicrosoftMonitoringAgent",
+  "Location": "eastus",
+  "ExtensionPublisher": "Microsoft.EnterpriseCloud.Monitoring"
+}

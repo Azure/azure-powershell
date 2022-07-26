@@ -556,7 +556,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             {
                 tokenKey = AzureAccount.Property.KeyVaultAccessToken;
             }
-            if (string.Equals(targetEndpoint, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId, StringComparison.OrdinalIgnoreCase))
+            if (string.Equals(targetEndpoint, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphEndpointResourceId, StringComparison.OrdinalIgnoreCase) || string.Equals(targetEndpoint, AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl, StringComparison.OrdinalIgnoreCase))
             {
                 tokenKey = Constants.MicrosoftGraphAccessToken;
             }

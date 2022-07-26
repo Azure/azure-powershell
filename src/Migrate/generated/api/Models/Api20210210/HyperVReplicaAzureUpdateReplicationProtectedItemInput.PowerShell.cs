@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -85,7 +87,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="HyperVReplicaAzureUpdateReplicationProtectedItemInput" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInput FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -102,17 +106,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV1ResourceGroupId = (string) content.GetValueForProperty("RecoveryAzureV1ResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV1ResourceGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV2ResourceGroupId = (string) content.GetValueForProperty("RecoveryAzureV2ResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV2ResourceGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).UseManagedDisk = (string) content.GetValueForProperty("UseManagedDisk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).UseManagedDisk, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).DiskIdToDiskEncryptionMap = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputDiskIdToDiskEncryptionMap) content.GetValueForProperty("DiskIdToDiskEncryptionMap",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).DiskIdToDiskEncryptionMap, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputDiskIdToDiskEncryptionMapTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetProximityPlacementGroupId = (string) content.GetValueForProperty("TargetProximityPlacementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetProximityPlacementGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetAvailabilityZone = (string) content.GetValueForProperty("TargetAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetAvailabilityZone, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetVMTag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputTargetVmtags) content.GetValueForProperty("TargetVMTag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetVMTag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputTargetVmtagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetManagedDiskTag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputTargetManagedDiskTags) content.GetValueForProperty("TargetManagedDiskTag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetManagedDiskTag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputTargetManagedDiskTagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetNicTag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputTargetNicTags) content.GetValueForProperty("TargetNicTag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetNicTag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputTargetNicTagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).SqlServerLicenseType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SqlServerLicenseType?) content.GetValueForProperty("SqlServerLicenseType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).SqlServerLicenseType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SqlServerLicenseType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType, global::System.Convert.ToString);
+            if (content.Contains("RecoveryAzureV1ResourceGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV1ResourceGroupId = (string) content.GetValueForProperty("RecoveryAzureV1ResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV1ResourceGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryAzureV2ResourceGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV2ResourceGroupId = (string) content.GetValueForProperty("RecoveryAzureV2ResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV2ResourceGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("UseManagedDisk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).UseManagedDisk = (string) content.GetValueForProperty("UseManagedDisk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).UseManagedDisk, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskIdToDiskEncryptionMap"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).DiskIdToDiskEncryptionMap = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputDiskIdToDiskEncryptionMap) content.GetValueForProperty("DiskIdToDiskEncryptionMap",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).DiskIdToDiskEncryptionMap, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputDiskIdToDiskEncryptionMapTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TargetProximityPlacementGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetProximityPlacementGroupId = (string) content.GetValueForProperty("TargetProximityPlacementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetProximityPlacementGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetAvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetAvailabilityZone = (string) content.GetValueForProperty("TargetAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetAvailabilityZone, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetVMTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetVMTag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputTargetVmtags) content.GetValueForProperty("TargetVMTag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetVMTag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputTargetVmtagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TargetManagedDiskTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetManagedDiskTag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputTargetManagedDiskTags) content.GetValueForProperty("TargetManagedDiskTag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetManagedDiskTag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputTargetManagedDiskTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TargetNicTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetNicTag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputTargetNicTags) content.GetValueForProperty("TargetNicTag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetNicTag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputTargetNicTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SqlServerLicenseType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).SqlServerLicenseType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SqlServerLicenseType?) content.GetValueForProperty("SqlServerLicenseType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).SqlServerLicenseType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SqlServerLicenseType.CreateFrom);
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -130,17 +167,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV1ResourceGroupId = (string) content.GetValueForProperty("RecoveryAzureV1ResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV1ResourceGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV2ResourceGroupId = (string) content.GetValueForProperty("RecoveryAzureV2ResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV2ResourceGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).UseManagedDisk = (string) content.GetValueForProperty("UseManagedDisk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).UseManagedDisk, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).DiskIdToDiskEncryptionMap = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputDiskIdToDiskEncryptionMap) content.GetValueForProperty("DiskIdToDiskEncryptionMap",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).DiskIdToDiskEncryptionMap, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputDiskIdToDiskEncryptionMapTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetProximityPlacementGroupId = (string) content.GetValueForProperty("TargetProximityPlacementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetProximityPlacementGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetAvailabilityZone = (string) content.GetValueForProperty("TargetAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetAvailabilityZone, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetVMTag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputTargetVmtags) content.GetValueForProperty("TargetVMTag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetVMTag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputTargetVmtagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetManagedDiskTag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputTargetManagedDiskTags) content.GetValueForProperty("TargetManagedDiskTag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetManagedDiskTag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputTargetManagedDiskTagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetNicTag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputTargetNicTags) content.GetValueForProperty("TargetNicTag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetNicTag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputTargetNicTagsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).SqlServerLicenseType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SqlServerLicenseType?) content.GetValueForProperty("SqlServerLicenseType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).SqlServerLicenseType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SqlServerLicenseType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType, global::System.Convert.ToString);
+            if (content.Contains("RecoveryAzureV1ResourceGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV1ResourceGroupId = (string) content.GetValueForProperty("RecoveryAzureV1ResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV1ResourceGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryAzureV2ResourceGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV2ResourceGroupId = (string) content.GetValueForProperty("RecoveryAzureV2ResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).RecoveryAzureV2ResourceGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("UseManagedDisk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).UseManagedDisk = (string) content.GetValueForProperty("UseManagedDisk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).UseManagedDisk, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskIdToDiskEncryptionMap"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).DiskIdToDiskEncryptionMap = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputDiskIdToDiskEncryptionMap) content.GetValueForProperty("DiskIdToDiskEncryptionMap",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).DiskIdToDiskEncryptionMap, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputDiskIdToDiskEncryptionMapTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TargetProximityPlacementGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetProximityPlacementGroupId = (string) content.GetValueForProperty("TargetProximityPlacementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetProximityPlacementGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetAvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetAvailabilityZone = (string) content.GetValueForProperty("TargetAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetAvailabilityZone, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetVMTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetVMTag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputTargetVmtags) content.GetValueForProperty("TargetVMTag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetVMTag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputTargetVmtagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TargetManagedDiskTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetManagedDiskTag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputTargetManagedDiskTags) content.GetValueForProperty("TargetManagedDiskTag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetManagedDiskTag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputTargetManagedDiskTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TargetNicTag"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetNicTag = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputTargetNicTags) content.GetValueForProperty("TargetNicTag",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).TargetNicTag, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HyperVReplicaAzureUpdateReplicationProtectedItemInputTargetNicTagsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SqlServerLicenseType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).SqlServerLicenseType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SqlServerLicenseType?) content.GetValueForProperty("SqlServerLicenseType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaAzureUpdateReplicationProtectedItemInputInternal)this).SqlServerLicenseType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.SqlServerLicenseType.CreateFrom);
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -4,4 +4,6 @@
     <PsRootModuleName>Compute</PsRootModuleName>
   </PropertyGroup>
   <Import Project="$(MSBuildThisFileDirectory)..\..\Az.autorest.hybrid.props" />
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

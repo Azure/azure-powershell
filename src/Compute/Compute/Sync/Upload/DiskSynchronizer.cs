@@ -23,6 +23,7 @@ using System.Security.Cryptography;
 using Microsoft.WindowsAzure.Commands.Sync.Upload;
 using Microsoft.WindowsAzure.Commands.Sync;
 using System.Threading.Tasks;
+using Microsoft.Azure.Commands.Compute.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Sync.Upload
 {
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
             this.maxParallelism = maxParallelism;
         }
 
-        public bool Synchronize()
+        public bool Synchronize(ComputeTokenCredential tokenCredential)
         {
             var uploadStatus = new ProgressStatus(alreadyUploadedData, alreadyUploadedData + dataToUpload, new ComputeStats());
 
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.Compute.Sync.Upload
                 Task<LoopResult> task = Task<LoopResult>.Factory.StartNew(() =>
                 {
                     return Threading.Parallel.ForEach(dataWithRanges,
-                                                  () => new PSPageBlobClient(pageBlob.Uri),
+                                                  () => new PSPageBlobClient(pageBlob.Uri, tokenCredential),
                                                   (dwr, b) =>
                                                   {
                                                       using (dwr)

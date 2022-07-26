@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Description
-Description for Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
+Creates a new web, mobile, or API app in an existing resource group, or updates an existing app.
 .Example
 Update-AzFunctionApp -Name MyUniqueFunctionAppName -ResourceGroupName MyResourceGroupName -PlanName NewPlanName -Force
 .Example
@@ -106,6 +106,8 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerPoolName <String>]: Name of the worker pool.
 
 SITECONFIG <ISiteConfig>: Configuration of the app.
+  [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+  [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
   [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
   [ActionType <AutoHealActionType?>]: Predefined action to be taken.
   [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -259,6 +261,8 @@ SITEENVELOPE <ISitePatchResource>: ARM resource for a site.
   [ScmSiteAlsoStopped <Boolean?>]: <code>true</code> to stop SCM (KUDU) site when the app is stopped; otherwise, <code>false</code>. The default is <code>false</code>.
   [ServerFarmId <String>]: Resource ID of the associated App Service plan, formatted as: "/subscriptions/{subscriptionID}/resourceGroups/{groupName}/providers/Microsoft.Web/serverfarms/{appServicePlanName}".
   [SiteConfig <ISiteConfig>]: Configuration of the app.
+    [AcrUseManagedIdentityCred <Boolean?>]: Flag to use Managed Identity Creds for ACR pull
+    [AcrUserManagedIdentityId <String>]: If using user managed identity, the user managed identity ClientId
     [ActionMinProcessExecutionTime <String>]: Minimum time the process must execute         before taking the action
     [ActionType <AutoHealActionType?>]: Predefined action to be taken.
     [AlwaysOn <Boolean?>]: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -711,6 +715,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzFunctionApp_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzFunctionApp_UpdateExpanded';
@@ -726,6 +731,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -734,15 +740,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

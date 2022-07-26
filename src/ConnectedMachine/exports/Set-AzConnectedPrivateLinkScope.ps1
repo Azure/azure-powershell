@@ -22,16 +22,12 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 Creates (or updates) a Azure Arc PrivateLinkScope.
 Note: You cannot specify a different value for InstrumentationKey nor AppId in the Put operation.
 .Example
-PS C:\> Set-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $location
-
-Name         Location    PublicNetworkAccess ProvisioningState Tag
-----         --------    ------------------- ----------------- ---
-name         eastus2euap Disabled            Succeeded         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesRes…
+Set-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $location
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope
+Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -52,7 +48,7 @@ PARAMETER <IHybridComputePrivateLinkScope>: An Azure Arc PrivateLinkScope defini
 https://docs.microsoft.com/powershell/module/az.connectedmachine/set-azconnectedprivatelinkscope
 #>
 function Set-AzConnectedPrivateLinkScope {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope])]
 [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -78,7 +74,7 @@ param(
 
     [Parameter(ParameterSetName='Update', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope]
     # An Azure Arc PrivateLinkScope definition.
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -99,7 +95,7 @@ param(
 
     [Parameter(ParameterSetName='UpdateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IPrivateLinkScopesResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IPrivateLinkScopesResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags
     ${Tag},
@@ -159,6 +155,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Update = 'Az.ConnectedMachine.private\Set-AzConnectedPrivateLinkScope_Update';
             UpdateExpanded = 'Az.ConnectedMachine.private\Set-AzConnectedPrivateLinkScope_UpdateExpanded';
@@ -173,6 +187,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -181,15 +196,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

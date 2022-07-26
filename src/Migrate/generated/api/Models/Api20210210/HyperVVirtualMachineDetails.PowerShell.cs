@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="HyperVVirtualMachineDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="HyperVVirtualMachineDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,20 +103,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOSDetails) content.GetValueForProperty("OSDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.OSDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).SourceItemId = (string) content.GetValueForProperty("SourceItemId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).SourceItemId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).Generation = (string) content.GetValueForProperty("Generation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).Generation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).DiskDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails[]) content.GetValueForProperty("DiskDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).DiskDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasPhysicalDisk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus?) content.GetValueForProperty("HasPhysicalDisk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasPhysicalDisk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasFibreChannelAdapter = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus?) content.GetValueForProperty("HasFibreChannelAdapter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasFibreChannelAdapter, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasSharedVhd = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus?) content.GetValueForProperty("HasSharedVhd",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasSharedVhd, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IConfigurationSettingsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IConfigurationSettingsInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOstype = (string) content.GetValueForProperty("OSDetailOstype",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOstype, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailProductType = (string) content.GetValueForProperty("OSDetailProductType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailProductType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsedition = (string) content.GetValueForProperty("OSDetailOsedition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsedition, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsversion = (string) content.GetValueForProperty("OSDetailOsversion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsversion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsmajorVersion = (string) content.GetValueForProperty("OSDetailOsmajorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsmajorVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsminorVersion = (string) content.GetValueForProperty("OSDetailOsminorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsminorVersion, global::System.Convert.ToString);
+            if (content.Contains("OSDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOSDetails) content.GetValueForProperty("OSDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.OSDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SourceItemId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).SourceItemId = (string) content.GetValueForProperty("SourceItemId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).SourceItemId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Generation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).Generation = (string) content.GetValueForProperty("Generation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).Generation, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).DiskDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails[]) content.GetValueForProperty("DiskDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).DiskDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HasPhysicalDisk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasPhysicalDisk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus?) content.GetValueForProperty("HasPhysicalDisk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasPhysicalDisk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus.CreateFrom);
+            }
+            if (content.Contains("HasFibreChannelAdapter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasFibreChannelAdapter = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus?) content.GetValueForProperty("HasFibreChannelAdapter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasFibreChannelAdapter, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus.CreateFrom);
+            }
+            if (content.Contains("HasSharedVhd"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasSharedVhd = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus?) content.GetValueForProperty("HasSharedVhd",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasSharedVhd, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus.CreateFrom);
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IConfigurationSettingsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IConfigurationSettingsInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSDetailOstype"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOstype = (string) content.GetValueForProperty("OSDetailOstype",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOstype, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSDetailProductType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailProductType = (string) content.GetValueForProperty("OSDetailProductType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailProductType, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSDetailOsedition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsedition = (string) content.GetValueForProperty("OSDetailOsedition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsedition, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSDetailOsversion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsversion = (string) content.GetValueForProperty("OSDetailOsversion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsversion, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSDetailOsmajorVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsmajorVersion = (string) content.GetValueForProperty("OSDetailOsmajorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsmajorVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSDetailOsminorVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsminorVersion = (string) content.GetValueForProperty("OSDetailOsminorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsminorVersion, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -132,20 +176,62 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOSDetails) content.GetValueForProperty("OSDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.OSDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).SourceItemId = (string) content.GetValueForProperty("SourceItemId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).SourceItemId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).Generation = (string) content.GetValueForProperty("Generation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).Generation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).DiskDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails[]) content.GetValueForProperty("DiskDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).DiskDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasPhysicalDisk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus?) content.GetValueForProperty("HasPhysicalDisk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasPhysicalDisk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasFibreChannelAdapter = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus?) content.GetValueForProperty("HasFibreChannelAdapter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasFibreChannelAdapter, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasSharedVhd = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus?) content.GetValueForProperty("HasSharedVhd",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasSharedVhd, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IConfigurationSettingsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IConfigurationSettingsInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOstype = (string) content.GetValueForProperty("OSDetailOstype",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOstype, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailProductType = (string) content.GetValueForProperty("OSDetailProductType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailProductType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsedition = (string) content.GetValueForProperty("OSDetailOsedition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsedition, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsversion = (string) content.GetValueForProperty("OSDetailOsversion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsversion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsmajorVersion = (string) content.GetValueForProperty("OSDetailOsmajorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsmajorVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsminorVersion = (string) content.GetValueForProperty("OSDetailOsminorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsminorVersion, global::System.Convert.ToString);
+            if (content.Contains("OSDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOSDetails) content.GetValueForProperty("OSDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.OSDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("SourceItemId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).SourceItemId = (string) content.GetValueForProperty("SourceItemId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).SourceItemId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Generation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).Generation = (string) content.GetValueForProperty("Generation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).Generation, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).DiskDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails[]) content.GetValueForProperty("DiskDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).DiskDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HasPhysicalDisk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasPhysicalDisk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus?) content.GetValueForProperty("HasPhysicalDisk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasPhysicalDisk, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus.CreateFrom);
+            }
+            if (content.Contains("HasFibreChannelAdapter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasFibreChannelAdapter = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus?) content.GetValueForProperty("HasFibreChannelAdapter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasFibreChannelAdapter, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus.CreateFrom);
+            }
+            if (content.Contains("HasSharedVhd"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasSharedVhd = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus?) content.GetValueForProperty("HasSharedVhd",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).HasSharedVhd, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.PresenceStatus.CreateFrom);
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IConfigurationSettingsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IConfigurationSettingsInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSDetailOstype"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOstype = (string) content.GetValueForProperty("OSDetailOstype",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOstype, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSDetailProductType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailProductType = (string) content.GetValueForProperty("OSDetailProductType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailProductType, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSDetailOsedition"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsedition = (string) content.GetValueForProperty("OSDetailOsedition",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsedition, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSDetailOsversion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsversion = (string) content.GetValueForProperty("OSDetailOsversion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsversion, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSDetailOsmajorVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsmajorVersion = (string) content.GetValueForProperty("OSDetailOsmajorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsmajorVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSDetailOsminorVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsminorVersion = (string) content.GetValueForProperty("OSDetailOsminorVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVVirtualMachineDetailsInternal)this).OSDetailOsminorVersion, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

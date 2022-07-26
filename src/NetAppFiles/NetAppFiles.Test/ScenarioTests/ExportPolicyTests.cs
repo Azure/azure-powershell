@@ -17,21 +17,17 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.NetAppFiles.Test.ScenarioTests.ScenarioTest
 {
-    public class ExportPolicyTests
+    public class ExportPolicyTests : NetAppFilesTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public ExportPolicyTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ExportPolicyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestExportPolicy()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ExportPolicy");
+            TestRunner.RunTestScript("Test-ExportPolicy");
         }
     }
 }

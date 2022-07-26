@@ -84,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Pre
         /// Creates a new instance of <see cref="OfflineConfiguration" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="OfflineConfiguration" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IOfflineConfiguration FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>

@@ -22,9 +22,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 
     /// <summary>
     /// Class ServerEndpointConverter.
-    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpoint, StorageSyncModels.ServerEndpoint}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSServerEndpoint, ServerEndpoint}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSServerEndpoint, StorageSyncModels.ServerEndpoint}" />
+    /// <seealso cref="Converters.ConverterBase{PSServerEndpoint, ServerEndpoint}" />
     public class ServerEndpointConverter : ConverterBase<PSServerEndpoint, StorageSyncModels.ServerEndpoint>
     {
 

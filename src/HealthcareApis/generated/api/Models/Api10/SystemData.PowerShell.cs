@@ -82,7 +82,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10
         /// Creates a new instance of <see cref="SystemData" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="SystemData" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api10.ISystemData FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
