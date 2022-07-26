@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="InMageProtectedDiskDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="InMageProtectedDiskDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,28 +101,94 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskId = (string) content.GetValueForProperty("DiskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskName = (string) content.GetValueForProperty("DiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProtectionStage = (string) content.GetValueForProperty("ProtectionStage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProtectionStage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).HealthErrorCode = (string) content.GetValueForProperty("HealthErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).HealthErrorCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).RpoInSecond = (long?) content.GetValueForProperty("RpoInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).RpoInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncRequired = (string) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncRequired, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProgressPercentage = (int?) content.GetValueForProperty("ResyncProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncDurationInSecond = (long?) content.GetValueForProperty("ResyncDurationInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncDurationInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskCapacityInByte = (long?) content.GetValueForProperty("DiskCapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskCapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).FileSystemCapacityInByte = (long?) content.GetValueForProperty("FileSystemCapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).FileSystemCapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).SourceDataInMb = (double?) content.GetValueForProperty("SourceDataInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).SourceDataInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).PsDataInMb = (double?) content.GetValueForProperty("PsDataInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).PsDataInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).TargetDataInMb = (double?) content.GetValueForProperty("TargetDataInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).TargetDataInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskResized = (string) content.GetValueForProperty("DiskResized",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskResized, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).LastRpoCalculatedTime = (global::System.DateTime?) content.GetValueForProperty("LastRpoCalculatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).LastRpoCalculatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProcessedByte = (long?) content.GetValueForProperty("ResyncProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncTotalTransferredByte = (long?) content.GetValueForProperty("ResyncTotalTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncTotalTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLast15MinutesTransferredByte = (long?) content.GetValueForProperty("ResyncLast15MinutesTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLast15MinutesTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLastDataTransferTimeUtc = (global::System.DateTime?) content.GetValueForProperty("ResyncLastDataTransferTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLastDataTransferTimeUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncStartTime = (global::System.DateTime?) content.GetValueForProperty("ResyncStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressHealth = (string) content.GetValueForProperty("ProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressHealth, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressStatus = (string) content.GetValueForProperty("ProgressStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressStatus, global::System.Convert.ToString);
+            if (content.Contains("DiskId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskId = (string) content.GetValueForProperty("DiskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskName = (string) content.GetValueForProperty("DiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProtectionStage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProtectionStage = (string) content.GetValueForProperty("ProtectionStage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProtectionStage, global::System.Convert.ToString);
+            }
+            if (content.Contains("HealthErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).HealthErrorCode = (string) content.GetValueForProperty("HealthErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).HealthErrorCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("RpoInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).RpoInSecond = (long?) content.GetValueForProperty("RpoInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).RpoInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ResyncRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncRequired = (string) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncRequired, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResyncProgressPercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProgressPercentage = (int?) content.GetValueForProperty("ResyncProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ResyncDurationInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncDurationInSecond = (long?) content.GetValueForProperty("ResyncDurationInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncDurationInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("DiskCapacityInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskCapacityInByte = (long?) content.GetValueForProperty("DiskCapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskCapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("FileSystemCapacityInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).FileSystemCapacityInByte = (long?) content.GetValueForProperty("FileSystemCapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).FileSystemCapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("SourceDataInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).SourceDataInMb = (double?) content.GetValueForProperty("SourceDataInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).SourceDataInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("PsDataInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).PsDataInMb = (double?) content.GetValueForProperty("PsDataInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).PsDataInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("TargetDataInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).TargetDataInMb = (double?) content.GetValueForProperty("TargetDataInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).TargetDataInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("DiskResized"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskResized = (string) content.GetValueForProperty("DiskResized",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskResized, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastRpoCalculatedTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).LastRpoCalculatedTime = (global::System.DateTime?) content.GetValueForProperty("LastRpoCalculatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).LastRpoCalculatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ResyncProcessedByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProcessedByte = (long?) content.GetValueForProperty("ResyncProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ResyncTotalTransferredByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncTotalTransferredByte = (long?) content.GetValueForProperty("ResyncTotalTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncTotalTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ResyncLast15MinutesTransferredByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLast15MinutesTransferredByte = (long?) content.GetValueForProperty("ResyncLast15MinutesTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLast15MinutesTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ResyncLastDataTransferTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLastDataTransferTimeUtc = (global::System.DateTime?) content.GetValueForProperty("ResyncLastDataTransferTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLastDataTransferTimeUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ResyncStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncStartTime = (global::System.DateTime?) content.GetValueForProperty("ResyncStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ProgressHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressHealth = (string) content.GetValueForProperty("ProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressHealth, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProgressStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressStatus = (string) content.GetValueForProperty("ProgressStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressStatus, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -138,28 +206,94 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskId = (string) content.GetValueForProperty("DiskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskName = (string) content.GetValueForProperty("DiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProtectionStage = (string) content.GetValueForProperty("ProtectionStage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProtectionStage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).HealthErrorCode = (string) content.GetValueForProperty("HealthErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).HealthErrorCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).RpoInSecond = (long?) content.GetValueForProperty("RpoInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).RpoInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncRequired = (string) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncRequired, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProgressPercentage = (int?) content.GetValueForProperty("ResyncProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncDurationInSecond = (long?) content.GetValueForProperty("ResyncDurationInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncDurationInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskCapacityInByte = (long?) content.GetValueForProperty("DiskCapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskCapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).FileSystemCapacityInByte = (long?) content.GetValueForProperty("FileSystemCapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).FileSystemCapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).SourceDataInMb = (double?) content.GetValueForProperty("SourceDataInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).SourceDataInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).PsDataInMb = (double?) content.GetValueForProperty("PsDataInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).PsDataInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).TargetDataInMb = (double?) content.GetValueForProperty("TargetDataInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).TargetDataInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskResized = (string) content.GetValueForProperty("DiskResized",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskResized, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).LastRpoCalculatedTime = (global::System.DateTime?) content.GetValueForProperty("LastRpoCalculatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).LastRpoCalculatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProcessedByte = (long?) content.GetValueForProperty("ResyncProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncTotalTransferredByte = (long?) content.GetValueForProperty("ResyncTotalTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncTotalTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLast15MinutesTransferredByte = (long?) content.GetValueForProperty("ResyncLast15MinutesTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLast15MinutesTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLastDataTransferTimeUtc = (global::System.DateTime?) content.GetValueForProperty("ResyncLastDataTransferTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLastDataTransferTimeUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncStartTime = (global::System.DateTime?) content.GetValueForProperty("ResyncStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressHealth = (string) content.GetValueForProperty("ProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressHealth, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressStatus = (string) content.GetValueForProperty("ProgressStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressStatus, global::System.Convert.ToString);
+            if (content.Contains("DiskId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskId = (string) content.GetValueForProperty("DiskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskName = (string) content.GetValueForProperty("DiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProtectionStage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProtectionStage = (string) content.GetValueForProperty("ProtectionStage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProtectionStage, global::System.Convert.ToString);
+            }
+            if (content.Contains("HealthErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).HealthErrorCode = (string) content.GetValueForProperty("HealthErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).HealthErrorCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("RpoInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).RpoInSecond = (long?) content.GetValueForProperty("RpoInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).RpoInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ResyncRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncRequired = (string) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncRequired, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResyncProgressPercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProgressPercentage = (int?) content.GetValueForProperty("ResyncProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ResyncDurationInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncDurationInSecond = (long?) content.GetValueForProperty("ResyncDurationInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncDurationInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("DiskCapacityInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskCapacityInByte = (long?) content.GetValueForProperty("DiskCapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskCapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("FileSystemCapacityInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).FileSystemCapacityInByte = (long?) content.GetValueForProperty("FileSystemCapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).FileSystemCapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("SourceDataInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).SourceDataInMb = (double?) content.GetValueForProperty("SourceDataInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).SourceDataInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("PsDataInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).PsDataInMb = (double?) content.GetValueForProperty("PsDataInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).PsDataInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("TargetDataInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).TargetDataInMb = (double?) content.GetValueForProperty("TargetDataInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).TargetDataInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("DiskResized"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskResized = (string) content.GetValueForProperty("DiskResized",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).DiskResized, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastRpoCalculatedTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).LastRpoCalculatedTime = (global::System.DateTime?) content.GetValueForProperty("LastRpoCalculatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).LastRpoCalculatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ResyncProcessedByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProcessedByte = (long?) content.GetValueForProperty("ResyncProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ResyncTotalTransferredByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncTotalTransferredByte = (long?) content.GetValueForProperty("ResyncTotalTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncTotalTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ResyncLast15MinutesTransferredByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLast15MinutesTransferredByte = (long?) content.GetValueForProperty("ResyncLast15MinutesTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLast15MinutesTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ResyncLastDataTransferTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLastDataTransferTimeUtc = (global::System.DateTime?) content.GetValueForProperty("ResyncLastDataTransferTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncLastDataTransferTimeUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ResyncStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncStartTime = (global::System.DateTime?) content.GetValueForProperty("ResyncStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ResyncStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("ProgressHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressHealth = (string) content.GetValueForProperty("ProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressHealth, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProgressStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressStatus = (string) content.GetValueForProperty("ProgressStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageProtectedDiskDetailsInternal)this).ProgressStatus, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

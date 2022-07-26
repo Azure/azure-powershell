@@ -50,6 +50,7 @@ function Validate-FailoverGroup($server, $partnerServer, $name, $role, $failover
 	Assert-NotNull $fg.Id "`$fg.Id ($message)"
 	Assert-NotNull $fg.PartnerServers "`$fg.PartnerServers ($message)"
 	Assert-AreEqual $name $fg.FailoverGroupName "`$fg.FailoverGroupName ($message)"
+	# Assert-AreEqual $true $partnerServer.ResourceId.Contains($fg.PartnerSubscriptionId) "`$fg.PartnerSubscriptionId ($message)"
 	Assert-AreEqual $server.ResourceGroupName $fg.ResourceGroupName "`$fg.ResourceGroupName ($message)"
 	Assert-AreEqual $partnerServer.ResourceGroupName $fg.PartnerResourceGroupName "`$fg.PartnerResourceGroupName ($message)"
 	Assert-AreEqual $server.ServerName $fg.ServerName "`$fg.ServerName ($message)"
@@ -232,6 +233,19 @@ function Test-CreateFailoverGroup-Overflow()
 		$fgName = Get-FailoverGroupName
 		$fg = $server | New-AzSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerResourceGroupName $partnerServer.ResourceGroupName -PartnerServerName $partnerServer.ServerName -FailoverPolicy Automatic -GracePeriodWithDataLossHours $gracePeriodToSet
 		Validate-FailoverGroup $server $partnerServer $fgName Primary Automatic $expectedGracePeriod Disabled @() $fg
+		Validate-FailoverGroupWithGet $fg
+	}
+}
+
+function Test-CreateFailoverGroup-CrossSubscription()
+{
+	Handle-FailoverGroupTest {
+		Param($server, $partnerServer)
+
+		$fgName = Get-FailoverGroupName
+		$partnerSubscriptionId = $partnerServer.ResourceId.Split('/')[2]
+		$fg = $server | New-AzSqlDatabaseFailoverGroup -FailoverGroupName $fgName -PartnerSubscriptionId $partnerSubscriptionId -PartnerResourceGroupName $partnerServer.ResourceGroupName -PartnerServerName $partnerServer.ServerName -FailoverPolicy Manual
+		Validate-FailoverGroup $server $partnerServer $fgName Primary Manual $null Disabled @() $fg
 		Validate-FailoverGroupWithGet $fg
 	}
 }

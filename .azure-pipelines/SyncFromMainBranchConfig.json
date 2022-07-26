@@ -1,5 +1,6 @@
 {
     "SyncPath": [
+        ".ci-config.json",
         "tools",
         ".azure-pipelines",
         "src/lib",

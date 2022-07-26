@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="InMageRcmReplicationDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="InMageRcmReplicationDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,66 +103,246 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetails) content.GetValueForProperty("MobilityAgentDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmMobilityAgentDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InternalIdentifier = (string) content.GetValueForProperty("InternalIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InternalIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FabricDiscoveryMachineId = (string) content.GetValueForProperty("FabricDiscoveryMachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FabricDiscoveryMachineId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MultiVMGroupName = (string) content.GetValueForProperty("MultiVMGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MultiVMGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).DiscoveryType = (string) content.GetValueForProperty("DiscoveryType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).DiscoveryType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerId = (string) content.GetValueForProperty("ProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessorCoreCount = (int?) content.GetValueForProperty("ProcessorCoreCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessorCoreCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AllocatedMemoryInMb = (double?) content.GetValueForProperty("AllocatedMemoryInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AllocatedMemoryInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerName = (string) content.GetValueForProperty("ProcessServerName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).RunAsAccountId = (string) content.GetValueForProperty("RunAsAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).RunAsAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).OSType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FirmwareType = (string) content.GetValueForProperty("FirmwareType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FirmwareType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).PrimaryNicIPAddress = (string) content.GetValueForProperty("PrimaryNicIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).PrimaryNicIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetGeneration = (string) content.GetValueForProperty("TargetGeneration",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetGeneration, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LicenseType = (string) content.GetValueForProperty("LicenseType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LicenseType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMName = (string) content.GetValueForProperty("TargetVMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMSize = (string) content.GetValueForProperty("TargetVMSize",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMSize, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetResourceGroupId = (string) content.GetValueForProperty("TargetResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetResourceGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetLocation = (string) content.GetValueForProperty("TargetLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilitySetId = (string) content.GetValueForProperty("TargetAvailabilitySetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilitySetId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilityZone = (string) content.GetValueForProperty("TargetAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilityZone, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetProximityPlacementGroupId = (string) content.GetValueForProperty("TargetProximityPlacementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetProximityPlacementGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetBootDiagnosticsStorageAccountId = (string) content.GetValueForProperty("TargetBootDiagnosticsStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetBootDiagnosticsStorageAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetNetworkId = (string) content.GetValueForProperty("TargetNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TestNetworkId = (string) content.GetValueForProperty("TestNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TestNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FailoverRecoveryPointId = (string) content.GetValueForProperty("FailoverRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FailoverRecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointReceived = (global::System.DateTime?) content.GetValueForProperty("LastRecoveryPointReceived",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointReceived, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoInSecond = (long?) content.GetValueForProperty("LastRpoInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoCalculatedTime = (global::System.DateTime?) content.GetValueForProperty("LastRpoCalculatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoCalculatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointId = (string) content.GetValueForProperty("LastRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressPercentage = (int?) content.GetValueForProperty("InitialReplicationProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProcessedByte = (long?) content.GetValueForProperty("InitialReplicationProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationTransferredByte = (long?) content.GetValueForProperty("InitialReplicationTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth?) content.GetValueForProperty("InitialReplicationProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressPercentage = (int?) content.GetValueForProperty("ResyncProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProcessedByte = (long?) content.GetValueForProperty("ResyncProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncTransferredByte = (long?) content.GetValueForProperty("ResyncTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth?) content.GetValueForProperty("ResyncProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncRequired = (string) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncRequired, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResyncState?) content.GetValueForProperty("ResyncState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResyncState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MobilityAgentUpgradeState?) content.GetValueForProperty("AgentUpgradeState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MobilityAgentUpgradeState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeType = (string) content.GetValueForProperty("LastAgentUpgradeType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeJobId = (string) content.GetValueForProperty("AgentUpgradeJobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeJobId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeAttemptToVersion = (string) content.GetValueForProperty("AgentUpgradeAttemptToVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeAttemptToVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProtectedDisk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmProtectedDiskDetails[]) content.GetValueForProperty("ProtectedDisk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProtectedDisk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmProtectedDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmProtectedDiskDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).IsLastUpgradeSuccessful = (string) content.GetValueForProperty("IsLastUpgradeSuccessful",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).IsLastUpgradeSuccessful, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmLastAgentUpgradeErrorDetails[]) content.GetValueForProperty("LastAgentUpgradeErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmLastAgentUpgradeErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmLastAgentUpgradeErrorDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeBlockingErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmAgentUpgradeBlockingErrorDetails[]) content.GetValueForProperty("AgentUpgradeBlockingErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeBlockingErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmAgentUpgradeBlockingErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmAgentUpgradeBlockingErrorDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).VMNic = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetails[]) content.GetValueForProperty("VMNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).VMNic, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmNicDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailVersion = (string) content.GetValueForProperty("MobilityAgentDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestVersion = (string) content.GetValueForProperty("MobilityAgentDetailLatestVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestAgentReleaseDate = (string) content.GetValueForProperty("MobilityAgentDetailLatestAgentReleaseDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestAgentReleaseDate, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersion = (string) content.GetValueForProperty("MobilityAgentDetailDriverVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestUpgradableVersionWithoutReboot = (string) content.GetValueForProperty("MobilityAgentDetailLatestUpgradableVersionWithoutReboot",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestUpgradableVersionWithoutReboot, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailAgentVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("MobilityAgentDetailAgentVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailAgentVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("MobilityAgentDetailDriverVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLastHeartbeatUtc = (global::System.DateTime?) content.GetValueForProperty("MobilityAgentDetailLastHeartbeatUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLastHeartbeatUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailReasonsBlockingUpgrade = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason[]) content.GetValueForProperty("MobilityAgentDetailReasonsBlockingUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailReasonsBlockingUpgrade, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailIsUpgradeable = (string) content.GetValueForProperty("MobilityAgentDetailIsUpgradeable",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailIsUpgradeable, global::System.Convert.ToString);
+            if (content.Contains("MobilityAgentDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetails) content.GetValueForProperty("MobilityAgentDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmMobilityAgentDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("InternalIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InternalIdentifier = (string) content.GetValueForProperty("InternalIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InternalIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("FabricDiscoveryMachineId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FabricDiscoveryMachineId = (string) content.GetValueForProperty("FabricDiscoveryMachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FabricDiscoveryMachineId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MultiVMGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MultiVMGroupName = (string) content.GetValueForProperty("MultiVMGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MultiVMGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiscoveryType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).DiscoveryType = (string) content.GetValueForProperty("DiscoveryType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).DiscoveryType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProcessServerId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerId = (string) content.GetValueForProperty("ProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProcessorCoreCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessorCoreCount = (int?) content.GetValueForProperty("ProcessorCoreCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessorCoreCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AllocatedMemoryInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AllocatedMemoryInMb = (double?) content.GetValueForProperty("AllocatedMemoryInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AllocatedMemoryInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("ProcessServerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerName = (string) content.GetValueForProperty("ProcessServerName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunAsAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).RunAsAccountId = (string) content.GetValueForProperty("RunAsAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).RunAsAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).OSType, global::System.Convert.ToString);
+            }
+            if (content.Contains("FirmwareType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FirmwareType = (string) content.GetValueForProperty("FirmwareType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FirmwareType, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryNicIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).PrimaryNicIPAddress = (string) content.GetValueForProperty("PrimaryNicIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).PrimaryNicIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetGeneration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetGeneration = (string) content.GetValueForProperty("TargetGeneration",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetGeneration, global::System.Convert.ToString);
+            }
+            if (content.Contains("LicenseType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LicenseType = (string) content.GetValueForProperty("LicenseType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LicenseType, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetVMName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMName = (string) content.GetValueForProperty("TargetVMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetVMSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMSize = (string) content.GetValueForProperty("TargetVMSize",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetResourceGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetResourceGroupId = (string) content.GetValueForProperty("TargetResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetResourceGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetLocation = (string) content.GetValueForProperty("TargetLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetAvailabilitySetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilitySetId = (string) content.GetValueForProperty("TargetAvailabilitySetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilitySetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetAvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilityZone = (string) content.GetValueForProperty("TargetAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilityZone, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetProximityPlacementGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetProximityPlacementGroupId = (string) content.GetValueForProperty("TargetProximityPlacementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetProximityPlacementGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetBootDiagnosticsStorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetBootDiagnosticsStorageAccountId = (string) content.GetValueForProperty("TargetBootDiagnosticsStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetBootDiagnosticsStorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetNetworkId = (string) content.GetValueForProperty("TargetNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TestNetworkId = (string) content.GetValueForProperty("TestNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TestNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("FailoverRecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FailoverRecoveryPointId = (string) content.GetValueForProperty("FailoverRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FailoverRecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastRecoveryPointReceived"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointReceived = (global::System.DateTime?) content.GetValueForProperty("LastRecoveryPointReceived",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointReceived, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastRpoInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoInSecond = (long?) content.GetValueForProperty("LastRpoInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("LastRpoCalculatedTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoCalculatedTime = (global::System.DateTime?) content.GetValueForProperty("LastRpoCalculatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoCalculatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastRecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointId = (string) content.GetValueForProperty("LastRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("InitialReplicationProgressPercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressPercentage = (int?) content.GetValueForProperty("InitialReplicationProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("InitialReplicationProcessedByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProcessedByte = (long?) content.GetValueForProperty("InitialReplicationProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("InitialReplicationTransferredByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationTransferredByte = (long?) content.GetValueForProperty("InitialReplicationTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("InitialReplicationProgressHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth?) content.GetValueForProperty("InitialReplicationProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth.CreateFrom);
+            }
+            if (content.Contains("ResyncProgressPercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressPercentage = (int?) content.GetValueForProperty("ResyncProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ResyncProcessedByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProcessedByte = (long?) content.GetValueForProperty("ResyncProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ResyncTransferredByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncTransferredByte = (long?) content.GetValueForProperty("ResyncTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ResyncProgressHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth?) content.GetValueForProperty("ResyncProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth.CreateFrom);
+            }
+            if (content.Contains("ResyncRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncRequired = (string) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncRequired, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResyncState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResyncState?) content.GetValueForProperty("ResyncState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResyncState.CreateFrom);
+            }
+            if (content.Contains("AgentUpgradeState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MobilityAgentUpgradeState?) content.GetValueForProperty("AgentUpgradeState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MobilityAgentUpgradeState.CreateFrom);
+            }
+            if (content.Contains("LastAgentUpgradeType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeType = (string) content.GetValueForProperty("LastAgentUpgradeType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeType, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentUpgradeJobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeJobId = (string) content.GetValueForProperty("AgentUpgradeJobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeJobId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentUpgradeAttemptToVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeAttemptToVersion = (string) content.GetValueForProperty("AgentUpgradeAttemptToVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeAttemptToVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProtectedDisk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProtectedDisk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmProtectedDiskDetails[]) content.GetValueForProperty("ProtectedDisk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProtectedDisk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmProtectedDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmProtectedDiskDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("IsLastUpgradeSuccessful"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).IsLastUpgradeSuccessful = (string) content.GetValueForProperty("IsLastUpgradeSuccessful",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).IsLastUpgradeSuccessful, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastAgentUpgradeErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmLastAgentUpgradeErrorDetails[]) content.GetValueForProperty("LastAgentUpgradeErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmLastAgentUpgradeErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmLastAgentUpgradeErrorDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AgentUpgradeBlockingErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeBlockingErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmAgentUpgradeBlockingErrorDetails[]) content.GetValueForProperty("AgentUpgradeBlockingErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeBlockingErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmAgentUpgradeBlockingErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmAgentUpgradeBlockingErrorDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("VMNic"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).VMNic = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetails[]) content.GetValueForProperty("VMNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).VMNic, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmNicDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityAgentDetailVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailVersion = (string) content.GetValueForProperty("MobilityAgentDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityAgentDetailLatestVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestVersion = (string) content.GetValueForProperty("MobilityAgentDetailLatestVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityAgentDetailLatestAgentReleaseDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestAgentReleaseDate = (string) content.GetValueForProperty("MobilityAgentDetailLatestAgentReleaseDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestAgentReleaseDate, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityAgentDetailDriverVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersion = (string) content.GetValueForProperty("MobilityAgentDetailDriverVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityAgentDetailLatestUpgradableVersionWithoutReboot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestUpgradableVersionWithoutReboot = (string) content.GetValueForProperty("MobilityAgentDetailLatestUpgradableVersionWithoutReboot",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestUpgradableVersionWithoutReboot, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityAgentDetailAgentVersionExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailAgentVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("MobilityAgentDetailAgentVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailAgentVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("MobilityAgentDetailDriverVersionExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("MobilityAgentDetailDriverVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("MobilityAgentDetailLastHeartbeatUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLastHeartbeatUtc = (global::System.DateTime?) content.GetValueForProperty("MobilityAgentDetailLastHeartbeatUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLastHeartbeatUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("MobilityAgentDetailReasonsBlockingUpgrade"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailReasonsBlockingUpgrade = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason[]) content.GetValueForProperty("MobilityAgentDetailReasonsBlockingUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailReasonsBlockingUpgrade, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason.CreateFrom));
+            }
+            if (content.Contains("MobilityAgentDetailIsUpgradeable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailIsUpgradeable = (string) content.GetValueForProperty("MobilityAgentDetailIsUpgradeable",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailIsUpgradeable, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -178,66 +360,246 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetails) content.GetValueForProperty("MobilityAgentDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmMobilityAgentDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InternalIdentifier = (string) content.GetValueForProperty("InternalIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InternalIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FabricDiscoveryMachineId = (string) content.GetValueForProperty("FabricDiscoveryMachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FabricDiscoveryMachineId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MultiVMGroupName = (string) content.GetValueForProperty("MultiVMGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MultiVMGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).DiscoveryType = (string) content.GetValueForProperty("DiscoveryType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).DiscoveryType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerId = (string) content.GetValueForProperty("ProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessorCoreCount = (int?) content.GetValueForProperty("ProcessorCoreCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessorCoreCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AllocatedMemoryInMb = (double?) content.GetValueForProperty("AllocatedMemoryInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AllocatedMemoryInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerName = (string) content.GetValueForProperty("ProcessServerName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).RunAsAccountId = (string) content.GetValueForProperty("RunAsAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).RunAsAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).OSType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FirmwareType = (string) content.GetValueForProperty("FirmwareType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FirmwareType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).PrimaryNicIPAddress = (string) content.GetValueForProperty("PrimaryNicIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).PrimaryNicIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetGeneration = (string) content.GetValueForProperty("TargetGeneration",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetGeneration, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LicenseType = (string) content.GetValueForProperty("LicenseType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LicenseType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMName = (string) content.GetValueForProperty("TargetVMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMSize = (string) content.GetValueForProperty("TargetVMSize",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMSize, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetResourceGroupId = (string) content.GetValueForProperty("TargetResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetResourceGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetLocation = (string) content.GetValueForProperty("TargetLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilitySetId = (string) content.GetValueForProperty("TargetAvailabilitySetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilitySetId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilityZone = (string) content.GetValueForProperty("TargetAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilityZone, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetProximityPlacementGroupId = (string) content.GetValueForProperty("TargetProximityPlacementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetProximityPlacementGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetBootDiagnosticsStorageAccountId = (string) content.GetValueForProperty("TargetBootDiagnosticsStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetBootDiagnosticsStorageAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetNetworkId = (string) content.GetValueForProperty("TargetNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TestNetworkId = (string) content.GetValueForProperty("TestNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TestNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FailoverRecoveryPointId = (string) content.GetValueForProperty("FailoverRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FailoverRecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointReceived = (global::System.DateTime?) content.GetValueForProperty("LastRecoveryPointReceived",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointReceived, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoInSecond = (long?) content.GetValueForProperty("LastRpoInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoCalculatedTime = (global::System.DateTime?) content.GetValueForProperty("LastRpoCalculatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoCalculatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointId = (string) content.GetValueForProperty("LastRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressPercentage = (int?) content.GetValueForProperty("InitialReplicationProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProcessedByte = (long?) content.GetValueForProperty("InitialReplicationProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationTransferredByte = (long?) content.GetValueForProperty("InitialReplicationTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth?) content.GetValueForProperty("InitialReplicationProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressPercentage = (int?) content.GetValueForProperty("ResyncProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProcessedByte = (long?) content.GetValueForProperty("ResyncProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncTransferredByte = (long?) content.GetValueForProperty("ResyncTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth?) content.GetValueForProperty("ResyncProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncRequired = (string) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncRequired, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResyncState?) content.GetValueForProperty("ResyncState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResyncState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MobilityAgentUpgradeState?) content.GetValueForProperty("AgentUpgradeState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MobilityAgentUpgradeState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeType = (string) content.GetValueForProperty("LastAgentUpgradeType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeJobId = (string) content.GetValueForProperty("AgentUpgradeJobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeJobId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeAttemptToVersion = (string) content.GetValueForProperty("AgentUpgradeAttemptToVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeAttemptToVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProtectedDisk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmProtectedDiskDetails[]) content.GetValueForProperty("ProtectedDisk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProtectedDisk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmProtectedDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmProtectedDiskDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).IsLastUpgradeSuccessful = (string) content.GetValueForProperty("IsLastUpgradeSuccessful",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).IsLastUpgradeSuccessful, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmLastAgentUpgradeErrorDetails[]) content.GetValueForProperty("LastAgentUpgradeErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmLastAgentUpgradeErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmLastAgentUpgradeErrorDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeBlockingErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmAgentUpgradeBlockingErrorDetails[]) content.GetValueForProperty("AgentUpgradeBlockingErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeBlockingErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmAgentUpgradeBlockingErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmAgentUpgradeBlockingErrorDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).VMNic = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetails[]) content.GetValueForProperty("VMNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).VMNic, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmNicDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailVersion = (string) content.GetValueForProperty("MobilityAgentDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestVersion = (string) content.GetValueForProperty("MobilityAgentDetailLatestVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestAgentReleaseDate = (string) content.GetValueForProperty("MobilityAgentDetailLatestAgentReleaseDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestAgentReleaseDate, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersion = (string) content.GetValueForProperty("MobilityAgentDetailDriverVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestUpgradableVersionWithoutReboot = (string) content.GetValueForProperty("MobilityAgentDetailLatestUpgradableVersionWithoutReboot",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestUpgradableVersionWithoutReboot, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailAgentVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("MobilityAgentDetailAgentVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailAgentVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("MobilityAgentDetailDriverVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLastHeartbeatUtc = (global::System.DateTime?) content.GetValueForProperty("MobilityAgentDetailLastHeartbeatUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLastHeartbeatUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailReasonsBlockingUpgrade = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason[]) content.GetValueForProperty("MobilityAgentDetailReasonsBlockingUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailReasonsBlockingUpgrade, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailIsUpgradeable = (string) content.GetValueForProperty("MobilityAgentDetailIsUpgradeable",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailIsUpgradeable, global::System.Convert.ToString);
+            if (content.Contains("MobilityAgentDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmMobilityAgentDetails) content.GetValueForProperty("MobilityAgentDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmMobilityAgentDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("InternalIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InternalIdentifier = (string) content.GetValueForProperty("InternalIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InternalIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("FabricDiscoveryMachineId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FabricDiscoveryMachineId = (string) content.GetValueForProperty("FabricDiscoveryMachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FabricDiscoveryMachineId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MultiVMGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MultiVMGroupName = (string) content.GetValueForProperty("MultiVMGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MultiVMGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiscoveryType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).DiscoveryType = (string) content.GetValueForProperty("DiscoveryType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).DiscoveryType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProcessServerId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerId = (string) content.GetValueForProperty("ProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProcessorCoreCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessorCoreCount = (int?) content.GetValueForProperty("ProcessorCoreCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessorCoreCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AllocatedMemoryInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AllocatedMemoryInMb = (double?) content.GetValueForProperty("AllocatedMemoryInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AllocatedMemoryInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("ProcessServerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerName = (string) content.GetValueForProperty("ProcessServerName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProcessServerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunAsAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).RunAsAccountId = (string) content.GetValueForProperty("RunAsAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).RunAsAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("OSType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).OSType = (string) content.GetValueForProperty("OSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).OSType, global::System.Convert.ToString);
+            }
+            if (content.Contains("FirmwareType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FirmwareType = (string) content.GetValueForProperty("FirmwareType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FirmwareType, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryNicIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).PrimaryNicIPAddress = (string) content.GetValueForProperty("PrimaryNicIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).PrimaryNicIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetGeneration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetGeneration = (string) content.GetValueForProperty("TargetGeneration",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetGeneration, global::System.Convert.ToString);
+            }
+            if (content.Contains("LicenseType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LicenseType = (string) content.GetValueForProperty("LicenseType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LicenseType, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetVMName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMName = (string) content.GetValueForProperty("TargetVMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetVMSize"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMSize = (string) content.GetValueForProperty("TargetVMSize",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetVMSize, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetResourceGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetResourceGroupId = (string) content.GetValueForProperty("TargetResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetResourceGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetLocation = (string) content.GetValueForProperty("TargetLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetAvailabilitySetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilitySetId = (string) content.GetValueForProperty("TargetAvailabilitySetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilitySetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetAvailabilityZone"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilityZone = (string) content.GetValueForProperty("TargetAvailabilityZone",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetAvailabilityZone, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetProximityPlacementGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetProximityPlacementGroupId = (string) content.GetValueForProperty("TargetProximityPlacementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetProximityPlacementGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetBootDiagnosticsStorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetBootDiagnosticsStorageAccountId = (string) content.GetValueForProperty("TargetBootDiagnosticsStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetBootDiagnosticsStorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetNetworkId = (string) content.GetValueForProperty("TargetNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TargetNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TestNetworkId = (string) content.GetValueForProperty("TestNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).TestNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("FailoverRecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FailoverRecoveryPointId = (string) content.GetValueForProperty("FailoverRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).FailoverRecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastRecoveryPointReceived"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointReceived = (global::System.DateTime?) content.GetValueForProperty("LastRecoveryPointReceived",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointReceived, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastRpoInSecond"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoInSecond = (long?) content.GetValueForProperty("LastRpoInSecond",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoInSecond, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("LastRpoCalculatedTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoCalculatedTime = (global::System.DateTime?) content.GetValueForProperty("LastRpoCalculatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRpoCalculatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastRecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointId = (string) content.GetValueForProperty("LastRecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastRecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("InitialReplicationProgressPercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressPercentage = (int?) content.GetValueForProperty("InitialReplicationProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("InitialReplicationProcessedByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProcessedByte = (long?) content.GetValueForProperty("InitialReplicationProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("InitialReplicationTransferredByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationTransferredByte = (long?) content.GetValueForProperty("InitialReplicationTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("InitialReplicationProgressHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth?) content.GetValueForProperty("InitialReplicationProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).InitialReplicationProgressHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth.CreateFrom);
+            }
+            if (content.Contains("ResyncProgressPercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressPercentage = (int?) content.GetValueForProperty("ResyncProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ResyncProcessedByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProcessedByte = (long?) content.GetValueForProperty("ResyncProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ResyncTransferredByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncTransferredByte = (long?) content.GetValueForProperty("ResyncTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("ResyncProgressHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth?) content.GetValueForProperty("ResyncProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncProgressHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.VMReplicationProgressHealth.CreateFrom);
+            }
+            if (content.Contains("ResyncRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncRequired = (string) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncRequired, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResyncState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResyncState?) content.GetValueForProperty("ResyncState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ResyncState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ResyncState.CreateFrom);
+            }
+            if (content.Contains("AgentUpgradeState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MobilityAgentUpgradeState?) content.GetValueForProperty("AgentUpgradeState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MobilityAgentUpgradeState.CreateFrom);
+            }
+            if (content.Contains("LastAgentUpgradeType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeType = (string) content.GetValueForProperty("LastAgentUpgradeType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeType, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentUpgradeJobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeJobId = (string) content.GetValueForProperty("AgentUpgradeJobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeJobId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentUpgradeAttemptToVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeAttemptToVersion = (string) content.GetValueForProperty("AgentUpgradeAttemptToVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeAttemptToVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProtectedDisk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProtectedDisk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmProtectedDiskDetails[]) content.GetValueForProperty("ProtectedDisk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).ProtectedDisk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmProtectedDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmProtectedDiskDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("IsLastUpgradeSuccessful"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).IsLastUpgradeSuccessful = (string) content.GetValueForProperty("IsLastUpgradeSuccessful",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).IsLastUpgradeSuccessful, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastAgentUpgradeErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmLastAgentUpgradeErrorDetails[]) content.GetValueForProperty("LastAgentUpgradeErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).LastAgentUpgradeErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmLastAgentUpgradeErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmLastAgentUpgradeErrorDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AgentUpgradeBlockingErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeBlockingErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmAgentUpgradeBlockingErrorDetails[]) content.GetValueForProperty("AgentUpgradeBlockingErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).AgentUpgradeBlockingErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmAgentUpgradeBlockingErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmAgentUpgradeBlockingErrorDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("VMNic"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).VMNic = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetails[]) content.GetValueForProperty("VMNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).VMNic, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageRcmNicDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityAgentDetailVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailVersion = (string) content.GetValueForProperty("MobilityAgentDetailVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityAgentDetailLatestVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestVersion = (string) content.GetValueForProperty("MobilityAgentDetailLatestVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityAgentDetailLatestAgentReleaseDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestAgentReleaseDate = (string) content.GetValueForProperty("MobilityAgentDetailLatestAgentReleaseDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestAgentReleaseDate, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityAgentDetailDriverVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersion = (string) content.GetValueForProperty("MobilityAgentDetailDriverVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityAgentDetailLatestUpgradableVersionWithoutReboot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestUpgradableVersionWithoutReboot = (string) content.GetValueForProperty("MobilityAgentDetailLatestUpgradableVersionWithoutReboot",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLatestUpgradableVersionWithoutReboot, global::System.Convert.ToString);
+            }
+            if (content.Contains("MobilityAgentDetailAgentVersionExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailAgentVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("MobilityAgentDetailAgentVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailAgentVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("MobilityAgentDetailDriverVersionExpiryDate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersionExpiryDate = (global::System.DateTime?) content.GetValueForProperty("MobilityAgentDetailDriverVersionExpiryDate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailDriverVersionExpiryDate, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("MobilityAgentDetailLastHeartbeatUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLastHeartbeatUtc = (global::System.DateTime?) content.GetValueForProperty("MobilityAgentDetailLastHeartbeatUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailLastHeartbeatUtc, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("MobilityAgentDetailReasonsBlockingUpgrade"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailReasonsBlockingUpgrade = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason[]) content.GetValueForProperty("MobilityAgentDetailReasonsBlockingUpgrade",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailReasonsBlockingUpgrade, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.AgentUpgradeBlockedReason.CreateFrom));
+            }
+            if (content.Contains("MobilityAgentDetailIsUpgradeable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailIsUpgradeable = (string) content.GetValueForProperty("MobilityAgentDetailIsUpgradeable",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmReplicationDetailsInternal)this).MobilityAgentDetailIsUpgradeable, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

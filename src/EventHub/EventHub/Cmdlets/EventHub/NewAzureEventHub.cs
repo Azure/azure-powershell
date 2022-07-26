@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             {
                 try
                 {
-                    WriteObject(Client.CreateOrUpdateEventHub(ResourceGroupName, Namespace, eventHub.Name, eventHub));
+                    WriteObject(UtilityClient.CreateOrUpdateEventHub(ResourceGroupName, Namespace, eventHub.Name, eventHub));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

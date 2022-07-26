@@ -20,6 +20,7 @@ using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Commands.Sql.Services;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
 using System.Collections.Generic;
+using System;
 using System.Linq;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
@@ -97,7 +98,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             FailoverGroupPartnerServer partnerServer = new FailoverGroupPartnerServer();
             partnerServer.Id = string.Format(
                 AzureSqlFailoverGroupModel.PartnerServerIdTemplate,
-                _subscription.Id.ToString(),
+                model.PartnerSubscriptionId == null ? _subscription.Id.ToString() : model.PartnerSubscriptionId.ToString(),
                 model.PartnerResourceGroupName,
                 model.PartnerServerName);
             partnerServers.Add(partnerServer);
@@ -272,6 +273,7 @@ namespace Microsoft.Azure.Commands.Sql.FailoverGroup.Services
             FailoverGroupPartnerServer partnerServer = failoverGroup.Properties.PartnerServers.FirstOrDefault();
             if (partnerServer != null)
             {
+                model.PartnerSubscriptionId = GetUriSegment(partnerServer.Id, 2);
                 model.PartnerResourceGroupName = GetUriSegment(partnerServer.Id, 4);
                 model.PartnerServerName = GetUriSegment(partnerServer.Id, 8);
                 model.PartnerLocation = partnerServer.Location;

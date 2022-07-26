@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -66,16 +68,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).CloudServiceName = (string) content.GetValueForProperty("CloudServiceName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).CloudServiceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).AccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookId = (string) content.GetValueForProperty("RunbookId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookName = (string) content.GetValueForProperty("RunbookName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobOutput = (string) content.GetValueForProperty("JobOutput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobOutput, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).IsPrimarySideScript = (bool?) content.GetValueForProperty("IsPrimarySideScript",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).IsPrimarySideScript, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType, global::System.Convert.ToString);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("CloudServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).CloudServiceName = (string) content.GetValueForProperty("CloudServiceName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).CloudServiceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccountName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).AccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunbookId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookId = (string) content.GetValueForProperty("RunbookId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunbookName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookName = (string) content.GetValueForProperty("RunbookName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobId, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobOutput"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobOutput = (string) content.GetValueForProperty("JobOutput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobOutput, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsPrimarySideScript"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).IsPrimarySideScript = (bool?) content.GetValueForProperty("IsPrimarySideScript",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).IsPrimarySideScript, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -93,16 +125,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).CloudServiceName = (string) content.GetValueForProperty("CloudServiceName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).CloudServiceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).AccountName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookId = (string) content.GetValueForProperty("RunbookId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookName = (string) content.GetValueForProperty("RunbookName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobOutput = (string) content.GetValueForProperty("JobOutput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobOutput, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).IsPrimarySideScript = (bool?) content.GetValueForProperty("IsPrimarySideScript",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).IsPrimarySideScript, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType, global::System.Convert.ToString);
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("CloudServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).CloudServiceName = (string) content.GetValueForProperty("CloudServiceName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).CloudServiceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AccountName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).AccountName = (string) content.GetValueForProperty("AccountName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).AccountName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunbookId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookId = (string) content.GetValueForProperty("RunbookId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunbookName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookName = (string) content.GetValueForProperty("RunbookName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).RunbookName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobId = (string) content.GetValueForProperty("JobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobId, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobOutput"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobOutput = (string) content.GetValueForProperty("JobOutput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).JobOutput, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsPrimarySideScript"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).IsPrimarySideScript = (bool?) content.GetValueForProperty("IsPrimarySideScript",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetailsInternal)this).IsPrimarySideScript, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -138,7 +200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="AutomationRunbookTaskDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="AutomationRunbookTaskDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAutomationRunbookTaskDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

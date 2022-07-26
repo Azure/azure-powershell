@@ -106,24 +106,16 @@ Created     : 2/8/2016 11:21:45 PM
 Updated     : 2/8/2016 11:21:45 PM
 ```
 
+This command gets the certificate named `TestCert01` from the key vault named `ContosoKV01`
+
 ### Example 2: Get cert and save it as pfx
 ```powershell
-$cert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certName
-$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name -AsPlainText
-# Write to a file
-Set-Content -Path cert.pfx -Value $secret -PassThru
+$CertBase64 = Get-AzKeyVaultSecret -VaultName $vaultName -Name $certName -AsPlainText
+$CertBytes = [Convert]::FromBase64String($CertBase64)
+Set-Content -Path cert.pfx -Value $CertBytes -AsByteStream
 ```
 
-```output
------BEGIN PRIVATE KEY-----
-******************************
------END PRIVATE KEY-----
------BEGIN CERTIFICATE-----
-******************************
------END CERTIFICATE-----
-```
-
-This command gets the certificate named `$certName` from the key vault named `$vaultName`. These commands access secret `$cert.Name` and then save the content as a pfx file.
+This command gets the certificate named `$certName` from the key vault named `$vaultName`. These commands access secret `$certName` and then save the content as a pfx file.
 
 ### Example 3: Get all the certificates that have been deleted but not purged for this key vault.
 ```powershell
