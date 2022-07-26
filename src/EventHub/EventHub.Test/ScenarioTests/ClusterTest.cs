@@ -30,5 +30,12 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
         {
             TestRunner.RunTestScript("ClusterTest");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SelfServeClusterTestCURD()
+        {
+            TestRunner.RunTestScript("SelfServeCluster");
+        }
     }
 }
