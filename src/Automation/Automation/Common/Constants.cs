@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         public const int PsCommandValueDepth = 2;
 
-        public const int JobSummaryLength = 80;
+        public const int JobSummaryLength = 1000;
 
         public const int MaxWaitSeconds = 10800;
 
