@@ -14,7 +14,7 @@
 
 namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
-    using Microsoft.Azure.Commands.EventHub.Test.ScenarioTests;
+    using Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
     using Xunit;
     using Xunit.Abstractions;
