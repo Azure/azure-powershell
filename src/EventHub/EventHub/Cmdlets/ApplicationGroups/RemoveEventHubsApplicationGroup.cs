@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
             {
                 try
                 {
-                    Client.DeleteApplicationGroup(resourceGroupName: ResourceGroupName,
+                    UtilityClient.DeleteApplicationGroup(resourceGroupName: ResourceGroupName,
                                                   namespaceName: NamespaceName,
                                                   appGroupName: Name);
 

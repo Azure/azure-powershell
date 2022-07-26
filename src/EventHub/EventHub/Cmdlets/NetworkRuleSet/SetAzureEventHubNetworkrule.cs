@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                             trustedServiceAccessEnabled = TrustedServiceAccessEnabled.IsPresent;
                         }
 
-                        WriteObject(Client.UpdateNetworkRuleSet(resourceGroupName: ResourceGroupName,
+                        WriteObject(UtilityClient.UpdateNetworkRuleSet(resourceGroupName: ResourceGroupName,
                                                                 namespaceName: Name,
                                                                 publicNetworkAccess: PublicNetworkAccess,
                                                                 trustedServiceAccessEnabled: trustedServiceAccessEnabled,
@@ -100,20 +100,20 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
 
                     if (ParameterSetName.Equals(NetwrokruleSetInputObjectParameterSet))
                     {
-                        WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, InputObject));
+                        WriteObject(UtilityClient.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, InputObject));
                     }
 
                     if (ParameterSetName.Equals("NetworkRuleSetResourceIdParameterSet"))
                     {
                         ResourceIdentifier getParamGeoDR = GetResourceDetailsFromId(ResourceId);
 
-                        PSNetworkRuleSetAttributes getNWRuleSet = Client.GetNetworkRuleSet(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource);
+                        PSNetworkRuleSetAttributes getNWRuleSet = UtilityClient.GetNetworkRuleSet(getParamGeoDR.ResourceGroupName, getParamGeoDR.ParentResource);
 
                         if (ResourceGroupName != null && getParamGeoDR.ResourceName != null)
                         {
                             if (ShouldProcess(target: Name, action: string.Format("updating NetwrokruleSet", Name, ResourceGroupName)))
                             {
-                                WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, getNWRuleSet));
+                                WriteObject(UtilityClient.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, getNWRuleSet));
                             }
                         }
                     }

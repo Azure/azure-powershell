@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -94,15 +96,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMName = (string) content.GetValueForProperty("TestVMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMFriendlyName = (string) content.GetValueForProperty("TestVMFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkConnectionStatus = (string) content.GetValueForProperty("NetworkConnectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkConnectionStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkFriendlyName = (string) content.GetValueForProperty("NetworkFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Subnet = (string) content.GetValueForProperty("Subnet",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Subnet, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("RecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestVMName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMName = (string) content.GetValueForProperty("TestVMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestVMFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMFriendlyName = (string) content.GetValueForProperty("TestVMFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkConnectionStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkConnectionStatus = (string) content.GetValueForProperty("NetworkConnectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkConnectionStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkFriendlyName = (string) content.GetValueForProperty("NetworkFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Subnet"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Subnet = (string) content.GetValueForProperty("Subnet",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Subnet, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("RecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,15 +149,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMName = (string) content.GetValueForProperty("TestVMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMFriendlyName = (string) content.GetValueForProperty("TestVMFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkConnectionStatus = (string) content.GetValueForProperty("NetworkConnectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkConnectionStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkFriendlyName = (string) content.GetValueForProperty("NetworkFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Subnet = (string) content.GetValueForProperty("Subnet",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Subnet, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("RecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestVMName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMName = (string) content.GetValueForProperty("TestVMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestVMFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMFriendlyName = (string) content.GetValueForProperty("TestVMFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).TestVMFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkConnectionStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkConnectionStatus = (string) content.GetValueForProperty("NetworkConnectionStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkConnectionStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkFriendlyName = (string) content.GetValueForProperty("NetworkFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).NetworkFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Subnet"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Subnet = (string) content.GetValueForProperty("Subnet",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).Subnet, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointId = (string) content.GetValueForProperty("RecoveryPointId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPointTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointTime = (global::System.DateTime?) content.GetValueForProperty("RecoveryPointTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetailsInternal)this).RecoveryPointTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -137,7 +193,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="FailoverReplicationProtectedItemDetails" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverReplicationProtectedItemDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

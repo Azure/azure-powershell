@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="InMageRcmNicDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="InMageRcmNicDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,19 +101,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).NicId = (string) content.GetValueForProperty("NicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).NicId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsPrimaryNic = (string) content.GetValueForProperty("IsPrimaryNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsPrimaryNic, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsSelectedForFailover = (string) content.GetValueForProperty("IsSelectedForFailover",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsSelectedForFailover, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddress = (string) content.GetValueForProperty("SourceIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddressType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType?) content.GetValueForProperty("SourceIPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddressType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceNetworkId = (string) content.GetValueForProperty("SourceNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceSubnetName = (string) content.GetValueForProperty("SourceSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceSubnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddress = (string) content.GetValueForProperty("TargetIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddressType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType?) content.GetValueForProperty("TargetIPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddressType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetSubnetName = (string) content.GetValueForProperty("TargetSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetSubnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestSubnetName = (string) content.GetValueForProperty("TestSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestSubnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddress = (string) content.GetValueForProperty("TestIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddressType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType?) content.GetValueForProperty("TestIPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddressType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType.CreateFrom);
+            if (content.Contains("NicId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).NicId = (string) content.GetValueForProperty("NicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).NicId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsPrimaryNic"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsPrimaryNic = (string) content.GetValueForProperty("IsPrimaryNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsPrimaryNic, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsSelectedForFailover"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsSelectedForFailover = (string) content.GetValueForProperty("IsSelectedForFailover",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsSelectedForFailover, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddress = (string) content.GetValueForProperty("SourceIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceIPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddressType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType?) content.GetValueForProperty("SourceIPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddressType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType.CreateFrom);
+            }
+            if (content.Contains("SourceNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceNetworkId = (string) content.GetValueForProperty("SourceNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceSubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceSubnetName = (string) content.GetValueForProperty("SourceSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceSubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddress = (string) content.GetValueForProperty("TargetIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetIPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddressType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType?) content.GetValueForProperty("TargetIPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddressType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType.CreateFrom);
+            }
+            if (content.Contains("TargetSubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetSubnetName = (string) content.GetValueForProperty("TargetSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetSubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestSubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestSubnetName = (string) content.GetValueForProperty("TestSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestSubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddress = (string) content.GetValueForProperty("TestIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestIPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddressType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType?) content.GetValueForProperty("TestIPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddressType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType.CreateFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -129,19 +170,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).NicId = (string) content.GetValueForProperty("NicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).NicId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsPrimaryNic = (string) content.GetValueForProperty("IsPrimaryNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsPrimaryNic, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsSelectedForFailover = (string) content.GetValueForProperty("IsSelectedForFailover",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsSelectedForFailover, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddress = (string) content.GetValueForProperty("SourceIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddressType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType?) content.GetValueForProperty("SourceIPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddressType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceNetworkId = (string) content.GetValueForProperty("SourceNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceSubnetName = (string) content.GetValueForProperty("SourceSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceSubnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddress = (string) content.GetValueForProperty("TargetIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddressType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType?) content.GetValueForProperty("TargetIPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddressType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetSubnetName = (string) content.GetValueForProperty("TargetSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetSubnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestSubnetName = (string) content.GetValueForProperty("TestSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestSubnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddress = (string) content.GetValueForProperty("TestIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddressType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType?) content.GetValueForProperty("TestIPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddressType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType.CreateFrom);
+            if (content.Contains("NicId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).NicId = (string) content.GetValueForProperty("NicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).NicId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsPrimaryNic"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsPrimaryNic = (string) content.GetValueForProperty("IsPrimaryNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsPrimaryNic, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsSelectedForFailover"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsSelectedForFailover = (string) content.GetValueForProperty("IsSelectedForFailover",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).IsSelectedForFailover, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddress = (string) content.GetValueForProperty("SourceIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceIPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddressType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType?) content.GetValueForProperty("SourceIPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceIPAddressType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType.CreateFrom);
+            }
+            if (content.Contains("SourceNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceNetworkId = (string) content.GetValueForProperty("SourceNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceSubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceSubnetName = (string) content.GetValueForProperty("SourceSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).SourceSubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddress = (string) content.GetValueForProperty("TargetIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetIPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddressType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType?) content.GetValueForProperty("TargetIPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetIPAddressType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType.CreateFrom);
+            }
+            if (content.Contains("TargetSubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetSubnetName = (string) content.GetValueForProperty("TargetSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TargetSubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestSubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestSubnetName = (string) content.GetValueForProperty("TestSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestSubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddress = (string) content.GetValueForProperty("TestIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestIPAddressType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddressType = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType?) content.GetValueForProperty("TestIPAddressType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmNicDetailsInternal)this).TestIPAddressType, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.EthernetAddressType.CreateFrom);
+            }
             AfterDeserializePSObject(content);
         }
 

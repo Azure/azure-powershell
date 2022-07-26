@@ -72,14 +72,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
                 {
                     if (ShouldProcess(target: NamespaceName, action: string.Format(Resources.ListApplicationGroup, NamespaceName, ResourceGroupName)))
                     {
-                        WriteObject(Client.ListApplicationGroup(ResourceGroupName, NamespaceName));
+                        WriteObject(UtilityClient.ListApplicationGroup(ResourceGroupName, NamespaceName));
                     }
                 }
                 else
                 {
                     if (ShouldProcess(target: Name, action: string.Format(Resources.GetApplicationGroup, Name, NamespaceName, ResourceGroupName)))
                     {
-                        WriteObject(Client.GetApplicationGroup(ResourceGroupName, NamespaceName, Name));
+                        WriteObject(UtilityClient.GetApplicationGroup(ResourceGroupName, NamespaceName, Name));
                     }
                 }
             }
