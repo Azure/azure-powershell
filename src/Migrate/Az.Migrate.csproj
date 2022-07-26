@@ -2,7 +2,6 @@
   <PropertyGroup>
     <PsModuleName>Migrate</PsModuleName>
   </PropertyGroup>
-  <!-- test -->
 
   <Import Project="$(MSBuildThisFileDirectory)..\Az.autorest.props" />
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
