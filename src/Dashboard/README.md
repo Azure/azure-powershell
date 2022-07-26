@@ -59,4 +59,8 @@ directive:
   - where:
       subject: PrivateLinkResource
     remove: true
+  - where:
+      verb: New
+      subject: Grafana
+    hide: true
 ```
