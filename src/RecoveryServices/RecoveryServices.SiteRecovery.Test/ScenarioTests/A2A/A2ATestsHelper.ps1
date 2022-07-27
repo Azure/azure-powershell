@@ -242,14 +242,16 @@ function createAzureVmInAvailabilityZone{
 }
 
 function createAzureVmInEdgeZone {
-    param([string]$primaryLocation)
+    param(
+        [string]$primaryLocation,
+        [string]$primaryExtendedLocation
+    )
     
     $VMLocalAdminUser = "adminUser"
     $PasswordString = $(Get-RandomSuffix 12)
     $Password = $PasswordString | ConvertTo-SecureString -Force -AsPlainText
     $VMLocalAdminSecurePassword = $Password
     $VMLocation = getPrimaryZoneLocation
-    $primaryExtendedLocation = getPrimaryExtendedLocation
     $VMName = getAzureVmName
     $domain = "domain" + $seed
     $password = $VMLocalAdminSecurePassword | ConvertTo-SecureString -AsPlainText -Force

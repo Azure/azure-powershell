@@ -821,7 +821,7 @@ function Test-VMNicConfig {
     Test AzureToEdgeZoneRecoveryPlanReplication new parametersets
 #>
 
-function Test-AzureToEdgeZoneRecoveryPlanReplication {
+function Test-EdgeZoneToZoneRecoveryPlanReplication {
     param([string] $seed = '346')
     $primaryPolicyName = getPrimaryPolicy
     $recoveryPolicyName = getRecoveryPolicy
@@ -862,7 +862,7 @@ function Test-AzureToEdgeZoneRecoveryPlanReplication {
     [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
     $logStg = createCacheStorageAccountForZone
 
-    $v2VmId = createAzureVmInEdgeZone
+    $v2VmId = createAzureVmInEdgeZone -PrimaryLocation $primaryLocation -PrimaryExtendedLocation $primaryExtendedLocation
     $vm = get-azVm -ResourceGroupName $vmName -Name $vmName
     $vhdid = $vm.StorageProfile.OSDisk.ManagedDisk.Id
     $index = $vm.Id.IndexOf("/providers/")
@@ -907,7 +907,7 @@ function Test-AzureToEdgeZoneRecoveryPlanReplication {
     #enable Replication
     $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
-        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
+        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType -RecoveryAvailabilityZone $recZone
     $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryExtendedLocation $recoveryExtendedLocation -RecoveryAzureNetworkId $RecoveryAzureNetworkId -RecoveryAzureSubnetName "frontendSubnet"
     WaitForJobCompletion -JobId $enableDRjob.Name
     WaitForIRCompletion -affectedObjectId $enableDRjob.TargetObjectId
@@ -1106,7 +1106,7 @@ function Test-EdgeZoneToEdgeZoneRecoveryPlanReplication {
     [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
     $logStg = createCacheStorageAccountForZone
 
-    $v2VmId = createAzureVmInEdgeZone
+    $v2VmId = createAzureVmInEdgeZone -PrimaryLocation $primaryLocation -PrimaryExtendedLocation $primaryExtendedLocation
     $vm = get-azVm -ResourceGroupName $vmName -Name $vmName
     $vhdid = $vm.StorageProfile.OSDisk.ManagedDisk.Id
     $index = $vm.Id.IndexOf("/providers/")
