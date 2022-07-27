@@ -486,14 +486,6 @@
             <Alignment>Right</Alignment>
           </TableColumnHeader>
           <TableColumnHeader>
-            <Label>Capability</Label>
-            <Alignment>Right</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
-            <Label>Value</Label>
-            <Alignment>Right</Alignment>
-          </TableColumnHeader>
-          <TableColumnHeader>
             <Label>RestrictionInfo</Label>
             <Alignment>Left</Alignment>
             <Width>30</Width>
@@ -513,12 +505,6 @@
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.LocationInfo[0].Zones</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.Capabilities[0].Name</ScriptBlock>
-              </TableColumnItem>
-              <TableColumnItem>
-                <ScriptBlock>$_.Capabilities[0].Value</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
                 <ScriptBlock>$_.RestrictionInfo</ScriptBlock>
