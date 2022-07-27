@@ -188,7 +188,7 @@ function Test-ManagedInstanceDnsAliasGetAndMoveOperations
 
 
         #Move by names parameter set and use AsJob to test that functionality
-        $aliasJob = Move-AzSqlInstanceDnsAlias -ResourceGroupName $rgName -InstanceName $targetManagedInstanceName -SourceResourceGroupName $rgName -SourceInstanceName $sourceManagedInstanceName -SourceName $testAliasName -AsJob
+        $aliasJob = Move-AzSqlInstanceDnsAlias -DestResourceGroupName $rgName -InstanceName $targetManagedInstanceName -SourceResourceGroupName $rgName -SourceInstanceName $sourceManagedInstanceName -SourceName $testAliasName -AsJob
         $aliasJob | Wait-Job
         $managedInstanceDnsAlias = $aliasJob.Output
 
@@ -205,7 +205,7 @@ function Test-ManagedInstanceDnsAliasGetAndMoveOperations
         #Move by name and source parent object parameter set
         #Since the alias is now on the target instance, we will move it back to the source
 
-        $managedInstanceDnsAlias = Move-AzSqlInstanceDnsAlias -ResourceGroupName $rgName -InstanceName $sourceManagedInstanceName -SourceInstanceObject $targetManagedInstance -SourceName $testAliasName
+        $managedInstanceDnsAlias = Move-AzSqlInstanceDnsAlias -DestResourceGroupName $rgName -InstanceName $sourceManagedInstanceName -SourceInstanceObject $targetManagedInstance -SourceName $testAliasName
         ValidateDnsAlias $managedInstanceDnsAlias $testAliasName $rgName $sourceManagedInstanceName $false
         $managedInstanceDnsAliasResourceId = $managedInstanceDnsAlias.Id
         Assert-True {$managedInstanceDnsAliasResourceId.Contains($sourceManagedInstanceName)}
@@ -216,7 +216,7 @@ function Test-ManagedInstanceDnsAliasGetAndMoveOperations
         #Get the dns alias
         $managedInstanceDnsAlias = Get-AzSqlInstanceDnsAlias -ResourceGroupName $rgName -InstanceName $sourceManagedInstanceName -Name $testAliasName
 
-        $managedInstanceDnsAlias = Move-AzSqlInstanceDnsAlias -ResourceGroupName $rgName -InstanceName $targetManagedInstanceName -SourceInputObject $managedInstanceDnsAlias
+        $managedInstanceDnsAlias = Move-AzSqlInstanceDnsAlias -DestResourceGroupName $rgName -InstanceName $targetManagedInstanceName -SourceInputObject $managedInstanceDnsAlias
         ValidateDnsAlias $managedInstanceDnsAlias $testAliasName $rgName $targetManagedInstanceName $false
         $managedInstanceDnsAliasResourceId = $managedInstanceDnsAlias.Id
         Assert-True {$managedInstanceDnsAliasResourceId.Contains($targetManagedInstanceName)}
@@ -351,7 +351,7 @@ function Test-ManagedInstanceDnsAliasPipingScenarios
         # PowerShell limits that only a single parameter can be passed by pipeline in the same parameter set. Others can only be passed by pipeline through property name.
         # That's why source instance object and source input object can only be piped if using ByName parameter sets for target instance object.
         #Pass source instance object (which is now $targetManagedInstance because the dns alias has been moved previously) by pipeline
-        $managedInstanceDnsAlias = $targetManagedInstance | Move-AzSqlInstanceDnsAlias -ResourceGroupName $rgName -InstanceName $sourceManagedInstanceName -SourceName $testAliasName
+        $managedInstanceDnsAlias = $targetManagedInstance | Move-AzSqlInstanceDnsAlias -DestResourceGroupName $rgName -InstanceName $sourceManagedInstanceName -SourceName $testAliasName
 
         #Validate that move has been successfully completed
         ValidateDnsAlias $managedInstanceDnsAlias $testAliasName $rgName $sourceManagedInstanceName $false
@@ -362,7 +362,7 @@ function Test-ManagedInstanceDnsAliasPipingScenarios
         $managedInstanceDnsAlias = Get-AzSqlInstanceDnsAlias -InstanceObject $sourceManagedInstance -Name $testAliasName
 
         #Now pass the input object through pipeline
-        $managedInstanceDnsAlias = $managedInstanceDnsAlias | Move-AzSqlInstanceDnsAlias -ResourceGroupName $rgName -InstanceName $targetManagedInstanceName
+        $managedInstanceDnsAlias = $managedInstanceDnsAlias | Move-AzSqlInstanceDnsAlias -DestResourceGroupName $rgName -InstanceName $targetManagedInstanceName
 
         #Validate that move has been successfully completed
         ValidateDnsAlias $managedInstanceDnsAlias $testAliasName $rgName $targetManagedInstanceName $false
@@ -373,7 +373,7 @@ function Test-ManagedInstanceDnsAliasPipingScenarios
         $managedInstanceDnsAlias = Get-AzSqlInstanceDnsAlias -InstanceObject $targetManagedInstance -Name $testAliasName
 
         #Now pass the source resource Id
-        $managedInstanceDnsAlias = $managedInstanceDnsAlias.Id | Move-AzSqlInstanceDnsAlias -ResourceGroupName $rgName -InstanceName $sourceManagedInstanceName
+        $managedInstanceDnsAlias = $managedInstanceDnsAlias.Id | Move-AzSqlInstanceDnsAlias -DestResourceGroupName $rgName -InstanceName $sourceManagedInstanceName
 
         #Validate that move has been successfully completed
         ValidateDnsAlias $managedInstanceDnsAlias $testAliasName $rgName $sourceManagedInstanceName $false
@@ -434,7 +434,7 @@ function Test-ManagedInstanceDnsAliasErrorHandling
 
         #Check moving to non existant MI
         $msgExcNotFoundParent = "Can not perform requested operation on nested resource. Parent resource '" + $invalidMIName + "' not found."
-        Assert-ThrowsContains { Move-AzSqlInstanceDnsAlias -ResourceGroupName $rgName -InstanceName $invalidMIName -SourceResourceGroupName $rgName -SourceInstanceName $managedInstanceName -SourceName $testAliasName}$msgExcNotFoundParent
+        Assert-ThrowsContains { Move-AzSqlInstanceDnsAlias -DestResourceGroupName $rgName -InstanceName $invalidMIName -SourceResourceGroupName $rgName -SourceInstanceName $managedInstanceName -SourceName $testAliasName}$msgExcNotFoundParent
 
         #Assert confirmation message
         $removeConfirmationMessage = "Are you sure you want to remove the instance DNS alias named '"+$testAliasName+"' from managed instance '"+$managedInstanceName+"' located in resource group '"+$rgName+"'?"
