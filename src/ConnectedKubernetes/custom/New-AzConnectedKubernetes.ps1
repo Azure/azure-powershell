@@ -188,7 +188,7 @@ function New-AzConnectedKubernetes {
 
         #Region check helm install
         try {
-             $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
+            $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
             if ($HelmVersion.Contains("v2")) {
                 Write-Error "Helm version 3+ is required. Ensure that you have installed the latest version of Helm. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
                 return
@@ -202,7 +202,7 @@ function New-AzConnectedKubernetes {
         #Region get release namespace
         $ReleaseNamespace = $null
         try {
-            $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext | ConvertFrom-Json).namespace
+            $ReleaseNamespace = (C:\Users\yunwang\.azure\helm\v3.6.3\windows-amd64\helm.exe status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext | ConvertFrom-Json).namespace
         } catch {
             Write-Error "Fail to find the namespace for azure-arc."
         }
@@ -225,14 +225,14 @@ function New-AzConnectedKubernetes {
                 # }
                 # return
             } catch {
-                helm delete azure-arc --namespace $ReleaseNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
+                # helm delete azure-arc --namespace $ReleaseNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
             }
         }
 
         if ((Test-Path Env:HELMREPONAME) -and (Test-Path Env:HELMREPOURL)) {
             $HelmRepoName = Get-ChildItem -Path Env:HELMREPONAME
             $HelmRepoUrl = Get-ChildItem -Path Env:HELMREPOURL
-            helm repo add $HelmRepoName $HelmRepoUrl --kubeconfig $KubeConfig --kube-context $KubeContext
+            C:\Users\yunwang\.azure\helm\v3.6.3\windows-amd64\helm.exe repo add $HelmRepoName $HelmRepoUrl --kubeconfig $KubeConfig --kube-context $KubeContext
         }
 
         if (Test-Path Env:HELMREGISTRY) {
@@ -268,12 +268,13 @@ function New-AzConnectedKubernetes {
         Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
         #Region pull helm chart
         try {
-             $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
-             if ($HelmVersion.Substring(1,$HelmVersion.Length-1) -ge [System.Version]"3.7") {
-                helm pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
-             } else {
-                helm chart pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
-             }
+            #  $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
+            #  if ($HelmVersion.Substring(1,$HelmVersion.Length-1) -ge [System.Version]"3.7") {
+            #     helm pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
+            #  } else {
+            #     helm chart pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
+            #  }
+            C:\Users\yunwang\.azure\helm\v3.6.3\windows-amd64\helm.exe chart pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
         } catch {
             Write-Error "Unable to pull helm chart from the registery $RegisteryPath"
             throw
@@ -288,12 +289,13 @@ function New-AzConnectedKubernetes {
             $ChartExportPath = Join-Path -Path $Home -ChildPath '.azure' | Join-Path -ChildPath 'AzureArcCharts'
         }
         try {
-             $HelmVersion = helm version --short --kubeconfig $KubeConfig
-             if ($HelmVersion.Substring(1,$HelmVersion.Length-1) -ge [System.Version]"3.7") {
-                helm pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
-             } else {
-                helm chart export $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
-             }
+            #  $HelmVersion = helm version --short --kubeconfig $KubeConfig
+            #  if ($HelmVersion.Substring(1,$HelmVersion.Length-1) -ge [System.Version]"3.7") {
+            #     helm pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
+            #  } else {
+            #     helm chart export $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
+            #  }
+            C:\Users\yunwang\.azure\helm\v3.6.3\windows-amd64\helm.exe chart export $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
         } catch {
             Write-Error "Unable to export helm chart from the registery $RegisteryPath"
             throw
@@ -302,7 +304,7 @@ function New-AzConnectedKubernetes {
 
         $RSA = [System.Security.Cryptography.RSA]::Create(4096)
         $AgentPublicKey = [System.Convert]::ToBase64String($RSA.ExportRSAPublicKey())
-        $AgentPrivateKey = [System.Convert]::ToBase64String($RSA.ExportRSAPrivateKey())
+        $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + [System.Convert]::ToBase64String($RSA.ExportPkcs8PrivateKey()) + "`n-----END RSA PRIVATE KEY-----"
 
         $HelmChartPath = Join-Path -Path $ChartExportPath -ChildPath 'azure-arc-k8sagents'
         if (Test-Path Env:HELMCHART) {
@@ -311,10 +313,12 @@ function New-AzConnectedKubernetes {
             $ChartPath = $HelmChartPath
         }
 
-        $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
-        helm upgrade --install azure-arc $ChartPath --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --kubeconfig $KubeConfig --kube-context $KubeContext
-        
         $PSBoundParameters.Add('AgentPublicKeyCertificate', $AgentPublicKey)
-        Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
+        $Result = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
+
+        $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
+        Write-Host "C:\Users\yunwang\.azure\helm\v3.6.3\windows-amd64\helm.exe upgrade --install azure-arc $ChartPath --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure  --kubeconfig $KubeConfig --kube-context $KubeContext --wait --timeout 600s"
+        C:\Users\yunwang\.azure\helm\v3.6.3\windows-amd64\helm.exe upgrade --install azure-arc $ChartPath --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure --kubeconfig $KubeConfig --kube-context $KubeContext --wait --timeout 600s
+        Return $Result
     }
 }
