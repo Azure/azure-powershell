@@ -240,7 +240,7 @@ function Test-ManagedInstanceLinkErrHandling
 
         # Confirm that ShouldContinue message is triggered on Remove (tests don't support user interaction so we'll validate the exception)
         $msgExcDataLoss = "may cause data loss"
-        Assert-ThrowsContains { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $invalidLinkName1 } $msgExcDataLoss
+        Assert-ThrowsContains { Remove-AzSqlInstanceLink -ResourceGroupName $rgName -InstanceName $miName -Name $linkName } $msgExcDataLoss
 
         # validate forbidden updates in current link state
         $exSet1 = "The 'parameters.properties.replicationMode' segment in the url is invalid."
