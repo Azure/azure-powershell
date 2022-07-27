@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="InMageEnableProtectionInput" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="InMageEnableProtectionInput" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInput FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,19 +103,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInput) content.GetValueForProperty("DiskExclusionInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageDiskExclusionInputTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).VMFriendlyName = (string) content.GetValueForProperty("VMFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).VMFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MasterTargetId = (string) content.GetValueForProperty("MasterTargetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MasterTargetId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).ProcessServerId = (string) content.GetValueForProperty("ProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).ProcessServerId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RetentionDrive = (string) content.GetValueForProperty("RetentionDrive",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RetentionDrive, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RunAsAccountId = (string) content.GetValueForProperty("RunAsAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RunAsAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupId = (string) content.GetValueForProperty("MultiVMGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupName = (string) content.GetValueForProperty("MultiVMGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DatastoreName = (string) content.GetValueForProperty("DatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DatastoreName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DisksToInclude = (string[]) content.GetValueForProperty("DisksToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DisksToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEnableProtectionProviderSpecificInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEnableProtectionProviderSpecificInputInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputVolumeOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions[]) content.GetValueForProperty("DiskExclusionInputVolumeOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputVolumeOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageVolumeExclusionOptionsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputDiskSignatureOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions[]) content.GetValueForProperty("DiskExclusionInputDiskSignatureOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputDiskSignatureOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageDiskSignatureExclusionOptionsTypeConverter.ConvertFrom));
+            if (content.Contains("DiskExclusionInput"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInput) content.GetValueForProperty("DiskExclusionInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageDiskExclusionInputTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("VMFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).VMFriendlyName = (string) content.GetValueForProperty("VMFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).VMFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MasterTargetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MasterTargetId = (string) content.GetValueForProperty("MasterTargetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MasterTargetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProcessServerId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).ProcessServerId = (string) content.GetValueForProperty("ProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).ProcessServerId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetentionDrive"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RetentionDrive = (string) content.GetValueForProperty("RetentionDrive",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RetentionDrive, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunAsAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RunAsAccountId = (string) content.GetValueForProperty("RunAsAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RunAsAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MultiVMGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupId = (string) content.GetValueForProperty("MultiVMGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MultiVMGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupName = (string) content.GetValueForProperty("MultiVMGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatastoreName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DatastoreName = (string) content.GetValueForProperty("DatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DatastoreName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisksToInclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DisksToInclude = (string[]) content.GetValueForProperty("DisksToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DisksToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEnableProtectionProviderSpecificInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEnableProtectionProviderSpecificInputInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskExclusionInputVolumeOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputVolumeOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions[]) content.GetValueForProperty("DiskExclusionInputVolumeOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputVolumeOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageVolumeExclusionOptionsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DiskExclusionInputDiskSignatureOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputDiskSignatureOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions[]) content.GetValueForProperty("DiskExclusionInputDiskSignatureOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputDiskSignatureOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageDiskSignatureExclusionOptionsTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -131,19 +172,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInput) content.GetValueForProperty("DiskExclusionInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageDiskExclusionInputTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).VMFriendlyName = (string) content.GetValueForProperty("VMFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).VMFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MasterTargetId = (string) content.GetValueForProperty("MasterTargetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MasterTargetId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).ProcessServerId = (string) content.GetValueForProperty("ProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).ProcessServerId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RetentionDrive = (string) content.GetValueForProperty("RetentionDrive",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RetentionDrive, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RunAsAccountId = (string) content.GetValueForProperty("RunAsAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RunAsAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupId = (string) content.GetValueForProperty("MultiVMGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupName = (string) content.GetValueForProperty("MultiVMGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DatastoreName = (string) content.GetValueForProperty("DatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DatastoreName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DisksToInclude = (string[]) content.GetValueForProperty("DisksToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DisksToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEnableProtectionProviderSpecificInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEnableProtectionProviderSpecificInputInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputVolumeOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions[]) content.GetValueForProperty("DiskExclusionInputVolumeOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputVolumeOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageVolumeExclusionOptionsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputDiskSignatureOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions[]) content.GetValueForProperty("DiskExclusionInputDiskSignatureOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputDiskSignatureOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageDiskSignatureExclusionOptionsTypeConverter.ConvertFrom));
+            if (content.Contains("DiskExclusionInput"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInput) content.GetValueForProperty("DiskExclusionInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageDiskExclusionInputTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("VMFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).VMFriendlyName = (string) content.GetValueForProperty("VMFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).VMFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MasterTargetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MasterTargetId = (string) content.GetValueForProperty("MasterTargetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MasterTargetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProcessServerId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).ProcessServerId = (string) content.GetValueForProperty("ProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).ProcessServerId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RetentionDrive"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RetentionDrive = (string) content.GetValueForProperty("RetentionDrive",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RetentionDrive, global::System.Convert.ToString);
+            }
+            if (content.Contains("RunAsAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RunAsAccountId = (string) content.GetValueForProperty("RunAsAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).RunAsAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MultiVMGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupId = (string) content.GetValueForProperty("MultiVMGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("MultiVMGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupName = (string) content.GetValueForProperty("MultiVMGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).MultiVMGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DatastoreName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DatastoreName = (string) content.GetValueForProperty("DatastoreName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DatastoreName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisksToInclude"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DisksToInclude = (string[]) content.GetValueForProperty("DisksToInclude",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DisksToInclude, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEnableProtectionProviderSpecificInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEnableProtectionProviderSpecificInputInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskExclusionInputVolumeOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputVolumeOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions[]) content.GetValueForProperty("DiskExclusionInputVolumeOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputVolumeOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageVolumeExclusionOptionsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DiskExclusionInputDiskSignatureOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputDiskSignatureOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions[]) content.GetValueForProperty("DiskExclusionInputDiskSignatureOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageEnableProtectionInputInternal)this).DiskExclusionInputDiskSignatureOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageDiskSignatureExclusionOptionsTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 
