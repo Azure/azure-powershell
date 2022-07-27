@@ -22,10 +22,10 @@ The **New-AzPrivateDnsZoneConfig** cmdlet enables you to create a new DNS zone c
 
 ## EXAMPLES
 
-### Creates DNS zone configuration
+### Example 1: Creates DNS zone configuration
 ```powershell
-PS C:\> $dnsZone = New-AzPrivateDnsZone -ResourceGroupName "rg" -Name "test.vault.azure.com"
-PS C:\> $config = New-AzPrivateDnsZoneConfig -Name "test-vault-azure-com" -PrivateDnsZoneId $dnsZone.ResourceId
+$dnsZone = New-AzPrivateDnsZone -ResourceGroupName "rg" -Name "test.vault.azure.com"
+$config = New-AzPrivateDnsZoneConfig -Name "test-vault-azure-com" -PrivateDnsZoneId $dnsZone.ResourceId
 ```
 
 The above example creates DNS zone and then creates DNS zone configuration. `New-AzPrivateDnsZone` cmdlet is proveded by module Az.PrivateDns.

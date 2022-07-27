@@ -26,8 +26,11 @@ This cmdlet applies, reverts, or discards the recommended action based on the ne
 ## EXAMPLES
 
 ### Example1: Update the state of the specified recommended action to Pending
+```powershell
+Set-AzSqlServerRecommendedActionState -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName "CreateIndex" -RecommendedActionName "IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893" -State Pending
 ```
-PS C:\>Set-AzSqlServerRecommendedActionState -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName "CreateIndex" -RecommendedActionName "IR_[test_schema]_[test_table_0.0361551]_6C7AE8CC9C87E7FD5893" -State Pending
+
+```output
 ResourceGroupName          : WIRunnersProd
 ServerName                 : wi-runner-australia-east
 AdvisorName                : CreateIndex

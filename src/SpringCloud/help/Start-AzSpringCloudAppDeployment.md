@@ -32,14 +32,14 @@ Start the deployment.
 
 ### Example 1: Start Spring Cloud Service by name.
 ```powershell
-PS C:\> Start-AzSpringCloud -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default
+Start-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default
 ```
 
 Start Spring Cloud Service by name.
 
 ### Example 2: Start Spring Cloud Service from pipe.
 ```powershell
-PS C:\> Get-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default | Start-AzSpringCloud
+Get-AzSpringCloudAppDeployment -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default | Start-AzSpringCloudAppDeployment
 ```
 
 Start Spring Cloud Service from pipe.
@@ -250,7 +250,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+INPUTOBJECT `<ISpringCloudIdentity>`: Identity Parameter
   - `[AppName <String>]`: The name of the App resource.
   - `[BindingName <String>]`: The name of the Binding resource.
   - `[CertificateName <String>]`: The name of the certificate resource.

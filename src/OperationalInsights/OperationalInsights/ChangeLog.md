@@ -17,8 +17,17 @@
     * Overview of change #1
         - Additional information about change #1
 -->
+
 ## Upcoming Release
-* Bug fix - prevent exceptions while using StorageInsight cmdlets 
+
+## Version 3.1.0
+* Removed capacity validation in new and update cluster cmdlets as validation exists on server side.
+* Extended error message on base class for extended information.
+* Bug fix - prevent exceptions while using StorageInsight cmdlets.
+* Bug fix - when updating a cluster, it's SKU was set even if no value was passed.
+
+## Version 3.0.1
+* Added logic to prevent exceptions while using `StorageInsight` cmdlets.
 
 ## Version 3.0.0
 * Expanded DataSourceType with values `Query`, `Alerts` for LinkedStorageAccount cmdlets

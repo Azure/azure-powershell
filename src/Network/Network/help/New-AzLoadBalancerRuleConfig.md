@@ -38,13 +38,13 @@ The **New-AzLoadBalancerRuleConfig** cmdlet creates a rule configuration for an 
 
 ### Example 1: Creating a rule configuration for an Azure Load Balancer
 ```powershell
-PS C:\> $publicip = New-AzPublicIpAddress -ResourceGroupName "MyResourceGroup" `
+$publicip = New-AzPublicIpAddress -ResourceGroupName "MyResourceGroup" `
     -name MyPublicIP -location 'West US' -AllocationMethod Dynamic
-PS C:\> $frontend = New-AzLoadBalancerFrontendIpConfig -Name MyFrontEnd `
+$frontend = New-AzLoadBalancerFrontendIpConfig -Name MyFrontEnd `
     -PublicIpAddress $publicip
-PS C:\> $probe = New-AzLoadBalancerProbeConfig -Name MyProbe -Protocol http -Port `
+$probe = New-AzLoadBalancerProbeConfig -Name MyProbe -Protocol http -Port `
     80 -IntervalInSeconds 15 -ProbeCount 2 -RequestPath healthcheck.aspx
-PS C:\> New-AzLoadBalancerRuleConfig -Name "MyLBrule" -FrontendIPConfiguration `
+New-AzLoadBalancerRuleConfig -Name "MyLBrule" -FrontendIPConfiguration `
     $frontend -BackendAddressPool $backendAddressPool -Probe $probe -Protocol Tcp `
     -FrontendPort 80 -BackendPort 80 -IdleTimeoutInMinutes 15 -EnableFloatingIP `
     -LoadDistribution SourceIP
@@ -52,11 +52,11 @@ PS C:\> New-AzLoadBalancerRuleConfig -Name "MyLBrule" -FrontendIPConfiguration `
 
 ### Example 2: Creating a rule configuration for an Azure Load Balancer with Gateway Load Balancer
 ```powershell
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> $MyBackendPool1 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $MyLoadBalancer -Name $backendPool1Name
-PS C:\> $MyBackendPool2 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $MyLoadBalancer -Name $backendPool2Name
-PS C:\> $slb | Add-AzLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "All" -FrontendPort 0 -BackendPort 0 -BackendAddressPool $MyBackendPool1,$MyBackendPool2
-PS C:\>$slb | Set-AzLoadBalancer
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+$MyBackendPool1 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $MyLoadBalancer -Name $backendPool1Name
+$MyBackendPool2 = Get-AzLoadBalancerBackendAddressPool -ResourceGroupName $resourceGroup -LoadBalancerName $MyLoadBalancer -Name $backendPool2Name
+$slb | Add-AzLoadBalancerRuleConfig -Name "NewRule" -FrontendIPConfiguration $slb.FrontendIpConfigurations[0] -Protocol "All" -FrontendPort 0 -BackendPort 0 -BackendAddressPool $MyBackendPool1,$MyBackendPool2
+$slb | Set-AzLoadBalancer
 ```
 
 The first three commands set up a public IP, a front end, and a probe for the rule configuration in the forth command. The forth command creates a new rule called MyLBrule with certain specifications.

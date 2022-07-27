@@ -45,8 +45,10 @@ Check if a DigitalTwinsInstance name is available.
 
 ### Example 1: Check the name by location and name.
 ```powershell
-PS C:\> Test-AzDigitalTwinsInstanceNameAvailability -Location eastus -name youriTestName
+Test-AzDigitalTwinsInstanceNameAvailability -Location eastus -name youriTestName
+```
 
+```output
 Message                       NameAvailable Reason
 -------                       ------------- ------
 'youriTestName' is available. True
@@ -56,10 +58,12 @@ Check the availability of the name by location and name.
 
 ### Example 2: Check the name by DigitalTwinsObject and CheckNameObject.
 ```powershell
-PS C:\> $getAzDT =Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest 
+$getAzDT =Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest 
 $checkName = New-AzDigitalTwinsCheckNameRequestObject -name youriTestName
 Test-AzDigitalTwinsInstanceNameAvailability -InputObject $getAzDT -DigitalTwinsInstanceCheckName $checkName
+```
 
+```output
 Message                     NameAvailable Reason
 -------                     ------------- ------
 'youriTestName' is available. True
@@ -214,10 +218,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DIGITALTWINSINSTANCECHECKNAME <ICheckNameRequest>: The result returned from a database check name availability request.
+DIGITALTWINSINSTANCECHECKNAME `<ICheckNameRequest>`: The result returned from a database check name availability request.
   - `Name <String>`: Resource name.
 
-INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+INPUTOBJECT `<IDigitalTwinsIdentity>`: Identity Parameter
   - `[EndpointName <String>]`: Name of Endpoint Resource.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location of DigitalTwinsInstance.

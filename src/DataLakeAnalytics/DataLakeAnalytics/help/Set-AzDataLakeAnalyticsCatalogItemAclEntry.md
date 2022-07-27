@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 online version: https://docs.microsoft.com/powershell/module/az.datalakeanalytics/set-azdatalakeanalyticscatalogitemaclentry
@@ -86,8 +86,10 @@ The **Set-AzDataLakeAnalyticsCatalogItemAclEntry** cmdlet adds or modifies an en
 
 ### Example 1: Modify user permissions for a catalog
 ```powershell
-PS C:\> Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -User -ObjectId (Get-AzADUser -Mail "PattiFuller@contoso.com").Id -Permissions Read
+Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -User -ObjectId (Get-AzADUser -Mail "PattiFuller@contoso.com").Id -Permissions Read
+```
 
+```output
 Type  Id                                   Permissions
 ----  --                                   -----------
 User  90a6f74b-fd73-490e-900a-c4f0f9694d02        Read
@@ -100,8 +102,10 @@ This command modifies the catalog ACE for Patti Fuller to have read permissions.
 
 ### Example 2: Modify user Permissions for a database
 ```powershell
-PS C:\> Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -User -ObjectId (Get-AzADUser -Mail "PattiFuller@contoso.com").Id -ItemType Database -Path "databaseName" -Permissions Read
+Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -User -ObjectId (Get-AzADUser -Mail "PattiFuller@contoso.com").Id -ItemType Database -Path "databaseName" -Permissions Read
+```
 
+```output
 Type  Id                                   Permissions
 ----  --                                   -----------
 User  90a6f74b-fd73-490e-900a-c4f0f9694d02        Read
@@ -114,8 +118,10 @@ This command modifies the database ACE for Patti Fuller to have read permissions
 
 ### Example 3: Modify other permissions for a catalog
 ```powershell
-PS C:\> Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -Other -Permissions Read
+Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -Other -Permissions Read
+```
 
+```output
 Type  Id                                   Permissions
 ----  --                                   -----------
 User  90a6f74b-fd73-490e-900a-c4f0f9694d02        Read
@@ -128,8 +134,10 @@ This command modifies the catalog ACE for other to have read permissions.
 
 ### Example 4: Modify other Permissions for a database
 ```powershell
-PS C:\> Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -Other -ItemType Database -Path "databaseName" -Permissions Read
+Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -Other -ItemType Database -Path "databaseName" -Permissions Read
+```
 
+```output
 Type  Id                                   Permissions
 ----  --                                   -----------
 User  90a6f74b-fd73-490e-900a-c4f0f9694d02        Read
@@ -140,8 +148,10 @@ User  bd0b55bb-3a57-442a-b2f6-78c95c10ef86        Read
 
 ### Example 5: Modify user owner permissions for a catalog
 ```powershell
-PS C:\> Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner -Permissions Read
+Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner -Permissions Read
+```
 
+```output
 Type      Id                                   Permissions
 ----      --                                   -----------
 UserOwner 0316ac75-6703-4ace-984f-a4dd79aeeafc        Read
@@ -151,8 +161,10 @@ This command sets the owner permission for the account to Read.
 
 ### Example 6: Modify user owner Permissions for a database
 ```powershell
-PS C:\> Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner -ItemType Database -Path "databaseName" -Permissions Read
+Set-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner -ItemType Database -Path "databaseName" -Permissions Read
+```
 
+```output
 Type       Id                                   Permissions
 ----       --                                   -----------
 GroupOwner 0316ac75-6703-4ace-984f-a4dd79aeeafc        Read

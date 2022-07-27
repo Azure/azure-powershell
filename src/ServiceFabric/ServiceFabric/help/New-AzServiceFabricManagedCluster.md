@@ -18,7 +18,7 @@ New-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String>
  [-UpgradeMode <ClusterUpgradeMode>] [-CodeVersion <String>] [-UpgradeCadence <PSClusterUpgradeCadence>]
  [-ClientCertIsAdmin] -ClientCertThumbprint <String> -AdminPassword <SecureString> [-AdminUserName <String>]
  [-HttpGatewayConnectionPort <Int32>] [-ClientConnectionPort <Int32>] [-DnsName <String>]
- [-Sku <ManagedClusterSku>] [-UseTestExtension] [-ZonalResiliency] [-AsJob]
+ [-Sku <ManagedClusterSku>] [-UseTestExtension] [-ZonalResiliency] [-AsJob] [-Tag <Hashtable>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ New-AzServiceFabricManagedCluster [-ResourceGroupName] <String> [-Name] <String>
  [-ClientCertIsAdmin] -ClientCertCommonName <String> [-ClientCertIssuerThumbprint <String[]>]
  -AdminPassword <SecureString> [-AdminUserName <String>] [-HttpGatewayConnectionPort <Int32>]
  [-ClientConnectionPort <Int32>] [-DnsName <String>] [-Sku <ManagedClusterSku>] [-UseTestExtension]
- [-ZonalResiliency] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-ZonalResiliency] [-AsJob] [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -43,7 +43,9 @@ This cmdlet will create a managed cluster resource without node types. To bootst
 $rgName = "testRG"
 $clusterName = "testCluster"
 $password = ConvertTo-SecureString -AsPlainText -Force "testpass1234!@#$"
-New-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Location centraluseuap -ClusterName $clusterName -AdminPassword $password -Verbose
+$tags = @{"test"="tag"}
+
+New-AzServiceFabricManagedCluster -ResourceGroupName $rgName -Location centraluseuap -ClusterName $clusterName -AdminPassword $password -Tag $tags -Verbose
 ```
 
 This command creates a cluster resource with default basic sku.
@@ -322,6 +324,21 @@ Accepted values: Basic, Standard
 Required: False
 Position: Named
 Default value: Basic
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Specify the tags as key/value pairs.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

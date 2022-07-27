@@ -33,12 +33,11 @@ Updates a function app service plan.
 
 ### Example 1: Update an app service plan to EP2 sku with twenty maximum workers.
 ```powershell
-PS C:\> Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
-                                 -Name MyPremiumPlan `
-                                 -MaximumWorkerCount 20 `
-                                 -Sku EP2 `
-                                 -Force
-
+Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
+                         -Name MyPremiumPlan `
+                         -MaximumWorkerCount 20 `
+                         -Sku EP2 `
+                         -Force
 ```
 
 This command updates an app service plan to EP2 sku with twenty maximum workers.
@@ -277,7 +276,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IAppServicePlan>: 
+INPUTOBJECT `<IAppServicePlan>`: 
   - `Location <String>`: Resource Location.
   - `[Kind <String>]`: Kind of resource.
   - `[Tag <IResourceTags>]`: Resource tags.

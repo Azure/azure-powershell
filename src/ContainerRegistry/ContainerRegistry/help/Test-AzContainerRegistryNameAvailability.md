@@ -24,8 +24,10 @@ The Test-AzContainerRegistryNameAvailability cmdlet checks whether a container r
 
 ### Example 1: Checks the availability of a container registry name
 ```powershell
-PS C:\>Test-AzContainerRegistryNameAvailability -Name 'SomeRegistryName'
+Test-AzContainerRegistryNameAvailability -Name 'SomeRegistryName'
+```
 
+```output
 NameAvailable Reason Message
 ------------- ------ -------
          True

@@ -15,8 +15,8 @@ Creates a new dedicated eventhub cluster
 ### ClusterPropertiesSet (Default)
 ```
 New-AzEventHubCluster [-ResourceGroupName] <String> [-Name] <String> [-Location] <String> [-Capacity <Int32>]
- [-Tag <Hashtable>] [[-ResourceId] <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-Tag <Hashtable>] [-SupportsScaling] [[-ResourceId] <String>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ClusterResourceIdParameterSet
@@ -32,8 +32,10 @@ The New-AzEventHubCluster cmdlet creates the dedicated eventhub cluster in the g
 
 ### Example 1
 ```powershell
-PS C:\>  New-AzEventHubCluster -ResourceGroupName RSG-Cluster27651 -Name Eventhub-Cluster-5557 -Location southcentralus -Capacity 1
+New-AzEventHubCluster -ResourceGroupName RSG-Cluster27651 -Name Eventhub-Cluster-5557 -Location southcentralus -Capacity 1
+```
 
+```output
 Id        : /subscriptions/SubId/resourceGroups/RSG-Cluster27651/providers/Microsoft.EventHub/clusters/Eventhub-Cluster-5557
 Name      : Eventhub-Cluster-5557
 Location  : southcentralus
@@ -152,6 +154,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -SupportsScaling
+Hashtables which represents resource Tags for Clusters
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClusterPropertiesSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -Tag
 Hashtables which represents resource Tags for Clusters
 
@@ -208,6 +225,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
 
 ### System.Collections.Hashtable
+
+### System.Management.Automation.SwitchParameter
 
 ## OUTPUTS
 

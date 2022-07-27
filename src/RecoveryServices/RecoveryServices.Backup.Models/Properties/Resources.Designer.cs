@@ -739,7 +739,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to For SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly.
+        ///   Looks up a localized string similar to For Standard policy SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 5. For weekly backup policies, the only allowed value is 5. Please set the value accordingly.
         /// </summary>
         public static string InstantRPRetentionDaysException
         {
@@ -1843,7 +1843,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to copy items to the <TargetVault> whose storage redundancy is <StorageRedundancyType>.
+        ///   Looks up a localized string similar to Are you sure you want to copy items to the {TargetVault} whose storage redundancy is {StorageRedundancyType}.
         /// </summary>
         public static string TargetVaultStorageRedundancy
         {
@@ -2094,5 +2094,301 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             }
         }
 
+        /// <summary>        
+        ///   Looks up a localized string similar to Number of restore points are more than {Limit}, please reduce the
+        ///   retention duration count for Daily Schedule or reduce number of backups per day
+        /// </summary>
+        public static string DailyRetentionPointsLimitExceeded
+        {
+            get
+            {
+                return ResourceManager.GetString("DailyRetentionPointsLimitExceeded", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleInterval, ScheduleWindowStartTime, ScheduleWindowDuration, ScheduleRunTimeZone can't be null for Hourly policy
+        /// </summary>
+        public static string HourlyScheduleNullValueException
+        {
+            get
+            {
+                return ResourceManager.GetString("HourlyScheduleNullValueException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowDuration should be less than or equal to (23:30 - ScheduleWindowStartTime)
+        /// </summary>
+        public static string InvalidLastBackupTime
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidLastBackupTime", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect value for ScheduleInterval, allowed values are {Valid List of Intervals}
+        /// </summary>
+        public static string InvalidScheduleInterval
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidScheduleInterval", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowDuration can't be lesser than ScheduleInterval and should exist in range from MinDuration to MaxDuration
+        /// </summary>
+        public static string InvalidScheduleWindowDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidScheduleWindowDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowStartTime is out of range, valid range is from MinstartTime to MaxStartTime
+        /// </summary>
+        public static string ScheduleWindowStartTimeOutOfRange
+        {
+            get
+            {
+                return ResourceManager.GetString("ScheduleWindowStartTimeOutOfRange", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TargetResourceGroupName parameter should be empty for OriginalLocation in-place restore
+        /// </summary>
+        public static string TargetRGNotRequiredException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetRGNotRequiredException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TargetVMName, TargetVNetName, TargetVNetResourceGroup, TargetSubnetName can't be empty for restoring to AlternateLocation with create new VM option
+        /// </summary>
+        public static string TargetParamsMissingException
+        {
+            get
+            {
+                return ResourceManager.GetString("TargetParamsMissingException", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleRunFrequency parameter is only expected for WorkloadTypes: AzureVM, AzureFiles
+        /// </summary>
+        public static string UnexpectedParamScheduleRunFrequency
+        {
+            get
+            {
+                return ResourceManager.GetString("UnexpectedParamScheduleRunFrequency", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleInterval, ScheduleWindowStartTime, ScheduleWindowDuration must be empty for non-Hourly policy
+        /// </summary>
+        public static string HourlyScheduleNotNull
+        {
+            get
+            {
+                return ResourceManager.GetString("HourlyScheduleNotNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleRunTimes and ScheduleRunDays must be empty for Hourly policy
+        /// </summary>
+        public static string NonHourlyAttributesNotNull
+        {
+            get
+            {
+                return ResourceManager.GetString("NonHourlyAttributesNotNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowDuration can't be less than ScheduleInterval for Hourly policy
+        /// </summary>
+        public static string WindowDurationLessThanInterval
+        {
+            get
+            {
+                return ResourceManager.GetString("WindowDurationLessThanInterval", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to ScheduleWindowStartTime in Hourly schedule policy should be in UTC time, however policy can be created in a different time zone by providing the timezone in ScheduleRunTimeZone attribute
+        /// </summary>
+        public static string WindowStartTimeNotInUTC
+        {
+            get
+            {
+                return ResourceManager.GetString("WindowStartTimeNotInUTC", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Hourly policy is not supported for WorkloadType AzureIaasVM, please try with Enhanced policy or different schedule frequency: Daily, Weekly
+        /// </summary>
+        public static string StandardHourlyPolicyNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("StandardHourlyPolicyNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Standard Hourly schedule is not supported for WorkloadType AzureVM
+        /// </summary>
+        public static string StandardHourlyScheduleNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("StandardHourlyScheduleNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to For Enhanced policy SnapshotRetentionRangeInDays, the minimum value is 1 and maximum is 30. For weekly backup policies, the minimum allowed value is 5. Please set the value accordingly
+        /// </summary>
+        public static string SnapshotRetentionOutOfRange
+        {
+            get
+            {
+                return ResourceManager.GetString("SnapshotRetentionOutOfRange", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Weekly ScheduleRunFrequency isn't supported for WorkloadType: AzureFiles
+        /// </summary>
+        public static string WeeklyScheduleNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("WeeklyScheduleNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enhanced policy is only supported for workloadType AzureVM. Please provide correct PolicySubType and WorkloadType
+        /// </summary>
+        public static string EnhancedPolicyNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("EnhancedPolicyNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Enhanced Hourly policy is currently not supported for WorkloadType AzureIaasVM. This will be supported soon
+        /// </summary>
+        public static string EnhancedHourlyPolicyNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("EnhancedHourlyPolicyNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Trusted VM can only be protected using Enhanced policy. Please provide a valid AzureVM Enhanced policy
+        /// </summary>
+        public static string InvalidPolicyForTrustedVMProtection
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidPolicyForTrustedVMProtection", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to ProtectedItemURI can't be null as the operation is protected with ResourceGuard
+        /// </summary>
+        public static string ProtectedItemURICantBeNull
+        {
+            get
+            {
+                return ResourceManager.GetString("ProtectedItemURICantBeNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Operation not critical, please try without the Token parameter. MUA currently only protects reducing or disabling retention times
+        /// </summary>
+        public static string PolicyUpdateNotCritical
+        {
+            get
+            {
+                return ResourceManager.GetString("PolicyUpdateNotCritical", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to {0} is not protected via MUA, either protect or try without the Token parameter
+        /// </summary>
+        public static string UnexpectedParameterToken
+        {
+            get
+            {
+                return ResourceManager.GetString("UnexpectedParameterToken", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Operation not critical, please try without the Token parameter. MUA currently protects disabling SoftDelete or SecurityFeatures only when it was previously enabled
+        /// </summary>
+        public static string BackupConfigUpdateNotCritical
+        {
+            get
+            {
+                return ResourceManager.GetString("BackupConfigUpdateNotCritical", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to ResourceGuardMapping not found
+        /// </summary>
+        public static string ResourceGuardMappingNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("ResourceGuardMappingNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Invalid parameter Token: Stop protection with retain backup data is not MUA protected
+        /// </summary>
+        public static string DisableWithRetainBackupNotCrititcal{
+            get
+            {
+                return ResourceManager.GetString("DisableWithRetainBackupNotCrititcal", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Cross region restore is not supported along with cross subscription restore, please try passing either RestoreToSecondaryRegion or TargetSubscriptionId parameter but not both
+        /// </summary>
+        public static string CRRNotSupportedWIthCSR
+        {
+            get
+            {
+                return ResourceManager.GetString("CRRNotSupportedWIthCSR", resourceCulture);
+            }
+        }
     }
 }

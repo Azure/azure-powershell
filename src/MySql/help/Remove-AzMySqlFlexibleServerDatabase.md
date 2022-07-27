@@ -32,16 +32,15 @@ Deletes a database.
 
 ### Example 1: Remove MySql database by name
 ```powershell
-PS C:\> Remove-AzMySqlFlexibleServerDatabase -Name databasetest -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+Remove-AzMySqlFlexibleServerDatabase -Name databasetest -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 ```
 
 This cmdlet removes MySql database by name.
 
 ### Example 2: Remove MySql database by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/databases/databasetest"
-PS C:\> Remove-AzMySqlFlexibleServerDatabase -InputObject $ID
- 
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/databases/databasetest"
+Remove-AzMySqlFlexibleServerDatabase -InputObject $ID
 ```
 
 These cmdlets remove MySql database by identity.
@@ -236,7 +235,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+INPUTOBJECT `<IMySqlIdentity>`: Identity Parameter
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.

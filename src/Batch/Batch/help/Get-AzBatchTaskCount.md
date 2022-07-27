@@ -33,7 +33,7 @@ Task counts provide a count of the tasks by active, running or completed task st
 
 ### Example 1: Get task counts by ID
 ```powershell
-Get-AzBatchTaskCount -JobId "Job01" -Id "Task03" -BatchContext $Context
+Get-AzBatchTaskCount -JobId "Job01" -BatchContext $Context
 ```
 
 ```output

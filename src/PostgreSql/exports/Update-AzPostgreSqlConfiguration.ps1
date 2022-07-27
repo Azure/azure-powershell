@@ -22,18 +22,10 @@ Use Update-AzPostgreSqlServer instead if you want update AdministratorLoginPassw
 Updates a configuration of a server.
 Use Update-AzPostgreSqlServer instead if you want update AdministratorLoginPassword, sku, etc.
 .Example
-PS C:\> Update-AzPostgreSqlConfiguration -Name intervalstyle -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -Value SQL_STANDARD
-
-Name          Value
-----          -----
-intervalstyle SQL_STANDARD
+ Update-AzPostgreSqlConfiguration -Name intervalstyle -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer -Value SQL_STANDARD
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/configurations/deadlock_timeout"
-PS C:\> Update-AzPostgreSqlConfiguration -InputObject $ID -Value 2000
-
-Name             Value
-----             -----
-deadlock_timeout 2000
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/configurations/deadlock_timeout"
+ Update-AzPostgreSqlConfiguration -InputObject $ID -Value 2000
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity

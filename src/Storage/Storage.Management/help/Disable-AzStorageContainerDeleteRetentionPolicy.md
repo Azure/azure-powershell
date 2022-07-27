@@ -36,6 +36,7 @@ The **Disable-AzStorageContainerDeleteRetentionPolicy** cmdlet disables delete r
 ## EXAMPLES
 
 ### Example 1: Disable delete retention policy for blob containers
+<!-- Skip: Output cannot be splitted from code -->
 ```
 C:\PS>Disable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PassThru
 

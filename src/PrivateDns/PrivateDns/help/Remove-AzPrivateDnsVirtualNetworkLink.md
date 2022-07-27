@@ -40,8 +40,8 @@ When specifying the link using a **PSPrivateDnsVirtualNetworkLink** object (pass
 ## EXAMPLES
 
 ### Example 1: Remove a link
-```
-PS C:\>Remove-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "mylink"
+```powershell
+Remove-AzPrivateDnsVirtualNetworkLink -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com" -Name "mylink"
 ```
 
 This command removes the link named mylink linked to zone myzone.com from the resource group named MyResourceGroup.

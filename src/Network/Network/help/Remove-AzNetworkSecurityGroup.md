@@ -24,8 +24,8 @@ The **Remove-AzNetworkSecurityGroup** cmdlet removes an Azure network security g
 ## EXAMPLES
 
 ### Example 1: Remove a network security group
-```
-PS C:\>Remove-AzNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
+```powershell
+Remove-AzNetworkSecurityGroup -Name "NSG-FrontEnd" -ResourceGroupName "TestRG"
 ```
 
 This command removes the security group named NSG-FrontEnd in the resource group named TestRG.

@@ -32,6 +32,7 @@ Add-AzKeyVaultKey [-VaultName] <String> [-Name] <String> -KeyFilePath <String>
 ```
 Add-AzKeyVaultKey -HsmName <String> [-Name] <String> [-Disable] [-KeyOps <String[]>] [-Expires <DateTime>]
  [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] -KeyType <String> [-CurveName <String>]
+ [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,7 +63,8 @@ Add-AzKeyVaultKey [-InputObject] <PSKeyVault> [-Name] <String> -KeyFilePath <Str
 ```
 Add-AzKeyVaultKey [-HsmObject] <PSManagedHsm> [-Name] <String> [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] -KeyType <String>
- [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CurveName <String>] [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### HsmInputObjectImport
@@ -92,7 +94,8 @@ Add-AzKeyVaultKey [-ResourceId] <String> [-Name] <String> -KeyFilePath <String>
 ```
 Add-AzKeyVaultKey -HsmResourceId <String> [-Name] <String> [-Disable] [-KeyOps <String[]>]
  [-Expires <DateTime>] [-NotBefore <DateTime>] [-Tag <Hashtable>] [-Size <Int32>] -KeyType <String>
- [-CurveName <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-CurveName <String>] [-Exportable] [-Immutable] [-ReleasePolicyPath <String>] [-UseDefaultCVMPolicy]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### HsmResourceIdImport
@@ -130,8 +133,10 @@ backup of it that you can restore.
 
 ### Example 1: Create a key
 ```powershell
-PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITSoftware' -Destination 'Software'
+Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITSoftware' -Destination 'Software'
+```
 
+```output
 Vault/HSM Name : contoso
 Name           : ITSoftware
 Key Type       : RSA
@@ -152,8 +157,10 @@ This command creates a software-protected key named ITSoftware in the key vault 
 
 ### Example 2: Create an EC key
 ```powershell
-PS C:\> Add-AzKeyVaultKey -VaultName test-kv -Name test-key -Destination Software -KeyType EC
+Add-AzKeyVaultKey -VaultName test-kv -Name test-key -Destination Software -KeyType EC
+```
 
+```output
 Vault/HSM Name : test-kv
 Name           : test-key
 Key Type       : EC
@@ -174,8 +181,10 @@ This command creates a software-protected EC key named test-key in the key vault
 
 ### Example 3: Create an HSM-protected key
 ```powershell
-PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITHsm' -Destination 'HSM'
+Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITHsm' -Destination 'HSM'
+```
 
+```output
 Vault Name     : contoso
 Name           : ITHsm
 Version        : 67da57e9cadf48a2ad8d366b115843ab
@@ -193,12 +202,14 @@ This command creates an HSM-protected key in the key vault named Contoso.
 
 ### Example 4: Create a key with non-default values
 ```powershell
-PS C:\> $KeyOperations = 'decrypt', 'verify'
-PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
-PS C:\> $NotBefore = (Get-Date).ToUniversalTime()
-PS C:\> $Tags = @{'Severity' = 'high'; 'Accounting' = "true"}
-PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITHsmNonDefault' -Destination 'HSM' -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations -Disable -Tag $Tags
+$KeyOperations = 'decrypt', 'verify'
+$Expires = (Get-Date).AddYears(2).ToUniversalTime()
+$NotBefore = (Get-Date).ToUniversalTime()
+$Tags = @{'Severity' = 'high'; 'Accounting' = "true"}
+Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITHsmNonDefault' -Destination 'HSM' -Expires $Expires -NotBefore $NotBefore -KeyOps $KeyOperations -Disable -Tag $Tags
+```
 
+```output
 Vault/HSM Name : contoso
 Name           : ITHsmNonDefault
 Key Type       : RSA
@@ -230,8 +241,10 @@ cmdlet.
 
 ### Example 5: Import an HSM-protected key
 ```powershell
-PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITByok' -KeyFilePath 'C:\Contoso\ITByok.byok' -Destination 'HSM'
+Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITByok' -KeyFilePath 'C:\Contoso\ITByok.byok' -Destination 'HSM'
+```
 
+```output
 Vault Name     : contoso
 Name           : ITByok
 Version        : 67da57e9cadf48a2ad8d366b115843ab
@@ -253,9 +266,11 @@ For more information, see
 
 ### Example 6: Import a software-protected key
 ```powershell
-PS C:\> $Password = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
-PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfx' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password
+$Password = ConvertTo-SecureString -String 'Password' -AsPlainText -Force
+Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfx' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password
+```
 
+```output
 Vault Name     : contoso
 Name           : ITPfx
 Version        : 67da57e9cadf48a2ad8d366b115843ab
@@ -277,11 +292,13 @@ location for the key and the password stored in $Password.
 
 ### Example 7: Import a key and assign attributes
 ```powershell
-PS C:\> $Password = ConvertTo-SecureString -String 'password' -AsPlainText -Force
-PS C:\> $Expires = (Get-Date).AddYears(2).ToUniversalTime()
-PS C:\> $Tags = @{ 'Severity' = 'high'; 'Accounting' = "true" }
-PS C:\> Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfxToHSM' -Destination 'HSM' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password -Expires $Expires -Tag $Tags
+$Password = ConvertTo-SecureString -String 'password' -AsPlainText -Force
+$Expires = (Get-Date).AddYears(2).ToUniversalTime()
+$Tags = @{ 'Severity' = 'high'; 'Accounting' = "true" }
+Add-AzKeyVaultKey -VaultName 'contoso' -Name 'ITPfxToHSM' -Destination 'HSM' -KeyFilePath 'C:\Contoso\ITPfx.pfx' -KeyFilePassword $Password -Expires $Expires -Tag $Tags
+```
 
+```output
 Vault Name     : contoso
 Name           : ITPfxToHSM
 Version        : 929bfc14db84439b823ffd1bedadaf5f
@@ -309,11 +326,59 @@ stored in $tags.
 ### Example 8: Generate a Key Exchange Key (KEK) for "bring your own key" (BYOK) feature
 
 ```powershell
-PS C:\> $key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destination HSM -Size 2048 -KeyOps "import"
+$key = Add-AzKeyVaultKey -VaultName $vaultName -Name $keyName -Destination HSM -Size 2048 -KeyOps "import"
 ```
 
 Generates a key (referred to as a Key Exchange Key (KEK)). The KEK must be an RSA-HSM key that has only the import key operation. Only Key Vault Premium SKU supports RSA-HSM keys.
 For more details please refer to https://docs.microsoft.com/azure/key-vault/keys/hsm-protected-keys
+
+### Example 9: Create a secure key in managed hsm
+
+```powershell
+<# release_policy_template.json
+{
+  "anyOf": [
+    {
+      "allOf": [
+        {
+          "claim": "<claim name>",
+          "equals": "<value to match>"
+        }
+      ],
+      "authority": "<issuer>"
+    }
+  ],
+  "version": "1.0.0"
+}
+#>
+Add-AzKeyVaultKey -HsmName testmhsm -Name test-key -KeyType RSA -Exportable -ReleasePolicyPath release_policy.json
+```
+
+```output
+Vault/HSM Name : testmhsm
+Name           : test-key
+Key Type       : RSA
+Key Size       : 2048
+Curve Name     : 
+Version        : ed6b026bf0a605042006635713d33ef6
+Id             : https://testmhsm.managedhsm.azure.net:443/keys/test-key/ed6b026bf0a605042006635713d33ef6
+Enabled        : True
+Expires        : 
+Not Before     : 
+Created        : 6/2/2022 7:14:37 AM
+Updated        : 6/2/2022 7:14:37 AM
+Recovery Level : Recoverable+Purgeable
+Release Policy : 
+                 Content Type   : application/json; charset=utf-8
+                 Policy Content : {"anyOf":[{"allOf":[{"claim":"x-ms-sgx-is-debuggable","equals":"true"}],"authority":"htt 
+                 ps://sharedeus.eus.attest.azure.net/"}],"version":"1.0.0"}
+                 Immutable      : False
+
+
+Tags           : 
+```
+
+Create a secure key in managed hsm named testmhsm. Its name is test-key and type is RSA. 
 
 ## PARAMETERS
 
@@ -421,6 +486,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Exportable
+Indicates if the private key can be exported.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: HsmInteractiveCreate, HsmInputObjectCreate, HsmResourceIdCreate
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -HsmName
 HSM name. Cmdlet constructs the FQDN of a managed HSM based on the name and currently selected environment.
 
@@ -463,6 +543,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Immutable
+Sets the release policy as immutable state. Once marked immutable, this flag cannot be reset and the policy cannot be changed under any circumstances.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: HsmInteractiveCreate, HsmInputObjectCreate, HsmResourceIdCreate
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -607,6 +702,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ReleasePolicyPath
+A path to a file containing JSON policy definition. The policy rules under which a key can be exported.
+
+```yaml
+Type: System.String
+Parameter Sets: HsmInteractiveCreate, HsmInputObjectCreate, HsmResourceIdCreate
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceId
 Vault Resource Id.
 
@@ -645,6 +755,21 @@ Key-value pairs in the form of a hash table. For example:
 Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases: Tags
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseDefaultCVMPolicy
+Specifies to use default policy under which the key can be exported for CVM disk encryption.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: HsmInteractiveCreate, HsmInputObjectCreate, HsmResourceIdCreate
+Aliases:
 
 Required: False
 Position: Named
@@ -706,6 +831,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ### Microsoft.Azure.Commands.KeyVault.Models.PSKeyVault
+
+### Microsoft.Azure.Commands.KeyVault.Models.PSManagedHsm
 
 ### System.String
 

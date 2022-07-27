@@ -25,8 +25,8 @@ Invoke-AzVMPatchAssessment [-ResourceId] <String> [-AsJob] [-DefaultProfile <IAz
 
 ### InputObjectParameterSet
 ```
-Invoke-AzVMPatchAssessment [-VM] <PSVirtualMachine> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+Invoke-AzVMPatchAssessment [-VM] <PSVirtualMachine> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,9 +35,11 @@ Assesses the patch status of a VM and reports all detected patches that are avai
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Invoke-AzVMPatchAssessment -ResourceGroupName "myRG" -VMName "myVM"
 ```
-PS C:\> Invoke-AzVmPatchAssessment -ResourceGroupName "myRG" -VMName "myVM"
-```
+
+This command invokes patch assessment on virtual machine "mvVM" under resource group "myRG"
 
 ## PARAMETERS
 

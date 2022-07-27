@@ -25,8 +25,10 @@ Deletes a Move Resource from the move collection.
 
 ### Example 1: Remove one Move Rresource from the Move Collection.
 ```powershell
-PS C:\> Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -Name "psdemorm-vnet"
+Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS" -MoveCollectionName "PS-centralus-westcentralus-demoRMS" -Name "psdemorm-vnet"
+```
 
+```output
 AdditionalInfo : 
 Code           : 
 Detail         : 

@@ -88,5 +88,21 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-LoadBalancerBackendPoolCRUDWithAddTunnelInterface");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestIPBasedBackendPoolQueryInboundNatRulePortMapping()
+        {
+            TestRunner.RunTestScript("Test-IPBasedBackendPoolQueryInboundNatRulePortMapping");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.slbdev)]
+        public void TestNICBasedBackendPoolQueryInboundNatRulePortMapping()
+        {
+            TestRunner.RunTestScript("Test-NICBasedBackendPoolQueryInboundNatRulePortMapping");
+        }
     }
 }

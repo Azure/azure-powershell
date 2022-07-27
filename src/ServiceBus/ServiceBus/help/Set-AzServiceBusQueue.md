@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/set-azservicebusqueue
@@ -24,14 +24,16 @@ The **Set-AzServiceBusQueue** cmdlet updates the description for the Service Bus
 ## EXAMPLES
 
 ### Example 1
+```powershell
+$QueueObj = Get-AzServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1
+
+$QueueObj.DeadLetteringOnMessageExpiration = $True
+$QueueObj.SupportOrdering = $True
+
+Set-AzServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1 -QueueObj $QueueObj
 ```
-PS C:\> $QueueObj = Get-AzServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1
 
-PS C:\> $QueueObj.DeadLetteringOnMessageExpiration = $True
-PS C:\> $QueueObj.SupportOrdering = $True
-
-PS C:\> Set-AzServiceBusQueue -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -QueueName SB-Queue_example1 -QueueObj $QueueObj
-
+```output
 Id                                  : /subscriptions/{subscriptionId}/resourceGroups/{ResourceGroupName}/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/SB-Example1/queues/SB-Queue_exampl1
 Name                                : SB-Queue_exampl1
 LockDuration                        : PT1M

@@ -35,14 +35,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         //     for more details. Possible values include: 'CrashConsistent', 'FileSystemConsistent',
         //     'ApplicationConsistent'
         public string ConsistencyMode { get; set; }
-        //
-        // Summary:
-        //     Gets the provisioning details set by the server during Create restore point operation.
-        public RestorePointProvisioningDetails ProvisioningDetails { get; set; }
+
         //
         // Summary:
         //     Gets or sets list of disk resource ids that the customer wishes to exclude from
         //     the restore point. If no disks are specified, all disks will be included.
         public IList<ApiEntityReference> ExcludeDisks { get; set; }
+
+        public RestorePointInstanceView InstanceView { get; set; }
+
+        public DateTime? TimeCreated { get; set; }
+
+        public ApiEntityReference SourceRestorePoint { get; set; }
+
     }
 }

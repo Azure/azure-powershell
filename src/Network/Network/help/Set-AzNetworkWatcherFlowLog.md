@@ -93,12 +93,13 @@ Updates flow log resource.
 
 ### Example 1
 ```powershell
-PS C:\> $flowLog = Get-AzNetworkWatcherFlowLog -Location eastus -Name pstest
-PS C:\> $flowLog.Enabled = $true
-PS C:\> $flowLog.Format.Version = 2
-PS C:\> $flowLog | Set-AzNetworkWatcherFlowLog -Force
+$flowLog = Get-AzNetworkWatcherFlowLog -Location eastus -Name pstest
+$flowLog.Enabled = $true
+$flowLog.Format.Version = 2
+$flowLog | Set-AzNetworkWatcherFlowLog -Force
 ```
 
+```output
 Name                       : pstest
 Id                         : /subscriptions/bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb/resourceGroups/NetworkWatcherRG/provid
                              ers/Microsoft.Network/networkWatchers/NetworkWatcher_eastus/FlowLogs/pstest
@@ -119,6 +120,7 @@ Format                     : {
                                "Version": 2
                              }
 FlowAnalyticsConfiguration : {}
+```
 
 ### Example 2
 

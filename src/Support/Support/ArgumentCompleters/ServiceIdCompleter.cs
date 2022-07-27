@@ -54,7 +54,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Support.ArgumentCompleters
         /// <summary>
         /// Create ScriptBlock that registers the correct location for tab completetion of the -Location parameter
         /// </summary>
-        /// <param name="resourceTypes"></param>
         /// <returns></returns>
         public static ScriptBlock CreateScriptBlock()
         {

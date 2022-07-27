@@ -15,7 +15,8 @@ Adds an action to the input ManagementPolicy Action Group object, or creates a M
 ### BaseBlob (Default)
 ```
 Add-AzStorageAccountManagementPolicyAction -BaseBlobAction <String> -DaysAfterModificationGreaterThan <Int32>
- [-InputObject <PSManagementPolicyActionGroup>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DaysAfterLastTierChangeGreaterThan <Int32>] [-InputObject <PSManagementPolicyActionGroup>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BaseBlobLastAccessTime
@@ -25,16 +26,24 @@ Add-AzStorageAccountManagementPolicyAction -BaseBlobAction <String> -DaysAfterLa
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### BaseBlobCreationTime
+```
+Add-AzStorageAccountManagementPolicyAction -BaseBlobAction <String> -DaysAfterCreationGreaterThan <Int32>
+ [-InputObject <PSManagementPolicyActionGroup>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### Snapshot
 ```
 Add-AzStorageAccountManagementPolicyAction -SnapshotAction <String> -DaysAfterCreationGreaterThan <Int32>
- [-InputObject <PSManagementPolicyActionGroup>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DaysAfterLastTierChangeGreaterThan <Int32>] [-InputObject <PSManagementPolicyActionGroup>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### BlobVersion
 ```
 Add-AzStorageAccountManagementPolicyAction -BlobVersionAction <String> -DaysAfterCreationGreaterThan <Int32>
- [-InputObject <PSManagementPolicyActionGroup>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DaysAfterLastTierChangeGreaterThan <Int32>] [-InputObject <PSManagementPolicyActionGroup>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,25 +52,32 @@ The **Add-AzStorageAccountManagementPolicyAction** cmdlet adds an action to the 
 ## EXAMPLES
 
 ### Example 1: Creates a ManagementPolicy Action Group object with 4 actions, then add it to a management policy rule and set to a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
-PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
-PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50  -InputObject $action
+PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -DaysAfterCreationGreaterThan 100
+PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50  -DaysAfterLastTierChangeGreaterThan 40 -InputObject $action
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction TierToCool -DaysAfterLastAccessTimeGreaterThan 30  -EnableAutoTierToHotFromCool -InputObject $action
 PS C:\>$action = Add-AzStorageAccountManagementPolicyAction -SnapshotAction Delete -daysAfterCreationGreaterThan 100 -InputObject $action
 PS C:\>$action 
 
 BaseBlob.TierToCool.DaysAfterModificationGreaterThan      : 
 BaseBlob.TierToCool.DaysAfterLastAccessTimeGreaterThan    : 30
+BaseBlob.TierToCool.DaysAfterCreationGreaterThan          : 
 BaseBlob.EnableAutoTierToHotFromCool                      : True
 BaseBlob.TierToArchive.DaysAfterModificationGreaterThan   : 50
 BaseBlob.TierToArchive.DaysAfterLastAccessTimeGreaterThan : 
-BaseBlob.Delete.DaysAfterModificationGreaterThan          : 100
+BaseBlob.TierToArchive.DaysAfterCreationGreaterThan       : 
+BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan : 40
+BaseBlob.Delete.DaysAfterModificationGreaterThan          : 
 BaseBlob.Delete.DaysAfterLastAccessTimeGreaterThan        : 
+BaseBlob.Delete.DaysAfterCreationGreaterThan              : 100
 Snapshot.TierToCool.DaysAfterCreationGreaterThan          : 
 Snapshot.TierToArchive.DaysAfterCreationGreaterThan       : 
+Snapshot.TierToArchive.DaysAfterLastTierChangeGreaterThan : 
 Snapshot.Delete.DaysAfterCreationGreaterThan              : 100
 Version.TierToCool.DaysAfterCreationGreaterThan           : 
 Version.TierToArchive.DaysAfterCreationGreaterThan        : 
+Version.TierToArchive.DaysAfterLastTierChangeGreaterThan  : 
 Version.Delete.DaysAfterCreationGreaterThan               : 
 
 PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter
@@ -72,6 +88,7 @@ PS C:\>$policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName "myreso
 The first command create a ManagementPolicy Action Group object, the following 3 commands add 3 actions to the object. Then add it to a management policy rule and set to a Storage account.
 
 ### Example 2: Creates a ManagementPolicy Action Group object with 6 actions on snapshot and blob version, then add it to a management policy rule and set to a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $action = Add-AzStorageAccountManagementPolicyAction  -SnapshotAction Delete -daysAfterCreationGreaterThan 40
 PS C:\> $action = Add-AzStorageAccountManagementPolicyAction -InputObject $action -SnapshotAction TierToArchive -daysAfterCreationGreaterThan 50
@@ -83,15 +100,22 @@ PS C:\> $action
 
 BaseBlob.TierToCool.DaysAfterModificationGreaterThan      : 
 BaseBlob.TierToCool.DaysAfterLastAccessTimeGreaterThan    : 
+BaseBlob.TierToCool.DaysAfterCreationGreaterThan          : 
+BaseBlob.EnableAutoTierToHotFromCool                      : 
 BaseBlob.TierToArchive.DaysAfterModificationGreaterThan   : 
 BaseBlob.TierToArchive.DaysAfterLastAccessTimeGreaterThan : 
+BaseBlob.TierToArchive.DaysAfterCreationGreaterThan       : 
+BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan : 
 BaseBlob.Delete.DaysAfterModificationGreaterThan          : 
 BaseBlob.Delete.DaysAfterLastAccessTimeGreaterThan        : 
+BaseBlob.Delete.DaysAfterCreationGreaterThan              : 
 Snapshot.TierToCool.DaysAfterCreationGreaterThan          : 60
 Snapshot.TierToArchive.DaysAfterCreationGreaterThan       : 50
+Snapshot.TierToArchive.DaysAfterLastTierChangeGreaterThan : 
 Snapshot.Delete.DaysAfterCreationGreaterThan              : 40
 Version.TierToCool.DaysAfterCreationGreaterThan           : 90
 Version.TierToArchive.DaysAfterCreationGreaterThan        : 80
+Version.TierToArchive.DaysAfterLastTierChangeGreaterThan  : 
 Version.Delete.DaysAfterCreationGreaterThan               : 70
 
 PS C:\>$filter = New-AzStorageAccountManagementPolicyFilter
@@ -108,7 +132,7 @@ The management policy action for baseblob.
 
 ```yaml
 Type: System.String
-Parameter Sets: BaseBlob, BaseBlobLastAccessTime
+Parameter Sets: BaseBlob, BaseBlobLastAccessTime, BaseBlobCreationTime
 Aliases:
 Accepted values: Delete, TierToArchive, TierToCool
 
@@ -140,7 +164,7 @@ Integer value indicating the age in days after creation.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: Snapshot, BlobVersion
+Parameter Sets: BaseBlobCreationTime, Snapshot, BlobVersion
 Aliases:
 
 Required: True
@@ -159,6 +183,21 @@ Parameter Sets: BaseBlobLastAccessTime
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DaysAfterLastTierChangeGreaterThan
+Integer value indicating the age in days after last blob tier change time. This property is only applicable for tierToArchive actions. It requires daysAfterModificationGreaterThan to be set for baseBlobs based actions, or daysAfterModificationGreaterThan to be set for snapshots and blob version based actions.
+
+```yaml
+Type: System.Int32
+Parameter Sets: BaseBlob, Snapshot, BlobVersion
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -243,7 +282,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

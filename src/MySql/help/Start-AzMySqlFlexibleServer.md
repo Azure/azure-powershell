@@ -31,15 +31,15 @@ Starts a server.
 
 ### Example 1: Start the server by resource name
 ```powershell
-PS C:\> Start-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
+Start-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
 ```
 
 Start the server by name
 
 ### Example 2: Start the server by identity
 ```powershell
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/start"
-PS C:\> Start-AzMySqlFlexibleServer -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test/start"
+Start-AzMySqlFlexibleServer -InputObject $ID
 ```
 
 Start the server by identity
@@ -219,7 +219,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+INPUTOBJECT `<IMySqlIdentity>`: Identity Parameter
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.

@@ -23,17 +23,14 @@ The **Add-AzWebAppTrafficRouting** cmdlet adds a Routing rule to an Azure Web Ap
 
 ### Example 1: Add a routing rule to transfer 15% of production traffice to  Stg slot
 ```powershell
-PS C:\>Add-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" 
--RoutingRule @{ActionHostName='XXXX.azurewebsites.net';ReroutePercentage=15;Name='Stg'}
+Add-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" -RoutingRule @{ActionHostName='XXXX.azurewebsites.net';ReroutePercentage=15;Name='Stg'}
 ```
 
 This command adds a routing rule to transfer 15% of production traffice to  Stg slot
 
 ### Example 2: Add a routing rule to transfer the production traffice to Stg slot ranges from 50% to 90% in incremental manner.
 ```powershell
-PS C:\>Add-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" 
--RoutingRule @{ActionHostName='XXXX.azurewebsites.net';ReroutePercentage=50;ChangeIntervalInMinutes=1;
-MinReroutePercentage=50;MaxReroutePercentage=90;Name='Stg';ChangeStep=10}
+Add-AzWebAppTrafficRouting -ResourceGroupName "Default-Web-WestUS" -WebAppName "ContosoSite" -RoutingRule @{ActionHostName='XXXX.azurewebsites.net';ReroutePercentage=50;ChangeIntervalInMinutes=1;MinReroutePercentage=50;MaxReroutePercentage=90;Name='Stg';ChangeStep=10}
 ```
 
 This command adds a routing rule to transfer the production traffice to Stg slot ranges from 50% to 90% in incremental manner.
@@ -146,6 +143,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Update-AzWebAppTrafficRouting](./Update-AzWebAppTrafficRouting.md)
 
 [Get-AzWebAppTrafficRouting](./Get-AzWebAppTrafficRouting.md)

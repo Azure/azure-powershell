@@ -25,8 +25,10 @@ Get pending maintenance updates to resource.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzMaintenanceUpdate -ResourceGroupName smdtest$location -ResourceParentType hostGroups -ResourceParentName smddhg$location -ResourceType hosts -ResourceName smddh$location -ProviderName Microsoft.Compute
+Get-AzMaintenanceUpdate -ResourceGroupName smdtest$location -ResourceParentType hostGroups -ResourceParentName smddhg$location -ResourceType hosts -ResourceName smddh$location -ProviderName Microsoft.Compute
+```
 
+```output
 MaintenanceScope    : Host
 ImpactType          : Freeze
 Status              : Pending

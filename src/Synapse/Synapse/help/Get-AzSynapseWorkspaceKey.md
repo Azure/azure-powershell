@@ -36,29 +36,29 @@ The **Get-AzSynapseWorkspaceKey** cmdlet gets a workspace key.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseWorkspaceKey -WorkspaceName ContosoWorkspace
+Get-AzSynapseWorkspaceKey -WorkspaceName ContosoWorkspace
 ```
 
 This command gets information about all workspace keys in the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseWorkspaceKey -WorkspaceName ContosoWorkspace -Name ContosoWorkspaceKey
+Get-AzSynapseWorkspaceKey -WorkspaceName ContosoWorkspace -Name ContosoWorkspaceKey
 ```
 
 This command gets information about the workspace key named ContosoWorkspaceKey in the workspace named ContosoWorkspace.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseWorkspaceKey -Name ContosoWorkspaceKey
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseWorkspaceKey -Name ContosoWorkspaceKey
 ```
 
 This command gets information about the workspace key named ContosoWorkspaceKey in the workspace named ContosoWorkspace through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzSynapseSqlPool -ResourceId "/subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/keys/ContosoWorkspaceKey"
+Get-AzSynapseSqlPool -ResourceId "/subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/keys/ContosoWorkspaceKey"
 ```
 
 This command gets the workspace key with the specified resource ID.

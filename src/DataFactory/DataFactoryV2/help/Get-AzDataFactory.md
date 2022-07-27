@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: ECE1F469-E3C3-4294-A288-8BAE851E8599
@@ -26,8 +26,11 @@ If you do not specify a name, this cmdlet gets information about all of the data
 ## EXAMPLES
 
 ### Example 1: Get all data factories
+```powershell
+Get-AzDataFactory -ResourceGroupName "ADF"
 ```
-PS C:\>Get-AzDataFactory -ResourceGroupName "ADF"
+
+```output
 DataFactoryName   : WikiADF
 ResourceGroupName : ADF
 Location          : WestUS
@@ -44,8 +47,11 @@ Properties        : Microsoft.WindowsAzure.Commands.Utilities.PSDataFactoryConfi
 This command displays information about all data factories in the Azure subscription.
 
 ### Example 2: Get a specific data factory
+```powershell
+$DataFactory = Get-AzDataFactory -ResourceGroupName "ADF" -Name "WikiADF"
 ```
-PS C:\>$DataFactory = Get-AzDataFactory -ResourceGroupName "ADF" -Name "WikiADF"
+
+```output
 DataFactoryName   : WikiADF
 ResourceGroupName : ADF
 Location          : westus

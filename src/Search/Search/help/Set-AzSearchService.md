@@ -41,8 +41,9 @@ The **Set-AzSearchService** cmdlet modifies an Azure Cognitive Search service.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -PartitionCount 2 -ReplicaCount 2
-
+Set-AzSearchService -ResourceGroupName "TestAzureSearchPsGroup" -Name "pstestazuresearch01" -PartitionCount 2 -ReplicaCount 2
+```
+```output
 
 ResourceGroupName : TestAzureSearchPsGroup
 Name              : pstestazuresearch01

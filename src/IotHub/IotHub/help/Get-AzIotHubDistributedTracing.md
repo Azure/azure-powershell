@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubdistributedtracing
@@ -37,8 +37,10 @@ Get the distributed tracing settings for a device.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotHubDistributedTracing -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1"
+Get-AzIotHubDistributedTracing -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -DeviceId "myDevice1"
+```
 
+```output
 DeviceId      : mydevice1
 Sampling Mode : Enabled
 Sampling Rate : 22%

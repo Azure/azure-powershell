@@ -6,13 +6,14 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Extensions;
+    using System;
 
     /// <summary>Create or Update a dedicated HSM in the specified subscription.</summary>
     /// <remarks>
     /// [OpenAPI] CreateOrUpdate=>PUT:"/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/{name}"
     /// </remarks>
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzDedicatedHsm_CreateExpanded", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Description(@"Create or Update a dedicated HSM in the specified subscription.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Generated]
     public partial class NewAzDedicatedHsm_CreateExpanded : global::System.Management.Automation.PSCmdlet,
@@ -81,6 +82,33 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
         public string Location { get => ParametersBody.Location ?? null; set => ParametersBody.Location = value; }
 
         /// <summary>
+        /// Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.
+        /// </summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.",
+        SerializedName = @"networkInterfaces",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.INetworkInterface) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.INetworkInterface[] ManagementNetworkInterface { get => ParametersBody.ManagementNetworkProfileNetworkInterface ?? null /* arrayOf */; set => ParametersBody.ManagementNetworkProfileNetworkInterface = value; }
+
+        /// <summary>
+        /// The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Category(global::Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...",
+        SerializedName = @"id",
+        PossibleTypes = new [] { typeof(string) })]
+        public string ManagementSubnetId { get => ParametersBody.ManagementNetworkProfileSubnetId ?? null; set => ParametersBody.ManagementNetworkProfileSubnetId = value; }
+
+        /// <summary>
         /// <see cref="IEventListener" /> cancellation delegate. Stops the cmdlet when called.
         /// </summary>
         global::System.Action Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.IEventListener.Cancel => _cancellationTokenSource.Cancel;
@@ -113,8 +141,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
         ReadOnly = false,
         Description = @"Specifies the list of resource Ids for the network interfaces associated with the dedicated HSM.",
         SerializedName = @"networkInterfaces",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.INetworkInterface[] NetworkInterface { get => ParametersBody.NetworkProfileNetworkInterface ?? null /* arrayOf */; set => ParametersBody.NetworkProfileNetworkInterface = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.INetworkInterface) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.INetworkInterface[] NetworkInterface { get => ParametersBody.NetworkProfileNetworkInterface ?? null /* arrayOf */; set => ParametersBody.NetworkProfileNetworkInterface = value; }
 
         /// <summary>
         /// when specified, will make the remote call, and return an AsyncOperationResponse, letting the remote operation continue
@@ -125,10 +153,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
         public global::System.Management.Automation.SwitchParameter NoWait { get; set; }
 
         /// <summary>Backing field for <see cref="ParametersBody" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.DedicatedHsm();
+        private Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm _parametersBody= new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.DedicatedHsm();
 
         /// <summary>Resource information with extended details.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
+        private Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm ParametersBody { get => this._parametersBody; set => this._parametersBody = value; }
 
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.HttpPipeline" /> that the remote call will use.
@@ -173,8 +201,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
         ReadOnly = false,
         Description = @"SKU of the dedicated HSM",
         SerializedName = @"name",
-        PossibleTypes = new [] { typeof(string) })]
-        public string Sku { get => ParametersBody.SkuName ?? null; set => ParametersBody.SkuName = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.SkuName) })]
+        [global::System.Management.Automation.ArgumentCompleter(typeof(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.SkuName))]
+        public Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.SkuName Sku { get => ParametersBody.SkuName ?? ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Support.SkuName)""); set => ParametersBody.SkuName = value; }
 
         /// <summary>This field will be used when RP does not support Availability zones.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "This field will be used when RP does not support Availability zones.")]
@@ -198,7 +227,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
         Description = @"The ARM resource id in the form of /subscriptions/{SubscriptionId}/resourceGroups/{ResourceGroupName}/...",
         SerializedName = @"id",
         PossibleTypes = new [] { typeof(string) })]
-        public string SubnetId { get => ParametersBody.SubnetId ?? null; set => ParametersBody.SubnetId = value; }
+        public string SubnetId { get => ParametersBody.NetworkProfileSubnetId ?? null; set => ParametersBody.NetworkProfileSubnetId = value; }
 
         /// <summary>Backing field for <see cref="SubscriptionId" /> property.</summary>
         private string _subscriptionId;
@@ -230,8 +259,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
         ReadOnly = false,
         Description = @"Resource tags",
         SerializedName = @"tags",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceTags) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IResourceTags Tag { get => ParametersBody.Tag ?? null /* object */; set => ParametersBody.Tag = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IResourceTags) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IResourceTags Tag { get => ParametersBody.Tag ?? null /* object */; set => ParametersBody.Tag = value; }
 
         /// <summary>The Dedicated Hsm zones.</summary>
         [global::System.Management.Automation.AllowEmptyCollection]
@@ -250,30 +279,35 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
         /// happens on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsmError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsmError"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onDefault method should be processed, or if the method should
         /// return immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsmError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsmError> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// <c>overrideOnOk</c> will be called before the regular onOk has been processed, allowing customization of what happens
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm"
         /// /> from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
         /// </summary>
         protected override void BeginProcessing()
         {
+            var telemetryId = Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Module.Instance.GetTelemetryId.Invoke();
+            if (telemetryId != "" && telemetryId != "internal")
+            {
+                __correlationId = telemetryId;
+            }
             Module.Instance.SetProxyConfiguration(Proxy, ProxyCredential, ProxyUseDefaultCredentials);
             if (Break)
             {
@@ -309,7 +343,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
         /// <summary>Performs clean-up after the command execution</summary>
         protected override void EndProcessing()
         {
-            ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Events.CmdletEndProcessing).Wait(); if( ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
+
         }
 
         /// <summary>Handles/Dispatches events during the call to the REST service.</summary>
@@ -450,7 +484,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
         {
             using( NoSynchronizationContext )
             {
-                await ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Events.CmdletProcessRecordAsyncStart); if( ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 await ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.IEventListener)this).Signal(Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.Events.CmdletGetPipeline); if( ((Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.IEventListener)this).Token.IsCancellationRequested ) { return; }
                 Pipeline = Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Module.Instance.CreatePipeline(InvocationInformation, __correlationId, __processRecordId, this.ParameterSetName);
                 if (null != HttpPipelinePrepend)
@@ -493,12 +526,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
         /// a delegate that is called when the remote service returns default (any response code not handled elsewhere).
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsmError"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsmError"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsmError> response)
+        private async global::System.Threading.Tasks.Task onDefault(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsmError> response)
         {
             using( NoSynchronizationContext )
             {
@@ -515,7 +548,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
                 if ((null == code || null == message))
                 {
                     // Unrecognized Response. Create an error record based on what we have.
-                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsmError>(responseMessage, await response);
+                    var ex = new Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Runtime.RestException<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsmError>(responseMessage, await response);
                     WriteError( new global::System.Management.Automation.ErrorRecord(ex, ex.Code, global::System.Management.Automation.ErrorCategory.InvalidOperation, new { ResourceGroupName=ResourceGroupName, Name=Name, SubscriptionId=SubscriptionId, body=ParametersBody })
                     {
                       ErrorDetails = new global::System.Management.Automation.ErrorDetails(ex.Message) { RecommendedAction = ex.Action }
@@ -533,12 +566,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm"
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm"
         /// /> from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm> response)
         {
             using( NoSynchronizationContext )
             {
@@ -550,7 +583,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20181031.IDedicatedHsm
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.DedicatedHsm.Models.Api20211130.IDedicatedHsm
                 WriteObject((await response));
             }
         }

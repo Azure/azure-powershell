@@ -14,6 +14,7 @@
 
 using Commands.StorageSync.Interop.DataObjects;
 using Commands.StorageSync.Interop.Interfaces;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using System;
 
 namespace Microsoft.Azure.Commands.StorageSync.Interfaces
@@ -23,6 +24,12 @@ namespace Microsoft.Azure.Commands.StorageSync.Interfaces
     /// </summary>
     public interface IStorageSyncResourceManager
     {
+        /// <summary>
+        /// Get Service Principal Or Null
+        /// </summary>
+        /// <returns>MicrosoftGraphServicePrincipal</returns>
+        MicrosoftGraphServicePrincipal GetServicePrincipalOrNull();
+
         /// <summary>
         /// Creates the ecs management.
         /// </summary>

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         /// <summary>
         /// Initializes a new instance of the PSDictionaryElement class.
         /// </summary>
-        /// <param name="inputDictionary">The input IDictionary</param>
+        /// <param name="content"></param>
         public PSAggregatedCounts(IList<AlertsSummaryGroupItem> content)
         {
             this.Content = content;

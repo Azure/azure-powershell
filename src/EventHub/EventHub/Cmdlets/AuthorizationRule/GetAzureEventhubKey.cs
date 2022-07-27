@@ -58,21 +58,21 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                 // Get a Namespace List Keys for the specified AuthorizationRule
                 if (ParameterSetName.Equals(NamespaceAuthoRuleParameterSet))
                 {
-                    PSListKeysAttributes keys = Client.GetNamespaceListKeys(ResourceGroupName, Namespace, Name);
+                    PSListKeysAttributes keys = UtilityClient.GetNamespaceListKeys(ResourceGroupName, Namespace, Name);
                     WriteObject(keys, true);
                 }
 
                 // Get a EventHub List Keys for the specified AuthorizationRule
                 if (ParameterSetName.Equals(EventhubAuthoRuleParameterSet))
                 {
-                    PSListKeysAttributes keys = Client.GetEventHubListKeys(ResourceGroupName, Namespace, EventHub, Name);
+                    PSListKeysAttributes keys = UtilityClient.GetEventHubListKeys(ResourceGroupName, Namespace, EventHub, Name);
                     WriteObject(keys, true);
                 }
 
                 // Get Alias List Keys for the specified AuthorizationRule
                 if (ParameterSetName.Equals(AliasAuthoRuleParameterSet))
                 {
-                    PSListKeysAttributes keys = Client.GetAliasListKeys(ResourceGroupName, Namespace, AliasName, Name);
+                    PSListKeysAttributes keys = UtilityClient.GetAliasListKeys(ResourceGroupName, Namespace, AliasName, Name);
                     WriteObject(keys, true);
                 }
             }

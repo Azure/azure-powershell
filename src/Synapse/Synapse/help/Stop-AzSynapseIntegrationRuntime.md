@@ -43,30 +43,30 @@ The Stop-AzSynapseIntegrationRuntime cmdlet stops a managed dedicated integratio
 
 ### Example 1
 ```powershell
-PS C:\> Stop-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-dedicated-ir'
+Stop-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name 'test-dedicated-ir'
 ```
 
 This cmdlet stops a managed dedicated integration runtime named 'test-dedicated-ir' in workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Stop-AzSynapseIntegrationRuntime -Name 'test-dedicated-ir'
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Stop-AzSynapseIntegrationRuntime -Name 'test-dedicated-ir'
 ```
 
 This cmdlet stops a managed dedicated integration runtime named 'test-dedicated-ir' in workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> Stop-AzSynapseIntegrationRuntime -ResourceId '/subscriptions/0000abcd-1a1b-12ab-1234-0000abcd00aa/resourceGroups/Contosorg/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/integrationruntimes/test-dedicated-ir'
+Stop-AzSynapseIntegrationRuntime -ResourceId '/subscriptions/0000abcd-1a1b-12ab-1234-0000abcd00aa/resourceGroups/Contosorg/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/integrationruntimes/test-dedicated-ir'
 ```
 
 This cmdlet stops a managed dedicated integration runtime using ResourceId in workspace ContosoWorkspace.
 
 ### Example 4
 ```powershell
-PS C:\> $ir = Get-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name test-dedicated-ir -ResourceGroupName Contosorg
-PS C:\> $ir | Stop-AzSynapseIntegrationRuntime
+$ir = Get-AzSynapseIntegrationRuntime -WorkspaceName ContosoWorkspace -Name test-dedicated-ir -ResourceGroupName Contosorg
+$ir | Stop-AzSynapseIntegrationRuntime
 ```
 
 This cmdlet stops a managed dedicated integration runtime named 'test-dedicated-ir' in workspace ContosoWorkspace through pipeline.

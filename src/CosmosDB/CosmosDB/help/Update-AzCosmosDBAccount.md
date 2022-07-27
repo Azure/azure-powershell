@@ -61,8 +61,10 @@ Update the properties of a CosmosDB account. Cannot update Account Regions simul
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name accountName -DefaultConsistencyLevel "Strong" -EnableAutomaticFailover 1 -EnableMultipleWriteLocations 1 -EnableVirtualNetwork 1
+Update-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name accountName -DefaultConsistencyLevel "Strong" -EnableAutomaticFailover 1 -EnableMultipleWriteLocations 1 -EnableVirtualNetwork 1
+```
 
+```output
 Kind                          : GlobalDocumentDB
 ProvisioningState             : Initializing
 DocumentEndpoint              :
@@ -155,6 +157,21 @@ The time(in hours) for which each backup is retained (only for accounts with per
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -BackupStorageRedundancy
+The redundancy type of the backup Storage account
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -526,21 +543,6 @@ The cmdlet is not run.
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BackupStorageRedundancy
-The redundancy type of the backup Storage account
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
 
 Required: False
 Position: Named

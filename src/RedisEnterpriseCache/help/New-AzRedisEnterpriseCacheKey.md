@@ -25,8 +25,10 @@ Regenerates an access key for a Redis Enterprise database.
 
 ### Example 1: Regenerate primary access key
 ```powershell
-PS C:\> New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Primary"
+New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Primary"
+```
 
+```output
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
 new-primary-key                              secondary-key
@@ -37,8 +39,10 @@ This command regenerates the primary secret access key used for authenticating c
 
 ### Example 2: Regenerate secondary access key
 ```powershell
-PS C:\> New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Secondary"
+New-AzRedisEnterpriseCacheKey -Name "MyCache" -ResourceGroupName "MyGroup" -KeyType "Secondary"
+```
 
+```output
 PrimaryKey                                   SecondaryKey
 ----------                                   ------------
 primary-key                                  new-secondary-key

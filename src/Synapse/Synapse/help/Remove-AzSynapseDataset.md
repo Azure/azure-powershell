@@ -37,7 +37,7 @@ The **Remove-AzSynapseDataset** cmdlet removes a dataset from workspace.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseDataset -WorkspaceName ContosoWorkspace -Name ContosoDataset
+Remove-AzSynapseDataset -WorkspaceName ContosoWorkspace -Name ContosoDataset
 ```
 
 This command removes the dataset named ContosoDataset from the workspace named ContosoWorkspace.

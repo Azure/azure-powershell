@@ -24,16 +24,9 @@ $instanceLocation = "eastus"
 function Test-GetManagedInstanceOperation
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
+	$rg = Create-ResourceGroupForTest
 	# Initiate sync create of managed instance.
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance = Create-ManagedInstanceForTest $rg
 
 	try
 	{
@@ -77,16 +70,9 @@ function Test-GetManagedInstanceOperation
 function Test-StopManagedInstanceOperation
 {
 	# Setup
-	$rg = Create-ResourceGroupForTest "westeurope"
-	$vnetName = "vnet-pcresizeandcreate"
-	$subnetName = "ManagedInstance"
-
-	# Setup VNET
-	$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
-	$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
+	$rg = Create-ResourceGroupForTest
 	# Initiate sync create of managed instance.
-	$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+	$managedInstance = Create-ManagedInstanceForTest $rg
 
 	try
 	{

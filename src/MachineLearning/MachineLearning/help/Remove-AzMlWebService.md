@@ -30,7 +30,7 @@ Deletes a Azure Machine Learning web service referenced by resource group and na
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Remove-AzMlWebService -ResourceGroupName "myresourcegroup" -Name "mywebservicename"
 ```
 

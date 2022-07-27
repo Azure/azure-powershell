@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 0671D833-8B3A-4480-A576-92F1A9E8CE92
@@ -33,22 +33,22 @@ The **Set-AzDataLakeStoreItemAclEntry** cmdlet modifies an entry (ACE) in the ac
 ## EXAMPLES
 
 ### Example 1: Modify permissions for an ACE
-```
-PS C:\>Set-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -AceType User -Id (Get-AzADUser -Mail "PattiFuller@contoso.com").ObjectId -Permissions All
+```powershell
+Set-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -AceType User -Id (Get-AzADUser -Mail "PattiFuller@contoso.com").ObjectId -Permissions All
 ```
 
 This command modifies the ACE for Patti Fuller to have all permissions.
 
 ### Example 2: Modify permissions for an ACE recursively
-```
-PS C:\>Set-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -AceType User -Id (Get-AzADUser -Mail "PattiFuller@contoso.com").ObjectId -Permissions All -Recurse -Concurrency 128
+```powershell
+Set-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -AceType User -Id (Get-AzADUser -Mail "PattiFuller@contoso.com").ObjectId -Permissions All -Recurse -Concurrency 128
 ```
 
 ### Example 3: Modify permissions for an ACE recursively using Acl object
-```
-PS C:\>$fullAcl="user:userid1:--x,default:user:userid1:--x"
-PS C:\>$newFullAcl = $fullAcl.Split(",")
-PS C:\>Set-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -Acl $newFullAcl -Recurse -Concurrency 128 -ShowProgress -Verbose
+```powershell
+$fullAcl="user:userid1:--x,default:user:userid1:--x"
+$newFullAcl = $fullAcl.Split(",")
+Set-AzDataLakeStoreItemAclEntry -AccountName "ContosoADL" -Path / -Acl $newFullAcl -Recurse -Concurrency 128 -ShowProgress -Verbose
 ```
 
 This command recursively modifies the ACE for Patti Fuller to have all permissions to root and all its subdirectories and files.

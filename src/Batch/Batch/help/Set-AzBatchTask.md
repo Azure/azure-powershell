@@ -28,7 +28,7 @@ Modify the properties of that object, and then use the current cmdlet to commit 
 ### Example 1: Update a task
 ```powershell
 $Task = Get-AzBatchTask -JobId "Job16" -Id "Task22" -BatchContext $Context
-$Constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @([TimeSpan}::FromDays(5), [TimeSpan]::FromDays(2), 3)
+$Constraints = New-Object Microsoft.Azure.Commands.Batch.Models.PSTaskConstraints -ArgumentList @([TimeSpan]::FromDays(5), [TimeSpan]::FromDays(2), 3)
 $Task.Constraints = $Constraints
 Set-AzBatchTask -Task $Task -BatchContext $Context
 ```

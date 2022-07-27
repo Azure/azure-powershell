@@ -28,12 +28,12 @@ The Import-AzMlWebService cmdlet imports , specified either directly or in a ref
 ## EXAMPLES
 
 ### Example 1: Import from string
-```
+```powershell
 Import-AzMlWebService -JsonString $jsonDefinition
 ```
 
 ### Example 2: Import from file path
-```
+```powershell
 Import-AzMlWebService -InputFile "C:\mlservice.json"
 ```
 

@@ -52,144 +52,144 @@ The Get-AzActivityLog cmdlet retrieve Activity Log events. The events can be ass
 ## EXAMPLES
 
 ### Example 1: Get an event log by subscription ID
-```
-PS C:\>Get-AzActivityLog
+```powershell
+Get-AzActivityLog
 ```
 
 This command lists at most 1000 events associated with the user's subscription ID that took place 7 days from the current date/time.
 
 ### Example 2: Get an event log by subscription ID with a maximum number of events
-```
-PS C:\>Get-AzActivityLog -MaxRecord 100
+```powershell
+Get-AzActivityLog -MaxRecord 100
 ```
 
 This command lists at most 100 events associated with the user's subscription ID that took place 7 days from the current date/time.
 
 ### Example 3: Get an event log by subscription ID with a start time.
-```
-PS C:\>Get-AzActivityLog -StartTime 2017-06-01T10:30
+```powershell
+Get-AzActivityLog -StartTime 2017-06-01T10:30
 ```
 
 This command lists at most 1000 events associated with the user's subscription ID that took place on or after 2017-06-01T10:30 local time if that date/time is not older than 90 days from the current date/time.
 
 ### Example 4: Get an event log by subscription ID with a start time and end time.
-```
-PS C:\>Get-AzActivityLog -StartTime 2017-04-01T10:30 -EndTime 2017-04-14T11:30
+```powershell
+Get-AzActivityLog -StartTime 2017-04-01T10:30 -EndTime 2017-04-14T11:30
 ```
 
 This command lists at most 1000 of the events associated with the user's subscription ID that took place on or after 2017-04-01T10:30 local time, and before 2017-04-14T11:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period.
 
 ### Example 5: Get an event log by correlation ID
-```
-PS C:\>Get-AzActivityLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23"
+```powershell
+Get-AzActivityLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23"
 ```
 
 This command lists at most 1000 events associated with the specified correlation ID that took place 7 days from the current date/time. 
 **NOTE**: this is usually only one event.
 
 ### Example 6: Get an event log by correlation ID with a maximum number of events
-```
-PS C:\>Get-AzActivityLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -MaxRecord 100
+```powershell
+Get-AzActivityLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -MaxRecord 100
 ```
 
 This command lists at most 100 events associated with the specified correlation ID that took place 7 days from the current date/time. 
 **NOTE**: this is usually only one event.
 
 ### Example 7: Get an event log by correlation ID and start time
-```
-PS C:\>Get-AzActivityLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -StartTime 2017-05-22T04:30:00
+```powershell
+Get-AzActivityLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -StartTime 2017-05-22T04:30:00
 ```
 
 This command lists at most 1000 events associated with the specified correlation ID that took place on or after 2017-05-22T04:30:00 local time if the start time is not older than 90 days from the current date/time.
 **NOTE**: this is usually only one event.
 
 ### Example 8: Get an event log by correlation ID with start time and end time
-```
-PS C:\>Get-AzActivityLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -StartTime 2017-04-15T04:30:00 -EndTime 2017-04-25T12:30:00
+```powershell
+Get-AzActivityLog -CorrelationId "60c694d0-e46f-4c12-bed1-9b7aef541c23" -StartTime 2017-04-15T04:30:00 -EndTime 2017-04-25T12:30:00
 ```
 
 This command lists at most 1000 events associated with the specified correlation ID that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period.
 
 ### Example 9: Get an event log for a resource group
-```
-PS C:\>Get-AzActivityLog -ResourceGroupName "Contoso-Web-CentralUS"
+```powershell
+Get-AzActivityLog -ResourceGroupName "Contoso-Web-CentralUS"
 ```
 
 This command lists at most 1000 the events associated with the specified resource group that took place 7 days from the current date/time.
 
 ### Example 10: Get an event log for a resource group with a maximum number of events
-```
-PS C:\>Get-AzActivityLog -ResourceGroup "Contoso-Web-CentralUS" -MaxRecord 100
+```powershell
+Get-AzActivityLog -ResourceGroup "Contoso-Web-CentralUS" -MaxRecord 100
 ```
 
 This command lists at most 100 events associated with the specified resource group that took place 7 days from the current date/time.
 
 ### Example 11: Get an event log for a resource group by start time
-```
-PS C:\>Get-AzActivityLog -ResourceGroup "Contoso-Web-CentralUS" -StartTime 2017-05-22T04:30:00
+```powershell
+Get-AzActivityLog -ResourceGroup "Contoso-Web-CentralUS" -StartTime 2017-05-22T04:30:00
 ```
 
 This command lists at most 1000 events associated with the specified resource group that took place on or after 2017-05-22T04:30:00 local time if the start time is not older than 90 days from the current date/time.
 
 ### Example 12: Get an event log for a resource group with a start time and end time
-```
-PS C:\>Get-AzActivityLog -ResourceGroup "Contoso-Web-CentralUS" -StartTime 2017-04-15T04:30 -EndTime 2017-04-25T12:30
+```powershell
+Get-AzActivityLog -ResourceGroup "Contoso-Web-CentralUS" -StartTime 2017-04-15T04:30 -EndTime 2017-04-25T12:30
 ```
 
 This command lists at most 1000 events associated with the specified resource group that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period.
 
 ### Example 13: Get an event log by resource ID
-```
-PS C:\>Get-AzActivityLog -ResourceId "/subscriptions/623d50f1-4fa8-4e46-a967-a9214aed43ab/ResourceGroups/Contoso-Web-CentralUS/providers/Microsoft.Web/ServerFarms/Contoso1"
+```powershell
+Get-AzActivityLog -ResourceId "/subscriptions/623d50f1-4fa8-4e46-a967-a9214aed43ab/ResourceGroups/Contoso-Web-CentralUS/providers/Microsoft.Web/ServerFarms/Contoso1"
 ```
 
 This command lists at most 1000 events associated with the specified resource ID that took place 7 days from the current date/time.
 
 ### Example 14: Get an event log by resource ID with a maximum number of events
-```
-PS C:\>Get-AzActivityLog -ResourceId "/subscriptions/623d50f1-4fa8-4e46-a967-a9214aed43ab/ResourceGroups/Contoso-Web-CentralUS/providers/Microsoft.Web/ServerFarms/Contoso1" -MaxRecord 100
+```powershell
+Get-AzActivityLog -ResourceId "/subscriptions/623d50f1-4fa8-4e46-a967-a9214aed43ab/ResourceGroups/Contoso-Web-CentralUS/providers/Microsoft.Web/ServerFarms/Contoso1" -MaxRecord 100
 ```
 
 This command lists at most 100 events associated with the specified resource ID that took place 7 days from the current date/time.
 
 ### Example 15: Get an event log by resource ID with a start time
-```
-PS C:\>Get-AzActivityLog -ResourceId "/subscriptions/623d50f1-4fa8-4e46-a967-a9214aed43ab/ResourceGroups/Contoso-Web-CentralUS/providers/Microsoft.Web/ServerFarms/Contoso1" -StartTime 2017-05-22T04:30
+```powershell
+Get-AzActivityLog -ResourceId "/subscriptions/623d50f1-4fa8-4e46-a967-a9214aed43ab/ResourceGroups/Contoso-Web-CentralUS/providers/Microsoft.Web/ServerFarms/Contoso1" -StartTime 2017-05-22T04:30
 ```
 
 This command lists at most 1000 events associated with the specified resource ID that took place on or after 2017-05-22T04:30:00 local time if the start time is not older than 90 days from the current date/time.
 
 ### Example 16: Get an event log by resource ID with a start time and end time
-```
-PS C:\>Get-AzActivityLog -ResourceId "/subscriptions/623d50f1-4fa8-4e46-a967-a9214aed43ab/ResourceGroups/Contoso-Web-CentralUS/providers/Microsoft.Web/ServerFarms/Contoso1" -StartTime 2017-04-15T04:30 -EndTime 2017-04-25T12:30
+```powershell
+Get-AzActivityLog -ResourceId "/subscriptions/623d50f1-4fa8-4e46-a967-a9214aed43ab/ResourceGroups/Contoso-Web-CentralUS/providers/Microsoft.Web/ServerFarms/Contoso1" -StartTime 2017-04-15T04:30 -EndTime 2017-04-25T12:30
 ```
 
 This command lists at most 1000 events associated with the specified resource ID that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period.
 
 ### Example 17: Get an event log by resource provider
-```
-PS C:\>Get-AzActivityLog -ResourceProvider "Microsoft.Web"
+```powershell
+Get-AzActivityLog -ResourceProvider "Microsoft.Web"
 ```
 
 This command lists at most 1000 events associated with the specified resource provider that took place 7 days from the current date/time.
 
 ### Example 18: Get an event log by resource provider with a maximum number of events
-```
-PS C:\>Get-AzActivityLog -ResourceProvider "Microsoft.Web" -MaxRecord 100
+```powershell
+Get-AzActivityLog -ResourceProvider "Microsoft.Web" -MaxRecord 100
 ```
 
 This command lists at most 100 events associated with the specified resource provider that took place 7 days from the current date/time.
 
 ### Example 19: Get an event log by resource provider with a start time
-```
-PS C:\>Get-AzActivityLog -ResourceProvider "Microsoft.Web" -StartTime 2017-05-22T04:30
+```powershell
+Get-AzActivityLog -ResourceProvider "Microsoft.Web" -StartTime 2017-05-22T04:30
 ```
 
 This command lists at most 1000 events associated with the specified resource provider that took place on or after  2017-05-22T04:30:00 local time if the start time is not older than 90 days from the current date/time.
 
 ### Example 20: Get an event log by resource provider with a start time and end time
-```
-PS C:\>Get-AzActivityLog -ResourceProvider "Microsoft.Web" -StartTime 2017-04-15T04:30 -EndTime 2017-04-25T12:30
+```powershell
+Get-AzActivityLog -ResourceProvider "Microsoft.Web" -StartTime 2017-04-15T04:30 -EndTime 2017-04-25T12:30
 ```
 
 This command lists at most 1000 events associated with the specified resource provider that took place on or after 2017-04-15T04:30 local time, but before 2017-04-25T12:30 local time if the whole date/time range is not older than 90 days from the current date/time, i.e.: the retention period.

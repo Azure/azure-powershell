@@ -24,7 +24,7 @@ The **Remove-AzRouteFilter** cmdlet removes a route filter.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
+Remove-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
 ```
 
 The command removes the route filter named RouteFilter01 in the resource group named ResourceGroup01.

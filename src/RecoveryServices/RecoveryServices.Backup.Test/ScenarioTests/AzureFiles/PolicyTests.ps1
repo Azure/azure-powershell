@@ -20,6 +20,9 @@ $fileShareName = "AzureFileShare;fs1"
 $saName = "pstestsa8895"
 $skuName="Standard_LRS"
 $newPolicyName = "newFilePolicy"
+$newHourlyPolicyName = "afsHourlyPolicy"
+$scheduleWindowStartTime = "2021-12-22T06:00:00.00+00:00"
+$windowStartTime = "6:00:00"
 
 # Setup Instructions:
 # 1. Create a resource group
@@ -86,4 +89,58 @@ function Test-AzureFSPolicy
 		-VaultId $vault.ID `
 		-WorkloadType AzureFiles
 	Assert-False { $policy.Name -contains $newPolicyName }
+}
+
+function Test-AzureFSHourlyPolicy
+{
+	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
+		
+	# Get default policy objects	
+	$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage -ScheduleRunFrequency Hourly
+	$retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadType AzureFiles -BackupManagementType AzureStorage  -ScheduleRunFrequency Hourly
+
+	# Create hourly policy
+	$policy = New-AzRecoveryServicesBackupProtectionPolicy `
+		-Name $newHourlyPolicyName -WorkloadType AzureFiles `
+		-BackupManagementType AzureStorage -RetentionPolicy $retentionPolicy `
+		-SchedulePolicy $schedulePolicy -VaultId $vault.ID
+
+	Assert-NotNull $policy
+	Assert-AreEqual $policy.Name $newHourlyPolicyName
+
+	# Modify policy to IST policy
+	$timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "India" }
+	$schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
+
+	$startTime = Get-Date -Date $scheduleWindowStartTime
+	$schedulePolicy.ScheduleWindowStartTime = $startTime.ToUniversalTime()
+
+	Set-AzRecoveryServicesBackupProtectionPolicy -Policy $policy -VaultId $vault.ID -SchedulePolicy $schedulePolicy 
+
+	$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newHourlyPolicyName
+
+	Assert-True { $policy.SchedulePolicy.ScheduleRunTimeZone -match "India" }	
+
+	Assert-True { $policy.SchedulePolicy.ScheduleWindowStartTime.ToString() -match $windowStartTime }
+	
+	# Modify policy to Russian Standard Time
+	$retentionPolicy.DailySchedule.DurationCountInDays = 6
+	$schedulePolicy.ScheduleWindowDuration = 14
+	$timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "Russian Standard Time" }
+	$schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
+
+	Set-AzRecoveryServicesBackupProtectionPolicy -Policy $policy -VaultId $vault.ID -SchedulePolicy $schedulePolicy -RetentionPolicy $retentionPolicy
+	$policy = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Name $newHourlyPolicyName
+
+	Assert-True { $policy.SchedulePolicy.ScheduleRunTimeZone -match "Russia" }
+
+	# Delete policy
+	Remove-AzRecoveryServicesBackupProtectionPolicy `
+		-VaultId $vault.ID `
+		-Policy $policy `
+		-Force
+	$policy = Get-AzRecoveryServicesBackupProtectionPolicy `
+		-VaultId $vault.ID `
+		-WorkloadType AzureFiles
+	Assert-False { $policy.Name -contains $newHourlyPolicyName }
 }

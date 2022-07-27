@@ -36,10 +36,10 @@ ResourceGroup level configuration: There can be only one configuration for each 
 
 ###  Example 1
 ```powershell
- Set-AzAdvisorConfiguration -LowCpuThreshold 10
- ```
+Set-AzAdvisorConfiguration -LowCpuThreshold 10
+```
 
- ```output
+```output
 Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}
 Name       : {user_subscription}
 Properties : additionalProperties : null
@@ -53,10 +53,10 @@ Updates the configuration(lowCpuThreshold) for subscription level Configuration.
 
 ### Example 2
 ```powershell
- Set-AzAdvisorConfiguration -LowCpuThreshold 15 -Exclude 
- ```
+Set-AzAdvisorConfiguration -LowCpuThreshold 15 -Exclude
+```
  
- ```output
+```output
 Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}
 Name       : {user_subscription}
 Properties : additionalProperties : null
@@ -70,8 +70,8 @@ Updates the configuration(lowCpuThreshold, exclude) for subscription level Confi
 
 ### Example 3
 ```powershell
- Set-AzAdvisorConfiguration -ResourceGroupName resourceGroupName1 -Exclude
- ```
+Set-AzAdvisorConfiguration -ResourceGroupName resourceGroupName1 -Exclude
+```
 
 ```output
 Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}-resourceGroupName1
@@ -87,10 +87,10 @@ Updates the configuration(exclude) for resourceGroupName1 to be excluded in the 
 
 ### Example 4
 ```powershell
- Get-AzAdvisorConfiguration | Set-AzAdvisorConfiguration -LowCpuThreshold 20
- ```
+Get-AzAdvisorConfiguration | Set-AzAdvisorConfiguration -LowCpuThreshold 20
+```
 
- ```output
+```output
 Id         : /subscriptions/{user_subscription}/resourceGroups/resourceGroupName1/providers/Microsoft.Advisor/configurations/{user_subscription}
 Name       : {user_subscription}
 Properties : additionalProperties : null

@@ -26,21 +26,37 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Test.Mocks
     /// </summary>
     internal sealed class MockPowerShellRuntime : IPowerShellRuntime, IDisposable
     {
+        private Runspace _defaultRunspace;
+
         /// <inheritdoc />
-        public Runspace DefaultRunspace { get; private set; } = PowerShellRunspaceUtilities.GetMinimalRunspace();
+        public Runspace DefaultRunspace
+        {
+            get
+            {
+                if (_defaultRunspace is null)
+                {
+                    _defaultRunspace = PowerShellRunspaceUtilities.GetTestRunspace();
+                }
+
+                return _defaultRunspace;
+            }
+        }
 
         /// <inheritdoc />
         public PowerShell ConsoleRuntime => throw new NotImplementedException("It's not implemented yet because there is no test case to set up powershell environment.");
+
+        /// <inheritdoc />
+        public string HostName => AzPredictorConstants.MockPSHostName;
 
         /// <inheritdoc />
         public IList<T> ExecuteScript<T>(string contents) => throw new NotImplementedException("It's not implemented yet because there is no test case to set up powershell environment.");
 
         public void Dispose()
         {
-            if (DefaultRunspace is not null)
+            if (_defaultRunspace is not null)
             {
-                DefaultRunspace.Dispose();
-                DefaultRunspace = null;
+                _defaultRunspace.Dispose();
+                _defaultRunspace = null;
             }
         }
     }

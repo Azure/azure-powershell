@@ -16,26 +16,26 @@ Gets Backup protection policies for a vault.
 ### NoParamSet (Default)
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-PolicySubType <PSPolicyType>] [<CommonParameters>]
 ```
 
 ### PolicyNameParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-Name] <String> [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>] [<CommonParameters>]
 ```
 
 ### WorkloadParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType> [-VaultId <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-PolicySubType <PSPolicyType>] [<CommonParameters>]
 ```
 
 ### WorkloadBackupManagementTypeParamSet
 ```
 Get-AzRecoveryServicesBackupProtectionPolicy [-WorkloadType] <WorkloadType>
  [-BackupManagementType] <BackupManagementType> [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+ [-PolicySubType <PSPolicyType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,8 +45,11 @@ Set the vault context by using the Set-AzRecoveryServicesVaultContext cmdlet bef
 ## EXAMPLES
 
 ### Example 1: Get all policies in the vault
+```powershell
+Get-AzRecoveryServicesBackupProtectionPolicy
 ```
-PS C:\> Get-AzRecoveryServicesBackupProtectionPolicy 
+
+```output
 Name                 WorkloadType       BackupManagementType BackupTime                DaysOfWeek   
 ----                 ------------       -------------------- ----------                ----------   
 DefaultPolicy        AzureVM            AzureVM              4/14/2016 5:00:00 PM                   
@@ -57,11 +60,18 @@ NewPolicy2           AzureVM            AzureVM              4/24/2016 1:30:00 A
 This command gets all protection policies created in the vault.
 
 ### Example 2: Get a specific policy
-```
-PS C:\> $Pol= Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
+```powershell
+$Pol= Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
 ```
 
-This command gets the protection policy named DefaultPolicy, and then stores it in the $Pol variable.
+This command gets the protection policy named DefaultPolicy, and then stores it in the $pol variable.
+
+### Example 3: Get only Enhanced policies in a vault
+```powershell
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM  -PolicySubType Enhanced
+```
+
+This command gets only the Enhanced protection policies in RS vault, and then stores it in the $pol variable.
 
 ## PARAMETERS
 
@@ -106,6 +116,22 @@ Aliases:
 
 Required: True
 Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PolicySubType
+Type of policy to be fetched: Standard, Enhanced
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.PSPolicyType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Standard, Enhanced
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

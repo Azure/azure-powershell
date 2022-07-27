@@ -25,7 +25,7 @@ The cmdlet returns the updated service unit object.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzDeploymentManagerServiceUnit -InputObject $serviceUnitObject
+Set-AzDeploymentManagerServiceUnit -InputObject $serviceUnitObject
 ```
 
 This command updates a service unit whose name, service name, service topology name and ResourceGroup match the Name, ServiceName, ServiceTopologyName and ResourceGroupName properties of the $serviceUnitObject, respectively.

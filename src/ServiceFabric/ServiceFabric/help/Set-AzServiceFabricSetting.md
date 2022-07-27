@@ -31,14 +31,14 @@ Use **Set-AzServiceFabricSetting** to add or update Service Fabric settings in a
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Set-AzServiceFabricSetting -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster'  -Section 'NamingService' -Parameter 'MaxFileOperationTimeout' -Value 5000
 ```
 
 This command will set 'MaxFileOperationTimeout' to value '5000' under the section 'NamingService'.
 
 ### Example 2
-```
+```powershell
 $fabricSettings = @(
     @{ 
         "name" = "NamingService";

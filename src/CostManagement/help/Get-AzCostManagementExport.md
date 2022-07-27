@@ -37,8 +37,10 @@ The operation to get the export for the defined scope by export name.
 
 ### Example 1: Get all AzCostManagementExports by scope
 ```powershell
-PS C:\> Get-AzCostManagementExport -Scope 'subscriptions/**********'
+Get-AzCostManagementExport -Scope 'subscriptions/**********'
+```
 
+```output
 ETag              Name                               Type
 ----              ----                               ----
 "************" TestExport                         Microsoft.CostManagement/exports
@@ -50,8 +52,10 @@ Get all AzCostManagementExports by Scope
 
 ### Example 2: Get AzCostManagementExport by Name and scope
 ```powershell
-PS C:\> Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
+Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
+```
 
+```output
 ETag              Name       Type
 ----              ----       ----
 "************" TestExport Microsoft.CostManagement/exports
@@ -158,7 +162,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
+INPUTOBJECT `<ICostManagementIdentity>`: Identity Parameter
   - `[AlertId <String>]`: Alert ID
   - `[ExportName <String>]`: Export Name.
   - `[ExternalCloudProviderId <String>]`: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.

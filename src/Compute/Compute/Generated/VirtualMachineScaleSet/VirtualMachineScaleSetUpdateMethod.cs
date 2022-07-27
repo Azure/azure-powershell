@@ -236,6 +236,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
+        public bool ScaleInPolicyForceDeletion { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string PauseTimeBetweenBatches { get; set; }
 
@@ -347,6 +351,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "UserData for the Vmss, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
         public string UserData { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Type of repair action (replace, restart, reimage) that will be used for repairing unhealthy virtual machines in the scale set. Default value is replace.",
+            ValueFromPipelineByPropertyName = true)]
+        [PSArgumentCompleter("Replace", "Restart", "Reimage")]
+        public string AutomaticRepairAction { get; set; }
 
         private void BuildPatchObject()
         {
@@ -949,6 +960,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.ScaleInPolicy.Rules = this.ScaleInPolicy;
             }
 
+            if (this.IsParameterBound(c => c.ScaleInPolicyForceDeletion))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ScaleInPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ScaleInPolicy = new ScaleInPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.ScaleInPolicy.ForceDeletion = this.ScaleInPolicyForceDeletion;
+            }
+
             if (this.IsParameterBound(c => c.SinglePlacementGroup))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -1300,6 +1324,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 this.VirtualMachineScaleSet.AutomaticRepairsPolicy.Enabled = this.EnableAutomaticRepair;
             }
+
+            if (this.IsParameterBound(c => c.AutomaticRepairAction))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy = new AutomaticRepairsPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.AutomaticRepairsPolicy.RepairAction = this.AutomaticRepairAction;
+            }
+
 
             if (this.IsParameterBound(c => c.EnableAutomaticUpdate))
             {
@@ -1654,6 +1692,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.ScaleInPolicy = new ScaleInPolicy();
                 }
                 this.VirtualMachineScaleSet.ScaleInPolicy.Rules = this.ScaleInPolicy;
+            }
+
+            if (this.IsParameterBound(c => c.ScaleInPolicyForceDeletion))
+            {
+                if (this.VirtualMachineScaleSet.ScaleInPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ScaleInPolicy = new ScaleInPolicy();
+                }
+                this.VirtualMachineScaleSet.ScaleInPolicy.ForceDeletion = this.ScaleInPolicyForceDeletion;
             }
 
             if (this.IsParameterBound(c => c.SinglePlacementGroup))

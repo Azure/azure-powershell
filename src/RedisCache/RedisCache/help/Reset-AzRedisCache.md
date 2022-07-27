@@ -24,8 +24,8 @@ The **Reset-AzRedisCache** cmdlet restarts nodes of an Azure Redis Cache instanc
 ## EXAMPLES
 
 ### Example 1: Restart both nodes
-```
-PS C:\>Reset-AzRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -RebootType "AllNodes" -Force
+```powershell
+Reset-AzRedisCache -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -RebootType "AllNodes" -Force
 ```
 
 This command restarts both nodes for the cache named RedisCache06.

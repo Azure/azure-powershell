@@ -59,6 +59,8 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         Start-Sleep -Seconds 10
                 
         $jobid = $restoreJob.JobId.Split("/")[-1]
+        ($jobid -ne $null) | Should be $true
+
         $jobstatus = "InProgress"
         while($jobstatus -ne "Completed")
         {
@@ -77,6 +79,8 @@ Describe 'Start-AzDataProtectionBackupInstanceRestore' {
         $restoreFilesJob = Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instance.Name -ResourceGroupName $rgName -VaultName $vaultName -SubscriptionId $sub -Parameter $OssRestoreReqFiles
 
         $jobid = $restoreFilesJob.JobId.Split("/")[-1]
+        ($jobid -ne $null) | Should be $true
+
         $jobstatus = "InProgress"
         while($jobstatus -ne "Completed")
         {

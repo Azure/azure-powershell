@@ -160,13 +160,8 @@ function Add-ProjectDependencies
     
     foreach ($Csproj in $CsprojList)
     {
-        try
-        {
-            $CsprojAbslutionPath = Resolve-Path -Path ($SolutionFoloderPath + "\\" + $Csproj)
-        }
-        catch
-        {
-            throw "${SolutionPath}: $Csproj is not found!"
+        If(-Not (Test-Path ($SolutionFoloderPath + "\\" + $Csproj))) {
+            Write-Error "${SolutionPath}: $Csproj is not found!"
         }
     }
     $Mappings[$SolutionPath] = $CsprojList | ForEach-Object { (Split-Path -Path $_ -Leaf).Replace('.csproj', '') }

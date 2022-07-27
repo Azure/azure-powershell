@@ -32,23 +32,23 @@ To delete a resource, but leave the resource group, use the Remove-AzResource cm
 ## EXAMPLES
 
 ### Example 1: Remove a resource group
-```
-PS C:\>Remove-AzResourceGroup -Name "ContosoRG01"
+```powershell
+Remove-AzResourceGroup -Name "ContosoRG01"
 ```
 
 This command removes the ContosoRG01 resource group from the subscription.
 The cmdlet prompts you for confirmation and returns no output.
 
 ### Example 2: Remove a resource group without confirmation
-```
-PS C:\>Get-AzResourceGroup -Name "ContosoRG01" | Remove-AzResourceGroup -Force
+```powershell
+Get-AzResourceGroup -Name "ContosoRG01" | Remove-AzResourceGroup -Force
 ```
 
 This command uses the Get-AzResourceGroup cmdlet to get the resource group ContosoRG01, and then passes it to **Remove-AzResourceGroup** by using the pipeline operator. The *Force* parameter suppresses the confirmation prompt.
 
 ### Example 3: Remove all resource groups
-```
-PS C:\>Get-AzResourceGroup | Remove-AzResourceGroup
+```powershell
+Get-AzResourceGroup | Remove-AzResourceGroup
 ```
 
 This command uses the **Get-AzResourceGroup** cmdlet to get all resource groups, and then passes them to **Remove-AzResourceGroup** by using the pipeline operator.

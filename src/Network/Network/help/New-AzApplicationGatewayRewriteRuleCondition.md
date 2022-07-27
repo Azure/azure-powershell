@@ -23,16 +23,17 @@ New-AzApplicationGatewayRewriteRuleCondition -Variable <String> [-Pattern <Strin
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> $condition = New-AzApplicationGatewayRewriteRuleCondition -Variable "var_request_uri" -Pattern "http" -IgnoreCase
-PS C:\> $condition
+$condition = New-AzApplicationGatewayRewriteRuleCondition -Variable "var_request_uri" -Pattern "http" -IgnoreCase
+$condition
 
 Variable   : var_request_uri
 Pattern    : http
 IgnoreCase : True
 Negate     : False
 
-PS C:\> $condition | Format-Table
+$condition | Format-Table
 
 Variable        Pattern IgnoreCase Negate
 --------        ------- ---------- ------

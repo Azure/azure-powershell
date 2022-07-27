@@ -42,8 +42,10 @@ See the Microsoft Azure Trust Center (https://azure.microsoft.com/support/trust-
 
 ### Example 1: Restore a backed-up managed storage account
 ```powershell
-PS C:\> Restore-AzKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+Restore-AzKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -InputFile "C:\Backup.blob"
+```
 
+```output
 Id                  : https://mykeyvault.vault.azure.net:443/storage/mystorageaccount
 Vault Name          : MyKeyVault
 AccountName         : mystorageaccount

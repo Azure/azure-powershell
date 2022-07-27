@@ -24,12 +24,12 @@ Depending on the parameters passed, the cmdlet returns a specific commitment ass
 ## EXAMPLES
 
 ### Example 1: Get a specific commitment association
-```
+```powershell
 Get-AzMlCommitmentAssociation -ResourceGroupName "MyResourceGroup" -CommitmentPlanName "MyCommitmentPlanName" -Name "MyCommitmentAssociationName"
 ```
 
 ### Example 2: Get all commitment associations for the specified commitment plan
-```
+```powershell
 Get-AzMlCommitmentAssociation -ResourceGroupName "MyResourceGroup" -CommitmentPlanName "MyCommitmentPlanName"
 ```
 

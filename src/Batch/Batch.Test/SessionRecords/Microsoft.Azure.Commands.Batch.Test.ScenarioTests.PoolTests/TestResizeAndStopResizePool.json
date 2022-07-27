@@ -1,32 +1,32 @@
 {
   "Entries": [
     {
-      "RequestUri": "/pools?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMjAtMDMtMDEuMTEuMA==",
+      "RequestUri": "/pools?api-version=2022-01-01.15.0",
+      "EncodedRequestUri": "L3Bvb2xzP2FwaS12ZXJzaW9uPTIwMjItMDEtMDEuMTUuMA==",
       "RequestMethod": "POST",
-      "RequestBody": "{\r\n  \"id\": \"resizePool\",\r\n  \"vmSize\": \"small\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": true\r\n}",
+      "RequestBody": "{\r\n  \"id\": \"resizePool\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  },\r\n  \"targetDedicatedNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableInterNodeCommunication\": true\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "0bf64ba5-06bd-4bbf-978e-5bb80e3c1084"
+          "4fea0684-4957-4776-baec-2baa5cdb669f"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:29:30 GMT"
+          "Tue, 15 Feb 2022 19:50:14 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata; charset=utf-8"
         ],
         "Content-Length": [
-          "235"
+          "244"
         ]
       },
       "ResponseHeaders": {
@@ -34,16 +34,16 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80CC4A081457A"
+          "0x8D9F0BC62561283"
         ],
         "Location": [
-          "https://prodtest6.francecentral.batch.azure.com/pools/resizePool"
+          "https://mikeportal.eastus.batch.azure.com/pools/resizePool"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "8778fcb1-34b2-41c0-992f-c30f19276d1a"
+          "deb1c5f0-2bcd-4e7e-afa2-b92216ea6891"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -55,38 +55,41 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://prodtest6.francecentral.batch.azure.com/pools/resizePool"
+          "https://mikeportal.eastus.batch.azure.com/pools/resizePool"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:29:51 GMT"
+          "Tue, 15 Feb 2022 19:50:13 GMT"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 22:29:51 GMT"
+          "Tue, 15 Feb 2022 19:50:14 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 201
     },
     {
-      "RequestUri": "/pools/resizePool?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2w/YXBpLXZlcnNpb249MjAyMC0wMy0wMS4xMS4w",
+      "RequestUri": "/pools/resizePool?api-version=2022-01-01.15.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2w/YXBpLXZlcnNpb249MjAyMi0wMS0wMS4xNS4w",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "c3c97ff4-b347-4bc3-ad31-26625ee18b2d"
+          "91ec87fe-1571-40ab-80ea-9c800a5fe3d0"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:29:52 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "d214a171-ac09-48da-a1f3-bea53a9dd3f7"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -95,13 +98,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80CC4A081457A"
+          "0x8D9F0BC62561283"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "2ae568be-7651-44fe-a9b9-31d8c06c2d77"
+          "aed318f0-38e9-4d96-89a5-b4d7cd5727ad"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -113,38 +116,41 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:18 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 22:29:51 GMT"
+          "Tue, 15 Feb 2022 19:50:14 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"resizePool\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/resizePool\",\r\n  \"eTag\": \"0x8D80CC4A081457A\",\r\n  \"lastModified\": \"2020-06-09T22:29:51.8875002Z\",\r\n  \"creationTime\": \"2020-06-09T22:29:51.8875002Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2020-06-09T22:29:51.8875002Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2020-06-09T22:29:53.04759Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikeportal.eastus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"resizePool\",\r\n  \"url\": \"https://mikeportal.eastus.batch.azure.com/pools/resizePool\",\r\n  \"eTag\": \"0x8D9F0BC62561283\",\r\n  \"lastModified\": \"2022-02-15T19:50:14.3961731Z\",\r\n  \"creationTime\": \"2022-02-15T19:50:14.3961731Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2022-02-15T19:50:14.3961731Z\",\r\n  \"allocationState\": \"steady\",\r\n  \"allocationStateTransitionTime\": \"2022-02-15T19:50:15.9092193Z\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 0,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"taskSlotsPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/resizePool?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2w/YXBpLXZlcnNpb249MjAyMC0wMy0wMS4xMS4w",
+      "RequestUri": "/pools/resizePool?api-version=2022-01-01.15.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2w/YXBpLXZlcnNpb249MjAyMi0wMS0wMS4xNS4w",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "272ae7dc-0ac5-4a3f-9943-013866f25590"
+          "2fc9e4f6-969d-496c-83fe-6670429213f4"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "c6633536-1864-4387-b4b6-74a8df554e1f"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -153,13 +159,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80CC4ADE9845D"
+          "0x8D9F0BC6529B800"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "000132ad-6ae9-47bf-8aec-7de81d44b9cf"
+          "680f8a76-d855-4ea4-a519-30ce93d5514b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -171,38 +177,41 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"resizePool\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/resizePool\",\r\n  \"eTag\": \"0x8D80CC4ADE9845D\",\r\n  \"lastModified\": \"2020-06-09T22:30:14.3810653Z\",\r\n  \"creationTime\": \"2020-06-09T22:29:51.8875002Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2020-06-09T22:29:51.8875002Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2020-06-09T22:30:14.3810653Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 1,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikeportal.eastus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"resizePool\",\r\n  \"url\": \"https://mikeportal.eastus.batch.azure.com/pools/resizePool\",\r\n  \"eTag\": \"0x8D9F0BC6529B800\",\r\n  \"lastModified\": \"2022-02-15T19:50:19.1386624Z\",\r\n  \"creationTime\": \"2022-02-15T19:50:14.3961731Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2022-02-15T19:50:14.3961731Z\",\r\n  \"allocationState\": \"resizing\",\r\n  \"allocationStateTransitionTime\": \"2022-02-15T19:50:19.1386624Z\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 1,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"taskSlotsPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/resizePool?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2w/YXBpLXZlcnNpb249MjAyMC0wMy0wMS4xMS4w",
+      "RequestUri": "/pools/resizePool?api-version=2022-01-01.15.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2w/YXBpLXZlcnNpb249MjAyMi0wMS0wMS4xNS4w",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "7afc67f0-e3b0-4918-a02f-61111776e72e"
+          "bbbb7b3f-ef46-4266-b4de-b52e8c87b25a"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "b32e2aa6-74e5-41c1-9072-a6cfac20f37a"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
           "AzurePowershell/Az1.0.0"
         ]
       },
@@ -211,13 +220,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80CC4ADE9845D"
+          "0x8D9F0BC6529B800"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "b30a2b98-1ab3-48ee-b467-a8e82450379e"
+          "4b9ee34b-321b-4b88-b538-ff3ab4f2baca"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -229,38 +238,41 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
         ],
         "Content-Type": [
           "application/json; odata=minimalmetadata"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
         ]
       },
-      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://prodtest6.francecentral.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"resizePool\",\r\n  \"url\": \"https://prodtest6.francecentral.batch.azure.com/pools/resizePool\",\r\n  \"eTag\": \"0x8D80CC4ADE9845D\",\r\n  \"lastModified\": \"2020-06-09T22:30:14.3810653Z\",\r\n  \"creationTime\": \"2020-06-09T22:29:51.8875002Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2020-06-09T22:29:51.8875002Z\",\r\n  \"allocationState\": \"stopping\",\r\n  \"allocationStateTransitionTime\": \"2020-06-09T22:30:14.7587257Z\",\r\n  \"vmSize\": \"small\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 1,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"maxTasksPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"odata.metadata\": \"https://mikeportal.eastus.batch.azure.com/$metadata#pools/@Element\",\r\n  \"id\": \"resizePool\",\r\n  \"url\": \"https://mikeportal.eastus.batch.azure.com/pools/resizePool\",\r\n  \"eTag\": \"0x8D9F0BC6529B800\",\r\n  \"lastModified\": \"2022-02-15T19:50:19.1386624Z\",\r\n  \"creationTime\": \"2022-02-15T19:50:14.3961731Z\",\r\n  \"state\": \"active\",\r\n  \"stateTransitionTime\": \"2022-02-15T19:50:14.3961731Z\",\r\n  \"allocationState\": \"stopping\",\r\n  \"allocationStateTransitionTime\": \"2022-02-15T19:50:19.3506631Z\",\r\n  \"vmSize\": \"standard_d1_v2\",\r\n  \"resizeTimeout\": \"PT15M\",\r\n  \"currentDedicatedNodes\": 0,\r\n  \"targetDedicatedNodes\": 1,\r\n  \"currentLowPriorityNodes\": 0,\r\n  \"targetLowPriorityNodes\": 0,\r\n  \"enableAutoScale\": false,\r\n  \"enableInterNodeCommunication\": true,\r\n  \"taskSlotsPerNode\": 1,\r\n  \"taskSchedulingPolicy\": {\r\n    \"nodeFillType\": \"Spread\"\r\n  },\r\n  \"cloudServiceConfiguration\": {\r\n    \"osFamily\": \"4\",\r\n    \"osVersion\": \"*\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/pools/resizePool/resize?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2wvcmVzaXplP2FwaS12ZXJzaW9uPTIwMjAtMDMtMDEuMTEuMA==",
+      "RequestUri": "/pools/resizePool/resize?api-version=2022-01-01.15.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2wvcmVzaXplP2FwaS12ZXJzaW9uPTIwMjItMDEtMDEuMTUuMA==",
       "RequestMethod": "POST",
       "RequestBody": "{\r\n  \"targetDedicatedNodes\": 1\r\n}",
       "RequestHeaders": {
         "client-request-id": [
-          "7b4068ea-2f48-4b8e-b6a1-1045718c95c0"
+          "e43ed32e-3153-4770-b55c-a17fa5b88df9"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "0830a803-382b-4d4c-82f3-3843e32d1608"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Type": [
@@ -275,13 +287,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80CC4ADE9845D"
+          "0x8D9F0BC6529B800"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "e9cc340f-8098-4697-aa7c-19349db90bfe"
+          "ede67461-0cca-4eb6-bccc-a3017bfe5fa8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -293,38 +305,41 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://prodtest6.francecentral.batch.azure.com/pools/resizePool/resize"
+          "https://mikeportal.eastus.batch.azure.com/pools/resizePool/resize"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/pools/resizePool/stopresize?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2wvc3RvcHJlc2l6ZT9hcGktdmVyc2lvbj0yMDIwLTAzLTAxLjExLjA=",
+      "RequestUri": "/pools/resizePool/stopresize?api-version=2022-01-01.15.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2wvc3RvcHJlc2l6ZT9hcGktdmVyc2lvbj0yMDIyLTAxLTAxLjE1LjA=",
       "RequestMethod": "POST",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "07dbb2d4-58cc-4036-8b10-bc55df09c925"
+          "7ed4f02a-84ae-4022-895c-bc56936c6465"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
+        ],
+        "x-ms-client-request-id": [
+          "28ef0ae3-0d6d-4118-85fe-f730cdb84c81"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -336,13 +351,13 @@
           "chunked"
         ],
         "ETag": [
-          "0x8D80CC4ADE9845D"
+          "0x8D9F0BC6529B800"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "7205de5a-7a59-4f0d-ac51-f4411c13dfce"
+          "5f5540aa-14c8-4ba1-865e-b6fbf7215837"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -354,38 +369,38 @@
           "3.0"
         ],
         "DataServiceId": [
-          "https://prodtest6.francecentral.batch.azure.com/pools/resizePool/stopresize"
+          "https://mikeportal.eastus.batch.azure.com/pools/resizePool/stopresize"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
         ],
         "Last-Modified": [
-          "Tue, 09 Jun 2020 22:30:14 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
         ]
       },
       "ResponseBody": "",
       "StatusCode": 202
     },
     {
-      "RequestUri": "/pools/resizePool?api-version=2020-03-01.11.0",
-      "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2w/YXBpLXZlcnNpb249MjAyMC0wMy0wMS4xMS4w",
+      "RequestUri": "/pools/resizePool?api-version=2022-01-01.15.0",
+      "EncodedRequestUri": "L3Bvb2xzL3Jlc2l6ZVBvb2w/YXBpLXZlcnNpb249MjAyMi0wMS0wMS4xNS4w",
       "RequestMethod": "DELETE",
       "RequestBody": "",
       "RequestHeaders": {
         "client-request-id": [
-          "880c199d-0f45-4c49-a260-7ee016e4f4c4"
+          "c0eb3767-c4d9-4e3a-92e0-6a877a575976"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "ocp-date": [
-          "Tue, 09 Jun 2020 22:30:15 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28207.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/13.0.20.15503",
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Batch.Protocol.BatchServiceClient/15.300.22.6302",
           "AzurePowershell/Az1.0.0"
         ],
         "Content-Length": [
@@ -400,7 +415,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "request-id": [
-          "bfbf8bee-9ed9-4785-8eff-e918c8d07545"
+          "7bd58dd6-6ec0-4940-804f-24d983722081"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -412,7 +427,7 @@
           "3.0"
         ],
         "Date": [
-          "Tue, 09 Jun 2020 22:30:15 GMT"
+          "Tue, 15 Feb 2022 19:50:19 GMT"
         ]
       },
       "ResponseBody": "",
@@ -421,9 +436,9 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "21abd678-18c5-4660-9fdd-8c5ba6b6fe1f",
-    "AZURE_BATCH_ACCOUNT": "prodtest6",
-    "AZURE_BATCH_ENDPOINT": "https://prodtest6.francecentral.batch.azure.com",
-    "AZURE_BATCH_RESOURCE_GROUP": "abc"
+    "SubscriptionId": "ba2358c2-42f2-4138-88df-7c68cf608bea",
+    "AZURE_BATCH_ACCOUNT": "mikeportal",
+    "AZURE_BATCH_ENDPOINT": "https://mikeportal.eastus.batch.azure.com",
+    "AZURE_BATCH_RESOURCE_GROUP": "batchportal"
   }
 }

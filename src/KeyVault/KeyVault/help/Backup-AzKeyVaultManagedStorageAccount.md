@@ -40,8 +40,10 @@ and specify a key vault in the second region.
 
 ### Example 1: Back up a managed storage account with an automatically generated file name
 ```powershell
-PS C:\Users\username\> Backup-AzKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -Name 'MyMSAK'
+Backup-AzKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -Name 'MyMSAK'
+```
 
+```output
 C:\Users\username\mykeyvault-mymsak-1527029447.01191
 ```
 
@@ -49,8 +51,10 @@ This command retrieves the managed storage account named MyMSAK from the key vau
 
 ### Example 2: Back up a managed storage account to a specified file name
 ```powershell
-PS C:\> Backup-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyMSAK' -OutputFile 'C:\Backup.blob'
+Backup-AzKeyVaultKey -VaultName 'MyKeyVault' -Name 'MyMSAK' -OutputFile 'C:\Backup.blob'
+```
 
+```output
 C:\Backup.blob
 ```
 
@@ -58,9 +62,11 @@ This command retrieves the managed storage account named MyMSAK from the key vau
 
 ### Example 3: Back up a previously retrieved managed storage account to a specified file name, overwriting the destination file without prompting.
 ```powershell
-PS C:\> $msak = Get-AzKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -Name 'MyMSAK'
-PS C:\> Backup-AzKeyVaultManagedStorageAccount -StorageAccount $msak -OutputFile 'C:\Backup.blob' -Force
+$msak = Get-AzKeyVaultManagedStorageAccount -VaultName 'MyKeyVault' -Name 'MyMSAK'
+Backup-AzKeyVaultManagedStorageAccount -StorageAccount $msak -OutputFile 'C:\Backup.blob' -Force
+```
 
+```output
 C:\Backup.blob
 ```
 

@@ -37,15 +37,15 @@ The **Remove-AzSynapseWorkspacePackage** removes a workspace package
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Name ContosoPackageName
+Remove-AzSynapseWorkspacePackage -WorkspaceName ContosoWorkspace -Name ContosoPackageName
 ```
 
 This command deletes a workspace package under an Azure Synapse Analytics workspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseWorkspacePackage -Name ContosoPackageName
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapseWorkspacePackage -Name ContosoPackageName
 ```
 
 This command deletes a workspace package under an Azure Synapse Analytics workspace through pipeline.

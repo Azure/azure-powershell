@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: B10B1F5D-5566-4129-9D42-05A6D3B72C9E
@@ -34,8 +34,8 @@ The **Export-AzDataLakeStoreItem** cmdlet downloads a file from Data Lake Store.
 ## EXAMPLES
 
 ### Example 1: Download an item from the Data Lake Store
-```
-PS C:\>Export-AzDataLakeStoreItem -AccountName "ContosoADL" -Path /myFiles/TestSource.csv -Destination "C:\Test.csv" -Concurrency 4
+```powershell
+Export-AzDataLakeStoreItem -AccountName "ContosoADL" -Path /myFiles/TestSource.csv -Destination "C:\Test.csv" -Concurrency 4
 ```
 
 This command downloads the file TestSource.csv from the Data Lake Store to C:\Test.csv with a concurrency of 4.

@@ -48,7 +48,7 @@ Remove-AzVirtualRouterPeer -ResourceId $virtualRouterPeerId
 
 ### Example 3
 ```powershell
-$virtualRouterPeer = Get-AzVirtualRouterPeer -ResourceGroupName virtualRouter -RouterName virtualRouter -PeerName csr
+$virtualRouterPeer = Get-AzVirtualRouterPeer -ResourceGroupName virtualRouter -VirtualRouterName virtualRouter -PeerName csr
 Remove-AzVirtualRouterPeer -InputObject $virtualRouterPeer
 ```
 

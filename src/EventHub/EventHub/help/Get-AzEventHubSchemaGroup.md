@@ -31,8 +31,10 @@ The Get-AzEventHubSchemaGroup gets a specific schema group from a namespace or l
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventHubSchemaGroup -ResourceGroupName myresourcegroup -Namespace mynamespace -Name myschemagroup
+Get-AzEventHubSchemaGroup -ResourceGroupName myresourcegroup -Namespace mynamespace -Name myschemagroup
+```
 
+```output
 Id                  : /subscriptions/{subscriptionid}/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/mynamespace/schemagroups/myschemagroup
 Name                : myschemagroup
 Location            : East US
@@ -46,8 +48,10 @@ Gets the details of schema group \`myschemagroup\` in \`mynamespace\` in the res
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventHubSchemaGroup -ResourceGroupName myresourcegroup -Namespace mynamespace
+Get-AzEventHubSchemaGroup -ResourceGroupName myresourcegroup -Namespace mynamespace
+```
 
+```output
 Id                  : /subscriptions/{subscriptionid}/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/mynamespace/schemagroups/myschemagroup
 Name                : myschemagroup
 Location            : East US

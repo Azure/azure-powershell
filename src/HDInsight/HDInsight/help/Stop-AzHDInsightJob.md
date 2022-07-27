@@ -24,11 +24,11 @@ The **Stop-AzHDInsightJob** cmdlet stops a specified running job on an Azure HDI
 ## EXAMPLES
 
 ### Example 1: Stop a job on the specified cluster
-```
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $clusterCreds = Get-Credential
-PS C:\> Stop-AzHDInsightJob `
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
+Stop-AzHDInsightJob `
             -ClusterName $clusterName `
             -ClusterCredential $clusterCreds `
             -JobId $jobId

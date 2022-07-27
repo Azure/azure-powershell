@@ -12,86 +12,78 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SecurityRegulatoryComplinceTests
+    public class SecurityRegulatoryComplinceTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public SecurityRegulatoryComplinceTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SecurityRegulatoryComplinceTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetStandardSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmRegulatoryComplianceStandard-SubscriptionScope");
+            TestRunner.RunTestScript("Get-AzureRmRegulatoryComplianceStandard-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetStandardSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmRegulatoryComplianceStandard-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Get-AzureRmRegulatoryComplianceStandard-SubscriptionLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetStandardResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmRegulatoryComplianceStandard-ResourceId");
+            TestRunner.RunTestScript("Get-AzureRmRegulatoryComplianceStandard-ResourceId");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetControlSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmRegulatoryComplianceControl-SubscriptionScope");
+            TestRunner.RunTestScript("Get-AzureRmRegulatoryComplianceControl-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetControlSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmRegulatoryComplianceControl-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Get-AzureRmRegulatoryComplianceControl-SubscriptionLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetControlResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmRegulatoryComplianceControl-ResourceId");
+            TestRunner.RunTestScript("Get-AzureRmRegulatoryComplianceControl-ResourceId");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAssessmentSubscriptionScope()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmRegulatoryComplianceAssessment-SubscriptionScope");
+            TestRunner.RunTestScript("Get-AzureRmRegulatoryComplianceAssessment-SubscriptionScope");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAssessmentSubscriptionLevelResource()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmRegulatoryComplianceAssessment-SubscriptionLevelResource");
+            TestRunner.RunTestScript("Get-AzureRmRegulatoryComplianceAssessment-SubscriptionLevelResource");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAssessmentResourceId()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzureRmRegulatoryComplianceAssessment-ResourceId");
+            TestRunner.RunTestScript("Get-AzureRmRegulatoryComplianceAssessment-ResourceId");
         }
-
     }
 }

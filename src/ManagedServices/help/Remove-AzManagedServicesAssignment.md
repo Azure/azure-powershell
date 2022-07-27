@@ -31,16 +31,14 @@ Deletes the specified registration assignment.
 
 ### Example 1: Removes Azure Lighthouse registration assignment at subscription scope
 ```powershell
-PS C:\> Remove-AzManagedServicesAssignment -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-
+Remove-AzManagedServicesAssignment -Name "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 Removes Azure Lighthouse registration assignment at subscription scope.
 
 ### Example 2: Removes Azure Lighthouse registration assignment at resource group scope
 ```powershell
-PS C:\> Remove-AzManagedServicesAssignment -Name xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testgroup"
-
+Remove-AzManagedServicesAssignment -Name "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -Scope "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/testgroup"
 ```
 
 Removes Azure Lighthouse registration assignment at resource group scope.
@@ -204,7 +202,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IManagedServicesIdentity>: Identity Parameter
+INPUTOBJECT `<IManagedServicesIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[MarketplaceIdentifier <String>]`: The Azure Marketplace identifier. Expected formats: {publisher}.{product[-preview]}.{planName}.{version} or {publisher}.{product[-preview]}.{planName} or {publisher}.{product[-preview]} or {publisher}).
   - `[RegistrationAssignmentId <String>]`: The GUID of the registration assignment.

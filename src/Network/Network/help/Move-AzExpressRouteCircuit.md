@@ -29,7 +29,7 @@ operation. Those resources need to be reconfigured after the move.
 ## EXAMPLES
 
 ### Example 1: Move an ExpressRoute circuit to the Resource Manager deployment model
-```
+```powershell
 Move-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $RG -Location $Location -ServiceKey $ServiceKey
 ```
 

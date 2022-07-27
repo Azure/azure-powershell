@@ -36,10 +36,12 @@ The Remove-AzSqlElasticJobCredential cmdlet removes a job credential
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
+```powershell
+$agent = Get-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 $agent | Remove-AzSqlElasticJobCredential -Name cred1
+```
 
+```output
 CredentialName UserName
 -------------- --------
 cred1          user2

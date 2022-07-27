@@ -24,8 +24,8 @@ The **Get-AzApplicationGatewayIdentity** cmdlet gets identity assigned to the ap
 
 ### Example 1
 ```powershell
-PS C:\> $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
-PS C:\> $identity = Get-AzApplicationGatewayIdentity -ApplicationGateway $gw
+$gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
+$identity = Get-AzApplicationGatewayIdentity -ApplicationGateway $gw
 ```
 
 This examples shows how to get application gateway identity from Application Gateway.

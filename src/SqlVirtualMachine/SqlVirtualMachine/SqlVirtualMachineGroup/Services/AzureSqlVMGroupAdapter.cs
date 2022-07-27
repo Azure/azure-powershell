@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// Deletes a sql virtual machine group
         /// </summary>
         /// <param name="resourceGroupName">The resource group the sql virtual machine goup is in</param>
-        /// <param name="serverName">The name of the sql virtual machine group to delete</param>
+        /// <param name="sqlVirtualMachineName">The name of the sql virtual machine group to delete</param>
         public void RemoveSqlVirtualMachine(string resourceGroupName, string sqlVirtualMachineName)
         {
             Communicator.Delete(resourceGroupName, sqlVirtualMachineName);
@@ -80,7 +80,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// <summary>
         /// Gets a list of all the sql virtual machine groups in a subscription
         /// </summary>
-        /// <param name="resourceGroupName">The name of the resource group</param>
         /// <returns>A list of all the sql virtual machine groups</returns>
         public List<AzureSqlVMGroupModel> ListSqlVirtualMachineGroup()
         {
@@ -109,7 +108,7 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// Gets a sql virtual machine group in a resource group
         /// </summary>
         /// <param name="resourceGroupName">The name of the resource group</param>
-        /// <param name="serverName">The name of the sql virtual machine group</param>
+        /// <param name="groupName">The name of the sql virtual machine group</param>
         /// <returns>The sql virtual machine group</returns>
         public AzureSqlVMGroupModel GetSqlVirtualMachineGroup(string resourceGroupName, string groupName)
         {
@@ -120,7 +119,6 @@ namespace Microsoft.Azure.Commands.SqlVirtualMachine.SqlVirtualMachine.Adapter
         /// <summary>
         /// Convert a Management.SqlVirtualMachine.Models.SqlVirtualMachineGroupModel to AzureSqlVirtualMachineGroupModel
         /// </summary>
-        /// <param name="resourceGroupName">The resource group the sql virtual machine group is in</param>
         /// <param name="resp">The management client sql virtual machine group response to convert</param>
         /// <returns>The converted sql virtual machine group model</returns>
         private static AzureSqlVMGroupModel CreateSqlVirtualMachineGroupModelFromResponse(SqlVirtualMachineGroup resp)

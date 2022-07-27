@@ -35,8 +35,10 @@ The **Disconnect-AzP2sVpnGatewayVpnConnection** cmdlet enables you to disconnect
 
 ### Example 1
 ```powershell
-PS C:\> Disconnect-AzP2sVpnGatewayVpnConnection -ResourceName 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -VpnConnectionId @("IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
+Disconnect-AzP2sVpnGatewayVpnConnection -ResourceName 683482ade8564515aed4b8448c9757ea-westus-gw -ResourceGroupName P2SCortexGATesting -VpnConnectionId @("IKEv2_7e1cfe59-5c7c-4315-a876-b11fbfdfeed4")
+```
 
+```output
 ResourceGroupName              : P2SCortexGATesting
 Name                           : 683482ade8564515aed4b8448c9757ea-westus-gw
 Id                             : /subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/p2sVpnGateways/683482ade8564515a

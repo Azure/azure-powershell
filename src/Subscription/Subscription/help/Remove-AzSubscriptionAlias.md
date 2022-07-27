@@ -24,7 +24,7 @@ The **Remove-AzSubscriptionAlias** cmdlet removes the subscription alias
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSubscriptionAlias -AliasName "ExistingAliasName"
+Remove-AzSubscriptionAlias -AliasName "ExistingAliasName"
 ```
 
 Deletes the subscription alias

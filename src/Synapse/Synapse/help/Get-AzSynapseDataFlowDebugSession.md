@@ -31,15 +31,15 @@ List all active data flow debug sessions in specified Synapse workspace with det
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseDataFlowDebugSession -WorkspaceName ContosoWorkspace
+Get-AzSynapseDataFlowDebugSession -WorkspaceName ContosoWorkspace
 ```
 
 Get all active data flow debug sessions in Synapse workspace "ContosoWorkspace".
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseDataFlowDebugSession
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseDataFlowDebugSession
 ```
 
 Get all active data flow debug sessions in Synapse workspace "ContosoWorkspace" through pipeline.

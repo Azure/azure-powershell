@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 ms.assetid: 6E84E26F-8150-41F8-8823-CEED05619A75
@@ -29,8 +29,11 @@ If you omit a required template parameter, the cmdlet prompts you for the value.
 ## EXAMPLES
 
 ### Example 1: Get an integration account partner
+```powershell
+Get-AzIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -PartnerName "IntegrationAccountPartner22"
 ```
-PS C:\>Get-AzIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31" -PartnerName "IntegrationAccountPartner22"
+
+```output
 Id                 : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/TestIntegrationAccount/partners/IntegrationAccountPartner31
 Name               : IntegrationAccountPartner31
 Type               : Microsoft.Logic/integrationAccounts/partners
@@ -44,8 +47,11 @@ Metadata           :
 This command gets the integration account partner named IntegrationAccountPartner22.
 
 ### Example 2: Get an integration account partners by using an integration account name
+```powershell
+Get-AzIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
 ```
-PS C:\>Get-AzIntegrationAccountPartner -ResourceGroupName "ResourceGroup11" -Name "IntegrationAccount31"
+
+```output
 Id                 : /subscriptions/<SubscriptionId>/resourceGroups/ResourceGroup11/providers/Microsoft.Logic/integrationAccounts/TestIntegrationAccount/partners/IntegrationAccountPartner31
 Name               : IntegrationAccountPartner31
 Type               : Microsoft.Logic/integrationAccounts/partners

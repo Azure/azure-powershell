@@ -25,8 +25,8 @@ The **Add-AzVmssAdditionalUnattendContent** cmdlet adds information to the unatt
 ## EXAMPLES
 
 ### Example 1: Add information to the unattended Windows Setup answer file
-```
-PS C:\> Add-AzVmssAdditionalUnattendContent -VirtualMachineScaleSet $VMSS -ComponentName  $AUCComponentName -Content  $AUCContent -PassName $AUCPassName -SettingName  $AUCSetting
+```powershell
+Add-AzVmssAdditionalUnattendContent -VirtualMachineScaleSet $VMSS -ComponentName  $AUCComponentName -Content  $AUCContent -PassName $AUCPassName -SettingName  $AUCSetting
 ```
 
 This command adds information to the unattended Windows Setup answer file.

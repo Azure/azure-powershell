@@ -23,8 +23,8 @@ The **Unregister-AzProviderFeature** cmdlet unregisters an Azure provider featur
 ## EXAMPLES
 
 ### Example 1: Unregister a feature
-```
-PS C:\>Unregister-AzProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
+```powershell
+Unregister-AzProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
 This unregisters the AllowApplicationSecurityGroups feature for Microsoft.Network from your account.

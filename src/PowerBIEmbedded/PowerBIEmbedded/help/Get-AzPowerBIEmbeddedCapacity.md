@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.PowerBI.dll-Help.xml
 Module Name: Az.PowerBIEmbedded
 ms.assetid: 5321FC62-3585-4493-A3D2-22CD82503CA7
@@ -31,8 +31,11 @@ The Get-AzPowerBIEmbeddedCapacity cmdlet gets the details of a PowerBI Embedded 
 ## EXAMPLES
 
 ### Example 1: Get resource group capacities
+```powershell
+Get-AzPowerBIEmbeddedCapacity -ResourceGroupName "testRG"
 ```
-PS C:\>Get-AzPowerBIEmbeddedCapacity -ResourceGroupName "testRG"
+
+```output
 Type                   : Microsoft.PowerBIDedicated/capacities
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 ResourceGroup          : testRG
@@ -59,8 +62,11 @@ Tag                    : {}
 This command gets all Azure PowerBI Embedded Capacity in the resource group named testRG
 
 ### Example 2: Get a capacity
+```powershell
+Get-AzPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity"
 ```
-PS C:\>Get-AzPowerBIEmbeddedCapacity -ResourceGroupName "testRG" -Name "testcapacity"
+
+```output
 Type                   : Microsoft.PowerBIDedicated/capacities
 Id                     : /subscriptions/78e47976-.../resourceGroups/testRG/providers/Microsoft.PowerBIDedicated/capacities/testcapacity
 ResourceGroup          : testRG
@@ -138,7 +144,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

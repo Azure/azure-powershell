@@ -23,12 +23,16 @@ Gets the status of a cloud service.
 ## EXAMPLES
 
 ### Example 1: Get cloud service instance view
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $cloudServiceInstanceView = Get-AzCloudServiceInstanceView -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
-$cloudServiceInstanceView.ToJsonString()
-```
 
-```Output
+$cloudServiceInstanceView
+RoleInstanceStatusesSummary                                   Statuses
+---------------------------                                   --------
+{{ProvisioningState/succeeded : 4}, {PowerState/started : 4}} {Provisioning succeeded, Started, Current Upgrade Domain of cloud service is -1., Max Upgrade Domain of cloud service is 1.}
+
+$cloudServiceInstanceView.ToJsonString()
 {
   "roleInstance": {
     "statusesSummary": [

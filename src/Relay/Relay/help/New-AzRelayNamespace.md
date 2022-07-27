@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/powershell/module/az.relay/new-azrelaynamespace
@@ -24,9 +24,11 @@ resource manifest is immutable.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1 -Location "West US" -Tag @{Tag1="Tag1Value"}
 ```
-PS C:\> New-AzRelayNamespace -ResourceGroupName Default-ServiceBus-WestUS -Name TestNameSpace-Relay1 -Location "West US" -Tag @{Tag1="Tag1Value"}
 
+```output
 ProvisioningState  : Succeeded
 CreatedAt          : 4/12/2017 12:38:47 AM
 UpdatedAt          : 4/12/2017 12:39:10 AM

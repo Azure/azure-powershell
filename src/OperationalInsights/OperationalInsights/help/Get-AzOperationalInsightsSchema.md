@@ -24,8 +24,8 @@ The **Get-AzOperationalInsightsSchema** cmdlet returns the schema associated wit
 ## EXAMPLES
 
 ### Example 1: Get the schemas for a workspace
-```
-PS C:\>Get-AzOperationalInsightsSchema -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
+```powershell
+Get-AzOperationalInsightsSchema -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "ContosoWorkspace"
 ```
 
 This command gets the schemas associated with a workspace.

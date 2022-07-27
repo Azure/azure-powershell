@@ -61,11 +61,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Create or Update Action Rule.
+        ///   Looks up a localized string similar to Create or Update Alert Processing Rule.
         /// </summary>
-        internal static string CreateOrUpdateActionRule_Action {
+        internal static string CreateOrUpdateAlertProcessingRule_Action
+        {
             get {
-                return ResourceManager.GetString("CreateOrUpdateActionRule_Action", resourceCulture);
+                return ResourceManager.GetString("CreateOrUpdateAlertProcessingRule_Action", resourceCulture);
             }
         }
         
@@ -126,9 +127,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Remove action rule.
         /// </summary>
-        internal static string RemoveActionRule_Action {
+        internal static string RemoveAlertProcessingRule_Action
+        {
             get {
-                return ResourceManager.GetString("RemoveActionRule_Action", resourceCulture);
+                return ResourceManager.GetString("RemoveAlertProcessingRule_Action", resourceCulture);
             }
         }
         

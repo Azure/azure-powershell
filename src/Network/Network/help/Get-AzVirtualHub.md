@@ -31,11 +31,13 @@ Gets an Azure VirtualHub by Name and ResourceGroupName or lists all Virtual Hubs
 ### Example 1
 
 ```powershell
-PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG"
-PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
-PS C:\> New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
-PS C:\> Get-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub"
+New-AzResourceGroup -Location "West US" -Name "testRG"
+$virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
+New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24"
+Get-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub"
+```
 
+```output
 VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
 Name                      : westushub
@@ -55,8 +57,10 @@ It then gets the virtual hub using its ResourceGroupName and ResourceName.
 ### Example 2
 
 ```powershell
-PS C:\> Get-AzVirtualHub -Name westushub*
+Get-AzVirtualHub -Name westushub*
+```
 
+```output
 VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 ResourceGroupName         : testRG
 Name                      : westushub1

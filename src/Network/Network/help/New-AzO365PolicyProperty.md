@@ -23,7 +23,7 @@ Create an office 365 breakout policy to be used with New-AzVpnSite and Update-Az
 
 ### Example 1
 ```powershell
-PS C:\> $policy = New-AzO365PolicyProperty -Allow -Optimize
+$policy = New-AzO365PolicyProperty -Allow -Optimize
 ```
 
 Create an office 365 traffic breakout policy with breakout allowed for allow and optimize category of traffic.

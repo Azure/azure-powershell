@@ -16,7 +16,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Azure.Management.OperationalInsights.Models;
-using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
@@ -77,11 +76,11 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Models
         public ClusterPatch GetClusterPatch()
         {
             return new ClusterPatch(
-                this.KeyVaultProperties?.GetKeyVaultProperties(),
+                keyVaultProperties: this.KeyVaultProperties?.GetKeyVaultProperties(),
                 billingType: this.BillingType,
                 identity: Identity.getIdentity(), 
-                this.Sku?.getClusterSku(),
-                this.getTags()
+                sku: this.Sku?.getClusterSku(),
+                tags: this.getTags()
             );
         }
     }

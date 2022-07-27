@@ -37,9 +37,11 @@ The New-AzSqlElasticJobAgent cmdlet creates a new Elastic Job agent
 ## EXAMPLES
 
 ### Example 1
+```powershell
+New-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -DatabaseName jobdb -Name agent
 ```
-PS C:\> New-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -DatabaseName jobdb -Name agent
 
+```output
 ResourceGroupName ServerName       DatabaseName AgentName State Tags
 ----------------- ----------       ------------ --------- ----- ----
 rg                elasticjobserver jobdb        agent     Ready

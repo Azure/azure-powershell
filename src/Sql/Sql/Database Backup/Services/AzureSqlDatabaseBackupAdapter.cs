@@ -13,17 +13,12 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Sql.Backup.Model;
 using Microsoft.Azure.Commands.Sql.Database.Model;
-using Microsoft.Azure.Commands.Sql.Database.Services;
-using Microsoft.Azure.Commands.Sql.ElasticPool.Services;
 using Microsoft.Azure.Commands.Sql.Server.Adapter;
 using Microsoft.Azure.Management.Sql.LegacySdk.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Management.Automation;
 
@@ -52,8 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Constructs a database backup adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlDatabaseBackupAdapter(IAzureContext context)
         {
             Context = context;
@@ -90,9 +84,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Creates a new the restore point for a given Sql Azure Database.
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure SQL Server</param>
-        /// <param name="databaseName">The name of the Azure SQL database</param>
+        /// <param name="entityList"></param>
         /// <returns>List of restore points</returns>
         internal IEnumerable<AzureSqlDatabaseRestorePointModel> NewRestorePoint(IEnumerable<AzureSqlDatabaseRestorePointModel> entityList)
         {
@@ -118,10 +110,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Removes a given restore point for a given Sql Azure Database.
         /// </summary>
-        /// <param name="resourceGroup">The name of the resource group</param>
-        /// <param name="serverName">The name of the Azure SQL Server</param>
-        /// <param name="databaseName">The name of the Azure SQL database</param>
-        /// <param name="restorePointCreationDate">The create time of the restore point</param>
+        /// <param name="entityList"></param>
         /// <returns>void</returns>
         internal void RemoveRestorePoint(IEnumerable<AzureSqlDatabaseRestorePointModel> entityList)
         {
@@ -257,7 +246,6 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
-        /// <param name="current">Whether or not the user provided the Current switch to get the current implementation of LTR policy</param>
         /// <returns>A backup LongTermRetention policy</returns>
         internal AzureSqlDatabaseBackupLongTermRetentionPolicyModel GetDatabaseBackupLongTermRetentionPolicy(
             string resourceGroup,
@@ -283,13 +271,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Update a Long Term Retention backup.
         /// </summary>
-        /// <param name="locationName">The location name.</param>
-        /// <param name="serverName">The server name.</param>
-        /// <param name="databaseName">The database name.</param>
-        /// <param name="backupName">The backup name.</param>
-        /// <param name="resourceGroupName">The resource group name</param>
-        /// <param name="onlyLatestPerDatabase">Whether or not to only get the latest backup per database.</param>
-        /// <param name="databaseState">The state of databases to get backups for: All, Live, Deleted.</param>
+        /// <param name="model"></param>
         internal AzureSqlDatabaseLongTermRetentionBackupCopyModel CopyDatabaseLongTermRetentionBackup(
             AzureSqlDatabaseLongTermRetentionBackupCopyModel model)
         {
@@ -334,14 +316,8 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <summary>
         /// Update a Long Term Retention backup.
         /// </summary>
-        /// <param name="locationName">The location name.</param>
-        /// <param name="serverName">The server name.</param>
-        /// <param name="databaseName">The database name.</param>
-        /// <param name="backupName">The backup name.</param>
-        /// <param name="resourceGroupName">The resource group name</param>
-        /// <param name="onlyLatestPerDatabase">Whether or not to only get the latest backup per database.</param>
-        /// <param name="databaseState">The state of databases to get backups for: All, Live, De
-        /// leted.</param>
+        /// <param name="model"></param>
+        /// <param name="updateParameters"></param>
         internal AzureSqlDatabaseLongTermRetentionBackupModel UpdateDatabaseLongTermRetentionBackup(
             AzureSqlDatabaseLongTermRetentionBackupModel model,
             Management.Sql.Models.UpdateLongTermRetentionBackupParameters updateParameters)
@@ -370,6 +346,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
+        /// <param name="model">A backup vault</param>
         /// <returns>A backup vault</returns>
         internal AzureSqlServerBackupLongTermRetentionVaultModel SetBackupLongTermRetentionVault(
             string resourceGroup,
@@ -403,6 +380,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="model">A backup LongTermRetention policy</param>
         /// <returns>A backup LongTermRetention policy</returns>
         internal AzureSqlDatabaseBackupLongTermRetentionPolicyModel SetDatabaseBackupLongTermRetentionPolicy(
             string resourceGroup,
@@ -546,6 +524,7 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
+        /// <param name="model">A geo backup policy</param>
         /// <returns>A geo backup policy</returns>
         internal AzureSqlDatabaseGeoBackupPolicyModel SetDatabaseGeoBackupPolicy(
             string resourceGroup,
@@ -586,8 +565,10 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         /// <param name="restorePointInTime">A point to time to restore to (for PITR and dropped DB restore)</param>
         /// <param name="resourceId">The resource ID of the DB to restore (live, geo backup, deleted database, long term retention backup, etc.)</param>
         /// <param name="model">An object modeling the database to create via restore</param>
+        /// <param name="isCrossSubscriptionRestore">Is cross subscription restore</param>
+        /// <param name="customHeaders">Custom headers</param>
         /// <returns>Restored database object</returns>
-        internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model)
+        internal AzureSqlDatabaseModel RestoreDatabase(string resourceGroup, DateTime restorePointInTime, string resourceId, AzureSqlDatabaseModel model, bool isCrossSubscriptionRestore, Dictionary<string, List<string>> customHeaders = null)
         {
             // Construct the ARM resource Id of the pool
             string elasticPoolId = string.IsNullOrWhiteSpace(model.ElasticPoolName) ? null : AzureSqlDatabaseModel.PoolIdTemplate.FormatInvariant(
@@ -613,30 +594,48 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
                 LicenseType = model.LicenseType,
                 RequestedBackupStorageRedundancy = model.RequestedBackupStorageRedundancy,
                 ZoneRedundant = model.ZoneRedundant,
+                Tags = model.Tags
             };
+            
+            // check if restore operation is cross subscription or same subscription
+            if (isCrossSubscriptionRestore)
+            {
+                // cross subscription path
+                if (dbModel.CreateMode != Management.Sql.Models.CreateMode.Recovery 
+                    && dbModel.CreateMode != Management.Sql.Models.CreateMode.Restore 
+                    && dbModel.CreateMode != Management.Sql.Models.CreateMode.PointInTimeRestore)
+                {
+                    throw new ArgumentException("Restore mode not supported for cross subscription restore. Supported restore modes for cross subscription are Recovery, Restore, PointInTimeRestore.");
+                }
 
-            if (model.CreateMode == Management.Sql.Models.CreateMode.Recovery)
-            {
-                dbModel.RecoverableDatabaseId = resourceId;
-            }
-            else if (model.CreateMode == Management.Sql.Models.CreateMode.Restore)
-            {
-                dbModel.RestorableDroppedDatabaseId = resourceId;
-            }
-            else if (model.CreateMode == Management.Sql.Models.CreateMode.PointInTimeRestore)
-            {
-                dbModel.SourceDatabaseId = resourceId;
-            }
-            else if (model.CreateMode == Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup)
-            {
-                dbModel.LongTermRetentionBackupResourceId = resourceId;
+                dbModel.SourceResourceId = resourceId;
             }
             else
             {
-                throw new ArgumentException("Restore mode not supported");
+                // same subscription path
+                if (model.CreateMode == Management.Sql.Models.CreateMode.Recovery)
+                {
+                    dbModel.RecoverableDatabaseId = resourceId;
+                }
+                else if (model.CreateMode == Management.Sql.Models.CreateMode.Restore)
+                {
+                    dbModel.RestorableDroppedDatabaseId = resourceId;
+                }
+                else if (model.CreateMode == Management.Sql.Models.CreateMode.PointInTimeRestore)
+                {
+                    dbModel.SourceDatabaseId = resourceId;
+                }
+                else if (model.CreateMode == Management.Sql.Models.CreateMode.RestoreLongTermRetentionBackup)
+                {
+                    dbModel.LongTermRetentionBackupResourceId = resourceId;
+                }
+                else
+                {
+                    throw new ArgumentException("Restore mode not supported");
+                }
             }
 
-            Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, dbModel);
+            Management.Sql.Models.Database database = Communicator.RestoreDatabase(resourceGroup, model.ServerName, model.DatabaseName, dbModel, customHeaders);
 
             return new AzureSqlDatabaseModel(resourceGroup, model.ServerName, database);
         }
@@ -655,12 +654,13 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
-        /// Create or update a backup LongTermRetention policy for a Azure SQL Database
+        /// Create or update a backup ShortTermRetention policy for a Azure SQL Database
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
-        /// <returns>A backup LongTermRetention policy</returns>
+        /// <param name="model">A backup ShortTermRetention policy</param>
+        /// <returns>A backup ShortTermRetention policy</returns>
         internal AzureSqlDatabaseBackupShortTermRetentionPolicyModel SetDatabaseBackupShortTermRetentionPolicy(
             string resourceGroup,
             string serverName,
@@ -681,13 +681,12 @@ namespace Microsoft.Azure.Commands.Sql.Backup.Services
         }
 
         /// <summary>
-        /// Get a backup LongTermRetention policy for a Azure SQL Database
+        /// Get a backup ShortTermRetention policy for a Azure SQL Database
         /// </summary>
         /// <param name="resourceGroup">The name of the resource group</param>
         /// <param name="serverName">The name of the Azure SQL Server</param>
         /// <param name="databaseName">The name of the Azure SQL Database</param>
-        /// <param name="current">Whether or not the user provided the Current switch to get the current implementation of LTR policy</param>
-        /// <returns>A backup LongTermRetention policy</returns>
+        /// <returns>A backup ShortTermRetention policy</returns>
         internal AzureSqlDatabaseBackupShortTermRetentionPolicyModel GetDatabaseBackupShortTermRetentionPolicy(
             string resourceGroup,
             string serverName,

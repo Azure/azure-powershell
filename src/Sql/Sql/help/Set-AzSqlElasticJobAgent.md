@@ -36,9 +36,11 @@ The Set-AzSqlElasticJobAgent cmdlet updates an Elastic Job agents
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Set-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent -Tag @{ Octopus = "Agent" }
 ```
-PS C:\> Set-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent -Tag @{ Octopus = "Agent" }
 
+```output
 ResourceGroupName ServerName       DatabaseName AgentName State Tags
 ----------------- ----------       ------------ --------- ----- ----
 rg                elasticjobserver jobdb        agent     Ready {[Octopus, Agent]}

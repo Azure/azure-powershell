@@ -32,16 +32,14 @@ The operation to delete the extension.
 
 ### Example 1: Remove a machine extension.
 ```powershell
-PS C:\> Remove-AzConnectedMachineExtension -MachineName myMachine -ResourceGroupName myRG -Name custom
-
+Remove-AzConnectedMachineExtension -MachineName myMachine -ResourceGroupName myRG -Name custom
 ```
 
 Deletes the extension on the machine.
 
 ### Example 2: Remove extension via the pipeline
 ```powershell
-PS C:\> Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName myMachine | Remove-AzConnectedMachineExtension
-
+Get-AzConnectedMachineExtension -ResourceGroupName contoso-connected-machines -MachineName myMachine | Remove-AzConnectedMachineExtension
 ```
 
 Removes all extensions in the specified machine.
@@ -236,7 +234,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedMachineIdentity>`: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.
   - `[GroupName <String>]`: The name of the private link resource.
   - `[Id <String>]`: Resource identity path

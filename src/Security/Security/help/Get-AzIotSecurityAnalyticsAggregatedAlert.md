@@ -32,8 +32,10 @@ The name of the aggregated alerts is a combination of the alert type and the ale
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Name "IoT_Bruteforce_Fail/2019-02-02"
+Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Name "IoT_Bruteforce_Fail/2019-02-02"
+```
 
+```output
 Id: "/subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/iotSecuritySolutions/MySolution/analyticsModels/default/aggregatedAlerts/IoT_Bruteforce_Fail/2019-02-02"
 Name: "IoT_Bruteforce_Fail/2019-02-02"
 Type: "Microsoft.Security/IoTSecurityAggregatedAlert"
@@ -67,8 +69,10 @@ Get the aggregated alert "IoT_Bruteforce_Fail/2019-02-02" (the name combined fro
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution"
+Get-AzIotSecurityAnalyticsAggregatedAlert -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution"
+```
 
+```output
 Array of aggregated alert items as shown in example 1
 ```
 

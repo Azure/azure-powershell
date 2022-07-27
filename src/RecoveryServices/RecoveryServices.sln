@@ -46,7 +46,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.Helpers", "..\Compu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.AlcWrapper", "..\Compute\Compute.AlcWrapper\Compute.AlcWrapper.csproj", "{2F7F35C7-945E-44F3-B77F-817FD58663FE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Compute", "Compute.Autorest\Az.Compute.csproj", "{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Compute", "..\Compute\Compute.Autorest\Az.Compute.csproj", "{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

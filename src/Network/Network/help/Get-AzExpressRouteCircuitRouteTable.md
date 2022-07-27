@@ -28,7 +28,7 @@ connectivity.
 ## EXAMPLES
 
 ### Example 1: Display the route table for the primary path
-```
+```powershell
 Get-AzExpressRouteCircuitRouteTable -ResourceGroupName $RG -ExpressRouteCircuitName $CircuitName -PeeringType 'AzurePrivatePeering' -DevicePath 'Primary'
 ```
 

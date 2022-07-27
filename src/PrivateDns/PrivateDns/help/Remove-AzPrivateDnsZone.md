@@ -42,8 +42,8 @@ This can be suppressed using the *Overwrite* parameter, which deletes the zone r
 ## EXAMPLES
 
 ### Example 1: Remove a private zone
-```
-PS C:\>Remove-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
+```powershell
+Remove-AzPrivateDnsZone -Name "myzone.com" -ResourceGroupName "MyResourceGroup"
 ```
 
 This command removes the zone named myzone.com from the resource group named MyResourceGroup.

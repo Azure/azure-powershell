@@ -43,14 +43,14 @@ The **Reset-AzSynapseSqlPoolAuditSetting** cmdlet removes the auditing settings 
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzSynapseSqlPoolAuditSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+Reset-AzSynapseSqlPoolAuditSetting -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command removes the auditing settings of a SQL pool called ContosoSqlPool in the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool | Reset-AzSynapseSqlPoolAuditSetting
+Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool | Reset-AzSynapseSqlPoolAuditSetting
 ```
 
 This command removes the auditing settings of a SQL pool called ContosoSqlPool in the workspace ContosoWorkspace through pipeline.

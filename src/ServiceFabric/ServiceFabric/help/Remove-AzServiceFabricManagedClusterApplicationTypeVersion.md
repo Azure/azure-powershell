@@ -39,31 +39,31 @@ This cmdlet will remove a managed application type version from the cluster. All
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> $version = "v1"
-PS C:\> Remove-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $version -Force -PassThru -Verbose
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appTypeName = "testAppType"
+$version = "v1"
+Remove-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $version -Force -PassThru -Verbose
 ```
 
 This example will remove the managed version "v1" under the type "testAppType". It there are any applications under this resource the command will throw an exception.
 
 ### Example 2
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appTypeName = "testAppType"
-PS C:\> $version = "v1"
-PS C:\> $appTypeVersion = Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $appTypeVersion
-PS C:\> $appTypeVersion | Remove-AzServiceFabricManagedClusterApplicationTypeVersion -Force -PassThru -Verbose
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appTypeName = "testAppType"
+$version = "v1"
+$appTypeVersion = Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $appTypeVersion
+$appTypeVersion | Remove-AzServiceFabricManagedClusterApplicationTypeVersion -Force -PassThru -Verbose
 ```
 
 This example will remove the managed version "v1" under the type "testAppType". It there are any applications under this resource the command will throw an exception.
 
 ### Example 3
 ```powershell
-PS C:\> $resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applicationTypes/testAppType/versions/v1"
-PS C:\> Remove-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceId $resourceId
+$resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applicationTypes/testAppType/versions/v1"
+Remove-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceId $resourceId
 ```
 
 This example will remove the managed application type version details with the ARM Resource ID specified.

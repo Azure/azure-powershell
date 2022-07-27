@@ -43,11 +43,18 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd.Model.Persistence
 
             if (cachedBlock == null || cachedBlock.BlockIndex != block)
             {
+                IndexRange logicalRange = IndexRange.FromLength(block * GetBlockSize(), this.GetBlockSize());
+                if (ExtraBlockIndex.HasValue && block == ExtraBlockIndex)
+                {
+                    long startIndex = block * GetBlockSize();
+                    long size = vhdFile.Footer.CurrentSize - startIndex;
+                    logicalRange = IndexRange.FromLength(startIndex, size);
+                }
                 cachedBlock = new Block(this)
                 {
                     BlockIndex = block,
                     VhdUniqueId = this.vhdFile.Footer.UniqueId,
-                    LogicalRange = IndexRange.FromLength(block * GetBlockSize(), vhdFile.Header.BlockSize),
+                    LogicalRange = logicalRange,
                     BitMap = bitMapFactory.Create(block),
                     Empty = false
                 };

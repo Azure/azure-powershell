@@ -341,6 +341,21 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Specifies the Active Directory SAMAccountName for Azure Storage.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectorySamAccountName { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the Active Directory account type for Azure Storage. Possible values include: 'User', 'Computer'.",
+            ParameterSetName = ActiveDirectoryDomainServicesForFileParameterSet)]
+        [PSArgumentCompleter("User", "Computer")]
+        [ValidateNotNullOrEmpty]
+        public string ActiveDirectoryAccountType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Allow or disallow public access to all blobs or containers in the storage account.")]
         [ValidateNotNullOrEmpty]
         public bool AllowBlobPublicAccess
@@ -644,7 +659,9 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 ForestName = this.ActiveDirectoryForestName,
                                 DomainGuid = this.ActiveDirectoryDomainGuid,
                                 DomainSid = this.ActiveDirectoryDomainSid,
-                                AzureStorageSid = this.ActiveDirectoryAzureStorageSid
+                                AzureStorageSid = this.ActiveDirectoryAzureStorageSid,
+                                SamAccountName = this.ActiveDirectorySamAccountName,
+                                AccountType = this.ActiveDirectoryAccountType
                             };
                         }
                         else // Disable AD
@@ -655,9 +672,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
                                 || !string.IsNullOrEmpty(this.ActiveDirectoryDomainGuid)
                                 || !string.IsNullOrEmpty(this.ActiveDirectoryDomainSid)
                                 || !string.IsNullOrEmpty(this.ActiveDirectoryAzureStorageSid)
+                                || !string.IsNullOrEmpty(this.ActiveDirectorySamAccountName)
+                                || !string.IsNullOrEmpty(this.ActiveDirectoryAccountType)
                                 )
                             {
-                                throw new System.ArgumentException("To Disable ActiveDirectoryDomainServicesForFile, user can't specify any of: ActiveDirectoryDomainName, ActiveDirectoryNetBiosDomainName, ActiveDirectoryForestName, ActiveDirectoryDomainGuid, ActiveDirectoryDomainSid, ActiveDirectoryAzureStorageSid.");
+                                throw new System.ArgumentException("To Disable ActiveDirectoryDomainServicesForFile, user can't specify any of: ActiveDirectoryDomainName, ActiveDirectoryNetBiosDomainName, ActiveDirectoryForestName, ActiveDirectoryDomainGuid, ActiveDirectoryDomainSid, ActiveDirectoryAzureStorageSid, ActiveDirectorySamAccountName, ActiveDirectoryAccountType.");
                             }
 
                             // Only disable AD; else keep unchanged

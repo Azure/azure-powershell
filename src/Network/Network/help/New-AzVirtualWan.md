@@ -26,9 +26,11 @@ Creates a new Azure VirtualWAN resource.
 ### Example 1
 
 ```powershell
-PS C:\> New-AzResourceGroup -Location "West US" -Name "testRG" 
-PS C:\> New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic
+New-AzResourceGroup -Location "West US" -Name "testRG" 
+New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic
+```
 
+```output
 Name                       : testRG
 Id                         : /subscriptions/{SubscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
 AllowVnetToVnetTraffic     : False

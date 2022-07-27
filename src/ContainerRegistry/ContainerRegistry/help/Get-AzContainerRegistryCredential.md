@@ -37,8 +37,10 @@ The Get-AzContainerRegistryCredential cmdlet gets the login credentials for a co
 
 ### Example 1: Get the login credentials for a container registry
 ```powershell
-PS C:\>Get-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
+Get-AzContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
+```
 
+```output
 Username   Password                         Password2
 --------   --------                         ---------
 MyRegistry +Y+==B==KdT=YV=ZgH=p/zQ/e1sNQq/d //JRPkgxx+r+z/ztU=R//E==vum=pRKL

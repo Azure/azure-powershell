@@ -41,14 +41,13 @@ Gets a role instance from a cloud service.
 Get-AzCloudServiceRoleInstance -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 ```
 
-```Output
+```output
 Name                    Location    SkuName        SkuTier
 ----                    --------    -------        -------
 ContosoFrontEnd_IN_0    eastus2euap Standard_D1_v2 Standard
 ContosoFrontEnd_IN_1    eastus2euap Standard_D1_v2 Standard
 ContosoBackEnd_IN_1     eastus2euap Standard_D1_v2 Standard
 ContosoBackEnd_IN_1     eastus2euap Standard_D1_v2 Standard
-
 ```
 
 This command gets the properties of all role instances of cloud service named ContosoCS that belongs to the resource group named ContosOrg.
@@ -58,11 +57,10 @@ This command gets the properties of all role instances of cloud service named Co
 Get-AzCloudServiceRoleInstance -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS" -RoleInstanceName "ContosoFrontEnd_IN_0"
 ```
 
-```Output
+```output
 Name                    Location    SkuName        SkuTier
 ----                    --------    -------        -------
 ContosoFrontEnd_IN_0    eastus2euap Standard_D1_v2 Standard
-
 ```
 
 This command gets the properties of the role instance named ContosoFrontEnd_IN_0 of cloud service named ContosoCS that belongs to the resource group named ContosOrg.
@@ -101,6 +99,7 @@ Accept wildcard characters: False
 
 ### -Expand
 The expand expression to apply to the operation.
+'UserData' is not supported for cloud services.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.CloudService.Support.InstanceViewTypes
@@ -196,12 +195,15 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
+INPUTOBJECT `<ICloudServiceIdentity>`: Identity Parameter
   - `[CloudServiceName <String>]`: 
+  - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[NetworkInterfaceName <String>]`: The name of the network interface.
   - `[OSFamilyName <String>]`: Name of the OS family.
   - `[OSVersionName <String>]`: Name of the OS version.
+  - `[PublicIPAddressName <String>]`: The name of the public IP Address.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.

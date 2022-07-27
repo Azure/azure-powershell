@@ -46,21 +46,21 @@ Finally, ODataQuery parameter is used to perform filtering for the search result
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1
+Get-AzEventGridTopic -ResourceGroup MyResourceGroupName -Name Topic1
 ```
 
 Gets the details of Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/topics/Topic1"
+Get-AzEventGridTopic -ResourceId "/subscriptions/$subscriptionId/resourceGroups/MyResourceGroupName/providers/Microsoft.EventGrid/topics/Topic1"
 ```
 
 Gets the details of Event Grid topic \`Topic1\` in resource group \`MyResourceGroupName\`.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzEventGridTopic -ResourceGroup MyResourceGroupName
+Get-AzEventGridTopic -ResourceGroup MyResourceGroupName
 ```
 
 List all the Event Grid topics in resource group \`MyResourceGroupName\` without pagination.
@@ -68,15 +68,15 @@ List all the Event Grid topics in resource group \`MyResourceGroupName\` without
 ### Example 4
 ```powershell
 $odataFilter = "Name ne 'ABCD'"
-PS C:\> $result = Get-AzEventGridTopic -ResourceGroup MyResourceGroupName -Top 10 -ODataQuery $odataFilter
-PS C:\> Get-AzEventGridTopic $result.NextLink
+$result = Get-AzEventGridTopic -ResourceGroup MyResourceGroupName -Top 10 -ODataQuery $odataFilter
+Get-AzEventGridTopic $result.NextLink
 ```
 
 List the first 10 Event Grid topics (if any) in resource group \`MyResourceGroupName\` that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of topics, user is expected to re-call Get-AzEventGridTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.
 
 ### Example 5
 ```powershell
-PS C:\> Get-AzEventGridTopic
+Get-AzEventGridTopic
 ```
 
 List all the Event Grid topics in the subscription without pagination.
@@ -84,8 +84,8 @@ List all the Event Grid topics in the subscription without pagination.
 ### Example 6
 ```powershell
 $odataFilter = "Name ne 'ABCD'"
-PS C:\> $result = Get-AzEventGridTopic -Top 10 -ODataQuery $odataFilter
-PS C:\> Get-AzEventGridTopic $result.NextLink
+$result = Get-AzEventGridTopic -Top 10 -ODataQuery $odataFilter
+Get-AzEventGridTopic $result.NextLink
 ```
 
 List the first 10 Event Grid topics (if any) in the subscription that satisfies the $odataFilter query. If more results are available, the $result.NextLink will not be $null. In order to get next page(s) of topics, user is expected to re-call Get-AzEventGridTopic and uses result.NextLink obtained from the previous call. Caller should stop when result.NextLink becomes $null.

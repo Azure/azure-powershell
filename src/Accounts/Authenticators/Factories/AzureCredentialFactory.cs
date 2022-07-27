@@ -40,6 +40,11 @@ namespace Microsoft.Azure.PowerShell.Authenticators.Factories
         public virtual TokenCredential CreateClientCertificateCredential(string tenantId, string clientId, string certificatePath, ClientCertificateCredentialOptions options)
         {
             return new ClientCertificateCredential(tenantId, clientId, certificatePath, options);
+	}
+
+        public virtual TokenCredential CreateSharedTokenCacheCredentials(SharedTokenCacheCredentialOptions options)
+        {
+            return new SharedTokenCacheCredential(options);
         }
     }
 }

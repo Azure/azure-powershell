@@ -33,8 +33,10 @@ Creates a new CosmosDB Cassandra Keyspace.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBCassandraKeyspace -AccountName myAccountName -ResourceGroupName myRgName -Name myKeyspaceName -Throughput 600
+New-AzCosmosDBCassandraKeyspace -AccountName myAccountName -ResourceGroupName myRgName -Name myKeyspaceName -Throughput 600
+```
 
+```output
 Name     : myKeyspace
 Id       : /subscriptions/mySubId/resourceGroups/myRgName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/cassandraKeyspaces/myKeyspaceName
 Location :

@@ -24,8 +24,8 @@ The **Get-AzHDInsightPersistedScriptAction** cmdlet gets the persisted script ac
 ## EXAMPLES
 
 ### Example 1: Get the persisted script actions on a cluster
-```
-PS C:\>Get-AzHDInsightPersistedScriptAction -ClusterName "your-hadoop-001"
+```powershell
+Get-AzHDInsightPersistedScriptAction -ClusterName "your-hadoop-001"
 ```
 
 This command gets persisted script actions on the cluster named your-hadoop-001.

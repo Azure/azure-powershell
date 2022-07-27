@@ -43,7 +43,9 @@ The **Get-AzNetworkProfile** cmdlet retrieves an existing network profile top le
 ### Example 1
 ```powershell
 $networkProfile = Get-AzNetworkProfile -Name np1 -ResourceGroupName rg1
+```
 
+```output
 ProvisioningState                           : Succeeded
 ContainerNetworkInterfaces                  : {}
 ContainerNetworkInterfaceConfigurations     : {}
@@ -66,7 +68,9 @@ This retrieves the network profile np1 in resource group rg1
 ### Example 2
 ```powershell
 $networkProfile = Get-AzNetworkProfile -Name np*
+```
 
+```output
 ProvisioningState                           : Succeeded
 ContainerNetworkInterfaces                  : {}
 ContainerNetworkInterfaceConfigurations     : {}

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubvalidsku
@@ -25,8 +25,8 @@ You will have to delete and recreate the iothub if you want to achieve this.
 ## EXAMPLES
 
 ### Example 1 Get the valid skus
-```
-PS C:\> Get-AzIotHubValidSku -ResourceGroupName "myresourcegroup" -Name "myiothub"
+```powershell
+Get-AzIotHubValidSku -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets a list of all skus for the IotHub named "myiothub"

@@ -1,0 +1,40 @@
+﻿{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Network/networkSecurityGroups"
+      },
+      {
+        "field": "name",
+        "like": "pstests*"
+      }
+    ]
+  },
+  "then": {
+    "effect": "deployIfNotExists",
+    "details": {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "name": "notExists",
+      "roleDefinitionIds": [
+        "/providers/Microsoft.Authorization/roleDefinitions/f25e0fa2-a7c8-4377-a976-54943a77a395"
+      ],
+      "deployment": {
+        "properties": {
+          "mode": "incremental",
+          "template": {
+            "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+            "contentVersion": "1.0.0.0",
+            "resources": [],
+            "outputs": {
+              "constantOutput": {
+                "type": "string",
+                "value": "someConstantValue"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

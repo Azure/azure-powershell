@@ -16,6 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
+using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
@@ -24,6 +25,7 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -87,6 +89,25 @@ namespace Microsoft.Azure.Commands.Profile
                             profile.TrySetDefaultContext(name, new AzureContext(Context.Subscription,
                               Context.Account,
                                 Context.Environment, Context.Tenant));
+                            if (AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keyStore))
+                            {
+                                var account = Context.Account;
+                                if (account != null)
+                                {
+                                    var secret = account.GetProperty(AzureAccount.Property.ServicePrincipalSecret);
+                                    if (!string.IsNullOrEmpty(secret))
+                                    {
+                                        keyStore.SaveKey(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, Context.Tenant?.Id)
+                                            , secret.ConvertToSecureString());
+                                    }
+                                    var password = account.GetProperty(AzureAccount.Property.CertificatePassword);
+                                    if (!string.IsNullOrEmpty(password))
+                                    {
+                                        keyStore.SaveKey(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, Context.Tenant?.Id)
+                                            , password.ConvertToSecureString());
+                                    }
+                                }
+                            }
                             CompleteContextProcessing(profile);
                         });
                 }

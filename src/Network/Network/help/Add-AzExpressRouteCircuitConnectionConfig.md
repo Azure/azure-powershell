@@ -36,7 +36,7 @@ you must call the Set-AzExpressRouteCircuit cmdlet to activate the configuration
 ## EXAMPLES
 
 ### Example 1: Add a circuit connection resource to an existing ExpressRoute circuit
-```
+```powershell
 $circuit_init = Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg
 $circuit_peer = Get-AzExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
 $addressSpace = '60.0.0.0/29'
@@ -46,7 +46,7 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $circuit_init
 ```
 
 ### Example 2: Add a circuit connection configuration using Piping to an existing ExpressRoute Circuit
-```
+```powershell
 $circuit_peer = Get-AzExpressRouteCircuit -Name $peeringCircuitName -ResourceGroupName $rg
 $addressSpace = '60.0.0.0/29'
 Get-AzExpressRouteCircuit -Name $initiatingCircuitName -ResourceGroupName $rg|Add-AzExpressRouteCircuitConnectionConfig -Name $circuitConnectionName -PeerExpressRouteCircuitPeering $circuit_peer.Peerings[0].Id -AddressPrefix $addressSpace -AuthorizationKey $circuit_peer.Authorizations[0].AuthorizationKey |Set-AzExpressRouteCircuit

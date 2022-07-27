@@ -24,10 +24,10 @@ The **Set-AzLoadBalancer** cmdlet updates a load balancer.
 ## EXAMPLES
 
 ### Example 1: Modify a load balancer
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "NRPLB"
-PS C:\> $slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewRule" -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81 -BackendPort 8181 -Protocol "TCP"
-PS C:\> $slb | Set-AzLoadBalancer
+```powershell
+$slb = Get-AzLoadBalancer -Name "NRPLB"
+$slb | Add-AzLoadBalancerInboundNatRuleConfig -Name "NewRule" -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81 -BackendPort 8181 -Protocol "TCP"
+$slb | Set-AzLoadBalancer
 ```
 
 The first command gets the load balancer named NRPLB, and then stores it in the $slb variable.

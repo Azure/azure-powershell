@@ -24,9 +24,9 @@ The **Get-AzLoadBalancerProbeConfig** cmdlet gets one or more probe configuratio
 ## EXAMPLES
 
 ### Example 1: Get the probe configuration of a load balancer
-```
-PS C:\>$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:\> Get-AzLoadBalancerProbeConfig -Name "MyProbe" -LoadBalancer $slb
+```powershell
+$slb = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+Get-AzLoadBalancerProbeConfig -Name "MyProbe" -LoadBalancer $slb
 ```
 
 The first command gets the load balancer named MyLoadBalancer, and then stores it in the variable $slb.

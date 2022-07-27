@@ -25,8 +25,10 @@ This object is provided as an input to the Set-AzMigrateServerReplication cmdlet
 
 ### Example 1: Create a NIC object
 ```powershell
-PS C:\> New-AzMigrateNicMapping -NicID a2399354-653a-464e-a567-d30ef5467a31 -TargetNicSelectionType primary -TargetNicIP "172.17.1.17"
+New-AzMigrateNicMapping -NicID a2399354-653a-464e-a567-d30ef5467a31 -TargetNicSelectionType primary -TargetNicIP "172.17.1.17"
+```
 
+```output
 IsPrimaryNic IsSelectedForMigration NicId                                TargetStaticIPAddress TargetSubnetName
 ------------ ---------------------- -----                                --------------------- ----------------
 false        false                  a2399354-653a-464e-a567-d30ef5467a31

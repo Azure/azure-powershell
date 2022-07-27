@@ -38,8 +38,8 @@ The Instance Failover Group's primary region should be used to execute the comma
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Remove-AzSqlDatabaseInstanceFailoverGroup
+```powershell
+Get-AzSqlDatabaseInstanceFailoverGroup -ResourceGroupName rg -Location location -Name fg | Remove-AzSqlDatabaseInstanceFailoverGroup
 ```
 
 Remove a Instance Failover Group.

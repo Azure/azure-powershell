@@ -24,10 +24,10 @@ The **Remove-AzApplicationGatewayClientAuthConfiguration** cmdlet removes the cl
 
 ### Example 1
 ```powershell
-PS C:\> $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $profile  = Get-AzApplicationGatewaySslProfile -Name "Profile01" -ApplicationGateway $AppGw
-PS C:\> Remove-AzApplicationGatewayClientAuthConfiguration -SslProfile $profile
-PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGW
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$profile  = Get-AzApplicationGatewaySslProfile -Name "Profile01" -ApplicationGateway $AppGw
+Remove-AzApplicationGatewayClientAuthConfiguration -SslProfile $profile
+Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the SSL profile named Profile01 for $AppGw and stores it in the $profile variable. The next command removes the client authentication configuration of the ssl profile stored in $profile. The last command updates the application gateway.

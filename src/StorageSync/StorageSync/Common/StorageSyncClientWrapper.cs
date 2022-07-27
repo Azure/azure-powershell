@@ -16,8 +16,10 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.StorageSync.Interfaces;
 using Microsoft.Azure.Commands.StorageSync.Properties;
-using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
-using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Users.Models;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources;
@@ -36,11 +38,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 {
     /// <summary>
     /// Class StorageSyncClientWrapper.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientWrapper" />
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncClientWrapper" />
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncClientWrapper" />
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncClientWrapper" />
     public class StorageSyncClientWrapper : IStorageSyncClientWrapper
     {
         /// <summary>
@@ -54,11 +54,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// </summary>
 
         private static Guid AzureUSGovernmentKailaniAppId = new Guid("ce88d19b-f69a-4c2e-ac8a-d1aa9db611e8");
-
-        /// <summary>
-        /// The azure us product test kailani application identifier
-        /// </summary>
-        private static Guid AzureUSProdTestKailaniAppId = new Guid("1fcdfafe-959b-4b32-afff-84f850974e84");
 
         /// <summary>
         /// The built in role definition identifier
@@ -90,10 +85,10 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         public IResourceManagementClient ResourceManagementClient { get; set; }
 
         /// <summary>
-        /// Gets or sets the active directory client.
+        /// Gets or sets the Microsoft Graph Client.
         /// </summary>
-        /// <value>The active directory client.</value>
-        public ActiveDirectoryClient ActiveDirectoryClient { get; set; }
+        /// <value>The Microsoft Graph client.</value>
+        public MicrosoftGraphClient MicrosoftGraphClient { get; set; }
 
         /// <summary>
         /// Gets or sets the verbose logger.
@@ -111,13 +106,13 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Initializes a new instance of the <see cref="StorageSyncClientWrapper" /> class.
         /// </summary>
         /// <param name="context">The context.</param>
-        /// <param name="activeDirectoryClient">The active directory client.</param>
-        public StorageSyncClientWrapper(IAzureContext context, ActiveDirectoryClient activeDirectoryClient)
+        /// <param name="microsoftGraphClient">The active directory client.</param>
+        public StorageSyncClientWrapper(IAzureContext context, MicrosoftGraphClient microsoftGraphClient)
                 : this(AzureSession.Instance.ClientFactory.CreateArmClient<StorageSyncManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                       AzureSession.Instance.ClientFactory.CreateArmClient<AuthorizationManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager),
                       AzureSession.Instance.ClientFactory.CreateArmClient<ResourceManagementClient>(context, AzureEnvironment.Endpoint.ResourceManager))
         {
-            ActiveDirectoryClient = activeDirectoryClient;
+            MicrosoftGraphClient = microsoftGraphClient;
 
             if (AzureSession.Instance.TryGetComponent(StorageSyncConstants.StorageSyncResourceManager, out IStorageSyncResourceManager storageSyncResourceManager))
             {
@@ -181,13 +176,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         {
             get
             {
-                if (StorageSyncConstants.ResourceProvider.EndsWith("Int", StringComparison.InvariantCultureIgnoreCase) ||
-                    StorageSyncConstants.ResourceProvider.EndsWith("Dev", StringComparison.InvariantCultureIgnoreCase))
-                {
-                    return AzureUSProdTestKailaniAppId;
-                }
-                else
-                {
                     switch (AzureRmProfileProvider.Instance?.Profile?.DefaultContext?.Environment?.Name)
                     {
                         case EnvironmentName.AzureUSGovernment:
@@ -195,7 +183,6 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
                         default:
                             return AzureCloudKailaniAppId;
                     }
-                }
             }
         }
 
@@ -231,37 +218,17 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// Ensures the service principal.
         /// </summary>
         /// <returns>PSADServicePrincipal.</returns>
-        public PSADServicePrincipal EnsureServicePrincipal()
+        public MicrosoftGraphServicePrincipal GetServicePrincipalOrNull()
         {
             string applicationId = CurrentApplicationId.ToString();
-            string appObjectId = ActiveDirectoryClient.GetServicePrincipalsIdByAppId(CurrentApplicationId);
-            PSADServicePrincipal servicePrincipal = ActiveDirectoryClient.GetServicePrincipalByObjectId(appObjectId);
+            // TODO: Remove this call once Az Powershell supports MSGraphClient in Test framework.
+            MicrosoftGraphServicePrincipal servicePrincipal = this.StorageSyncResourceManager.GetServicePrincipalOrNull();
 
             if (servicePrincipal == null)
             {
-                VerboseLogger.Invoke(StorageSyncResources.CreateServicePrincipalMessage);
-                // Create an application and get the applicationId
-                var passwordCredential = new PSADPasswordCredential()
-                {
-                    StartDate = DateTime.Now,
-                    EndDate = DateTime.Now.AddYears(1),
-                    KeyId = Guid.NewGuid(),
-                    Password = SecureStringExtensions.ConvertToString(Guid.NewGuid().ToString().ConvertToSecureString())
-                };
-
-                var createParameters = new CreatePSServicePrincipalParameters
-                {
-                    ApplicationId = CurrentApplicationId,
-                    AccountEnabled = bool.TrueString,
-                    PasswordCredentials = new PSADPasswordCredential[]
-                     {
-                        passwordCredential
-                     }
-                };
-
-                servicePrincipal = ActiveDirectoryClient.CreateServicePrincipal(createParameters);
+                var oDataQuery = new ODataQuery<MicrosoftGraphServicePrincipal>(sp => sp.AppId == applicationId);
+                servicePrincipal = MicrosoftGraphClient.FilterServicePrincipals(oDataQuery).FirstOrDefault();
             }
-
             return servicePrincipal;
         }
 
@@ -273,7 +240,7 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
         /// <param name="storageAccountSubscriptionId">The storage account subscription identifier.</param>
         /// <param name="storageAccountResourceId">The storage account resource identifier.</param>
         /// <returns>RoleAssignment.</returns>
-        public RoleAssignment EnsureRoleAssignment(PSADServicePrincipal serverPrincipal, string storageAccountSubscriptionId, string storageAccountResourceId)
+        public RoleAssignment EnsureRoleAssignment(MicrosoftGraphServicePrincipal serverPrincipal, string storageAccountSubscriptionId, string storageAccountResourceId)
         {
             string currentSubscriptionId = AuthorizationManagementClient.SubscriptionId;
             bool hasMismatchSubscription = currentSubscriptionId != storageAccountSubscriptionId;

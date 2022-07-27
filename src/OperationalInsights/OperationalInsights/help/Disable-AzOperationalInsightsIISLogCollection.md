@@ -32,12 +32,14 @@ The **Disable-AzOperationalInsightsIISLogCollection** cmdlet stops collection of
 
 ### Example 1
 ```powershell
-PS C:\> Disable-AzOperationalInsightsIISLogCollection -ResourceGroupName yuzhi-rg -WorkspaceName OperationalInsight
+Disable-AzOperationalInsightsIISLogCollection -ResourceGroupName test-rg -WorkspaceName OperationalInsight
+```
 
+```output
 Name              : DataSource_IISLogs
-ResourceGroupName : yuzhi-rg
+ResourceGroupName : test-rg
 WorkspaceName     : OperationalInsight
-ResourceId        : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/yuzhi-rg/providers/Microsoft.OperationalInsights/wo
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/wo
                     rkspaces/OperationalInsight/datasources/DataSource_IISLogs
 Kind              : IISLogs
 Properties        : {"state":"OnPremiseDisabled"}

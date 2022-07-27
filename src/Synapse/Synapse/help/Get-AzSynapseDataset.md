@@ -33,14 +33,14 @@ If you do not specify a name, this cmdlet gets information about all the dataset
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseDataset -WorkspaceName ContosoWorkspace
+Get-AzSynapseDataset -WorkspaceName ContosoWorkspace
 ```
 
 This command gets information about all datasets in the workspace named ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseDataset -WorkspaceName ContosoWorkspace -Name ContosoDataset
+Get-AzSynapseDataset -WorkspaceName ContosoWorkspace -Name ContosoDataset
 ```
 
 This command gets information about the dataset named ContosoDataset in the workspace named ContosoWorkspace.

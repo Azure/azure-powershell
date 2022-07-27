@@ -30,8 +30,9 @@ The **Get-AzSearchService** cmdlet gets the specified Azure Cognitive Search ser
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSearchService -ResourceGroupName felixwa-01
-
+Get-AzSearchService -ResourceGroupName felixwa-01
+```
+```output
 
 ResourceGroupName : felixwa-01
 Name              : felixwa-basic-search

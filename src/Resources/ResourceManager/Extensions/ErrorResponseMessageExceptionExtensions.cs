@@ -46,7 +46,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Extensions
         /// <summary>
         /// Converts <see cref="AggregateException"/> objects into <see cref="ErrorRecord"/>
         /// </summary>
-        /// <param name="exception">The exception</param>
         internal static ErrorRecord ToErrorRecord(this AggregateException aggregateException)
         {
             // TODO: Improve this.

@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tags", "..\Resources\Tags\T
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.MSGraph", "..\Resources\MSGraph.Autorest\Az.MSGraph.csproj", "{266CBF7F-4C80-4D7A-A415-44C142369101}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Authorization", "..\Resources\Authorization.Autorest\Az.Authorization.csproj", "{E14B71EE-4EDA-4FFC-8BD2-DDB73331B955}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

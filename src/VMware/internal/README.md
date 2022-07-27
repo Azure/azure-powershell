@@ -1,5 +1,5 @@
 # Internal
-This directory contains a module to handle *internal only* cmdlets. Cmdlets that you **hide** in configuration are created here. For more information on hiding, see [cmdlet hiding](https://github.com/Azure/autorest/blob/master/docs/powershell/options.md#cmdlet-hiding-exportation-suppression). The cmdlets in this directory are generated at **build-time**. Do not put any custom code, files, cmdlets, etc. into this directory. Please use `..\custom` for all custom implementation.
+This directory contains a module to handle *internal only* cmdlets. Cmdlets that you **hide** in configuration are created here. For more information on hiding, see [cmdlet hiding](https://github.com/Azure/autorest.powershell/blob/main/docs/directives.md#cmdlet-hiding-exportation-suppression). The cmdlets in this directory are generated at **build-time**. Do not put any custom code, files, cmdlets, etc. into this directory. Please use `..\custom` for all custom implementation.
 
 ## Info
 - Modifiable: no

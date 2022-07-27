@@ -53,9 +53,9 @@ New-AzResourceGroup -Name TestResourceGroup -Location centralus
 
 ### Example 2: Add a delegation to a subnet being added to an existing virtual network
 ```powershell
-PS C:\> $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
-PS C:\> $delegation = New-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers"
-PS C:\> Add-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet -AddressPrefix "10.0.2.0/24" -Delegation $delegation | Set-AzVirtualNetwork
+$vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
+$delegation = New-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.Sql/servers"
+Add-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $vnet -AddressPrefix "10.0.2.0/24" -Delegation $delegation | Set-AzVirtualNetwork
 ```
 
 This example first gets an existing vnet.
@@ -186,7 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrivateEndpointNetworkPoliciesFlag
-Configure to enable or disable applying network policies on private endpoint in the subnet.
+Configure to enable or disable applying network policies on private endpoint in the subnet. Default value is Disabled.
 
 ```yaml
 Type: System.String

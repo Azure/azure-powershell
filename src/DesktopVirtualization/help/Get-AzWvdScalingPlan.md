@@ -48,8 +48,10 @@ Get a scaling plan.
 
 ### Example 1: Get a Windows Virtual Desktop Scaling Plan by name
 ```powershell
-PS C:\> Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName -Name scalingPlan1
+Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName -Name scalingPlan1
+```
 
+```output
 Location      Name             Type
 --------      ----             ----
 westcentralus scalingPlan1     Microsoft.DesktopVirtualization/scalingplans
@@ -59,8 +61,10 @@ This command gets a Windows Virtual Desktop Scaling Plan in a Resource Group.
 
 ### Example 2: List Windows Virtual Desktop Scaling Plans
 ```powershell
-PS C:\> Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName
+Get-AzWvdScalingPlan -ResourceGroupName ResourceGroupName
+```
 
+```output
 Location      Name             Type
 --------      ----             ----
 westcentralus scalingPlan1     Microsoft.DesktopVirtualization/scalingplans
@@ -183,7 +187,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+INPUTOBJECT `<IDesktopVirtualizationIdentity>`: Identity Parameter
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group

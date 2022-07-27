@@ -18,6 +18,32 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed the warning messages for MSGraph migration [#18856]
+
+## Version 4.2.0
+* Added parameter `CommandContextAttachmentZip` for `Invoke-AzAksRunCommand`. [#17454]
+* Added ManagedIdentity support for Aks[#15656].
+* Added property `PowerState` for the output of `Get-AzAksCluster`[#18271]
+* Updated the logic of `Set-AzAksCluster` for parameter `NodeImageOnly`.
+* Added parameter `NodeImageOnly` for `Update-AzAksNodePool`.
+* Added parameter `AvailabilityZone` for `New-AzAksCluster`. [#18658]
+
+## Version 4.1.0
+* Removed these aliases:
+  * `Get-AzAks`
+  * `New-AzAks`
+  * `Set-AzAks`
+  * `Remove-AzAks`
+
+## Version 3.1.3
+* Updated the description of `Force` in `Invoke-AzAksRunCommand` [#17756]
+* Fixed the issue that `identity` cannot be piped into `Set-AzAksCluster` [#17376]
+
+## Version 3.1.2
+* Updated the breaking change warning messages [#16805]
+
+## Version 3.1.1
+* Fixed the typo in `New-AzAksCluster` [#16733]
 
 ## Version 3.1.0
 * Added support of `load balancer` and `api server access` in `New-AzAksCluster` and `Set-AzAksCluster`. [#16575]

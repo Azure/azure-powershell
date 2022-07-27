@@ -23,8 +23,10 @@ Get the usage quota of a subscription.
 
 ### Get the usage quota by inputting the location
 ```powershell
-PS C:\> Get-AzSignalRUsage eastus
+Get-AzSignalRUsage eastus
+```
 
+```output
 Name                 CurrentValue Limit
 ----                 ------------ -----
 FreeTierInstances    2            5

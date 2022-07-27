@@ -34,24 +34,24 @@ Specify the *Status* parameter to get only the instance view of a virtual machin
 ## EXAMPLES
 
 ### Example 1: Get the properties of a VMSS virtual machine
-```
-PS C:\> Get-AzVmssVM -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
+```powershell
+Get-AzVmssVM -ResourceGroupName "Group001" -VMScaleSetName "VMSS001"
 ```
 
 This command gets the properties of the VMSS virtual machine named VMSS001 that belongs to the resource group named Group001.
 Since the command does not specify the *InstanceView* switch parameter, the cmdlet gets the model view of the virtual machine.
 
 ### Example 2: Get the model view properties of a VMSS virtual machine
-```
-PS C:\> Get-AzVmssVM -ResourceGroupName "Group002" -VMScaleSetName "VMSS004" -InstanceId $ID
+```powershell
+Get-AzVmssVM -ResourceGroupName "Group002" -VMScaleSetName "VMSS004" -InstanceId $ID
 ```
 
 This command gets the properties of the VMSS virtual machine named VMSS004 that belongs to the resource group named Group002.
 The command gets the instance ID stored in the variable $ID for which to get the model view.
 
 ### Example 3: Get the instance view properties of a VMSS virtual machine
-```
-PS C:\> Get-AzVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $ID
+```powershell
+Get-AzVmssVM -InstanceView  -ResourceGroupName $rgname  -VMScaleSetName $vmssName -InstanceId $ID
 ```
 
 This command gets the properties of the VMSS virtual machine named VMSS004 that belongs to the resource group named Group002.

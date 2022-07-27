@@ -13,17 +13,19 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
-using System.Management.Automation;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.ThreatDetection.Cmdlet
 {
     /// <summary>
     /// Returns the advanced threat protection settings of a specific database.
     /// </summary>
-    [GenericBreakingChange("Get-AzSqlDatabaseAdvancedThreatProtectionSettings alias will be removed in an upcoming breaking change release", "3.0.0")]
+    [CmdletOutputBreakingChange(
+        deprecatedCmdletOutputTypeName: typeof(DatabaseThreatDetectionPolicyModel),
+        deprecateByVersion: "9.0.0",
+        ReplacementCmdletOutputTypeName = "DatabaseAdvancedThreatProtectionSettingsModel")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlDatabaseAdvancedThreatProtectionSetting", SupportsShouldProcess = true),OutputType(typeof(DatabaseThreatDetectionPolicyModel))]
-    [Alias("Get-AzSqlDatabaseAdvancedThreatProtectionSettings")]
     public class AzureRmSqlDatabaseThreatDetectionPolicy : SqlDatabaseThreatDetectionCmdletBase
     {
         /// <summary>

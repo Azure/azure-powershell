@@ -33,8 +33,10 @@ Creates a new CosmosDB Sql Database.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBSqlDatabase -AccountName myAccountName -Name myDatabaseName -ResourceGroupName myResourcegroupName
+New-AzCosmosDBSqlDatabase -AccountName myAccountName -Name myDatabaseName -ResourceGroupName myResourcegroupName
+```
 
+```output
 Name     : myDatabaseName
 Id       : /subscriptions/mySubscriptionId/resourceGroups/myResourcegroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/sqlDatabases/myDatabaseName
 Location :

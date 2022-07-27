@@ -127,7 +127,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets a value indicating whether retention should be enabled
         /// </summary>
-        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the retention should be enabled")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The value indicating whether the retention should be enabled. Note that this only applies when saving data to a Storage account.")]
         [ValidateNotNullOrEmpty]
         public bool? RetentionEnabled { get; set; }
 
@@ -140,7 +140,7 @@ namespace Microsoft.Azure.Commands.Insights.Diagnostics
         /// <summary>
         /// Gets or sets the retention in days
         /// </summary>
-        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The retention in days.")]
+        [Parameter(ParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The retention in days. Note that this only applies when saving data to a Storage account.")]
         public int? RetentionInDays { get; set; }
 
         /// <summary>

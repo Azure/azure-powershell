@@ -31,9 +31,11 @@ Id can be either fully qualified or just the Guid.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzCosmosDBSqlRoleDefinition -AccountName accountName -ResourceGroupName resourceGroupName -Id id
 ```
-PS C:\> Get-AzCosmosDBSqlRoleDefinition -AccountName accountName -ResourceGroupName resourceGroupName -Id id
 
+```output
 RoleName         : roleName
 Id               : /subscriptions/subId/resourceGroups/resourceGroupName/providers/Microsoft.DocumentDB/databaseAccounts/accountName/sqlRoleDefinitions/id
 Type             : CustomRole

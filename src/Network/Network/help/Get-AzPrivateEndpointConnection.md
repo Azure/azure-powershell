@@ -37,14 +37,14 @@ The **Get-AzPrivateEndpointConnection** cmdlet retrieves a private endpoint conn
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Get-AzPrivateEndpointConnection -PrivateLinkResourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Sql/servers/mySql'
 ```
 
 This example return a list of all private endpoint connections belongs to sql server named Mysql.
 
 ### Example 2
-```
+```powershell
 Get-AzPrivateEndpointConnection -Name MyPrivateEndpointConnection1 -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkService -PrivateLinkResourceType 'Microsoft.Network/privateLinkServices'
 ```
 

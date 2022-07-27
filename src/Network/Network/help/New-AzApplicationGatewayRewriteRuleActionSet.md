@@ -27,7 +27,7 @@ New-AzApplicationGatewayRewriteRuleActionSet
 
 ### Example 1
 ```powershell
-PS C:\> $action = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc -UrlConfiguration $urlConfiguration
+$action = New-AzApplicationGatewayRewriteRuleActionSet -ResponseHeaderConfiguration $hc -UrlConfiguration $urlConfiguration
 ```
 
 This command creates a rewrite rule action set and stores the result in the variable named $action.

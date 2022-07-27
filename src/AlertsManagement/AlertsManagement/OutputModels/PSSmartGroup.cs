@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.AlertsManagement.OutputModels
         {
             Id = smartGroup.Id;
             Name = smartGroup.Name;
-            AlertsCount = smartGroup.AlertsCount;
+            AlertsCount = (int?)smartGroup.AlertsCount;
             State = smartGroup.SmartGroupState;
             Severity = smartGroup.Severity;
             LastModifiedTime = smartGroup.LastModifiedDateTime;

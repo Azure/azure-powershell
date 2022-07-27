@@ -203,12 +203,13 @@ namespace Microsoft.Azure.Commands.Compute
             "RHEL",
             "SLES",
             "UbuntuLTS",
+            "Win2022AzureEditionCore",
+            "Win2019Datacenter",
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
             "Win2008R2SP1",
-            "Win10",
-            "Win2019Datacenter")]
+            "Win10")]
         [Alias("ImageName")]
         public string Image { get; set; } = "Win2016Datacenter";
 
@@ -261,7 +262,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string HostId { get; set; }
-        
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false)]
         public string VmssId { get; set; }
@@ -291,7 +292,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = DiskFileParameterSet, Mandatory = false,
             HelpMessage = "EncryptionAtHost property can be used by user in the request to enable or disable the Host Encryption for the virtual machine. This will enable the encryption for all the disks including Resource/Temp disk at host itself.")]
         public SwitchParameter EncryptionAtHost { get; set; }
-        
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false,
             HelpMessage = "The resource id of the dedicated host group, on which the customer wants their VM placed using automatic placement.",
             ValueFromPipelineByPropertyName = true)]
@@ -330,7 +331,7 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
-        
+
         [Parameter(
             Mandatory = false,
             ParameterSetName = SimpleParameterSet,
@@ -344,12 +345,19 @@ namespace Microsoft.Azure.Commands.Compute
         public string UserData { get; set; }
 
         [Parameter(
-            ParameterSetName = SimpleParameterSet, 
+            Mandatory = false,
+            ParameterSetName = SimpleParameterSet,
+            HelpMessage = "Specified the gallery image unique id for vm deployment. This can be fetched from gallery image GET call.")]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
+        public string ImageReferenceId { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the fault domain of the virtual machine.")]
         [Parameter(
-            ParameterSetName = DiskFileParameterSet, 
+            ParameterSetName = DiskFileParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Specifies the fault domain of the virtual machine.")]
@@ -361,11 +369,30 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
         [Parameter(
-            ParameterSetName = DiskFileParameterSet, 
+            ParameterSetName = DiskFileParameterSet,
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
         public SwitchParameter HibernationEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).")]
+        public int vCPUCountAvailable { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
+        public int vCPUCountPerCore { get; set; }
+
+        [Parameter(
+           ParameterSetName = DefaultParameterSet,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.")]
+        public SwitchParameter DisableIntegrityMonitoring { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -464,6 +491,25 @@ namespace Microsoft.Azure.Commands.Compute
                     location: Location,
                     client: _client);
 
+                Dictionary<string, List<string>> auxAuthHeader = null;
+                if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
+                {
+                    var resourceId = ResourceId.TryParse(_cmdlet.ImageReferenceId);
+
+                    if (string.Equals(ComputeStrategy.Namespace, resourceId?.ResourceType?.Namespace, StringComparison.OrdinalIgnoreCase)
+                     && string.Equals("galleries", resourceId?.ResourceType?.Provider, StringComparison.OrdinalIgnoreCase)
+                     && !string.Equals(_cmdlet.ComputeClient?.ComputeManagementClient?.SubscriptionId, resourceId?.SubscriptionId, StringComparison.OrdinalIgnoreCase))
+                    {
+                        List<string> resourceIds = new List<string>();
+                        resourceIds.Add(_cmdlet.ImageReferenceId);
+                        var auxHeaderDictionary = _cmdlet.GetAuxilaryAuthHeaderFromResourceIds(resourceIds);
+                        if (auxHeaderDictionary != null && auxHeaderDictionary.Count > 0)
+                        {
+                            auxAuthHeader = new Dictionary<string, List<string>>(auxHeaderDictionary);
+                        }
+                    }
+                }
+
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
                     name: _cmdlet.VirtualNetworkName, edgeZone: _cmdlet.EdgeZone, addressPrefix: _cmdlet.AddressPrefix);
@@ -489,7 +535,7 @@ namespace Microsoft.Azure.Commands.Compute
                 if (string.IsNullOrEmpty(publicIpAddress.Name))
                 {
                     networkInterface = resourceGroup.CreateNetworkInterfaceConfigNoPublicIP(
-                        _cmdlet.Name, _cmdlet.EdgeZone, subnet, 
+                        _cmdlet.Name, _cmdlet.EdgeZone, subnet,
                         networkSecurityGroup, enableAcceleratedNetwork);
                 }
                 else
@@ -497,7 +543,7 @@ namespace Microsoft.Azure.Commands.Compute
                     networkInterface = resourceGroup.CreateNetworkInterfaceConfig(
                         _cmdlet.Name, _cmdlet.EdgeZone, subnet, publicIpAddress, networkSecurityGroup, enableAcceleratedNetwork);
                 }
-                
+
                 var ppgSubResourceFunc = resourceGroup.CreateProximityPlacementGroupSubResourceFunc(_cmdlet.ProximityPlacementGroupId);
 
                 var availabilitySet = _cmdlet.AvailabilitySetName == null
@@ -510,7 +556,7 @@ namespace Microsoft.Azure.Commands.Compute
                 List<SshPublicKey> sshPublicKeyList = null;
                 if (!String.IsNullOrEmpty(_cmdlet.SshKeyName))
                 {
-                    SshPublicKey sshPublicKey = _cmdlet.createPublicKeyObject(_cmdlet.Credential.UserName); 
+                    SshPublicKey sshPublicKey = _cmdlet.createPublicKeyObject(_cmdlet.Credential.UserName);
                     sshPublicKeyList = new List<SshPublicKey>()
                     {
                         sshPublicKey
@@ -559,7 +605,11 @@ namespace Microsoft.Azure.Commands.Compute
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
                         userData: _cmdlet.UserData,
                         platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?) null,
-                        additionalCapabilities: vAdditionalCapabilities
+                        additionalCapabilities: vAdditionalCapabilities,
+                        vCPUsAvailable: _cmdlet.IsParameterBound(c => c.vCPUCountAvailable) ? _cmdlet.vCPUCountAvailable : (int?)null,
+                        vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null,
+                        imageReferenceId: _cmdlet.ImageReferenceId,
+                        auxAuthHeader: auxAuthHeader
                         );
                 }
                 else
@@ -593,7 +643,9 @@ namespace Microsoft.Azure.Commands.Compute
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
                         userData: _cmdlet.UserData,
                         platformFaultDomain: _cmdlet.IsParameterBound(c => c.PlatformFaultDomain) ? _cmdlet.PlatformFaultDomain : (int?)null,
-                        additionalCapabilities: vAdditionalCapabilities
+                        additionalCapabilities: vAdditionalCapabilities,
+                        vCPUsAvailable: _cmdlet.IsParameterBound(c => c.vCPUCountAvailable) ? _cmdlet.vCPUCountAvailable : (int?)null,
+                        vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null
                     );
                 }
             }
@@ -749,6 +801,16 @@ namespace Microsoft.Azure.Commands.Compute
                 ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
             }
 
+            // Guest Attestation extension defaulting scenario check.
+            // Check if Identity can be defaulted in. 
+            if (shouldGuestAttestationExtBeInstalled() &&
+                this.VM != null &&
+                this.VM.Identity == null)
+            {
+                this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
+            }
+
+
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
@@ -777,7 +839,8 @@ namespace Microsoft.Azure.Commands.Compute
                         BillingProfile = this.VM.BillingProfile,
                         SecurityProfile = this.VM.SecurityProfile,
                         CapacityReservation = this.VM.CapacityReservation,
-                        UserData = this.VM.UserData
+                        UserData = this.VM.UserData,
+                        PlatformFaultDomain = this.VM.PlatformFaultDomain
                     };
 
                     Dictionary<string, List<string>> auxAuthHeader = null;
@@ -802,7 +865,7 @@ namespace Microsoft.Azure.Commands.Compute
                     Rest.Azure.AzureOperationResponse<VirtualMachine> result;
 
                     if (this.IsParameterBound(c => c.SshKeyName))
-                    { 
+                    {
                         parameters = addSshPublicKey(parameters);
                     }
 
@@ -837,9 +900,9 @@ namespace Microsoft.Azure.Commands.Compute
                                 AutoUpgradeMinorVersion = true,
                             };
 
-                            typeof(CM.Resource).GetRuntimeProperty("Name")
+                            typeof(CM.ResourceWithOptionalLocation).GetRuntimeProperty("Name")
                                 .SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
-                            typeof(CM.Resource).GetRuntimeProperty("Type")
+                            typeof(CM.ResourceWithOptionalLocation).GetRuntimeProperty("Type")
                                 .SetValue(extensionParameters, VirtualMachineExtensionType);
 
                             var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
@@ -851,8 +914,73 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
+                    // Guest Attestation extension defaulting scenario check.
+                    // Default behavior for Trusted Launch VM with SecureBootEnabled and VTpmEnabled is to install the Guest Attestation esxtension.
+                    // If DisableIntegrityMonitoring is true, then this extension will not be installed. 
+                    if (shouldGuestAttestationExtBeInstalled())
+                    {
+                        var extensionParams = new VirtualMachineExtension { };
+
+                        if (IsLinuxOs()) //linux
+                        {
+                            extensionParams = new VirtualMachineExtension
+                            {
+                                Location = this.Location,
+                                Publisher = "Microsoft.Azure.Security.LinuxAttestation",
+                                VirtualMachineExtensionType = "GuestAttestation",
+                                TypeHandlerVersion = "1.0",
+                            };
+                        }
+                        else //windows
+                        {
+                            extensionParams = new VirtualMachineExtension
+                            {
+                                Location = this.Location,
+                                Publisher = "Microsoft.Azure.Security.WindowsAttestation",
+                                VirtualMachineExtensionType = "GuestAttestation",
+                                TypeHandlerVersion = "1.0",
+                            };
+                        }
+
+                        var extClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
+                        var op = extClient.BeginCreateOrUpdateWithHttpMessagesAsync
+                            (
+                                this.ResourceGroupName,
+                                this.VM.Name,
+                                "GuestAttestation",
+                                extensionParams
+                            ).GetAwaiter().GetResult();
+                    }
+
                     WriteObject(psResult);
                 });
+            }
+        }
+
+        /// <summary>
+        /// Check to see if the Guest Attestation extension should be installed and Identity set to SystemAssigned.
+        /// Requirements for this scenario to be true:
+        /// 1) DisableIntegrityMonitoring is not true.
+        /// 2) SecurityType is TrustedLaunch.
+        /// 3) SecureBootEnabled is true.
+        /// 4) VTpmEnabled is true.
+        /// </summary>
+        /// <returns></returns>
+        private bool shouldGuestAttestationExtBeInstalled()
+        {
+            if (this.DisableIntegrityMonitoring != true &&
+                    this.VM != null &&
+                    this.VM.SecurityProfile != null &&
+                    this.VM.SecurityProfile.SecurityType == "TrustedLaunch" &&
+                    this.VM.SecurityProfile.UefiSettings != null &&
+                    this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
+                    this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -991,15 +1119,9 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
-            var storageAccount = TryToChooseExistingStandardStorageAccount(storageClient);
-
-            if (storageAccount == null)
-            {
-                return CreateStandardStorageAccount(storageClient);
-            }
-
-            WriteWarning(string.Format(Properties.Resources.UsingExistingStorageAccountForBootDiagnostics, storageAccount.Name));
-            return storageAccount.PrimaryEndpoints.Blob;
+            var storagePrimaryEndpointBlob = CreateStandardStorageAccount(storageClient);
+            return storagePrimaryEndpointBlob;
+            
         }
 
         private string GetStorageAccountNameFromStorageProfile()
@@ -1241,7 +1363,7 @@ namespace Microsoft.Azure.Commands.Compute
                 {
                     throw new Exception("Please provide parameter '-SshKeyName' to be used with '-GenerateSshKey'");
                 }
-            }  
+            }
         }
     }
 }

@@ -53,7 +53,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.4'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'Microsoft.Azure.Management.EventGrid.dll'
@@ -83,7 +83,12 @@ CmdletsToExport = 'New-AzEventGridTopic', 'Get-AzEventGridTopic',
                'Get-AzEventGridDomain', 'Get-AzEventGridDomainTopic', 
                'Get-AzEventGridDomainKey', 'New-AzEventGridDomainKey', 
                'Remove-AzEventGridDomain', 'New-AzEventGridDomainTopic', 
-               'Remove-AzEventGridDomainTopic'
+               'Remove-AzEventGridDomainTopic', 'Get-AzEventGridSystemTopic',
+               'New-AzEventGridSystemTopic','Update-AzEventGridSystemTopic',
+               'Remove-AzEventGridSystemTopic', 'New-AzEventGridSystemTopicEventSubscription', 
+               'Update-AzEventGridSystemTopicEventSubscription', 'Get-AzEventGridSystemTopicEventSubscription', 
+               'Remove-AzEventGridSystemTopicEventSubscription', 'Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute', 
+               'Get-AzEventGridFullUrlForSystemTopicEventSubscription'
 
 # Variables to export from this module
 # VariablesToExport = @()

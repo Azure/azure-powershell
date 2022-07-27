@@ -11,6 +11,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
+using System;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
@@ -18,6 +20,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.ServiceBus.Models;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
 {
@@ -40,7 +43,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         /// <summary>
         /// ServiceBus Namespace Location.
         /// </summary>
-        [Parameter( Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "ServiceBus Namespace Location")]
+        [Parameter( Mandatory = false, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "ServiceBus Namespace Location")]
         [LocationCompleter("Microsoft.ServiceBus/namespaces")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
@@ -81,24 +84,48 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Namespace
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "enabling or disabling SAS authentication for the Service Bus namespace")]
         public SwitchParameter DisableLocalAuth { get; set; }
 
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Identity Type")]
+        [ValidateSet("SystemAssigned", "UserAssigned", "SystemAssigned, UserAssigned", "None", IgnoreCase = true)]
+        public string IdentityType { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "List of user assigned Identity Ids")]
+        public string[] IdentityId { get; set; }
+
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Key Property")]
+        public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
+
         /// <summary>
         /// 
         /// </summary>
         public override void ExecuteCmdlet()
         {
-            // Update a ServiceBus namespace
-            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-
-            if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateNamespace, Name, ResourceGroupName)))
+            try
             {
-                try
+
+                if (ShouldProcess(target: Name, action: string.Format(Resources.UpdateNamespace, Name, ResourceGroupName)))
                 {
-                    WriteObject(Client.UpdateNamespace(ResourceGroupName, Name, Location, SkuName, SkuCapacity, tagDictionary, DisableLocalAuth.IsPresent));
+                    try
+                    {
+                        WriteObject(Client.UpdateNamespace(resourceGroupName: ResourceGroupName, 
+                                                           namespaceName: Name, 
+                                                           location :Location, 
+                                                           skuName: SkuName, 
+                                                           skuCapacity: SkuCapacity, 
+                                                           tags: Tag, 
+                                                           isDisableLocalAuth: DisableLocalAuth.IsPresent, 
+                                                           identityType: IdentityType, 
+                                                           identityIds: IdentityId, 
+                                                           encryptionconfigs: EncryptionConfig));
+                    }
+                    catch (Management.ServiceBus.Models.ErrorResponseException ex)
+                    {
+                        WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
+                    }
                 }
-                catch (Management.ServiceBus.Models.ErrorResponseException ex)
-                {
-                    WriteError(ServiceBusClient.WriteErrorforBadrequest(ex));
-                }
+            }
+            catch (Exception ex)
+            {
+                WriteError(new ErrorRecord(ex, ex.Message, ErrorCategory.OpenError, ex));
             }
         }
     }

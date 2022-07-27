@@ -44,8 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.ServiceTierAdvisor.Services
         /// <summary>
         /// Constructs a service tier advisor adapter
         /// </summary>
-        /// <param name="profile">The current azure profile</param>
-        /// <param name="subscription">The current azure subscription</param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlServiceTierAdvisorAdapter(IAzureContext context)
         {
             Context = context;

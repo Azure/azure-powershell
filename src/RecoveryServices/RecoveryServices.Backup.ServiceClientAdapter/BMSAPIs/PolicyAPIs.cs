@@ -15,6 +15,7 @@
 using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
+using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
 using RestAzureNS = Microsoft.Rest.Azure;
 using RestAzureODataNS = Microsoft.Rest.Azure.OData;
@@ -28,19 +29,64 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="policyName">Name of the policy</param>
         /// <param name="request">Policy create or update request</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
+        /// <param name="auxiliaryAccessToken"></param>
+        /// <param name="isMUAProtected"></param>
         /// <returns>Policy created by this operation</returns>
         public RestAzureNS.AzureOperationResponse<ProtectionPolicyResource>
             CreateOrUpdateProtectionPolicy(
                 string policyName,
                 ProtectionPolicyResource request,
                 string vaultName = null,
-                string resourceGroupName = null)
+                string resourceGroupName = null, 
+                string auxiliaryAccessToken = "", 
+                bool isMUAProtected = false)
         {
+            Dictionary<string, List<string>> customHeaders = new Dictionary<string, List<string>>();
+            string operationRequest = null;
+
+            if (isMUAProtected)
+            {
+                List<ResourceGuardProxyBaseResource> resourceGuardMapping = ListResourceGuardMapping(vaultName, resourceGroupName);                
+
+                if (resourceGuardMapping != null && resourceGuardMapping.Count != 0)
+                {
+                    foreach (ResourceGuardOperationDetail operationDetail in resourceGuardMapping[0].Properties.ResourceGuardOperationDetails)
+                    {
+                        if (operationDetail.VaultCriticalOperation == "Microsoft.RecoveryServices/vaults/backupPolicies/write") operationRequest = operationDetail.DefaultResourceRequest;
+                    }
+
+                    if (operationRequest != null)
+                    {
+                        request.Properties.ResourceGuardOperationRequests = new List<string>();
+                        request.Properties.ResourceGuardOperationRequests.Add(operationRequest);
+                    }
+                }
+            }
+
+            if (auxiliaryAccessToken != null && auxiliaryAccessToken != "")
+            {
+                if (operationRequest != null)
+                {
+                    customHeaders.Add("x-ms-authorization-auxiliary", new List<string> { "Bearer " + auxiliaryAccessToken });
+                }
+                else if (!isMUAProtected)
+                {
+                    throw new ArgumentException(String.Format(Resources.PolicyUpdateNotCritical));
+                }
+                else
+                {   
+                    throw new ArgumentException(String.Format(Resources.UnexpectedParameterToken, "ModifyPolicy"));
+                }
+            }
+
             return BmsAdapter.Client.ProtectionPolicies.CreateOrUpdateWithHttpMessagesAsync(
                 vaultName ?? BmsAdapter.GetResourceName(),
                 resourceGroupName ?? BmsAdapter.GetResourceGroupName(),
                 policyName,
                 request,
+                customHeaders,
                 cancellationToken: BmsAdapter.CmdletCancellationToken).Result;
         }
 
@@ -48,6 +94,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Gets a protection policy given the name
         /// </summary>
         /// <param name="policyName">Name of the policy</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Policy response returned by the service</returns>
         public ProtectionPolicyResource GetProtectionPolicy(
             string policyName,
@@ -66,6 +114,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// </summary>
         /// <param name="queryFilter">Query filter</param>
         /// <param name="skipToken">Skip token for pagination</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>List of protection policies</returns>
         public List<ProtectionPolicyResource> ListProtectionPolicy(
             RestAzureODataNS.ODataQuery<ProtectionPolicyQueryObject> queryFilter,
@@ -83,7 +133,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
             Func<string, RestAzureNS.IPage<ProtectionPolicyResource>> listNextAsync =
                 nextLink => BmsAdapter.Client.BackupPolicies.ListNextWithHttpMessagesAsync(
                     nextLink,
-                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;
+                    cancellationToken: BmsAdapter.CmdletCancellationToken).Result.Body;            
 
             return HelperUtils.GetPagedList(listAsync, listNextAsync);
         }
@@ -92,6 +142,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ServiceClient
         /// Deletes protection policy from the vault specified by the name
         /// </summary>
         /// <param name="policyName">Name of the policy to be deleted</param>
+        /// <param name="vaultName"></param>
+        /// <param name="resourceGroupName"></param>
         /// <returns>Default azure operation response</returns>
         public RestAzureNS.AzureOperationResponse RemoveProtectionPolicy(
                 string policyName,

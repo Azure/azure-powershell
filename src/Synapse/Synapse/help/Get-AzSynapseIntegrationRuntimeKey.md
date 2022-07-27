@@ -43,7 +43,7 @@ The **Get-AzSynapseIntegrationRuntimeKey** cmdlet gets keys for an integration r
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseIntegrationRuntimeKey -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
+Get-AzSynapseIntegrationRuntimeKey -WorkspaceName ContosoWorkspace -Name 'test-selfhost-ir'
 ```
 
 The cmdlet retrieves keys for an integration runtime named 'test-selfhost-ir'.

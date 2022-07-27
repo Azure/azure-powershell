@@ -52,6 +52,17 @@ schema: {HelpInfo.Schema.ToString(3)}
 
     internal class HelpExampleOutput
     {
+        private string ExampleTemplate =
+            "{0}{1}" + Environment.NewLine +
+            "{2}" + Environment.NewLine + "{3}" + Environment.NewLine + "{4}" + Environment.NewLine + Environment.NewLine +
+            "{5}" + Environment.NewLine + Environment.NewLine;
+
+        private string ExampleTemplateWithOutput =
+             "{0}{1}" + Environment.NewLine +
+            "{2}" + Environment.NewLine + "{3}" + Environment.NewLine + "{4}" + Environment.NewLine + Environment.NewLine +
+            "{5}" + Environment.NewLine + "{6}" + Environment.NewLine + "{7}" + Environment.NewLine + Environment.NewLine +
+            "{8}" + Environment.NewLine + Environment.NewLine;
+
         public MarkdownExampleHelpInfo ExampleInfo { get; }
 
         public HelpExampleOutput(MarkdownExampleHelpInfo exampleInfo)
@@ -59,17 +70,26 @@ schema: {HelpInfo.Schema.ToString(3)}
             ExampleInfo = exampleInfo;
         }
 
-        public override string ToString() => $@"{ExampleNameHeader}{ExampleInfo.Name}
-{ExampleCodeHeader}
-{ExampleInfo.Code}
-{ExampleCodeFooter}
-
-{ExampleInfo.Description.ToDescriptionFormat()}
-
-";
+        public override string ToString()
+        {
+            if (string.IsNullOrEmpty(ExampleInfo.Output))
+            {
+                return string.Format(ExampleTemplate, 
+                    ExampleNameHeader, ExampleInfo.Name, 
+                    ExampleCodeHeader, ExampleInfo.Code, ExampleCodeFooter, 
+                    ExampleInfo.Description.ToDescriptionFormat());
+            }
+            else
+            {
+                return string.Format(ExampleTemplateWithOutput,
+                    ExampleNameHeader, ExampleInfo.Name,
+                    ExampleCodeHeader, ExampleInfo.Code, ExampleCodeFooter, 
+                    ExampleOutputHeader, ExampleInfo.Output, ExampleOutputFooter,
+                    ExampleInfo.Description.ToDescriptionFormat()); ;
+            }
+        }
     }
-
-
+    
     internal class HelpParameterOutput
     {
         public MarkdownParameterHelpInfo ParameterInfo { get; }
@@ -161,6 +181,8 @@ Locale: en-US
         public const string ExampleNameHeader = "### ";
         public const string ExampleCodeHeader = "```powershell";
         public const string ExampleCodeFooter = "```";
+        public const string ExampleOutputHeader = "```output";
+        public const string ExampleOutputFooter = "```";
 
         public static HelpMetadataOutput ToHelpMetadataOutput(this MarkdownHelpInfo helpInfo) => new HelpMetadataOutput(helpInfo);
 

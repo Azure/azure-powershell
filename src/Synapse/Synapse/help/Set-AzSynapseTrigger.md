@@ -31,15 +31,15 @@ The **Set-AzSynapseTrigger** cmdlet creates a trigger in a workspace. Triggers a
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger -DefinitionFile ".\scheduledTrigger.json"
+Set-AzSynapseTrigger -WorkspaceName ContosoWorkspace -Name ContosoTrigger -DefinitionFile ".\scheduledTrigger.json"
 ```
 
 Create a new trigger called ContosoTrigger in the workspace ContosoWorkspace. The trigger is created in the 'Stopped' state, meaning that it doesn't immediately start. A trigger can be started using the `Start-AzDataFactoryV2Trigger` cmdlet.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Set-AzSynapseTrigger -Name ContosoTrigger -DefinitionFile ".\scheduledTrigger.json"
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Set-AzSynapseTrigger -Name ContosoTrigger -DefinitionFile ".\scheduledTrigger.json"
 ```
 
 Create a new trigger called ContosoTrigger in the workspace ContosoWorkspace through pipeline. The trigger is created in the 'Stopped' state, meaning that it doesn't immediately start. A trigger can be started using the `Start-AzDataFactoryV2Trigger` cmdlet.

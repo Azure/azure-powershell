@@ -18,9 +18,6 @@
 Create a in-memory object for Container
 .Description
 Create a in-memory object for Container
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.Container
 .Link
 https://docs.microsoft.com/powershell/module/az.ContainerInstance/new-AzContainerInstanceObject
 #>

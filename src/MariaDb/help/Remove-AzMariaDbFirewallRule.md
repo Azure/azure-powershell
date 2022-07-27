@@ -32,8 +32,7 @@ Deletes a server firewall rule.
 
 ### Example 1: Remove a firewall rule under a MariaDB
 ```powershell
-PS C:\> Remove-AzMariaDbFirewallRule -Name frname-001 -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-4rmtig
-
+Remove-AzMariaDbFirewallRule -Name frname-001 -ResourceGroupName mariadb-test-qu5ov0 -ServerName mariadb-test-4rmtig
 ```
 
 This command removes a firewall rule under a MariaDB.
@@ -228,7 +227,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMariaDbIdentity>: Identity Parameter
+INPUTOBJECT `<IMariaDbIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.

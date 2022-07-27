@@ -29,7 +29,7 @@ Please note some properties can be set only during cloud service creation.
 # Create RDP extension object
 $rdpExtension = New-AzCloudServiceRemoteDesktopExtensionObject -Name "RDPExtension" -Credential $credential -Expiration $expiration -TypeHandlerVersion "1.2.1"
 # Get existing cloud service
-$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 # Add RDP extension to existing cloud service extension object
 $cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension + $rdpExtension
 # Update cloud service
@@ -41,7 +41,7 @@ Above set of commands adds a RDP extension to already existing cloud service nam
 ### Example 2: Remove all extensions from cloud service
 ```powershell
 # Get existing cloud service
-$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 # Set extension to empty list
 $cloudService.ExtensionProfile.Extension = @()
 # Update cloud service
@@ -53,7 +53,7 @@ Above set of commands removes all extensions from existing cloud service named C
 ### Example 3: Remove RDP extension from cloud service
 ```powershell
 # Get existing cloud service
-$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 # Remove extension by name RDPExtension
 $cloudService.ExtensionProfile.Extension = $cloudService.ExtensionProfile.Extension | Where-Object { $_.Name -ne "RDPExtension" }
 # Update cloud service
@@ -65,7 +65,7 @@ Above set of commands removes RDP extension from existing cloud service named Co
 ### Example 4: Scale-Out / Scale-In role instances
 ```powershell
 # Get existing cloud service
-$cloudService = Get-AzCloudService -ResourceGroup "ContosOrg" -CloudServiceName "ContosoCS"
+$cloudService = Get-AzCloudService -ResourceGroupName "ContosOrg" -CloudServiceName "ContosoCS"
 
 # Scale-out all role instance count by 1
 $cloudService.RoleProfile.Role | ForEach-Object {$_.SkuCapacity += 1}
@@ -215,19 +215,22 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICloudServiceIdentity>: Identity Parameter
+INPUTOBJECT `<ICloudServiceIdentity>`: Identity Parameter
   - `[CloudServiceName <String>]`: 
+  - `[IPConfigurationName <String>]`: The IP configuration name.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Name of the location that the OS version pertains to.
+  - `[NetworkInterfaceName <String>]`: The name of the network interface.
   - `[OSFamilyName <String>]`: Name of the OS family.
   - `[OSVersionName <String>]`: Name of the OS version.
+  - `[PublicIPAddressName <String>]`: The name of the public IP Address.
   - `[ResourceGroupName <String>]`: 
   - `[RoleInstanceName <String>]`: Name of the role instance.
   - `[RoleName <String>]`: Name of the role.
   - `[SubscriptionId <String>]`: Subscription credentials which uniquely identify Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
   - `[UpdateDomain <Int32?>]`: Specifies an integer value that identifies the update domain. Update domains are identified with a zero-based index: the first update domain has an ID of 0, the second has an ID of 1, and so on.
 
-PARAMETER <ICloudService>: Describes the cloud service.
+PARAMETER `<ICloudService>`: Describes the cloud service.
   - `Location <String>`: Resource location.
   - `[AllowModelOverride <Boolean?>]`: (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.         The default value is `false`.
   - `[Configuration <String>]`: Specifies the XML service configuration (.cscfg) for the cloud service.

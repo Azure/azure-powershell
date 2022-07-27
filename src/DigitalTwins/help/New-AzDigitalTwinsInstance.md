@@ -35,8 +35,10 @@ The usual pattern to modify a property is to retrieve the DigitalTwinsInstance a
 
 ### Example 1: Create an AzDigitalTwinsInstance by default.
 ```powershell
-PS C:\> New-AzDigitalTwinsInstance -ResourceGroupName youritest -ResourceName youriDigitalTwin -Location eastus
+New-AzDigitalTwinsInstance -ResourceGroupName youritest -ResourceName youriDigitalTwin -Location eastus
+```
 
+```output
 Location Name             SkuName Type
 -------- ----             ------- ----
 eastus   youriDigitalTwin S1      Microsoft.DigitalTwins/digitalTwinsInstances
@@ -46,9 +48,11 @@ Create an AzDigitalTwinsInstance by default
 
 ### Example 2: Create an AzDigitalTwinsInstance by AzDigitalTwins Object.
 ```powershell
-PS C:\> $GetAzDigTwin = Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
+$GetAzDigTwin = Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
 New-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest01 -DigitalTwinsCreate $getAzdigitalTwins
+```
 
+```output
 Location Name                    Type
 -------- ----                    ----
 eastus   youriDigitalTwinsTest01 Microsoft.DigitalTwins/digitalTwinsInstances
@@ -245,7 +249,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DIGITALTWINSCREATE <IDigitalTwinsDescription>: The description of the DigitalTwins service.
+DIGITALTWINSCREATE `<IDigitalTwinsDescription>`: The description of the DigitalTwins service.
   - `Location <String>`: The resource location.
   - `[Tag <IDigitalTwinsResourceTags>]`: The resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

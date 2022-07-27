@@ -31,7 +31,7 @@ The **Test-AzSynapseSqlDatabase** cmdlet checks for the existence of a Synapse A
 
 ### Example 1
 ```powershell
-PS C:\> Test-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase
+Test-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase
 ```
 
 This command checks the existence of the specified SQL database.

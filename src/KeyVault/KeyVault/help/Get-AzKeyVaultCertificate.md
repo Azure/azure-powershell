@@ -74,7 +74,10 @@ The **Get-AzKeyVaultCertificate** cmdlet gets the specified certificate or the v
 
 ### Example 1: Get a certificate
 ```powershell
-PS C:\> Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
+Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "TestCert01"
+```
+
+```output
 Name        : testCert01
 Certificate : [Subject]
                 CN=contoso.com
@@ -103,21 +106,23 @@ Created     : 2/8/2016 11:21:45 PM
 Updated     : 2/8/2016 11:21:45 PM
 ```
 
-### Example 2: Get cert and save it as pfx
-This command gets the certificate named TestCert01 from the key vault named ContosoKV01. To download the certificate as pfx file, run following command. These commands access SecretId and then save the content as a pfx file.
+This command gets the certificate named `TestCert01` from the key vault named `ContosoKV01`
 
+### Example 2: Get cert and save it as pfx
 ```powershell
-$cert = Get-AzKeyVaultCertificate -VaultName $vaultName -Name $certName
-$secret = Get-AzKeyVaultSecret -VaultName $vaultName -Name $cert.Name
-$secretByte = [Convert]::FromBase64String(($secret.SecretValue | ConvertFrom-SecureString -AsPlainText))
-# Write to a file
-[System.IO.File]::WriteAllBytes("cert.pfx", $secretByte)
+$CertBase64 = Get-AzKeyVaultSecret -VaultName $vaultName -Name $certName -AsPlainText
+$CertBytes = [Convert]::FromBase64String($CertBase64)
+Set-Content -Path cert.pfx -Value $CertBytes -AsByteStream
 ```
+
+This command gets the certificate named `$certName` from the key vault named `$vaultName`. These commands access secret `$certName` and then save the content as a pfx file.
 
 ### Example 3: Get all the certificates that have been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzKeyVaultCertificate -VaultName 'contoso' -InRemovedState
+Get-AzKeyVaultCertificate -VaultName 'contoso' -InRemovedState
+```
 
+```output
 DeletedDate        : 5/24/2018 6:08:32 PM
 Enabled            : True
 Expires            : 11/24/2018 6:08:13 PM
@@ -148,8 +153,10 @@ This command gets all the certificates that have been previously deleted, but no
 
 ### Example 4: Gets the certificate MyCert that has been deleted but not purged for this key vault.
 ```powershell
-PS C:\> Get-AzKeyVaultCertificate -VaultName 'contoso' -Name 'test1' -InRemovedState
+Get-AzKeyVaultCertificate -VaultName 'contoso' -Name 'test1' -InRemovedState
+```
 
+```output
 Certificate        : [Subject]
                        CN=contoso.com
 
@@ -191,8 +198,10 @@ This command will return metadata such as the deletion date, and the scheduled p
 
 ### Example 5: List certificates using filtering
 ```powershell
-PS C:\> Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "test*"
+Get-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "test*"
+```
 
+```output
 Enabled   : True
 Expires   : 8/5/2019 2:39:25 AM
 NotBefore : 2/5/2019 2:29:25 AM
@@ -214,9 +223,9 @@ VaultName : ContosoKV01
 Name      : test2
 Version   :
 Id        : https://ContosoKV01.vault.azure.net:443/certificates/test2
-
-This command gets all certificates starting with "test" from the key vault named ContosoKV01.
 ```
+This command gets all certificates starting with "test" from the key vault named ContosoKV01.
+
 
 ## PARAMETERS
 

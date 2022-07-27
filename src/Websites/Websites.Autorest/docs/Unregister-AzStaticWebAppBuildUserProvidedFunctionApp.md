@@ -32,7 +32,7 @@ Description for Detach the user provided function app from the static site build
 
 ### Example 1: Unregister the user provided function app from the static site build
 ```powershell
-PS C:\> Unregister-AzStaticWebAppBuildUserProvidedFunctionApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' -EnvironmentName 'default' -FunctionAppName 'functionAppName01'
+Unregister-AzStaticWebAppBuildUserProvidedFunctionApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' -EnvironmentName 'default' -FunctionAppName 'functionAppName01'
 
 ```
 
@@ -40,7 +40,7 @@ This command unregisters the user provided function app from the static site bui
 
 ### Example 2: Unregister the user provided function app from the static site build by pipeline
 ```powershell
-PS C:\> Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' -EnvironmentName 'default' -FunctionAppName 'functionAppName01' -FunctionAppResourceId 'functionAppId01' -FunctionAppRegion 'eastus' -IsForced | Unregister-AzStaticWebAppBuildUserProvidedFunctionApp
+Register-AzStaticWebAppUserProvidedFunctionApp -ResourceGroupName 'resourceGroup' -Name 'staticweb00' -EnvironmentName 'default' -FunctionAppName 'functionAppName01' -FunctionAppResourceId 'functionAppId01' -FunctionAppRegion 'eastus' -IsForced | Unregister-AzStaticWebAppBuildUserProvidedFunctionApp
 
 ```
 
@@ -228,12 +228,15 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[EnvironmentName <String>]`: The stage site identifier.
   - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
+  - `[JobHistoryId <String>]`: History ID.
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
   - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[Slot <String>]`: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.
+  - `[WebJobName <String>]`: Name of Web Job.
 
 ## RELATED LINKS
 

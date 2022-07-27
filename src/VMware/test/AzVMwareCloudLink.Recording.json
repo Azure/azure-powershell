@@ -1,10 +1,9 @@
 {
-  "AzVMwareCloudLink+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt?api-version=2021-06-01+1": {
+  "AzVMwareCloudLink+[NoContext]+List+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks/tquwao?api-version=2021-12-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt?api-version=2021-06-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"linkedCloud\": \"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2\"\r\n  }\r\n}",
-      "isContentBase64": false,
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks/tquwao?api-version=2021-12-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"linkedCloud\": \"/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloudtpi0\"\r\n  }\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -13,41 +12,27 @@
       }
     },
     "Response": {
-      "StatusCode": 201,
+      "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "10" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/e3e9159b-54d5-489d-aabd-4f34ea92a25a?api-version=2021-06-01" ],
-        "x-ms-request-id": [ "a8d734bb-f5be-4368-a6ec-863e3532ed98" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "a944f962-7a86-481f-a6cb-1acb070a55c3" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210729T035804Z:a944f962-7a86-481f-a6cb-1acb070a55c3" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 218F1DD888554084B3A48F59C4D7EDE8 Ref B: SG2EDGE1419 Ref C: 2021-07-29T03:58:03Z" ],
-        "Date": [ "Thu, 29 Jul 2021 03:58:04 GMT" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:08:36 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "423" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "367" ],
+        "Content-Type": [ "application/json" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt\",\"name\":\"azslrt\",\"properties\":{\"linkedCloud\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2\",\"status\":\"Building\"},\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\"}",
-      "isContentBase64": false
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/cloudLinks/cloudLink1\",\"name\":\"cloudLink1\",\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\",\"properties\":{\"status\":\"Active\",\"linkedCloud\":\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"}}"
     }
   },
-  "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/e3e9159b-54d5-489d-aabd-4f34ea92a25a?api-version=2021-06-01+2": {
+  "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks/tquwao?api-version=2021-12-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/e3e9159b-54d5-489d-aabd-4f34ea92a25a?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks/tquwao?api-version=2021-12-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "57" ],
-        "x-ms-client-request-id": [ "e6814630-1008-44b3-8645-9f97f145af1c" ],
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "ec94ba63-9173-4332-86da-d390997c8c8b" ],
         "CommandName": [ "New-AzVMwareCloudLink" ],
         "FullCommandName": [ "New-AzVMwareCloudLink_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -59,165 +44,24 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "10" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14965" ],
-        "x-ms-request-id": [ "657f745c-de20-43cf-8513-e0d00249bd8d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "4e4335c8-8f4f-4182-9576-514f6d956741" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210729T035815Z:4e4335c8-8f4f-4182-9576-514f6d956741" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 2494BC227CD34C4AAB0E08039AEA70DC Ref B: SG2EDGE1419 Ref C: 2021-07-29T03:58:15Z" ],
-        "Date": [ "Thu, 29 Jul 2021 03:58:15 GMT" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:09:06 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "356" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "367" ],
+        "Content-Type": [ "application/json" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/e3e9159b-54d5-489d-aabd-4f34ea92a25a\",\"name\":\"e3e9159b-54d5-489d-aabd-4f34ea92a25a\",\"percentComplete\":0,\"startTime\":\"2021-07-29T03:54:18.1790389+00:00\",\"status\":\"Building\"}",
-      "isContentBase64": false
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/cloudLinks/cloudLink1\",\"name\":\"cloudLink1\",\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\",\"properties\":{\"status\":\"Active\",\"linkedCloud\":\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"}}"
     }
   },
-  "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/e3e9159b-54d5-489d-aabd-4f34ea92a25a?api-version=2021-06-01+3": {
+  "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks?api-version=2021-12-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/e3e9159b-54d5-489d-aabd-4f34ea92a25a?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks?api-version=2021-12-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "58" ],
-        "x-ms-client-request-id": [ "e6814630-1008-44b3-8645-9f97f145af1c" ],
-        "CommandName": [ "New-AzVMwareCloudLink" ],
-        "FullCommandName": [ "New-AzVMwareCloudLink_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "10" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14964" ],
-        "x-ms-request-id": [ "2333ba09-18ae-4af9-a7a8-0578c39a81c2" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "a2604e63-89d8-4400-9320-7264a526eac4" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210729T035826Z:a2604e63-89d8-4400-9320-7264a526eac4" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F618E07E299C45D1A2E4445DBF719C54 Ref B: SG2EDGE1419 Ref C: 2021-07-29T03:58:26Z" ],
-        "Date": [ "Thu, 29 Jul 2021 03:58:26 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "356" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/e3e9159b-54d5-489d-aabd-4f34ea92a25a\",\"name\":\"e3e9159b-54d5-489d-aabd-4f34ea92a25a\",\"percentComplete\":0,\"startTime\":\"2021-07-29T03:54:18.1790389+00:00\",\"status\":\"Building\"}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/e3e9159b-54d5-489d-aabd-4f34ea92a25a?api-version=2021-06-01+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/e3e9159b-54d5-489d-aabd-4f34ea92a25a?api-version=2021-06-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "59" ],
-        "x-ms-client-request-id": [ "e6814630-1008-44b3-8645-9f97f145af1c" ],
-        "CommandName": [ "New-AzVMwareCloudLink" ],
-        "FullCommandName": [ "New-AzVMwareCloudLink_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "10" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14964" ],
-        "x-ms-request-id": [ "e058fbe4-7207-4da2-8baa-19b5e6f17a28" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "6e701093-f87e-4d21-ab01-69284112b495" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210729T035837Z:6e701093-f87e-4d21-ab01-69284112b495" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: C433B6B24C8840CBAA7AD4C22D212D73 Ref B: SG2EDGE1419 Ref C: 2021-07-29T03:58:36Z" ],
-        "Date": [ "Thu, 29 Jul 2021 03:58:36 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "840" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"endTime\":\"2021-07-29T03:58:30.5876864+00:00\",\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/e3e9159b-54d5-489d-aabd-4f34ea92a25a\",\"name\":\"e3e9159b-54d5-489d-aabd-4f34ea92a25a\",\"percentComplete\":100,\"properties\":{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt\",\"name\":\"azslrt\",\"properties\":{\"linkedCloud\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2\",\"status\":\"Active\"},\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\"},\"startTime\":\"2021-07-29T03:54:18.1790389+00:00\",\"status\":\"Succeeded\"}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt?api-version=2021-06-01+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt?api-version=2021-06-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "60" ],
-        "x-ms-client-request-id": [ "e6814630-1008-44b3-8645-9f97f145af1c" ],
-        "CommandName": [ "New-AzVMwareCloudLink" ],
-        "FullCommandName": [ "New-AzVMwareCloudLink_CreateExpanded" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14963" ],
-        "x-ms-request-id": [ "db56659b-89a1-4580-a68b-c08bf04f57d4" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "5b4fbc8f-00e2-4028-8a47-f6bc5e2760e3" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210729T035837Z:5b4fbc8f-00e2-4028-8a47-f6bc5e2760e3" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 5A89293F035A42FB9246CEA5EDCD1336 Ref B: SG2EDGE1419 Ref C: 2021-07-29T03:58:37Z" ],
-        "Date": [ "Thu, 29 Jul 2021 03:58:37 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "421" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt\",\"name\":\"azslrt\",\"properties\":{\"linkedCloud\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2\",\"status\":\"Active\"},\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\"}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareCloudLink+[NoContext]+List+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks?api-version=2021-06-01+6": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks?api-version=2021-06-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "61" ],
-        "x-ms-client-request-id": [ "13f299ac-2e60-47e4-adab-6fd4fd00c308" ],
+        "x-ms-unique-id": [ "21" ],
+        "x-ms-client-request-id": [ "4fa33712-e256-4345-9ee2-b5d0ae09de0c" ],
         "CommandName": [ "Get-AzVMwareCloudLink" ],
         "FullCommandName": [ "Get-AzVMwareCloudLink_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -230,36 +74,24 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14963" ],
-        "x-ms-request-id": [ "9c4b901e-7fa9-49af-922f-95efb9010c38" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "59f59ec4-3702-44da-be5f-68b5bd14dcf4" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210729T035838Z:59f59ec4-3702-44da-be5f-68b5bd14dcf4" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 03354EBC9853476FBD73ECC14971DA59 Ref B: SG2EDGE1419 Ref C: 2021-07-29T03:58:38Z" ],
-        "Date": [ "Thu, 29 Jul 2021 03:58:38 GMT" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:09:07 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "433" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "379" ],
+        "Content-Type": [ "application/json" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt\",\"name\":\"azslrt\",\"properties\":{\"linkedCloud\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2\",\"status\":\"Active\"},\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\"}]}",
-      "isContentBase64": false
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/cloudLinks/cloudLink1\",\"name\":\"cloudLink1\",\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\",\"properties\":{\"status\":\"Active\",\"linkedCloud\":\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"}}]}"
     }
   },
-  "AzVMwareCloudLink+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt?api-version=2021-06-01+1": {
+  "AzVMwareCloudLink+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks/tquwao?api-version=2021-12-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks/tquwao?api-version=2021-12-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "62" ],
-        "x-ms-client-request-id": [ "70ce9db1-feb3-45fd-9a09-d2ac757d79fb" ],
+        "x-ms-unique-id": [ "22" ],
+        "x-ms-client-request-id": [ "a4deb45e-b776-49a0-9407-9a78381b3b93" ],
         "CommandName": [ "Get-AzVMwareCloudLink" ],
         "FullCommandName": [ "Get-AzVMwareCloudLink_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -272,34 +104,21 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14962" ],
-        "x-ms-request-id": [ "5c0e413d-4852-4513-ac98-2846124a58ba" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "e74802ad-21ab-4b16-99f2-ccc09263c168" ],
-        "x-ms-routing-request-id": [ "NORTHEUROPE:20210729T035839Z:e74802ad-21ab-4b16-99f2-ccc09263c168" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: ECCA8BF1AE004EA394F07707C3AEE735 Ref B: SG2EDGE1419 Ref C: 2021-07-29T03:58:38Z" ],
-        "Date": [ "Thu, 29 Jul 2021 03:58:38 GMT" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:09:07 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "421" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "367" ],
+        "Content-Type": [ "application/json" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt\",\"name\":\"azslrt\",\"properties\":{\"linkedCloud\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2\",\"status\":\"Active\"},\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\"}",
-      "isContentBase64": false
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/cloudLinks/cloudLink1\",\"name\":\"cloudLink1\",\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\",\"properties\":{\"status\":\"Active\",\"linkedCloud\":\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"}}"
     }
   },
-
-  "AzVMwareCloudLink+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt?api-version=2021-06-01+1": {
+  "AzVMwareCloudLink+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks/tquwao?api-version=2021-12-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt?api-version=2021-06-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"linkedCloud\": \"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2\"\r\n  }\r\n}",
-      "isContentBase64": false,
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks/tquwao?api-version=2021-12-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"linkedCloud\": \"/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloudtpi0\"\r\n  }\r\n}",
       "Headers": {
       },
       "ContentHeaders": {
@@ -310,37 +129,25 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
-        "x-ms-request-id": [ "9127deb7-223c-4884-a9ed-0c470e02362d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "270e5018-144d-4f4e-9b01-432eff0e056f" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T040449Z:270e5018-144d-4f4e-9b01-432eff0e056f" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 14900445585A459DB63B7B5E188B9C82 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:04:47Z" ],
-        "Date": [ "Thu, 29 Jul 2021 04:04:49 GMT" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:09:07 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "421" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "367" ],
+        "Content-Type": [ "application/json" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt\",\"name\":\"azslrt\",\"properties\":{\"linkedCloud\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2\",\"status\":\"Active\"},\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\"}",
-      "isContentBase64": false
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/cloudLinks/cloudLink1\",\"name\":\"cloudLink1\",\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\",\"properties\":{\"status\":\"Active\",\"linkedCloud\":\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"}}"
     }
   },
-  "AzVMwareCloudLink+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt?api-version=2021-06-01+2": {
+  "AzVMwareCloudLink+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks/tquwao?api-version=2021-12-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks/tquwao?api-version=2021-12-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "118" ],
-        "x-ms-client-request-id": [ "9930dcfc-8ad1-4cd7-abb7-3344de4df874" ],
+        "x-ms-unique-id": [ "24" ],
+        "x-ms-client-request-id": [ "9b711318-0115-4159-9078-f12db4d49f17" ],
         "CommandName": [ "New-AzVMwareCloudLink" ],
         "FullCommandName": [ "New-AzVMwareCloudLink_CreateExpanded" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -352,37 +159,24 @@
     "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14941" ],
-        "x-ms-request-id": [ "1d8a2ebb-fae8-480d-9450-a67264bafe51" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "afb23338-49f6-40ae-bb78-5da003cf57a6" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T040520Z:afb23338-49f6-40ae-bb78-5da003cf57a6" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 4C7E066CA5D144F38CDD3EF4906F8924 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:05:20Z" ],
-        "Date": [ "Thu, 29 Jul 2021 04:05:19 GMT" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:09:37 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "421" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "367" ],
+        "Content-Type": [ "application/json" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt\",\"name\":\"azslrt\",\"properties\":{\"linkedCloud\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2\",\"status\":\"Active\"},\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\"}",
-      "isContentBase64": false
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/cloudLinks/cloudLink1\",\"name\":\"cloudLink1\",\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\",\"properties\":{\"status\":\"Active\",\"linkedCloud\":\"/subscriptions/12341234-1234-1234-1234-123412341234/resourceGroups/mygroup/providers/Microsoft.AVS/privateClouds/cloud2\"}}"
     }
   },
-
-  "AzVMwareCloudLink+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt?api-version=2021-06-01+1": {
+  "AzVMwareCloudLink+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks/tquwao?api-version=2021-12-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt?api-version=2021-06-01",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/cloudLinks/tquwao?api-version=2021-12-01",
       "Content": null,
-      "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "162" ],
-        "x-ms-client-request-id": [ "20dc4f0e-bcfd-4289-a556-58e130f10e8e" ],
+        "x-ms-unique-id": [ "25" ],
+        "x-ms-client-request-id": [ "64cab187-e417-419d-b35b-f74b03aed5bb" ],
         "CommandName": [ "Remove-AzVMwareCloudLink" ],
         "FullCommandName": [ "Remove-AzVMwareCloudLink_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -393,201 +187,15 @@
       }
     },
     "Response": {
-      "StatusCode": 202,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Location": [ "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationresults/cf553742-c046-47bb-8ff3-5b81a1ee1458?api-version=2021-06-01" ],
-        "Retry-After": [ "10" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/cf553742-c046-47bb-8ff3-5b81a1ee1458?api-version=2021-06-01" ],
-        "x-ms-request-id": [ "fcd405c7-3511-4ba5-9b7e-96c2722ba106" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "13d06fb4-a7e4-4592-963a-708a8a356a7e" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041230Z:13d06fb4-a7e4-4592-963a-708a8a356a7e" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 378E1AA9123D46BF8C4EDBFAFF73C86E Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:12:29Z" ],
-        "Date": [ "Thu, 29 Jul 2021 04:12:29 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "423" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt\",\"name\":\"azslrt\",\"properties\":{\"linkedCloud\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_2/providers/Microsoft.AVS/privateClouds/azps_test_cloud_2\",\"status\":\"Deleting\"},\"type\":\"Microsoft.AVS/privateClouds/cloudLinks\"}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareCloudLink+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/cf553742-c046-47bb-8ff3-5b81a1ee1458?api-version=2021-06-01+2": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/cf553742-c046-47bb-8ff3-5b81a1ee1458?api-version=2021-06-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "163" ],
-        "x-ms-client-request-id": [ "20dc4f0e-bcfd-4289-a556-58e130f10e8e" ],
-        "CommandName": [ "Remove-AzVMwareCloudLink" ],
-        "FullCommandName": [ "Remove-AzVMwareCloudLink_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
       "StatusCode": 200,
       "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "10" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14905" ],
-        "x-ms-request-id": [ "1ad73063-e87c-4f11-a885-e2381a56f9f9" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "1a5fcc06-59ca-4655-861c-18167e77d824" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041240Z:1a5fcc06-59ca-4655-861c-18167e77d824" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: D0BFA1CA6FEC472F9B41C8A828F749BA Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:12:40Z" ],
-        "Date": [ "Thu, 29 Jul 2021 04:12:41 GMT" ]
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:09:38 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "356" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
+        "Content-Length": [ "0" ]
       },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/cf553742-c046-47bb-8ff3-5b81a1ee1458\",\"name\":\"cf553742-c046-47bb-8ff3-5b81a1ee1458\",\"percentComplete\":0,\"startTime\":\"2021-07-29T04:08:43.4536734+00:00\",\"status\":\"Building\"}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareCloudLink+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/cf553742-c046-47bb-8ff3-5b81a1ee1458?api-version=2021-06-01+3": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/cf553742-c046-47bb-8ff3-5b81a1ee1458?api-version=2021-06-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "164" ],
-        "x-ms-client-request-id": [ "20dc4f0e-bcfd-4289-a556-58e130f10e8e" ],
-        "CommandName": [ "Remove-AzVMwareCloudLink" ],
-        "FullCommandName": [ "Remove-AzVMwareCloudLink_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "10" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14904" ],
-        "x-ms-request-id": [ "9910940f-dca2-4873-954e-863779c3b99d" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "03ecb44a-0b03-4942-a79b-8acd59913785" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041252Z:03ecb44a-0b03-4942-a79b-8acd59913785" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 7707C3382EB541B0BC8D4DEAD0336A5B Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:12:51Z" ],
-        "Date": [ "Thu, 29 Jul 2021 04:12:52 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "356" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/cf553742-c046-47bb-8ff3-5b81a1ee1458\",\"name\":\"cf553742-c046-47bb-8ff3-5b81a1ee1458\",\"percentComplete\":0,\"startTime\":\"2021-07-29T04:08:43.4536734+00:00\",\"status\":\"Building\"}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareCloudLink+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/cf553742-c046-47bb-8ff3-5b81a1ee1458?api-version=2021-06-01+4": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/cf553742-c046-47bb-8ff3-5b81a1ee1458?api-version=2021-06-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "165" ],
-        "x-ms-client-request-id": [ "20dc4f0e-bcfd-4289-a556-58e130f10e8e" ],
-        "CommandName": [ "Remove-AzVMwareCloudLink" ],
-        "FullCommandName": [ "Remove-AzVMwareCloudLink_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Retry-After": [ "10" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14903" ],
-        "x-ms-request-id": [ "50cd2ecd-40f4-4b0f-a81f-75b19fa74f5c" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "ca7acf25-a4ee-4cb8-8b31-708275c79a8e" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041302Z:ca7acf25-a4ee-4cb8-8b31-708275c79a8e" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: 518F60C09F34479A8ECB6D45BF7331F8 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:13:02Z" ],
-        "Date": [ "Thu, 29 Jul 2021 04:13:03 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "405" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"endTime\":\"2021-07-29T04:12:55.2884024+00:00\",\"id\":\"/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationstatuses/cf553742-c046-47bb-8ff3-5b81a1ee1458\",\"name\":\"cf553742-c046-47bb-8ff3-5b81a1ee1458\",\"percentComplete\":100,\"startTime\":\"2021-07-29T04:08:43.4536734+00:00\",\"status\":\"Succeeded\"}",
-      "isContentBase64": false
-    }
-  },
-  "AzVMwareCloudLink+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationresults/cf553742-c046-47bb-8ff3-5b81a1ee1458?api-version=2021-06-01+5": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/ba75e79b-dd95-4025-9dbf-3a7ae8dff2b5/resourceGroups/azps_test_group_1/providers/Microsoft.AVS/privateClouds/azps_test_cloud_1/cloudLinks/azslrt/operationresults/cf553742-c046-47bb-8ff3-5b81a1ee1458?api-version=2021-06-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "166" ],
-        "x-ms-client-request-id": [ "20dc4f0e-bcfd-4289-a556-58e130f10e8e" ],
-        "CommandName": [ "Remove-AzVMwareCloudLink" ],
-        "FullCommandName": [ "Remove-AzVMwareCloudLink_Delete" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "14902" ],
-        "x-ms-request-id": [ "d094003b-ac87-40ad-a0d2-9cadf80c1238" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "x-ms-correlation-request-id": [ "f9d28462-38f3-40ca-9998-58bc3856b269" ],
-        "x-ms-routing-request-id": [ "WESTEUROPE:20210729T041303Z:f9d28462-38f3-40ca-9998-58bc3856b269" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "X-Cache": [ "CONFIG_NOCACHE" ],
-        "X-MSEdge-Ref": [ "Ref A: F1F0369BAA894924AC58398E7081D746 Ref B: SG2EDGE1419 Ref C: 2021-07-29T04:13:03Z" ],
-        "Date": [ "Thu, 29 Jul 2021 04:13:03 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "4" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "bnVsbA==",
-      "isContentBase64": false
+      "Content": null
     }
   }
 }

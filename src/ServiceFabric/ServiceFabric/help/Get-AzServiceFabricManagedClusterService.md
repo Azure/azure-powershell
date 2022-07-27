@@ -37,29 +37,29 @@ This cmdlet will get the managed service details in the specified application an
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> $serviceName = "testService"
-PS C:\> Get-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+$serviceName = "testService"
+Get-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName
 ```
 
 This example gets the managed service resource details for the managed service "testService".
 
 ### Example 2
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> Get-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+Get-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName
 ```
 
 This example gets a list of the managed services under the application "testApp".
 
 ### Example 3
 ```powershell
-PS C:\> $resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applications/testApp/services/testService"
-PS C:\> Get-AzServiceFabricManagedClusterService -ResourceId $resourceId
+$resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applications/testApp/services/testService"
+Get-AzServiceFabricManagedClusterService -ResourceId $resourceId
 ```
 
 This example will get the managed service details with the ARM Resource ID specified, if it doesn't find the resource it will throw an exception.

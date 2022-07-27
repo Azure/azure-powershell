@@ -19,6 +19,43 @@
 -->
 
 ## Upcoming Release
+* Implemented `SupportsShouldProcess` for `Invoke-AzRestMethod`
+* Supported giving suggestions if an Azure PowerShell command cannot be found, for example when there is a typo in command name.
+
+## Version 2.9.0
+* Supported exporting and importing configurations by `Export-AzConfig` and `Import-AzConfig`.
+* Fixed an issue that Az.Accounts may fail to be imported in parallel PowerShell processes. [#18321] 
+* Fixed incorrect access token [#18105]
+* Upgraded version of Microsoft.Identity.Client for .NET Framework. [#18495]
+* Fixed an issue that Az.Accounts failed to be imported if multiple environment variables, which only differ by case, are set. [#18304]
+
+## Version 2.8.0
+* Added a preview feature allowing user to control the following configurations by using `Get-AzConfig`, `Update-AzConfig` and `Clear-AzConfig`:
+    - `DefaultSubscriptionForLogin`: Subscription name or GUID. Sets the default context for Azure PowerShell when logging in without specifying a subscription.
+    - `DisplayBreakingChangeWarning`: Controls if warning messages for breaking changes are displayed or suppressed.
+    - `EnableDataCollection`: When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience.
+* Upgraded System.Reflection.DispatchProxy on Windows PowerShell [#17856]
+* Upgraded Azure.Identity to 1.6.0 and Azure.Core to 1.24.0
+
+## Version 2.7.6
+* Upgraded Microsoft.Rest.ClientRuntime to 2.3.24
+
+## Version 2.7.5
+* Added `SshCredentialFactory` to support get ssh credential of vm from msal.
+* Fixed the bug of cmdlet fails when -DefaultProfile is set to service principal login context. [#16617]
+* Fixed the issue that authorization does not work in Dogfood environment
+
+## Version 2.7.4
+* Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp2.1 [#17428]
+
+## Version 2.7.3
+* Fixed the issue that authorization does not work in customized environment [#17157]
+* Enabled Continue Access Evaluation for MSGraph
+* Improved error message when login is blocked by AAD
+* Improved error message when silent reauthentication failed
+* Loaded System.Private.ServiceModel and System.ServiceModel.Primitives on Windows PowerShell [#17087]
+
+## Version 2.7.2
 * Removed legacy assembly System.Private.ServiceModel and System.ServiceModel.Primitives [#16063]
 
 ## Version 2.7.1
@@ -194,7 +231,7 @@
 * Updated Add-AzEnvironment and Set-AzEnvironment to accept parameters AzureAttestationServiceEndpointResourceId and AzureAttestationServiceEndpointSuffix
 
 ## Version 1.6.6
-* Add client-side telemetry info for Az 4.0 preview
+* Add client-side telemetry info for Az 4.0 `preview`
 
 ## Version 1.6.5
 * Update references in .psd1 to use relative path

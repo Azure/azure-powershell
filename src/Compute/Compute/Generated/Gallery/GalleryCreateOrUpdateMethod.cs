@@ -47,6 +47,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string galleryName = this.Name;
                     Gallery gallery = new Gallery();
                     gallery.Location = this.Location;
+                    if (this.IsParameterBound(c => c.Permission)){
+                        gallery.SharingProfile = new SharingProfile();
+                        gallery.SharingProfile.Permissions = this.Permission;
+                    }
 
                     if (this.IsParameterBound(c => c.Description))
                     {
@@ -102,6 +106,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "This property allows you to specify the permission of sharing gallery. Possible values are: 'Private' and 'Groups'.")]
+        [PSArgumentCompleter("Private","Groups")]
+        public string Permission { get; set; }
     }
 
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Gallery", DefaultParameterSetName = "DefaultParameter", SupportsShouldProcess = true)]
@@ -153,8 +164,108 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
+                    if (this.IsParameterBound(c => c.Permission))
+                    {
+                        if (gallery.SharingProfile == null)
+                        {
+                            gallery.SharingProfile = new SharingProfile();
+                        }
+                        gallery.SharingProfile.Permissions = this.Permission;
+                    }
 
+
+                    SharingUpdate sharingUpdate = new SharingUpdate();
+                    if (this.Share.IsPresent)
+                    {
+                        if (this.Reset.IsPresent)
+                        {
+                            // if sub or tenant is present return error 
+                            if (this.IsParameterBound(c => c.Subscription) || this.IsParameterBound(c => c.Tenant))
+                            {
+                                throw new Exception("Parameter '-Reset' cannot be used with parameters '-Tenant' or '-Subscription'.");
+                            }
+                            else
+                            {
+                                sharingUpdate.OperationType = "Reset";
+                            }
+                        }
+                        if (this.IsParameterBound(c => c.Subscription))
+                        {
+                            if (sharingUpdate.Groups == null)
+                            {
+                                sharingUpdate.Groups = new List<SharingProfileGroup>();
+                            }
+                            SharingProfileGroup sharingProfile = new SharingProfileGroup();
+                            sharingProfile.Type = "Subscriptions";
+                            sharingProfile.Ids = new List<string>();
+                            foreach (var id in this.Subscription)
+                            {
+                                sharingProfile.Ids.Add(id);
+                            }
+                            sharingUpdate.Groups.Add(sharingProfile);
+                            sharingUpdate.OperationType = "Add";
+                        }
+                        if (this.IsParameterBound(c => c.Tenant))
+                        {
+                            if (sharingUpdate.Groups == null)
+                            {
+                                sharingUpdate.Groups = new List<SharingProfileGroup>();
+                            }
+                            SharingProfileGroup sharingProfile = new SharingProfileGroup();
+                            sharingProfile.Type = "AADTenants";
+                            sharingProfile.Ids = new List<string>();
+                            foreach (var id in this.Tenant)
+                            {
+                                sharingProfile.Ids.Add(id);
+                            }
+                            sharingUpdate.Groups.Add(sharingProfile);
+                            sharingUpdate.OperationType = "Add";
+                        }
+                        if (this.IsParameterBound(c => c.RemoveTenant))
+                        {
+                            if (sharingUpdate.Groups == null)
+                            {
+                                sharingUpdate.Groups = new List<SharingProfileGroup>();
+                            }
+                            SharingProfileGroup sharingProfile = new SharingProfileGroup();
+                            sharingProfile.Type = "AADTenants";
+                            sharingProfile.Ids = new List<string>();
+                            foreach (var id in this.RemoveTenant)
+                            {
+                                sharingProfile.Ids.Add(id);
+                            }
+                            sharingUpdate.Groups.Add(sharingProfile);
+                            sharingUpdate.OperationType = "Remove";
+                        }
+                        if (this.IsParameterBound(c => c.RemoveSubscription))
+                        {
+                            if (sharingUpdate.Groups == null)
+                            {
+                                sharingUpdate.Groups = new List<SharingProfileGroup>();
+                            }
+                            SharingProfileGroup sharingProfile = new SharingProfileGroup();
+                            sharingProfile.Type = "Subscriptions";
+                            sharingProfile.Ids = new List<string>();
+                            foreach (var id in this.RemoveSubscription)
+                            {
+                                sharingProfile.Ids.Add(id);
+                            }
+                            sharingUpdate.Groups.Add(sharingProfile);
+                            sharingUpdate.OperationType = "Remove";
+                        }
+
+                    }
+                    else if (this.IsParameterBound(c => c.Subscription) || this.IsParameterBound(c => c.Tenant) || this.Reset.IsPresent || this.IsParameterBound(c => c.RemoveSubscription) || this.IsParameterBound(c => c.RemoveTenant))
+                    {
+                        throw new Exception("Parameters '-Subscription', '-Tenant', '-RemoveSubscription', '-RemoveTenant', and '-Reset' must be used with '-Share' parameter.");
+                    }
+                    
                     var result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
+                    if (this.Share.IsPresent)
+                    {
+                        GallerySharingProfileClient.Update(resourceGroupName, galleryName, sharingUpdate);
+                        result = GalleriesClient.Get(ResourceGroupName, galleryName, "Permissions");
+                    }
                     var psObject = new PSGallery();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<Gallery, PSGallery>(result, psObject);
                     WriteObject(psObject);
@@ -205,5 +316,48 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public Hashtable Tag { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "This property allows you to specify the permission of the sharing gallery. Possible values are: 'Private' and 'Groups'.")]
+        [PSArgumentCompleter("Private", "Groups")]
+        public string Permission { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A list of subscription IDs the gallery is aimed to be shared to.")]
+        public string[] Subscription { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A list of tenant IDs the gallery is aimed to be shared to.")]
+        public string[] Tenant { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A list of subscription IDs the gallery will stop sharing to.")]
+        public string[] RemoveSubscription { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "A list of tenant IDs the gallery will stop sharing to.")]
+        public string[] RemoveTenant { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Update sharing profile of the gallery.")]
+        public SwitchParameter Share { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Resets the sharing permission of the gallery to 'Private'.")]
+        public SwitchParameter Reset { get; set; }
     }
 }

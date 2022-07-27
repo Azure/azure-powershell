@@ -36,7 +36,7 @@ The **Reset-AzVpnSiteLinkConnection** cmdlet resets your VPN Link Connection bas
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzVpnSiteLinkConnection -ResourceGroupName test-rg -VpnGatewayName test-gateway -VpnConnectionName test-connection -ResourceName test-linkConnection
+Reset-AzVpnSiteLinkConnection -ResourceGroupName test-rg -VpnGatewayName test-gateway -VpnConnectionName test-connection -ResourceName test-linkConnection
 ```
 
 Resets the VPN Site Link Connection with the name "test-linkConnection" within the resource group "test-rg"

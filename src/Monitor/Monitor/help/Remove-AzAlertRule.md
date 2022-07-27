@@ -26,8 +26,11 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 ## EXAMPLES
 
 ### Example 1: Remove an alert rule
+```powershell
+Remove-AzAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
 ```
-PS C:\>Remove-AzAlertRule -ResourceGroup "Default-Web-CentralUS" -Name "myalert-7da64548-214d-42ca-b12b-b245bb8f0ac8"
+
+```output
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 2c6c159b-0e73-4a01-a67b-c32c1a0008a3                                                                                 OK

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 9425D38D-5978-421F-A438-4463068C4628
@@ -32,8 +32,11 @@ The **Remove-AzDataFactoryLinkedService** cmdlet removes a linked service from A
 ## EXAMPLES
 
 ### Example 1: Remove a linked service
+```powershell
+Remove-AzDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceTest"
 ```
-PS C:\>Remove-AzDataFactoryLinkedService -ResourceGroupName "ADF" -DataFactoryName "WikiADF" -Name "LinkedServiceTest"
+
+```output
 Confirm
 Are you sure you want to remove linked service 'LinkedServiceTest' in data factory 'WikiADF'? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y

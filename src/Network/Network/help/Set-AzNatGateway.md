@@ -40,11 +40,11 @@ Update Nat Gateway Resource with Public Ip Address, Public Ip Prefix and IdleTim
 
 ### Example 1
 ```powershell
-PS C:\> $nGateway = Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "ng1"
-PS C:\> $pipArray = $pip, $pip2
-PS C:\> $natUpdate = Set-AzNatGateway -InputObject $nGateway -IdleTimeoutInMinutes 5 -PublicIpAddress $pipArray
-PS C:\> $natUpdate = Set-AzNatGateway -ResourceGroupName "natgateway_test" -Name "ng1" -PublicIpAddress $pipArray
-PS C:\> $natUpdate = Set-AzNatGateway -ResourceId "natgateway_id" -PublicIpAddress $pipArray
+$nGateway = Get-AzNatGateway -ResourceGroupName "natgateway_test" -Name "ng1"
+$pipArray = $pip, $pip2
+$natUpdate = Set-AzNatGateway -InputObject $nGateway -IdleTimeoutInMinutes 5 -PublicIpAddress $pipArray
+$natUpdate = Set-AzNatGateway -ResourceGroupName "natgateway_test" -Name "ng1" -PublicIpAddress $pipArray
+$natUpdate = Set-AzNatGateway -ResourceId "natgateway_id" -PublicIpAddress $pipArray
 ```
 
 ## PARAMETERS

@@ -24,10 +24,12 @@ Create a in-memory object for QueryFilter
 
 ### Example 1: Create a filter object of query for cost management export
 ```powershell
-PS C:\> $orDimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
-PS C:\> $orTag = New-AzCostManagementQueryComparisonExpressionObject -Name 'Environment' -Value @('UAT', 'Prod')
-PS C:\> New-AzCostManagementQueryFilterObject -or @((New-AzCostManagementQueryFilterObject -Dimension $orDimension), (New-AzCostManagementQueryFilterObject -Tag $orTag))
+$orDimension = New-AzCostManagementQueryComparisonExpressionObject -Name 'ResourceLocation' -Value @('East US', 'West Europe')
+$orTag = New-AzCostManagementQueryComparisonExpressionObject -Name 'Environment' -Value @('UAT', 'Prod')
+New-AzCostManagementQueryFilterObject -or @((New-AzCostManagementQueryFilterObject -Dimensions $orDimension), (New-AzCostManagementQueryFilterObject -Tag $orTag))
+```
 
+```output
 And       :
 Dimension : Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryComparisonExpression
 Not       : Microsoft.Azure.PowerShell.Cmdlets.Cost.Models.Api20200601.QueryFilter
@@ -148,11 +150,11 @@ AND <IQueryFilter[]>: The logical "AND" expression. Must have at least 2 items.
   - `[Or <IQueryFilter[]>]`: The logical "OR" expression. Must have at least 2 items.
   - `[Tag <IQueryComparisonExpression>]`: Has comparison expression for a tag
 
-DIMENSIONS <IQueryComparisonExpression>: Has comparison expression for a dimensions.
+DIMENSIONS `<IQueryComparisonExpression>`: Has comparison expression for a dimensions.
   - `Name <String>`: The name of the column to use in comparison.
   - `Value <String[]>`: Array of values to use for comparison
 
-NOT <IQueryFilter>: The logical "NOT" expression.
+NOT `<IQueryFilter>`: The logical "NOT" expression.
   - `[And <IQueryFilter[]>]`: The logical "AND" expression. Must have at least 2 items.
   - `[Dimensions <IQueryComparisonExpression>]`: Has comparison expression for a dimension
     - `Name <String>`: The name of the column to use in comparison.
@@ -170,7 +172,7 @@ OR <IQueryFilter[]>: The logical "OR" expression. Must have at least 2 items.
   - `[Or <IQueryFilter[]>]`: The logical "OR" expression. Must have at least 2 items.
   - `[Tag <IQueryComparisonExpression>]`: Has comparison expression for a tag
 
-TAG <IQueryComparisonExpression>: Has comparison expression for a tag.
+TAG `<IQueryComparisonExpression>`: Has comparison expression for a tag.
   - `Name <String>`: The name of the column to use in comparison.
   - `Value <String[]>`: Array of values to use for comparison
 

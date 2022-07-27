@@ -33,7 +33,10 @@ This cmdlet is also supported by the SQL Instance Stretch Database service on Az
 
 ### Example 1: Get all deleted database backups on a server
 ```powershell
-PS C:\>Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -InstanceName "ContosoServer"
+Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -InstanceName "ContosoServer"
+```
+
+```output
 DeletionDate         : 2019-03-03 12:00:17 AM
 ResourceGroupName    : ContosoResourceGroup
 ManagedInstanceName  : ContosoServer
@@ -69,7 +72,10 @@ This command gets all deleted database backups on a server.
 
 ### Example 2: Get a specified deleted database backup
 ```powershell
-PS C:\>Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -InstanceName "ContosoServer" -DatabaseName "DB1"
+Get-AzSqlDeletedInstanceDatabaseBackup -ResourceGroupName "ContosoResourceGroup" -InstanceName "ContosoServer" -DatabaseName "DB1"
+```
+
+```output
 DeletionDate         : 2019-03-03 12:00:17 AM
 ResourceGroupName    : ContosoResourceGroup
 ManagedInstanceName  : ContosoServer

@@ -50,8 +50,10 @@ update cluster
 
 ### Example 1
 ```powershell
-Update-AzOperationalInsightsCluster -ResourceGroupName azps-test-group -ClusterName yabo-cluster10 -Location eastus -SkuName CapacityReservation -SkuCapacity 1200 -KeyVaultUri {uri} -KeyName {key-name} -KeyVersion {version}
+Update-AzOperationalInsightsCluster -ResourceGroupName "rg-name" -ClusterName "cluster-name" -SkuName CapacityReservation -SkuCapacity 1200 -KeyVaultUri "uri" -KeyName "key-name" -KeyVersion "version"
+```
 
+```output
 Identity						: Microsoft.Azure.Commands.OperationalInsights.Models.PSIdentity
 Sku								: Microsoft.Azure.Commands.OperationalInsights.Models.PSClusterSku
 ClusterId						: {cluster-id}

@@ -56,7 +56,7 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
         [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, HelpMessage = "Sku Capacity")]
         [Parameter(Mandatory = false, ParameterSetName = UpdateByResourceIdParameterSet, HelpMessage = "Sku Capacity")]
         [ValidateNotNullOrEmpty]
-        public long SkuCapacity { get; set; }
+        public long? SkuCapacity { get; set; }
 
         [Parameter(Mandatory = false, ParameterSetName = AllParameterSet)]
         [Parameter(Mandatory = false, ParameterSetName = UpdateByNameParameterSet, HelpMessage = "Key Vault Uri")]
@@ -120,8 +120,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
             }
             else
             {
-                parameters.KeyVaultProperties = new PSKeyVaultProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion);
-                parameters.Sku = new PSClusterSku(this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString(), this.SkuCapacity);
+                parameters.KeyVaultProperties = PSKeyVaultProperties.CreateProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion);
+                parameters.Sku = this.SkuCapacity == null ? null :  new PSClusterSku(this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString(), this.SkuCapacity);
                 parameters.Tags = this.Tag;
                 parameters.Identity = new PSIdentity(IdentityType);
                 parameters.BillingType = BillingType;

@@ -36,12 +36,14 @@ Gets a ExpressRouteGateway resource using ResourceGroupName and GatewayName OR l
 ### Example 1
 
 ```powershell
-PS C:\> New-AzResourceGroup -Location "West Central US" -Name "testRG"
-PS C:\> $virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West Central US"
-PS C:\> $virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
-PS C:\> New-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
-PS C:\> Get-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw"
+New-AzResourceGroup -Location "West Central US" -Name "testRG"
+$virtualWan = New-AzVirtualWan -ResourceGroupName testRG -Name myVirtualWAN -Location "West Central US"
+$virtualHub = New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.0.1/24"
+New-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw" -VirtualHubId $virtualHub.Id -MinScaleUnits 2
+Get-AzExpressRouteGateway -ResourceGroupName "testRG" -Name "testExpressRoutegw"
+```
 
+```output
 ResourceGroupName   : testRG
 Name                : testExpressRoutegw
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw
@@ -61,8 +63,10 @@ It then gets the ExpressRouteGateway using its resourceGroupName and the gateway
 ### Example 2
 
 ```powershell
-PS C:\> Get-AzExpressRouteGateway -Name test*
+Get-AzExpressRouteGateway -Name test*
+```
 
+```output
 ResourceGroupName   : testRG
 Name                : testExpressRoutegw1
 Id                  : /subscriptions/{subscriptionId}/resourceGroups/testRG/providers/Microsoft.Network/ExpressRouteGateways/testExpressRoutegw1

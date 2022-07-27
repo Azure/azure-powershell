@@ -38,7 +38,7 @@ New-AzExpressRoutePortLOA cmdlet downloads a letter of authorization document in
 
 ### Example 1
 ```powershell
-PS C:\> New-AzExpressRoutePortLOA -ResourceGroupName myRg -PortName myPort -CustomerName Contoso -Destination loa.pdf
+New-AzExpressRoutePortLOA -ResourceGroupName myRg -PortName myPort -CustomerName Contoso -Destination loa.pdf
 ```
 
 Download the letter of authorization document for express route port 'myPort' and store it in file 'loa.pdf'.

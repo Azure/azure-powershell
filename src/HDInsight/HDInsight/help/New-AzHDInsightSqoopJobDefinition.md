@@ -24,12 +24,12 @@ The **New-AzHDInsightSqoopJobDefinition** cmdlet defines a Sqoop job object for 
 ## EXAMPLES
 
 ### Example 1: Create a Sqoop job definition
-```
-PS C:\># Cluster info
-PS C:\>$clusterName = "your-hadoop-001"
-PS C:\>$clusterCreds = Get-Credential
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
-PS C:\>New-AzHDInsightSqoopJobDefinition -StatusFolder $statusFolder `
+New-AzHDInsightSqoopJobDefinition -StatusFolder $statusFolder `
             -Command $sqoopCommand `
         | Start-AzHDInsightJob -ClusterName $clusterName `
             -ClusterCredential $clusterCreds

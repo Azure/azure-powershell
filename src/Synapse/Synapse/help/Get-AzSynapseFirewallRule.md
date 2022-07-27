@@ -32,22 +32,22 @@ If you do not specify a rule name, this cmdlet gets all rules.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseFirewallRule -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace
+Get-AzSynapseFirewallRule -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace
 ```
 
 This command gets all firewall rules under a workspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseFirewallRule -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoFirewallRule
+Get-AzSynapseFirewallRule -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoFirewallRule
 ```
 
 This command gets the firewall rule under workspace ContosoWorkspace with name ContosoFirewallRule.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseFirewallRule
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseFirewallRule
 ```
 
 This command gets all firewall rules under a workspace through pipeline.

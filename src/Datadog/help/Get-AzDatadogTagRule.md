@@ -36,8 +36,10 @@ Get a tag rule set for a given monitor resource.
 
 ### Example 1: List all tag rules set for a given monitor resource
 ```powershell
-PS C:\> Get-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog
+Get-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog
+```
 
+```output
 Name    Type
 ----    ----
 default microsoft.Datadog/monitors/tagrules
@@ -47,8 +49,10 @@ This command lists all tag rules set for a given monitor resource.
 
 ### Example 2: Get a tag rule set for a given monitor resource
 ```powershell
-PS C:\> Get-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'default'
+Get-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'default'
+```
 
+```output
 Name    Type
 ----    ----
 default microsoft.Datadog/monitors/tagrules
@@ -58,8 +62,10 @@ This command gets a tag rule set for a given monitor resource.
 
 ### Example 3: Get a tag rule set for a given monitor resource by pipeline
 ```powershell
-PS C:\> Get-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'default' | Get-AzDatadogTagRule
+Get-AzDatadogTagRule -ResourceGroupName azure-rg-Datadog -MonitorName Datadog -Name 'default' | Get-AzDatadogTagRule
+```
 
+```output
 Name    Type
 ----    ----
 default microsoft.Datadog/monitors/tagrules
@@ -181,7 +187,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDatadogIdentity>: Identity Parameter
+INPUTOBJECT `<IDatadogIdentity>`: Identity Parameter
   - `[ConfigurationName <String>]`: Configuration name
   - `[Id <String>]`: Resource identity path
   - `[MonitorName <String>]`: Monitor resource name

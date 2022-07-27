@@ -35,35 +35,35 @@ INPUTOBJECT <IAppConfigurationIdentity>: Identity Parameter
   [ResourceGroupName <String>]: The name of the resource group to which the container registry belongs.
   [SubscriptionId <String>]: The Microsoft Azure subscription ID.
 .Link
-https://docs.microsoft.com/en-us/powershell/module/az.appconfiguration/update-azappconfigurationstore
+https://docs.microsoft.com/powershell/module/az.appconfiguration/update-azappconfigurationstore
 .LINK
-[Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/en-us/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-4.4.0)
-[New-AzUserAssignedIdentity](https://docs.microsoft.com/en-us/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
+[Set-AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy?view=azps-4.4.0)
+[New-AzUserAssignedIdentity](https://docs.microsoft.com/powershell/module/az.managedserviceidentity/new-azuserassignedidentity?view=azps-4.4.0)
 #>
 function Update-AzAppConfigurationStore {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStore])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
         [System.String]
         # The name of the configuration store.
         ${Name},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory)]
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
         [System.String]
         # The name of the resource group to which the container registry belongs.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded')]
+        [Parameter(ParameterSetName='UpdateExpanded')]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The Microsoft Azure subscription ID.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.IAppConfigurationIdentity]
         # Identity Parameter
@@ -106,7 +106,7 @@ function Update-AzAppConfigurationStore {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes = ([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStoreUpdateParametersTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20200601.IConfigurationStoreUpdateParametersTags]))]
         [System.Collections.Hashtable]
         # The ARM resource tags.
         ${Tag},

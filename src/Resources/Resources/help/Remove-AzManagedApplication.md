@@ -30,9 +30,9 @@ The **Remove-AzManagedApplication** cmdlet removes a managed application
 ## EXAMPLES
 
 ### Example 1: Remove managed application by resource ID
-```
-PS C:\>$Application = Get-AzManagedApplication -Name "myApp" -ResourceGroupName "myRG"
-PS C:\>Remove-AzManagedApplication -Id $Application.ResourceId -Force
+```powershell
+$Application = Get-AzManagedApplication -Name "myApp" -ResourceGroupName "myRG"
+Remove-AzManagedApplication -Id $Application.ResourceId -Force
 ```
 
 The first command gets a managed application named myApp by using the Get-AzManagedApplication cmdlet.

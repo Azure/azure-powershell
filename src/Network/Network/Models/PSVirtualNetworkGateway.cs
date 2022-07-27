@@ -32,6 +32,9 @@ namespace Microsoft.Azure.Commands.Network.Models
         public bool EnableBgp { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
+        public bool DisableIPsecProtection { get; set; }
+
+        [Ps1Xml(Target = ViewControl.Table)]
         public bool EnablePrivateIpAddress { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]

@@ -33,7 +33,7 @@ Purges data in an Log Analytics workspace by a set of user-defined filters
 
 ### Example 1
 ```powershell
-PS C:\> New-AzOperationalInsightsPurgeWorkspace -ResourceGroupName dabenham-dev -WorkspaceName dabenham-troubleShootingE2E -Column "Column_Name" -OperatorProperty "Operator" -Value "Value" -key "Key" -Table "Table_Name"
+New-AzOperationalInsightsPurgeWorkspace -ResourceGroupName dabenham-dev -WorkspaceName dabenham-troubleShootingE2E -Column "Column_Name" -OperatorProperty "Operator" -Value "Value" -key "Key" -Table "Table_Name"
 ```
 
 Purges data in an Log Analytics workspace's table

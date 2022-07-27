@@ -24,8 +24,10 @@ The Get-AzIotSecurityAnalytics cmdlet returns a set of security analytics of a s
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzIotSecurityAnalytics -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Default
+Get-AzIotSecurityAnalytics -ResourceGroupName "MyResourceGroup" -SolutionName "MySolution" -Default
+```
 
+```output
 Id: "/subscriptions/XXXXXXXX-XXXX-XXXXX-XXXX-XXXXXXXXXXXX/resourceGroups/MyResourceGroup/providers/Microsoft.Security/iotSecuritySolutions/MySolution/analyticsModels/default"
 Name: "default"
 Type: "Microsoft.Security/IoTSecuritySolutionAnalyticsModel"

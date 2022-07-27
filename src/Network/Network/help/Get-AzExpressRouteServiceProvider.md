@@ -24,7 +24,7 @@ providers and their attributes. Attribute include location and bandwidth options
 ## EXAMPLES
 
 ### Example 1: Get a list of service provider with locations in "Silicon Valley"
-```
+```powershell
 Get-AzExpressRouteServiceProvider |
    Where-Object PeeringLocations -Contains "Silicon Valley" |
    Select-Object Name

@@ -24,7 +24,7 @@ The **Set-AzApplicationGateway** cmdlet updates a route filter
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzRouteFilter -RouteFilter $rf
+Set-AzRouteFilter -RouteFilter $rf
 ```
 
 This command updates the route filter with settings in the $rf variable.

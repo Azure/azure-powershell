@@ -30,8 +30,8 @@ The **Restart-AzRecoveryServicesAsrJob** cmdlet restarts an Azure Site Recovery 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Restart-AzRecoveryServicesAsrJob -Job $Job
+```powershell
+$currentJob = Restart-AzRecoveryServicesAsrJob -Job $Job
 ```
 
 Restarts the specified ASR job and returns the updated ASR job object of the ASR job.

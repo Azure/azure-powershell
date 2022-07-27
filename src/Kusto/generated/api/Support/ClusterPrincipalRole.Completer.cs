@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AllDatabasesAdmin".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AllDatabasesAdmin", "AllDatabasesAdmin", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllDatabasesAdmin");
+                yield return new global::System.Management.Automation.CompletionResult("'AllDatabasesAdmin'", "AllDatabasesAdmin", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllDatabasesAdmin");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "AllDatabasesViewer".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("AllDatabasesViewer", "AllDatabasesViewer", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllDatabasesViewer");
+                yield return new global::System.Management.Automation.CompletionResult("'AllDatabasesViewer'", "AllDatabasesViewer", global::System.Management.Automation.CompletionResultType.ParameterValue, "AllDatabasesViewer");
             }
         }
     }

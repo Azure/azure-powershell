@@ -14,13 +14,13 @@ while(-not $mockingPath) {
 Describe 'New-AzDatabricksWorkspace' {
     It 'CreateExpanded' {
         $name = "databricks-test-" + $env.rstr4
-        $res = New-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup -Location eastus -VirtualNetworkId $env.virtualNetwork -PrivateSubnetName priv -PublicSubnetName pub -Sku standard
+        $res = New-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup -Location eastus -VirtualNetworkId $env.virtualNetwork -PrivateSubnetName $env.PrivSubNet -PublicSubnetName $env.PubSubNet
         $res.Name | Should -Be $name
         { Remove-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
     }
     It 'CreateExpandedWithEncryption' {
         $name = "databricks-test01-" + $env.rstr4
-        $res = New-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup -Location eastus -VirtualNetworkId $env.virtualNetwork -PrivateSubnetName priv -PublicSubnetName pub -Sku premium -RequireInfrastructureEncryption
+        $res = New-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup -Location eastus -Sku premium -RequireInfrastructureEncryption
         $res.RequireInfrastructureEncryption | Should -Be $True
         { Remove-AzDatabricksWorkspace -Name $name -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
     }

@@ -33,8 +33,10 @@ Creates a new CosmosDB Gremlin Database.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzCosmosDBGremlinDatabase -AccountName myAccountName -Name myDatabaseName -ResourceGroupName myResourcegroupName
+New-AzCosmosDBGremlinDatabase -AccountName myAccountName -Name myDatabaseName -ResourceGroupName myResourcegroupName
+```
 
+```output
 Name     : myDatabaseName
 Id       : /subscriptions/mySubscriptionId/resourceGroups/myResourcegroupName/providers/Microsoft.DocumentDB/databaseAccounts/myAccountName/gremlinDatabases/myDatabaseName
 Location :

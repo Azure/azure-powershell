@@ -1,0 +1,17 @@
+﻿{
+  "if": {
+    "allOf": [
+      {
+        "field": "type",
+        "equals": "Microsoft.Network/networkSecurityGroups"
+      },
+      {
+        "field": "name",
+        "like": "pstests1*"
+      }
+    ]
+  },
+  "then": {
+    "effect": "audit"
+  }
+}

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 online version: https://docs.microsoft.com/powershell/module/az.datalakestore/add-azdatalakestorevirtualnetworkrule
@@ -24,8 +24,10 @@ The **Add-AzDataLakeStoreVirtualNetworkRule** cmdlet adds a virtual network rule
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET" -SubnetId "testId"
+Add-AzDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET" -SubnetId "testId"
+```
 
+```output
 ResourceGroupName                :
 AccountName                      :
 VirtualNetworkRuleName           : myVNET

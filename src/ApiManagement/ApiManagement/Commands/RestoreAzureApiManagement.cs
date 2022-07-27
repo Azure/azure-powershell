@@ -19,6 +19,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using Microsoft.WindowsAzure.Storage;
     using ResourceManager.Common.ArgumentCompleters;
     using System.Management.Automation;
+    using SdkModels = Microsoft.Azure.Management.ApiManagement.Models;
 
     [Cmdlet("Restore", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement"), OutputType(typeof(PsApiManagement))]
     public class RestoreAzureApiManagement : AzureApiManagementCmdletBase
@@ -64,30 +65,64 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The type of access to be used for the storage account. The default value is AccessKey.")]
+        [PSArgumentCompleter(SdkModels.AccessType.AccessKey, SdkModels.AccessType.SystemAssignedManagedIdentity, SdkModels.AccessType.UserAssignedManagedIdentity)]
+        public string AccessType { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The Client ID of user assigned managed identity. Required only if accessType is set to UserAssignedManagedIdentity.")]
+        public string IdentityClientId { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Sends restored PsApiManagement to pipeline if operation succeeds.")]
         public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            CloudStorageAccount account = null;
-            if (CloudStorageAccount.TryParse(StorageContext.ConnectionString, out account))
+            if (string.IsNullOrWhiteSpace(AccessType))
             {
-                var apimanagementResource = Client.RestoreApiManagement(
-                    ResourceGroupName,
-                    Name,
-                    account.Credentials.AccountName,
-                    account.Credentials.ExportBase64EncodedKey(),
-                    SourceContainerName,
-                    SourceBlobName);
+                this.AccessType = SdkModels.AccessType.AccessKey;
+            }
 
-                if (PassThru.IsPresent)
+            PsApiManagement apiManagement = null;
+            if (this.AccessType == SdkModels.AccessType.AccessKey)
+            {
+                CloudStorageAccount account = null;
+                if (CloudStorageAccount.TryParse(StorageContext.ConnectionString, out account))
                 {
-                    this.WriteObject(apimanagementResource);
+                    apiManagement = Client.RestoreApiManagement(
+                        ResourceGroupName,
+                        Name,
+                        account.Credentials.AccountName,
+                        account.Credentials.ExportBase64EncodedKey(),
+                        SourceContainerName,
+                        SourceBlobName,
+                        AccessType,
+                        IdentityClientId);
+                }
+                else
+                {
+                    throw new PSArgumentException("Failed to parse the storage connection string.", nameof(StorageContext));
                 }
             }
-            else
+            else 
             {
-                throw new PSArgumentException("Failed to parse the storage connection string.", nameof(StorageContext));
+                apiManagement = Client.RestoreApiManagement(
+                        ResourceGroupName,
+                        Name,
+                        StorageContext.StorageAccountName,
+                        null,
+                        SourceContainerName,
+                        SourceBlobName,
+                        AccessType,
+                        IdentityClientId);
+            }
+
+            if (PassThru.IsPresent && apiManagement != null)
+            {
+                this.WriteObject(apiManagement);
             }
         }
     }

@@ -41,6 +41,11 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor.Utilities
         PowerShell ConsoleRuntime { get; }
 
         /// <summary>
+        /// Gets the current PowerShell host name.
+        /// </summary>
+        public string HostName { get; }
+
+        /// <summary>
         /// Executes the PowerShell cmdlet in the current powershell session.
         /// </summary>
         IList<T> ExecuteScript<T>(string contents);

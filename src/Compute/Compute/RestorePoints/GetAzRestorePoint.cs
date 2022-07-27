@@ -51,6 +51,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [Alias("RestorePointName")]
         public string Name { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter InstanceView { get; set; }
+
 
         public override void ExecuteCmdlet()
         {
@@ -60,11 +65,22 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 string resourceGroup = this.ResourceGroupName;
                 string restorePointName = this.Name;
                 string restorePointCollectionName = this.RestorePointCollectionName;
+                bool instanceViewTrue = this.InstanceView.IsPresent;
 
-                var result = RestorePointClient.Get(resourceGroup, restorePointCollectionName, restorePointName);
-                var psObject = new PSRestorePoint();
-                ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePoint, PSRestorePoint>(result, psObject);
-                WriteObject(psObject);
+                if (instanceViewTrue == true)
+                {
+                    var result = RestorePointClient.Get(resourceGroup, restorePointCollectionName, restorePointName, "InstanceView");
+                    var psObject = new PSRestorePoint();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePoint, PSRestorePoint>(result, psObject);
+                    WriteObject(psObject);
+                }
+                else
+                {
+                    var result = RestorePointClient.Get(resourceGroup, restorePointCollectionName, restorePointName);
+                    var psObject = new PSRestorePoint();
+                    ComputeAutomationAutoMapperProfile.Mapper.Map<RestorePoint, PSRestorePoint>(result, psObject);
+                    WriteObject(psObject);
+                }
             });
         }
     }

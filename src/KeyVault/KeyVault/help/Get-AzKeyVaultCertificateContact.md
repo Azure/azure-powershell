@@ -38,8 +38,10 @@ The **Get-AzKeyVaultCertificateContact** cmdlet gets contacts that are registere
 
 ### Example 1: Get all certificate contacts
 ```powershell
-PS C:\> $Contacts = Get-AzKeyVaultCertificateContact -VaultName "Contoso"
+$Contacts = Get-AzKeyVaultCertificateContact -VaultName "Contoso"
+```
 
+```output
 Email                   VaultName
 -----                   ---------
 username@microsoft.com  Contoso

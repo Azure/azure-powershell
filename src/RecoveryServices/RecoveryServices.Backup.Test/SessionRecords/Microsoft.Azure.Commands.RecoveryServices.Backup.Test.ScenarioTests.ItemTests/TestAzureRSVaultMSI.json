@@ -7,15 +7,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "740c04a5-0d80-44ea-ac0a-bf06f79a5985"
+          "40bf2a20-c39b-4491-9703-c09f7494a31c"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -25,177 +25,45 @@
         ],
         "Pragma": [
           "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "34545344-88f1-463c-8424-2202408589e1"
-        ],
-        "x-ms-client-request-id": [
-          "740c04a5-0d80-44ea-ac0a-bf06f79a5985"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11999"
         ],
-        "x-ms-correlation-request-id": [
-          "34545344-88f1-463c-8424-2202408589e1"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124546Z:34545344-88f1-463c-8424-2202408589e1"
-        ],
-        "Date": [
-          "Mon, 20 Sep 2021 12:45:46 GMT"
-        ],
-        "Content-Length": [
-          "1186"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-11T05%3A27%3A46.7482826Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi1\": {\r\n        \"clientId\": \"76412f91-4d41-4aea-b612-1e516c7cc9f6\",\r\n        \"principalId\": \"61658597-bfd1-4178-bf98-fe409b6f558a\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "0ff2103e-6e12-432d-89e1-d30aff64f556"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29719.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "bed156f7-abd3-4584-95ec-ba6bcbb9eed9"
+          "9936077a-5726-44d8-a197-62c5cbf90448"
         ],
         "x-ms-client-request-id": [
-          "0ff2103e-6e12-432d-89e1-d30aff64f556"
+          "40bf2a20-c39b-4491-9703-c09f7494a31c"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "9936077a-5726-44d8-a197-62c5cbf90448"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220125T041525Z:9936077a-5726-44d8-a197-62c5cbf90448"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
-        ],
-        "x-ms-correlation-request-id": [
-          "bed156f7-abd3-4584-95ec-ba6bcbb9eed9"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124546Z:bed156f7-abd3-4584-95ec-ba6bcbb9eed9"
-        ],
         "Date": [
-          "Mon, 20 Sep 2021 12:45:46 GMT"
-        ],
-        "Content-Length": [
-          "1186"
-        ],
-        "Content-Type": [
-          "application/json"
-        ],
-        "Expires": [
-          "-1"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-11T05%3A27%3A46.7482826Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi1\": {\r\n        \"clientId\": \"76412f91-4d41-4aea-b612-1e516c7cc9f6\",\r\n        \"principalId\": \"61658597-bfd1-4178-bf98-fe409b6f558a\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
-      "StatusCode": 200
-    },
-    {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
-      "RequestMethod": "GET",
-      "RequestBody": "",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "25d293a8-4f88-40e1-89f7-7a85f3f7f91b"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.6.29719.03",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
-        ]
-      },
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "01aef186-72cf-413d-9819-ac6eb025eccb"
-        ],
-        "x-ms-client-request-id": [
-          "25d293a8-4f88-40e1-89f7-7a85f3f7f91b"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
-        ],
-        "x-ms-correlation-request-id": [
-          "01aef186-72cf-413d-9819-ac6eb025eccb"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124557Z:01aef186-72cf-413d-9819-ac6eb025eccb"
-        ],
-        "Date": [
-          "Mon, 20 Sep 2021 12:45:57 GMT"
+          "Tue, 25 Jan 2022 04:15:25 GMT"
         ],
         "Content-Length": [
           "583"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A45%3A52.0853607Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A52%3A36.1655487Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -205,15 +73,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a4644c5-8de6-4850-b223-0cf3b1e101f4"
+          "24ea426d-f480-4827-a669-991a1574570e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -224,44 +92,176 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "f6abfa74-ed91-448c-8483-631103bde913"
+          "e8bad71f-372b-4f1b-956d-da4c8129af63"
         ],
         "x-ms-client-request-id": [
-          "2a4644c5-8de6-4850-b223-0cf3b1e101f4"
+          "24ea426d-f480-4827-a669-991a1574570e"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "e8bad71f-372b-4f1b-956d-da4c8129af63"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220125T041526Z:e8bad71f-372b-4f1b-956d-da4c8129af63"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
+        "Date": [
+          "Tue, 25 Jan 2022 04:15:25 GMT"
+        ],
+        "Content-Length": [
+          "583"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A52%3A36.1655487Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "aac4bc9a-c41a-46bc-8686-c853f936eda1"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "fa93dc6f-aa52-463a-bcac-71d8ea2329c5"
+        ],
+        "x-ms-client-request-id": [
+          "aac4bc9a-c41a-46bc-8686-c853f936eda1"
+        ],
         "Server": [
-          "Microsoft-IIS/10.0"
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "fa93dc6f-aa52-463a-bcac-71d8ea2329c5"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220125T041534Z:fa93dc6f-aa52-463a-bcac-71d8ea2329c5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Date": [
+          "Tue, 25 Jan 2022 04:15:34 GMT"
+        ],
+        "Content-Length": [
+          "583"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A15%3A29.8664961Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0P2FwaS12ZXJzaW9uPTIwMjEtMDYtMDE=",
+      "RequestMethod": "GET",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "b7ddffc9-f8a9-4bb7-8700-0178e6144f89"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.6.30411.01",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
+          "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11996"
         ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "494bb463-676f-4510-a7fd-e1eaea18cfda"
+        ],
+        "x-ms-client-request-id": [
+          "b7ddffc9-f8a9-4bb7-8700-0178e6144f89"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
         "x-ms-correlation-request-id": [
-          "f6abfa74-ed91-448c-8483-631103bde913"
+          "494bb463-676f-4510-a7fd-e1eaea18cfda"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124602Z:f6abfa74-ed91-448c-8483-631103bde913"
+          "SOUTHINDIA:20220125T041540Z:494bb463-676f-4510-a7fd-e1eaea18cfda"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:46:01 GMT"
+          "Tue, 25 Jan 2022 04:15:40 GMT"
         ],
         "Content-Length": [
           "696"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A46%3A00.1737617Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"94f05a1b-f917-4a41-bf59-a539dbf5c878\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A15%3A38.7394341Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"371c934e-c046-4a6e-b654-4110a9b5b04d\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -271,12 +271,12 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a4644c5-8de6-4850-b223-0cf3b1e101f4"
+          "b7ddffc9-f8a9-4bb7-8700-0178e6144f89"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -286,45 +286,45 @@
         ],
         "Pragma": [
           "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "ab9d894f-6825-47c3-bbfb-8b929ff7a034"
-        ],
-        "x-ms-client-request-id": [
-          "2a4644c5-8de6-4850-b223-0cf3b1e101f4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11993"
         ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "ff818850-e3a5-4b45-b21a-71fd5fee55ea"
+        ],
+        "x-ms-client-request-id": [
+          "b7ddffc9-f8a9-4bb7-8700-0178e6144f89"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
         "x-ms-correlation-request-id": [
-          "ab9d894f-6825-47c3-bbfb-8b929ff7a034"
+          "ff818850-e3a5-4b45-b21a-71fd5fee55ea"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124808Z:ab9d894f-6825-47c3-bbfb-8b929ff7a034"
+          "SOUTHINDIA:20220125T041744Z:ff818850-e3a5-4b45-b21a-71fd5fee55ea"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:48:07 GMT"
+          "Tue, 25 Jan 2022 04:17:44 GMT"
         ],
         "Content-Length": [
           "1514"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A47%3A07.5404538Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"94f05a1b-f917-4a41-bf59-a539dbf5c878\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi1\": {\r\n        \"clientId\": \"76412f91-4d41-4aea-b612-1e516c7cc9f6\",\r\n        \"principalId\": \"61658597-bfd1-4178-bf98-fe409b6f558a\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A16%3A54.3922644Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"371c934e-c046-4a6e-b654-4110a9b5b04d\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi1\": {\r\n        \"clientId\": \"76412f91-4d41-4aea-b612-1e516c7cc9f6\",\r\n        \"principalId\": \"61658597-bfd1-4178-bf98-fe409b6f558a\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -334,15 +334,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4b9e4bc9-16da-4616-9f80-eadee2a08051"
+          "d7bbe221-d918-4495-8447-8f9c4e118fa1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -352,45 +352,45 @@
         ],
         "Pragma": [
           "no-cache"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "x-ms-request-id": [
-          "15752fba-9a63-4010-92da-13350ed91c91"
-        ],
-        "x-ms-client-request-id": [
-          "4b9e4bc9-16da-4616-9f80-eadee2a08051"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11992"
         ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "x-ms-request-id": [
+          "7eb3977a-68f5-4f5b-badc-89d4cd223030"
+        ],
+        "x-ms-client-request-id": [
+          "d7bbe221-d918-4495-8447-8f9c4e118fa1"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
         "x-ms-correlation-request-id": [
-          "15752fba-9a63-4010-92da-13350ed91c91"
+          "7eb3977a-68f5-4f5b-badc-89d4cd223030"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124808Z:15752fba-9a63-4010-92da-13350ed91c91"
+          "SOUTHINDIA:20220125T041745Z:7eb3977a-68f5-4f5b-badc-89d4cd223030"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:48:07 GMT"
+          "Tue, 25 Jan 2022 04:17:44 GMT"
         ],
         "Content-Length": [
           "1514"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A47%3A07.5404538Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"94f05a1b-f917-4a41-bf59-a539dbf5c878\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi1\": {\r\n        \"clientId\": \"76412f91-4d41-4aea-b612-1e516c7cc9f6\",\r\n        \"principalId\": \"61658597-bfd1-4178-bf98-fe409b6f558a\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A16%3A54.3922644Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"371c934e-c046-4a6e-b654-4110a9b5b04d\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi1\": {\r\n        \"clientId\": \"76412f91-4d41-4aea-b612-1e516c7cc9f6\",\r\n        \"principalId\": \"61658597-bfd1-4178-bf98-fe409b6f558a\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -400,15 +400,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5c13dbe8-a6bc-4070-a74c-7d822dc509a6"
+          "f7ba99e4-baec-4a40-9165-5b6ae6974ad5"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -419,44 +419,44 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11991"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "cc4999bf-e969-4be6-9ae2-8453ea34ccd4"
+          "017d2540-956c-4449-83bb-7650592df21f"
         ],
         "x-ms-client-request-id": [
-          "5c13dbe8-a6bc-4070-a74c-7d822dc509a6"
+          "f7ba99e4-baec-4a40-9165-5b6ae6974ad5"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "017d2540-956c-4449-83bb-7650592df21f"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220125T041745Z:017d2540-956c-4449-83bb-7650592df21f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11991"
-        ],
-        "x-ms-correlation-request-id": [
-          "cc4999bf-e969-4be6-9ae2-8453ea34ccd4"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124808Z:cc4999bf-e969-4be6-9ae2-8453ea34ccd4"
-        ],
         "Date": [
-          "Mon, 20 Sep 2021 12:48:07 GMT"
+          "Tue, 25 Jan 2022 04:17:45 GMT"
         ],
         "Content-Length": [
           "1514"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A47%3A07.5404538Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"94f05a1b-f917-4a41-bf59-a539dbf5c878\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi1\": {\r\n        \"clientId\": \"76412f91-4d41-4aea-b612-1e516c7cc9f6\",\r\n        \"principalId\": \"61658597-bfd1-4178-bf98-fe409b6f558a\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A16%3A54.3922644Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"371c934e-c046-4a6e-b654-4110a9b5b04d\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi1\": {\r\n        \"clientId\": \"76412f91-4d41-4aea-b612-1e516c7cc9f6\",\r\n        \"principalId\": \"61658597-bfd1-4178-bf98-fe409b6f558a\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -466,12 +466,12 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5c13dbe8-a6bc-4070-a74c-7d822dc509a6"
+          "f7ba99e4-baec-4a40-9165-5b6ae6974ad5"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -486,10 +486,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "dc21c5b6-5039-47e1-bcc4-95f11445932a"
+          "13c09386-9a72-49dd-872d-4b6ab5118e4d"
         ],
         "x-ms-client-request-id": [
-          "5c13dbe8-a6bc-4070-a74c-7d822dc509a6"
+          "f7ba99e4-baec-4a40-9165-5b6ae6974ad5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -501,13 +501,13 @@
           "11988"
         ],
         "x-ms-correlation-request-id": [
-          "dc21c5b6-5039-47e1-bcc4-95f11445932a"
+          "13c09386-9a72-49dd-872d-4b6ab5118e4d"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125016Z:dc21c5b6-5039-47e1-bcc4-95f11445932a"
+          "SOUTHINDIA:20220125T041951Z:13c09386-9a72-49dd-872d-4b6ab5118e4d"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:50:16 GMT"
+          "Tue, 25 Jan 2022 04:19:50 GMT"
         ],
         "Content-Length": [
           "1255"
@@ -519,7 +519,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A49%3A15.2698212Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"94f05a1b-f917-4a41-bf59-a539dbf5c878\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A18%3A51.3735144Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"371c934e-c046-4a6e-b654-4110a9b5b04d\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -529,15 +529,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "195a68d5-7d45-4506-abfb-ca4e395928be"
+          "e8b38f0a-a262-49f8-b846-bcf9faa8b212"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -552,10 +552,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "9e716e06-8cc4-4bd9-88b7-6c89c746dad8"
+          "c2565874-a58d-4394-96ea-f8e5fdc52f7d"
         ],
         "x-ms-client-request-id": [
-          "195a68d5-7d45-4506-abfb-ca4e395928be"
+          "e8b38f0a-a262-49f8-b846-bcf9faa8b212"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -567,13 +567,13 @@
           "11987"
         ],
         "x-ms-correlation-request-id": [
-          "9e716e06-8cc4-4bd9-88b7-6c89c746dad8"
+          "c2565874-a58d-4394-96ea-f8e5fdc52f7d"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125017Z:9e716e06-8cc4-4bd9-88b7-6c89c746dad8"
+          "SOUTHINDIA:20220125T041951Z:c2565874-a58d-4394-96ea-f8e5fdc52f7d"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:50:17 GMT"
+          "Tue, 25 Jan 2022 04:19:51 GMT"
         ],
         "Content-Length": [
           "1255"
@@ -585,7 +585,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A49%3A15.2698212Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"94f05a1b-f917-4a41-bf59-a539dbf5c878\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A18%3A51.3735144Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"371c934e-c046-4a6e-b654-4110a9b5b04d\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -595,15 +595,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b6259ef7-3ab0-4914-901e-b31f0937a113"
+          "9cd91e36-cb2e-46d4-af8c-d0d0e6aa8ac7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -618,10 +618,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "3423e972-8fda-419d-98db-8647ce157bee"
+          "3fd64945-8fe6-4c32-b6e5-e1d4fa2d223a"
         ],
         "x-ms-client-request-id": [
-          "b6259ef7-3ab0-4914-901e-b31f0937a113"
+          "9cd91e36-cb2e-46d4-af8c-d0d0e6aa8ac7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -633,13 +633,13 @@
           "11986"
         ],
         "x-ms-correlation-request-id": [
-          "3423e972-8fda-419d-98db-8647ce157bee"
+          "3fd64945-8fe6-4c32-b6e5-e1d4fa2d223a"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125017Z:3423e972-8fda-419d-98db-8647ce157bee"
+          "SOUTHINDIA:20220125T041951Z:3fd64945-8fe6-4c32-b6e5-e1d4fa2d223a"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:50:17 GMT"
+          "Tue, 25 Jan 2022 04:19:51 GMT"
         ],
         "Content-Length": [
           "1255"
@@ -651,7 +651,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A49%3A15.2698212Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"94f05a1b-f917-4a41-bf59-a539dbf5c878\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A18%3A51.3735144Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"371c934e-c046-4a6e-b654-4110a9b5b04d\",\r\n    \"type\": \"SystemAssigned, UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {\r\n        \"clientId\": \"81fbdfeb-90b5-4d27-bffb-09c051f662cf\",\r\n        \"principalId\": \"362a8a49-2182-448c-ab32-a96b645dbbd6\"\r\n      },\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -661,15 +661,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a921ea29-e2ed-4f4f-8343-1fa85a9cc403"
+          "1e17261f-6816-43c4-b0b2-916e69ea3ac2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -684,10 +684,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "072d4885-ca2e-41bd-b4a0-ed18fca8705a"
+          "f4c63a8f-bb18-4498-98ef-a2843cd05598"
         ],
         "x-ms-client-request-id": [
-          "a921ea29-e2ed-4f4f-8343-1fa85a9cc403"
+          "1e17261f-6816-43c4-b0b2-916e69ea3ac2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -699,13 +699,13 @@
           "11985"
         ],
         "x-ms-correlation-request-id": [
-          "072d4885-ca2e-41bd-b4a0-ed18fca8705a"
+          "f4c63a8f-bb18-4498-98ef-a2843cd05598"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125024Z:072d4885-ca2e-41bd-b4a0-ed18fca8705a"
+          "SOUTHINDIA:20220125T041957Z:f4c63a8f-bb18-4498-98ef-a2843cd05598"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:50:24 GMT"
+          "Tue, 25 Jan 2022 04:19:57 GMT"
         ],
         "Content-Length": [
           "696"
@@ -717,7 +717,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A50%3A20.7226016Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"94f05a1b-f917-4a41-bf59-a539dbf5c878\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A19%3A54.4685138Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"371c934e-c046-4a6e-b654-4110a9b5b04d\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -727,15 +727,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "398a7111-f43d-40bc-90c9-04c02d9cb658"
+          "f9399b85-a40c-4dc4-9cc6-4519236c3b91"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -750,10 +750,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "5edb6bb1-8b96-46b7-9167-f876c965dcb6"
+          "703e8f86-f498-4408-b749-e7cc5bab7038"
         ],
         "x-ms-client-request-id": [
-          "398a7111-f43d-40bc-90c9-04c02d9cb658"
+          "f9399b85-a40c-4dc4-9cc6-4519236c3b91"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -765,13 +765,13 @@
           "11984"
         ],
         "x-ms-correlation-request-id": [
-          "5edb6bb1-8b96-46b7-9167-f876c965dcb6"
+          "703e8f86-f498-4408-b749-e7cc5bab7038"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125028Z:5edb6bb1-8b96-46b7-9167-f876c965dcb6"
+          "SOUTHINDIA:20220125T042002Z:703e8f86-f498-4408-b749-e7cc5bab7038"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:50:27 GMT"
+          "Tue, 25 Jan 2022 04:20:02 GMT"
         ],
         "Content-Length": [
           "583"
@@ -783,7 +783,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A50%3A26.3214179Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A20%3A00.8238873Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -793,12 +793,12 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "398a7111-f43d-40bc-90c9-04c02d9cb658"
+          "f9399b85-a40c-4dc4-9cc6-4519236c3b91"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -809,44 +809,44 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11981"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "578d13d3-a208-441d-a171-48307c85479c"
+          "ef586766-c66c-4b6b-b8d8-31258b8df71b"
         ],
         "x-ms-client-request-id": [
-          "398a7111-f43d-40bc-90c9-04c02d9cb658"
+          "f9399b85-a40c-4dc4-9cc6-4519236c3b91"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "ef586766-c66c-4b6b-b8d8-31258b8df71b"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220125T042205Z:ef586766-c66c-4b6b-b8d8-31258b8df71b"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11981"
-        ],
-        "x-ms-correlation-request-id": [
-          "578d13d3-a208-441d-a171-48307c85479c"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125232Z:578d13d3-a208-441d-a171-48307c85479c"
-        ],
         "Date": [
-          "Mon, 20 Sep 2021 12:52:32 GMT"
+          "Tue, 25 Jan 2022 04:22:05 GMT"
         ],
         "Content-Length": [
-          "927"
+          "925"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A51%3A31.9520978Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A21%3A05.80883Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -856,15 +856,15 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "80ef6dbb-a4c0-47ed-9a4e-789769dbc606"
+          "eb6c0a23-ec6c-4dde-baa0-0ab95981bb22"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -875,44 +875,44 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11980"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "7e3322bd-f2ac-49d7-be25-db57e9492a85"
+          "8a9ff9f7-f1d4-4d73-ae84-a677dc98df57"
         ],
         "x-ms-client-request-id": [
-          "80ef6dbb-a4c0-47ed-9a4e-789769dbc606"
+          "eb6c0a23-ec6c-4dde-baa0-0ab95981bb22"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "8a9ff9f7-f1d4-4d73-ae84-a677dc98df57"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220125T042206Z:8a9ff9f7-f1d4-4d73-ae84-a677dc98df57"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11980"
-        ],
-        "x-ms-correlation-request-id": [
-          "7e3322bd-f2ac-49d7-be25-db57e9492a85"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125233Z:7e3322bd-f2ac-49d7-be25-db57e9492a85"
-        ],
         "Date": [
-          "Mon, 20 Sep 2021 12:52:32 GMT"
+          "Tue, 25 Jan 2022 04:22:05 GMT"
         ],
         "Content-Length": [
-          "927"
+          "925"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A51%3A31.9520978Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A21%3A05.80883Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {\r\n        \"clientId\": \"97ddd056-ca73-4222-b7b2-3fb0f6f68b9d\",\r\n        \"principalId\": \"614d1391-bf8f-4a77-b8cb-4729d0f4c289\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -922,15 +922,15 @@
       "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "0ff2103e-6e12-432d-89e1-d30aff64f556"
+          "24ea426d-f480-4827-a669-991a1574570e"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ],
         "Content-Type": [
@@ -947,44 +947,44 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "299"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "a66e6afe-b6e7-40e1-a6d7-36260c5cdaac"
+          "bc2a2e81-1ea8-4c31-9905-ff20e740bd77"
         ],
         "x-ms-client-request-id": [
-          "0ff2103e-6e12-432d-89e1-d30aff64f556"
+          "24ea426d-f480-4827-a669-991a1574570e"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "bc2a2e81-1ea8-4c31-9905-ff20e740bd77"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220125T041534Z:bc2a2e81-1ea8-4c31-9905-ff20e740bd77"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "209"
-        ],
-        "x-ms-correlation-request-id": [
-          "a66e6afe-b6e7-40e1-a6d7-36260c5cdaac"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124556Z:a66e6afe-b6e7-40e1-a6d7-36260c5cdaac"
-        ],
         "Date": [
-          "Mon, 20 Sep 2021 12:45:55 GMT"
+          "Tue, 25 Jan 2022 04:15:33 GMT"
         ],
         "Content-Length": [
           "583"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A45%3A52.0853607Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A15%3A29.8664961Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -994,15 +994,15 @@
       "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "25d293a8-4f88-40e1-89f7-7a85f3f7f91b"
+          "aac4bc9a-c41a-46bc-8686-c853f936eda1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ],
         "Content-Type": [
@@ -1019,44 +1019,44 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "298"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "b132fffc-f230-4256-b7aa-b6da4c49e60c"
+          "72463aaa-6241-480c-b716-587bea8e624c"
         ],
         "x-ms-client-request-id": [
-          "25d293a8-4f88-40e1-89f7-7a85f3f7f91b"
+          "aac4bc9a-c41a-46bc-8686-c853f936eda1"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "72463aaa-6241-480c-b716-587bea8e624c"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220125T041540Z:72463aaa-6241-480c-b716-587bea8e624c"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "208"
-        ],
-        "x-ms-correlation-request-id": [
-          "b132fffc-f230-4256-b7aa-b6da4c49e60c"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124601Z:b132fffc-f230-4256-b7aa-b6da4c49e60c"
-        ],
         "Date": [
-          "Mon, 20 Sep 2021 12:46:01 GMT"
+          "Tue, 25 Jan 2022 04:15:39 GMT"
         ],
         "Content-Length": [
           "696"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A46%3A00.1737617Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"94f05a1b-f917-4a41-bf59-a539dbf5c878\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A15%3A38.7394341Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"371c934e-c046-4a6e-b654-4110a9b5b04d\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1066,15 +1066,15 @@
       "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned,UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi1\": {},\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi2\": {},\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {}\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a4644c5-8de6-4850-b223-0cf3b1e101f4"
+          "b7ddffc9-f8a9-4bb7-8700-0178e6144f89"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ],
         "Content-Type": [
@@ -1092,37 +1092,40 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationResults/NDA5NTs3NWMzM2RlYS0zYWNiLTQ5YzgtOWI5OS0xZTBlZWQyZGZmNWU=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationResults/NDA5NTsyYzdlMzk2Ny03NTc0LTQ3OGMtOGU5Yi0yOTkyM2VjMGUyNzA=?api-version=2021-06-01"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs3NWMzM2RlYS0zYWNiLTQ5YzgtOWI5OS0xZTBlZWQyZGZmNWU=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTsyYzdlMzk2Ny03NTc0LTQ3OGMtOGU5Yi0yOTkyM2VjMGUyNzA=?api-version=2021-06-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "8ddc8bb3-59ec-4ae1-9b11-8941901ecbba"
+          "00000000-0000-0000-0000-000000000000"
         ],
         "x-ms-client-request-id": [
-          "2a4644c5-8de6-4850-b223-0cf3b1e101f4"
+          "00000000-0000-0000-0000-000000000000"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "297"
+        ],
+        "x-ms-correlation-request-id": [
+          "a0cfbc7e-454f-4fac-ad53-a08111e1edcf"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220125T041542Z:a0cfbc7e-454f-4fac-ad53-a08111e1edcf"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "207"
-        ],
-        "x-ms-correlation-request-id": [
-          "8ddc8bb3-59ec-4ae1-9b11-8941901ecbba"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124604Z:8ddc8bb3-59ec-4ae1-9b11-8941901ecbba"
-        ],
         "Date": [
-          "Mon, 20 Sep 2021 12:46:04 GMT"
+          "Tue, 25 Jan 2022 04:15:41 GMT"
         ],
         "Expires": [
           "-1"
@@ -1141,15 +1144,15 @@
       "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned,UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi1\": null\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5c13dbe8-a6bc-4070-a74c-7d822dc509a6"
+          "f7ba99e4-baec-4a40-9165-5b6ae6974ad5"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ],
         "Content-Type": [
@@ -1167,37 +1170,40 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationResults/NDA5NTs4OGU4ZThlNS01YmUwLTQzYzYtYmFhMS1jYzgzZWViM2FkMzg=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationResults/NDA5NTs5NDFlNzQxMi1iOWM0LTRmMzctYTcwOS01ZGE0YzM0Y2VlYmY=?api-version=2021-06-01"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs4OGU4ZThlNS01YmUwLTQzYzYtYmFhMS1jYzgzZWViM2FkMzg=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs5NDFlNzQxMi1iOWM0LTRmMzctYTcwOS01ZGE0YzM0Y2VlYmY=?api-version=2021-06-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "0100ab8c-e65c-43c9-9891-db74688d5fec"
+          "00000000-0000-0000-0000-000000000000"
         ],
         "x-ms-client-request-id": [
-          "5c13dbe8-a6bc-4070-a74c-7d822dc509a6"
+          "00000000-0000-0000-0000-000000000000"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "296"
+        ],
+        "x-ms-correlation-request-id": [
+          "dde6c720-5538-49e4-979c-02acab6fe7d0"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220125T041747Z:dde6c720-5538-49e4-979c-02acab6fe7d0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "206"
-        ],
-        "x-ms-correlation-request-id": [
-          "0100ab8c-e65c-43c9-9891-db74688d5fec"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124812Z:0100ab8c-e65c-43c9-9891-db74688d5fec"
-        ],
         "Date": [
-          "Mon, 20 Sep 2021 12:48:12 GMT"
+          "Tue, 25 Jan 2022 04:17:47 GMT"
         ],
         "Expires": [
           "-1"
@@ -1216,15 +1222,15 @@
       "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"SystemAssigned\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b6259ef7-3ab0-4914-901e-b31f0937a113"
+          "9cd91e36-cb2e-46d4-af8c-d0d0e6aa8ac7"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ],
         "Content-Type": [
@@ -1245,10 +1251,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "e407ce9e-e9a9-4e97-a3ef-d9b20590e78d"
+          "1cc99610-52e9-49d1-b3d0-ddbc3447bb2b"
         ],
         "x-ms-client-request-id": [
-          "b6259ef7-3ab0-4914-901e-b31f0937a113"
+          "9cd91e36-cb2e-46d4-af8c-d0d0e6aa8ac7"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1257,16 +1263,16 @@
           "Microsoft-IIS/10.0"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "205"
+          "295"
         ],
         "x-ms-correlation-request-id": [
-          "e407ce9e-e9a9-4e97-a3ef-d9b20590e78d"
+          "1cc99610-52e9-49d1-b3d0-ddbc3447bb2b"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125024Z:e407ce9e-e9a9-4e97-a3ef-d9b20590e78d"
+          "SOUTHINDIA:20220125T041957Z:1cc99610-52e9-49d1-b3d0-ddbc3447bb2b"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:50:23 GMT"
+          "Tue, 25 Jan 2022 04:19:57 GMT"
         ],
         "Content-Length": [
           "696"
@@ -1278,7 +1284,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A50%3A20.7226016Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"94f05a1b-f917-4a41-bf59-a539dbf5c878\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A19%3A54.4685138Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"tenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\",\r\n    \"principalId\": \"371c934e-c046-4a6e-b654-4110a9b5b04d\",\r\n    \"type\": \"SystemAssigned\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1288,15 +1294,15 @@
       "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a921ea29-e2ed-4f4f-8343-1fa85a9cc403"
+          "1e17261f-6816-43c4-b0b2-916e69ea3ac2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ],
         "Content-Type": [
@@ -1317,10 +1323,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "0d6c24c4-18ae-4780-b5e6-feda690d9828"
+          "b8f1ff26-e2e8-44fe-8650-05afd88762b7"
         ],
         "x-ms-client-request-id": [
-          "a921ea29-e2ed-4f4f-8343-1fa85a9cc403"
+          "1e17261f-6816-43c4-b0b2-916e69ea3ac2"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1329,16 +1335,16 @@
           "Microsoft-IIS/10.0"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "204"
+          "294"
         ],
         "x-ms-correlation-request-id": [
-          "0d6c24c4-18ae-4780-b5e6-feda690d9828"
+          "b8f1ff26-e2e8-44fe-8650-05afd88762b7"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125027Z:0d6c24c4-18ae-4780-b5e6-feda690d9828"
+          "SOUTHINDIA:20220125T042002Z:b8f1ff26-e2e8-44fe-8650-05afd88762b7"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:50:27 GMT"
+          "Tue, 25 Jan 2022 04:20:02 GMT"
         ],
         "Content-Length": [
           "583"
@@ -1350,7 +1356,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A50%3A26.3214179Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A20%3A00.8238873Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -1360,15 +1366,15 @@
       "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/pstest-msi3\": {}\r\n    }\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "398a7111-f43d-40bc-90c9-04c02d9cb658"
+          "f9399b85-a40c-4dc4-9cc6-4519236c3b91"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ],
         "Content-Type": [
@@ -1386,37 +1392,37 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationResults/NDA5NTsxMTE1YmJjYy1hYjI3LTRiZTQtYTgyNy05NjJmODQ1ZWI5NzM=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationResults/NDA5NTs1YzVmMjExOS02MzE5LTQ5Y2EtOTNhYy1kMjg3YTM1YTE5NTk=?api-version=2021-06-01"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTsxMTE1YmJjYy1hYjI3LTRiZTQtYTgyNy05NjJmODQ1ZWI5NzM=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs1YzVmMjExOS02MzE5LTQ5Y2EtOTNhYy1kMjg3YTM1YTE5NTk=?api-version=2021-06-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "e021a3aa-f27c-415c-9f7a-de99855340c5"
+          "4d2a07a7-ddf4-4c80-b49a-cf113af06a52"
         ],
         "x-ms-client-request-id": [
-          "398a7111-f43d-40bc-90c9-04c02d9cb658"
+          "f9399b85-a40c-4dc4-9cc6-4519236c3b91"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "203"
+          "293"
         ],
         "x-ms-correlation-request-id": [
-          "e021a3aa-f27c-415c-9f7a-de99855340c5"
+          "4d2a07a7-ddf4-4c80-b49a-cf113af06a52"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125029Z:e021a3aa-f27c-415c-9f7a-de99855340c5"
+          "SOUTHINDIA:20220125T042003Z:4d2a07a7-ddf4-4c80-b49a-cf113af06a52"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:50:28 GMT"
+          "Tue, 25 Jan 2022 04:20:03 GMT"
         ],
         "Expires": [
           "-1"
@@ -1435,15 +1441,15 @@
       "RequestBody": "{\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "80ef6dbb-a4c0-47ed-9a4e-789769dbc606"
+          "eb6c0a23-ec6c-4dde-baa0-0ab95981bb22"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ],
         "Content-Type": [
@@ -1460,59 +1466,59 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "292"
+        ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "2651dcf8-3c1b-4a5e-9a95-1b2353483c5c"
+          "e709ee19-5b68-4d0a-81ab-d99169fd912e"
         ],
         "x-ms-client-request-id": [
-          "80ef6dbb-a4c0-47ed-9a4e-789769dbc606"
+          "eb6c0a23-ec6c-4dde-baa0-0ab95981bb22"
+        ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-correlation-request-id": [
+          "e709ee19-5b68-4d0a-81ab-d99169fd912e"
+        ],
+        "x-ms-routing-request-id": [
+          "SOUTHINDIA:20220125T042211Z:e709ee19-5b68-4d0a-81ab-d99169fd912e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
         ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "x-ms-ratelimit-remaining-subscription-resource-requests": [
-          "202"
-        ],
-        "x-ms-correlation-request-id": [
-          "2651dcf8-3c1b-4a5e-9a95-1b2353483c5c"
-        ],
-        "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125239Z:2651dcf8-3c1b-4a5e-9a95-1b2353483c5c"
-        ],
         "Date": [
-          "Mon, 20 Sep 2021 12:52:39 GMT"
+          "Tue, 25 Jan 2022 04:22:11 GMT"
         ],
         "Content-Length": [
           "583"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2021-09-20T12%3A52%3A36.1655487Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"location\": \"centraluseuap\",\r\n  \"name\": \"msi-pstest-vault\",\r\n  \"etag\": \"W/\\\"datetime'2022-01-25T04%3A22%3A08.5650908Z'\\\"\",\r\n  \"tags\": {\r\n    \"MABUsed\": \"Yes\",\r\n    \"Owner\": \"hiaga\",\r\n    \"Purpose\": \"testing\",\r\n    \"DeleteBy\": \"01-2099\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"None\"\r\n  },\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"privateEndpointStateForBackup\": \"None\",\r\n    \"privateEndpointStateForSiteRecovery\": \"None\"\r\n  },\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault\",\r\n  \"type\": \"Microsoft.RecoveryServices/vaults\",\r\n  \"sku\": {\r\n    \"name\": \"RS0\",\r\n    \"tier\": \"Standard\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs3NWMzM2RlYS0zYWNiLTQ5YzgtOWI5OS0xZTBlZWQyZGZmNWU=?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzM05XTXpNMlJsWVMwellXTmlMVFE1WXpndE9XSTVPUzB4WlRCbFpXUXlaR1ptTldVPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTsyYzdlMzk2Ny03NTc0LTQ3OGMtOGU5Yi0yOTkyM2VjMGUyNzA=?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzeVl6ZGxNemsyTnkwM05UYzBMVFEzT0dNdE9HVTVZaTB5T1RreU0yVmpNR1V5TnpBPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a4644c5-8de6-4850-b223-0cf3b1e101f4"
+          "b7ddffc9-f8a9-4bb7-8700-0178e6144f89"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -1524,67 +1530,67 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationResults/NDA5NTs3NWMzM2RlYS0zYWNiLTQ5YzgtOWI5OS0xZTBlZWQyZGZmNWU=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationResults/NDA5NTsyYzdlMzk2Ny03NTc0LTQ3OGMtOGU5Yi0yOTkyM2VjMGUyNzA=?api-version=2021-06-01"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs3NWMzM2RlYS0zYWNiLTQ5YzgtOWI5OS0xZTBlZWQyZGZmNWU=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTsyYzdlMzk2Ny03NTc0LTQ3OGMtOGU5Yi0yOTkyM2VjMGUyNzA=?api-version=2021-06-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "800fec22-fcbf-4270-8ec2-7f544e5b9b6f"
+          "816145b1-1f40-426f-a1e6-5a3c3b5542b5"
         ],
         "x-ms-client-request-id": [
-          "2a4644c5-8de6-4850-b223-0cf3b1e101f4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "b7ddffc9-f8a9-4bb7-8700-0178e6144f89"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11995"
         ],
         "x-ms-correlation-request-id": [
-          "800fec22-fcbf-4270-8ec2-7f544e5b9b6f"
+          "816145b1-1f40-426f-a1e6-5a3c3b5542b5"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124705Z:800fec22-fcbf-4270-8ec2-7f544e5b9b6f"
+          "SOUTHINDIA:20220125T041643Z:816145b1-1f40-426f-a1e6-5a3c3b5542b5"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:47:04 GMT"
+          "Tue, 25 Jan 2022 04:16:42 GMT"
         ],
         "Content-Length": [
           "355"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs3NWMzM2RlYS0zYWNiLTQ5YzgtOWI5OS0xZTBlZWQyZGZmNWU=\",\r\n  \"name\": \"NDA5NTs3NWMzM2RlYS0zYWNiLTQ5YzgtOWI5OS0xZTBlZWQyZGZmNWU=\",\r\n  \"status\": \"InProgress\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTsyYzdlMzk2Ny03NTc0LTQ3OGMtOGU5Yi0yOTkyM2VjMGUyNzA=\",\r\n  \"name\": \"NDA5NTsyYzdlMzk2Ny03NTc0LTQ3OGMtOGU5Yi0yOTkyM2VjMGUyNzA=\",\r\n  \"status\": \"InProgress\",\r\n  \"percentComplete\": 0.0\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs3NWMzM2RlYS0zYWNiLTQ5YzgtOWI5OS0xZTBlZWQyZGZmNWU=?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzM05XTXpNMlJsWVMwellXTmlMVFE1WXpndE9XSTVPUzB4WlRCbFpXUXlaR1ptTldVPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTsyYzdlMzk2Ny03NTc0LTQ3OGMtOGU5Yi0yOTkyM2VjMGUyNzA=?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzeVl6ZGxNemsyTnkwM05UYzBMVFEzT0dNdE9HVTVZaTB5T1RreU0yVmpNR1V5TnpBPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2a4644c5-8de6-4850-b223-0cf3b1e101f4"
+          "b7ddffc9-f8a9-4bb7-8700-0178e6144f89"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -1599,55 +1605,55 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "ed4e0746-9aac-4126-86a0-15501fbc1606"
+          "e96a9197-66b8-4c75-aa3c-0d366b374e7d"
         ],
         "x-ms-client-request-id": [
-          "2a4644c5-8de6-4850-b223-0cf3b1e101f4"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "b7ddffc9-f8a9-4bb7-8700-0178e6144f89"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11994"
         ],
         "x-ms-correlation-request-id": [
-          "ed4e0746-9aac-4126-86a0-15501fbc1606"
+          "e96a9197-66b8-4c75-aa3c-0d366b374e7d"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124807Z:ed4e0746-9aac-4126-86a0-15501fbc1606"
+          "SOUTHINDIA:20220125T041744Z:e96a9197-66b8-4c75-aa3c-0d366b374e7d"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:48:06 GMT"
+          "Tue, 25 Jan 2022 04:17:44 GMT"
         ],
         "Content-Length": [
           "354"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs3NWMzM2RlYS0zYWNiLTQ5YzgtOWI5OS0xZTBlZWQyZGZmNWU=\",\r\n  \"name\": \"NDA5NTs3NWMzM2RlYS0zYWNiLTQ5YzgtOWI5OS0xZTBlZWQyZGZmNWU=\",\r\n  \"status\": \"Succeeded\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTsyYzdlMzk2Ny03NTc0LTQ3OGMtOGU5Yi0yOTkyM2VjMGUyNzA=\",\r\n  \"name\": \"NDA5NTsyYzdlMzk2Ny03NTc0LTQ3OGMtOGU5Yi0yOTkyM2VjMGUyNzA=\",\r\n  \"status\": \"Succeeded\",\r\n  \"percentComplete\": 0.0\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs4OGU4ZThlNS01YmUwLTQzYzYtYmFhMS1jYzgzZWViM2FkMzg=?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzNE9HVTRaVGhsTlMwMVltVXdMVFF6WXpZdFltRmhNUzFqWXpnelpXVmlNMkZrTXpnPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs5NDFlNzQxMi1iOWM0LTRmMzctYTcwOS01ZGE0YzM0Y2VlYmY=?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzNU5ERmxOelF4TWkxaU9XTTBMVFJtTXpjdFlUY3dPUzAxWkdFMFl6TTBZMlZsWW1ZPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5c13dbe8-a6bc-4070-a74c-7d822dc509a6"
+          "f7ba99e4-baec-4a40-9165-5b6ae6974ad5"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -1659,67 +1665,67 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationResults/NDA5NTs4OGU4ZThlNS01YmUwLTQzYzYtYmFhMS1jYzgzZWViM2FkMzg=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationResults/NDA5NTs5NDFlNzQxMi1iOWM0LTRmMzctYTcwOS01ZGE0YzM0Y2VlYmY=?api-version=2021-06-01"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs4OGU4ZThlNS01YmUwLTQzYzYtYmFhMS1jYzgzZWViM2FkMzg=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs5NDFlNzQxMi1iOWM0LTRmMzctYTcwOS01ZGE0YzM0Y2VlYmY=?api-version=2021-06-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "c9f08bd2-d441-4956-9d5f-ff34f01d2599"
+          "58793ddd-49ec-465f-a3e0-5c4560121f35"
         ],
         "x-ms-client-request-id": [
-          "5c13dbe8-a6bc-4070-a74c-7d822dc509a6"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "f7ba99e4-baec-4a40-9165-5b6ae6974ad5"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11990"
         ],
         "x-ms-correlation-request-id": [
-          "c9f08bd2-d441-4956-9d5f-ff34f01d2599"
+          "58793ddd-49ec-465f-a3e0-5c4560121f35"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T124914Z:c9f08bd2-d441-4956-9d5f-ff34f01d2599"
+          "SOUTHINDIA:20220125T041848Z:58793ddd-49ec-465f-a3e0-5c4560121f35"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:49:14 GMT"
+          "Tue, 25 Jan 2022 04:18:48 GMT"
         ],
         "Content-Length": [
           "355"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs4OGU4ZThlNS01YmUwLTQzYzYtYmFhMS1jYzgzZWViM2FkMzg=\",\r\n  \"name\": \"NDA5NTs4OGU4ZThlNS01YmUwLTQzYzYtYmFhMS1jYzgzZWViM2FkMzg=\",\r\n  \"status\": \"InProgress\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs5NDFlNzQxMi1iOWM0LTRmMzctYTcwOS01ZGE0YzM0Y2VlYmY=\",\r\n  \"name\": \"NDA5NTs5NDFlNzQxMi1iOWM0LTRmMzctYTcwOS01ZGE0YzM0Y2VlYmY=\",\r\n  \"status\": \"InProgress\",\r\n  \"percentComplete\": 0.0\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs4OGU4ZThlNS01YmUwLTQzYzYtYmFhMS1jYzgzZWViM2FkMzg=?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzNE9HVTRaVGhsTlMwMVltVXdMVFF6WXpZdFltRmhNUzFqWXpnelpXVmlNMkZrTXpnPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs5NDFlNzQxMi1iOWM0LTRmMzctYTcwOS01ZGE0YzM0Y2VlYmY=?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzNU5ERmxOelF4TWkxaU9XTTBMVFJtTXpjdFlUY3dPUzAxWkdFMFl6TTBZMlZsWW1ZPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "5c13dbe8-a6bc-4070-a74c-7d822dc509a6"
+          "f7ba99e4-baec-4a40-9165-5b6ae6974ad5"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -1734,10 +1740,10 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "c826c51d-aa73-468c-8373-9a56608dd6b9"
+          "81fb702b-2148-4651-9460-d8e385a04df3"
         ],
         "x-ms-client-request-id": [
-          "5c13dbe8-a6bc-4070-a74c-7d822dc509a6"
+          "f7ba99e4-baec-4a40-9165-5b6ae6974ad5"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1749,13 +1755,13 @@
           "11989"
         ],
         "x-ms-correlation-request-id": [
-          "c826c51d-aa73-468c-8373-9a56608dd6b9"
+          "81fb702b-2148-4651-9460-d8e385a04df3"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125016Z:c826c51d-aa73-468c-8373-9a56608dd6b9"
+          "SOUTHINDIA:20220125T041950Z:81fb702b-2148-4651-9460-d8e385a04df3"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:50:16 GMT"
+          "Tue, 25 Jan 2022 04:19:50 GMT"
         ],
         "Content-Length": [
           "354"
@@ -1767,22 +1773,22 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs4OGU4ZThlNS01YmUwLTQzYzYtYmFhMS1jYzgzZWViM2FkMzg=\",\r\n  \"name\": \"NDA5NTs4OGU4ZThlNS01YmUwLTQzYzYtYmFhMS1jYzgzZWViM2FkMzg=\",\r\n  \"status\": \"Succeeded\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs5NDFlNzQxMi1iOWM0LTRmMzctYTcwOS01ZGE0YzM0Y2VlYmY=\",\r\n  \"name\": \"NDA5NTs5NDFlNzQxMi1iOWM0LTRmMzctYTcwOS01ZGE0YzM0Y2VlYmY=\",\r\n  \"status\": \"Succeeded\",\r\n  \"percentComplete\": 0.0\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTsxMTE1YmJjYy1hYjI3LTRiZTQtYTgyNy05NjJmODQ1ZWI5NzM=?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzeE1URTFZbUpqWXkxaFlqSTNMVFJpWlRRdFlUZ3lOeTA1TmpKbU9EUTFaV0k1TnpNPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs1YzVmMjExOS02MzE5LTQ5Y2EtOTNhYy1kMjg3YTM1YTE5NTk=?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzMVl6Vm1NakV4T1MwMk16RTVMVFE1WTJFdE9UTmhZeTFrTWpnM1lUTTFZVEU1TlRrPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "398a7111-f43d-40bc-90c9-04c02d9cb658"
+          "f9399b85-a40c-4dc4-9cc6-4519236c3b91"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -1794,22 +1800,22 @@
           "no-cache"
         ],
         "Location": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationResults/NDA5NTsxMTE1YmJjYy1hYjI3LTRiZTQtYTgyNy05NjJmODQ1ZWI5NzM=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationResults/NDA5NTs1YzVmMjExOS02MzE5LTQ5Y2EtOTNhYy1kMjg3YTM1YTE5NTk=?api-version=2021-06-01"
         ],
         "Retry-After": [
           "60"
         ],
         "Azure-AsyncOperation": [
-          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTsxMTE1YmJjYy1hYjI3LTRiZTQtYTgyNy05NjJmODQ1ZWI5NzM=?api-version=2021-06-01"
+          "https://management.azure.com/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs1YzVmMjExOS02MzE5LTQ5Y2EtOTNhYy1kMjg3YTM1YTE5NTk=?api-version=2021-06-01"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "x-ms-request-id": [
-          "a1a673c6-ce6b-420e-b1ad-7ce7826bc58e"
+          "5500b128-61b4-4a17-baf9-a95219df9028"
         ],
         "x-ms-client-request-id": [
-          "398a7111-f43d-40bc-90c9-04c02d9cb658"
+          "f9399b85-a40c-4dc4-9cc6-4519236c3b91"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -1821,13 +1827,13 @@
           "11983"
         ],
         "x-ms-correlation-request-id": [
-          "a1a673c6-ce6b-420e-b1ad-7ce7826bc58e"
+          "5500b128-61b4-4a17-baf9-a95219df9028"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125130Z:a1a673c6-ce6b-420e-b1ad-7ce7826bc58e"
+          "SOUTHINDIA:20220125T042104Z:5500b128-61b4-4a17-baf9-a95219df9028"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:51:30 GMT"
+          "Tue, 25 Jan 2022 04:21:04 GMT"
         ],
         "Content-Length": [
           "355"
@@ -1839,22 +1845,22 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTsxMTE1YmJjYy1hYjI3LTRiZTQtYTgyNy05NjJmODQ1ZWI5NzM=\",\r\n  \"name\": \"NDA5NTsxMTE1YmJjYy1hYjI3LTRiZTQtYTgyNy05NjJmODQ1ZWI5NzM=\",\r\n  \"status\": \"InProgress\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs1YzVmMjExOS02MzE5LTQ5Y2EtOTNhYy1kMjg3YTM1YTE5NTk=\",\r\n  \"name\": \"NDA5NTs1YzVmMjExOS02MzE5LTQ5Y2EtOTNhYy1kMjg3YTM1YTE5NTk=\",\r\n  \"status\": \"InProgress\",\r\n  \"percentComplete\": 0.0\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTsxMTE1YmJjYy1hYjI3LTRiZTQtYTgyNy05NjJmODQ1ZWI5NzM=?api-version=2021-06-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzeE1URTFZbUpqWXkxaFlqSTNMVFJpWlRRdFlUZ3lOeTA1TmpKbU9EUTFaV0k1TnpNPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
+      "RequestUri": "/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs1YzVmMjExOS02MzE5LTQ5Y2EtOTNhYy1kMjg3YTM1YTE5NTk=?api-version=2021-06-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMzgzMDRlMTMtMzU3ZS00MDVlLTllOWEtMjIwMzUxZGNjZThjL3Jlc291cmNlR3JvdXBzL21zaS1wc3Rlc3QtcmcvcHJvdmlkZXJzL01pY3Jvc29mdC5SZWNvdmVyeVNlcnZpY2VzL3ZhdWx0cy9tc2ktcHN0ZXN0LXZhdWx0L29wZXJhdGlvblN0YXR1cy9OREE1TlRzMVl6Vm1NakV4T1MwMk16RTVMVFE1WTJFdE9UTmhZeTFrTWpnM1lUTTFZVEU1TlRrPT9hcGktdmVyc2lvbj0yMDIxLTA2LTAx",
       "RequestMethod": "GET",
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "398a7111-f43d-40bc-90c9-04c02d9cb658"
+          "f9399b85-a40c-4dc4-9cc6-4519236c3b91"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29719.03",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
+          "OSVersion/Microsoft.Windows.10.0.19042.",
           "Microsoft.Azure.Management.RecoveryServices.RecoveryServicesClient/4.3.2.0"
         ]
       },
@@ -1869,40 +1875,40 @@
           "nosniff"
         ],
         "x-ms-request-id": [
-          "afb2aa00-531b-4bc6-ac60-8a031224dea0"
+          "18627577-d1ac-4832-b036-7417c7434d90"
         ],
         "x-ms-client-request-id": [
-          "398a7111-f43d-40bc-90c9-04c02d9cb658"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "f9399b85-a40c-4dc4-9cc6-4519236c3b91"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
           "11982"
         ],
         "x-ms-correlation-request-id": [
-          "afb2aa00-531b-4bc6-ac60-8a031224dea0"
+          "18627577-d1ac-4832-b036-7417c7434d90"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIACENTRAL:20210920T125232Z:afb2aa00-531b-4bc6-ac60-8a031224dea0"
+          "SOUTHINDIA:20220125T042205Z:18627577-d1ac-4832-b036-7417c7434d90"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "Date": [
-          "Mon, 20 Sep 2021 12:52:32 GMT"
+          "Tue, 25 Jan 2022 04:22:05 GMT"
         ],
         "Content-Length": [
           "354"
         ],
         "Content-Type": [
-          "application/json"
+          "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTsxMTE1YmJjYy1hYjI3LTRiZTQtYTgyNy05NjJmODQ1ZWI5NzM=\",\r\n  \"name\": \"NDA5NTsxMTE1YmJjYy1hYjI3LTRiZTQtYTgyNy05NjJmODQ1ZWI5NzM=\",\r\n  \"status\": \"Succeeded\",\r\n  \"percentComplete\": 0.0\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/38304e13-357e-405e-9e9a-220351dcce8c/resourceGroups/msi-pstest-rg/providers/Microsoft.RecoveryServices/vaults/msi-pstest-vault/operationStatus/NDA5NTs1YzVmMjExOS02MzE5LTQ5Y2EtOTNhYy1kMjg3YTM1YTE5NTk=\",\r\n  \"name\": \"NDA5NTs1YzVmMjExOS02MzE5LTQ5Y2EtOTNhYy1kMjg3YTM1YTE5NTk=\",\r\n  \"status\": \"Succeeded\",\r\n  \"percentComplete\": 0.0\r\n}",
       "StatusCode": 200
     }
   ],

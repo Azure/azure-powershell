@@ -25,8 +25,11 @@ Specify the name of an existing elastic pool to see the property values for only
 ## EXAMPLES
 
 ### Example 1: Get all elastic pools
+```powershell
+Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
-PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+
+```output
 ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/server01/elasticPools/elasticpool01
 ResourceGroupName : resourcegroup01
 ServerName        : server01
@@ -59,8 +62,11 @@ Tags              :
 This command gets all of the elastic pools on the server named Server01.
 
 ### Example 2: Get a specific elastic pool
+```powershell
+Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool27"
 ```
-PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool27"
+
+```output
 ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/server01/elasticPools/elasticpool01
 ResourceGroupName : resourcegroup01
 ServerName        : server01
@@ -79,8 +85,11 @@ Tags              :
 This command gets the elastic pool named ElasticPool0127 on the server named Server01.
 
 ### Example 3: Get metrics for a Azure SQL Elastic Database Pool
+```powershell
+Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" | Get-AzMetric -TimeGrain 0:5:0 -MetricName storage_percent
 ```
-PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ElasticPoolName "ElasticPool01" | Get-AzMetric -TimeGrain 0:5:0 -MetricName storage_percent
+
+```output
 DimensionName  : 
 DimensionValue : 
 Name           : cpu_percent
@@ -140,8 +149,11 @@ Unit           : Percent
 This command returns metrics for an Azure SQL elastic database pool named ElasticPool01.
 
 ### Example 4: Get all elastic pools using filtering -ElasticPoolName "ElasticPool*"
+```powershell
+Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
-PS C:\>Get-AzSqlElasticPool -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+
+```output
 ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/resourcegroup01/providers/Microsoft.Sql/servers/server01/elasticPools/elasticpool01
 ResourceGroupName : resourcegroup01
 ServerName        : server01

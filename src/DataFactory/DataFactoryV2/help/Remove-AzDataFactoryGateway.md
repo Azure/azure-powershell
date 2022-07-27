@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: E1461540-DEAE-43C3-83DF-7DF3FE8D4EC0
@@ -31,8 +31,11 @@ The **Remove-AzDataFactoryGateway** cmdlet removes the specified gateway from Az
 ## EXAMPLES
 
 ### Example 1: Remove a gateway
+```powershell
+Remove-AzDataFactoryGateway -Name "ContosoGateway" -DataFactoryName "WikiADF" -ResourceGroupName "ADF"
 ```
-PS C:\>Remove-AzDataFactoryGateway -Name "ContosoGateway" -DataFactoryName "WikiADF" -ResourceGroupName "ADF"
+
+```output
 Confirm
 Are you sure you want to remove gateway 'ContosoGateway' in data factory 'WikiADF'? 
  [Y] Yes  [N] No  [S] Suspend  [?] Help (default is Y): Y

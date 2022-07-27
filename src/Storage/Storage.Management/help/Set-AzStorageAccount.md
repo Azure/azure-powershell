@@ -55,6 +55,7 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryNetBiosDomainName <String>]
  [-ActiveDirectoryForestName <String>] [-ActiveDirectoryDomainGuid <String>]
  [-ActiveDirectoryDomainSid <String>] [-ActiveDirectoryAzureStorageSid <String>]
+ [-ActiveDirectorySamAccountName <String>] [-ActiveDirectoryAccountType <String>]
  [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
  [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
@@ -70,46 +71,46 @@ You can use this cmdlet to modify the account type, update a customer domain, or
 
 ### Example 1: Set the Storage account type
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -Type "Standard_RAGRS"
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName "Standard_RAGRS"
 ```
 
 This command sets the Storage account type to Standard_RAGRS.
 
 ### Example 2: Set a custom domain for a Storage account
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -CustomDomainName "www.contoso.com" -UseSubDomain $True
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -CustomDomainName "www.contoso.com" -UseSubDomain $True
 ```
 
 This command sets a custom domain for a Storage account.
 
 ### Example 3: Set the access tier value
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -AccessTier Cool
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AccessTier Cool
 ```
 
 The command sets the Access Tier value to be cool.
 
 ### Example 4: Set the custom domain and tags
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -CustomDomainName "www.domainname.com" -UseSubDomain $true -Tag @{tag0="value0";tag1="value1";tag2="value2"}
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -CustomDomainName "www.domainname.com" -UseSubDomain $true -Tag @{tag0="value0";tag1="value1";tag2="value2"}
 ```
 
 The command sets the custom domain and tags for a Storage account.
 
 ### Example 5: Set Encryption KeySource to Keyvault
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -AssignIdentity
-PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount"
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -AssignIdentity
+PS C:\>$account = Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount"
 
 PS C:\>$keyVault = New-AzKeyVault -VaultName "MyKeyVault" -ResourceGroupName "MyResourceGroup" -Location "EastUS2"
 PS C:\>$key = Add-AzKeyVaultKey -VaultName "MyKeyVault" -Name "MyKey" -Destination 'Software'
 PS C:\>Set-AzKeyVaultAccessPolicy -VaultName "MyKeyVault" -ObjectId $account.Identity.PrincipalId -PermissionsToKeys wrapkey,unwrapkey,get
 
 # In case to enable key auto rotation, don't set KeyVersion
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion $key.Version -KeyVaultUri $keyVault.VaultUri
 
 # In case to enable key auto rotation after set keyvault proeprites with KeyVersion, can update account by set KeyVersion to empty
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion "" -KeyVaultUri $keyVault.VaultUri
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -KeyvaultEncryption -KeyName $key.Name -KeyVersion "" -KeyVaultUri $keyVault.VaultUri
 ```
 
 This command set Encryption KeySource with a new created Keyvault.
@@ -117,14 +118,14 @@ If want to enable key auto rotation, don't set keyversion when set Keyvault prop
 
 ### Example 6: Set Encryption KeySource to "Microsoft.Storage"
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -StorageEncryption
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -StorageEncryption
 ```
 
 This command set Encryption KeySource to "Microsoft.Storage"
 
 ### Example 7: Set NetworkRuleSet property of a Storage account with JSON
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -NetworkRuleSet (@{bypass="Logging,Metrics";
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -NetworkRuleSet (@{bypass="Logging,Metrics";
     ipRules=(@{IPAddressOrRange="20.11.0.0/16";Action="allow"},
             @{IPAddressOrRange="10.0.0.0/7";Action="allow"});
     virtualNetworkRules=(@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"},
@@ -136,22 +137,23 @@ This command sets NetworkRuleSet property of a Storage account with JSON
 
 ### Example 8: Get NetworkRuleSet property from a Storage account, and set it to another Storage account
 ```
-PS C:\> $networkRuleSet = (Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount").NetworkRuleSet 
-PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount2" -NetworkRuleSet $networkRuleSet
+PS C:\> $networkRuleSet = (Get-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount").NetworkRuleSet 
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount2" -NetworkRuleSet $networkRuleSet
 ```
 
 This first command gets NetworkRuleSet property from a Storage account, and the second command sets it to another Storage account 
 
 ### Example 9: Upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account
 ```
-PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -UpgradeToStorageV2
+PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -UpgradeToStorageV2
 ```
 
 The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
 
 ### Example 10: Update a Storage account by enable Azure Files AAD DS Authentication and set DefaultSharePermission.
+<!-- Skip: Output cannot be splitted from code -->
 ```
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true -DefaultSharePermission StorageFileDataSmbShareOwner
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true -DefaultSharePermission StorageFileDataSmbShareOwner
 
 PS C:\> $account.AzureFilesIdentityBasedAuth
 
@@ -163,14 +165,17 @@ AADDS                   Microsoft.Azure.Commands.Management.Storage.Models.PSAct
 The command update a Storage account by enable Azure Files AAD DS Authentication.
 
 ### Example 11: Update a Storage account by enable Files Active Directory Domain Service Authentication, and then show the File Identity Based authentication setting
+<!-- Skip: Output cannot be splitted from code -->
 ```
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -EnableActiveDirectoryDomainServicesForFile $true `
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -EnableActiveDirectoryDomainServicesForFile $true `
         -ActiveDirectoryDomainName "mydomain.com" `
         -ActiveDirectoryNetBiosDomainName "mydomain.com" `
         -ActiveDirectoryForestName "mydomain.com" `
         -ActiveDirectoryDomainGuid "12345678-1234-1234-1234-123456789012" `
         -ActiveDirectoryDomainSid "S-1-5-21-1234567890-1234567890-1234567890" `
-        -ActiveDirectoryAzureStorageSid "S-1-5-21-1234567890-1234567890-1234567890-1234"
+        -ActiveDirectoryAzureStorageSid "S-1-5-21-1234567890-1234567890-1234567890-1234" `
+        -ActiveDirectorySamAccountName "samaccountname" `
+        -ActiveDirectoryAccountType Computer 
 		
 PS C:\> $account.AzureFilesIdentityBasedAuth.DirectoryServiceOptions
 AD
@@ -183,13 +188,16 @@ ForestName        : mydomain.com
 DomainGuid        : 12345678-1234-1234-1234-123456789012
 DomainSid         : S-1-5-21-1234567890-1234567890-1234567890
 AzureStorageSid   : S-1-5-21-1234567890-1234567890-1234567890-1234
+SamAccountName    : samaccountname
+AccountType       : Computer
 ```
 
 The command updates a Storage account by enable Azure Files Active Directory Domain Service Authentication, and then shows the File Identity Based authentication setting
 
 ### Example 12: Set MinimumTlsVersion, AllowBlobPublicAccess and AllowSharedKeyAccess
+<!-- Skip: Output cannot be splitted from code -->
 ```
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $true
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $true
 
 PS C:\> $account.MinimumTlsVersion
 TLS1_1
@@ -204,8 +212,9 @@ True
 The command sets MinimumTlsVersion, AllowBlobPublicAccess and AllowSharedKeyAccess, and then show the the 3 properties of the account 
 
 ### Example 13: Update a Storage account with RoutingPreference setting
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\>$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -PublishMicrosoftEndpoint $false -PublishInternetEndpoint $true -RoutingChoice InternetRouting
+PS C:\>$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -PublishMicrosoftEndpoint $false -PublishInternetEndpoint $true -RoutingChoice InternetRouting
 
 PS C:\>$account.RoutingPreference
 
@@ -229,19 +238,21 @@ InternetEndpoints  : {"Blob":"https://mystorageaccount-internetrouting.blob.core
 This command updates a Storage account with RoutingPreference setting: PublishMicrosoftEndpoint as false, PublishInternetEndpoint as true, and RoutingChoice as MicrosoftRouting.
 
 ### Example 14: Update a Storage account with KeyExpirationPeriod and SasExpirationPeriod
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06" -EnableHttpsTrafficOnly $true
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06" -EnableHttpsTrafficOnly $true
 
-PS C:\> $$account.KeyPolicy.KeyExpirationPeriodInDays
+PS C:\> $account.KeyPolicy.KeyExpirationPeriodInDays
 5
 
-PS C:\> $$account.SasPolicy.SasExpirationPeriod
+PS C:\> $account.SasPolicy.SasExpirationPeriod
 1.12:05:06
 ```
 
 This command updates a Storage account with KeyExpirationPeriod and SasExpirationPeriod, then show the updated account related properties.
 
 ### Example 15: Update a Storage account to Keyvault encryption, and access Keyvault with user assigned identity
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 # Create KeyVault (no need if using exist keyvault)
 PS C:\> $keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -Location eastus2euap -EnablePurgeProtection
@@ -253,7 +264,7 @@ PS C:\> Set-AzKeyVaultAccessPolicy -VaultName $keyvaultName -ResourceGroupName $
 PS C:\> $useridentityId= $userId.Id
 
 # Update Storage account with Keyvault encryption and access Keyvault with user assigned identity, then show properties
-PS C:\> $account = Update-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName `
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName `
                 -IdentityType UserAssigned  -UserAssignedIdentityId $useridentityId  `
                 -KeyVaultUri $keyVault.VaultUri -KeyName $keyname -KeyVaultUserAssignedIdentityId $useridentityId
 
@@ -272,6 +283,7 @@ LastKeyRotationTimestamp      : 4/12/2021 8:17:57 AM
 This command first creates a keyvault and a user assigned identity, then updates a storage account with keyvault encryption, the storage access access keyvault with the user assigned identity.
 
 ### Example 16: Update a Keyvault encrypted Storage account, from access Keyvault with user assigned identity, to access Keyvault with system assigned identity
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 # Assign System identity to the account, and give the system assigned identity acces to the keyvault
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  -IdentityType SystemAssignedUserAssigned
@@ -310,8 +322,9 @@ This command first update the user assigned identity to access keyvault, then up
 To update both both Keyvault and the user assigned identity, we need update with the above 2 steps. 
 
 ### Example 18: Update a Storage account with AllowCrossTenantReplication
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -AllowCrossTenantReplication $false -EnableHttpsTrafficOnly $true
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -AllowCrossTenantReplication $false -EnableHttpsTrafficOnly $true
 
 PS C:\> $account.AllowCrossTenantReplication
 False
@@ -320,8 +333,9 @@ False
 This command updates a Storage account by set AllowCrossTenantReplication to false, then show the updated account related properties.
 
 ### Example 18: Update a Storage account by enable PublicNetworkAccess
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PublicNetworkAccess Enabled
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -PublicNetworkAccess Enabled
 
 PS C:\> $account.PublicNetworkAccess
 Enabled
@@ -330,8 +344,9 @@ Enabled
 This command updates a Storage account by set PublicNetworkAccess as enabled.
 
 ### Example 19: Update account level  mmutability policy
+<!-- Skip: Output cannot be splitted from code -->
 ```
-PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -AccountName "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked
 
 PS C:\> $account.ImmutableStorageWithVersioning.Enabled
 True
@@ -362,6 +377,21 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Hot, Cool
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveDirectoryAccountType
+Specifies the Active Directory account type for Azure Storage. Possible values include: 'User', 'Computer'.
+
+```yaml
+Type: System.String
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
 
 Required: False
 Position: Named
@@ -447,6 +477,21 @@ Accept wildcard characters: False
 
 ### -ActiveDirectoryNetBiosDomainName
 Specifies the NetBIOS domain name. This parameter must be set when -EnableActiveDirectoryDomainServicesForFile is set to true.
+
+```yaml
+Type: System.String
+Parameter Sets: ActiveDirectoryDomainServicesForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ActiveDirectorySamAccountName
+Specifies the Active Directory SAMAccountName for Azure Storage.
 
 ```yaml
 Type: System.String

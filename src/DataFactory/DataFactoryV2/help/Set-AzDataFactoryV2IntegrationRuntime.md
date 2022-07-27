@@ -80,10 +80,12 @@ The Set-AzDataFactoryV2IntegrationRuntime cmdlet updates an integration runtime 
 ## EXAMPLES
 
 ### Example 1: Update integration runtime description.
-```
-PS C:\> Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' `
+```powershell
+Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' `
                                             -Description 'New description'
+```
 
+```output
     Id                : /subscriptions/b3ee3a7f-7614-4644-ad07-afa832620b4b/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir
     ResourceGroupName : rg-test-dfv2
     DataFactoryName   : test-df-eu2
@@ -94,10 +96,12 @@ PS C:\> Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' 
 The cmdlet updates the description of integration runtime named 'test-selfhost-ir'.
 
 ### Example 2: Share Self-hosted integration runtime.
-```
-PS C:\> Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' `
+```powershell
+Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' -DataFactoryName 'test-df-eu2' -Name 'test-selfhost-ir' `
                                             -SharedIntegrationRuntimeResourceId '/subscriptions/b3ee3a7f-7614-4644-ad07-afa832620b4b/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir' -Type "SelfHosted"
+```
 
+```output
     Id                : /subscriptions/b3ee3a7f-7614-4644-ad07-afa832620b4b/resourceGroups/rg-test-dfv2/providers/Microsoft.DataFactory/factories/test-df-eu2/integrationruntimes/test-selfhost-ir
     ResourceGroupName : rg-test-dfv2
     DataFactoryName   : test-df-eu2
@@ -108,14 +112,16 @@ PS C:\> Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName 'rg-test-dfv2' 
 The cmdlet adds the ADF to use the shared integration runtime. When using `-SharedIntegrationRuntimeResourceId` parameter the `-Type` must also be included. Note that the data factory need to be granted permission to use the integration runtime before running cmdlet.
 
 ### Example 3: Configure Self-Hosted IR as a proxy for Azure-SSIS IR in ADF.
-```
-PS C:\> Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName testgroup `
+```powershell
+Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName testgroup `
                                            -DataFactoryName testdf `
                                            -Name SSISIRWithDataProxy `
                                            -DataProxyIntegrationRuntimeName proxySelfhostedIR `
                                            -DataProxyStagingLinkedServiceName AzureBlobStorage `
                                            -DataProxyStagingPath teststaging
+```
 
+```output
     Location                          : EastUS
     NodeSize                          : Standard_D8_v3
     NodeCount                         : 1

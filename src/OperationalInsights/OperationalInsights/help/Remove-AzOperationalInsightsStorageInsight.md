@@ -31,18 +31,18 @@ The **Remove-AzOperationalInsightsStorageInsight** cmdlet deletes a Storage Insi
 ## EXAMPLES
 
 ### Example 1: Remove a Storage Insight by name
-```
-PS C:\>Remove-AzOperationalInsightsStorageInsight -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "MyWorkspace" -Name "MyStorageInsight"
+```powershell
+Remove-AzOperationalInsightsStorageInsight -ResourceGroupName "ContosoResourceGroup" -WorkspaceName "MyWorkspace" -Name "MyStorageInsight"
 ```
 
 This command removes the Storage Insight named MyStorageInsight from the workspace named MyWorkspace in the specified resource group.
 The command does not specify the *Force* parameter, so it prompts you for confirmation before removing the Storage Insight.
 
 ### Example 2: Remove a Storage Insight without confirmation
-```
-PS C:\>$Workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
+```powershell
+$Workspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace"
 
-PS C:\>Remove-AzOperationalInsightsStorageInsight -Workspace $Workspace -Name "MyStorageInsight" -Force
+Remove-AzOperationalInsightsStorageInsight -Workspace $Workspace -Name "MyStorageInsight" -Force
 ```
 
 The first command uses the Get-AzOperationalInsightsWorkspace cmdlet to get the workspace named MyWorkspace, and then stores it in the $Workspace variable.The second command removes the storage insight named MyStorageInsight from $Workspace without prompting you for confirmation.

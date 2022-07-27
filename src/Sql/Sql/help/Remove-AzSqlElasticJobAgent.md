@@ -36,9 +36,11 @@ The Remove-AzSqlElasticJobAgent cmdlet removes an Elastic Job agent
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Remove-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 ```
-PS C:\> Remove-AzSqlElasticJobAgent -ResourceGroupName rg -ServerName elasticjobserver -Name agent
 
+```output
 ResourceGroupName ServerName       DatabaseName AgentName State Tags
 ----------------- ----------       ------------ --------- ----- ----
 rg                elasticjobserver jobdb        agent     Ready {[Octopus, Agent]}

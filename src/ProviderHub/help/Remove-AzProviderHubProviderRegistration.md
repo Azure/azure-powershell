@@ -31,14 +31,14 @@ Deletes a provider registration.
 
 ### Example 1: Delete a provider registration by resource provider name.
 ```powershell
-PS C:\> Remove-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
+Remove-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
 ```
 
 Delete a provider registration by resource provider name.
 
 ### Example 2: Delete a provider registration by resource provider name.
 ```powershell
-PS C:\> Remove-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
+Remove-AzProviderHubProviderRegistration -ProviderNamespace "Microsoft.Contoso"
 ```
 
 Delete a provider registration by resource provider name.
@@ -172,7 +172,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IProviderHubIdentity>: Identity Parameter
+INPUTOBJECT `<IProviderHubIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[NestedResourceTypeFirst <String>]`: The first child resource type.
   - `[NestedResourceTypeSecond <String>]`: The second child resource type.

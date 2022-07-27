@@ -32,7 +32,7 @@ The **Set-AzPrivateEndpointConnection** cmdlet updates a private endpoint connec
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Set-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService -PrivateLinkServiceConnectionState "Approved"
 ```
 

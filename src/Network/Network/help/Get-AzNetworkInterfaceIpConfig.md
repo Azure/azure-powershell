@@ -24,7 +24,7 @@ The **Get-AzNetworkInterfaceIPConfig** cmdlet gets a network interface IP config
 ## EXAMPLES
 
 ### 1: Get an IP configuration of a network interface
-```
+```powershell
 $nic1 = Get-AzNetworkInterface -Name mynic -ResourceGroupName $myrg
 Get-AzNetworkInterfaceIpConfig -Name ipconfig1 -NetworkInterface $nic1
 ```

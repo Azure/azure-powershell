@@ -37,8 +37,10 @@ The Remove-AzSqlInstanceKeyVaultKey cmdlet  removes the Key Vault key from the s
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSqlInstanceKeyVaultKey -ResourceGroupName 'ContosoResourceGroup' -InstanceName 'ContosoManagedInstanceName' -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+Remove-AzSqlInstanceKeyVaultKey -ResourceGroupName 'ContosoResourceGroup' -InstanceName 'ContosoManagedInstanceName' -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+```
 
+```output
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
 KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
@@ -52,9 +54,11 @@ This command removes the Key Vault key with Id 'https://contoso.vault.azure.net/
 
 ### Example 2: Using managed instance object
 ```powershell
-PS C:\> $managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> Remove-AzSqlInstanceKeyVaultKey -Instance $managedInstance -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+$managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+Remove-AzSqlInstanceKeyVaultKey -Instance $managedInstance -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+```
 
+```output
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
 KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
@@ -68,9 +72,11 @@ This command removes the Key Vault key with Id 'https://contoso.vault.azure.net/
 
 ### Example 3: Using managed instance resource id
 ```powershell
-PS C:\> $managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> Remove-AzSqlInstanceKeyVaultKey -InstanceResourceId $managedInstance.ResourceId -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+$managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+Remove-AzSqlInstanceKeyVaultKey -InstanceResourceId $managedInstance.ResourceId -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+```
 
+```output
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
 KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901
@@ -84,9 +90,11 @@ This command removes the Key Vault key with Id 'https://contoso.vault.azure.net/
 
 ### Example 4: Using piping
 ```powershell
-PS C:\> $managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
-PS C:\> $managedInstance | Remove-AzSqlInstanceKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+$managedInstance = Get-AzSqlInstance -Name 'ContosoManagedInstanceName' -ResourceGroupName 'ContosoResourceGroup'
+$managedInstance | Remove-AzSqlInstanceKeyVaultKey -KeyId 'https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901'
+```
 
+```output
 ResourceGroupName      : ContosoResourceGroup
 ManagedInstanceName    : ContosoManagedInstanceName
 KeyId                  : https://contoso.vault.azure.net/keys/contosokey/01234567890123456789012345678901

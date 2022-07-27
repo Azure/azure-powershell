@@ -42,7 +42,7 @@ This command allows for changes on the adjustable parameters of a server endpoin
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName" -TierFilesOlderThanDays 30
+Set-AzStorageSyncServerEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName" -Name "myServerEndpointName" -TierFilesOlderThanDays 30
 ```
 
 This example performs two actions, it sets a new cloud tiering policy on the specified server endpoint, which directs the server to tier all files that have not been accessed in the past 30 days and it also disables the offline data transfer mode, which was initially enabled on this server endpoint during it's creation. Offline data transfer is used as part of interoperability with bulk migration services, such as Azure Data Box.

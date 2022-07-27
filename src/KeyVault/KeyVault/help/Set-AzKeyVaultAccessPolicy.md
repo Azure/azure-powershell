@@ -164,8 +164,9 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 ## EXAMPLES
 
 ### Example 1: Grant permissions to a user for a key vault and modify the permissions
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets set,delete -PassThru
+Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets set,delete -PassThru
 
 Vault Name                       : Contoso03Vault
 Resource Group Name              : myrg
@@ -191,7 +192,7 @@ Access Policies                  :
 
 Tags                             :
 
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets set,delete,get -PassThru
+Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets set,delete,get -PassThru
 
 Vault Name                       : Contoso03Vault
 Resource Group Name              : myrg
@@ -217,7 +218,7 @@ Access Policies                  :
 
 Tags                             :
 
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys @() -PassThru
+Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys @() -PassThru
 
 Vault Name                       : Contoso03Vault
 Resource Group Name              : myrg
@@ -250,7 +251,7 @@ The final command further modifies the existing permissions for PattiFuller@cont
 
 ### Example 2: Grant permissions for an application service principal to read and write secrets
 ```powershell
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com' -PermissionsToSecrets Get,Set
+Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ServicePrincipalName 'http://payroll.contoso.com' -PermissionsToSecrets Get,Set
 ```
 
 This command grants permissions for an application for a key vault named Contoso03Vault.
@@ -259,7 +260,7 @@ This example specifies the service principal name `http://payroll.contoso.com`, 
 
 ### Example 3: Grant permissions for an application using its object ID
 ```powershell
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectId 34595082-9346-41b6-8d6b-295a2808b8db -PermissionsToSecrets Get,Set
+Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ObjectId 34595082-9346-41b6-8d6b-295a2808b8db -PermissionsToSecrets Get,Set
 ```
 
 This command grants the application permissions to read and write secrets.
@@ -267,22 +268,22 @@ This example specifies the application using the object ID of the service princi
 
 ### Example 4: Grant permissions for a user principal name
 ```powershell
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets Get,List,Set
+Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToSecrets Get,List,Set
 ```
 
 This command grants get, list, and set permissions for the specified user principal name for access to secrets.
 
 ### Example 5: Enable secrets to be retrieved from a key vault by the Microsoft.Compute resource provider
 ```powershell
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
+Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -ResourceGroupName 'Group14' -EnabledForDeployment
 ```
 
 This command grants the permissions for secrets to be retrieved from the Contoso03Vault key vault by the Microsoft.Compute resource provider.
 
 ### Example 6: Grant permissions to a security group
 ```powershell
-PS C:\> Get-AzADGroup
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'myownvault' -ObjectId (Get-AzADGroup -SearchString 'group2')[0].Id -PermissionsToKeys get, set -PermissionsToSecrets get, set
+Get-AzADGroup
+Set-AzKeyVaultAccessPolicy -VaultName 'myownvault' -ObjectId (Get-AzADGroup -SearchString 'group2')[0].Id -PermissionsToKeys get, set -PermissionsToSecrets get, set
 ```
 
 The first command uses the Get-AzADGroup cmdlet to get all Active Directory groups. From the output, you see 3 groups returned, named **group1**, **group2**, and **group3**. Multiple groups can have the same name but always have a unique ObjectId. When more than one group that has the same name is returned, use the ObjectId in the output to identify the one you want to use.
@@ -292,7 +293,7 @@ This example picks the first one, indicated by index \[0\] in the returned list.
 
 ### Example 7: Grant Azure Information Protection access to the customer-managed tenant key (BYOK)
 ```powershell
-PS C:\> Set-AzKeyVaultAccessPolicy -VaultName 'Contoso04Vault' -ServicePrincipalName 00000012-0000-0000-c000-000000000000 -PermissionsToKeys decrypt,sign,get
+Set-AzKeyVaultAccessPolicy -VaultName 'Contoso04Vault' -ServicePrincipalName 00000012-0000-0000-c000-000000000000 -PermissionsToKeys decrypt,sign,get
 ```
 
 This command authorizes Azure Information Protection to use a customer-managed key (the bring your own key, or "BYOK" scenario) as the Azure Information Protection tenant key.
@@ -479,7 +480,6 @@ The acceptable values for this parameter:
 Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
-Accepted values: all, get, list, delete, create, import, update, managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, recover, purge, backup, restore
 
 Required: False
 Position: Named
@@ -509,12 +509,12 @@ The acceptable values for this parameter:
 - Restore
 - Recover
 - Purge
+- Rotate
 
 ```yaml
 Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
-Accepted values: all, decrypt, encrypt, unwrapKey, wrapKey, verify, sign, get, list, update, create, import, delete, backup, restore, recover, purge
 
 Required: False
 Position: Named
@@ -541,7 +541,6 @@ The acceptable values for this parameter:
 Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
-Accepted values: all, get, list, set, delete, backup, restore, recover, purge
 
 Required: False
 Position: Named
@@ -574,7 +573,6 @@ The acceptable values for this parameter:
 Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
-Accepted values: all, get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
 
 Required: False
 Position: Named

@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -94,12 +96,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.FailoverProcessServerRequestPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).ContainerName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).SourceProcessServerId = (string) content.GetValueForProperty("SourceProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).SourceProcessServerId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).TargetProcessServerId = (string) content.GetValueForProperty("TargetProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).TargetProcessServerId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).VmsToMigrate = (string[]) content.GetValueForProperty("VmsToMigrate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).VmsToMigrate, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).UpdateType = (string) content.GetValueForProperty("UpdateType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).UpdateType, global::System.Convert.ToString);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.FailoverProcessServerRequestPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ContainerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).ContainerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceProcessServerId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).SourceProcessServerId = (string) content.GetValueForProperty("SourceProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).SourceProcessServerId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetProcessServerId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).TargetProcessServerId = (string) content.GetValueForProperty("TargetProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).TargetProcessServerId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VmsToMigrate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).VmsToMigrate = (string[]) content.GetValueForProperty("VmsToMigrate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).VmsToMigrate, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("UpdateType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).UpdateType = (string) content.GetValueForProperty("UpdateType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).UpdateType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,12 +137,30 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.FailoverProcessServerRequestPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).ContainerName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).SourceProcessServerId = (string) content.GetValueForProperty("SourceProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).SourceProcessServerId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).TargetProcessServerId = (string) content.GetValueForProperty("TargetProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).TargetProcessServerId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).VmsToMigrate = (string[]) content.GetValueForProperty("VmsToMigrate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).VmsToMigrate, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).UpdateType = (string) content.GetValueForProperty("UpdateType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).UpdateType, global::System.Convert.ToString);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.FailoverProcessServerRequestPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ContainerName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).ContainerName = (string) content.GetValueForProperty("ContainerName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).ContainerName, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceProcessServerId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).SourceProcessServerId = (string) content.GetValueForProperty("SourceProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).SourceProcessServerId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetProcessServerId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).TargetProcessServerId = (string) content.GetValueForProperty("TargetProcessServerId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).TargetProcessServerId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VmsToMigrate"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).VmsToMigrate = (string[]) content.GetValueForProperty("VmsToMigrate",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).VmsToMigrate, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("UpdateType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).UpdateType = (string) content.GetValueForProperty("UpdateType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequestInternal)this).UpdateType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -130,7 +168,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="FailoverProcessServerRequest" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="FailoverProcessServerRequest" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFailoverProcessServerRequest FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

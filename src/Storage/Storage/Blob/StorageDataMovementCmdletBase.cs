@@ -71,7 +71,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
-        /// <param name="msg">Confirmation message</param>
+        /// <param name="source">Indicating the source.</param>
+        /// <param name="destination">Indicating the destination.</param>
         /// <returns>True if the opeation is confirmed, otherwise return false</returns>
         protected bool ConfirmOverwrite(object source, object destination)
         {
@@ -82,7 +83,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// Confirm the overwrite operation
         /// </summary>
-        /// <param name="msg">Confirmation message</param>
+        /// <param name="source">Indicating the source.</param>
+        /// <param name="destination">Indicating the destination.</param>
         /// <returns>True if the opeation is confirmed, otherwise return false</returns>
         protected async Task<bool> ConfirmOverwriteAsync(object source, object destination)
         {

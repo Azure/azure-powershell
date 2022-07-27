@@ -29,8 +29,11 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 ## EXAMPLES
 
 ### Example 1: Get TDE status for a database
+```powershell
+Get-AzSqlDatabaseTransparentDataEncryption -ServerName "server01" -ResourceGroupName "resourcegroup01" -DatabaseName "database01"
 ```
-PS C:\>Get-AzSqlDatabaseTransparentDataEncryption -ServerName "server01" -ResourceGroupName "resourcegroup01" -DatabaseName "database01"
+
+```output
 ResourceGroupName             ServerName                    DatabaseName                                          State
 -----------------             ----------                    ------------                                          -----
 resourcegroup01               server01                      database01                                            Disabled

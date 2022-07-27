@@ -32,9 +32,11 @@ Updates container group tags with specified values.
 
 ### Example 1: Update a container group 
 ```powershell
-PS C:\> $container = Update-AzContainerGroup -Name test-cg -ResourceGroupName test-rg -Tag @{"k"="v"}
-PS C:\> $container.Tag | fl
+$container = Update-AzContainerGroup -Name test-cg -ResourceGroupName test-rg -Tag @{"k"="v"}
+$container.Tag | Format-List
+```
 
+```output
 Keys                 : {k}
 Values               : {v}
 AdditionalProperties : {[k, v]}
@@ -45,9 +47,11 @@ This command updates a container group.
 
 ### Example 2: Update a container group using piping
 ```powershell
-PS C:\> $container = Get-AzContainerGroup -Name test-cg -ResourceGroupName test-rg | Update-AzContainerGroup -Tag @{"k"="v"}
-PS C:\> $container.Tag | fl
+$container = Get-AzContainerGroup -Name test-cg -ResourceGroupName test-rg | Update-AzContainerGroup -Tag @{"k"="v"}
+$container.Tag | Format-List
+```
 
+```output
 Keys                 : {k}
 Values               : {v}
 AdditionalProperties : {[k, v]}
@@ -231,7 +235,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IContainerInstanceIdentity>: Identity Parameter
+INPUTOBJECT `<IContainerInstanceIdentity>`: Identity Parameter
   - `[ContainerGroupName <String>]`: The name of the container group.
   - `[ContainerName <String>]`: The name of the container instance.
   - `[Id <String>]`: Resource identity path

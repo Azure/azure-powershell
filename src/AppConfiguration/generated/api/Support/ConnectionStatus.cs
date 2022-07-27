@@ -6,6 +6,7 @@
 namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
 {
 
+    /// <summary>The private link service connection status.</summary>
     public partial struct ConnectionStatus :
         System.IEquatable<ConnectionStatus>
     {
@@ -31,7 +32,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Support
         /// <param name="value">the value to convert to an instance of <see cref="ConnectionStatus" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ConnectionStatus(System.Convert.ToString(value));
+            return new ConnectionStatus(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ConnectionStatus</summary>

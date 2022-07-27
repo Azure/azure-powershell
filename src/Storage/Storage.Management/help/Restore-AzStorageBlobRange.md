@@ -40,6 +40,7 @@ The start range is included, and the end range is excluded in blob restore.
 ## EXAMPLES
 
 ### Example 1: Start restores blobs in a Storage account with specific blob ranges
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> $range1 = New-AzStorageBlobRangeToRestore -StartRange container1/blob1 -EndRange container2/blob2
 PS C:\> $range2 = New-AzStorageBlobRangeToRestore -StartRange container3/blob3 -EndRange container4/blob4
@@ -59,6 +60,7 @@ Complete 6ca55a8b-fca0-461a-8e4c-13927a9707e6               2020-02-10T13:58:44.
 This command first creates 2 blob ranges, then start restores blobs in a Storage account with the 2 blob ranges from 1 day ago. User can use Get-AzStorageAccount to trace the restore status later.
 
 ### Example 2: Restores all blobs in a Storage account in the backend
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> $job = Restore-AzStorageBlobRange -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -TimeToRestore (Get-Date).AddMinutes(-30) -WaitForComplete -asjob
 
@@ -74,6 +76,7 @@ Complete 0387953a-bbe6-4602-818d-e661581ee44b               2020-08-28T07:11:33.
 This command restores all blobs in a Storage account from 30 minutes ago, and wait for the restore complete. Since restore blobs might take a long time, run it in the backend with -Asjob parameter, and then wait for the job complete and show the result.
 
 ### Example 3: Restores blobs by input blob ranges directly, and wait for complete
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> Restore-AzStorageBlobRange -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -WaitForComplete `
     -TimeToRestore (Get-Date).AddSeconds(-1) `

@@ -22,7 +22,26 @@ Set-AzOperationalInsightsDataSource [-DataSource] <PSDataSource> [-DefaultProfil
 The **Set-AzOperationalInsightsDataSource** cmdlet updates a data source.
 
 ## EXAMPLES
-
+### Example 1
+```powershell
+$datasource = Get-AzOperationalInsightsDataSource -Kind CustomLog -ResourceGroupName testrg -WorkspaceName LogAnalyticsWorkspace
+Set-AzOperationalInsightsDataSource -DataSource $datasource
+```
+```output
+Name              : DataSource_CustomLog_Customlog_CL
+ResourceGroupName : testrg
+WorkspaceName     : LogAnalyticsWorkspace
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/testrg/providers/Microsoft.Ope
+                    rationalInsights/workspaces/LogAnalyticsWorkspace/datasources/DataSource_CustomLog_Customlog_
+                    CL
+Kind              : CustomLog
+Properties        : {"customLogName":"Customlog_CL","description":"","extractions":[{"extractionName":"TimeGenerated","
+                    extractionProperties":{"dateTimeExtraction":{"joinStringRegex":null,"regex":null,"formatString":nul
+                    l}},"extractionType":"DateTime"}],"inputs":[{"location":{"fileSystemLocations":{"linuxFileTypeLogPa
+                    ths":null,"windowsFileTypeLogPaths":["D:\\logs.txt"]}},"recordDelimiter":{"regexDelimiter":{"matchI
+                    ndex":0,"numberdGroup":null,"pattern":"\\n"}}}]}
+```
+Update a data source.
 ## PARAMETERS
 
 ### -DataSource

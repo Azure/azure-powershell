@@ -20,11 +20,94 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.30.0
+* Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion` 
+
+## Version 4.29.0
+* Added image alias 'Win2022AzureEditionCore'
+* Added the `-DisableIntegrityMonitoring` switch parameter to the `New-AzVM` cmdlet. 
+  Changed the default behavior for `New-AzVM` and `New-AzVmss` when these conditions are met:
+  1) `-DisableIntegrityMonitoring` is not true.
+  2) `SecurityType` on the SecurityProfile is `TrustedLaunch`.
+  3) `VTpmEnabled` on the SecurityProfile is true.
+  4) `SecureBootEnabled` on the SecurityProfile is true. 
+  Now `New-AzVM` will install the `Guest Attestation` extension to the new VM when these conditions are met.
+  Now `New-AzVmss` will install the `Guest Attestation` extension to the new Vmss when these conditions are met and installed to all VM instances in the Vmss.
+* Added `-UserAssignedIdentity` and `-FederatedClientId` to the following cmdlets:
+    - `New-AzDiskEncryptionSetConfig`
+    - `Update-AzDiskEncryptionSet`
+* Added `-TreatFailureAsDeploymentFailure` to cmdlets `Add-AzVmGalleryApplication` and `Add-AzVmssGalleryApplication`
+* Removed Exceptions for when SinglePlacementGroup is set to true in 'OrchestrationMode'
+
+## Version 4.28.0
+* For `Add-AzVhd` upon upload failure using DirectUploadToManagedDisk parameter set, the SAS will be revoked and the created managed disk will be deleted.
+* An unresolved path can be passed in for '-LocalFilePath' for `Add-AzVhd`. The cmdlet with unresolve the path itself.
+* Added `-DataAccessAuthMode` parameter to Add-AzVhd DirectUploadToManagedDisk parameter set. 
+* Added `-EnabldUltraSSD` parameter to New-AzHostGroup.
+
+## Version 4.27.0
+* Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.
+* Added a new cmdlet named `Restart-AzHost` to restart dedicated hosts. 
+* Added `-DataAccessAuthMode` parameter to the following cmdlets:
+    - `New-AzDiskConfig`
+    - `New-AzDiskUpdateConfig`
+    - `New-AzSnapshotConfig`
+    - `New-AzSnapshotUpdateConfig`
+* Added `-Architecture` parameter to the following cmdlets:
+    - `New-AzDiskConfig`
+    - `New-AzDiskUpdateConfig`
+    - `New-AzSnapshotConfig`
+    - `New-AzSnapshotUpdateConfig`
+    - `New-AzGalleryImageDefinition`
+* Added `-InstanceView` parameter to `Get-AzRestorePoint`
+* Added parameter `-ScriptString` to `Invoke-AzvmRunCommand` and `Invoke-AzvmssRunCommand`
+* Added parameter `-ScaleInPolicyForceDeletion` to `Update-Azvmss`
+
+## Version 4.26.0
+* Added `-ImageReferenceId` parameter to following cmdlets: `New-AzVm`, `New-AzVmConfig`, `New-AzVmss`, `Set-AzVmssStorageProfile`
+* Added functionality for cross-tenant image reference for VM, VMSS, Managed Disk, and Gallery Image Version creation. 
+* `New-AzGallery` can take in `-Permission` parameter to set its sharingProfile property.
+* `Update-AzGallery` can update sharingProfile.
+* `Get-AzGallery` can take in `-Expand` parameter for expanded resource view.
+* New parameter set for the following cmdlets to support Shared Image Gallery Direct Sharing
+    - Get-AzGallery
+    - Get-AzGalleryImageDefinition
+    - Get-AzGalleryImageVersion
+* Updates and improvements to `Add-AzVhd`
+    - Added `-DiskHyperVGeneration` and `-DiskOsType` parameters to the DirectUploadToManagedDisk parameter set for upload to more robust managed disk settings.
+    - Updated progress output functions so that it works with VHD files with "&" character in its name.
+    - Updated so that uploading dynamically sized VHD files are converted to fixed size during upload.
+    - Fixed a bug in uploading a differencing disk.
+    - Automatically delete converted/resized VHD files after upload.
+    - Fixed a bug that indicates `-ResourceGroupName` parameter as optional when it is actually mandatory.
+
+## Version 4.25.0
+* Updated `New-AzVM` to create a new storage account for boot diagnostics if one does not exist. This will prevent the cmdlet from using a random storage account in the current subscription to use for boot diagnostics.
+* Added `AutomaticRepairAction` string parameter to the `New-AzVmssConfig` and `Update-AzVmss` cmdlets.
+* Updated `Get-AzVm` to include `GetVirtualMachineById` parameter set.
+* Edited the documentation for the cmdlet `Set-AzVMADDomainExtension` to ensure the example is accurate. 
+* Improved description and examples for disk creation.
+* Added new parameters to `New-AzRestorePoint` and `New-AzRestorePointCollection` for copying Restore Points and Restore Point Collections.
+* Added `Zone` and `PlacementGroupId` Parameters to `Repair-AzVmssServiceFabricUpdateDomain`.
+* Edited `New-AzVmss` logic to better check for null properties when the parameter `OrchestrationMode` is used.
+
+## Version 4.24.1
+* Updated New-AzVM feature for `vCPUsAvailable` and `vCPUsPerCore` parameters. Cmdlets will not try to use the new `VMCustomizationPreview` feature if the user does not have access to that feature. [#17370]
+
+## Version 4.24.0
+* Upgraded Compute .NET SDK package reference to version 52.0.0
+* Updated `New-AzSshKey` cmdlet to write file paths to generated keys to the Warning stream instead of the console.
+* Added `vCPUsAvailable` and `vCPUsPerCore` integer parameters to the `New-AzVm`, `New-AzVmConfig`, and `Update-AzVm` cmdlets.
+
+## Version 4.23.0
+* Remove ProvisioningDetails property from PSRestorePoint object.
 * Updated `Set-AzVmExtension` cmdlet to properly display `-Name` and `-Location` parameters as mandatory.
 * Edited `New-AzVmssConfig` second example so it runs successfully by changing the Tag input to the correct format. 
 * Added `Hibernate` parameter to `Stop-AzVm` cmdlet. 
 * Added `HibernationEnabled` parameter to `New-AzVm`, `New-AzVmConfig`, and `Update-AzVm` cmdlets.
 * Added `EnableHotpatching` parameter to the `Set-AzVmssOSProfile` cmdlet.
+* Added 'ForceDeletion' parameter to Remove-AzVM and Remove-AzVMSS.
 
 ## Version 4.22.0
 * Updated `UserData` parameter in VM and VMSS cmdlets to pipe by the Property Name to ensure piping scenarios occur correctly.

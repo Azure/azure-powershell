@@ -1,0 +1,62 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/03b601f1-7eca-4496-8f8d-355219eee254/resourceGroups/Sample-RG/providers/Microsoft.Security/automations/sampleAutomationToDelete?api-version=2019-01-01-preview",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMDNiNjAxZjEtN2VjYS00NDk2LThmOGQtMzU1MjE5ZWVlMjU0L3Jlc291cmNlR3JvdXBzL1NhbXBsZS1SRy9wcm92aWRlcnMvTWljcm9zb2Z0LlNlY3VyaXR5L2F1dG9tYXRpb25zL3NhbXBsZUF1dG9tYXRpb25Ub0RlbGV0ZT9hcGktdmVyc2lvbj0yMDE5LTAxLTAxLXByZXZpZXc=",
+      "RequestMethod": "DELETE",
+      "RequestBody": "",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "c02ce882-8c6d-43e5-b965-5ad9f0512b16"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.16002",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Security.SecurityCenterClient/3.0.0.0"
+        ]
+      },
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [
+          "249"
+        ],
+        "x-ms-request-id": [
+          "3de335ed-922c-4591-99b7-a161db3c1cec"
+        ],
+        "x-ms-correlation-request-id": [
+          "3de335ed-922c-4591-99b7-a161db3c1cec"
+        ],
+        "x-ms-routing-request-id": [
+          "GERMANYWESTCENTRAL:20220414T142753Z:3de335ed-922c-4591-99b7-a161db3c1cec"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 14 Apr 2022 14:27:53 GMT"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "",
+      "StatusCode": 204
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "03b601f1-7eca-4496-8f8d-355219eee254"
+  }
+}

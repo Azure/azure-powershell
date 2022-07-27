@@ -44,9 +44,10 @@ Copies a long term retention backup to a target database.  Target database may b
 
 ### Example 1: Copy a long term retention backup to another server within the same environment.
 ```powershell
-PS C:\> Copy-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName test-server -DatabaseName test-database -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -ResourceGroupName testrg -TargetDatabaseName ltr1 -TargetServerName ayang-eas -TargetSubscriptionId '01c4ec88-e179-44f7-9eb0-e9719a5087ab' -TargetResourceGroupName testrg
+Copy-AzSqlDatabaseLongTermRetentionBackup -Location southeastasia -ServerName test-server -DatabaseName test-database -BackupName 'e5c20f43-494c-4925-89d1-58e0f4569fb3;132579992320000000' -ResourceGroupName testrg -TargetDatabaseName ltr1 -TargetServerName ayang-eas -TargetSubscriptionId '01c4ec88-e179-44f7-9eb0-e9719a5087ab' -TargetResourceGroupName testrg
+```
 
-
+```output
 SourceResourceGroupName              : test-rg
 SourceLocation                       : southeastasia
 SourceServerName                     : test-server
