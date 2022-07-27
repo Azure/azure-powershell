@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
         public string[] IdentityId { get; set; }
 
         [Parameter(
@@ -100,17 +101,20 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false)]
         [AllowEmptyString]
+        [ValidateNotNullOrEmpty]
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Id of Host")]
+        [ValidateNotNullOrEmpty]
         public string HostId { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
+        [ValidateNotNullOrEmpty]
         public string CapacityReservationGroupId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -134,6 +138,7 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = ExplicitIdentityParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
+        [ValidateNotNullOrEmpty]
         public string UserData { get; set; }
 
         [Parameter(

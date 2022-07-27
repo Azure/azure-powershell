@@ -23,6 +23,7 @@
 
 ## Version 4.30.0
 * Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion` 
+* Updated `Update-AzVm` to give constructive error messages when empty variables are passed in parameters.
 
 ## Version 4.29.0
 * Added image alias 'Win2022AzureEditionCore'
