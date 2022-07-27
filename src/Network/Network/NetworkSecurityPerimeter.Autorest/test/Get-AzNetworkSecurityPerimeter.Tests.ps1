@@ -20,9 +20,7 @@ Describe 'Get-AzNetworkSecurityPerimeter' {
     }
 
     It 'Get' {
-        { 
-
-        } | Should -Not -Throw
+        { echo $env.rgname } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' {

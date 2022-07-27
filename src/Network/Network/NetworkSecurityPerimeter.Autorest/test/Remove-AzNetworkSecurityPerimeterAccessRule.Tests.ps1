@@ -15,11 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkSecurityPerim
 }
 
 Describe 'Remove-AzNetworkSecurityPerimeterAccessRule' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { 
+        #Remove-AzNetworkSecurityPerimeterAccessRule -Name $templateVariables.tmpAccessRuleDelete1 -ProfileName $templateVariables.tmpProfile1  -ResourceGroupName $env.rgname -SecurityPerimeterName $templateVariables.tmpNsp1 
+         } | Should -Not -Throw
     }
 
     It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+        
+        #Get-AzNetworkSecurityPerimeterAccessRule -Name $templateVariables.tmpAccessRuleDelete2 -ProfileName $templateVariables.tmpProfile1  -ResourceGroupName $env.rgname -SecurityPerimeterName $templateVariables.tmpNsp1 | Remove-AzNetworkSecurityPerimeterAccessRule
+        } | Should -Not -Throw
     }
 }
