@@ -1,0 +1,287 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "eastus2euap"
+    },
+    "nsp1Name": {
+      "type": "string",
+      "defaultValue": "nsp1",
+      "metadata": {
+        "description": "Name of the NSP resource."
+      }
+    },
+    "nspDeleteName": {
+      "type": "string",
+      "defaultValue": "nspDel",
+      "metadata": {
+        "description": "Name of the NSP resource."
+      }
+    },
+    "profile1Name": {
+      "type": "string",
+      "defaultValue": "profile1",
+      "metadata": {
+        "description": "Name of the NSP profile."
+      }
+    },
+    "profileDeleteName": {
+      "type": "string",
+      "defaultValue": "profileDel",
+      "metadata": {
+        "description": "Name of the NSP profile."
+      }
+    },
+    "accessRuleName": {
+      "type": "string",
+      "defaultValue": "accessRule",
+      "metadata": {
+        "description": "Name of the NSP access rule."
+      }
+    },
+    "paasName": {
+      "defaultValue": "passrp",
+      "type": "String",
+      "metadata": {
+        "description": "Name of the PAAS resource."
+      }
+    },
+    "tenantName": {
+      "defaultValue": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+      "type": "string"
+    },
+    "associationName": {
+      "type": "string",
+      "defaultValue": "asn"
+    }
+  },
+  "variables": {
+    "nsp1ResourceName": "[parameters('nsp1Name')]",
+    "nspDeleteResourceName": "[parameters('nspDeleteName')]",
+    "profile1ResourceName": "[concat(variables('nsp1ResourceName'), '/', parameters('profile1Name'))]",
+    "profileDeleteResourceName": "[concat(variables('nsp1ResourceName'), '/', parameters('profileDeleteName'))]",
+    "accessRuleResourceName": "[concat(variables('profile1ResourceName'), '/', parameters('accessRuleName'))]",
+    "paasResourceName": "[parameters('paasName')]",
+    "associationResourceName": "[concat(variables('nsp1ResourceName'), '/', parameters('associationName'))]"
+  },
+  "resources": [
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters",
+      "name": "[variables('nsp1ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "displayName": "NetworkSecurityPerimeter 3",
+        "description": "The third network security perimeter."
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters",
+      "name": "[variables('nspDeleteResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [],
+      "properties": {
+        "displayName": "NetworkSecurityPerimeter 3",
+        "description": "The third network security perimeter."
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters/profiles",
+      "name": "[variables('profile1ResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nsp1ResourceName'))]"
+      ],
+      "properties": {
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters/profiles",
+      "name": "[variables('profileDeleteResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nsp1ResourceName'))]"
+      ],
+      "properties": {
+      }
+    },
+    {
+      "apiVersion": "2021-02-01-preview",
+      "type": "Microsoft.Network/networkSecurityPerimeters/profiles/accessRules",
+      "name": "[variables('accessRuleResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nsp1ResourceName'), parameters('profile1Name'))]"
+      ],
+      "properties": {
+        "displayName": "NSP Access Rule - 1",
+        "description": "NSP Access Rule - 1",
+        "direction": "Inbound",
+        "addressPrefixes": [
+          "10.10.0.0/16"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2021-11-01-preview",
+      "name": "[variables('paasResourceName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "sku": {
+          "family": "A",
+          "name": "Standard"
+        },
+        "tenantId": "[parameters('tenantName')]",
+        "accessPolicies": [
+          {
+            "tenantId": "[parameters('tenantName')]",
+            "objectId": "57bfe214-9fdd-4732-bc3d-410323de367f",
+            "permissions": {
+              "keys": [
+                "Get",
+                "List",
+                "Update",
+                "Create",
+                "Import",
+                "Delete",
+                "Recover",
+                "Backup",
+                "Restore",
+                "GetRotationPolicy",
+                "SetRotationPolicy",
+                "Rotate"
+              ],
+              "secrets": [
+                "Get",
+                "List",
+                "Set",
+                "Delete",
+                "Recover",
+                "Backup",
+                "Restore"
+              ],
+              "certificates": [
+                "Get",
+                "List",
+                "Update",
+                "Create",
+                "Import",
+                "Delete",
+                "Recover",
+                "Backup",
+                "Restore",
+                "ManageContacts",
+                "ManageIssuers",
+                "GetIssuers",
+                "ListIssuers",
+                "SetIssuers",
+                "DeleteIssuers"
+              ]
+            }
+          }
+        ],
+        "enabledForDeployment": false,
+        "enabledForDiskEncryption": false,
+        "enabledForTemplateDeployment": false,
+        "enableSoftDelete": true,
+        "softDeleteRetentionInDays": 90,
+        "enableRbacAuthorization": false,
+        "vaultUri": "[concat('https://', variables('paasResourceName'), '.vault.azure.net/')]",
+        "provisioningState": "Succeeded",
+        "publicNetworkAccess": "Enabled"
+      }
+    },
+    {
+      "type": "Microsoft.Network/networkSecurityPerimeters/resourceAssociations",
+      "apiVersion": "2021-02-01-preview",
+      "name": "[variables('associationResourceName')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nsp1ResourceName'), parameters('profile1Name'))]",
+        "[resourceId('Microsoft.KeyVault/vaults', variables('paasResourceName'))]"
+      ],
+      "properties": {
+        "privateLinkResource": {
+          "id": "[resourceId('Microsoft.KeyVault/vaults', variables('paasResourceName'))]"
+        },
+        "profile": {
+          "id": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nsp1ResourceName'), parameters('profile1Name'))]"
+        },
+        "accessMode": "Enforced"
+      }
+    }
+  ],
+  "outputs": {
+    "accessRuleName": {
+      "type": "string",
+      "value": "[parameters('accessRuleName')]"
+    },
+    "profile1Name": {
+      "type": "string",
+      "value": "[parameters('profile1Name')]"
+    },
+    "profileDeleteName": {
+      "type": "string",
+      "value": "[parameters('profileDeleteName')]"
+    },
+    "nsp1Name": {
+      "type": "string",
+      "value": "[variables('nsp1ResourceName')]"
+    },
+    "nspDeleteName": {
+      "type": "string",
+      "value": "[variables('nspDeleteResourceName')]"
+    },
+    "paasResourceName": {
+      "type": "string",
+      "value": "[variables('paasResourceName')]"
+    },
+    "associationName": {
+      "type": "string",
+      "value": "[parameters('associationName')]"
+    },
+    "nsp1ArmId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nsp1ResourceName'))]"
+    },
+    "nspDeleteArmId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nspDeleteResourceName'))]"
+    },
+    "profile1ArmId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nsp1ResourceName'), parameters('profile1Name'))]"
+    },
+    "profileDeleteArmId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nsp1ResourceName'), parameters('profileDeleteName'))]"
+    },
+    "accessRuleArmId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles/accessRules', variables('nsp1ResourceName'), parameters('profile1Name'), parameters('accessRuleName'))]"
+    },
+    "paasResourceId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.KeyVault/vaults', variables('paasResourceName'))]"
+    },
+    "resourceGroupId": {
+      "type": "string",
+      "value": "[resourceGroup().id]"
+    },
+    "privateLinkResourceId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.KeyVault/vaults', variables('paasResourceName'))]"
+    },
+    "associationArmId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters/resourceAssociations', variables('nsp1ResourceName'), parameters('associationName'))]"
+    }
+  }
+}
