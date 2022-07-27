@@ -149,11 +149,13 @@ namespace Microsoft.Azure.Commands.Profile.Utilities
                 else if (EnableFuzzyString && TryGetFuzzyStringSuggestions(args.CommandName, out IEnumerable<string> suggestions))
                 {
                     WriteWarning(FormatFuzzyStringMessage(args.CommandName, suggestions));
-                } else
+                }
+                else
                 {
                     isHelpful = false;
                 }
-                if (isHelpful && !HaveAskedForFeedback) {
+                if (isHelpful && !HaveAskedForFeedback)
+                {
                     HaveAskedForFeedback = true;
                     WriteWarning("The intelligent recommendation feature is in preview. Help us improve it by sharing your experience: https://go.microsoft.com/fwlink/?linkid=2202436");
                 }
