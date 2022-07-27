@@ -13,7 +13,6 @@
                     Measure-SectionMissingAndOutputScript
                     Get-ScriptAnalyzerResult
 #>
-$DebugPreference = 'Continue'
 
 $SYNOPSIS_HEADING = "## SYNOPSIS"
 $SYNTAX_HEADING = "## SYNTAX"

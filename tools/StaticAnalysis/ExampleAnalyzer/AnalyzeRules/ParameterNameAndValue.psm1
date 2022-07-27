@@ -3,6 +3,7 @@
     Custom rule for parameter name and value.
     .NOTES
     File: ParameterNameAndValue.psm1
+    Import-Module should be at the beginning of the rule to avoid thread conflict.
 #>
 Get-Item "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1" | Import-Module -Global
 
