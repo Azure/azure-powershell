@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.19.0
 * Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
     - `New-AzFirewallPolicyExplicitProxy`
     - `New-AzFirewallPolicy`
