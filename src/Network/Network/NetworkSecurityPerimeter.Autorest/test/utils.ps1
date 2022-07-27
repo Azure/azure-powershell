@@ -136,7 +136,7 @@ function cleanupEnv() {
     Remove-AzNetworkSecurityPerimeterAssociation @remove_association1
 
     $remove_associationDelete1 = @{
-        SecurityPerimeterName = $templateVariables.tmpNsp1
+        SecurityPerimeterName = $templateVariables.tmpnspDelBase1
         ResourceGroupName = $env.rgname
         Name = $templateVariables.tmpAssociationDelete1
     }
