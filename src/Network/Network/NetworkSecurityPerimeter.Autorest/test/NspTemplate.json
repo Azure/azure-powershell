@@ -48,16 +48,16 @@
         "description": "Name of the NSP profile."
       }
     },
-    "profile3Name": {
+    "profileDelBase1Name": {
       "type": "string",
-      "defaultValue": "profile3",
+      "defaultValue": "prDelB1",
       "metadata": {
         "description": "Name of the NSP profile."
       }
     },
-    "profileDelBase1Name": {
+    "profileDelBase2Name": {
       "type": "string",
-      "defaultValue": "prDelB1",
+      "defaultValue": "prDelB2",
       "metadata": {
         "description": "Name of the NSP profile."
       }
@@ -142,8 +142,8 @@
     "nspDelete2ResourceName": "[parameters('nspDelete2Name')]",
     "profile1ResourceName": "[concat(variables('nsp1ResourceName'), '/', parameters('profile1Name'))]",
     "profile2ResourceName": "[concat(variables('nsp1ResourceName'), '/', parameters('profile2Name'))]",
-    "profile3ResourceName": "[concat(variables('nsp1ResourceName'), '/', parameters('profile3Name'))]",
     "profileDelBase1ResourceName": "[concat(variables('nspDelBase1ResourceName'), '/', parameters('profileDelBase1Name'))]",
+    "profileDelBase2ResourceName": "[concat(variables('nspDelBase1ResourceName'), '/', parameters('profileDelBase2Name'))]",
     "profileDelete1ResourceName": "[concat(variables('nspDelBase1ResourceName'), '/', parameters('profileDelete1Name'))]",
     "profileDelete2ResourceName": "[concat(variables('nspDelBase1ResourceName'), '/', parameters('profileDelete2Name'))]",
     "accessRule1ResourceName": "[concat(variables('profile1ResourceName'), '/', parameters('accessRule1Name'))]",
@@ -154,7 +154,7 @@
     "paas3ResourceName": "[parameters('paas3Name')]",
     "association1ResourceName": "[concat(variables('nsp1ResourceName'), '/', parameters('association1Name'))]",
     "associationDelete1ResourceName": "[concat(variables('nspDelBase1ResourceName'), '/', parameters('associationDelete1Name'))]",
-    "associationDelete2ResourceName": "[concat(variables('nsp1ResourceName'), '/', parameters('associationDelete2Name'))]"
+    "associationDelete2ResourceName": "[concat(variables('nspDelBase1ResourceName'), '/', parameters('associationDelete2Name'))]"
   },
   "resources": [
     {
@@ -226,10 +226,10 @@
     {
       "apiVersion": "2021-02-01-preview",
       "type": "Microsoft.Network/networkSecurityPerimeters/profiles",
-      "name": "[variables('profile3ResourceName')]",
+      "name": "[variables('profileDelBase2ResourceName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nsp1ResourceName'))]"
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters', variables('nspDelBase1ResourceName'))]"
       ],
       "properties": {
       }
@@ -573,7 +573,7 @@
       "name": "[variables('associationDelete2ResourceName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nsp1ResourceName'), parameters('profile3Name'))]",
+        "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nspDelBase1ResourceName'), parameters('profileDelBase2Name'))]",
         "[resourceId('Microsoft.KeyVault/vaults', variables('paas3ResourceName'))]"
       ],
       "properties": {
@@ -581,7 +581,7 @@
           "id": "[resourceId('Microsoft.KeyVault/vaults', variables('paas3ResourceName'))]"
         },
         "profile": {
-          "id": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nsp1ResourceName'), parameters('profile3Name'))]"
+          "id": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nspDelBase1ResourceName'), parameters('profileDelBase2Name'))]"
         },
         "accessMode": "Enforced"
       }
@@ -604,10 +604,6 @@
       "type": "string",
       "value": "[parameters('profile2Name')]"
     },
-    "profile3Name": {
-      "type": "string",
-      "value": "[parameters('profile3Name')]"
-    },
     "profileDelete1Name": {
       "type": "string",
       "value": "[parameters('profileDelete1Name')]"
@@ -615,6 +611,10 @@
     "profileDelBase1Name": {
       "type": "string",
       "value": "[parameters('profileDelBase1Name')]"
+    },
+    "profileDelBase2Name": {
+      "type": "string",
+      "value": "[parameters('profileDelBase2Name')]"
     },
     "profileDelete2Name": {
       "type": "string",
@@ -684,10 +684,6 @@
       "type": "string",
       "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nsp1ResourceName'), parameters('profile2Name'))]"
     },
-    "profile3ArmId": {
-      "type": "string",
-      "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nsp1ResourceName'), parameters('profile3Name'))]"
-    },
     "profileDelete1ArmId": {
       "type": "string",
       "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nspDelBase1ResourceName'), parameters('profileDelete1Name'))]"
@@ -695,6 +691,10 @@
     "profileDelBase1ArmId": {
       "type": "string",
       "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nspDelBase1ResourceName'), parameters('profileDelBase1Name'))]"
+    },
+    "profileDelBase2ArmId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Network/networkSecurityPerimeters/profiles', variables('nspDelBase1ResourceName'), parameters('profileDelBase2Name'))]"
     },
     "profileDelete2ArmId": {
       "type": "string",

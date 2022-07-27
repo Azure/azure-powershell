@@ -48,10 +48,10 @@ function setupEnv() {
     $tmpNspDelete2 =  $randomString + 't-nspD2'
     $tmpProfile1 = 't-profile1'
     $tmpProfile2 = 't-profile2'
-    $tmpProfile3 = 't-profile3'
     $tmpProfileDelete1 = 't-profileD1'
     $tmpProfileDelete2 = 't-profileD2'
     $tmpProfileDelBase1 = 't-prDelB1'
+    $tmpProfileDelBase2 = 't-prDelB2'
     $tmpAccessRule1 = 't-ar1'
     $tmpAccessRuleDelete1 = 't-arD1'
     $tmpAccessRuleDelete2 = 't-arD2'
@@ -62,8 +62,8 @@ function setupEnv() {
     $tmpPaas2Rp = $randomString + 't-paas2Rp'
     $tmpPaas3Rp = $randomString + 't-paas3Rp'
 
-    $tmpKeys = 'tmpNsp1','tmpnspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfile3', 'tmpProfileDelBase1', 'tmpAccessRule1','tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2'
-    $tmpValues = $tmpNsp1, $tmpnspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpAccessRule1, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2
+    $tmpKeys = 'tmpNsp1','tmpnspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1','tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2'
+    $tmpValues = $tmpNsp1, $tmpnspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2
 
     for ($i = 0; $i -le ($tmpKeys.length - 1); $i += 1) {
         if ($templateVariables.Contains($tmpKeys[$i])) {
@@ -99,10 +99,10 @@ function setupEnv() {
         nspDelete2Name = $tmpNspDelete2
         profile1Name = $tmpProfile1
         profile2Name = $tmpProfile2
-        profile3Name = $tmpProfile3
         profileDelete1Name = $tmpProfileDelete1
         profileDelete2Name = $tmpProfileDelete2
         profileDelBase1Name = $tmpProfileDelBase1
+        profileDelBase2Name = $tmpProfileDelBase2
         accessRule1Name = $tmpAccessRule1
         accessRuleDelete1Name = $tmpAccessRuleDelete1
         accessRuleDelete2Name = $tmpAccessRuleDelete2
@@ -144,7 +144,7 @@ function cleanupEnv() {
     Remove-AzNetworkSecurityPerimeterAssociation @remove_associationDelete1
 
     $remove_associationDelete2 = @{
-        SecurityPerimeterName = $templateVariables.tmpNsp1
+        SecurityPerimeterName = $templateVariables.tmpnspDelBase1
         ResourceGroupName = $env.rgname
         Name = $templateVariables.tmpAssociationDelete2
     }

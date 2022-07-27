@@ -17,7 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkSecurityPerimete
 Describe 'New-AzNetworkSecurityPerimeter' {
     It 'CreateExpanded'{
         {
-        New-AzNetworkSecurityPerimeter -ResourceGroupName $env.rgname -Name $env.nsp1 -Location $env.location
+
+            $nspName = $env.randomStr + '-' + $env.nsp1
+
+        New-AzNetworkSecurityPerimeter -ResourceGroupName $env.rgname -Name $nspName -Location $env.location
  } | Should -Not -Throw
     }
 }
