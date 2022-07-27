@@ -1,17 +1,17 @@
 {
-  "nsp2": "psnsp2",
   "association2": "psassociation2",
-  "profile2": "psprofile1",
-  "accessrule1": "psaccessrule1",
-  "SubscriptionId": "3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9",
-  "rgname": "kumarkaushal-PS-RG-1",
-  "accessrule2": "psaccessrule2",
-  "accessMode1": "Learning",
-  "profile1": "psprofile1",
-  "nsp1": "psnsp1",
-  "RandomStr": "t4hmy",
+  "RandomStr": "t71mp",
+  "nsp2": "psnsp2",
   "location": "eastus2euap",
+  "accessrule2": "psaccessrule2",
   "accessMode2": "Enforced",
+  "SubscriptionId": "3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9",
+  "nsp1": "psnsp1",
+  "accessrule1": "psaccessrule1",
   "association1": "psassociation1",
-  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47"
+  "rgname": "kumarkaushal-PS-RG-1",
+  "Tenant": "72f988bf-86f1-41af-91ab-2d7cd011db47",
+  "profile1": "psprofile1",
+  "accessMode1": "Learning",
+  "profile2": "psprofile1"
 }
