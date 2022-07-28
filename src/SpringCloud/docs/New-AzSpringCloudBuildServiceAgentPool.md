@@ -1,73 +1,59 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.springcloud/get-azspringcloudbuildservicebuild
+online version: https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudbuildserviceagentpool
 schema: 2.0.0
 ---
 
-# Get-AzSpringCloudBuildServiceBuild
+# New-AzSpringCloudBuildServiceAgentPool
 
 ## SYNOPSIS
-Get a KPack build.
+Create or update build service agent pool.
 
 ## SYNTAX
 
-### List (Default)
+### UpdateExpanded (Default)
 ```
-Get-AzSpringCloudBuildServiceBuild -BuildServiceName <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzSpringCloudBuildServiceBuild -BuildServiceName <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+New-AzSpringCloudBuildServiceAgentPool -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String>] [-PoolSizeName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### UpdateViaIdentityExpanded
 ```
-Get-AzSpringCloudBuildServiceBuild -InputObject <ISpringCloudIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+New-AzSpringCloudBuildServiceAgentPool -InputObject <ISpringCloudIdentity> [-PoolSizeName <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a KPack build.
+Create or update build service agent pool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create or update build service agent pool
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudBuildServiceAgentPool -ResourceGroupName springcloudrg -ServiceName espring-pwsh01 -PoolSizeName "S1"
 ```
 
 ```output
-{{ Add output here }}
+Name        ResourceGroupName ProvisioningState StackId                     StackVersion
+----        ----------------- ----------------- -------                     ------------
+builderfull springcloudrg     Succeeded         io.buildpacks.stacks.bionic full
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create or update build service agent pool.
 
 ## PARAMETERS
 
-### -BuildServiceName
-The name of the build service resource.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
-Parameter Sets: Get, List
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -95,7 +81,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -105,15 +91,30 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the build resource.
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PoolSizeName
+The name of build service agent pool size
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -126,7 +127,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -141,7 +142,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -156,13 +157,44 @@ Gets subscription ID which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -176,7 +208,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuild
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IBuildServiceAgentPoolResource
 
 ## NOTES
 

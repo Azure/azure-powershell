@@ -34,27 +34,33 @@ Operation to update an exiting Deployment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Operation to update an exiting Deployment
 ```powershell
-{{ Add code here }}
+Update-AzSpringCloudAppDeployment -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName tools -Name default
 ```
 
 ```output
-{{ Add output here }}
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
+                                                                                                     fiedBy
+----    ------------------- -------------------     ----------------------- ------------------------ ------------------
+default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
 ```
 
-{{ Add description here }}
+Operation to update an exiting Deployment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Operation to update an exiting Deployment by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudAppDeployment -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName tools -Name default | Update-AzSpringCloudAppDeployment
 ```
 
 ```output
-{{ Add output here }}
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
+                                                                                                     fiedBy
+----    ------------------- -------------------     ----------------------- ------------------------ ------------------
+default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
 ```
 
-{{ Add description here }}
+Operation to update an exiting Deployment by pipeline.
 
 ## PARAMETERS
 

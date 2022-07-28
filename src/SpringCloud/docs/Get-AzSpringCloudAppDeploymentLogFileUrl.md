@@ -30,27 +30,27 @@ Get deployment log file URL
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get deployment log file URL
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudAppDeploymentLogFileUrl -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -AppName tools -Name default
 ```
 
 ```output
-{{ Add output here }}
+url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/8a34c541b97d45c591d5749e7ec77913/logs/?sv=2018-03-28&sr=b&sig=yAh3I%2B1P9pfSRknfOy%2BCheeomZNoKM9R1brvzj2OTtw%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
 ```
 
-{{ Add description here }}
+Get deployment log file URL.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get deployment log file URL by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudAppDeployment -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -AppName tools -Name default | Get-AzSpringCloudAppDeploymentLogFileUrl
 ```
 
 ```output
-{{ Add output here }}
+url         :"https://xxxxxxxxxxxxxxxxxxxxxxxxxxx.blob.core.windows.net/8a34c541b97d45c591d5749e7ec77913/logs/?sv=2018-03-28&sr=b&sig=yAh3I%2B1P9pfSRknfOy%2BCheeomZNoKM9R1brvzj2OTtw%3D&se=2022-07-13T10%3A15%3A46Z&sp=r"
 ```
 
-{{ Add description here }}
+Get deployment log file URL by pipeline.
 
 ## PARAMETERS
 

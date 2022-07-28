@@ -22,27 +22,18 @@ Create an in-memory object for LoadedCertificate.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for LoadedCertificate.
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudAppLoadedCertificateObject -ResourceId myResourceId
 ```
 
 ```output
-{{ Add output here }}
+LoadTrustStore ResourceId
+-------------- ----------
+               myResourceId
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for LoadedCertificate.
 
 ## PARAMETERS
 

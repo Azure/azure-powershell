@@ -12,16 +12,10 @@ Get build service agent pool.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
-Get-AzSpringCloudBuildServiceAgentPool -BuildServiceName <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzSpringCloudBuildServiceAgentPool -BuildServiceName <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringCloudBuildServiceAgentPool -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -35,44 +29,33 @@ Get build service agent pool.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a build service agent pool
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildServiceAgentPool -ResourceGroupName springcloudrg -ServiceName sspring-portal01
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState PoolSizeCpu PoolSizeMemory PoolSizeName
+----    ----------------- ----------------- ----------- -------------- ------------
+default springcloudrg     Succeeded         2           4Gi            S1
 ```
 
-{{ Add description here }}
+Get a build service agent pool.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a build service agent pool by pipeline
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudBuildServiceAgentPool -ResourceGroupName springcloudrg -ServiceName espring-pwsh01 -PoolSizeName "S1" | Get-AzSpringCloudBuildServiceAgentPool
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState PoolSizeCpu PoolSizeMemory PoolSizeName
+----    ----------------- ----------------- ----------- -------------- ------------
+default springcloudrg     Succeeded         2           4Gi            S1
 ```
 
-{{ Add description here }}
+Get a build service agent pool by pipeline.
 
 ## PARAMETERS
-
-### -BuildServiceName
-The name of the build service resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -105,28 +88,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the build service agent pool resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -141,7 +109,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -157,7 +125,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False

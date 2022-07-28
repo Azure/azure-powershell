@@ -14,14 +14,14 @@ Get a KPack builder.
 
 ### List (Default)
 ```
-Get-AzSpringCloudBuildServiceBuilder -BuildServiceName <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringCloudBuildServiceBuilder -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSpringCloudBuildServiceBuilder -BuildServiceName <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringCloudBuildServiceBuilder -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -35,44 +35,46 @@ Get a KPack builder.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all KPack builder
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildServiceBuilder -ResourceGroupName springcloudrg -ServiceName sspring-portal01
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState StackId                     StackVersion
+----    ----------------- ----------------- -------                     ------------
+default springcloudrg     Succeeded         io.buildpacks.stacks.bionic base
 ```
 
-{{ Add description here }}
+List all KPack builder.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all KPack builders under build service
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildServiceBuilder -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -Name default
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState StackId                     StackVersion
+----    ----------------- ----------------- -------                     ------------
+default springcloudrg     Succeeded         io.buildpacks.stacks.bionic base
 ```
 
-{{ Add description here }}
+List all KPack builders under build service.
+
+### Example 2: Get a KPack builder by pipeline
+```powershell
+New-AzSpringCloudBuildServiceBuilder -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -Name builder03 -StackId 'io.buildpacks.stacks.bionic' -StackVersion 'base' | Get-AzSpringCloudBuildServiceBuilder
+```
+
+```output
+Name    ResourceGroupName ProvisioningState StackId                     StackVersion
+----    ----------------- ----------------- -------                     ------------
+builder01 springcloudrg     Succeeded         io.buildpacks.stacks.bionic base
+```
+
+Get a KPack builder by pipeline.
 
 ## PARAMETERS
-
-### -BuildServiceName
-The name of the build service resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

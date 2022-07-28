@@ -29,27 +29,31 @@ Get the Monitoring Setting and its properties.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the Monitoring Setting and its properties
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudMonitoringSetting -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState TraceEnabled
+----    ----------------- ----------------- ------------
+default azurespringrg     Succeeded         True
 ```
 
-{{ Add description here }}
+Get the Monitoring Setting and its properties.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the Monitoring Setting and its properties by pipeline
 ```powershell
-{{ Add code here }}
+ Update-AzSpringCloudMonitoringSetting -AppInsightsInstrumentationKey "InstrumentationKey=xxxxxxxxxxxxxxxxxxx;IngestionEndpoint=https://xxxxxx.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/" | Get-AzSpringCloudMonitoringSetting
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState TraceEnabled
+----    ----------------- ----------------- ------------
+default azurespringrg     Succeeded         True
 ```
 
-{{ Add description here }}
+Get the Monitoring Setting and its properties by pipeline.
 
 ## PARAMETERS
 

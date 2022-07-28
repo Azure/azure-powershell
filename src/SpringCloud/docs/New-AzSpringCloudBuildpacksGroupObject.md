@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudBuildpacksGroupPropertiesObject
+online version: https://docs.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudBuildpacksGroupObject
 schema: 2.0.0
 ---
 
-# New-AzSpringCloudBuildpacksGroupPropertiesObject
+# New-AzSpringCloudBuildpacksGroupObject
 
 ## SYNOPSIS
 Create an in-memory object for BuildpacksGroupProperties.
@@ -13,7 +13,7 @@ Create an in-memory object for BuildpacksGroupProperties.
 ## SYNTAX
 
 ```
-New-AzSpringCloudBuildpacksGroupPropertiesObject [-Buildpack <IBuildpackProperties[]>] [-Name <String>]
+New-AzSpringCloudBuildpacksGroupObject [-Buildpack <IBuildpackProperties[]>] [-Name <String>]
  [<CommonParameters>]
 ```
 
@@ -22,27 +22,22 @@ Create an in-memory object for BuildpacksGroupProperties.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for BuildpacksGroupProperties
 ```powershell
-{{ Add code here }}
+$pack = @()
+$pack += New-AzSpringCloudBuildpackObject -Id "tanzu-buildpacks/dotnet-core"
+$pack += New-AzSpringCloudBuildpackObject -Id "tanzu-buildpacks/python"
+$pack += New-AzSpringCloudBuildpackObject -Id "tanzu-buildpacks/java-azure"
+New-AzSpringCloudBuildpacksGroupObject -Name 'packtest' -Buildpack $pack
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+packtest
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for BuildpacksGroupProperties.
 
 ## PARAMETERS
 

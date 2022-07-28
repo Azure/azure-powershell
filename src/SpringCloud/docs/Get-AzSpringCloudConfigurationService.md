@@ -12,15 +12,9 @@ Get the Application Configuration Service and its properties.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
 Get-AzSpringCloudConfigurationService -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzSpringCloudConfigurationService -Name <String> -ResourceGroupName <String> -ServiceName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -35,27 +29,33 @@ Get the Application Configuration Service and its properties.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all Application Configuration Service and its properties
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01
 ```
 
 ```output
-{{ Add output here }}
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedB
+                                                                                                     y
+----    ------------------- -------------------     ----------------------- ------------------------ -----------------------
+default 2022/7/13 3:26:33   v-junxisu@microsoft.com User                    2022/7/13 7:46:06        v-junxisu@microsoft.com
 ```
 
-{{ Add description here }}
+Get all Application Configuration Service and its properties.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the Application Configuration Service and its properties
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -Name default
 ```
 
 ```output
-{{ Add output here }}
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedB
+                                                                                                     y
+----    ------------------- -------------------     ----------------------- ------------------------ -----------------------
+default 2022/7/13 3:26:33   v-junxisu@microsoft.com User                    2022/7/13 7:46:06        v-junxisu@microsoft.com
 ```
 
-{{ Add description here }}
+Get the Application Configuration Service and its properties.
 
 ## PARAMETERS
 
@@ -90,28 +90,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of Application Configuration Service.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: ConfigurationServiceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -126,7 +111,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -142,7 +127,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False

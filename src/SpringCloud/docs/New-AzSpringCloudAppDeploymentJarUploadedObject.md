@@ -13,8 +13,8 @@ Create an in-memory object for JarUploadedUserSourceInfo.
 ## SYNTAX
 
 ```
-New-AzSpringCloudAppDeploymentJarUploadedObject [-JvmOption <String>] [-RelativePath <String>]
- [-RuntimeVersion <String>] [-Version <String>] [<CommonParameters>]
+New-AzSpringCloudAppDeploymentJarUploadedObject [-JvmOption <String>] [-RuntimeVersion <String>]
+ [-Version <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,47 +22,23 @@ Create an in-memory object for JarUploadedUserSourceInfo.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for JarUploadedUserSourceInfo
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudAppDeploymentJarUploadedObject -RuntimeVersion "Java_8"
 ```
 
 ```output
-{{ Add output here }}
+RelativePath                     Version JvmOption RuntimeVersion
+------------                     ------- --------- --------------
+/resource/asd451212asdasd578454d                   Java_8
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for JarUploadedUserSourceInfo.
 
 ## PARAMETERS
 
 ### -JvmOption
 JVM parameter.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RelativePath
-Relative path of the storage which stores the source.
 
 ```yaml
 Type: System.String

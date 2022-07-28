@@ -30,27 +30,19 @@ Delete the custom domain of one lifecycle application.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete the custom domain of one lifecycle application
 ```powershell
-{{ Add code here }}
+Remove-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name springcloud-service.azuremicroservices.io
 ```
 
-```output
-{{ Add output here }}
-```
+Delete the custom domain of one lifecycle application.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete the custom domain of one lifecycle application by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name springcloud-service.azuremicroservices.io  |  Remove-AzSpringCloudAppCustomDomain
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete the custom domain of one lifecycle application.
 
 ## PARAMETERS
 

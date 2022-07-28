@@ -1,43 +1,81 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.springcloud/new-azspringcloudconfigurationservice
+online version: https://docs.microsoft.com/powershell/module/az.springcloud/update-azspringcloudappactivedeployment
 schema: 2.0.0
 ---
 
-# New-AzSpringCloudConfigurationService
+# Update-AzSpringCloudAppActiveDeployment
 
 ## SYNOPSIS
-Create the default Application Configuration Service or update the existing Application Configuration Service.
+Set existing Deployment under the app as active
 
 ## SYNTAX
 
+### SetExpanded (Default)
 ```
-New-AzSpringCloudConfigurationService -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String>] [-GitRepository <IConfigurationServiceGitRepository[]>]
+Update-AzSpringCloudAppActiveDeployment -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String>] [-DeploymentName <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### Set
+```
+Update-AzSpringCloudAppActiveDeployment -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ -ActiveDeploymentCollection <IActiveDeploymentCollection> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create the default Application Configuration Service or update the existing Application Configuration Service.
+Set existing Deployment under the app as active
 
 ## EXAMPLES
 
-### Example 1: Create the default Application Configuration Service or update the existing Application Configuration Service
+### Example 1: Set existing Deployment under the app as active
 ```powershell
-New-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01
+Update-AzSpringCloudAppActiveDeployment -ResourceGroupName springcloudrg -ServiceName standardspring-demo -Name demo -DeploymentName 'green'
 ```
 
 ```output
 Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
                                                                                                      fiedBy
 ----    ------------------- -------------------     ----------------------- ------------------------ ------------------
-default 2022/7/13 3:26:33   *********@microsoft.com User                    2022/7/13 7:46:06        *********@microso…
+default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
 ```
 
-Create the default Application Configuration Service or update the existing Application Configuration Service.
+Set existing Deployment under the app as active.
+
+### Example 2: Set existing Deployment under the app as active by pipeline
+```powershell
+Get-AzSpringCloudApp -ResourceGroupName springcloudrg -ServiceName standardspring-demo -Name demo | Update-AzSpringCloudAppActiveDeployment -DeploymentName 'green'
+```
+
+```output
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
+                                                                                                     fiedBy
+----    ------------------- -------------------     ----------------------- ------------------------ ------------------
+default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
+```
+
+Set existing Deployment under the app as active by pipeline.
 
 ## PARAMETERS
+
+### -ActiveDeploymentCollection
+Object that includes an array of Deployment resource name and set them as active.
+To construct, see NOTES section for ACTIVEDEPLOYMENTCOLLECTION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IActiveDeploymentCollection
+Parameter Sets: Set
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -69,16 +107,30 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GitRepository
-Repositories of Application Configuration Service git property.
-To construct, see NOTES section for GITREPOSITORY properties and create a hash table.
+### -DeploymentName
+Collection of Deployment name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigurationServiceGitRepository[]
-Parameter Sets: (All)
+Type: System.String[]
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the App resource.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -183,9 +235,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IActiveDeploymentCollection
+
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IConfigurationServiceResource
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IAppResource
 
 ## NOTES
 
@@ -196,18 +250,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-GITREPOSITORY <IConfigurationServiceGitRepository[]>: Repositories of Application Configuration Service git property.
-  - `Label <String>`: Label of the repository
-  - `Name <String>`: Name of the repository
-  - `Pattern <String[]>`: Collection of patterns of the repository
-  - `Uri <String>`: URI of the repository
-  - `[HostKey <String>]`: Public sshKey of git repository.
-  - `[HostKeyAlgorithm <String>]`: SshKey algorithm of git repository.
-  - `[Password <String>]`: Password of git repository basic auth.
-  - `[PrivateKey <String>]`: Private sshKey algorithm of git repository.
-  - `[SearchPath <String[]>]`: Searching path of the repository
-  - `[StrictHostKeyChecking <Boolean?>]`: Strict host key checking or not.
-  - `[Username <String>]`: Username of git repository basic auth.
+ACTIVEDEPLOYMENTCOLLECTION <IActiveDeploymentCollection>: Object that includes an array of Deployment resource name and set them as active.
+  - `[ActiveDeploymentName <String[]>]`: Collection of Deployment name.
 
 ## RELATED LINKS
 

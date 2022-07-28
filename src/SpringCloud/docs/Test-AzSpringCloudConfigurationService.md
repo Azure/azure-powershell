@@ -14,7 +14,7 @@ Check if the Application Configuration Service settings are valid.
 
 ### ValidateExpanded (Default)
 ```
-Test-AzSpringCloudConfigurationService -Name <String> -ResourceGroupName <String> -ServiceName <String>
+Test-AzSpringCloudConfigurationService -ResourceGroupName <String> -ServiceName <String>
  [-SubscriptionId <String>] [-GitRepository <IConfigurationServiceGitRepository[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -31,27 +31,18 @@ Check if the Application Configuration Service settings are valid.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check if the Application Configuration Service settings are valid
 ```powershell
-{{ Add code here }}
+Test-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01
 ```
 
 ```output
-{{ Add output here }}
+IsValid
+-------
+True
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Check if the Application Configuration Service settings are valid.
 
 ## PARAMETERS
 
@@ -114,21 +105,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of Application Configuration Service.
-
-```yaml
-Type: System.String
-Parameter Sets: ValidateExpanded
-Aliases: ConfigurationServiceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

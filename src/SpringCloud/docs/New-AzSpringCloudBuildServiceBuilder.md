@@ -13,10 +13,10 @@ Create or update a KPack builder.
 ## SYNTAX
 
 ```
-New-AzSpringCloudBuildServiceBuilder -BuildServiceName <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String>] [-BuildpackGroup <IBuildpacksGroupProperties[]>]
- [-StackId <String>] [-StackVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzSpringCloudBuildServiceBuilder -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String>] [-BuildpackGroup <IBuildpacksGroupProperties[]>] [-StackId <String>]
+ [-StackVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,27 +24,18 @@ Create or update a KPack builder.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create or update a KPack builder
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudBuildServiceBuilder -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -Name builder01 -StackId 'io.buildpacks.stacks.bionic' -StackVersion 'base'
 ```
 
 ```output
-{{ Add output here }}
+Name      ResourceGroupName ProvisioningState StackId                     StackVersion
+----      ----------------- ----------------- -------                     ------------
+builder01 springcloudrg     Succeeded         io.buildpacks.stacks.bionic base
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create or update a KPack builder.
 
 ## PARAMETERS
 
@@ -73,21 +64,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BuildServiceName
-The name of the build service resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

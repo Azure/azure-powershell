@@ -12,16 +12,10 @@ Get a build service resource.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
 Get-AzSpringCloudBuildService -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzSpringCloudBuildService -Name <String> -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -35,27 +29,31 @@ Get a build service resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a build service resource of the enterprise spring cloud
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildService -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -Name default
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState KPackVersion ResourceRequestCpu ResourceRequestMemory
+----    ----------------- ----------------- ------------ ------------------ ---------------------
+default springcloudrg     Succeeded         0.5.2        2                  4Gi
 ```
 
-{{ Add description here }}
+Get a build service resource of the enterprise spring cloud.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a build service resource of the enterprise spring cloud by id
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildService -InputObject "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/springcloudrg/providers/Microsoft.AppPlatform/Spring/sspring-portal01/buildServices/default"
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState KPackVersion ResourceRequestCpu ResourceRequestMemory
+----    ----------------- ----------------- ------------ ------------------ ---------------------
+default springcloudrg     Succeeded         0.5.2        2                  4Gi
 ```
 
-{{ Add description here }}
+Get a build service resource of the enterprise spring cloud.
 
 ## PARAMETERS
 
@@ -90,28 +88,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the build service resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases: BuildServiceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group that contains the resource.
 You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -126,7 +109,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -142,7 +125,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False

@@ -13,8 +13,8 @@ Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 ## SYNTAX
 
 ```
-New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject [-MainEntryPath <String>] [-RelativePath <String>]
- [-RuntimeVersion <String>] [-Version <String>] [<CommonParameters>]
+New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject [-MainEntryPath <String>] [-RuntimeVersion <String>]
+ [-Version <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,47 +22,23 @@ Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for NetCoreZipUploadedUserSourceInfo
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
 ```
 
 ```output
-{{ Add output here }}
+RelativePath Version NetCoreMainEntryPath RuntimeVersion
+------------ ------- -------------------- --------------
+<default>
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 
 ## PARAMETERS
 
 ### -MainEntryPath
 The path to the .NET executable relative to zip root.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RelativePath
-Relative path of the storage which stores the source.
 
 ```yaml
 Type: System.String

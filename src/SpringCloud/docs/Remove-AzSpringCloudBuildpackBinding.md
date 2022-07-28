@@ -14,9 +14,9 @@ Operation to delete a Buildpack Binding
 
 ### Delete (Default)
 ```
-Remove-AzSpringCloudBuildpackBinding -BuilderName <String> -BuildServiceName <String> -Name <String>
- -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzSpringCloudBuildpackBinding -BuilderName <String> -Name <String> -ResourceGroupName <String>
+ -ServiceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -30,27 +30,19 @@ Operation to delete a Buildpack Binding
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Operation to delete a Buildpack Binding
 ```powershell
-{{ Add code here }}
+Remove-AzSpringCloudBuildpackBinding -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -BuildServiceName default -BuilderName default -Name binging01
 ```
 
-```output
-{{ Add output here }}
-```
+Operation to delete a Buildpack Binding.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Operation to delete a Buildpack Binding by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildpackBinding -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -BuildServiceName default -BuilderName default -Name binging01 | Remove-AzSpringCloudBuildpackBinding
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Operation to delete a Buildpack Binding by pipeline.
 
 ## PARAMETERS
 
@@ -71,21 +63,6 @@ Accept wildcard characters: False
 
 ### -BuilderName
 The name of the builder resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BuildServiceName
-The name of the build service resource.
 
 ```yaml
 Type: System.String

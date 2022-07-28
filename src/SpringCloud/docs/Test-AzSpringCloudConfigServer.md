@@ -35,27 +35,31 @@ Check if the config server settings are valid.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check if the config server settings are valid
 ```powershell
-{{ Add code here }}
+ Test-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service
 ```
 
 ```output
-{{ Add output here }}
+IsValid
+-------
+True
 ```
 
-{{ Add description here }}
+Check if the config server settings are valid.
 
-### Example 2: {{ Add title here }}
+### Example 2: Check if the config server settings are valid by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service | Test-AzSpringCloudConfigServer
 ```
 
 ```output
-{{ Add output here }}
+IsValid
+-------
+True
 ```
 
-{{ Add description here }}
+Check if the config server settings are valid by pipeline.
 
 ## PARAMETERS
 

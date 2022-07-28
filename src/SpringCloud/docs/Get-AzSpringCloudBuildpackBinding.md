@@ -14,15 +14,14 @@ Get a buildpack binding by name.
 
 ### List (Default)
 ```
-Get-AzSpringCloudBuildpackBinding -BuilderName <String> -BuildServiceName <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringCloudBuildpackBinding -BuilderName <String> -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSpringCloudBuildpackBinding -BuilderName <String> -BuildServiceName <String> -Name <String>
- -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzSpringCloudBuildpackBinding -BuilderName <String> -Name <String> -ResourceGroupName <String>
+ -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -36,47 +35,52 @@ Get a buildpack binding by name.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all buildpack binding
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildpackBinding -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -BuildServiceName default -BuilderName default
 ```
 
 ```output
-{{ Add output here }}
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
+                                                                                                     fiedBy
+----    ------------------- -------------------     ----------------------- ------------------------ ------------------
+default 2022/7/13 3:26:33   *********@microsoft.com User                    2022/7/13 3:26:33        *********@microso…
 ```
 
-{{ Add description here }}
+List all buildpack binding.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a buildpack binding by name
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildpackBinding -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -BuildServiceName default -BuilderName default -Name default
 ```
 
 ```output
-{{ Add output here }}
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
+                                                                                                     fiedBy
+----    ------------------- -------------------     ----------------------- ------------------------ ------------------
+default 2022/7/13 3:26:33   *********@microsoft.com User                    2022/7/13 3:26:33        *********@microso…
 ```
 
-{{ Add description here }}
+Get a buildpack binding by name.
+
+### Example 2: Get a buildpack binding by pipeline
+```powershell
+New-AzSpringCloudBuildpackBinding -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -BuildServiceName default -BuilderName default -Name binging01 -BindingType 'AppDynamics' | Get-AzSpringCloudBuildpackBinding
+```
+
+```output
+Name      SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
+                                                                                                     fiedBy
+----      ------------------- -------------------     ----------------------- ------------------------ ------------------
+binging01 2022/7/13 3:26:33   *********@microsoft.com User                    2022/7/13 3:26:33        *********@microso…
+```
+
+Get a buildpack binding by pipeline.
 
 ## PARAMETERS
 
 ### -BuilderName
 The name of the builder resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BuildServiceName
-The name of the build service resource.
 
 ```yaml
 Type: System.String

@@ -14,7 +14,7 @@ Disable the default Application Configuration Service.
 
 ### Delete (Default)
 ```
-Remove-AzSpringCloudConfigurationService -Name <String> -ResourceGroupName <String> -ServiceName <String>
+Remove-AzSpringCloudConfigurationService -ResourceGroupName <String> -ServiceName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -30,27 +30,19 @@ Disable the default Application Configuration Service.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Disable the default Application Configuration Service
 ```powershell
-{{ Add code here }}
+Remove-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name default
 ```
 
-```output
-{{ Add output here }}
-```
+Disable the default Application Configuration Service.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Disable the default Application Configuration Service by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name default | Remove-AzSpringCloudConfigurationService
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Disable the default Application Configuration Service by pipeline.
 
 ## PARAMETERS
 
@@ -97,21 +89,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of Application Configuration Service.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: ConfigurationServiceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

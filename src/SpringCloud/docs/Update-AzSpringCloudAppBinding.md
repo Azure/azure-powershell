@@ -32,27 +32,31 @@ Operation to update an exiting Binding.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Operation to update an exiting Binding
 ```powershell
-{{ Add code here }}
+Update-AzSpringCloudAppBinding -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name redis -Key myKey -BindingParameter @{ "useSsl"= "true" }
 ```
 
 ```output
-{{ Add output here }}
+Name  
+----   
+redis
 ```
 
-{{ Add description here }}
+Operation to update an exiting Binding.
 
-### Example 2: {{ Add title here }}
+### Example 2: Operation to update an exiting Binding by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudAppBinding -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name redis | Update-AzSpringCloudAppBinding -Key myKey -BindingParameter @{ "useSsl"= "true" }
 ```
 
 ```output
-{{ Add output here }}
+Name  
+----   
+redis
 ```
 
-{{ Add description here }}
+Operation to update an exiting Binding by pipeline.
 
 ## PARAMETERS
 

@@ -12,10 +12,18 @@ Deploy the build file to an existing deployment.
 
 ## SYNTAX
 
+### DeployAppForStandard (Default)
 ```
-Deploy-AzSpringCloudApp -DeploymentName <String> -FilePath <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Deploy-AzSpringCloudApp -FilePath <String> -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### DeployAppForEnterprise
+```
+Deploy-AzSpringCloudApp -AgentPoolId <String> -BuilderId <String> -FilePath <String> -Name <String>
+ -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,29 +31,39 @@ Deploy the build file to an existing deployment.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Deploy the build file to an existing deployment
 ```powershell
-{{ Add code here }}
+ Deploy-AzSpringCloudApp -ResourceGroupName spring-rg-test -ServiceName spring-cli01 -Name demo -DeploymentName green -FilePath "C:\Users\Downloads\hellospring\target\hellospring-0.0.1-SNAPSHOT.jar"
 ```
 
 ```output
-{{ Add output here }}
+[1/3] Requesting for upload URL
+[2/3] Uploading package to blob
+[3/3] Updating deployment in app demo (this operation can take a while to complete)
+
+Name  SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----  -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+green 6/24/2022 6:50:58 AM v-test@microsoft.com User                    7/19/2022 7:06:08 AM     v-test@microsoft.com     User                         spring-rg-test
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command deploys the build file to an existing deployment.
 
 ## PARAMETERS
+
+### -AgentPoolId
+The resource id of agent pool.
+
+```yaml
+Type: System.String
+Parameter Sets: DeployAppForEnterprise
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job
@@ -62,6 +80,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -BuilderId
+The resource id of builder to build the source code.
+
+```yaml
+Type: System.String
+Parameter Sets: DeployAppForEnterprise
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -71,21 +104,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -DeploymentName
-The name of the App resource.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

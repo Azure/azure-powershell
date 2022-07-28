@@ -14,15 +14,14 @@ Get the supported buildpack resource.
 
 ### List (Default)
 ```
-Get-AzSpringCloudBuildServiceSupportedBuildpack -BuildServiceName <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringCloudBuildServiceSupportedBuildpack -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSpringCloudBuildServiceSupportedBuildpack -BuildServiceName <String> -Name <String>
- -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzSpringCloudBuildServiceSupportedBuildpack -Name <String> -ResourceGroupName <String>
+ -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -36,44 +35,37 @@ Get the supported buildpack resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all supported buildpack resource.
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildServiceSupportedBuildpack -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01
 ```
 
 ```output
-{{ Add output here }}
+Name                         ResourceGroupName BuildpackId
+----                         ----------------- -----------
+tanzu-buildpacks-java-azure  springcloudrg     tanzu-buildpacks/java-azure
+tanzu-buildpacks-dotnet-core springcloudrg     tanzu-buildpacks/dotnet-core
+tanzu-buildpacks-go          springcloudrg     tanzu-buildpacks/go
+tanzu-buildpacks-nodejs      springcloudrg     tanzu-buildpacks/nodejs
+tanzu-buildpacks-python      springcloudrg     tanzu-buildpacks/python
 ```
 
-{{ Add description here }}
+Get all supported buildpack resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the supported buildpack resource by name
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildServiceSupportedBuildpack -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -Name tanzu-buildpacks-python
 ```
 
 ```output
-{{ Add output here }}
+Name                    ResourceGroupName BuildpackId
+----                    ----------------- -----------
+tanzu-buildpacks-python springcloudrg     tanzu-buildpacks/python
 ```
 
-{{ Add description here }}
+Get the supported buildpack resource by name.
 
 ## PARAMETERS
-
-### -BuildServiceName
-The name of the build service resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

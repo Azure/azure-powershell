@@ -29,27 +29,31 @@ Check the resource name is valid as well as not in use.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Check the resource name is valid as well as not in use
 ```powershell
-{{ Add code here }}
+Test-AzSpringCloudAppDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service-01 -Name springcloud-service-01.azuremicroservices.io -AppName tools
 ```
 
 ```output
-{{ Add output here }}
+IsValid Message
+------- -------
+True
 ```
 
-{{ Add description here }}
+Check the resource name is valid as well as not in use.
 
-### Example 2: {{ Add title here }}
+### Example 2: Check the resource name is valid as well as not in use by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudAppDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service-01 -Name springcloud-service-01.azuremicroservices.io -AppName tools | Test-AzSpringCloudAppDomain
 ```
 
 ```output
-{{ Add output here }}
+IsValid Message
+------- -------
+True
 ```
 
-{{ Add description here }}
+Check the resource name is valid as well as not in use by pipeline.
 
 ## PARAMETERS
 

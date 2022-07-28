@@ -29,27 +29,18 @@ Get the config server and its properties.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all properties of the config server 
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState
+----    ----------------- -----------------
+default springcloudrg     Succeeded
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get all properties of the config server.
 
 ## PARAMETERS
 

@@ -14,15 +14,14 @@ Get the supported stack resource.
 
 ### List (Default)
 ```
-Get-AzSpringCloudBuildServiceSupportedStack -BuildServiceName <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzSpringCloudBuildServiceSupportedStack -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzSpringCloudBuildServiceSupportedStack -BuildServiceName <String> -Name <String>
- -ResourceGroupName <String> -ServiceName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzSpringCloudBuildServiceSupportedStack -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -36,44 +35,34 @@ Get the supported stack resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get all supported stack resource
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildServiceSupportedStack -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01
 ```
 
 ```output
-{{ Add output here }}
+Name                             ResourceGroupName StackId                     Version
+----                             ----------------- -------                     -------
+io.buildpacks.stacks.bionic-base springcloudrg     io.buildpacks.stacks.bionic base
+io.buildpacks.stacks.bionic-full springcloudrg     io.buildpacks.stacks.bionic full
 ```
 
-{{ Add description here }}
+Get all supported stack resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the supported stack resource
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildServiceSupportedStack -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -Name io.buildpacks.stacks.bionic-full
 ```
 
 ```output
-{{ Add output here }}
+Name                             ResourceGroupName StackId                     Version
+----                             ----------------- -------                     -------
+io.buildpacks.stacks.bionic-base springcloudrg     io.buildpacks.stacks.bionic base
 ```
 
-{{ Add description here }}
+Get the supported stack resource.
 
 ## PARAMETERS
-
-### -BuildServiceName
-The name of the build service resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.

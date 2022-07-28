@@ -14,9 +14,6 @@ Microsoft Azure PowerShell: SpringCloud cmdlets
 ### [Deploy-AzSpringCloudApp](Deploy-AzSpringCloudApp.md)
 Deploy the build file to an existing deployment.
 
-### [Deploy-AzSpringCloudAppSourceFile](Deploy-AzSpringCloudAppSourceFile.md)
-Upload the built file to spring cloud app.
-
 ### [Disable-AzSpringCloudTestEndpoint](Disable-AzSpringCloudTestEndpoint.md)
 Disable test endpoint functionality for a Service.
 
@@ -50,20 +47,8 @@ Get a build service resource.
 ### [Get-AzSpringCloudBuildServiceAgentPool](Get-AzSpringCloudBuildServiceAgentPool.md)
 Get build service agent pool.
 
-### [Get-AzSpringCloudBuildServiceBuild](Get-AzSpringCloudBuildServiceBuild.md)
-Get a KPack build.
-
 ### [Get-AzSpringCloudBuildServiceBuilder](Get-AzSpringCloudBuildServiceBuilder.md)
 Get a KPack builder.
-
-### [Get-AzSpringCloudBuildServiceBuildResult](Get-AzSpringCloudBuildServiceBuildResult.md)
-Get a KPack build result.
-
-### [Get-AzSpringCloudBuildServiceBuildResultLog](Get-AzSpringCloudBuildServiceBuildResultLog.md)
-Get a KPack build result log download URL.
-
-### [Get-AzSpringCloudBuildServiceResourceUploadUrl](Get-AzSpringCloudBuildServiceResourceUploadUrl.md)
-Get an resource upload URL for build service, which may be artifacts or source archive.
 
 ### [Get-AzSpringCloudBuildServiceSupportedBuildpack](Get-AzSpringCloudBuildServiceSupportedBuildpack.md)
 Get the supported buildpack resource.
@@ -110,8 +95,8 @@ Create or update custom domain of one lifecycle application.
 ### [New-AzSpringCloudAppDeployment](New-AzSpringCloudAppDeployment.md)
 Create a new Deployment or update an exiting Deployment.
 
-### [New-AzSpringCloudAppDeploymentHeapDump](New-AzSpringCloudAppDeploymentHeapDump.md)
-Generate Heap Dump
+### [New-AzSpringCloudAppDeploymentBuildResultObject](New-AzSpringCloudAppDeploymentBuildResultObject.md)
+Create an in-memory object for BuildResultUserSourceInfo.
 
 ### [New-AzSpringCloudAppDeploymentJarUploadedObject](New-AzSpringCloudAppDeploymentJarUploadedObject.md)
 Create an in-memory object for JarUploadedUserSourceInfo.
@@ -122,23 +107,20 @@ Create an in-memory object for NetCoreZipUploadedUserSourceInfo.
 ### [New-AzSpringCloudAppDeploymentSourceUploadedObject](New-AzSpringCloudAppDeploymentSourceUploadedObject.md)
 Create an in-memory object for SourceUploadedUserSourceInfo.
 
-### [New-AzSpringCloudAppDeploymentThreadDump](New-AzSpringCloudAppDeploymentThreadDump.md)
-Generate Thread Dump
-
 ### [New-AzSpringCloudAppLoadedCertificateObject](New-AzSpringCloudAppLoadedCertificateObject.md)
 Create an in-memory object for LoadedCertificate.
 
 ### [New-AzSpringCloudBuildpackBinding](New-AzSpringCloudBuildpackBinding.md)
 Create or update a buildpack binding.
 
-### [New-AzSpringCloudBuildpackPropertiesObject](New-AzSpringCloudBuildpackPropertiesObject.md)
+### [New-AzSpringCloudBuildpackObject](New-AzSpringCloudBuildpackObject.md)
 Create an in-memory object for BuildpackProperties.
 
-### [New-AzSpringCloudBuildpacksGroupPropertiesObject](New-AzSpringCloudBuildpacksGroupPropertiesObject.md)
+### [New-AzSpringCloudBuildpacksGroupObject](New-AzSpringCloudBuildpacksGroupObject.md)
 Create an in-memory object for BuildpacksGroupProperties.
 
-### [New-AzSpringCloudBuildServiceBuild](New-AzSpringCloudBuildServiceBuild.md)
-Create or update a KPack build.
+### [New-AzSpringCloudBuildServiceAgentPool](New-AzSpringCloudBuildServiceAgentPool.md)
+Create or update build service agent pool.
 
 ### [New-AzSpringCloudBuildServiceBuilder](New-AzSpringCloudBuildServiceBuilder.md)
 Create or update a KPack builder.
@@ -152,8 +134,14 @@ Create the default Application Configuration Service or update the existing Appl
 ### [New-AzSpringCloudConfigurationServiceGitRepositoryObject](New-AzSpringCloudConfigurationServiceGitRepositoryObject.md)
 Create an in-memory object for ConfigurationServiceGitRepository.
 
+### [New-AzSpringCloudContentCertificateObject](New-AzSpringCloudContentCertificateObject.md)
+Create an in-memory object for ContentCertificateProperties.
+
 ### [New-AzSpringCloudGitPatternRepositoryObject](New-AzSpringCloudGitPatternRepositoryObject.md)
 Create an in-memory object for GitPatternRepository.
+
+### [New-AzSpringCloudKeyVaultCertificateObject](New-AzSpringCloudKeyVaultCertificateObject.md)
+Create an in-memory object for KeyVaultCertificateProperties.
 
 ### [New-AzSpringCloudTestKey](New-AzSpringCloudTestKey.md)
 Regenerate a test key for a Service.
@@ -217,6 +205,9 @@ Operation to update an exiting Service.
 
 ### [Update-AzSpringCloudApp](Update-AzSpringCloudApp.md)
 Operation to update an exiting App.
+
+### [Update-AzSpringCloudAppActiveDeployment](Update-AzSpringCloudAppActiveDeployment.md)
+Set existing Deployment under the app as active
 
 ### [Update-AzSpringCloudAppBinding](Update-AzSpringCloudAppBinding.md)
 Operation to update an exiting Binding.

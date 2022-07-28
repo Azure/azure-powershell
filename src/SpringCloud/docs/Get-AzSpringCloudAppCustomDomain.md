@@ -35,27 +35,33 @@ Get the custom domain of one lifecycle application.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the custom domain of all lifecycle applications
 ```powershell
-{{ Add code here }}
+ Get-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway
 ```
 
 ```output
-{{ Add output here }}
+Name                                      
+          
+----                               
+springcloud-service.azuremicroservices.io
 ```
 
-{{ Add description here }}
+Get the custom domain of all lifecycle applications.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the custom domain of one lifecycle application
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name springcloud-service.azuremicroservices.io
 ```
 
 ```output
-{{ Add output here }}
+Name                                      
+          
+----                               
+springcloud-service.azuremicroservices.io
 ```
 
-{{ Add description here }}
+Get the custom domain of one lifecycle application.
 
 ## PARAMETERS
 

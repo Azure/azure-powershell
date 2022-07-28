@@ -14,8 +14,8 @@ Create or update certificate resource.
 
 ```
 New-AzSpringCloudCertificate -Name <String> -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String>] [-PropertiesType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Property <ICertificateProperties>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,27 +23,19 @@ Create or update certificate resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create or update certificate resource
 ```powershell
-{{ Add code here }}
+$cert = New-AzSpringCloudKeyVaultCertificatePropertiesObject -Name "cert01" -Type "KeyVaultCertificate" -VaultUri "https://xxxxxx.vault.azure.net" -Version "xxxxxxxxxxxxxxxxxxxxx" -ExcludePrivateKey $false
+New-AzSpringCloudCertificate -ResourceGroupName lucas-rg-test -ServiceName springapp-pwsh01 -Name cert01 -Property $cert
 ```
 
 ```output
-{{ Add output here }}
+Name   ResourceGroupName
+----   -----------------
+cert01 lucas-rg-test
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create or update certificate resource.
 
 ## PARAMETERS
 
@@ -107,11 +99,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PropertiesType
-The type of the certificate source.
+### -Property
+Properties of the certificate resource payload.
+To construct, see NOTES section for PROPERTY properties and create a hash table.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICertificateProperties
 Parameter Sets: (All)
 Aliases:
 
@@ -212,6 +205,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+PROPERTY <ICertificateProperties>: Properties of the certificate resource payload.
+  - `Type <String>`: The type of the certificate source.
 
 ## RELATED LINKS
 

@@ -1,52 +1,43 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudBuildpackPropertiesObject
+online version: https://docs.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentBuildResultObject
 schema: 2.0.0
 ---
 
-# New-AzSpringCloudBuildpackPropertiesObject
+# New-AzSpringCloudAppDeploymentBuildResultObject
 
 ## SYNOPSIS
-Create an in-memory object for BuildpackProperties.
+Create an in-memory object for BuildResultUserSourceInfo.
 
 ## SYNTAX
 
 ```
-New-AzSpringCloudBuildpackPropertiesObject [-Id <String>] [<CommonParameters>]
+New-AzSpringCloudAppDeploymentBuildResultObject [-Version <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for BuildpackProperties.
+Create an in-memory object for BuildResultUserSourceInfo.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for BuildResultUserSourceInfo
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudAppDeploymentBuildResultObject
 ```
 
 ```output
-{{ Add output here }}
+Version BuildResultId
+------- -------------
+        <default>
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for BuildResultUserSourceInfo.
 
 ## PARAMETERS
 
-### -Id
-Id of the buildpack.
+### -Version
+Version of the source.
 
 ```yaml
 Type: System.String
@@ -67,7 +58,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildpackProperties
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildResultUserSourceInfo
 
 ## NOTES
 

@@ -14,9 +14,9 @@ Delete a KPack builder.
 
 ### Delete (Default)
 ```
-Remove-AzSpringCloudBuildServiceBuilder -BuildServiceName <String> -Name <String> -ResourceGroupName <String>
- -ServiceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzSpringCloudBuildServiceBuilder -Name <String> -ResourceGroupName <String> -ServiceName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -30,27 +30,19 @@ Delete a KPack builder.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a KPack builder
 ```powershell
-{{ Add code here }}
+Remove-AzSpringCloudBuildServiceBuilder -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -BuildServiceName default -Name mybuilder
 ```
 
-```output
-{{ Add output here }}
-```
+Delete a KPack builder.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Delete a KPack builder by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildServiceBuilder -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -BuildServiceName default -Name mybuilder | Remove-AzSpringCloudBuildServiceBuilder
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Delete a KPack builder by pipeline.
 
 ## PARAMETERS
 
@@ -63,21 +55,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -BuildServiceName
-The name of the build service resource.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
