@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
 * Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
     - `New-AzFirewallPolicyExplicitProxy`
     - `New-AzFirewallPolicy`
