@@ -190,11 +190,16 @@ function New-AzConnectedKubernetes {
         try {
             $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
             if ($HelmVersion.Contains("v2")) {
-                Write-Error "Helm version 3+ is required. Ensure that you have installed the latest version of Helm. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
+                Write-Error "Helm version 3+ is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
                 return
             }
+            $HelmVersion = helm version --short --kubeconfig $KubeConfig
+            if ($HelmVersion.Substring(1,$HelmVersion.Length-1) -ge [System.Version]"3.7") {
+                Write-Error "Helm version larger then 3.7 cannot pull that chart azure-arc. Please use 3.6. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
+                Return
+            }
         } catch {
-            Write-Error "Helm version 3+ is required. Ensure that you have installed the latest version of Helm. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
+            Write-Error "Helm version 3+ is required. Learn more at https://aka.ms/arc/k8s/onboarding-helm-install"
             throw
         }
         #EndRegion
@@ -202,37 +207,35 @@ function New-AzConnectedKubernetes {
         #Region get release namespace
         $ReleaseNamespace = $null
         try {
-            $ReleaseNamespace = (C:\Users\yunwang\.azure\helm\v3.6.3\windows-amd64\helm.exe status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext | ConvertFrom-Json).namespace
+            $ReleaseNamespace = (helm status azure-arc -o json --kubeconfig $KubeConfig --kube-context $KubeContext | ConvertFrom-Json).namespace
         } catch {
             Write-Error "Fail to find the namespace for azure-arc."
         }
         #Endregion
 
         if ($null -ne $ReleaseNamespace) {
-            # $Configmap = kubectl get configmap --namespace azure-arc azure-clusterconfig -o json --kubeconfig $KubeConfig | ConvertFrom-Json
-            # $ConfigmapRgName = $Configmap.data.AZURE_RESOURCE_GROUP
-            # $ConfigmapClusterName = $Configmap.data.AZURE_RESOURCE_NAME
+            $Configmap = kubectl get configmap --namespace azure-arc azure-clusterconfig -o json --kubeconfig $KubeConfig | ConvertFrom-Json
+            $ConfigmapRgName = $Configmap.data.AZURE_RESOURCE_GROUP
+            $ConfigmapClusterName = $Configmap.data.AZURE_RESOURCE_NAME
             try {
-                $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ResourceGroupName -ClusterName $ClusterName @CommonPSBoundParameters
+                $ExistConnectedKubernetes = Get-AzConnectedKubernetes -ResourceGroupName $ConfigmapRgName -ClusterName $ConfigmapClusterName @CommonPSBoundParameters
         
-                $PSBoundParameters.Add('AgentPublicKeyCertificate', $ExistConnectedKubernetes.AgentPublicKeyCertificate)
-                Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
-                # if (($ResourceGroupName -eq $ConfigmapRgName) -and ($ClusterName -eq $ConfigmapClusterName)) {
-                #     $PSBoundParameters.Add('AgentPublicKeyCertificate', $ExistConnectedKubernetes.AgentPublicKeyCertificate)
-                #     Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
-                # } else {
-                #     Write-Error "The kubernetes cluster you are trying to onboard is already onboarded to the resource group '${ConfigmapRgName}' with resource name '${ConfigmapClusterName}'."
-                # }
-                # return
+                if (($ResourceGroupName -eq $ConfigmapRgName) -and ($ClusterName -eq $ConfigmapClusterName)) {
+                    $PSBoundParameters.Add('AgentPublicKeyCertificate', $ExistConnectedKubernetes.AgentPublicKeyCertificate)
+                    return Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
+                } else {
+                    Write-Error "The kubernetes cluster you are trying to onboard is already onboarded to the resource group '${ConfigmapRgName}' with resource name '${ConfigmapClusterName}'."
+                }
+                return
             } catch {
-                # helm delete azure-arc --namespace $ReleaseNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
+                helm delete azure-arc --namespace $ReleaseNamespace --kubeconfig $KubeConfig --kube-context $KubeContext
             }
         }
 
         if ((Test-Path Env:HELMREPONAME) -and (Test-Path Env:HELMREPOURL)) {
             $HelmRepoName = Get-ChildItem -Path Env:HELMREPONAME
             $HelmRepoUrl = Get-ChildItem -Path Env:HELMREPOURL
-            C:\Users\yunwang\.azure\helm\v3.6.3\windows-amd64\helm.exe repo add $HelmRepoName $HelmRepoUrl --kubeconfig $KubeConfig --kube-context $KubeContext
+            helm repo add $HelmRepoName $HelmRepoUrl --kubeconfig $KubeConfig --kube-context $KubeContext
         }
 
         if (Test-Path Env:HELMREGISTRY) {
@@ -268,13 +271,7 @@ function New-AzConnectedKubernetes {
         Set-Item -Path Env:HELM_EXPERIMENTAL_OCI -Value 1
         #Region pull helm chart
         try {
-            #  $HelmVersion = helm version --template='{{.Version}}' --kubeconfig $KubeConfig
-            #  if ($HelmVersion.Substring(1,$HelmVersion.Length-1) -ge [System.Version]"3.7") {
-            #     helm pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
-            #  } else {
-            #     helm chart pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
-            #  }
-            C:\Users\yunwang\.azure\helm\v3.6.3\windows-amd64\helm.exe chart pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
+            helm chart pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext
         } catch {
             Write-Error "Unable to pull helm chart from the registery $RegisteryPath"
             throw
@@ -289,13 +286,7 @@ function New-AzConnectedKubernetes {
             $ChartExportPath = Join-Path -Path $Home -ChildPath '.azure' | Join-Path -ChildPath 'AzureArcCharts'
         }
         try {
-            #  $HelmVersion = helm version --short --kubeconfig $KubeConfig
-            #  if ($HelmVersion.Substring(1,$HelmVersion.Length-1) -ge [System.Version]"3.7") {
-            #     helm pull $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
-            #  } else {
-            #     helm chart export $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
-            #  }
-            C:\Users\yunwang\.azure\helm\v3.6.3\windows-amd64\helm.exe chart export $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
+            helm chart export $RegisteryPath --kubeconfig $KubeConfig --kube-context $KubeContext --destination $ChartExportPath
         } catch {
             Write-Error "Unable to export helm chart from the registery $RegisteryPath"
             throw
@@ -304,8 +295,12 @@ function New-AzConnectedKubernetes {
 
         $RSA = [System.Security.Cryptography.RSA]::Create(4096)
         $AgentPublicKey = [System.Convert]::ToBase64String($RSA.ExportRSAPublicKey())
-        $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + [System.Convert]::ToBase64String($RSA.ExportPkcs8PrivateKey()) + "`n-----END RSA PRIVATE KEY-----"
-
+        $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + [System.Convert]::ToBase64String($RSA.ExportRSAPrivateKey()) + "`n-----END RSA PRIVATE KEY-----"
+        
+        # $AgentPublicKey = "MIICCgKCAgEAkunoLNz3cc8qg22k/g3OZiJW7CeZkzmk0S8x4s3YBxCkHG/dVyHgmcdMX6SbgcR7SfCeF6qVu1AxkYA6PKUYG8son1/DnXHDSwjEG77LUMG1jHWX2RiqZ8nlL363JYuyjniIuSVcjAerp/yK9PYgimeCWVfpO8ijWtJ03p81D6Zthtv/CSLY23tUFRl1EEiT2fcH7tf4PHxoLBWzyxOglOwd92ST3AbyFx5BC9wAQsCw0gGHteQyKEk2Z1gl70kuicrtC2dg4dH5voVLn0BeYRHhIXQXoC1TYTWoA5Mi0EYman8qXhaw4b1fGMSS3KcdLiBRp9NR9ar0N/bDl9cQPSrkVTpkX3UD9cBRZR9W7VjCX0I9tl3kxXvRswW2NNcnUnmNQvYy6DD9JsNgdMFtC6PLUYXbHWGZwmG0s5Hvw4eFKibPGEwzQ1U1KoCBWO6WElTWzwGoUy5d4CO/TKctlySL+4I0yiZrcQb4cbQ3euhP0fkS3zWW0huAcoDIsdRYfdZMoT5Tl6eUK7fTLtNJQ1LzElrbB9NJEPUpX1Y/E+ZPB+ziVHpdmEiOFjg3f/egIIEn0IPlj6nY9TrKBnEme8pjWiPuk6MinDAbuu0+jTXQ87WYWSMz+4cn3HvKJztP1z1Xl9eDiVGMiMJjOoEro7L6Roog/lUnaIGnvSGAnO0CAwEAAQ=="
+        # $a = "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"
+        # $AgentPrivateKey = "-----BEGIN RSA PRIVATE KEY-----`n" + $a + "`n-----END RSA PRIVATE KEY-----"
+        
         $HelmChartPath = Join-Path -Path $ChartExportPath -ChildPath 'azure-arc-k8sagents'
         if (Test-Path Env:HELMCHART) {
             $ChartPath = Get-ChildItem -Path Env:HELMCHART
@@ -317,8 +312,8 @@ function New-AzConnectedKubernetes {
         $Result = Az.ConnectedKubernetes.internal\New-AzConnectedKubernetes @PSBoundParameters
 
         $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
-        Write-Host "C:\Users\yunwang\.azure\helm\v3.6.3\windows-amd64\helm.exe upgrade --install azure-arc $ChartPath --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure  --kubeconfig $KubeConfig --kube-context $KubeContext --wait --timeout 600s"
-        C:\Users\yunwang\.azure\helm\v3.6.3\windows-amd64\helm.exe upgrade --install azure-arc $ChartPath --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure --kubeconfig $KubeConfig --kube-context $KubeContext --wait --timeout 600s
+        Write-Host "helm upgrade --install azure-arc $ChartPath --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure  --kubeconfig $KubeConfig --kube-context $KubeContext --wait --timeout 600s"
+        helm upgrade --install azure-arc $ChartPath --set global.subscriptionId=$SubscriptionId --set global.resourceGroupName=$ResourceGroupName --set global.resourceName=$ClusterName --set global.tenantId=$TenantId --set global.location=$Location --set global.onboardingPrivateKey=$AgentPrivateKey --set systemDefaultValues.spnOnboarding=false --set global.azureEnvironment=AZUREPUBLICCLOUD --set systemDefaultValues.clusterconnect-agent.enabled=true --set global.kubernetesDistro=$Distribution --set global.kubernetesInfra=$Infrastructure --kubeconfig $KubeConfig --kube-context $KubeContext --wait --timeout 600s
         Return $Result
     }
 }
