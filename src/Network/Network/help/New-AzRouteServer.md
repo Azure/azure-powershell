@@ -25,12 +25,14 @@ The **New-AzRouteServer** cmdlet creates an Azure RouteServer
 
 ### Example 1
 ```powershell
-$subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
-$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
-$subnetId = (Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet).Id
-$publicIpAddress = New-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName -AllocationMethod Static -Location $rglocation -Sku Standard -Tier Regional
+New-AzResourceGroup -Name myResourceGroup -Location eastus
 
-New-AzRouteServer -RouteServerName $routeServerName -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -HostedSubnet $subnetId -PublicIpAddress $publicIpAddress
+$subnet = New-AzVirtualNetworkSubnetConfig -Name RouteServerSubnet -AddressPrefix 10.0.0.0/24
+$vnet = New-AzVirtualNetwork -Name myVNet -ResourceGroupName myResourceGroup -Location eastus -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+$subnetId = (Get-AzVirtualNetworkSubnetConfig -Name RouteServerSubnet -VirtualNetwork $vnet).Id
+$publicIpAddress = New-AzPublicIpAddress -Name myRouteServerIP -ResourceGroupName myResourceGroup -AllocationMethod Static -Location eastus -Sku Standard -Tier Regional
+
+New-AzRouteServer -RouteServerName myRouteServer -ResourceGroupName myResourceGroup -Location eastus -HostedSubnet $subnetId -PublicIpAddress $publicIpAddress
 ```
 
 ## PARAMETERS
