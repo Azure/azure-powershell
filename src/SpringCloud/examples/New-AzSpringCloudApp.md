@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new App or update an exiting App
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudApp -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name tools
 ```
 
 ```output
-{{ Add output here }}
+Name  SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy
+----  ------------------- -------------------     ----------------------- ------------------------ ------------------------
+tools 2022/6/28 8:33:27   ******@microsoft.com    User                    2022/6/28 8:33:27         ******@microsoft.com
 ```
 
-{{ Add description here }}
+Create a new App or update an exiting App.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

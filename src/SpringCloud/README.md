@@ -62,6 +62,20 @@ identity-correction-for-post: true
 directive:
   - where:
       verb: Set
+      subject: BuildServiceAgentPoolPut
+    set:
+      verb: New
+      subject: BuildServiceAgentPool
+
+  - where:
+      verb: Set
+      subject: AppActiveDeployment
+    set:
+      verb: Update
+      subject: AppActiveDeployment
+
+  - where:
+      verb: Set
     remove: true
   # First rename parameter of the Get-AzSpringCloudService, then rename cmdlet to Get-AzSpringCloud.
   - where: 
@@ -154,7 +168,13 @@ directive:
       subject: ^MonitoringSettingPatch$
     set:
       subject: MonitoringSetting
-
+# remove cmdlet
+  - where:
+      subject: AppDeploymentHeapDump
+    remove: true
+  - where:
+      subject: AppDeploymentThreadDump
+    remove: true
 # remove variant
 # |Certificate|ConfigurationService
   - where: 
@@ -165,10 +185,28 @@ directive:
       subject: ^AppDeploymentHeapDump$|^AppDeploymentThreadDump$|^TestKey$
       variant: ^Generate$|^GenerateViaIdentity$|^GenerateViaIdentityExpanded$
     remove: true
+  
+  - where:
+      verb: Get
+      subject: BuildServiceBuildResultLog
+      variant: GetViaIdentity
+    remove: true
+
+  - where:
+      verb: Get
+      subject: ^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$
+      variant: List
+    remove: true
+    
 
   - where: 
       subject: ^TestKey$
       variant: ^Regenerate$|^RegenerateViaIdentity$|^RegenerateViaIdentityExpanded$
+    remove: true
+
+  - where: 
+      subject: ^AppActiveDeployment$
+      variant: ^SetViaIdentity$|^SetViaIdentityExpanded$
     remove: true
 
   - where: 
@@ -200,7 +238,7 @@ directive:
     remove: true
 
   - where: 
-      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^ConfigServer$|^MonitoringSetting$
+      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^ConfigServer$|^MonitoringSetting$|^BuildServiceAgentPool$
       variant: ^Update$|^UpdateViaIdentity$
     remove: true
 
@@ -306,12 +344,86 @@ directive:
       parameter-name: (^GitProperty)(.*)
     set:
       parameter-name: Git$2
+  - where:
+      subject: BuildServiceBuildResult|BuildServiceBuildResultLog
+      parameter-name: Name
+    set:
+      parameter-name: BuildName
+
+  - where:
+      subject: BuildServiceBuildResult|BuildServiceBuildResultLog
+      parameter-name: BuildResultName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: BuildServiceBuild
+      parameter-name: Builder
+    set:
+      parameter-name: BuilderId
+
+  - where:
+      subject: BuildServiceBuild
+      parameter-name: AgentPool
+    set:
+      parameter-name: AgentPoolId
+
+  - where:
+      subject: AppActiveDeployment
+      parameter-name: AppName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: AppActiveDeployment
+      parameter-name: AppName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: AppActiveDeployment
+      parameter-name: ActiveDeploymentName
+    set:
+      parameter-name: DeploymentName
+
+  # Only support default value
+  - where:
+      subject: ^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$
+      parameter-name: Name
+    hide: true
+    set:
+      default:
+        script: "'default'"
+
+  - where:
+      subject: ^BuildServiceAgentPool$|^BuildServiceBuilder$|^BuildServiceSupportedBuildpack$|^BuildServiceSupportedStack$|^BuildpackBinding$
+      parameter-name: BuildServiceName
+    hide: true
+    set:
+      default:
+        script: "'default'"
 
   # Returns a random value of RelativePath after each execution of Get-AzSpringCloudAppResourceUploadUrl
   - where:
       verb: Get
       subject: ^AppResourceUploadUrl$
     hide: true
+
+  - where:
+      verb: Get
+      subject: ^BuildServiceResourceUploadUrl$
+    hide: true
+
+  - where:
+      subject: ^BuildServiceBuild$
+    hide: true
+  - where:
+      subject: ^BuildServiceBuildResult$
+    hide: true
+  - where:
+      subject: ^BuildServiceBuildResultLog$
+    hide: true
+
   # Customization for add default locatio value when not pass location parameter
   - where:
       verb: New
@@ -327,15 +439,100 @@ directive:
           - Name
           - ResourceGroupName
           - ResourceType
-          
+
+  - where:
+      model-name: CertificateResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - Type
+
+  - where:
+      model-name: BuildService
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - KPackVersion
+          - ResourceRequestCpu
+          - ResourceRequestMemory
+
+  - where:
+      model-name: BuildServiceAgentPoolResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - PoolSizeCpu
+          - PoolSizeMemory
+          - PoolSizeName
+
+  - where:
+      model-name: BuilderResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - StackId
+          - StackVersion
+
+  - where:
+      model-name: SupportedBuildpackResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - BuildpackId
+
+  - where:
+      model-name: SupportedStackResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - StackId
+          - Version
+
+  - where:
+      model-name: ConfigServerResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+
+  - where:
+      model-name: MonitoringSettingResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - TraceEnabled
+
   - no-inline:
     - UserSourceInfo
+    - CertificateProperties
 
   - model-cmdlet:
-      - BuildpacksGroupProperties
-      - BuildpackProperties
+      # - BuildpacksGroupProperties
+      # - BuildpackProperties
       - ConfigurationServiceGitRepository
       - GitPatternRepository
+      # - KeyVaultCertificateProperties
+      # - ContentCertificateProperties
     # - LoadedCertificate
     # --> rename  New-AzSpringCloudLoadedCertificateObject New-AzSpringCloudAppLoadedCertificateObject
     # - JarUploadedUserSourceInfo
@@ -344,4 +541,5 @@ directive:
     # --> rename New-AzSpringCloudDeploymentNetCoreZipUploadedObject --> New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
     # - SourceUploadedUserSourceInfo
     # --> rename New-AzSpringCloudDeploymentSourceUploadedObject --> New-AzSpringCloudAppDeploymentSourceUploadedObject
+      # - BuildResultUserSourceInfo --> New-AzSpringCloudAppDeploymentBuildResultObject
 ```

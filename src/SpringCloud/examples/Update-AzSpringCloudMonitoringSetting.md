@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update the Monitoring Setting
 ```powershell
-{{ Add code here }}
+Update-AzSpringCloudMonitoringSetting -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service -AppInsightsInstrumentationKey "InstrumentationKey=xxxxxxxxxxxxxxxxxxx;IngestionEndpoint=https://xxxxxx.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/" -TraceEnabled
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState TraceEnabled
+----    ----------------- ----------------- ------------
+default azurespringrg     Succeeded         True
 ```
 
-{{ Add description here }}
+Update the Monitoring Setting.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update the Monitoring Setting by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudMonitoringSetting -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service | Update-AzSpringCloudMonitoringSetting -AppInsightsInstrumentationKey "InstrumentationKey=xxxxxxxxxxxxxxxxxxx;IngestionEndpoint=https://xxxxxx.in.applicationinsights.azure.com/;LiveEndpoint=https://eastus.livediagnostics.monitor.azure.com/" -TraceEnabled
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState TraceEnabled
+----    ----------------- ----------------- ------------
+default azurespringrg     Succeeded         True
 ```
 
-{{ Add description here }}
+Update the Monitoring Setting by pipeline.
 

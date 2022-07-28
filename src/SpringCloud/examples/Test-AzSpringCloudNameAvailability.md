@@ -1,22 +1,15 @@
-### Example 1: {{ Add title here }}
+### Example 1: Checks that the resource name is valid and is not already in use
 ```powershell
-{{ Add code here }}
+Test-AzSpringCloudNameAvailability -Location EastUS -Name springcloud-service -Type "Microsoft.AppPlatform/Spring" -debug
 ```
 
-```output
-{{ Add output here }}
+```output 
+Message
+-------
+The resource name is invalid. It can contain only lowercase letters, numbers and hyphens. The first character must be …
 ```
 
-{{ Add description here }}
+Checks that the resource name is valid and is not already in use.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

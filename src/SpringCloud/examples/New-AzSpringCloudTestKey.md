@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Regenerate a test key for a Service
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudTestKey -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service -KeyType Primary
 ```
 
 ```output
-{{ Add output here }}
+Enabled PrimaryKey                                                       PrimaryTestEndpoint
+------- ----------                                                       -------------------
+True    **************************************************************** https://primary:***********************…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Regenerate a test key for a Service.
 

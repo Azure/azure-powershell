@@ -16,41 +16,30 @@
 
 <#
 .Synopsis
-Create an in-memory object for JarUploadedUserSourceInfo.
+Create an in-memory object for BuildResultUserSourceInfo.
 .Description
-Create an in-memory object for JarUploadedUserSourceInfo.
+Create an in-memory object for BuildResultUserSourceInfo.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.JarUploadedUserSourceInfo
+Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildResultUserSourceInfo
 .Link
-https://docs.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentJarUploadedObject
+https://docs.microsoft.com/powershell/module/az.SpringCloud/new-AzSpringCloudAppDeploymentBuildResultObject
 #>
-function New-AzSpringCloudAppDeploymentJarUploadedObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.JarUploadedUserSourceInfo')]
+function New-AzSpringCloudAppDeploymentBuildResultObject {
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildResultUserSourceInfo')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
-
-        [Parameter(HelpMessage="JVM parameter.")]
-        [string]
-        $JvmOption,
-        [Parameter(HelpMessage="Runtime version of the Jar file.")]
-        [string]
-        $RuntimeVersion,
         [Parameter(HelpMessage="Version of the source.")]
         [string]
         $Version
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.JarUploadedUserSourceInfo]::New()
-        $Object.Type = 'Jar'
-        $Object.RelativePath = '<default>'
-
-        if ($PSBoundParameters.ContainsKey('JvmOption')) {
-            $Object.JvmOption = $JvmOption
-        }
-        if ($PSBoundParameters.ContainsKey('RuntimeVersion')) {
-            $Object.RuntimeVersion = $RuntimeVersion
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildResultUserSourceInfo]::New()
+        $Object.Type = "BuildResult"
+        $Object.BuildResultId = '<default>'
+        if ($PSBoundParameters.ContainsKey('BuildResultId')) {
+            $Object.BuildResultId = $BuildResultId
         }
         if ($PSBoundParameters.ContainsKey('Version')) {
             $Object.Version = $Version

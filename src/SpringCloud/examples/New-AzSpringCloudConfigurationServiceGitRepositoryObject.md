@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for ConfigurationServiceGitRepository
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudConfigurationServiceGitRepositoryObject -Name fake -Label master -Uri "https://github.com/fake-user/fake-repository" -Pattern "app/dev" -debug
 ```
 
 ```output
-{{ Add output here }}
+HostKey HostKeyAlgorithm Label  Name Password Pattern   PrivateKey SearchPath StrictHostKeyChecking Uri
+------- ---------------- -----  ---- -------- -------   ---------- ---------- --------------------- ---
+                         master fake          {app/dev}                                             https://github.com…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for ConfigurationServiceGitRepository.
 

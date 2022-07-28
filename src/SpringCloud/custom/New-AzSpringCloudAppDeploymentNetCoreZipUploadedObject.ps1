@@ -36,9 +36,6 @@ function New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject {
         [Parameter(HelpMessage="Runtime version of the .Net file.")]
         [string]
         $RuntimeVersion,
-        [Parameter(HelpMessage="Relative path of the storage which stores the source.")]
-        [string]
-        $RelativePath,
         [Parameter(HelpMessage="Version of the source.")]
         [string]
         $Version
@@ -47,15 +44,13 @@ function New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject {
     process {
         $Object = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.NetCoreZipUploadedUserSourceInfo]::New()
         $Object.Type = 'NetCoreZip'
+        $Object.RelativePath = '<default>'
 
         if ($PSBoundParameters.ContainsKey('MainEntryPath')) {
             $Object.NetCoreMainEntryPath = $MainEntryPath
         }
         if ($PSBoundParameters.ContainsKey('RuntimeVersion')) {
             $Object.RuntimeVersion = $RuntimeVersion
-        }
-        if ($PSBoundParameters.ContainsKey('RelativePath')) {
-            $Object.RelativePath = $RelativePath
         }
         if ($PSBoundParameters.ContainsKey('Version')) {
             $Object.Version = $Version

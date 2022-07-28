@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Disable the default Service Registry
 ```powershell
-{{ Add code here }}
+Remove-AzSpringCloudRegistry -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name default
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Disable the default Service Registry.
 
-### Example 2: {{ Add title here }}
+### Example 2: Disable the default Service Registry by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudRegistry -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name default | Remove-AzSpringCloudRegistry
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+Disable the default Service Registry by pipeline.

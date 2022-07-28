@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete the certificate resource
 ```powershell
-{{ Add code here }}
+Remove-AzSpringCloudCertificate -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name mycertificate
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete the certificate resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete the certificate resource
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudCertificate -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name mycertificate | Remove-AzSpringCloudCertificate -InputObject $data
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete the certificate resource.
 

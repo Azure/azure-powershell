@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new Binding or update an exiting Binding
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudAppBinding -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -name redis -Key myKey -ResourceId myResourceId -AppName tools -BindingParameter @{ "useSsl"= "true" }
 ```
 
 ```output
-{{ Add output here }}
+ResourceName Name  ResourceGroupName    ResourceType
+------------ ----  -----------------    ------------
+redisService redis SpringCloud-gp-junxi Microsoft.Cache
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create a new Binding or update an exiting Binding.
 

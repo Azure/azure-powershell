@@ -1,6 +1,6 @@
-### Example 1: Operation to update an exiting Deployment
+### Example 1: Set existing Deployment under the app as active
 ```powershell
-Update-AzSpringCloudAppDeployment -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName tools -Name default
+Update-AzSpringCloudAppActiveDeployment -ResourceGroupName springcloudrg -ServiceName standardspring-demo -Name demo -DeploymentName 'green'
 ```
 
 ```output
@@ -10,11 +10,11 @@ Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType Syst
 default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
 ```
 
-Operation to update an exiting Deployment.
+Set existing Deployment under the app as active.
 
-### Example 2: Operation to update an exiting Deployment by pipeline
+### Example 2: Set existing Deployment under the app as active by pipeline
 ```powershell
-Get-AzSpringCloudAppDeployment -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName tools -Name default | Update-AzSpringCloudAppDeployment
+Get-AzSpringCloudApp -ResourceGroupName springcloudrg -ServiceName standardspring-demo -Name demo | Update-AzSpringCloudAppActiveDeployment -DeploymentName 'green'
 ```
 
 ```output
@@ -24,5 +24,5 @@ Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType Syst
 default 2022/7/1 3:41:45    *********@microsoft.com User                    2022/7/1 3:49:11         **********@microso…
 ```
 
-Operation to update an exiting Deployment by pipeline.
+Set existing Deployment under the app as active by pipeline.
 

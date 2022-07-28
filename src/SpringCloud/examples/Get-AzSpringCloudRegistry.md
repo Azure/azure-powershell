@@ -1,22 +1,28 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get all Service Registry and its properties
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudRegistry -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01
 ```
 
 ```output
-{{ Add output here }}
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedB
+                                                                                                     y
+----    ------------------- -------------------     ----------------------- ------------------------ -----------------------
+default 2022/7/13 3:26:33   v-junxisu@microsoft.com User                    2022/7/13 3:26:33        v-junxisu@microsoft.com
 ```
 
-{{ Add description here }}
+Get all Service Registry and its properties
 
-### Example 2: {{ Add title here }}
+### Example 2: Get the Service Registry and its properties.
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudRegistry -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -Name default
 ```
 
 ```output
-{{ Add output here }}
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedB
+                                                                                                     y
+----    ------------------- -------------------     ----------------------- ------------------------ -----------------------
+default 2022/7/13 3:26:33   v-junxisu@microsoft.com User                    2022/7/13 3:26:33        v-junxisu@microsoft.com
 ```
 
-{{ Add description here }}
+Get the Service Registry and its properties.
 

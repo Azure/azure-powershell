@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a build service resource of the enterprise spring cloud
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildService -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -Name default
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState KPackVersion ResourceRequestCpu ResourceRequestMemory
+----    ----------------- ----------------- ------------ ------------------ ---------------------
+default springcloudrg     Succeeded         0.5.2        2                  4Gi
 ```
 
-{{ Add description here }}
+Get a build service resource of the enterprise spring cloud.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a build service resource of the enterprise spring cloud by id
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildService -InputObject "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/springcloudrg/providers/Microsoft.AppPlatform/Spring/sspring-portal01/buildServices/default"
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState KPackVersion ResourceRequestCpu ResourceRequestMemory
+----    ----------------- ----------------- ------------ ------------------ ---------------------
+default springcloudrg     Succeeded         0.5.2        2                  4Gi
 ```
 
-{{ Add description here }}
+Get a build service resource of the enterprise spring cloud.
 

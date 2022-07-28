@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Start Spring Cloud Service by name
 ```powershell
-{{ Add code here }}
+Start-AzSpringCloudAppDeploymentJfr -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default 
 ```
 
-```output
-{{ Add output here }}
-```
+Start Spring Cloud Service by name.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Start Spring Cloud Service by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudAppDeploymentJfr -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -DeploymentName default | Start-AzSpringCloudAppDeployment
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Start Spring Cloud Service by pipeline.

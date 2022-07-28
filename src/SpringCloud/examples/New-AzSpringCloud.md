@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create or update a new standard spring cloud service 
 ```powershell
-{{ Add code here }}
+New-AzSpringCloud -ResourceGroupName springcloudrg -Name spring-pwsh01 -Location eastus
 ```
 
 ```output
-{{ Add output here }}
+Location Name                SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModified
+                                                                                                 At
+-------- ----                ------------------- -------------------     ----------------------- ----------------------
+eastus   springcloud-service 2022/6/28 7:59:45   ******@microsoft.com    User                    2022/6/28 7:59:45
 ```
 
-{{ Add description here }}
+Create or update a new standard spring cloud service.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create or update a new enterprise spring cloud service 
 ```powershell
-{{ Add code here }}
+New-AzSpringCloud -ResourceGroupName springcloudrg -Name espring-pwsh01 -Location eastus -SkuTier "Enterprise" -SkuName "E0"
 ```
 
 ```output
-{{ Add output here }}
+Location Name           SystemDataCreatedAt  SystemDataCreatedBy  SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+-------- ----           -------------------  -------------------  ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+eastus   espring-pwsh01 7/22/2022 7:35:40 AM v-diya@microsoft.com User                    7/22/2022 7:35:40 AM     v-diya@microsoft.com     User                         springcloudrg
 ```
 
-{{ Add description here }}
-
+Create or update a new enterprise spring cloud service .

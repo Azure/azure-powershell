@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Delete a KPack builder
 ```powershell
-{{ Add code here }}
+Remove-AzSpringCloudBuildServiceBuilder -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -BuildServiceName default -Name mybuilder
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Delete a KPack builder.
 
-### Example 2: {{ Add title here }}
+### Example 2: Delete a KPack builder by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildServiceBuilder -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -BuildServiceName default -Name mybuilder | Remove-AzSpringCloudBuildServiceBuilder
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+Delete a KPack builder by pipeline.

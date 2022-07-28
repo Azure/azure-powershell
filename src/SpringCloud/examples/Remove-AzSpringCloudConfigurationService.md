@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Disable the default Application Configuration Service
 ```powershell
-{{ Add code here }}
+Remove-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name default
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Disable the default Application Configuration Service.
 
-### Example 2: {{ Add title here }}
+### Example 2: Disable the default Application Configuration Service by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name default | Remove-AzSpringCloudConfigurationService
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Disable the default Application Configuration Service by pipeline.
 

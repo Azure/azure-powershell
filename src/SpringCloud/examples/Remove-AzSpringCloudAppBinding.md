@@ -1,22 +1,19 @@
-### Example 1: {{ Add title here }}
+### Example 1: Operation to delete a Binding
 ```powershell
-{{ Add code here }}
+Remove-AzSpringCloudAppBinding -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name redis
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Operation to delete a Binding.
 
-### Example 2: {{ Add title here }}
+### Example 1: Operation to delete a Binding by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudAppBinding -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name redis | Remove-AzSpringCloudAppBinding
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
+Operation to delete a Binding by pipeline.

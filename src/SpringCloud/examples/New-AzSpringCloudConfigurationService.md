@@ -1,22 +1,16 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create the default Application Configuration Service or update the existing Application Configuration Service
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01
 ```
 
 ```output
-{{ Add output here }}
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
+                                                                                                     fiedBy
+----    ------------------- -------------------     ----------------------- ------------------------ ------------------
+default 2022/7/13 3:26:33   *********@microsoft.com User                    2022/7/13 7:46:06        *********@microso…
 ```
 
-{{ Add description here }}
+Create the default Application Configuration Service or update the existing Application Configuration Service.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

@@ -1,22 +1,28 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update the config server
 ```powershell
-{{ Add code here }}
+Update-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service
 ```
 
 ```output
-{{ Add output here }}
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
+                                                                                                     fiedBy
+----    ------------------- -------------------     ----------------------- ------------------------ ------------------
+default 2022/7/1 7:22:54    *********@microsoft.com User                    2022/7/1 7:22:54         **********@microso…
 ```
 
-{{ Add description here }}
+Update the config server.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update the config server by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service | Update-AzSpringCloudConfigServer -InputObject $data
 ```
 
 ```output
-{{ Add output here }}
+Name    SystemDataCreatedAt SystemDataCreatedBy     SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModi
+                                                                                                     fiedBy
+----    ------------------- -------------------     ----------------------- ------------------------ ------------------
+default 2022/7/1 7:22:54    *********@microsoft.com User                    2022/7/1 7:22:54         **********@microso…
 ```
 
-{{ Add description here }}
+Update the config server by pipeline.
 

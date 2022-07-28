@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for GitPatternRepository
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudGitPatternRepositoryObject -Name fake -Uri "https://github.com/fake-user/fake-repository"
 ```
 
 ```output
-{{ Add output here }}
+HostKey HostKeyAlgorithm Label Name Password Pattern PrivateKey SearchPath StrictHostKeyChecking Uri
+------- ---------------- ----- ---- -------- ------- ---------- ---------- --------------------- ---
+                               fake                                                              https://github.com/fa…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Create an in-memory object for GitPatternRepository.

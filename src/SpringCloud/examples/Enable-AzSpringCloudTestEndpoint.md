@@ -1,22 +1,26 @@
-### Example 1: {{ Add title here }}
+### Example 1: Enable test endpoint functionality for a Service
 ```powershell
-{{ Add code here }}
+Enable-AzSpringCloudTestEndpoint -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service -debug
 ```
 
 ```output
-{{ Add output here }}
+Enabled PrimaryKey  PrimaryTestEndpoint
+------- ----------  -------------------
+True    *******     https://primary:EZ0RH3NEDunYBmnAiK7LebCGpruoO…
 ```
 
-{{ Add description here }}
+Enable test endpoint functionality for a Service.
 
-### Example 2: {{ Add title here }}
+### Example 2: Enable test endpoint functionality for a Service by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloud -ResourceGroupName lucas-rg-test -Name springapp-pwsh01 | Disable-AzSpringCloudTestEndpoint 
 ```
 
 ```output
-{{ Add output here }}
+Enabled PrimaryKey                                                       PrimaryTestEndpoint
+------- ----------                                                       -------------------
+True    **************************************************************** https://primary:EZ0RH3NEDunYBmnAiK7LebCGpruoO…
 ```
 
-{{ Add description here }}
+Enable test endpoint functionality for a Service by pipeline.
 

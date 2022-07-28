@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Disable test endpoint functionality for a Service
 ```powershell
-{{ Add code here }}
+Disable-AzSpringCloudTestEndpoint -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Disable test endpoint functionality for a Service.
 
-### Example 2: {{ Add title here }}
+### Example 2: Disable test endpoint functionality for a Service by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloud -ResourceGroupName lucas-rg-test -Name springapp-pwsh01 | Disable-AzSpringCloudTestEndpoint 
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Disable test endpoint functionality for a Service by pipeline.
 

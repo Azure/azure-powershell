@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create or update custom domain of one lifecycle application
 ```powershell
-{{ Add code here }}
+New-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -AppName gateway -Name springcloud-service.azuremicroservices.io
 ```
 
 ```output
-{{ Add output here }}
+Name                                      
+----                             
+springcloud-service.azuremicroservices.io
 ```
 
-{{ Add description here }}
+Create or update custom domain of one lifecycle application.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

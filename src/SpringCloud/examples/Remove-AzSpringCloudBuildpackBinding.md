@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Operation to delete a Buildpack Binding
 ```powershell
-{{ Add code here }}
+Remove-AzSpringCloudBuildpackBinding -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -BuildServiceName default -BuilderName default -Name binging01
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Operation to delete a Buildpack Binding.
 
-### Example 2: {{ Add title here }}
+### Example 2: Operation to delete a Buildpack Binding by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzSpringCloudBuildpackBinding -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -BuildServiceName default -BuilderName default -Name binging01 | Remove-AzSpringCloudBuildpackBinding
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+Operation to delete a Buildpack Binding by pipeline.
 
