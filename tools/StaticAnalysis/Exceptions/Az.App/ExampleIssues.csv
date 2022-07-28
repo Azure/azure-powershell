@@ -1,0 +1,4 @@
+"Module","Cmdlet","Example","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+"App","New-AzContainerApp","1","Unassigned_Parameter","5013","1","New-AzContainerAppTrafficWeightObject -LatestRevision must be assigned with a value.","-LatestRevision:$True","Assign value for the parameter -LatestRevision."
+"App","Update-AzContainerApp","1","Invalid_Cmdlet","5000","1","New-AzContainerAppSecretsecretObject is not a valid command name.","New-AzContainerAppSecretsecretObject -Name 'yourkey' -Value 'yourvalue'","Check the spell of New-AzContainerAppSecretsecretObject."
+"App","New-AzContainerAppTemplateObject","1","Unassigned_Variable","5110","2","New-AzContainerAppTemplateObject -Probe $probe is a null-valued parameter value.","-Probe","Assign value for $probe."
