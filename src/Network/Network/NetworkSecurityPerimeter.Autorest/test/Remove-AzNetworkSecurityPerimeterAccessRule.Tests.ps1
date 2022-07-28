@@ -17,14 +17,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkSecurityPerim
 Describe 'Remove-AzNetworkSecurityPerimeterAccessRule' {
     It 'Delete' {
         { 
-        #Remove-AzNetworkSecurityPerimeterAccessRule -Name $templateVariables.tmpAccessRuleDelete1 -ProfileName $templateVariables.tmpProfile1  -ResourceGroupName $env.rgname -SecurityPerimeterName $templateVariables.tmpNsp1 
-         } | Should -Not -Throw
+
+        Remove-AzNetworkSecurityPerimeterAccessRule -Name tmpAccessRuleDelete1 -ProfileName $env.tmpProfileDelBase1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNspDelBase1
+
+        } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         { 
         
-        #Get-AzNetworkSecurityPerimeterAccessRule -Name $templateVariables.tmpAccessRuleDelete2 -ProfileName $templateVariables.tmpProfile1  -ResourceGroupName $env.rgname -SecurityPerimeterName $templateVariables.tmpNsp1 | Remove-AzNetworkSecurityPerimeterAccessRule
+
+        $accessRuleObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRuleDelete2 -ProfileName $env.tmpProfileDelBase1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNspDelBase1
+
+        Remove-AzNetworkSecurityPerimeterAccessRule -InputObject $accessRuleObj
+        
         } | Should -Not -Throw
     }
 }

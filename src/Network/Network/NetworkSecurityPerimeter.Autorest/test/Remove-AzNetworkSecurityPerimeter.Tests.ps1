@@ -18,14 +18,17 @@ Describe 'Remove-AzNetworkSecurityPerimeter' {
     It 'Delete' {
         { 
         
-        #Remove-AzNetworkSecurityPerimeter -Name $templateVariables.tmpNspDelete1 -ResourceGroupName $env.rgname 
+        Remove-AzNetworkSecurityPerimeter -Name $env.tmpNspDelete1 -ResourceGroupName $env.rgname
         
         } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         { 
-        #Get-AzNetworkSecurityPerimeter -Name $templateVariables.tmpNspDelete2 -ResourceGroupName $env.rgname | Remove-AzNetworkSecurityPerimeter
+
+        $nspObj = Get-AzNetworkSecurityPerimeter -Name $env.tmpNspDelete2 -ResourceGroupName $env.rgname
+        Remove-AzNetworkSecurityPerimeter -InputObject $nspObj
+        
         } | Should -Not -Throw
     }
 }
