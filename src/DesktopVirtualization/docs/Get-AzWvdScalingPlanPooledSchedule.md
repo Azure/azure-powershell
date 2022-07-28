@@ -1,82 +1,64 @@
 ---
 external help file:
 Module Name: Az.DesktopVirtualization
-online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvddesktop
+online version: https://docs.microsoft.com/powershell/module/az.desktopvirtualization/get-azwvdscalingplanpooledschedule
 schema: 2.0.0
 ---
 
-# Get-AzWvdDesktop
+# Get-AzWvdScalingPlanPooledSchedule
 
 ## SYNOPSIS
-Get a desktop.
+Get a ScalingPlanPooledSchedule.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzWvdDesktop -ApplicationGroupName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzWvdDesktop -ApplicationGroupName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzWvdScalingPlanPooledSchedule -ResourceGroupName <String> -ScalingPlanName <String>
+ -ScalingPlanScheduleName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzWvdDesktop -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
+Get-AzWvdScalingPlanPooledSchedule -InputObject <IDesktopVirtualizationIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get a desktop.
+Get a ScalingPlanPooledSchedule.
 
 ## EXAMPLES
 
-### Example 1: Get a Windows Virtual Desktop Desktop by name
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzWvdDesktop -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName -Name DesktopName
+{{ Add code here }}
 ```
 
 ```output
-Name                             Type
-----                             ----
-ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
+{{ Add output here }}
 ```
 
-This command gets a Windows Virtual Desktop Desktop in an applicaton Group.
+{{ Add description here }}
 
-### Example 2: List Windows Virtual Desktop Desktops
+### Example 2: {{ Add title here }}
 ```powershell
-Get-AzWvdDesktop -ResourceGroupName ResourceGroupName -ApplicationGroupName ApplicationGroupName
+{{ Add code here }}
 ```
 
 ```output
-Name                             Type
-----                             ----
-ApplicationGroupName/DesktopName Microsoft.DesktopVirtualization/applicationgroups/desktops
+{{ Add output here }}
 ```
 
-This command listsWindows Virtual Desktop Desktops in an applicaton Group.
+{{ Add description here }}
 
 ## PARAMETERS
-
-### -ApplicationGroupName
-The name of the application group
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -109,13 +91,14 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the desktop within the specified desktop group
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
-Aliases: DesktopName
+Parameter Sets: Get, List
+Aliases:
 
 Required: True
 Position: Named
@@ -124,13 +107,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+### -ScalingPlanName
+The name of the scaling plan.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ScalingPlanScheduleName
+The name of the ScalingPlanSchedule
+
+```yaml
+Type: System.String
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -164,7 +161,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220401Preview.IDesktop
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220401Preview.IScalingPlanPooledSchedule
 
 ## NOTES
 

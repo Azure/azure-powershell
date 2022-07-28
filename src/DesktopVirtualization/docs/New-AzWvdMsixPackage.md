@@ -216,7 +216,7 @@ List of package applications.
 To construct, see NOTES section for PACKAGEAPPLICATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackageApplications[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220401Preview.IMsixPackageApplications[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -233,7 +233,7 @@ List of package dependencies.
 To construct, see NOTES section for PACKAGEDEPENDENCY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackageDependencies[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220401Preview.IMsixPackageDependencies[]
 Parameter Sets: CreateExpanded
 Aliases:
 
@@ -374,7 +374,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMsixPackage
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220401Preview.IMsixPackage
 
 ## NOTES
 
@@ -385,7 +385,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications. 
+`PACKAGEAPPLICATION <IMsixPackageApplications[]>`: List of package applications. 
   - `[AppId <String>]`: Package Application Id, found in appxmanifest.xml.
   - `[AppUserModelId <String>]`: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
   - `[Description <String>]`: Description of Package Application.
@@ -394,7 +394,7 @@ PACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications.
   - `[RawIcon <Byte[]>]`: the icon a 64 bit string as a byte array.
   - `[RawPng <Byte[]>]`: the icon a 64 bit string as a byte array.
 
-PACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies. 
+`PACKAGEDEPENDENCY <IMsixPackageDependencies[]>`: List of package dependencies. 
   - `[DependencyName <String>]`: Name of package dependency.
   - `[MinVersion <String>]`: Dependency version required.
   - `[Publisher <String>]`: Name of dependency publisher.

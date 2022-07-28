@@ -16,11 +16,14 @@ Create or update a host pool.
 ```
 New-AzWvdHostPool -HostPoolType <HostPoolType> -LoadBalancerType <LoadBalancerType> -Name <String>
  -PreferredAppGroupType <PreferredAppGroupType> -ResourceGroupName <String> [-Location <String>]
- [-SubscriptionId <String>] [-CustomRdpProperty <String>] [-Description <String>] [-ExpirationTime <DateTime>]
- [-FriendlyName <String>] [-IdentityType <ResourceIdentityType>] [-Kind <String>] [-ManagedBy <String>]
- [-MaxSessionLimit <Int32>] [-MigrationRequestMigrationPath <String>] [-MigrationRequestOperation <Operation>]
- [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>] [-PlanName <String>] [-PlanProduct <String>]
- [-PlanPromotionCode <String>] [-PlanPublisher <String>] [-PlanVersion <String>]
+ [-SubscriptionId <String>] [-AgentUpdateMaintenanceWindow <IMaintenanceWindowProperties[]>]
+ [-AgentUpdateMaintenanceWindowTimeZone <String>] [-AgentUpdateType <SessionHostComponentUpdateType>]
+ [-AgentUpdateUseSessionHostLocalTime] [-CustomRdpProperty <String>] [-Description <String>]
+ [-ExpirationTime <DateTime>] [-FriendlyName <String>] [-IdentityType <ResourceIdentityType>] [-Kind <String>]
+ [-ManagedBy <String>] [-MaxSessionLimit <Int32>] [-MigrationRequestMigrationPath <String>]
+ [-MigrationRequestOperation <Operation>] [-PersonalDesktopAssignmentType <PersonalDesktopAssignmentType>]
+ [-PlanName <String>] [-PlanProduct <String>] [-PlanPromotionCode <String>] [-PlanPublisher <String>]
+ [-PlanVersion <String>] [-PublicNetworkAccess <HostpoolPublicNetworkAccess>]
  [-RegistrationInfoToken <String>] [-RegistrationTokenOperation <RegistrationTokenOperation>] [-Ring <Int32>]
  [-SkuCapacity <Int32>] [-SkuFamily <String>] [-SkuName <String>] [-SkuSize <String>] [-SkuTier <SkuTier>]
  [-SsoadfsAuthority <String>] [-SsoClientId <String>] [-SsoClientSecretKeyVaultPath <String>]
@@ -102,6 +105,69 @@ eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
 This command creates a Windows Virtual Desktop HostPool in a Resource Group.
 
 ## PARAMETERS
+
+### -AgentUpdateMaintenanceWindow
+List of maintenance windows.
+Maintenance windows are 2 hours long.
+To construct, see NOTES section for AGENTUPDATEMAINTENANCEWINDOW properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220401Preview.IMaintenanceWindowProperties[]
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgentUpdateMaintenanceWindowTimeZone
+Time zone for maintenance as defined in https://docs.microsoft.com/en-us/dotnet/api/system.timezoneinfo.findsystemtimezonebyidview=net-5.0.
+Must be set if useLocalTime is true.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgentUpdateType
+The type of maintenance for session host components.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.SessionHostComponentUpdateType
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AgentUpdateUseSessionHostLocalTime
+Whether to use localTime of the virtual machine.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -CustomRdpProperty
 Custom rdp property of HostPool.
@@ -457,6 +523,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicNetworkAccess
+Enabled allows this resource to be accessed from both public and private networks, Disabled allows this resource to only be accessed via private endpoints
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.HostpoolPublicNetworkAccess
+Parameter Sets: CreateExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RegistrationInfoToken
 The registration token base64 encoded string.
 
@@ -785,11 +866,20 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IHostPool
+### Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20220401Preview.IHostPool
 
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`AGENTUPDATEMAINTENANCEWINDOW <IMaintenanceWindowProperties[]>`: List of maintenance windows. Maintenance windows are 2 hours long.
+  - `[DayOfWeek <DayOfWeek?>]`: Day of the week.
+  - `[Hour <Int32?>]`: The update start hour of the day. (0 - 23)
 
 ## RELATED LINKS
 
