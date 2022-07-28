@@ -73,6 +73,15 @@ function setupEnv() {
         }
     }
 
+    for ($i = 0; $i -le ($tmpKeys.length - 1); $i += 1) {
+        if ($env.Contains($tmpKeys[$i])) {
+            $env.($tmpKeys[$i]) = $tmpValues[$i]
+        }else{
+            $env.Add($tmpKeys[$i], $tmpValues[$i])
+        }
+    }
+
+
     Get-Content $envFilePath  | ConvertFrom-Json -AsHashtable
 
     set-content -Path (Join-Path $PSScriptRoot 'env.json') -Value (ConvertTo-Json $env)
