@@ -50,7 +50,7 @@ Patches a Container App using JSON Merge Patch
 $secretObject = Get-AzContainerAppSecret -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
 $newSecretObject = @(0..($secretObject.Count-1))
 [array]::copy($secretObject,$newSecretObject,$secretObject.Count)
-$secretObject += New-AzContainerAppSecretsecretObject -Name "yourkey" -Value "yourvalue"
+$secretObject += New-AzContainerAppSecretObject -Name "yourkey" -Value "yourvalue"
 
 Update-AzContainerApp -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationSecret $secretObject -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
 ```
