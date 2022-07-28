@@ -14,27 +14,28 @@ Modifies the managed instance to which Azure SQL Managed Instance DNS Alias is p
 
 ### MoveByNameAndSourceResourceIdParameterSet (Default)
 ```
-Move-AzSqlInstanceDnsAlias [-ResourceGroupName] <String> [-InstanceName] <String> [-SourceResourceId] <String>
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Move-AzSqlInstanceDnsAlias [-DestResourceGroupName] <String> [-InstanceName] <String>
+ [-SourceResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ### MoveByNamesParameterSet
 ```
-Move-AzSqlInstanceDnsAlias [-ResourceGroupName] <String> [-InstanceName] <String>
+Move-AzSqlInstanceDnsAlias [-DestResourceGroupName] <String> [-InstanceName] <String>
  [-SourceResourceGroupName] <String> [-SourceInstanceName] <String> -SourceName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveByNameAndSourceParentObjectParameterSet
 ```
-Move-AzSqlInstanceDnsAlias [-ResourceGroupName] <String> [-InstanceName] <String> -SourceName <String>
+Move-AzSqlInstanceDnsAlias [-DestResourceGroupName] <String> [-InstanceName] <String> -SourceName <String>
  [-SourceInstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveByNameAndSourceInputObjectParameterSet
 ```
-Move-AzSqlInstanceDnsAlias [-ResourceGroupName] <String> [-InstanceName] <String>
+Move-AzSqlInstanceDnsAlias [-DestResourceGroupName] <String> [-InstanceName] <String>
  [-SourceInputObject] <AzureSqlManagedInstanceDnsAliasModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -73,7 +74,7 @@ Moves an Azure SQL Managed Instance DNS Alias from a source managed instance to 
 
 ### Example 1: Moves a managed instance DNS alias to the target managed instance
 ```powershell
-Move-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup2 -InstanceName ManagedInstance2 -SourceResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
+Move-AzSqlInstanceDnsAlias -DestResourceGroupName ResourceGroup2 -InstanceName ManagedInstance2 -SourceResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup1/providers/Microsoft.Sql/managedInstances/ManagedInstance1/dnsAliases/DnsAlias1
 ```
 
 ```output
@@ -89,7 +90,7 @@ This command moves a DNS alias designated with -SourceResourceId to the target m
 
 ### Example 2: Moves a managed instance DNS alias with the given name, source managed instance and source resource group to the target managed instance
 ```powershell
-Move-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup2 -InstanceName ManagedInstance2 -SourceResourceGroupName ResourceGroup1 -SourceInstanceName ManagedInstance1 -SourceName DnsAlias1
+-DestResourceGroupName ResourceGroup2 -InstanceName ManagedInstance2 -SourceResourceGroupName ResourceGroup1 -SourceInstanceName ManagedInstance1 -SourceName DnsAlias1
 ```
 
 ```output
@@ -106,7 +107,7 @@ This command moves a managed instance DNS alias DnsAlias1 from the source manage
 ### Example 3: Moves a managed instance DNS alias from a previously fetched managed instance to the target managed instance.
 ```powershell
 $managedInstance = Get-AzSqlInstance -ResourceGroupName ResourceGroup2 -Name ManagedInstance2
-Move-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup2 -InstanceName ManagedInstance2 -SourceInstanceObject $managedInstance -SourceName DnsAlias1
+-DestResourceGroupName ResourceGroup2 -InstanceName ManagedInstance2 -SourceInstanceObject $managedInstance -SourceName DnsAlias1
 ```
 
 ```output
@@ -123,7 +124,7 @@ This command moves a managed instance DNS alias DnsAlias1 from the previously so
 ### Example 4: Moves a previously fetched managed instance DNS alias to the target managed instance
 ```powershell
 $managedInstanceAlias = Get-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1
-Move-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup2 -InstanceName ManagedInstance2 -SourceInputObject $managedInstanceAlias
+-DestResourceGroupName ResourceGroup2 -InstanceName ManagedInstance2 -SourceInputObject $managedInstanceAlias
 ```
 
 ```output
@@ -239,6 +240,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DestResourceGroupName
+Name of the destination resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: MoveByNameAndSourceResourceIdParameterSet, MoveByNamesParameterSet, MoveByNameAndSourceParentObjectParameterSet, MoveByNameAndSourceInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InstanceName
 Name of the target managed instance.
 
@@ -266,21 +282,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Name of the target resource group.
-
-```yaml
-Type: System.String
-Parameter Sets: MoveByNameAndSourceResourceIdParameterSet, MoveByNamesParameterSet, MoveByNameAndSourceParentObjectParameterSet, MoveByNameAndSourceInputObjectParameterSet
-Aliases: DestResourceGroupName
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -458,4 +459,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 https://aka.ms/sqlmi-dnsalias-docs
