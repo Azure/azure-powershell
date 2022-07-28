@@ -251,7 +251,8 @@ function createAzureVmInEdgeZone {
     $PasswordString = $(Get-RandomSuffix 12)
     $Password = $PasswordString | ConvertTo-SecureString -Force -AsPlainText
     $VMLocalAdminSecurePassword = $Password
-    $VMLocation = getPrimaryZoneLocation
+    $VMLocation = $primaryLocation
+    $VMExtendedLocation = $primaryExtendedLocation
     $VMName = getAzureVmName
     $domain = "domain" + $seed
     $password = $VMLocalAdminSecurePassword | ConvertTo-SecureString -AsPlainText -Force

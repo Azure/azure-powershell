@@ -982,9 +982,9 @@ function Test-EdgeZoneToAzureRecoveryPlanReplication {
     $vmName = getAzureVmName
     New-AzResourceGroup -name $vmName -location $primaryLocation -force
     [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-    $logStg = createCacheStorageAccountForZone
+    $logStg = createCacheStorageAccount
 
-    $v2VmId = createAzureVm
+    $v2VmId = createAzureVm -PrimaryLocation $primaryLocation -PrimaryExtendedLocation $primaryExtendedLocation
     $vm = get-azVm -ResourceGroupName $vmName -Name $vmName
     $vhdid = $vm.StorageProfile.OSDisk.ManagedDisk.Id
     $index = $vm.Id.IndexOf("/providers/")
