@@ -1,5 +1,5 @@
 @{
-  GUID = '36d2558b-d499-492c-8ad5-5f95ee10581f'
+  GUID = '9560a0c7-e4ed-40d0-a8c4-9b28b241edca'
   RootModule = './Az.NetworkSecurityPerimeter.psm1'
   ModuleVersion = '0.1.0'
   CompatiblePSEditions = 'Core', 'Desktop'

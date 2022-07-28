@@ -19,16 +19,3 @@ if (Test-Path -Path $envFilePath) {
     $env = Get-Content (Join-Path $PSScriptRoot $envFile) | ConvertFrom-Json
     $PSDefaultParameterValues=@{"*:SubscriptionId"=$env.SubscriptionId; "*:Tenant"=$env.Tenant}
 }
-
-$templateVariablesFile = 'templateVariables.json'
-
-if (Test-Path -Path (Join-Path $PSScriptRoot $templateVariablesFile)) {
-    $templateVariablesFilePath = Join-Path $PSScriptRoot $templateVariablesFile
-} else {
-    $templateVariablesFilePath = Join-Path $PSScriptRoot '..\$templateVariablesFile'
-}
-
-$templateVariables = @{}
-if (Test-Path -Path $templateVariablesFilePath) {
-    $templateVariables = Get-Content (Join-Path $PSScriptRoot $templateVariablesFile) | ConvertFrom-Json
-}

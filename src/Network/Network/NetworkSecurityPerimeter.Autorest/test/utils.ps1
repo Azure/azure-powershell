@@ -43,7 +43,7 @@ function setupEnv() {
 
     #Create variable for template
     $tmpNsp1 =  $randomString + 't-nsp1'
-    $tmpnspDelBase1 =  $randomString + 't-nspDelB1'
+    $tmpNspDelBase1 =  $randomString + 't-nspDelB1'
     $tmpNspDelete1 =  $randomString + 't-nspD1'
     $tmpNspDelete2 =  $randomString + 't-nspD2'
     $tmpProfile1 = 't-profile1'
@@ -62,8 +62,8 @@ function setupEnv() {
     $tmpPaas2Rp = $randomString + 't-paas2Rp'
     $tmpPaas3Rp = $randomString + 't-paas3Rp'
 
-    $tmpKeys = 'tmpNsp1','tmpnspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1','tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2'
-    $tmpValues = $tmpNsp1, $tmpnspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2
+    $tmpKeys = 'tmpNsp1','tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1','tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2'
+    $tmpValues = $tmpNsp1, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2
 
     for ($i = 0; $i -le ($tmpKeys.length - 1); $i += 1) {
         if ($templateVariables.Contains($tmpKeys[$i])) {
@@ -94,7 +94,7 @@ function setupEnv() {
         ResourceGroupName = $env.rgname
         TemplateFile = ".\test\NSPTemplate.json"
         nsp1Name = $tmpNsp1
-        nspDelBase1Name = $tmpnspDelBase1
+        nspDelBase1Name = $tmpNspDelBase1
         nspDelete1Name = $tmpNspDelete1
         nspDelete2Name = $tmpNspDelete2
         profile1Name = $tmpProfile1
@@ -136,7 +136,7 @@ function cleanupEnv() {
     Remove-AzNetworkSecurityPerimeterAssociation @remove_association1
 
     $remove_associationDelete1 = @{
-        SecurityPerimeterName = $templateVariables.tmpnspDelBase1
+        SecurityPerimeterName = $templateVariables.tmpNspDelBase1
         ResourceGroupName = $env.rgname
         Name = $templateVariables.tmpAssociationDelete1
     }
@@ -144,7 +144,7 @@ function cleanupEnv() {
     Remove-AzNetworkSecurityPerimeterAssociation @remove_associationDelete1
 
     $remove_associationDelete2 = @{
-        SecurityPerimeterName = $templateVariables.tmpnspDelBase1
+        SecurityPerimeterName = $templateVariables.tmpNspDelBase1
         ResourceGroupName = $env.rgname
         Name = $templateVariables.tmpAssociationDelete2
     }

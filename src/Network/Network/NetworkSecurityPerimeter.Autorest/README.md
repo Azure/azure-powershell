@@ -171,6 +171,11 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('if (result.NextLink != null)', 'if (result.NextLink != null && result.NextLink != "")')
+
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('_nextLink != null', '_nextLink != null && _nextLink != ""')
+
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('Runtime.Method.Patch', 'Runtime.Method.Put')
