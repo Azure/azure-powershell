@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkSecurityPerimete
 
 Describe 'New-AzNetworkSecurityPerimeterProfile' {
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { New-AzNetworkSecurityPerimeterProfile -Name $env.profile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 } | Should -Not -Throw
     }
 }
