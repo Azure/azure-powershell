@@ -5489,7 +5489,12 @@ Patches a Container App using JSON Merge Patch
 .Description
 Patches a Container App using JSON Merge Patch
 .Example
-Update-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
+$secretObject = Get-AzContainerAppSecret -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
+$newSecretObject = @(0..($secretObject.Count-1))
+[array]::copy($secretObject,$newSecretObject,$secretObject.Count)
+$secretObject += New-AzContainerAppSecretsecretObject -Name "yourkey" -Value "yourvalue"
+
+Update-AzContainerApp -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationSecret $secretObject -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.App.Models.IAppIdentity

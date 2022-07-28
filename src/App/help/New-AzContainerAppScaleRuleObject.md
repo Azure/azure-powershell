@@ -198,22 +198,22 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-AZUREQUEUEAUTH <IScaleRuleAuth[]>: Authentication secrets for the queue scale rule.
+`AZUREQUEUEAUTH <IScaleRuleAuth[]>`: Authentication secrets for the queue scale rule.
   - `[SecretRef <String>]`: Name of the Container App secret from which to pull the auth params.
   - `[TriggerParameter <String>]`: Trigger Parameter that uses the secret
 
-CUSTOMAUTH <IScaleRuleAuth[]>: Authentication secrets for the custom scale rule.
+`CUSTOMAUTH <IScaleRuleAuth[]>`: Authentication secrets for the custom scale rule.
   - `[SecretRef <String>]`: Name of the Container App secret from which to pull the auth params.
   - `[TriggerParameter <String>]`: Trigger Parameter that uses the secret
 
-CUSTOMMETADATA `<ICustomScaleRuleMetadata>`: Metadata properties to describe custom scale rule.
+`CUSTOMMETADATA <ICustomScaleRuleMetadata>`: Metadata properties to describe custom scale rule.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-HTTPAUTH <IScaleRuleAuth[]>: Authentication secrets for the custom scale rule.
+`HTTPAUTH <IScaleRuleAuth[]>`: Authentication secrets for the custom scale rule.
   - `[SecretRef <String>]`: Name of the Container App secret from which to pull the auth params.
   - `[TriggerParameter <String>]`: Trigger Parameter that uses the secret
 
-HTTPMETADATA `<IHttpScaleRuleMetadata>`: Metadata properties to describe http scale rule.
+`HTTPMETADATA <IHttpScaleRuleMetadata>`: Metadata properties to describe http scale rule.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
