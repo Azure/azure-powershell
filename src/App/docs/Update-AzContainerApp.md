@@ -47,7 +47,12 @@ Patches a Container App using JSON Merge Patch
 
 ### Example 1: Update a Container App.
 ```powershell
-Update-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
+$secretObject = Get-AzContainerAppSecret -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
+$newSecretObject = @(0..($secretObject.Count-1))
+[array]::copy($secretObject,$newSecretObject,$secretObject.Count)
+$secretObject += New-AzContainerAppSecretsecretObject -Name "yourkey" -Value "yourvalue"
+
+Update-AzContainerApp -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationSecret $secretObject -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
 ```
 
 ```output
@@ -595,28 +600,28 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONFIGURATIONREGISTRY <IRegistryCredentials[]>: Collection of private container registry credentials for containers used by the Container app
+`CONFIGURATIONREGISTRY <IRegistryCredentials[]>`: Collection of private container registry credentials for containers used by the Container app
   - `[Identity <String>]`: A Managed Identity to use to authenticate with Azure Container Registry. For user-assigned identities, use the full user-assigned identity Resource ID. For system-assigned identities, use 'system'
   - `[PasswordSecretRef <String>]`: The name of the Secret that contains the registry login password
   - `[Server <String>]`: Container Registry Server
   - `[Username <String>]`: Container Registry Username
 
-CONFIGURATIONSECRET <ISecret[]>: Collection of secrets used by a Container app
+`CONFIGURATIONSECRET <ISecret[]>`: Collection of secrets used by a Container app
   - `[Name <String>]`: Secret Name.
   - `[Value <String>]`: Secret Value.
 
-INGRESSCUSTOMDOMAIN <ICustomDomain[]>: custom domain bindings for Container Apps' hostnames.
+`INGRESSCUSTOMDOMAIN <ICustomDomain[]>`: custom domain bindings for Container Apps' hostnames.
   - `CertificateId <String>`: Resource Id of the Certificate to be bound to this hostname. Must exist in the Managed Environment.
   - `Name <String>`: Hostname.
   - `[BindingType <BindingType?>]`: Custom Domain binding type.
 
-INGRESSTRAFFIC <ITrafficWeight[]>: Traffic weights for app's revisions
+`INGRESSTRAFFIC <ITrafficWeight[]>`: Traffic weights for app's revisions
   - `[Label <String>]`: Associates a traffic label with a revision
   - `[LatestRevision <Boolean?>]`: Indicates that the traffic weight belongs to a latest stable revision
   - `[RevisionName <String>]`: Name of a revision
   - `[Weight <Int32?>]`: Traffic weight assigned to a revision
 
-INPUTOBJECT <IAppIdentity>: Identity Parameter
+`INPUTOBJECT <IAppIdentity>`: Identity Parameter
   - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
   - `[CertificateName <String>]`: Name of the Certificate.
   - `[ComponentName <String>]`: Name of the Dapr Component.
@@ -630,7 +635,7 @@ INPUTOBJECT <IAppIdentity>: Identity Parameter
   - `[StorageName <String>]`: Name of the storage.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-SCALERULE <IScaleRule[]>: Scaling rules.
+`SCALERULE <IScaleRule[]>`: Scaling rules.
   - `[AzureQueueAuth <IScaleRuleAuth[]>]`: Authentication secrets for the queue scale rule.
     - `[SecretRef <String>]`: Name of the Container App secret from which to pull the auth params.
     - `[TriggerParameter <String>]`: Trigger Parameter that uses the secret
@@ -645,7 +650,7 @@ SCALERULE <IScaleRule[]>: Scaling rules.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[Name <String>]`: Scale Rule Name
 
-TEMPLATECONTAINER <IContainer[]>: List of container definitions for the Container App.
+`TEMPLATECONTAINER <IContainer[]>`: List of container definitions for the Container App.
   - `[Arg <String[]>]`: Container start command arguments.
   - `[Command <String[]>]`: Container start command.
   - `[Env <IEnvironmentVar[]>]`: Container environment variables.
@@ -677,7 +682,7 @@ TEMPLATECONTAINER <IContainer[]>: List of container definitions for the Containe
     - `[MountPath <String>]`: Path within the container at which the volume should be mounted.Must not contain ':'.
     - `[VolumeName <String>]`: This must match the Name of a Volume.
 
-TEMPLATEVOLUME <IVolume[]>: List of volume definitions for the Container App.
+`TEMPLATEVOLUME <IVolume[]>`: List of volume definitions for the Container App.
   - `[Name <String>]`: Volume name.
   - `[StorageName <String>]`: Name of storage resource. No need to provide for EmptyDir.
   - `[StorageType <StorageType?>]`: Storage type for the volume. If not provided, use EmptyDir.
