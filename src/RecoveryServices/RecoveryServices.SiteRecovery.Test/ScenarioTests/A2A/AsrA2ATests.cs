@@ -132,21 +132,30 @@ namespace RecoveryServices.SiteRecovery.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AEdgeZoneToZoneRecoveryPlanReplication()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-EdgeZoneToZoneRecoveryPlanReplication");
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-EdgeZoneToZoneRecoveryPlanReplication");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AEdgeZoneToAzureRecoveryPlanReplication()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-EdgeZoneToAzureRecoveryPlanReplication");
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-EdgeZoneToAzureRecoveryPlanReplication");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void A2AEdgeZoneToEdgeZoneRecoveryPlanReplication()
         {
-            this.RunPowerShellTest(_logger, Constants.NewModel, "Test-EdgeZoneToEdgeZoneRecoveryPlanReplication");
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-EdgeZoneToEdgeZoneRecoveryPlanReplication");
         }
 
         [Fact]

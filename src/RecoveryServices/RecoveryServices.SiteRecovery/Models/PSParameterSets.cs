@@ -79,17 +79,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         internal const string AzureZoneToZone = "AzureZoneToZone";
 
-        /// </summary>
+        /// <summary>
         /// Handle ASR Vault - EdgeZone to EdgeZone replication.
         /// </summary>
         internal const string EdgeZoneToEdgeZone = "EdgeZoneToEdgeZone";
 
-        /// </summary>
+        /// <summary>
         /// Handle ASR Vault - Azure to EdgeZone replication.
         /// </summary>
         internal const string AzureToEdgeZone = "AzureToEdgeZone";
 
-        /// </summary>
+        /// <summary>
         /// Handle ASR Vault - EdgeZone to Azure replication.
         /// </summary>
         internal const string EdgeZoneToAzure = "EdgeZoneToAzure";
