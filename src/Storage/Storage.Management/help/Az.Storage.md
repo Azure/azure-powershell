@@ -197,6 +197,9 @@ Move a file or directory to another a file or directory in same Storage account.
 ### [New-AzDataLakeGen2Item](New-AzDataLakeGen2Item.md)
 Create a file or directory in a filesystem.
 
+### [New-AzDataLakeGen2SasToken](New-AzDataLakeGen2SasToken.md)
+Generates a SAS token for Azure DatalakeGen2 item.
+
 ### [New-AzRmStorageContainer](New-AzRmStorageContainer.md)
 Creates a Storage blob container
 
@@ -208,6 +211,9 @@ Creates a Storage account.
 
 ### [New-AzStorageAccountKey](New-AzStorageAccountKey.md)
 Regenerates a storage key for an Azure Storage account.
+
+### [New-AzStorageAccountManagementPolicyBlobIndexMatchObject](New-AzStorageAccountManagementPolicyBlobIndexMatchObject.md)
+Creates a ManagementPolicy BlobIndexMatch object, which can be used in New-AzStorageAccountManagementPolicyFilter.
 
 ### [New-AzStorageAccountManagementPolicyFilter](New-AzStorageAccountManagementPolicyFilter.md)
 Creates a ManagementPolicy rule filter object, which can be used in New-AzStorageAccountManagementPolicyRule.

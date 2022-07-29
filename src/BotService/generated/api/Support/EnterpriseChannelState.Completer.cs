@@ -28,43 +28,43 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.BotService.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Creating".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Creating", "Creating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Creating");
+                yield return new global::System.Management.Automation.CompletionResult("'Creating'", "Creating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Creating");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "CreateFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("CreateFailed", "CreateFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "CreateFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'CreateFailed'", "CreateFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "CreateFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Started".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Started", "Started", global::System.Management.Automation.CompletionResultType.ParameterValue, "Started");
+                yield return new global::System.Management.Automation.CompletionResult("'Started'", "Started", global::System.Management.Automation.CompletionResultType.ParameterValue, "Started");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Starting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Starting", "Starting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Starting");
+                yield return new global::System.Management.Automation.CompletionResult("'Starting'", "Starting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Starting");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "StartFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("StartFailed", "StartFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "StartFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'StartFailed'", "StartFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "StartFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Stopped".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Stopped", "Stopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopped");
+                yield return new global::System.Management.Automation.CompletionResult("'Stopped'", "Stopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopped");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Stopping".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Stopping", "Stopping", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopping");
+                yield return new global::System.Management.Automation.CompletionResult("'Stopping'", "Stopping", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopping");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "StopFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("StopFailed", "StopFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "StopFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'StopFailed'", "StopFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "StopFailed");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Deleting".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Deleting", "Deleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleting");
+                yield return new global::System.Management.Automation.CompletionResult("'Deleting'", "Deleting", global::System.Management.Automation.CompletionResultType.ParameterValue, "Deleting");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "DeleteFailed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("DeleteFailed", "DeleteFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeleteFailed");
+                yield return new global::System.Management.Automation.CompletionResult("'DeleteFailed'", "DeleteFailed", global::System.Management.Automation.CompletionResultType.ParameterValue, "DeleteFailed");
             }
         }
     }

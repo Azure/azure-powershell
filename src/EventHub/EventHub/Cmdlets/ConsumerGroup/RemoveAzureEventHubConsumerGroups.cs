@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
             {
                 try
                 {
-                    Client.DeletConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
+                    UtilityClient.DeletConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
                     if (PassThru)
                     {
                         WriteObject(true);

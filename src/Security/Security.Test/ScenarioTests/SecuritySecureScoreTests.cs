@@ -12,40 +12,29 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using System.Diagnostics;
-using System.IO;
-using System.Text;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Security.Test.ScenarioTests
 {
-    public class SecuritySecureScoreTests
+    public class SecuritySecureScoreTests : SecurityTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public SecuritySecureScoreTests(Xunit.Abstractions.ITestOutputHelper output)
+        public SecuritySecureScoreTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAllSecureScores()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AllSecuritySecureScores");
+            TestRunner.RunTestScript("Get-AllSecuritySecureScores");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAscSecureScore()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-SecuritySecureScore");
+            TestRunner.RunTestScript("Get-SecuritySecureScore");
         }
     }
 }

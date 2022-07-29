@@ -165,7 +165,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.PowerShell
                 {
                     sb.AppendLine($@"{Indent}{Indent}{Indent}Prerelease = {previewVersion}");
                 }
-                sb.AppendLine($@"{Indent}{Indent}{Indent}Tags = {"Azure ResourceManager ARM PSModule HealthcareApis".Split(' ').ToPsList().NullIfEmpty() ?? "''"}");
+                sb.AppendLine($@"{Indent}{Indent}{Indent}Tags = {"Azure ResourceManager ARM PSModule HealthcareApis HealthCare FhirService".Split(' ').ToPsList().NullIfEmpty() ?? "''"}");
                 sb.AppendLine($@"{Indent}{Indent}{Indent}LicenseUri = '{"https://aka.ms/azps-license"}'");
                 sb.AppendLine($@"{Indent}{Indent}{Indent}ProjectUri = '{"https://github.com/Azure/azure-powershell"}'");
                 sb.AppendLine($@"{Indent}{Indent}{Indent}ReleaseNotes = ''");

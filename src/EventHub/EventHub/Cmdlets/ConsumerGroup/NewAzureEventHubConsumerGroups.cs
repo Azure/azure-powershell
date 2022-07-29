@@ -59,7 +59,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
             {
                 try
                 {
-                    WriteObject(Client.CreateOrUpdateConsumerGroup(ResourceGroupName, Namespace, EventHub, Name, consumerGroup));
+                    WriteObject(UtilityClient.CreateOrUpdateConsumerGroup(ResourceGroupName, Namespace, EventHub, Name, consumerGroup));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

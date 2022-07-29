@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.HPCCache.Test.Utilities
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
+    using Microsoft.Azure.Commands.TestFx;
     using Microsoft.Azure.Management.StorageCache.Models;
     using Microsoft.Azure.Test.HttpRecorder;
     using Microsoft.Rest.ClientRuntime.Azure.TestFramework;

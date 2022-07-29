@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
         public override void ExecuteCmdlet()
         {
-            PSNetworkRuleSetAttributes networkRuleSet = Client.GetNetworkRuleSet(ResourceGroupName, Name);
+            PSNetworkRuleSetAttributes networkRuleSet = UtilityClient.GetNetworkRuleSet(ResourceGroupName, Name);
             if (!networkRuleSet.IpRules.Contains(new PSNWRuleSetIpRulesAttributes { IpMask = IpMask }))
             {
                 if (ShouldProcess(target: Name, action: string.Format("Adding IP rule for NetworkRuleSet of {0} in Resourcegroup {1}", Name, ResourceGroupName)))
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                             networkRuleSet.IpRules.Add(IpRuleObject);
                         }
 
-                        WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
+                        WriteObject(UtilityClient.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
                     }
                     catch (Management.EventHub.Models.ErrorResponseException ex)
                     {

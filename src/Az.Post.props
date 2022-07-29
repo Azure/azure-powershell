@@ -1,0 +1,9 @@
+<Project>
+  <!-- XML -->
+  <PropertyGroup>
+    <!-- warning CS1591: Missing XML comment for publicly visible type or member -->
+    <NoWarn>$(NoWarn),1591</NoWarn>
+    <DocumentationFile>$(OutputPath)\$(AssemblyName).xml</DocumentationFile>
+  </PropertyGroup>
+</Project>
+

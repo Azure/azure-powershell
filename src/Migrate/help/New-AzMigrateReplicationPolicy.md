@@ -25,7 +25,7 @@ The operation to create a replication policy.
 
 ### Example 1: Create a replication policy
 ```powershell
-$providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtPolicyCreationInput]::new()
+$providerSpecificPolicy = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20180110.VMwareCbtPolicyCreationInput]::new()
 $providerSpecificPolicy.AppConsistentFrequencyInMinute = 240
 $providerSpecificPolicy.InstanceType = "VMwareCbt"
 $providerSpecificPolicy.RecoveryPointHistoryInMinute = 4320
@@ -214,7 +214,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>: The ReplicationProviderSettings.
+`PROVIDERSPECIFICINPUT <IPolicyProviderSpecificInput>`: The ReplicationProviderSettings.
   - `[InstanceType <String>]`: The class type.
 
 ## RELATED LINKS

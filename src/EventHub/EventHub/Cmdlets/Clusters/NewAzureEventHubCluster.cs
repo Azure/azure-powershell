@@ -13,11 +13,13 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventHub.Models;
+using Microsoft.Azure.Management.EventHub.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
@@ -30,24 +32,35 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [Parameter(Mandatory = true, ParameterSetName = ClusterPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Resource Group Name")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
-         public string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
+
+        [CmdletParameterBreakingChange("Name", ChangeDescription = "'Name' Parameter is being deprecated from " + ClusterResourceIdParameterSet + " without being replaced. ResourceId's are implicit of resource name.")]
         [Parameter(Mandatory = true, ParameterSetName = ClusterPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Cluster Name")]
         [Parameter(Mandatory = true, ParameterSetName = ClusterResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Cluster Name")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+
         [Parameter(Mandatory = true, ParameterSetName = ClusterPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Location of Cluster")]
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
+
 
         [Parameter(Mandatory = false, ParameterSetName = ClusterPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Cluster Capacity (CU), curerntrly, allowed value = 1")]
         [ValidateNotNullOrEmpty]
         public int? Capacity { get; set; }
 
+
         [Parameter(Mandatory = false, ParameterSetName = ClusterPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Hashtables which represents resource Tags for Clusters")]
         public Hashtable Tag { get; set; }
 
+
+        [Parameter(Mandatory = false, ParameterSetName = ClusterPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Hashtables which represents resource Tags for Clusters")]
+        public SwitchParameter SupportsScaling { get; set; }
+
+
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "'ResourceId' Parameter is being deprecated without being replaced.")]
         [Parameter(Mandatory = true, ParameterSetName = ClusterResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Resource ID of Cluster")]
         [Parameter(Mandatory = false, ParameterSetName = ClusterPropertiesParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Resource ID of Cluster")]
         [ValidateNotNullOrEmpty]
@@ -56,46 +69,61 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 
         public override void ExecuteCmdlet()
         {
-
-            PSEventHubClusterAttributes cluster = new PSEventHubClusterAttributes(); 
-
-            if (ParameterSetName.Equals(ClusterPropertiesParameterSet))
+            if (ResourceId != null)
             {
-                cluster.Location = Location;
-                if (this.IsParameterBound(c => c.Capacity))
-                {
-                    cluster.Sku.Capacity = Capacity;
-                }
-                else
-                {
-                    cluster.Sku.Capacity = 1;
-                }
-
-                if (this.IsParameterBound(c => c.Tag))
-                {
-                    cluster.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
-                }                               
+                ResourceIdParser resourceIdParser = new ResourceIdParser(1, ResourceId, ClusterURL);
+                ResourceGroupName = resourceIdParser.ResourceGroupName;
+                Name = resourceIdParser.TopLevelResourceName;
             }
 
-            if (ParameterSetName.Equals(ClusterResourceIdParameterSet))
-            {
-                LocalResourceIdentifier identifier = new LocalResourceIdentifier(ResourceId);
-                cluster = Client.GetEventHubCluster(identifier.ResourceGroupName, identifier.ResourceName);
-                cluster.Name = Name; 
-            }
-
-            if (ShouldProcess(target:cluster.Name, action:string.Format("Create cluster {0} in ResourveGroup - {1}",cluster.Name,ResourceGroupName)))
+            if (ShouldProcess(target:Name, action:string.Format("Create cluster {0} in ResourceGroup - {1}", Name, ResourceGroupName)))
             {
                 try
                 {
-                    WriteObject(Client.CreateOrUpdateEventHubCluster(ResourceGroupName, Name, cluster));
+                    Cluster clusterPayload = CreateClusterPayload();
+                    PSEventHubClusterAttributes createdCluster = new PSEventHubClusterAttributes(UtilityClient.CreateOrUpdateEventHubCluster(ResourceGroupName, Name, clusterPayload));
+                    WriteObject(createdCluster);
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {
                     WriteError(Eventhub.EventHubsClient.WriteErrorforBadrequest(ex));
                 }
+            }              
+        }
+    
+        internal Cluster CreateClusterPayload()
+        {
+            Cluster cluster = new Cluster();
+
+            cluster.Location = Location;
+
+            if (this.IsParameterBound(c => c.Capacity))
+            {
+                cluster.Sku = new ClusterSku() 
+                {
+                    Capacity = Capacity
+                };
             }
-                        
+
+            else
+            {
+                cluster.Sku = new ClusterSku()
+                {
+                    Capacity = 1
+                };
+            }
+
+            if (this.IsParameterBound(c => c.SupportsScaling))
+            {
+                cluster.SupportsScaling = SupportsScaling.IsPresent;
+            }
+
+            if (this.IsParameterBound(c => c.Tag))
+            {
+                cluster.Tags = TagsConversionHelper.CreateTagDictionary(Tag, validate: true);
+            }
+
+            return cluster;
         }
     }
 }

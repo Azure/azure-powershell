@@ -25,7 +25,7 @@ The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrast
 
 ### Example 1: Initialises the infrastructure for the migrate project.
 ```powershell
-Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName TestRG  -ProjectName TestProject -Vmwareagentless -TargetRegion centralus
+Initialize-AzMigrateReplicationInfrastructure -ResourceGroupName TestRG -ProjectName TestProject -TargetRegion centralus
 ```
 
 ```output

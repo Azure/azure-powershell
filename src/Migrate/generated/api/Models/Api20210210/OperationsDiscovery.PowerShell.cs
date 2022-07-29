@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="OperationsDiscovery" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="OperationsDiscovery" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscovery FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,14 +101,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Display = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDisplay) content.GetValueForProperty("Display",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Display, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DisplayTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Origin = (string) content.GetValueForProperty("Origin",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Origin, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AnyTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayProvider = (string) content.GetValueForProperty("DisplayProvider",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayProvider, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayResource = (string) content.GetValueForProperty("DisplayResource",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayResource, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayOperation = (string) content.GetValueForProperty("DisplayOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayOperation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayDescription, global::System.Convert.ToString);
+            if (content.Contains("Display"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Display = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDisplay) content.GetValueForProperty("Display",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Display, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DisplayTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Origin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Origin = (string) content.GetValueForProperty("Origin",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Origin, global::System.Convert.ToString);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AnyTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DisplayProvider"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayProvider = (string) content.GetValueForProperty("DisplayProvider",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayProvider, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayResource = (string) content.GetValueForProperty("DisplayResource",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayResource, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayOperation = (string) content.GetValueForProperty("DisplayOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayOperation, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayDescription, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,14 +150,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Display = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDisplay) content.GetValueForProperty("Display",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Display, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DisplayTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Origin = (string) content.GetValueForProperty("Origin",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Origin, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AnyTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayProvider = (string) content.GetValueForProperty("DisplayProvider",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayProvider, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayResource = (string) content.GetValueForProperty("DisplayResource",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayResource, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayOperation = (string) content.GetValueForProperty("DisplayOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayOperation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayDescription, global::System.Convert.ToString);
+            if (content.Contains("Display"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Display = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDisplay) content.GetValueForProperty("Display",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Display, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DisplayTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Origin"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Origin = (string) content.GetValueForProperty("Origin",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Origin, global::System.Convert.ToString);
+            }
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IAny) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.AnyTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DisplayProvider"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayProvider = (string) content.GetValueForProperty("DisplayProvider",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayProvider, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayResource = (string) content.GetValueForProperty("DisplayResource",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayResource, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayOperation = (string) content.GetValueForProperty("DisplayOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayOperation, global::System.Convert.ToString);
+            }
+            if (content.Contains("DisplayDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayDescription = (string) content.GetValueForProperty("DisplayDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IOperationsDiscoveryInternal)this).DisplayDescription, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

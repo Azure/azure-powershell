@@ -37,8 +37,10 @@ Gets the properties of the specified IoT Connector.
 
 ### Example 1: List the properties of the specified IoT Connector.
 ```powershell
-PS C:\> Get-AzHealthcareIotConnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
+Get-AzHealthcareIotConnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
+```
 
+```output
 Location Name                      ResourceGroupName
 -------- ----                      -----------------
 eastus2  azpshcws/azpsiotconnector azps_test_group
@@ -48,8 +50,10 @@ List the properties of the specified IoT Connector.
 
 ### Example 2: Gets the properties of the specified IoT Connector.
 ```powershell
-PS C:\> Get-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
+Get-AzHealthcareIotConnector -Name azpsiotconnector -ResourceGroupName azps_test_group -WorkspaceName azpshcws
+```
 
+```output
 Location Name                      ResourceGroupName
 -------- ----                      -----------------
 eastus2  azpshcws/azpsiotconnector azps_test_group
@@ -170,7 +174,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IHealthcareApisIdentity>: Identity Parameter
+INPUTOBJECT `<IHealthcareApisIdentity>`: Identity Parameter
   - `[DicomServiceName <String>]`: The name of DICOM Service resource.
   - `[FhirDestinationName <String>]`: The name of IoT Connector FHIR destination resource.
   - `[FhirServiceName <String>]`: The name of FHIR Service resource.

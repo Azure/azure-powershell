@@ -24,9 +24,11 @@ Creates an instance of a trigger
 
 ### Example 1: Create trigger schedule for scan run
 ```powershell
-PS C:\> $obj = New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -ScheduleHour $(9) -ScheduleMinute $(0) -ScheduleMonthDay $(10)
+$obj = New-AzPurviewTriggerObject -RecurrenceEndTime '7/20/2022 12:00:00 AM' -RecurrenceStartTime '2/17/2022 1:32:00 PM' -Interval 1 -RecurrenceFrequency 'Month' -ScanLevel 'Full' -ScheduleHour $(9) -ScheduleMinute $(0) -ScheduleMonthDay $(10)
 New-AzPurviewTrigger -Endpoint https://parv-brs-2.purview.azure.com/ -DataSourceName 'DataScanTestData-Parv' -ScanName 'Scan-6HK' -Body $obj
+```
 
+```output
 CreatedAt                  : 2/17/2022 1:35:12 PM
 Id                         : datasources/DataScanTestData-Parv/scans/Scan-6HK/triggers/default
 IncrementalScanStartTime   :
@@ -182,7 +184,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <ITrigger>: .
+BODY `<ITrigger>`: .
   - `[IncrementalScanStartTime <DateTime?>]`: 
   - `[Interval <Int32?>]`: 
   - `[RecurrenceEndTime <DateTime?>]`: 

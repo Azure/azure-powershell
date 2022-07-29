@@ -1,0 +1,43 @@
+{
+  "New-AzStackHciCluster+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip?api-version=2022-05-01",
+      "Content": "{\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"aadClientId\": \"a47e35a6-f7c0-408c-8045-d813cd41d51a\",\r\n    \"aadTenantId\": \"72f988bf-86f1-41af-91ab-2d7cd011db47\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "172" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"1400f8b3-0000-0100-0000-62a9bb530000\"" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Request-Context": [ "appId=" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "mise-correlation-id": [ "046e8eed-3611-46c2-a46f-ab974e708c8b" ],
+        "x-ms-request-id": [ "43d3d09a-98e1-4dbf-a569-6132f23418d8" ],
+        "x-ms-correlation-request-id": [ "f77ce2ac-0cbd-46e4-bf98-22232413e10b" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-routing-request-id": [ "EASTUS:20220615T105827Z:f77ce2ac-0cbd-46e4-bf98-22232413e10b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 15 Jun 2022 10:58:27 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "906" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/ff0aa6da-20f8-44fe-9aee-381c8e8a4aeb/resourceGroups/azurestackhci-pwsh-rg-h2/providers/Microsoft.AzureStackHCI/clusters/pwsh-Clusterqvip\",\"name\":\"pwsh-Clusterqvip\",\"type\":\"microsoft.azurestackhci/clusters\",\"location\":\"eastus\",\"systemData\":{\"createdBy\":\"lsweeney@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-06-15T10:57:40.4886031Z\",\"lastModifiedBy\":\"lsweeney@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-06-15T10:58:26.9216801Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"status\":\"NotYetRegistered\",\"cloudId\":\"388070bd-a5f2-4f68-9144-625519cf3746\",\"aadClientId\":\"a47e35a6-f7c0-408c-8045-d813cd41d51a\",\"aadTenantId\":\"72f988bf-86f1-41af-91ab-2d7cd011db47\",\"desiredProperties\":{\"windowsServerSubscription\":\"Disabled\",\"diagnosticLevel\":\"Basic\"},\"trialDaysRemaining\":60,\"billingModel\":\"Trial\",\"serviceEndpoint\":\"https://dp.stackhci.azure.com/eastus/\"}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -12,7 +12,12 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Security.KeyVault.Keys;
+
+using Microsoft.Azure.Commands.KeyVault.Models;
+
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Security;
 
@@ -32,6 +37,15 @@ namespace Microsoft.Azure.Commands.KeyVault
             {
                 Marshal.FreeBSTR(bstr);
             }
+        }
+
+        public static PSKeyReleasePolicy ToPSKeyReleasePolicy(this KeyReleasePolicy keyReleasePolicy)
+        {
+            if (keyReleasePolicy == null)
+            {
+                return null;
+            }
+            return new PSKeyReleasePolicy(keyReleasePolicy);
         }
     }
 }

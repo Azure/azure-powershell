@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 using System;
 using System.Management.Automation;
-
+using System.Net.Http;
 using Microsoft.Azure.Commands.Peering.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </exception>
         /// <exception cref="Exception">
         /// </exception>
-        /// <exception cref="ArmErrorException">
+        /// <exception cref="ErrorResponseException">
         /// </exception>
         /// <exception cref="HttpRequestException">
         /// </exception>
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </exception>
         /// <exception cref="Exception">
         /// </exception>
-        /// <exception cref="ArmErrorException">
+        /// <exception cref="ErrorResponseException">
         /// </exception>
         /// <exception cref="HttpRequestException">
         /// </exception>
@@ -215,7 +215,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Peering.Peering
         /// </exception>
         /// <exception cref="Exception">
         /// </exception>
-        /// <exception cref="ArmErrorException">
+        /// <exception cref="ErrorResponseException">
         /// </exception>
         /// <exception cref="HttpRequestException">
         /// </exception>

@@ -16,6 +16,8 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.Shared.Config;
+using Microsoft.Azure.PowerShell.Common.Config;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Common.Utilities;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -140,7 +142,7 @@ namespace Common.Authentication.Test
             {
                 var controller = DataCollectionController.Create(AzureSession.Instance);
                 var profile = controller.GetProfile(() => { });
-                DataCollectionController.WritePSDataCollectionProfile(AzureSession.Instance, profile);
+                Assert.True(profile.EnableAzureDataCollection);
             }
             finally
             {
@@ -149,7 +151,9 @@ namespace Common.Authentication.Test
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Config migration happens during initialization of azure session." +
+            "Because session is shared between test cases," +
+            "need to investigate how to initialize without side effect.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DataCollectionHandlesIOErrors()
         {
@@ -164,7 +168,7 @@ namespace Common.Authentication.Test
             {
                 var controller = DataCollectionController.Create(AzureSession.Instance);
                 var profile = controller.GetProfile(() => { });
-                DataCollectionController.WritePSDataCollectionProfile(AzureSession.Instance, profile);
+                Assert.True(profile.EnableAzureDataCollection);
             }
             finally
             {
@@ -172,7 +176,9 @@ namespace Common.Authentication.Test
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Config migration happens during initialization of azure session." +
+           "Because session is shared between test cases," +
+           "need to investigate how to initialize without side effect.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DataCollectionHandlesFileExistenceErrors()
         {
@@ -187,14 +193,17 @@ namespace Common.Authentication.Test
             {
                 var controller = DataCollectionController.Create(AzureSession.Instance);
                 var profile = controller.GetProfile(() => { });
-                DataCollectionController.WritePSDataCollectionProfile(AzureSession.Instance, profile);
+                Assert.True(profile.EnableAzureDataCollection);
             }
             finally
             {
                 AzureSession.Instance.DataStore = oldDataStore;
             }
         }
-        [Fact]
+
+        [Fact(Skip = "Config migration happens during initialization of azure session." +
+            "Because session is shared between test cases," +
+            "need to investigate how to initialize without side effect.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DataCollectionHandlesDirectoryExistenceErrors()
         {
@@ -209,7 +218,7 @@ namespace Common.Authentication.Test
             {
                 var controller = DataCollectionController.Create(AzureSession.Instance);
                 var profile = controller.GetProfile(() => { });
-                DataCollectionController.WritePSDataCollectionProfile(AzureSession.Instance, profile);
+                Assert.True(profile.EnableAzureDataCollection);
             }
             finally
             {
@@ -218,7 +227,9 @@ namespace Common.Authentication.Test
 
         }
 
-        [Fact]
+        [Fact(Skip = "Config migration happens during initialization of azure session." +
+            "Because session is shared between test cases," +
+            "need to investigate how to initialize without side effect.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void DataCollectionHandlesWriteErrors()
         {
@@ -234,13 +245,13 @@ namespace Common.Authentication.Test
             AzureSession.Instance.DataStore = mock.Object;
             try
             {
-                DataCollectionController.WritePSDataCollectionProfile(AzureSession.Instance, new AzurePSDataCollectionProfile(true));
+                Assert.True(AzureSession.Instance.TryGetComponent<IConfigManager>(nameof(IConfigManager), out var manager)
+                    && manager.GetConfigValue<bool>(ConfigKeys.EnableDataCollection));
             }
             finally
             {
                 AzureSession.Instance.DataStore = oldDataStore;
             }
         }
-
     }
 }

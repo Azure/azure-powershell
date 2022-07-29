@@ -64,8 +64,8 @@ function setupEnv() {
 
     New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
 
-    New-AzHealthcareAPIsWorkspace -Name $env.apiWorkspace1 -ResourceGroupName $env.resourceGroup -Location $env.location
-    New-AzHealthcareFhirService -Name $env.fhirService1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -Kind 'fhir-R4' -AuthenticationConfigurationAuthority "https://login.microsoftonline.com/$($env.Tenant)" -AuthenticationConfigurationAudience "https://azpshcws-$($env.fhirService1).fhir.azurehealthcareapis.com"
+    New-AzHealthcareApisWorkspace -Name $env.apiWorkspace1 -ResourceGroupName $env.resourceGroup -Location $env.location
+    New-AzHealthcareFhirService -Name $env.fhirService1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -Kind 'fhir-R4' -Authority "https://login.microsoftonline.com/$($env.Tenant)" -Audience "https://azpshcws-$($env.fhirService1).fhir.azurehealthcareapis.com"
     $arr = @()
     New-AzHealthcareIotConnector -Name $env.iotConnector1 -ResourceGroupName $env.resourceGroup -WorkspaceName $env.apiWorkspace1 -Location $env.location -IngestionEndpointConfigurationConsumerGroup "sajob-01-portal_input-01_consumer_group" -IngestionEndpointConfigurationEventHubName "sajob01portaleventhub" -IngestionEndpointConfigurationFullyQualifiedEventHubNamespace "sdk-Namespace-4761" -DeviceMappingContent @{"templateType"="CollectionContent";"template"=$arr}
 

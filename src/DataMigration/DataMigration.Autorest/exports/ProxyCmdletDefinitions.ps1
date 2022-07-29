@@ -2142,7 +2142,10 @@ Create a new database migration to a given SQL Db.
 .Description
 Create a new database migration to a given SQL Db.
 .Example
-New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword "pass" -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword "password" -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb"
+$sourcePassword = ConvertTo-SecureString "pass123" -AsPlainText -Force
+$targetPassword = ConvertTo-SecureString "pass123" -AsPlainText -Force
+New-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName "mysqldb" -MigrationService  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.DataMigration/SqlMigrationServices/myDMS" -TargetSqlConnectionAuthentication "SqlAuthentication" -TargetSqlConnectionDataSource "mydb.windows.net" -TargetSqlConnectionPassword $targetPassword -TargetSqlConnectionUserName "user" -SourceSqlConnectionAuthentication "SqlAuthentication" -SourceSqlConnectionDataSource "xyz.MICROSOFT.COM" -SourceSqlConnectionUserName "user1" -SourceSqlConnectionPassword $sourcePassword -SourceDatabaseName "sourcedb" -TargetDbName "mydb1" -Scope  "/subscriptions/1111-2222-3333-4444/resourceGroups/myRG/providers/Microsoft.Sql/servers/mysqldb"
+
 .Example
 $sourcePassword = ConvertTo-SecureString "pass123" -AsPlainText -Force
 $targetPassword = ConvertTo-SecureString "pass123" -AsPlainText -Force
@@ -3487,9 +3490,9 @@ Remove the specified database migration for a given SQL Db.
 .Description
 Remove the specified database migration for a given SQL Db.
 .Example
-Remove-AzDataMigrationToSqlDb -ResourceGroupName tsum38RG -SqlDbInstanceName dmstestsqldb -TargetDbName at_sqldbtrgtps1
+Remove-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName sqldb -TargetDbName myDB
 .Example
-Remove-AzDataMigrationToSqlDb -ResourceGroupName tsum38RG -SqlDbInstanceName dmstestsqldb -TargetDbName at_sqldbtrgtps1 -Force
+Remove-AzDataMigrationToSqlDb -ResourceGroupName myRG -SqlDbInstanceName sqldb -TargetDbName myDB -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.IDataMigrationIdentity
@@ -4629,50 +4632,10 @@ Collect performance data for given SQL Server instance(s)
 Collect performance data for given SQL Server instance(s)
 .Example
 PS C:\> Get-AzDataMigrationPerformanceDataCollection -SqlConnectionStrings "Data Source=AALAB03-2K8.REDMOND.CORP.MICROSOFT.COM;Initial Catalog=master;Integrated Security=False;User Id=dummyUserId;Password=dummyPassword" -NumberOfIterations 2
-
-Connecting to the SQL server(s)...
-Starting data collection...
-Press the Enter key to stop the data collection at any time...
-
-Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
-Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
-Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
-UTC 2022-02-03 07:04:50, Server AALAB03-2K8:
-        Performance data query iteration: 1 of 2, collected 349 data points.
-UTC 2022-02-03 07:04:52, Server AALAB03-2K8:
-        Collected static configuration data, and saved to C:\Users\vmanhas\AppData\Local\Microsoft\SqlAssessment.
-Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
-UTC 2022-02-03 07:05:44, Server AALAB03-2K8:
-        Performance data query iteration: 2 of 2, collected 347 data points.
-UTC 2022-02-03 07:07:13, Server AALAB03-2K8:
-        Aggregated 696 raw data points to 263 performance counters, and saved to C:\Users\vmanhas\AppData\Local\Microsoft\SqlAssessment.
-UTC 2022-02-03 07:07:16, Server AALAB03-2K8:
-        Performance data query iteration: 1 of 2, collected 349 data points.
-
-Event and Error Logs Folder Path: C:\Users\vmanhas\AppData\Local\Microsoft\SqlAssessment\Logs
 .Example
 PS C:\> Get-AzDataMigrationAssessment -ConfigFilePath "C:\Users\user\document\config.json"
-
-Connecting to the SQL server(s)...
-Starting data collection...
-Press the Enter key to stop the data collection at any time...
-
-Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
-Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
-Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
-UTC 2022-02-03 07:04:50, Server AALAB03-2K8:
-        Performance data query iteration: 1 of 2, collected 349 data points.
-UTC 2022-02-03 07:04:52, Server AALAB03-2K8:
-        Collected static configuration data, and saved to C:\Users\vmanhas\AppData\Local\Microsoft\SqlAssessment.
-Security Warning: The negotiated TLS 1.0 is an insecure protocol and is supported for backward compatibility only. The recommended protocol version is TLS 1.2 and later.
-UTC 2022-02-03 07:05:44, Server AALAB03-2K8:
-        Performance data query iteration: 2 of 2, collected 347 data points.
-UTC 2022-02-03 07:07:13, Server AALAB03-2K8:
-        Aggregated 696 raw data points to 263 performance counters, and saved to C:\Users\vmanhas\AppData\Local\Microsoft\SqlAssessment.
-UTC 2022-02-03 07:07:16, Server AALAB03-2K8:
-        Performance data query iteration: 1 of 2, collected 349 data points.
-
-Event and Error Logs Folder Path: C:\Users\vmanhas\AppData\Local\Microsoft\SqlAssessment\Logs
+.Example
+PS C:\> Get-AzDataMigrationAssessment -ConfigFilePath "C:\Users\user\document\config.json" -Time 120
 
 .Outputs
 System.Boolean
@@ -4716,6 +4679,12 @@ param(
     # For example, with default values, performance data will be persisted every 30 seconds * 20 iterations = 10 minutes.
     # (Default: 20, Minimum: 2)
     ${NumberOfIterations},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
+    [System.Int64]
+    # Duration of time in seconds for which you want to collect performance data
+    ${Time},
 
     [Parameter(ParameterSetName='ConfigFile', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Category('Body')]
@@ -4811,48 +4780,8 @@ Gives SKU recommendations for Azure SQL offerings
 Gives SKU recommendations for Azure SQL offerings
 .Example
 PS C:\> Get-AzDataMigrationSkuRecommendation -DisplayResult
-
-Starting SKU recommendation...
-
-Performing aggregation for instance AALAB03-2K8...
-Aggregation complete. Calculating SKU recommendations...
-Instance name: AALAB03-2K8
-SKU recommendation: Azure SQL Managed Instance:
-Compute: Gen5 - GeneralPurpose - 4 cores
-Storage: 64 GB
-Recommendation reasons:
-        According to the performance data collected, we estimate that your SQL server instance has a requirement for 0.16 vCores of CPU. For greater flexibility, based on your scaling factor of 100.00%, we are making a recommendation based on 0.16 vCores. Based on all the other factors, including memory, storage, and IO, this is the smallest compute sizing that will satisfy all of your needs.
-        This SQL Server instance requires 0.44 GB of memory, which is within this SKU's limit of 20.40 GB.
-        This SQL Server instance requires 32.37 GB of storage for data files. We recommend provisioning 64 GB of storage, which is the closest valid amount that can be provisioned that meets your requirement.
-        This SQL Server instance requires 0.00 MB/second of combined read/write IO throughput. This is a relatively idle instance, so IO latency is not considered.
-        Assuming the database uses the Full Recovery Model, this SQL Server instance requires 1 IOPS for data and log files. 
-        This is the most cost-efficient offering among all the performance eligible SKUs.
-
-
-Finishing SKU recommendations...
-Event and Error Logs Folder Path: C:\Users\vmanhas\AppData\Local\Microsoft\SqlAssessment\Logs
 .Example
 PS C:\> Get-AzDataMigrationSkuRecommendation -ConfigFilePath "C:\Users\user\document\config.json"
-
-Starting SKU recommendation...
-
-Performing aggregation for instance AALAB03-2K8...
-Aggregation complete. Calculating SKU recommendations...
-Instance name: AALAB03-2K8
-SKU recommendation: Azure SQL Managed Instance:
-Compute: Gen5 - GeneralPurpose - 4 cores
-Storage: 64 GB
-Recommendation reasons:
-        According to the performance data collected, we estimate that your SQL server instance has a requirement for 0.16 vCores of CPU. For greater flexibility, based on your scaling factor of 100.00%, we are making a recommendation based on 0.16 vCores. Based on all the other factors, including memory, storage, and IO, this is the smallest compute sizing that will satisfy all of your needs.
-        This SQL Server instance requires 0.44 GB of memory, which is within this SKU's limit of 20.40 GB.
-        This SQL Server instance requires 32.37 GB of storage for data files. We recommend provisioning 64 GB of storage, which is the closest valid amount that can be provisioned that meets your requirement.
-        This SQL Server instance requires 0.00 MB/second of combined read/write IO throughput. This is a relatively idle instance, so IO latency is not considered.
-        Assuming the database uses the Full Recovery Model, this SQL Server instance requires 1 IOPS for data and log files. 
-        This is the most cost-efficient offering among all the performance eligible SKUs.
-
-
-Finishing SKU recommendations...
-Event and Error Logs Folder Path: C:\Users\vmanhas\AppData\Local\Microsoft\SqlAssessment\Logs
 
 .Outputs
 System.Boolean

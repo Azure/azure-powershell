@@ -86,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101
         /// Creates a new instance of <see cref="ServicesResourceIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ServicesResourceIdentity" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Models.Api20211101.IServicesResourceIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.HealthcareApis.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
