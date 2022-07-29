@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Core;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Rest;
@@ -98,6 +99,21 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
         }
 
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TokenCredential GetTokenCredential(IAzureContext context)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TokenCredential GetTokenCredential(IAzureContext context, string targetEndpoint)
+        {
+            throw new NotImplementedException();
+        }
+
+        public TokenCredential GetTokenCredential(string accessToken, Func<string> renew = null)
         {
             throw new NotImplementedException();
         }

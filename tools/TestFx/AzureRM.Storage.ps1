@@ -157,7 +157,7 @@ function Get-StorageClient
     [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext], [string]
     $storageClient = [Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient]
     $storageVersion = [System.Reflection.Assembly]::GetAssembly($storageClient).GetName().Version
-    $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateArmClient", $types)
+    $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethods() | Where-Object { $_.Name -eq "CreateArmClient" -and $_.IsGenericMethod -eq $true }
     $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Storage.Version2017_10_01.StorageManagementClient])
     $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment+Endpoint]::ResourceManager
     $client = $closedMethod.Invoke($factory, $arguments)

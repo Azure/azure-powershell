@@ -26,7 +26,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication.Policy;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Exceptions;
-
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
     public class ClientFactory : IClientFactory
     {
         private static readonly char[] uriPathSeparator = { '/' };
-        private static readonly CancelRetryHandler DefaultCancelRetryHandler  = new CancelRetryHandler(TimeSpan.FromSeconds(10), 3);
+        private static readonly CancelRetryHandler DefaultCancelRetryHandler = new CancelRetryHandler(TimeSpan.FromSeconds(10), 3);
 
         private Dictionary<Type, IClientAction> _actions;
         private OrderedDictionary _handlers;
@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             return client;
         }
 
-        public virtual ArmClient CreateArmClient(IAzureContext context, 
+        public virtual ArmClient CreateArmClient(IAzureContext context,
             string endpoint = AzureEnvironment.Endpoint.ActiveDirectoryServiceEndpointResourceId)
         {
             if (context == null)
@@ -104,13 +104,15 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
             }
             HttpClient client = new HttpClient();
 
-            option = option ?? new ArmClientOptions() {
+            option = option ?? new ArmClientOptions()
+            {
                 /*                Transport = new HttpClientTransport(client)
                 */
                 Diagnostics =
                 {
-                    IsLoggingContentEnabled =true,
-                    IsTelemetryEnabled = false
+                    IsTelemetryEnabled = true,
+                    IsLoggingEnabled = true,
+                    IsLoggingContentEnabled = true
                 }
             };
             // Add Azure PowerShell policy into option
@@ -123,24 +125,21 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
 
             foreach (var policy in GetCustomPolicies())
             {
-                option.AddPolicy(policy, HttpPipelinePosition.PerCall);
+                if (policy is HttpTracingPolicy)
+                {
+                    option.AddPolicy(policy, HttpPipelinePosition.PerRetry);
+                }
+                else
+                {
+                    option.AddPolicy(policy, HttpPipelinePosition.PerCall);
+                }
             }
 
             // Set max retries
-            int? maxRetries = HttpRetryTimes.AzurePsHttpMaxRetries;
-            if (maxRetries != null && maxRetries >= 0)
-            {
-                option.SetMaxRetryCountofRetryOption((int)maxRetries);
-            }
+            int maxRetries = HttpRetryTimes.AzurePsHttpMaxRetries ?? 3;
+            int maxretriesfor429 = HttpRetryTimes.AzurePsHttpMaxRetriesFor429 ?? 3;
+            option.SetMaxRetryCountofRetryOption((maxRetries + 1) * maxretriesfor429 - 1);
 
-            // Set max delay
-
-            int? maxretriesfor429 = HttpRetryTimes.AzurePsHttpMaxRetriesFor429;
-            if (maxretriesfor429 != null && maxretriesfor429 >= 0)
-            {
-                option.SetMaxDelayForRetryOption((int)maxretriesfor429);
-            }
-            
             var creds = AzureSession.Instance.AuthenticationFactory.GetTokenCredential(context, endpoint);
             return new ArmClient(creds, context.Subscription.Id.ToString(), option);
         }
@@ -149,7 +148,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Factories
         {
             List<Type> types = new List<Type>();
             List<object> parameterList = new List<object>();
-            List<DelegatingHandler> handlerList = new List<DelegatingHandler> { DefaultCancelRetryHandler.Clone() as CancelRetryHandler};
+            List<DelegatingHandler> handlerList = new List<DelegatingHandler> { DefaultCancelRetryHandler.Clone() as CancelRetryHandler };
             if (parameters.FirstOrDefault(parameter => parameter is IClaimsChallengeProcessor) is IClaimsChallengeProcessor claimsChallengeProcessor)
             {
                 handlerList.Add(new ClaimsChallengeHandler(claimsChallengeProcessor));

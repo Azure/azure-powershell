@@ -45,14 +45,9 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Policy
 
         public override void OnSendingRequest(HttpMessage message)
         {
-            StringBuilder sb = new StringBuilder();
             userAgents?.ForEach((agent) => {
-                sb.Append(agent.ToString()).Append(" ");
-            }); 
-            message.SetProperty("UserAgentOverride", sb.ToString().TrimEnd());
-            /*userAgents?.ForEach((agent)=> {
                 message.Request.Headers.Add(Names.UserAgent, agent.ToString());
-            });*/
+            });
         }
           
     }

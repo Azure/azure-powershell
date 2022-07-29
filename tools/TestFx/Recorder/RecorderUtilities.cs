@@ -121,42 +121,30 @@ namespace Microsoft.Azure.Commands.TestFx.Recorder
 
         public static HttpContent CreateHttpContent(string contentData, RecordEntryContentType recordContentType)
         {
-            HttpContent createdContent = null;
+            RecordReadOnlyStream contentStream = null;
 
-            switch (recordContentType)
+            if (recordContentType == RecordEntryContentType.Binary)
             {
-                case RecordEntryContentType.Binary:
+                try
+                {
+                    byte[] hashBytes = Convert.FromBase64String(contentData);
+                    if (hashBytes != null)
                     {
-                        try
-                        {
-                            byte[] hashBytes = Convert.FromBase64String(contentData);
-                            if (hashBytes != null)
-                            {
-                                createdContent = new ByteArrayContent(hashBytes);
-                            }
-                        }
-                        catch
-                        {
-                            if (contentData != null)
-                                createdContent = new StringContent(contentData);
-                            else
-                                createdContent = new StringContent(string.Empty);
-                        }
-                        break;
+                        contentStream = new RecordReadOnlyStream(hashBytes);
                     }
-                case RecordEntryContentType.Ascii:
-                    {
-                        createdContent = new StringContent(contentData);
-                        break;
-                    }
-                case RecordEntryContentType.Null:
-                default:
-                    {
-                        createdContent = new StringContent(string.Empty);
-                        break;
-                    }
+                }
+                catch
+                {
+                    contentStream = null;
+                }
             }
 
+            if (contentStream == null)
+            {
+                contentStream = new RecordReadOnlyStream(contentData);
+            }
+
+            HttpContent createdContent = new StreamContent(contentStream);
             return createdContent;
         }
 

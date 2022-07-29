@@ -31,6 +31,14 @@ using System.Threading.Tasks;
 using Microsoft.Azure.Commands.TestFx.DelegatingHandlers;
 using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.Azure.Test.HttpRecorder;
+using Azure.ResourceManager;
+using Azure.Core.Pipeline;
+using System.Collections.Specialized;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common;
+using Azure.Core;
+using Microsoft.Azure.Commands.TestFx.Policies;
 #if NETSTANDARD
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core;
 #endif
@@ -45,7 +53,13 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
 
         public bool MoqClients { get; set; }
 
+        private readonly OrderedDictionary _handlers = new OrderedDictionary();
+        private readonly OrderedDictionary _policies = new OrderedDictionary();
+        private readonly ReaderWriterLockSlim _handlersLock = new ReaderWriterLockSlim();
+        private readonly ReaderWriterLockSlim _policiesLock = new ReaderWriterLockSlim();
+
         public HashSet<ProductInfoHeaderValue> UniqueUserAgents { get; set; } = new HashSet<ProductInfoHeaderValue>();
+
         public ProductInfoHeaderValue[] UserAgents => UniqueUserAgents.ToArray();
 
         public MockClientFactory(MockContext mockContext, IEnumerable<object> serviceClients)
@@ -124,12 +138,34 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
 
         public void AddHandler<T>(T handler) where T : DelegatingHandler, ICloneable
         {
-            // Do nothing
+            _handlersLock.EnterWriteLock();
+            try
+            {
+                if (handler != null)
+                {
+                    _handlers[handler.GetType()] = handler;
+                }
+            }
+            finally
+            {
+                _handlersLock.ExitWriteLock();
+            }
         }
 
         public void RemoveHandler(Type handlerType)
         {
-            // Do nothing
+            _handlersLock.EnterWriteLock();
+            try
+            {
+                if (_handlers.Contains(handlerType))
+                {
+                    _handlers.Remove(handlerType);
+                }
+            }
+            finally
+            {
+                _handlersLock.ExitWriteLock();
+            }
         }
 
         public void AddAction(IClientAction action)
@@ -140,6 +176,91 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
         public void RemoveAction(Type actionType)
         {
             // Do nothing
+        }
+
+        public ArmClient CreateArmClient(IAzureContext context, string endpoint)
+        {
+            if (context == null)
+            {
+                throw new AzPSApplicationException(Resources.NoSubscriptionInContext, ErrorKind.UserError);
+            }
+
+            return CreateCustomArmClient(context, endpoint, null);
+        }
+
+        public ArmClient CreateCustomArmClient(IAzureContext context, string endpoint, ArmClientOptions option)
+        {
+            if (context == null)
+            {
+                throw new AzPSApplicationException(Resources.NoSubscriptionInContext, ErrorKind.UserError);
+            }
+
+            var handlers = _mockContext.AddHandlers(TestEnvironmentFactory.GetTestEnvironment());
+
+            if (!int.TryParse(Environment.GetEnvironmentVariable("AZURE_PS_HTTP_MAX_RETRIES"), out int maxRetries))
+            {
+                maxRetries = 3;
+            }
+            if (!int.TryParse(Environment.GetEnvironmentVariable("AZURE_PS_HTTP_MAX_RETRIES_FOR_429"), out int maxRetriesFor429))
+            {
+                maxRetriesFor429 = 3;
+            }
+
+            option ??= new ArmClientOptions()
+            {
+                Transport = new HttpClientTransport(handlers[0]),
+                Diagnostics =
+                {
+                    IsLoggingContentEnabled = true,
+                    IsLoggingEnabled = true,
+                    IsTelemetryEnabled = true
+                },
+                Retry =
+                {
+                    MaxRetries = (maxRetries + 1) * maxRetriesFor429 - 1,
+                    Mode = RetryMode.Exponential
+                }
+            };
+
+            if (UserAgents != null && UserAgents.Length >= 0)
+            {
+                option.AddPolicy(new UserAgentPolicy(UserAgents), HttpPipelinePosition.PerCall);
+            }
+
+            var creds = AzureSession.Instance.AuthenticationFactory.GetTokenCredential(context, endpoint);
+            return new ArmClient(creds, context.Subscription.Id.ToString(), option);
+        }
+
+        public void AddPolicy(HttpPipelinePolicy policy)
+        {
+            _policiesLock.EnterWriteLock();
+            try
+            {
+                if (policy != null)
+                {
+                    _policies[policy.GetType()] = policy;
+                }
+            }
+            finally
+            {
+                _policiesLock.ExitWriteLock();
+            }
+        }
+
+        public void RemovePolicy(Type policy)
+        {
+            _policiesLock.EnterWriteLock();
+            try
+            {
+                if (_policies.Contains(policy))
+                {
+                    _policies.Remove(policy);
+                }
+            }
+            finally
+            {
+                _policiesLock.ExitWriteLock();
+            }
         }
 
         #region Hyak

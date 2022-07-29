@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <PackageReference Include="Azure.ResourceManager" Version="1.0.0" />
+    <PackageReference Include="Azure.ResourceManager" Version="1.2.0" />
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Aks" Version="1.0.0-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Authentication.Abstractions" Version="1.0.0-preview"/>
     <PackageReference Include="Microsoft.Azure.PowerShell.Clients.Authorization" Version="1.0.0-preview"/>
@@ -23,7 +23,7 @@
     <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure" Version="3.3.19"/>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Azure.Core" Version="1.24.0"/>
+    <PackageReference Include="Azure.Core" Version="1.25.0"/>
   </ItemGroup>
   <ItemGroup Condition="'$(IsTestProject)' != 'true'">
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.12.0">
