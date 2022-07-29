@@ -28,7 +28,7 @@ Describe 'New-AzSentinelEntityQuery' {
             UserConsentToApplication(''{{Account_Name}}'', ''{{Account_UPNSuffix}}'', ''{{Account_AadUserId}}'')  
             | project Target_CloudApplication_AppId, Target_CloudApplication_Name, TimeGenerated'
         $entityQuery = New-AzSentinelEntityQuery -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -EntityQueryId ((New-Guid).Guid) -Kind Activity -Title "The user consented to OAuth application" `
+            -Kind Activity -Title "The user consented to OAuth application" `
             -InputEntityType "Account" -Content "The user consented to the OAuth application named {{Target_CloudApplication_Name}} {{Count}} time(s)" `
             -Description "This activity lists user's consents to an OAuth applications." `
             -QueryDefinitionQuery $query

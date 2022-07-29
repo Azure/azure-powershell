@@ -15,26 +15,26 @@ Updates setting.
 ### UpdateExpandedAnomaliesEyesOnEntityAnalytics (Default)
 ```
 Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -SettingsName <String>
- -AnomaliesOrEyesOn [-SubscriptionId <String>] [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpandedUeba
 ```
-Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -SettingsName <String> -UEBA
+Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -SettingsName <String>
  [-SubscriptionId <String>] [-DataSource <UebaDataSources[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics
 ```
-Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> -AnomaliesOrEyesOn [-Disabled] [-Enabled]
+Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> [-Disabled] [-Enabled]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedUeba
 ```
-Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> -UEBA [-DataSource <UebaDataSources[]>]
+Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> [-DataSource <UebaDataSources[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -52,21 +52,6 @@ This command updates the Anomalies setting, other settings are:
 EyesOn, EntityAnalytics and Ueba
 
 ## PARAMETERS
-
-### -AnomaliesOrEyesOn
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedAnomaliesEyesOnEntityAnalytics, UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -216,21 +201,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -UEBA
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedUeba, UpdateViaIdentityExpandedUeba
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

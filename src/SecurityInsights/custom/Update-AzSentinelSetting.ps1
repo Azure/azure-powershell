@@ -66,21 +66,9 @@ function Update-AzSentinelSetting {
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
 
-        [Parameter(ParameterSetName = 'UpdateExpandedAnomaliesEyesOnEntityAnalytics', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        ${AnomaliesOrEyesOn},
-        
-        [Parameter(ParameterSetName = 'UpdateExpandedUeba', Mandatory)]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedUeba', Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
-        [System.Management.Automation.SwitchParameter]
-        ${UEBA},
-
         #Anomalies
-         #.EyesOn
-         #.EntityAnalytics
+        #.EyesOn
+        #.EntityAnalytics
         [Parameter(ParameterSetName = 'UpdateExpandedAnomaliesEyesOnEntityAnalytics')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]

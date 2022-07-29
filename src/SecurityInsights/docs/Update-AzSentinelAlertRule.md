@@ -17,11 +17,11 @@ Updates the alert rule.
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String> -Scheduled
  [-SubscriptionId <String>] [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>]
  [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>]
- [-CreateIncident] [-Description <String>] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
- [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-GroupByAlertDetail <AlertDetail>]
- [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>] [-GroupingConfigurationEnabled]
- [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>] [-QueryFrequency <TimeSpan>]
- [-QueryPeriod <TimeSpan>] [-ReOpenClosedIncident] [-Severity <AlertSeverity>]
+ [-CreateIncident] [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled]
+ [-EntityMapping <EntityMapping>] [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>]
+ [-GroupByAlertDetail <AlertDetail>] [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>]
+ [-GroupingConfigurationEnabled] [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>]
+ [-QueryFrequency <TimeSpan>] [-QueryPeriod <TimeSpan>] [-ReOpenClosedIncident] [-Severity <AlertSeverity>]
  [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>]
  [-TriggerOperator <TriggerOperator>] [-TriggerThreshold <Int32>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -30,16 +30,16 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
 ### UpdateFusionMLTI
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String> -FusionMLorTI
- [-SubscriptionId <String>] [-AlertRuleTemplateName <String>] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-AlertRuleTemplateName <String>] [-Disabled] [-Enabled]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateMicrosoftSecurityIncidentCreation
 ```
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
  -MicrosoftSecurityIncidentCreation [-SubscriptionId <String>] [-AlertRuleTemplateName <String>]
- [-Description <String>] [-DisplayNamesExcludeFilter <String>] [-DisplayNamesFilter <String>] [-Enabled]
- [-ProductFilter <MicrosoftSecurityProductName>] [-SeveritiesFilter <AlertSeverity[]>]
+ [-Description <String>] [-Disabled] [-DisplayNamesExcludeFilter <String>] [-DisplayNamesFilter <String>]
+ [-Enabled] [-ProductFilter <MicrosoftSecurityProductName>] [-SeveritiesFilter <AlertSeverity[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -48,25 +48,25 @@ Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -Workspa
 Update-AzSentinelAlertRule -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String> -NRT
  [-SubscriptionId <String>] [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>]
  [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>]
- [-CreateIncident] [-Description <String>] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
- [-GroupByAlertDetail <AlertDetail>] [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>]
- [-GroupingConfigurationEnabled] [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>]
- [-ReOpenClosedIncident] [-Severity <AlertSeverity>] [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled]
- [-Tactic <AttackTactic>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-CreateIncident] [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled]
+ [-EntityMapping <EntityMapping>] [-GroupByAlertDetail <AlertDetail>] [-GroupByCustomDetail <String[]>]
+ [-GroupByEntity <EntityMappingType>] [-GroupingConfigurationEnabled] [-LookbackDuration <TimeSpan>]
+ [-MatchingMethod <String>] [-Query <String>] [-ReOpenClosedIncident] [-Severity <AlertSeverity>]
+ [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityFusionMLTI
 ```
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -FusionMLorTI
- [-AlertRuleTemplateName <String>] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-AlertRuleTemplateName <String>] [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityMicrosoftSecurityIncidentCreation
 ```
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -MicrosoftSecurityIncidentCreation
- [-AlertRuleTemplateName <String>] [-Description <String>] [-DisplayNamesExcludeFilter <String>]
+ [-AlertRuleTemplateName <String>] [-Description <String>] [-Disabled] [-DisplayNamesExcludeFilter <String>]
  [-DisplayNamesFilter <String>] [-Enabled] [-ProductFilter <MicrosoftSecurityProductName>]
  [-SeveritiesFilter <AlertSeverity[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -76,8 +76,8 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -MicrosoftSe
 ```
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -NRT [-AlertDescriptionFormat <String>]
  [-AlertDisplayNameFormat <String>] [-AlertRuleTemplateName <String>] [-AlertSeverityColumnName <String>]
- [-AlertTacticsColumnName <String>] [-CreateIncident] [-Description <String>] [-DisplayName <String>]
- [-Enabled] [-EntityMapping <EntityMapping>] [-GroupByAlertDetail <AlertDetail>]
+ [-AlertTacticsColumnName <String>] [-CreateIncident] [-Description <String>] [-Disabled]
+ [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>] [-GroupByAlertDetail <AlertDetail>]
  [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>] [-GroupingConfigurationEnabled]
  [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>] [-ReOpenClosedIncident]
  [-Severity <AlertSeverity>] [-SuppressionDuration <TimeSpan>] [-SuppressionEnabled] [-Tactic <AttackTactic>]
@@ -89,7 +89,7 @@ Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -NRT [-Alert
 Update-AzSentinelAlertRule -InputObject <ISecurityInsightsIdentity> -Scheduled
  [-AlertDescriptionFormat <String>] [-AlertDisplayNameFormat <String>] [-AlertRuleTemplateName <String>]
  [-AlertSeverityColumnName <String>] [-AlertTacticsColumnName <String>] [-CreateIncident]
- [-Description <String>] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
+ [-Description <String>] [-Disabled] [-DisplayName <String>] [-Enabled] [-EntityMapping <EntityMapping>]
  [-EventGroupingSettingAggregationKind <EventGroupingAggregationKind>] [-GroupByAlertDetail <AlertDetail>]
  [-GroupByCustomDetail <String[]>] [-GroupByEntity <EntityMappingType>] [-GroupingConfigurationEnabled]
  [-LookbackDuration <TimeSpan>] [-MatchingMethod <String>] [-Query <String>] [-QueryFrequency <TimeSpan>]
@@ -239,6 +239,21 @@ Accept wildcard characters: False
 ```yaml
 Type: System.String
 Parameter Sets: UpdateMicrosoftSecurityIncidentCreation, UpdateNRT, UpdateScheduled, UpdateViaIdentityMicrosoftSecurityIncidentCreation, UpdateViaIdentityNRT, UpdateViaIdentityUpdateScheduled
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Disabled
+
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False

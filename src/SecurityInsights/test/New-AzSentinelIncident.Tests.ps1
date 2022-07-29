@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSentinelIncident'))
 Describe 'New-AzSentinelIncident' {
     It 'CreateExpanded' {
         $incident = New-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Id ((New-Guid).Guid) -Severity Informational -Status New -Title "NewIncidentPSTest"
+            -Severity Informational -Status New -Title "NewIncidentPSTest"
         $incident.Title | Should -Be "NewIncidentPSTest"
     }
 }
