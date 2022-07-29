@@ -16,16 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStorageMoverJobDefin
 
 Describe 'Remove-AzStorageMoverJobDefinition' {
     It 'Delete' {
-        # Adding try-catch here to record the response despite the pending fix server error.
-        try {
-            $jobName = "testJob3" + $env.RandomString
-            $job1 = New-AzStorageMoverJobDefinition -Name $jobName -ProjectName $env.ProjectName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -AgentName $env.AgentName -SourceName $env.NfsEndpointName -TargetName $env.ContainerEndpointName -CopyMode "Additive"
+        $jobName = "testJob3" + $env.RandomString
+        $job1 = New-AzStorageMoverJobDefinition -Name $jobName -ProjectName $env.ProjectName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -AgentName $env.AgentName -SourceName $env.NfsEndpointName -TargetName $env.ContainerEndpointName -CopyMode "Additive"
 
-            Remove-AzStorageMoverJobDefinition -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -ProjectName $env.ProjectName -Name $jobName
-            $jobList = Get-AzStorageMoverJobDefinition -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -ProjectName $env.ProjectName
-            $jobList.Name | Should -Not -Contain $jobName
-        } catch {
-            "Remove return code error"
-        }
+        Remove-AzStorageMoverJobDefinition -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -ProjectName $env.ProjectName -Name $jobName
+        $jobList = Get-AzStorageMoverJobDefinition -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -ProjectName $env.ProjectName
+        $jobList.Name | Should -Not -Contain $jobName
     }
 }

@@ -17,14 +17,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStorageMover'))
 Describe 'Remove-AzStorageMover' {
     # Adding try-catch here to record the response despite the pending fix server error.
     It 'Delete' {
-        try {
-            $storageMoverName = "testStoMover3" + $env.RandomString
-            $StorageMover = New-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $storageMoverName -Location $env.Location -Description $description
-            Remove-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $storageMoverName -Force
-            $stoMoverList = Get-AzStorageMover
-            $stoMoverList.Name | Should -Not -Contain $storageMoverName
-        } catch {
-            "Remove return code error"
-        }  
+        $storageMoverName = "testStoMover3" + $env.RandomString
+        $StorageMover = New-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $storageMoverName -Location $env.Location -Description $description
+        Remove-AzStorageMover -ResourceGroupName $env.ResourceGroupName -Name $storageMoverName -Force
+        $stoMoverList = Get-AzStorageMover
+        $stoMoverList.Name | Should -Not -Contain $storageMoverName 
     }
 }

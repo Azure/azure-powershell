@@ -31,7 +31,7 @@ For information on how to develop for `Az.StorageMover`, see [how-to.md](how-to.
 
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
-brach: 36ac14c46828ae36365ca9d68c26d75d9ade48f0
+brach: 913f1e8aa0bfc773c5f236f03d56f379d9d3d012
 require:
 # readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md

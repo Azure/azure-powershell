@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzStorageMoverEndpoint
 
 ## SYNOPSIS
-Deletes an endpoint resource.
+Deletes an Endpoint resource.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Remove-AzStorageMoverEndpoint -InputObject <IStorageMoverIdentity> [-DefaultProf
 ```
 
 ## DESCRIPTION
-Deletes an endpoint resource.
+Deletes an Endpoint resource.
 
 ## EXAMPLES
 
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the endpoint resource.
+The name of the Endpoint resource.
 
 ```yaml
 Type: System.String
@@ -228,12 +228,12 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IStorageMoverIdentity>`: Identity Parameter
-  - `[AgentName <String>]`: The name of the agent resource.
-  - `[EndpointName <String>]`: The name of the endpoint resource.
+  - `[AgentName <String>]`: The name of the Agent resource.
+  - `[EndpointName <String>]`: The name of the Endpoint resource.
   - `[Id <String>]`: Resource identity path
-  - `[JobDefinitionName <String>]`: The name of the job definition resource.
-  - `[JobRunName <String>]`: The name of the job run.
-  - `[ProjectName <String>]`: The name of the project resource.
+  - `[JobDefinitionName <String>]`: The name of the Job Definition resource.
+  - `[JobRunName <String>]`: The name of the Job Run resource.
+  - `[ProjectName <String>]`: The name of the Project resource.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[StorageMoverName <String>]`: The name of the Storage Mover resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.

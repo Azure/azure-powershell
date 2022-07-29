@@ -1,8 +1,8 @@
 {
-  "Start-AzStorageMoverJobDefinition+[NoContext]+Start+$POST+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProject0426e89i/jobDefinitions/testJob0426e89i/startJob?api-version=2022-07-01-preview+1": {
+  "Start-AzStorageMoverJobDefinition+[NoContext]+Start+$POST+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProjectx08itkwr/jobDefinitions/testJobx08itkwr/startJob?api-version=2022-07-01-preview+1": {
     "Request": {
       "Method": "POST",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProject0426e89i/jobDefinitions/testJob0426e89i/startJob?api-version=2022-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProjectx08itkwr/jobDefinitions/testJobx08itkwr/startJob?api-version=2022-07-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -37,7 +37,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"jobRunResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProject0426e89i/jobDefinitions/testJob0426e89i/jobRuns/8ceabf52-0069-4dbd-8bd7-e0fd6f8d8bc0\"}",
+      "Content": "{\"jobRunResourceId\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProjectx08itkwr/jobDefinitions/testJobx08itkwr/jobRuns/8ceabf52-0069-4dbd-8bd7-e0fd6f8d8bc0\"}",
       "isContentBase64": false
     }
   }

@@ -15,19 +15,19 @@ Microsoft Azure PowerShell: StorageMover cmdlets
 Gets a Storage Mover resource.
 
 ### [Get-AzStorageMoverAgent](Get-AzStorageMoverAgent.md)
-Gets an agent resource.
+Gets an Agent resource.
 
 ### [Get-AzStorageMoverEndpoint](Get-AzStorageMoverEndpoint.md)
-Gets an endpoint resource.
+Gets an Endpoint resource.
 
 ### [Get-AzStorageMoverJobDefinition](Get-AzStorageMoverJobDefinition.md)
-Gets a job definition resource.
+Gets a Job Definition resource.
 
 ### [Get-AzStorageMoverJobRun](Get-AzStorageMoverJobRun.md)
-Gets a job run resource.
+Gets a Job Run resource.
 
 ### [Get-AzStorageMoverProject](Get-AzStorageMoverProject.md)
-Gets a project resource.
+Gets a Project resource.
 
 ### [New-AzStorageMover](New-AzStorageMover.md)
 Creates or updates a top-level Storage Mover resource.
@@ -36,31 +36,31 @@ Creates or updates a top-level Storage Mover resource.
 Creates an AzStorageContainer endpoint resource, which represents a data transfer source or destination.
 
 ### [New-AzStorageMoverJobDefinition](New-AzStorageMoverJobDefinition.md)
-Creates or updates a job definition resource, which contains configuration for a single unit of managed data transfer.
+Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 
 ### [New-AzStorageMoverNfsEndpoint](New-AzStorageMoverNfsEndpoint.md)
 Creates a Nfs endpoint resource, which represents a data transfer source or destination.
 
 ### [New-AzStorageMoverProject](New-AzStorageMoverProject.md)
-Creates or updates a project resource, which is a logical grouping of related jobs.
+Creates or updates a Project resource, which is a logical grouping of related jobs.
 
 ### [Remove-AzStorageMover](Remove-AzStorageMover.md)
 Deletes a Storage Mover resource.
 
 ### [Remove-AzStorageMoverEndpoint](Remove-AzStorageMoverEndpoint.md)
-Deletes an endpoint resource.
+Deletes an Endpoint resource.
 
 ### [Remove-AzStorageMoverJobDefinition](Remove-AzStorageMoverJobDefinition.md)
-Deletes a job definition resource.
+Deletes a Job Definition resource.
 
 ### [Remove-AzStorageMoverProject](Remove-AzStorageMoverProject.md)
-Deletes a project resource.
+Deletes a Project resource.
 
 ### [Start-AzStorageMoverJobDefinition](Start-AzStorageMoverJobDefinition.md)
-Requests an agent to start a new instance of this job definition, generating a new job run resource.
+Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.
 
 ### [Stop-AzStorageMoverJobDefinition](Stop-AzStorageMoverJobDefinition.md)
-Requests the agent of any active instance of this job definition to stop.
+Requests the Agent of any active instance of this Job Definition to stop.
 
 ### [Unregister-AzStorageMoverAgent](Unregister-AzStorageMoverAgent.md)
 Deletes an agent resource.
@@ -70,14 +70,14 @@ Updates properties for a Storage Mover resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverAgent](Update-AzStorageMoverAgent.md)
-Creates or updates an agent resource.
+Creates or updates an Agent resource.
 
 ### [Update-AzStorageMoverAzStorageContainerEndpoint](Update-AzStorageMoverAzStorageContainerEndpoint.md)
 Updates properties for an AzStorageContainer endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverJobDefinition](Update-AzStorageMoverJobDefinition.md)
-Updates properties for a job definition resource.
+Updates properties for a Job Definition resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverNfsEndpoint](Update-AzStorageMoverNfsEndpoint.md)
@@ -85,6 +85,6 @@ Updates properties for a Nfs endpoint resource.
 Properties not specified in the request body will be unchanged.
 
 ### [Update-AzStorageMoverProject](Update-AzStorageMoverProject.md)
-Updates properties for a project resource.
+Updates properties for a Project resource.
 Properties not specified in the request body will be unchanged.
 

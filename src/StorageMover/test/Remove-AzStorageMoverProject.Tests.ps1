@@ -16,16 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStorageMoverProject'
 
 Describe 'Remove-AzStorageMoverProject' {
     It 'Delete' {
-    # Adding try-catch here to record the response despite the pending fix server error.
-        try {
-            $projectName = "testProject" + $env.RandomString
-            $project = New-AzStorageMoverProject -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Name $projectName -Description $description
-            
-            Remove-AzStorageMoverProject -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Name $projectName
-            $projectList = Get-AzStorageMoverProject -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName 
-            $projectList.Name | Should -Not -Contain $projectName
-        } catch {
-            "Remove return code error"
-        }
+        $projectName = "testProject" + $env.RandomString
+        $project = New-AzStorageMoverProject -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Name $projectName -Description $description
+        
+        Remove-AzStorageMoverProject -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName -Name $projectName
+        $projectList = Get-AzStorageMoverProject -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.InitialStoMoverName 
+        $projectList.Name | Should -Not -Contain $projectName
     }
 }

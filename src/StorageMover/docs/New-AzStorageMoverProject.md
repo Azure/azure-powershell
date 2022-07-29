@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzStorageMoverProject
 
 ## SYNOPSIS
-Creates or updates a project resource, which is a logical grouping of related jobs.
+Creates or updates a Project resource, which is a logical grouping of related jobs.
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ New-AzStorageMoverProject -Name <String> -ResourceGroupName <String> -StorageMov
 ```
 
 ## DESCRIPTION
-Creates or updates a project resource, which is a logical grouping of related jobs.
+Creates or updates a Project resource, which is a logical grouping of related jobs.
 
 ## EXAMPLES
 
@@ -71,7 +71,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-A description for the project.
+A description for the Project.
 
 ```yaml
 Type: System.String
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the project resource.
+The name of the Project resource.
 
 ```yaml
 Type: System.String
@@ -101,7 +101,7 @@ Accept wildcard characters: False
 ```
 
 ### -Project
-The project resource.
+The Project resource.
 To construct, see NOTES section for PROJECT properties and create a hash table.
 
 ```yaml
@@ -213,8 +213,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`PROJECT <IProject>`: The project resource.
-  - `[Description <String>]`: A description for the project.
+`PROJECT <IProject>`: The Project resource.
+  - `[Description <String>]`: A description for the Project.
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
   - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.

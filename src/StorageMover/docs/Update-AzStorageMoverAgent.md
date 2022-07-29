@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStorageMoverAgent
 
 ## SYNOPSIS
-Creates or updates an agent resource.
+Creates or updates an Agent resource.
 
 ## SYNTAX
 
@@ -39,7 +39,7 @@ Update-AzStorageMoverAgent -InputObject <IStorageMoverIdentity> [-Description <S
 ```
 
 ## DESCRIPTION
-Creates or updates an agent resource.
+Creates or updates an Agent resource.
 
 ## EXAMPLES
 
@@ -59,7 +59,7 @@ This command updates the description of a Storage mover agent.
 ## PARAMETERS
 
 ### -Agent
-The agent resource.
+The Agent resource.
 To construct, see NOTES section for AGENT properties and create a hash table.
 
 ```yaml
@@ -90,7 +90,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-A description for the agent.
+A description for the Agent.
 
 ```yaml
 Type: System.String
@@ -121,7 +121,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the agent resource.
+The name of the Agent resource.
 
 ```yaml
 Type: System.String
@@ -234,16 +234,16 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`AGENT <IAgentUpdateParameters>`: The agent resource.
-  - `[Description <String>]`: A description for the agent.
+`AGENT <IAgentUpdateParameters>`: The Agent resource.
+  - `[Description <String>]`: A description for the Agent.
 
 `INPUTOBJECT <IStorageMoverIdentity>`: Identity Parameter
-  - `[AgentName <String>]`: The name of the agent resource.
-  - `[EndpointName <String>]`: The name of the endpoint resource.
+  - `[AgentName <String>]`: The name of the Agent resource.
+  - `[EndpointName <String>]`: The name of the Endpoint resource.
   - `[Id <String>]`: Resource identity path
-  - `[JobDefinitionName <String>]`: The name of the job definition resource.
-  - `[JobRunName <String>]`: The name of the job run.
-  - `[ProjectName <String>]`: The name of the project resource.
+  - `[JobDefinitionName <String>]`: The name of the Job Definition resource.
+  - `[JobRunName <String>]`: The name of the Job Run resource.
+  - `[ProjectName <String>]`: The name of the Project resource.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[StorageMoverName <String>]`: The name of the Storage Mover resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.

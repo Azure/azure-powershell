@@ -16,16 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzStorageMoverEndpoint
 
 Describe 'Remove-AzStorageMoverEndpoint' {
     It 'Delete' {
-        # Adding try-catch here to record the response despite the pending fix server error.
-        try {
-            $endpointName = "containerEndpoint2" + $env.RandomString
-            $endpoint = New-AzStorageMoverAzStorageContainerEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -BlobContainerName $env.ContainerName -StorageMoverName $env.InitialStoMoverName -StorageAccountResourceId $env.StoraccId
+        $endpointName = "containerEndpoint2" + $env.RandomString
+        $endpoint = New-AzStorageMoverAzStorageContainerEndpoint -Name $endpointName -ResourceGroupName $env.ResourceGroupName -BlobContainerName $env.ContainerName -StorageMoverName $env.InitialStoMoverName -StorageAccountResourceId $env.StoraccId
 
-            Remove-AzStorageMoverEndpoint -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Name $endpointName 
-            $endpointList = Get-AzStorageMoverEndpoint -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent
-            $endpointList.Name | Should -Not -Contain $endpointName
-        } catch {
-            "Remove return code error"
-        }
+        Remove-AzStorageMoverEndpoint -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Name $endpointName 
+        $endpointList = Get-AzStorageMoverEndpoint -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent
+        $endpointList.Name | Should -Not -Contain $endpointName
     }
 }

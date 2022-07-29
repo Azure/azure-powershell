@@ -1,9 +1,9 @@
 {
-  "Update-AzStorageMoverJobDefinition+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProject0426e89i/jobDefinitions/testUpdateJob50426e89i?api-version=2022-07-01-preview+1": {
+  "Update-AzStorageMoverJobDefinition+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProjectx08itkwr/jobDefinitions/testUpdateJob5x08itkwr?api-version=2022-07-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProject0426e89i/jobDefinitions/testUpdateJob50426e89i?api-version=2022-07-01-preview",
-      "Content": "{\r\n  \"properties\": {\r\n    \"copyMode\": \"Additive\",\r\n    \"sourceName\": \"nfsEndpoint0426e89i\",\r\n    \"targetName\": \"containerEndpoint0426e89i\",\r\n    \"agentName\": \"testagent7\"\r\n  }\r\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProjectx08itkwr/jobDefinitions/testUpdateJob5x08itkwr?api-version=2022-07-01-preview",
+      "Content": "{\r\n  \"properties\": {\r\n    \"copyMode\": \"Additive\",\r\n    \"sourceName\": \"nfsEndpointx08itkwr\",\r\n    \"targetName\": \"containerEndpointx08itkwr\",\r\n    \"agentName\": \"testagent7\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -17,30 +17,30 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0000877f-0000-3400-0000-62da36530000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1178" ],
+        "ETag": [ "\"00007a63-0000-3400-0000-62e3a4400000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1194" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "mise-correlation-id": [ "7c80b368-f6ee-4849-b94e-bf06e19cd4cd" ],
-        "x-ms-request-id": [ "0af87799-9ccd-4a22-abde-7d29db3a384d" ],
-        "x-ms-correlation-request-id": [ "56c4d9d1-82df-4788-b3c3-e36ad6717aa6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220722T053203Z:56c4d9d1-82df-4788-b3c3-e36ad6717aa6" ],
+        "mise-correlation-id": [ "81bf05be-a03f-4caa-a83e-28aec56f20b3" ],
+        "x-ms-request-id": [ "092800a6-9c2a-4d32-b3d5-6483ded42827" ],
+        "x-ms-correlation-request-id": [ "f81a9a75-dc76-4165-bc5f-54b6ff04bbbd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T091128Z:f81a9a75-dc76-4165-bc5f-54b6ff04bbbd" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Jul 2022 05:32:02 GMT" ]
+        "Date": [ "Fri, 29 Jul 2022 09:11:28 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "736" ],
+        "Content-Length": [ "774" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProject0426e89i/jobDefinitions/testUpdateJob50426e89i\",\"name\":\"testUpdateJob50426e89i\",\"type\":\"microsoft.storagemover/storagemovers/projects/jobdefinitions\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-22T05:32:02.8239696Z\",\"lastModifiedBy\":\"yifanzhang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-22T05:32:02.8239696Z\"},\"properties\":{\"copyMode\":\"Additive\",\"sourceName\":\"nfsEndpoint0426e89i\",\"targetName\":\"containerEndpoint0426e89i\",\"agentName\":\"testagent7\",\"provisioningState\":\"Succeeded\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProjectx08itkwr/jobDefinitions/testUpdateJob5x08itkwr\",\"name\":\"testUpdateJob5x08itkwr\",\"type\":\"microsoft.storagemover/storagemovers/projects/jobdefinitions\",\"systemData\":{\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"createdAt\":\"2022-07-29T09:11:27.2879741Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2022-07-29T09:11:27.2879741Z\"},\"properties\":{\"copyMode\":\"Additive\",\"sourceName\":\"nfsEndpointx08itkwr\",\"targetName\":\"containerEndpointx08itkwr\",\"agentName\":\"testagent7\",\"provisioningState\":\"Succeeded\"}}",
       "isContentBase64": false
     }
   },
-  "Update-AzStorageMoverJobDefinition+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProject0426e89i/jobDefinitions/testUpdateJob50426e89i?api-version=2022-07-01-preview+2": {
+  "Update-AzStorageMoverJobDefinition+[NoContext]+UpdateExpanded+$PATCH+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProjectx08itkwr/jobDefinitions/testUpdateJob5x08itkwr?api-version=2022-07-01-preview+2": {
     "Request": {
       "Method": "PATCH",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProject0426e89i/jobDefinitions/testUpdateJob50426e89i?api-version=2022-07-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProjectx08itkwr/jobDefinitions/testUpdateJob5x08itkwr?api-version=2022-07-01-preview",
       "Content": "{\r\n  \"properties\": {\r\n    \"description\": \"update description\"\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -55,22 +55,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "ETag": [ "\"0000887f-0000-3400-0000-62da36530000\"" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1177" ],
+        "ETag": [ "\"00007b63-0000-3400-0000-62e3a4450000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
         "x-ms-providerhub-traffic": [ "True" ],
-        "x-ms-request-id": [ "a89a86f6-e67d-428c-933f-c7ed9da3fd09" ],
-        "x-ms-correlation-request-id": [ "111efd50-0f1a-41c6-9456-b9877d835cfd" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220722T053203Z:111efd50-0f1a-41c6-9456-b9877d835cfd" ],
+        "x-ms-request-id": [ "6223c34c-42c3-4338-854e-f0154eb6c446" ],
+        "x-ms-correlation-request-id": [ "33942f46-b69c-4814-ba4b-3cac85ce2d95" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220729T091133Z:33942f46-b69c-4814-ba4b-3cac85ce2d95" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 22 Jul 2022 05:32:03 GMT" ]
+        "Date": [ "Fri, 29 Jul 2022 09:11:32 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "771" ],
+        "Content-Length": [ "809" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProject0426e89i/jobDefinitions/testUpdateJob50426e89i\",\"name\":\"testUpdateJob50426e89i\",\"type\":\"microsoft.storagemover/storagemovers/projects/jobdefinitions\",\"systemData\":{\"createdBy\":\"yifanzhang@microsoft.com\",\"createdByType\":\"User\",\"createdAt\":\"2022-07-22T05:32:02.8239696Z\",\"lastModifiedBy\":\"yifanzhang@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-07-22T05:32:03.4645949Z\"},\"properties\":{\"copyMode\":\"Additive\",\"sourceName\":\"nfsEndpoint0426e89i\",\"targetName\":\"containerEndpoint0426e89i\",\"agentName\":\"testagent7\",\"provisioningState\":\"Succeeded\",\"description\":\"update description\"}}",
+      "Content": "{\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testStorageMover/providers/Microsoft.StorageMover/storageMovers/testStorageMover2/projects/testProjectx08itkwr/jobDefinitions/testUpdateJob5x08itkwr\",\"name\":\"testUpdateJob5x08itkwr\",\"type\":\"microsoft.storagemover/storagemovers/projects/jobdefinitions\",\"systemData\":{\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"createdAt\":\"2022-07-29T09:11:27.2879741Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\",\"lastModifiedAt\":\"2022-07-29T09:11:33.1160866Z\"},\"properties\":{\"copyMode\":\"Additive\",\"sourceName\":\"nfsEndpointx08itkwr\",\"targetName\":\"containerEndpointx08itkwr\",\"agentName\":\"testagent7\",\"provisioningState\":\"Succeeded\",\"description\":\"update description\"}}",
       "isContentBase64": false
     }
   }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStorageMoverJobDefinition
 
 ## SYNOPSIS
-Updates properties for a job definition resource.
+Updates properties for a Job Definition resource.
 Properties not specified in the request body will be unchanged.
 
 ## SYNTAX
@@ -42,7 +42,7 @@ Update-AzStorageMoverJobDefinition -InputObject <IStorageMoverIdentity> [-AgentN
 ```
 
 ## DESCRIPTION
-Updates properties for a job definition resource.
+Updates properties for a Job Definition resource.
 Properties not specified in the request body will be unchanged.
 
 ## EXAMPLES
@@ -63,7 +63,7 @@ This command updates the description of a job definition.
 ## PARAMETERS
 
 ### -AgentName
-Name of the agent to assign for new job runs of this definition.
+Name of the Agent to assign for new Job Runs of this Job Definition.
 
 ```yaml
 Type: System.String
@@ -108,7 +108,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-A description for the job definition.
+A description for the Job Definition.
 
 ```yaml
 Type: System.String
@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -JobDefinition
-The job definition resource.
+The Job Definition resource.
 To construct, see NOTES section for JOBDEFINITION properties and create a hash table.
 
 ```yaml
@@ -155,7 +155,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the job definition resource.
+The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
@@ -170,7 +170,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-The name of the project resource.
+The name of the Project resource.
 
 ```yaml
 Type: System.String
@@ -284,20 +284,20 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IStorageMoverIdentity>`: Identity Parameter
-  - `[AgentName <String>]`: The name of the agent resource.
-  - `[EndpointName <String>]`: The name of the endpoint resource.
+  - `[AgentName <String>]`: The name of the Agent resource.
+  - `[EndpointName <String>]`: The name of the Endpoint resource.
   - `[Id <String>]`: Resource identity path
-  - `[JobDefinitionName <String>]`: The name of the job definition resource.
-  - `[JobRunName <String>]`: The name of the job run.
-  - `[ProjectName <String>]`: The name of the project resource.
+  - `[JobDefinitionName <String>]`: The name of the Job Definition resource.
+  - `[JobRunName <String>]`: The name of the Job Run resource.
+  - `[ProjectName <String>]`: The name of the Project resource.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[StorageMoverName <String>]`: The name of the Storage Mover resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-`JOBDEFINITION <IJobDefinitionUpdateParameters>`: The job definition resource.
-  - `[AgentName <String>]`: Name of the agent to assign for new job runs of this definition.
+`JOBDEFINITION <IJobDefinitionUpdateParameters>`: The Job Definition resource.
+  - `[AgentName <String>]`: Name of the Agent to assign for new Job Runs of this Job Definition.
   - `[CopyMode <CopyMode?>]`: Strategy to use for copy.
-  - `[Description <String>]`: A description for the job definition.
+  - `[Description <String>]`: A description for the Job Definition.
 
 ## RELATED LINKS
 

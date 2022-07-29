@@ -134,7 +134,7 @@ Accept wildcard characters: False
 ```
 
 ### -StorageMover
-The Storage Mover resource, which is a container for a group of Storage Mover agents and projects.
+The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
 To construct, see NOTES section for STORAGEMOVER properties and create a hash table.
 
 ```yaml
@@ -230,7 +230,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`STORAGEMOVER <IStorageMover>`: The Storage Mover resource, which is a container for a group of Storage Mover agents and projects.
+`STORAGEMOVER <IStorageMover>`: The Storage Mover resource, which is a container for a group of Agents, Projects, and Endpoints.
   - `Location <String>`: The geo-location where the resource lives
   - `[Tag <ITrackedResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzStorageMoverProject
 
 ## SYNOPSIS
-Updates properties for a project resource.
+Updates properties for a Project resource.
 Properties not specified in the request body will be unchanged.
 
 ## SYNTAX
@@ -40,7 +40,7 @@ Update-AzStorageMoverProject -InputObject <IStorageMoverIdentity> [-Description 
 ```
 
 ## DESCRIPTION
-Updates properties for a project resource.
+Updates properties for a Project resource.
 Properties not specified in the request body will be unchanged.
 
 ## EXAMPLES
@@ -76,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-A description for the project.
+A description for the Project.
 
 ```yaml
 Type: System.String
@@ -107,7 +107,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the project resource.
+The name of the Project resource.
 
 ```yaml
 Type: System.String
@@ -122,7 +122,7 @@ Accept wildcard characters: False
 ```
 
 ### -Project
-The project resource.
+The Project resource.
 To construct, see NOTES section for PROJECT properties and create a hash table.
 
 ```yaml
@@ -237,18 +237,18 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IStorageMoverIdentity>`: Identity Parameter
-  - `[AgentName <String>]`: The name of the agent resource.
-  - `[EndpointName <String>]`: The name of the endpoint resource.
+  - `[AgentName <String>]`: The name of the Agent resource.
+  - `[EndpointName <String>]`: The name of the Endpoint resource.
   - `[Id <String>]`: Resource identity path
-  - `[JobDefinitionName <String>]`: The name of the job definition resource.
-  - `[JobRunName <String>]`: The name of the job run.
-  - `[ProjectName <String>]`: The name of the project resource.
+  - `[JobDefinitionName <String>]`: The name of the Job Definition resource.
+  - `[JobRunName <String>]`: The name of the Job Run resource.
+  - `[ProjectName <String>]`: The name of the Project resource.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[StorageMoverName <String>]`: The name of the Storage Mover resource.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
 
-`PROJECT <IProjectUpdateParameters>`: The project resource.
-  - `[Description <String>]`: A description for the project.
+`PROJECT <IProjectUpdateParameters>`: The Project resource.
+  - `[Description <String>]`: A description for the Project.
 
 ## RELATED LINKS
 

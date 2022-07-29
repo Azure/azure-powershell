@@ -8,15 +8,15 @@ schema: 2.0.0
 # New-AzStorageMoverJobDefinition
 
 ## SYNOPSIS
-Creates or updates a job definition resource, which contains configuration for a single unit of managed data transfer.
+Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 
 ## SYNTAX
 
 ### CreateExpanded (Default)
 ```
 New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGroupName <String>
- -StorageMoverName <String> [-SubscriptionId <String>] [-AgentName <String>] [-CopyMode <CopyMode>]
- [-Description <String>] [-SourceName <String>] [-SourceSubpath <String>] [-TargetName <String>]
+ -StorageMoverName <String> -CopyMode <CopyMode> -SourceName <String> -TargetName <String>
+ [-SubscriptionId <String>] [-AgentName <String>] [-Description <String>] [-SourceSubpath <String>]
  [-TargetSubpath <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ New-AzStorageMoverJobDefinition -Name <String> -ProjectName <String> -ResourceGr
 ```
 
 ## DESCRIPTION
-Creates or updates a job definition resource, which contains configuration for a single unit of managed data transfer.
+Creates or updates a Job Definition resource, which contains configuration for a single unit of managed data transfer.
 
 ## EXAMPLES
 
@@ -71,7 +71,7 @@ This command creates a job definition.
 ## PARAMETERS
 
 ### -AgentName
-Name of the agent to assign for new job runs of this definition.
+Name of the Agent to assign for new Job Runs of this Job Definition.
 
 ```yaml
 Type: System.String
@@ -93,7 +93,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.StorageMover.Support.CopyMode
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -116,7 +116,7 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-A description for the job definition.
+A description for the Job Definition.
 
 ```yaml
 Type: System.String
@@ -131,7 +131,7 @@ Accept wildcard characters: False
 ```
 
 ### -JobDefinition
-The job definition resource.
+The Job Definition resource.
 To construct, see NOTES section for JOBDEFINITION properties and create a hash table.
 
 ```yaml
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the job definition resource.
+The name of the Job Definition resource.
 
 ```yaml
 Type: System.String
@@ -162,7 +162,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProjectName
-The name of the project resource.
+The name of the Project resource.
 
 ```yaml
 Type: System.String
@@ -193,14 +193,14 @@ Accept wildcard characters: False
 ```
 
 ### -SourceName
-The name of the source endpoint.
+The name of the source Endpoint.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -253,14 +253,14 @@ Accept wildcard characters: False
 ```
 
 ### -TargetName
-The name of the target endpoint.
+The name of the target Endpoint.
 
 ```yaml
 Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -333,11 +333,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`JOBDEFINITION <IJobDefinition>`: The job definition resource.
-  - `[AgentName <String>]`: Name of the agent to assign for new job runs of this definition.
-  - `[CopyMode <CopyMode?>]`: Strategy to use for copy.
-  - `[Description <String>]`: A description for the job definition.
-  - `[SourceName <String>]`: The name of the source endpoint.
+`JOBDEFINITION <IJobDefinition>`: The Job Definition resource.
+  - `CopyMode <CopyMode>`: Strategy to use for copy.
+  - `SourceName <String>`: The name of the source Endpoint.
+  - `TargetName <String>`: The name of the target Endpoint.
+  - `[AgentName <String>]`: Name of the Agent to assign for new Job Runs of this Job Definition.
+  - `[Description <String>]`: A description for the Job Definition.
   - `[SourceSubpath <String>]`: The subpath to use when reading from the source Endpoint.
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
@@ -345,7 +346,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
   - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
   - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[TargetName <String>]`: The name of the target endpoint.
   - `[TargetSubpath <String>]`: The subpath to use when writing to the target Endpoint.
 
 ## RELATED LINKS
