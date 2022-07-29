@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSpringCloudConfigSer
 }
 
 Describe 'Update-AzSpringCloudConfigServer' {
+    # Test case been write in Get cmdlet
     It 'UpdateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

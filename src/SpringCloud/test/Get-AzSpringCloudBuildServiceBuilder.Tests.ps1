@@ -15,15 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSpringCloudBuildService
 }
 
 Describe 'Get-AzSpringCloudBuildServiceBuilder' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzSpringCloudBuildServiceBuilder -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01} | Should -Not -Throw
     }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CRUD' { 
+        { 
+            New-AzSpringCloudBuildServiceBuilder -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -Name builder01 -StackId 'io.buildpacks.stacks.bionic' -StackVersion 'base' 
+            Get-AzSpringCloudBuildServiceBuilder -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -Name builder01
+            Remove-AzSpringCloudBuildServiceBuilder -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -Name builder01
+        } | Should -Not -Throw
     }
 }

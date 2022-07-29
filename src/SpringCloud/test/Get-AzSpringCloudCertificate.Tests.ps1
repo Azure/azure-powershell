@@ -15,15 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSpringCloudCertificate'
 }
 
 Describe 'Get-AzSpringCloudCertificate' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzSpringCloudCertificate -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CRUD' {
+        { 
+            $cert = New-AzSpringCloudKeyVaultCertificateObject -Name "springcert" -VaultUri "https://springcloudkv.vault.azure.net" -Version "3e0a7f95f2264f568b6219ae43a131f2" -ExcludePrivateKey $false
+            New-AzSpringCloudCertificate -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -Name springcert -Property $cert
+            Get-AzSpringCloudCertificate -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -Name springcert
+            Remove-AzSpringCloudCertificate -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -Name springcert
+        } | Should -Not -Throw
     }
 }

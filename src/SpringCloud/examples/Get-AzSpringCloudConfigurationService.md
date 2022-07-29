@@ -14,7 +14,7 @@ Get all Application Configuration Service and its properties.
 
 ### Example 2: Get the Application Configuration Service and its properties
 ```powershell
-Get-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -Name default
+Get-AzSpringCloudConfigurationService -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01
 ```
 
 ```output

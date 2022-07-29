@@ -15,11 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSpringCloudBuildService
 }
 
 Describe 'New-AzSpringCloudBuildServiceAgentPool' {
+    # Test case been write in New cmdlet
     It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+        } | Should -Not -Throw
     }
 }

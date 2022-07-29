@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSpringCloudTestKey'))
 }
 
 Describe 'New-AzSpringCloudTestKey' {
-    It 'RegenerateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'RegenerateExpanded' {
+        { 
+            New-AzSpringCloudTestKey -ResourceGroupName $env.resourceGroup -Name $env.standardSpringName01 -KeyType Primary
+        } | Should -Not -Throw
     }
 }

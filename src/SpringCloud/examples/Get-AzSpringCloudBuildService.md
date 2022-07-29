@@ -1,6 +1,6 @@
 ### Example 1: Get a build service resource of the enterprise spring cloud
 ```powershell
-Get-AzSpringCloudBuildService -ResourceGroupName springcloudrg -ServiceName sspring-portal01 -Name default
+Get-AzSpringCloudBuildService -ResourceGroupName springcloudrg -ServiceName sspring-portal01
 ```
 
 ```output

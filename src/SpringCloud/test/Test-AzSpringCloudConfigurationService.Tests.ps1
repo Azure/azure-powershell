@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzSpringCloudConfigurati
 }
 
 Describe 'Test-AzSpringCloudConfigurationService' {
+    # Test case been write in Get cmdlet
     It 'ValidateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

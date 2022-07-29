@@ -1,60 +1,72 @@
 ---
 external help file:
 Module Name: Az.SpringCloud
-online version: https://docs.microsoft.com/powershell/module/az.springcloud/remove-azspringcloudregistry
+online version: https://docs.microsoft.com/powershell/module/az.springcloud/test-azspringcloudappcustomdomain
 schema: 2.0.0
 ---
 
-# Remove-AzSpringCloudRegistry
+# Test-AzSpringCloudAppCustomDomain
 
 ## SYNOPSIS
-Disable the default Service Registry.
+Check the resource name is valid as well as not in use.
 
 ## SYNTAX
 
-### Delete (Default)
+### ValidateExpanded (Default)
 ```
-Remove-AzSpringCloudRegistry -Name <String> -ResourceGroupName <String> -ServiceName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Test-AzSpringCloudAppCustomDomain -AppName <String> -ResourceGroupName <String> -ServiceName <String>
+ -Name <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### ValidateViaIdentityExpanded
 ```
-Remove-AzSpringCloudRegistry -InputObject <ISpringCloudIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Test-AzSpringCloudAppCustomDomain -InputObject <ISpringCloudIdentity> -Name <String>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Disable the default Service Registry.
+Check the resource name is valid as well as not in use.
 
 ## EXAMPLES
 
-### Example 1: Disable the default Service Registry
+### Example 1: Check the resource name is valid as well as not in use
 ```powershell
-Remove-AzSpringCloudRegistry -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name default
+Test-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service-01 -Name springcloud-service-01.azuremicroservices.io -AppName tools
 ```
 
-Disable the default Service Registry.
-
-### Example 2: Disable the default Service Registry by pipeline
-```powershell
-Get-AzSpringCloudRegistry -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service -Name default | Remove-AzSpringCloudRegistry
+```output
+IsValid Message
+------- -------
+True
 ```
 
-Disable the default Service Registry by pipeline.
+Check the resource name is valid as well as not in use.
+
+### Example 2: Check the resource name is valid as well as not in use by pipeline
+```powershell
+Get-AzSpringCloudAppCustomDomain -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-service-01 -Name springcloud-service-01.azuremicroservices.io -AppName tools | Test-AzSpringCloudAppCustomDomain
+```
+
+```output
+IsValid Message
+------- -------
+True
+```
+
+Check the resource name is valid as well as not in use by pipeline.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -AppName
+The name of the App resource.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: ValidateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -82,7 +94,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: ValidateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -93,44 +105,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of Service Registry.
+Name to be validated
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: ServiceRegistryName
+Parameter Sets: (All)
+Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -143,7 +125,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: True
@@ -158,7 +140,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: True
@@ -174,7 +156,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: ValidateExpanded
 Aliases:
 
 Required: False
@@ -224,7 +206,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.ICustomDomainValidateResult
 
 ## NOTES
 

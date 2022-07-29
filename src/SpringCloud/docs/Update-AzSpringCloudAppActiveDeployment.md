@@ -19,10 +19,9 @@ Update-AzSpringCloudAppActiveDeployment -Name <String> -ResourceGroupName <Strin
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Set
+### SetViaIdentityExpanded
 ```
-Update-AzSpringCloudAppActiveDeployment -Name <String> -ResourceGroupName <String> -ServiceName <String>
- -ActiveDeploymentCollection <IActiveDeploymentCollection> [-SubscriptionId <String>]
+Update-AzSpringCloudAppActiveDeployment -InputObject <ISpringCloudIdentity> [-DeploymentName <String[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -61,22 +60,6 @@ Set existing Deployment under the app as active by pipeline.
 
 ## PARAMETERS
 
-### -ActiveDeploymentCollection
-Object that includes an array of Deployment resource name and set them as active.
-To construct, see NOTES section for ACTIVEDEPLOYMENTCOLLECTION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IActiveDeploymentCollection
-Parameter Sets: Set
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -AsJob
 Run the command as a job
 
@@ -112,7 +95,7 @@ Collection of Deployment name.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: SetExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -122,12 +105,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
+Parameter Sets: SetViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
 The name of the App resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -158,7 +157,7 @@ You can obtain this value from the Azure Resource Manager API or the portal.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -173,7 +172,7 @@ The name of the Service resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -189,7 +188,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -235,7 +234,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.IActiveDeploymentCollection
+### Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity
 
 ## OUTPUTS
 
@@ -250,8 +249,27 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ACTIVEDEPLOYMENTCOLLECTION <IActiveDeploymentCollection>: Object that includes an array of Deployment resource name and set them as active.
-  - `[ActiveDeploymentName <String[]>]`: Collection of Deployment name.
+INPUTOBJECT <ISpringCloudIdentity>: Identity Parameter
+  - `[AgentPoolName <String>]`: The name of the build service agent pool resource.
+  - `[AppName <String>]`: The name of the App resource.
+  - `[BindingName <String>]`: The name of the Binding resource.
+  - `[BuildName <String>]`: The name of the build resource.
+  - `[BuildResultName <String>]`: The name of the build result resource.
+  - `[BuildServiceName <String>]`: The name of the build service resource.
+  - `[BuilderName <String>]`: The name of the builder resource.
+  - `[BuildpackBindingName <String>]`: The name of the Buildpack Binding Name
+  - `[BuildpackName <String>]`: The name of the buildpack resource.
+  - `[CertificateName <String>]`: The name of the certificate resource.
+  - `[ConfigurationServiceName <String>]`: The name of Application Configuration Service.
+  - `[DeploymentName <String>]`: The name of the Deployment resource.
+  - `[DomainName <String>]`: The name of the custom domain resource.
+  - `[Id <String>]`: Resource identity path
+  - `[Location <String>]`: the region
+  - `[ResourceGroupName <String>]`: The name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  - `[ServiceName <String>]`: The name of the Service resource.
+  - `[ServiceRegistryName <String>]`: The name of Service Registry.
+  - `[StackName <String>]`: The name of the stack resource.
+  - `[SubscriptionId <String>]`: Gets subscription ID which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
 

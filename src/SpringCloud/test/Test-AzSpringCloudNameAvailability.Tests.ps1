@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Test-AzSpringCloudNameAvailab
 }
 
 Describe 'Test-AzSpringCloudNameAvailability' {
-    It 'CheckExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CheckExpanded' {
+        { Test-AzSpringCloudNameAvailability -Location EastUS -Name springcloud-service -Type "Microsoft.AppPlatform/Spring" } | Should -Not -Throw
     }
 }

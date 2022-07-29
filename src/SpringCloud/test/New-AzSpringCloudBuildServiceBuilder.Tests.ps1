@@ -15,7 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSpringCloudBuildService
 }
 
 Describe 'New-AzSpringCloudBuildServiceBuilder' {
+    # Test case been write in New cmdlet
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+        } | Should -Not -Throw
     }
 }

@@ -15,11 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Disable-AzSpringCloudTestEndp
 }
 
 Describe 'Disable-AzSpringCloudTestEndpoint' {
-    It 'Disable' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Disable' {
+        { 
+            Enable-AzSpringCloudTestEndpoint -ResourceGroupName $env.resourceGroup -Name $env.standardSpringName01
+            Disable-AzSpringCloudTestEndpoint -ResourceGroupName $env.resourceGroup -Name $env.standardSpringName01
+        } | Should -Not -Throw
     }
 
-    It 'DisableViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DisableViaIdentity' {
+        { 
+            $spring = Get-AzSpringCloud -ResourceGroupName $env.resourceGroup -Name $env.standardSpringName01
+            Enable-AzSpringCloudTestEndpoint -InputObject $spring.Id
+            Disable-AzSpringCloudTestEndpoint -InputObject $spring.Id
+        } | Should -Not -Throw
     }
 }

@@ -173,9 +173,6 @@ Delete the certificate resource.
 ### [Remove-AzSpringCloudConfigurationService](Remove-AzSpringCloudConfigurationService.md)
 Disable the default Application Configuration Service.
 
-### [Remove-AzSpringCloudRegistry](Remove-AzSpringCloudRegistry.md)
-Disable the default Service Registry.
-
 ### [Restart-AzSpringCloudAppDeployment](Restart-AzSpringCloudAppDeployment.md)
 Restart the deployment.
 
@@ -188,7 +185,7 @@ Start JFR
 ### [Stop-AzSpringCloudAppDeployment](Stop-AzSpringCloudAppDeployment.md)
 Stop the deployment.
 
-### [Test-AzSpringCloudAppDomain](Test-AzSpringCloudAppDomain.md)
+### [Test-AzSpringCloudAppCustomDomain](Test-AzSpringCloudAppCustomDomain.md)
 Check the resource name is valid as well as not in use.
 
 ### [Test-AzSpringCloudConfigServer](Test-AzSpringCloudConfigServer.md)

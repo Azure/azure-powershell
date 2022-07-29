@@ -15,11 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSpringCloudAppDeploymen
 }
 
 Describe 'Get-AzSpringCloudAppDeploymentLogFileUrl' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzSpringCloudAppDeploymentLogFileUrl -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway -Name $env.greenDeploymentName } | Should -Not -Throw
     }
 }

@@ -15,11 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzSpringCloudAppDeploym
 }
 
 Describe 'Start-AzSpringCloudAppDeploymentJfr' {
-    It 'StartExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'StartViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Start' {
+        $deploy = Start-AzSpringCloudAppDeploymentJfr -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appAccount -Name $env.greenDeploymentName -AppInstance 'account-green-7-f667cc5bb-q74bh' -FilePath '/tmp'
+        $deploy = Get-AzSpringCloudAppDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appAccount -Name $env.greenDeploymentName  
+        $deploy.ProvisioningState | Should -Be "Succeeded"
     }
 }

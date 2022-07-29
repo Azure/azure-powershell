@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzSpringCloudAppCustom
 }
 
 Describe 'Remove-AzSpringCloudAppCustomDomain' {
+    # Test case been write in Get cmdlet
     It 'Delete' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

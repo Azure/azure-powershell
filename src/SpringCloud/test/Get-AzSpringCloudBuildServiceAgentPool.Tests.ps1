@@ -15,15 +15,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSpringCloudBuildService
 }
 
 Describe 'Get-AzSpringCloudBuildServiceAgentPool' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    It 'Get' {
+        {
+            New-AzSpringCloudBuildServiceAgentPool -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -PoolSizeName "S1"
+            Get-AzSpringCloudBuildServiceAgentPool -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01
+        } | Should -Not -Throw
+    } 
 }

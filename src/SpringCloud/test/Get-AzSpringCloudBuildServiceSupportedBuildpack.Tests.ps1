@@ -15,15 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSpringCloudBuildService
 }
 
 Describe 'Get-AzSpringCloudBuildServiceSupportedBuildpack' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzSpringCloudBuildServiceSupportedBuildpack -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzSpringCloudBuildServiceSupportedBuildpack -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -Name 'tanzu-buildpacks-python' } | Should -Not -Throw
     }
 }

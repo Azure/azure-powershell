@@ -16,6 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSpringCloudRuntimeVersi
 
 Describe 'Get-AzSpringCloudRuntimeVersion' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { Get-AzSpringCloudRuntimeVersion } | Should -Not -Throw
     }
 }

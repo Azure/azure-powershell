@@ -196,7 +196,7 @@ function UploadFileToSpringCloud {
     Write-Host '[1/3] Requesting for upload URL' -ForegroundColor Yellow
     if ($ServiceType -eq 'Enterprise')
     {
-        $uploadInfo = Az.SpringCloud.internal\Get-AzSpringCloudBuildServiceResourceUploadUrl -ResourceGroupName $ResourceGroupName -serviceName $ServiceName @DeployPSBoundParameters
+        $uploadInfo = Az.SpringCloud.internal\Get-AzSpringCloudBuildServiceResourceUploadUrl -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -Name default @DeployPSBoundParameters
     }
     else {
         $uploadInfo = Az.SpringCloud.internal\Get-AzSpringCloudAppResourceUploadUrl -ResourceGroupName $ResourceGroupName -serviceName $ServiceName -Name $AppName @DeployPSBoundParameters
@@ -287,7 +287,7 @@ function DeployEnterpriseSpringCloudApp {
         $DeployPSBoundParameters
     )
     $buildName = 'default' + (Get-Random)
-    Az.SpringCloud.internal\New-AzSpringCloudBuildServiceBuild -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -BuildServiceName 'default' -Name $buildName -AgentPoolId $AgentPoolId -BuilderId $BuilderId -RelativePath $RelativePath @DeployPSBoundParameters
+    $null = Az.SpringCloud.internal\New-AzSpringCloudBuildServiceBuild -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -BuildServiceName 'default' -Name $buildName -AgentPoolId $AgentPoolId -BuilderId $BuilderId -RelativePath $RelativePath @DeployPSBoundParameters
     do {
         Start-Sleep 30
         $result = Az.SpringCloud.internal\Get-AzSpringCloudBuildServiceBuildResult -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -BuildServiceName 'default' -BuildName $buildName -Name 1
@@ -300,6 +300,6 @@ function DeployEnterpriseSpringCloudApp {
     $buildResult = [Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.Api20220401.BuildResultUserSourceInfo]::New()
     $buildResult.Type = "BuildResult"
     $buildResult.BuildResultId = $result.Id
-    Update-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AppName -Name $DeploymentName -Source $buildResult @DeployPSBoundParameters
+    $null  = Update-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AppName -Name $DeploymentName -Source $buildResult @DeployPSBoundParameters
     Start-AzSpringCloudAppDeployment -ResourceGroupName $ResourceGroupName -ServiceName $ServiceName -AppName $AppName -Name $DeploymentName @DeployPSBoundParameters
 }

@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSpringCloudTestKey'))
 }
 
 Describe 'Get-AzSpringCloudTestKey' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzSpringCloudTestKey -ResourceGroupName $env.resourceGroup -Name $env.standardSpringName01 } | Should -Not -Throw
     }
 }

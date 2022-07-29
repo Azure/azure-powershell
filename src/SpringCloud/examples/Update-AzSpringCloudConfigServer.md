@@ -14,7 +14,7 @@ Update the config server.
 
 ### Example 2: Update the config server by pipeline
 ```powershell
-Get-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service | Update-AzSpringCloudConfigServer -InputObject $data
+Get-AzSpringCloudConfigServer -ResourceGroupName SpringCloud-gp-junxi -Name springcloud-service | Update-AzSpringCloudConfigServer
 ```
 
 ```output

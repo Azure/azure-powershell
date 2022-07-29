@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSpringCloudAppCustomDom
 }
 
 Describe 'New-AzSpringCloudAppCustomDomain' {
+    # Test case been write in Get cmdlet
     It 'CreateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

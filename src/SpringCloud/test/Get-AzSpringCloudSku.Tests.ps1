@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSpringCloudSku'))
 }
 
 Describe 'Get-AzSpringCloudSku' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzSpringCloudSku } | Should -Not -Throw
     }
 }

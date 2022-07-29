@@ -15,11 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSpringCloudAppActive
 }
 
 Describe 'Update-AzSpringCloudAppActiveDeployment' {
-    It 'SetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'Set' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded' {
+        { Update-AzSpringCloudAppActiveDeployment -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -Name $env.appGateway -DeploymentName $env.greenDeploymentName } | Should -Not -Throw
     }
 }

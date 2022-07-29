@@ -15,6 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSpringCloudCertificate'
 }
 
 Describe 'New-AzSpringCloudCertificate' {
+    # Test case been write in Get cmdlet
     It 'CreateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }

@@ -15,15 +15,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSpringCloudRegistry'))
 }
 
 Describe 'Get-AzSpringCloudRegistry' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { 
+            Get-AzSpringCloudRegistry -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01
+        } | Should -Not -Throw
     }
 }

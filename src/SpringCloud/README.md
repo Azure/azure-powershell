@@ -168,6 +168,13 @@ directive:
       subject: ^MonitoringSettingPatch$
     set:
       subject: MonitoringSetting
+
+  - where:
+      verb: Test
+      subject: ^AppDomain$
+    set:
+      subject: AppCustomDomain
+      
 # remove cmdlet
   - where:
       subject: AppDeploymentHeapDump
@@ -194,7 +201,7 @@ directive:
 
   - where:
       verb: Get
-      subject: ^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$
+      subject: ^Registry$|^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$
       variant: List
     remove: true
     
@@ -206,7 +213,7 @@ directive:
 
   - where: 
       subject: ^AppActiveDeployment$
-      variant: ^SetViaIdentity$|^SetViaIdentityExpanded$
+      variant: ^SetViaIdentity$|^Set$
     remove: true
 
   - where: 
@@ -216,7 +223,7 @@ directive:
 
   - where:
       verb: Test 
-      subject: ^AppDomain$
+      subject: ^AppCustomDomain$
       variant: ^Validate$|^ValidateViaIdentity$
     remove: true
 
@@ -388,7 +395,7 @@ directive:
 
   # Only support default value
   - where:
-      subject: ^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$
+      subject: ^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$|^Registry$
       parameter-name: Name
     hide: true
     set:
@@ -428,6 +435,10 @@ directive:
   - where:
       verb: New
       subject: ^App$
+    hide: true
+  - where:
+      verb: Remove
+      subject: ^Registry$
     hide: true
 
   - where:

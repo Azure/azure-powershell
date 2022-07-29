@@ -15,15 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSpringCloudBuildpackBin
 }
 
 Describe 'Get-AzSpringCloudBuildpackBinding' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { 
+            Get-AzSpringCloudBuildpackBinding -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -BuilderName default
+        } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CRUD' {
+        { 
+            New-AzSpringCloudBuildpackBinding -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -BuilderName default -Name binging01 -BindingType 'AppDynamics'
+            Get-AzSpringCloudBuildpackBinding -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -BuilderName default -Name binging01
+            Remove-AzSpringCloudBuildpackBinding -ResourceGroupName $env.resourceGroup -ServiceName $env.enterpriseSpringName01 -BuilderName default -Name binging01
+        } | Should -Not -Throw
     }
 }

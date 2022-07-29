@@ -15,15 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzSpringCloudAppCustomDom
 }
 
 Describe 'Get-AzSpringCloudAppCustomDomain' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzSpringCloudAppCustomDomain -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway} | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        {   Test-AzSpringCloudAppCustomDomain -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway -Name "$($env.standardSpringName01).azuremicroservices.io"
+            New-AzSpringCloudAppCustomDomain -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway -Name "$($env.standardSpringName01).azuremicroservices.io"
+            Get-AzSpringCloudAppCustomDomain -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway -Name "$($env.standardSpringName01).azuremicroservices.io"
+            Update-AzSpringCloudAppCustomDomain -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway -Name "$($env.standardSpringName01).azuremicroservices.io"
+            Remove-AzSpringCloudAppCustomDomain -ResourceGroupName $env.resourceGroup -ServiceName $env.standardSpringName01 -AppName $env.appGateway -Name "$($env.standardSpringName01).azuremicroservices.io"
+        } | Should -Not -Throw
     }
 }
