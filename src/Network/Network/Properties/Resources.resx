@@ -191,6 +191,9 @@
   <data name="ApplicationGatewaybackendHttpSettingsName" xml:space="preserve">
     <value>backendHttpSettingsCollection</value>
   </data>
+  <data name="ApplicationGatewaybackendSettingsName" xml:space="preserve">
+    <value>backendSettingsCollection</value>
+  </data>
   <data name="ApplicationGatewayChildResourceId" xml:space="preserve">
     <value>/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/applicationGateways/{2}/{3}/{4}</value>
     <comment>The ID of a application gateway child resource</comment>
@@ -204,6 +207,9 @@
   <data name="ApplicationGatewayHttpListenerName" xml:space="preserve">
     <value>httpListeners</value>
   </data>
+  <data name="ApplicationGatewayListenerName" xml:space="preserve">
+    <value>listeners</value>
+  </data>
   <data name="ApplicationGatewayIPConfigurationName" xml:space="preserve">
     <value>gatewayIpConfigurations</value>
   </data>
@@ -212,6 +218,9 @@
   </data>
   <data name="ApplicationGatewayRequestRoutingRuleName" xml:space="preserve">
     <value>requestRoutingRules</value>
+  </data>
+  <data name="ApplicationGatewayRoutingRuleName" xml:space="preserve">
+    <value>routingRules</value>
   </data>
   <data name="ApplicationGatewayAuthenticationCertificateName" xml:space="preserve">
     <value>authenticationCertificates</value>
@@ -296,7 +305,7 @@
   </data>
   <data name="ParentVpnServerConfigurationNotFound" xml:space="preserve">
     <value>The parent VpnServerConfiguration for this PolicyGroup cannot be found.</value>
-  </data> 
+  </data>
   <data name="ParentExpressRouteGatewayNotFound" xml:space="preserve">
     <value>The parent ExpressRouteGateway for this connection cannot be found.</value>
   </data>
@@ -368,7 +377,7 @@
   </data>
   <data name="CreatingChildResourceLongRunningOperationMessage" xml:space="preserve">
     <value>Creating child resource with ResourceGroupName {0}, ParentResourceName {1} ResourceName {2}.</value>
-  </data>  
+  </data>
   <data name="ResourceAlreadyPresentInResourceGroup" xml:space="preserve">
     <value>A resource with the same name {0} and same type already exists in ResourceGroup {1}. If you wish to modify this resource please use the Update operation instead.</value>
   </data>
@@ -734,6 +743,15 @@
   </data>
   <data name="VirtualNetworkGatewayNatRuleNotFound" xml:space="preserve">
     <value>The VirtualNetworkGatewayNatRule could not be found</value>
+  </data>
+  <data name="RemoveRoutingIntentWarning" xml:space="preserve">
+    <value>Removing this Routing Intent resource will remove all routing policies present in this and may affect the routing in your VirtualHub</value>
+  </data>
+  <data name="RoutingIntentNotFound" xml:space="preserve">
+    <value>The routing intent resource could not be found</value>
+  </data>
+  <data name="SameTypeChildResourceAlreadyPresentInResourceGroup" xml:space="preserve">
+    <value>Only one child allowed. A resource with name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead.</value>
   </data>
   <data name="UnsupportPrivateEndpointConnectionType" xml:space="preserve">
     <value>{0} doesn't support private endpoint connection.</value>
