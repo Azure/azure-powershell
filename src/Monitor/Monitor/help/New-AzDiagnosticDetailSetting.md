@@ -12,16 +12,16 @@ Create PSDiagnosticDetailSetting Object, type could be metric or log
 
 ## SYNTAX
 
-### LogSettingParameterSet
+### MetricSettingParameterSet (Default)
 ```
-New-AzDiagnosticDetailSetting -Log [-RetentionInDays <Int32>] [-RetentionEnabled] -Category <String>
- [-Enabled] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzDiagnosticDetailSetting [-Metric] [-RetentionInDays <Int32>] [-RetentionEnabled] -Category <String>
+ [-Enabled] [-TimeGrain <TimeSpan>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### MetricSettingParameterSet
+### LogSettingParameterSet
 ```
-New-AzDiagnosticDetailSetting -Metric [-RetentionInDays <Int32>] [-RetentionEnabled] -Category <String>
- [-Enabled] [-TimeGrain <TimeSpan>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzDiagnosticDetailSetting [-Log] [-RetentionInDays <Int32>] [-RetentionEnabled] -Category <String>
+ [-Enabled] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

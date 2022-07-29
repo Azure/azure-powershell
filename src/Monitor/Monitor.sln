@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -25,6 +25,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights", "..\OperationalInsights\OperationalInsights\OperationalInsights.csproj", "{F9305976-EF6B-4502-BC38-ACFA47CB6DF6}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{F5D663A9-1A74-4F03-A727-3788AAD28C5E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Monitor", "Monitor.Autorest\Az.Monitor.csproj", "{0FC28534-A5D9-43F1-830C-A53797A4CD73}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -80,6 +82,10 @@ Global
 		{F5D663A9-1A74-4F03-A727-3788AAD28C5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5D663A9-1A74-4F03-A727-3788AAD28C5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5D663A9-1A74-4F03-A727-3788AAD28C5E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FC28534-A5D9-43F1-830C-A53797A4CD73}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FC28534-A5D9-43F1-830C-A53797A4CD73}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FC28534-A5D9-43F1-830C-A53797A4CD73}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FC28534-A5D9-43F1-830C-A53797A4CD73}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
