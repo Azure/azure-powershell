@@ -70,6 +70,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string CreateOption { get; set; }
 
         [Parameter(
+            Mandatory =false,
+            ValueFromPipelineByPropertyName = true)]
+        public string DeleteOption { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public int DiskSizeGB { get; set; }
@@ -133,6 +138,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             vDataDisks.DiskSizeGB = this.IsParameterBound(c => c.DiskSizeGB) ? this.DiskSizeGB : (int?)null;
             vDataDisks.DiskIOPSReadWrite = this.IsParameterBound(c => c.DiskIOPSReadWrite) ? this.DiskIOPSReadWrite : (long?)null;
             vDataDisks.DiskMBpsReadWrite = this.IsParameterBound(c => c.DiskMBpsReadWrite) ? this.DiskMBpsReadWrite : (long?)null;
+
+            if (this.IsParameterBound(c => c.DeleteOption))
+            {
+                
+                // VirtualMachineProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                // StorageProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+                }
+                // DataDisks
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.DataDisks == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.DataDisks = new List<VirtualMachineScaleSetDataDisk>();
+                }
+                vDataDisks.DeleteOption = this.DeleteOption;
+            }
             if (this.IsParameterBound(c => c.StorageAccountType))
             {
                 // ManagedDisk

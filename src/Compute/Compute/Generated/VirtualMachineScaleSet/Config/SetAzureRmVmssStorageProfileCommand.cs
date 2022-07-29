@@ -89,6 +89,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true)]
+        public string OsDiskDeletionOption { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             Position = 8,
             ValueFromPipelineByPropertyName = true)]
         public OperatingSystemTypes? OsDiskOsType { get; set; }
@@ -328,6 +333,27 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk = new VirtualMachineScaleSetOSDisk();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.CreateOption = this.OsDiskCreateOption;
+            }
+
+            //DiskDeletion
+            if (this.IsParameterBound( c => c.OsDiskDeletionOption))
+            {
+                // VirtualMachineProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                // StorageProfile
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile = new VirtualMachineScaleSetStorageProfile();
+                }
+                // OsDisk
+                if (this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk == null)
+                {
+                    this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk = new VirtualMachineScaleSetOSDisk();
+                }
+                this.VirtualMachineScaleSet.VirtualMachineProfile.StorageProfile.OsDisk.DeleteOption = this.OsDiskDeletionOption;
             }
 
             if (this.IsParameterBound(c => c.DiffDiskPlacement) & !this.IsParameterBound(c => c.DiffDiskPlacement))
