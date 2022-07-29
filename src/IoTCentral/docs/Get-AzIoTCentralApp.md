@@ -165,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Models.Api20210601.IApp
+### Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Models.Api20211101Preview.IApp
 
 ## NOTES
 
@@ -177,7 +177,9 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IIoTCentralIdentity>`: Identity Parameter
+  - `[GroupId <String>]`: The private link resource name.
   - `[Id <String>]`: Resource identity path
+  - `[PrivateEndpointConnectionName <String>]`: The private endpoint connection name.
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the IoT Central application.
   - `[ResourceName <String>]`: The ARM resource name of the IoT Central application.
   - `[SubscriptionId <String>]`: The subscription identifier.

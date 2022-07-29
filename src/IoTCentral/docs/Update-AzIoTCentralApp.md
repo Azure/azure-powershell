@@ -15,17 +15,21 @@ Update the metadata of an IoT Central application.
 ### UpdateExpanded (Default)
 ```
 Update-AzIoTCentralApp -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DisplayName <String>] [-IdentityType <SystemAssignedServiceIdentityType>] [-SkuName <AppSku>]
- [-Subdomain <String>] [-Tag <Hashtable>] [-Template <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DisplayName <String>] [-IdentityType <SystemAssignedServiceIdentityType>] [-NetworkRuleSetApplyToDevice]
+ [-NetworkRuleSetApplyToIoTCentral] [-NetworkRuleSetDefaultAction <NetworkAction>]
+ [-NetworkRuleSetIPRule <INetworkRuleSetIPRule[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-SkuName <AppSku>] [-Subdomain <String>] [-Tag <Hashtable>] [-Template <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzIoTCentralApp -InputObject <IIoTCentralIdentity> [-DisplayName <String>]
- [-IdentityType <SystemAssignedServiceIdentityType>] [-SkuName <AppSku>] [-Subdomain <String>]
- [-Tag <Hashtable>] [-Template <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-IdentityType <SystemAssignedServiceIdentityType>] [-NetworkRuleSetApplyToDevice]
+ [-NetworkRuleSetApplyToIoTCentral] [-NetworkRuleSetDefaultAction <NetworkAction>]
+ [-NetworkRuleSetIPRule <INetworkRuleSetIPRule[]>] [-PublicNetworkAccess <PublicNetworkAccess>]
+ [-SkuName <AppSku>] [-Subdomain <String>] [-Tag <Hashtable>] [-Template <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -152,11 +156,87 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkRuleSetApplyToDevice
+Whether these rules apply for device connectivity to IoT Hub and Device Provisioning service associated with this application.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkRuleSetApplyToIoTCentral
+Whether these rules apply for connectivity via IoT Central web portal and APIs.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkRuleSetDefaultAction
+The default network action to apply.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Support.NetworkAction
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkRuleSetIPRule
+List of IP rules.
+To construct, see NOTES section for NETWORKRULESETIPRULE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Models.Api20211101Preview.INetworkRuleSetIPRule[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicNetworkAccess
+Whether requests from the public network are allowed.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Support.PublicNetworkAccess
 Parameter Sets: (All)
 Aliases:
 
@@ -298,7 +378,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Models.Api20210601.IApp
+### Microsoft.Azure.PowerShell.Cmdlets.IoTCentral.Models.Api20211101Preview.IApp
 
 ## NOTES
 
@@ -310,10 +390,16 @@ To create the parameters described below, construct a hash table containing the 
 
 
 `INPUTOBJECT <IIoTCentralIdentity>`: Identity Parameter
+  - `[GroupId <String>]`: The private link resource name.
   - `[Id <String>]`: Resource identity path
+  - `[PrivateEndpointConnectionName <String>]`: The private endpoint connection name.
   - `[ResourceGroupName <String>]`: The name of the resource group that contains the IoT Central application.
   - `[ResourceName <String>]`: The ARM resource name of the IoT Central application.
   - `[SubscriptionId <String>]`: The subscription identifier.
+
+`NETWORKRULESETIPRULE <INetworkRuleSetIPRule[]>`: List of IP rules.
+  - `[FilterName <String>]`: The readable name of the IP rule.
+  - `[IPMask <String>]`: The CIDR block defining the IP range.
 
 ## RELATED LINKS
 
