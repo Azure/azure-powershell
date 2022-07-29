@@ -138,7 +138,6 @@ namespace Microsoft.Azure.Commands.Compute
             ParameterSetName = ExplicitIdentityParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
             ValueFromPipelineByPropertyName = true)]
-        [ValidateNotNullOrEmpty]
         public string UserData { get; set; }
 
         [Parameter(
