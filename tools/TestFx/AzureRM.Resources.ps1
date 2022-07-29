@@ -294,9 +294,8 @@ function Get-ResourcesClient
 {
   param([Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext] $context)
   $factory = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.ClientFactory
-  [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext],
-	[string]
-  $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethod("CreateArmClient", $types)
+  [System.Type[]]$types = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.IAzureContext],[string]
+  $method = [Microsoft.Azure.Commands.Common.Authentication.IClientFactory].GetMethods() | Where-Object { $_.Name -eq "CreateArmClient" -and $_.IsGenericMethod -eq $true }
   $closedMethod = $method.MakeGenericMethod([Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient])
   $arguments = $context, [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment+Endpoint]::ResourceManager
   $client = $closedMethod.Invoke($factory, $arguments)

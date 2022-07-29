@@ -28,7 +28,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
         public AzureEventListener(Action<string> action)
         {
             AzureEventSourceListener = new AzureEventSourceListener(
-                (args, message) => action(message), 
+                (args, message) =>
+                {
+                    if (!args.EventSource.Name.StartsWith("Azure-Core"))
+                    {
+                        action(message);
+                    }
+                },
                 EventLevel.Informational);
         }
 

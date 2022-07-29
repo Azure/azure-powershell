@@ -12,11 +12,22 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Azure.Core;
+using Hyak.Common;
+using Microsoft.Azure.Commands.Common;
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Microsoft.Azure.Commands.Common.Authentication.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Properties;
+using Microsoft.Azure.Commands.Common.Exceptions;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.Identity.Client;
 using Microsoft.Rest;
+using Microsoft.WindowsAzure.Commands.Common;
 using System;
+using System.Linq;
 using System.Security;
+using System.Threading.Tasks;
 
 namespace Microsoft.Azure.Commands.TestFx.Mocks
 {
@@ -80,9 +91,9 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
             {
                 return new MockAccessToken()
                 {
-                    AccessToken = account.Id,
+                    UserId = account.Id,
                     LoginType = LoginType.OrgId,
-                    UserId = account.Id
+                    AccessToken = account.Id
                 };
             }
             else
@@ -124,6 +135,21 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
         public void RemoveUser(IAzureAccount account, IAzureTokenCache tokenCache)
         {
             throw new NotImplementedException();
+        }
+
+        public TokenCredential GetTokenCredential(IAzureContext context)
+        {
+            return new AzureTokenCredential(Token.AccessToken);
+        }
+
+        public TokenCredential GetTokenCredential(IAzureContext context, string targetEndpoint)
+        {
+            return new AzureTokenCredential(Token.AccessToken);
+        }
+
+        public TokenCredential GetTokenCredential(string accessToken, Func<string> renew = null)
+        {
+            return new AzureTokenCredential(accessToken, renew);
         }
     }
 }
