@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.11.3
 * Fixed `Publish-AzWebapp` to handle relative paths properly [#18028]
 
 ## Version 2.11.2
