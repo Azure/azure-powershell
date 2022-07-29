@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Allowed `DnsName` in `New-AzKeyVaultCertificatePolicy` to accept an empty list [#18954]
 * Removed the warning messages for MSGraph migration [#18856]
 
 ## Version 4.6.0
