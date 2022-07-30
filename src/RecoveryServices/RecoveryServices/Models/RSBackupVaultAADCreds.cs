@@ -102,5 +102,11 @@ namespace Microsoft.Azure.Portal.RecoveryServices.Models.Common
         /// </summary>
         [DataMember(Order = 13)]
         public string AgentLinks { get; set; }
+
+        /// <summary>
+        /// Gets or sets the values for AadAudience.
+        /// </summary>
+        [DataMember(Order = 14)]
+        public string AadAudience { get; set; }
     }
 }
