@@ -55,7 +55,12 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
                 continue
             }
             Write-Output "Searching in file $($_.FullName) ..."
-            $module = (Get-Item -Path $_.FullName).Directory.Parent.Name
+            if((Get-Item -Path $_.FullName).Directory.Parent.Parent.Name -ne "src"){
+                $module = (Get-Item -Path $_.FullName).Directory.Parent.Parent.Name
+            }
+            else{
+               $module = (Get-Item -Path $_.FullName).Directory.Parent.Name 
+            }
             $cmdlet = $_.BaseName
             $result = Measure-SectionMissingAndOutputScript $module $cmdlet $_.FullName `
                 -OutputScriptsInFile:$OutputScriptsInFile.IsPresent `
@@ -72,7 +77,7 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
 if ($PSCmdlet.ParameterSetName -eq "Script" -or $AnalyzeScriptsInFile.IsPresent) {
     # Read and analyze ".ps1" in \ScriptsByExample
     Write-Output "Analyzing file ..."
-    $analysisResultsTable += Get-ScriptAnalyzerResult (Get-Item -Path $ScriptPaths) $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -ErrorAction SilentlyContinue
+    $analysisResultsTable += Get-ScriptAnalyzerResult (Get-Item -Path $ScriptPaths) $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -ErrorAction Continue
     
     # Summarize analysis results, output in Result.csv
     if($analysisResultsTable){

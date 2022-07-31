@@ -170,11 +170,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         protected const string SchemaGroupURL = "Microsoft.EventHub/namespaces/schemagroups";
         protected const string ApplicationGroupURL = "Microsoft.EventHub/namespaces/applicationgroups";
         protected const string PrivateEndpointURL = "Microsoft.EventHub/namespaces/privateEndpointConnections";
+        protected const string ClusterURL = "Microsoft.EventHub/clusters";
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private EventHubsClient  _client;
         
-        public EventHubsClient Client
+        public EventHubsClient UtilityClient
         {
             get
             {
@@ -271,6 +272,38 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         public string ParentResource2 { get; set; }
 
+    }
+
+    
+    public class ResourceIdParser
+    {
+        public int ResourceLevel { get; set; }
+
+        public string ResourceGroupName { get; set; }
+
+        public string TopLevelResourceName { get; set; }
+
+        public ResourceIdParser(int resourceLevel, string resourceId, string expectedResourceType)
+        {
+            //Resource Level indicates the hierarchy of a resource in a resource id
+            //level 1 :TopLevelResource would be an eventhub namespace
+            //Level 2 :ChildResource of the TopLevel Resource. EventHubEntities
+            //and so on.
+            if(resourceLevel == 1)
+            {
+                //TopLevelResource within resource group
+                ResourceIdentifier ResourceId = new ResourceIdentifier(resourceId);
+
+                if (ResourceId.ResourceType.ToLower().Equals(expectedResourceType.ToLower()))
+                {
+                    ResourceGroupName = ResourceId.ResourceGroupName;
+                    TopLevelResourceName = ResourceId.ResourceName;
+                }
+
+                else
+                    throw new Exception("Invalid Resource Id, Id must be of type " + expectedResourceType);
+            }
+        }
     }
 
 }

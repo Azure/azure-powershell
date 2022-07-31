@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -66,21 +68,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetails) content.GetValueForProperty("CustomDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.TaskTypeDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IGroupTaskDetails) content.GetValueForProperty("GroupTaskCustomDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.GroupTaskDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskId = (string) content.GetValueForProperty("TaskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).EndTime = (global::System.DateTime?) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).EndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).AllowedAction = (string[]) content.GetValueForProperty("AllowedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).AllowedAction, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).State, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StateDescription = (string) content.GetValueForProperty("StateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StateDescription, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskType = (string) content.GetValueForProperty("TaskType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetails[]) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Error, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.JobErrorDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetailInstanceType = (string) content.GetValueForProperty("CustomDetailInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetailInstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailInstanceType = (string) content.GetValueForProperty("GroupTaskCustomDetailInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailInstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailChildTask = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTask[]) content.GetValueForProperty("GroupTaskCustomDetailChildTask",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailChildTask, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTask>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.AsrTaskTypeConverter.ConvertFrom));
+            if (content.Contains("CustomDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetails) content.GetValueForProperty("CustomDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.TaskTypeDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GroupTaskCustomDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IGroupTaskDetails) content.GetValueForProperty("GroupTaskCustomDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.GroupTaskDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TaskId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskId = (string) content.GetValueForProperty("TaskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("StartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("EndTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).EndTime = (global::System.DateTime?) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).EndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("AllowedAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).AllowedAction = (string[]) content.GetValueForProperty("AllowedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).AllowedAction, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).State, global::System.Convert.ToString);
+            }
+            if (content.Contains("StateDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StateDescription = (string) content.GetValueForProperty("StateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StateDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("TaskType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskType = (string) content.GetValueForProperty("TaskType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetails[]) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Error, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.JobErrorDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("CustomDetailInstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetailInstanceType = (string) content.GetValueForProperty("CustomDetailInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetailInstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("GroupTaskCustomDetailInstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailInstanceType = (string) content.GetValueForProperty("GroupTaskCustomDetailInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailInstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("GroupTaskCustomDetailChildTask"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailChildTask = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTask[]) content.GetValueForProperty("GroupTaskCustomDetailChildTask",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailChildTask, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTask>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.AsrTaskTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -98,21 +145,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetails) content.GetValueForProperty("CustomDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.TaskTypeDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IGroupTaskDetails) content.GetValueForProperty("GroupTaskCustomDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.GroupTaskDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskId = (string) content.GetValueForProperty("TaskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).EndTime = (global::System.DateTime?) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).EndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).AllowedAction = (string[]) content.GetValueForProperty("AllowedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).AllowedAction, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).State, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StateDescription = (string) content.GetValueForProperty("StateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StateDescription, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskType = (string) content.GetValueForProperty("TaskType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetails[]) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Error, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.JobErrorDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetailInstanceType = (string) content.GetValueForProperty("CustomDetailInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetailInstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailInstanceType = (string) content.GetValueForProperty("GroupTaskCustomDetailInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailInstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailChildTask = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTask[]) content.GetValueForProperty("GroupTaskCustomDetailChildTask",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailChildTask, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTask>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.AsrTaskTypeConverter.ConvertFrom));
+            if (content.Contains("CustomDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetails) content.GetValueForProperty("CustomDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.TaskTypeDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GroupTaskCustomDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IGroupTaskDetails) content.GetValueForProperty("GroupTaskCustomDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.GroupTaskDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("TaskId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskId = (string) content.GetValueForProperty("TaskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("StartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StartTime = (global::System.DateTime?) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("EndTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).EndTime = (global::System.DateTime?) content.GetValueForProperty("EndTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).EndTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("AllowedAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).AllowedAction = (string[]) content.GetValueForProperty("AllowedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).AllowedAction, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).State, global::System.Convert.ToString);
+            }
+            if (content.Contains("StateDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StateDescription = (string) content.GetValueForProperty("StateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).StateDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("TaskType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskType = (string) content.GetValueForProperty("TaskType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).TaskType, global::System.Convert.ToString);
+            }
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetails[]) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).Error, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.JobErrorDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("CustomDetailInstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetailInstanceType = (string) content.GetValueForProperty("CustomDetailInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).CustomDetailInstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("GroupTaskCustomDetailInstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailInstanceType = (string) content.GetValueForProperty("GroupTaskCustomDetailInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailInstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("GroupTaskCustomDetailChildTask"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailChildTask = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTask[]) content.GetValueForProperty("GroupTaskCustomDetailChildTask",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTaskInternal)this).GroupTaskCustomDetailChildTask, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTask>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.AsrTaskTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -146,7 +238,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="AsrTask" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="AsrTask" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAsrTask FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

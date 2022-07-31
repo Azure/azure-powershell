@@ -68,6 +68,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = true,
+            HelpMessage = "Azure VMSS endpoint switch.",
+            ParameterSetName = "AzureVMSS")]
+        public SwitchParameter AzureVMSS { get; set; }
+
+        [Parameter(
+            Mandatory = true,
             HelpMessage = "Resource ID of the connection monitor endpoint.",
              ParameterSetName = "AzureVM")]
         [Parameter(
@@ -86,6 +92,10 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             HelpMessage = "Resource ID of the connection monitor endpoint.",
              ParameterSetName = "MMAWorkspaceNetwork")]
+        [Parameter(
+            Mandatory = true,
+            HelpMessage = "Azure VMSS endpoint.",
+            ParameterSetName = "AzureVMSS")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
@@ -106,15 +116,19 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of items which need to be included into endpont scope.",
+            HelpMessage = "List of items which need to be included into endpoint scope.",
              ParameterSetName = "AzureVNet")]
         [Parameter(
             Mandatory = false,
-            HelpMessage = "List of items which need to be included into endpont scope.",
+            HelpMessage = "List of items which need to be included into endpoint scope.",
              ParameterSetName = "MMAWorkspaceMachine")]
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of IPs which need to be included into endpoint scope.",
+            ParameterSetName = "AzureVMSS")]
+        [Parameter(
             Mandatory = true,
-            HelpMessage = "List of items which need to be included into endpont scope.",
+            HelpMessage = "List of items which need to be included into endpoint scope.",
              ParameterSetName = "MMAWorkspaceNetwork")]
         [ValidateNotNullOrEmpty]
         public PSNetworkWatcherConnectionMonitorEndpointScopeItem[] IncludeItem { get; set; }
@@ -131,6 +145,10 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "List of items which need to be excluded from endpoint scope.",
              ParameterSetName = "MMAWorkspaceNetwork")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "List of IPs which need to be excluded into endpoint scope.",
+            ParameterSetName = "AzureVMSS")]
         [ValidateNotNullOrEmpty]
         public PSNetworkWatcherConnectionMonitorEndpointScopeItem[] ExcludeItem { get; set; }
 
@@ -146,6 +164,10 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Test coverage for the endpoint. Supported values are Default, Low, BelowAverage, Average, AboveAverage, Full.",
              ParameterSetName = "MMAWorkspaceNetwork")]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Test coverage for the endpoint. Supported values are Default, Low, BelowAverage, Average, AboveAverage, Full",
+            ParameterSetName = "AzureVMSS")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("Default", "Low", "BelowAverage", "Average", "AboveAverage", "Full")]
         public string CoverageLevel { get; set; }
@@ -222,6 +244,10 @@ namespace Microsoft.Azure.Commands.Network
             else if (MMAWorkspaceNetwork.IsPresent)
             {
                 return "MMAWorkspaceNetwork";
+            }
+            else if (AzureVMSS.IsPresent)
+            {
+                return "AzureVMSS";
             }
 
             return string.Empty;

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.6.1
 * Removed the warning messages for MSGraph migration [#18856]
 
 ## Version 4.6.0

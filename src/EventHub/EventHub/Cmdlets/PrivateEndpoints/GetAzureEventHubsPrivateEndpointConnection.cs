@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
                 if(Name == null)
                 {
                     if(ShouldProcess(target: NamespaceName, action: string.Format(Resources.ListNamespacePrivateEndpoints, NamespaceName, ResourceGroupName))){
-                        WriteObject(Client.ListPrivateEndpointConnection(ResourceGroupName, NamespaceName).ToList(), true);
+                        WriteObject(UtilityClient.ListPrivateEndpointConnection(ResourceGroupName, NamespaceName).ToList(), true);
                     }
                 }
                 else
                 {
                     if (ShouldProcess(target: Name, action: string.Format(Resources.GetNamespacePrivateEndpoints, Name, NamespaceName, ResourceGroupName))){
-                        WriteObject(Client.GetPrivateEndpointConnection(ResourceGroupName, NamespaceName, Name));
+                        WriteObject(UtilityClient.GetPrivateEndpointConnection(ResourceGroupName, NamespaceName, Name));
                     }
                 }
             }

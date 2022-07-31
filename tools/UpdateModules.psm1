@@ -148,6 +148,19 @@ if (%ISAZMODULE% -and (`$PSEdition -eq 'Core'))
             $template = $template -replace "%ISAZMODULE%", "`$false"
         }
 
+        # Register CommandNotFound event in Az.Accounts
+        if ($IsNetcore -and $file.BaseName -ieq 'Az.Accounts')
+        {
+            $template = $template -replace "%COMMAND-NOT-FOUND%",
+@"
+[Microsoft.Azure.Commands.Profile.Utilities.CommandNotFoundHelper]::RegisterCommandNotFoundAction(`$ExecutionContext.InvokeCommand)
+"@
+        }
+        else
+        {
+            $template = $template -replace "%COMMAND-NOT-FOUND%"
+        }
+
         # Handle
         $contructedCommands = Find-DefaultResourceGroupCmdlets -IsRMModule:$IsRMModule -ModuleMetadata $ModuleMetadata -ModulePath $ModulePath
         $template = $template -replace "%DEFAULTRGCOMMANDS%", $contructedCommands

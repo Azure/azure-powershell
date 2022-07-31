@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateLinks
             {
                 try
                 {  
-                    WriteObject(Client.GetPrivateLinkResource(ResourceGroupName, NamespaceName));
+                    WriteObject(UtilityClient.GetPrivateLinkResource(ResourceGroupName, NamespaceName));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {
