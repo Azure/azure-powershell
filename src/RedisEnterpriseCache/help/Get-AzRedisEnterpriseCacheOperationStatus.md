@@ -105,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IOperationStatus
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IOperationStatus
 
 ## NOTES
 

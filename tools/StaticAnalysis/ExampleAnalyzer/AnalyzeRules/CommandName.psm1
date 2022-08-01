@@ -3,6 +3,7 @@
     Custom rule for command name.
     .NOTES
     File: CommandName.psm1
+    Import-Module should be at the beginning of the rule to avoid thread conflict.
 #>
 Get-Item "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1" | Import-Module -Global
 
@@ -112,7 +113,7 @@ function Measure-CommandName {
                 }
                 $ModuleCmdletExNum = $($CommandParameterPair[$i].ModuleCmdletExNum)
                 $Result = [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
-                    Message = "$ModuleCmdletExNum-#@#$Message#@#$Remediation";
+                    Message = "$Message#@#$Remediation";
                     Extent = $Asts[$i].Extent;
                     RuleName = $RuleName;
                     Severity = $Severity

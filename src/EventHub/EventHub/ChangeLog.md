@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.0
 * Added -MinimumTlsVersion to New-AzEventHubNamespace and Set-AzEventHubNamespace
 * Added -SupportsScaling to New-AzEventHubCluster and Set-AzEventHubCluster to support self serve clusters
 * Deprecation warning on a few parameters in cluster cmdlets that will be deprecated in the November major release

@@ -75,6 +75,9 @@ namespace Microsoft.Azure.Commands.OperationalInsights
             HelpMessage = "Allow to opt-out of local authentication and ensure customers can use only MSI and AAD for exclusive authentication")]
         public bool? DisableLocalAuth;
 
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID of the default Data Collection Rule to use for this workspace. Expected format is - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}.")]
+        public string DefaultDataCollectionRuleResourceId;
+
         public override void ExecuteCmdlet()
         {
             if (ParameterSetName == ByObject)
@@ -94,7 +97,8 @@ namespace Microsoft.Azure.Commands.OperationalInsights
                 RetentionInDays = RetentionInDays,
                 DailyQuotaGb = DailyQuotaGb,
                 ForceCmkForQuery = ForceCmkForQuery,
-                WsFeatures = new PSWorkspaceFeatures(DisableLocalAuth)
+                WsFeatures = new PSWorkspaceFeatures(DisableLocalAuth),
+                DefaultDataCollectionRuleResourceId = DefaultDataCollectionRuleResourceId
             };
 
             WriteObject(OperationalInsightsClient.UpdatePSWorkspace(parameters));

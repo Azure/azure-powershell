@@ -63,4 +63,48 @@ Example issues occur when your changed markdown files in the `help` folder (_e.g
 - Copy each of the errors you would like to suppress directly from the ExampleIssues.csv file output in the CI pipeline artifacts
 - Push the changes to the .csv file and ensure the errors no longer show up in the `ExampleIssues.csv` file output from the CI pipeline artifacts.
 
-If you have unexpected errors, please check whether you have splitted outputs from codes. If outputs cannot be separated from codes, then please add the tag `<!-- Skip: Output cannot be splitted from code -->` to the next line of the example title and in front of the code block.
+## Trouble Shotting for Unexpected Errors in Example Issues
+### Scenario 1
+Please check whether you have splitted outputs from codes.
+
+The following shows the scene: outputs in codes.
+### Example
+```powershell
+Get-AzConfig -EnableDataCollection
+
+Key                           Value Applies To Scope       Help Message
+---                           ----- ---------- -----       ------------
+EnableDataCollection          False Az         CurrentUser When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the custom…
+```
+
+In this scene, we should split them by 'output' tag as follows.
+### Example
+```powershell
+Get-AzConfig -EnableDataCollection
+```
+
+```output
+Key                           Value Applies To Scope       Help Message
+---                           ----- ---------- -----       ------------
+EnableDataCollection          False Az         CurrentUser When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the custom…
+```
+
+If outputs cannot be separated from codes, then please add the tag `<!-- Skip: Output cannot be splitted from code -->` to the next line of the example title and in front of the code block. The following is an example. It will look more clear in raw markdown file.
+### Example
+<!-- Skip: Output cannot be splitted from code -->
+```powershell
+$Context = Get-AzBatchAccountKey -AccountName myaccount
+$Context.PrimaryAccountKey
+ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMN==
+$Context.SecondaryAccountKey
+ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMN==
+```
+
+### Scenario 2 
+Please check whether you have matched the correct number of **quotes** and **brackets**. The common error messages in this scenario are as follows.
+- MissingEndParenthesisInExpression: Missing closing ')' in expression.
+- MissingEndCurlyBrace: Missing closing '}' in statement block or type definition.
+- MissingArrayIndexExpression: Array index expression is missing or not valid.
+- UnexpectedToken: Unexpected token xxx. (Check whether you have missed or added extra quote)
+
+In this scenario, many other unreasonable errors will occur. Leave them alone. Just make sure you have correct the number of **quotes** and **brackets** and rerun the CI verification. 
