@@ -11,13 +11,24 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Management.OperationalInsights.Models;
+using System;
+using System.Collections.Generic;
+using System.Text;
+
 namespace Microsoft.Azure.Commands.OperationalInsights.Models
 {
-    public class UpdatePSTableParameters : OperationalInsightsParametersBase
+    public class PSClusterSku
     {
-        public string TableName { get; set; }
-        //public bool? IsTroubleshootEnabled { get; set; }//in the next API version i.e 2020-10-01
-        public int? RetentionInDays { get; set; }
 
+        public PSClusterSku(ClusterSku sku)
+        {
+            this.Capacity = sku.Capacity;
+            this.Name = sku.Name;
+        }
+
+        public long? Capacity { get; set; }
+
+        public string Name { get; set; }
     }
 }

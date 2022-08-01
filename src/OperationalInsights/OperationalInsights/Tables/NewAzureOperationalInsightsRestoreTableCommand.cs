@@ -17,8 +17,8 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Tables
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsTable", SupportsShouldProcess = true, DefaultParameterSetName = ByWorkspaceName), OutputType(typeof(PSWorkspace))]
-    public class SetAzureOperationalInsightsTableCommand : OperationalInsightsBaseCmdlet
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsRestoreTable", SupportsShouldProcess = true), OutputType(typeof(PSTable))]
+    public class NewAzureOperationalInsightsRestoreTableCommand : OperationalInsightsBaseCmdlet
     {
         [Parameter(Position = 0, ParameterSetName = ByWorkspaceName, Mandatory = true, ValueFromPipelineByPropertyName = true,
             HelpMessage = "The resource group name.")]
@@ -32,29 +32,38 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Tables
         public string WorkspaceName { get; set; }
 
         [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The table name.")]
+            HelpMessage = "The table name. For Restore table the name should end with '_RST'")]
         [ValidateNotNullOrEmpty]
         public string TableName { get; set; }
 
-        [Parameter(Position = 3, Mandatory = false, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The table data retention in days.between 30 and 730. Setting this property to null will default to the workspace retention")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The timestamp to start the restore from (UTC).")]
         [ValidateNotNullOrEmpty]
-        public int? RetentionInDays { get; set; }
+        public string StartRestoreTime { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The timestamp to end the restore by (UTC).")]
+        [ValidateNotNullOrEmpty]
+        public string EndRestoreTime { get; set; }
+
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The table to restore data from.")]
+        [ValidateNotNullOrEmpty]
+        public string SourceTable { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
+        public SwitchParameter AsJob { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            var tableSetProperties = new UpdatePSTableParameters()
-            {
-                ResourceGroupName = ResourceGroupName,
-                WorkspaceName = WorkspaceName,
-                TableName = TableName,
-                RetentionInDays = RetentionInDays,
-                //IsTroubleshootEnabled = IsTroubleshootEnabled,
-            };
+            var tableSetProperties = new PSRestoreTable(
+                resourceGroupName: ResourceGroupName,
+                workspaceName: WorkspaceName,
+                tableName: TableName,
+                startRestoreTime: StartRestoreTime,
+                endRestoreTime: EndRestoreTime,
+                SourceTable: SourceTable);
 
             if (ShouldProcess(TableName, $"Update Table: {TableName}, in workspace: {WorkspaceName}, resource group: {ResourceGroupName}"))
             {
-                WriteObject(OperationalInsightsClient.UpdatePSTable(tableSetProperties), true);
+                WriteObject(OperationalInsightsClient.CreateRestoreTable(tableSetProperties), true);
             }
         }
     }

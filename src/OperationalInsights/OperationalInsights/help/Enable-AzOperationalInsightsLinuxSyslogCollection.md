@@ -44,6 +44,7 @@ ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-
 Kind              : LinuxSyslogCollection
 Properties        : {"state":"Enabled"}
 ```
+
 Starts collection of syslog data from connected Linux computers in a workspace.
 
 ## PARAMETERS

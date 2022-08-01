@@ -43,10 +43,12 @@ You can specify a data source to get.
 You can filter the results based on the kind of data source.
 
 ## EXAMPLES
+
 ### Example 1
 ```powershell
 Get-AzOperationalInsightsDataSource -Kind CustomLog -ResourceGroupName testrg -WorkspaceName LogAnalyticsWorkspace
 ```
+
 ```output
 Name              : DataSource_CustomLog_Customlog_CL
 ResourceGroupName : testrg
@@ -61,7 +63,9 @@ Properties        : {"customLogName":"Customlog_CL","description":"","extraction
                     ths":null,"windowsFileTypeLogPaths":["D:\\logs.txt"]}},"recordDelimiter":{"regexDelimiter":{"matchI
                     ndex":0,"numberdGroup":null,"pattern":"\\n"}}}]}
 ```
+
 Get data sources.
+
 ## PARAMETERS
 
 ### -DefaultProfile

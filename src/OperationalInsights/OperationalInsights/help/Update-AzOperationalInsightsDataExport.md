@@ -184,7 +184,7 @@ Accept wildcard characters: False
 ```
 
 ### -TableName
-An array of tables to export, for example: ["Heartbeat, SecurityEvent"].
+An array of tables to export, for example: \["Heartbeat, SecurityEvent"\].
 
 ```yaml
 Type: System.String[]
