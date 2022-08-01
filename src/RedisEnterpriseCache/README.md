@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the RedisEnterpriseCache servi
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -39,7 +39,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/17d2a303b798b1675705efccb577b8f77da8389f/specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2021-03-01/redisenterprise.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/ea6bb1c836308d5b11166b9b2da6b306bc665a0f/specification/redisenterprise/resource-manager/Microsoft.Cache/stable/2022-01-01/redisenterprise.json
 
 module-version: 1.0.0
 title: RedisEnterpriseCache
@@ -101,6 +101,23 @@ directive:
       parameter-name: ClusterName
     set:
       alias: Name
+  - where:
+      verb: New
+      subject: Database
+      parameter-name: GeoReplicationLinkedDatabase
+    set:
+      parameter-name: LinkedDatabase
+  - where:
+      verb: New
+      subject: Database
+    set:
+      hide: true
+  - where:
+      verb: New
+      subject: Database
+      parameter-name: GeoReplicationGroupNickname
+    set:
+      parameter-name: GroupNickname
   - where:
       parameter-name: SkuCapacity
     set:
@@ -178,6 +195,15 @@ directive:
   - where:
       subject: PrivateEndpointConnection|PrivateLinkResource
     hide: true
+
+  # DatabaseName parameter to have value 'default'
+  - where:
+      subject: ForceDatabaseUnlink
+      parameter-name: DatabaseName
+    hide: true
+    set:
+      default:
+        script: '"default"'
 
   # Fix bugs in generated code from namespace conflict
   - from: source-file-csharp
