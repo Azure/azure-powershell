@@ -30,27 +30,12 @@ Remove a ScalingPlanPooledSchedule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a Windows Virtual Desktop Scaling Plan Pooled Schedule
 ```powershell
-{{ Add code here }}
+Remove-AzWvdScalingPlanPooledSchedule -ResourceGroupName ResourceGroupName -ScalingPlanName scalingPlan1 -ScalingPlanScheduleName PooledSchedule1
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command deletes a Windows Virtual Desktop Scaling Plan Pooled Schedule.
 
 ## PARAMETERS
 

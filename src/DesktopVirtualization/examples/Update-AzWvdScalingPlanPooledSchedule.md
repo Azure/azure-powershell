@@ -1,22 +1,29 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a Windows Virtual Desktop Scaling Plan Pooled Schedule
 ```powershell
-{{ Add code here }}
+New-AzWvdScalingPlanPooledSchedule `
+    -ResourceGroupName ResourceGroupName `
+    -scalingPlanName 'scalingPlan1' `
+    -ScalingPlanScheduleName 'PooledSchedule1' `
+    -DaysOfWeek 'Monday','Tuesday','Wednesday' `
+    -RampUpStartTimeHour '6' `
+    -RampUpStartTimeMinute '0' `
+    -RampUpMinimumHostsPct 1 `
+    -RampUpLoadBalancingAlgorithm 'BreadthFirst' `
+    -RampUpCapacityThreshold 10 `
+    -PeakStartTimeHour '8' `
+    -PeakStartTimeMinute '15' `
+    -PeakLoadBalancingAlgorithm 'BreadthFirst' `
+    -RampDownStartTimeHour '16' `
+    -RampDownStartTimeMinute '30' `
+    -RampDownLoadBalancingAlgorithm 'BreadthFirst' `
+    -RampDownCapacityThreshold 10 `
+    -OffPeakStartTimeHour '18' `
+    -OffPeakStartTimeMinute '45'
 ```
 
-```output
-{{ Add output here }}
+Location      Name         Type
+--------      ----         ----
+westcentralus scalingPlanScheduleWeekdays1 Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules 
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command updates an existing Windows Virtual Desktop Scaling Plan in a Resource Group.
