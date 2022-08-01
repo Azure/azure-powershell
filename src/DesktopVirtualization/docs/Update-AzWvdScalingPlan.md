@@ -35,33 +35,45 @@ Update a scaling plan.
 
 ### Example 1: Update a Windows Virtual Desktop Scaling Plan by name
 ```powershell
-Update-AzWvdScalingPlan `
+PS C:\> Update-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
             -Name 'scalingPlan1' `
             -Description 'Description' `
             -FriendlyName 'Friendly Name' `
             -HostPoolType 'Pooled' `
-            -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
+            -TimeZone 'Pacific Standard Time' `
             -Schedule @(
                 @{
-                    'name'                           = 'Work Week';
-                    'daysOfWeek'                     = @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday');
-                    'rampUpStartTime'                = '1900-01-01T06:00:00Z';
-                    'rampUpLoadBalancingAlgorithm'   = 'BreadthFirst';
-                    'rampUpMinimumHostsPct'          = 20;
-                    'rampUpCapacityThresholdPct'     = 20;
-                    'peakStartTime'                  = '1900-01-01T08:00:00Z';
-                    'peakLoadBalancingAlgorithm'     = 'DepthFirst';
-                    'RampDownStartTime'              = '1900-01-01T18:00:00Z';
-                    'rampDownLoadBalancingAlgorithm' = 'BreadthFirst';
-                    'rampDownMinimumHostsPct'        = 20;
-                    'rampDownCapacityThresholdPct'   = 20;
-                    'rampDownForceLogoffUser'        = $true;
-                    'rampDownWaitTimeMinute'         = 30;
-                    'rampDownNotificationMessage'    = 'Log out now, please.';
-                    'rampDownStopHostsWhen'          = 'ZeroSessions';
-                    'offPeakStartTime'               = '1900-01-01T20:00:00Z';
-                    'offPeakLoadBalancingAlgorithm'  = 'DepthFirst';
+                    'name'                           = 'Work Week'
+                    'daysOfWeek'                     = @('Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday')
+                    'rampUpStartTime'                = @{
+                                                            'hour' = 6
+                                                            'minute' = 0
+                                                        }
+                    'rampUpLoadBalancingAlgorithm'   = 'BreadthFirst'
+                    'rampUpMinimumHostsPct'          = 20
+                    'rampUpCapacityThresholdPct'     = 20
+                    'peakStartTime'                  = @{
+                                                            'hour' = 8
+                                                            'minute' = 30
+                                                        }
+                    'peakLoadBalancingAlgorithm'     = 'DepthFirst'
+                    'RampDownStartTime'              = @{
+                                                            'hour' = 16
+                                                            'minute' = 15
+                                                        }
+                    'rampDownLoadBalancingAlgorithm' = 'BreadthFirst'
+                    'rampDownMinimumHostsPct'        = 20
+                    'rampDownCapacityThresholdPct'   = 20
+                    'rampDownForceLogoffUser'        = $true
+                    'rampDownWaitTimeMinute'         = 30
+                    'rampDownNotificationMessage'    = 'Log out now, please.'
+                    'rampDownStopHostsWhen'          = 'ZeroSessions'
+                    'offPeakStartTime'               = @{
+                                                            'hour' = 18
+                                                            'minute' = 0
+                                                        }
+                    'offPeakLoadBalancingAlgorithm'  = 'DepthFirst'
                 }
             ) `
             -HostPoolReference @(
@@ -75,9 +87,7 @@ Update-AzWvdScalingPlan `
                 }
 
             )
-```
 
-```output
 Location      Name         Type
 --------      ----         ----
 westcentralus scalingPlan1 Microsoft.DesktopVirtualization/scalingplans
@@ -322,11 +332,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`HOSTPOOLREFERENCE <IScalingHostPoolReference[]>`: List of ScalingHostPoolReference definitions.
+HOSTPOOLREFERENCE <IScalingHostPoolReference[]>: List of ScalingHostPoolReference definitions.
   - `[HostPoolArmPath <String>]`: Arm path of referenced hostpool.
   - `[ScalingPlanEnabled <Boolean?>]`: Is the scaling plan enabled for this hostpool.
 
-`INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
+INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group
@@ -342,7 +352,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[UserSessionId <String>]`: The name of the user session within the specified session host
   - `[WorkspaceName <String>]`: The name of the workspace
 
-`SCHEDULE <IScalingSchedule[]>`: List of ScalingSchedule definitions.
+SCHEDULE <IScalingSchedule[]>: List of ScalingSchedule definitions.
   - `[DaysOfWeek <String[]>]`: Set of days of the week on which this schedule is active.
   - `[Name <String>]`: Name of the ScalingPlanPooledSchedule.
   - `[OffPeakLoadBalancingAlgorithm <SessionHostLoadBalancingAlgorithm?>]`: Load balancing algorithm for off-peak period.
@@ -367,4 +377,3 @@ To create the parameters described below, construct a hash table containing the 
   - `[RampUpStartTimeMinute <Int32?>]`: The minute.
 
 ## RELATED LINKS
-

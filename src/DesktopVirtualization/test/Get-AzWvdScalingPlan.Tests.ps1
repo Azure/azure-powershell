@@ -11,42 +11,36 @@ while(-not $mockingPath) {
 }
 . ($mockingPath | Select-Object -First 1).FullName
 
-# TODO: Use this because we have limited Arm rollout for this feature, change to use $env.Location and $env.ResourceGroup
-#$resourceGroup = $env.ResourceGroup
-#$resourceLocation = $env.Location
-$resourceGroup = 'jehurren-westcentralus'
-$resourceLocation = 'westcentralus'
-
 Describe 'Get-AzWvdScalingPlan' {
     It 'Get' {
         try {
             $scalingPlan = New-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
                 -Name 'ScalingPlanPowershellContained1' `
-                -Location $resourceLocation `
+                -Location $env.Scaling_location `
                 -Description 'desc' `
                 -FriendlyName 'fri' `
                 -HostPoolType 'Pooled' `
-                -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
+                -TimeZone 'Pacific Standard Time' `
                 -Schedule @() `
                 -HostPoolReference @()
 
             $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
-            $scalingPlan.Location | Should -Be $resourceLocation
+            $scalingPlan.Location | Should -Be $env.Scaling_Location
 
             Get-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
                 -Name 'ScalingPlanPowershellContained1'
 
             $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
-            $scalingPlan.Location | Should -Be $resourceLocation
+            $scalingPlan.Location | Should -Be $env.Scaling_Location
         }
         finally {
             $scalingPlan = Remove-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
                 -Name 'ScalingPlanPowershellContained1'
         }
     }
@@ -54,38 +48,38 @@ Describe 'Get-AzWvdScalingPlan' {
     It 'List' {
         try {
             $scalingPlan = New-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
                 -Name 'ScalingPlanPowershellContained1' `
-                -Location $resourceLocation `
+                -Location $env.Scaling_Location `
                 -Description 'desc' `
                 -FriendlyName 'fri' `
                 -HostPoolType 'Pooled' `
-                -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
+                -TimeZone 'Pacific Standard Time' `
                 -Schedule @() `
                 -HostPoolReference @()
 
             $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
-            $scalingPlan.Location | Should -Be $resourceLocation
+            $scalingPlan.Location | Should -Be $env.Scaling_Location
 
             $scalingPlan = New-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
                 -Name 'ScalingPlanPowershellContained2' `
-                -Location $resourceLocation `
+                -Location $env.Scaling_Location `
                 -Description 'desc' `
                 -FriendlyName 'fri' `
                 -HostPoolType 'Pooled' `
-                -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
+                -TimeZone 'Pacific Standard Time' `
                 -Schedule @() `
                 -HostPoolReference @()
 
             $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained2'
-            $scalingPlan.Location | Should -Be $resourceLocation
+            $scalingPlan.Location | Should -Be $env.Scaling_Location
 
             $scalingPlans = Get-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
                 | Where-Object -Property Name -Match 'ScalingPlanPowershellContained*' `
                 | Sort-Object -Property Name
 
@@ -95,12 +89,12 @@ Describe 'Get-AzWvdScalingPlan' {
         }
         finally {
             $scalingPlan = Remove-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
                 -Name 'ScalingPlanPowershellContained1'
             $scalingPlan = Remove-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
                 -Name 'ScalingPlanPowershellContained2'
         }
     }
@@ -108,36 +102,36 @@ Describe 'Get-AzWvdScalingPlan' {
     It 'List By Subscription' {
         try {
             $scalingPlan = New-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
                 -Name 'ScalingPlanPowershellContained1' `
-                -Location $resourceLocation `
+                -Location $env.Scaling_Location `
                 -Description 'desc' `
                 -FriendlyName 'fri' `
                 -HostPoolType 'Pooled' `
-                -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
+                -TimeZone 'Pacific Standard Time' `
                 -Schedule @() `
                 -HostPoolReference @()
 
             $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained1'
-            $scalingPlan.Location | Should -Be $resourceLocation
+            $scalingPlan.Location | Should -Be $env.Scaling_Location
 
             $scalingPlan = New-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
                 -Name 'ScalingPlanPowershellContained2' `
-                -Location $resourceLocation `
+                -Location $env.Scaling_Location `
                 -Description 'desc' `
                 -FriendlyName 'fri' `
                 -HostPoolType 'Pooled' `
-                -TimeZone '(UTC-08:00) Pacific Time (US & Canada)' `
+                -TimeZone 'Pacific Standard Time' `
                 -Schedule @() `
                 -HostPoolReference @()
 
             $scalingPlan.Name | Should -Be 'ScalingPlanPowershellContained2'
-            $scalingPlan.Location | Should -Be $resourceLocation
+            $scalingPlan.Location | Should -Be $env.Scaling_Location
 
-            $scalingPlans = Get-AzWvdScalingPlan -SubscriptionId $env.SubscriptionId `
+            $scalingPlans = Get-AzWvdScalingPlan -SubscriptionId $env.Scaling_SubscriptionId `
                 | Where-Object -Property Name -Match 'ScalingPlanPowershellContained*' `
                 | Sort-Object -Property Name
 
@@ -147,12 +141,12 @@ Describe 'Get-AzWvdScalingPlan' {
         }
         finally {
             $scalingPlan = Remove-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
                 -Name 'ScalingPlanPowershellContained1'
             $scalingPlan = Remove-AzWvdScalingPlan `
-                -SubscriptionId $env.SubscriptionId `
-                -ResourceGroupName $resourceGroup `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
                 -Name 'ScalingPlanPowershellContained2'
         }
     }

@@ -15,11 +15,78 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzWvdScalingPlanPooled
 }
 
 Describe 'Update-AzWvdScalingPlanPooledSchedule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
+    $scalingPlanName = 'ScalingPlanPowershellContained1' 
+    It 'UpdateExpanded' {
+        try {
+            $scalingPlan = New-AzWvdScalingPlan `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
+                -Name  $scalingPlanName `
+                -Location $env.Scaling_location `
+                -Description 'desc' `
+                -FriendlyName 'fri' `
+                -HostPoolType 'Pooled' `
+                -TimeZone 'Pacific Standard Time' `
+                -Schedule @() `
+                -HostPoolReference @()
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+            $scalingPlan.Name | Should -Be $scalingPlanName
+            $scalingPlan.Location | Should -Be $env.Scaling_Location
+
+            $scalingPlanPooledSchedule = New-AzWvdScalingPlanPooledSchedule `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
+                -ScalingPlanName $scalingPlanName `
+                -ScalingPlanScheduleName 'PooledSchedule1' `
+                -DaysOfWeek 'Monday','Tuesday','Wednesday' `
+                -RampUpStartTimeHour '6' `
+                -RampUpStartTimeMinute '0' `
+                -RampUpMinimumHostsPct 1 `
+                -RampUpLoadBalancingAlgorithm 'BreadthFirst' `
+                -RampUpCapacityThreshold 10 `
+                -PeakStartTimeHour '8' `
+                -PeakStartTimeMinute '15' `
+                -PeakLoadBalancingAlgorithm 'BreadthFirst' `
+                -RampDownStartTimeHour '16' `
+                -RampDownStartTimeMinute '30' `
+                -RampDownLoadBalancingAlgorithm 'BreadthFirst' `
+                -RampDownCapacityThreshold 10 `
+                -OffPeakStartTimeHour '18' `
+                -OffPeakStartTimeMinute '45' `
+                -OffPeakLoadBalancingAlgorithm 'BreadthFirst'
+
+            $scalingPlanPooledSchedule.Name | Should -Be "$($scalingPlanName)/PooledSchedule1"
+
+            $scalingPlanPooledSchedule = Update-AzWvdScalingPlanPooledSchedule `
+            -SubscriptionId $env.Scaling_SubscriptionId `
+            -ResourceGroupName $env.Scaling_ResourceGroup `
+            -ScalingPlanName $scalingPlanName `
+            -ScalingPlanScheduleName 'PooledSchedule1' `
+            -RampUpStartTimeHour 7 `
+            -RampUpStartTimeMinute 7 `
+            -RampDownStartTimeHour 17 `
+            -RampDownStartTimeMinute 7 
+
+            $scalingPlanPooledSchedule = Get-AzWvdScalingPlanPooledSchedule `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
+                -ScalingPlanName $scalingPlanName `
+                -ScalingPlanScheduleName 'PooledSchedule1'
+
+            $scalingPlanPooledSchedule.Name | Should -Be "$($scalingPlanName)/PooledSchedule1"
+            $scalingPlanPooledSchedule.RampUpStartTimeHour | Should -Be 7
+            $scalingPlanPooledSchedule.RampUpStartTimeMinute | Should -Be 7
+            $scalingPlanPooledSchedule.RampDownStartTimeHour | Should -Be 17
+            $scalingPlanPooledSchedule.RampDownStartTimeMinute | Should -Be 7
+        }
+        finally {
+            # This will delete the schedule too
+            $scalingPlan = Remove-AzWvdScalingPlan `
+                -SubscriptionId $env.Scaling_SubscriptionId `
+                -ResourceGroupName $env.Scaling_ResourceGroup `
+                -Name $scalingPlanName
+
+
+        }
     }
 }
