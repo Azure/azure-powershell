@@ -25,7 +25,7 @@ Create a new Activity Log Alert rule or update an existing one.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IActivityLogAlertResource
+Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -48,61 +48,61 @@ CONDITIONALLOF <IAlertRuleAnyOfOrLeafCondition[]>: The list of Activity Log Aler
 https://docs.microsoft.com/powershell/module/az.monitor/new-azactivitylogalert
 #>
 function New-AzActivityLogAlert {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IActivityLogAlertResource])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource])]
     [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [Alias('ActivityLogAlertName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Path')]
         [System.String]
         # The name of the Activity Log Alert rule.
         ${Name},
     
         [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
     
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
     
         [Parameter(Mandatory)]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IActionGroup[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActionGroup[]]
         # The list of the Action Groups.
         # To construct, see NOTES section for ACTIONGROUP properties and create a hash table.
         ${Action},
     
         [Parameter(Mandatory)]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IAlertRuleAnyOfOrLeafCondition[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleAnyOfOrLeafCondition[]]
         # The list of Activity Log Alert rule conditions.
         # To construct, see NOTES section for CONDITIONALLOF properties and create a hash table.
         ${Condition},
     
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
         [System.String]
         # A description of this Activity Log Alert rule.
         ${Description},
     
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
         [System.Boolean]
         # Indicates whether this Activity Log Alert rule is enabled.
         # If an Activity Log Alert rule is not enabled, then none of its actions will be activated.
         ${Enabled},
     
         [Parameter(Mandatory)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
         [System.String]
         # The location of the resource.
         # Since Azure Activity Log Alerts is a global service, the location of the rules should always be 'global'.
@@ -110,7 +110,7 @@ function New-AzActivityLogAlert {
     
         [Parameter(Mandatory)]
         [AllowEmptyCollection()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
         [System.String[]]
         # A list of resource IDs that will be used as prefixes.
         # The alert will only apply to Activity Log events with resource IDs that fall under one of these prefixes.
@@ -118,8 +118,8 @@ function New-AzActivityLogAlert {
         ${Scope},
     
         [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IAzureResourceTags]))]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAzureResourceTags]))]
         [System.Collections.Hashtable]
         # The tags of the resource.
         ${Tag},
@@ -127,46 +127,46 @@ function New-AzActivityLogAlert {
         [Parameter()]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Azure')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Azure')]
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Wait for .NET debugger to attach
         ${Break},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be appended to the front of the pipeline
         ${HttpPipelineAppend},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Runtime')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Runtime.SendAsyncStep[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Runtime.SendAsyncStep[]]
         # SendAsync Pipeline Steps to be prepended to the front of the pipeline
         ${HttpPipelinePrepend},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Runtime')]
         [System.Uri]
         # The URI for the proxy server to use
         ${Proxy},
     
         [Parameter(DontShow)]
         [ValidateNotNull()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Runtime')]
         [System.Management.Automation.PSCredential]
         # Credentials for a proxy server to use for the remote call
         ${ProxyCredential},
     
         [Parameter(DontShow)]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         # Use the default credentials for the proxy
         ${ProxyUseDefaultCredentials}

@@ -1,10 +1,10 @@
 <!-- region Generated -->
-# Az.Monitor
-This directory contains the PowerShell module for the Monitor service.
+# Az.ActivityLogAlert
+This directory contains the PowerShell module for the ActivityLogAlert service.
 
 ---
 ## Status
-[![Az.Monitor](https://img.shields.io/powershellgallery/v/Az.Monitor.svg?style=flat-square&label=Az.Monitor "Az.Monitor")](https://www.powershellgallery.com/packages/Az.Monitor/)
+[![Az.ActivityLogAlert](https://img.shields.io/powershellgallery/v/Az.ActivityLogAlert.svg?style=flat-square&label=Az.ActivityLogAlert "Az.ActivityLogAlert")](https://www.powershellgallery.com/packages/Az.ActivityLogAlert/)
 
 ## Info
 - Modifiable: yes
@@ -23,7 +23,7 @@ This module was primarily generated via [AutoRest](https://github.com/Azure/auto
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
 
 ## Development
-For information on how to develop for `Az.Monitor`, see [how-to.md](how-to.md).
+For information on how to develop for `Az.ActivityLogAlert`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
 ### AutoRest Configuration
@@ -36,9 +36,11 @@ input-file:
 # You need to specify your swagger files here.
   - https://github.com/Azure/azure-rest-api-specs/blob/e94b0da0c7f80e2986af90c1dd7e9c8f4c336c61/specification/monitor/resource-manager/Microsoft.Insights/stable/2020-10-01/activityLogAlerts_API.json
 
-title: Monitor
+root-module-name: $(prefix).Monitor
+title: ActivityLogAlert
 module-version: 0.1.0
 subject-prefix: ""
+namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert
 resourcegroup-append: true
 nested-object-to-string: true
 

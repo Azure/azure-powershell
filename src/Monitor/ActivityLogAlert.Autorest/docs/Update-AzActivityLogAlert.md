@@ -23,7 +23,7 @@ Update-AzActivityLogAlert -Name <String> -ResourceGroupName <String> [-Subscript
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzActivityLogAlert -InputObject <IMonitorIdentity> [-Enabled <Boolean>] [-Tag <Hashtable>]
+Update-AzActivityLogAlert -InputObject <IActivityLogAlertIdentity> [-Enabled <Boolean>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -79,7 +79,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertIdentity
 Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
@@ -187,11 +187,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IActivityLogAlertResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource
 
 ## NOTES
 
@@ -202,7 +202,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMonitorIdentity>: Identity Parameter
+INPUTOBJECT <IActivityLogAlertIdentity>: Identity Parameter
   - `[ActivityLogAlertName <String>]`: The name of the Activity Log Alert rule.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.

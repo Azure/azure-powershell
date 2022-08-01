@@ -1,16 +1,16 @@
 ---
-Module Name: Az.Monitor
-Module Guid: 16fcc555-1c0c-44ab-955f-437c5f3d03f9
-Download Help Link: https://docs.microsoft.com/powershell/module/az.monitor
+Module Name: Az.ActivityLogAlert
+Module Guid: 51359a36-98ad-4a4b-878d-564c18864934
+Download Help Link: https://docs.microsoft.com/powershell/module/az.activitylogalert
 Help Version: 1.0.0.0
 Locale: en-US
 ---
 
-# Az.Monitor Module
+# Az.ActivityLogAlert Module
 ## Description
-Microsoft Azure PowerShell: Monitor cmdlets
+Microsoft Azure PowerShell: ActivityLogAlert cmdlets
 
-## Az.Monitor Cmdlets
+## Az.ActivityLogAlert Cmdlets
 ### [Get-AzActivityLogAlert](Get-AzActivityLogAlert.md)
 Get an Activity Log Alert rule.
 

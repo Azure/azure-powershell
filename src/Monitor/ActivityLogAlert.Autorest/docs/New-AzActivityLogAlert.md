@@ -46,7 +46,7 @@ To construct, see NOTES section for ACTIONGROUP properties and create a hash tab
 To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IActionGroup[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActionGroup[]
 Parameter Sets: (All)
 Aliases:
 
@@ -63,7 +63,7 @@ To construct, see NOTES section for CONDITIONALLOF properties and create a hash 
 To construct, see NOTES section for CONDITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IAlertRuleAnyOfOrLeafCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleAnyOfOrLeafCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -252,7 +252,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IActivityLogAlertResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource
 
 ## NOTES
 
