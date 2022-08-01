@@ -48,6 +48,7 @@ function setupEnv() {
     $tmpNspDelete2 =  $randomString + 't-nspD2'
     $tmpProfile1 = 't-profile1'
     $tmpProfile2 = 't-profile2'
+    $tmpProfile3 = 't-profile3'
     $tmpProfileDelete1 = 't-profileD1'
     $tmpProfileDelete2 = 't-profileD2'
     $tmpProfileDelBase1 = 't-prDelB1'
@@ -61,9 +62,10 @@ function setupEnv() {
     $tmpPaas1Rp = $randomString + 't-paas1Rp'
     $tmpPaas2Rp = $randomString + 't-paas2Rp'
     $tmpPaas3Rp = $randomString + 't-paas3Rp'
+    $tmpPaas4Rp = $randomString + 't-paas4Rp'
 
-    $tmpKeys = 'tmpNsp1','tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1','tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2'
-    $tmpValues = $tmpNsp1, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2
+    $tmpKeys = 'tmpNsp1','tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfile3', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1','tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpPaas4Rp','tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2'
+    $tmpValues = $tmpNsp1, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpPaas4Rp,  $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2
 
     for ($i = 0; $i -le ($tmpKeys.length - 1); $i += 1) {
         if ($templateVariables.Contains($tmpKeys[$i])) {
@@ -108,6 +110,7 @@ function setupEnv() {
         nspDelete2Name = $tmpNspDelete2
         profile1Name = $tmpProfile1
         profile2Name = $tmpProfile2
+        profile3Name = $tmpProfile3
         profileDelete1Name = $tmpProfileDelete1
         profileDelete2Name = $tmpProfileDelete2
         profileDelBase1Name = $tmpProfileDelBase1
@@ -118,6 +121,7 @@ function setupEnv() {
         paas1Name = $tmpPaas1Rp
         paas2Name = $tmpPaas2Rp
         paas3Name = $tmpPaas3Rp
+        paas4Name = $tmpPaas4Rp
         association1Name = $tmpAssociation1
         associationDelete1Name = $tmpAssociationDelete1
         associationDelete2Name = $tmpAssociationDelete2
@@ -135,30 +139,42 @@ function cleanupEnv() {
     
     Write-Host -ForegroundColor Magenta "Removing associations"
 
-    #Remove association
+    #Remove associations
     $remove_association1 = @{
-        SecurityPerimeterName = $templateVariables.tmpNsp1
+        SecurityPerimeterName = $env.tmpNsp1
         ResourceGroupName = $env.rgname
-        Name = $templateVariables.tmpAssociation1
+        Name = $env.tmpAssociation1
        }
 
     Remove-AzNetworkSecurityPerimeterAssociation @remove_association1
 
     $remove_associationDelete1 = @{
-        SecurityPerimeterName = $templateVariables.tmpNspDelBase1
+        SecurityPerimeterName = $env.tmpNspDelBase1
         ResourceGroupName = $env.rgname
-        Name = $templateVariables.tmpAssociationDelete1
+        Name = $env.tmpAssociationDelete1
     }
 
     Remove-AzNetworkSecurityPerimeterAssociation @remove_associationDelete1
 
     $remove_associationDelete2 = @{
-        SecurityPerimeterName = $templateVariables.tmpNspDelBase1
+        SecurityPerimeterName = $env.tmpNspDelBase1
         ResourceGroupName = $env.rgname
-        Name = $templateVariables.tmpAssociationDelete2
+        Name = $env.tmpAssociationDelete2
     }
 
     Remove-AzNetworkSecurityPerimeterAssociation @remove_associationDelete2
+
+
+    #Remove association created by testcase
+    $remove_association2 = @{
+        SecurityPerimeterName = $env.tmpNsp1
+        ResourceGroupName = $env.rgname
+        Name = $env.association1
+    }
+
+
+    Remove-AzNetworkSecurityPerimeterAssociation @remove_association2
+
 
     Write-Host -ForegroundColor Magenta "Sleep 60"
 

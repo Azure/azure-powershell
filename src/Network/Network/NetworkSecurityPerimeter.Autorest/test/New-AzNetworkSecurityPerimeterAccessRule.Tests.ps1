@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkSecurityPerimete
 }
 
 Describe 'New-AzNetworkSecurityPerimeterAccessRule' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+        
+        New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule1 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound' -Location $env.location
+        
+        } | Should -Not -Throw
     }
 }

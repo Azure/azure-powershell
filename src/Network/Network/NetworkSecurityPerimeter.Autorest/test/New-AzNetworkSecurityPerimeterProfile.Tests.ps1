@@ -15,7 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkSecurityPerimete
 }
 
 Describe 'New-AzNetworkSecurityPerimeterProfile' {
-    It 'CreateExpanded' -skip {
-        { New-AzNetworkSecurityPerimeterProfile -Name $env.profile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+
+            New-AzNetworkSecurityPerimeterProfile -Name $env.profile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 
+        
+        } | Should -Not -Throw
     }
 }

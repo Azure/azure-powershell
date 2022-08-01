@@ -15,7 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkSecurityPerimete
 }
 
 Describe 'New-AzNetworkSecurityPerimeterAssociation' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { 
+        
+            $profileId = '/subscriptions/' +  $env.SubscriptionId + '/resourceGroups/' + $env.rgname  + '/providers/Microsoft.Network/networkSecurityPerimeters/' + $env.tmpNsp1 + '/profiles/' + $env.tmpProfile2
+            $privateLinkResourceId = '/subscriptions/' + $env.SubscriptionId +  '/resourceGroups/' + $env.rgname + '/providers/Microsoft.KeyVault/vaults/' + $env.tmpPaas4Rp
+
+            New-AzNetworkSecurityPerimeterAssociation -Name $env.association1 -SecurityPerimeterName $env.tmpNsp1 -ResourceGroupName $env.rgname -Location $env.location -AccessMode $env.accessMode1 -ProfileId $profileId -PrivateLinkResourceId $privateLinkResourceId
+
+        } | Should -Not -Throw
     }
 }

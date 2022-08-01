@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNetworkSecurityPerim
 }
 
 Describe 'Remove-AzNetworkSecurityPerimeterProfile' {
-    It 'Delete' -skip {
+    It 'Delete' {
         {
         
         Remove-AzNetworkSecurityPerimeterProfile -Name $env.tmpProfileDelete1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNspDelBase1

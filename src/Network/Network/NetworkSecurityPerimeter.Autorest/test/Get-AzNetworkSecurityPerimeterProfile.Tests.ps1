@@ -23,7 +23,7 @@ Describe 'Get-AzNetworkSecurityPerimeterProfile' {
         } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         { 
         
         Get-AzNetworkSecurityPerimeterProfile -Name $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1
