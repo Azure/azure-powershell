@@ -44,7 +44,7 @@ An Activity Log Alert rule condition that is met when at least one of its member
 To construct, see NOTES section for ANYOF properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IAlertRuleLeafCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IAlertRuleLeafCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +108,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.AlertRuleAnyOfOrLeafCondition
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.AlertRuleAnyOfOrLeafCondition
 
 ## NOTES
 

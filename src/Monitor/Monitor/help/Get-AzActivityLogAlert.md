@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-help.xml
+external help file: Az.Monitor-help.xml
 Module Name: Az.Monitor
 online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azactivitylogalert
 schema: 2.0.0
@@ -19,19 +19,20 @@ Get-AzActivityLogAlert [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
 
 ### Get
 ```
-Get-AzActivityLogAlert [-Name] <String> [-ResourceGroupName] <String> [-SubscriptionId <String[]>]
+Get-AzActivityLogAlert -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzActivityLogAlert [-ResourceGroupName] <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzActivityLogAlert -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzActivityLogAlert -InputObject <IMonitorIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzActivityLogAlert -InputObject <IActivityLogAlertIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +83,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertIdentity
 Parameter Sets: GetViaIdentity
 Aliases:
 
@@ -102,7 +103,7 @@ Parameter Sets: Get
 Aliases: ActivityLogAlertName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -118,7 +119,7 @@ Parameter Sets: Get, List1
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -144,11 +145,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.IMonitorIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.IActivityLogAlertIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Monitor.Models.Api20201001.IActivityLogAlertResource
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert.Models.Api20201001.IActivityLogAlertResource
 
 ## NOTES
 
@@ -159,7 +160,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IMonitorIdentity>`: Identity Parameter
+`INPUTOBJECT <IActivityLogAlertIdentity>`: Identity Parameter
   - `[ActivityLogAlertName <String>]`: The name of the Activity Log Alert rule.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.

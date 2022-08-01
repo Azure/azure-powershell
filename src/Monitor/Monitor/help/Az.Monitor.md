@@ -26,12 +26,6 @@ Adds or updates a V2 (non-classic) metric-based alert rule.
 ### [Add-AzWebtestAlertRule](Add-AzWebtestAlertRule.md)
 Adds or updates a webtest alert rule.
 
-### [Disable-AzActivityLogAlert](Disable-AzActivityLogAlert.md)
-Disables an activity log alert and sets its tags.
-
-### [Enable-AzActivityLogAlert](Enable-AzActivityLogAlert.md)
-Enables an activity log alert and sets its Tags.
-
 ### [Get-AzActionGroup](Get-AzActionGroup.md)
 Gets action group(s).
 
@@ -89,9 +83,6 @@ Gets Scheduled Query Resources
 ### [Get-AzSubscriptionDiagnosticSettingCategory](Get-AzSubscriptionDiagnosticSettingCategory.md)
 Get diagnostic setting categories for subscription.
 
-### [New-AzActionGroup](New-AzActionGroup.md)
-Creates an ActionGroup reference object in memory.
-
 ### [New-AzActionGroupObject](New-AzActionGroupObject.md)
 Create an in-memory object for ActionGroup.
 
@@ -100,9 +91,6 @@ Creates an new action group receiver.
 
 ### [New-AzActivityLogAlert](New-AzActivityLogAlert.md)
 Create a new Activity Log Alert rule or update an existing one.
-
-### [New-AzActivityLogAlertCondition](New-AzActivityLogAlertCondition.md)
-Creates an new activity log alert condition object in memory.
 
 ### [New-AzAlertRuleAnyOfOrLeafConditionObject](New-AzAlertRuleAnyOfOrLeafConditionObject.md)
 Create an in-memory object for AlertRuleAnyOfOrLeafCondition.
@@ -214,9 +202,6 @@ Removes a Log Alert Rule
 
 ### [Set-AzActionGroup](Set-AzActionGroup.md)
 Creates a new or updates an existing action group.
-
-### [Set-AzActivityLogAlert](Set-AzActivityLogAlert.md)
-Creates a new or sets an existing activity log alert.
 
 ### [Set-AzDataCollectionRule](Set-AzDataCollectionRule.md)
 Updates (full replacement) a data collection rule.
