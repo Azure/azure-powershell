@@ -145,7 +145,34 @@ This command imports an API from the specified Open 3.0 specification document a
 ### Example 7: Import an API from a GraphQL link
 ```powershell
 $ApiMgmtContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "GraphQL" -SpecificationUrl "http://contoso.com/graphql" -Path "apis"
+Import-AzApiManagementApi -Context $ApiMgmtContext -SpecificationFormat "GraphQL" -SpecificationUrl "http://contoso.com/graphql" -Path "graphqlapi"
+```
+
+```output
+ApiId                         : bg4g23csd067432zz853f0942341g3z1
+Name                          : GraphQL Api
+Description                   :
+ServiceUrl                    : http://contoso.com/graphql
+Path                          : graphqlapi
+ApiType                       : graphql
+Protocols                     : {Https}
+AuthorizationServerId         :
+AuthorizationScope            :
+OpenidProviderId              :
+BearerTokenSendingMethod      : {}
+SubscriptionKeyHeaderName     : Ocp-Apim-Subscription-Key
+SubscriptionKeyQueryParamName : subscription-key
+ApiRevision                   : 1
+ApiVersion                    :
+IsCurrent                     : True
+IsOnline                      : False
+SubscriptionRequired          :
+ApiRevisionDescription        :
+ApiVersionSetDescription      :
+ApiVersionSetId               :
+Id                            : /subscriptions/subid/resourceGroups/Api-Default-West-US/providers/Microsoft.ApiManagement/service/contoso/apis/bg4g23csd067432zz853f0942341g3z1     
+ResourceGroupName             : Api-Default-West-US
+ServiceName                   : contoso
 ```
 
 This command imports an API from the GraphQL link.
