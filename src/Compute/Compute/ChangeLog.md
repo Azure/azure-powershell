@@ -22,7 +22,8 @@
 ## Upcoming Release
 
 ## Version 4.30.0
-* Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion` 
+* Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion`
+* Changes made to Gallery cmdlets for Community Galleries
 
 ## Version 4.29.0
 * Added image alias 'Win2022AzureEditionCore'
