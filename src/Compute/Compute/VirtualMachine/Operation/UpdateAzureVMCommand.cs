@@ -101,20 +101,17 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
             Mandatory = false)]
         [AllowEmptyString]
-        [ValidateNotNullOrEmpty]
         public string ProximityPlacementGroupId { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Id of Host")]
-        [ValidateNotNullOrEmpty]
         public string HostId { get; set; }
 
         [Parameter(
             Mandatory = false,
             HelpMessage = "Id of the capacity reservation Group that is used to allocate.")]
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
-        [ValidateNotNullOrEmpty]
         public string CapacityReservationGroupId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
