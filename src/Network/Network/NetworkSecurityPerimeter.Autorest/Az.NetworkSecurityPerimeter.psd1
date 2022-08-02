@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.NetworkSecurityPerimeter.private.dll'
   FormatsToProcess = './Az.NetworkSecurityPerimeter.format.ps1xml'
-  FunctionsToExport = 'Get-AzNetworkSecurityPerimeter', 'Get-AzNetworkSecurityPerimeterAccessRule', 'Get-AzNetworkSecurityPerimeterAssociation', 'Get-AzNetworkSecurityPerimeterProfile', 'New-AzNetworkSecurityPerimeter', 'New-AzNetworkSecurityPerimeterAccessRule', 'New-AzNetworkSecurityPerimeterAssociation', 'New-AzNetworkSecurityPerimeterProfile', 'Remove-AzNetworkSecurityPerimeter', 'Remove-AzNetworkSecurityPerimeterAccessRule', 'Remove-AzNetworkSecurityPerimeterAssociation', 'Remove-AzNetworkSecurityPerimeterProfile', '*'
+  FunctionsToExport = 'Get-AzNetworkSecurityPerimeter', 'Get-AzNetworkSecurityPerimeterAccessRule', 'Get-AzNetworkSecurityPerimeterAssociation', 'Get-AzNetworkSecurityPerimeterProfile', 'New-AzNetworkSecurityPerimeter', 'New-AzNetworkSecurityPerimeterAccessRule', 'New-AzNetworkSecurityPerimeterAssociation', 'New-AzNetworkSecurityPerimeterProfile', 'Remove-AzNetworkSecurityPerimeter', 'Remove-AzNetworkSecurityPerimeterAccessRule', 'Remove-AzNetworkSecurityPerimeterAssociation', 'Remove-AzNetworkSecurityPerimeterProfile', 'Update-AzNetworkSecurityPerimeterAssociation', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

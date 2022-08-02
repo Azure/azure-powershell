@@ -47,3 +47,6 @@ Deletes an NSP association resource.
 ### [Remove-AzNetworkSecurityPerimeterProfile](Remove-AzNetworkSecurityPerimeterProfile.md)
 Deletes an NSP profile.
 
+### [Update-AzNetworkSecurityPerimeterAssociation](Update-AzNetworkSecurityPerimeterAssociation.md)
+Updates a workspace.
+

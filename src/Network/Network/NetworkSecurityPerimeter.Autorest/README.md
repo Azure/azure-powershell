@@ -55,9 +55,9 @@ directive:
   # Following is two common directive which are normally required in all the RPs
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
-  - where:
-      variant: ^Create$|^CreateViaIdentityExpanded$
-    remove: true
+#  - where:
+#      variant: ^Create$|^CreateViaIdentityExpanded$
+#    remove: true
 # Remove the set-* cmdlet
 #- where:
 #    verb: Set
