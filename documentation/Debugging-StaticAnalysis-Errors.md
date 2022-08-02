@@ -65,20 +65,8 @@ Example issues occur when your changed markdown files in the `help` folder (_e.g
 
 ## Trouble Shotting for Unexpected Errors in Example Issues
 ### Scenario 1: Unexpected errors caused by the mixture of outputs and codes 
-If you have put outputs in the code block, then the outputs will be recognized as invalid PowerShell syntax. Please check whether you have splitted outputs from codes.
-
-The following shows the scene: outputs in codes.
-### Example
-```powershell
-Get-AzConfig -EnableDataCollection
-
-Key                           Value Applies To Scope       Help Message
----                           ----- ---------- -----       ------------
-EnableDataCollection          False Az         CurrentUser When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the custom…
-```
-
-In this scene, we should split them by 'output' tag as follows.
-### Example
+If you have put outputs in the code block, then the outputs will be recognized as invalid PowerShell syntax. Please check whether you have splitted outputs from codes.The following shows the correct scene.
+### Example: Codes and outputs are split correctly
 ```powershell
 Get-AzConfig -EnableDataCollection
 ```
@@ -90,7 +78,7 @@ EnableDataCollection          False Az         CurrentUser When enabled, Azure P
 ```
 
 If outputs cannot be separated from codes, then please add the tag `<!-- Skip: Output cannot be splitted from code -->` to the next line of the example title and in front of the code block. The following is an example. It will look more clear in raw markdown file.
-### Example
+### Example: Add skip tag to the example whose outputs cannot be separated from codes
 <!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $Context = Get-AzBatchAccountKey -AccountName myaccount
