@@ -23,7 +23,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
         /// <summary>the value for an instance of the <see cref="ConfigServerState" /> Enum.</summary>
         private string _value { get; set; }
 
-        /// <summary>Creates an instance of the <see cref="ConfigServerState" Enum class./></summary>
+        /// <summary>Creates an instance of the <see cref="ConfigServerState"/> Enum class.</summary>
         /// <param name="underlyingValue">the value to create an instance for.</param>
         private ConfigServerState(string underlyingValue)
         {
@@ -34,7 +34,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
         /// <param name="value">the value to convert to an instance of <see cref="ConfigServerState" />.</param>
         internal static object CreateFrom(object value)
         {
-            return new ConfigServerState(System.Convert.ToString(value));
+            return new ConfigServerState(global::System.Convert.ToString(value));
         }
 
         /// <summary>Compares values of enum type ConfigServerState</summary>
@@ -84,8 +84,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
         }
 
         /// <summary>Overriding != operator for enum ConfigServerState</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are not equal to the same value</returns>
         public static bool operator !=(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ConfigServerState e1, Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ConfigServerState e2)
         {
@@ -93,8 +93,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
         }
 
         /// <summary>Overriding == operator for enum ConfigServerState</summary>
-        /// <param name="e1">the value to compare against <see cref="e2" /></param>
-        /// <param name="e2">the value to compare against <see cref="e1" /></param>
+        /// <param name="e1">the value to compare against <paramref name="e2" /></param>
+        /// <param name="e2">the value to compare against <paramref name="e1" /></param>
         /// <returns><c>true</c> if the two instances are equal to the same value</returns>
         public static bool operator ==(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ConfigServerState e1, Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support.ConfigServerState e2)
         {
