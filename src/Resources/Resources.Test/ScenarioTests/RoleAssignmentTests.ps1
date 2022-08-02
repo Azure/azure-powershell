@@ -91,20 +91,21 @@ Tests verifies delete scenario for RoleAssignments by using PSRoleAssignment Obj
 function Test-RaDeleteByPSRoleAssignment
 {
     # Setup
-    $definitionName = 'Backup Contributor'
-    $users = Get-AzADUser | Select-Object -First 1 -Wait
+    $definitionName = 'Reader'
+    $principalId = "f2dc21ac-702a-4bde-a4ce-146edf751d81" # Change this if testing in another tenant
     $subscription = $(Get-AzContext).Subscription
-    $resourceGroups = Get-AzResourceGroup | Select-Object -Last 1 -Wait
-    $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/' + $resourceGroups[0].ResourceGroupName
-    Assert-AreEqual 1 $users.Count "There should be at least one user to run the test."
+    $scope = '/subscriptions/'+ $subscription[0].Id +'/resourceGroups/PowershellTest'
+
+    $expectedMessage = "Succesfully removed role assignment for AD object 'f2dc21ac-702a-4bde-a4ce-146edf751d81' on scope '/subscriptions/4004a9fd-d58e-48dc-aeb2-4a4aec58606f/resourceGroups/PowershellTest' with role definition 'Reader'"
 
     # Test
-    $newAssignment = New-AzRoleAssignment -ObjectId $users[0].Id -RoleDefinitionName $definitionName -Scope $scope
+    $newAssignment = New-AzRoleAssignmentWithId -ObjectId $principalId -RoleDefinitionName $definitionName -Scope $scope -RoleAssignmentId 305df7f7-c560-4577-8f38-257fdfa1f93e
 
-    Remove-AzRoleAssignment $newAssignment
+    $result = Remove-AzRoleAssignment $newAssignment
 
     # Assert
     VerifyRoleAssignmentDeleted $newAssignment
+    Assert-AreEqual $result $expectedMessage
 }
 
 <#

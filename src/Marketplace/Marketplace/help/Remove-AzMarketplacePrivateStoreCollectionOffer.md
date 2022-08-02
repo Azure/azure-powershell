@@ -180,7 +180,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMarketplaceIdentity>: Identity Parameter
+INPUTOBJECT `<IMarketplaceIdentity>`: Identity Parameter
   - `[AdminRequestApprovalId <String>]`: The admin request approval ID to get create or update
   - `[CollectionId <String>]`: The collection ID
   - `[Id <String>]`: Resource identity path

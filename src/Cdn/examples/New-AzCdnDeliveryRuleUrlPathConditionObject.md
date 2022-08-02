@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureCDN DeliveryRuleUrlPathCondition
 ```powershell
-{{ Add code here }}
+New-AzCdnDeliveryRuleUrlPathConditionObject -Name UrlPath -ParameterOperator Equal -ParameterMatchValue /a
 ```
 
 ```output
-{{ Add output here }}
+Name
+----
+UrlPath
 ```
 
-{{ Add description here }}
+Create an in-memory object for AzureCDN DeliveryRuleUrlPathCondition
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 

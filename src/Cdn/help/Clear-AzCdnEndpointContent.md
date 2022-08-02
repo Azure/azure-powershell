@@ -43,27 +43,12 @@ Removes a content from CDN.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get content of an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
-{{ Add code here }}
+Clear-AzCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -ContentPath @("/movies/*","/pictures/pic1.jpg") 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get content of an AzureCDN Endpoint under the AzureCDN profile
 
 ## PARAMETERS
 
@@ -288,10 +273,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONTENTFILEPATH <IPurgeParameters>: Parameters required for content purge.
+CONTENTFILEPATH `<IPurgeParameters>`: Parameters required for content purge.
   - `ContentPath <String[]>`: The path to the content to be purged. Can describe a file path or a wild card directory.
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

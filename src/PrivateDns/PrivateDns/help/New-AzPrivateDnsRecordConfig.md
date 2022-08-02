@@ -57,6 +57,7 @@ The New-AzPrivateDnsRecordConfig cmdlet creates a local PSPrivateDnsRecord objec
 ## EXAMPLES
 
 ### Example 1: Create a RecordSet of type A
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $Records = @()
 $Records += New-AzPrivateDnsRecordConfig -IPv4Address 1.2.3.4

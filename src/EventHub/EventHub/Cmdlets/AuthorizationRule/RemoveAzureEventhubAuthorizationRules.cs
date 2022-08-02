@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     Name,
                     () =>
                     {
-                        Client.DeleteNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
+                        UtilityClient.DeleteNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
                         if (PassThru)
                         {
                             WriteObject(true);
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     Name,
                     () =>
                     {
-                        Client.DeleteEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name);
+                        UtilityClient.DeleteEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name);
                         if (PassThru)
                         {
                             WriteObject(true);

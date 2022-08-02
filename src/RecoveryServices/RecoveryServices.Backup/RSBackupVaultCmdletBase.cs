@@ -59,8 +59,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         /// <summary>
         /// Get the job PS model after fetching the job object from the service given the job ID.
         /// </summary>
-        /// <param name="secondaryRegion"></param>
-        /// <param name="vaultId"></param>
+        /// <param name="secondaryRegion">secondaryRegion for the vault </param>
+        /// <param name="vaultId">ResourceId of the vault to be fetched</param>
         /// <param name="jobId">ID of the job to be fetched</param>
         /// <returns></returns>
         public CmdletModel.JobBase GetCrrJobObject(string secondaryRegion, string vaultId, string jobId)
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
             CrrModel.CrrJobRequest jobRequest = new CrrModel.CrrJobRequest();
             jobRequest.JobName = jobId;
             jobRequest.ResourceId = vaultId;
-                        
+
             JobBase job = JobConversions.GetPSJobCrr(ServiceClientAdapter.GetCRRJobDetails(
                 secondaryRegion,
                 jobRequest));

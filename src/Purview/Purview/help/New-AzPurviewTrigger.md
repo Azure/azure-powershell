@@ -184,25 +184,25 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <ITrigger>: .
-  - `[IncrementalScanStartTime <DateTime?>]`: 
-  - `[Interval <Int32?>]`: 
-  - `[RecurrenceEndTime <DateTime?>]`: 
-  - `[RecurrenceFrequency <TriggerFrequency?>]`: 
-  - `[RecurrenceInterval <String>]`: 
-  - `[RecurrenceStartTime <DateTime?>]`: 
-  - `[RecurrenceTimeZone <String>]`: 
-  - `[ScanLevel <ScanLevelType?>]`: 
-  - `[ScheduleAdditionalProperty <IRecurrenceScheduleAdditionalProperties>]`: Dictionary of <any>
+BODY `<ITrigger>`: .
+  - `[IncrementalScanStartTime <DateTime?>]`:
+  - `[Interval <Int32?>]`:
+  - `[RecurrenceEndTime <DateTime?>]`:
+  - `[RecurrenceFrequency <TriggerFrequency?>]`:
+  - `[RecurrenceInterval <String>]`:
+  - `[RecurrenceStartTime <DateTime?>]`:
+  - `[RecurrenceTimeZone <String>]`:
+  - `[ScanLevel <ScanLevelType?>]`:
+  - `[ScheduleAdditionalProperty <IRecurrenceScheduleAdditionalProperties>]`: Dictionary of `<any>`
     - `[(Any) <Object>]`: This indicates any property can be added to this object.
-  - `[ScheduleHour <Int32[]>]`: 
-  - `[ScheduleMinute <Int32[]>]`: 
-  - `[ScheduleMonthDay <Int32[]>]`: 
-  - `[ScheduleMonthlyOccurrence <IRecurrenceScheduleOccurrence[]>]`: 
-    - `[AdditionalProperty <IRecurrenceScheduleOccurrenceAdditionalProperties>]`: Dictionary of <any>
+  - `[ScheduleHour <Int32[]>]`:
+  - `[ScheduleMinute <Int32[]>]`:
+  - `[ScheduleMonthDay <Int32[]>]`:
+  - `[ScheduleMonthlyOccurrence <IRecurrenceScheduleOccurrence[]>]`:
+    - `[AdditionalProperty <IRecurrenceScheduleOccurrenceAdditionalProperties>]`: Dictionary of `<any>`
       - `[(Any) <Object>]`: This indicates any property can be added to this object.
-    - `[Day <DayOfWeek?>]`: 
-    - `[Occurrence <Int32?>]`: 
-  - `[ScheduleWeekDay <DaysOfWeek[]>]`: 
+    - `[Day <DayOfWeek?>]`:
+    - `[Occurrence <Int32?>]`:
+  - `[ScheduleWeekDay <DaysOfWeek[]>]`:
 
 ## RELATED LINKS

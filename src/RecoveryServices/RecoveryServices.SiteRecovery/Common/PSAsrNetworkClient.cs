@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets all Azure Site Recovery Networks under a Server
         /// </summary>
-        /// <param name="fabricName"></param>
+        /// <param name="fabricName">Fabric name</param>
         /// <returns>Network list response</returns>
         public List<Network> GetAzureSiteRecoveryNetworks(
             string fabricName)

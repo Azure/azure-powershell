@@ -1066,7 +1066,9 @@ function Test-StorageAccountManagementPolicy
 
 		# create Rule2
 		$action2 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
-		$filter2 = New-AzStorageAccountManagementPolicyFilter -BlobType appendBlob,blockBlob
+		$blobindexmatch1 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag1" -Value "value1"
+		$blobindexmatch2 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag2" -Value "value2"
+		$filter2 = New-AzStorageAccountManagementPolicyFilter -BlobType appendBlob,blockBlob -BlobIndexMatch $blobindexmatch1,$blobindexmatch2
 		$rule2 = New-AzStorageAccountManagementPolicyRule -Name Test2 -Action $action2 -Filter $filter2 -Disabled
 		
 		# create Rule3
@@ -1102,6 +1104,10 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[0] $policy.Rules[1].Definition.Filters.BlobTypes[0]
 		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[1] $policy.Rules[1].Definition.Filters.BlobTypes[1]
 		Assert-AreEqual $rule2.Definition.Filters.PrefixMatch $policy.Rules[1].Definition.Filters.PrefixMatch
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[0].Name $policy.Rules[1].Definition.Filters.BlobIndexMatch[0].Name
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[0].Value $policy.Rules[1].Definition.Filters.BlobIndexMatch[0].Value
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[1].Name $policy.Rules[1].Definition.Filters.BlobIndexMatch[1].Name
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[1].Value $policy.Rules[1].Definition.Filters.BlobIndexMatch[1].Value
 		Assert-AreEqual $rule3.Enabled $policy.Rules[2].Enabled
 		Assert-AreEqual $rule3.Name $policy.Rules[2].Name
 		Assert-AreEqual $rule3.Definition.Actions.BaseBlob $policy.Rules[2].Definition.Actions.BaseBlob
@@ -1138,6 +1144,10 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[0] $policy.Rules[1].Definition.Filters.BlobTypes[0]
 		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[1] $policy.Rules[1].Definition.Filters.BlobTypes[1]
 		Assert-AreEqual $rule2.Definition.Filters.PrefixMatch $policy.Rules[1].Definition.Filters.PrefixMatch
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[0].Name $policy.Rules[1].Definition.Filters.BlobIndexMatch[0].Name
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[0].Value $policy.Rules[1].Definition.Filters.BlobIndexMatch[0].Value
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[1].Name $policy.Rules[1].Definition.Filters.BlobIndexMatch[1].Name
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[1].Value $policy.Rules[1].Definition.Filters.BlobIndexMatch[1].Value
 		Assert-AreEqual $rule3.Enabled $policy.Rules[2].Enabled
 		Assert-AreEqual $rule3.Name $policy.Rules[2].Name
 		Assert-AreEqual $rule3.Definition.Actions.BaseBlob $policy.Rules[2].Definition.Actions.BaseBlob
@@ -1178,6 +1188,10 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[0] $policy.Rules[1].Definition.Filters.BlobTypes[0]
 		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[1] $policy.Rules[1].Definition.Filters.BlobTypes[1]
 		Assert-AreEqual $rule2.Definition.Filters.PrefixMatch $policy.Rules[1].Definition.Filters.PrefixMatch
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[0].Name $policy.Rules[1].Definition.Filters.BlobIndexMatch[0].Name
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[0].Value $policy.Rules[1].Definition.Filters.BlobIndexMatch[0].Value
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[1].Name $policy.Rules[1].Definition.Filters.BlobIndexMatch[1].Name
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[1].Value $policy.Rules[1].Definition.Filters.BlobIndexMatch[1].Value
 		Assert-AreEqual $rule3.Enabled $policy.Rules[2].Enabled
 		Assert-AreEqual $rule3.Name $policy.Rules[2].Name
 		Assert-AreEqual $rule3.Definition.Actions.BaseBlob $policy.Rules[2].Definition.Actions.BaseBlob

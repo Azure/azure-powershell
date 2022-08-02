@@ -31,27 +31,19 @@ Enable https delivery of the custom domain.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enable an AzureCDN custom domain under the AzureCDN endpoint
 ```powershell
-{{ Add code here }}
+$customDomainHttpsParameter = New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn  -ProtocolType TLS12
+Enable-AzCdnCustomDomainCustomHttps -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -CustomDomainName customdomain001 -CustomDomainHttpsParameter $customDomainHttpsParameter
 ```
 
 ```output
-{{ Add output here }}
+Name            ResourceGroupName
+----            -----------------
+customdomain001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Enable an AzureCDN custom domain under the AzureCDN endpoint
 
 ## PARAMETERS
 
@@ -245,12 +237,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CUSTOMDOMAINHTTPSPARAMETER <ICustomDomainHttpsParameters>: The JSON object that contains the properties to secure a custom domain.
+CUSTOMDOMAINHTTPSPARAMETER `<ICustomDomainHttpsParameters>`: The JSON object that contains the properties to secure a custom domain.
   - `CertificateSource <CertificateSource>`: Defines the source of the SSL certificate.
   - `ProtocolType <ProtocolType>`: Defines the TLS extension protocol that is used for secure delivery.
   - `[MinimumTlsVersion <MinimumTlsVersion?>]`: TLS protocol version that will be used for Https
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

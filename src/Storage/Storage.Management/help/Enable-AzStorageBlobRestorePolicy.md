@@ -37,6 +37,7 @@ The **Enable-AzStorageBlobRestorePolicy** cmdlet enables Blob Restore Policy for
 ## EXAMPLES
 
 ### Example 1: Enables Blob Restore Policy for the Azure Storage Blob service on a Storage account
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> Enable-AzStorageBlobDeleteRetentionPolicy -ResourceGroupName "myresourcegoup" -StorageAccountName "mystorageaccount" -RetentionDays 5
 

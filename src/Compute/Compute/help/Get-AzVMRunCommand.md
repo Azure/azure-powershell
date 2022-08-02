@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Compute-help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmruncommand
 schema: 2.0.0
@@ -24,21 +24,21 @@ Get-AzVMRunCommand -CommandId <String> -Location <String> [-SubscriptionId <Stri
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List1
+```
+Get-AzVMRunCommand [-SubscriptionId <String[]>] -ResourceGroupName <String> -VMName <String> [-Expand <String>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### Get1
 ```
-Get-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName <String>
- [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVMRunCommand [-SubscriptionId <String[]>] -ResourceGroupName <String> -RunCommandName <String>
+ -VMName <String> [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
 Get-AzVMRunCommand -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzVMRunCommand -ResourceGroupName <String> -VMName <String> [-SubscriptionId <String[]>]
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -57,11 +57,11 @@ Location Name             Type
 eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
 ```
 
-Get Run Command by its name.
+Get Run Command by it's name.
 
 ### Example 2: Get Run Commands by VM
 ```powershell
-Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname  
+Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname
 ```
 
 ```output
@@ -77,7 +77,7 @@ Get Run Commands by VM name
 ## PARAMETERS
 
 ### -CommandId
-The command ID.
+The command id.
 
 ```yaml
 Type: System.String
@@ -111,7 +111,7 @@ The expand expression to apply on the operation.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
+Parameter Sets: List1, Get1
 Aliases:
 
 Required: False
@@ -142,7 +142,7 @@ The location upon which run commands is queried.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: List, Get
 Aliases:
 
 Required: True
@@ -157,7 +157,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
+Parameter Sets: List1, Get1
 Aliases:
 
 Required: True
@@ -188,7 +188,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, Get1, List, List1
+Parameter Sets: List, Get, List1, Get1
 Aliases:
 
 Required: False
@@ -203,7 +203,7 @@ The name of the virtual machine containing the run command.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1, List1
+Parameter Sets: List1, Get1
 Aliases:
 
 Required: True
@@ -237,7 +237,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IComputeIdentity>: Identity Parameter
+`INPUTOBJECT <IComputeIdentity>`: Identity Parameter
   - `[CommandId <String>]`: The command id.
   - `[GalleryApplicationName <String>]`: The name of the gallery Application Definition to be created or updated. The allowed characters are alphabets and numbers with dots, dashes, and periods allowed in the middle. The maximum length is 80 characters.
   - `[GalleryApplicationVersionName <String>]`: The name of the gallery Application Version to be created. Needs to follow semantic version name pattern: The allowed characters are digit and period. Digits must be within the range of a 32-bit integer. Format: <MajorVersion>.<MinorVersion>.<Patch>
@@ -254,4 +254,3 @@ INPUTOBJECT <IComputeIdentity>: Identity Parameter
   - `[VMScaleSetName <String>]`: The name of the VM scale set.
 
 ## RELATED LINKS
-

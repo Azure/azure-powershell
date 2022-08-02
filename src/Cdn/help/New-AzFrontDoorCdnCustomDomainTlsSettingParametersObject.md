@@ -22,27 +22,20 @@ Create an in-memory object for AFDDomainHttpsParameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AFDDomainHttpsParameters
 ```powershell
-{{ Add code here }}
+$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
 ```
 
 ```output
-{{ Add output here }}
+CertificateType     MinimumTlsVersion
+---------------     -----------------
+CustomerCertificate TLS12
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for AFDDomainHttpsParameters
 
 ## PARAMETERS
 
@@ -112,7 +105,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-SECRET <IResourceReference>: Resource reference to the secret. ie. subs/rg/profile/secret.
+SECRET `<IResourceReference>`: Resource reference to the secret. ie. subs/rg/profile/secret.
   - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS

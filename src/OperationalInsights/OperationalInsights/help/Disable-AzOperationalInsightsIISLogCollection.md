@@ -44,6 +44,7 @@ ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-
 Kind              : IISLogs
 Properties        : {"state":"OnPremiseDisabled"}
 ```
+
  Stops collection of Internet Information Services (IIS) logs from connected computers in a workspace.
 
 ## PARAMETERS

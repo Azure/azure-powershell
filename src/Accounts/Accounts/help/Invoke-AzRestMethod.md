@@ -98,6 +98,55 @@ Content    : {"@odata.context":"https://graph.microsoft.com/v1.0/$metadata#users
 
 Get current signed in user via MicrosoftGraph API. This example is equivalent to `Get-AzADUser -SignedIn`.
 
+### Example 3
+```powershell
+$subscriptionId = (Get-AzContext).Subscription.ID
+Invoke-AzRestMethod -SubscriptionId $subscriptionId -ResourceGroupName "test-group" -ResourceProviderName Microsoft.AppPlatform -ResourceType Spring,apps -Name "test-spring-service" -ApiVersion 2020-07-01 -Method GET
+```
+
+```output
+Headers    : {[Cache-Control, System.String[]], [Pragma, System.String[]], [Vary, System.String[]], [x-ms-request-id,
+             System.String[]]…}
+Version    : 1.1
+StatusCode : 200
+Method     : GET
+Content    : {"value":[{"properties":{"public":true,"url":"https://test-spring-service-demo.azuremicroservices.io","provisioni
+             ngState":"Succeeded","activeDeploymentName":"default","fqdn":"test-spring-service.azuremicroservices.io","httpsOn
+             ly":false,"createdTime":"2022-06-22T02:57:13.272Z","temporaryDisk":{"sizeInGB":5,"mountPath":"/tmp"},"pers
+             istentDisk":{"sizeInGB":0,"mountPath":"/persistent"}},"type":"Microsoft.AppPlatform/Spring/apps","identity
+             ":null,"location":"eastus","id":"/subscriptions/$subscriptionId/resourceGroups/test-group/providers/Microsoft.AppPlatform/Spring/test-spring-service/apps/demo","name":"demo"},{"properties":{"publ
+             ic":false,"provisioningState":"Succeeded","activeDeploymentName":"deploy01","fqdn":"test-spring-service.azuremicr
+             oservices.io","httpsOnly":false,"createdTime":"2022-06-22T07:46:54.9Z","temporaryDisk":{"sizeInGB":5,"moun
+             tPath":"/tmp"},"persistentDisk":{"sizeInGB":0,"mountPath":"/persistent"}},"type":"Microsoft.AppPlatform/Sp
+             ring/apps","identity":null,"location":"eastus","id":"/subscriptions/$subscriptionId/r
+             esourceGroups/test-group/providers/Microsoft.AppPlatform/Spring/test-spring-service/apps/pwsh01","name":"pwsh0
+             1"}]}
+```
+
+List apps under spring service "test-spring-service"
+
+### Example 4
+```powershell
+$subscriptionId = (Get-AzContext).Subscription.ID
+Invoke-AzRestMethod -SubscriptionId $subscriptionId -ResourceGroupName "test-group" -ResourceProviderName Microsoft.AppPlatform -ResourceType Spring -Name "test-spring-service","demo" -ApiVersion 2020-07-01 -Method GET
+```
+
+```output
+Headers    : {[Cache-Control, System.String[]], [Pragma, System.String[]], [Vary, System.String[]], [x-ms-request-id,
+             System.String[]]…}
+Version    : 1.1
+StatusCode : 200
+Method     : GET
+Content    : {"properties":{"public":true,"url":"https://test-spring-service-demo.azuremicroservices.io","provisioningState":"
+             Succeeded","activeDeploymentName":"default","fqdn":"test-spring-service.azuremicroservices.io","httpsOnly":false,
+             "createdTime":"2022-06-22T02:57:13.272Z","temporaryDisk":{"sizeInGB":5,"mountPath":"/tmp"},"persistentDisk
+             ":{"sizeInGB":0,"mountPath":"/persistent"}},"type":"Microsoft.AppPlatform/Spring/apps","identity":null,"lo
+             cation":"eastus","id":"/subscriptions/$subscriptionId/resourceGroups/test-group/pr
+             oviders/Microsoft.AppPlatform/Spring/test-spring-service/apps/demo","name":"demo"}
+```
+
+Get app "demo" under Spring cloud service "test-spring-service"
+
 ## PARAMETERS
 
 ### -ApiVersion

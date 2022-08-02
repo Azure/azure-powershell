@@ -29,6 +29,7 @@ using Microsoft.Azure.Management.KeyVault;
 using Microsoft.Azure.Graph.RBAC;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.Commands.TestFx.Recorder;
 
 namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 {
@@ -88,18 +89,6 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
                         {"Microsoft.Insights", null},
                         {"Microsoft.OperationalInsights", null}
                     }
-                ).WithManagementClients(
-                    GetSqlClient,
-                    GetMonitorManagementClient,
-                    GetCommonMonitorManagementClient,
-                    GetEventHubManagementClient,
-                    GetOperationalInsightsManagementClient,
-                    GetResourcesClient,
-                    GetGraphClient,
-                    GetGraphClientVersion1_6,
-                    GetKeyVaultClient,
-                    GetNetworkClient,
-                    GetStorageManagementClient
                 )
                 .Build();
         }
@@ -138,7 +127,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
         {
             GraphRbacManagementClient graphClient = context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
             graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
-            graphClient.TenantID = TestEnvironmentFactory.GetTestEnvironment().Tenant;
+            graphClient.TenantID = TestEnvironmentFactory.GetTestEnvironment().TenantId;
             return graphClient;
         }
 
@@ -150,7 +139,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                tenantId = TestEnvironmentFactory.GetTestEnvironment().Tenant;
+                tenantId = TestEnvironmentFactory.GetTestEnvironment().TenantId;
                 HttpMockServer.Variables[TenantIdKey] = tenantId;
             }
             else if (HttpMockServer.Mode == HttpRecorderMode.Playback)

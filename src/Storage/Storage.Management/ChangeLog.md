@@ -18,6 +18,15 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.8.0
+* Added check for storage account sas token is secured with the storage account key.
+    -  `New-AzStorageAccountSASToken`
+* Supported Management Policy rule filter BlobIndexMatch
+    -  Added a new cmdlet `New-AzStorageAccountManagementPolicyBlobIndexMatchObject`
+    -  Added a new parameter `BlobIndexMatch` in `New-AzStorageAccountManagementPolicyFilter`
+
+## Version 4.7.0
 * Supported BaseBlob DaysAfterCreationGreaterThan in Management Policy
     -  `Add-AzStorageAccountManagementPolicyAction`
 

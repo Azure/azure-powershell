@@ -45,27 +45,12 @@ Available for Verizon Profiles.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Import content of an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
-{{ Add code here }}
+Import-AzCdnEndpointContent -ResourceGroupName testps-rg-verzion -ProfileName verzioncdn001 -EndpointName verzionendptest001 -ContentPath @("/movies/hello","/pictures/pic1.jpg") 
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Import content of an AzureCDN Endpoint under the AzureCDN profile, only some skus support this action
 
 ## PARAMETERS
 
@@ -290,10 +275,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONTENTFILEPATH <ILoadParameters>: Parameters required for content load.
+CONTENTFILEPATH `<ILoadParameters>`: Parameters required for content load.
   - `ContentPath <String[]>`: The path to the content to be loaded. Path should be a relative file URL of the origin.
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

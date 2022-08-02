@@ -14,7 +14,7 @@ Create a Continuous Export configuration of an Application Insights component.
 
 ```
 Set-AzApplicationInsightsContinuousExport -ExportId <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DestinationType <String>] [-DisableConfiguration] [-DocumentType  <String[]>]
+ [-SubscriptionId <String>] [-DestinationType <String>] [-DisableConfiguration] [-DocumentType <String[]>]
  [-NotificationQueueEnabled <String>] [-NotificationQueueUri <String>] [-StorageAccountId <String>]
  [-StorageLocation <String>] [-StorageSASUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -29,9 +29,9 @@ Create a Continuous Export configuration of an Application Insights component.
 ```powershell
 $sastoken = New-AzStorageContainerSASToken -Name testcontainer -Context $context -ExpiryTime (Get-Date).AddYears(50) -Permission w
 $sasuri = "https://teststorageaccount.blob.core.windows.net/testcontainer" + $sastoken
-Set-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test"
--DocumentType "Request","Trace" -ExportId "jlTFEiBg1rkDXOCIeJQ2mB2TxZg=" -StorageAccountId "/subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount" -StorageLocation sourcecentralus
--StorageSASUri $sasuri
+Set-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" `
+-DocumentType "Request","Trace" -ExportId "jlTFEiBg1rkDXOCIeJQ2mB2TxZg=" -StorageAccountId "/subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount" -StorageLocation sourcecentralus `
+-StorageSASUri $sasuri -DestinationType Blob
 ```
 
 Update continuous export configuration "jlTFEiBg1rkDXOCIeJQ2mB2TxZg=" of resource "test" in resource group "testgroup" to export "Request" and "Trace" documents to storage container "testcontainer" in "teststorageaccount".The SAS token have to be valid and have write permission to the container, otherwise continuous export feature won't work.
@@ -85,8 +85,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DocumentType 
-
+### -DocumentType
+The document types to be exported, as comma separated values.
+Allowed values include 'Requests', 'Custom Event', 'Exception', 'Metric', 'Page View', 'Page Load', 'Dependency', 'Performance Counter', 'Availability', 'Trace'.
 
 ```yaml
 Type: System.String[]

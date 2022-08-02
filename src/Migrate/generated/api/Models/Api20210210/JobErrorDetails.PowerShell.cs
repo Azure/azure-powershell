@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="JobErrorDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="JobErrorDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,21 +101,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IServiceError) content.GetValueForProperty("ServiceErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ServiceErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProviderError) content.GetValueForProperty("ProviderErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ProviderErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ErrorLevel = (string) content.GetValueForProperty("ErrorLevel",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ErrorLevel, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).CreationTime = (global::System.DateTime?) content.GetValueForProperty("CreationTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).CreationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).TaskId = (string) content.GetValueForProperty("TaskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).TaskId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailCode = (string) content.GetValueForProperty("ServiceErrorDetailCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailMessage = (string) content.GetValueForProperty("ServiceErrorDetailMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailPossibleCaus = (string) content.GetValueForProperty("ServiceErrorDetailPossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailPossibleCaus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailRecommendedAction = (string) content.GetValueForProperty("ServiceErrorDetailRecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailRecommendedAction, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailActivityId = (string) content.GetValueForProperty("ServiceErrorDetailActivityId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailActivityId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorCode = (int?) content.GetValueForProperty("ProviderErrorDetailErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorMessage = (string) content.GetValueForProperty("ProviderErrorDetailErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorId = (string) content.GetValueForProperty("ProviderErrorDetailErrorId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailPossibleCaus = (string) content.GetValueForProperty("ProviderErrorDetailPossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailPossibleCaus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailRecommendedAction = (string) content.GetValueForProperty("ProviderErrorDetailRecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailRecommendedAction, global::System.Convert.ToString);
+            if (content.Contains("ServiceErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IServiceError) content.GetValueForProperty("ServiceErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ServiceErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProviderErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProviderError) content.GetValueForProperty("ProviderErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ProviderErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ErrorLevel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ErrorLevel = (string) content.GetValueForProperty("ErrorLevel",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ErrorLevel, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreationTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).CreationTime = (global::System.DateTime?) content.GetValueForProperty("CreationTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).CreationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("TaskId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).TaskId = (string) content.GetValueForProperty("TaskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).TaskId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceErrorDetailCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailCode = (string) content.GetValueForProperty("ServiceErrorDetailCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceErrorDetailMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailMessage = (string) content.GetValueForProperty("ServiceErrorDetailMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceErrorDetailPossibleCaus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailPossibleCaus = (string) content.GetValueForProperty("ServiceErrorDetailPossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailPossibleCaus, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceErrorDetailRecommendedAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailRecommendedAction = (string) content.GetValueForProperty("ServiceErrorDetailRecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailRecommendedAction, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceErrorDetailActivityId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailActivityId = (string) content.GetValueForProperty("ServiceErrorDetailActivityId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailActivityId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderErrorDetailErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorCode = (int?) content.GetValueForProperty("ProviderErrorDetailErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ProviderErrorDetailErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorMessage = (string) content.GetValueForProperty("ProviderErrorDetailErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderErrorDetailErrorId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorId = (string) content.GetValueForProperty("ProviderErrorDetailErrorId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderErrorDetailPossibleCaus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailPossibleCaus = (string) content.GetValueForProperty("ProviderErrorDetailPossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailPossibleCaus, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderErrorDetailRecommendedAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailRecommendedAction = (string) content.GetValueForProperty("ProviderErrorDetailRecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailRecommendedAction, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -131,21 +178,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IServiceError) content.GetValueForProperty("ServiceErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ServiceErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProviderError) content.GetValueForProperty("ProviderErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ProviderErrorTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ErrorLevel = (string) content.GetValueForProperty("ErrorLevel",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ErrorLevel, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).CreationTime = (global::System.DateTime?) content.GetValueForProperty("CreationTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).CreationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).TaskId = (string) content.GetValueForProperty("TaskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).TaskId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailCode = (string) content.GetValueForProperty("ServiceErrorDetailCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailCode, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailMessage = (string) content.GetValueForProperty("ServiceErrorDetailMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailPossibleCaus = (string) content.GetValueForProperty("ServiceErrorDetailPossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailPossibleCaus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailRecommendedAction = (string) content.GetValueForProperty("ServiceErrorDetailRecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailRecommendedAction, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailActivityId = (string) content.GetValueForProperty("ServiceErrorDetailActivityId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailActivityId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorCode = (int?) content.GetValueForProperty("ProviderErrorDetailErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorMessage = (string) content.GetValueForProperty("ProviderErrorDetailErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorMessage, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorId = (string) content.GetValueForProperty("ProviderErrorDetailErrorId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailPossibleCaus = (string) content.GetValueForProperty("ProviderErrorDetailPossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailPossibleCaus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailRecommendedAction = (string) content.GetValueForProperty("ProviderErrorDetailRecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailRecommendedAction, global::System.Convert.ToString);
+            if (content.Contains("ServiceErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IServiceError) content.GetValueForProperty("ServiceErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ServiceErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ProviderErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IProviderError) content.GetValueForProperty("ProviderErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ProviderErrorTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ErrorLevel"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ErrorLevel = (string) content.GetValueForProperty("ErrorLevel",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ErrorLevel, global::System.Convert.ToString);
+            }
+            if (content.Contains("CreationTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).CreationTime = (global::System.DateTime?) content.GetValueForProperty("CreationTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).CreationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("TaskId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).TaskId = (string) content.GetValueForProperty("TaskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).TaskId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceErrorDetailCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailCode = (string) content.GetValueForProperty("ServiceErrorDetailCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailCode, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceErrorDetailMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailMessage = (string) content.GetValueForProperty("ServiceErrorDetailMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceErrorDetailPossibleCaus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailPossibleCaus = (string) content.GetValueForProperty("ServiceErrorDetailPossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailPossibleCaus, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceErrorDetailRecommendedAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailRecommendedAction = (string) content.GetValueForProperty("ServiceErrorDetailRecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailRecommendedAction, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceErrorDetailActivityId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailActivityId = (string) content.GetValueForProperty("ServiceErrorDetailActivityId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ServiceErrorDetailActivityId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderErrorDetailErrorCode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorCode = (int?) content.GetValueForProperty("ProviderErrorDetailErrorCode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorCode, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ProviderErrorDetailErrorMessage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorMessage = (string) content.GetValueForProperty("ProviderErrorDetailErrorMessage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorMessage, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderErrorDetailErrorId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorId = (string) content.GetValueForProperty("ProviderErrorDetailErrorId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailErrorId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderErrorDetailPossibleCaus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailPossibleCaus = (string) content.GetValueForProperty("ProviderErrorDetailPossibleCaus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailPossibleCaus, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderErrorDetailRecommendedAction"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailRecommendedAction = (string) content.GetValueForProperty("ProviderErrorDetailRecommendedAction",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobErrorDetailsInternal)this).ProviderErrorDetailRecommendedAction, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

@@ -141,6 +141,7 @@ FullyQualifiedDomainName : server02.database.windows.net
 This command gets information about all the Azure SQL Database servers assigned to the resource group ResourceGroup01 that start with "server".
 
 ### Example 5: Get all instances of SQL Server assigned to a resource group with external administrator information
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
 
@@ -185,6 +186,7 @@ AzureADOnlyAuthentication : True
 This command gets information about all the Azure SQL Database servers assigned to the resource group ResourceGroup01.
 
 ### Example 6: Get information about an Azure SQL Database server with external administrator information
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $val = Get-AzSqlServer -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -ExpandActiveDirectoryAdministrator
 ResourceGroupName        : resourcegroup01

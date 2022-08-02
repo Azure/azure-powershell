@@ -69,7 +69,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
             {
                 try
                 {
-                    var result = Client.DeleteNetworkRuleSet(ResourceGroupName, Name);
+                    var result = UtilityClient.DeleteNetworkRuleSet(ResourceGroupName, Name);
 
                     if (PassThru.IsPresent)
                     {

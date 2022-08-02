@@ -43,6 +43,7 @@ psdemo-wps          eastus        Standard_S1
 
 
 ### Example 2: Create a Web PubSub resource with more parameters and show the result
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $wps = New-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
 -Location eastus -SkuName Standard_S1 -IdentityType SystemAssigned -LiveTraceEnabled true `

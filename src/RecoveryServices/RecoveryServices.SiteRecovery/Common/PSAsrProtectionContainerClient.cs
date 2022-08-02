@@ -100,6 +100,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets Azure Site Recovery Protection Container.
         /// </summary>
+        /// <param name="fabricName">Fabric Name</param>
         /// <returns>Protection Container list response</returns>
         public List<ProtectionContainer> GetAzureSiteRecoveryProtectionContainer(
             string fabricName)
@@ -127,7 +128,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Gets Azure Site Recovery Protection Container.
         /// </summary>
-        /// <param name="fabricName"></param>
+        /// <param name="fabricName">Fabric Name</param>
         /// <param name="protectionContainerName">Protection Container ID</param>
         /// <returns>Protection Container response</returns>
         public ProtectionContainer GetAzureSiteRecoveryProtectionContainer(

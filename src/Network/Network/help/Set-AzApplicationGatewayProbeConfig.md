@@ -14,7 +14,7 @@ Sets the health probe configuration on an existing Application Gateway.
 
 ```
 Set-AzApplicationGatewayProbeConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -Protocol <String> [-HostName <String>] -Path <String> -Interval <Int32> -Timeout <Int32>
+ -Protocol <String> [-HostName <String>] [-Path <String>] -Interval <Int32> -Timeout <Int32>
  -UnhealthyThreshold <Int32> [-PickHostNameFromBackendHttpSettings] [-MinServers <Int32>]
  [-Match <PSApplicationGatewayProbeHealthResponseMatch>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -163,7 +163,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -193,7 +193,7 @@ Specifies the protocol used to send probe.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Http, Https
+Accepted values: Http, Https, TCP, TLS
 
 Required: True
 Position: Named

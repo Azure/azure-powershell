@@ -34,27 +34,32 @@ Gets an existing origin within an endpoint.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List AzureCDN origins under the AzureCDN endpoint
 ```powershell
-{{ Add code here }}
+Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName
+----    -----------------
+origin1 testps-rg-da16jm
+origin2 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+List AzureCDN origins under the AzureCDN endpoint
 
-### Example 2: {{ Add title here }}
+### Example 2: Get an AzureCDN origin under the AzureCDN endpoint
 ```powershell
-{{ Add code here }}
+Get-AzCdnOrigin -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name origin1
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName
+----    -----------------
+origin1 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Get an AzureCDN origin under the AzureCDN endpoint
 
 ## PARAMETERS
 
@@ -184,7 +189,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

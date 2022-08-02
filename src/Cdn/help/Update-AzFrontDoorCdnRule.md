@@ -32,27 +32,18 @@ Updates an existing delivery rule within a rule set.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an AzureFrontDoor delivery rule within the specified rule set
 ```powershell
-{{ Add code here }}
+Update-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1 -Order 99
 ```
 
 ```output
-{{ Add output here }}
+Name  ResourceGroupName
+----  -----------------
+rule1 testps-rg-da16jm
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -316,7 +307,7 @@ ACTION <IDeliveryRuleAction1[]>: A list of actions that are executed when all th
 CONDITION <IDeliveryRuleCondition[]>: A list of conditions that must be matched for the actions to be executed
   - `Name <MatchVariable>`: The name of the condition for the delivery rule.
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

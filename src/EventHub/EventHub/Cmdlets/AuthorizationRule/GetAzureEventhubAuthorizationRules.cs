@@ -63,13 +63,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     if (!string.IsNullOrEmpty(Name))
                     {
                         // Get a Namespace AuthorizationRule
-                        PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetNamespaceAuthorizationRule(ResourceGroupName, Namespace, Name);
+                        PSSharedAccessAuthorizationRuleAttributes authRule = UtilityClient.GetNamespaceAuthorizationRule(ResourceGroupName, Namespace, Name);
                         WriteObject(authRule);
                     }
                     else
                     {
                         // Get all Namespace AuthorizationRules
-                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListNamespaceAuthorizationRules(ResourceGroupName, Namespace);
+                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = UtilityClient.ListNamespaceAuthorizationRules(ResourceGroupName, Namespace);
                         WriteObject(authRuleList, true);
                     }
 
@@ -78,13 +78,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     if (!string.IsNullOrEmpty(Name))
                     {
                         // Get a Eventhub AuthorizationRule
-                        PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetEventHubAuthorizationRules(ResourceGroupName, Namespace, Eventhub, Name);
+                        PSSharedAccessAuthorizationRuleAttributes authRule = UtilityClient.GetEventHubAuthorizationRules(ResourceGroupName, Namespace, Eventhub, Name);
                         WriteObject(authRule);
                     }
                     else
                     {
                         // Get all Eventhub AuthorizationRules
-                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListEventHubAuthorizationRules(ResourceGroupName, Namespace, Eventhub);
+                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = UtilityClient.ListEventHubAuthorizationRules(ResourceGroupName, Namespace, Eventhub);
                         WriteObject(authRuleList, true);
                     }
 
@@ -93,13 +93,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     if (!string.IsNullOrEmpty(Name))
                     {
                         // Get a Alias AuthorizationRule
-                        PSSharedAccessAuthorizationRuleAttributes authRule = Client.GetAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName, Name);
+                        PSSharedAccessAuthorizationRuleAttributes authRule = UtilityClient.GetAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName, Name);
                         WriteObject(authRule);
                     }
                     else
                     {
                         // Get all Alias AuthorizationRules
-                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = Client.ListAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName);
+                        IEnumerable<PSSharedAccessAuthorizationRuleAttributes> authRuleList = UtilityClient.ListAliasAuthorizationRules(ResourceGroupName, Namespace, AliasName);
                         WriteObject(authRuleList, true);
                     }
             }

@@ -3,7 +3,11 @@
     Custom rule for command name.
     .NOTES
     File: CommandName.psm1
+    Import-Module should be at the beginning of the rule to avoid thread conflict.
 #>
+Get-Item "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1" | Import-Module -Global
+
+. $PSScriptRoot\..\utils.ps1
 
 enum RuleNames {
     Invalid_Cmdlet
@@ -24,10 +28,6 @@ function Measure-CommandName {
         [System.Management.Automation.Language.ScriptBlockAst]
         $ScriptBlockAst
     )
-    begin{
-        $modulePath = "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1"
-        Get-Item $modulePath | Import-Module -Global
-    }
     process {
         $Results = @()
         $global:CommandParameterPair = @()
@@ -51,7 +51,7 @@ function Measure-CommandName {
                     if ($CommandAst.InvocationOperator -eq "Unknown") {
                         $CommandName = $CommandAst.CommandElements[0].Extent.Text
                         $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
-                        if ($null -eq $GetCommand) {
+                        if($null -eq $GetCommand){
                             # CommandName is not valid.
                             $global:CommandParameterPair += @{
                                 CommandName = $CommandName
@@ -60,25 +60,25 @@ function Measure-CommandName {
                             }
                             return $true
                         }
-                        else {
-                            if ($GetCommand.CommandType -eq "Alias") {
-                                # CommandName is an alias.
-                                $global:CommandParameterPair += @{
-                                    CommandName = $CommandName
-                                    ParameterName = "<is an alias>"
-                                    ModuleCmdletExNum = $ModuleCmdletExNum
-                                }
-                                return $true
+
+                        $ActualName = $GetCommand.Name
+                        if ($GetCommand.CommandType -eq "Alias") {
+                            # CommandName is an alias.
+                            $global:CommandParameterPair += @{
+                                CommandName = $CommandName
+                                ParameterName = "<is an alias>"
+                                ModuleCmdletExNum = $ModuleCmdletExNum
                             }
-                            if ($CommandName -cnotmatch "^([A-Z][a-z]+)+-([A-Z][a-z0-9]*)+$") {
-                                # CommandName doesn't follow the Capitalization Conventions.
-                                $global:CommandParameterPair += @{
-                                    CommandName = $CommandName
-                                    ParameterName = "<doesn't follow the Capitalization Conventions>"
-                                    ModuleCmdletExNum = $ModuleCmdletExNum
-                                }
-                                return $true
+                            return $true
+                        }
+                        if ($CommandName -cne $ActualName) {
+                            # CommandName doesn't follow the Capitalization Conventions.
+                            $global:CommandParameterPair += @{
+                                CommandName = "$CommandName#@#$ActualName"
+                                ParameterName = "<doesn't follow the Capitalization Conventions>"
+                                ModuleCmdletExNum = $ModuleCmdletExNum
                             }
+                            return $true
                         }
                     }
                 }
@@ -104,20 +104,16 @@ function Measure-CommandName {
                     $Severity = "Warning"
                 }
                 if ($global:CommandParameterPair[$i].ParameterName -eq "<doesn't follow the Capitalization Conventions>") {
-                    $Message = "$($CommandParameterPair[$i].CommandName) doesn't follow the Capitalization Conventions."
+                    $CommandName, $CorrectName = $CommandParameterPair[$i].CommandName -split "#@#"
+                    $Message = "$CommandName doesn't follow the Capitalization Conventions."
                     $RuleName = [RuleNames]::Capitalization_Conventions_Violated
                     $RuleSuppressionID = "5101"
-                    $name = $($CommandParameterPair[$i].CommandName)
-                    $textInfo = (Get-Culture).TextInfo
-                    $CorrectName = $textInfo.ToTitleCase(($name -split "-")[0])
-                    $CorrectName += "-Az"
-                    $CorrectName += $textInfo.ToTitleCase(($name -split "Az")[1])
                     $Remediation = "Check the Capitalization Conventions. Suggest format: $CorrectName"
-                    $Severity = "Warning"
+                    $Severity = "Error"
                 }
                 $ModuleCmdletExNum = $($CommandParameterPair[$i].ModuleCmdletExNum)
                 $Result = [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
-                    Message = "$ModuleCmdletExNum-@$Message@$Remediation";
+                    Message = "$ModuleCmdletExNum-#@#$Message#@#$Remediation";
                     Extent = $Asts[$i].Extent;
                     RuleName = $RuleName;
                     Severity = $Severity

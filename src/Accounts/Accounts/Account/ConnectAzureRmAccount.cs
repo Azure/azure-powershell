@@ -670,7 +670,7 @@ namespace Microsoft.Azure.Commands.Profile
             try
             {
 #endif
-                AzureSessionInitializer.InitializeAzureSession();
+                AzureSessionInitializer.InitializeAzureSession(WriteInitializationWarnings);
                 AzureSessionInitializer.MigrateAdalCache(AzureSession.Instance, GetAzureContextContainer, WriteInitializationWarnings);
 #if DEBUG
                 if (!TestMockSupport.RunningMocked)

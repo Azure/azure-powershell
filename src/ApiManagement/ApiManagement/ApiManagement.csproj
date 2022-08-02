@@ -22,4 +22,6 @@
     <Compile Include="$(StorageToolsPath)Adapters\WindowsAzure.Storage.8\AzureContextAdapterExtensions.cs" />
   </ItemGroup>
 
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

@@ -464,7 +464,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Map internal BackupStorageRedundancy value (GRS/LRS/ZRS) to external (Geo/Local/Zone)
+        /// Map internal BackupStorageRedundancy value (GZRS/GRS/LRS/ZRS) to external (GeoZone/Geo/Local/Zone)
         /// </summary>
         /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
         /// <returns>internal backupStorageRedundancy</returns>
@@ -472,6 +472,8 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         {
             switch (backupStorageRedundancy)
             {
+                case "GZRS":
+                    return "GeoZone";
                 case "GRS":
                     return "Geo";
                 case "LRS":
@@ -484,7 +486,7 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
         }
 
         /// <summary>
-        /// Map external BackupStorageRedundancy value (Geo/Local/Zone) to internal (GRS/LRS/ZRS)
+        /// Map external BackupStorageRedundancy value (GeoZone/Geo/Local/Zone) to internal (GZRS/GRS/LRS/ZRS)
         /// </summary>
         /// <param name="backupStorageRedundancy">Backup storage redundancy</param>
         /// <returns>internal backupStorageRedundancy</returns>
@@ -497,6 +499,8 @@ namespace Microsoft.Azure.Commands.Sql.ReplicationLink.Services
 
             switch (backupStorageRedundancy.ToLower())
             {
+                case "geozone":
+                    return "GZRS";
                 case "geo":
                     return "GRS";
                 case "local":

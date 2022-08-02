@@ -19,8 +19,21 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.1.0
+* Removed the warning messages for MSGraph migration [#18856]
+* [Breaking Change] Renamed cmdlet from `{}-AzADAppFederatedIdentityCredential` to `{}-AzADAppFederatedCredential`
+* [Breaking Change] Renamed `-Id` to `-FederatedCredentialId` for
+    - `Get-AzADAppFederatedCredential`
+    - `Remove-AzADAppFederatedCredential`
+    - `Update-AzADAppFederatedCredential`
+* Upgraded API version from Beta to 1.0
+
+## Version 6.0.1
+* Added feedback when deleting role assignments even if passthru is not used
 * Fixed relative path failure in -AsJob scenario [#18084]
 * Fixed logic of `createtime` and `ChangedTime` in `Get-AzResource --ExpandProperties`. [#18206]
+* Fixed role assignment latency for `New-AzADServicePrincipal` [#16777]
 
 ## Version 6.0.0
 * Added cmdlet for Application federated identity credential

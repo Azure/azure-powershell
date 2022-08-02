@@ -36,27 +36,19 @@ Updates an existing origin group within an endpoint.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an AzureCDN origin group under the AzureCDN endpoint
 ```powershell
-{{ Add code here }}
+$updateHealthProbeParameters = New-AzCdnHealthProbeParametersObject -ProbeIntervalInSecond 60 -ProbePath "/new-check-health.aspx" -ProbeProtocol "Http" -ProbeRequestType "HEAD"
+Update-AzCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -EndpointName endptest001 -Name org001 -HealthProbeSetting $updateHealthProbeParameters
 ```
 
 ```output
-{{ Add output here }}
+Name   ResourceGroupName
+----   -----------------
+org001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update an AzureCDN origin group under the AzureCDN endpoint
 
 ## PARAMETERS
 
@@ -313,13 +305,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin that is used to determine the health of the origin.
+HEALTHPROBESETTING `<IHealthProbeParameters>`: Health probe settings to the origin that is used to determine the health of the origin.
   - `[ProbeIntervalInSecond <Int32?>]`: The number of seconds between health probes.Default is 240sec.
   - `[ProbePath <String>]`: The path relative to the origin that is used to determine the health of the origin.
   - `[ProbeProtocol <ProbeProtocol?>]`: Protocol to use for health probe.
   - `[ProbeRequestType <HealthProbeRequestType?>]`: The type of health probe request that is made.
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path
@@ -337,7 +329,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
 ORIGIN <IResourceReference[]>: The source of the content being delivered via CDN within given origin group.
   - `[Id <String>]`: Resource ID.
 
-RESPONSEBASEDORIGINERRORDETECTIONSETTING <IResponseBasedOriginErrorDetectionParameters>: The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
+RESPONSEBASEDORIGINERRORDETECTIONSETTING `<IResponseBasedOriginErrorDetectionParameters>`: The JSON object that contains the properties to determine origin health using real requests/responses. This property is currently not supported.
   - `[HttpErrorRange <IHttpErrorRangeParameters[]>]`: The list of Http status code ranges that are considered as server errors for origin and it is marked as unhealthy.
     - `[Begin <Int32?>]`: The inclusive start of the http status code range.
     - `[End <Int32?>]`: The inclusive end of the http status code range.

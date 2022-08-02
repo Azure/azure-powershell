@@ -80,8 +80,8 @@ function New-AzApplicationInsightsContinuousExport {
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
         [System.String[]]
         # The document types to be exported, as comma separated values.
-        # Allowed values include 'Requests', 'Event', 'Exceptions', 'Metrics', 'PageViews', 'PageViewPerformance', 'Rdd', 'PerformanceCounters', 'Availability', 'Messages'.
-        ${DocumentType },
+        # Allowed values include 'Requests', 'Custom Event', 'Exception', 'Metric', 'Page View', 'Page Load', 'Dependency', 'Performance Counter', 'Availability', 'Trace'.
+        ${DocumentType},
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Category('Body')]
@@ -154,7 +154,7 @@ function New-AzApplicationInsightsContinuousExport {
         if ($PSBoundParameters['StorageAccountId']) {
             $PSBoundParameters['DestinationStorageSubscriptionId'] = [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Utilities]::ParseSubscriptionFromId($PSBoundParameters['StorageAccountId'])
         }
-        $PSBoundParameters['RecordType'] = [System.String]::Join(",", $PSBoundParameters['DocumentType'])
+        $PSBoundParameters['RecordType'] = [System.String]::Join(",", [Microsoft.Azure.PowerShell.Cmdlets.ApplicationInsights.Models.Utilities]::ConvertToRecordType($PSBoundParameters['DocumentType']))
         $null = $PSBoundParameters.Remove('DocumentType')
         $PSBoundParameters['IsEnabled'] = 'true'
 

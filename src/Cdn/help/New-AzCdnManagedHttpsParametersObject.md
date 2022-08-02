@@ -23,27 +23,18 @@ Create an in-memory object for CdnManagedHttpsParameters.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for AzureCDN CdnManagedHttpsParameters
 ```powershell
-{{ Add code here }}
+New-AzCdnManagedHttpsParametersObject -CertificateSourceParameterCertificateType Dedicated -CertificateSource Cdn -ProtocolType ServerNameIndication
 ```
 
 ```output
-{{ Add output here }}
+CertificateSource MinimumTlsVersion ProtocolType
+----------------- ----------------- ------------
+Cdn                                 TLS12
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for AzureCDN CdnManagedHttpsParameters
 
 ## PARAMETERS
 

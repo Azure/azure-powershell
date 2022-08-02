@@ -26,12 +26,12 @@ Creates a new application group within an eventhub namespace with throttling pol
 
 ### Example 1
 ```powershell
-PS C:\> $policy1 = New-AzEventHubThrottlingPolicyConfig -Name policy1 -MetricId IncomingBytes -RateLimitThreshold 12345
+$policy1 = New-AzEventHubThrottlingPolicyConfig -Name policy1 -MetricId IncomingBytes -RateLimitThreshold 12345
 
-PS C:\> $policy2 = New-AzEventHubThrottlingPolicyConfig -Name policy2 -MetricId IncomingBytes -RateLimitThreshold 12345
+$policy2 = New-AzEventHubThrottlingPolicyConfig -Name policy2 -MetricId IncomingMessages -RateLimitThreshold 23416
 
-PS C:\> New-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup 
-		-ClientAppGroupIdentifier SASKeyName=myauthkey -ThrottlingPolicy $policy1, $policy2
+New-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup `
+-ClientAppGroupIdentifier SASKeyName=myauthkey -ThrottlingPolicyConfig $policy1, $policy2
 ```
 
 Creates an application group with two throttling policies.

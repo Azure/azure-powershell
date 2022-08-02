@@ -34,27 +34,33 @@ Gets an existing delivery rule within a rule set.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: list AzureFrontDoor delivery rules within the specified rule set
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001
 ```
 
 ```output
-{{ Add output here }}
+Name      ResourceGroupName
+----      -----------------
+testrule1 testps-rg-da16jm
+testrule2 testps-rg-da16jm
+rule1     testps-rg-da16jm
 ```
 
-{{ Add description here }}
+list AzureFrontDoor delivery rules within the specified rule set
 
-### Example 2: {{ Add title here }}
+### Example 2: Get an AzureFrontDoor delivery rule within the specified rule set
 ```powershell
-{{ Add code here }}
+Get-AzFrontDoorCdnRule -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -RuleSetName ruleset001 -Name rule1
 ```
 
 ```output
-{{ Add output here }}
+Name  ResourceGroupName
+----  -----------------
+rule1 testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Get an AzureFrontDoor delivery rule within the specified rule set
 
 ## PARAMETERS
 
@@ -184,7 +190,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path
