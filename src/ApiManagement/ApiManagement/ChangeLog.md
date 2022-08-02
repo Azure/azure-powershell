@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added warning message for upcoming breaking change: make parameter Sku property from Enum to String
+
 
 ## Version 3.0.0
 
@@ -25,7 +27,7 @@
 * Updated APIM .Net SDK version to 8.0.0 / Api Version 2021-08-01
 
 ## Version 2.3.2
-Added warning message for upcoming breaking change.
+* Added warning message for upcoming breaking change.
 
 ## Version 2.3.1
 * Fixed a bug in `Get-AzApiManagementTenantGitAccess` cmdlet.
