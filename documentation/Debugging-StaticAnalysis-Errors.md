@@ -65,8 +65,9 @@ Example issues occur when your changed markdown files in the `help` folder (_e.g
 
 ## Trouble Shotting for Unexpected Errors in Example Issues
 ### Scenario 1: Unexpected errors caused by the mixture of outputs and codes 
-If you have put outputs in the code block, then the outputs will be recognized as invalid PowerShell syntax. Please check whether you have splitted outputs from codes.The following shows the correct scene.
+If you have put outputs in the code block, then the outputs will be recognized as invalid PowerShell syntax. Please check whether you have split outputs from codes. The following shows the correct scene. Note that if the example has no output, you don't need to add an output block.
 ### Example: Codes and outputs are split correctly
+````
 ```powershell
 Get-AzConfig -EnableDataCollection
 ```
@@ -76,9 +77,10 @@ Key                           Value Applies To Scope       Help Message
 ---                           ----- ---------- -----       ------------
 EnableDataCollection          False Az         CurrentUser When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the custom…
 ```
-
-If outputs cannot be separated from codes, then please add the tag `<!-- Skip: Output cannot be splitted from code -->` to the next line of the example title and in front of the code block. The following is an example. It will look more clear in raw markdown file.
+````
+If outputs cannot be separated from codes, then please add the tag `<!-- Skip: Output cannot be splitted from code -->` to the next line of the example title and in front of the code block. The following is an example. 
 ### Example: Add skip tag to the example whose outputs cannot be separated from codes
+````
 <!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $Context = Get-AzBatchAccountKey -AccountName myaccount
@@ -87,6 +89,7 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGH
 $Context.SecondaryAccountKey
 ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMN==
 ```
+````
 
 ### Scenario 2: Unexpected errors caused by unpaired quotes or brackets
 Please check whether you have matched the correct number of **quotes** and **brackets**. The common error messages in this scenario are as follows.
