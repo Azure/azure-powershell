@@ -81,13 +81,13 @@ function Get-ExamplesDetailsFromMd {
         if($exampleLine.StartsWith("###")){
             if(!$firstExample -and $needRecord){
                 if(!$codeBlockComplete -or !$outputBlockComplete -or !$otherTypeBlockComplete){
-                    $RuleName = "BlockPromptsNotMatched"
+                    $RuleName = "BlockIdentifiersNotMatched"
                     $ProblemID = 5064
                     $Description = "The start and end identifiers of the code block do not match."
                     $Remediation = "Please check whether the start or end identifier (triple backticks) of the code block is missing."
                     $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
                     if(!$codeBlockComplete){
-                        $exampleCodes = "#BlockPromptsNotMatched"
+                        $exampleCodes = "#BlockIdentifiersNotMatched"
                     }
                 }
                 $examplesProperties += Set-ExampleProperties $exampleNumber $exampleTitle $exampleCodes $exampleOutputs $hasOutputBlock $exampleDescriptions
@@ -185,13 +185,13 @@ function Get-ExamplesDetailsFromMd {
     }
     if($needRecord){
         if(!$codeBlockComplete -or !$outputBlockComplete -or !$otherTypeBlockComplete){
-            $RuleName = "BlockPromptsNotMatched"
+            $RuleName = "BlockIdentifiersNotMatched"
             $ProblemID = 5064
             $Description = "The start and end identifiers of the code block do not match."
             $Remediation = "Please check whether the start or end identifier (triple backticks) of the code block is missing."
             $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
             if(!$codeBlockComplete){
-                $exampleCodes = "#BlockPromptsNotMatched"
+                $exampleCodes = "#BlockIdentifiersNotMatched"
             }
         }
         $examplesProperties += Set-ExampleProperties $exampleNumber $exampleTitle $exampleCodes $exampleOutputs $hasOutputBlock $exampleDescriptions
