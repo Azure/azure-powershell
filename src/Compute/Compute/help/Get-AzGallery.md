@@ -29,6 +29,12 @@ Get-AzGallery [-GalleryUniqueName <String>] [-Scope <String>] -Location <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### CommunityGalleryParameterSet
+```
+Get-AzGallery [-GalleryPublicName <String>] -Location <String> [-Community]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get or list galleries.
 
@@ -178,6 +184,21 @@ Get a gallery's sharing profile.
 
 ## PARAMETERS
 
+### -Community
+List community galleries.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CommunityGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -190,6 +211,36 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Expand
+The expand query option to apply on the operation. Possible value(s): "SharingProfile/Groups"
+
+```yaml
+Type: System.String
+Parameter Sets: DefaultParameter
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -GalleryPublicName
+The public name of the Shared Image Gallery.
+
+```yaml
+Type: System.String
+Parameter Sets: CommunityGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -213,7 +264,7 @@ Location of the Shared Image Gallery.
 
 ```yaml
 Type: System.String
-Parameter Sets: SharedGalleryParameterSet
+Parameter Sets: SharedGalleryParameterSet, CommunityGalleryParameterSet
 Aliases:
 
 Required: True
@@ -274,21 +325,6 @@ Specifies galleries shared to subscription or tenant.
 ```yaml
 Type: System.String
 Parameter Sets: SharedGalleryParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Expand
-The expand query option to apply on the operation. Possible value(s): "SharingProfile/Groups"
-
-```yaml
-Type: System.String
-Parameter Sets: DefaultParameter
 Aliases:
 
 Required: False

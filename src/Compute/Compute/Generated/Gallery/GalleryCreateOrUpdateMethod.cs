@@ -262,7 +262,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             // if sub or tenant is present return error 
                             if (this.IsParameterBound(c => c.Subscription) || this.IsParameterBound(c => c.Tenant))
                             {
-                                throw new Exception("Parameter '-Reset' cannot be used with parameters '-Tenant' or '-Subscription'.");
+                                throw new Exception("Parameter '-Reset' cannot be used with parameters '-Tenant', '-Subscription' or 'Community'.");
                             }
                             else
                             {
@@ -332,6 +332,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             }
                             sharingUpdate.Groups.Add(sharingProfile);
                             sharingUpdate.OperationType = "Remove";
+                        }
+                        if (this.IsParameterBound(c => c.Community))
+                        {
+                            if(this.Community.IsPresent)
+                                sharingUpdate.OperationType = "EnableCommunity";
                         }
 
                     }
@@ -432,7 +437,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Update sharing profile of the gallery.")]
-        public bool Share { get; set; }
+        public SwitchParameter Share { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Update sharing profile of the gallery to community.")]
+        public SwitchParameter Community { get; set; }
 
         [Parameter(
             Mandatory = false,
