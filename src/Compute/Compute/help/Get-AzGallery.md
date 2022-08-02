@@ -229,7 +229,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-<<<<<<< HEAD
 ### -GalleryPublicName
 The public name of the Shared Image Gallery.
 
@@ -245,8 +244,6 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-=======
->>>>>>> origin/main
 ### -GalleryUniqueName
 The unique name of the Shared Image Gallery.
 
