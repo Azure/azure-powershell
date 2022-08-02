@@ -83,8 +83,8 @@ function Get-ExamplesDetailsFromMd {
                 if(!$codeBlockComplete -or !$outputBlockComplete -or !$otherTypeBlockComplete){
                     $RuleName = "BlockPromptsNotMatched"
                     $ProblemID = 5064
-                    $Description = "The prompts of the block are not matched."
-                    $Remediation = "Please check whether the start prompt or the terminator of the block is missing."
+                    $Description = "The start and end identifiers of the code block do not match."
+                    $Remediation = "Please check whether the start or end identifier (triple backticks) of the code block is missing."
                     $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
                     if(!$codeBlockComplete){
                         $exampleCodes = "#BlockPromptsNotMatched"
@@ -126,8 +126,8 @@ function Get-ExamplesDetailsFromMd {
                 if($blockType -notin $blockTypeList){
                     $RuleName = "BlockTypeUnsupported"
                     $ProblemID = 5062
-                    $Description = "The type of the tag after prompts `````` cannot be recognized."
-                    $Remediation = "Please check the type of the tag for this block."
+                    $Description = "The language identifier $blockType is not supported."
+                    $Remediation = "Please check the spelling or contact Azure PowerShell team."
                     $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
                 }
                 $otherTypeBlockComplete = $false
@@ -142,7 +142,7 @@ function Get-ExamplesDetailsFromMd {
                     else{
                         $RuleName = "UnclearBlockType"
                         $ProblemID = 5063
-                        $Description = "Too many blocks without declared type."
+                        $Description = "The code blocks are missing language identifiers."
                         $Remediation = "The type of the code block needs to be clearly indicated with 'powershell' or 'output'."
                         $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
                         $otherTypeBlockComplete = $false
@@ -187,8 +187,8 @@ function Get-ExamplesDetailsFromMd {
         if(!$codeBlockComplete -or !$outputBlockComplete -or !$otherTypeBlockComplete){
             $RuleName = "BlockPromptsNotMatched"
             $ProblemID = 5064
-            $Description = "The prompts of the block are not matched."
-            $Remediation = "Please check whether the start prompt or the terminator of the block is missing."
+            $Description = "The start and end identifiers of the code block do not match."
+            $Remediation = "Please check whether the start or end identifier (triple backticks) of the code block is missing."
             $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
             if(!$codeBlockComplete){
                 $exampleCodes = "#BlockPromptsNotMatched"
@@ -491,7 +491,7 @@ function Get-ScriptAnalyzerResult {
                 Severity = $Severity
                 Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 ProblemID = 5200
-                Remediation = "Unexpected Error. Please check https://github.com/Azure/azure-powershell/blob/master/documentation/Debugging-StaticAnalysis-Errors.md for more details."
+                Remediation = "Unexpected Error. Please check [Trouble Shotting for Unexpected Errors in Example Issues](https://github.com/Azure/azure-powershell/blob/master/documentation/Debugging-StaticAnalysis-Errors.md#Troubleshotting-Example-Issues) for more details."
             }
         }
         $errors += $result 

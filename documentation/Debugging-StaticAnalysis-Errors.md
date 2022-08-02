@@ -63,9 +63,9 @@ Example issues occur when your changed markdown files in the `help` folder (_e.g
 - Copy each of the errors you would like to suppress directly from the ExampleIssues.csv file output in the CI pipeline artifacts
 - Push the changes to the .csv file and ensure the errors no longer show up in the `ExampleIssues.csv` file output from the CI pipeline artifacts.
 
-## Trouble Shotting for Unexpected Errors in Example Issues
+## Troubleshotting Example Issues
 ### Scenario 1: Unexpected errors caused by the mixture of outputs and codes 
-If you have put outputs in the code block, then the outputs will be recognized as invalid PowerShell syntax. Please check whether you have split outputs from codes. The following shows the correct scene. Note that if the example has no output, you don't need to add an output block.
+PowerShell code and output are required to be in sepreated code blocks (```). If you have put outputs in the code block, then the outputs will be recognized as invalid PowerShell syntax. Please make sure you have splitted outputs from codes. The following shows the correct scene. Note that if the example has no output, you don't need to add an output block.
 ### Example: Codes and outputs are split correctly
 ````
 ```powershell
