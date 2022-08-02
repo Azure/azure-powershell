@@ -81,11 +81,14 @@ function Get-ExamplesDetailsFromMd {
         if($exampleLine.StartsWith("###")){
             if(!$firstExample -and $needRecord){
                 if(!$codeBlockComplete -or !$outputBlockComplete -or !$otherTypeBlockComplete){
-                    $RuleName = "BlockNotClosed"
-                    $ProblemID = 5065
-                    $Description = "The block is not closed."
-                    $Remediation = "Please check whether the closed `````` is missing in code block or output block."
+                    $RuleName = "BlockPromptsNotMatched"
+                    $ProblemID = 5064
+                    $Description = "The prompts of the block are not matched."
+                    $Remediation = "Please check whether the start prompt or the terminator of the block is missing."
                     $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+                    if(!$codeBlockComplete){
+                        $exampleCodes = "#BlockPromptsNotMatched"
+                    }
                 }
                 $examplesProperties += Set-ExampleProperties $exampleNumber $exampleTitle $exampleCodes $exampleOutputs $hasOutputBlock $exampleDescriptions
             }
@@ -123,7 +126,7 @@ function Get-ExamplesDetailsFromMd {
                 if($blockType -notin $blockTypeList){
                     $RuleName = "BlockTypeUnsupported"
                     $ProblemID = 5062
-                    $Description = "The type of the tag after `````` cannot be recognized."
+                    $Description = "The type of the tag after prompts `````` cannot be recognized."
                     $Remediation = "Please check the type of the tag for this block."
                     $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
                 }
@@ -157,20 +160,9 @@ function Get-ExamplesDetailsFromMd {
                     # Find the tail of other-type block
                     $otherTypeBlockComplete = $true
                 }
-                else{
-                    $RuleName = "NestedBlock"
-                    $ProblemID = 5064
-                    $Description = "The blocks are nested."
-                    $Remediation = "Make sure the blocks are closed in sequence."
-                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
-                }
             }
             elseif(($codeBlockComplete + $outputBlockComplete + $otherTypeBlockComplete)-le 1){
-                $RuleName = "NestedBlock"
-                $ProblemID = 5064
-                $Description = "The blocks are nested."
-                $Remediation = "Make sure the blocks are closed in sequence."
-                $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+                # Report BlockPromptsNotMatched later
             }
             elseif(!$codeBlockComplete){
                 # Find codes in code block
@@ -193,11 +185,14 @@ function Get-ExamplesDetailsFromMd {
     }
     if($needRecord){
         if(!$codeBlockComplete -or !$outputBlockComplete -or !$otherTypeBlockComplete){
-            $RuleName = "BlockNotClosed"
-            $ProblemID = 5065
-            $Description = "The block is not closed."
-            $Remediation = "Please check whether the closed `````` is missing in code block or output block."
+            $RuleName = "BlockPromptsNotMatched"
+            $ProblemID = 5064
+            $Description = "The prompts of the block are not matched."
+            $Remediation = "Please check whether the start prompt or the terminator of the block is missing."
             $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+            if(!$codeBlockComplete){
+                $exampleCodes = "#BlockPromptsNotMatched"
+            }
         }
         $examplesProperties += Set-ExampleProperties $exampleNumber $exampleTitle $exampleCodes $exampleOutputs $hasOutputBlock $exampleDescriptions
     }

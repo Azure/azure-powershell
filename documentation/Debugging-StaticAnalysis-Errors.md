@@ -64,8 +64,8 @@ Example issues occur when your changed markdown files in the `help` folder (_e.g
 - Push the changes to the .csv file and ensure the errors no longer show up in the `ExampleIssues.csv` file output from the CI pipeline artifacts.
 
 ## Trouble Shotting for Unexpected Errors in Example Issues
-### Scenario 1
-Please check whether you have splitted outputs from codes.
+### Scenario 1: Unexpected errors caused by the mixture of outputs and codes 
+If you have put outputs in the code block, then the outputs will be recognized as invalid PowerShell syntax. Please check whether you have splitted outputs from codes.
 
 The following shows the scene: outputs in codes.
 ### Example
@@ -100,7 +100,7 @@ $Context.SecondaryAccountKey
 ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMN==
 ```
 
-### Scenario 2 
+### Scenario 2: Unexpected errors caused by unpaired quotes or brackets
 Please check whether you have matched the correct number of **quotes** and **brackets**. The common error messages in this scenario are as follows.
 - MissingEndParenthesisInExpression: Missing closing ')' in expression.
 - MissingEndCurlyBrace: Missing closing '}' in statement block or type definition.
