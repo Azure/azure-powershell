@@ -93,4 +93,11 @@ directive:
       verb: Get
       subject: ActiveApplication
     remove: true
+   - where:      
+      verb: Remove
+      parameter-name: Force
+      subject: Updated description for clarity.
+    set:
+      parameter-description: 'Specify to force userSession deletion.'
+   
 ```
