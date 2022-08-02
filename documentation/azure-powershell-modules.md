@@ -45,6 +45,7 @@ Cosmos DB                             | `Az.CosmosDB`                           
 Cost Management                       | `Az.CostManagement`                     | [![CostManagement]][CostManagementGallery]
 Custom Location                       | `Az.CustomLocation`                     | [![CustomLocation]][CustomLocationGallery]
 Custom Resource Providers             | `Az.CustomProviders`                    | [![CustomProviders]][CustomProvidersGallery]
+Dashboard                             | `Az.Dashboard`                          | [![Dashboard]][DashboardGallery]
 Data Box                              | `Az.DataBox`                            | [![DataBox]][DataBoxGallery]
 Data Box Edge (Stack Edge)            | `Az.DataBoxEdge`                        | [![DataBoxEdge]][DataBoxEdgeGallery]
 Databricks                            | `Az.Databricks`                         | [![Databricks]][DatabricksGallery]
@@ -107,6 +108,7 @@ Network                               | `Az.Network`                            
 NetworkFunction                       | `Az.NetworkFunction`                    | [![NetworkFunction]][NetworkFunctionGallery]
 Notification Hubs                     | `Az.NotificationHubs`                   | [![NotificationHubs]][NotificationHubsGallery]
 Operational Insights                  | `Az.OperationalInsights`                | [![OperationalInsights]][OperationalInsightsGallery]
+Orbital                               | `Az.Orbital`                            | [![Orbital]][OrbitalGallery]
 Virtual Network peering               | `Az.Peering`                            | [![Peering]][PeeringGallery]
 Policy Insights                       | `Az.PolicyInsights`                     | [![PolicyInsights]][PolicyInsightsGallery]
 Portal                                | `Az.Portal`                             | [![Portal]][PortalGallery]
@@ -187,6 +189,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [CostManagement]:             https://img.shields.io/powershellgallery/v/Az.CostManagement.svg?style=flat-square&label=Az.CostManagement
 [CustomLocation]:             https://img.shields.io/powershellgallery/v/Az.CustomLocation.svg?style=flat-square&label=Az.CustomLocation
 [CustomProviders]:            https://img.shields.io/powershellgallery/v/Az.CustomProviders.svg?style=flat-square&label=Az.CustomProviders
+[Dashboard]:                  https://img.shields.io/powershellgallery/v/Az.Dashboard.svg?style=flat-square&label=Az.Dashboard
 [DataBox]:                    https://img.shields.io/powershellgallery/v/Az.DataBox.svg?style=flat-square&label=Az.DataBox
 [DataBoxEdge]:                https://img.shields.io/powershellgallery/v/Az.DataBoxEdge.svg?style=flat-square&label=Az.DataBoxEdge
 [Databricks]:                 https://img.shields.io/powershellgallery/v/Az.Databricks.svg?style=flat-square&label=Az.Databricks
@@ -249,6 +252,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [NetworkFunction]:            https://img.shields.io/powershellgallery/v/Az.NetworkFunction.svg?style=flat-square&label=Az.NetworkFunction
 [NotificationHubs]:           https://img.shields.io/powershellgallery/v/Az.NotificationHubs.svg?style=flat-square&label=Az.NotificationHubs
 [OperationalInsights]:        https://img.shields.io/powershellgallery/v/Az.OperationalInsights.svg?style=flat-square&label=Az.OperationalInsights
+[Orbital]:                    https://img.shields.io/powershellgallery/v/Az.Orbital.svg?style=flat-square&label=Az.Orbital
 [Peering]:                    https://img.shields.io/powershellgallery/v/Az.Peering.svg?style=flat-square&label=Az.Peering
 [PolicyInsights]:             https://img.shields.io/powershellgallery/v/Az.PolicyInsights.svg?style=flat-square&label=Az.PolicyInsights
 [Portal]:                     https://img.shields.io/powershellgallery/v/Az.Portal.svg?style=flat-square&label=Az.Portal
@@ -327,6 +331,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [CostManagementGallery]:             https://www.powershellgallery.com/packages/Az.CostManagement/
 [CustomLocationGallery]:             https://www.powershellgallery.com/packages/Az.CustomLocation/
 [CustomProvidersGallery]:            https://www.powershellgallery.com/packages/Az.CustomProviders/
+[DashboardGallery]:                  https://www.powershellgallery.com/packages/Az.Dashboard/
 [DataBoxGallery]:                    https://www.powershellgallery.com/packages/Az.DataBox/
 [DataBoxEdgeGallery]:                https://www.powershellgallery.com/packages/Az.DataBoxEdge/
 [DatabricksGallery]:                 https://www.powershellgallery.com/packages/Az.Databricks/
@@ -389,6 +394,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [NetworkFunctionGallery]:            https://www.powershellgallery.com/packages/Az.NetworkFunction/
 [NotificationHubsGallery]:           https://www.powershellgallery.com/packages/Az.NotificationHubs/
 [OperationalInsightsGallery]:        https://www.powershellgallery.com/packages/Az.OperationalInsights/
+[OrbitalGallery]:                    https://www.powershellgallery.com/packages/Az.Orbital/
 [PeeringGallery]:                    https://www.powershellgallery.com/packages/Az.Peering/
 [PolicyInsightsGallery]:             https://www.powershellgallery.com/packages/Az.PolicyInsights/
 [PortalGallery]:                     https://www.powershellgallery.com/packages/Az.Portal/
