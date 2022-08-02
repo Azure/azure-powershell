@@ -14,10 +14,10 @@ if(($null -eq $TestName) -or ($TestName -contains 'Unregister-AzStorageMoverAgen
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-# TODO: Add test for Unregister-AzStorageMoverAgent.
-# This test will be added last since agent cannot be created with ARM. There's limited resource of agents.
 Describe 'Unregister-AzStorageMoverAgent' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Unregister-AzStorageMoverAgent -Name $env.AgentName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent -Force
+        $agents =  Get-AzStorageMoverAgent -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent
+        $agents.Name | Should -Not -Contain $env.AgentName
     }
 }

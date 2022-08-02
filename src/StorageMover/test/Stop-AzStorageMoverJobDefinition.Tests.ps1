@@ -14,13 +14,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzStorageMoverJobDefinit
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-# TODO: Add test when server is ready. 
 Describe 'Stop-AzStorageMoverJobDefinition' {
-    It 'Stop' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'StopViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Stop' {
+        $job = Start-AzStorageMoverJobDefinition -JobDefinitionName $env.JobDefinitionName -ProjectName $env.ProjectName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent
+        $job | Should -Not -Be $null
+        $job = Stop-AzStorageMoverJobDefinition -JobDefinitionName $env.JobDefinitionName -ProjectName $env.ProjectName -ResourceGroupName $env.ResourceGroupName -StorageMoverName $env.StorageMoverNameWithAgent
+        $job | Should -Not -Be $null
     }
 }
