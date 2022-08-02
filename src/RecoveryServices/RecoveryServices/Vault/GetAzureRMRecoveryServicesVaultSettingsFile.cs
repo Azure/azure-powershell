@@ -554,6 +554,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                 {
                     var aadDetails = vaultCertificateResponse.Properties as ResourceCertificateAndAadDetails;
 
+                    string aadAudience = aadDetails.AadAudience;
+                    if (string.IsNullOrEmpty(aadAudience))
+                    {
+                        aadAudience = string.Format(CultureInfo.InvariantCulture,
+                            @"https://RecoveryServiceVault/{0}/{1}/{2}",
+                            Vault.Location,
+                            Vault.Name,
+                            aadDetails.ResourceId);
+                    }
+
                     var vaultCreds = new RSBackupVaultAADCreds
                     {
                         SubscriptionId = subscriptionId,
@@ -562,6 +572,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         ResourceId = aadDetails.ResourceId.Value,
                         AadAuthority = aadDetails.AadAuthority,
                         AadTenantId = aadDetails.AadTenantId,
+                        AadAudience = aadAudience,
                         ServicePrincipalClientId = aadDetails.ServicePrincipalClientId,
                         IdMgmtRestEndpoint = aadDetails.AzureManagementEndpointAudience,
                         ProviderNamespace = PSRecoveryServicesClient.ProductionRpNamespace,
@@ -569,8 +580,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         Location = Vault.Location,
                         Version = VaultCredentialVersionAad,
                         ResourceType = RecoveryServicesVaultType,
-                        AgentLinks = GetAgentLinks(),
-                        AadAudience = aadDetails.AadAudience
+                        AgentLinks = GetAgentLinks()
                     };
 
                     var serializer = new DataContractSerializer(typeof(RSBackupVaultAADCreds));
