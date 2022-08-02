@@ -139,6 +139,8 @@ function cleanupEnv() {
     
     Write-Host -ForegroundColor Magenta "Removing associations"
 
+    <#
+
     #Remove associations
     $remove_association1 = @{
         SecurityPerimeterName = $env.tmpNsp1
@@ -148,6 +150,9 @@ function cleanupEnv() {
 
     Remove-AzNetworkSecurityPerimeterAssociation @remove_association1
 
+    #>
+
+    
     $remove_associationDelete1 = @{
         SecurityPerimeterName = $env.tmpNspDelBase1
         ResourceGroupName = $env.rgname
@@ -175,17 +180,19 @@ function cleanupEnv() {
 
     Remove-AzNetworkSecurityPerimeterAssociation @remove_association2
 
+    Write-Host -ForegroundColor Magenta "Done"
 
-    Write-Host -ForegroundColor Magenta "Sleep 60"
 
-    Start-Sleep -Seconds 60
+#    Write-Host -ForegroundColor Magenta "Sleep 60"
 
-    Write-Host -ForegroundColor Magenta "Removing RG"
+#    Start-Sleep -Seconds 60
+
+#    Write-Host -ForegroundColor Magenta "Removing RG"
 
     #Remove resourceGroup
-    Remove-AzResourceGroup -Name $env.rgname
+#    Remove-AzResourceGroup -Name $env.rgname
 
-    Write-Host -ForegroundColor Magenta "Removed RG"
+#    Write-Host -ForegroundColor Magenta "Removed RG"
 
 }
 
