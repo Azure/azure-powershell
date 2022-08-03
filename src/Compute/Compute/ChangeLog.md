@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added Disk Delete Optional parameter to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
 
 ## Version 4.30.0
 * Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion` 
