@@ -40,7 +40,7 @@ Operation to update an exiting App.
 
 ### Example 1: Update Spring Cloud App by name
 ```powershell
-Update-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -ActiveDeploymentName default 
+Update-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway -AddonConfig @{'test' = 'value1'}
 ```
 
 ```output
@@ -73,7 +73,7 @@ Update Spring Cloud App by name.
 
 ### Example 2: Update Spring Cloud App by pipeline
 ```powershell
-Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway | Update-AzSpringCloudApp -ActiveDeploymentName default
+Get-AzSpringCloudApp -ResourceGroupName spring-cloud-rg -ServiceName spring-cloud-service -AppName gateway | Update-AzSpringCloudApp -AddonConfig @{'test' = 'value1'}
 ```
 
 ```output
