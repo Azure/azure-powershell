@@ -252,6 +252,7 @@ namespace Microsoft.Azure.Commands.Network
                 this.SkuTier = this.IsParameterBound(c => c.SkuTier) ? SkuTier : (InputObject.Sku?.Tier != null ? InputObject.Sku.Tier : null);
                 this.PrivateRange = this.IsParameterBound(c => c.PrivateRange) ? PrivateRange : InputObject.PrivateRange;
                 this.ExplicitProxy = this.IsParameterBound(c => c.ExplicitProxy) ? ExplicitProxy : InputObject.ExplicitProxy;
+                this.Tag = this.IsParameterBound(c => c.Tag) ? Tag : InputObject.Tag;
 
                 var firewallPolicy = new PSAzureFirewallPolicy()
                 {
@@ -270,6 +271,7 @@ namespace Microsoft.Azure.Commands.Network
                 AddPremiumProperties(firewallPolicy);
 
                 var azureFirewallPolicyModel = NetworkResourceManagerProfile.Mapper.Map<MNM.FirewallPolicy>(firewallPolicy);
+                azureFirewallPolicyModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
                 // Execute the PUT AzureFirewall Policy call
                 this.AzureFirewallPolicyClient.CreateOrUpdate(ResourceGroupName, Name, azureFirewallPolicyModel);

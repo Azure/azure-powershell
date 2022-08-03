@@ -73,7 +73,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
             {
                 try
                 {
-                    Client.SetEventHubDRConfigurationBreakPairing(ResourceGroupName, Namespace, Name);
+                    UtilityClient.SetEventHubDRConfigurationBreakPairing(ResourceGroupName, Namespace, Name);
                     if (PassThru)
                     {
                         WriteObject(true);

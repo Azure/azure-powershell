@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -187,6 +187,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to https://go.microsoft.com/fwlink/?linkid=2202029.
+        /// </summary>
+        internal static string AzureRMToAzMigrationGuideLink {
+            get {
+                return ResourceManager.GetString("AzureRMToAzMigrationGuideLink", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please provide either a subscription ID or a subscription name..
         /// </summary>
         internal static string BothSubscriptionIdAndNameProvided {
@@ -327,6 +336,60 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string ClientFactoryNotRegisteredRemoval {
             get {
                 return ResourceManager.GetString("ClientFactoryNotRegisteredRemoval", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The command {0} is in the AzureRM PowerShell module, which is outdated. See {1} for instructions to migrate to Az..
+        /// </summary>
+        internal static string CommandNotFoundAzureRM {
+            get {
+                return ResourceManager.GetString("CommandNotFoundAzureRM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The command {0} has been deprecated in {1}..
+        /// </summary>
+        internal static string CommandNotFoundDeprecated {
+            get {
+                return ResourceManager.GetString("CommandNotFoundDeprecated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not found. The most similar Azure PowerShell commands are:.
+        /// </summary>
+        internal static string CommandNotFoundFuzzyStringPlural {
+            get {
+                return ResourceManager.GetString("CommandNotFoundFuzzyStringPlural", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} is not found. The most similar Azure PowerShell command is:.
+        /// </summary>
+        internal static string CommandNotFoundFuzzyStringSingle {
+            get {
+                return ResourceManager.GetString("CommandNotFoundFuzzyStringSingle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The command {0} is part of Azure PowerShell module &quot;{1}&quot; and it is not installed. Run &quot;Install-Module {1}&quot; to install it..
+        /// </summary>
+        internal static string CommandNotFoundModuleNotInstalled {
+            get {
+                return ResourceManager.GetString("CommandNotFoundModuleNotInstalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The command {0} has been deprecated and replaced by {1} in {2}..
+        /// </summary>
+        internal static string CommandNotFoundReplaced {
+            get {
+                return ResourceManager.GetString("CommandNotFoundReplaced", resourceCulture);
             }
         }
         
@@ -916,6 +979,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please refer to the migration guide {0}..
+        /// </summary>
+        internal static string SeeMigrationGuide {
+            get {
+                return ResourceManager.GetString("SeeMigrationGuide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Change the current context.
         /// </summary>
         internal static string SelectContextPrompt {
@@ -1092,6 +1164,15 @@ namespace Microsoft.Azure.Commands.Profile.Properties {
         internal static string SubscriptionNameOrIdNotFound {
             get {
                 return ResourceManager.GetString("SubscriptionNameOrIdNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If a subscription is not specified, please check the configs by `Get-AzConfig`..
+        /// </summary>
+        internal static string SubscriptionNotFouldPleaseCheckConfig {
+            get {
+                return ResourceManager.GetString("SubscriptionNotFouldPleaseCheckConfig", resourceCulture);
             }
         }
         

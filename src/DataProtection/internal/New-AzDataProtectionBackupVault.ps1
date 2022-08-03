@@ -20,18 +20,14 @@ Creates or updates a BackupVault resource belonging to a resource group.
 .Description
 Creates or updates a BackupVault resource belonging to a resource group.
 .Example
-PS C:\> $sub = "xxxx-xxxx-xxxxx"
-PS C:\> $storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
-PS C:\> New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName "MyVault" -StorageSetting $storagesetting -Location westus
-
-ETag IdentityPrincipalId IdentityTenantId IdentityType Location Name    Type
----- ------------------- ---------------- ------------ -------- ----    ----
-                                                       westus   MyVault Microsoft.DataProtection/backupVaults
+$sub = "xxxx-xxxx-xxxxx"
+$storagesetting = New-AzDataProtectionBackupVaultStorageSettingObject -DataStoreType VaultStore -Type LocallyRedundant
+New-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName "MyVault" -StorageSetting $storagesetting -Location westus
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupVaultResource
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupVaultResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -46,6 +42,7 @@ PARAMETER <IBackupVaultResource>: Backup Vault Resource
   [Location <String>]: Resource location.
   [Tag <IDppTrackedResourceTags>]: Resource tags.
     [(Any) <String>]: This indicates any property can be added to this object.
+  [AzureMonitorAlertsForAllJobFailure <AlertsState?>]: 
   [ResourceMoveDetailCompletionTimeUtc <String>]: Completion time in UTC of latest ResourceMove operation attempted. ISO 8601 format.
   [ResourceMoveDetailOperationId <String>]: CorrelationId of latest ResourceMove operation attempted
   [ResourceMoveDetailSourceResourcePath <String>]: ARM resource path of source resource
@@ -59,7 +56,7 @@ STORAGESETTING <IStorageSetting[]>: Storage Settings
 https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupvault
 #>
 function New-AzDataProtectionBackupVault {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupVaultResource])]
 [CmdletBinding(DefaultParameterSetName='Create', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -83,7 +80,7 @@ param(
 
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupVaultResource]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupVaultResource]
     # Backup Vault Resource
     # To construct, see NOTES section for PARAMETER properties and create a hash table.
     ${Parameter},
@@ -91,10 +88,18 @@ param(
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IStorageSetting[]]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IStorageSetting[]]
     # Storage Settings
     # To construct, see NOTES section for STORAGESETTING properties and create a hash table.
     ${StorageSetting},
+
+    [Parameter(ParameterSetName='CreateExpanded')]
+    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState])]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.AlertsState]
+    # Parameter to Enable or Disable built-in azure monitor alerts for job failures.
+    # Security alerts cannot be disabled.
+    ${AzureMonitorAlertsForAllJobFailure},
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
@@ -116,7 +121,7 @@ param(
 
     [Parameter(ParameterSetName='CreateExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IDppTrackedResourceTags]))]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IDppTrackedResourceTags]))]
     [System.Collections.Hashtable]
     # Resource tags.
     ${Tag},
@@ -188,6 +193,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Create = 'Az.DataProtection.private\New-AzDataProtectionBackupVault_Create';
             CreateExpanded = 'Az.DataProtection.private\New-AzDataProtectionBackupVault_CreateExpanded';
@@ -201,6 +207,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -209,15 +216,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -18,19 +18,17 @@ using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.PowerShell.Authenticators;
 using Microsoft.Azure.PowerShell.Authenticators.Factories;
-using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Moq;
-using Xunit;
-using Xunit.Abstractions;
 using System;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
-
-
+using Xunit;
+using Xunit.Abstractions;
 
 namespace Common.Authenticators.Test
 {

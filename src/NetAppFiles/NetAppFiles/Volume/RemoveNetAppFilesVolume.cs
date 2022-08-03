@@ -76,6 +76,11 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
         public string Name { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            HelpMessage = "An option to force delete the volume. Will cleanup resources connected to the particular volume")]
+        public SwitchParameter ForceDelete { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             ParameterSetName = ResourceIdParameterSet,
@@ -135,7 +140,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Volume
 
             if (ShouldProcess(Name, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
             {
-                AzureNetAppFilesManagementClient.Volumes.Delete(ResourceGroupName, AccountName, PoolName, Name);
+                AzureNetAppFilesManagementClient.Volumes.Delete(ResourceGroupName, AccountName, PoolName, Name, ForceDelete = ForceDelete);
                 success = true;
             }
 

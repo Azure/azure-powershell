@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     using Helpers;
     using System;
     using System.Linq;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     public class PsApiManagementRegion
     {
@@ -41,6 +42,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
             PrivateIPAddresses = additionalLocation.PrivateIPAddresses != null ? additionalLocation.PrivateIPAddresses.ToArray() : null;
             Zone = additionalLocation.Zones?.ToArray();
             DisableGateway = additionalLocation.DisableGateway;
+            PublicIpAddressId = additionalLocation.PublicIpAddressId;
+            PlatformVersion = additionalLocation.PlatformVersion;
             if (additionalLocation.VirtualNetworkConfiguration != null)
             {
                 VirtualNetwork = new PsApiManagementVirtualNetwork(additionalLocation.VirtualNetworkConfiguration);
@@ -55,6 +58,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public int Capacity { get; set; }
 
+        [CmdletParameterBreakingChange("Sku", OldParamaterType = typeof(PsApiManagementSku), NewParameterTypeName = nameof(String))]
         public PsApiManagementSku Sku { get; set; }
 
         public string Location { get; set; }
@@ -64,5 +68,13 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
         public string[] Zone { get; set; }
 
         public bool? DisableGateway { get; set; }
+
+        public string PublicIpAddressId { get; set; }
+
+        //
+        // Summary:
+        //     Gets compute Platform Version running the service. Possible values include: 'undetermined',
+        //     'stv1', 'stv2', 'mtv1'
+        public string PlatformVersion { get; set; }
     }
 }

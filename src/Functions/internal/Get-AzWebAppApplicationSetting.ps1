@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Gets the application settings of an app.
+Gets the application settings of an app.
 .Description
-Description for Gets the application settings of an app.
+Gets the application settings of an app.
 .Example
 {{ Add code here }}
 .Example
@@ -109,6 +109,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             List = 'Az.Functions.private\Get-AzWebAppApplicationSetting_List';
         }
@@ -121,6 +122,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -129,15 +131,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -17,7 +17,7 @@ Creates a new or updates an existing action group.
 ```
 Set-AzActionGroup -ResourceGroupName <String> -Name <String> -ShortName <String>
  -Receiver <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]>
- [-DisableGroup] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+ [-DisableGroup] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>] [-Location <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,12 +26,13 @@ Set-AzActionGroup -ResourceGroupName <String> -Name <String> -ShortName <String>
 Set-AzActionGroup -ShortName <String>
  -Receiver <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Insights.OutputClasses.PSActionGroupReceiverBase]>
  [-DisableGroup] [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
+ [-Location <String>]
  -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Set-AzActionGroup [-ShortName <String>] [-DisableGroup]
+Set-AzActionGroup [-ShortName <String>] [-DisableGroup] [-Location <String>]
  [-Tag <System.Collections.Generic.IDictionary`2[System.String,System.String]>]
  -InputObject <PSActionGroupResource> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
@@ -46,7 +47,7 @@ The **Set-AzActionGroup** cmdlet creates a new or updates an existing action gro
 ```powershell
 $email1 = New-AzActionGroupReceiver -Name 'user1' -EmailReceiver -EmailAddress 'user1@example.com'
 $sms1 = New-AzActionGroupReceiver -Name 'user2' -SmsReceiver -CountryCode '1' -PhoneNumber '5555555555'
-Set-AzActionGroup -Name $actionGroupName -ResourceGroup $resourceGroupName -ShortName $shortName -Receiver $email1,$sms1
+Set-AzActionGroup -Name $actionGroupName -ResourceGroupName $resourceGroupName -ShortName $shortName -Receiver $email1,$sms1
 ```
 
 The first two commands create two receivers.
@@ -200,6 +201,9 @@ Accept wildcard characters: False
 
 ### -Tag
 The tags of the action group resource
+
+### -Location
+The location of the action group resource
 
 ```yaml
 Type: System.Collections.Generic.IDictionary`2[System.String,System.String]

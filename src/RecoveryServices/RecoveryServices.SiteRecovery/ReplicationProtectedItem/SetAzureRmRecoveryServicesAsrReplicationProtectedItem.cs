@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [ValidateNotNull]
         public IDictionary<string, string> RecoveryNicTag { get; set; }
 
-        // <summary>
+        /// <summary>
         ///     Gets or sets the resource ID of the availability zone to failover this virtual machine to.
         /// </summary>
         [Parameter]

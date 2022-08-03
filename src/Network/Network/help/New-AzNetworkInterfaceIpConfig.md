@@ -42,11 +42,9 @@ $vnet = Get-AzVirtualNetwork -Name myvnet -ResourceGroupName myrg
 $Subnet = Get-AzVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
 $PIP1 = Get-AzPublicIPAddress -Name "PIP1" -ResourceGroupName "RG1"
 
-$IPConfig1 = New-AzNetworkInterfaceIpConfig -Name "IPConfig-1" -Subnet $Subnet -PublicIpAddress $PIP1
-    -Primary
+$IPConfig1 = New-AzNetworkInterfaceIpConfig -Name "IPConfig-1" -Subnet $Subnet -PublicIpAddress $PIP1 -Primary
 
- $nic = New-AzNetworkInterface -Name $NicName -ResourceGroupName myrg -Location westus
-    -IpConfiguration $IpConfig1
+$nic = New-AzNetworkInterface -Name mynic1 -ResourceGroupName myrg -Location westus -IpConfiguration $IpConfig1
 ```
 
 The first two commands get a virtual network called myvnet and a subnet called mysubnet respectively that were
@@ -60,11 +58,9 @@ The first two commands get a virtual network called myvnet and a subnet called m
 $vnet = Get-AzVirtualNetwork -Name myvnet -ResourceGroupName myrg
 $Subnet = Get-AzVirtualNetworkSubnetConfig -Name mysubnet -VirtualNetwork $vnet
 
-$IPConfig2 = New-AzNetworkInterfaceIpConfig -Name "IP-Config2" -Subnet $Subnet -PrivateIpAddress
-    10.0.0.5
+$IPConfig2 = New-AzNetworkInterfaceIpConfig -Name "IP-Config2" -Subnet $Subnet -PrivateIpAddress 10.0.0.5
 
-$nic = New-AzNetworkInterface -Name mynic1 -ResourceGroupName myrg -Location westus -IpConfiguration
-    $IpConfig2
+$nic = New-AzNetworkInterface -Name mynic1 -ResourceGroupName myrg -Location westus -IpConfiguration $IpConfig2
 ```
 
 The first two commands get a virtual network called myvnet and a subnet called mysubnet respectively that were

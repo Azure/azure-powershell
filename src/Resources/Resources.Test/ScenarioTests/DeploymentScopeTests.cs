@@ -19,42 +19,39 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class DeploymentScopeTests
+    public class DeploymentScopeTests : ResourcesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public DeploymentScopeTests(ITestOutputHelper output)
+        public DeploymentScopeTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionLevelDeploymentEndToEnd()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-SubscriptionScope");
+            TestRunner.RunTestScript("Test-DeploymentEndToEnd-SubscriptionScope");
         }
 
         [Fact()]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ResourceGroupDeploymentEndToEnd()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-ResourceGroup");
+            TestRunner.RunTestScript("Test-DeploymentEndToEnd-ResourceGroup");
         }
 
-        [Fact()]
+        [Fact(Skip = "Need to update test Resources")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ManagementGroupLevelDeploymentEndToEnd()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-ManagementGroup");
+            TestRunner.RunTestScript("Test-DeploymentEndToEnd-ManagementGroup");
         }
 
-        [Fact()]
+        [Fact(Skip = "Need to update test Resources")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TenantLevelDeploymentEndToEnd()
         {
-            ResourcesController.NewInstance.RunPsTest(_logger, "Test-DeploymentEndToEnd-TenantScope");
+            TestRunner.RunTestScript("Test-DeploymentEndToEnd-TenantScope");
         }
     }
 }

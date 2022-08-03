@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -43,5 +42,27 @@ namespace Microsoft.Azure.Commands.OperationalInsights
         public const string SearchResults = "AzureRmOperationalInsightsSearchResults";
 
         public const string ComputerGroup = "AzureRmOperationalInsightsComputerGroup";
+
+        public const string ColumnsExample = "@{ ColName1 = Type; ColName2 = Type; ColName3 = Type}";
+
+        public static string TableDoesNotExist = $"Not found: Workspace {{0}} under resourceGroup {{1}} does not contain the table:{{2}}, please use {CmdletName.NewAzOperationalInsightsTable}.";
+
+        public static string TableAlreadyExist = $"Table: {{0}} under resourceGroup {{1}} and workspace {{2}} already exists, please use {CmdletName.UpdateAzOperationalInsightsTable}.";
+
+        public static string CustomLogTable = "Table name {0} should end with {1}";
+    }
+
+    internal static class CmdletName
+    {
+        public const string NewAzOperationalInsightsTable = "New-AzOperationalInsightsTable";
+        public const string UpdateAzOperationalInsightsTable = "Update-AzOperationalInsightsTable";
+    }
+
+    internal static class TableConsts
+    {
+        public const string CustomLogSuffix = "_CL";
+        public const string SearchResultsSuffix = "_SRCH";
+        public const string RestoredLogsSuffix = "_RST";
+        public const string DateTimeExample = "Sat, 28 Aug 2021 05:29:18 GMT";
     }
 }

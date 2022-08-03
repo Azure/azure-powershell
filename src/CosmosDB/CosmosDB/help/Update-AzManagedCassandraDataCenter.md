@@ -48,10 +48,10 @@ The **Update-AzManagedCassandraDataCenter** cmdlet updates an existing managed C
 ### Example 1
 ```powershell
 Update-AzManagedCassandraDataCenter `
- -ResourceGroupName {resourceGroupName} `
- -ClusterName {clusterName} `
- -DataCenterName {dataCenterName} `
- -NodeCount {N}
+ -ResourceGroupName "resourceGroupName" `
+ -ClusterName "clusterName" `
+ -DataCenterName "dataCenterName" `
+ -NodeCount 3
 ```
 
 ## PARAMETERS

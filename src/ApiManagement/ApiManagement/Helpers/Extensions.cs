@@ -67,6 +67,16 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
                 hostnameConfiguration.Certificate = hostnameConfig.CertificateInformation.GetCertificateInformation();
             }
 
+            if (!string.IsNullOrWhiteSpace(hostnameConfig.CertificateSource))
+            {
+                hostnameConfiguration.CertificateSource = hostnameConfig.CertificateSource;
+            }
+
+            if (!string.IsNullOrWhiteSpace(hostnameConfig.CertificateStatus))
+            {
+                hostnameConfiguration.CertificateStatus = hostnameConfig.CertificateStatus;
+            }
+
             return hostnameConfiguration;
         }
 
@@ -141,6 +151,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Helpers
             {
                 additionalLocation.DisableGateway = region.DisableGateway;
             }
+
+            additionalLocation.PublicIpAddressId = region.PublicIpAddressId;
 
             return additionalLocation;
         }

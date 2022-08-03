@@ -15,9 +15,11 @@
 
 namespace Microsoft.Azure.Commands.ApiManagement.Commands
 {
-    using Microsoft.Azure.Commands.ApiManagement.Models;
-    using ResourceManager.Common.ArgumentCompleters;
+    using System;
     using System.Management.Automation;
+    using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using ResourceManager.Common.ArgumentCompleters;
 
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagementRegion"), OutputType(typeof(PsApiManagement))]
     public class AddAzureApiManagementRegion : AzureApiManagementCmdletBase
@@ -37,6 +39,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
+        [CmdletParameterBreakingChange("Sku", OldParamaterType = typeof(PsApiManagementSku), NewParameterTypeName = nameof(String))]
         [Parameter(
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
@@ -70,6 +73,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             " Default behavior is to make the region live immediately. ")]
         public bool? DisableGateway { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments")]
+        public string PublicIpAddressId { get; set; }
+
         public override void ExecuteCmdlet()
         {
             ExecuteCmdLetWrap(
@@ -81,7 +87,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                         Capacity ?? 1,
                         VirtualNetwork,
                         Zone,
-                        DisableGateway);
+                        DisableGateway,
+                        PublicIpAddressId);
 
                     return ApiManagement;
                 },

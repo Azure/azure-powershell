@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Backup
             ParameterSetName = ObjectParameterSet,
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The snapshot object to remove")]
+            HelpMessage = "The backup object to update")]
         [ValidateNotNullOrEmpty]
         public PSNetAppFilesBackup InputObject { get; set; }
 

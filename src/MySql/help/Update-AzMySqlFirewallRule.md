@@ -73,7 +73,7 @@ These cmdlets update MySql Firewall Rule by identity.
 ### Example 3: Update MySql Firewall Rule by -ClientIPAddress.
 ```powershell
 $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/servers/mysql-test/firewallRules/rule"
-Update-AzMySqlFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
+Update-AzMySqlFirewallRule -InputObject $ID -ClientIPAddress 0.0.0.2
 ```
 
 ```output
@@ -307,7 +307,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+INPUTOBJECT `<IMySqlIdentity>`: Identity Parameter
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.

@@ -17,6 +17,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Models
     public enum PsApiManagementApiType
     {
         Http = 1,
-        Soap = 2
+        Soap = 2,
+        WebSocket = 3,
+        GraphQL = 4
     }
 }

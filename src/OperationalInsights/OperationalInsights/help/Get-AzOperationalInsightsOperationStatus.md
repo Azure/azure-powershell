@@ -24,7 +24,7 @@ Get the status of a long running azure asynchronous operation.
 
 ### Example 1
 ```powershell
-Get-AzOperationalInsightsOperationStatus -Location {location} -OperationId {op_id}
+Get-AzOperationalInsightsOperationStatus -Location "location" -OperationId "op_id"
 ```
 
 gets a long running azure asynchronous operation

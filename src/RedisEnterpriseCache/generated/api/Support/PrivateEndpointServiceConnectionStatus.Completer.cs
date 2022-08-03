@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Pending".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Pending", "Pending", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pending");
+                yield return new global::System.Management.Automation.CompletionResult("'Pending'", "Pending", global::System.Management.Automation.CompletionResultType.ParameterValue, "Pending");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Approved".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Approved", "Approved", global::System.Management.Automation.CompletionResultType.ParameterValue, "Approved");
+                yield return new global::System.Management.Automation.CompletionResult("'Approved'", "Approved", global::System.Management.Automation.CompletionResultType.ParameterValue, "Approved");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Rejected".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Rejected", "Rejected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Rejected");
+                yield return new global::System.Management.Automation.CompletionResult("'Rejected'", "Rejected", global::System.Management.Automation.CompletionResultType.ParameterValue, "Rejected");
             }
         }
     }

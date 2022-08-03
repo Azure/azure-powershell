@@ -12,78 +12,71 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.SecurityInsights.Test.ScenarioTests
 {
-    public class AlertRulesTests
+    public class AlertRulesTests : SecurityInsightsTestRunner
     {
-        private readonly XunitTracingInterceptor _logger;
-
-        public AlertRulesTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AlertRulesTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void ListAlertRules()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSentinelAlertRule-List");
+            TestRunner.RunTestScript("Get-AzSentinelAlertRule-List");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void GetAction()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Get-AzSentinelAlertRule-Get");
+            TestRunner.RunTestScript("Get-AzSentinelAlertRule-Get");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAlertRuleFusion()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSentinelAlertRule-CreateFusion");
+            TestRunner.RunTestScript("New-AzSentinelAlertRule-CreateFusion");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAlertRuleMSIC()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSentinelAlertRule-CreateMSIC");
+            TestRunner.RunTestScript("New-AzSentinelAlertRule-CreateMSIC");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void CreateAlertRuleScheduled()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "New-AzSentinelAlertRule-CreateScheduled");
+            TestRunner.RunTestScript("New-AzSentinelAlertRule-CreateScheduled");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void UpdateAlertRule()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSentinelAlertRule-Update");
+            TestRunner.RunTestScript("Update-AzSentinelAlertRule-Update");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void InputObject()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Update-AzSentinelAlertRule-InputObject");
+            TestRunner.RunTestScript("Update-AzSentinelAlertRule-InputObject");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void RemoveAlertRule()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Remove-AzSentinelAlertRule-Delete");
+            TestRunner.RunTestScript("Remove-AzSentinelAlertRule-Delete");
         }
     }
 }

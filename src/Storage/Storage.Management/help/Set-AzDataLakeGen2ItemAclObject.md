@@ -24,6 +24,7 @@ If the new ACL entry with same AccessControlType/EntityId/DefaultScope not exist
 ## EXAMPLES
 
 ### Example 1: Create an ACL object with 3 ACL entry, and update ACL on a directory
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
@@ -40,6 +41,7 @@ dir1/dir3            True                         2020-03-23 09:34:31Z rwxrw-rw-
 This command creates an ACL object with 3 ACL entries (use -InputObject parameter to add acl entry to existing acl object), and updates ACL on a directory.
 
 ### Example 2: Create an ACL object with 4 ACL entries, and update permission of an existing ACL entry
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 

@@ -25,7 +25,7 @@ The **New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup** creates 
 
 ### Example 1
 ```powershell
-$ruleGroupEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup -RuleGroupName $ruleName -Rules $rule1,$rule2
+$ruleGroupEntry = New-AzApplicationGatewayFirewallPolicyExclusionManagedRuleGroup -RuleGroupName $ruleName -Rule $rule1,$rule2
 ```
 
 Creates an ExclusionManagedRuleGroup entry with group name as $ruleName and Rules as $rule1, $rule2. Assigns the same to $ruleGroupEntry

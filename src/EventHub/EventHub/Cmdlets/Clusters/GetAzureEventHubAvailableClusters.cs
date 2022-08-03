@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         {
             try
             {
-                var availableClusterRegions = Client.GetEventHubAvailableClusters();
+                var availableClusterRegions = UtilityClient.GetEventHubAvailableClusters();
                 WriteObject(availableClusterRegions.ToList(), true);
             }
             catch (Management.EventHub.Models.ErrorResponseException ex)

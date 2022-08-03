@@ -27,7 +27,7 @@ The **New-AzSentinelIncidentOwner** cmdlet creates a Incident Owner object in me
 $Incident = Get-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -IncidentId "MyIncidentId"
 $owner = New-AzSentinelIncidentOwner -AssignedTo "First Last" -Email "user@domain.com" -Objectid "userobjectId" -UserPrincipalName "user@domain.com"
 $Incident.Owner = $owner
-$Incident | Set-AzSentinelIncident
+$Incident | Update-AzSentinelIncident
 ```
 
 This example creates an **IncidentOwner** and updates an Incident to the new owner.

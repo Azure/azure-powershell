@@ -28,11 +28,9 @@
 - Import the `Repo-Tasks` module that helps to perform basic repository tasks
 	- Run the command `Import-Module .\Repo-Tasks.psd1`
 
-## Acquiring TestFramework
+## Azure PowerShell TestFramework
 
-The `TestFramework` library is available on NuGet at https://www.nuget.org/packages/Microsoft.Rest.ClientRuntime.Azure.TestFramework/ .
-
-Instructions on manually downloading the library are available on NuGet, however, `TestFramework` will automatically be downloaded as part of the build process, so the manual download is usually not necessary.
+Azure PowerShell repo now has its own test framework located under `tools\TestFx`, which supports recording all the HTTP requests from behind Azure PowerShell cmdlets and then playing them back.
 
 The target framework of test is .Net Core 3.1, please ensure .Net runtime Microsoft.NETCore.App 3.1 is installed. You can list all installed version via `dotnet --info`.
 
@@ -129,8 +127,7 @@ AZURE_TEST_MODE=Record
 
 ## Record or Playback Tests
 
-- [Run the tests](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/azure-powershell-developer-guide.md#recordingrunning-tests) and make sure that you got a generated `.json` file that matches the test name in the bin folder under the `SessionRecords` folder
-- Copy the `SessionRecords` folder inside the test project and add all `*.json` files in Visual Studio setting "Copy to Output Directory" property to "Copy if newer"
+- [Run the tests](https://github.com/Azure/azure-powershell/blob/main/documentation/development-docs/azure-powershell-developer-guide.md#recordingrunning-tests) and make sure that you got a generated `.json` file that matches the test name under the `SessionRecords` folder in the test project.
 - To assure that the records work fine, delete the connection string (default mode is Playback mode) OR change HttpRecorderMode within the connection string to "Playback" and run the tests
 
 ## Change Test Environment settings at run-time

@@ -19,6 +19,9 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
+
+## Version 4.19.0
 * Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
     - `New-AzFirewallPolicyExplicitProxy`
     - `New-AzFirewallPolicy`
@@ -30,7 +33,7 @@
     - Added `CustomV2` to the validation set of `PolicyType`
     - Added `TLSv1_3` to the validation set of `MinProtocolVersion`
     - Removed validation for null or empty cipher suites list since there can be empty cipher suites list for min protocol version of tls1.3
-* Network Watcher Feature Change: Added new paramenter i.e. AzureVMSS as source endpoint in ConnectionMonitor.
+* Network Watcher Feature Change: Added new parameter i.e. AzureVMSS as source endpoint in ConnectionMonitor.
     - `New-AzNetworkWatcherConnectionMonitorEndpointObject`
 * Added `IdentifyTopFatFlow` parameter to `AzureFirewall`
     - `New-AzFirewall`
@@ -79,7 +82,7 @@
 * Multipool feature change: Updated cmdlets to add new optional property: `P2SConnectionConfiguration` object for specifying multiple Connection configurations.
     - `Update-AzP2sVpnGateway`
     - `New-AzP2sVpnGateway`
-* Multipool feature change: Added new cmdlets to suppport CRUD of Configuration policy groups for VpnServerConfiguration.
+* Multipool feature change: Added new cmdlets to support CRUD of Configuration policy groups for VpnServerConfiguration.
     - `Get-AzVpnServerConfigurationPolicyGroup`
     - `New-AzVpnServerConfigurationPolicyGroup`
     - `Update-AzVpnServerConfigurationPolicyGroup`
@@ -151,9 +154,22 @@
     - `New-AzNetworkManagerManagementGroupConnection` 
     - `Remove-AzNetworkManagerManagementGroupConnection` 
     - `Set-AzNetworkManagerManagementGroupConnection`
+* Made properties `ApplicationSecurityGroups` and `IpConfigurations` for `PrivateEndpoint` updatable in the cmdlet `Set-AzPrivateEndpoint`
+* Onboarded Device Update for IoT Hub to Private Link Common Cmdlets
+
+## Version 4.18.0
+* [Breaking Change] Changed default value of `-PrivateEndpointNetworkPoliciesFlag` to `Disabled` in `Add-AzVirtualNetworkSubnetConfig` and `New-AzVirtualNetworkSubnetConfig`
+* Fixed bugs that cannot parse virtual network encryption paramemters when updating exsiting vnet.
+
+## Version 4.17.0
+* Supported `Microsoft.Network/privateLinkServices` in `Get-AzPrivateEndpointConnection` [#16984].
+* Provided friendly message if resource type is not supported for private endpoint connection features [#17091].
+* Added `DisableIPsecProtection` to `Virtual Network Gateway`.
 
 ## Version 4.16.1
 * Fixed `ArgumentNullException` in `Add-AzureRmRouteConfig` when `RouteTable.Routes` is null.
+* Updated `New-AzFirewallPolicyIntrusionDetection` cmdlet:
+    - Added parameter -PrivateRange
 
 ## Version 4.16.0
 * Added support for retrieving the state of packet capture even when the provisioning state of the packet capture was failure

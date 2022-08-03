@@ -97,7 +97,7 @@ $appName = "testApp"
 $serviceName = "testService1"
 $serviceTypeName = "testStateless"
 $statelessServiceMetric = New-Object -TypeName "Microsoft.Azure.Commands.ServiceFabric.Models.PSServiceMetric" -ArgumentList @("metric1", "Low", 4)
-New-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateless -InstanceCount -1 -PartitionSchemaSingleton -Metric @($statelessServiceMetric) -Verbose
+New-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateless -InstanceCount -1 -PartitionSchemeSingleton -Metric @($statelessServiceMetric) -Verbose
 ```
 
 This example will create a new stateless managed service "testService1" with instance count -1 (on all the nodes).
@@ -127,8 +127,8 @@ $serviceName = "testService3"
 $serviceName2 = "testService2"
 $serviceTypeName = "testStateless"
 $statefulService = Get-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName2
-$statefulServiceCorrelation = New-Object -TypeName "Microsoft.Azure.Commands.ServiceFabric.Models.PSServiceCorrelation" -ArgumentList @("AlignedAffinity, $statefulService.Id)
-New-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateless -InstanceCount 3 -PartitionSchemaSingleton -Correlation @($statefulServiceCorrelation) -Verbose
+$statefulServiceCorrelation = New-Object -TypeName "Microsoft.Azure.Commands.ServiceFabric.Models.PSServiceCorrelation" -ArgumentList @("AlignedAffinity", $statefulService.Id)
+New-AzServiceFabricManagedClusterService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateless -InstanceCount 3 -PartitionSchemeSingleton -Correlation @($statefulServiceCorrelation) -Verbose
 ```
 
 This example will create a new stateless managed service "testService3".

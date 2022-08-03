@@ -20,7 +20,50 @@
 
 -->
 ## Upcoming Release
+* Updated `Update-AzVm` to give constructive error messages when empty variables are passed in parameters. [#15081]
+
+## Version 4.30.0
+* Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion` 
+
+## Version 4.29.0
+* Added image alias 'Win2022AzureEditionCore'
+* Added the `-DisableIntegrityMonitoring` switch parameter to the `New-AzVM` cmdlet. 
+  Changed the default behavior for `New-AzVM` and `New-AzVmss` when these conditions are met:
+  1) `-DisableIntegrityMonitoring` is not true.
+  2) `SecurityType` on the SecurityProfile is `TrustedLaunch`.
+  3) `VTpmEnabled` on the SecurityProfile is true.
+  4) `SecureBootEnabled` on the SecurityProfile is true. 
+  Now `New-AzVM` will install the `Guest Attestation` extension to the new VM when these conditions are met.
+  Now `New-AzVmss` will install the `Guest Attestation` extension to the new Vmss when these conditions are met and installed to all VM instances in the Vmss.
+* Added `-UserAssignedIdentity` and `-FederatedClientId` to the following cmdlets:
+    - `New-AzDiskEncryptionSetConfig`
+    - `Update-AzDiskEncryptionSet`
+* Added `-TreatFailureAsDeploymentFailure` to cmdlets `Add-AzVmGalleryApplication` and `Add-AzVmssGalleryApplication`
+* Removed Exceptions for when SinglePlacementGroup is set to true in 'OrchestrationMode'
+
+## Version 4.28.0
+* For `Add-AzVhd` upon upload failure using DirectUploadToManagedDisk parameter set, the SAS will be revoked and the created managed disk will be deleted.
+* An unresolved path can be passed in for '-LocalFilePath' for `Add-AzVhd`. The cmdlet with unresolve the path itself.
+* Added `-DataAccessAuthMode` parameter to Add-AzVhd DirectUploadToManagedDisk parameter set. 
+* Added `-EnabldUltraSSD` parameter to New-AzHostGroup.
+
+## Version 4.27.0
 * Edited `New-AzVm` cmdlet internal logic to use the `PlatformFaultDomain` value in the `PSVirtualMachine` object passed to it in the new virtual machine.
+* Added a new cmdlet named `Restart-AzHost` to restart dedicated hosts. 
+* Added `-DataAccessAuthMode` parameter to the following cmdlets:
+    - `New-AzDiskConfig`
+    - `New-AzDiskUpdateConfig`
+    - `New-AzSnapshotConfig`
+    - `New-AzSnapshotUpdateConfig`
+* Added `-Architecture` parameter to the following cmdlets:
+    - `New-AzDiskConfig`
+    - `New-AzDiskUpdateConfig`
+    - `New-AzSnapshotConfig`
+    - `New-AzSnapshotUpdateConfig`
+    - `New-AzGalleryImageDefinition`
+* Added `-InstanceView` parameter to `Get-AzRestorePoint`
+* Added parameter `-ScriptString` to `Invoke-AzvmRunCommand` and `Invoke-AzvmssRunCommand`
+* Added parameter `-ScaleInPolicyForceDeletion` to `Update-Azvmss`
 
 ## Version 4.26.0
 * Added `-ImageReferenceId` parameter to following cmdlets: `New-AzVm`, `New-AzVmConfig`, `New-AzVmss`, `Set-AzVmssStorageProfile`

@@ -8,7 +8,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Support
 
     /// <summary>
     /// This property allows you to specify the permission of sharing gallery. <br><br> Possible values are: <br><br> **Private**
-    /// <br><br> **Groups**
+    /// <br><br> **Groups** <br><br> **Community**
     /// </summary>
     [System.ComponentModel.TypeConverter(typeof(Microsoft.Azure.PowerShell.Cmdlets.Compute.Support.GallerySharingPermissionTypesTypeConverter))]
     public partial struct GallerySharingPermissionTypes :
@@ -36,6 +36,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Compute.Support
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Groups".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
                 yield return new global::System.Management.Automation.CompletionResult("'Groups'", "Groups", global::System.Management.Automation.CompletionResultType.ParameterValue, "Groups");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Community".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Community'", "Community", global::System.Management.Automation.CompletionResultType.ParameterValue, "Community");
             }
         }
     }

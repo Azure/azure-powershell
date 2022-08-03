@@ -19,6 +19,30 @@
 -->
 ## Upcoming Release
 
+## Version 2.2.0
+* Added -MinimumTlsVersion to New-AzEventHubNamespace and Set-AzEventHubNamespace
+* Added -SupportsScaling to New-AzEventHubCluster and Set-AzEventHubCluster to support self serve clusters
+* Deprecation warning on a few parameters in cluster cmdlets that will be deprecated in the November major release
+
+## Version 2.1.0
+* Added cmdlets for CRUD operations on EventHub Application Groups. The added cmdlets include,
+    -New-AzEventHubApplicationGroup
+    -Set-AzEventHubApplicationGroup
+    -Remove-AzEventHubApplicationGroup
+    -Get-AzEventHubApplicationGroup
+    -New-AzEventHubThrottlingPolicyConfig
+* Get-AzEventHubNamespace returned a maximum of 100 namespaces for list by resource groups or list by subscriptions so far. From here onwards, for resource groups and subscriptions with over a 100 namespaces, the cmdlet will return all the namespaces. You will not see a change in the cmdlet behaviour if your resource groups or subscriptions have less than a 100 namespaces.
+* Added cmdlets for manual approval of EventHubs Private Endpoint Connections. The added cmdlets include,
+    -Approve-AzEventHubPrivateEndpointConnection
+    -Deny-AzEventHubPrivateEndpointConnection
+    -Get-AzEventHubPrivateEndpointConnection
+    -Remove-AzEventHubPrivateEndpointConnection
+    -Get-AzEventHubPrivateLink
+
+## Version 2.0.0
+* Made `IPRule` and `VirtualNetworkRule` optional in `Set-AzEventHubNetworkRuleSet`.
+* Deprecated older MSI properties in `Set-AzEventHubNamespace` and `New-AzEventHubNamespace`
+
 ## Version 1.11.1
 
 * Deprecating older MSI related fields in New-AzEventHubNamespace and Set-AzEventHubNamespace

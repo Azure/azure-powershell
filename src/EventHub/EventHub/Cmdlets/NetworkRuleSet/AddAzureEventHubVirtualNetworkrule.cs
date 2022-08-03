@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
 
         public override void ExecuteCmdlet()
         {
-            PSNetworkRuleSetAttributes networkRuleSet = Client.GetNetworkRuleSet(ResourceGroupName, Name);
+            PSNetworkRuleSetAttributes networkRuleSet = UtilityClient.GetNetworkRuleSet(ResourceGroupName, Name);
             if (!networkRuleSet.VirtualNetworkRules.Contains(new PSNWRuleSetVirtualNetworkRulesAttributes { Subnet = new PSSubnetAttributes { Id = SubnetId }, IgnoreMissingVnetServiceEndpoint = IgnoreMissingVnetServiceEndpoint }))
             {
                 if (ShouldProcess(target: Name, action: string.Format("Adding VirtualNetworkRule for NetworkRuleSet of {0} in Resourcegroup {1}", Name, ResourceGroupName)))
@@ -62,13 +62,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                         if (ParameterSetName.Equals(VirtualNetworkRulePropertiesParameterSet))
                         {
                             networkRuleSet.VirtualNetworkRules.Add(new PSNWRuleSetVirtualNetworkRulesAttributes { Subnet = new PSSubnetAttributes { Id = SubnetId }, IgnoreMissingVnetServiceEndpoint = IgnoreMissingVnetServiceEndpoint.IsPresent });
-                            WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
+                            WriteObject(UtilityClient.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
                         }
 
                         if (ParameterSetName.Equals(VirtualNetworkRuleInputObjectParameterSet))
                         {
                             networkRuleSet.VirtualNetworkRules.Add(VirtualNetworkRuleObject);
-                            WriteObject(Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
+                            WriteObject(UtilityClient.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet));
                         }
                     }
                     catch (Management.EventHub.Models.ErrorResponseException ex)

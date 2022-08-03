@@ -16,19 +16,20 @@ Creates a VMSS.
 ### DefaultParameter (Default)
 ```
 New-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
- [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-EdgeZone <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet> [-AsJob] [-DisableIntegrityMonitoring]
+ [-EdgeZone <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SimpleParameterSet
 ```
 New-AzVmss [[-ResourceGroupName] <String>] [-VMScaleSetName] <String> [-AsJob] [-UserData <String>]
- [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>] [-VirtualNetworkName <String>]
- [-SubnetName <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
- [-SecurityGroupName <String>] [-LoadBalancerName <String>] [-BackendPort <Int32[]>] [-Location <String>]
- [-EdgeZone <String>] [-VmSize <String>] [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>]
- [-VnetAddressPrefix <String>] [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>]
- [-BackendPoolName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
+ [-DisableIntegrityMonitoring] [-ImageName <String>] -Credential <PSCredential> [-InstanceCount <Int32>]
+ [-VirtualNetworkName <String>] [-SubnetName <String>] [-PublicIpAddressName <String>]
+ [-DomainNameLabel <String>] [-SecurityGroupName <String>] [-LoadBalancerName <String>]
+ [-BackendPort <Int32[]>] [-Location <String>] [-EdgeZone <String>] [-VmSize <String>]
+ [-UpgradePolicyMode <UpgradeMode>] [-AllocationMethod <String>] [-VnetAddressPrefix <String>]
+ [-SubnetAddressPrefix <String>] [-FrontendPoolName <String>] [-BackendPoolName <String>]
+ [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-EnableUltraSSD]
  [-Zone <System.Collections.Generic.List`1[System.String]>] [-NatBackendPort <Int32[]>]
  [-DataDiskSizeInGb <Int32[]>] [-ProximityPlacementGroupId <String>] [-HostGroupId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-ScaleInPolicy <String[]>]
@@ -45,11 +46,11 @@ Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set 
 
 ### Example 1: Create a VMSS using the SimpleParameterSet
 ```powershell
-$vmssName = <VMSSNAME>
-# Create credentials, I am using one way to create credentials, there are others as well. 
+$vmssName = 'VMSSNAME'
+# Create credentials, I am using one way to create credentials, there are others as well.
 # Pick one that makes the most sense according to your use case.
-$vmPassword = ConvertTo-SecureString <PASSWORD_HERE> -AsPlainText -Force
-$vmCred = New-Object System.Management.Automation.PSCredential(<USERNAME_HERE>, $vmPassword)
+$vmPassword = ConvertTo-SecureString "PASSWORD" -AsPlainText -Force
+$vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword)
 
 #Create a VMSS using the default settings
 New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName
@@ -76,7 +77,7 @@ New-AzResourceGroup -Name $RGName -Location $LOC -Force;
 $STOName = "STO" + $RGName;
 $STOType = "Standard_GRS";
 New-AzStorageAccount -ResourceGroupName $RGName -Name $STOName -Location $LOC -Type $STOType;
-$STOAccount = Get-AzStorageAccount -ResourceGroupName $RGName -Name $STOName; 
+$STOAccount = Get-AzStorageAccount -ResourceGroupName $RGName -Name $STOName;
 
 # NRP
 $SubNet = New-AzVirtualNetworkSubnetConfig -Name ("subnet" + $RGName) -AddressPrefix "10.0.0.0/24";
@@ -115,11 +116,11 @@ $VMSSName = "VMSS" + $RGName;
 $AdminUsername = "Admin01";
 $AdminPassword = "p4ssw0rd@123" + $RGName;
 
-$PublisherName = "MicrosoftWindowsServer" 
-$Offer         = "WindowsServer" 
-$Sku           = "2012-R2-Datacenter" 
+$PublisherName = "MicrosoftWindowsServer"
+$Offer         = "WindowsServer"
+$Sku           = "2012-R2-Datacenter"
 $Version       = "latest"
-        
+
 $VHDContainer = "https://" + $STOName + ".blob.core.contoso.net/" + $VMSSName;
 
 $ExtName = "CSETest";
@@ -128,16 +129,16 @@ $ExtType = "BGInfo";
 $ExtVer = "2.1";
 
 #IP Config for the NIC
-$IPCfg = New-AzVmssIPConfig -Name "Test" `
+$IPCfg = New-AzVmssIpConfig -Name "Test" `
     -LoadBalancerInboundNatPoolsId $ExpectedLb.InboundNatPools[0].Id `
     -LoadBalancerBackendAddressPoolsId $ExpectedLb.BackendAddressPools[0].Id `
     -SubnetId $SubNetId;
-            
+
 #VMSS Config
 $VMSS = New-AzVmssConfig -Location $LOC -SkuCapacity 2 -SkuName "Standard_E4-2ds_v4" -UpgradePolicyMode "Automatic" `
     | Add-AzVmssNetworkInterfaceConfiguration -Name "Test" -Primary $True -IPConfiguration $IPCfg `
     | Add-AzVmssNetworkInterfaceConfiguration -Name "Test2"  -IPConfiguration $IPCfg `
-    | Set-AzVmssOSProfile -ComputerNamePrefix "Test"  -AdminUsername $AdminUsername -AdminPassword $AdminPassword `
+    | Set-AzVmssOsProfile -ComputerNamePrefix "Test"  -AdminUsername $AdminUsername -AdminPassword $AdminPassword `
     | Set-AzVmssStorageProfile -Name "Test"  -OsDiskCreateOption 'FromImage' -OsDiskCaching "None" `
     -ImageReferenceOffer $Offer -ImageReferenceSku $Sku -ImageReferenceVersion $Version `
     -ImageReferencePublisher $PublisherName -VhdContainer $VHDContainer `
@@ -145,25 +146,6 @@ $VMSS = New-AzVmssConfig -Location $LOC -SkuCapacity 2 -SkuName "Standard_E4-2ds
 
 #Create the VMSS
 New-AzVmss -ResourceGroupName $RGName -Name $VMSSName -VirtualMachineScaleSet $VMSS;
-```
-
-### Example 3: Create a VMSS with a UserData value
-```powershell
-$ResourceGroupName = '<RESOURCE GROUP NAME>';
-$vmssName = <VMSSNAME>;
-$domainNameLabel = "dnl" + $ResourceGroupName;
-# Create credentials, I am using one way to create credentials, there are others as well. 
-# Pick one that makes the most sense according to your use case.
-$vmPassword = ConvertTo-SecureString <PASSWORD_HERE> -AsPlainText -Force;
-$vmCred = New-Object System.Management.Automation.PSCredential(<USERNAME_HERE>, $vmPassword);
-
-$text = "UserData value to encode";
-$bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
-$userData = [Convert]::ToBase64String($bytes);
-
-#Create a VMSS
-New-AzVmss -ResourceGroupName $ResourceGroupName -Name $vmssName -Credential $vmCred -DomainNameLabel $domainNameLabel -Userdata $userData;
-$vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $vmssName -InstanceView:$false -Userdata;
 ```
 
 The complex example above creates a VMSS, following is an explanation of what is happening:
@@ -182,9 +164,81 @@ The complex example above creates a VMSS, following is an explanation of what is
 * The fourteenth command uses the **New-AzLoadBalancerRuleConfig** to create a load balancer rule configuration and stores the result in the variable named $LBRule.
 * The fifteenth command uses the **New-AzLoadBalancer** cmdlet to create a load balancer and stores the result in the variable named $ActualLb.
 * The sixteenth command uses the **Get-AzLoadBalancer** to get information about the load balancer that was created in the fifteenth command and stores the information in the variable named $ExpectedLb.
-* The seventeenth command uses the **New-AzVmssIPConfig** cmdlet to create a VMSS IP configuration and stores the information in the variable named $IPCfg.
+* The seventeenth command uses the **New-AzVmssIpConfig** cmdlet to create a VMSS IP configuration and stores the information in the variable named $IPCfg.
 * The eighteenth command uses the **New-AzVmssConfig** cmdlet to create a VMSS configuration object and stores the result in the variable named $VMSS.
 * The nineteenth command uses the **New-AzVmss** cmdlet to create the VMSS.
+
+### Example 3: Create a VMSS with a UserData value
+```powershell
+$ResourceGroupName = 'RESOURCE GROUP NAME';
+$vmssName = 'VMSSNAME';
+$domainNameLabel = "dnl" + $ResourceGroupName;
+# Create credentials, I am using one way to create credentials, there are others as well.
+# Pick one that makes the most sense according to your use case.
+$vmPassword = ConvertTo-SecureString 'PASSWORD' -AsPlainText -Force;
+$vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword);
+
+$text = "UserData value to encode";
+$bytes = [System.Text.Encoding]::Unicode.GetBytes($text);
+$userData = [Convert]::ToBase64String($bytes);
+
+#Create a VMSS
+New-AzVmss -ResourceGroupName $ResourceGroupName -Name $vmssName -Credential $vmCred -DomainNameLabel $domainNameLabel -Userdata $userData;
+$vmss = Get-AzVmss -ResourceGroupName $ResourceGroupName -VMScaleSetName $vmssName -InstanceView:$false -Userdata;
+```
+
+Create a VMSS with a UserData value
+
+### Example 4: Create a VMSS with the Guest Attestation extension installed with the TrustedLaunch security type.
+```powershell
+# Common setup
+$rgname = <RESOURCE GROUP NAME>;
+$loc = <AZURE REGION>;
+New-AzResourceGroup -Name $rgname -Location $loc -Force;
+$vmssSize = 'Standard_DS3_v2';
+$PublisherName = "MicrosoftWindowsServer";
+$Offer = "WindowsServer";
+$SKU = "2019-DATACENTER-GENSECOND";
+$securityType = "TrustedLaunch";
+$secureboot = $true;
+$vtpm = $true;
+
+# NRP
+$subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+$vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+$vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+$subnetId = $vnet.Subnets[0].Id;
+
+# New VMSS Parameters
+$vmssName = 'vmss' + $rgname;
+$vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+$adminUsername = <USER NAME>;
+$adminPassword = <PASSWORD> | ConvertTo-SecureString -AsPlainText -Force;
+$imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
+$imgRef.PublisherName = $PublisherName;
+$imgRef.Offer = $Offer;
+$imgRef.Skus = $SKU;
+$imgRef.Version = "latest";
+$ipCfg = New-AzVmssIpConfig -Name 'test' -SubnetId $subnetId;
+
+$vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
+| Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+| Set-AzVmssOsProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+| Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
+    -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+    -ImageReferencePublisher $imgRef.PublisherName ;
+
+# Requirements for the Guest Attestation defaulting behavior.
+# SecurityType is TrustedLaunch, EnableVtpm is true, EnableSecureBoot is true, DisableIntegrityMonitoring is not true.
+$vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
+$vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
+
+# Create Vmss
+$result = New-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+# This Vmss and its Vm instances has the GuestAttestation extension installed, and the Identity of SystemAssigned.
+```
+
+Create a VMSS with the Guest Attestation extension installed with the TrustedLaunch security type
 
 ## PARAMETERS
 
@@ -309,8 +363,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DisableIntegrityMonitoring
+This flag disables the default behavior to install the Guest Attestation extension to the virtual machine scale set and its vm instances if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DomainNameLabel
-The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assigned to the Scale Set. Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com). If no value is supplied, the default domain name label will be the concatenation of <ScaleSetName> and <ResourceGroupName>.
+The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assigned to the Scale Set. Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com). If no value is supplied, the default domain name label will be the concatenation of `<ScaleSetName>` and `<ResourceGroupName>`.
 
 ```yaml
 Type: System.String
@@ -355,7 +424,7 @@ Accept wildcard characters: False
 ```
 
 ### -EncryptionAtHost
-This parameter will enable the encryption for all the disks including Resource/Temp disk at host itself. 
+This parameter will enable the encryption for all the disks including Resource/Temp disk at host itself.
 Default: The Encryption at host will be disabled unless this property is set to true for the resource.
 
 ```yaml
@@ -417,6 +486,21 @@ Accept wildcard characters: False
 
 ### -ImageName
 The name of the image for VMs in this Scale Set. If no value is provided, the "Windows Server 2016 DataCenter" image will be used.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferenceId
+Specified the shared gallery image unique id for vmss deployment. This can be fetched from shared gallery image GET call.
 
 ```yaml
 Type: System.String
@@ -627,21 +711,6 @@ Accept wildcard characters: False
 
 ### -SecurityGroupName
 The name of the network security group to apply to this Scale Set.  If no value is provided, a default network security group with the same name as the Scale Set will be created and applied to the Scale Set.
-
-```yaml
-Type: System.String
-Parameter Sets: SimpleParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ImageReferenceId
-Specified the shared gallery image unique id for vmss deployment. This can be fetched from shared gallery image GET call.
 
 ```yaml
 Type: System.String

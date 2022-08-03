@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Description for Check if a resource name is available.
+Check if a resource name is available.
 .Description
-Description for Check if a resource name is available.
+Check if a resource name is available.
 .Example
 {{ Add code here }}
 .Example
@@ -207,6 +207,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Check = 'Az.Functions.private\Test-AzNameAvailability_Check';
             CheckExpanded = 'Az.Functions.private\Test-AzNameAvailability_CheckExpanded';
@@ -222,6 +223,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -230,15 +232,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -20,10 +20,8 @@ Delete a role management policy
 .Description
 Delete a role management policy
 .Example
-PS C:\> $scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
-PS C:\> Remove-AzRoleManagementPolicy -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
-
-The requested resource does not support http method 'DELETE'.
+$scope = "/subscriptions/38ab2ccc-3747-4567-b36b-9478f5602f0d/"
+Remove-AzRoleManagementPolicy -Scope $scope -Name "0a4d3ef7-147b-4777-a958-ae9dfab3c331"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.Authorization.Models.IAuthorizationIdentity
@@ -135,7 +133,7 @@ begin {
         $parameterSet = $PSCmdlet.ParameterSetName
 
         if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Runspace.Version.ToString()
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
         }         
         $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
         if ($preTelemetryId -eq '') {

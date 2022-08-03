@@ -164,6 +164,7 @@ The cmdlet may call below Microsoft Graph API according to input parameters:
 ## EXAMPLES
 
 ### Example 1: Grant permissions to a user for a key vault and modify the permissions
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName 'Contoso03Vault' -UserPrincipalName 'PattiFuller@contoso.com' -PermissionsToKeys create,import,delete,list -PermissionsToSecrets set,delete -PassThru
 
@@ -292,11 +293,11 @@ This example picks the first one, indicated by index \[0\] in the returned list.
 
 ### Example 7: Grant Azure Information Protection access to the customer-managed tenant key (BYOK)
 ```powershell
-Set-AzKeyVaultAccessPolicy -VaultName 'Contoso04Vault' -ServicePrincipalName 00000012-0000-0000-c000-000000000000 -PermissionsToKeys decrypt,sign,get
+Set-AzKeyVaultAccessPolicy -VaultName 'Contoso04Vault' -ServicePrincipalName 'MyServicePrincipal' -PermissionsToKeys decrypt,sign,get
 ```
 
 This command authorizes Azure Information Protection to use a customer-managed key (the bring your own key, or "BYOK" scenario) as the Azure Information Protection tenant key.
-When you run this command, specify your own key vault name but you must specify the *ServicePrincipalName* parameter with the GUID **00000012-0000-0000-c000-000000000000** and specify the permissions in the example.
+When you run this command, specify your own key vault name but you must specify the *ServicePrincipalName* parameter and specify the permissions in the example.
 
 ## PARAMETERS
 
@@ -423,7 +424,7 @@ Accept wildcard characters: False
 ```
 
 ### -ObjectId
-Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.
+Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions. Its value is in the format of GUID.
 
 ```yaml
 Type: System.String
@@ -479,7 +480,6 @@ The acceptable values for this parameter:
 Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
-Accepted values: all, get, list, delete, create, import, update, managecontacts, getissuers, listissuers, setissuers, deleteissuers, manageissuers, recover, purge, backup, restore
 
 Required: False
 Position: Named
@@ -509,12 +509,12 @@ The acceptable values for this parameter:
 - Restore
 - Recover
 - Purge
+- Rotate
 
 ```yaml
 Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
-Accepted values: all, decrypt, encrypt, unwrapKey, wrapKey, verify, sign, get, list, update, create, import, delete, backup, restore, recover, purge
 
 Required: False
 Position: Named
@@ -541,7 +541,6 @@ The acceptable values for this parameter:
 Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
-Accepted values: all, get, list, set, delete, backup, restore, recover, purge
 
 Required: False
 Position: Named
@@ -574,7 +573,6 @@ The acceptable values for this parameter:
 Type: System.String[]
 Parameter Sets: ByUserPrincipalName, ByObjectId, ByServicePrincipalName, ByEmailAddress, InputObjectByObjectId, InputObjectByServicePrincipalName, InputObjectByUserPrincipalName, InputObjectByEmailAddress, ResourceIdByObjectId, ResourceIdByServicePrincipalName, ResourceIdByUserPrincipalName, ResourceIdByEmailAddress
 Aliases:
-Accepted values: all, get, list, delete, set, update, regeneratekey, getsas, listsas, deletesas, setsas, recover, backup, restore, purge
 
 Required: False
 Position: Named

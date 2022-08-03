@@ -18,8 +18,25 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Show OAuth token in debug log in debug build only
+
+## Version 4.8.0
+* Added check for storage account sas token is secured with the storage account key.
+    -  `New-AzStorageAccountSASToken`
+* Supported Management Policy rule filter BlobIndexMatch
+    -  Added a new cmdlet `New-AzStorageAccountManagementPolicyBlobIndexMatchObject`
+    -  Added a new parameter `BlobIndexMatch` in `New-AzStorageAccountManagementPolicyFilter`
+
+## Version 4.7.0
+* Supported BaseBlob DaysAfterCreationGreaterThan in Management Policy
+    -  `Add-AzStorageAccountManagementPolicyAction`
+
+## Version 4.6.0
+* Supported generate Sas token for DataLakeGen2
+    -  `New-AzDataLakeGen2SasToken`
+* Showed OAuth token in debug log in debug build only
     -  `New-AzStorageContext`
+* Supported return more file properties when list Azure file
+    -  `Get-AzStorageFile`
 
 ## Version 4.5.0
 * Supported DaysAfterLastTierChangeGreaterThan in Management Policy

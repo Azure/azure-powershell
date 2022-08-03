@@ -55,15 +55,18 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObject,
             Mandatory = true,
-            ValueFromPipeline = true)]
+            ValueFromPipeline = true,
+            HelpMessage = "Specifies the ASR protection container object for the primary protection container to be used in the mapping. To get the ASR protection container in the Recovery Service Container run the Get-AzRecoveryServicesAsrProtectionContainer cmdlet.")]
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObjectWithName,
             Mandatory = true,
-            ValueFromPipeline = true)]
+            ValueFromPipeline = true,
+            HelpMessage = "Specifies the ASR protection container object for the primary protection container to be used in the mapping. To get the ASR protection container in the Recovery Service Container run the Get-AzRecoveryServicesAsrProtectionContainer cmdlet.")]
         [Parameter(
             ParameterSetName = ASRParameterSets.ByObjectWithFriendlyName,
             Mandatory = true,
-            ValueFromPipeline = true)]
+            ValueFromPipeline = true,
+            HelpMessage = "Specifies the ASR protection container object for the primary protection container to be used in the mapping. To get the ASR protection container in the Recovery Service Container run the Get-AzRecoveryServicesAsrProtectionContainer cmdlet.")]
         [ValidateNotNullOrEmpty]
         public ASRProtectionContainer ProtectionContainer { get; set; }
 
@@ -259,7 +262,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Write Protected Items
         /// </summary>
-        /// <param name="protectableItems">List of protectable items</param>
+        /// <param name="replicationProtectedItems"></param>
         private void WriteReplicationProtectedItems(
             IList<ReplicationProtectedItem> replicationProtectedItems)
         {

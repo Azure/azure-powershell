@@ -121,6 +121,10 @@
                 <PropertyName>RecoveryLevel</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Release Policy</Label>
+                <PropertyName>ReleasePolicy</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>Tags</Label>
                 <PropertyName>TagsTable</PropertyName>
               </ListItem>
@@ -773,6 +777,32 @@
               <ListItem>
                 <Label>Permissions to (Key Vault Managed) Storage</Label>
                 <PropertyName>PermissionsToStorage</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.KeyVault.Models.PSKeyReleasePolicy</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.KeyVault.Models.PSKeyReleasePolicy</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Content Type</Label>
+                <PropertyName>ContentType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Policy Content</Label>
+                <PropertyName>PolicyContent</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Immutable</Label>
+                <PropertyName>Immutable</PropertyName>
               </ListItem>
             </ListItems>
           </ListEntry>

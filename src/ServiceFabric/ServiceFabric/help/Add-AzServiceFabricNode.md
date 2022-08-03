@@ -24,7 +24,7 @@ Use **Add-AzServiceFabricNode** to add nodes to the specific node type. You just
 
 ### Example 1
 ```powershell
-Add-AzServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeTypeName 'nt1'
+Add-AzServiceFabricNode -ResourceGroupName 'Group1' -Name 'Contoso01SFCluster' -NumberOfNodesToAdd 2 -NodeType 'nt1'
 ```
 
 This command will add 2 nodes to the node type 'n1'.

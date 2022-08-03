@@ -315,7 +315,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER <IScript>: Class representing a database script.
+PARAMETER `<IScript>`: Class representing a database script.
   - `[AzureAsyncOperation <String>]`: 
   - `[Content <String>]`: The script content. This property should be used when the script is provide inline and not through file in a SA. Must not be used together with scriptUrl and scriptUrlSasToken properties.
   - `[ContinueOnError <Boolean?>]`: Flag that indicates whether to continue if one of the command fails.

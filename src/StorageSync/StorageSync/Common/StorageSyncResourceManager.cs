@@ -24,11 +24,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common
 {
     /// <summary>
     /// Class StorageSyncResourceManager.
-    /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncResourceManager" />
     /// Implements the <see cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncResourceManager" />
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Interfaces.IStorageSyncResourceManager" />
-    /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.IStorageSyncResourceManager" />
     public class StorageSyncResourceManager : IStorageSyncResourceManager
     {
 

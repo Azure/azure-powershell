@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -66,28 +68,94 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.AddRecoveryServicesProviderInputPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("AuthenticationIdentityInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("ResourceAccessIdentityInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("DataPlaneAuthenticationIdentityInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).BiosId = (string) content.GetValueForProperty("BiosId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).BiosId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputTenantId = (string) content.GetValueForProperty("AuthenticationIdentityInputTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputApplicationId = (string) content.GetValueForProperty("AuthenticationIdentityInputApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputObjectId = (string) content.GetValueForProperty("AuthenticationIdentityInputObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAudience = (string) content.GetValueForProperty("AuthenticationIdentityInputAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAadAuthority = (string) content.GetValueForProperty("AuthenticationIdentityInputAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAadAuthority, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputTenantId = (string) content.GetValueForProperty("ResourceAccessIdentityInputTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputApplicationId = (string) content.GetValueForProperty("ResourceAccessIdentityInputApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputObjectId = (string) content.GetValueForProperty("ResourceAccessIdentityInputObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAudience = (string) content.GetValueForProperty("ResourceAccessIdentityInputAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAadAuthority = (string) content.GetValueForProperty("ResourceAccessIdentityInputAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAadAuthority, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputTenantId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputApplicationId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputObjectId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAudience = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAadAuthority = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAadAuthority, global::System.Convert.ToString);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.AddRecoveryServicesProviderInputPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AuthenticationIdentityInput"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("AuthenticationIdentityInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ResourceAccessIdentityInput"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("ResourceAccessIdentityInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityInput"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("DataPlaneAuthenticationIdentityInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BiosId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).BiosId = (string) content.GetValueForProperty("BiosId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).BiosId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityInputTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputTenantId = (string) content.GetValueForProperty("AuthenticationIdentityInputTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityInputApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputApplicationId = (string) content.GetValueForProperty("AuthenticationIdentityInputApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityInputObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputObjectId = (string) content.GetValueForProperty("AuthenticationIdentityInputObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityInputAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAudience = (string) content.GetValueForProperty("AuthenticationIdentityInputAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityInputAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAadAuthority = (string) content.GetValueForProperty("AuthenticationIdentityInputAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAadAuthority, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityInputTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputTenantId = (string) content.GetValueForProperty("ResourceAccessIdentityInputTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityInputApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputApplicationId = (string) content.GetValueForProperty("ResourceAccessIdentityInputApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityInputObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputObjectId = (string) content.GetValueForProperty("ResourceAccessIdentityInputObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityInputAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAudience = (string) content.GetValueForProperty("ResourceAccessIdentityInputAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityInputAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAadAuthority = (string) content.GetValueForProperty("ResourceAccessIdentityInputAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAadAuthority, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityInputTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputTenantId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityInputApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputApplicationId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityInputObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputObjectId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityInputAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAudience = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityInputAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAadAuthority = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAadAuthority, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -105,28 +173,94 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.AddRecoveryServicesProviderInputPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("AuthenticationIdentityInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("ResourceAccessIdentityInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("DataPlaneAuthenticationIdentityInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).BiosId = (string) content.GetValueForProperty("BiosId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).BiosId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputTenantId = (string) content.GetValueForProperty("AuthenticationIdentityInputTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputApplicationId = (string) content.GetValueForProperty("AuthenticationIdentityInputApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputObjectId = (string) content.GetValueForProperty("AuthenticationIdentityInputObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAudience = (string) content.GetValueForProperty("AuthenticationIdentityInputAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAadAuthority = (string) content.GetValueForProperty("AuthenticationIdentityInputAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAadAuthority, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputTenantId = (string) content.GetValueForProperty("ResourceAccessIdentityInputTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputApplicationId = (string) content.GetValueForProperty("ResourceAccessIdentityInputApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputObjectId = (string) content.GetValueForProperty("ResourceAccessIdentityInputObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAudience = (string) content.GetValueForProperty("ResourceAccessIdentityInputAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAadAuthority = (string) content.GetValueForProperty("ResourceAccessIdentityInputAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAadAuthority, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputTenantId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputApplicationId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputObjectId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAudience = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAadAuthority = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAadAuthority, global::System.Convert.ToString);
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.AddRecoveryServicesProviderInputPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("AuthenticationIdentityInput"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("AuthenticationIdentityInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ResourceAccessIdentityInput"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("ResourceAccessIdentityInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityInput"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInput = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("DataPlaneAuthenticationIdentityInput",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInput, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MachineId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineId = (string) content.GetValueForProperty("MachineId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).MachineId, global::System.Convert.ToString);
+            }
+            if (content.Contains("BiosId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).BiosId = (string) content.GetValueForProperty("BiosId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).BiosId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityInputTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputTenantId = (string) content.GetValueForProperty("AuthenticationIdentityInputTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityInputApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputApplicationId = (string) content.GetValueForProperty("AuthenticationIdentityInputApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityInputObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputObjectId = (string) content.GetValueForProperty("AuthenticationIdentityInputObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityInputAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAudience = (string) content.GetValueForProperty("AuthenticationIdentityInputAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("AuthenticationIdentityInputAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAadAuthority = (string) content.GetValueForProperty("AuthenticationIdentityInputAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).AuthenticationIdentityInputAadAuthority, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityInputTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputTenantId = (string) content.GetValueForProperty("ResourceAccessIdentityInputTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityInputApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputApplicationId = (string) content.GetValueForProperty("ResourceAccessIdentityInputApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityInputObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputObjectId = (string) content.GetValueForProperty("ResourceAccessIdentityInputObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityInputAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAudience = (string) content.GetValueForProperty("ResourceAccessIdentityInputAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceAccessIdentityInputAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAadAuthority = (string) content.GetValueForProperty("ResourceAccessIdentityInputAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).ResourceAccessIdentityInputAadAuthority, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityInputTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputTenantId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityInputApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputApplicationId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityInputObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputObjectId = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityInputAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAudience = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPlaneAuthenticationIdentityInputAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAadAuthority = (string) content.GetValueForProperty("DataPlaneAuthenticationIdentityInputAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInputInternal)this).DataPlaneAuthenticationIdentityInputAadAuthority, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -162,7 +296,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="AddRecoveryServicesProviderInput" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="AddRecoveryServicesProviderInput" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAddRecoveryServicesProviderInput FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
