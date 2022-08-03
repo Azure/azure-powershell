@@ -66,6 +66,10 @@ directive:
       model-name: Endpoint
     set:
       suppress-format: true  
+  - where:
+      model-name: Agent
+    set:
+      suppress-format: true  
   - no-inline:
       - EndpointBaseProperties
   - no-inline:

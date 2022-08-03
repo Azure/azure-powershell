@@ -26,7 +26,7 @@ Property                     : {
                                  "endpointType": "NfsMount",
                                  "provisioningState": "Succeeded",
                                  "host": "x.x.x.x",
-                                 "export": "x"
+                                 "export": "/"
                                }
 SystemDataCreatedAt          : 7/18/2022 7:28:30 AM
 SystemDataCreatedBy          : xxxxxxx
@@ -51,7 +51,7 @@ Property                     : {
                                  "endpointType": "NfsMount",
                                  "provisioningState": "Succeeded",
                                  "host": "x.x.x.x",
-                                 "export": "x"
+                                 "export": "/"
                                }
 SystemDataCreatedAt          : 7/18/2022 7:28:30 AM
 SystemDataCreatedBy          : xxxxxxx
