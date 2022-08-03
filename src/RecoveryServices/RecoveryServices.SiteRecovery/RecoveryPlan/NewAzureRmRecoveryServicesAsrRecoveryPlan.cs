@@ -62,6 +62,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureZoneToZone,
             Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EdgeZoneToAzure,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToEdgeZone,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EdgeZoneToEdgeZone,
+            Mandatory = true)]
         public string Name { get; set; }
 
         /// <summary>
@@ -76,6 +85,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = true)]
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureZoneToZone,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EdgeZoneToAzure,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToEdgeZone,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EdgeZoneToEdgeZone,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRFabric PrimaryFabric { get; set; }
@@ -113,6 +131,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureZoneToZone,
             Mandatory = false)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EdgeZoneToAzure,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EdgeZoneToEdgeZone,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string PrimaryEdgeZone { get; set; }
 
@@ -122,6 +146,12 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureZoneToZone,
             Mandatory = false)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToEdgeZone,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EdgeZoneToEdgeZone,
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string RecoveryEdgeZone { get; set; }
 
@@ -142,6 +172,36 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             Mandatory = true,
             HelpMessage = "Switch parameter specifies creating the replicated item in azure zone to zone scenario.")]
         public SwitchParameter AzureZoneToZone { get; set; }
+
+        /// <summary>
+        ///    Switch parameter to specify that the replicated item is an Azure virtual machine 
+        ///    replicating from EdgeZone to Azure.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EdgeZoneToAzure,
+            Mandatory = true,
+            HelpMessage = "Switch parameter specifies creating the replicated item in EdgeZone to Azure scenario.")]
+        public SwitchParameter EdgeZoneToAzure { get; set; }
+
+        /// <summary>
+        ///    Switch parameter to specify that the replicated item is an Azure virtual machine 
+        ///    replicating from Azure to EdgeZone.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToEdgeZone,
+            Mandatory = true,
+            HelpMessage = "Switch parameter specifies creating the replicated item in Azure to EdgeZone scenario.")]
+        public SwitchParameter AzureToEdgeZone { get; set; }
+
+        /// <summary>
+        ///    Switch parameter to specify that the replicated item is an Azure virtual machine 
+        ///    replicating from EdgeZone to EdgeZone.
+        /// </summary>
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EdgeZoneToEdgeZone,
+            Mandatory = true,
+            HelpMessage = "Switch parameter specifies creating the replicated item EdgeZone to EdgeZone scenario.")]
+        public SwitchParameter EdgeZoneToEdgeZone { get; set; }
 
         /// <summary>
         ///     Gets or sets the failover deployment model (Classic or Resource Manager)
@@ -169,6 +229,15 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
             ValueFromPipeline = true)]
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureZoneToZone,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EdgeZoneToAzure,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.AzureToEdgeZone,
+            Mandatory = true)]
+        [Parameter(
+            ParameterSetName = ASRParameterSets.EdgeZoneToEdgeZone,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public ASRReplicationProtectedItem[] ReplicationProtectedItem { get; set; }

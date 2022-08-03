@@ -40,6 +40,11 @@ function getPrimaryLocation
     return "EastUS"
 }
 
+function getLocationForEZScenario
+{
+    return "eastus2euap"
+}
+
 function getPrimaryZoneLocation
 {
     return "EastUS"
@@ -47,7 +52,7 @@ function getPrimaryZoneLocation
 
 function getPrimaryExtendedLocation
 {
-    return "ezecustomerlabboston1"
+    return "microsoftrrdclab1"
 }
 
 
@@ -67,7 +72,7 @@ function getRecoveryLocation{
 
 function getRecoveryExtendedLocation
 {
-    return "ezecustomerlabboston1"
+    return "microsoftrrdclab2"
 }
 
 function getPrimaryFabric{
@@ -181,7 +186,7 @@ function createAzureVm{
 		$PasswordString = $(Get-RandomSuffix 12)
 		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
         $VMLocalAdminSecurePassword = $Password
-		$VMLocation = getPrimaryLocation
+		$VMLocation = if ($primaryLocation) { $primaryLocation } else { getPrimaryLocation }
 		$VMName = getAzureVmName
 		$domain = "domain"+ $seed
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
@@ -231,7 +236,7 @@ function createAzureVmInAvailabilityZone{
 		$PasswordString = $(Get-RandomSuffix 12)
 		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
         $VMLocalAdminSecurePassword = $Password
-		$VMLocation = getPrimaryZoneLocation
+		$VMLocation = if ($primaryLocation) { $primaryLocation } else { getPrimaryZoneLocation }
 		$VMZone = getPrimaryZone
 		$VMName = getAzureVmName
 		$domain = "domain"+ $seed
@@ -246,6 +251,8 @@ function createAzureVmInEdgeZone {
         [string]$primaryLocation,
         [string]$primaryExtendedLocation
     )
+
+    # throw "This is an error."
     
     $VMLocalAdminUser = "adminUser"
     $PasswordString = $(Get-RandomSuffix 12)
@@ -254,10 +261,44 @@ function createAzureVmInEdgeZone {
     $VMLocation = $primaryLocation
     $VMExtendedLocation = $primaryExtendedLocation
     $VMName = getAzureVmName
+    $ComputerName = $VMName
+    $primaryResourceGroupName = $VMName
     $domain = "domain" + $seed
     $password = $VMLocalAdminSecurePassword | ConvertTo-SecureString -AsPlainText -Force
     $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
-    $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -EdgeZone $primaryExtendedLocation
+
+    $VMSize = "Standard_D2S_V3"
+    $NetworkName = "MyVNet"
+    $NICName = "MyNIC"
+    $SubnetName = "MySubnet"
+    $SubnetAddressPrefix = "10.0.0.0/24"
+    $VnetAddressPrefix = "10.0.0.0/16"
+    $ipName = 'myStdPublicIP'
+
+    $ip = @{
+        Name = $ipName
+        ResourceGroupName = $primaryResourceGroupName
+        Location = $VMLocation
+        EdgeZone = $VMExtendedLocation
+        Sku = 'Standard'
+        AllocationMethod = 'Static'
+        IpAddressVersion = 'IPv4'
+    }
+    New-AzPublicIpAddress @ip
+
+    $pip = Get-AzPublicIpAddress -Name $ipName -ResourceGroupName $primaryResourceGroupName
+    $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+    $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $primaryResourceGroupName -Location $VMLocation -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet -EdgeZone $VMExtendedLocation
+    $subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $vnet
+    $IpConfigVm = New-AzNetworkInterfaceIpConfig -Name "IpConfigVm" -Subnet $subnet -PublicIpAddress $pip -Primary
+    $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $primaryResourceGroupName -Location $VMLocation -EdgeZone $VMExtendedLocation -IpConfiguration $IpConfigVm
+
+    $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
+    $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
+    $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Linux -ComputerName $ComputerName -Credential $Credential 
+    $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'Canonical' -Offer 'UbuntuServer' -Skus '18.04-lts' -Version latest
+    $VirtualMachine | Set-AzVMBootDiagnostic -disable
+    $vm = New-AzVM -ResourceGroupName $primaryResourceGroupName -Location $VMLocation -VM $VirtualMachine -EdgeZone $VMExtendedLocation
     return $vm.Id
 }
 
@@ -265,7 +306,7 @@ function createRecoveryNetworkId{
     param([string] $location , [string] $resourceGroup)
 
 	$NetworkName = getRecoveryNetworkName
-	$NetworkLocation = getRecoveryLocation
+	$NetworkLocation = if ($location) { $location } else { getRecoveryLocation }
 	$ResourceGroupName = getRecoveryResourceGroupName
 	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
     $virtualNetwork = New-AzVirtualNetwork `
@@ -280,7 +321,7 @@ function createRecoveryNetworkIdForZone{
     param([string] $location , [string] $resourceGroup)
 
 	$NetworkName = getRecoveryNetworkName
-	$NetworkLocation = getPrimaryZoneLocation
+	$NetworkLocation = if ($location) { $location } else { getPrimaryZoneLocation } 
 	$ResourceGroupName = getRecoveryResourceGroupName
 	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
     $virtualNetwork = New-AzVirtualNetwork `
@@ -291,11 +332,27 @@ function createRecoveryNetworkIdForZone{
     return $virtualNetwork.Id
 }
 
+function createRecoveryNetworkIdForEdgeZone{
+    param([string] $location , [string] $resourceGroup , [string] $edgeZone)
+
+	$NetworkName = getRecoveryNetworkName
+	$NetworkLocation = getPrimaryZoneLocation
+	$ResourceGroupName = getRecoveryResourceGroupName
+    $EdgeZone = if ($edgeZone) { $edgeZone } else { getRecoveryExtendedLocation }
+	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
+    $virtualNetwork = New-AzVirtualNetwork `
+          -ResourceGroupName $ResourceGroupName `
+          -Location $NetworkLocation `
+          -Name $NetworkName `
+          -AddressPrefix 10.0.0.0/16 -Subnet $frontendSubnet -EdgeZone $edgeZone
+    return $virtualNetwork.Id
+}
+
 function createCacheStorageAccount{
     param([string] $location , [string] $resourceGroup)
 
 	$StorageAccountName = getCacheStorageAccountName
-	$cacheLocation = getPrimaryLocation
+	$cacheLocation = if ($location) { $location } else { getPrimaryLocation }
 	$storageRes = getAzureVmName
     $storageAccount = New-AzStorageAccount `
           -ResourceGroupName $storageRes `

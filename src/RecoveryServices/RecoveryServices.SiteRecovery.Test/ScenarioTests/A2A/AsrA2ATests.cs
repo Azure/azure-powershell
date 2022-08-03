@@ -130,12 +130,12 @@ namespace RecoveryServices.SiteRecovery.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void A2AEdgeZoneToZoneRecoveryPlanReplication()
+        public void A2AAzureToEdgeZoneRecoveryPlanReplication()
         {
             TestRunner.RunTestScript(
                 $"Import-Module {_helperModule.AsAbsoluteLocation()}",
                 $"Import-Module {_testModule.AsAbsoluteLocation()}",
-                "Test-EdgeZoneToZoneRecoveryPlanReplication");
+                "Test-AzureToEdgeZoneRecoveryPlanReplication");
         }
 
         [Fact]
@@ -156,6 +156,26 @@ namespace RecoveryServices.SiteRecovery.Test
                 $"Import-Module {_helperModule.AsAbsoluteLocation()}",
                 $"Import-Module {_testModule.AsAbsoluteLocation()}",
                 "Test-EdgeZoneToEdgeZoneRecoveryPlanReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AEdgeZoneToAvailabilityZoneRecoveryPlanReplication()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-EdgeZoneToAvailabilityZoneRecoveryPlanReplication");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void A2AAvailabilityZoneToEdgeZoneRecoveryPlanReplication()
+        {
+            TestRunner.RunTestScript(
+                $"Import-Module {_helperModule.AsAbsoluteLocation()}",
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                "Test-AvailabilityZoneToEdgeZoneRecoveryPlanReplication");
         }
 
         [Fact]
