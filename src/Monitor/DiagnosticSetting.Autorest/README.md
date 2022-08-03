@@ -44,7 +44,6 @@ title: DiagnosticSetting
 module-version: 0.1.0
 subject-prefix: ""
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
-resourcegroup-append: true
 nested-object-to-string: true
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
@@ -64,17 +63,17 @@ directive:
     remove: true
   # Rename parameter name for New-AzDiagnosticSetting
   - where:
-      subject: DiagnosticSetting
+      subject: ^DiagnosticSetting$|^DiagnosticSettingsCategory$
       parameter-name: ResourceUri
     set:
       parameter-name: ResourceId
   - where:
-      subject: DiagnosticSettingCategory
-      parameter-name: ResourceUri
+      subject: DiagnosticSettingsCategory
     set:
-      parameter-name: ResourceId
+      subject: DiagnosticSettingCategory
 
   - model-cmdlet:
     - MetricSettings
     - LogSettings
+    - SubscriptionLogSettings
 ```
