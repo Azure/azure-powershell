@@ -18,8 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added warning message for upcoming breaking change: make parameter Sku property from Enum to String
-
+* Added warning message for upcoming breaking change: changed the type of parameter Sku from Enum to String
+* Supported GraphQL Specification Format
 
 ## Version 3.0.0
 
