@@ -19,6 +19,17 @@
 --->
 
 ## Upcoming Release
+* Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
+    - `New-AzFirewallPolicyExplicitProxy`
+    - `New-AzFirewallPolicy`
+    - `Set-AzFirewallPolicy`
+* Added new cmdlets to create packet captures for Network Watcher:
+    - `New-AzNetworkWatcherPacketCaptureV2`
+    - `New-AzPacketCaptureScopeConfig`
+* Added support for CustomV2 ssl policies for Application Gateway.
+    - Added `CustomV2` to the validation set of `PolicyType`
+    - Added `TLSv1_3` to the validation set of `MinProtocolVersion`
+    - Removed validation for null or empty cipher suites list since there can be empty cipher suites list for min protocol version of tls1.3
 * Network Watcher Feature Change: Added new paramenter i.e. AzureVMSS as source endpoint in ConnectionMonitor.
     - `New-AzNetworkWatcherConnectionMonitorEndpointObject`
 * Added `IdentifyTopFatFlow` parameter to `AzureFirewall`

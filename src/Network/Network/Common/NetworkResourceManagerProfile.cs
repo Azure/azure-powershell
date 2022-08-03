@@ -467,6 +467,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSPacketCaptureResult, MNM.PacketCaptureResult>();
                 cfg.CreateMap<CNM.PSStorageLocation, MNM.PacketCaptureStorageLocation>();
                 cfg.CreateMap<CNM.PSPacketCaptureFilter, MNM.PacketCaptureFilter>();
+                cfg.CreateMap<CNM.PSPacketCaptureMachineScope, MNM.PacketCaptureMachineScope>();
                 cfg.CreateMap<CNM.PSPacketCaptureStatus, MNM.PacketCaptureQueryStatusResult>();
 
                 // MNM to CNM
@@ -474,6 +475,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.PacketCaptureResult, CNM.PSPacketCaptureResult>();
                 cfg.CreateMap<MNM.PacketCaptureStorageLocation, CNM.PSStorageLocation>();
                 cfg.CreateMap<MNM.PacketCaptureFilter, CNM.PSPacketCaptureFilter>();
+                cfg.CreateMap<MNM.PacketCaptureMachineScope, CNM.PSPacketCaptureMachineScope>();
                 cfg.CreateMap<MNM.PacketCaptureQueryStatusResult, CNM.PSPacketCaptureStatus>();
 
                 // Topology
@@ -1301,7 +1303,7 @@ namespace Microsoft.Azure.Commands.Network
                         { "Network.FTP.AllowActiveFTP", src.AllowActiveFTP },
                         { "Network.DNS.EnableProxy", src.DNSEnableProxy },
                         { "Network.DNS.Servers", src.DNSServer?.Aggregate((result, item) => result + "," + item) },
-                        { "Network.AdditionalLogs.IdentifyTopFatFlows", src.IdentifyTopFatFlow },
+                        { "Network.AdditionalLogs.EnableFatFlowLogging", src.IdentifyTopFatFlow },
                     }.Where(kvp => kvp.Value != null).ToDictionary(key => key.Key, val => val.Value);   // TODO: remove after backend code is refactored
                 });
                 cfg.CreateMap<CNM.PSAzureFirewallSku, MNM.AzureFirewallSku>();
@@ -1348,7 +1350,7 @@ namespace Microsoft.Azure.Commands.Network
                     }
                     dest.AllowActiveFTP = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.FTP.AllowActiveFTP", StringComparison.OrdinalIgnoreCase)).Value;
                     dest.DNSEnableProxy = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.EnableProxy", StringComparison.OrdinalIgnoreCase)).Value;
-                    dest.IdentifyTopFatFlow = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.AdditionalLogs.IdentifyTopFatFlows", StringComparison.OrdinalIgnoreCase)).Value;
+                    dest.IdentifyTopFatFlow = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.AdditionalLogs.EnableFatFlowLogging", StringComparison.OrdinalIgnoreCase)).Value;
                     try
                     {
                         dest.DNSServer = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.Servers", StringComparison.OrdinalIgnoreCase)).Value?.Split(',').Select(str => str.Trim()).ToArray();
@@ -1380,6 +1382,7 @@ namespace Microsoft.Azure.Commands.Network
 
                 // Azure Firewall Policies
                 // CNM to MNM
+                cfg.CreateMap<CNM.PSAzureFirewallPolicyExplicitProxy, MNM.ExplicitProxy>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicyRuleCollectionGroup, MNM.FirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<CNM.PSAzureFirewallPolicy, MNM.FirewallPolicy>().ForCtorParam("dnsSettings", opt =>
                 {
@@ -1390,6 +1393,7 @@ namespace Microsoft.Azure.Commands.Network
                 });
 
                 // MNM to CNM
+                cfg.CreateMap<MNM.ExplicitProxy, CNM.PSAzureFirewallPolicyExplicitProxy>();
                 cfg.CreateMap<MNM.FirewallPolicyRuleCollectionGroup, CNM.PSAzureFirewallPolicyRuleCollectionGroup>();
                 cfg.CreateMap<MNM.FirewallPolicy, CNM.PSAzureFirewallPolicy>().AfterMap((src, dst) =>
                 {
