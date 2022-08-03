@@ -26,8 +26,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights", "..\O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Network", "..\Network\Network\Network.csproj", "{F5D663A9-1A74-4F03-A727-3788AAD28C5E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Monitor", "Monitor.Autorest\Az.Monitor.csproj", "{0FC28534-A5D9-43F1-830C-A53797A4CD73}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ActivityLogAlert", "ActivityLogAlert.Autorest\Az.ActivityLogAlert.csproj", "{112CEC1D-DED4-4275-9456-A6B5A6B7FC6E}"
 EndProject
 Global
