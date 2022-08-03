@@ -32,6 +32,7 @@ The **Get-AzAutomationDscNodeConfigurationDeployment** cmdlet deploys an APS Des
 ## EXAMPLES
 
 ### Example 1: Get a node configuration deployment
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $deployment = Get-AzAutomationDscNodeConfigurationDeployment `
                          -JobId 35b14eb4-52b7-4a1d-ad62-8e9f84adc657 `

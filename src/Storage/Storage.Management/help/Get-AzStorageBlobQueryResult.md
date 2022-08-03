@@ -50,6 +50,7 @@ The **Get-AzStorageBlobQueryResult** cmdlet applies a simple Structured Query La
 ## EXAMPLES
 
 ### Example 1: Query a blob
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> $inputconfig = New-AzStorageBlobQueryConfig -AsCsv -HasHeader
 
@@ -69,6 +70,7 @@ BytesScanned FailureCount BlobQueryError
 This command querys a blob succsssfully with input config as csv, and output config as json, and save the output to local file "c:\resultfile.json".
 
 ### Example 2: Query a blob snapshot
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -SnapshotTime "2020-07-29T11:08:21.1097874Z" -Context $ctx
 

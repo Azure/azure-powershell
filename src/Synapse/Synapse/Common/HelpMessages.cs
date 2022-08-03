@@ -64,6 +64,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string TenantId = "Select the tenant Id to use when signing in into the Azure DevOps Git repository.";
 
+        public const string LastCommitId = "The last published commit Id.";
+
         public const string DoNotAssignManagedIdentity = "Do not assign the workspace's system-assigned managed identity CONTROL permissions to SQL pools for pipeline integration.";
 
         public const string SparkPoolName = "Name of Synapse Spark pool.";

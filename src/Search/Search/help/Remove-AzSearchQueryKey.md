@@ -36,6 +36,7 @@ The **Remove-AzSearchQueryKey** cmdlet removes the query key from the Azure Cogn
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Get-AzSearchQueryKey -ResourceGroupName "TestAzureSearchPsGroup" -ServiceName "pstestazuresearch01"
 

@@ -702,7 +702,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CUSTOMOPENIDCONNECTPROVIDER <IIdentityProvidersCustomOpenIdConnectProviders>: The map of the name of the alias of each custom Open ID Connect provider to the         configuration settings of the custom Open ID Connect provider.
+CUSTOMOPENIDCONNECTPROVIDER `<IIdentityProvidersCustomOpenIdConnectProviders>`: The map of the name of the alias of each custom Open ID Connect provider to the         configuration settings of the custom Open ID Connect provider.
   - `[(Any) <ICustomOpenIdConnectProvider>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS

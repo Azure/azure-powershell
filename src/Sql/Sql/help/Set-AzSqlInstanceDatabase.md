@@ -44,6 +44,7 @@ Set-AzSqlInstanceDatabase [-Tag <Hashtable>] [-ResourceId] <String> [-AsJob]
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 PS C:\> Set-AzSqlInstanceDatabase -Name "name1" -InstanceName "instance1" -ResourceGroupName "rg1" -Tags @{tag1="value1"}
 

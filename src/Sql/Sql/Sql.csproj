@@ -11,13 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="AdvancedThreatProtection\Templates\DeployInstanceVaTemplate.json" />
-    <None Remove="AdvancedThreatProtection\Templates\DeployServerVaTemplate.json" />
+    <None Remove="AdvancedDataSecurity\Templates\DeployInstanceVaTemplate.json" />
+    <None Remove="AdvancedDataSecurity\Templates\DeployServerVaTemplate.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="AdvancedThreatProtection\Templates\DeployInstanceVaTemplate.json" />
-    <EmbeddedResource Include="AdvancedThreatProtection\Templates\DeployServerVaTemplate.json" />
+    <EmbeddedResource Include="AdvancedDataSecurity\Templates\DeployInstanceVaTemplate.json" />
+    <EmbeddedResource Include="AdvancedDataSecurity\Templates\DeployServerVaTemplate.json" />
   </ItemGroup>
 
   <ItemGroup>

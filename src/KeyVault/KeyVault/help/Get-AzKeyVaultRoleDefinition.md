@@ -55,6 +55,7 @@ Managed HSM Backup                                1 permission(s)
 The example lists all the roles at "/keys" scope.
 
 ### Example 2
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $backupRole = Get-AzKeyVaultRoleDefinition -HsmName myHsm -RoleDefinitionName "Managed HSM Backup User"
 

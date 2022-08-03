@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using Xunit.Abstractions;
 using Microsoft.Azure.Commands.TestFx;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.Azure.Commands.TestFx.Recorder;
 
 namespace Microsoft.Azure.Commands.SqlVirtualMachine.Test.ScenarioTests
 {

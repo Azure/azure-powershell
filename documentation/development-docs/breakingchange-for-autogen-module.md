@@ -13,95 +13,95 @@ Breaking changes and preview messages for auto gen cmdlets are added through dir
 
 ```yaml
 - where:
-      verb: (.*)
-    set:
-      breaking-change:
-        deprecated-by-version: 5.0.0
-        change-effective-date: 2055/10/30
+    verb: (.*)
+  set:
+    breaking-change:
+      deprecated-by-version: 5.0.0
+      change-effective-date: 2055/10/30
 ```
 
 ## Case 2 — Breaking change for a cmdlet
 
 ```yaml
 - where:
-      verb: New
-      subject: VNetPeering
-    set:
-      breaking-change:
-        replacement-cmdlet: New-AzNewVNetPeering
-        deprecated-by-version: 5.0.0
-        change-effective-date: 2022/05/30
+    verb: New
+    subject: VNetPeering
+  set:
+    breaking-change:
+      replacement-cmdlet: New-AzNewVNetPeering
+      deprecated-by-version: 5.0.0
+      change-effective-date: 2022/05/30
 ```
 
 ## Case 3 — Breaking change for multiple cmdlets
 
 ```yaml
 - where:
-      subject: VNetPeering
-    set:
-      breaking-change:
-        replacement-cmdlet: $.replace("VNetPeering", "VNewNetPeering")
-        deprecated-by-version: 5.0.0
-        change-effective-date: 2022/05/30
+    subject: VNetPeering
+  set:
+    breaking-change:
+      replacement-cmdlet: $.replace("VNetPeering", "VNewNetPeering")
+      deprecated-by-version: 5.0.0
+      change-effective-date: 2022/05/30
 ```
 
 ## Case 4 — Breaking change for an output type
 
 ```yaml
 - where:
-      verb: New
-      subject: VNetPeering
-    set:
-      breaking-change:
-        deprecated-cmdlet-output-type: oldtype
-        replacement-cmdlet-output-type: newtype
-        deprecated-output-properties:
-          - propertyA
-          - PropertyB
-        new-output-properties:
-          - PropertyC
-          - PropertyD
-        change-description: This is a custom message for the change.
-        deprecated-by-version: 5.0.0
-        change-effective-date: 2022/05/11
+    verb: New
+    subject: VNetPeering
+  set:
+    breaking-change:
+      deprecated-cmdlet-output-type: oldtype
+      replacement-cmdlet-output-type: newtype
+      deprecated-output-properties:
+        - propertyA
+        - PropertyB
+      new-output-properties:
+        - PropertyC
+        - PropertyD
+      change-description: This is a custom message for the change.
+      deprecated-by-version: 5.0.0
+      change-effective-date: 2022/05/11
 ```
 
 ## Case 5 — Breaking change for parameter sets(variants)
 
 ```yaml
 - where:
-      verb: Remove
-      subject: VNetPeering
-      variant: Delete
-    set:
-      breaking-change:
-        deprecated-by-version: 5.0.0
-        change-efective-date: 2022/05/30
+    verb: Remove
+    subject: VNetPeering
+    variant: Delete
+  set:
+    breaking-change:
+      deprecated-by-version: 5.0.0
+      change-effective-date: 2022/05/30
 ```
 
 ## Case 6 — Breaking change for a parameter
 
 ```yaml
 - where:
-      parameter-name: Sku
-    set:
-      breaking-change:
-        old-parameter-type: int
-        new-parameter-type: boolean
-        become-mandatory: true
-        change-description: This is a custom message for the change.
-        deprecated-by-version: 5.0.0
-        change-efective-date: 2022/05/30
+    parameter-name: Sku
+  set:
+    breaking-change:
+      old-parameter-type: int
+      new-parameter-type: boolean
+      become-mandatory: true
+      change-description: This is a custom message for the change.
+      deprecated-by-version: 5.0.0
+      change-effective-date: 2022/05/30
 ```
 
 ## Case 7 — Preview message
 
 ```yaml
 - where:
-      verb: New
-      subject: VNetPeering
-    set:
-      preview-message: This is a test preview message.
+    verb: New
+    subject: VNetPeering
+  set:
+    preview-message: This is a test preview message.
 ```
 
 # For customized cmdlets

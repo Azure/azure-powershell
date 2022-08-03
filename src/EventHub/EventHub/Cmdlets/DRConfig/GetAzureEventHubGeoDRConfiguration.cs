@@ -61,12 +61,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                     {
                         if (!string.IsNullOrEmpty(Name))
                         {
-                            PSEventHubDRConfigurationAttributes drConfiguration = Client.GetEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name);
+                            PSEventHubDRConfigurationAttributes drConfiguration = UtilityClient.GetEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name);
                             WriteObject(drConfiguration);
                         }
                         else
                         {
-                            IEnumerable<PSEventHubDRConfigurationAttributes> drConfigurationList = Client.ListAllEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName);
+                            IEnumerable<PSEventHubDRConfigurationAttributes> drConfigurationList = UtilityClient.ListAllEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName);
                             WriteObject(drConfigurationList.ToList(), true);
                         }
                     }
@@ -80,12 +80,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                     {
                         if (!string.IsNullOrEmpty(Name))
                         {
-                            PSEventHubDRConfigurationAttributes drConfiguration = Client.GetEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name);
+                            PSEventHubDRConfigurationAttributes drConfiguration = UtilityClient.GetEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName, Name);
                             WriteObject(drConfiguration);
                         }
                         else
                         {
-                            IEnumerable<PSEventHubDRConfigurationAttributes> drConfigurationList = Client.ListAllEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName);
+                            IEnumerable<PSEventHubDRConfigurationAttributes> drConfigurationList = UtilityClient.ListAllEventHubDRConfiguration(getParamGeoDR.ResourceGroupName, getParamGeoDR.ResourceName);
                             WriteObject(drConfigurationList.ToList(), true);
                         }
                     }
@@ -96,13 +96,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
                     if (!string.IsNullOrEmpty(Name))
                     {
                         // Get a DRConfiguration
-                        PSEventHubDRConfigurationAttributes drConfiguration = Client.GetEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
+                        PSEventHubDRConfigurationAttributes drConfiguration = UtilityClient.GetEventHubDRConfiguration(ResourceGroupName, Namespace, Name);
                         WriteObject(drConfiguration);
                     }
                     else
                     {
                         // Get all DRConfigurations
-                        IEnumerable<PSEventHubDRConfigurationAttributes> drConfigurationList = Client.ListAllEventHubDRConfiguration(ResourceGroupName, Namespace);
+                        IEnumerable<PSEventHubDRConfigurationAttributes> drConfigurationList = UtilityClient.ListAllEventHubDRConfiguration(ResourceGroupName, Namespace);
                         WriteObject(drConfigurationList.ToList(), true);
                     }
                 }

@@ -85,7 +85,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
                         Description = String.Empty;
                     }
 
-                    WriteObject(Client.UpdatePrivateEndpointConnection(resourceGroupName: ResourceGroupName,
+                    WriteObject(UtilityClient.UpdatePrivateEndpointConnection(resourceGroupName: ResourceGroupName,
                                                                        namespaceName: NamespaceName,
                                                                        privateEndpointName: Name,
                                                                        connectionState: "Rejected",

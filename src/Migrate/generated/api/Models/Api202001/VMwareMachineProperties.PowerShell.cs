@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
         /// Creates a new instance of <see cref="VMwareMachineProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="VMwareMachineProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachineProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -104,57 +106,210 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppsAndRole = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAppsAndRoles) content.GetValueForProperty("AppsAndRole",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppsAndRole, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.AppsAndRolesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystem) content.GetValueForProperty("OperatingSystemDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.OperatingSystemTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IGuestOSDetails) content.GetValueForProperty("GuestOSDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.GuestOSDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DataCenterScope = (string) content.GetValueForProperty("DataCenterScope",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DataCenterScope, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Firmware = (string) content.GetValueForProperty("Firmware",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Firmware, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterFqdn = (string) content.GetValueForProperty("VCenterFqdn",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterFqdn, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterId = (string) content.GetValueForProperty("VCenterId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMwareToolsStatus = (string) content.GetValueForProperty("VMwareToolsStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMwareToolsStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingSupported = (bool?) content.GetValueForProperty("ChangeTrackingSupported",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingEnabled = (bool?) content.GetValueForProperty("ChangeTrackingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).MaxSnapshot = (int?) content.GetValueForProperty("MaxSnapshot",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).MaxSnapshot, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Disk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareDisk[]) content.GetValueForProperty("Disk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Disk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareDisk>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareDiskTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostInMaintenanceMode = (bool?) content.GetValueForProperty("HostInMaintenanceMode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostInMaintenanceMode, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostPowerState = (string) content.GetValueForProperty("HostPowerState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostPowerState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostVersion = (string) content.GetValueForProperty("HostVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NetworkAdapter = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareNetworkAdapter[]) content.GetValueForProperty("NetworkAdapter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NetworkAdapter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareNetworkAdapter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareNetworkAdapterTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMapping = (string) content.GetValueForProperty("DependencyMapping",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMapping, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMappingStartTime = (global::System.DateTime?) content.GetValueForProperty("DependencyMappingStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMappingStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfProcessorCore = (int?) content.GetValueForProperty("NumberOfProcessorCore",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfProcessorCore, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AllocatedMemoryInMb = (double?) content.GetValueForProperty("AllocatedMemoryInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AllocatedMemoryInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMConfigurationFileLocation = (string) content.GetValueForProperty("VMConfigurationFileLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMConfigurationFileLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfApplication = (int?) content.GetValueForProperty("NumberOfApplication",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfApplication, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestDetailsDiscoveryTimestamp = (global::System.DateTime?) content.GetValueForProperty("GuestDetailsDiscoveryTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestDetailsDiscoveryTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsGuestDetailsDiscoveryInProgress = (bool?) content.GetValueForProperty("IsGuestDetailsDiscoveryInProgress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsGuestDetailsDiscoveryInProgress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).CreatedTimestamp = (string) content.GetValueForProperty("CreatedTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).CreatedTimestamp, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).UpdatedTimestamp = (string) content.GetValueForProperty("UpdatedTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).UpdatedTimestamp, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).InstanceUuid = (string) content.GetValueForProperty("InstanceUuid",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).InstanceUuid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).PowerStatus = (string) content.GetValueForProperty("PowerStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).PowerStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosSerialNumber = (string) content.GetValueForProperty("BiosSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosSerialNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosGuid = (string) content.GetValueForProperty("BiosGuid",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosGuid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMFqdn = (string) content.GetValueForProperty("VMFqdn",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMFqdn, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsDeleted = (bool?) content.GetValueForProperty("IsDeleted",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsDeleted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHealthErrorDetails[]) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Error, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHealthErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.HealthErrorDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleApplication = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IApplication[]) content.GetValueForProperty("AppAndRoleApplication",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleApplication, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IApplication>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ApplicationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleWebApplication = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplication[]) content.GetValueForProperty("AppAndRoleWebApplication",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleWebApplication, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplication>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.WebApplicationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleFeature = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IFeature[]) content.GetValueForProperty("AppAndRoleFeature",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleFeature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IFeature>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.FeatureTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSqlServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServer[]) content.GetValueForProperty("AppAndRoleSqlServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSqlServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SqlServerTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSystemCenter = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISystemCenter[]) content.GetValueForProperty("AppAndRoleSystemCenter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSystemCenter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISystemCenter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SystemCenterTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleExchangeServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServer[]) content.GetValueForProperty("AppAndRoleExchangeServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleExchangeServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ExchangeServerTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleOtherDatabase = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOtherDatabase[]) content.GetValueForProperty("AppAndRoleOtherDatabase",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleOtherDatabase, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOtherDatabase>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.OtherDatabaseTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOstype = (string) content.GetValueForProperty("GuestOSDetailOstype",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOstype, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsname = (string) content.GetValueForProperty("GuestOSDetailOsname",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsname, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsversion = (string) content.GetValueForProperty("GuestOSDetailOsversion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsversion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSharePointServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServer[]) content.GetValueForProperty("AppAndRoleSharePointServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSharePointServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SharePointServerTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleBizTalkServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IBizTalkServer[]) content.GetValueForProperty("AppAndRoleBizTalkServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleBizTalkServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IBizTalkServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.BizTalkServerTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSType = (string) content.GetValueForProperty("OperatingSystemDetailOSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSName = (string) content.GetValueForProperty("OperatingSystemDetailOSName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSVersion = (string) content.GetValueForProperty("OperatingSystemDetailOSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSVersion, global::System.Convert.ToString);
+            if (content.Contains("AppsAndRole"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppsAndRole = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAppsAndRoles) content.GetValueForProperty("AppsAndRole",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppsAndRole, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.AppsAndRolesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("OperatingSystemDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystem) content.GetValueForProperty("OperatingSystemDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.OperatingSystemTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GuestOSDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IGuestOSDetails) content.GetValueForProperty("GuestOSDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.GuestOSDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataCenterScope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DataCenterScope = (string) content.GetValueForProperty("DataCenterScope",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DataCenterScope, global::System.Convert.ToString);
+            }
+            if (content.Contains("Firmware"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Firmware = (string) content.GetValueForProperty("Firmware",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Firmware, global::System.Convert.ToString);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("VCenterFqdn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterFqdn = (string) content.GetValueForProperty("VCenterFqdn",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterFqdn, global::System.Convert.ToString);
+            }
+            if (content.Contains("VCenterId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterId = (string) content.GetValueForProperty("VCenterId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMwareToolsStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMwareToolsStatus = (string) content.GetValueForProperty("VMwareToolsStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMwareToolsStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("ChangeTrackingSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingSupported = (bool?) content.GetValueForProperty("ChangeTrackingSupported",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ChangeTrackingEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingEnabled = (bool?) content.GetValueForProperty("ChangeTrackingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("MaxSnapshot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).MaxSnapshot = (int?) content.GetValueForProperty("MaxSnapshot",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).MaxSnapshot, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Disk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Disk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareDisk[]) content.GetValueForProperty("Disk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Disk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareDisk>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareDiskTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HostInMaintenanceMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostInMaintenanceMode = (bool?) content.GetValueForProperty("HostInMaintenanceMode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostInMaintenanceMode, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("HostName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostName, global::System.Convert.ToString);
+            }
+            if (content.Contains("HostPowerState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostPowerState = (string) content.GetValueForProperty("HostPowerState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostPowerState, global::System.Convert.ToString);
+            }
+            if (content.Contains("HostVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostVersion = (string) content.GetValueForProperty("HostVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkAdapter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NetworkAdapter = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareNetworkAdapter[]) content.GetValueForProperty("NetworkAdapter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NetworkAdapter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareNetworkAdapter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareNetworkAdapterTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DependencyMapping"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMapping = (string) content.GetValueForProperty("DependencyMapping",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMapping, global::System.Convert.ToString);
+            }
+            if (content.Contains("DependencyMappingStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMappingStartTime = (global::System.DateTime?) content.GetValueForProperty("DependencyMappingStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMappingStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NumberOfProcessorCore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfProcessorCore = (int?) content.GetValueForProperty("NumberOfProcessorCore",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfProcessorCore, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AllocatedMemoryInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AllocatedMemoryInMb = (double?) content.GetValueForProperty("AllocatedMemoryInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AllocatedMemoryInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("VMConfigurationFileLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMConfigurationFileLocation = (string) content.GetValueForProperty("VMConfigurationFileLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMConfigurationFileLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("NumberOfApplication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfApplication = (int?) content.GetValueForProperty("NumberOfApplication",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfApplication, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("GuestDetailsDiscoveryTimestamp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestDetailsDiscoveryTimestamp = (global::System.DateTime?) content.GetValueForProperty("GuestDetailsDiscoveryTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestDetailsDiscoveryTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("IsGuestDetailsDiscoveryInProgress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsGuestDetailsDiscoveryInProgress = (bool?) content.GetValueForProperty("IsGuestDetailsDiscoveryInProgress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsGuestDetailsDiscoveryInProgress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("CreatedTimestamp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).CreatedTimestamp = (string) content.GetValueForProperty("CreatedTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).CreatedTimestamp, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdatedTimestamp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).UpdatedTimestamp = (string) content.GetValueForProperty("UpdatedTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).UpdatedTimestamp, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceUuid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).InstanceUuid = (string) content.GetValueForProperty("InstanceUuid",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).InstanceUuid, global::System.Convert.ToString);
+            }
+            if (content.Contains("PowerStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).PowerStatus = (string) content.GetValueForProperty("PowerStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).PowerStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("BiosSerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosSerialNumber = (string) content.GetValueForProperty("BiosSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosSerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("BiosGuid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosGuid = (string) content.GetValueForProperty("BiosGuid",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosGuid, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMFqdn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMFqdn = (string) content.GetValueForProperty("VMFqdn",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMFqdn, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsDeleted"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsDeleted = (bool?) content.GetValueForProperty("IsDeleted",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsDeleted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHealthErrorDetails[]) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Error, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHealthErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.HealthErrorDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleApplication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleApplication = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IApplication[]) content.GetValueForProperty("AppAndRoleApplication",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleApplication, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IApplication>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ApplicationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleWebApplication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleWebApplication = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplication[]) content.GetValueForProperty("AppAndRoleWebApplication",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleWebApplication, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplication>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.WebApplicationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleFeature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleFeature = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IFeature[]) content.GetValueForProperty("AppAndRoleFeature",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleFeature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IFeature>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.FeatureTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleSqlServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSqlServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServer[]) content.GetValueForProperty("AppAndRoleSqlServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSqlServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SqlServerTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleSystemCenter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSystemCenter = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISystemCenter[]) content.GetValueForProperty("AppAndRoleSystemCenter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSystemCenter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISystemCenter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SystemCenterTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleExchangeServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleExchangeServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServer[]) content.GetValueForProperty("AppAndRoleExchangeServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleExchangeServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ExchangeServerTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleOtherDatabase"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleOtherDatabase = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOtherDatabase[]) content.GetValueForProperty("AppAndRoleOtherDatabase",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleOtherDatabase, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOtherDatabase>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.OtherDatabaseTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("GuestOSDetailOstype"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOstype = (string) content.GetValueForProperty("GuestOSDetailOstype",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOstype, global::System.Convert.ToString);
+            }
+            if (content.Contains("GuestOSDetailOsname"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsname = (string) content.GetValueForProperty("GuestOSDetailOsname",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsname, global::System.Convert.ToString);
+            }
+            if (content.Contains("GuestOSDetailOsversion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsversion = (string) content.GetValueForProperty("GuestOSDetailOsversion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsversion, global::System.Convert.ToString);
+            }
+            if (content.Contains("AppAndRoleSharePointServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSharePointServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServer[]) content.GetValueForProperty("AppAndRoleSharePointServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSharePointServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SharePointServerTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleBizTalkServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleBizTalkServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IBizTalkServer[]) content.GetValueForProperty("AppAndRoleBizTalkServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleBizTalkServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IBizTalkServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.BizTalkServerTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("OperatingSystemDetailOSType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSType = (string) content.GetValueForProperty("OperatingSystemDetailOSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSType, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperatingSystemDetailOSName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSName = (string) content.GetValueForProperty("OperatingSystemDetailOSName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperatingSystemDetailOSVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSVersion = (string) content.GetValueForProperty("OperatingSystemDetailOSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSVersion, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -172,57 +327,210 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppsAndRole = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAppsAndRoles) content.GetValueForProperty("AppsAndRole",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppsAndRole, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.AppsAndRolesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystem) content.GetValueForProperty("OperatingSystemDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.OperatingSystemTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IGuestOSDetails) content.GetValueForProperty("GuestOSDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.GuestOSDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DataCenterScope = (string) content.GetValueForProperty("DataCenterScope",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DataCenterScope, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Firmware = (string) content.GetValueForProperty("Firmware",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Firmware, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterFqdn = (string) content.GetValueForProperty("VCenterFqdn",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterFqdn, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterId = (string) content.GetValueForProperty("VCenterId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMwareToolsStatus = (string) content.GetValueForProperty("VMwareToolsStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMwareToolsStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingSupported = (bool?) content.GetValueForProperty("ChangeTrackingSupported",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingEnabled = (bool?) content.GetValueForProperty("ChangeTrackingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).MaxSnapshot = (int?) content.GetValueForProperty("MaxSnapshot",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).MaxSnapshot, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Disk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareDisk[]) content.GetValueForProperty("Disk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Disk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareDisk>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareDiskTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostInMaintenanceMode = (bool?) content.GetValueForProperty("HostInMaintenanceMode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostInMaintenanceMode, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostPowerState = (string) content.GetValueForProperty("HostPowerState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostPowerState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostVersion = (string) content.GetValueForProperty("HostVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostVersion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NetworkAdapter = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareNetworkAdapter[]) content.GetValueForProperty("NetworkAdapter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NetworkAdapter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareNetworkAdapter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareNetworkAdapterTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMapping = (string) content.GetValueForProperty("DependencyMapping",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMapping, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMappingStartTime = (global::System.DateTime?) content.GetValueForProperty("DependencyMappingStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMappingStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfProcessorCore = (int?) content.GetValueForProperty("NumberOfProcessorCore",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfProcessorCore, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AllocatedMemoryInMb = (double?) content.GetValueForProperty("AllocatedMemoryInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AllocatedMemoryInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMConfigurationFileLocation = (string) content.GetValueForProperty("VMConfigurationFileLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMConfigurationFileLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfApplication = (int?) content.GetValueForProperty("NumberOfApplication",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfApplication, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestDetailsDiscoveryTimestamp = (global::System.DateTime?) content.GetValueForProperty("GuestDetailsDiscoveryTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestDetailsDiscoveryTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsGuestDetailsDiscoveryInProgress = (bool?) content.GetValueForProperty("IsGuestDetailsDiscoveryInProgress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsGuestDetailsDiscoveryInProgress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).CreatedTimestamp = (string) content.GetValueForProperty("CreatedTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).CreatedTimestamp, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).UpdatedTimestamp = (string) content.GetValueForProperty("UpdatedTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).UpdatedTimestamp, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).InstanceUuid = (string) content.GetValueForProperty("InstanceUuid",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).InstanceUuid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).PowerStatus = (string) content.GetValueForProperty("PowerStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).PowerStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosSerialNumber = (string) content.GetValueForProperty("BiosSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosSerialNumber, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosGuid = (string) content.GetValueForProperty("BiosGuid",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosGuid, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMFqdn = (string) content.GetValueForProperty("VMFqdn",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMFqdn, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsDeleted = (bool?) content.GetValueForProperty("IsDeleted",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsDeleted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHealthErrorDetails[]) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Error, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHealthErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.HealthErrorDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleApplication = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IApplication[]) content.GetValueForProperty("AppAndRoleApplication",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleApplication, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IApplication>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ApplicationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleWebApplication = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplication[]) content.GetValueForProperty("AppAndRoleWebApplication",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleWebApplication, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplication>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.WebApplicationTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleFeature = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IFeature[]) content.GetValueForProperty("AppAndRoleFeature",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleFeature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IFeature>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.FeatureTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSqlServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServer[]) content.GetValueForProperty("AppAndRoleSqlServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSqlServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SqlServerTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSystemCenter = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISystemCenter[]) content.GetValueForProperty("AppAndRoleSystemCenter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSystemCenter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISystemCenter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SystemCenterTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleExchangeServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServer[]) content.GetValueForProperty("AppAndRoleExchangeServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleExchangeServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ExchangeServerTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleOtherDatabase = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOtherDatabase[]) content.GetValueForProperty("AppAndRoleOtherDatabase",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleOtherDatabase, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOtherDatabase>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.OtherDatabaseTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOstype = (string) content.GetValueForProperty("GuestOSDetailOstype",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOstype, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsname = (string) content.GetValueForProperty("GuestOSDetailOsname",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsname, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsversion = (string) content.GetValueForProperty("GuestOSDetailOsversion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsversion, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSharePointServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServer[]) content.GetValueForProperty("AppAndRoleSharePointServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSharePointServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SharePointServerTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleBizTalkServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IBizTalkServer[]) content.GetValueForProperty("AppAndRoleBizTalkServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleBizTalkServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IBizTalkServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.BizTalkServerTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSType = (string) content.GetValueForProperty("OperatingSystemDetailOSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSName = (string) content.GetValueForProperty("OperatingSystemDetailOSName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSVersion = (string) content.GetValueForProperty("OperatingSystemDetailOSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSVersion, global::System.Convert.ToString);
+            if (content.Contains("AppsAndRole"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppsAndRole = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IAppsAndRoles) content.GetValueForProperty("AppsAndRole",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppsAndRole, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.AppsAndRolesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("OperatingSystemDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOperatingSystem) content.GetValueForProperty("OperatingSystemDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.OperatingSystemTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("GuestOSDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IGuestOSDetails) content.GetValueForProperty("GuestOSDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.GuestOSDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DataCenterScope"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DataCenterScope = (string) content.GetValueForProperty("DataCenterScope",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DataCenterScope, global::System.Convert.ToString);
+            }
+            if (content.Contains("Firmware"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Firmware = (string) content.GetValueForProperty("Firmware",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Firmware, global::System.Convert.ToString);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("VCenterFqdn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterFqdn = (string) content.GetValueForProperty("VCenterFqdn",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterFqdn, global::System.Convert.ToString);
+            }
+            if (content.Contains("VCenterId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterId = (string) content.GetValueForProperty("VCenterId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VCenterId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMwareToolsStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMwareToolsStatus = (string) content.GetValueForProperty("VMwareToolsStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMwareToolsStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("ChangeTrackingSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingSupported = (bool?) content.GetValueForProperty("ChangeTrackingSupported",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingSupported, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("ChangeTrackingEnabled"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingEnabled = (bool?) content.GetValueForProperty("ChangeTrackingEnabled",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).ChangeTrackingEnabled, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("MaxSnapshot"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).MaxSnapshot = (int?) content.GetValueForProperty("MaxSnapshot",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).MaxSnapshot, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Disk"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Disk = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareDisk[]) content.GetValueForProperty("Disk",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Disk, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareDisk>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareDiskTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HostInMaintenanceMode"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostInMaintenanceMode = (bool?) content.GetValueForProperty("HostInMaintenanceMode",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostInMaintenanceMode, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("HostName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostName = (string) content.GetValueForProperty("HostName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostName, global::System.Convert.ToString);
+            }
+            if (content.Contains("HostPowerState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostPowerState = (string) content.GetValueForProperty("HostPowerState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostPowerState, global::System.Convert.ToString);
+            }
+            if (content.Contains("HostVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostVersion = (string) content.GetValueForProperty("HostVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).HostVersion, global::System.Convert.ToString);
+            }
+            if (content.Contains("NetworkAdapter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NetworkAdapter = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareNetworkAdapter[]) content.GetValueForProperty("NetworkAdapter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NetworkAdapter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareNetworkAdapter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.VMwareNetworkAdapterTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DependencyMapping"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMapping = (string) content.GetValueForProperty("DependencyMapping",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMapping, global::System.Convert.ToString);
+            }
+            if (content.Contains("DependencyMappingStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMappingStartTime = (global::System.DateTime?) content.GetValueForProperty("DependencyMappingStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DependencyMappingStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("DisplayName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DisplayName = (string) content.GetValueForProperty("DisplayName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).DisplayName, global::System.Convert.ToString);
+            }
+            if (content.Contains("NumberOfProcessorCore"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfProcessorCore = (int?) content.GetValueForProperty("NumberOfProcessorCore",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfProcessorCore, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("AllocatedMemoryInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AllocatedMemoryInMb = (double?) content.GetValueForProperty("AllocatedMemoryInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AllocatedMemoryInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("VMConfigurationFileLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMConfigurationFileLocation = (string) content.GetValueForProperty("VMConfigurationFileLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMConfigurationFileLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("NumberOfApplication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfApplication = (int?) content.GetValueForProperty("NumberOfApplication",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).NumberOfApplication, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("GuestDetailsDiscoveryTimestamp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestDetailsDiscoveryTimestamp = (global::System.DateTime?) content.GetValueForProperty("GuestDetailsDiscoveryTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestDetailsDiscoveryTimestamp, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("IsGuestDetailsDiscoveryInProgress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsGuestDetailsDiscoveryInProgress = (bool?) content.GetValueForProperty("IsGuestDetailsDiscoveryInProgress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsGuestDetailsDiscoveryInProgress, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("CreatedTimestamp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).CreatedTimestamp = (string) content.GetValueForProperty("CreatedTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).CreatedTimestamp, global::System.Convert.ToString);
+            }
+            if (content.Contains("UpdatedTimestamp"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).UpdatedTimestamp = (string) content.GetValueForProperty("UpdatedTimestamp",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).UpdatedTimestamp, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceUuid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).InstanceUuid = (string) content.GetValueForProperty("InstanceUuid",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).InstanceUuid, global::System.Convert.ToString);
+            }
+            if (content.Contains("PowerStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).PowerStatus = (string) content.GetValueForProperty("PowerStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).PowerStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("BiosSerialNumber"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosSerialNumber = (string) content.GetValueForProperty("BiosSerialNumber",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosSerialNumber, global::System.Convert.ToString);
+            }
+            if (content.Contains("BiosGuid"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosGuid = (string) content.GetValueForProperty("BiosGuid",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).BiosGuid, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMFqdn"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMFqdn = (string) content.GetValueForProperty("VMFqdn",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).VMFqdn, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsDeleted"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsDeleted = (bool?) content.GetValueForProperty("IsDeleted",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).IsDeleted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHealthErrorDetails[]) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).Error, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IHealthErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.HealthErrorDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleApplication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleApplication = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IApplication[]) content.GetValueForProperty("AppAndRoleApplication",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleApplication, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IApplication>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ApplicationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleWebApplication"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleWebApplication = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplication[]) content.GetValueForProperty("AppAndRoleWebApplication",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleWebApplication, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IWebApplication>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.WebApplicationTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleFeature"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleFeature = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IFeature[]) content.GetValueForProperty("AppAndRoleFeature",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleFeature, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IFeature>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.FeatureTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleSqlServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSqlServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServer[]) content.GetValueForProperty("AppAndRoleSqlServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSqlServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISqlServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SqlServerTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleSystemCenter"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSystemCenter = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISystemCenter[]) content.GetValueForProperty("AppAndRoleSystemCenter",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSystemCenter, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISystemCenter>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SystemCenterTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleExchangeServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleExchangeServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServer[]) content.GetValueForProperty("AppAndRoleExchangeServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleExchangeServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IExchangeServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ExchangeServerTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleOtherDatabase"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleOtherDatabase = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOtherDatabase[]) content.GetValueForProperty("AppAndRoleOtherDatabase",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleOtherDatabase, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IOtherDatabase>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.OtherDatabaseTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("GuestOSDetailOstype"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOstype = (string) content.GetValueForProperty("GuestOSDetailOstype",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOstype, global::System.Convert.ToString);
+            }
+            if (content.Contains("GuestOSDetailOsname"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsname = (string) content.GetValueForProperty("GuestOSDetailOsname",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsname, global::System.Convert.ToString);
+            }
+            if (content.Contains("GuestOSDetailOsversion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsversion = (string) content.GetValueForProperty("GuestOSDetailOsversion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).GuestOSDetailOsversion, global::System.Convert.ToString);
+            }
+            if (content.Contains("AppAndRoleSharePointServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSharePointServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServer[]) content.GetValueForProperty("AppAndRoleSharePointServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleSharePointServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.ISharePointServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.SharePointServerTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AppAndRoleBizTalkServer"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleBizTalkServer = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IBizTalkServer[]) content.GetValueForProperty("AppAndRoleBizTalkServer",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).AppAndRoleBizTalkServer, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IBizTalkServer>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.BizTalkServerTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("OperatingSystemDetailOSType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSType = (string) content.GetValueForProperty("OperatingSystemDetailOSType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSType, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperatingSystemDetailOSName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSName = (string) content.GetValueForProperty("OperatingSystemDetailOSName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSName, global::System.Convert.ToString);
+            }
+            if (content.Contains("OperatingSystemDetailOSVersion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSVersion = (string) content.GetValueForProperty("OperatingSystemDetailOSVersion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api202001.IVMwareMachinePropertiesInternal)this).OperatingSystemDetailOSVersion, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
     }

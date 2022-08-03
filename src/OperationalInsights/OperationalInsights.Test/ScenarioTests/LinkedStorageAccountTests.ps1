@@ -23,8 +23,8 @@ function Test-LinkedStorageAccount
 	$workspaceName = Get-ResourceName
 	$loc = Get-ProviderLocation
 
-	$accountName1 = "azpstestaccountmock1"
-    $accountName2 = "azpstestaccountmock2"
+	$accountName1 = "azpstestaccountmock11"
+    $accountName2 = "azpstestaccountmock21"
 
 	try
 	{

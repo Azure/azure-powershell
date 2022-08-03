@@ -3,7 +3,11 @@
     Custom rule for parameter name and value.
     .NOTES
     File: ParameterNameAndValue.psm1
+    Import-Module should be at the beginning of the rule to avoid thread conflict.
 #>
+Get-Item "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1" | Import-Module -Global
+
+. $PSScriptRoot\..\utils.ps1
 
 enum RuleNames {
     Unknown_Parameter_Set
@@ -14,6 +18,8 @@ enum RuleNames {
     Unbinded_Expression
     Mismatched_Parameter_Value_Type
 }
+
+$global:UtilityOutputTypePair = @{"ConvertTo-Json" = [string]; "ConvertFrom-Json" = [hashtable]}
 
 <#
     .SYNOPSIS
@@ -35,11 +41,24 @@ function Get-ParameterNameNotAlias {
     Gets the final actual value from ast.
 #>
 function Get-FinalVariableValue {
-    param([System.Management.Automation.Language.Ast]$CommandElementAst)
-
+    param([System.Management.Automation.Language.Ast]$CommandElementAst,
+    [System.Management.Automation.Language.VariableExpressionAst]$VariableExpressionAst = $null)
     while ($true) {
         if ($null -ne $CommandElementAst.Expression) {
             $CommandElementAst = $CommandElementAst.Expression
+        }
+        elseif ($null -ne $CommandElementAst.Left) {
+            if($CommandElementAst.Left -eq $VariableExpressionAst){
+                if($CommandElementAst.Right -eq $VariableExpressionAst){
+                    $CommandElementAst = $null
+                }
+                else{
+                    $CommandElementAst = $CommandElementAst.Right
+                }
+            }
+            else{
+                $CommandElementAst = $CommandElementAst.Left
+            }
         }
         elseif ($null -ne $CommandElementAst.Target) {
             $CommandElementAst = $CommandElementAst.Target
@@ -48,7 +67,14 @@ function Get-FinalVariableValue {
             $CommandElementAst = $CommandElementAst.Pipeline
         }
         elseif ($null -ne $CommandElementAst.PipelineElements) {
-            $CommandElementAst = $CommandElementAst.PipelineElements[-1]
+            $LastElement = $CommandElementAst.PipelineElements[-1].Extent.Text
+            # If the LastElement contains "where" or "sort", then the type isnot changed. 
+            if($LastElement -match "where" -or $LastElement -match "sort"){
+                $CommandElementAst = $CommandElementAst.PipelineElements[0]
+            }
+            else{
+                $CommandElementAst = $CommandElementAst.PipelineElements[-1]
+            }
         }
         elseif($null -ne $CommandElementAst.Elements){
             $CommandElementAst = $CommandElementAst.Elements[0]
@@ -77,6 +103,19 @@ function Get-RecoveredValueType{
         if ($global:AssignmentLeftAndRight.ContainsKey($CommandElementAst.Extent.Text)){
             $CommandElementAst = $global:AssignmentLeftAndRight.($CommandElementAst.Extent.Text)
         }
+        elseif ($null -ne $CommandElementAst.Left) {
+            if($CommandElementAst.Left -eq $VariableExpressionAst){
+                if($CommandElementAst.Right -eq $VariableExpressionAst){
+                    $CommandElementAst = $null
+                }
+                else{
+                    $CommandElementAst = $CommandElementAst.Right
+                }
+            }
+            else{
+                $CommandElementAst = $CommandElementAst.Left
+            }
+        }
         elseif ($null -ne $CommandElementAst.Expression) {
             if($null -ne $CommandElementAst.Member){
                 $Items += $CommandElementAst.Member
@@ -98,12 +137,23 @@ function Get-RecoveredValueType{
             }
         }
         else{
+            if($Items[$j].Value -eq "new"){
+                return $Type
+            }
             $Member = $Type.GetMembers() | Where-Object {$_.Name -eq $Items[$j]}
-            if($Member -is [array]){
-                $Member = $Member[0]
+            if($null -eq $Member -and $null -ne $Type.ImplementedInterfaces){
+                for($i = 0; $i -lt $Type.ImplementedInterfaces.Length; $i++){
+                    $Member = $Type.ImplementedInterfaces[$i].GetMembers() | Where-Object {$_.Name -eq $Items[$j]}
+                    if($null -ne $Member){
+                        break
+                    }
+                }
             }
             if($null -eq $Member){
-                return $null
+                 return $null
+            }
+            if($Member -is [array]){
+                $Member = $Member[0]
             }
             if($null -ne $Member.PropertyType){
                 $Type = $Member.PropertyType
@@ -119,6 +169,39 @@ function Get-RecoveredValueType{
     return $Type
 }
 
+<#
+    .SYNOPSIS
+    Measure whether the actual type matches the expected type.
+#>
+function Measure-IsTypeMatched{
+    param (
+        [System.Reflection.TypeInfo]$ExpectedType,
+        [System.Reflection.TypeInfo]$ActualType
+    )
+    if($ActualType -eq $null) {
+        return $false
+    }
+    if($ActualType.IsArray) {
+        $ActualType = $ActualType.GetElementType()
+    }
+    if($ActualType.IsGenericType){
+        $ActualType = $ActualType.GetGenericArguments()[0]
+    }
+    $Converter = [System.ComponentModel.TypeDescriptor]::GetConverter($ExpectedType)  
+    if ($ActualType -eq $ExpectedType -or
+        $ActualType.GetInterfaces().Contains($ExpectedType) -or 
+        $ExpectedType.GetInterfaces().Contains($ActualType) -or 
+        $ActualType.IsSubclassOf($ExpectedType) -or 
+        $Converter.CanConvertFrom($ActualType)) {
+        return $true
+    }
+    return $false
+}
+
+<#
+    .SYNOPSIS
+    Gets the expression's actual value and type, if the parameter is assigned with a value.
+#>
 function Get-AssignedParameterExpression {
     param (
         [System.Management.Automation.CommandInfo]$GetCommand,
@@ -134,7 +217,7 @@ function Get-AssignedParameterExpression {
             break
         }
         # Get the actual value
-        $CommandElement_Copy = Get-FinalVariableValue $global:AssignmentLeftAndRight.($CommandElement_Copy.Extent.Text)
+        $CommandElement_Copy = Get-FinalVariableValue $global:AssignmentLeftAndRight.($CommandElement_Copy.Extent.Text) $CommandElement_Copy
         if ($null -eq $CommandElement_Copy) {
             # Variable is not assigned with a value.
             # Unassigned_Variable
@@ -142,16 +225,42 @@ function Get-AssignedParameterExpression {
             return $ExpressionToParameter
         }
     }
+    if($CommandElement_Copy.Extent.Text -match "foreach" -or $CommandElement_Copy.Extent.Text -match "select"){
+        Write-Debug "The CommandElement contains 'foreach' or 'select'. This situation can not be handled now."
+        return $null
+    }
+    $ExpectedType = $GetCommand.Parameters.$ParameterNameNotAlias.ParameterType
+    if($CommandElement_Copy -is [System.Management.Automation.Language.HashtableAst]){
+        # If ExpectedType is ValueType, then it cannot be created by Hashtable.
+        if($ExpectedType.IsValueType){
+            # Mismatched_Parameter_Value_Type
+            $ExpressionToParameter = "$($CommandElement.Extent.Text)-#-$ExpectedType, created by hashtable but is value type."
+            return $ExpressionToParameter
+        }
+        return $null
+    }
+    if($CommandElement_Copy -is [System.Management.Automation.Language.ConvertExpressionAst]){
+        $CommandElement_Copy = $CommandElement_Copy.Type
+    }
+    while ($ExpectedType.IsArray) {
+        $ExpectedType = $ExpectedType.GetElementType()
+    }
+    if($ExpectedType.IsGenericType){
+        $ExpectedType = $ExpectedType.GetGenericArguments()[0]
+    }
     if ($CommandElement_Copy -is [System.Management.Automation.Language.CommandAst]) {
         # Value is an command
         # If the value is created by "New-Object", then get the type behind "New-Object".
         if($CommandElement_Copy.CommandElements[0].Extent.Text -eq "New-Object"){
             if($CommandElement_Copy.CommandElements[1].Extent.Text -eq "-TypeName"){
-                $OutputType = $CommandElement_Copy.CommandElements[2].Extent.Text -as [Type]
+                $TypeName = $CommandElement_Copy.CommandElements[2].Extent.Text -replace "`""
+                $TypeName = $TypeName -replace "'"
             }
             else{
-                $OutputType = $CommandElement_Copy.CommandElements[1].Extent.Text -as [Type]
+                $TypeName = $CommandElement_Copy.CommandElements[1].Extent.Text -replace "`""
+                $TypeName = $TypeName -replace "'"
             }
+            $OutputType = $TypeName -as [Type]
             $OutputTypes = @() + $OutputType
         }
         else{
@@ -162,10 +271,16 @@ function Get-AssignedParameterExpression {
                 return $null
             }
             $OutputTypes = @()
-            $j = 0
-            while($GetElementCommand.OutputType[$j]){
-                $OutputTypes += $GetElementCommand.OutputType[$j].Type
-                $j++
+            if($global:UtilityOutputTypePair.ContainsKey($GetElementCommand.Name)){
+                $OutputType = $global:UtilityOutputTypePair.($GetElementCommand.Name)
+                $OutputTypes += $OutputType
+            }
+            else{
+                $j = 0
+                while($GetElementCommand.OutputType[$j]){
+                    $OutputTypes += $GetElementCommand.OutputType[$j].Type
+                    $j++
+                }
             }
         }
         $flag = $true
@@ -174,63 +289,49 @@ function Get-AssignedParameterExpression {
             $ReturnType = $OutputTypes[$j]
             $j++
             $ActualType = Get-RecoveredValueType $CommandElement $ReturnType
-            $ExpectedType = $GetCommand.Parameters.$ParameterNameNotAlias.ParameterType
             if($null -eq $ActualType){
                 Continue
             }
-            if ($ExpectedType.IsArray) {
-                $ExpectedType = $ExpectedType.GetElementType()
-            }
-            if($ActualType.IsArray) {
-                $ActualType = $ActualType.GetElementType()
-            }
-            if($ActualType.IsGenericType){
-                $ActualType = $ActualType.GetGenericArguments()[0]
-            }
-            if($ExpectedType.IsGenericType){
-                $ExpectedType = $ExpectedType.GetGenericArguments()[0]
-            }
-            if ($ActualType -eq $ExpectedType -or $ActualType -is $ExpectedType -or
-            $ActualType.GetInterfaces().Contains($ExpectedType) -or $ExpectedType.GetInterfaces().Contains($ActualType)) {
+            if(Measure-IsTypeMatched $ExpectedType $ActualType){
                 $flag = $false
+                break
             }
         }
         if($flag){
             # Mismatched_Parameter_Value_Type
-            $ExpressionToParameter = "$($CommandElement.Extent.Text)-#-$ExpectedType"
+            $ExpressionToParameter = "$($CommandElement.Extent.Text)-#-$ExpectedType. Now the type is $ActualType.(Command)"
             return $ExpressionToParameter
         }
-            
     }
-    elseif($CommandElement_Copy -is [System.Management.Automation.Language.HashtableAst]){
-        # If ExpectedType is ValueType, then it cannot be created by Hashtable.
-        if($ExpectedType.IsValueType){
+    elseif($CommandElement_Copy -is [System.Management.Automation.Language.TypeExpressionAst] -or
+    $CommandElement_Copy -is [System.Management.Automation.Language.TypeConstraintAst]){
+        $ReturnType = $CommandElement_Copy.TypeName.ToString() -as [Type]
+        if($null -eq $ReturnType){
+            $ActualType = $null
+        }
+        else{
+            $ActualType = Get-RecoveredValueType $CommandElement $ReturnType
+        }
+        if (!(Measure-IsTypeMatched $ExpectedType $ActualType)) {
             # Mismatched_Parameter_Value_Type
-            $ExpressionToParameter = "$($CommandElement.Extent.Text)-#-$ExpectedType"
+            $ExpressionToParameter = "$($CommandElement.Extent.Text)-#-$ExpectedType. Now the type is $ActualType.(Type)"
             return $ExpressionToParameter
         }
     }
     elseif($CommandElement_Copy -is [System.Management.Automation.Language.ExpressionAst]) {
-        # Value is a constant expression                        
-        $ExpectedType = $GetCommand.Parameters.$ParameterNameNotAlias.ParameterType
+        # Value is a constant expression                   
         $ConvertedObject = $CommandElement_Copy.Extent.text -as $ExpectedType
+        # Value of Automatic Variable
+        if($null -eq $ConvertedObject){
+            if($null -ne (Get-Variable | Where-Object {$_.Name -eq $CommandElement_Copy.VariablePath})){
+                $value = (Get-Variable | Where-Object {$_.Name -eq $CommandElement_Copy.VariablePath}).Value
+            }
+            $ConvertedObject = $value -as $ExpectedType
+        }
         $StaticType = $CommandElement_Copy.StaticType
-        if($ExpectedType.IsGenericType){
-            $ExpectedType = $ExpectedType.GetGenericArguments()[0]
-        }
-        if($StaticType.IsGenericType){
-            $StaticType = $StaticType.GetGenericArguments()[0]
-        }
-        if ($ExpectedType.IsArray){
-            $ExpectedType = $ExpectedType.GetElementType()
-        }
-        if($StaticType.IsArray){
-            $StaticType = $StaticType.GetElementType()
-        }
-        if ($StaticType -ne $ExpectedType -and $null -eq $ConvertedObject -and
-        !$StaticType.GetInterfaces().Contains($ExpectedType) -and !$ExpectedType.GetInterfaces().Contains($StaticType)) {
+        if (!(Measure-IsTypeMatched $ExpectedType $StaticType) -and $null -eq $ConvertedObject) {
             # Mismatched_Parameter_Value_Type
-            $ExpressionToParameter = "$($CommandElement.Extent.Text)-#-$ExpectedType"
+            $ExpressionToParameter = "$($CommandElement.Extent.Text)-#-$ExpectedType. Now the type is $StaticType.(Static)"
             return $ExpressionToParameter
         }
     }
@@ -250,10 +351,6 @@ function Measure-ParameterNameAndValue {
         [System.Management.Automation.Language.ScriptBlockAst]
         $ScriptBlockAst
     )
-    begin{
-        $modulePath = "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1"
-        Get-Item $modulePath | Import-Module -Global
-    }
     process {
         $Results = @()
         $global:CommandParameterPair = @()
@@ -269,16 +366,26 @@ function Measure-ParameterNameAndValue {
             [ScriptBlock]$Predicate = {
                 param([System.Management.Automation.Language.Ast]$Ast)
                 $global:Ast = $Ast
-
                 if ($Ast -is [System.Management.Automation.Language.AssignmentStatementAst]) {
                     [System.Management.Automation.Language.AssignmentStatementAst]$AssignmentStatementAst = $Ast
-                    $global:AssignmentLeftAndRight.($AssignmentStatementAst.Left.Extent.Text) = $AssignmentStatementAst.Right
+                    if($AssignmentStatementAst.Left -is [System.Management.Automation.Language.ConvertExpressionAst]){
+                        $global:AssignmentLeftAndRight.($AssignmentStatementAst.Left.Child.Extent.Text) = $AssignmentStatementAst.Left.Type
+                    }
+                    elseif($AssignmentStatementAst.Left -is [System.Management.Automation.Language.VariableExpressionAst]){
+                        $global:AssignmentLeftAndRight.($AssignmentStatementAst.Left.Extent.Text) = $AssignmentStatementAst.Right
+                    }
                 }
 
                 if ($Ast -is [System.Management.Automation.Language.CommandElementAst] -and $Ast.Parent -is [System.Management.Automation.Language.CommandAst]) {
                     [System.Management.Automation.Language.CommandElementAst]$CommandElementAst = $Ast
                     [System.Management.Automation.Language.CommandAst]$CommandAst = $CommandElementAst.Parent
 
+                    # Skip all the statements with -ParameterName <Type>
+                    if($Ast.Parent.Extent.Text -match "-\w+\s*<.*?>"){
+                        Write-Debug "Skip $($Ast.Parent.Extent.Text)"
+                        return $false
+                    }
+                    
                     if ($global:SkipNextCommandElementAst) {
                         $global:SkipNextCommandElementAst = $false
                         return $false
@@ -293,9 +400,7 @@ function Measure-ParameterNameAndValue {
 
                     $CommandName = $CommandAst.CommandElements[0].Extent.Text
                     $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
-
-                    # Skip parameters for invaild cmdlet
-                    if ($null -eq $GetCommand) {
+                    if($null -eq $GetCommand){
                         return $false
                     }
                     # Get command from alias
@@ -605,21 +710,21 @@ function Measure-ParameterNameAndValue {
                     $RuleName = [RuleNames]::Invalid_Parameter_Name
                     $Severity = "Error"
                     $RuleSuppressionID = "5011"
-                    $Remediation = "Check validity of the parameter $($CommandParameterPair[$i].ParameterName)."
+                    $Remediation = "Check validity of the parameter -$($CommandParameterPair[$i].ParameterName)."
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter -eq "<duplicate>") {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-#@#$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) appeared more than once."
                     $RuleName = [RuleNames]::Duplicate_Parameter_Name
                     $Severity = "Error"
                     $RuleSuppressionID = "5012"
-                    $Remediation = "Remove redundant parameter $($CommandParameterPair[$i].ParameterName)."
+                    $Remediation = "Remove redundant parameter -$($CommandParameterPair[$i].ParameterName)."
                 }
                 elseif ($null -eq $global:CommandParameterPair[$i].ExpressionToParameter) {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-#@#$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) must be assigned with a value."
                     $RuleName = [RuleNames]::Unassigned_Parameter
                     $Severity = "Error"
                     $RuleSuppressionID = "5013"
-                    $Remediation = "Assign value for the parameter $($CommandParameterPair[$i].ParameterName)."
+                    $Remediation = "Assign value for the parameter -$($CommandParameterPair[$i].ParameterName)."
                 }
                 elseif ($global:CommandParameterPair[$i].ExpressionToParameter.EndsWith(" is a null-valued parameter value.")) {
                     $Message = "$($CommandParameterPair[$i].ModuleCmdletExNum)-#@#$($CommandParameterPair[$i].CommandName) -$($CommandParameterPair[$i].ParameterName) $($CommandParameterPair[$i].ExpressionToParameter)"
