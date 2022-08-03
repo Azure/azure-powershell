@@ -14,7 +14,7 @@ Get all Service Registry and its properties
 
 ### Example 2: Get the Service Registry and its properties.
 ```powershell
-Get-AzSpringCloudRegistry -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01 -Name default
+Get-AzSpringCloudRegistry -ResourceGroupName SpringCloud-gp-junxi -ServiceName springcloud-01
 ```
 
 ```output
