@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported GraphQL Specification Format
 
 ## Version 3.0.0
 
