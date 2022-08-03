@@ -32,7 +32,8 @@ For information on how to develop for `Az.NetworkSecurityPerimeter`, see [how-to
 ``` yaml
 require:
 # readme.azure.noprofile.md is the common configuration file
-  - ../../../../tools/SwaggerCI/readme.azure.noprofile.md
+# - ../../../../tools/SwaggerCI/readme.azure.noprofile.md
+  - $(this-folder)/../../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
   - C:\repo\azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
@@ -59,9 +60,9 @@ directive:
 #      variant: ^Create$|^CreateViaIdentityExpanded$
 #    remove: true
 # Remove the set-* cmdlet
-#- where:
-#    verb: Set
-#  remove: true
+  - where:
+      verb: Set
+    remove: true
   - where:
       variant: ^Update$|^UpdateViaIdentity$
     remove: true

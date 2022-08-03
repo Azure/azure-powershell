@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.NetworkSecurityPerimeter
-online version: https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/update-aznetworksecurityperimeterassociation
+online version: https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/update-aznetworksecurityperimeteraccessrule
 schema: 2.0.0
 ---
 
-# Update-AzNetworkSecurityPerimeterAssociation
+# Update-AzNetworkSecurityPerimeterAccessRule
 
 ## SYNOPSIS
 Updates a workspace.
@@ -14,17 +14,19 @@ Updates a workspace.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzNetworkSecurityPerimeterAssociation -Name <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AccessMode <String>] [-Location <String>]
- [-PrivateLinkResourceId <String>] [-ProfileId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzNetworkSecurityPerimeterAccessRule -Name <String> -ResourceGroupName <String>
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <ArrayList>]
+ [-FullyQualifiedDomainName <ArrayList>] [-Location <String>] [-NetworkSecurityPerimeters <ArrayList>]
+ [-ProfileName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNetworkSecurityPerimeterAssociation -InputObject <INetworkSecurityPerimeterIdentity>
- [-AccessMode <String>] [-Location <String>] [-PrivateLinkResourceId <String>] [-ProfileId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
+ [-AddressPrefix <ArrayList>] [-FullyQualifiedDomainName <ArrayList>] [-Location <String>]
+ [-NetworkSecurityPerimeters <ArrayList>] [-ProfileName <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -56,11 +58,11 @@ Updates a workspace.
 
 ## PARAMETERS
 
-### -AccessMode
-Access Mode
+### -AddressPrefix
+Address Prefix
 
 ```yaml
-Type: System.String
+Type: System.Collections.ArrayList
 Parameter Sets: (All)
 Aliases:
 
@@ -93,6 +95,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -FullyQualifiedDomainName
+Fully qualified domain name
+
+```yaml
+Type: System.Collections.ArrayList
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -147,6 +164,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NetworkSecurityPerimeters
+Inbound rule specified by the perimeter id
+
+```yaml
+Type: System.Collections.ArrayList
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NoWait
 Run the command asynchronously
 
@@ -162,23 +194,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PrivateLinkResourceId
-Private link resource id
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProfileId
-Network security perimeter profile id
+### -ProfileName
+Profile Name
 
 ```yaml
 Type: System.String
@@ -293,7 +310,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAssociation
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRule
 
 ## NOTES
 

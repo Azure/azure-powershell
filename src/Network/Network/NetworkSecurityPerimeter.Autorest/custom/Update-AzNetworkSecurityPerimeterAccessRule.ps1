@@ -19,8 +19,8 @@ Updates a workspace.
 .Description
 Updates a workspace.
 #>
-function Update-AzNetworkSecurityPerimeterAssociation {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAssociation])]
+function Update-AzNetworkSecurityPerimeterAccessRule {
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRule])]
     [CmdletBinding(DefaultParameterSetName = 'UpdateExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
 
@@ -141,36 +141,44 @@ function Update-AzNetworkSecurityPerimeterAssociation {
         # The Location of the resource
         ${Location},
 
-
-        [Parameter(HelpMessage = "Access Mode")]
+        [Parameter(HelpMessage = "Profile Name")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.String]
-        # Access Mode
-        ${AccessMode},
+        # Profile Name
+        ${ProfileName},
 
-        [Parameter(HelpMessage = "Private link resource id")]
+        
+        [Parameter(HelpMessage = "Address Prefix")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.String]
-        # Private link resource id
-        ${PrivateLinkResourceId},
+        [System.Collections.ArrayList]
+        # Address Prefix
+        ${AddressPrefix},
 
-        [Parameter(HelpMessage = "Network security perimeter profile id")]
+        [Parameter(HelpMessage = "Fully qualified domain name")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.String]
-        # Network security perimeter profile id
-        ${ProfileId}
+        [System.Collections.ArrayList]
+        # Fully qualified domain name
+        ${FullyQualifiedDomainName},
+
+
+        [Parameter(HelpMessage = "Inbound rule specified by the perimeter id")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+        [System.Collections.ArrayList]
+        # Fully qualified domain name
+        ${NetworkSecurityPerimeters}
+
+
+        # add only those paramters which can be updated
 
     )
 
     process {
         try {
-
-            'Start >>>>>> Update' | Out-File -FilePath C:\Users\kumarkaushal\Desktop\powershell.txt -Append
             
             # 1. GET
 
             # body params and AsJob
-            $params = 'Tag', 'Location', 'AccessMode', 'PrivateLinkResourceId', 'ProfileId', 'AsJob'
+            $params = 'Tag', 'Location', 'ProfileName', 'AddressPrefix', 'FullyQualifiedDomainName', 'NetworkSecurityPerimeters', 'AsJob'
 
             $paramsMap = @{}
 
@@ -183,9 +191,9 @@ function Update-AzNetworkSecurityPerimeterAssociation {
             $null = $PSBoundParameters.Remove('Confirm')
 
 
-            $getObject = Get-AzNetworkSecurityPerimeterAssociation @PSBoundParameters
+            $getObject = Get-AzNetworkSecurityPerimeterAccessRule @PSBoundParameters
 
-            
+            echo $getObject
 
 
             # 2. PUT
@@ -193,23 +201,14 @@ function Update-AzNetworkSecurityPerimeterAssociation {
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
-            $null = $PSBoundParameters.Remove('SecurityPerimeterName')
 
-            
+
             foreach ($item in $paramsMap.GetEnumerator() )
             {
                 if ($item.Value){
                     #TODO this might throw error
                     $key = $item.Key
-
-                    Write-Host -ForegroundColor Magenta $key
-
-
-                    $variable = (Get-Variable $key -ValueOnly)
-
-                    Write-Host -ForegroundColor Magenta $variable
-
-                    $getObject.$key = $variable
+                    $getObject.$key = Get-Variable $key
                 }
             }
 
@@ -217,21 +216,14 @@ function Update-AzNetworkSecurityPerimeterAssociation {
                 $PSBoundParameters.Add('AsJob', $true)
             }
 
-            Write-Host $getObject
-            
-            Write-Host ($getObject | Format-Table | Out-String)
-            # Write-Host ($PSBoundParameters | Format-Table | Out-String)
-
-            # Databricks is using this command
+            # Fix this command
             # Az.Databricks.private\New-AzDatabricksWorkspace_CreateViaIdentity -InputObject $workspace -Parameter $workspace @PSBoundParameters
 
-            try{
-                Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity -InputObject $getObject -Parameter $getObject @PSBoundParameters
-
-            }catch{
-                throw           
-            }
             
+            New-AzNetworkSecurityPerimeterAccessRule_CreateViaIdentity -InputObject $getObject -Parameter $getObject @PSBoundParameters
+
+            #New-AzNetworkSecurityPerimeterAssociation_CreateExpanded @PSBoundParameters
+
         }
 
         catch {

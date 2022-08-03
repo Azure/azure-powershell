@@ -1,7 +1,7 @@
 ---
 Module Name: Az.NetworkSecurityPerimeter
 Module Guid: 9560a0c7-e4ed-40d0-a8c4-9b28b241edca
-Download Help Link: https://docs.microsoft.com/en-us/powershell/module/az.networksecurityperimeter
+Download Help Link: https://docs.microsoft.com/powershell/module/az.networksecurityperimeter
 Help Version: 1.0.0.0
 Locale: en-US
 ---
@@ -46,6 +46,9 @@ Deletes an NSP association resource.
 
 ### [Remove-AzNetworkSecurityPerimeterProfile](Remove-AzNetworkSecurityPerimeterProfile.md)
 Deletes an NSP profile.
+
+### [Update-AzNetworkSecurityPerimeterAccessRule](Update-AzNetworkSecurityPerimeterAccessRule.md)
+Updates a workspace.
 
 ### [Update-AzNetworkSecurityPerimeterAssociation](Update-AzNetworkSecurityPerimeterAssociation.md)
 Updates a workspace.

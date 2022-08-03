@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkSecurityPerimeter
-online version: https://docs.microsoft.com/en-us/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeteraccessrule
+online version: https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/get-aznetworksecurityperimeteraccessrule
 schema: 2.0.0
 ---
 
