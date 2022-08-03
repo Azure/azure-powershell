@@ -78,7 +78,8 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         ${ProxyUseDefaultCredentials},
 
 
-            # Azure parameters
+        # Azure parameters
+        
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -168,7 +169,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         ${NetworkSecurityPerimeters}
 
 
-        # add only those paramters which can be updated
+        # Add only those paramters which can be updated
 
     )
 
@@ -191,38 +192,32 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             $null = $PSBoundParameters.Remove('Confirm')
 
 
-            $getObject = Get-AzNetworkSecurityPerimeterAccessRule @PSBoundParameters
-
-            echo $getObject
-
+            $GETObject = Get-AzNetworkSecurityPerimeterAccessRule @PSBoundParameters
 
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
+            $null = $PSBoundParameters.Remove('SecurityPerimeterName')
 
 
             foreach ($item in $paramsMap.GetEnumerator() )
             {
                 if ($item.Value){
-                    #TODO this might throw error
                     $key = $item.Key
-                    $getObject.$key = Get-Variable $key
+
+                    $variable = (Get-Variable $key -ValueOnly)
+
+                    $GETObject.$key = $variable
                 }
             }
 
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
             }
-
-            # Fix this command
-            # Az.Databricks.private\New-AzDatabricksWorkspace_CreateViaIdentity -InputObject $workspace -Parameter $workspace @PSBoundParameters
-
             
-            New-AzNetworkSecurityPerimeterAccessRule_CreateViaIdentity -InputObject $getObject -Parameter $getObject @PSBoundParameters
-
-            #New-AzNetworkSecurityPerimeterAssociation_CreateExpanded @PSBoundParameters
+            New-AzNetworkSecurityPerimeterAccessRule_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
 
         }
 

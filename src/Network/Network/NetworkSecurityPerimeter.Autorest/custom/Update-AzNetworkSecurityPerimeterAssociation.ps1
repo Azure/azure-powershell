@@ -15,9 +15,9 @@
 
 <#
 .Synopsis
-Updates a workspace.
+Updates an association
 .Description
-Updates a workspace.
+Updates an association.
 #>
 function Update-AzNetworkSecurityPerimeterAssociation {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAssociation])]
@@ -78,7 +78,9 @@ function Update-AzNetworkSecurityPerimeterAssociation {
         ${ProxyUseDefaultCredentials},
 
 
-            # Azure parameters
+        # Azure parameters
+
+
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -164,8 +166,6 @@ function Update-AzNetworkSecurityPerimeterAssociation {
 
     process {
         try {
-
-            'Start >>>>>> Update' | Out-File -FilePath C:\Users\kumarkaushal\Desktop\powershell.txt -Append
             
             # 1. GET
 
@@ -182,12 +182,9 @@ function Update-AzNetworkSecurityPerimeterAssociation {
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-
-            $getObject = Get-AzNetworkSecurityPerimeterAssociation @PSBoundParameters
+            $GETObject = Get-AzNetworkSecurityPerimeterAssociation @PSBoundParameters
 
             
-
-
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
@@ -199,17 +196,11 @@ function Update-AzNetworkSecurityPerimeterAssociation {
             foreach ($item in $paramsMap.GetEnumerator() )
             {
                 if ($item.Value){
-                    #TODO this might throw error
                     $key = $item.Key
-
-                    Write-Host -ForegroundColor Magenta $key
-
 
                     $variable = (Get-Variable $key -ValueOnly)
 
-                    Write-Host -ForegroundColor Magenta $variable
-
-                    $getObject.$key = $variable
+                    $GETObject.$key = $variable
                 }
             }
 
@@ -217,16 +208,11 @@ function Update-AzNetworkSecurityPerimeterAssociation {
                 $PSBoundParameters.Add('AsJob', $true)
             }
 
-            Write-Host $getObject
+            Write-Host $GETObject
+            Write-Host $PSBoundParameters
             
-            Write-Host ($getObject | Format-Table | Out-String)
-            # Write-Host ($PSBoundParameters | Format-Table | Out-String)
-
-            # Databricks is using this command
-            # Az.Databricks.private\New-AzDatabricksWorkspace_CreateViaIdentity -InputObject $workspace -Parameter $workspace @PSBoundParameters
-
             try{
-                Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity -InputObject $getObject -Parameter $getObject @PSBoundParameters
+                Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
 
             }catch{
                 throw           
