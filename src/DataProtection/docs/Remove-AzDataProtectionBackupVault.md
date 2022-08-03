@@ -31,7 +31,7 @@ Deletes a BackupVault resource from the resource group.
 
 ### Example 1: Delete a backup vault.
 ```powershell
-PS C:\> Remove-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
+Remove-AzDataProtectionBackupVault -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName "MyResourceGroup" -VaultName "MyVault"
 
 ```
 

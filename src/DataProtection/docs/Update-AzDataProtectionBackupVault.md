@@ -35,8 +35,8 @@ For example, updating tags for a resource.
 
 ### Example 1: Add tags to an existing backup vault
 ```powershell
-PS C:\> $tag = @{"Owner"="sarath";"Purpose"="AzureBackupTesting"}
-PS C:\> Update-AzDataProtectionBackupVault -SubscriptionId "xxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -Tag $tag
+$tag = @{"Owner"="sarath";"Purpose"="AzureBackupTesting"}
+Update-AzDataProtectionBackupVault -SubscriptionId "xxx-xxx-xxx" -ResourceGroupName sarath-rg -VaultName sarath-vault -Tag $tag
 ```
 
 ```output
@@ -50,8 +50,10 @@ The second command adds the given tags to the backup vault.
 
 ### Example 2: Disable Azure monitor alerts for job failures
 ```powershell
-PS C:\>  Update-AzDataProtectionBackupVault -ResourceGroupName "rgName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -AzureMonitorAlertsForAllJobFailure 'Disabled'
+Update-AzDataProtectionBackupVault -ResourceGroupName "rgName" -VaultName "vaultName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -AzureMonitorAlertsForAllJobFailure 'Disabled'
+```
 
+```output
 Name          Location      Type                                  IdentityType
 ----          --------      ----                                  ------------
 vaultName southeastasia Microsoft.DataProtection/backupVaults SystemAssigned

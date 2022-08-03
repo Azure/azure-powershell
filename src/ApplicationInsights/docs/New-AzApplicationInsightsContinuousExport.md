@@ -14,7 +14,7 @@ Create a Continuous Export configuration of an Application Insights component.
 
 ```
 New-AzApplicationInsightsContinuousExport -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DestinationType <String>] [-DocumentType  <String[]>]
+ [-SubscriptionId <String>] [-DestinationType <String>] [-DocumentType <String[]>]
  [-NotificationQueueEnabled <String>] [-NotificationQueueUri <String>] [-StorageAccountId <String>]
  [-StorageLocation <String>] [-StorageSASUri <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -31,7 +31,7 @@ $sastoken = New-AzStorageContainerSASToken -Name testcontainer -Context $context
 $sasuri = "https://teststorageaccount.blob.core.windows.net/testcontainer" + $sastoken
 New-AzApplicationInsightsContinuousExport -ResourceGroupName "testgroup" -Name "test" `
 -DocumentType "Request","Trace", "Custom Event" -StorageAccountId "/subscriptions/50359d91-7b9d-4823-85af-eb298a61ba96/resourceGroups/testgroup/providers/Microsoft.Storage/storageAccounts/teststorageaccount" -StorageLocation sourcecentralus `
--StorageSASUri $sasuri
+-StorageSASUri $sasuri -DestinationType Blob
 ```
 
 Create a new application insights continuous export configuration to export "Request" and "Trace" document types to storage contain "testcontainer" in storage account "teststorageaccount" in resource group "testgroup".
@@ -70,8 +70,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DocumentType 
-
+### -DocumentType
+The document types to be exported, as comma separated values.
+Allowed values include 'Requests', 'Custom Event', 'Exception', 'Metric', 'Page View', 'Page Load', 'Dependency', 'Performance Counter', 'Availability', 'Trace'.
 
 ```yaml
 Type: System.String[]

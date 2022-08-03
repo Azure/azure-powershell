@@ -73,8 +73,8 @@ New-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName te
 ```
 
 ```output
-Kind     Location  Name                                            
-----     --------  ----                                            
+Kind     Location  Name
+----     --------  ----
 EventHub East US 2 testws/testkustopool/testdatabase/eventhubdc
 ```
 
@@ -82,12 +82,12 @@ The above command creates a new EventHub data connection named "eventhubdc" for 
 
 ### Example 2: Create a new EventGrid data connection
 ```powershell
-New-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName testdatabase -Name eventgriddc -Location eastus2 -Kind EventGrid -EventHubResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.EventHub/namespaces/testeventhubns/eventhubs/testeventhub" -StorageAccountResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/teststorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping" -IgnoreFirstRecord -BlobStorageEventType "Microsoft.Storage.BlobRenamed"
+New-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName testws -KustoPoolName testkustopool -DatabaseName testdatabase -Name eventgriddc -Location eastus2 -Kind EventGrid -EventHubResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.EventHub/namespaces/testeventhubns/eventhubs/testeventhub" -StorageAccountResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/teststorage" -DataFormat "JSON" -ConsumerGroup '$Default' -TableName "Events" -MappingRuleName "EventsMapping"
 ```
 
 ```output
 Kind      Location  Name
-----      --------  ----                                              
+----      --------  ----
 EventGrid East US 2 testws/testkustopool/testdatabase/eventgriddc
 ```
 
@@ -99,8 +99,8 @@ New-AzSynapseKustoPoolDataConnection -ResourceGroupName testrg -WorkspaceName te
 ```
 
 ```output
-Kind   Location  Name 
-----   --------  ----                                           
+Kind   Location  Name
+----   --------  ----
 IotHub East US 2 testws/testkustopool/testdatabase/iothubdc
 ```
 

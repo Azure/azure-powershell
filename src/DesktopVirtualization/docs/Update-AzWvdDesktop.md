@@ -34,10 +34,10 @@ Update a desktop.
 ### Example 1: Update a Windows Virtual Desktop Desktop
 ```powershell
 Update-AzWvdDesktop -ResourceGroupName ResourceGroupName `
-                             -ApplicationGroupName ApplicationGroupName `
-                             -Name DesktopName `
-                             -FriendlyName 'Friendly name' `
-                             -Description 'Description' `
+                    -ApplicationGroupName ApplicationGroupName `
+                    -Name DesktopName `
+                    -FriendlyName 'Friendly name' `
+                    -Description 'Description'
 ```
 
 ```output

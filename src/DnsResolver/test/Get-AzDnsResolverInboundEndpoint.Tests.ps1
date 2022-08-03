@@ -27,9 +27,9 @@ function CreateInboundEndpoint([String]$InboundEndpointName, [String]$DnsResolve
             $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $VirtualNetworkName;
         }
 
-    New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
+    New-AzDnsResolver -Name $DnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
     
-    $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAllocationMethod Dynamic -SubnetId $subnet.id 
+    $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAllocationMethod Dynamic -SubnetId $subnetId 
     New-AzDnsResolverInboundEndpoint -DnsResolverName $DnsResolverName -Name $InboundEndpointName -ResourceGroupName $RESOURCE_GROUP_NAME -IPConfiguration $ipConfiguration -Location $LOCATION
 }
 
@@ -39,6 +39,8 @@ Describe 'Get-AzDnsResolverInboundEndpoint' {
         $dnsResolverName = "psdnsresolvername17";
         $inboundEndpointName =  "psinboundendpointname17";
         $virtualNetworkName = "psvirtualnetworkname17";
+        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
+        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
 
         CreateInboundEndpoint -InboundEndpointName $inboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
 
@@ -54,6 +56,8 @@ Describe 'Get-AzDnsResolverInboundEndpoint' {
         $dnsResolverName = "psdnsresolvername18";
         $inboundEndpointName =  "psinboundendpointname18";
         $virtualNetworkName = "psvirtualnetworkname18";
+        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
+        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
 
         CreateInboundEndpoint -InboundEndpointName $inboundEndpointName -DnsResolverName $dnsResolverName -VirtualNetworkName $virtualNetworkName 
         

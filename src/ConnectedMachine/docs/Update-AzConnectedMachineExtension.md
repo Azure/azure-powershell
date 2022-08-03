@@ -51,13 +51,13 @@ The operation to create or update the extension.
 ### Example 1: Update an extension
 ```powershell
 $splat = @{
-            ResourceGroupName = "connectedMachines"
-            MachineName = "linux-eastus1_1"
-            Name = "customScript"
-            Settings = @{
-                commandToExecute = "ls -l"
-            }
-        }
+    ResourceGroupName = "connectedMachines"
+    MachineName = "linux-eastus1_1"
+    Name = "customScript"
+    Settings = @{
+        commandToExecute = "ls -l"
+    }
+}
 Update-AzConnectedMachineExtension @splat
 ```
 
@@ -73,8 +73,8 @@ Updates an extension on a specific machine.
 ```powershell
 $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachines -MachineName linux-eastus1_1 -Name customScript
 $extToUpdate | Update-AzConnectedMachineExtension -Settings @{
-                commandToExecute = "ls -l"
-            }
+    commandToExecute = "ls -l"
+}
 ```
 
 ```output
@@ -92,10 +92,10 @@ $extToUpdate = Get-AzConnectedMachineExtension -ResourceGroupName connectedMachi
 # Update the settings on the object that will be used via the pipeline
 $extToUpdate.Setting.commandToExecute = "ls -l"
 $splat = @{
-            ResourceGroupName = "connectedMachines"
-            MachineName = "linux-eastus1_1"
-            Name = "customScript"
-        }
+    ResourceGroupName = "connectedMachines"
+    MachineName = "linux-eastus1_1"
+    Name = "customScript"
+}
 $extToUpdate | Update-AzConnectedMachineExtension @splat
 ```
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzRedisEnterpriseCache
 
 ## SYNOPSIS
-Updates an existing Redis Enterprise cluster
+Updates an existing RedisEnterprise cluster
 
 ## SYNTAX
 
@@ -27,7 +27,7 @@ Update-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Cap
 ```
 
 ## DESCRIPTION
-Updates an existing Redis Enterprise cluster
+Updates an existing RedisEnterprise cluster
 
 ## EXAMPLES
 
@@ -63,7 +63,7 @@ Accept wildcard characters: False
 ```
 
 ### -Capacity
-The size of the Redis Enterprise cluster.
+The size of the RedisEnterprise cluster.
 Defaults to 2 or 3 depending on SKU.
 Valid values are (2, 4, 6, ...) for Enterprise SKUs and (3, 9, 15, ...) for Flash SKUs.
 
@@ -80,7 +80,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-The name of the Redis Enterprise cluster.
+The name of the RedisEnterprise cluster.
 
 ```yaml
 Type: System.String
@@ -173,7 +173,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sku
-The type of Redis Enterprise cluster to deploy.
+The type of RedisEnterprise cluster to deploy.
 Possible values: (Enterprise_E10, EnterpriseFlash_F300 etc.)
 
 ```yaml
@@ -258,7 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.ICluster
 
 ## NOTES
 
@@ -269,8 +269,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the Redis Enterprise cluster.
+`INPUTOBJECT <IRedisEnterpriseCacheIdentity>`: Identity Parameter
+  - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
   - `[DatabaseName <String>]`: The name of the database.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The region the operation is in.

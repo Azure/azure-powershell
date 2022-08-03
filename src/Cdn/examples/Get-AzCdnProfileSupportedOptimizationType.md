@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: Gets the supported optimization types for the AzureCDN profile
 ```powershell
-{{ Add code here }}
+Get-AzCdnProfileSupportedOptimizationType -ResourceGroupName testps-rg-da16jm -ProfileName cdn001
 ```
 
 ```output
-{{ Add output here }}
+GeneralWebDelivery
 ```
+Gets the supported optimization types for the AzureCDN profile
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
