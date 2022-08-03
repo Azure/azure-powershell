@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkFunctionTrafficCollectorPolicy'))
+if(($null -eq $TestName) -or ($TestName -contains 'New-AzNetworkFunctionCollectorPolicy'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Get-AzNetworkFunctionTrafficCollectorPolicy.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'New-AzNetworkFunctionCollectorPolicy.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,16 +14,20 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkFunctionTrafficC
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Get-AzNetworkFunctionTrafficCollectorPolicy' {
-    It 'List' -skip {
+Describe 'New-AzNetworkFunctionCollectorPolicy' {
+    It 'CreateExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
+    It 'Create' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'CreateViaIdentityExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
+    }
+
+    It 'CreateViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

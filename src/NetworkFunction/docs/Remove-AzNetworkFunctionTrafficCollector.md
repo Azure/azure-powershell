@@ -29,27 +29,18 @@ Deletes a specified Azure Traffic Collector resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a new traffic collector
 ```powershell
-{{ Add code here }}
+Remove-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroup SEA-Cust10
 ```
 
 ```output
-{{ Add output here }}
+{
+}
 ```
 
-{{ Add description here }}
+This cmdlet deletes a traffic collector.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

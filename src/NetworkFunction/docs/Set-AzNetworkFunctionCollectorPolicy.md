@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://docs.microsoft.com/en-us/powershell/module/az.networkfunction/set-aznetworkfunctiontrafficcollectorpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.networkfunction/set-aznetworkfunctioncollectorpolicy
 schema: 2.0.0
 ---
 
-# Set-AzNetworkFunctionTrafficCollectorPolicy
+# Set-AzNetworkFunctionCollectorPolicy
 
 ## SYNOPSIS
 Creates or updates a Collector Policy resource
@@ -14,7 +14,7 @@ Creates or updates a Collector Policy resource
 
 ### UpdateExpanded (Default)
 ```
-Set-AzNetworkFunctionTrafficCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
+Set-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
  -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]
  [-IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]
@@ -23,20 +23,20 @@ Set-AzNetworkFunctionTrafficCollectorPolicy -AzureTrafficCollectorName <String> 
 
 ### Update
 ```
-Set-AzNetworkFunctionTrafficCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
+Set-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
  -ResourceGroupName <String> -Location <String> -Parameters <ICollectorPolicy> [-SubscriptionId <String>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentity
 ```
-Set-AzNetworkFunctionTrafficCollectorPolicy -InputObject <ITrafficCollectorIdentity>
+Set-AzNetworkFunctionCollectorPolicy -InputObject <ITrafficCollectorIdentity>
  -Parameters <ICollectorPolicy> [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Set-AzNetworkFunctionTrafficCollectorPolicy -InputObject <ITrafficCollectorIdentity>
+Set-AzNetworkFunctionCollectorPolicy -InputObject <ITrafficCollectorIdentity>
  [-EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]
  [-IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]
  [-IngestionPolicyIngestionType <IngestionType>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -47,27 +47,45 @@ Creates or updates a Collector Policy resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a traffic collector policy
 ```powershell
-{{ Add code here }}
+Set-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficcollectorname -atc -resourcegroup rg1 -location eastus
 ```
 
 ```output
-{{ Add output here }}
+{
+    "name": "cp1",
+    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.NetworkFunction/AzureTrafficCollector/atc/collectorPolicies/cp1",
+    "etag": "test",
+    "type": "Microsoft.NetworkFunction/azureTrafficCollectors/collectorPolicies",
+    "properties": {
+        "ingestionPolicy": {
+        "ingestionType": "IPFIX",
+        "ingestionSources": [
+            {
+            "resourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName",
+            "sourceType": "Resource"
+            }
+        ]
+        },
+        "emissionPolicies": [
+        {
+            "emissionType": "IPFIX",
+            "emissionDestinations": [
+            {
+                "destinationType": "AzureMonitor"
+            }
+            ]
+        }
+        ],
+        "provisioningState": "Succeeded"
+    }
+    }
+}
 ```
 
-{{ Add description here }}
+This cmdlet updates a traffic collector policy.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

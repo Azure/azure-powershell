@@ -1,69 +1,70 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://docs.microsoft.com/en-us/powershell/module/az.networkfunction/get-aznetworkfunctiontrafficcollectorpolicy
+online version: https://docs.microsoft.com/en-us/powershell/module/az.networkfunction/remove-aznetworkfunctioncollectorpolicy
 schema: 2.0.0
 ---
 
-# Get-AzNetworkFunctionTrafficCollectorPolicy
+# Remove-AzNetworkFunctionCollectorPolicy
 
 ## SYNOPSIS
-Gets the collector policy in a specified Traffic Collector
+Deletes a specified Collector Policy resource.
 
 ## SYNTAX
 
-### List (Default)
+### Delete (Default)
 ```
-Get-AzNetworkFunctionTrafficCollectorPolicy -AzureTrafficCollectorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzNetworkFunctionTrafficCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [<CommonParameters>]
+Remove-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String>
+ -CollectorPolicyName <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### DeleteViaIdentity
 ```
-Get-AzNetworkFunctionTrafficCollectorPolicy -InputObject <ITrafficCollectorIdentity> [<CommonParameters>]
+Remove-AzNetworkFunctionCollectorPolicy -InputObject <ITrafficCollectorIdentity> [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the collector policy in a specified Traffic Collector
+Deletes a specified Collector Policy resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a new traffic collector policy
 ```powershell
-{{ Add code here }}
+Remove-AzNetworkFunctionCollectorPolicy -azuretrafficcollectorname atctestps -collectorpolicyname cp1 -resourcegroup test
 ```
 
 ```output
-{{ Add output here }}
+{
+}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet deletes a traffic collector policy.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AzureTrafficCollectorName
 Azure Traffic Collector name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -78,7 +79,7 @@ Collector Policy Name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -94,7 +95,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITrafficCollectorIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -104,12 +105,42 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -124,12 +155,43 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -143,7 +205,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ICollectorPolicy
+### System.Boolean
 
 ## NOTES
 

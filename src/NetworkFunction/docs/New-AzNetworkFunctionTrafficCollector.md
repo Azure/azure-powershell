@@ -44,27 +44,27 @@ Creates or updates a Azure Traffic Collector resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new traffic collector
 ```powershell
-{{ Add code here }}
+New-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroup test -location eastus
 ```
 
 ```output
-{{ Add output here }}
+{
+    "CollectorPolicies": [],
+    "Etag": "testEtag",
+    "Id": "id",
+    "Location": "eastus",
+    "Name": "atctestps",
+    "ProvisioningState": {},
+    "Tags": {},
+    "Type": "Microsoft.NetworkFunction/AzureTrafficCollectors",
+    "VirtualHubId": null
+}
 ```
 
-{{ Add description here }}
+This cmdlet creates a new traffic collector.
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

@@ -1,6 +1,6 @@
 ### Example 1: Get list of collector policies by atc name and resource group
 ```powershell
-Get-AzNetworkFunctionTrafficCollectorPolicy -AzureTrafficCollectorName test -resourcegroup test
+Get-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName test -resourcegroup test
 ```
 
 ```output
