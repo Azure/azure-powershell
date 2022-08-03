@@ -25,27 +25,20 @@ Creates a new origin group within the specified profile.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an AzureFrontDoor origin group under the AzureFrontDoor profile
 ```powershell
-{{ Add code here }}
+$healthProbeSetting = New-AzFrontDoorCdnOriginGroupHealthProbeSettingObject -ProbeIntervalInSecond 1 -ProbePath "/" -ProbeProtocol "Https" -ProbeRequestType "GET"
+$loadBalancingSetting = New-AzFrontDoorCdnOriginGroupLoadBalancingSettingObject -AdditionalLatencyInMillisecond 200  -SampleSize 5 -SuccessfulSamplesRequired 4
+New-AzFrontDoorCdnOriginGroup -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -OriginGroupName org001 -LoadBalancingSetting $loadBalancingSetting -HealthProbeSetting $healthProbeSetting
 ```
 
 ```output
-{{ Add output here }}
+Name   ResourceGroupName
+----   -----------------
+org001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -268,13 +261,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-HEALTHPROBESETTING <IHealthProbeParameters>: Health probe settings to the origin that is used to determine the health of the origin.
+HEALTHPROBESETTING `<IHealthProbeParameters>`: Health probe settings to the origin that is used to determine the health of the origin.
   - `[ProbeIntervalInSecond <Int32?>]`: The number of seconds between health probes.Default is 240sec.
   - `[ProbePath <String>]`: The path relative to the origin that is used to determine the health of the origin.
   - `[ProbeProtocol <ProbeProtocol?>]`: Protocol to use for health probe.
   - `[ProbeRequestType <HealthProbeRequestType?>]`: The type of health probe request that is made.
 
-LOADBALANCINGSETTING <ILoadBalancingSettingsParameters>: Load balancing settings for a backend pool
+LOADBALANCINGSETTING `<ILoadBalancingSettingsParameters>`: Load balancing settings for a backend pool
   - `[AdditionalLatencyInMillisecond <Int32?>]`: The additional latency in milliseconds for probes to fall into the lowest latency bucket
   - `[SampleSize <Int32?>]`: The number of samples to consider for load balancing decisions
   - `[SuccessfulSamplesRequired <Int32?>]`: The number of samples within the sample period that must succeed

@@ -136,8 +136,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// remove the azure blob 
         /// </summary>
-        /// <param name="blob">Cloudblob object</param>
-        /// <param name="isValidBlob">whether the Cloudblob parameter is validated</param>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
+        /// <param name="blob">CloudBlob object</param>
+        /// <param name="isValidBlob">whether the CloudBlob parameter is validated</param>
         /// <returns>true if the blob is removed successfully, false if user cancel the remove operation</returns>
         internal async Task RemoveAzureBlob(long taskId, IStorageBlobManagement localChannel, CloudBlob blob, bool isValidBlob)
         {
@@ -212,8 +214,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// remove the azure blob with Track2 SDK
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="blob">BlobBaseClient object</param>
-        /// <param name="isValidBlob">whether the Cloudblob parameter is validated</param>
+        /// <param name="isValidBlob">whether the CloudBlob parameter is validated</param>
         /// <returns>true if the blob is removed successfully, false if user cancel the remove operation</returns>
         internal async Task RemoveAzureBlobTrack2(long taskId, IStorageBlobManagement localChannel, BlobBaseClient blob, bool isValidBlob)
         {
@@ -326,6 +330,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// remove azure blob
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="container">CloudBlobContainer object</param>
         /// <param name="blobName">blob name</param>
         /// <returns>true if the blob is removed successfully, false if user cancel the remove operation</returns>
@@ -387,6 +393,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob
         /// <summary>
         /// remove azure blob
         /// </summary>
+        /// <param name="taskId">Task id</param>
+        /// <param name="localChannel">IStorageBlobManagement channel object</param>
         /// <param name="containerName">container name</param>
         /// <param name="blobName">blob name</param>
         /// <returns>true if the blob is removed successfully, false if user cancel the remove operation</returns>

@@ -32,27 +32,21 @@ Updates an existing domain within a profile.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an AzureFrontDoor customdomain under the profile
 ```powershell
-{{ Add code here }}
+$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+$updateTlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS10" -Secret $secretResoure
+Update-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 -TlsSetting $updateSetting
 ```
 
 ```output
-{{ Add output here }}
+Name      ResourceGroupName
+----      -----------------
+domain001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update an AzureFrontDoor customdomain under the profile
 
 ## PARAMETERS
 
@@ -275,7 +269,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path
@@ -290,7 +284,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 
-TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
+TLSSETTING `<IAfdDomainHttpsParameters>`: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
   - `CertificateType <AfdCertificateType>`: Defines the source of the SSL certificate.
   - `[MinimumTlsVersion <AfdMinimumTlsVersion?>]`: TLS protocol version that will be used for Https
   - `[Secret <IResourceReference>]`: Resource reference to the secret. ie. subs/rg/profile/secret

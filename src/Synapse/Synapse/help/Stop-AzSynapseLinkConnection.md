@@ -37,42 +37,43 @@ The **Stop-AzSynapseLinkConnection** cmdlet stops a link connection in workspace
 
 ### Example 1
 ```powershell
-PS C:\> Stop-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Stop-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 ```
 
 This command stops a link connection named ContosoLinkConnection in workspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Workspacename ContosoWorkspace 
-PS C:\> $ws | Stop-AzSynapseLinkConnection -Name ContosoLinkConnection
+$ws = Get-AzSynapseWorkspace -Workspacename ContosoWorkspace 
+$ws | Stop-AzSynapseLinkConnection -Name ContosoLinkConnection
 ```
 
 This command stops a link connection named ContosoLinkConnection in workspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $linkConnection = Get-AzSynapseLinkConnection -Workspacename ContosoWorkspace -Name ContosoLinkConnection
-PS C:\> $linkConnection | Stop-AzSynapseLinkConnection
+$linkConnection = Get-AzSynapseLinkConnection -Workspacename ContosoWorkspace -Name ContosoLinkConnection
+$linkConnection | Stop-AzSynapseLinkConnection
 ```
 
 This command stops a link connection named ContosoLinkConnection in workspace through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> Stop-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
-PS C:\> Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
-
-	WorkspaceName     : ContosoWorkspace
-	Id                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-	Name              : ContosoLinkConnection
-	IsApplyingChanges :
-	IsPartiallyFailed : False
-	StartTime         : 2022-03-10T06:59:34.5820499Z
-	StopTime          : 2022-03-10T07:21:42.4895248Z
-	Status            : Stopping
-	ContinuousRunId   : 
-	Error             :
+Stop-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+```
+```output
+WorkspaceName     : ContosoWorkspace
+Id                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Name              : ContosoLinkConnection
+IsApplyingChanges :
+IsPartiallyFailed : False
+StartTime         : 2022-03-10T06:59:34.5820499Z
+StopTime          : 2022-03-10T07:21:42.4895248Z
+Status            : Stopping
+ContinuousRunId   : 
+Error             :
 ```
 
 This command stops a link connection named ContosoLinkConnection in workspace, then you can call **Get-AzSynapseLinkConnectionDetailedStatus** to get status of the link connection.

@@ -30,27 +30,39 @@ Updates an existing Azure Front Door Standard or Azure Front Door Premium or CDN
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an AzureFrontDoor profile under the resource group
 ```powershell
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2  = 22
+}
+Update-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 -Tag $tags
 ```
 
 ```output
-{{ Add output here }}
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Update an AzureFrontDoor profile under the resource group
 
-### Example 2: {{ Add title here }}
+### Example 2: Update an AzureFrontDoor profile under the resource group via identity
 ```powershell
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2  = 22
+}
+Get-AzFrontDoorCdnProfile -ResourceGroupName testps-rg-da16jm -Name fdp-v542q6 | Update-AzFrontDoorCdnProfile -Tag $tags
 ```
 
 ```output
-{{ Add output here }}
+Location Name       Kind      ResourceGroupName
+-------- ----       ----      -----------------
+Global   fdp-v542q6 frontdoor testps-rg-da16jm
 ```
 
-{{ Add description here }}
+Update an AzureFrontDoor profile under the resource group via identity
 
 ## PARAMETERS
 
@@ -242,7 +254,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

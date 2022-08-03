@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Compute-help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/powershell/module/az.compute/set-azvmruncommand
 schema: 2.0.0
@@ -13,12 +13,13 @@ The operation to create or update the run command.
 ## SYNTAX
 
 ```
-Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName <String> -Location <String>
- [-SubscriptionId <String>] [-AsyncExecution] [-ErrorBlobUri <String>] [-OutputBlobUri <String>]
- [-Parameter <IRunCommandInputParameter[]>] [-ProtectedParameter <IRunCommandInputParameter[]>]
- [-RunAsPassword <String>] [-RunAsUser <String>] [-SourceCommandId <String>] [-SourceScript <String>]
- [-SourceScriptUri <String>] [-Tag <Hashtable>] [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzVMRunCommand -ResourceGroupName <String> -RunCommandName <String> -VMName <String>
+ [-SubscriptionId <String>] -Location <String> [-AsyncExecution] [-ErrorBlobUri <String>]
+ [-OutputBlobUri <String>] [-Parameter <IRunCommandInputParameter[]>]
+ [-ProtectedParameter <IRunCommandInputParameter[]>] [-RunAsPassword <String>] [-RunAsUser <String>]
+ [-SourceCommandId <String>] [-SourceScript <String>] [-SourceScriptUri <String>] [-Tag <Hashtable>]
+ [-TimeoutInSecond <Int32>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -28,7 +29,7 @@ The operation to create or update the run command.
 
 ### Example 1: Simple Example
 ```powershell
-Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand' 
+Set-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName 'firstruncommand'
 ```
 
 ```output
@@ -394,13 +395,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER <IRunCommandInputParameter[]>: The parameters used by the script.
+`PARAMETER <IRunCommandInputParameter[]>`: The parameters used by the script.
   - `Name <String>`: The run command parameter name.
   - `Value <String>`: The run command parameter value.
 
-PROTECTEDPARAMETER <IRunCommandInputParameter[]>: The parameters used by the script.
+`PROTECTEDPARAMETER <IRunCommandInputParameter[]>`: The parameters used by the script.
   - `Name <String>`: The run command parameter name.
   - `Value <String>`: The run command parameter value.
 
 ## RELATED LINKS
-

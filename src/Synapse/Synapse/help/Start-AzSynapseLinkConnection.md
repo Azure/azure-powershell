@@ -37,45 +37,49 @@ The **Start-AzSynapseLinkConnection** cmdlet starts a link connection in workspa
 
 ### Example 1
 ```powershell
-PS C:\> Start-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Start-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
 ```
 
 This command starts a link connection named ContosoLinkConnection in workspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Workspacename ContosoWorkspace 
-PS C:\> $ws | Start-AzSynapseLinkConnection -Name ContosoLinkConnection
+$ws = Get-AzSynapseWorkspace -Workspacename ContosoWorkspace
+$ws | Start-AzSynapseLinkConnection -Name ContosoLinkConnection
 ```
 
 This command starts a link connection named ContosoLinkConnection in workspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $linkConnection = Get-AzSynapseLinkConnection -Workspacename ContosoWorkspace -Name ContosoLinkConnection
-PS C:\> $linkConnection | Start-AzSynapseLinkConnection
+$linkConnection = Get-AzSynapseLinkConnection -Workspacename ContosoWorkspace -Name ContosoLinkConnection
+$linkConnection | Start-AzSynapseLinkConnection
 ```
 
 This command starts a link connection named ContosoLinkConnection in workspace through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> Start-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
-PS C:\> Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Start-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+Get-AzSynapseLinkConnectionDetailedStatus -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+```
 
-	WorkspaceName     : ContosoWorkspace
-	Id                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-	Name              : ContosoLinkConnection
-	IsApplyingChanges :
-	IsPartiallyFailed : False
-	StartTime         : 2022-03-10T07:57:37.8730044Z
-	StopTime          : 
-	Status            : Starting
-	ContinuousRunId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-	Error             :
+```output
+WorkspaceName     : ContosoWorkspace
+Id                : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Name              : ContosoLinkConnection
+IsApplyingChanges :
+IsPartiallyFailed : False
+StartTime         : 2022-03-10T07:57:37.8730044Z
+StopTime          :
+Status            : Starting
+ContinuousRunId   : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+Error             :
 ```
 
 The **Start-AzSynapseLinkConnection** command starts a link connection named ContosoLinkConnection in workspace, then you can call **Get-AzSynapseLinkConnectionDetailedStatus** to get status of the link connection.
+
+## PARAMETERS
 
 ### -AsJob
 Run cmdlet in the background

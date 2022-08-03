@@ -43,27 +43,12 @@ Removes a content from AzureFrontDoor.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Clear the content of an AzureFrontDoor endpoint
 ```powershell
-{{ Add code here }}
+Clear-AzFrontDoorCdnEndpointContent -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -ContentPath /a
 ```
 
-```output
-{{ Add output here }}
-```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -303,11 +288,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CONTENT <IAfdPurgeParameters>: Parameters required for content purge.
+CONTENT `<IAfdPurgeParameters>`: Parameters required for content purge.
   - `ContentPath <String[]>`: The path to the content to be purged. Can describe a file path or a wild card directory.
   - `[Domain <String[]>]`: List of domains.
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

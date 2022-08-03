@@ -55,25 +55,26 @@ Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxx
 Vault URI                        : https://contoso03vault.vault.azure.net/
 Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
 SKU                              : Standard
-Enabled For Deployment?          : False
-Enabled For Template Deployment? : False
-Enabled For Disk Encryption?     : False
-Soft Delete Enabled?             :
+Enabled For Deployment?          : 
+Enabled For Template Deployment? : 
+Enabled For Disk Encryption?     : 
+Soft Delete Enabled?             : True
 Access Policies                  :
                                    Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
                                    Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
                                    Application ID                             :
                                    Display Name                               : User Name (username@microsoft.com)
-                                   Permissions to Keys                        : get, create, delete, list, update,
-                                   import, backup, restore, recover
-                                   Permissions to Secrets                     : get, list, set, delete, backup,
-                                   restore, recover
-                                   Permissions to Certificates                : get, delete, list, create, import,
-                                   update, deleteissuers, getissuers, listissuers, managecontacts, manageissuers,
-                                   setissuers, recover, backup, restore
-                                   Permissions to (Key Vault Managed) Storage : delete, deletesas, get, getsas, list,
-                                   listsas, regeneratekey, set, setsas, update, recover, backup, restore
+                                   Permissions to Keys                        : all
+                                   Permissions to Secrets                     : all
+                                   Permissions to Certificates                : all
+                                   Permissions to (Key Vault Managed) Storage : all
 
+Network Rule Set                  :
+                                   Default Action                             : Allow
+                                   Bypass                                     : AzureServices
+                                   IP Rules                                   :
+                                   Virtual Network Rules                      :
+                                      
 Tags                             :
 ```
 
@@ -104,16 +105,17 @@ Access Policies                  :
                                    Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
                                    Application ID                             :
                                    Display Name                               : User Name (username@microsoft.com)
-                                   Permissions to Keys                        : get, create, delete, list, update,
-                                   import, backup, restore, recover
-                                   Permissions to Secrets                     : get, list, set, delete, backup,
-                                   restore, recover
-                                   Permissions to Certificates                : get, delete, list, create, import,
-                                   update, deleteissuers, getissuers, listissuers, managecontacts, manageissuers,
-                                   setissuers, recover, backup, restore
-                                   Permissions to (Key Vault Managed) Storage : delete, deletesas, get, getsas, list,
-                                   listsas, regeneratekey, set, setsas, update, recover, backup, restore
+                                   Permissions to Keys                        : all
+                                   Permissions to Secrets                     : all
+                                   Permissions to Certificates                : all
+                                   Permissions to (Key Vault Managed) Storage : all
 
+Network Rule Set                 :
+                                  Default Action                             : Allow
+                                  Bypass                                     : AzureServices
+                                  IP Rules                                   :
+                                  Virtual Network Rules                      :
+                                 
 Tags                             :
 ```
 
@@ -126,9 +128,42 @@ $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -Address
 $virtualNetwork = New-AzVirtualNetwork -Name myVNet -ResourceGroupName myRG -Location westus -AddressPrefix "110.0.0.0/16" -Subnet $frontendSubnet
 $myNetworkResId = (Get-AzVirtualNetwork -Name myVNet -ResourceGroupName myRG).Subnets[0].Id
 $ruleSet = New-AzKeyVaultNetworkRuleSetObject -DefaultAction Allow -Bypass AzureServices -IpAddressRange "110.0.1.0/24" -VirtualNetworkResourceId $myNetworkResId
-New-AzKeyVault -ResourceGroupName "myRg" -VaultName "myVault" -NetworkRuleSet $ruleSet
+New-AzKeyVault -ResourceGroupName "myRg" -VaultName "myVault" -NetworkRuleSet $ruleSet -Location westus
 ```
 
+```output
+Vault Name                       : myVault
+Resource Group Name              : myRg
+Location                         : East US
+Resource ID                      : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx/resourceGroups/myRg/providers
+                                   /Microsoft.KeyVault/vaults/myVault
+Vault URI                        : https://myVault.vault.azure.net/
+Tenant ID                        : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+SKU                              : Premium
+Enabled For Deployment?          : False
+Enabled For Template Deployment? : False
+Enabled For Disk Encryption?     : False
+Soft Delete Enabled?             :
+Access Policies                  :
+                                   Tenant ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Object ID                                  : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx
+                                   Application ID                             :
+                                   Display Name                               : User Name (username@microsoft.com)
+                                   Permissions to Keys                        : all
+                                   Permissions to Secrets                     : all
+                                   Permissions to Certificates                : all
+                                   Permissions to (Key Vault Managed) Storage : all
+
+Network Rule Set                 :
+                                  Default Action                             : Allow
+                                  Bypass                                     : AzureServices
+                                  IP Rules                                   : 110.0.1.0/24
+                                  Virtual Network Rules                      : /subscriptions/0b1f6471-1bf0-4dda-ae
+                                  c3-cb9272f09590/resourcegroups/myRg/providers/microsoft.network/virtualnetworks
+                                  /myvnet/subnets/frontendsubnet
+                                 
+Tags                             :
+```
 Creating a key vault and specifies network rules to allow access to the specified IP address from the virtual network identified by $myNetworkResId. See `New-AzKeyVaultNetworkRuleSetObject` for more information.
 
 ## PARAMETERS

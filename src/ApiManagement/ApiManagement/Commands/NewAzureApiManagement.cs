@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common.ArgumentCompleters;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using System;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement"), OutputType(typeof(PsApiManagement))]
     public class NewAzureApiManagement : AzureApiManagementCmdletBase
@@ -58,10 +60,11 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [ValidatePattern(@"^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@([a-zA-Z0-9_]+[a-zA-Z0-9_-]*\.)+[a-zA-Z]{2,63}$")]
         public string AdminEmail { get; set; }
 
+        [CmdletParameterBreakingChange("Sku", OldParamaterType = typeof(PsApiManagementSku), NewParameterTypeName = nameof(String))]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,
-            HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Consumption, Basic, Standard and Premium . Default value is Developer")]
+            HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Basic, Standard, Premium and Consumption. The default value is Developer. ")]
         [ValidateSet("Developer", "Basic", "Standard", "Premium", "Consumption"), PSDefaultValue(Value = "Developer")]
         public PsApiManagementSku? Sku { get; set; }
 

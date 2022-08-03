@@ -24,27 +24,21 @@ Creates a new domain within the specified profile.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Creates an AzureFrontDoor domain within the specified AzureFrontDoor profile
 ```powershell
-{{ Add code here }}
+$secret =  Get-AzFrontDoorCdnSecret -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -Name secret001
+$secretResoure = New-AzFrontDoorCdnResourceReferenceObject -Id $secret.Id
+$tlsSetting = New-AzFrontDoorCdnCustomDomainTlsSettingParametersObject -CertificateType "CustomerCertificate" -MinimumTlsVersion "TLS12" -Secret $secretResoure
+New-AzFrontDoorCdnCustomDomain -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -CustomDomainName domain001 -HostName "pstest001.dev.cdn.azure.cn" -TlsSetting $tlsSetting
 ```
 
 ```output
-{{ Add output here }}
+Name      ResourceGroupName
+----      -----------------
+domain001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates an AzureFrontDoor domain within the specified AzureFrontDoor profile
 
 ## PARAMETERS
 
@@ -265,7 +259,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-TLSSETTING <IAfdDomainHttpsParameters>: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
+TLSSETTING `<IAfdDomainHttpsParameters>`: The configuration specifying how to enable HTTPS for the domain - using AzureFrontDoor managed certificate or user's own certificate. If not specified, enabling ssl uses AzureFrontDoor managed certificate by default.
   - `CertificateType <AfdCertificateType>`: Defines the source of the SSL certificate.
   - `[MinimumTlsVersion <AfdMinimumTlsVersion?>]`: TLS protocol version that will be used for Https
   - `[Secret <IResourceReference>]`: Resource reference to the secret. ie. subs/rg/profile/secret

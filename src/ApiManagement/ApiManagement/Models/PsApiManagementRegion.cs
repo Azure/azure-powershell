@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     using Helpers;
     using System;
     using System.Linq;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     public class PsApiManagementRegion
     {
@@ -57,6 +58,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public int Capacity { get; set; }
 
+        [CmdletParameterBreakingChange("Sku", OldParamaterType = typeof(PsApiManagementSku), NewParameterTypeName = nameof(String))]
         public PsApiManagementSku Sku { get; set; }
 
         public string Location { get; set; }

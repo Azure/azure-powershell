@@ -125,7 +125,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Cdn
         /// <summary>Creates the module instance.</summary>
         private Module()
         {
-            /// constructor
+            // constructor
             ClientAPI = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Cdn();
             _handler.Proxy = _webProxy;
             _pipeline = new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.HttpPipeline(new Microsoft.Azure.PowerShell.Cmdlets.Cdn.Runtime.HttpClientFactory(new global::System.Net.Http.HttpClient()));

@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
 
         public override void ExecuteCmdlet()
         {
-            PSNetworkRuleSetAttributes networkRuleSet = Client.GetNetworkRuleSet(ResourceGroupName, Name);
+            PSNetworkRuleSetAttributes networkRuleSet = UtilityClient.GetNetworkRuleSet(ResourceGroupName, Name);
             PSNWRuleSetVirtualNetworkRulesAttributes Toremove = new PSNWRuleSetVirtualNetworkRulesAttributes();
 
 
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                     {
                         networkRuleSet.VirtualNetworkRules.Remove(Toremove);
 
-                        var result = Client.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet);
+                        var result = UtilityClient.CreateOrUpdateNetworkRuleSet(ResourceGroupName, Name, networkRuleSet);
 
                         if (PassThru.IsPresent)
                         {

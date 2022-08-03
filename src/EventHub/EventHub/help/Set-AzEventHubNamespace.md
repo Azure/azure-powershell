@@ -12,20 +12,11 @@ Updates the specified Event Hubs namespace.
 
 ## SYNTAX
 
-### NamespaceParameterSet (Default)
-```
-Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>]
- [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableKafka] [-DisableLocalAuth]
- [-IdentityType <String>] [-IdentityId <String[]>] [-EncryptionConfig <PSEncryptionConfigAttributes[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### AutoInflateParameterSet
 ```
 Set-AzEventHubNamespace [-ResourceGroupName] <String> [-Name] <String> [[-Location] <String>]
  [[-SkuName] <String>] [[-SkuCapacity] <Int32>] [[-Tag] <Hashtable>] [-EnableAutoInflate]
  [-MaximumThroughputUnits <Int32>] [-EnableKafka] [-DisableLocalAuth] [-IdentityType <String>]
- [-IdentityId <String[]>] [-EncryptionConfig <PSEncryptionConfigAttributes[]>]
+ [-IdentityId <String[]>] [-EncryptionConfig <PSEncryptionConfigAttributes[]>] [-MinimumTlsVersion <String>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -62,7 +53,7 @@ Updates the Tags for namespace \`MyNamespaceName\` to Created .
 
 ### Example 2
 ```powershell
-Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -State Created -EnableAutoInflate -MaximumThroughputUnits 10
+Set-AzEventHubNamespace -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -Location "WestUS" -EnableAutoInflate -MaximumThroughputUnits 10
 ```
 
 ```output
@@ -128,9 +119,7 @@ ClusterArmId                  : /subscriptions/{subscriptionId}/resourceGroups/D
 Encryption                    : Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes
 Encryption.KeySource          : MicrosoftKeyVault
 Identity                      : PrinicipalId : 000000,
-                                TenantId: 000000,
-                                Type: SystemAssigned,
-                                UserAssignedIdentity:
+                                TenantId: 000000
 IdentityType                  : SystemAssigned
 IdentityId                    :
 EncryptionConfig              : {{ KeyName: key1,
@@ -181,9 +170,7 @@ ClusterArmId                  : /subscriptions/{subscriptionId}/resourceGroups/D
 Encryption                    : Microsoft.Azure.Commands.EventHub.Models.PSEncryptionAttributes
 Encryption.KeySource          : MicrosoftKeyVault
 Identity                      : PrinicipalId : 000000,
-                                TenantId: 000000,
-                                Type: SystemAssigned,
-                                UserAssignedIdentity:
+                                TenantId: 000000
 IdentityType                  : SystemAssigned
 IdentityId                    :
 EncryptionConfig              : {{ KeyName: key1,
@@ -226,7 +213,7 @@ Accept wildcard characters: False
 ```
 
 ### -DisableLocalAuth
-enabling or disabling  SAS authentication for namespace
+enabling or disabling SAS authentication for namespace
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -245,10 +232,10 @@ Indicates whether AutoInflate is enabled
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AutoInflateParameterSet
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -336,8 +323,25 @@ Upper limit of throughput units when AutoInflate is enabled, value should be wit
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
-Parameter Sets: AutoInflateParameterSet
+Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -MinimumTlsVersion
+The minimum TLS version for the cluster to support, e.g.
+'1.2'
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: 1.0, 1.1, 1.2
 
 Required: False
 Position: Named
@@ -416,7 +420,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 6
+Position: 5
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

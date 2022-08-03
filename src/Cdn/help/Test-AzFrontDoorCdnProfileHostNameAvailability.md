@@ -30,27 +30,18 @@ Check the name availability of a host name.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Test the availability of a host name under the AzureFrontDoor profile
 ```powershell
-{{ Add code here }}
+Test-AzFrontDoorCdnProfileHostNameAvailability -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -HostName hello1.dev.cdn.azure.cn
 ```
 
 ```output
-{{ Add output here }}
+Message NameAvailable Reason
+------- ------------- ------
+        True
 ```
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -196,7 +187,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

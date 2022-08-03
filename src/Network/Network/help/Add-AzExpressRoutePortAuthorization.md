@@ -13,7 +13,7 @@ Adds an ExpressRoutePort authorization.
 ## SYNTAX
 
 ```
-Add-AzExpressRoutePortAuthorization -Name <String> -ExpressRoutePort <PSExpressRoutePort>
+Add-AzExpressRoutePortAuthorization -Name <String> -ExpressRoutePortObject <PSExpressRoutePort>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,6 +34,7 @@ to the appropriate circuit owner.
 ```powershell
 $ERPort = Get-AzExpressRoutePort -Name "ContosoPort" -ResourceGroupName "ContosoResourceGroup"
 ```
+
 ```output
 Name                       : ContosoPort
 ResourceGroupName          : ContosoResourceGroup
@@ -89,9 +90,11 @@ Links                      : [
                              ]
 Circuits                   : []
 ```
+
 ```powershell
-Add-AzExpressRoutePortAuthorization -Name "ContosoPortAuthorization" -ExpressRoutePort $ERPort
+Add-AzExpressRoutePortAuthorization -Name "ContosoPortAuthorization" -ExpressRoutePortObject $ERPort
 ```
+
 ```output
 Name                   : ContosoPortAuthorization
 Id                     : /subscriptions/62364504-2406-418e-971c-05822ff72fad/resourceGroups/ContosoResourceGroup/provid
@@ -102,7 +105,6 @@ AuthorizationUseStatus : Available
 ProvisioningState      : Succeeded
 CircuitResourceUri     :
 ```
-
 
 The commands in this example add a new authorization to an existing ExpressRoutePort. The first
 command uses **Get-AzExpressRoutePort** to create an object reference to a ExpressRoutePort named
@@ -127,8 +129,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpressRoutePort
-Specifies the ExpressRoutePort that this cmdlet adds the authorization to.
+### -ExpressRoutePortObject
+The ExpressRoutePort Object
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSExpressRoutePort

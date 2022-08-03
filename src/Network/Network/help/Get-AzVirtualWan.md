@@ -32,7 +32,7 @@ Gets a Virtual WAN or all Virtual WANs in a resource group or subscription.
 
 ```powershell
 New-AzResourceGroup -Location "West US" -Name "testRG" 
-New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic $true
+New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US" -AllowBranchToBranchTraffic
 Get-AzVirtualWan -Name "myVirtualWAN" -ResourceGroupName "testRG"
 ```
 

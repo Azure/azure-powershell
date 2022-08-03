@@ -1,0 +1,80 @@
+{
+  "Get-AzReservationQuote+[NoContext]+CalculateExpanded+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_b1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"/subscriptions/30000000-aaaa-bbbb-cccc-100000000005\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Monthly\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"TestVm\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "361" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"9/26/2022 11:16:34 PM\"}" ],
+        "x-ms-request-id": [ "westcentralus:0e3a030b-3dd5-4662-a54e-4f00a185bdac" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-correlation-request-id": [ "68fefb0e-afb7-443c-bed2-dedf02e63284" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220628T231636Z:68fefb0e-afb7-443c-bed2-dedf02e63284" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 28 Jun 2022 23:16:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1681" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"billingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":24.0},\"netTotal\":0.0,\"taxTotal\":0.0,\"grandTotal\":0.0,\"paymentSchedule\":[{\"dueDate\":\"2022-06-28\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"billingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"status\":\"Scheduled\"},{\"dueDate\":\"2022-07-28\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"status\":\"Scheduled\"},{\"dueDate\":\"2022-08-28\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"status\":\"Scheduled\"},{\"dueDate\":\"2022-09-28\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"status\":\"Scheduled\"},{\"dueDate\":\"2022-10-28\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"status\":\"Scheduled\"},{\"dueDate\":\"2022-11-28\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"status\":\"Scheduled\"},{\"dueDate\":\"2022-12-28\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"status\":\"Scheduled\"},{\"dueDate\":\"2023-01-28\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"status\":\"Scheduled\"},{\"dueDate\":\"2023-02-28\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"status\":\"Scheduled\"},{\"dueDate\":\"2023-03-28\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"status\":\"Scheduled\"},{\"dueDate\":\"2023-04-28\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"status\":\"Scheduled\"},{\"dueDate\":\"2023-05-28\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":2.0},\"status\":\"Scheduled\"}],\"reservationOrderId\":\"44cabf69-0c05-4851-8a7b-04fa65d3899a\",\"skuTitle\":\"Reserved VM Instance, Standard_B1ls, US West, 1 Year\",\"skuDescription\":\"Standard_b1ls\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":24.0}}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzReservationQuote+[NoContext]+Calculate+$POST+https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Capacity/calculatePrice?api-version=2022-03-01",
+      "Content": "{\r\n  \"sku\": {\r\n    \"name\": \"Standard_b1ls\"\r\n  },\r\n  \"properties\": {\r\n    \"reservedResourceType\": \"VirtualMachines\",\r\n    \"billingScopeId\": \"/subscriptions/30000000-aaaa-bbbb-cccc-100000000005\",\r\n    \"term\": \"P1Y\",\r\n    \"billingPlan\": \"Upfront\",\r\n    \"quantity\": 1,\r\n    \"displayName\": \"Testvm\",\r\n    \"appliedScopeType\": \"Shared\"\r\n  },\r\n  \"location\": \"westus\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "361" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1198" ],
+        "x-ms-test": [ "{\"contact\":\"sornaks\",\"scenarios\":\"MultiCurrencyTesting\",\"retention\":\"9/26/2022 11:16:36 PM\"}" ],
+        "x-ms-request-id": [ "westcentralus:ec9059fa-b63a-4748-a7f6-fec95be93b26" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "x-ms-correlation-request-id": [ "9799a9be-0c7e-4507-a9a6-fbab147282e2" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220628T231639Z:9799a9be-0c7e-4507-a9a6-fbab147282e2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Tue, 28 Jun 2022 23:16:38 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "342" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"billingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":24.0},\"netTotal\":0.0,\"taxTotal\":0.0,\"grandTotal\":0.0,\"reservationOrderId\":\"6f91289e-158f-4759-991d-bb4d8fa499e1\",\"skuTitle\":\"Reserved VM Instance, Standard_B1ls, US West, 1 Year\",\"skuDescription\":\"Standard_b1ls\",\"pricingCurrencyTotal\":{\"currencyCode\":\"GBP\",\"amount\":24.0}}}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -39,7 +39,7 @@ The **Get-AzSynapseLinkConnectionLinkTablesStatus** cmdlet gets status of link t
 
 ### Example 1
 ```powershell
-Get-AzSynapseLinkConnectionLinkTablesStatus -WorkspaceName ContosoWorkspace -LinkConnectionName ContosoLinkConnection -MaxSegmentCount 50
+Get-AzSynapseLinkConnectionLinkTableStatus -WorkspaceName ContosoWorkspace -LinkConnectionName ContosoLinkConnection -MaxSegmentCount 50
 ```
 
 This command gets status of link tables with max segment count 50 under link connection ContosoLinkConnection in workspace ContosoWorkspace.
@@ -47,15 +47,15 @@ This command gets status of link tables with max segment count 50 under link con
 ### Example 2
 ```powershell
 $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-$ws | Get-AzSynapseLinkConnectionLinkTablesStatus -LinkConnectionName ContosoLinkConnection -MaxSegmentCount 50
+$ws | Get-AzSynapseLinkConnectionLinkTableStatus -LinkConnectionName ContosoLinkConnection -MaxSegmentCount 50
 ```
 
 This command gets status of link tables with max segment count 50 under link connection ContosoLinkConnection in workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-$lc = Get-AzSynpaseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
-$lc | Get-AzSynapseLinkConnectionLinkTablesStatus -MaxSegmentCount 50
+$lc = Get-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -Name ContosoLinkConnection
+$lc | Get-AzSynapseLinkConnectionLinkTableStatus -MaxSegmentCount 50
 ```
 
 This command gets status of link tables with max segment count 50 under a link connection through pipeline.

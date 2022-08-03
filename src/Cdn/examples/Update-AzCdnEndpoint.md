@@ -1,22 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an AzureCDN Endpoint under the AzureCDN profile
 ```powershell
-{{ Add code here }}
+$tags = @{
+    Tag1 = 11
+    Tag2 = 22
+}
+Update-AzCdnEndpoint -ResourceGroupName testps-rg-da16jm -ProfileName cdn001 -Name endptest001 -Tag $tags -DefaultOriginGroupId $originGroup.Id
 ```
 
 ```output
-{{ Add output here }}
+Location Name        ResourceGroupName
+-------- ----        -----------------
+WestUs   endptest001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update an AzureCDN Endpoint under the AzureCDN profile
 

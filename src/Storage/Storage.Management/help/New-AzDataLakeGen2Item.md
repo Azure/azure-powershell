@@ -35,6 +35,7 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 ## EXAMPLES
 
 ### Example 1: Create a directory with specified permission, Umask, properties, and metadata
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>New-AzDataLakeGen2Item -FileSystem "testfilesystem" -Path "dir1/dir2/" -Directory -Permission rwxrwxrwx -Umask ---rw---- -Property @{"CacheControl" = "READ"; "ContentDisposition" = "True"} -Metadata  @{"tag1" = "value1"; "tag2" = "value2" }
 
@@ -48,6 +49,7 @@ dir1/dir2            True                         2020-03-23 09:15:56Z rwx---rwx
 This command creates a directory with specified Permission, Umask, properties, and metadata
 
 ### Example 2: Create(upload) a data lake file from a local source file, and the cmdlet runs in background
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $task = New-AzDataLakeGen2Item  -FileSystem "testfilesystem" -Path "dir1/dir2/file1" -Source "c:\sourcefile.txt" -Force -asjob
 PS C:\> $task | Wait-Job

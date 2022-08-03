@@ -33,7 +33,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -45,7 +46,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="JobTaskDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="JobTaskDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,14 +103,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTask = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobEntity) content.GetValueForProperty("JobTask",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTask, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.JobEntityTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobId = (string) content.GetValueForProperty("JobTaskJobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobFriendlyName = (string) content.GetValueForProperty("JobTaskJobFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectId = (string) content.GetValueForProperty("JobTaskTargetObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectName = (string) content.GetValueForProperty("JobTaskTargetObjectName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetInstanceType = (string) content.GetValueForProperty("JobTaskTargetInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetInstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobScenarioName = (string) content.GetValueForProperty("JobTaskJobScenarioName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobScenarioName, global::System.Convert.ToString);
+            if (content.Contains("JobTask"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTask = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobEntity) content.GetValueForProperty("JobTask",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTask, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.JobEntityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobTaskJobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobId = (string) content.GetValueForProperty("JobTaskJobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobId, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobTaskJobFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobFriendlyName = (string) content.GetValueForProperty("JobTaskJobFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobTaskTargetObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectId = (string) content.GetValueForProperty("JobTaskTargetObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobTaskTargetObjectName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectName = (string) content.GetValueForProperty("JobTaskTargetObjectName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobTaskTargetInstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetInstanceType = (string) content.GetValueForProperty("JobTaskTargetInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetInstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobTaskJobScenarioName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobScenarioName = (string) content.GetValueForProperty("JobTaskJobScenarioName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobScenarioName, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -126,14 +152,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTask = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobEntity) content.GetValueForProperty("JobTask",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTask, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.JobEntityTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobId = (string) content.GetValueForProperty("JobTaskJobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobFriendlyName = (string) content.GetValueForProperty("JobTaskJobFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectId = (string) content.GetValueForProperty("JobTaskTargetObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectName = (string) content.GetValueForProperty("JobTaskTargetObjectName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetInstanceType = (string) content.GetValueForProperty("JobTaskTargetInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetInstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobScenarioName = (string) content.GetValueForProperty("JobTaskJobScenarioName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobScenarioName, global::System.Convert.ToString);
+            if (content.Contains("JobTask"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTask = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobEntity) content.GetValueForProperty("JobTask",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTask, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.JobEntityTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITaskTypeDetailsInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobTaskJobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobId = (string) content.GetValueForProperty("JobTaskJobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobId, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobTaskJobFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobFriendlyName = (string) content.GetValueForProperty("JobTaskJobFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobTaskTargetObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectId = (string) content.GetValueForProperty("JobTaskTargetObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobTaskTargetObjectName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectName = (string) content.GetValueForProperty("JobTaskTargetObjectName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetObjectName, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobTaskTargetInstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetInstanceType = (string) content.GetValueForProperty("JobTaskTargetInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskTargetInstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("JobTaskJobScenarioName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobScenarioName = (string) content.GetValueForProperty("JobTaskJobScenarioName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJobTaskDetailsInternal)this).JobTaskJobScenarioName, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

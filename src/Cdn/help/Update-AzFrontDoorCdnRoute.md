@@ -42,27 +42,18 @@ Updates an existing route with the specified route name under the specified subs
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update an AzureFrontDoor route under the AzureFrontDoor profile
 ```powershell
-{{ Add code here }}
+Update-AzFrontDoorCdnRoute -ResourceGroupName testps-rg-da16jm -ProfileName fdp-v542q6 -EndpointName end001 -Name route001 -EnabledState "Enabled"
 ```
 
 ```output
-{{ Add output here }}
+Name     ResourceGroupName
+----     -----------------
+route001 testps-rg-da16jm
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Update an AzureFrontDoor route under the AzureFrontDoor profile
 
 ## PARAMETERS
 
@@ -476,7 +467,7 @@ To create the parameters described below, construct a hash table containing the 
 CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoint.
   - `[Id <String>]`: Resource ID.
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

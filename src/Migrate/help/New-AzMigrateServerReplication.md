@@ -104,7 +104,6 @@ This is for the scenario, when there is only one single disk that has to be prot
 ```powershell
 $OSDisk = New-AzMigrateDiskMapping -DiskID '6000C299-343d-7bcd-c05e-a94bd63316dd' -DiskType 'Standard_LRS' -IsOSDisk 'true'
 $DataDisk = New-AzMigrateDiskMapping -DiskID '7000C299-343d-7bcd-c05e-a94bd63316dd' -DiskType 'Standard_LRS' -IsOSDisk 'false'
-$DisksToInclude = @()
 $DisksToInclude += $OSDisk
 $DisksToInclude += $DataDisk
 New-AzMigrateServerReplication -MachineId "/subscriptions/xxx-xxx-xxx/resourceGroups/azmigratepwshtestasr13072020/providers/Microsoft.OffAzure/VMwareSites/AzMigratePWSHTc8d1site/machines/bcdr-vcenter-fareast-corp-micro-cfcc5a24-a40e-56b9-a6af-e206c9ca4f93_50063baa-9806-d6d6-7e09-c0ae87309b4f" -LicenseType NoLicenseType -TargetResourceGroupId "/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG" -TargetNetworkId  "/subscriptions/xxx-xxx-xxx/resourceGroups/AzMigratePWSHtargetRG/providers/Microsoft.Network/virtualNetworks/AzMigrateTargetNetwork" -TargetSubnetName default -TargetVMName "prsadhu-TestVM" -DiskToInclude $DisksToInclude -PerformAutoResync true
@@ -521,10 +520,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DISKTAG <IVMwareCbtEnableMigrationInputTargetDiskTags>: Specifies the tag to be used for disk creation.
+`DISKTAG <IVMwareCbtEnableMigrationInputTargetDiskTags>`: Specifies the tag to be used for disk creation.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-DISKTOINCLUDE <IVMwareCbtDiskInput[]>: Specifies the disks on the source server to be included for replication.
+`DISKTOINCLUDE <IVMwareCbtDiskInput[]>`: Specifies the disks on the source server to be included for replication.
   - `DiskId <String>`: The disk Id.
   - `IsOSDisk <String>`: A value indicating whether the disk is the OS disk.
   - `LogStorageAccountId <String>`: The log storage account ARM Id.
@@ -532,13 +531,13 @@ DISKTOINCLUDE <IVMwareCbtDiskInput[]>: Specifies the disks on the source server 
   - `[DiskEncryptionSetId <String>]`: The DiskEncryptionSet ARM Id.
   - `[DiskType <DiskAccountType?>]`: The disk type.
 
-INPUTOBJECT <IVMwareMachine>: Specifies the discovered server to be migrated. The server object can be retrieved using the Get-AzMigrateServer cmdlet.
+`INPUTOBJECT <IVMwareMachine>`: Specifies the discovered server to be migrated. The server object can be retrieved using the Get-AzMigrateServer cmdlet.
   - `[GuestOSDetailOstype <String>]`: Type of the operating system.
 
-NICTAG <IVMwareCbtEnableMigrationInputTargetNicTags>: Specifies the tag to be used for NIC creation.
+`NICTAG <IVMwareCbtEnableMigrationInputTargetNicTags>`: Specifies the tag to be used for NIC creation.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-VMTAG <IVMwareCbtEnableMigrationInputTargetVmtags>: Specifies the tag to be used for VM creation.
+`VMTAG <IVMwareCbtEnableMigrationInputTargetVmtags>`: Specifies the tag to be used for VM creation.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS

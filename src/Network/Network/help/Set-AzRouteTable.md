@@ -76,18 +76,19 @@ The command passes that table to the Add-AzRouteConfig cmdlet by using the pipel
 **Add-AzRouteConfig** adds the route named Route07, and then passes the result to the current cmdlet, which updates the table to reflect your changes.
 
 ### Example 2: Modify route table
+<!-- Skip: Output cannot be splitted from code -->
 
 ```powershell
 $rt = Get-AzRouteTable -ResourceGroupName "rgName" -Name "rtName"
 $rt.DisableBgpRoutePropagation
+
 False
+
 $rt.DisableBgpRoutePropagation = $true
 Set-AzRouteTable -RouteTable $rt
 $rt = Get-AzRouteTable -ResourceGroupName "rgName" -Name "rtName"
 $rt.DisableBgpRoutePropagation
-```
 
-```output
 True
 ```
 

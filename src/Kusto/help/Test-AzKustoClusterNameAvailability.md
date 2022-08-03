@@ -31,7 +31,7 @@ Checks that the cluster name is valid and is not already in use.
 
 ### Example 1: Check the availability of a Kusto cluster name which is in use
 ```powershell
-Test-AzKustoClusterNameAvailability -Name testnewkustocluster -Location 'East US' -Type Microsoft.Kusto/clusters
+Test-AzKustoClusterNameAvailability -Name testnewkustocluster -Location 'East US'
 ```
 
 ```output
@@ -44,7 +44,7 @@ The above command returns whether or not a Kusto cluster named "testnewkustoclus
 
 ### Example 2: Check the availability of a Kusto cluster name which is not in use
 ```powershell
-Test-AzKustoClusterNameAvailability -Name availablekustocluster -Location 'East US' -Type Microsoft.Kusto/clusters
+Test-AzKustoClusterNameAvailability -Name availablekustocluster -Location 'East US'
 ```
 
 ```output
@@ -185,7 +185,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IKustoIdentity>: Identity Parameter
+INPUTOBJECT `<IKustoIdentity>`: Identity Parameter
   - `[AttachedDatabaseConfigurationName <String>]`: The name of the attached database configuration.
   - `[ClusterName <String>]`: The name of the Kusto cluster.
   - `[DataConnectionName <String>]`: The name of the data connection.

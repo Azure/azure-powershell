@@ -222,8 +222,6 @@ namespace Microsoft.Azure.Commands.Resources
 
         public override void ExecuteCmdlet()
         {
-            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
-
             FilterRoleAssignmentsOptions options = new FilterRoleAssignmentsOptions()
             {
                 Scope = Scope,
