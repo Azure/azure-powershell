@@ -30,7 +30,7 @@ For information on how to develop for `Az.Dashboard`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 8c3029730778c35b597aa6d1afe69e78872bf03c
+branch: 02ed6d4aac29881364f8698b4fdac9c76cd0f538
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -63,4 +63,7 @@ directive:
       verb: New
       subject: Grafana
     hide: true
+  # The cmdlet's name to long, Re-name it
+  # - model-cmdlet:
+  #     - AzureMonitorWorkspaceIntegration
 ```
