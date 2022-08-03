@@ -216,4 +216,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-https://aka.ms/sqlmi-dnsalias-docs
+[New-AzSqlInstanceDnsAlias](./New-AzSqlInstanceDnsAlias.md)
+
+[Set-AzSqlInstanceDnsAlias](./Set-AzSqlInstanceDnsAlias.md)
+
+[Move-AzSqlInstanceDnsAlias](./Move-AzSqlInstanceDnsAlias.md)
+
+[Remove-AzSqlInstanceDnsAlias](./Remove-AzSqlInstanceDnsAlias.md)
+
+[SQL Managed Instance DNS alias Documentation](https://aka.ms/sqlmi-dnsalias-docs)

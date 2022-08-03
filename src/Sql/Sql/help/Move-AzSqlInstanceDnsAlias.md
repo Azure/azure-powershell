@@ -14,56 +14,56 @@ Modifies the managed instance to which Azure SQL Managed Instance DNS Alias is p
 
 ### MoveByNameAndSourceResourceIdParameterSet (Default)
 ```
-Move-AzSqlInstanceDnsAlias [-DestResourceGroupName] <String> [-InstanceName] <String>
+Move-AzSqlInstanceDnsAlias [-DestResourceGroupName] <String> [-DestInstanceName] <String>
  [-SourceResourceId] <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### MoveByNamesParameterSet
 ```
-Move-AzSqlInstanceDnsAlias [-DestResourceGroupName] <String> [-InstanceName] <String>
+Move-AzSqlInstanceDnsAlias [-DestResourceGroupName] <String> [-DestInstanceName] <String>
  [-SourceResourceGroupName] <String> [-SourceInstanceName] <String> -SourceName <String> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveByNameAndSourceParentObjectParameterSet
 ```
-Move-AzSqlInstanceDnsAlias [-DestResourceGroupName] <String> [-InstanceName] <String> -SourceName <String>
+Move-AzSqlInstanceDnsAlias [-DestResourceGroupName] <String> [-DestInstanceName] <String> -SourceName <String>
  [-SourceInstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveByNameAndSourceInputObjectParameterSet
 ```
-Move-AzSqlInstanceDnsAlias [-DestResourceGroupName] <String> [-InstanceName] <String>
+Move-AzSqlInstanceDnsAlias [-DestResourceGroupName] <String> [-DestInstanceName] <String>
  [-SourceInputObject] <AzureSqlManagedInstanceDnsAliasModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveByParentObjectAndSourceNameParameterSet
 ```
-Move-AzSqlInstanceDnsAlias [-InstanceObject] <AzureSqlManagedInstanceModel> [-SourceResourceGroupName] <String>
- [-SourceInstanceName] <String> -SourceName <String> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+Move-AzSqlInstanceDnsAlias [-DestInstanceObject] <AzureSqlManagedInstanceModel>
+ [-SourceResourceGroupName] <String> [-SourceInstanceName] <String> -SourceName <String> [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveByParentObjectsParameterSet
 ```
-Move-AzSqlInstanceDnsAlias [-InstanceObject] <AzureSqlManagedInstanceModel> -SourceName <String>
+Move-AzSqlInstanceDnsAlias [-DestInstanceObject] <AzureSqlManagedInstanceModel> -SourceName <String>
  [-SourceInstanceObject] <AzureSqlManagedInstanceModel> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveByParentObjectAndSourceInputObjectParameterSet
 ```
-Move-AzSqlInstanceDnsAlias [-InstanceObject] <AzureSqlManagedInstanceModel>
+Move-AzSqlInstanceDnsAlias [-DestInstanceObject] <AzureSqlManagedInstanceModel>
  [-SourceInputObject] <AzureSqlManagedInstanceDnsAliasModel> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### MoveByParentObjectAndSourceResourceIdParameterSet
 ```
-Move-AzSqlInstanceDnsAlias [-InstanceObject] <AzureSqlManagedInstanceModel> [-SourceResourceId] <String>
+Move-AzSqlInstanceDnsAlias [-DestInstanceObject] <AzureSqlManagedInstanceModel> [-SourceResourceId] <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -240,6 +240,36 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DestInstanceName
+Name of the destination managed instance.
+
+```yaml
+Type: System.String
+Parameter Sets: MoveByNameAndSourceResourceIdParameterSet, MoveByNamesParameterSet, MoveByNameAndSourceParentObjectParameterSet, MoveByNameAndSourceInputObjectParameterSet
+Aliases:
+
+Required: True
+Position: 1
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DestInstanceObject
+Input object of the destination managed instance.
+
+```yaml
+Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
+Parameter Sets: MoveByParentObjectAndSourceNameParameterSet, MoveByParentObjectsParameterSet, MoveByParentObjectAndSourceInputObjectParameterSet, MoveByParentObjectAndSourceResourceIdParameterSet
+Aliases:
+
+Required: True
+Position: 0
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -DestResourceGroupName
 Name of the destination resource group.
 
@@ -252,36 +282,6 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceName
-Name of the target managed instance.
-
-```yaml
-Type: System.String
-Parameter Sets: MoveByNameAndSourceResourceIdParameterSet, MoveByNamesParameterSet, MoveByNameAndSourceParentObjectParameterSet, MoveByNameAndSourceInputObjectParameterSet
-Aliases: DestInstanceName
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InstanceObject
-Input object of the target managed instance.
-
-```yaml
-Type: Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
-Parameter Sets: MoveByParentObjectAndSourceNameParameterSet, MoveByParentObjectsParameterSet, MoveByParentObjectAndSourceInputObjectParameterSet, MoveByParentObjectAndSourceResourceIdParameterSet
-Aliases: DestInstanceObject
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -460,4 +460,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-https://aka.ms/sqlmi-dnsalias-docs
+[New-AzSqlInstanceDnsAlias](./New-AzSqlInstanceDnsAlias.md)
+
+[Get-AzSqlInstanceDnsAlias](./Move-AzSqlInstanceDnsAlias.md)
+
+[Set-AzSqlInstanceDnsAlias](./Set-AzSqlInstanceDnsAlias.md)
+
+[Remove-AzSqlInstanceDnsAlias](./Remove-AzSqlInstanceDnsAlias.md)
+
+[SQL Managed Instance DNS alias Documentation](https://aka.ms/sqlmi-dnsalias-docs)
