@@ -63,6 +63,13 @@ directive:
 #    verb: Set
 #  remove: true
   - where:
+      variant: ^Update$|^UpdateViaIdentity$
+    remove: true
+  # Hide CreateViaIdentity for customization
+  - where:
+      variant: ^CreateViaIdentity$
+    hide: true
+  - where:
       subject: NetworkSecurityPerimeter
     set:
       subject-prefix: ''

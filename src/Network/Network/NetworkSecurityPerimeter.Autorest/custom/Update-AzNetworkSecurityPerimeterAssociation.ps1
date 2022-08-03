@@ -208,15 +208,33 @@ function Update-AzNetworkSecurityPerimeterAssociation {
                 $PSBoundParameters.Add('AsJob', $true)
             }
 
-            # Fix this command
+            # Databricks is using this command
             # Az.Databricks.private\New-AzDatabricksWorkspace_CreateViaIdentity -InputObject $workspace -Parameter $workspace @PSBoundParameters
 
             
-            #This works
-            New-AzNetworkSecurityPerimeterAssociation_CreateExpanded @PSBoundParameters
+            
+            try{
+                Az.NetworkSecurityPerimeter\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity -InputObject $getObject -Parameter $getObject @PSBoundParameters
+            }
+            catch {
+                Write-Host -ForegroundColor Magenta "Az.NetworkSecurityPerimeter\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity is not available"
+            }
+            
+            try{
+                Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity -InputObject $getObject -Parameter $getObject @PSBoundParameters
 
-            #New-AzNetworkSecurityPerimeterAssociation_CreateExpanded @PSBoundParameters
-
+            }catch{
+                Write-Host -ForegroundColor Magenta "Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity is not available"            
+            }
+            
+            try {
+                Az.NetworkSecurityPerimeter.internal\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity -InputObject $getObject -Parameter $getObject @PSBoundParameters
+            }
+            catch{
+                Write-Host -ForegroundColor Magenta "Az.NetworkSecurityPerimeter.internal\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity is not available"
+                throw
+            }
+            
         }
 
         catch {
