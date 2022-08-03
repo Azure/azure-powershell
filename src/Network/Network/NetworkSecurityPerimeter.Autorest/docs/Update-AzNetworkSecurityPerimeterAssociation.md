@@ -8,7 +8,7 @@ schema: 2.0.0
 # Update-AzNetworkSecurityPerimeterAssociation
 
 ## SYNOPSIS
-Updates a workspace.
+Updates an association
 
 ## SYNTAX
 
@@ -28,7 +28,7 @@ Update-AzNetworkSecurityPerimeterAssociation -InputObject <INetworkSecurityPerim
 ```
 
 ## DESCRIPTION
-Updates a workspace.
+Updates an association.
 
 ## EXAMPLES
 
