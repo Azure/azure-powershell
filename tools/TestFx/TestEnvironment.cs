@@ -122,7 +122,6 @@ namespace Microsoft.Azure.Commands.TestFx
 
             Enum.TryParse(envNameString, true, out TestEnvironmentName envName);
             Endpoints = new TestEndpoints(EnvEndpoints[envName], ConnectionString);
-
         }
 
         private void LoadDefaultEnvironmentEndpoints()
@@ -187,19 +186,7 @@ namespace Microsoft.Azure.Commands.TestFx
 
         private void RecorderModeSettings()
         {
-            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
-            {
-                //Get Subscription Id from MockServer
-                if (HttpMockServer.Variables.ContainsCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey))
-                {
-                    SubscriptionId = HttpMockServer.Variables.GetValueUsingCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey);
-                }
-                else if (string.IsNullOrEmpty(SubscriptionId))
-                {
-                    throw new Exception($"Subscription Id is not present in the recorded mock or in connection string (e.g. {ConnectionStringKeys.SubscriptionIdKey}=<subscriptionId>)");
-                }
-            }
-            else if (HttpMockServer.Mode == HttpRecorderMode.Record)
+            if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
                 //Restore/Add Subscription Id in MockServer from supplied connection string
                 if (HttpMockServer.Variables.ContainsCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey))
@@ -420,6 +407,18 @@ namespace Microsoft.Azure.Commands.TestFx
                 {
                     string graphFailMessage = $@"Unable to make request to graph endpoint '{GraphUri}' using credentials provided within the connectionstring";
                     Debug.WriteLine(graphFailMessage, ex.ToString());
+                }
+            }
+        }
+
+        internal void SetRecordedEnvironmentVariables()
+        {
+            if (HttpMockServer.Mode == HttpRecorderMode.Playback)
+            {
+                //Get Subscription Id from MockServer
+                if (HttpMockServer.Variables.ContainsCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey))
+                {
+                    SubscriptionId = HttpMockServer.Variables.GetValueUsingCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey);
                 }
             }
         }

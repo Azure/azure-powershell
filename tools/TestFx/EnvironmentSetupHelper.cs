@@ -391,7 +391,7 @@ namespace Microsoft.Azure.Commands.TestFx
             TestEnvironment currentEnvironment;
             if (mode == AzureModule.AzureResourceManager)
             {
-                currentEnvironment = TestEnvironmentFactory.GetTestEnvironment();
+                currentEnvironment = TestEnvironmentFactory.GetTestFxEnvironment();
             }
             else
             {
