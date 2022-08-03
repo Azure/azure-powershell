@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
     using System.Text.RegularExpressions;
     using Microsoft.Azure.Commands.ApiManagement.Properties;
     using Microsoft.Azure.Management.ApiManagement.Models;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
     public class PsApiManagement
     {
@@ -160,6 +161,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Models
 
         public string Location { get; private set; }
 
+        [CmdletParameterBreakingChange("Sku", OldParamaterType = typeof(PsApiManagementSku), NewParameterTypeName = nameof(String))]
         public PsApiManagementSku Sku { get; set; }
 
         public int Capacity { get; set; }
