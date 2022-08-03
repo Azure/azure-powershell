@@ -15,7 +15,7 @@ Creates or updates a Collector Policy resource
 ### CreateExpanded (Default)
 ```
 New-AzNetworkFunctionTrafficCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
- -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]
  [-IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]
  [-IngestionPolicyIngestionType <IngestionType>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -24,7 +24,7 @@ New-AzNetworkFunctionTrafficCollectorPolicy -AzureTrafficCollectorName <String> 
 ### Create
 ```
 New-AzNetworkFunctionTrafficCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
- -ResourceGroupName <String> -Parameters <ICollectorPolicy> [-SubscriptionId <String>] [-AsJob] [-NoWait]
+ -ResourceGroupName <String> -Location <String> -Parameters <ICollectorPolicy> [-SubscriptionId <String>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -107,6 +107,21 @@ Collector Policy Name
 ```yaml
 Type: System.String
 Parameter Sets: Create, CreateExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Resource location.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
