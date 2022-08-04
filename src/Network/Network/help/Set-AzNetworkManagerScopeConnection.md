@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkManagerScopeConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update a network manager scope connection.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ Set-AzNetworkManagerScopeConnection -NetworkManagerName <String> -ResourceGroupN
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzNetworkManagerScopeConnection** cmdlet updates a network manager scope connection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $scopeConnection = Get-AzNetworkManagerScopeConnection -ResourceGroupName "TestResourceGroup" -NetworkManagerName "TestNM" -Name "testsc"
+PS C:\> Set-AzNetworkManagerScopeConnection -ResourceGroupName "TestResourceGroup" -NetworkManagerName "TestNM" -NetworkManagerScopeConnection $scopeConnection
 ```
-
-{{ Add example description here }}
+Updates a scope connection.
 
 ## PARAMETERS
 
@@ -154,3 +154,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzNetworkManagerScopeConnection](./Get-AzNetworkManagerScopeConnection.md)
+
+[New-AzNetworkManagerScopeConnection](./New-AzNetworkManagerScopeConnection.md)
+
+[Remove-AzNetworkManagerScopeConnection](./Remove-AzNetworkManagerScopeConnection.md)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerManagementGroupConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a network manager management group connection.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ New-AzNetworkManagerManagementGroupConnection -ManagementGroupId <String> -Name 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerManagementGroupConnection** cmdlet creates a network manager management group connection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzNetworkManagerManagementGroupConnection -ManagementGroupId $managementGroupId -Name $networkManagerConnectionName -NetworkManagerId $networkManagerId -Description "SampleDescription"
 ```
 
-{{ Add example description here }}
+Creates a network manager management group connection.
 
 ## PARAMETERS
 
@@ -182,3 +182,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Set-PSNetworkManagerConnection](./Set-PSNetworkManagerConnection.md)
+
+[Get-PSNetworkManagerConnection](./Get-PSNetworkManagerConnection.md)
+
+[Remove-PSNetworkManagerConnection](./Remove-PSNetworkManagerConnection.md)

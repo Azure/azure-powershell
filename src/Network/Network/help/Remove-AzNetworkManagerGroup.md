@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetworkManagerGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a network Group.
 
 ## SYNTAX
 
@@ -19,16 +19,15 @@ Remove-AzNetworkManagerGroup -Name <String> -NetworkManagerName <String> -Resour
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetworkManagerGroup** cmdlet removes an network Group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzNetworkManagerGroup -Name TestNetworkGroupName -NetworkManagerName TestNMName -ResourceGroupName TestRGName
 ```
-
-{{ Add example description here }}
+Removes a network Group.
 
 ## PARAMETERS
 
@@ -198,3 +197,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerGroup](./Get-AzNetworkManagerGroup.md)
+
+[New-AzNetworkManagerGroup](./New-AzNetworkManagerGroup.md)
+
+[Set-AzNetworkManagerGroup](./Set-AzNetworkManagerGroup.md)

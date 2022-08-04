@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerStaticMember
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a network manager static member.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ New-AzNetworkManagerStaticMember -Name <String> -NetworkManagerName <String> -Ne
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerStaticMember** cmdlet creates a network manager static member.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzNetworkManagerStaticMember -ResourceGroupName TestRGName -NetworkManagerName TestNetworkManagerName -Name TestNetworkGroupName -ResourceId "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnet"
 ```
 
-{{ Add example description here }}
+Creates a network manager static member.
 
 ## PARAMETERS
 
@@ -197,3 +197,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzNetworkManagerStaticMember](./Get-AzNetworkManagerStaticMember.md)
+
+[Remove-AzNetworkManagerStaticMember](./Remove-AzNetworkManagerStaticMember.md)
+
+[Set-AzNetworkManagerStaticMember](./Set-AzNetworkManagerStaticMember.md)

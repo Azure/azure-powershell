@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkManagerManagementGroupConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update a network manger management group connection
 
 ## SYNTAX
 
@@ -19,16 +19,17 @@ Set-AzNetworkManagerManagementGroupConnection -ManagementGroupId <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzNetworkManagerManagementGroupConnection** cmdlet update a network manger management group connection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $networkManagerConnection = Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "SDKTestMG" -Name "testsc"
+PS C:\> Set-AzNetworkManagerManagementGroupConnection -ManagementGroupId "SDKTestMG" -NetworkManagerManagementGroupConnection $networkManagerConnection
 ```
 
-{{ Add example description here }}
+Updates a network manger management group connection.
 
 ## PARAMETERS
 
@@ -139,3 +140,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Remove-PSNetworkManagerConnection](./Remove-PSNetworkManagerConnection.md)
+
+[Get-PSNetworkManagerConnection](./Get-PSNetworkManagerConnection.md)
+
+[New-PSNetworkManagerConnection](./New-PSNetworkManagerConnection.md)

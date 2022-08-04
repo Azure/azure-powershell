@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerSecurityAdminConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a security admin configuration.
 
 ## SYNTAX
 
@@ -21,16 +21,17 @@ New-AzNetworkManagerSecurityAdminConfiguration -Name <String> -NetworkManagerNam
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerSecurityAdminConfiguration** cmdlet creates a security admin configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName TestRGName -NetworkManagerName TestNMName -Name TestAdminConfigName -Description "TestDescription" -DeleteExistingNSG  -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedService
+
 ```
 
-{{ Add example description here }}
+Creates a security admin configuration.
 
 ## PARAMETERS
 
@@ -218,3 +219,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzNetworkManagerSecurityAdminConfiguration](./Get-AzNetworkManagerSecurityAdminConfiguration.md)
+
+[Remove-AzNetworkManagerSecurityAdminConfiguration](./Remove-AzNetworkManagerSecurityAdminConfiguration.md)
+
+[Set-AzNetworkManagerSecurityAdminConfiguration](./Set-AzNetworkManagerSecurityAdminConfiguration.md)

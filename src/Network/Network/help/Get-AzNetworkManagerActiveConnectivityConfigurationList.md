@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerActiveConnectivityConfigurationList
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Lists NetworkManager Active Connectivity Configurations in network manager.
 
 ## SYNTAX
 
@@ -19,16 +19,62 @@ Get-AzNetworkManagerActiveConnectivityConfigurationList -NetworkManagerName <Str
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManagerActiveConnectivityConfigurationList** cmdlet lists NetworkManager Active Connectivity Configurations in network manager .
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
+PS C:\> $regions.Add("centraluseuap")
+PS C:\> Get-AzNetworkManagerActiveConnectivityConfigurationList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
+ 
+ Value     : [
+              {
+                "Region": "centraluseuap",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/connectivityConfigurations/TestConn",
+                "DisplayName": "Sample Config Name",
+                "Description": "",
+                "ConnectivityTopology": "HubAndSpoke",
+                "Hubs": [
+                  {
+                    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/provide
+            rs/Microsoft.Network/virtualNetworks/hub",
+                    "ResourceType": "Microsoft.Network/virtualNetworks"
+                  }
+                ],
+                "IsGlobal": "False",
+                "AppliesToGroups": [
+                  {
+                    "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/pro
+            viders/Microsoft.Network/networkManagers/TestNMName/networkGroups/testNG",
+                    "UseHubGateway": "False",
+                    "IsGlobal": "True",
+                    "GroupConnectivity": "None"
+                  }
+                ],
+                "ProvisioningState": "Succeeded",
+                "DeleteExistingPeering": "True",
+                "ConfigurationGroups": [
+                  {
+                    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testNG",
+                    "DisplayName": "DISplayName",
+                    "Description": "SampleDESCRIption",
+                    "GroupMembers": [
+                      {
+                        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/testvnet"
+                      }
+                    ],
+                    "ConditionalMembership": "",
+                    "ProvisioningState": "Succeeded"
+                  }
+                ]
+              }
+            ]
+SkipToken : 
 
-{{ Add example description here }}
+```
+Lists NetworkManager Active Connectivity Configurations in network manager for region centraluseuap.
 
 ## PARAMETERS
 
@@ -123,3 +169,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerActiveSecurityAdminRuleList](./Get-AzNetworkManagerActiveSecurityAdminRuleList.md)

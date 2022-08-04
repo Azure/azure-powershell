@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManager
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a network manager.
 
 ## SYNTAX
 
@@ -20,16 +20,24 @@ New-AzNetworkManager -Name <String> -ResourceGroupName <String> -Location <Strin
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManager** cmdlet creates a network manager.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> [System.Collections.Generic.List[string]]$subgroup  = @()
+PS C:\> $subgroup.Add("/subscriptions/00000000-0000-0000-0000-000000000000")
+PS C:\> [System.Collections.Generic.List[string]]$managementGroups  = @()
+PS C:\> $managementGroups.Add("/providers/Microsoft.Management/managementGroups/PowerShellTest")
+PS C:\> $testScope = New-AzNetworkManagerScope -Subscription $subgroup -ManagementGroup $managementGroups
+PS C:\> [System.Collections.Generic.List[String]]$access  = @()
+PS C:\> $access.Add("Connectivity");
+PS C:\> New-AzNetworkManager -ResourceGroupName TestResourceGroup -Name TestNetworkManager -NetworkManagerScope $testScope -NetworkManagerScopeAccess $access -Location "eastus"
+
 ```
 
-{{ Add example description here }}
+Creates a network manager with connectivity access.
 
 ## PARAMETERS
 
@@ -234,3 +242,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzNetworkManagerScope](./New-AzNetworkManagerScope.md)
+
+[Get-AzNetworkManager](./Get-AzNetworkManager.md)
+
+[Remove-AzNetworkManager](./Remove-AzNetworkManager.md)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetworkManager
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a network manager.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ Remove-AzNetworkManager -Name <String> -ResourceGroupName <String> [-ForceDelete
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetworkManager** cmdlet removes an Azure network manager.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzNetworkManager -Name TestNMName -ResourceGroupName TestRGName
 ```
 
-{{ Add example description here }}
+Removes a network manager.
 
 ## PARAMETERS
 
@@ -182,3 +182,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManager](./Get-AzNetworkManager.md)
+
+[New-AzNetworkManager](./New-AzNetworkManager.md)
+
+[Set-AzNetworkManager](./Set-AzNetworkManager.md)

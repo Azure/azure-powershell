@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetworkManagerConnectivityConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a connectivity configuration.
 
 ## SYNTAX
 
@@ -19,16 +19,15 @@ Remove-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerN
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetworkManager** cmdlet removes a connectivity configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzNetworkManagerConnectivityConfiguration -Name TestConnConfigName -NetworkManagerName TestNMName -ResourceGroupName TestRGName
 ```
-
-{{ Add example description here }}
+Removes a connectivity configuration.
 
 ## PARAMETERS
 
@@ -198,3 +197,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkManagerConnectivityConfiguration](./New-AzNetworkManagerConnectivityConfiguration.md)
+
+[Get-AzNetworkManagerConnectivityConfiguration](./Get-AzNetworkManagerConnectivityConfiguration.md)
+
+[Set-AzNetworkManagerConnectivityConfiguration](./Set-AzNetworkManagerConnectivityConfiguration.md)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerScopeConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a scope connection in a network manager.
 
 ## SYNTAX
 
@@ -25,16 +25,61 @@ Get-AzNetworkManagerScopeConnection -Name <String> -NetworkManagerName <String> 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManagerScopeConnection** cmdlet gets one or more scope connections in a network manager.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Retrieve a scope connection
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzNetworkManagerScopeConnection -ResourceGroupName "TestResourceGroup" -NetworkManagerName "TestNM" -Name "testsc"
+
+TenantId          : 00000000-0000-0000-0000-000000000000
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000
+ConnectionState   : Pending
+Description       : SampleDescription
+DisplayName       :
+Type              : Microsoft.Network/networkManagers/scopeConnections
+ProvisioningState :
+SystemData        : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText    : {
+                      "CreatedBy": "user@microsoft.com",
+                      "CreatedByType": "User",
+                      "CreatedAt": "2022-03-16T03:01:26.397158Z",
+                      "LastModifiedBy": "user@microsoft.com",
+                      "LastModifiedByType": "User",
+                      "LastModifiedAt": "2022-03-16T03:01:26.397158Z"
+                    }
+Name              : testsc
+Etag              :
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Netwo
+                    rk/networkManagers/TestNM/scopeConnections/testsc
 ```
 
-{{ Add example description here }}
+### Example 2: List scope connections
+```powershell
+PS C:\> Get-AzNetworkManagerScopeConnection -ResourceGroupName "TestResourceGroup" -NetworkManagerName "TestNM" 
+
+TenantId          : 00000000-0000-0000-0000-000000000000
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000
+ConnectionState   : Pending
+Description       : SampleDescription
+DisplayName       :
+Type              : Microsoft.Network/networkManagers/scopeConnections
+ProvisioningState :
+SystemData        : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText    : {
+                      "CreatedBy": "user@microsoft.com",
+                      "CreatedByType": "User",
+                      "CreatedAt": "2022-03-16T03:01:26.397158Z",
+                      "LastModifiedBy": "user@microsoft.com",
+                      "LastModifiedByType": "User",
+                      "LastModifiedAt": "2022-03-16T03:01:26.397158Z"
+                    }
+Name              : testsc
+Etag              :
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Netwo
+                    rk/networkManagers/TestNM/scopeConnections/testsc
+```
 
 ## PARAMETERS
 
@@ -124,3 +169,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkManagerScopeConnection](./New-AzNetworkManagerScopeConnection.md)
+
+[Remove-AzNetworkManagerScopeConnection](./Remove-AzNetworkManagerScopeConnection.md)
+
+[Set-AzNetworkManagerScopeConnection](./Set-AzNetworkManagerScopeConnection.md)

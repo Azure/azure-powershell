@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerEffectiveConnectivityConfigurationList
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Lists NetworkManager Effective Connectivity Configurations applied on a virtual networks.
 
 ## SYNTAX
 
@@ -19,16 +19,57 @@ Get-AzNetworkManagerEffectiveConnectivityConfigurationList -VirtualNetworkName <
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManagerEffectiveConnectivityConfigurationList** cmdlet lists NetworkManager Effective Connectivity Configurations applied on a virtual network.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzNetworkManagerEffectiveConnectivityConfigurationList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
+ 
+ Value     : [
+              {
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/connectivityConfigurations/TestConn",
+                "DisplayName": "Sample Config Name",
+                "Description": "",
+                "ConnectivityTopology": "HubAndSpoke",
+                "Hubs": [
+                  {
+                    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/hub",
+                    "ResourceType": "Microsoft.Network/virtualNetworks"
+                  }
+                ],
+                "IsGlobal": "False",
+                "AppliesToGroups": [
+                  {
+                    "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testNG",
+                    "UseHubGateway": "False",
+                    "IsGlobal": "True",
+                    "GroupConnectivity": "None"
+                  }
+                ],
+                "ProvisioningState": "Succeeded",
+                "DeleteExistingPeering": "True",
+                "ConfigurationGroups": [
+                  {
+                    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testNG",
+                    "DisplayName": "DISplayName",
+                    "Description": "SampleDESCRIption",
+                    "GroupMembers": [
+                      {
+                        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/testvnet"
+                      }
+                    ],
+                    "ConditionalMembership": "",
+                    "ProvisioningState": "Succeeded"
+                  }
+                ]
+              }
+            ]
+SkipToken :
 ```
 
-{{ Add example description here }}
+Lists NetworkManager Effective Connectivity Configurations applied on a virtual network 'TestVnet'.
 
 ## PARAMETERS
 
@@ -106,3 +147,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerEffectiveSecurityAdminRuleList](./Get-AzNetworkManagerEffectiveSecurityAdminRuleList.md)

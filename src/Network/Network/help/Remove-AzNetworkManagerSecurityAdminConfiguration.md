@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetworkManagerSecurityAdminConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a security admin configuration.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ Remove-AzNetworkManagerSecurityAdminConfiguration -Name <String> -NetworkManager
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetworkManagerSecurityAdminConfiguration** cmdlet removes a security admin configuration.}
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzNetworkManagerSecurityAdminConfiguration -Name TestAdminConfigName -NetworkManagerName TestNMName -ResourceGroupName TestRGName
 ```
 
-{{ Add example description here }}
+Removes a security admin configuration.
 
 ## PARAMETERS
 
@@ -198,3 +198,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerSecurityAdminConfiguration](./Get-AzNetworkManagerSecurityAdminConfiguration.md)
+
+[New-AzNetworkManagerSecurityAdminConfiguration](./New-AzNetworkManagerSecurityAdminConfiguration.md)
+
+[Set-AzNetworkManagerSecurityAdminConfiguration](./Set-AzNetworkManagerSecurityAdminConfiguration.md)

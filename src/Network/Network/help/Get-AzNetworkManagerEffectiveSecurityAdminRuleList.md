@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerEffectiveSecurityAdminRuleList
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Lists NetworkManager Effective Security Admin Rules applied on a virtual networks.
 
 ## SYNTAX
 
@@ -19,16 +19,71 @@ Get-AzNetworkManagerEffectiveSecurityAdminRuleList -VirtualNetworkName <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManagerEffectiveSecurityAdminRuleList** cmdlet lists NetworkManager Effective Security Admin Rules applied on a virtual network.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzNetworkManagerEffectiveSecurityAdminRuleList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
+
+Value     : [
+              {
+                "DisplayName": "Sample Rule Name",
+                "Description": "Description",
+                "Protocol": "Tcp",
+                "Sources": [
+                  {
+                    "AddressPrefix": "Internet",
+                    "AddressPrefixType": "ServiceTag"
+                  }
+                ],
+                "Destinations": [
+                  {
+                    "AddressPrefix": "10.0.0.1",
+                    "AddressPrefixType": "IPPrefix"
+                  }
+                ],
+                "SourcePortRanges": [
+                  "100"
+                ],
+                "DestinationPortRanges": [
+                  "99"
+                ],
+                "Access": "Allow",
+                "Priority": 100,
+                "Direction": "Inbound",
+                "ProvisioningState": "Succeeded",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestAdminConfig/ruleCollections/TestRuleCollection/rules/TestRule",
+                "ConfigurationDisplayName": "sample Config DisplayName",
+                "ConfigurationDescription": "DESCription",
+                "RuleCollectionDisplayName": "Sample rule Collection displayName",
+                "RuleCollectionDescription": "Sample rule Collection Description",
+                "RuleCollectionAppliesToGroups": [
+                  {
+                    "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testNG"
+                  }
+                ],
+                "RuleGroups": [
+                  {
+                    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testNG",
+                    "DisplayName": "DISplayName",
+                    "Description": "SampleConfigDESCRIption",
+                    "GroupMembers": [
+                      {
+                        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/TestVnet"
+                      }
+                    ],
+                    "ConditionalMembership": "",
+                    "ProvisioningState": "Succeeded"
+                  }
+                ]
+              }
+            ]
+SkipToken :
 ```
 
-{{ Add example description here }}
+Lists NetworkManager Effective Security Admin Rules applied on a virtual network 'TestVnet'.
 
 ## PARAMETERS
 
@@ -106,3 +161,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerEffectiveConnectivityConfigurationList](./Get-AzNetworkManagerEffectiveConnectivityConfigurationList.md)

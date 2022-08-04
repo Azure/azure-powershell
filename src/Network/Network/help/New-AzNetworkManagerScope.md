@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerScope
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a network manager scope.
 
 ## SYNTAX
 
@@ -19,16 +19,20 @@ New-AzNetworkManagerScope [-ManagementGroup <System.Collections.Generic.List`1[S
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerScope** cmdlet creates a network manager scope.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> [System.Collections.Generic.List[string]]$subgroup  = @()
+PS C:\> $subgroup.Add("/subscriptions/00000000-0000-0000-0000-000000000000")
+PS C:\> [System.Collections.Generic.List[string]]$mggroup  = @()
+PS C:\> $mggroup.Add("/providers/Microsoft.Management/managementGroups/PowerShellTest")
+PS C:\> New-AzNetworkManagerScope -Subscription $subgroup -ManagementGroup $mggroup
 ```
 
-{{ Add example description here }}
+Creates a network manager scope for management group and subscription.
 
 ## PARAMETERS
 
@@ -91,3 +95,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzNetworkManager](./New-AzNetworkManager.md)
+
+[Get-AzNetworkManager](./Get-AzNetworkManager.md)
+
+[Remove-AzNetworkManager](./Remove-AzNetworkManager.md)
+
+[Set-AzNetworkManager](./Set-AzNetworkManager.md)

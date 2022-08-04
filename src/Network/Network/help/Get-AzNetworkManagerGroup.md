@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets network group(s) in a network manager.
 
 ## SYNTAX
 
@@ -25,16 +25,57 @@ Get-AzNetworkManagerGroup -Name <String> -NetworkManagerName <String> -ResourceG
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManagerGroup** cmdlet gets a network group in a network manager.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+Expand
+PS C:\> Get-AzNetworkManagerGroup  -Name "TestGroup" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
 
-{{ Add example description here }}
+Name                  : TestGroup
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsof
+                        t.Network/networkManagers/TestNMName/networkGroups/TestGroup
+Description           : 
+Etag                  : "00000000-0000-0000-0000-000000000000"
+ProvisioningState     : Succeeded
+ConditionalMembership :
+MemberType            :
+SystemData            : {
+                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                          "CreatedByType": "Application",
+                          "CreatedAt": "2021-10-17T21:13:02",
+                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                          "LastModifiedByType": "Application",
+                          "LastModifiedAt": "2021-10-17T21:13:02"
+                        }
+```
+Gets a network group 'TestGroup' in a network manager.
+
+### Example 2
+```powershell
+NoExpand
+PS C:\> Get-AzNetworkManagerGroup -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+
+Name                  : TestGroup
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsof
+                        t.Network/networkManagers/TestNMName/networkGroups/TestGroup 
+Description           : 
+Etag                  : "00000000-0000-0000-0000-000000000000"
+ProvisioningState     : Succeeded
+ConditionalMembership :
+MemberType            :
+SystemData            : {
+                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                          "CreatedByType": "Application",
+                          "CreatedAt": "2021-10-17T21:13:02",
+                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                          "LastModifiedByType": "Application",
+                          "LastModifiedAt": "2021-10-17T21:13:02"
+                        }
+```
+Gets all network groups in a network manager.
 
 ## PARAMETERS
 
@@ -124,3 +165,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkManagerGroup](./New-AzNetworkManagerGroup.md)
+
+[Remove-AzNetworkManagerGroup](./Remove-AzNetworkManagerGroup.md)
+
+[Set-AzNetworkManagerGroup](./Set-AzNetworkManagerGroup.md)

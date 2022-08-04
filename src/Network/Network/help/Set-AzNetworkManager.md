@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkManager
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a network manager..
 
 ## SYNTAX
 
@@ -18,16 +18,46 @@ Set-AzNetworkManager -ResourceGroupName <String> -NetworkManager <PSNetworkManag
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzNetworkManager** cmdlet updates a network manager.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> $networkManager = Get-AzNetworkManager -ResourceGroupName "TestResourceGroup" -Name "TestNM"
+PS C:\> $networkManager.Description = "Sample Description"
+PS C:\> Set-AzNetworkManager -ResourceGroupName "TestResourceGroup" -NetworkManager $networkManager
 
-{{ Add example description here }}
+Description                     : Sample Description
+Location                        : eastus2euap
+Id                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/provider
+                                  s/Microsoft.Network/networkManagers/TestNM
+Type                            : Microsoft.Network/networkManagers
+Tag                             : {}
+ProvisioningState               : Succeeded
+NetworkManagerScopeAccesses     : [
+                                    "SecurityAdmin",
+                                    "SecurityUser"
+                                  ]
+NetworkManagerScopes            : {
+                                    "ManagementGroups": [],
+                                    "Subscriptions": [
+                                      "/subscriptions/00000000-0000-0000-0000-000000000000"
+                                    ]
+                                  }
+SystemData                      : {
+                                    "CreatedBy": "user@microsoft.com",
+                                    "CreatedByType": "User",
+                                    "CreatedAt": "2021-10-05T04:15:42",
+                                    "LastModifiedBy": "user@microsoft.com",
+                                    "LastModifiedByType": "User",
+                                    "LastModifiedAt": "2021-10-05T04:15:42"
+                                  }
+Name                            : TestNM
+Etag                            : W/"00000000-0000-0000-0000-000000000000"
+```
+Example to update the description of a network manager TestNM
+
 
 ## PARAMETERS
 
@@ -138,3 +168,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzNetworkManager](./New-AzNetworkManager.md)
+
+[Get-AzNetworkManager](./Get-AzNetworkManager.md)
+
+[Remove-AzNetworkManager](./Remove-AzNetworkManager.md)

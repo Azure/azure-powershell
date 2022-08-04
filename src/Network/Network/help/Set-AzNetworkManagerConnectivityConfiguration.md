@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkManagerConnectivityConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a connectivity configuration.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ Set-AzNetworkManagerConnectivityConfiguration -NetworkManagerName <String> -Reso
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzNetworkManagerConnectivityConfiguration** cmdlet updates a connectivity configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $ConnectivityConfiguraiton = Get-AzNetworkManagerConnectivityConfiguration  -Name "TestConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+PS C:\> Set-AzNetworkManagerConnectivityConfiguration -NetworkManagerName TestNMName -ResourceGroupName TestRGName -NetworkManagerConnectivityConfiguration $ConnectivityConfiguraiton
 ```
-
-{{ Add example description here }}
+Updates a connectivity configuration.
 
 ## PARAMETERS
 
@@ -154,3 +154,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzNetworkManagerConnectivityConfiguration](./Get-AzNetworkManagerConnectivityConfiguration.md)
+
+[New-AzNetworkManagerConnectivityConfiguration](./New-AzNetworkManagerConnectivityConfiguration.md)
+
+[Remove-AzNetworkManagerConnectivityConfiguration](./Remove-AzNetworkManagerConnectivityConfiguration.md)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkManagerSubscriptionConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update a network manger subscription connection.
 
 ## SYNTAX
 
@@ -18,16 +18,17 @@ Set-AzNetworkManagerSubscriptionConnection -NetworkManagerSubscriptionConnection
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzNetworkManagerSubscriptionConnection** cmdlet update a network manger subscription connection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $networkManagerConnection = Get-AzNetworkManagerSubscriptionConnection -NetworkManagerSubscriptionConnection $networkManagerConnection -Name testConnection
+PS C:\> Set-AzNetworkManagerSubscriptionConnection -NetworkManagerSubscriptionConnection $networkManagerConnection
 ```
 
-{{ Add example description here }}
+Updates a network manger subscription connection.
 
 ## PARAMETERS
 
@@ -121,3 +122,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Remove-PSNetworkManagerConnection](./Remove-PSNetworkManagerConnection.md)
+
+[Get-PSNetworkManagerConnection](./Get-PSNetworkManagerConnection.md)
+
+[New-PSNetworkManagerConnection](./New-PSNetworkManagerConnection.md)

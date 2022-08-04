@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerSecurityAdminRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a security admin rule.
 
 ## SYNTAX
 
@@ -33,16 +33,28 @@ New-AzNetworkManagerSecurityAdminRule -Name <String> -RuleCollectionName <String
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerSecurityAdminRule** cmdlet creates a security admin rule.
 
 ## EXAMPLES
 
-### Example 1
+
+### Example 1: Create Custom Security Admin Rule
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $sourceAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "Internet" -AddressPrefixType "ServiceTag"
+PS C:\> $destinationAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.0.0.1" -AddressPrefixType "IPPrefix" 
+PS C:\> [System.Collections.Generic.List[string]]$sourcePortList = @()
+PS C:\> $sourcePortList.Add("100")
+PS C:\> [System.Collections.Generic.List[String]]$destinationPortList = @()
+PS C:\> $destinationPortList.Add("99");
+PS C:\> New-AzNetworkManagerSecurityAdminRule -ResourceGroupName TestRGName -NetworkManagerName TestNMName -ConfigName TestAdminConfigName  -RuleCollectionName TestRuleCollectionName -Name TestRuleName -Description "TestDescription" -Protocol  "TCP" -Direction "Inbound" -Access "Allow" -Priority 100 -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -Source $sourceAddressPrefix -Destination $destinationAddressPrefix 
+
 ```
 
-{{ Add example description here }}
+### Example 2: Create Default Security Admin Rule
+```powershell
+PS C:\> New-AzNetworkManagerSecurityAdminRule -ResourceGroupName TestRGName -NetworkManagerName TestNMName -ConfigName TestAdminConfigName  -RuleCollectionName TestRuleCollectionName -Name TestRuleName -Flag "TestFlag"
+
+```
 
 ## PARAMETERS
 
@@ -367,3 +379,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerSecurityAdminRule](./Get-AzNetworkManagerSecurityAdminRule.md)
+
+[Remove-AzNetworkManagerSecurityAdminRule](./Remove-AzNetworkManagerSecurityAdminRule.md)
+
+[Set-AzNetworkManagerSecurityAdminRule](./Set-AzNetworkManagerSecurityAdminRule.md)

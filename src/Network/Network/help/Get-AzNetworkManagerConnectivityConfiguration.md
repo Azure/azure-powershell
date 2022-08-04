@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerConnectivityConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a connectivity configuration in a network manager.
 
 ## SYNTAX
 
@@ -25,16 +25,91 @@ Get-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerName
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManagerConnectivityConfiguration** cmdlet gets one or more connectivity configurations in a network manager.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+Expand
+PS C:\> Get-AzNetworkManagerConnectivityConfiguration  -Name "TestConn" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
 
-{{ Add example description here }}
+Name                  : TestNMName
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsof
+                        t.Network/networkManagers/TestNMName/connectivityConfigurations/TestConn
+DisplayName           : Sample Config Name
+Description           :
+Etag                  : "00000000-0000-0000-0000-000000000000"
+ProvisioningState     : Succeeded
+ConnectivityTopology  : HubAndSpoke
+DeleteExistingPeering : True
+IsGlobal              : True
+Hubs                  : [
+                          {
+                            "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/hub",
+                            "ResourceType": "Microsoft.Network/virtualNetworks"
+                          }
+                        ]
+AppliesToGroups       : [
+                          {
+                            "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng",
+                            "UseHubGateway": "True",
+                            "IsGlobal": "True",
+                            "GroupConnectivity": "None"
+                          }
+                        ]
+DeleteExistingPeering : True
+SystemData            : {
+                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                          "CreatedByType": "Application",
+                          "CreatedAt": "2021-10-17T21:13:05",
+                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                          "LastModifiedByType": "Application",
+                          "LastModifiedAt": "2021-10-17T21:13:08"
+                        }
+```
+Gets a connectivity configuration named 'TestConn' in a network manager.
+
+### Example 2
+```powershell
+NoExpand
+PS C:\> Get-AzNetworkManagerConnectivityConfiguration -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+
+Name                  : TestNMName
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsof
+                        t.Network/networkManagers/TestNMName/connectivityConfigurations/TestConn
+DisplayName           : Sample Config Name
+Description           :
+Etag                  : "00000000-0000-0000-0000-000000000000"
+ProvisioningState     : Succeeded
+ConnectivityTopology  : HubAndSpoke
+DeleteExistingPeering : True
+IsGlobal              : True
+Hubs                  : [
+                          {
+                            "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/hub",
+                            "ResourceType": "Microsoft.Network/virtualNetworks"
+                          }
+                        ]
+AppliesToGroups       : [
+                          {
+                            "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng",
+                            "UseHubGateway": "True",
+                            "IsGlobal": "True",
+                            "GroupConnectivity": "None"
+                          }
+                        ]
+DeleteExistingPeering : True
+SystemData            : {
+                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                          "CreatedByType": "Application",
+                          "CreatedAt": "2021-10-17T21:13:05",
+                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                          "LastModifiedByType": "Application",
+                          "LastModifiedAt": "2021-10-17T21:13:08"
+                        }
+```
+Gets all connectivity configurations in a network manager.
 
 ## PARAMETERS
 
@@ -124,3 +199,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkManagerConnectivityConfiguration](./New-AzNetworkManagerConnectivityConfiguration.md)
+
+[Remove-AzNetworkManagerConnectivityConfiguration](./Remove-AzNetworkManagerConnectivityConfiguration.md)
+
+[Set-AzNetworkManagerConnectivityConfiguration](./Set-AzNetworkManagerConnectivityConfiguration.md)

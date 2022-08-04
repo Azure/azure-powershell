@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetworkManagerSubscriptionConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Remove a network manager subscription connection.
 
 ## SYNTAX
 
@@ -18,16 +18,15 @@ Remove-AzNetworkManagerSubscriptionConnection -Name <String> [-Force] [-PassThru
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetworkManagerSubscriptionConnection** cmdlet removes a network manager subscription connection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName -PassThru -Force -AsJob
 ```
-
-{{ Add example description here }}
+Remove a network manager subscription connection.
 
 ## PARAMETERS
 
@@ -151,3 +150,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Set-PSNetworkManagerConnection](./Set-PSNetworkManagerConnection.md)
+
+[Get-PSNetworkManagerConnection](./Get-PSNetworkManagerConnection.md)
+
+[New-PSNetworkManagerConnection](./New-PSNetworkManagerConnection.md)

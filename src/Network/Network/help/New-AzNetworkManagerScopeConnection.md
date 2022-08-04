@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerScopeConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a scope connection.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ New-AzNetworkManagerScopeConnection -Name <String> -NetworkManagerName <String> 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerScopeConnection** cmdlet creates a scope connection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzNetworkManagerScopeConnection -ResourceGroupName "TestRG" -NetworkManagerName "TestNM" -Name "TestScopeConn" -TenantId "00000000-0000-0000-0000-000000000000" -ResourceId "00000000-0000-0000-0000-000000000000" -Description "SampleDescription" 
 ```
 
-{{ Add example description here }}
+Creates a scope connection.
 
 ## PARAMETERS
 
@@ -213,3 +213,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzNetworkManagerScopeConnection](./Get-AzNetworkManagerScopeConnection.md)
+
+[Remove-AzNetworkManagerScopeConnection](./Remove-AzNetworkManagerScopeConnection.md)
+
+[Set-AzNetworkManagerScopeConnection](./Set-AzNetworkManagerScopeConnection.md)

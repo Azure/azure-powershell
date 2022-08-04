@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerConnectivityGroupItem
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a connectivity group item.
 
 ## SYNTAX
 
@@ -18,16 +18,17 @@ New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId <String> [-UseHubGatew
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerConnectivityGroupItem** cmdlet creates a connectivity group item.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $TestNetworkGroupId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup"
+PS C:\> New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $TestNetworkGroupId -UseHubGateway –GroupConnectivity "None" -IsGlobal 
 ```
 
-{{ Add example description here }}
+Creates a connectivity group item.
 
 ## PARAMETERS
 
@@ -122,3 +123,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzNetworkManagerConnectivityConfiguration](./New-AzNetworkManagerConnectivityConfiguration.md)

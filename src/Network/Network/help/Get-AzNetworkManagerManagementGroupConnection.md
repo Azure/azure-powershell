@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerManagementGroupConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a network manager management group connection.
 
 ## SYNTAX
 
@@ -25,16 +25,48 @@ Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId <String> -Name 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManagerManagementGroupConnection** cmdlet gets a network manager connection on a management group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "SDKTestMG" -Name "testsc"
 
-{{ Add example description here }}
+NetworkManagerId  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PSTestResources/providers/Micros
+                    oft.Network/networkManagers/PSTestNM
+ConnectionState   : Pending
+Description       : SampleDescription
+Type              : Microsoft.Network/networkManagers/networkManagerConnections
+ProvisioningState :
+SystemData        :
+SystemDataText    : null
+Name              : testsc
+Etag              :
+Id                : /providers/Microsoft.Management/managementGroups/SDKTestMG/providers/Microsoft.Network/networkManagerConne
+                    ctions/testsc
+```
+Gets a network manager connection on management group 'SDKTestMG'.
+
+
+### Example 2
+```powershell
+PS C:\> Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "SDKTestMG"
+
+NetworkManagerId  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PSTestResources/providers/Micros
+                    oft.Network/networkManagers/PSTestNM
+ConnectionState   : Pending
+Description       : SampleDescription
+Type              : Microsoft.Network/networkManagers/networkManagerConnections
+ProvisioningState :
+SystemData        :
+SystemDataText    : null
+Name              : testsc
+Etag              :
+Id                : /providers/Microsoft.Management/managementGroups/SDKTestMG/providers/Microsoft.Network/networkManagerConne
+                    ctions/testsc
+```
+Gets all network manager connections on management group 'SDKTestMG'.
 
 ## PARAMETERS
 
@@ -109,3 +141,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkManagerManagementGroupConnection](./New-AzNetworkManagerManagementGroupConnection.md)
+
+[Set-AzNetworkManagerManagementGroupConnection](./Set-AzNetworkManagerManagementGroupConnection.md)
+
+[Remove-AzNetworkManagerManagementGroupConnection](./Remove-AzNetworkManagerManagementGroupConnection.md)

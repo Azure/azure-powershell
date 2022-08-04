@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerActiveSecurityAdminRuleList
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Lists NetworkManager Active Security Admin Rules in network manager.
 
 ## SYNTAX
 
@@ -19,16 +19,74 @@ Get-AzNetworkManagerActiveSecurityAdminRuleList -NetworkManagerName <String> -Re
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManagerActiveSecurityAdminRuleList** cmdlet lists NetworkManager Active Security Admin Rules in network manager.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
+PS C:\> $regions.Add("centraluseuap")
+PS C:\> Get-AzNetworkManagerActiveSecurityAdminRuleList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
+
+Value     : [
+              {
+                "DisplayName": "Sample Rule Name",
+                "Description": "Description",
+                "Protocol": "Tcp",
+                "Sources": [
+                  {
+                    "AddressPrefix": "Internet",
+                    "AddressPrefixType": "ServiceTag"
+                  }
+                ],
+                "Destinations": [
+                  {
+                    "AddressPrefix": "10.0.0.1",
+                    "AddressPrefixType": "IPPrefix"
+                  }
+                ],
+                "SourcePortRanges": [
+                  "100"
+                ],
+                "DestinationPortRanges": [
+                  "99"
+                ],
+                "Access": "Allow",
+                "Priority": 100,
+                "Direction": "Inbound",
+                "ProvisioningState": "Succeeded",
+                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestAdminConfig/ruleCollections/TestRuleCollection/rules/TestRule",
+                "Region": "eastus2euap",
+                "ConfigurationDisplayName": "sample Config DisplayName",
+                "ConfigurationDescription": "DESCription",
+                "RuleCollectionDisplayName": "Sample rule Collection displayName",
+                "RuleCollectionDescription": "Sample rule Collection Description",
+                "RuleCollectionAppliesToGroups": [
+                  {
+                    "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testNG"
+                  }
+                ],
+                "RuleGroups": [
+                  {
+                    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testNG",
+                    "DisplayName": "DISplayName",
+                    "Description": "SampleConfigDESCRIption",
+                    "GroupMembers": [
+                      {
+                        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/testvnet"
+                      }
+                    ],
+                    "ConditionalMembership": "",
+                    "ProvisioningState": "Succeeded"
+                  }
+                ]
+              }
+            ]
+SkipToken :
 ```
 
-{{ Add example description here }}
+Lists NetworkManager Active Security Admin Rules in network manager for region centraluseuap.
 
 ## PARAMETERS
 
@@ -123,3 +181,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerActiveConnectivityConfigurationList](./Get-AzNetworkManagerActiveConnectivityConfigurationList.md)

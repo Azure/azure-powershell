@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetworkManagerStaticMember
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a network manager static member.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ Remove-AzNetworkManagerStaticMember -Name <String> -NetworkGroupName <String> -N
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetworkManagerStaticMember** cmdlet removes a network manager static member.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Expand
+PS C:\> Remove-AzNetworkManagerStaticMember  -Name "TestStaticMember" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup"
 ```
-
-{{ Add example description here }}
+Removes a network manager static member.
 
 ## PARAMETERS
 
@@ -197,3 +197,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkManagerStaticMember](./New-AzNetworkManagerStaticMember.md)
+
+[Get-AzNetworkManagerStaticMember](./Get-AzNetworkManagerStaticMember.md)
+
+[Set-AzNetworkManagerStaticMember](./Set-AzNetworkManagerStaticMember.md)

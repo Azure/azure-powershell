@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetworkManagerScopeConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a network manager scope connection.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ Remove-AzNetworkManagerScopeConnection -Name <String> -NetworkManagerName <Strin
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetworkManagerScopeConnection** cmdlet removes an Azure network manager scope connection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzNetworkManagerScopeConnection -ResourceGroupName "testRG" -NetworkManagerName "TestNM" -Name "TestScopeConn" -PassThru -Force -AsJob
 ```
 
-{{ Add example description here }}
+Removes a network manager scope connection.
 
 ## PARAMETERS
 
@@ -182,3 +182,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzNetworkManagerScopeConnection](./Get-AzNetworkManagerScopeConnection.md)
+
+[New-AzNetworkManagerScopeConnection](./New-AzNetworkManagerScopeConnection.md)
+
+[Set-AzNetworkManagerScopeConnection](./Set-AzNetworkManagerScopeConnection.md)

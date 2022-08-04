@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerDeploymentStatusList
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Lists Deployment Status in a network manager.
 
 ## SYNTAX
 
@@ -20,16 +20,35 @@ Get-AzNetworkManagerDeploymentStatusList -NetworkManagerName <String> -ResourceG
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManagerDeploymentStatusList** cmdlet lists Deployment Status in a network manager.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
+PS C:\> $regions.Add("centraluseuap")
+PS C:\> [System.Collections.Generic.List[String]]$DeploymentTypes = @()  
+PS C:\> $DeploymentTypes.Add("SecurityAdmin")
+PS C:\> Get-AzNetworkManagerDeploymentStatusList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken" -DeploymentType $DeploymentTypes
+ 
+Value     : [
+              {
+                "CommitTime": "2021-10-18T04:06:08Z",
+                "Region": "centraluseuap",
+                "DeploymentStatus": "Deployed",
+                "ConfigurationIds": [
+                  "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/testAdminConfig"
+                ],
+                "DeploymentType": "SecurityAdmin",
+                "ErrorMessage": ""
+              }
+            ]
+SkipToken :
+
 ```
 
-{{ Add example description here }}
+Lists Deployment Status of SecurityAdmin configurations in region centraluseuap for a network manager.
 
 ## PARAMETERS
 

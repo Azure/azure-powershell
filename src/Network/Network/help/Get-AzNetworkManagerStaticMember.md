@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerStaticMember
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets network manager static members.
 
 ## SYNTAX
 
@@ -25,16 +25,41 @@ Get-AzNetworkManagerStaticMember -Name <String> -NetworkGroupName <String> -Netw
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManagerStaticMember** cmdlet gets a network manager static member.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Expand
+PS C:\> Get-AzNetworkManagerStaticMember  -Name "TestStaticMember" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup"
+
+Name              : TestSM
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Netwo
+                    rk/networkManagers/TestNMName/networkGroups/TestNetworkGroup/staticMembers/TestStaticMember
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Netwo
+                    rk/virtualNetworks/vnet1
+Description       :
+Type              : Microsoft.Network/networkManagers/networkGroups/staticMembers
+Etag              :
+ProvisioningState : Succeeded
 ```
 
-{{ Add example description here }}
+### Example 2
+```powershell
+NoExpand
+PS C:\> Get-AzNetworkManagerStaticMember -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup"
+
+Name              : TestSM
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Netwo
+                    rk/networkManagers/TestNMName/networkGroups/TestNetworkGroup/staticMembers/TestStaticMember
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Netwo
+                    rk/virtualNetworks/vnet1
+Description       :
+Type              : Microsoft.Network/networkManagers/networkGroups/staticMembers
+Etag              :
+ProvisioningState : Succeeded
+```
 
 ## PARAMETERS
 
@@ -139,3 +164,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkManagerStaticMember](./New-AzNetworkManagerStaticMember.md)
+
+[Remove-AzNetworkManagerStaticMember](./Remove-AzNetworkManagerStaticMember.md)
+
+[Set-AzNetworkManagerStaticMember](./Set-AzNetworkManagerStaticMember.md)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerSubscriptionConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a network manager subscription connection.
 
 ## SYNTAX
 
@@ -25,16 +25,46 @@ Get-AzNetworkManagerSubscriptionConnection -Name <String> [-DefaultProfile <IAzu
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManagerSubscriptionConnection** cmdlet gets a network manager subscription connection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> Get-AzNetworkManagerSubscriptionConnection -Name "testsc"
 
-{{ Add example description here }}
+NetworkManagerId  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PSTestResources/providers/Micros
+                    oft.Network/networkManagers/PSTestNM
+ConnectionState   : Pending
+Description       : SampleDescription
+Type              : Microsoft.Network/networkManagers/networkManagerConnections
+ProvisioningState :
+SystemData        :
+SystemDataText    : null
+Name              : testsc
+Etag              :
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/networkManagerConne
+                    ctions/testsc
+```
+Gets a network manager connection on a subscription.
+
+```powershell
+PS C:\> Get-AzNetworkManagerSubscriptionConnection
+
+NetworkManagerId  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PSTestResources/providers/Micros
+                    oft.Network/networkManagers/PSTestNM
+ConnectionState   : Pending
+Description       : SampleDescription
+Type              : Microsoft.Network/networkManagers/networkManagerConnections
+ProvisioningState :
+SystemData        :
+SystemDataText    : null
+Name              : testsc
+Etag              :
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/networkManagerConne
+                    ctions/testsc
+```
+Gets all network manager connections on a subscription.
 
 ## PARAMETERS
 
@@ -94,3 +124,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkManagerSubscriptionConnection](./New-AzNetworkManagerSubscriptionConnection.md)
+
+[Set-AzNetworkManagerSubscriptionConnection](./Set-AzNetworkManagerSubscriptionConnection.md)
+
+[Remove-AzNetworkManagerSubscriptionConnection](./Remove-AzNetworkManagerSubscriptionConnection.md)

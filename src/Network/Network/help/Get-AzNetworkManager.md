@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManager
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a network manager in a resource group.
 
 ## SYNTAX
 
@@ -25,16 +25,77 @@ Get-AzNetworkManager -Name <String> -ResourceGroupName <String> [-DefaultProfile
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManager** cmdlet gets one or more network managers in a resource group.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Retrieve a network manager
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzNetworkManager -ResourceGroupName "TestResourceGroup" -Name "TestNM"
+
+DisplayName                     :
+Description                     :
+Location                        : eastus2euap
+Id                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/provider
+                                  s/Microsoft.Network/networkManagers/TestNM
+Type                            : Microsoft.Network/networkManagers
+Tag                             : {}
+ProvisioningState               : Succeeded
+NetworkManagerScopeAccesses     : [
+                                    "SecurityAdmin",
+                                    "SecurityUser"
+                                  ]
+NetworkManagerScopes            : {
+                                    "ManagementGroups": [],
+                                    "Subscriptions": [
+                                      "/subscriptions/00000000-0000-0000-0000-000000000000"
+                                    ]
+                                  }
+SystemData                      : {
+                                    "CreatedBy": "user@microsoft.com",
+                                    "CreatedByType": "User",
+                                    "CreatedAt": "2021-10-05T04:15:42",
+                                    "LastModifiedBy": "user@microsoft.com",
+                                    "LastModifiedByType": "User",
+                                    "LastModifiedAt": "2021-10-05T04:15:42"
+                                  }
+Name                            : TestNM
+Etag                            : W/"00000000-0000-0000-0000-000000000000"
 ```
 
-{{ Add example description here }}
+### Example 2: List network managers
+```powershell
+Get-AzNetworkManager -ResourceGroupName "TestResourceGroup"
+
+DisplayName                     :
+Description                     :
+Location                        : eastus2euap
+Id                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/provider
+                                  s/Microsoft.Network/networkManagers/TestNM
+Type                            : Microsoft.Network/networkManagers
+Tag                             : {}
+ProvisioningState               : Succeeded
+NetworkManagerScopeAccesses     : [
+                                    "SecurityAdmin",
+                                    "SEcurityUser"
+                                  ]
+NetworkManagerScopes            : {
+                                    "ManagementGroups": [],
+                                    "Subscriptions": [
+                                      "/subscriptions/00000000-0000-0000-0000-000000000000"
+                                    ]
+                                  }
+SystemData                      : {
+                                    "CreatedBy": "user@microsoft.com",
+                                    "CreatedByType": "User",
+                                    "CreatedAt": "2021-10-05T04:15:42",
+                                    "LastModifiedBy": "user@microsoft.com",
+                                    "LastModifiedByType": "User",
+                                    "LastModifiedAt": "2021-10-05T04:15:42"
+                                  }
+Name                            : TestNM
+Etag                            : W/"00000000-0000-0000-0000-000000000000"
+```
 
 ## PARAMETERS
 

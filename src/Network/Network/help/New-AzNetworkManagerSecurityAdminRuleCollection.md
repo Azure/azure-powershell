@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerSecurityAdminRuleCollection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a security admin rule collection.
 
 ## SYNTAX
 
@@ -20,16 +20,19 @@ New-AzNetworkManagerSecurityAdminRuleCollection -Name <String> -SecurityAdminCon
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerSecurityAdminConfiguration** cmdlet creates a security admin rule collection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem]]$configGroup  = @() 
+PS C:\> $groupItem = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId "TestNetworkGroupId"
+PS C:\> $configGroup.Add($groupItem)
+PS C:\> New-AzNetworkManagerSecurityAdminRuleCollection -ResourceGroupName TestRGName -NetworkManagerName TestNMName -ConfigName TestAdminConfigName -Name TestRuleCollectionName -AppliesToGroup $configGroup 
 
-{{ Add example description here }}
+```
+Creates a security admin rule collection.
 
 ## PARAMETERS
 
@@ -215,3 +218,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzNetworkManagerSecurityGroupItem](./New-AzNetworkManagerSecurityGroupItem.md)
+
+[Get-AzNetworkManagerSecurityAdminRuleCollection](./Get-AzNetworkManagerSecurityAdminRuleCollection.md)
+
+[Remove-AzNetworkManagerSecurityAdminRuleCollection](./Remove-AzNetworkManagerSecurityAdminRuleCollection.md)
+
+[Set-AzNetworkManagerSecurityAdminRuleCollection](./Set-AzNetworkManagerSecurityAdminRuleCollection.md)

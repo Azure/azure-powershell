@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetworkManagerSecurityAdminRuleCollection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a security admin rule collection.
 
 ## SYNTAX
 
@@ -19,16 +19,17 @@ Remove-AzNetworkManagerSecurityAdminRuleCollection -Name <String> -SecurityAdmin
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetworkManagerSecurityAdminRuleCollection** cmdlet removes a security admin rule collection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzNetworkManagerSecurityAdminRuleCollection -Name TestRuleCollectionName -SecurityAdminConfigurationName TestAdminConfigName
+ -NetworkManagerName TestNMName -ResourceGroupName TestRGName
 ```
 
-{{ Add example description here }}
+Removes a security admin rule collection.
 
 ## PARAMETERS
 
@@ -213,3 +214,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerSecurityAdminRuleCollection](./Get-AzNetworkManagerSecurityAdminRuleCollection.md)
+
+[New-AzNetworkManagerSecurityAdminRuleCollection](./New-AzNetworkManagerSecurityAdminRuleCollection.md)
+
+[Set-AzNetworkManagerSecurityAdminRuleCollection](./Set-AzNetworkManagerSecurityAdminRuleCollection.md)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkManagerGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a network manager group.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ Set-AzNetworkManagerGroup -NetworkManagerName <String> -ResourceGroupName <Strin
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzNetworkManagerGroup** cmdlet updates a network manager group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $networkGroup = Get-AzNetworkManagerGroup  -Name "TestGroup" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+PS C:\> Set-AzNetworkManagerGroup -NetworkManagerName TestNMName -ResourceGroupName TestRGName -NetworkGroup $networkGroup
 ```
-
-{{ Add example description here }}
+Updates a network manager group.
 
 ## PARAMETERS
 
@@ -154,3 +154,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzNetworkManagerGroup](./Get-AzNetworkManagerGroup.md)
+
+[New-AzNetworkManagerGroup](./New-AzNetworkManagerGroup.md)
+
+[Remove-AzNetworkManagerGroup](./Remove-AzNetworkManagerGroup.md)

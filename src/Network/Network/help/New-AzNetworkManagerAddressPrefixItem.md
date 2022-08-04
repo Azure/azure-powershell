@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerAddressPrefixItem
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a network manager address prefix item.
 
 ## SYNTAX
 
@@ -18,16 +18,17 @@ New-AzNetworkManagerAddressPrefixItem -AddressPrefix <String> -AddressPrefixType
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerAddressPrefixItem** cmdlet creates a network manager address prefix item.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzNetworkManagerAddressPrefixItem -AddressPrefix "Internet" -AddressPrefixType "ServiceTag"   
+
 ```
 
-{{ Add example description here }}
+Creates a network manager address prefix item.
 
 ## PARAMETERS
 

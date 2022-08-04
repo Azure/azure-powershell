@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerSubscriptionConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a network manager subscription connection.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzNetworkManagerSubscriptionConnection -Name <String> -NetworkManagerId <Str
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerSubscriptionConnection** cmdlet creates a network manager subscription connection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzNetworkManagerSubscriptionConnection -Name TestConnectionName -NetworkManagerId "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTest" -Description "SampleDescription"
 ```
 
-{{ Add example description here }}
+Creates a network manager subscription connection.
 
 ## PARAMETERS
 
@@ -166,3 +166,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Set-PSNetworkManagerConnection](./Set-PSNetworkManagerConnection.md)
+
+[Get-PSNetworkManagerConnection](./Get-PSNetworkManagerConnection.md)
+
+[Remove-PSNetworkManagerConnection](./Remove-PSNetworkManagerConnection.md)

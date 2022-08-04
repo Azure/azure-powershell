@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerSecurityGroupItem
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a security group item.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzNetworkManagerSecurityGroupItem -NetworkGroupId <String> [-DefaultProfile 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerSecurityGroupItem** cmdlet creates a security group item.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
-```
+PS C:\> New-AzNetworkManagerSecurityGroupItem -NetworkGroupId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup"
 
-{{ Add example description here }}
+```
+Creates a security group item.
 
 ## PARAMETERS
 
@@ -75,3 +75,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzNetworkManagerSecurityAdminRuleCollection](./New-AzNetworkManagerSecurityAdminRuleCollection.md)

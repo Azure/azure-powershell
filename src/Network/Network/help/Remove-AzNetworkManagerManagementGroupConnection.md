@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetworkManagerManagementGroupConnection
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Remove a network manager management group connection.
 
 ## SYNTAX
 
@@ -18,16 +18,15 @@ Remove-AzNetworkManagerManagementGroupConnection -ManagementGroupId <String> -Na
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzNetworkManagerManagementGroupConnection** cmdlet removes a network manager management group connection.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzNetworkManagerManagementGroupConnection -ManagementGroupId $managementGroupId -Name $networkManagerConnectionName -PassThru -Force -AsJob
 ```
-
-{{ Add example description here }}
+Remove a network manager management group connection.
 
 ## PARAMETERS
 
@@ -166,3 +165,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Set-PSNetworkManagerConnection](./Set-PSNetworkManagerConnection.md)
+
+[Get-PSNetworkManagerConnection](./Get-PSNetworkManagerConnection.md)
+
+[New-PSNetworkManagerConnection](./New-PSNetworkManagerConnection.md)

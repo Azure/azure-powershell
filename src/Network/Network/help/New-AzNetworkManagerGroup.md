@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a network manager group.
 
 ## SYNTAX
 
@@ -19,16 +19,17 @@ New-AzNetworkManagerGroup -Name <String> -NetworkManagerName <String> -ResourceG
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerGroup** cmdlet creates a network manager group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzNetworkManagerGroup -ResourceGroupName TestRGName -NetworkManagerName TestNetworkManagerName -Name TestNetworkGroupName -Description "TestDescription"
+
 ```
 
-{{ Add example description here }}
+Creates a network manager group.
 
 ## PARAMETERS
 
@@ -197,3 +198,10 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzNetworkManagerGroupMembersItem](./New-AzNetworkManagerGroupMembersItem.md)
+
+[Get-AzNetworkManagerGroup](./Get-AzNetworkManagerGroup.md)
+
+[Remove-AzNetworkManagerGroup](./Remove-AzNetworkManagerGroup.md)
+
+[Set-AzNetworkManagerGroup](./Set-AzNetworkManagerGroup.md)

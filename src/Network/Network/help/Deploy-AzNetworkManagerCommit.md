@@ -8,7 +8,7 @@ schema: 2.0.0
 # Deploy-AzNetworkManagerCommit
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deploys network manager commit
 
 ## SYNTAX
 
@@ -20,16 +20,31 @@ Deploy-AzNetworkManagerCommit -Name <String> -ResourceGroupName <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Deploy-AzNetworkManagerCommit** cmdlet deploys network manager commit
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> [System.Collections.Generic.List[string]]$configids  = @()
+PS C:\> $configids.Add($TestConfigId);
+PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
+PS C:\> $regions.Add("centraluseuap")
+PS C:\> Deploy-AzNetworkManagerCommit -ResourceGroupName TestRGName -Name TestNMName -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
+
 ```
 
-{{ Add example description here }}
+The example is used to commit connecitivity confgurations $TestConfigId on region centraluseuap.
+
+### Example 2
+```powershell
+PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
+PS C:\> $regions.Add("centraluseuap")
+PS C:\> Deploy-AzNetworkManagerCommit -ResourceGroupName TestRGName -Name TestNMName -TargetLocation $regions -CommitType "Connectivity" 
+
+```
+
+The example is used to uncommit all connecitivity confgurations on region centraluseuap.
 
 ## PARAMETERS
 
@@ -170,3 +185,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[New-AzNetworkManager](./New-AzNetworkManager.md)
+
+[Get-AzNetworkManager](./Get-AzNetworkManager.md)
+
+[Remove-AzNetworkManager](./Remove-AzNetworkManager.md)
+
+[Set-AzNetworkManager](./Set-AzNetworkManager.md)

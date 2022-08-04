@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerHub
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a network manager hub.
 
 ## SYNTAX
 
@@ -18,16 +18,16 @@ New-AzNetworkManagerHub -ResourceId <String> -ResourceType <String> [-DefaultPro
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerHub** cmdlet creates a network manager hub.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>  New-AzNetworkManagerHub -ResourceId $TestVnetId -ResourceType "Microsoft.Network/virtualNetworks" 
 ```
 
-{{ Add example description here }}
+Creates a network manager hub.
 
 ## PARAMETERS
 
@@ -90,3 +90,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzNetworkManagerConnectivityConfiguration](./New-AzNetworkManagerConnectivityConfiguration.md)

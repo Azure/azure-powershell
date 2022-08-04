@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkManagerSecurityAdminRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a network manager security admin rule.
 
 ## SYNTAX
 
@@ -20,16 +20,17 @@ Set-AzNetworkManagerSecurityAdminRule -RuleCollectionName <String> -SecurityAdmi
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzNetworkManagerSecurityAdminRule** cmdlet updates a network manager security admin rule.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $SecurityAdminRule = Get-AzNetworkManagerSecurityAdminRule  -Name "testRule" -RuleCollectionName "TestRC" -SecurityAdminConfigurationName "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+PS C:\> Set-AzNetworkManagerSecurityAdminRule -RuleCollectionName "TestRC" -SecurityAdminConfigurationName "testRule" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -SecurityAdminRule $SecurityAdminRule
 ```
 
-{{ Add example description here }}
+Updates a network manager security admin rule.
 
 ## PARAMETERS
 
@@ -185,3 +186,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzNetworkManagerSecurityAdminRule](./Get-AzNetworkManagerSecurityAdminRule.md)
+
+[New-AzNetworkManagerSecurityAdminRule](./New-AzNetworkManagerSecurityAdminRule.md)
+
+[Remove-AzNetworkManagerSecurityAdminRule](./Remove-AzNetworkManagerSecurityAdminRule.md)

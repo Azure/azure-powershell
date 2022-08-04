@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzNetworkManagerSecurityAdminRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a security admin rule in a network manager.
 
 ## SYNTAX
 
@@ -27,16 +27,95 @@ Get-AzNetworkManagerSecurityAdminRule -Name <String> -RuleCollectionName <String
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzNetworkManagerSecurityAdminRule** cmdlets gets security admin rule in a network manager.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Expand
+PS C:\> Get-AzNetworkManagerSecurityAdminRule  -Name "testRule" -RuleCollectionName "TestRC" -SecurityAdminConfigurationName "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+
+Name                  : testRule
+Description           : Description
+Type                  : Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections/rules
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestSecConfig/ruleCollections/TestRC/rules/testRule
+Etag                  : "00000000-0000-0000-0000-000000000000"
+ProvisioningState     : Succeeded
+Protocol              : Tcp
+Direction             : Inbound
+Sources               : [
+                          {
+                            "AddressPrefix": "Internet",
+                            "AddressPrefixType": "ServiceTag"
+                          }
+                        ]
+Destinations          : [
+                          {
+                            "AddressPrefix": "10.0.0.1",
+                            "AddressPrefixType": "IPPrefix"
+                          }
+                        ]
+SourcePortRanges      : [
+                          "100"
+                        ]
+DestinationPortRanges : [
+                          "99"
+                        ]
+Access                : Allow
+Priority              : 100
+SystemData            : {
+                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                          "CreatedByType": "Application",
+                          "CreatedAt": "2021-10-18T04:06:05",
+                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                          "LastModifiedByType": "Application",
+                          "LastModifiedAt": "2021-10-18T04:06:06"
+                        }
 ```
 
-{{ Add example description here }}
+### Example 2
+```powershell
+NoExpand
+PS C:\> Get-AzNetworkManagerSecurityAdminRule  -RuleCollectionName "TestRC" -SecurityAdminConfigurationName "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+
+Name                  : testRule
+Description           : Description
+Type                  : Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections/rules
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestSecConfig/ruleCollections/TestRC/rules/testRule
+Etag                  : "00000000-0000-0000-0000-000000000000"
+ProvisioningState     : Succeeded
+Protocol              : Tcp
+Direction             : Inbound
+Sources               : [
+                          {
+                            "AddressPrefix": "Internet",
+                            "AddressPrefixType": "ServiceTag"
+                          }
+                        ]
+Destinations          : [
+                          {
+                            "AddressPrefix": "10.0.0.1",
+                            "AddressPrefixType": "IPPrefix"
+                          }
+                        ]
+SourcePortRanges      : [
+                          "100"
+                        ]
+DestinationPortRanges : [
+                          "99"
+                        ]
+Access                : Allow
+Priority              : 100
+SystemData            : {
+                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                          "CreatedByType": "Application",
+                          "CreatedAt": "2021-10-18T04:06:05",
+                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                          "LastModifiedByType": "Application",
+                          "LastModifiedAt": "2021-10-18T04:06:06"
+                        }
+```
 
 ## PARAMETERS
 
@@ -156,3 +235,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzNetworkManagerSecurityAdminRule](./New-AzNetworkManagerSecurityAdminRule.md)
+
+[Remove-AzNetworkManagerSecurityAdminRule](./Remove-AzNetworkManagerSecurityAdminRule.md)
+
+[Set-AzNetworkManagerSecurityAdminRule](./Set-AzNetworkManagerSecurityAdminRule.md)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzNetworkManagerConnectivityConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a network manager connectivity configuration.
 
 ## SYNTAX
 
@@ -23,16 +23,23 @@ New-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerName
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzNetworkManagerConnectivityConfiguration** cmdlet creates a network manager.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM/networkGroups/PSTestGroup" -UseHubGateway -GroupConnectivity "None" -IsGlobal
+PS C:\> [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]]$connectivityGroup = @()
+PS C:\> $connectivityGroup.Add($connectivityGroupItem)  
+PS C:\> [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerHub]]$hubList  = @() 
+PS C:\> $hub = New-AzNetworkManagerHub -ResourceId "TestVnetId" -ResourceType "Microsoft.Network/virtualNetworks" 
+PS C:\> $hubList.Add($hub)
+PS C:\> New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName TestResourceGroup -Name TestConnConfigName -NetworkManagerName TestNetworkManagerName -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering -IsGlobal 
+
 ```
 
-{{ Add example description here }}
+Creates a network manager connectivity configuration.
 
 ## PARAMETERS
 
@@ -267,3 +274,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzNetworkManagerConnectivityConfiguration](./Get-AzNetworkManagerConnectivityConfiguration.md)
+
+[Remove-AzNetworkManagerConnectivityConfiguration](./Remove-AzNetworkManagerConnectivityConfiguration.md)
+
+[Set-AzNetworkManagerConnectivityConfiguration](./Set-AzNetworkManagerConnectivityConfiguration.md)

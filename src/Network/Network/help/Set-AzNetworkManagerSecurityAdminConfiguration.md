@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzNetworkManagerSecurityAdminConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a network manager security admin configuration.
 
 ## SYNTAX
 
@@ -19,16 +19,17 @@ Set-AzNetworkManagerSecurityAdminConfiguration -NetworkManagerName <String> -Res
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzNetworkManagerSecurityAdminConfiguration** cmdlet updates a network manager security admin configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> $NetworkManagerSecurityConfiguration = Get-AzNetworkManagerSecurityAdminConfiguration  -Name "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRGName"
+PS C:\> Set-AzNetworkManagerSecurityAdminConfiguration -NetworkManagerName TestNMName -ResourceGroupName TestRGName -NetworkManagerSecurityAdminConfiguration $NetworkManagerSecurityConfiguration
 ```
 
-{{ Add example description here }}
+Updates a network manager security admin configuration.
 
 ## PARAMETERS
 
@@ -154,3 +155,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[Get-AzNetworkManagerSecurityAdminConfiguration](./Get-AzNetworkManagerSecurityAdminConfiguration.md)
+
+[New-AzNetworkManagerSecurityAdminConfiguration](./New-AzNetworkManagerSecurityAdminConfiguration.md)
+
+[Remove-AzNetworkManagerSecurityAdminConfiguration](./Remove-AzNetworkManagerSecurityAdminConfiguration.md)
