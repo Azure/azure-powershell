@@ -133,7 +133,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the workspace.
+The name of the association.
 
 ```yaml
 Type: System.String
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecurityPerimeterName
-The name of the SecurityPerimeterName
+The name of the network security perimeter
 
 ```yaml
 Type: System.String

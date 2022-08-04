@@ -112,24 +112,24 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the workspace.")]
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the access rule.")]
         [Alias('AccessRuleName')]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
         [System.String]
-        # The name of the workspace.
+        # The name of the access rule.
         ${Name},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the SecurityPerimeterName")]
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the network security perimeter")]
         [Alias('NetworkSecurityPerimeterName')]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
         [System.String]
-        # The name of the workspace.
+        # The name of the network security perimeter.
         ${SecurityPerimeterName},
 
-        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "Profile Name")]
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the profile")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
         [System.String]
-        # The name of the workspace.
+        # The name of the profile.
         ${ProfileName},
 
 
@@ -166,13 +166,13 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         [Parameter(HelpMessage = "Inbound rule specified by the perimeter id")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.Collections.ArrayList]
-        # Fully qualified domain name
+        # Inbound rule specified by the perimeter id
         ${NetworkSecurityPerimeters},
 
         [Parameter(HelpMessage = "Direction")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.String]
-        # The Location of the resource
+        # Direction
         ${Direction}
 
 
@@ -186,9 +186,6 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         try {
             
             # 1. GET
-
-
-            Write-Host "test 1"
 
             # body params and AsJob
             $params = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'NetworkSecurityPerimeters', 'Direction', 'Subscription',  'AsJob'

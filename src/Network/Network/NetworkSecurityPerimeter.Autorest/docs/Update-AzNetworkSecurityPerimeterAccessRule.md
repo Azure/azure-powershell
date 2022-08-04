@@ -164,7 +164,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the workspace.
+The name of the access rule.
 
 ```yaml
 Type: System.String
@@ -209,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 ### -ProfileName
-Profile Name
+The name of the profile
 
 ```yaml
 Type: System.String
@@ -240,7 +240,7 @@ Accept wildcard characters: False
 ```
 
 ### -SecurityPerimeterName
-The name of the SecurityPerimeterName
+The name of the network security perimeter
 
 ```yaml
 Type: System.String
