@@ -14,19 +14,18 @@ Updates a workspace.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzNetworkSecurityPerimeterAccessRule -Name <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <ArrayList>]
+Update-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <ArrayList>] [-Direction <String>]
  [-FullyQualifiedDomainName <ArrayList>] [-Location <String>] [-NetworkSecurityPerimeters <ArrayList>]
- [-ProfileName <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
- [-AddressPrefix <ArrayList>] [-FullyQualifiedDomainName <ArrayList>] [-Location <String>]
- [-NetworkSecurityPerimeters <ArrayList>] [-ProfileName <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AddressPrefix <ArrayList>] [-Direction <String>] [-FullyQualifiedDomainName <ArrayList>]
+ [-Location <String>] [-NetworkSecurityPerimeters <ArrayList>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,6 +102,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Direction
+Direction
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -FullyQualifiedDomainName
 Fully qualified domain name
 
@@ -155,7 +169,7 @@ The name of the workspace.
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases: WorkspaceName
+Aliases: AccessRuleName
 
 Required: True
 Position: Named
@@ -199,10 +213,10 @@ Profile Name
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: UpdateExpanded
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

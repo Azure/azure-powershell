@@ -55,6 +55,7 @@ function setupEnv() {
     $tmpProfileDelBase1 = 't-prDelB1'
     $tmpProfileDelBase2 = 't-prDelB2'
     $tmpAccessRule1 = 't-ar1'
+    $tmpAccessRule2 = 't-ar2'
     $tmpAccessRuleDelete1 = 't-arD1'
     $tmpAccessRuleDelete2 = 't-arD2'
     $tmpAssociation1 = 't-asn1'
@@ -65,8 +66,8 @@ function setupEnv() {
     $tmpPaas3Rp = $randomString + 't-paas3Rp'
     $tmpPaas4Rp = $randomString + 't-paas4Rp'
 
-    $tmpKeys = 'tmpNsp1','tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfile3', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1','tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpPaas4Rp','tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2'
-    $tmpValues = $tmpNsp1, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpPaas4Rp,  $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2
+    $tmpKeys = 'tmpNsp1','tmpNspDelBase1', 'tmpProfile1', 'tmpProfile2', 'tmpProfile3', 'tmpProfileDelBase1', 'tmpProfileDelBase2', 'tmpAccessRule1', 'tmpAccessRule2', 'tmpAccessRuleDelete1','tmpAccessRuleDelete2', 'tmpAssociation1', 'tmpAssociationDelete1', 'tmpAssociationDelete2', 'tmpPaas1Rp', 'tmpPaas2Rp','tmpPaas3Rp', 'tmpPaas4Rp','tmpProfileDelete1', 'tmpProfileDelete2', 'tmpNspDelete1', 'tmpNspDelete2'
+    $tmpValues = $tmpNsp1, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRule2, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpPaas4Rp,  $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2
 
     for ($i = 0; $i -le ($tmpKeys.length - 1); $i += 1) {
         if ($templateVariables.Contains($tmpKeys[$i])) {
@@ -117,6 +118,7 @@ function setupEnv() {
         profileDelBase1Name = $tmpProfileDelBase1
         profileDelBase2Name = $tmpProfileDelBase2
         accessRule1Name = $tmpAccessRule1
+        accessRule2Name = $tmpAccessRule2
         accessRuleDelete1Name = $tmpAccessRuleDelete1
         accessRuleDelete2Name = $tmpAccessRuleDelete2
         paas1Name = $tmpPaas1Rp

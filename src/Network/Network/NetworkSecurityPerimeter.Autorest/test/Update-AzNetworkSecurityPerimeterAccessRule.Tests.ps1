@@ -38,11 +38,11 @@ Describe 'Update-AzNetworkSecurityPerimeterAccessRule' {
     It 'UpdateViaIdentityExpandedFQDN' {
         {
            # this test case is dependent on the above test case
-           $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ProfileName $env.tmpProfile1
+           $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ProfileName $env.tmpProfile1
 
-           $UpdateObj = Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -Direction 'Outbound' -FullyQualifiedDomainName @('10.0.0.0/16', '10.0.0.0/17')
+           $UpdateObj = Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -FullyQualifiedDomainName @('microsoft.com', 'nsp.microsoft.com')
 
-           $UpdateObj.fullyQualifiedDomainNames | Should -Be @('10.0.0.0/16', '10.0.0.0/17')
+           $UpdateObj.fullyQualifiedDomainName | Should -Be @('microsoft.com', 'nsp.microsoft.com')
            
         } | Should -Not -Throw
     }
