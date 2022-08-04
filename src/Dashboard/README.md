@@ -63,6 +63,10 @@ directive:
       verb: New
       subject: Grafana
     hide: true
+  - where:
+      parameter-name: GrafanaIntegrationAzureMonitorWorkspaceIntegration
+    set:
+      parameter-name: MonitorWorkspaceIntegration 
   # The cmdlet's name to long, Re-name it
   # - model-cmdlet:
   #     - AzureMonitorWorkspaceIntegration

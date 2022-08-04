@@ -15,9 +15,9 @@ Update a workspace for Grafana resource.
 ### UpdateExpanded (Default)
 ```
 Update-AzGrafana -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-ApiKey <ApiKey>]
- [-DeterministicOutboundIP <DeterministicOutboundIP>]
- [-GrafanaIntegrationAzureMonitorWorkspaceIntegration <IAzureMonitorWorkspaceIntegration[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-DeterministicOutboundIP <DeterministicOutboundIP>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>]
+ [-MonitorWorkspaceIntegration <IAzureMonitorWorkspaceIntegration[]>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-ZoneRedundancy <ZoneRedundancy>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -25,9 +25,9 @@ Update-AzGrafana -Name <String> -ResourceGroupName <String> [-SubscriptionId <St
 ### UpdateViaIdentityExpanded
 ```
 Update-AzGrafana -InputObject <IDashboardIdentity> [-ApiKey <ApiKey>]
- [-DeterministicOutboundIP <DeterministicOutboundIP>]
- [-GrafanaIntegrationAzureMonitorWorkspaceIntegration <IAzureMonitorWorkspaceIntegration[]>]
- [-IdentityType <ManagedServiceIdentityType>] [-IdentityUserAssignedIdentity <Hashtable>]
+ [-DeterministicOutboundIP <DeterministicOutboundIP>] [-IdentityType <ManagedServiceIdentityType>]
+ [-IdentityUserAssignedIdentity <Hashtable>]
+ [-MonitorWorkspaceIntegration <IAzureMonitorWorkspaceIntegration[]>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-ZoneRedundancy <ZoneRedundancy>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -110,22 +110,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -GrafanaIntegrationAzureMonitorWorkspaceIntegration
-.
-To construct, see NOTES section for GRAFANAINTEGRATIONAZUREMONITORWORKSPACEINTEGRATION properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IdentityType
 Type of managed service identity (where both SystemAssigned and UserAssigned types are allowed).
 
@@ -171,6 +155,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorWorkspaceIntegration
+.
+To construct, see NOTES section for MONITORWORKSPACEINTEGRATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -316,9 +316,6 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`GRAFANAINTEGRATIONAZUREMONITORWORKSPACEINTEGRATION <IAzureMonitorWorkspaceIntegration[]>`: .
-  - `[AzureMonitorWorkspaceResourceId <String>]`: The resource Id of the connected Azure Monitor Workspace.
-
 `INPUTOBJECT <IDashboardIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[PrivateEndpointConnectionName <String>]`: The private endpoint connection name of Azure Managed Grafana.
@@ -326,6 +323,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The workspace name of Azure Managed Grafana.
+
+`MONITORWORKSPACEINTEGRATION <IAzureMonitorWorkspaceIntegration[]>`: .
+  - `[AzureMonitorWorkspaceResourceId <String>]`: The resource Id of the connected Azure Monitor Workspace.
 
 ## RELATED LINKS
 
