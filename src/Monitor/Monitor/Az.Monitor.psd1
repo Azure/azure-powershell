@@ -158,7 +158,7 @@ PrivateData = @{
         ReleaseNotes = '* Upgraded API version for ActivityLogAlert from 2017-04-01 to 2020-10-01'
 
         # Prerelease string of this module
-        Prerelease = Preview
+        Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
