@@ -1347,6 +1347,12 @@
       "Remove-AzCustomProviderAssociation": {},
       "Update-AzCustomProvider": {}
     },
+    "Az.Dashboard": {
+      "Get-AzGrafana": {},
+      "New-AzGrafana": {},
+      "Remove-AzGrafana": {},
+      "Update-AzGrafana": {}
+    },
     "Az.DataBox": {
       "Get-AzDataBoxJob": {},
       "Get-AzDataBoxJobCredential": {},
@@ -3089,13 +3095,6 @@
       "New-AzAlertRuleEmail": {},
       "New-AzAlertRuleWebhook": {},
       "Remove-AzAlertRule": {},
-      "Set-AzActivityLogAlert": {},
-      "Get-AzActivityLogAlert": {},
-      "New-AzActionGroup": {},
-      "New-AzActivityLogAlertCondition": {},
-      "Enable-AzActivityLogAlert": {},
-      "Disable-AzActivityLogAlert": {},
-      "Remove-AzActivityLogAlert": {},
       "New-AzActionGroupReceiver": {},
       "Set-AzActionGroup": {},
       "Get-AzActionGroup": {},
@@ -3132,6 +3131,13 @@
       "Get-AzDataCollectionRuleAssociation": {},
       "New-AzDataCollectionRuleAssociation": {},
       "Remove-AzDataCollectionRuleAssociation": {},
+      "Get-AzActivityLogAlert": {},
+      "New-AzActionGroupObject": {},
+      "New-AzActivityLogAlert": {},
+      "New-AzAlertRuleAnyOfOrLeafConditionObject": {},
+      "New-AzAlertRuleLeafConditionObject": {},
+      "Remove-AzActivityLogAlert": {},
+      "Update-AzActivityLogAlert": {},
       "Get-AzLog": {}
     },
     "Az.MonitoringSolutions": {
@@ -4080,6 +4086,24 @@
       "Get-AzOperationalInsightsIntelligencePacks": {},
       "Get-AzOperationalInsightsWorkspaceManagementGroups": {},
       "Get-AzOperationalInsightsWorkspaceSharedKeys": {}
+    },
+    "Az.Orbital": {
+      "Get-AzOrbitalAvailableGroundStation": {},
+      "Get-AzOrbitalAvailableSpacecraftContact": {},
+      "Get-AzOrbitalContactProfile": {},
+      "Get-AzOrbitalSpacecraft": {},
+      "Get-AzOrbitalSpacecraftContact": {},
+      "New-AzOrbitalContactProfile": {},
+      "New-AzOrbitalContactProfileLinkChannelObject": {},
+      "New-AzOrbitalContactProfileLinkObject": {},
+      "New-AzOrbitalSpacecraft": {},
+      "New-AzOrbitalSpacecraftContact": {},
+      "New-AzOrbitalSpacecraftLinkObject": {},
+      "Remove-AzOrbitalContactProfile": {},
+      "Remove-AzOrbitalSpacecraft": {},
+      "Remove-AzOrbitalSpacecraftContact": {},
+      "Update-AzOrbitalContactProfile": {},
+      "Update-AzOrbitalSpacecraft": {}
     },
     "Az.Peering": {
       "Get-AzPeering": {},
