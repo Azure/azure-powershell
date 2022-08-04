@@ -491,7 +491,7 @@ function Get-ScriptAnalyzerResult {
                 Severity = $Severity
                 Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 ProblemID = 5200
-                Remediation = "Unexpected Error. Please check [Trouble Shotting for Unexpected Errors in Example Issues](https://github.com/Azure/azure-powershell/blob/master/documentation/Debugging-StaticAnalysis-Errors.md#Troubleshotting-Example-Issues) for more details."
+                Remediation = "Unexpected Error. Please check [Trouble Shotting for Unexpected Errors in Example Issues](https://github.com/Azure/azure-powershell/blob/main/documentation/Debugging-StaticAnalysis-Errors.md#Troubleshotting-Example-Issues) for more details."
             }
         }
         $errors += $result 
