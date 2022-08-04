@@ -70,8 +70,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string CreateOption { get; set; }
 
         [Parameter(
-            Mandatory =false,
-            ValueFromPipelineByPropertyName = true)]
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether Data disk should be deleted or detached upon VMSS Flex deletion(This feature is available for VMSS with Flexible OrchestrationMode only)")]
+        [PSArgumentCompleter("Delete", "Detach")]
         public string DeleteOption { get; set; }
 
         [Parameter(

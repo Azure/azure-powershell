@@ -82,11 +82,11 @@ Accept wildcard characters: False
 ```
 
 ### -DeleteOption
-"Specifies whether data disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only)
+Specifies whether data disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only)
 
 Accepted Values 
 Delete - If this value is used, the data disk is deleted when the VMSS Flex VM is deleted.
-Detach -  If this value is used, the data disk is retained after VMSS Flex VM is deleted.
+Detach - If this value is used, the data disk is retained after VMSS Flex VM is deleted.
 
 ```yaml
 Type: System.String

@@ -89,7 +89,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            ValueFromPipelineByPropertyName = true)]
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies whether OS disk should be deleted or detached upon VMSS Flex deletion(This feature is available for VMSS with Flexible OrchestrationMode only)")]
+        [PSArgumentCompleter("Delete", "Detach")]
         public string OsDiskDeletionOption { get; set; }
 
         [Parameter(
@@ -336,7 +338,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             }
 
             //DiskDeletion
-            if (this.IsParameterBound( c => c.OsDiskDeletionOption))
+            if (this.IsParameterBound(c => c.OsDiskDeletionOption))
             {
                 // VirtualMachineProfile
                 if (this.VirtualMachineScaleSet.VirtualMachineProfile == null)

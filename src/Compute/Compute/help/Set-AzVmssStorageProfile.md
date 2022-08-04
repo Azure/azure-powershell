@@ -44,7 +44,7 @@ This command sets the storage profile properties for the VMSS named ContosoVMSS.
 Specifies the data disk object.
 
 ```yaml
-Type: VirtualMachineScaleSetDataDisk[]
+Type: Microsoft.Azure.Management.Compute.Models.VirtualMachineScaleSetDataDisk[]
 Parameter Sets: (All)
 Aliases:
 
@@ -59,7 +59,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -74,7 +74,7 @@ Accept wildcard characters: False
 Specifies the ephemeral disk placement for operating system disk. This property can be used by user in the request to choose the location i.e. cache disk or resource disk space for Ephemeral OS disk provisioning. For more information on Ephemeral OS disk size requirements, please refer Ephemeral OS disk size requirements for Windows VM at https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks#size-requirements and Linux VM at https://docs.microsoft.com/azure/virtual-machines/linux/ephemeral-os-disks#size-requirements. This parameter can only be used if the parameter DiffDiskSetting is set to 'Local'.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -89,7 +89,7 @@ Accept wildcard characters: False
 Specifies the differencing disk settings for operating system disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -104,7 +104,7 @@ Accept wildcard characters: False
 Specifies the resource Id of customer managed disk encryption set.  This can only be specified for managed disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -120,7 +120,7 @@ Specifies the blob URI for the user image.
 VMSS creates an operating system disk in the same container of the user image.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -135,7 +135,7 @@ Accept wildcard characters: False
 Specifies the image reference ID.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -151,7 +151,7 @@ Specifies the type of virtual machine image (VMImage) offer.
 To obtain an image offer, use the Get-AzVMImageOffer cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -167,7 +167,7 @@ Specifies the name of a publisher of a VMImage.
 To obtain a publisher, use the Get-AzVMImagePublisher cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -183,7 +183,7 @@ Specifies the VMImage SKU.
 To obtain SKUs, use the Get-AzVMImageSku cmdlet.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -199,7 +199,7 @@ Specifies the version of the VMImage.
 To use the latest version, specify a value of latest instead of a particular version.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -214,7 +214,7 @@ Accept wildcard characters: False
 Specifies the managed disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -235,7 +235,7 @@ If you change the caching value, the cmdlet will restart the virtual machine.
 This setting affects the consistency and performance of the disk.
 
 ```yaml
-Type: CachingTypes
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.CachingTypes]
 Parameter Sets: (All)
 Aliases:
 Accepted values: None, ReadOnly, ReadWrite
@@ -255,7 +255,7 @@ The acceptable values for this parameter are:
 If you are using a platform image, you will also use the *imageReference* parameter.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -267,14 +267,14 @@ Accept wildcard characters: False
 ```
 
 ### -OsDiskDeletionOption
-"Specifies whether OS disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only)
+Specifies whether OS disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only)
 
 Accepted Values 
 Delete - If this value is used, the OS disk is deleted when the VMSS Flex VM is deleted.
-Detach -  If this value is used, the OS disk is retained after VMSS Flex VM is deleted.
+Detach - If this value is used, the OS disk is retained after VMSS Flex VM is deleted.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -289,7 +289,7 @@ Accept wildcard characters: False
 Specifies the name of the operating system disk.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: Name
 
@@ -305,7 +305,7 @@ Specifies the type of operating system on the disk.
 This is only needed for user image scenarios and not for a platform image.
 
 ```yaml
-Type: OperatingSystemTypes
+Type: System.Nullable`1[Microsoft.Azure.Management.Compute.Models.OperatingSystemTypes]
 Parameter Sets: (All)
 Aliases:
 Accepted values: Windows, Linux
@@ -321,7 +321,7 @@ Accept wildcard characters: False
 Specifies whether WriteAccelerator should be enabled or disabled on the OS disk.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -336,7 +336,7 @@ Accept wildcard characters: False
 Specifies the container URLs that are used to store operating system disks for the VMSS.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -352,7 +352,7 @@ Specifies the VMSS object.
 To obtain the object, use the New-AzVmssConfig object.
 
 ```yaml
-Type: PSVirtualMachineScaleSet
+Type: Microsoft.Azure.Commands.Compute.Automation.Models.PSVirtualMachineScaleSet
 Parameter Sets: (All)
 Aliases:
 
@@ -367,7 +367,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -382,7 +382,7 @@ Accept wildcard characters: False
 Shows what would happen if the cmdlet runs. The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
