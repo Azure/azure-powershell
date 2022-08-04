@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Fixes OutputFiles on JobSchedule ManagerTasks.
+* Fixed a bug wherein creating a new JobSchedule does not properly submit Output Files.
 
 ## Version 3.2.0
 
