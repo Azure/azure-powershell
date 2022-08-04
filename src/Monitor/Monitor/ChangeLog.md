@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 
-## Version 3.1.0
+## Version 4.0.0
 * Upgraded API version for ActivityLogAlert from 2017-04-01 to 2020-10-01
 
 ## Version 3.0.2
