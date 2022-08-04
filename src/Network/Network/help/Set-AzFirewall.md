@@ -73,6 +73,7 @@ $pip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name publicIpName
 $firewall.Allocate($vnet, $pip)
 $firewall | Set-AzFirewall
 ```
+
 This example retrieves a Firewall, deallocates the firewall, and saves it. The Deallocate command removes the running 
 service but preserves the firewall's configuration. For changes to be reflected in cloud, Set-AzFirewall must be called.
 If user wants to start the service again, the Allocate method should be called on the firewall.
@@ -87,6 +88,7 @@ $mgmtPip = Get-AzPublicIpAddress -ResourceGroupName rgName -Name MgmtPublicIpNam
 $firewall.Allocate($vnet, $pip, $mgmtPip)
 $firewall | Set-AzFirewall
 ```
+
 This example allocates the firewall with a management public IP address and subnet for forced tunneling scenarios. The VNet must contain a subnet called "AzureFirewallManagementSubnet".
 
 ### 6:	Add a Public IP address to an Azure Firewall
@@ -165,10 +167,61 @@ $Hub = Get-AzVirtualHub -ResourceGroupName "testRG" -Name "westushub"
 $firewall.Allocate($Hub.Id)
 $firewall | Set-AzFirewall
 ```
+
 This example retrieves a Hub Firewall, deallocates the hub firewall, and saves it. The Deallocate command removes the reference 
 to the virtual hub but preserves the firewall's configuration. For changes to be reflected in cloud, Set-AzFirewall must be called.
 The Allocate method assigns the virtual hub reference to the firewall. Again, for changes to be reflected in cloud,
 Set-AzFirewall must be called.
+
+### 13:	Identify Top Fat Flows on Azure Firewall
+```powershell
+$azFw = Get-AzFirewall -Name "ps184" -ResourceGroupName "ps774"
+$azFw.IdentifyTopFatFlow = $true
+
+$azFw | Set-AzFirewall
+```
+
+```output
+		AllowActiveFTP	                : null	
+		ApplicationRuleCollections	    : Count = 0	
+		ApplicationRuleCollectionsText	: "[]"	
+		DNSEnableProxy	                : null	
+		DNSServer	                    : null	
+		DNSServersText	                : "null"	
+		Etag	                        : "W/\"7533fa1b-8588-400d-857c-6bc372e14f1b\""
+		FirewallPolicy	                : null	
+		HubIPAddresses	                : null	
+		Id	                            : "/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/ps774/providers/Microsoft.Network/azureFirewalls/ps184"	
+		IdentifyTopFatFlow	            : "true"	
+		IpConfigurations	            : Count = 0	
+		IpConfigurationsText	        : "[]"	
+		Location	                    : "eastus"	
+		ManagementIpConfiguration	    : null	
+		ManagementIpConfigurationText	: "null"	
+		Name	                        : "ps184"	
+		NatRuleCollections	            : Count = 0	
+		NatRuleCollectionsText	        : "[]"	
+		NetworkRuleCollections	        : Count = 0	
+		NetworkRuleCollectionsText	    : "[]"	
+		PrivateRange	                : null	
+		PrivateRangeText	            : "null"	
+		ProvisioningState	            : "Succeeded"	
+		ResourceGroupName	            : "ps774"	
+		ResourceGuid	                : null	
+		Sku	                            : {Microsoft.Azure.Commands.Network.Models.PSAzureFirewallSku}	
+		Tag	                            : null	
+		TagsTable	                    : null	
+		ThreatIntelMode	                : "Alert"	
+		ThreatIntelWhitelist	        : {Microsoft.Azure.Commands.Network.Models.PSAzureFirewallThreatIntelWhitelist}	
+		ThreatIntelWhitelistText	    : "{\r\n  \"FQDNs\": null,\r\n  \"IpAddresses\": null\r\n}"	
+		Type	                        : "Microsoft.Network/azureFirewalls"	
+		VirtualHub	                    : null	
+		Zones	                        : Count = 0	
+		privateRange	                : null	
+
+```
+
+In this example, Identify Top Fat Flows is enabled on the Firewall.
 
 ## PARAMETERS
 
@@ -248,7 +301,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

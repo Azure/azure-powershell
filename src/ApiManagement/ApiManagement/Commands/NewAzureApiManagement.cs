@@ -18,6 +18,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using ResourceManager.Common.ArgumentCompleters;
     using System.Collections.Generic;
     using System.Management.Automation;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+    using System;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement"), OutputType(typeof(PsApiManagement))]
     public class NewAzureApiManagement : AzureApiManagementCmdletBase
@@ -58,6 +60,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [ValidatePattern(@"^[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*@([a-zA-Z0-9_]+[a-zA-Z0-9_-]*\.)+[a-zA-Z]{2,63}$")]
         public string AdminEmail { get; set; }
 
+        [CmdletParameterBreakingChange("Sku", OldParamaterType = typeof(PsApiManagementSku), NewParameterTypeName = nameof(String))]
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             Mandatory = false,

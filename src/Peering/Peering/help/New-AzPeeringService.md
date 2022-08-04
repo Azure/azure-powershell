@@ -89,7 +89,7 @@ Accept wildcard characters: False
 ```
 
 ### -PeeringLocation
-The Physical Location Different from Azure Region. Use Get-AzPeeringServiceLocation [-Country <country>]
+The Physical Location Different from Azure Region. Use Get-AzPeeringServiceLocation [-Country `<country>`]
 
 ```yaml
 Type: System.String

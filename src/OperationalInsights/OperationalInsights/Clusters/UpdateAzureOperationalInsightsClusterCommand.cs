@@ -1,5 +1,4 @@
 ﻿// ----------------------------------------------------------------------------------
-//
 // Copyright Microsoft Corporation
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -14,14 +13,16 @@
 
 using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
-using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
+    [CmdletOutputBreakingChange(typeof(PSCluster), DeprecatedOutputProperties = new String[] { "NextLink", "Sku" })]
     [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", DefaultParameterSetName = UpdateByNameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class UpdateAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {
@@ -108,20 +109,20 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
                 this.ClusterName = resourceIdentifier.ResourceName;
             }
 
-            PSClusterPatch parameters = new PSClusterPatch();
+            PSCluster parameters = new PSCluster();
 
             if (this.IsParameterBound(c => c.InputCluster))
             {
-                parameters.KeyVaultProperties = InputCluster.KeyVaultProperties;
-                parameters.Sku = InputCluster.Sku;
+                parameters.KeyVaultProperties = PSKeyVaultProperties.CreateKVProperties(InputCluster.KeyVaultProperties?.KeyVaultUri, InputCluster.KeyVaultProperties?.KeyName, InputCluster.KeyVaultProperties?.KeyVersion);
+                parameters.CapacityReservationProperties = InputCluster.CapacityReservationProperties;
                 parameters.Tags = InputCluster.Tags;
                 parameters.Identity = InputCluster.Identity;
                 parameters.BillingType = InputCluster.BillingType;
             }
             else
             {
-                parameters.KeyVaultProperties = PSKeyVaultProperties.CreateProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion);
-                parameters.Sku = this.SkuCapacity == null ? null :  new PSClusterSku(this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString(), this.SkuCapacity);
+                parameters.KeyVaultProperties = PSKeyVaultProperties.CreateKVProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion);
+                parameters.CapacityReservationProperties = this.SkuCapacity == null ? null : new PSCapacityReservationProperties(this.SkuCapacity, this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString());
                 parameters.Tags = this.Tag;
                 parameters.Identity = new PSIdentity(IdentityType);
                 parameters.BillingType = BillingType;

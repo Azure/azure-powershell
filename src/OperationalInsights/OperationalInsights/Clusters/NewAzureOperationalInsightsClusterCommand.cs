@@ -16,9 +16,12 @@ using System.Collections;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.OperationalInsights.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System;
 
 namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
 {
+    [CmdletOutputBreakingChange(typeof(PSCluster), DeprecatedOutputProperties = new String[] { "NextLink", "Sku" })]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "OperationalInsightsCluster", SupportsShouldProcess = true), OutputType(typeof(PSCluster))]
     public class NewAzureOperationalInsightsClusterCommand : OperationalInsightsBaseCmdlet
     {
@@ -87,12 +90,12 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Clusters
                 Name = this.ClusterName,
                 Location = this.Location,
                 Identity = new PSIdentity(this.IdentityType),
-                Sku = new PSClusterSku(this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString(), this.SkuCapacity),
+                CapacityReservationProperties = new PSCapacityReservationProperties(maxCapacity: this.SkuCapacity, skuName: this.SkuName ?? AllowedClusterServiceTiers.CapacityReservation.ToString()),
                 Tags = this.Tag,
                 IsDoubleEncryptionEnabled = this.IsDoubleEncryptionEnabled,
                 IsAvailabilityZonesEnabled = this.IsAvailabilityZonesEnabled,
                 BillingType = this.BillingType,
-                KeyVaultProperties = PSKeyVaultProperties.CreateProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
+                KeyVaultProperties = PSKeyVaultProperties.CreateKVProperties(this.KeyVaultUri, this.KeyName, this.KeyVersion),
             };
 
             if (ShouldProcess(this.ClusterName,
