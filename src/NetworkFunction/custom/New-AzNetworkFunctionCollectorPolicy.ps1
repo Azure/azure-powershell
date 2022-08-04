@@ -170,7 +170,7 @@ param(
 
 process {
     try {
-        Az.NetworkFunction.internal\New-AzNetworkFunctionTrafficCollector @PSBoundParameters
+        Az.NetworkFunction.internal\New-AzNetworkFunctionCollectorPolicy @PSBoundParameters
     } catch {
         throw
     }
