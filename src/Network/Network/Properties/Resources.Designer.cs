@@ -95,6 +95,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ApplicationGatewaybackendHttpSettingsName", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to backendSettingsCollection.
+        /// </summary>
+        internal static string ApplicationGatewaybackendSettingsName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewaybackendSettingsName", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to /subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/applicationGateways/{2}/{3}/{4}.
@@ -138,6 +147,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ApplicationGatewayHttpListenerName {
             get {
                 return ResourceManager.GetString("ApplicationGatewayHttpListenerName", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to listeners.
+        /// </summary>
+        internal static string ApplicationGatewayListenerName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayListenerName", resourceCulture);
             }
         }
         
@@ -210,6 +228,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string ApplicationGatewayRequestRoutingRuleName {
             get {
                 return ResourceManager.GetString("ApplicationGatewayRequestRoutingRuleName", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to routingRules.
+        /// </summary>
+        internal static string ApplicationGatewayRoutingRuleName {
+            get {
+                return ResourceManager.GetString("ApplicationGatewayRoutingRuleName", resourceCulture);
             }
         }
         
@@ -457,6 +484,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Creating child resource with ResourceGroupName {0}, ParentResourceName {1} ResourceName {2}..
+        /// </summary>
+        internal static string CreatingChildResourceLongRunningOperationMessage {
+            get {
+                return ResourceManager.GetString("CreatingChildResourceLongRunningOperationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Creating resource with ResourceGroupName {0}, ResourceName {1}..
         /// </summary>
         internal static string CreatingLongRunningOperationMessage {
@@ -464,18 +500,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("CreatingLongRunningOperationMessage", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to Creating child resource with ResourceGroupName {0}, ParentResourceName {1} ResourceName {2}..
-        /// </summary>
-        internal static string CreatingChildResourceLongRunningOperationMessage
-        {
-            get
-            {
-                return ResourceManager.GetString("CreatingChildResourceLongRunningOperationMessage", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Creating Resource.
         /// </summary>
@@ -864,7 +889,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to TargetResourceId specified in flow log is not a valid resource ID of Network security group..
+        ///   Looks up a localized string similar to TargetResourceId specified in flow log is not a valid resource ID of Network security group, Virtual Network, Subnet or Network Interface..
         /// </summary>
         internal static string InvalidTargetResourceId {
             get {
@@ -1078,18 +1103,16 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("ParentVpnGatewayNotFound", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The parent VpnServerConfiguration for this PolicyGroup cannot be found..
         /// </summary>
-        internal static string ParentVpnServerConfigurationNotFound
-        {
-            get
-            {
+        internal static string ParentVpnServerConfigurationNotFound {
+            get {
                 return ResourceManager.GetString("ParentVpnServerConfigurationNotFound", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to IP version is undefined.
         /// </summary>
@@ -1159,6 +1182,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string RemoveRouteServerWarning {
             get {
                 return ResourceManager.GetString("RemoveRouteServerWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing this Routing Intent resource will remove all routing policies present in this and may affect the routing in your VirtualHub.
+        /// </summary>
+        internal static string RemoveRoutingIntentWarning {
+            get {
+                return ResourceManager.GetString("RemoveRoutingIntentWarning", resourceCulture);
             }
         }
         
@@ -1294,6 +1326,24 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         internal static string RouteTableNotFound {
             get {
                 return ResourceManager.GetString("RouteTableNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The routing intent resource could not be found.
+        /// </summary>
+        internal static string RoutingIntentNotFound {
+            get {
+                return ResourceManager.GetString("RoutingIntentNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Only one child allowed. A resource with name {0} and same type already exists in ResourceGroup {1}, ParentResource {2}. If you wish to modify this resource please use the Update operation instead..
+        /// </summary>
+        internal static string SameTypeChildResourceAlreadyPresentInResourceGroup {
+            get {
+                return ResourceManager.GetString("SameTypeChildResourceAlreadyPresentInResourceGroup", resourceCulture);
             }
         }
         
@@ -1764,18 +1814,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnConnectionNotFound", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to The VpnServerConfigurationPolicyGroup could not be found..
-        /// </summary>
-        internal static string VpnServerConfigurationPolicyGroupNotFound
-        {
-            get
-            {
-                return ResourceManager.GetString("VpnServerConfigurationPolicyGroupNotFound", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Update request for VpnConnection contains deprecated property. Please use corresponding VpnSiteLinkConnection property instead..
         /// </summary>
@@ -1811,18 +1850,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnGatewayRequiredToCreateVpnConnection", resourceCulture);
             }
         }
-
-        /// <summary>
-        ///   Looks up a localized string similar to A valid VpnServerConfiguration reference is required to create or update a PolicyGroup..
-        /// </summary>
-        internal static string VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup
-        {
-            get
-            {
-                return ResourceManager.GetString("VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup", resourceCulture);
-            }
-        }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to A valid VpnGateway reference is required to create a VpnNatRule.
         /// </summary>
@@ -1849,13 +1877,31 @@ namespace Microsoft.Azure.Commands.Network.Properties {
                 return ResourceManager.GetString("VpnServerConfigurationNotFound", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The VpnServerConfigurationPolicyGroup could not be found..
+        /// </summary>
+        internal static string VpnServerConfigurationPolicyGroupNotFound {
+            get {
+                return ResourceManager.GetString("VpnServerConfigurationPolicyGroupNotFound", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to A valid VpnServerConfiguration is required to create a P2SVpnGateway.
         /// </summary>
         internal static string VpnServerConfigurationRequiredForP2SVpnGateway {
             get {
                 return ResourceManager.GetString("VpnServerConfigurationRequiredForP2SVpnGateway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A valid VpnServerConfiguration reference is required to create or update a PolicyGroup..
+        /// </summary>
+        internal static string VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup {
+            get {
+                return ResourceManager.GetString("VpnServerConfigurationRequiredToCreateOrUpdatePolicyGroup", resourceCulture);
             }
         }
         

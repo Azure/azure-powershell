@@ -122,10 +122,16 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewayBackendAddressPool[] BackendAddressPools { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of backend http settings")]
         public PSApplicationGatewayBackendHttpSettings[] BackendHttpSettingsCollection { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of backend settings")]
+        public PSApplicationGatewayBackendSettings[] BackendSettingsCollection { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -134,10 +140,16 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewaySslProfile[] SslProfiles { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of http listener")]
         public PSApplicationGatewayHttpListener[] HttpListeners { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of listener")]
+        public PSApplicationGatewayListener[] Listeners { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -146,10 +158,16 @@ namespace Microsoft.Azure.Commands.Network
         public PSApplicationGatewayUrlPathMap[] UrlPathMaps { get; set; }
 
         [Parameter(
-             Mandatory = true,
+             Mandatory = false,
              ValueFromPipelineByPropertyName = true,
              HelpMessage = "The list of request routing rule")]
         public PSApplicationGatewayRequestRoutingRule[] RequestRoutingRules { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true,
+             HelpMessage = "The list of routing rule")]
+        public PSApplicationGatewayRoutingRule[] RoutingRules { get; set; }
 
         [Parameter(
              Mandatory = false,
@@ -334,6 +352,11 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.BackendHttpSettingsCollection = this.BackendHttpSettingsCollection?.ToList();
             }
 
+            if (this.BackendSettingsCollection != null)
+            {
+                applicationGateway.BackendSettingsCollection = this.BackendSettingsCollection?.ToList();
+            }
+
             if (this.SslProfiles != null)
             {
                 applicationGateway.SslProfiles = this.SslProfiles?.ToList();
@@ -344,6 +367,11 @@ namespace Microsoft.Azure.Commands.Network
                 applicationGateway.HttpListeners = this.HttpListeners?.ToList();
             }
 
+            if (this.Listeners != null)
+            {
+                applicationGateway.Listeners = this.Listeners?.ToList();
+            }
+
             if (this.UrlPathMaps != null)
             {
                 applicationGateway.UrlPathMaps = this.UrlPathMaps?.ToList();
@@ -352,6 +380,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.RequestRoutingRules != null)
             {
                 applicationGateway.RequestRoutingRules = this.RequestRoutingRules?.ToList();
+            }
+
+            if (this.RoutingRules != null)
+            {
+                applicationGateway.RoutingRules = this.RoutingRules?.ToList();
             }
 
             if (this.RewriteRuleSet != null)

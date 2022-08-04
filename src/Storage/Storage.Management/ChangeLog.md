@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.8.0
 * Added check for storage account sas token is secured with the storage account key.
     -  `New-AzStorageAccountSASToken`
 * Supported Management Policy rule filter BlobIndexMatch
