@@ -17,19 +17,25 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNetworkSecurityPerimete
 Describe 'Get-AzNetworkSecurityPerimeterAccessRule' {
     It 'List' {
         { 
-                Get-AzNetworkSecurityPerimeterAccessRule -ProfileName $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1
+            Get-AzNetworkSecurityPerimeterAccessRule -ProfileName $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1
         } | Should -Not -Throw
     }
 
     It 'Get' {
         { 
 
-        Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ProfileName $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1
+            Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ProfileName $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1
         
         } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        { 
+        
+        $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ProfileName $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1
+        $GETObjViaIdentity = Get-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj
+
+        $GETObj.Name | Should -Be $GETObjViaIdentity.Name
+        } | Should -Not -Throw
     }
 }

@@ -33,7 +33,13 @@ Describe 'Get-AzNetworkSecurityPerimeterAssociation' {
         } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        { 
+        
+        $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name $env.tmpAssociation1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1
+        $GETObjViaIdentity = Get-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj
+        $GETObj.Name | Should -Be $GETObjViaIdentity.Name
+
+        } | Should -Not -Throw
     }
 }

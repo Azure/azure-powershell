@@ -18,7 +18,7 @@ Describe 'Get-AzNetworkSecurityPerimeterProfile' {
     It 'List' {
         { 
         
-                Get-AzNetworkSecurityPerimeterProfile -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1
+         Get-AzNetworkSecurityPerimeterProfile -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1
         
         } | Should -Not -Throw
     }
@@ -31,7 +31,13 @@ Describe 'Get-AzNetworkSecurityPerimeterProfile' {
         } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        { 
+        
+        $GETObj = Get-AzNetworkSecurityPerimeterProfile -Name $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1
+        $GETObjViaIdentity = Get-AzNetworkSecurityPerimeterProfile -InputObject $GETObj
+        $GETObj.Name | Should -Be $GETObjViaIdentity.Name
+
+        } | Should -Not -Throw
     }
 }

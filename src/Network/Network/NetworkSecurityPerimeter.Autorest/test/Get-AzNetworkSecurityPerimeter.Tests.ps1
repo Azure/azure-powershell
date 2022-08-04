@@ -23,7 +23,14 @@ Describe 'Get-AzNetworkSecurityPerimeter' {
         { Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp1 -ResourceGroupName $env.rgname } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        { 
+        
+        $GETObj = Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp1 -ResourceGroupName $env.rgname
+        $GETObjViaIdentity = Get-AzNetworkSecurityPerimeter -InputObject $GETObj
+
+        $GETObj.Name | Should -Be $GETObjViaIdentity.Name
+        
+        } | Should -Not -Throw
     }
 }
