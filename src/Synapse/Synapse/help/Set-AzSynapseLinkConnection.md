@@ -31,6 +31,37 @@ The **Set-AzSynapseLinkConnection** cmdlet creates or updates a link connections
 
 ### Example 1
 ```powershell
+<#
+linkconnection.json
+{
+	"name":"sampleLinkConnection", // please change to your link connection name
+	"properties":{
+		"sourceDatabase":{
+			"typeProperties":{ // please change to your source database resourceId and principalId
+				"resourceId":"/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/sampleResourceGroup/providers/Microsoft.Sql/servers/sampleServer",
+				"principalId":"xxxxxxxxxx"
+				},
+			"linkedService":{
+				"referenceName":"sampleLinkServiceReference", // please change to your source database link service name
+				"type":"LinkedServiceReference"
+			}
+		},
+		"targetDatabase":{
+			"linkedService":{
+				"referenceName":"sampleLinkServiceReference", // please change to your target database link service name
+				"type":"LinkedServiceReference",
+				"parameters":{
+					"DBName":"v2"
+				}
+			}
+		},
+		"compute":{
+			"coreCount":16,
+			"computeType":"General"
+		}
+	}
+}
+#>
 Set-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\linkconnection.json"
 ```
 

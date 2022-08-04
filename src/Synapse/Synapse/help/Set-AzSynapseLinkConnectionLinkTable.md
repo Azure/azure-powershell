@@ -39,6 +39,29 @@ The **Set-AzSynapseLinkConnectionLinkTables** cmdlet edits link tables under a l
 
 ### Example 1
 ```powershell
+<#
+edittables.json
+{ 
+  "linkTables": [ 
+    { 
+      "id": "00000000000000000000000000000000", // please change to your link table Id: a uuid
+      "source": { 
+        "tableName": "sampleSourceTable", // please change to your source table name
+        "schemaName": "sampleSourceSchema" // please change to your source database schema name
+      }, 
+      "target": { 
+        "tableName": "sampleTargetTable", // please change to your target table name
+        "schemaName": "sampleTargetSchema", // please change to your target database schema name
+        "distributionOptions": { 
+          "type": "Round_RoBin", // please choose a type from Hash, Round_RoBin, Replicate
+          "distributionColumn": "sampleColumn" // please change to the column name
+        }
+      }, 
+      "operationType": "add" // please choose a value from add, update, remove
+    }
+  ]
+}
+#>
 Set-AzSynapseLinkConnectionLinkTable -WorkspaceName ContosoWorkspace -LinkConnectionName ContosoLinkConnection -EditTablesRequestFile "C:\\samples\\edittables.json"
 ```
 
