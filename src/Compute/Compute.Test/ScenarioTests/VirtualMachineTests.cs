@@ -509,6 +509,13 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         }
 
         [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineGuestAttestation()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineGuestAttestation");
+        }
+
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestConfidentialVMSetAzVmOsDiskDESId()
         {
@@ -545,9 +552,16 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineGuestAttestation()
+        public void TestConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest()
         {
-            TestRunner.RunTestScript("Test-VirtualMachineGuestAttestation");
+            TestRunner.RunTestScript("Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDEBUGConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest()
+        {
+            TestRunner.RunTestScript("Test-DEBUGConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest");
         }
     }
 }

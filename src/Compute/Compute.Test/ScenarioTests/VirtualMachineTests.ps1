@@ -5879,7 +5879,6 @@ function Test-VirtualMachineGuestAttestation
         Clean-ResourceGroup $rgname;
     }
 }
-}
 
 <#
 .SYNOPSIS
@@ -6306,7 +6305,7 @@ function Test-ConfidentialVMSetAzVmOsDiskDESIdNoCustPolicyDESPermission
 Test confidential vm set-azvmosdisk wiki
 https://dev.azure.com/msazure/AzureWiki/_wiki/wikis/AzureWiki.wiki/232000/How-to-Provision-a-CVM-with-customer-managed-key-(CMK)-using-Azure-CLI
 #>
-function Test-ConfidentialVMSetAzVmOsDiskWiki
+function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
@@ -6316,7 +6315,7 @@ function Test-ConfidentialVMSetAzVmOsDiskWiki
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $rgname = "adsandwiki12";
+        #$rgname = "adsandwiki13";
 
         $vmname = 'v' + 'vmdesnop';
         $vmSize = "Standard_DC2as_v5";         
@@ -6331,12 +6330,12 @@ function Test-ConfidentialVMSetAzVmOsDiskWiki
         $secureEncryptGuestState = 'DiskWithVMGuestState';
         $vmSecurityType = "ConfidentialVM";
         $user = "admin01";
-        $password = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force; 
-        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        #$password = Get-PasswordForVM;
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force; 
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        $kvname = "val3" + $rgname;
-        $keyname = "keynam";
+        $kvname = "kv" + $rgname;
+        $keyname = "k" + $rgname;
         $desName= "des" + $rgname;
 
         # New-AzKeyVault -Name $kvName -Location $loc -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
@@ -6360,8 +6359,9 @@ function Test-ConfidentialVMSetAzVmOsDiskWiki
         # az keyvault key create --vault-name $kvname --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
         $KeyName = $keyname;
         $KeySize = 3072;
-        az keyvault key create --vault-name $KeyVault --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
-        #######Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -UseDefaultCVMPolicy;
+        #az keyvault key create --vault-name $KeyVault --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
+        #######Add-AzKeyVaultKey -Hsmname $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA  -UseDefaultCVMPolicy;#-Destination HSM;
+        Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM ;#-UseDefaultCVMPolicy ;#-Destination HSM;
 
 
         # Capture Keyvault and key details
@@ -6377,8 +6377,11 @@ function Test-ConfidentialVMSetAzVmOsDiskWiki
         $diskencset = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $desName;
 
         # Assign DES Access Policy to key vault
+        #Start-Sleep -Seconds 30;
         $desIdentity = (Get-AzDiskEncryptionSet -Name $desName -ResourceGroupName $rgName).Identity.PrincipalId;
         Set-AzKeyVaultAccessPolicy -VaultName $kvName -ResourceGroupName $rgname -ObjectId $desIdentity -PermissionsToKeys wrapKey,unwrapKey,get;
+        #Error at this point. Could not find the resource. Might be a delay in creation or something? 
+
         #######$keyVault = Get-AzKeyVault -VaultName $kvName -ResourceGroupName $rgName;
         #######$desIdentity= (az disk-encryption-set show -n $desName -g $rgname --query [identity.principalId] -o tsv);
         #######az keyvault set-policy -n $kvname `
@@ -6426,6 +6429,138 @@ function Test-ConfidentialVMSetAzVmOsDiskWiki
         Clean-ResourceGroup $rgname;
     }
 }
+
+function Test-DEBUGConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "northeurope";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        #$rgname = "adsandwiki14";
+
+        $vmname = 'v' + 'vmdesnop';
+        $vmSize = "Standard_DC2as_v5";         
+        $domainNameLabel2 = "d" + $rgname;
+        $computerName = "c" + "compnam";
+        $identityType = "SystemAssigned";
+        $loc = 'northeurope';
+        $subnetPrefix = "subnet2";
+        $vnetPrefix = "vnet2";
+        $pubIpPrefix = "pubip2";
+        $nicPrefix = "nic2";
+        $secureEncryptGuestState = 'DiskWithVMGuestState';
+        $vmSecurityType = "ConfidentialVM";
+        $user = "admin01";
+        #$password = Get-PasswordForVM;
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force; 
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $kvname = "kv2" + $rgname;
+        $keyname = "k" + $rgname;
+        $desName= "des" + $rgname;
+
+        
+        $KeyVault = $kvName;
+        $resourceGroup = $rgname;
+        $region = $loc;
+        #########this worked: az keyvault create --name $KeyVault --resource-group $resourceGroup --location $region --sku Premium --enable-purge-protection ;
+        New-AzKeyVault -Name $KeyVault -Location $loc -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
+        
+        #  install-module -name "Az.Resources" -AllowClobber -Force
+        #$cvmAgent = Get-AzADServicePrincipal -ApplicationId 'bf7b6499-ff71-4aa2-97a4-f372087be7f0';
+        # above command does not work in the test framework, but it is more accurate. Below value is in what this command returns.
+        $cvmAgentId = "cbab42ea-0ee6-4563-a646-7418ac305278";
+        #error here with the audience? yes.
+        # id is cbab42ea-0ee6-4563-a646-7418ac305278
+        
+        #########$cvmAgent = Get-AzureADServicePrincipal -ObjectId "bf7b6499-ff71-4aa2-97a4-f372087be7f0" | Out-String | ConvertFrom-Json;
+        #########thisworked: az keyvault set-policy --name $KeyVault --object-id $cvmAgent.id --key-permissions get release;
+        Set-AzKeyVaultAccessPolicy -VaultName $kvName -ResourceGroupName $rgname -ObjectId $cvmAgentId -PermissionsToKeys get,release -BypassObjectIdValidation;
+        # Why does the above end in a bad request?????????????????????????? no api version in the request. WTF? Works fine on manual test.
+        #Trying -BypassObjectIdValidation. WOOORKED!!!!!!!!!!!!!!!
+        # needed to make this run in test framework
+        Set-AzKeyVaultAccessPolicy -VaultName $kvName -ResourceGroupName $rgname -ObjectId "f90057dd-422f-49fc-a88f-91e965bc00c8" -PermissionsToKeys create,update,import -BypassObjectIdValidation;
+
+        # Add Key vault Key
+        # Currently requires downloading a particular policy file.
+        
+        
+        $KeyName = $keyname;
+        $KeySize = 3072;
+        az keyvault key create --vault-name $KeyVault --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
+        
+        
+        # Capture Keyvault and key details
+        $encryptionKeyVaultTmp = Get-AzKeyVault -VaultName $kvName -ResourceGroupName $rgName;
+        $encryptionKeyVaultId = $encryptionKeyVaultTmp.ResourceId;
+        
+        #$encryptionKeyURL = (Get-AzKeyVaultKey -VaultName $kvName -KeyName $keyName).Key.Kid;
+        $encryptionKeyTmp = Get-AzKeyVaultKey -VaultName $kvName -Name $keyName;
+        #using Name or not still runs into this issue. Whenever the test gets to the TestClientFactory to CreateCUstomArmClient, it fails
+        # with error " The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: can't find constructor (uri, ServiceClientCredentials, DelegatingHandler[]) to create client"
+        $encryptionKeyURL = $encryptionKeyTmp.Key.Kid;
+        <#
+        # Create new DES Config and DES
+        $diskEncryptionType = "ConfidentialVmEncryptedWithCustomerKey";
+        $desConfig = New-AzDiskEncryptionSetConfig -Location $loc -SourceVaultId $encryptionKeyVaultId -KeyUrl $encryptionKeyURL -IdentityType SystemAssigned -EncryptionType $diskEncryptionType;
+        New-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $desName -DiskEncryptionSet $desConfig;
+        $diskencset = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $desName;
+
+        # Assign DES Access Policy to key vault
+        $desTmp = Get-AzDiskEncryptionSet -Name $desName -ResourceGroupName $rgName;
+        $desIdentity = $desTmp.Identity.PrincipalId;
+        #$desIdentity = (Get-AzDiskEncryptionSet -Name $desName -ResourceGroupName $rgName).Identity.PrincipalId;
+        Set-AzKeyVaultAccessPolicy -VaultName $kvName -ResourceGroupName $rgname -ObjectId $desIdentity -PermissionsToKeys wrapKey,unwrapKey,get;
+        #Error at this point. Could not find the resource. Might be a delay in creation or something? 
+   
+        
+        
+
+        # Set-AzVmOsDisk test, DiskWithVMGuestState scenario. 
+
+        $virtualMachine = New-AzVMConfig -VMName $VMName -VMSize $vmSize;
+        $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
+        $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'windowsserver' -Skus '2022-datacenter-smalldisk-g2' -Version "latest";
+
+        $subnetConfigName = $subnetPrefix + $rgName;
+        $vnetConfigName = $vnetPrefix + $rgname;
+        $pubIpName = $pubIpPrefix + $rgname;
+        $nicName = $nicPrefix + $rgname;
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetConfigName -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name $vnetConfigName -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name $vnetConfigName -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name $pubIpName -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2;
+        $pubip = Get-AzPublicIpAddress -Name $pubIpName -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name $nicName -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+
+        $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $nicId;
+
+        $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $secureEncryptGuestState -SecureVMDiskEncryptionSet $diskencset.Id;
+        $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
+        $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $VirtualMachine;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-AreEqual $secureEncryptGuestState $vm.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
+        #>
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
 
 <#
 .SYNOPSIS
