@@ -204,22 +204,11 @@ function Update-AzNetworkSecurityPerimeterAssociation {
                 }
             }
 
-            if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
-            }
-
-            Write-Host $GETObject
-            Write-Host $PSBoundParameters
             
-            try{
-                Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
+            # Call PUT method
+            Az.NetworkSecurityPerimeter.private\New-AzNetworkSecurityPerimeterAssociation_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
 
-            }catch{
-                throw           
-            }
-            
         }
-
         catch {
             throw
         }

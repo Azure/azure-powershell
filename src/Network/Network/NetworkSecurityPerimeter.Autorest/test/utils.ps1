@@ -27,6 +27,7 @@ function setupEnv() {
     }
 
     $randomString = "t" + (RandomString -allChars $false -len 4)
+    $randomString = "test"
 
     $envFilePath = (Join-Path $PSScriptRoot $envFile)
 
@@ -167,8 +168,7 @@ function cleanupEnv() {
     Remove-AzNetworkSecurityPerimeterAssociation @remove_associationDelete2
 
     
-    <#
-
+    
     #Remove association created by testcase
     $remove_association2 = @{
         SecurityPerimeterName = $env.tmpNsp1
@@ -184,7 +184,9 @@ function cleanupEnv() {
 
     Write-Host -ForegroundColor Magenta "Sleep 60"
 
+    <#
     Start-Sleep -Seconds 60
+
 
     Write-Host -ForegroundColor Magenta "Removing RG"
 
@@ -192,8 +194,7 @@ function cleanupEnv() {
     Remove-AzResourceGroup -Name $env.rgname
 
     Write-Host -ForegroundColor Magenta "Removed RG"
-
     #>
-
+    
 }
 

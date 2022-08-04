@@ -15,11 +15,27 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNetworkSecurityPerim
 }
 
 Describe 'Update-AzNetworkSecurityPerimeterAssociation' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { 
+            $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name $env.association1 -SecurityPerimeterName $env.tmpNsp1 -ResourceGroupName $env.rgname
+
+            $UpdateObj = Update-AzNetworkSecurityPerimeterAssociation -Name $env.association1 -SecurityPerimeterName $env.tmpNsp1 -ResourceGroupName $env.rgname -AccessMode $env.accessMode2
+
+            $UpdateObj.accessMode | Should -Be $env.accessMode2
+
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        { 
+           #$PSDefaultParameterValues['Disabled'] = $true   
+
+           $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name $env.association1 -SecurityPerimeterName $env.tmpNsp1 -ResourceGroupName $env.rgname
+
+           $UpdateObj = Update-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj -AccessMode $env.accessMode1
+
+           $UpdateObj.accessMode | Should -Be $env.accessMode1
+
+        } | Should -Not -Throw
     }
 }

@@ -113,7 +113,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "The name of the workspace.")]
-        [Alias('WorkspaceName')]
+        [Alias('AccessRuleName')]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
         [System.String]
         # The name of the workspace.
@@ -125,6 +125,12 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         [System.String]
         # The name of the workspace.
         ${SecurityPerimeterName},
+
+        [Parameter(ParameterSetName = 'UpdateExpanded', Mandatory, HelpMessage = "Profile Name")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Path')]
+        [System.String]
+        # The name of the workspace.
+        ${ProfileName},
 
 
         # Body paramters
@@ -142,18 +148,13 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         # The Location of the resource
         ${Location},
 
-        [Parameter(HelpMessage = "Profile Name")]
-        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.String]
-        # Profile Name
-        ${ProfileName},
-
         
         [Parameter(HelpMessage = "Address Prefix")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.Collections.ArrayList]
         # Address Prefix
         ${AddressPrefix},
+
 
         [Parameter(HelpMessage = "Fully qualified domain name")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
@@ -166,20 +167,31 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.Collections.ArrayList]
         # Fully qualified domain name
-        ${NetworkSecurityPerimeters}
+        ${NetworkSecurityPerimeters},
+
+        [Parameter(HelpMessage = "Direction")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+        [System.String]
+        # The Location of the resource
+        ${Direction}
 
 
         # Add only those paramters which can be updated
 
     )
 
+
+ 
     process {
         try {
             
             # 1. GET
 
+
+            Write-Host "test 1"
+
             # body params and AsJob
-            $params = 'Tag', 'Location', 'ProfileName', 'AddressPrefix', 'FullyQualifiedDomainName', 'NetworkSecurityPerimeters', 'AsJob'
+            $params = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'NetworkSecurityPerimeters', 'Direction', 'Subscription',  'AsJob'
 
             $paramsMap = @{}
 
@@ -200,6 +212,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
             $null = $PSBoundParameters.Remove('SecurityPerimeterName')
+            $null = $PSBoundParameters.Remove('ProfileName')
 
 
             foreach ($item in $paramsMap.GetEnumerator() )
@@ -212,11 +225,8 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
                     $GETObject.$key = $variable
                 }
             }
-
-            if ($hasAsJob) {
-                $PSBoundParameters.Add('AsJob', $true)
-            }
             
+            # Call PUT method
             New-AzNetworkSecurityPerimeterAccessRule_CreateViaIdentity -InputObject $GETObject -Parameter $GETObject @PSBoundParameters
 
         }

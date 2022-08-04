@@ -15,11 +15,36 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNetworkSecurityPerim
 }
 
 Describe 'Update-AzNetworkSecurityPerimeterAccessRule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { 
+
+        Update-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ProfileName $env.tmpProfile1  -AddressPrefix @('10.10.0.0/17')
+        
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        {
+           # this test case is dependent on the above test case
+           $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ProfileName $env.tmpProfile1
+
+           $UpdateObj = Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @('10.0.0.0/16')
+
+           $UpdateObj.addressPrefix | Should -Be @('10.0.0.0/16')
+           
+        } | Should -Not -Throw
     }
+
+    It 'UpdateViaIdentityExpandedFQDN' {
+        {
+           # this test case is dependent on the above test case
+           $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ProfileName $env.tmpProfile1
+
+           $UpdateObj = Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -Direction 'Outbound' -FullyQualifiedDomainName @('10.0.0.0/16', '10.0.0.0/17')
+
+           $UpdateObj.fullyQualifiedDomainNames | Should -Be @('10.0.0.0/16', '10.0.0.0/17')
+           
+        } | Should -Not -Throw
+    }
+
 }
