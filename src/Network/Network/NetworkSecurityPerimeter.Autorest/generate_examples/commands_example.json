@@ -13,7 +13,7 @@
 				},
 				{
 					"methodType": "GetViaIdentity",
-					"command": "$GETObj = Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp1 -ResourceGroupName $env.rgname   BREAKLINE  $GETObjViaIdentity = Get-AzNetworkSecurityPerimeter -InputObject $GETObj"
+					"command": "$GETObj = Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp1 -ResourceGroupName $env.rgname   BREAKLINE  Get-AzNetworkSecurityPerimeter -InputObject $GETObj"
 				},
 				{
 					"methodType": "Create",
@@ -67,7 +67,7 @@
 				},
 				{
 					"methodType": "GetViaIdentity",
-					"command": "$GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ProfileName $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1  BREAKLINE  $GETObjViaIdentity = Get-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj"
+					"command": "$GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ProfileName $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1  BREAKLINE  Get-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj"
 				},
 				{
 					"methodType": "Create",
@@ -87,7 +87,7 @@
 				},
 				{
 					"methodType": "UpdateViaIdentity",
-					"command": "$GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ProfileName $env.tmpProfile1  BREAKLINE  $UpdateObj = Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @('10.0.0.0/16')"
+					"command": "$GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ProfileName $env.tmpProfile1  BREAKLINE  Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @('10.0.0.0/16')"
 				}
 			]
 		},
@@ -124,7 +124,7 @@
 				},
 				{
 					"methodType": "UpdateViaIdentity",
-					"command": "$GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name $env.association1 -SecurityPerimeterName $env.tmpNsp1 -ResourceGroupName $env.rgname  BREAKLINE  $UpdateObj = Update-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj -AccessMode $env.accessMode1"
+					"command": "$GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name $env.association1 -SecurityPerimeterName $env.tmpNsp1 -ResourceGroupName $env.rgname  BREAKLINE  Update-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj -AccessMode $env.accessMode1"
 				}
 			]
 		}

@@ -96,15 +96,15 @@ function main(){
 
             $outputCommand = Get-Content -Path .\temp_command.ps1
             
-            $mdFileContent = "```````powershell
+            $mdFileContent = "``````powershell
 
 $outputCommand
 
-```````
+``````
 
-```````output
+``````output
 $outputString
-```````
+``````
 $description
 "
 
