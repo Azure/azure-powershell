@@ -51,10 +51,43 @@ namespace Microsoft.Azure.Commands.Automation.Common
             {
                 return null;
             }
-
             Hashtable parameters = new Hashtable();
+            bool SuccessfulPSInvoke = false;
+            Collection<PSObject> result=null;
             parameters.Add(Constants.PsCommandParamInputObject, json);
-            var result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertFromJson, parameters);
+            using (var PS_GetVersion = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace))
+            {
+                PS_GetVersion.AddScript("(Get-Host).Version.Major");
+                var PSVersion = Int32.Parse(PS_GetVersion.Invoke()[0].ToString());
+                if(PSVersion>5)
+                {
+                    try
+                    {
+                        result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertFromJson, parameters);
+                        SuccessfulPSInvoke = false;
+                    }
+                    catch (Exception)
+                    {
+                        
+                    }
+                    finally
+                    {
+                        if (!SuccessfulPSInvoke)
+                        {
+                            parameters.Remove(Constants.PsCommandParamInputObject);
+                            if (!(json[0] == '"' && json[json.Length - 1] == '"') && !(json[0] == '\'' && json[json.Length - 1] == '\''))
+                            {
+                                json = "'" + json + "'";
+                            }
+                            parameters.Add(Constants.PsCommandParamInputObject, json);
+                        }
+                    }
+                }
+            }
+            if (!SuccessfulPSInvoke)
+            {
+                result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertFromJson, parameters);
+            }
             if (result.Count != 1)
             {
                 return null;
