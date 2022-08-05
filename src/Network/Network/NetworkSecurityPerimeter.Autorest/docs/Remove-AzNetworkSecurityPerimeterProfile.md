@@ -34,7 +34,7 @@ Deletes an NSP profile.
 
 ```powershell
 
- Remove-AzNetworkSecurityPerimeterProfile -Name profile6 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp4
+ Remove-AzNetworkSecurityPerimeterProfile -Name profile6 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4
 
 ```
 
@@ -47,7 +47,7 @@ Deletes a NetworkSecurityPerimeterProfile by Name
 
 ```powershell
 
- $profileObj = Get-AzNetworkSecurityPerimeterProfile -Name profile7 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp4      Remove-AzNetworkSecurityPerimeterProfile -InputObject $profileObj
+ $profileObj = Get-AzNetworkSecurityPerimeterProfile -Name profile7 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp4      Remove-AzNetworkSecurityPerimeterProfile -InputObject $profileObj
 
 ```
 

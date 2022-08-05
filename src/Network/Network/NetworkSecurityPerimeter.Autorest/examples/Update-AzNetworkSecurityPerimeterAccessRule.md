@@ -3,7 +3,7 @@
 
 ```powershell
 
- Update-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3 -ProfileName profile1  -AddressPrefix @('10.10.0.0/17')
+ Update-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -ProfileName profile1  -AddressPrefix @('10.10.0.0/17')
 
 ```
 
@@ -21,7 +21,7 @@ Updates a NetworkSecurityPerimeterAccessRule
 
 ```powershell
 
- $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3 -ProfileName profile1
+ $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3 -ProfileName profile1
  Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @('10.0.0.0/16')
 
 ```

@@ -40,7 +40,7 @@ Gets the specified NSP association by name.
 ### Example 1: {{ Add title here }}
 ```powershell
 
- Get-AzNetworkSecurityPerimeterAssociation -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3
+ Get-AzNetworkSecurityPerimeterAssociation -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
 
 ```
 
@@ -59,7 +59,7 @@ List NetworkSecurityPerimeterAccessAssociation
 
 ```powershell
 
- Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3
+ Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
 
 ```
 
@@ -76,7 +76,7 @@ Gets a NetworkSecurityPerimeterAccessAssociation by Name
 ### Example 3: Gets a NetworkSecurityPerimeterAccessAssociation by identity (using pipe)
 ```powershell
 
- $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3     Get-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj
+ $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3     Get-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj
 
 ```
 

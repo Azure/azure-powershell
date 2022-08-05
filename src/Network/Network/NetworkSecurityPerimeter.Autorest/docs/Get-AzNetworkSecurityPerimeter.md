@@ -40,7 +40,7 @@ Gets the specified network security perimeter by the name.
 
 ```powershell
 
- Get-AzNetworkSecurityPerimeter -ResourceGroupName kumarkaushal-PS-RG-1
+ Get-AzNetworkSecurityPerimeter -ResourceGroupName ResourceGroup-1
 
 ```
 
@@ -63,7 +63,7 @@ List NetworkSecurityPerimeter
 
 ```powershell
 
- Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName kumarkaushal-PS-RG-1
+ Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
 
 ```
 
@@ -82,7 +82,7 @@ Gets a NetworkSecurityPerimeter by Name
 
 ```powershell
 
- $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName kumarkaushal-PS-RG-1
+ $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
  $GETObjViaIdentity = Get-AzNetworkSecurityPerimeter -InputObject $GETObj
 
 ```

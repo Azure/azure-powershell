@@ -1,7 +1,7 @@
 ### Example 1: Creates a NetworkSecurityPerimeterProfile
 ```powershell
 
- New-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3
+ New-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
 
 ```
 
@@ -18,7 +18,7 @@ Creates a NetworkSecurityPerimeterProfile
 ### Example 2: Creates a NetworkSecurityPerimeterProfile
 ```powershell
 
- New-AzNetworkSecurityPerimeterProfile -Name profile2 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3
+ New-AzNetworkSecurityPerimeterProfile -Name profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
 
 ```
 

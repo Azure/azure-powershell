@@ -2,7 +2,7 @@
 
 ```powershell
 
- Update-AzNetworkSecurityPerimeterAssociation -Name association1 -SecurityPerimeterName nsp3 -ResourceGroupName kumarkaushal-PS-RG-1 -AccessMode Enforced
+ Update-AzNetworkSecurityPerimeterAssociation -Name association1 -SecurityPerimeterName nsp3 -ResourceGroupName ResourceGroup-1 -AccessMode Enforced
 
 ```
 
@@ -19,7 +19,7 @@ Updates a NetworkSecurityPerimeterAccessAssociation
 
 ```powershell
 
- $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association1 -SecurityPerimeterName nsp3 -ResourceGroupName kumarkaushal-PS-RG-1
+ $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association1 -SecurityPerimeterName nsp3 -ResourceGroupName ResourceGroup-1
  Update-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj -AccessMode Learning
 
 ```
