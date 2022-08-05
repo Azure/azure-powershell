@@ -44,8 +44,8 @@ Property                     : {
                                  "endpointType": "NfsMount",
                                  "description": "Update Description"
                                  "provisioningState": "Succeeded",
-                                 "host": "x.x.x.x",
-                                 "export": "x"
+                                 "host": "10.0.0.1",
+                                 "export": "/"
                                }
 SystemDataCreatedAt          : 7/18/2022 7:28:30 AM
 SystemDataCreatedBy          : xxxxxxx

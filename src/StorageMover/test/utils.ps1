@@ -61,9 +61,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-
-    # Comment Remove-AzResourceGroup out for now since creating an agent requires a local VM and cannot be created with ARM.
-    # Deleting the resource group would delete the agent too. Will uncomment once the agent testing is done.
-    # Remove-AzResourceGroup -Name $env.ResourceGroupName
+    Remove-AzResourceGroup -Name $env.ResourceGroupName
 }
 
