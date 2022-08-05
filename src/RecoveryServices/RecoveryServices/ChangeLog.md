@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed GetAzRecoveryServicesVaultSettingsFile cmdlet used for downloading vault credential file.
 
 ## Version 5.4.1
 * Fixed delay in long running operations [#18567]
