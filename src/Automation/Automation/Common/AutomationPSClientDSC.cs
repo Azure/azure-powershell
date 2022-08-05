@@ -1469,8 +1469,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 }
 
                 // Write to the file
-                // TODO: Change the GetContent to string
-                this.WriteFile(outputFilePath, null);
+                this.WriteFile(outputFilePath, nodeReportContent);
 
                 return new DirectoryInfo(outputFilePath);
             }
