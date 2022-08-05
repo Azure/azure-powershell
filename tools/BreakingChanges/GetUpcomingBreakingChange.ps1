@@ -15,7 +15,7 @@
 # To get upcoming breaking change info, you need to build az first
 # ```powershell
 # dotnet msbuild build.proj /t:build /p:configuration=debug
-# Import-Module tools/BreakingChanges/GetUpcomingBreakingChange.ps1
+# Import-Module ./tools/BreakingChanges/GetUpcomingBreakingChange.ps1
 # Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath .\artifacts\Debug\ -MarkdownPath UpcommingBreakingChange.md
 # ```
 
@@ -563,11 +563,11 @@ Function Export-BreakingChangeMessageOfModule
     {
         Return ""
     }
-    $Result = "`n`n# $ModuleName`n"
+    $Result = "`n`n## $ModuleName`n"
 
     ForEach ($CmdletName In ($ModuleBreakingChangeInfo.Keys | Sort-Object))
     {
-        $Result += "`n## ``$CmdletName```n"
+        $Result += "`n### ``$CmdletName```n"
         $Result += Export-BreakingChangeMessageOfCmdlet $ModuleBreakingChangeInfo[$CmdletName]
     }
 
@@ -585,7 +585,7 @@ Function Export-AllBreakingChangeMessageUnderArtifacts
         [String]
         $MarkdownPath
     )
-    $Result = ''
+    $Result = "# Upcoming breaking changes in Azure PowerShell"
     $AllModuleList = Get-ChildItem -Path $ArtifactsPath -Filter Az.* | ForEach-Object { $_.Name }
     ForEach ($ModuleName In $AllModuleList)
     {
