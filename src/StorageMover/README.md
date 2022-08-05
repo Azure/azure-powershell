@@ -51,25 +51,9 @@ directive:
       verb: Set
     remove: true
   - where:
-      model-name: StorageMover
+      model-name: StorageMover|JobDefinition|Project|Endpoint|Agent
     set:
       suppress-format: true
-  - where:
-      model-name: JobDefinition
-    set:
-      suppress-format: true
-  - where:
-      model-name: Project
-    set:
-      suppress-format: true
-  - where:
-      model-name: Endpoint
-    set:
-      suppress-format: true  
-  - where:
-      model-name: Agent
-    set:
-      suppress-format: true  
   - no-inline:
       - EndpointBaseProperties
   - no-inline:
