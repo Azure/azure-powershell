@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://docs.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuilderrunoutput
+online version: https://docs.microsoft.com/powershell/module/az.imagebuilder/get-azimagebuildertemplaterunoutput
 schema: 2.0.0
 ---
 
-# Get-AzImageBuilderRunOutput
+# Get-AzImageBuilderTemplateRunOutput
 
 ## SYNOPSIS
 Get the specified run output for the specified image template resource
@@ -14,19 +14,19 @@ Get the specified run output for the specified image template resource
 
 ### List (Default)
 ```
-Get-AzImageBuilderRunOutput -ImageTemplateName <String> -ResourceGroupName <String>
+Get-AzImageBuilderTemplateRunOutput -ImageTemplateName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzImageBuilderRunOutput -ImageTemplateName <String> -ResourceGroupName <String> -RunOutputName <String>
+Get-AzImageBuilderTemplateRunOutput -ImageTemplateName <String> -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzImageBuilderRunOutput -InputObject <IImageBuilderIdentity> [-DefaultProfile <PSObject>]
+Get-AzImageBuilderTemplateRunOutput -InputObject <IImageBuilderIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -37,40 +37,26 @@ Get the specified run output for the specified image template resource
 
 ### Example 1: List all run results under a template
 ```powershell
-Get-AzImageBuilderRunOutput -ImageTemplateName lucas-imagetemplate -ResourceGroupName wyunchi-imagebuilder
+Get-AzImageBuilderTemplateRunOutput -ImageTemplateName test-img-temp -ResourceGroupName bez-rg
 ```
 
 ```output
-Name          Type
-----          ----
-image_lucas_1 Microsoft.VirtualMachineImages/imageTemplates/runOutputs
+Name          
+----          
+image_lucas_1 
 ```
 
 This command lists all run results under a template.
 
 ### Example 2: Get a run result under a template
 ```powershell
-Get-AzImageBuilderRunOutput -ImageTemplateName template-name-u7gjqx -ResourceGroupName wyunchi-imagebuilder -RunOutputName runout-template-name-u7gjqx 
+Get-AzImageBuilderTemplateRunOutput -ImageTemplateName test-img-temp -ResourceGroupName bez-rg -Name runout-template-name-u7gjq
 ```
 
 ```output
-Name                        Type
-----                        ----
-runout-template-name-u7gjqx Microsoft.VirtualMachineImages/imageTemplates/runOutputs
-```
-
-This command gets a run result under a template.
-
-### Example 3: Get a run result under a template
-```powershell
-$result = Get-AzImageBuilderRunOutput -ImageTemplateName template-name-u7gjqx -ResourceGroupName wyunchi-imagebuilder -RunOutputName runout-template-name-u7gjqx
-Get-AzImageBuilderRunOutput -InputObject $result
-```
-
-```output
-Name                        Type
-----                        ----
-runout-template-name-u7gjqx Microsoft.VirtualMachineImages/imageTemplates/runOutputs
+Name                       
+----                       
+runout-template-name-u7gjqx
 ```
 
 This command gets a run result under a template.
@@ -123,13 +109,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-The name of the resource group.
+### -Name
+The name of the run output
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Parameter Sets: Get
+Aliases: RunOutputName
 
 Required: True
 Position: Named
@@ -138,12 +124,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RunOutputName
-The name of the run output
+### -ResourceGroupName
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -178,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IRunOutput
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IRunOutput
 
 ## NOTES
 
@@ -189,7 +175,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IImageBuilderIdentity>: Identity Parameter
+`INPUTOBJECT <IImageBuilderIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ImageTemplateName <String>]`: The name of the image Template
   - `[ResourceGroupName <String>]`: The name of the resource group.

@@ -1,77 +1,76 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://docs.microsoft.com/powershell/module/az.imagebuilder/new-AzImageBuilderDistributorObject
+online version: https://docs.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatedistributorobject
 schema: 2.0.0
 ---
 
-# New-AzImageBuilderDistributorObject
+# New-AzImageBuilderTemplateDistributorObject
 
 ## SYNOPSIS
-Generic distribution object
+Create an in-memory object for ImageTemplateDistributor.
 
 ## SYNTAX
 
-### ManagedImageDistributor (Default)
+### VhdDistributor (Default)
 ```
-New-AzImageBuilderDistributorObject -ArtifactTag <Hashtable> -ImageId <String> -Location <String>
- -ManagedImageDistributor -RunOutputName <String> [<CommonParameters>]
+New-AzImageBuilderTemplateDistributorObject -RunOutputName <String> -VhdDistributor
+ [-ArtifactTag <IImageTemplateDistributorArtifactTags>] [<CommonParameters>]
+```
+
+### ManagedImageDistributor
+```
+New-AzImageBuilderTemplateDistributorObject -ImageId <String> -Location <String> -ManagedImageDistributor
+ -RunOutputName <String> [-ArtifactTag <IImageTemplateDistributorArtifactTags>] [<CommonParameters>]
 ```
 
 ### SharedImageDistributor
 ```
-New-AzImageBuilderDistributorObject -ArtifactTag <Hashtable> -ExcludeFromLatest <Boolean>
- -GalleryImageId <String> -ReplicationRegion <String[]> -RunOutputName <String> -SharedImageDistributor
- [-StorageAccountType <SharedImageStorageAccountType>] [<CommonParameters>]
-```
-
-### VhdDistributor
-```
-New-AzImageBuilderDistributorObject -ArtifactTag <Hashtable> -RunOutputName <String> -VhdDistributor
- [<CommonParameters>]
+New-AzImageBuilderTemplateDistributorObject -GalleryImageId <String> -ReplicationRegion <String[]>
+ -RunOutputName <String> -SharedImageDistributor [-ArtifactTag <IImageTemplateDistributorArtifactTags>]
+ [-ExcludeFromLatest <Boolean>] [-StorageAccountType <SharedImageStorageAccountType>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Generic distribution object
+Create an in-memory object for ImageTemplateDistributor.
 
 ## EXAMPLES
 
 ### Example 1: Create a managed image distributor
 ```powershell
-New-AzImageBuilderDistributorObject -ManagedImageDistributor  -ArtifactTag @{tag='lucasManage'} -ImageId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/lucas-linux-imageshare -RunOutputName luacas-runout -Location eastus
+New-AzImageBuilderTemplateDistributorObject -ManagedImageDistributor -ArtifactTag @{tag='lucasManage'} -ImageId /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/lucas-linux-imageshare -RunOutputName luacas-runout -Location eastus
 ```
 
 ```output
-RunOutputName Type         ImageId                                                                                                                                           Location
-------------- ----         -------                                                                                                                                           --------
-luacas-runout ManagedImage /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/lucas-linux-imageshare eastus
+RunOutputName ImageId
+------------- -------                                                                                                         
+luacas-runout /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Co…
 ```
 
 This command creates a managed image distributor.
 
 ### Example 2: Create a VHD distributor
 ```powershell
-New-AzImageBuilderDistributorObject -ArtifactTag @{tag='vhd'} -VhdDistributor -RunOutputName image-vhd
+New-AzImageBuilderTemplateDistributorObject -ArtifactTag @{tag='vhd'} -VhdDistributor -RunOutputName image-vhd
 ```
 
 ```output
-RunOutputName Type
-------------- ----
-image-vhd     Vhd
+RunOutputName
+-------------
+image-vhd
 ```
 
 This command creates a VHD distributor.
 
 ### Example 3: Create a shared image distributor
 ```powershell
-New-AzImageBuilderDistributorObject -SharedImageDistributor -ArtifactTag @{tag='dis-share'} -GalleryImageId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/galleries/myimagegallery/images/lcuas-linux-share' -ReplicationRegion eastus2 -RunOutputName 'outname' -ExcludeFromLatest $false 
+New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{tag='dis-share'} -GalleryImageId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/galleries/myimagegallery/images/lcuas-linux-share' -ReplicationRegion eastus2 -RunOutputName 'outname' -ExcludeFromLatest $false 
 ```
 
 ```output
-RunOutputName Type        ExcludeFromLatest GalleryImageId                                                                                                                                                        ReplicationRegi
-                                                                                                                                                                                                                  on
-------------- ----        ----------------- --------------                                                                                                                                                        ---------------
-outname       SharedImage False             /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/galleries/myimagegallery/images/lcuas-linux-share {eastus2}
+RunOutputName ExcludeFromLatest GalleryImageId
+------------- ----------------- --------------                                                                                
+outname       False             /subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/prov… 
 ```
 
 This command creates a shared image distributor.
@@ -80,13 +79,14 @@ This command creates a shared image distributor.
 
 ### -ArtifactTag
 Tags that will be applied to the artifact once it has been created/updated by the distributor.
+To construct, see NOTES section for ARTIFACTTAG properties and create a hash table.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateDistributorArtifactTags
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -102,7 +102,7 @@ Type: System.Boolean
 Parameter Sets: SharedImageDistributor
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -252,11 +252,23 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateDistributor
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateManagedImageDistributor
+
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateSharedImageDistributor
+
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateVhdDistributor
 
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`ARTIFACTTAG <IImageTemplateDistributorArtifactTags>`: Tags that will be applied to the artifact once it has been created/updated by the distributor.
+  - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 

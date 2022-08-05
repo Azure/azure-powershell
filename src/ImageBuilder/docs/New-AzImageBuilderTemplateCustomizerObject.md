@@ -1,135 +1,119 @@
 ---
 external help file:
 Module Name: Az.ImageBuilder
-online version: https://docs.microsoft.com/powershell/module/az.imagebuilder/new-AzImageBuilderCustomizerObject
+online version: https://docs.microsoft.com/powershell/module/az.ImageBuilder/new-azimagebuildertemplatecustomizerobject
 schema: 2.0.0
 ---
 
-# New-AzImageBuilderCustomizerObject
+# New-AzImageBuilderTemplateCustomizerObject
 
 ## SYNOPSIS
-Describes a unit of image customization
+Create an in-memory object for ImageTemplateCustomizer.
 
 ## SYNTAX
 
-### ShellCustomizer (Default)
+### FileCustomizer (Default)
 ```
-New-AzImageBuilderCustomizerObject -CustomizerName <String> -ShellCustomizer [-Inline <String[]>]
- [-ScriptUri <String>] [-Sha256Checksum <String>] [<CommonParameters>]
-```
-
-### FileCustomizer
-```
-New-AzImageBuilderCustomizerObject -CustomizerName <String> -FileCustomizer [-Destination <String>]
+New-AzImageBuilderTemplateCustomizerObject -FileCustomizer [-Destination <String>] [-Name <String>]
  [-Sha256Checksum <String>] [-SourceUri <String>] [<CommonParameters>]
 ```
 
 ### PowerShellCustomizer
 ```
-New-AzImageBuilderCustomizerObject -CustomizerName <String> -PowerShellCustomizer [-Inline <String[]>]
+New-AzImageBuilderTemplateCustomizerObject -PowerShellCustomizer [-Inline <String[]>] [-Name <String>]
  [-RunAsSystem <Boolean>] [-RunElevated <Boolean>] [-ScriptUri <String>] [-Sha256Checksum <String>]
  [-ValidExitCode <Int32[]>] [<CommonParameters>]
 ```
 
 ### RestartCustomizer
 ```
-New-AzImageBuilderCustomizerObject -CustomizerName <String> -RestartCustomizer [-RestartCheckCommand <String>]
+New-AzImageBuilderTemplateCustomizerObject -RestartCustomizer [-Name <String>] [-RestartCheckCommand <String>]
  [-RestartCommand <String>] [-RestartTimeout <String>] [<CommonParameters>]
+```
+
+### ShellCustomizer
+```
+New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer [-Inline <String[]>] [-Name <String>]
+ [-ScriptUri <String>] [-Sha256Checksum <String>] [<CommonParameters>]
 ```
 
 ### WindowsUpdateCustomizer
 ```
-New-AzImageBuilderCustomizerObject -CustomizerName <String> -WindowsUpdateCustomizer [-Filter <String[]>]
+New-AzImageBuilderTemplateCustomizerObject -WindowsUpdateCustomizer [-Filter <String[]>] [-Name <String>]
  [-SearchCriterion <String>] [-UpdateLimit <Int32>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Describes a unit of image customization
+Create an in-memory object for ImageTemplateCustomizer.
 
 ## EXAMPLES
 
 ### Example 1: Create a windows update customizer
 ```powershell
-New-AzImageBuilderCustomizerObject -WindowsUpdateCustomizer -Filter ("BrowseOnly", "IsInstalled") -SearchCriterion "BrowseOnly=0 and IsInstalled=0"  -UpdateLimit 100 -CustomizerName 'WindUpdate'
+New-AzImageBuilderTemplateCustomizerObject -WindowsUpdateCustomizer -Name 'WindUpdate' -Filter ("BrowseOnly", "IsInstalled") -SearchCriterion "BrowseOnly=0 and IsInstalled=0" -UpdateLimit 100
 ```
 
 ```output
-Name       Type          Filter                    SearchCriterion                UpdateLimit
-----       ----          ------                    ---------------                -----------
-WindUpdate WindowsUpdate {BrowseOnly, IsInstalled} BrowseOnly=0 and IsInstalled=0 100
+Name       Filter                    SearchCriterion                UpdateLimit
+----       ------                    ---------------                -----------
+WindUpdate {BrowseOnly, IsInstalled} BrowseOnly=0 and IsInstalled=0 100
 ```
 
 This command creates a windows update customizer.
 
 ### Example 2: Create a file customizer
 ```powershell
-New-AzImageBuilderCustomizerObject -FileCustomizer -CustomizerName 'filecus' -Destination 'c:\\buildArtifacts\\index.html' -SourceUri 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html'
+New-AzImageBuilderTemplateCustomizerObject -FileCustomizer -Name 'filecus' -Destination 'c:\\buildArtifacts\\index.html' -SourceUri 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html'
 ```
 
 ```output
-Name    Type Destination                    Sha256Checksum SourceUri
-----    ---- -----------                    -------------- ---------
-filecus File c:\\buildArtifacts\\index.html                https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/exampleArtifacts/buildArtifacts/…
+Name    Destination                    Sha256Checksum SourceUri
+----    -----------                    -------------- ---------
+filecus c:\\buildArtifacts\\index.html                https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/exampleArtifacts/buildArtifacts/index.html
 ```
 
 This command creates a file customizer.
 
 ### Example 3: Create a powershell customizer
 ```powershell
-$inline = @("mkdir c:\\buildActions", "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt")
-New-AzImageBuilderCustomizerObject -PowerShellCustomizer -CustomizerName settingUpMgmtAgtPath -RunElevated $false -Inline $inline
+New-AzImageBuilderTemplateCustomizerObject -PowerShellCustomizer -Name settingUpMgmtAgtPath -RunElevated $false -Inline "mkdir c:\\buildActions", "echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt"
 ```
 
 ```output
-Name                 Type       Inline                                                                                                  RunElevated ScriptUri Sha256Checksum
-----                 ----       ------                                                                                                  ----------- --------- --------------
-settingUpMgmtAgtPath PowerShell {mkdir c:\\buildActions, echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt} False
+Name                 Inline                                                                                                  RunAsSystem  
+----                 ------                                                                                                  -----------  
+settingUpMgmtAgtPath {mkdir c:\\buildActions, echo Azure-Image-Builder-Was-Here  > c:\\buildActions\\buildActionsOutput.txt}
 ```
 
 This command creates a powershell customizer.
 
 ### Example 4: Create a restart customizer
 ```powershell
-New-AzImageBuilderCustomizerObject -RestartCustomizer -CustomizerName 'restcus' -RestartCommand 'shutdown /f /r /t 0 /c \"packer restart\"' -RestartCheckCommand 'powershell -command "& {Write-Output "restarted."}"' -RestartTimeout '10m'
+New-AzImageBuilderTemplateCustomizerObject -RestartCustomizer -Name 'restcus' -RestartCommand 'shutdown /f /r /t 0 /c \"packer restart\"' -RestartCheckCommand 'powershell -command "& {Write-Output "restarted."}"' -RestartTimeout '10m'
 ```
 
 ```output
-Name    Type           RestartCheckCommand                                 RestartCommand                            RestartTimeout
-----    ----           -------------------                                 --------------                            --------------
-restcus WindowsRestart powershell -command "& {Write-Output "restarted."}" shutdown /f /r /t 0 /c \"packer restart\" 10m
+Name    RestartCheckCommand                                 RestartCommand                            RestartTimeout
+----    -------------------                                 --------------                            --------------
+restcus powershell -command "& {Write-Output "restarted."}" shutdown /f /r /t 0 /c \"packer restart\" 10m
 ```
 
 This command creates a restart customizer.
 
 ### Example 5: Create a shell customizer
 ```powershell
-New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName downloadBuildArtifacts -ScriptUri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh" 
+New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer -Name downloadBuildArtifacts -ScriptUri "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh" 
 ```
 
 ```output
-Name                   Type  Inline ScriptUri                                                                                                      Sha256Checksum
-----                   ----  ------ ---------                                                                                                      --------------
-downloadBuildArtifacts Shell        https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh
+Name                   Inline ScriptUri
+----                   ------ ---------                                                                                       
+downloadBuildArtifacts        https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/cus…
 ```
 
 This command creates a shell customizer.
 
 ## PARAMETERS
-
-### -CustomizerName
-Friendly Name to provide context on what this customization step does.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: Name
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -Destination
 The absolute path to a file (with nested directory structures already created) where the file (from sourceUri) will be uploaded to in the VM.
@@ -180,11 +164,26 @@ Accept wildcard characters: False
 ```
 
 ### -Inline
-Array of shell commands to execute.
+Array of PowerShell commands to execute.
 
 ```yaml
 Type: System.String[]
 Parameter Sets: PowerShellCustomizer, ShellCustomizer
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Friendly Name to provide context on what this customization step does.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,7 +226,7 @@ Accept wildcard characters: False
 ```
 
 ### -RestartCommand
-Command to execute the restart [Default: 'shutdown /r /f /t 0 /c packer restart']
+Command to execute the restart [Default: 'shutdown /r /f /t 0 /c "packer restart"'].
 
 ```yaml
 Type: System.String
@@ -243,7 +242,7 @@ Accept wildcard characters: False
 
 ### -RestartCustomizer
 Reboots a VM and waits for it to come back online (Windows).
-Corresponds to Packer windows-restart provisioner.
+Corresponds to Packer windows-restart provisioner
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -305,7 +304,7 @@ Accept wildcard characters: False
 ```
 
 ### -ScriptUri
-URI of the shell script to be run for customizing.
+URI of the PowerShell script to be run for customizing.
 It can be a github link, SAS URI for Azure Storage, etc.
 
 ```yaml
@@ -338,7 +337,7 @@ Accept wildcard characters: False
 ```
 
 ### -Sha256Checksum
-SHA256 checksum of the shell script provided in the scriptUri field.
+SHA256 checksum of the file provided in the sourceUri field above.
 
 ```yaml
 Type: System.String
@@ -419,7 +418,7 @@ Accept wildcard characters: False
 
 ### -WindowsUpdateCustomizer
 Installs Windows Updates.
-Corresponds to Packer Windows Update Provisioner (https://github.com/rgl/packer-provisioner-windows-update).
+Corresponds to Packer Windows Update Provisioner (https://github.com/rgl/packer-provisioner-windows-update)
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -440,7 +439,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20200214.IImageTemplateCustomizer
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateFileCustomizer
+
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplatePowerShellCustomizer
+
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateRestartCustomizer
+
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateShellCustomizer
+
+### Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.ImageTemplateWindowsUpdateCustomizer
 
 ## NOTES
 
