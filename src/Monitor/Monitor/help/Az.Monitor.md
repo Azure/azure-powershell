@@ -54,10 +54,14 @@ Gets data collection rule(s).
 Gets data collection rule association(s).
 
 ### [Get-AzDiagnosticSetting](Get-AzDiagnosticSetting.md)
-Gets the logged categories and time grains.
+Gets the active diagnostic settings for the specified resource.
 
 ### [Get-AzDiagnosticSettingCategory](Get-AzDiagnosticSettingCategory.md)
-Get or list supported diagnostic setting category for Azure resource.
+Gets the diagnostic settings category for the specified resource.
+
+### [Get-AzEventCategory](Get-AzEventCategory.md)
+Get the list of available event categories supported in the Activity Logs Service.
+The current list includes the following: Administrative, Security, ServiceHealth, Alert, Recommendation, Policy.
 
 ### [Get-AzInsightsPrivateLinkScope](Get-AzInsightsPrivateLinkScope.md)
 Get private link scope
@@ -79,6 +83,9 @@ Gets metric definitions.
 
 ### [Get-AzScheduledQueryRule](Get-AzScheduledQueryRule.md)
 Gets Scheduled Query Resources
+
+### [Get-AzSubscriptionDiagnosticSetting](Get-AzSubscriptionDiagnosticSetting.md)
+Gets the active subscription diagnostic settings for the specified resource.
 
 ### [Get-AzSubscriptionDiagnosticSettingCategory](Get-AzSubscriptionDiagnosticSettingCategory.md)
 Get diagnostic setting categories for subscription.
@@ -126,13 +133,16 @@ Create data collection rule association.
 Create PSDiagnosticDetailSetting Object, type could be metric or log
 
 ### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
-Create PSServiceDiagnosticSettings object.
+Creates or updates diagnostic settings for the specified resource.
 
 ### [New-AzInsightsPrivateLinkScope](New-AzInsightsPrivateLinkScope.md)
 create private link scope
 
 ### [New-AzInsightsPrivateLinkScopedResource](New-AzInsightsPrivateLinkScopedResource.md)
 create for private link scoped resource
+
+### [New-AzLogSettingsObject](New-AzLogSettingsObject.md)
+Create an in-memory object for LogSettings.
 
 ### [New-AzMetricAlertRuleV2Criteria](New-AzMetricAlertRuleV2Criteria.md)
 Creates a local criteria object that can be used to create a new metric alert
@@ -142,6 +152,9 @@ Creates a local dimension selection object that can be used to construct a metri
 
 ### [New-AzMetricFilter](New-AzMetricFilter.md)
 Creates a metric dimension filter that can be used to query metrics.
+
+### [New-AzMetricSettingsObject](New-AzMetricSettingsObject.md)
+Create an in-memory object for MetricSettings.
 
 ### [New-AzScheduledQueryRule](New-AzScheduledQueryRule.md)
 Creates a Log Alert Rule (Scheduled Query Rule type)
@@ -164,6 +177,12 @@ Creates an object of type Source
 ### [New-AzScheduledQueryRuleTriggerCondition](New-AzScheduledQueryRuleTriggerCondition.md)
 Creates an object of type Trigger Condition
 
+### [New-AzSubscriptionDiagnosticSetting](New-AzSubscriptionDiagnosticSetting.md)
+Creates or updates subscription diagnostic settings for the specified resource.
+
+### [New-AzSubscriptionLogSettingsObject](New-AzSubscriptionLogSettingsObject.md)
+Create an in-memory object for SubscriptionLogSettings.
+
 ### [Remove-AzActionGroup](Remove-AzActionGroup.md)
 Removes an action group.
 
@@ -183,7 +202,7 @@ Delete a data collection rule.
 Delete a data collection rule association.
 
 ### [Remove-AzDiagnosticSetting](Remove-AzDiagnosticSetting.md)
-Remove a diagnostic setting for the a resource.
+Deletes existing diagnostic settings for the specified resource.
 
 ### [Remove-AzInsightsPrivateLinkScope](Remove-AzInsightsPrivateLinkScope.md)
 delete private link scope
@@ -199,6 +218,9 @@ Removes a V2 (non-classic) metric alert rule.
 
 ### [Remove-AzScheduledQueryRule](Remove-AzScheduledQueryRule.md)
 Removes a Log Alert Rule
+
+### [Remove-AzSubscriptionDiagnosticSetting](Remove-AzSubscriptionDiagnosticSetting.md)
+Deletes existing subscription diagnostic settings for the specified resource.
 
 ### [Set-AzActionGroup](Set-AzActionGroup.md)
 Creates a new or updates an existing action group.
