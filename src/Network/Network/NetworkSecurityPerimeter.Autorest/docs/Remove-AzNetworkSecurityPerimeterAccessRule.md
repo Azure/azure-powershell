@@ -30,27 +30,31 @@ Deletes an NSP access rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a NetworkSecurityPerimeterAccessRule by Name
+
 ```powershell
-{{ Add code here }}
+
+ Remove-AzNetworkSecurityPerimeterAccessRule -Name ar5 -ProfileName profile4 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp4
+
 ```
 
 ```output
-{{ Add output here }}
+
 ```
+Deletes a NetworkSecurityPerimeterAccessRule by Name
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### Example 2: Deletes a NetworkSecurityPerimeterAccessRule by identity (using pipe)
 ```powershell
-{{ Add code here }}
+
+ $accessRuleObj = Get-AzNetworkSecurityPerimeterAccessRule -Name ar6 -ProfileName profile4 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp4     Remove-AzNetworkSecurityPerimeterAccessRule -InputObject $accessRuleObj
+
 ```
 
 ```output
-{{ Add output here }}
-```
 
-{{ Add description here }}
+```
+Deletes a NetworkSecurityPerimeterAccessRule by identity (using pipe)
 
 ## PARAMETERS
 

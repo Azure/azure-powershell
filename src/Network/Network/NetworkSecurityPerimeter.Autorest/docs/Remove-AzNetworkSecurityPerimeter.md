@@ -29,27 +29,30 @@ Deletes a network security perimeter.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a NetworkSecurityPerimeter by Name
 ```powershell
-{{ Add code here }}
+
+ Remove-AzNetworkSecurityPerimeter -Name nsp5 -ResourceGroupName kumarkaushal-PS-RG-1
+
 ```
 
 ```output
-{{ Add output here }}
+
 ```
+Deletes a NetworkSecurityPerimeter by Name
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Deletes a NetworkSecurityPerimeter by identity (using pipe)
 ```powershell
-{{ Add code here }}
+
+ $nspObj = Get-AzNetworkSecurityPerimeter -Name nsp6 -ResourceGroupName kumarkaushal-PS-RG-1 
+ Remove-AzNetworkSecurityPerimeter -InputObject $nspObj
+
 ```
 
 ```output
-{{ Add output here }}
-```
 
-{{ Add description here }}
+```
+Deletes a NetworkSecurityPerimeter by identity (using pipe)
 
 ## PARAMETERS
 

@@ -1,0 +1,132 @@
+{
+	"resources": [
+		{
+			"type": "NetworkSecurityPerimeter",
+			"commands":[
+				{
+					"methodType": "List",
+					"command": "Get-AzNetworkSecurityPerimeter -ResourceGroupName $env.rgname"
+				},
+				{
+					"methodType": "Get",
+					"command": "Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp1 -ResourceGroupName $env.rgname"
+				},
+				{
+					"methodType": "GetViaIdentity",
+					"command": "$GETObj = Get-AzNetworkSecurityPerimeter -Name $env.tmpNsp1 -ResourceGroupName $env.rgname   BREAKLINE  $GETObjViaIdentity = Get-AzNetworkSecurityPerimeter -InputObject $GETObj"
+				},
+				{
+					"methodType": "Create",
+					"command": "New-AzNetworkSecurityPerimeter -ResourceGroupName $env.rgname -Name $env.nsp1 -Location $env.location"
+				},
+				{
+					"methodType": "Delete",
+					"command": "Remove-AzNetworkSecurityPerimeter -Name $env.tmpNspDelete1 -ResourceGroupName $env.rgname"				},
+				{
+					"methodType": "DeleteViaIdentity",
+					"command": "$nspObj = Get-AzNetworkSecurityPerimeter -Name $env.tmpNspDelete2 -ResourceGroupName $env.rgname  BREAKLINE  Remove-AzNetworkSecurityPerimeter -InputObject $nspObj"
+				}
+			]
+		},
+		{
+			"type" : "NetworkSecurityPerimeterProfile",
+			"commands":[
+				
+				{
+					"methodType": "Get",
+					"command": "Get-AzNetworkSecurityPerimeterProfile -Name $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1"
+				},
+				{
+					"methodType": "GetViaIdentity",
+					"command": "$GETObj = Get-AzNetworkSecurityPerimeterProfile -Name $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1  BREAKLINE  Get-AzNetworkSecurityPerimeterProfile -InputObject $GETObj"
+				},
+				{
+					"methodType": "Create",
+					"command": "New-AzNetworkSecurityPerimeterProfile -Name $env.profile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1"
+				},
+				{
+					"methodType": "Delete",
+					"command": "Remove-AzNetworkSecurityPerimeterProfile -Name $env.tmpProfileDelete1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNspDelBase1"
+				},
+				{
+					"methodType": "DeleteViaIdentity",
+					"command": "$profileObj = Get-AzNetworkSecurityPerimeterProfile -Name $env.tmpProfileDelete2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNspDelBase1   BREAKLINE  Remove-AzNetworkSecurityPerimeterProfile -InputObject $profileObj"
+				}
+			]
+		},
+		{
+			"type": "NetworkSecurityPerimeterAccessRule",
+			"commands":[
+				{
+					"methodType": "List",
+					"command": "Get-AzNetworkSecurityPerimeterAccessRule -ProfileName $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1"
+				},
+				{
+					"methodType": "Get",
+					"command": "Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ProfileName $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1"
+				},
+				{
+					"methodType": "GetViaIdentity",
+					"command": "$GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ProfileName $env.tmpProfile1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1  BREAKLINE  $GETObjViaIdentity = Get-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj"
+				},
+				{
+					"methodType": "Create",
+					"command": "New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule1 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound' -Location $env.location"
+				},
+				{
+					"methodType": "Delete",
+					"command": "Remove-AzNetworkSecurityPerimeterAccessRule -Name tmpAccessRuleDelete1 -ProfileName $env.tmpProfileDelBase1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNspDelBase1"
+				},
+				{
+					"methodType": "DeleteViaIdentity",
+					"command": "$accessRuleObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRuleDelete2 -ProfileName $env.tmpProfileDelBase1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNspDelBase1  BREAKLINE  Remove-AzNetworkSecurityPerimeterAccessRule -InputObject $accessRuleObj"
+				},
+				{
+					"methodType": "Update",
+					"command": "Update-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ProfileName $env.tmpProfile1  -AddressPrefix @('10.10.0.0/17')"
+				},
+				{
+					"methodType": "UpdateViaIdentity",
+					"command": "$GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name $env.tmpAccessRule1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -ProfileName $env.tmpProfile1  BREAKLINE  $UpdateObj = Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @('10.0.0.0/16')"
+				}
+			]
+		},
+		{
+			"type": "NetworkSecurityPerimeterAccessAssociation",
+			"commands":[
+				{
+					"methodType": "List",
+					"command": "Get-AzNetworkSecurityPerimeterAssociation -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1"
+				},
+				{
+					"methodType": "Get",
+					"command": "Get-AzNetworkSecurityPerimeterAssociation -Name $env.tmpAssociation1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1"
+				},
+				{
+					"methodType": "GetViaIdentity",
+					"command": "$GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name $env.tmpAssociation1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1  BREAKLINE  Get-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj"
+				},
+				{
+					"methodType": "Create",
+					"command": "$profileId = '/subscriptions/$env.SubscriptionId/resourceGroups/$env.rgname/providers/Microsoft.Network/networkSecurityPerimeters/$env.tmpNsp1/profiles/$env.tmpProfile2' BREAKLINE $privateLinkResourceId = '/subscriptions/$env.SubscriptionId/resourceGroups/$env.rgname/providers/Microsoft.KeyVault/vaults/$env.tmpPaas4Rp'  BREAKLINE  New-AzNetworkSecurityPerimeterAssociation -Name $env.association1 -SecurityPerimeterName $env.tmpNsp1 -ResourceGroupName $env.rgname -Location $env.location -AccessMode $env.accessMode1 -ProfileId $profileId -PrivateLinkResourceId $privateLinkResourceId"
+				},
+				{
+					"methodType": "Delete",
+					"command": "Remove-AzNetworkSecurityPerimeterAssociation -Name $env.tmpAssociationDelete1 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNspDelBase1"
+				},
+				{
+					"methodType": "DeleteViaIdentity",
+					"command": "$associationObj = Get-AzNetworkSecurityPerimeterAssociation -Name $env.tmpAssociationDelete2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNspDelBase1  BREAKLINE  Remove-AzNetworkSecurityPerimeterAssociation -InputObject $associationObj"
+				},
+				{
+					"methodType": "Update",
+					"command": "$UpdateObj = Update-AzNetworkSecurityPerimeterAssociation -Name $env.association1 -SecurityPerimeterName $env.tmpNsp1 -ResourceGroupName $env.rgname -AccessMode $env.accessMode2"
+				},
+				{
+					"methodType": "UpdateViaIdentity",
+					"command": "$GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name $env.association1 -SecurityPerimeterName $env.tmpNsp1 -ResourceGroupName $env.rgname  BREAKLINE  $UpdateObj = Update-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj -AccessMode $env.accessMode1"
+				}
+			]
+		}
+	]
+}
