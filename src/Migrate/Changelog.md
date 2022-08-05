@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.1.3
 * Fixed a cross-subscription issue
 
 ## Version 1.1.2
