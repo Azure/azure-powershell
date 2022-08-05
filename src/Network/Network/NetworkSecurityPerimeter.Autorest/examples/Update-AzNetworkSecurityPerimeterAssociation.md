@@ -1,22 +1,33 @@
-### Example 1: {{ Add title here }}
+### Example 1: Updates a NetworkSecurityPerimeterAccessAssociation
+
 ```powershell
-{{ Add code here }}
+
+ Update-AzNetworkSecurityPerimeterAssociation -Name association1 -SecurityPerimeterName nsp3 -ResourceGroupName kumarkaushal-PS-RG-1 -AccessMode Enforced
+
 ```
 
 ```output
-{{ Add output here }}
+Location Name
+-------- ----
+         association1
+
+
 ```
+Updates a NetworkSecurityPerimeterAccessAssociation
 
-{{ Add description here }}
+### Example 2: Updates a NetworkSecurityPerimeterAccessAssociation by identity (using pipe)
 
-### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+
+ $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association1 -SecurityPerimeterName nsp3 -ResourceGroupName kumarkaushal-PS-RG-1
+ Update-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj -AccessMode Learning
+
 ```
 
 ```output
-{{ Add output here }}
+Location Name
+-------- ----
+         association1
+
 ```
-
-{{ Add description here }}
-
+Updates a NetworkSecurityPerimeterAccessAssociation by identity (using pipe)

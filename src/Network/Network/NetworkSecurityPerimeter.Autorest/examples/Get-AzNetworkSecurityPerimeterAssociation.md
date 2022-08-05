@@ -1,22 +1,52 @@
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+
+ Get-AzNetworkSecurityPerimeterAssociation -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3
+
 ```
 
 ```output
-{{ Add output here }}
+
+Location Name
+-------- ----
+         association1
+         association3
+
+
 ```
+List NetworkSecurityPerimeterAccessAssociation
 
-{{ Add description here }}
+### Example 2: Gets a NetworkSecurityPerimeterAccessAssociation by Name
 
-### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+
+ Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3
+
 ```
 
 ```output
-{{ Add output here }}
+
+Location Name
+-------- ----
+         association3
+
+
+```
+Gets a NetworkSecurityPerimeterAccessAssociation by Name
+
+### Example 3: Gets a NetworkSecurityPerimeterAccessAssociation by identity (using pipe)
+```powershell
+
+ $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3     Get-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj
+
 ```
 
-{{ Add description here }}
+```output
 
+Location Name
+-------- ----
+         association3
+
+
+```
+Gets a NetworkSecurityPerimeterAccessAssociation by identity (using pipe)

@@ -1,22 +1,36 @@
-### Example 1: {{ Add title here }}
+
+### Example 1: Updates a NetworkSecurityPerimeterAccessRule
+
 ```powershell
-{{ Add code here }}
+
+ Update-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3 -ProfileName profile1  -AddressPrefix @('10.10.0.0/17')
+
 ```
 
 ```output
-{{ Add output here }}
+
+Location Name
+-------- ----
+         ar3
+
+
 ```
+Updates a NetworkSecurityPerimeterAccessRule
 
-{{ Add description here }}
+### Example 2: Updates a NetworkSecurityPerimeterAccessRule by identity (using pipe)
 
-### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+
+ $GETObj = Get-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3 -ProfileName profile1
+ Update-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj -AddressPrefix @('10.0.0.0/16')
+
 ```
 
 ```output
-{{ Add output here }}
+Location Name
+-------- ----
+         ar3
+
+
 ```
-
-{{ Add description here }}
-
+Updates a NetworkSecurityPerimeterAccessRule by identity (using pipe)

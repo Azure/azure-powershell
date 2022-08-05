@@ -1,22 +1,33 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates a NetworkSecurityPerimeterAccessRule
 ```powershell
-{{ Add code here }}
+
+ New-AzNetworkSecurityPerimeterAccessRule -Name accessRule1 -ProfileName profile2 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound' -Location eastus2euap
+
 ```
 
 ```output
-{{ Add output here }}
+
+Location Name
+-------- ----
+         accessRule1
+
+
 ```
+Creates a NetworkSecurityPerimeterAccessRule
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Creates a NetworkSecurityPerimeterAccessRule
 ```powershell
-{{ Add code here }}
+
+ New-AzNetworkSecurityPerimeterAccessRule -Name accessRule2 -ProfileName profile2 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3 -AddressPrefix '10.10.0.0/16' -Direction 'Inbound' -Location eastus2euap
+
 ```
 
 ```output
-{{ Add output here }}
+
+Location Name
+-------- ----
+         accessRule2
+
+
 ```
-
-{{ Add description here }}
-
+Creates a NetworkSecurityPerimeterAccessRule

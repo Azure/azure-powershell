@@ -1,22 +1,59 @@
-### Example 1: {{ Add title here }}
+### Example 1: List NetworkSecurityPerimeter
+
 ```powershell
-{{ Add code here }}
+
+ Get-AzNetworkSecurityPerimeter -ResourceGroupName kumarkaushal-PS-RG-1
+
 ```
 
 ```output
-{{ Add output here }}
+
+Location    Name
+--------    ----
+eastus2euap nsp4
+eastus2euap nsp3
+eastus2euap nsp1
+eastus2euap nsp6
+eastus2euap nsp5
+
+
 ```
+List NetworkSecurityPerimeter
 
-{{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### Example 2: Gets a NetworkSecurityPerimeter by Name
+
 ```powershell
-{{ Add code here }}
+
+ Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName kumarkaushal-PS-RG-1
+
 ```
 
 ```output
-{{ Add output here }}
+
+Location    Name
+--------    ----
+eastus2euap nsp3
+
+
+```
+Gets a NetworkSecurityPerimeter by Name
+
+
+### Example 3: Gets a NetworkSecurityPerimeter by identity (using pipe)
+
+```powershell
+
+ $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName kumarkaushal-PS-RG-1
+ $GETObjViaIdentity = Get-AzNetworkSecurityPerimeter -InputObject $GETObj
+
 ```
 
-{{ Add description here }}
+```output
 
+Location    Name
+--------    ----
+eastus2euap nsp3
+
+```
+Gets a NetworkSecurityPerimeter by identity (using pipe)

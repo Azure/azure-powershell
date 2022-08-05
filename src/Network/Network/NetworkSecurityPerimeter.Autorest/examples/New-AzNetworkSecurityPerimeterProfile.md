@@ -1,22 +1,33 @@
-### Example 1: {{ Add title here }}
+### Example 1: Creates a NetworkSecurityPerimeterProfile
 ```powershell
-{{ Add code here }}
+
+ New-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3
+
 ```
 
 ```output
-{{ Add output here }}
+
+Location    Name
+--------    ----
+eastus2euap profile1
+
+
 ```
+Creates a NetworkSecurityPerimeterProfile
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Creates a NetworkSecurityPerimeterProfile
 ```powershell
-{{ Add code here }}
+
+ New-AzNetworkSecurityPerimeterProfile -Name profile2 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp3
+
 ```
 
 ```output
-{{ Add output here }}
+
+Location    Name
+--------    ----
+eastus2euap profile2
+
+
 ```
-
-{{ Add description here }}
-
+Creates a NetworkSecurityPerimeterProfile

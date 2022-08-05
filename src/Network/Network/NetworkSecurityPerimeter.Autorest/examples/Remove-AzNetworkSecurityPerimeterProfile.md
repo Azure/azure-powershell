@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Deletes a NetworkSecurityPerimeterProfile by Name
+
 ```powershell
-{{ Add code here }}
+
+ Remove-AzNetworkSecurityPerimeterProfile -Name profile6 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp4
+
 ```
 
 ```output
-{{ Add output here }}
+
 ```
+Deletes a NetworkSecurityPerimeterProfile by Name
 
-{{ Add description here }}
+### Example 2: Deletes a NetworkSecurityPerimeterProfile by identity (using pipe)
 
-### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
+
+ $profileObj = Get-AzNetworkSecurityPerimeterProfile -Name profile7 -ResourceGroupName kumarkaushal-PS-RG-1 -SecurityPerimeterName nsp4      Remove-AzNetworkSecurityPerimeterProfile -InputObject $profileObj
+
 ```
 
 ```output
-{{ Add output here }}
+
 ```
-
-{{ Add description here }}
-
+Deletes a NetworkSecurityPerimeterProfile by identity (using pipe)
