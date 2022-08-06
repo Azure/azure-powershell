@@ -27,7 +27,6 @@ function setupEnv() {
     }
 
     $randomString = "t" + (RandomString -allChars $false -len 4)
-    $randomString = "test"
 
     $envFilePath = (Join-Path $PSScriptRoot $envFile)
 
@@ -70,14 +69,6 @@ function setupEnv() {
     $tmpValues = $tmpNsp1, $tmpNspDelBase1, $tmpProfile1, $tmpProfile2, $tmpProfile3, $tmpProfileDelBase1, $tmpProfileDelBase2, $tmpAccessRule1, $tmpAccessRule2, $tmpAccessRuleDelete1, $tmpAccessRuleDelete2,  $tmpAssociation1, $tmpAssociationDelete1, $tmpAssociationDelete2, $tmpPaas1Rp, $tmpPaas2Rp,$tmpPaas3Rp, $tmpPaas4Rp,  $tmpProfileDelete1, $tmpProfileDelete2, $tmpNspDelete1, $tmpNspDelete2
 
     for ($i = 0; $i -le ($tmpKeys.length - 1); $i += 1) {
-        if ($templateVariables.Contains($tmpKeys[$i])) {
-            $templateVariables.($tmpKeys[$i]) = $tmpValues[$i]
-        }else{    
-            $templateVariables.Add($tmpKeys[$i], $tmpValues[$i])
-        }
-    }
-
-    for ($i = 0; $i -le ($tmpKeys.length - 1); $i += 1) {
         if ($env.Contains($tmpKeys[$i])) {
             $env.($tmpKeys[$i]) = $tmpValues[$i]
         }else{
@@ -85,15 +76,11 @@ function setupEnv() {
         }
     }
 
-
     Get-Content $envFilePath  | ConvertFrom-Json -AsHashtable
 
     set-content -Path (Join-Path $PSScriptRoot 'env.json') -Value (ConvertTo-Json $env)
 
     set-content -Path (Join-Path $PSScriptRoot 'localEnv.json') -Value (ConvertTo-Json $env)
-
-    set-content -Path (Join-Path $PSScriptRoot 'templateVariables.json') -Value (ConvertTo-Json $templateVariables)
-
     
     Write-Host -ForegroundColor Magenta "Create resource group"
 
@@ -106,28 +93,28 @@ function setupEnv() {
     $templateInput = @{
         ResourceGroupName = $env.rgname
         TemplateFile = ".\test\NSPTemplate.json"
-        nsp1Name = $tmpNsp1
-        nspDelBase1Name = $tmpNspDelBase1
-        nspDelete1Name = $tmpNspDelete1
-        nspDelete2Name = $tmpNspDelete2
-        profile1Name = $tmpProfile1
-        profile2Name = $tmpProfile2
-        profile3Name = $tmpProfile3
-        profileDelete1Name = $tmpProfileDelete1
-        profileDelete2Name = $tmpProfileDelete2
-        profileDelBase1Name = $tmpProfileDelBase1
-        profileDelBase2Name = $tmpProfileDelBase2
-        accessRule1Name = $tmpAccessRule1
-        accessRule2Name = $tmpAccessRule2
-        accessRuleDelete1Name = $tmpAccessRuleDelete1
-        accessRuleDelete2Name = $tmpAccessRuleDelete2
-        paas1Name = $tmpPaas1Rp
-        paas2Name = $tmpPaas2Rp
-        paas3Name = $tmpPaas3Rp
-        paas4Name = $tmpPaas4Rp
-        association1Name = $tmpAssociation1
-        associationDelete1Name = $tmpAssociationDelete1
-        associationDelete2Name = $tmpAssociationDelete2
+        nsp1Name = $env.tmpNsp1
+        nspDelBase1Name = $env.tmpNspDelBase1
+        nspDelete1Name = $env.tmpNspDelete1
+        nspDelete2Name = $env.tmpNspDelete2
+        profile1Name = $env.tmpProfile1
+        profile2Name = $env.tmpProfile2
+        profile3Name = $env.tmpProfile3
+        profileDelete1Name = $env.tmpProfileDelete1
+        profileDelete2Name = $env.tmpProfileDelete2
+        profileDelBase1Name = $env.tmpProfileDelBase1
+        profileDelBase2Name = $env.tmpProfileDelBase2
+        accessRule1Name = $env.tmpAccessRule1
+        accessRule2Name = $env.tmpAccessRule2
+        accessRuleDelete1Name = $env.tmpAccessRuleDelete1
+        accessRuleDelete2Name = $env.tmpAccessRuleDelete2
+        paas1Name = $env.tmpPaas1Rp
+        paas2Name = $env.tmpPaas2Rp
+        paas3Name = $env.tmpPaas3Rp
+        paas4Name = $env.tmpPaas4Rp
+        association1Name = $env.tmpAssociation1
+        associationDelete1Name = $env.tmpAssociationDelete1
+        associationDelete2Name = $env.tmpAssociationDelete2
        }
     
     #deploy template
@@ -170,7 +157,6 @@ function cleanupEnv() {
     Remove-AzNetworkSecurityPerimeterAssociation @remove_associationDelete2
 
     
-    
     #Remove association created by testcase
     $remove_association2 = @{
         SecurityPerimeterName = $env.tmpNsp1
@@ -183,7 +169,6 @@ function cleanupEnv() {
 
     Write-Host -ForegroundColor Magenta "Done"
 
-    <#
     Write-Host -ForegroundColor Magenta "Sleep 60"
 
 
@@ -196,6 +181,5 @@ function cleanupEnv() {
     Remove-AzResourceGroup -Name $env.rgname
 
     Write-Host -ForegroundColor Magenta "Removed RG"
-    #>
 }
 
