@@ -284,6 +284,12 @@ namespace Microsoft.Azure.Commands.Network
             MNM.VpnGatewayGeneration.Generation2)]
         public string VpnGatewayGeneration { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "P2S Client Connection Configuration that assiociate between address and policy group")]
+        public PSClientConnectionConfiguration[] ClientConnectionConfigurations { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -461,6 +467,11 @@ namespace Microsoft.Azure.Commands.Network
                     {
                         throw new ArgumentException("Virtual Network Gateway VpnClientProtocol should be :" + MNM.VpnClientProtocol.OpenVPN + " when P2S AAD authentication is being configured.");
                     }
+                }
+
+                if (this.ClientConnectionConfigurations != null && this.ClientConnectionConfigurations.Any())
+                {
+                    vnetGateway.VpnClientConfiguration.ClientConnectionConfigurations = this.ClientConnectionConfigurations.ToList();
                 }
             }
             else
