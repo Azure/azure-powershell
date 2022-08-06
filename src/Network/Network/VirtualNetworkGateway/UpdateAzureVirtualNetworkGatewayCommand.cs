@@ -213,6 +213,12 @@ namespace Microsoft.Azure.Commands.Network
         public bool? BgpRouteTranslationForNat { get; set; }
 
         [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "P2S Client Connection Configuration that assiociate between address and policy group")]
+        public PSClientConnectionConfiguration[] ClientConnectionConfigurations { get; set; }
+
+        [Parameter(
             Mandatory = true,
             ParameterSetName = VirtualNetworkGatewayParameterSets.UpdateResourceWithTags,
             HelpMessage = "P2S External Radius server address.")]
@@ -276,7 +282,8 @@ namespace Microsoft.Azure.Commands.Network
                  this.RadiusServerSecret != null ||
                  this.RadiusServerList != null ||
                  (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0) ||
-                 this.AadTenantUri != null) &&
+                 this.AadTenantUri != null || 
+                 this.ClientConnectionConfigurations != null && this.ClientConnectionConfigurations.Count() > 0) &&
                 this.VirtualNetworkGateway.VpnClientConfiguration == null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
@@ -351,6 +358,10 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     throw new ArgumentException("Virtual Network Gateway VpnClientProtocol should be :" + MNM.VpnClientProtocol.OpenVPN + " when P2S AAD authentication is being configured.");
                 }
+            }
+            if (this.ClientConnectionConfigurations != null && this.ClientConnectionConfigurations.Count() > 0)
+            {
+                this.VirtualNetworkGateway.VpnClientConfiguration.ClientConnectionConfigurations = this.ClientConnectionConfigurations.ToList();
             }
 
             if (this.RemoveAadAuthentication.IsPresent)
