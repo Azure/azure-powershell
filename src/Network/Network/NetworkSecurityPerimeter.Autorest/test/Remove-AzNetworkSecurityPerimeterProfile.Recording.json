@@ -1,0 +1,123 @@
+{
+  "Remove-AzNetworkSecurityPerimeterProfile+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/testt-nspDelB1/profiles/t-profileD1?api-version=2021-02-01-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/testt-nspDelB1/profiles/t-profileD1?api-version=2021-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "31" ],
+        "x-ms-client-request-id": [ "85ff2e2f-5820-4b1a-964a-9ac56ee14f71" ],
+        "CommandName": [ "Remove-AzNetworkSecurityPerimeterProfile" ],
+        "FullCommandName": [ "Remove-AzNetworkSecurityPerimeterProfile_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14992" ],
+        "x-ms-request-id": [ "56a57572-8356-40cd-967f-6e4f5d9374ea" ],
+        "x-ms-correlation-request-id": [ "56a57572-8356-40cd-967f-6e4f5d9374ea" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20220806T102402Z:56a57572-8356-40cd-967f-6e4f5d9374ea" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 06 Aug 2022 10:24:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNetworkSecurityPerimeterProfile+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/testt-nspDelB1/profiles/t-profileD2?api-version=2021-02-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/testt-nspDelB1/profiles/t-profileD2?api-version=2021-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "32" ],
+        "x-ms-client-request-id": [ "2ad10fe6-7850-4a3a-9a04-4e0967532070" ],
+        "CommandName": [ "Get-AzNetworkSecurityPerimeterProfile" ],
+        "FullCommandName": [ "Get-AzNetworkSecurityPerimeterProfile_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11941" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "bc070ca0-1318-4f98-b9ba-14b2301cd1c8" ],
+        "x-ms-correlation-request-id": [ "bc070ca0-1318-4f98-b9ba-14b2301cd1c8" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20220806T102403Z:bc070ca0-1318-4f98-b9ba-14b2301cd1c8" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 06 Aug 2022 10:24:03 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "366" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"t-profileD2\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/testt-nspDelB1/profiles/t-profileD2\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles\",\"properties\":{\"accessRulesVersion\":\"0\",\"diagnosticSettingsVersion\":\"0\"},\"location\":\"eastus2euap\"}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzNetworkSecurityPerimeterProfile+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/testt-nspDelB1/profiles/t-profileD2?api-version=2021-02-01-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/testt-nspDelB1/profiles/t-profileD2?api-version=2021-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "33" ],
+        "x-ms-client-request-id": [ "00d4c1b6-0ff8-40fe-be94-6e6e4b4ffd4a" ],
+        "CommandName": [ "Remove-AzNetworkSecurityPerimeterProfile" ],
+        "FullCommandName": [ "Remove-AzNetworkSecurityPerimeterProfile_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14991" ],
+        "x-ms-request-id": [ "6e5f45c0-1c39-4a63-b734-e51a2dfbbbf1" ],
+        "x-ms-correlation-request-id": [ "6e5f45c0-1c39-4a63-b734-e51a2dfbbbf1" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20220806T102404Z:6e5f45c0-1c39-4a63-b734-e51a2dfbbbf1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 06 Aug 2022 10:24:04 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

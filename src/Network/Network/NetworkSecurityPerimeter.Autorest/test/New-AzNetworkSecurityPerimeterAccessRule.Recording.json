@@ -1,0 +1,38 @@
+{
+  "New-AzNetworkSecurityPerimeterAccessRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/testt-nsp1/profiles/t-profile2/accessRules/psaccessrule1?api-version=2021-02-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/testt-nsp1/profiles/t-profile2/accessRules/psaccessrule1?api-version=2021-02-01-preview",
+      "Content": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"direction\": \"Inbound\",\r\n    \"addressPrefixes\": [ \"10.10.0.0/16\" ]\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "130" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "5efb1ed3-6ce9-471a-86b6-2dc69d6e580c" ],
+        "x-ms-correlation-request-id": [ "5efb1ed3-6ce9-471a-86b6-2dc69d6e580c" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20220806T102345Z:5efb1ed3-6ce9-471a-86b6-2dc69d6e580c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 06 Aug 2022 10:23:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "489" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"psaccessrule1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/testt-nsp1/profiles/t-profile2/accessRules/psaccessrule1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles/accessRules\",\"properties\":{\"provisioningState\":\"Succeeded\",\"direction\":\"Inbound\",\"addressPrefixes\":[\"10.10.0.0/16\"],\"fullyQualifiedDomainNames\":[],\"subscriptions\":[],\"networkSecurityPerimeters\":[]}}",
+      "isContentBase64": false
+    }
+  }
+}
