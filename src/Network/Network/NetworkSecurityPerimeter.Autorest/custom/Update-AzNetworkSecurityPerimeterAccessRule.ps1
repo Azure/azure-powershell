@@ -188,13 +188,12 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             # 1. GET
 
             # body params and AsJob
-            $params = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'NetworkSecurityPerimeters', 'Direction', 'Subscription',  'AsJob'
+            $bodyParams = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'NetworkSecurityPerimeters', 'Direction', 'Subscription',  'AsJob'
 
-            $paramsMap = @{}
+            $bodyParamsMap = @{}
 
-            for($index=0; $index -lt $params.Length; $index++)
-            {
-                $paramsMap[$params[$index]] = $PSBoundParameters.Remove($params[$index])
+            ForEach($bodyParam in $bodyParams){
+                $bodyParamsMap[$bodyParam] = $PSBoundParameters.Remove($bodyParam)
             }
 
             $null = $PSBoundParameters.Remove('WhatIf')
@@ -204,15 +203,14 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             $GETObject = Get-AzNetworkSecurityPerimeterAccessRule @PSBoundParameters
 
             # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
-            $null = $PSBoundParameters.Remove('SecurityPerimeterName')
-            $null = $PSBoundParameters.Remove('ProfileName')
 
+            $pathParams = 'InputObject', 'ResourceGroupName', 'Name', 'SubscriptionId', 'SecurityPerimeterName', 'ProfileName'
 
-            foreach ($item in $paramsMap.GetEnumerator() )
+            ForEach($pathParam in $pathParams){        
+                $null = $PSBoundParameters.Remove($pathParam)
+            }
+
+            foreach ($item in $bodyParamsMap.GetEnumerator() )
             {
                 if ($item.Value){
                     $key = $item.Key

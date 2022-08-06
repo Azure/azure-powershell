@@ -1,8 +1,8 @@
 {
-  "New-AzNetworkSecurityPerimeterAccessRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/t1g03t-nsp1/profiles/t-profile2/accessRules/psaccessrule1?api-version=2021-02-01-preview+1": {
+  "New-AzNetworkSecurityPerimeterAccessRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile2/accessRules/psaccessrule1?api-version=2021-02-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/t1g03t-nsp1/profiles/t-profile2/accessRules/psaccessrule1?api-version=2021-02-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile2/accessRules/psaccessrule1?api-version=2021-02-01-preview",
       "Content": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"direction\": \"Inbound\",\r\n    \"addressPrefixes\": [ \"10.10.0.0/16\" ]\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -17,21 +17,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "5edc11de-27e9-48f6-a705-6eae9052e77a" ],
-        "x-ms-correlation-request-id": [ "5edc11de-27e9-48f6-a705-6eae9052e77a" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20220806T110050Z:5edc11de-27e9-48f6-a705-6eae9052e77a" ],
+        "x-ms-request-id": [ "faa47474-05c7-44b5-81bc-2c223b8fe2e5" ],
+        "x-ms-correlation-request-id": [ "faa47474-05c7-44b5-81bc-2c223b8fe2e5" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20220806T121004Z:faa47474-05c7-44b5-81bc-2c223b8fe2e5" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sat, 06 Aug 2022 11:00:49 GMT" ]
+        "Date": [ "Sat, 06 Aug 2022 12:10:04 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "490" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"psaccessrule1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/t1g03t-nsp1/profiles/t-profile2/accessRules/psaccessrule1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles/accessRules\",\"properties\":{\"provisioningState\":\"Succeeded\",\"direction\":\"Inbound\",\"addressPrefixes\":[\"10.10.0.0/16\"],\"fullyQualifiedDomainNames\":[],\"subscriptions\":[],\"networkSecurityPerimeters\":[]}}",
+      "Content": "{\"name\":\"psaccessrule1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile2/accessRules/psaccessrule1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles/accessRules\",\"properties\":{\"provisioningState\":\"Succeeded\",\"direction\":\"Inbound\",\"addressPrefixes\":[\"10.10.0.0/16\"],\"fullyQualifiedDomainNames\":[],\"subscriptions\":[],\"networkSecurityPerimeters\":[]}}",
       "isContentBase64": false
     }
   }
