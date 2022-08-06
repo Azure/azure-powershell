@@ -183,10 +183,10 @@ function cleanupEnv() {
 
     Write-Host -ForegroundColor Magenta "Done"
 
-
+    <#
     Write-Host -ForegroundColor Magenta "Sleep 60"
 
-    <#
+
     Start-Sleep -Seconds 60
 
 
@@ -197,6 +197,5 @@ function cleanupEnv() {
 
     Write-Host -ForegroundColor Magenta "Removed RG"
     #>
-    
 }
 
