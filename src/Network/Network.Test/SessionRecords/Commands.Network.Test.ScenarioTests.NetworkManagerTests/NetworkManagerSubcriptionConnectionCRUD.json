@@ -1,13 +1,12 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps7601?api-version=2022-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZkMTkwZmEtZGQxYy00NzI0LWI3ZjYtYzVjYzNiYTVjODg0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrTWFuYWdlckNvbm5lY3Rpb25zL3BzNzYwMT9hcGktdmVyc2lvbj0yMDIyLTAxLTAx",
+      "RequestUri": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps6570?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZkMTkwZmEtZGQxYy00NzI0LWI3ZjYtYzVjYzNiYTVjODg0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrTWFuYWdlckNvbm5lY3Rpb25zL3BzNjU3MD9hcGktdmVyc2lvbj0yMDIyLTAxLTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a8e42c10-3674-4857-9176-c4c94e24da3e"
+          "4bac48bb-abde-4a10-bac2-dc73b1ebbc7e"
         ],
         "Accept-Language": [
           "en-US"
@@ -19,6 +18,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -36,19 +36,19 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "608e68a7-00fd-4ffd-9377-5a48f43d9250"
+          "234227be-e89a-4350-9182-1af64ce4ac26"
         ],
         "x-ms-correlation-request-id": [
-          "608e68a7-00fd-4ffd-9377-5a48f43d9250"
+          "234227be-e89a-4350-9182-1af64ce4ac26"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220722T164126Z:608e68a7-00fd-4ffd-9377-5a48f43d9250"
+          "WESTUS:20220807T035249Z:234227be-e89a-4350-9182-1af64ce4ac26"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 22 Jul 2022 16:41:26 GMT"
+          "Sun, 07 Aug 2022 03:52:48 GMT"
         ],
         "Content-Length": [
           "200"
@@ -60,17 +60,16 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"message\": \"Resource [/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps7601] does not exist or has been deleted\",\r\n    \"code\": \"NotFound\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"message\": \"Resource [/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps6570] does not exist or has been deleted\",\r\n    \"code\": \"NotFound\"\r\n  }\r\n}",
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps7601?api-version=2022-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZkMTkwZmEtZGQxYy00NzI0LWI3ZjYtYzVjYzNiYTVjODg0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrTWFuYWdlckNvbm5lY3Rpb25zL3BzNzYwMT9hcGktdmVyc2lvbj0yMDIyLTAxLTAx",
+      "RequestUri": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps6570?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZkMTkwZmEtZGQxYy00NzI0LWI3ZjYtYzVjYzNiYTVjODg0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrTWFuYWdlckNvbm5lY3Rpb25zL3BzNjU3MD9hcGktdmVyc2lvbj0yMDIyLTAxLTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "f75cc23e-7963-4803-9d39-b6d8752b414c"
+          "6eeb7f58-57cc-4bfe-acf5-d688326879a2"
         ],
         "Accept-Language": [
           "en-US"
@@ -82,6 +81,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -90,7 +90,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11999"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -99,19 +99,19 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "b712e1d2-19f2-4ac3-9f8b-03c3c70ed8ba"
+          "47f7b3dc-febd-489b-b15b-d2bd53eedfb7"
         ],
         "x-ms-correlation-request-id": [
-          "b712e1d2-19f2-4ac3-9f8b-03c3c70ed8ba"
+          "47f7b3dc-febd-489b-b15b-d2bd53eedfb7"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220722T164132Z:b712e1d2-19f2-4ac3-9f8b-03c3c70ed8ba"
+          "WESTUS:20220807T035254Z:47f7b3dc-febd-489b-b15b-d2bd53eedfb7"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 22 Jul 2022 16:41:31 GMT"
+          "Sun, 07 Aug 2022 03:52:54 GMT"
         ],
         "Content-Length": [
           "480"
@@ -123,17 +123,16 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps7601\",\r\n  \"name\": \"ps7601\",\r\n  \"type\": \"Microsoft.Network/networkManagerConnections\",\r\n  \"location\": \"\",\r\n  \"properties\": {\r\n    \"networkManagerId\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE\",\r\n    \"connectionState\": \"Pending\",\r\n    \"description\": \"SampleDescription\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps6570\",\r\n  \"name\": \"ps6570\",\r\n  \"type\": \"Microsoft.Network/networkManagerConnections\",\r\n  \"location\": \"\",\r\n  \"properties\": {\r\n    \"networkManagerId\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE\",\r\n    \"connectionState\": \"Pending\",\r\n    \"description\": \"SampleDescription\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps7601?api-version=2022-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZkMTkwZmEtZGQxYy00NzI0LWI3ZjYtYzVjYzNiYTVjODg0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrTWFuYWdlckNvbm5lY3Rpb25zL3BzNzYwMT9hcGktdmVyc2lvbj0yMDIyLTAxLTAx",
+      "RequestUri": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps6570?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZkMTkwZmEtZGQxYy00NzI0LWI3ZjYtYzVjYzNiYTVjODg0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrTWFuYWdlckNvbm5lY3Rpb25zL3BzNjU3MD9hcGktdmVyc2lvbj0yMDIyLTAxLTAx",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4b68cd2a-a7b7-449c-a42f-a4f1c10740f4"
+          "4a0186cc-8495-4e6f-a679-d97dfd0cf3a4"
         ],
         "Accept-Language": [
           "en-US"
@@ -145,6 +144,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -153,7 +153,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11997"
+          "11999"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -162,19 +162,19 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "a5df2180-7f9d-496d-8346-7f53278493f3"
+          "910c7294-51bb-4fdd-b9a2-09c9cd639f89"
         ],
         "x-ms-correlation-request-id": [
-          "a5df2180-7f9d-496d-8346-7f53278493f3"
+          "910c7294-51bb-4fdd-b9a2-09c9cd639f89"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220722T164132Z:a5df2180-7f9d-496d-8346-7f53278493f3"
+          "WESTUS:20220807T035256Z:910c7294-51bb-4fdd-b9a2-09c9cd639f89"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 22 Jul 2022 16:41:32 GMT"
+          "Sun, 07 Aug 2022 03:52:55 GMT"
         ],
         "Content-Length": [
           "480"
@@ -186,17 +186,16 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps7601\",\r\n  \"name\": \"ps7601\",\r\n  \"type\": \"Microsoft.Network/networkManagerConnections\",\r\n  \"location\": \"\",\r\n  \"properties\": {\r\n    \"networkManagerId\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE\",\r\n    \"connectionState\": \"Pending\",\r\n    \"description\": \"SampleDescription\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps6570\",\r\n  \"name\": \"ps6570\",\r\n  \"type\": \"Microsoft.Network/networkManagerConnections\",\r\n  \"location\": \"\",\r\n  \"properties\": {\r\n    \"networkManagerId\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE\",\r\n    \"connectionState\": \"Pending\",\r\n    \"description\": \"SampleDescription\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps7601?api-version=2022-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZkMTkwZmEtZGQxYy00NzI0LWI3ZjYtYzVjYzNiYTVjODg0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrTWFuYWdlckNvbm5lY3Rpb25zL3BzNzYwMT9hcGktdmVyc2lvbj0yMDIyLTAxLTAx",
+      "RequestUri": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps6570?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZkMTkwZmEtZGQxYy00NzI0LWI3ZjYtYzVjYzNiYTVjODg0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrTWFuYWdlckNvbm5lY3Rpb25zL3BzNjU3MD9hcGktdmVyc2lvbj0yMDIyLTAxLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"networkManagerId\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE\",\r\n    \"description\": \"SampleDescription\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "a8e42c10-3674-4857-9176-c4c94e24da3e"
+          "4bac48bb-abde-4a10-bac2-dc73b1ebbc7e"
         ],
         "Accept-Language": [
           "en-US"
@@ -214,6 +213,7 @@
           "274"
         ]
       },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"networkManagerId\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE\",\r\n    \"description\": \"SampleDescription\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -231,19 +231,19 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "d90c2909-af92-46a7-af99-aa93c36189c7"
+          "07e3455a-0e4f-4f30-91d1-97b8d77ed5cb"
         ],
         "x-ms-correlation-request-id": [
-          "d90c2909-af92-46a7-af99-aa93c36189c7"
+          "07e3455a-0e4f-4f30-91d1-97b8d77ed5cb"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220722T164131Z:d90c2909-af92-46a7-af99-aa93c36189c7"
+          "WESTUS:20220807T035252Z:07e3455a-0e4f-4f30-91d1-97b8d77ed5cb"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 22 Jul 2022 16:41:31 GMT"
+          "Sun, 07 Aug 2022 03:52:52 GMT"
         ],
         "Content-Length": [
           "480"
@@ -255,17 +255,16 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps7601\",\r\n  \"name\": \"ps7601\",\r\n  \"type\": \"Microsoft.Network/networkManagerConnections\",\r\n  \"location\": \"\",\r\n  \"properties\": {\r\n    \"networkManagerId\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE\",\r\n    \"connectionState\": \"Pending\",\r\n    \"description\": \"SampleDescription\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps6570\",\r\n  \"name\": \"ps6570\",\r\n  \"type\": \"Microsoft.Network/networkManagerConnections\",\r\n  \"location\": \"\",\r\n  \"properties\": {\r\n    \"networkManagerId\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE\",\r\n    \"connectionState\": \"Pending\",\r\n    \"description\": \"SampleDescription\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps7601?api-version=2022-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZkMTkwZmEtZGQxYy00NzI0LWI3ZjYtYzVjYzNiYTVjODg0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrTWFuYWdlckNvbm5lY3Rpb25zL3BzNzYwMT9hcGktdmVyc2lvbj0yMDIyLTAxLTAx",
+      "RequestUri": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps6570?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZkMTkwZmEtZGQxYy00NzI0LWI3ZjYtYzVjYzNiYTVjODg0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrTWFuYWdlckNvbm5lY3Rpb25zL3BzNjU3MD9hcGktdmVyc2lvbj0yMDIyLTAxLTAx",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"networkManagerId\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE\",\r\n    \"connectionState\": \"Pending\",\r\n    \"description\": \"A Different Description.\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "4b68cd2a-a7b7-449c-a42f-a4f1c10740f4"
+          "4a0186cc-8495-4e6f-a679-d97dfd0cf3a4"
         ],
         "Accept-Language": [
           "en-US"
@@ -283,6 +282,7 @@
           "316"
         ]
       },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"networkManagerId\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE\",\r\n    \"connectionState\": \"Pending\",\r\n    \"description\": \"A Different Description.\"\r\n  }\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -291,7 +291,7 @@
           "no-cache"
         ],
         "x-ms-ratelimit-remaining-subscription-writes": [
-          "1198"
+          "1199"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -300,19 +300,19 @@
           "Kestrel"
         ],
         "x-ms-request-id": [
-          "6d3a9ed0-e709-4d51-9b48-9ce7aa5f6356"
+          "577f4c9a-1844-45c6-a21b-0c0ce455ad6c"
         ],
         "x-ms-correlation-request-id": [
-          "6d3a9ed0-e709-4d51-9b48-9ce7aa5f6356"
+          "577f4c9a-1844-45c6-a21b-0c0ce455ad6c"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220722T164133Z:6d3a9ed0-e709-4d51-9b48-9ce7aa5f6356"
+          "WESTUS:20220807T035257Z:577f4c9a-1844-45c6-a21b-0c0ce455ad6c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 22 Jul 2022 16:41:33 GMT"
+          "Sun, 07 Aug 2022 03:52:56 GMT"
         ],
         "Content-Length": [
           "487"
@@ -324,17 +324,16 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps7601\",\r\n  \"name\": \"ps7601\",\r\n  \"type\": \"Microsoft.Network/networkManagerConnections\",\r\n  \"location\": \"\",\r\n  \"properties\": {\r\n    \"networkManagerId\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE\",\r\n    \"connectionState\": \"Pending\",\r\n    \"description\": \"A Different Description.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps6570\",\r\n  \"name\": \"ps6570\",\r\n  \"type\": \"Microsoft.Network/networkManagerConnections\",\r\n  \"location\": \"\",\r\n  \"properties\": {\r\n    \"networkManagerId\": \"/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM-DO-NOT-DELETE\",\r\n    \"connectionState\": \"Pending\",\r\n    \"description\": \"A Different Description.\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps7601?api-version=2022-01-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZkMTkwZmEtZGQxYy00NzI0LWI3ZjYtYzVjYzNiYTVjODg0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrTWFuYWdlckNvbm5lY3Rpb25zL3BzNzYwMT9hcGktdmVyc2lvbj0yMDIyLTAxLTAx",
+      "RequestUri": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/providers/Microsoft.Network/networkManagerConnections/ps6570?api-version=2022-01-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGZkMTkwZmEtZGQxYy00NzI0LWI3ZjYtYzVjYzNiYTVjODg0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrTWFuYWdlckNvbm5lY3Rpb25zL3BzNjU3MD9hcGktdmVyc2lvbj0yMDIyLTAxLTAx",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "370cfbe3-2a68-4c2f-8c50-dc728e5bbc2c"
+          "7eb85d6f-cd37-4998-9f51-441ce27b3533"
         ],
         "Accept-Language": [
           "en-US"
@@ -346,6 +345,7 @@
           "Microsoft.Azure.Management.Network.NetworkManagementClient/23.0.0.0"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -363,19 +363,19 @@
           "14999"
         ],
         "x-ms-request-id": [
-          "aff80fd1-2eba-49b0-942f-80bbfe6625d2"
+          "30a83499-4c2f-41fe-9546-1e1559788c40"
         ],
         "x-ms-correlation-request-id": [
-          "aff80fd1-2eba-49b0-942f-80bbfe6625d2"
+          "30a83499-4c2f-41fe-9546-1e1559788c40"
         ],
         "x-ms-routing-request-id": [
-          "WESTCENTRALUS:20220722T164134Z:aff80fd1-2eba-49b0-942f-80bbfe6625d2"
+          "WESTCENTRALUS:20220807T035300Z:30a83499-4c2f-41fe-9546-1e1559788c40"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 22 Jul 2022 16:41:34 GMT"
+          "Sun, 07 Aug 2022 03:53:00 GMT"
         ],
         "Expires": [
           "-1"
@@ -390,7 +390,7 @@
   ],
   "Names": {
     "Test-NetworkManagerSubscriptionConnectionCRUD": [
-      "ps7601"
+      "ps6570"
     ]
   },
   "Variables": {
