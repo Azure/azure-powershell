@@ -28,8 +28,8 @@ Creates or updates subscription diagnostic settings for the specified resource.
 ```powershell
 $subscriptionId = (Get-AzContext).SubscriptionId
 $log = @()
-$log += New-AzSubscriptionLogSettingsObject -Category Recommendation $Enabled $true
-New-AzsubscriptionDiagnosticSetting -Name test-setting -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log
+$log += New-AzSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
+New-AzSubscriptionDiagnosticSetting -Name test-setting -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log
 ```
 
 Create diagnostic setting for current subscription
