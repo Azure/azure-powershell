@@ -184,10 +184,4 @@ directive:
     where: $
     transform: $ = $.replace('_nextLink != null', '_nextLink != null && _nextLink != ""')
 
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('Runtime.Method.Patch', 'Runtime.Method.Put')
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace('/// [OpenAPI] Update=>PATCH', '/// [OpenAPI] Update=>PUT')
 ```

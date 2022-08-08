@@ -169,11 +169,53 @@ function cleanupEnv() {
 
     Write-Host -ForegroundColor Magenta "Done"
 
-    Write-Host -ForegroundColor Magenta "Sleep 60"
 
+    $isDeleted = $false
 
-    Start-Sleep -Seconds 60
+    While(-Not $isDeleted){
+        $isDeleted = $true
 
+        Write-Host -ForegroundColor Magenta "Sleep 20"
+
+        Start-Sleep -Seconds 20
+
+        try{
+             $isDeleted = $false
+             Get-AzNetworkSecurityPerimeterAssociation @remove_association1
+             continue
+        }
+        catch{
+            $isDeleted = $true
+        }
+
+        try{
+             $isDeleted = $false
+             Get-AzNetworkSecurityPerimeterAssociation @remove_associationDelete1
+             continue
+        }
+        catch{
+            $isDeleted = $true
+        }
+
+        try{
+             $isDeleted = $false
+             Get-AzNetworkSecurityPerimeterAssociation @remove_associationDelete2
+             continue
+        }
+        catch{
+            $isDeleted = $true
+        }
+
+        try{
+             $isDeleted = $false
+             Get-AzNetworkSecurityPerimeterAssociation @remove_association2
+             continue
+        }
+        catch{
+            $isDeleted = $true
+        }
+
+    }
 
     Write-Host -ForegroundColor Magenta "Removing RG"
 
