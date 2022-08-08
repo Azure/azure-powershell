@@ -234,7 +234,6 @@ function Measure-SectionMissingAndOutputScript {
         [string]$Module,
         [string]$Cmdlet,
         [string]$MarkdownPath,
-        [switch]$OutputScriptsInFile,
         [string]$OutputFolder,
         [int]$TotalLine
     )
@@ -360,7 +359,7 @@ function Measure-SectionMissingAndOutputScript {
 
             
             # Output example codes to "TempScript.ps1"
-            if ($OutputScriptsInFile.IsPresent -and $missingExampleCode -eq 0) {
+            if ($missingExampleCode -eq 0) {
                 $cmdletExamplesScriptPath = "$OutputFolder\TempScript.ps1"
                 $line = $exampleCodes.Count
                 if($line -ne 0){
