@@ -927,6 +927,9 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSVpnClientConnectionHealthDetail, MNM.VpnClientConnectionHealthDetail>();
                 cfg.CreateMap<CNM.PSIpConfigurationBgpPeeringAddress, MNM.IPConfigurationBgpPeeringAddress>();
                 cfg.CreateMap<CNM.PSVirtualNetworkGatewayNatRule, MNM.VirtualNetworkGatewayNatRule>();
+                cfg.CreateMap<CNM.PSVirtualNetworkGatewayPolicyGroup, MNM.VirtualNetworkGatewayPolicyGroup>();
+                cfg.CreateMap<CNM.PSVirtualNetworkGatewayPolicyGroupMember, MNM.VirtualNetworkGatewayPolicyGroupMember>();
+                cfg.CreateMap<CNM.PSClientConnectionConfiguration, MNM.VngClientConnectionConfiguration>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.VirtualNetworkGateway, CNM.PSVirtualNetworkGateway>();
