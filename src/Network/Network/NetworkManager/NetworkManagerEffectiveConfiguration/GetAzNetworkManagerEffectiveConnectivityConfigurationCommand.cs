@@ -23,8 +23,8 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerEffectiveConnectivityConfigurationList"), OutputType(typeof(PSNetworkManagerEffectiveConnectivityConfigurationListResult))]
-    public class GetAzNetworkManageEffectiveConnectivityConfigurationListCommand : NetworkManagerBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerEffectiveConnectivityConfiguration"), OutputType(typeof(PSNetworkManagerEffectiveConnectivityConfigurationResult))]
+    public class GetAzNetworkManageEffectiveConnectivityConfigurationCommand : NetworkManagerBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -61,8 +61,8 @@ namespace Microsoft.Azure.Commands.Network
             }
                 
             var networkManagerEffectiveConnectivityConfiguration = this.NetworkClient.NetworkManagementClient.ListNetworkManagerEffectiveConnectivityConfigurations(parameter, this.VirtualNetworkResourceGroupName, this.VirtualNetworkName);
-            var psEffectiveConnectivityConfigurationList = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerEffectiveConnectivityConfigurationListResult>(networkManagerEffectiveConnectivityConfiguration);
-            WriteObject(psEffectiveConnectivityConfigurationList);
+            var psEffectiveConnectivityConfiguration = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerEffectiveConnectivityConfigurationResult>(networkManagerEffectiveConnectivityConfiguration);
+            WriteObject(psEffectiveConnectivityConfiguration);
         }
     }
 }

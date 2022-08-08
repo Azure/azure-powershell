@@ -31,83 +31,137 @@ The **Get-AzNetworkManagerConnectivityConfiguration** cmdlet gets one or more co
 
 ### Example 1
 ```powershell
-Expand
-PS C:\> Get-AzNetworkManagerConnectivityConfiguration  -Name "TestConn" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
-
-Name                  : TestNMName
-Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsof
-                        t.Network/networkManagers/TestNMName/connectivityConfigurations/TestConn
-DisplayName           : Sample Config Name
-Description           :
-Etag                  : "00000000-0000-0000-0000-000000000000"
-ProvisioningState     : Succeeded
+Get-AzNetworkManagerConnectivityConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psConnectivityConfig"
+```
+```output
 ConnectivityTopology  : HubAndSpoke
+Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
 DeleteExistingPeering : True
-IsGlobal              : True
-Hubs                  : [
+IsGlobal              : False
+AppliesToGroups       : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup,
+                        /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2}
+AppliesToGroupsText   : [
                           {
-                            "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/hub",
-                            "ResourceType": "Microsoft.Network/virtualNetworks"
-                          }
-                        ]
-AppliesToGroups       : [
+                            "NetworkGroupId":
+                        "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup",
+                            "UseHubGateway": "False",
+                            "IsGlobal": "False",
+                            "GroupConnectivity": "None"
+                          },
                           {
-                            "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng",
-                            "UseHubGateway": "True",
-                            "IsGlobal": "True",
+                            "NetworkGroupId":
+                        "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2",
+                            "UseHubGateway": "False",
+                            "IsGlobal": "False",
                             "GroupConnectivity": "None"
                           }
                         ]
-DeleteExistingPeering : True
-SystemData            : {
-                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
-                          "CreatedByType": "Application",
-                          "CreatedAt": "2021-10-17T21:13:05",
-                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
-                          "LastModifiedByType": "Application",
-                          "LastModifiedAt": "2021-10-17T21:13:08"
+HubsText              : [
+                          {
+                            "ResourceId": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub",
+                            "ResourceType": "Microsoft.Network/virtualNetworks"
+                          }
+                        ]
+DisplayName           :
+Description           :
+Type                  : Microsoft.Network/networkManagers/connectivityConfigurations
+ProvisioningState     : Succeeded
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "jaredgorthy@microsoft.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2022-08-07T04:37:43.1186543Z",
+                          "LastModifiedBy": "jaredgorthy@microsoft.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2022-08-08T00:58:41.1751638Z"
                         }
+Name                  : psConnectivityConfig
+Etag                  : "02002303-0000-0700-0000-62f05fc10000"
+Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfig
 ```
-Gets a connectivity configuration named 'TestConn' in a network manager.
+Gets a connectivity configuration in a network manager.
 
 ### Example 2
 ```powershell
-NoExpand
-PS C:\> Get-AzNetworkManagerConnectivityConfiguration -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
-
-Name                  : TestNMName
-Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsof
-                        t.Network/networkManagers/TestNMName/connectivityConfigurations/TestConn
-DisplayName           : Sample Config Name
-Description           :
-Etag                  : "00000000-0000-0000-0000-000000000000"
-ProvisioningState     : Succeeded
+Get-AzNetworkManagerConnectivityConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager"
+```
+```output
 ConnectivityTopology  : HubAndSpoke
+Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
 DeleteExistingPeering : True
-IsGlobal              : True
-Hubs                  : [
+IsGlobal              : False
+AppliesToGroups       : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup,
+                        /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2}
+AppliesToGroupsText   : [
                           {
-                            "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/virtualNetworks/hub",
-                            "ResourceType": "Microsoft.Network/virtualNetworks"
-                          }
-                        ]
-AppliesToGroups       : [
+                            "NetworkGroupId":
+                        "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup",
+                            "UseHubGateway": "False",
+                            "IsGlobal": "False",
+                            "GroupConnectivity": "None"
+                          },
                           {
-                            "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng",
-                            "UseHubGateway": "True",
-                            "IsGlobal": "True",
+                            "NetworkGroupId":
+                        "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2",
+                            "UseHubGateway": "False",
+                            "IsGlobal": "False",
                             "GroupConnectivity": "None"
                           }
                         ]
-DeleteExistingPeering : True
-SystemData            : {
-                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
-                          "CreatedByType": "Application",
-                          "CreatedAt": "2021-10-17T21:13:05",
-                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
-                          "LastModifiedByType": "Application",
-                          "LastModifiedAt": "2021-10-17T21:13:08"
+HubsText              : [
+                          {
+                            "ResourceId": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub",
+                            "ResourceType": "Microsoft.Network/virtualNetworks"
+                          }
+                        ]
+DisplayName           :
+Description           :
+Type                  : Microsoft.Network/networkManagers/connectivityConfigurations
+ProvisioningState     : Succeeded
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "jaredgorthy@microsoft.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2022-08-07T04:37:43.1186543Z",
+                          "LastModifiedBy": "jaredgorthy@microsoft.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2022-08-08T00:58:41.1751638Z"
                         }
+Name                  : psConnectivityConfig
+Etag                  : "02002303-0000-0700-0000-62f05fc10000"
+Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfig
+
+ConnectivityTopology  : Mesh
+Hubs                  : {}
+DeleteExistingPeering : True
+IsGlobal              : False
+AppliesToGroups       : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup}
+AppliesToGroupsText   : [
+                          {
+                            "NetworkGroupId":
+                        "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup",
+                            "UseHubGateway": "False",
+                            "IsGlobal": "False",
+                            "GroupConnectivity": "None"
+                          }
+                        ]
+HubsText              : []
+DisplayName           :
+Description           :
+Type                  : Microsoft.Network/networkManagers/connectivityConfigurations
+ProvisioningState     : Succeeded
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "jaredgorthy@microsoft.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2022-08-07T04:43:00.9075845Z",
+                          "LastModifiedBy": "jaredgorthy@microsoft.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2022-08-07T04:43:00.9075845Z"
+                        }
+Name                  : psConnectivityConfigMesh
+Etag                  : "010010af-0000-0700-0000-62ef42d50000"
+Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfigMesh
 ```
 Gets all connectivity configurations in a network manager.
 

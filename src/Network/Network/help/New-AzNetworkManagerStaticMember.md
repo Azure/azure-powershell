@@ -25,10 +25,29 @@ The **New-AzNetworkManagerStaticMember** cmdlet creates a network manager static
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkManagerStaticMember -ResourceGroupName TestRGName -NetworkManagerName TestNetworkManagerName -Name TestNetworkGroupName -ResourceId "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnet"
+$vnetId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnet"
+New-AzNetworkManagerStaticMember -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -NetworkGroupName "psNetworkGroup" -Name "psStaticMember" -ResourceId $vnetId
 ```
-
-Creates a network manager static member.
+```output
+ResourceId        : /subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnet
+DisplayName       :
+Description       :
+Type              : Microsoft.Network/networkManagers/networkGroups/staticMembers
+ProvisioningState : Updating
+SystemData        : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText    : {
+                      "CreatedBy": "jaredgorthy@microsoft.com",
+                      "CreatedByType": "User",
+                      "CreatedAt": "2022-08-08T00:13:22.2067814Z",
+                      "LastModifiedBy": "jaredgorthy@microsoft.com",
+                      "LastModifiedByType": "User",
+                      "LastModifiedAt": "2022-08-08T00:13:22.2067814Z"
+                    }
+Name              : psStaticMember
+Etag              :
+Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup/staticMembers/psStaticMember
+```
+Creates a network manager static member with a vnet resource.
 
 ## PARAMETERS
 

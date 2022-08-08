@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzNetworkManagerManagementGroupConnection
 
 ## SYNOPSIS
-Remove a network manager management group connection.
+Removes a network manager management group connection.
 
 ## SYNTAX
 
@@ -24,9 +24,9 @@ The **Remove-AzNetworkManagerManagementGroupConnection** cmdlet removes a networ
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetworkManagerManagementGroupConnection -ManagementGroupId $managementGroupId -Name $networkManagerConnectionName -PassThru -Force -AsJob
+Remove-AzNetworkManagerManagementGroupConnection -ManagementGroupId "newMG" -Name "psConnection" -Force 
 ```
-Remove a network manager management group connection.
+Removes a network manager management group connection.
 
 ## PARAMETERS
 

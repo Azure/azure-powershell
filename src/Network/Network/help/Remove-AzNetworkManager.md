@@ -24,10 +24,9 @@ The **Remove-AzNetworkManager** cmdlet removes an Azure network manager.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetworkManager -Name TestNMName -ResourceGroupName TestRGName
+Remove-AzNetworkManager -Name TestNMName -ResourceGroupName TestRGName
 ```
-
-Removes a network manager.
+Deletes a network manager.
 
 ## PARAMETERS
 

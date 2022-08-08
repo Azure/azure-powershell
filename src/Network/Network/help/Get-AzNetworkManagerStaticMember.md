@@ -32,29 +32,35 @@ The **Get-AzNetworkManagerStaticMember** cmdlet gets a network manager static me
 ### Example 1
 ```powershell
 Expand
-PS C:\> Get-AzNetworkManagerStaticMember  -Name "TestStaticMember" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup"
-
+Get-AzNetworkManagerStaticMember  -Name "TestStaticMember" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup"
+```
+```output
 Name              : TestSM
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Netwo
-                    rk/networkManagers/TestNMName/networkGroups/TestNetworkGroup/staticMembers/TestStaticMember
-ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Netwo
-                    rk/virtualNetworks/vnet1
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestNetworkGroup/staticMembers/TestStaticMember
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/vnet1
 Description       :
 Type              : Microsoft.Network/networkManagers/networkGroups/staticMembers
 Etag              :
 ProvisioningState : Succeeded
 ```
+Gets a single static member.
 
 ### Example 2
 ```powershell
-NoExpand
-PS C:\> Get-AzNetworkManagerStaticMember -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup"
-
+Get-AzNetworkManagerStaticMember -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -NetworkGroupName "psNetworkGroup"
+```
+```output
 Name              : TestSM
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Netwo
-                    rk/networkManagers/TestNMName/networkGroups/TestNetworkGroup/staticMembers/TestStaticMember
-ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Netwo
-                    rk/virtualNetworks/vnet1
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestNetworkGroup/staticMembers/TestSM
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/vnet1
+Description       :
+Type              : Microsoft.Network/networkManagers/networkGroups/staticMembers
+Etag              :
+ProvisioningState : Succeeded
+
+Name              : TestSM2
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestNetworkGroup/staticMembers/TestSM2
+ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testRG/providers/Microsoft.Network/virtualNetworks/vnet2
 Description       :
 Type              : Microsoft.Network/networkManagers/networkGroups/staticMembers
 Etag              :

@@ -31,12 +31,11 @@ The **Get-AzNetworkManagerGroup** cmdlet gets a network group in a network manag
 
 ### Example 1
 ```powershell
-Expand
-PS C:\> Get-AzNetworkManagerGroup  -Name "TestGroup" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
-
+Get-AzNetworkManagerGroup  -Name "TestGroup" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+```
+```output
 Name                  : TestGroup
-Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsof
-                        t.Network/networkManagers/TestNMName/networkGroups/TestGroup
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup
 Description           : 
 Etag                  : "00000000-0000-0000-0000-000000000000"
 ProvisioningState     : Succeeded
@@ -55,12 +54,27 @@ Gets a network group 'TestGroup' in a network manager.
 
 ### Example 2
 ```powershell
-NoExpand
-PS C:\> Get-AzNetworkManagerGroup -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
-
+Get-AzNetworkManagerGroup -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+```
+```output
 Name                  : TestGroup
-Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsof
-                        t.Network/networkManagers/TestNMName/networkGroups/TestGroup 
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup 
+Description           : 
+Etag                  : "00000000-0000-0000-0000-000000000000"
+ProvisioningState     : Succeeded
+ConditionalMembership :
+MemberType            :
+SystemData            : {
+                          "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                          "CreatedByType": "Application",
+                          "CreatedAt": "2021-10-17T21:13:02",
+                          "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                          "LastModifiedByType": "Application",
+                          "LastModifiedAt": "2021-10-17T21:13:02"
+                        }
+
+                        Name                  : TestGroup2
+Id                    : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup2 
 Description           : 
 Etag                  : "00000000-0000-0000-0000-000000000000"
 ProvisioningState     : Succeeded

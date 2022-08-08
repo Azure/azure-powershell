@@ -26,9 +26,8 @@ The **Remove-AzNetworkManagerSecurityAdminRule** cmdlet removes a security admin
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetworkManagerSecurityAdminRule -Name TestAdminRuleName -RuleCollectionName TestRuleCollectionName -SecurityAdminConfigurationName TestAdminConfigName -NetworkManagerName TestNMName -ResourceGroupName TestRGName
+Remove-AzNetworkManagerSecurityAdminRule -Name TestAdminRuleName -RuleCollectionName TestRuleCollectionName -SecurityAdminConfigurationName TestAdminConfigName -NetworkManagerName TestNMName -ResourceGroupName TestRGName
 ```
-
 Removes a security admin rule.
 
 ## PARAMETERS

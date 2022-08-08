@@ -20,6 +20,7 @@ using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        public virtual List<string> TargetLocation { get; set; }
+        public virtual string[] TargetLocation { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -61,7 +62,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [AllowEmptyCollection]
         [SupportsWildcards]
-        public virtual List<string> ConfigurationId { get; set; }
+        public virtual string[] ConfigurationId { get; set; }
 
         [Parameter(
            Mandatory = true,
@@ -78,9 +79,9 @@ namespace Microsoft.Azure.Commands.Network
             List<string> configIdList = new List<string>();
             if (this.ConfigurationId != null)
             {
-                configIdList = this.ConfigurationId;
+                configIdList = this.ConfigurationId.ToList();
             }
-            var commitResult = this.PostNetworkManagerCommit(this.ResourceGroupName, this.Name, this.TargetLocation, configIdList, this.CommitType);
+            var commitResult = this.PostNetworkManagerCommit(this.ResourceGroupName, this.Name, this.TargetLocation.ToList(), configIdList, this.CommitType);
             WriteObject(commitResult);
         }
     }

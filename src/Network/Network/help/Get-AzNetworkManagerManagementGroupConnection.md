@@ -31,42 +31,54 @@ The **Get-AzNetworkManagerManagementGroupConnection** cmdlet gets a network mana
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "SDKTestMG" -Name "testsc"
-
-NetworkManagerId  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PSTestResources/providers/Micros
-                    oft.Network/networkManagers/PSTestNM
+Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "newMG" -Name "psConnection"
+```
+```output
+NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
 ConnectionState   : Pending
-Description       : SampleDescription
-Type              : Microsoft.Network/networkManagers/networkManagerConnections
+DisplayName       :
+Description       : sample description
+Type              : Microsoft.Network/networkManagerConnections
 ProvisioningState :
 SystemData        :
 SystemDataText    : null
-Name              : testsc
+Name              : psConnection
 Etag              :
-Id                : /providers/Microsoft.Management/managementGroups/SDKTestMG/providers/Microsoft.Network/networkManagerConne
-                    ctions/testsc
+Id                : /providers/Microsoft.Management/managementGroups/newMG/providers/Microsoft.Network/networkManagerConnections/psConnection
 ```
-Gets a network manager connection on management group 'SDKTestMG'.
+Gets a network manager connection on management group 'newMG'.
 
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "SDKTestMG"
-
-NetworkManagerId  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PSTestResources/providers/Micros
-                    oft.Network/networkManagers/PSTestNM
+PS C:\> Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "newMG"
+```
+```output
+NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/jaredgorthy-testResources/providers/Microsoft.Network/networkManagers/jaredgorthy
 ConnectionState   : Pending
-Description       : SampleDescription
-Type              : Microsoft.Network/networkManagers/networkManagerConnections
+DisplayName       :
+Description       :
+Type              : Microsoft.Network/networkManagerConnections
 ProvisioningState :
 SystemData        :
 SystemDataText    : null
-Name              : testsc
+Name              : mgConnection
 Etag              :
-Id                : /providers/Microsoft.Management/managementGroups/SDKTestMG/providers/Microsoft.Network/networkManagerConne
-                    ctions/testsc
+Id                : /providers/Microsoft.Management/managementGroups/newMG/providers/Microsoft.Network/networkManagerConnections/mgConnection
+
+NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
+ConnectionState   : Pending
+DisplayName       :
+Description       : sample description
+Type              : Microsoft.Network/networkManagerConnections
+ProvisioningState :
+SystemData        :
+SystemDataText    : null
+Name              : psConnection
+Etag              :
+Id                : /providers/Microsoft.Management/managementGroups/newMG/providers/Microsoft.Network/networkManagerConnections/psConnection
 ```
-Gets all network manager connections on management group 'SDKTestMG'.
+Gets all network manager connections on management group 'newMG'.
 
 ## PARAMETERS
 

@@ -25,8 +25,7 @@ The **Remove-AzNetworkManagerStaticMember** cmdlet removes a network manager sta
 
 ### Example 1
 ```powershell
-Expand
-PS C:\> Remove-AzNetworkManagerStaticMember  -Name "TestStaticMember" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup"
+Remove-AzNetworkManagerStaticMember  -Name "TestStaticMember" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup"
 ```
 Removes a network manager static member.
 

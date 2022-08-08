@@ -23,8 +23,8 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerEffectiveSecurityAdminRuleList"), OutputType(typeof(PSNetworkManagerEffectiveSecurityAdminRuleListResult))]
-    public class GetAzNetworkManagerEffctiveSecurityAdminRuleListCommand : NetworkManagerBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerEffectiveSecurityAdminRule"), OutputType(typeof(PSNetworkManagerEffectiveSecurityAdminRuleResult))]
+    public class GetAzNetworkManagerEffctiveSecurityAdminRuleCommand : NetworkManagerBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -60,10 +60,10 @@ namespace Microsoft.Azure.Commands.Network
                 parameter.SkipToken = this.SkipToken;
             }
                 
-            var networkManagerEffectiveAdminRuleListResult = this.NetworkClient.NetworkManagementClient.ListNetworkManagerEffectiveSecurityAdminRules(parameter, this.VirtualNetworkResourceGroupName, this.VirtualNetworkName);
-            var pSNetworkManagerEffectiveSecurityAdminRulesList = new List<PSNetworkManagerEffectiveBaseSecurityAdminRule>();
+            var networkManagerEffectiveAdminRuleResult = this.NetworkClient.NetworkManagementClient.ListNetworkManagerEffectiveSecurityAdminRules(parameter, this.VirtualNetworkResourceGroupName, this.VirtualNetworkName);
+            var pSNetworkManagerEffectiveSecurityAdminRules = new List<PSNetworkManagerEffectiveBaseSecurityAdminRule>();
 
-            foreach (var rule in networkManagerEffectiveAdminRuleListResult.Value)
+            foreach (var rule in networkManagerEffectiveAdminRuleResult.Value)
             {
                 PSNetworkManagerEffectiveBaseSecurityAdminRule psEffectiveAdminRule;
                 if (rule.GetType().Name == "EffectiveSecurityAdminRule")
@@ -78,13 +78,13 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     throw new ErrorException("UnKnown Effective Admin Rule Type");
                 }
-                pSNetworkManagerEffectiveSecurityAdminRulesList.Add(psEffectiveAdminRule);
+                pSNetworkManagerEffectiveSecurityAdminRules.Add(psEffectiveAdminRule);
             }
 
-            var pSNetworkManagerEffectiveSecurityAdminRulesListResult = new PSNetworkManagerEffectiveSecurityAdminRuleListResult();
-            pSNetworkManagerEffectiveSecurityAdminRulesListResult.Value = pSNetworkManagerEffectiveSecurityAdminRulesList;
-            pSNetworkManagerEffectiveSecurityAdminRulesListResult.SkipToken = networkManagerEffectiveAdminRuleListResult.SkipToken;
-            WriteObject(pSNetworkManagerEffectiveSecurityAdminRulesListResult);
+            var pSNetworkManagerEffectiveSecurityAdminRulesResult = new PSNetworkManagerEffectiveSecurityAdminRuleResult();
+            pSNetworkManagerEffectiveSecurityAdminRulesResult.Value = pSNetworkManagerEffectiveSecurityAdminRules;
+            pSNetworkManagerEffectiveSecurityAdminRulesResult.SkipToken = networkManagerEffectiveAdminRuleResult.SkipToken;
+            WriteObject(pSNetworkManagerEffectiveSecurityAdminRulesResult);
         }
     }
 }

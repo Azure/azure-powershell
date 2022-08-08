@@ -8,43 +8,43 @@ schema: 2.0.0
 # Deploy-AzNetworkManagerCommit
 
 ## SYNOPSIS
-Deploys network manager commit
+Deploys a network manager commit.
 
 ## SYNTAX
 
 ```
 Deploy-AzNetworkManagerCommit -Name <String> -ResourceGroupName <String>
- -TargetLocation <System.Collections.Generic.List`1[System.String]>
- [-ConfigurationId <System.Collections.Generic.List`1[System.String]>] -CommitType <String>
+ -TargetLocation <String[]> [-ConfigurationId <String[]>] -CommitType <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Deploy-AzNetworkManagerCommit** cmdlet deploys network manager commit
+The **Deploy-AzNetworkManagerCommit** cmdlet deploys a network manager commit.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> [System.Collections.Generic.List[string]]$configids  = @()
-PS C:\> $configids.Add($TestConfigId);
-PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
-PS C:\> $regions.Add("centraluseuap")
-PS C:\> Deploy-AzNetworkManagerCommit -ResourceGroupName TestRGName -Name TestNMName -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
-
+$regions = @("eastus", "westus")
+$configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfigMesh")
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
 ```
-
-The example is used to commit connecitivity confgurations $TestConfigId on region centraluseuap.
+This example is used to commit connecitivity confguration in East US and West US regions.
 
 ### Example 2
 ```powershell
-PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
-PS C:\> $regions.Add("centraluseuap")
-PS C:\> Deploy-AzNetworkManagerCommit -ResourceGroupName TestRGName -Name TestNMName -TargetLocation $regions -CommitType "Connectivity" 
-
+$regions = @( "westus")
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Connectivity" 
 ```
+This example is used to uncommit all connecitivity confgurations in West US region.
 
-The example is used to uncommit all connecitivity confgurations on region centraluseuap.
+### Example 3
+```powershell
+$regions = @( "westus")
+$configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig")
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Connectivity" 
+```
+This example is used to commit a security admin config in West US region.
 
 ## PARAMETERS
 
@@ -67,7 +67,7 @@ Accept wildcard characters: True
 List of configuration ids.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]	
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +127,7 @@ Accept wildcard characters: True
 List of target locations.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]	
 Parameter Sets: (All)
 Aliases:
 
@@ -176,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.String[]	
 
 ## OUTPUTS
 

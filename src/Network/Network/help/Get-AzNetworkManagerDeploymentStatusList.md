@@ -14,8 +14,8 @@ Lists Deployment Status in a network manager.
 
 ```
 Get-AzNetworkManagerDeploymentStatusList -NetworkManagerName <String> -ResourceGroupName <String>
- [-Region <System.Collections.Generic.List`1[System.String]>]
- [-DeploymentType <System.Collections.Generic.List`1[System.String]>] [-SkipToken <String>]
+ [-Region <String[]>]
+ [-DeploymentType <String[]>] [-SkipToken <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,12 +26,11 @@ The **Get-AzNetworkManagerDeploymentStatusList** cmdlet lists Deployment Status 
 
 ### Example 1
 ```powershell
-PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
-PS C:\> $regions.Add("centraluseuap")
-PS C:\> [System.Collections.Generic.List[String]]$DeploymentTypes = @()  
-PS C:\> $DeploymentTypes.Add("SecurityAdmin")
-PS C:\> Get-AzNetworkManagerDeploymentStatusList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken" -DeploymentType $DeploymentTypes
- 
+$regions = @("centraluseuap")  
+$DeploymentTypes = @("SecurityAdmin")  
+Get-AzNetworkManagerDeploymentStatusList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken" -DeploymentType $DeploymentTypes
+```
+```output
 Value     : [
               {
                 "CommitTime": "2021-10-18T04:06:08Z",
@@ -47,7 +46,6 @@ Value     : [
 SkipToken :
 
 ```
-
 Lists Deployment Status of SecurityAdmin configurations in region centraluseuap for a network manager.
 
 ## PARAMETERS
@@ -71,7 +69,7 @@ Accept wildcard characters: False
 List of deploymentTypes.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]	
 Parameter Sets: (All)
 Aliases:
 
@@ -101,7 +99,7 @@ Accept wildcard characters: True
 List of regions.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]	
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +147,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.String[]	
 
 ## OUTPUTS
 

@@ -125,14 +125,14 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Source Port Ranges.",
            ParameterSetName = "Custom")]
-        public List<string> SourcePortRange { get; set; }
+        public string[] SourcePortRange { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Destination Port Ranges.",
            ParameterSetName = "Custom")]
-        public List<string> DestinationPortRange { get; set; }
+        public string[] DestinationPortRange { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -188,11 +188,11 @@ namespace Microsoft.Azure.Commands.Network
                 securityAdminRule.Priority = this.Priority;
                 if (this.SourcePortRange != null)
                 {
-                    securityAdminRule.SourcePortRanges = this.SourcePortRange;
+                    securityAdminRule.SourcePortRanges = this.SourcePortRange.ToList();
                 }
                 if (this.DestinationPortRange != null)
                 {
-                    securityAdminRule.DestinationPortRanges = this.DestinationPortRange;
+                    securityAdminRule.DestinationPortRanges = this.DestinationPortRange.ToList();
                 }
                 if (this.Source != null)
                 {

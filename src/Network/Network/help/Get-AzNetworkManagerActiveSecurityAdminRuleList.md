@@ -14,7 +14,7 @@ Lists NetworkManager Active Security Admin Rules in network manager.
 
 ```
 Get-AzNetworkManagerActiveSecurityAdminRuleList -NetworkManagerName <String> -ResourceGroupName <String>
- [-Region <System.Collections.Generic.List`1[System.String]>] [-SkipToken <String>]
+ [-Region <String[]>] [-SkipToken <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -25,10 +25,10 @@ The **Get-AzNetworkManagerActiveSecurityAdminRuleList** cmdlet lists NetworkMana
 
 ### Example 1
 ```powershell
-PS C:\> [System.Collections.Generic.List[String]]$regions = @()  
-PS C:\> $regions.Add("centraluseuap")
-PS C:\> Get-AzNetworkManagerActiveSecurityAdminRuleList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
-
+$regions = @("centraluseuap")  
+Get-AzNetworkManagerActiveSecurityAdminRuleList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
+```
+```output
 Value     : [
               {
                 "DisplayName": "Sample Rule Name",
@@ -85,7 +85,6 @@ Value     : [
             ]
 SkipToken :
 ```
-
 Lists NetworkManager Active Security Admin Rules in network manager for region centraluseuap.
 
 ## PARAMETERS
@@ -124,7 +123,7 @@ Accept wildcard characters: True
 List of regions.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]	
 Parameter Sets: (All)
 Aliases:
 
@@ -172,7 +171,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.String[]	
 
 ## OUTPUTS
 

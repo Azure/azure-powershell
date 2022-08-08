@@ -20,11 +20,12 @@ using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerActiveConnectivityConfigurationList"), OutputType(typeof(PSNetworkManagerActiveConnectivityConfigurationListResult))]
-    public class GetAzNetworkManagerActiveConnectivityConfigurationListCommand : NetworkManagerBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerActiveConnectivityConfiguration"), OutputType(typeof(PSNetworkManagerActiveConnectivityConfigurationResult))]
+    public class GetAzNetworkManagerActiveConnectivityConfigurationCommand : NetworkManagerBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -49,7 +50,7 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "List of regions.")]
         [AllowEmptyCollection]
-        public List<string> Region { get; set; }
+        public string[] Region { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Network
             var parameter = new ActiveConfigurationParameter();
             if(this.Region != null)
             {
-                parameter.Regions = this.Region;
+                parameter.Regions = this.Region.ToList();
             }
             if(!string.IsNullOrEmpty(this.SkipToken))
             {
@@ -71,8 +72,8 @@ namespace Microsoft.Azure.Commands.Network
             }
                 
             var networkManagerActiveConnectivityConfiguration = this.NetworkClient.NetworkManagementClient.ListActiveConnectivityConfigurations(parameter, this.ResourceGroupName, this.NetworkManagerName);
-            var psActiveConnectivityConfigurationList = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerActiveConnectivityConfigurationListResult>(networkManagerActiveConnectivityConfiguration);
-            WriteObject(psActiveConnectivityConfigurationList);
+            var psActiveConnectivityConfiguration = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerActiveConnectivityConfigurationResult>(networkManagerActiveConnectivityConfiguration);
+            WriteObject(psActiveConnectivityConfiguration);
         }
     }
 }

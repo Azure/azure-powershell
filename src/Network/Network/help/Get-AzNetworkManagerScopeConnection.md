@@ -31,8 +31,9 @@ The **Get-AzNetworkManagerScopeConnection** cmdlet gets one or more scope connec
 
 ### Example 1: Retrieve a scope connection
 ```powershell
-PS C:\> Get-AzNetworkManagerScopeConnection -ResourceGroupName "TestResourceGroup" -NetworkManagerName "TestNM" -Name "testsc"
-
+Get-AzNetworkManagerScopeConnection -ResourceGroupName "TestResourceGroup" -NetworkManagerName "TestNM" -Name "testsc"
+```
+```output
 TenantId          : 00000000-0000-0000-0000-000000000000
 ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000
 ConnectionState   : Pending
@@ -51,34 +52,54 @@ SystemDataText    : {
                     }
 Name              : testsc
 Etag              :
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Netwo
-                    rk/networkManagers/TestNM/scopeConnections/testsc
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Network/networkManagers/TestNM/scopeConnections/testsc
 ```
+Get a specific scope connection on a network manager.
 
 ### Example 2: List scope connections
 ```powershell
-PS C:\> Get-AzNetworkManagerScopeConnection -ResourceGroupName "TestResourceGroup" -NetworkManagerName "TestNM" 
-
-TenantId          : 00000000-0000-0000-0000-000000000000
-ResourceId        : /subscriptions/00000000-0000-0000-0000-000000000000
+Get-AzNetworkManagerScopeConnection -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" 
+```
+```output
+TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
+ResourceId        : /subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884
 ConnectionState   : Pending
-Description       : SampleDescription
 DisplayName       :
+Description       : SampleDescription
 Type              : Microsoft.Network/networkManagers/scopeConnections
 ProvisioningState :
 SystemData        : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
 SystemDataText    : {
-                      "CreatedBy": "user@microsoft.com",
+                      "CreatedBy": "jaredgorthy@microsoft.com",
                       "CreatedByType": "User",
-                      "CreatedAt": "2022-03-16T03:01:26.397158Z",
-                      "LastModifiedBy": "user@microsoft.com",
+                      "CreatedAt": "2022-08-07T23:53:52.6942092Z",
+                      "LastModifiedBy": "jaredgorthy@microsoft.com",
                       "LastModifiedByType": "User",
-                      "LastModifiedAt": "2022-03-16T03:01:26.397158Z"
+                      "LastModifiedAt": "2022-08-07T23:53:52.6942092Z"
                     }
-Name              : testsc
+Name              : subConnection
 Etag              :
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Netwo
-                    rk/networkManagers/TestNM/scopeConnections/testsc
+Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/scopeConnections/subConnection
+
+TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
+ResourceId        : /providers/Microsoft.Management/managementGroups/newMG
+ConnectionState   : Pending
+DisplayName       :
+Description       : SampleDescription
+Type              : Microsoft.Network/networkManagers/scopeConnections
+ProvisioningState :
+SystemData        : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText    : {
+                      "CreatedBy": "jaredgorthy@microsoft.com",
+                      "CreatedByType": "User",
+                      "CreatedAt": "2022-08-07T23:55:14.7516201Z",
+                      "LastModifiedBy": "jaredgorthy@microsoft.com",
+                      "LastModifiedByType": "User",
+                      "LastModifiedAt": "2022-08-07T23:55:14.7516201Z"
+                    }
+Name              : mgConnection
+Etag              :
+Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/scopeConnections/mgConnection
 ```
 
 ## PARAMETERS

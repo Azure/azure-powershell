@@ -34,20 +34,30 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Management Group Lists in Network Manager Scope")]
-        public List<string> ManagementGroup { get; set; }
+        public string[] ManagementGroup { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Subscription Lists in Network Manager Scope")]
-        public List<string> Subscription { get; set; }
+        public string[] Subscription { get; set; }
 
         public override void Execute()
         {
             base.Execute();
             var psNetworkManagerScopes = new PSNetworkManagerScopes();
-            psNetworkManagerScopes.ManagementGroups = this.ManagementGroup;
-            psNetworkManagerScopes.Subscriptions = this.Subscription;
+            List<string> managementGroups = new List<string>();
+            if (this.ManagementGroup != null)
+            {
+                managementGroups = this.ManagementGroup.ToList();
+            }
+            List<string> subscriptions = new List<string>();
+            if (this.Subscription != null)
+            {
+                subscriptions = this.Subscription.ToList();
+            }
+            psNetworkManagerScopes.ManagementGroups = managementGroups;
+            psNetworkManagerScopes.Subscriptions = subscriptions;
             WriteObject(psNetworkManagerScopes);
         }
     }

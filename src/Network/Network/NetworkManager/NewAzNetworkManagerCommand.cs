@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Network Manager Scope Access")]
-        public List<string> NetworkManagerScopeAccess { get; set; }
+        public string[] NetworkManagerScopeAccess { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Commands.Network
             networkManager.Name = this.Name;
             networkManager.Location = this.Location;
             networkManager.NetworkManagerScopes = this.NetworkManagerScope;
-            networkManager.NetworkManagerScopeAccesses = this.NetworkManagerScopeAccess;
+            networkManager.NetworkManagerScopeAccesses = this.NetworkManagerScopeAccess.ToList();
             if (!string.IsNullOrEmpty(this.Description))
             {
                 networkManager.Description = this.Description;

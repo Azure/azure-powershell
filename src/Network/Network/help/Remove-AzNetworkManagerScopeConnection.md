@@ -25,10 +25,9 @@ The **Remove-AzNetworkManagerScopeConnection** cmdlet removes an Azure network m
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetworkManagerScopeConnection -ResourceGroupName "testRG" -NetworkManagerName "TestNM" -Name "TestScopeConn" -PassThru -Force -AsJob
+Remove-AzNetworkManagerScopeConnection -ResourceGroupName "testRG" -NetworkManagerName "TestNM" -Name "TestScopeConn" -PassThru -Force -AsJob
 ```
-
-Removes a network manager scope connection.
+Deletes a network manager scope connection.
 
 ## PARAMETERS
 

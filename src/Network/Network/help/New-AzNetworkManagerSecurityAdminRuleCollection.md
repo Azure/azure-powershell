@@ -26,13 +26,37 @@ The **New-AzNetworkManagerSecurityAdminConfiguration** cmdlet creates a security
 
 ### Example 1
 ```powershell
-PS C:\> [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem]]$configGroup  = @() 
-PS C:\> $groupItem = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId "TestNetworkGroupId"
-PS C:\> $configGroup.Add($groupItem)
-PS C:\> New-AzNetworkManagerSecurityAdminRuleCollection -ResourceGroupName TestRGName -NetworkManagerName TestNMName -ConfigName TestAdminConfigName -Name TestRuleCollectionName -AppliesToGroup $configGroup 
-
+[System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem]]$configGroup  = @() 
+$groupItem = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
+$configGroup.Add($groupItem)
+New-AzNetworkManagerSecurityAdminRuleCollection -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -ConfigName "psSecurityAdminConfig" -Name "psRuleCollection" -AppliesToGroup $configGroup 
 ```
-Creates a security admin rule collection.
+```output
+AppliesToGroups     : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup}
+AppliesToGroupsText : [
+                        {
+                          "NetworkGroupId":
+                      "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
+                        }
+                      ]
+DisplayName         :
+Description         :
+Type                : Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections
+ProvisioningState   : Succeeded
+SystemData          : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText      : {
+                        "CreatedBy": "jaredgorthy@microsoft.com",
+                        "CreatedByType": "User",
+                        "CreatedAt": "2022-08-08T00:34:32.030751Z",
+                        "LastModifiedBy": "jaredgorthy@microsoft.com",
+                        "LastModifiedByType": "User",
+                        "LastModifiedAt": "2022-08-08T00:34:32.030751Z"
+                      }
+Name                : psRuleCollection
+Etag                :
+Id                  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig/ruleCollections/psRuleCollection
+```
+Creates a security admin rule collection with a network group member.
 
 ## PARAMETERS
 

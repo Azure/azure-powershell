@@ -45,13 +45,12 @@
     - `New-AzNetworkManagerSecurityAdminRule` 
     - `Remove-AzNetworkManagerSecurityAdminRule` 
     - `Set-AzNetworkManagerSecurityAdminRule` 
-    - `Get-AzNetworkManagerActiveConnectivityConfigurationList` 
-    - `Get-AzNetworkManagerActiveSecurityAdminRuleList` 
-    - `Get-AzNetworkManagerEffectiveConnectivityConfigurationList` 
-    - `Get-AzNetworkManagerEffectiveSecurityAdminRuleList` 
-    - `Get-AzNetworkManagerEffectiveSecurityAdminRuleList` 
+    - `Get-AzNetworkManagerActiveConnectivityConfiguration` 
+    - `Get-AzNetworkManagerActiveSecurityAdminRule` 
+    - `Get-AzNetworkManagerEffectiveConnectivityConfiguration` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRule` 
     - `Deploy-AzNetworkManagerCommit` 
-    - `Get-AzNetworkManagerDeploymentStatusList` 
+    - `Get-AzNetworkManagerDeploymentStatus` 
     - `New-AzNetworkManagerAddressPrefixItem` 
     - `New-AzNetworkManagerScope` 
     - `New-AzNetworkManagerSecurityGroupItem`

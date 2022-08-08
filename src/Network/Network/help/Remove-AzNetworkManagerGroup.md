@@ -25,9 +25,9 @@ The **Remove-AzNetworkManagerGroup** cmdlet removes an network Group.
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetworkManagerGroup -Name TestNetworkGroupName -NetworkManagerName TestNMName -ResourceGroupName TestRGName
+Remove-AzNetworkManagerGroup -Name TestNetworkGroupName -NetworkManagerName TestNMName -ResourceGroupName TestRGName -ForceDelete
 ```
-Removes a network Group.
+Deletes a network Group.
 
 ## PARAMETERS
 

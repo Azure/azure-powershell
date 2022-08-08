@@ -31,15 +31,12 @@ function Test-NetworkManagerCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
 
         # Create Scope
-        [System.Collections.Generic.List[string]]$subscriptions  = @()
-        $subscriptions.Add($subscriptionId)
-        [System.Collections.Generic.List[string]]$managementGroups  = @()
-        $managementGroups.Add($managementGroupId)
+        $subscriptions  = @($subscriptionId)
+        $managementGroups  = @($managementGroupId)
         $scope = New-AzNetworkManagerScope -Subscription $subscriptions -ManagementGroup $managementGroups
 
         # Define access
-        [System.Collections.Generic.List[String]]$access  = @()
-        $access.Add("Connectivity");
+        $access  = @("Connectivity")
 
         # Create network manager
         New-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
@@ -88,10 +85,8 @@ function Test-NetworkManagerGroupCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create Scope
-        [System.Collections.Generic.List[string]]$group  = @()
-        $group.Add($subscriptionId)
-        [System.Collections.Generic.List[String]]$access  = @()
-        $access.Add("Connectivity");
+        $group  = @($subscriptionId)
+        $access  = @("Connectivity")
         $scope = New-AzNetworkManagerScope -Subscription $group
 
         # Create a network manager
@@ -152,10 +147,8 @@ function Test-NetworkManagerStaticMemberCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create Scope
-        [System.Collections.Generic.List[string]]$group  = @()
-        $group.Add($subscriptionId)
-        [System.Collections.Generic.List[String]]$access  = @()
-        $access.Add("Connectivity");
+        $group  = @($subscriptionId)
+        $access  = @("Connectivity")
         $scope = New-AzNetworkManagerScope -Subscription $group
 
         # Create network manager
@@ -224,10 +217,8 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
 
         # Create Scope
-        [System.Collections.Generic.List[string]]$group  = @()
-        $group.Add($subscriptionId)
-        [System.Collections.Generic.List[String]]$access  = @()
-        $access.Add("Connectivity");
+        $group  = @($subscriptionId)
+        $access  = @("Connectivity")
         $scope = New-AzNetworkManagerScope -Subscription $group
         
         # Create network manager
@@ -276,18 +267,16 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual $connectivityConfigurationName $newConnConfig.Name;
 
 
-        [System.Collections.Generic.List[string]]$configids  = @()
-        $configids.Add($newConnConfig.Id);
-        [System.Collections.Generic.List[String]]$regions = @()  
-        $regions.Add($rglocation)
+        $configids  = @($newConnConfig.Id)
+        $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
-        # Start-Sleep -Seconds 180
+        #Start-Sleep -Seconds 120
          
-        $deploymentStatus = Get-AzNetworkManagerDeploymentStatusList -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "Connectivity"
+        $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "Connectivity"
         Assert-NotNull $deploymentStatus;
         Assert-AreEqual "Connectivity"  $deploymentStatus.Value[0].DeploymentType;
 
-        $activeConnectivityConfig = Get-AzNetworkManagerActiveConnectivityConfigurationList -NetworkManagerName $networkManagerName -ResourceGroupName $rgname -region $regions
+        $activeConnectivityConfig = Get-AzNetworkManagerActiveConnectivityConfiguration -NetworkManagerName $networkManagerName -ResourceGroupName $rgname -region $regions
         Assert-NotNull $activeConnectivityConfig;
         Assert-AreEqual  $newConnConfig.Id $activeConnectivityConfig.Value[0].Id;
         Assert-AreEqual  $networkGroup.Id $activeConnectivityConfig.Value[0].ConfigurationGroups[0].Id;
@@ -302,7 +291,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "False"   $activeConnectivityConfig.Value[0].IsGlobal;
         Assert-AreEqual "True"   $activeConnectivityConfig.Value[0].DeleteExistingPeering;
 
-        $effectiveConnectivityConfig = Get-AzNetworkManagerEffectiveConnectivityConfigurationList -VirtualNetworkName $vnet -VirtualNetworkResourceGroupName $vnetRG
+        $effectiveConnectivityConfig = Get-AzNetworkManagerEffectiveConnectivityConfiguration -VirtualNetworkName $vnet -VirtualNetworkResourceGroupName $vnetRG
         Assert-NotNull $effectiveConnectivityConfig;
         Assert-AreEqual  $newConnConfig.Id $effectiveConnectivityConfig.Value[0].Id;
         Assert-AreEqual  $networkGroup.Id $effectiveConnectivityConfig.Value[0].ConfigurationGroups[0].Id;
@@ -317,7 +306,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "True"   $effectiveConnectivityConfig.Value[0].DeleteExistingPeering;
 
         $job = Remove-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $connectivityConfigurationName -ForceDelete -PassThru -Force -AsJob;
-        # Start-Sleep -Seconds 180
+        #Start-Sleep -Seconds 120
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
@@ -366,10 +355,8 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
 
         # Create Scope
-        [System.Collections.Generic.List[string]]$group  = @()
-        $group.Add($subscriptionId)
-        [System.Collections.Generic.List[String]]$access  = @()
-        $access.Add("SecurityAdmin");
+        $group  = @($subscriptionId)
+        $access  = @("SecurityAdmin")
         $scope = New-AzNetworkManagerScope -Subscription $group
         New-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
 
@@ -384,8 +371,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
 
         $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName
 
-        [System.Collections.Generic.List[string]]$ApplyOnNetworkIntentPolicyBasedServices  = @()
-        $ApplyOnNetworkIntentPolicyBasedServices.Add("None")
+        $ApplyOnNetworkIntentPolicyBasedServices  = @("None")
         New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName -Description "DESCription" -DeleteExistingNSG -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedServices
         
         $securityConfig = Get-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName
@@ -419,10 +405,8 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         $sourceAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "Internet" -AddressPrefixType "ServiceTag"
         $destinationAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.0.0.1" -AddressPrefixType "IPPrefix" 
 
-        [System.Collections.Generic.List[string]]$sourcePortList = @()
-        $sourcePortList.Add("100")
-        [System.Collections.Generic.List[String]]$destinationPortList = @()
-        $destinationPortList.Add("99");
+        $sourcePortList = @("100")
+        $destinationPortList = @("99")
         New-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityConfigurationName  -RuleCollectionName $RuleCollectionName -Name $RuleName -Description "Description" -Protocol  "TCP" -Direction "Inbound" -Access "Allow" -Priority 100 -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -Source $sourceAddressPrefix -Destination $destinationAddressPrefix 
 
         $adminRule = Get-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName
@@ -442,19 +426,17 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-NotNull $newAdminRule;
         Assert-AreEqual $RuleName $newAdminRule.Name;
 
-        [System.Collections.Generic.List[string]]$configids  = @()
-        $configids.Add($securityConfig.Id);
-        [System.Collections.Generic.List[String]]$regions = @()  
-        $regions.Add($rglocation)
+        $configids  = @($securityConfig.Id)
+        $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "SecurityAdmin" 
-        # Start-Sleep -Seconds 180
+        #Start-Sleep -Seconds 120
        
-        $deploymentStatus = Get-AzNetworkManagerDeploymentStatusList -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "SecurityAdmin"
+        $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "SecurityAdmin"
         Assert-NotNull $deploymentStatus;
         Assert-AreEqual "SecurityAdmin"  $deploymentStatus.Value[0].DeploymentType;
         Assert-AreEqual $securityConfig.Id  $deploymentStatus.Value[0].ConfigurationIds[0];
 
-        $activeSecurityAdminRule = Get-AzNetworkManagerActiveSecurityAdminRuleList -NetworkManagerName $networkManagerName -ResourceGroupName $rgname -region $regions
+        $activeSecurityAdminRule = Get-AzNetworkManagerActiveSecurityAdminRule -NetworkManagerName $networkManagerName -ResourceGroupName $rgname -region $regions
         Assert-NotNull $activeSecurityAdminRule;
         Assert-AreEqual  $newAdminRule.Id $activeSecurityAdminRule.Value[0].Id;
         Assert-AreEqual  $networkGroup.Id $activeSecurityAdminRule.Value[0].RuleGroups[0].Id;
@@ -473,7 +455,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual "10.0.0.1" $activeSecurityAdminRule.Value[0].Destinations[0].AddressPrefix
         Assert-AreEqual "Internet" $activeSecurityAdminRule.Value[0].Sources[0].AddressPrefix
 
-        $effectiveSecurityAdminRuleList = Get-AzNetworkManagerEffectiveSecurityAdminRuleList  -VirtualNetworkName $vnetName -VirtualNetworkResourceGroupName $vnetRG
+        $effectiveSecurityAdminRuleList = Get-AzNetworkManagerEffectiveSecurityAdminRule  -VirtualNetworkName $vnetName -VirtualNetworkResourceGroupName $vnetRG
         Assert-NotNull $effectiveSecurityAdminRuleList;
 
         <#
@@ -510,7 +492,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual "Internet" $effectiveSecurityAdminRuleList.Value[3].Sources[0].AddressPrefix
 
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "SecurityAdmin" 
-        # Start-Sleep -Seconds 180
+        #Start-Sleep -Seconds 120
 
         $job = Remove-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
@@ -562,10 +544,8 @@ function Test-NetworkManagerScopeConnectionCRUD
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
         
         # Create Scope
-        [System.Collections.Generic.List[string]]$group  = @()
-        $group.Add($subscriptionId)
-        [System.Collections.Generic.List[String]]$access  = @()
-        $access.Add("Connectivity");
+        $group  = @($subscriptionId)
+        $access  = @("Connectivity")
         $scope = New-AzNetworkManagerScope -Subscription $group
         New-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
 

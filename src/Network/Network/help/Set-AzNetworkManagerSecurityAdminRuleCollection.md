@@ -26,11 +26,46 @@ The **Set-AzNetworkManagerSecurityAdminRuleCollection** cmdlet updates a network
 
 ### Example 1
 ```powershell
-$NetworkManagerSecurityAdminRuleCollection = Get-AzNetworkManagerSecurityAdminRuleCollection  -SecurityAdminConfigurationName TestSecurityAdminConfigurationName -NetworkManagerName TestNMName -ResourceGroupName TestRGName -Name ruleCollection
-PS C:\> Set-AzNetworkManagerSecurityAdminRuleCollection -SecurityAdminConfigurationName TestSecurityAdminConfigurationName -NetworkManagerName TestNMName -ResourceGroupName TestRGName -NetworkManagerSecurityAdminRuleCollection $NetworkManagerSecurityAdminRuleCollection
+$NetworkManagerSecurityAdminRuleCollection = Get-AzNetworkManagerSecurityAdminRuleCollection -SecurityAdminConfigurationName "psSecurityAdminConfig" -Name "psRuleCollection" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup"
+$groupItem = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
+$groupItem2 = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2"
+[System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem]]$configGroup  = @() 
+$configGroup.Add($groupItem)
+$configGroup.Add($groupItem2)
+$NetworkManagerSecurityAdminRuleCollection.AppliesToGroups = $configGroup
+Set-AzNetworkManagerSecurityAdminRuleCollection -SecurityAdminConfigurationName "psSecurityAdminConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -NetworkManagerSecurityAdminRuleCollection $NetworkManagerSecurityAdminRuleCollection
 ```
-
-Updates a network manager security admin rule collection.
+```output
+AppliesToGroups     : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup,
+                      /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2}
+AppliesToGroupsText : [
+                        {
+                          "NetworkGroupId":
+                      "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
+                        },
+                        {
+                          "NetworkGroupId":
+                      "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2"
+                        }
+                      ]
+DisplayName         :
+Description         :
+Type                : Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections
+ProvisioningState   : Succeeded
+SystemData          : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText      : {
+                        "CreatedBy": "jaredgorthy@microsoft.com",
+                        "CreatedByType": "User",
+                        "CreatedAt": "2022-08-08T00:34:32.030751Z",
+                        "LastModifiedBy": "jaredgorthy@microsoft.com",
+                        "LastModifiedByType": "User",
+                        "LastModifiedAt": "2022-08-08T01:19:40.2407843Z"
+                      }
+Name                : psRuleCollection
+Etag                :
+Id                  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig/ruleCollections/psRuleCollection
+```
+Updates a network manager security admin rule collection to include new network groups.
 
 ## PARAMETERS
 

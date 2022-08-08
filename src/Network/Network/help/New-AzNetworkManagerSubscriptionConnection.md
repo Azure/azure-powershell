@@ -24,10 +24,22 @@ The **New-AzNetworkManagerSubscriptionConnection** cmdlet creates a network mana
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkManagerSubscriptionConnection -Name TestConnectionName -NetworkManagerId "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTest" -Description "SampleDescription"
+New-AzNetworkManagerSubscriptionConnection -Name "subConnection" -NetworkManagerId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager" -Description "SampleDescription"
 ```
-
-Creates a network manager subscription connection.
+```output
+NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
+ConnectionState   : Pending
+DisplayName       :
+Description       : SampleDescription
+Type              : Microsoft.Network/networkManagerConnections
+ProvisioningState :
+SystemData        :
+SystemDataText    : null
+Name              : subConnection
+Etag              :
+Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/providers/Microsoft.Network/networkManagerConnections/subConnection
+```
+Creates a network manager connection to a subscription.
 
 ## PARAMETERS
 

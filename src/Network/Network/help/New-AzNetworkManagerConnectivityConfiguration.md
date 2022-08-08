@@ -23,23 +23,99 @@ New-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerName
 ```
 
 ## DESCRIPTION
-The **New-AzNetworkManagerConnectivityConfiguration** cmdlet creates a network manager.
+The **New-AzNetworkManagerConnectivityConfiguration** cmdlet creates a network manager connectivity configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/PowerShellTestResources/providers/Microsoft.Network/networkManagers/PowerShellTestNM/networkGroups/PSTestGroup" -UseHubGateway -GroupConnectivity "None" -IsGlobal
-PS C:\> [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]]$connectivityGroup = @()
-PS C:\> $connectivityGroup.Add($connectivityGroupItem)  
-PS C:\> [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerHub]]$hubList  = @() 
-PS C:\> $hub = New-AzNetworkManagerHub -ResourceId "TestVnetId" -ResourceType "Microsoft.Network/virtualNetworks" 
-PS C:\> $hubList.Add($hub)
-PS C:\> New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName TestResourceGroup -Name TestConnConfigName -NetworkManagerName TestNetworkManagerName -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering -IsGlobal 
-
+$connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
+[System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]]$connectivityGroup  = @()  
+$connectivityGroup.Add($connectivityGroupItem)   
+[System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerHub]]$hubList  = @() 
+$hub = New-AzNetworkManagerHub -ResourceId "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub" -ResourceType "Microsoft.Network/virtualNetworks" 
+$hubList.Add($hub)
+New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgName -Name "psConnectivityConfig" -NetworkManagerName $nmName -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
 ```
+```output
+ConnectivityTopology  : HubAndSpoke
+Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
+DeleteExistingPeering : True
+IsGlobal              : False
+AppliesToGroups       : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup}
+AppliesToGroupsText   : [
+                          {
+                            "NetworkGroupId": "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup",
+                            "UseHubGateway": "False",
+                            "IsGlobal": "False",
+                            "GroupConnectivity": "None"
+                          }
+                        ]
+HubsText              : [
+                          {
+                            "ResourceId": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub",
+                            "ResourceType": "Microsoft.Network/virtualNetworks"
+                          }
+                        ]
+DisplayName           :
+Description           :
+Type                  : Microsoft.Network/networkManagers/connectivityConfigurations
+ProvisioningState     : Succeeded
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "jaredgorthy@microsoft.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2022-08-07T04:37:43.1186543Z",
+                          "LastModifiedBy": "jaredgorthy@microsoft.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2022-08-07T04:37:43.1186543Z"
+                        }
+Name                  : psConnectivityConfig
+Etag                  :
+Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfig
+```
+Creates a hub and spoke network manager connectivity configuration.
 
-Creates a network manager connectivity configuration.
+### Example 2
+```powershell
+$connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
+[System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]]$connectivityGroup  = @()  
+$connectivityGroup.Add($connectivityGroupItem)   
+New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgName -Name "psConnectivityConfigMesh" -NetworkManagerName $nmName -ConnectivityTopology "Mesh" -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
+```
+```output
+ConnectivityTopology  : Mesh
+Hubs                  : {}
+DeleteExistingPeering : True
+IsGlobal              : False
+AppliesToGroups       : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup}
+AppliesToGroupsText   : [
+                          {
+                            "NetworkGroupId": "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup",
+                            "UseHubGateway": "False",
+                            "IsGlobal": "False",
+                            "GroupConnectivity": "None"
+                          }
+                        ]
+HubsText              : []
+DisplayName           :
+Description           :
+Type                  : Microsoft.Network/networkManagers/connectivityConfigurations
+ProvisioningState     : Succeeded
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "jaredgorthy@microsoft.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2022-08-07T04:43:00.9075845Z",
+                          "LastModifiedBy": "jaredgorthy@microsoft.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2022-08-07T04:43:00.9075845Z"
+                        }
+Name                  : psConnectivityConfigMesh
+Etag                  :
+Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfigMesh
+```
+Creates a mesh network manager connectivity configuration.
 
 ## PARAMETERS
 

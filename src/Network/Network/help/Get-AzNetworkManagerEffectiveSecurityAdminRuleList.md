@@ -25,8 +25,9 @@ The **Get-AzNetworkManagerEffectiveSecurityAdminRuleList** cmdlet lists NetworkM
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetworkManagerEffectiveSecurityAdminRuleList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
-
+Get-AzNetworkManagerEffectiveSecurityAdminRuleList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
+```
+```output
 Value     : [
               {
                 "DisplayName": "Sample Rule Name",

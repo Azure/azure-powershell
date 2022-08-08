@@ -25,10 +25,62 @@ The **Set-AzNetworkManagerConnectivityConfiguration** cmdlet updates a connectiv
 
 ### Example 1
 ```powershell
-PS C:\> $ConnectivityConfiguraiton = Get-AzNetworkManagerConnectivityConfiguration  -Name "TestConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
-PS C:\> Set-AzNetworkManagerConnectivityConfiguration -NetworkManagerName TestNMName -ResourceGroupName TestRGName -NetworkManagerConnectivityConfiguration $ConnectivityConfiguraiton
+$ConnectivityConfiguration = Get-AzNetworkManagerConnectivityConfiguration -Name "psConnectivityConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup"
+$connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
+$connectivityGroupItem2 = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2"
+[System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]]$connectivityGroup  = @()  
+$connectivityGroup.Add($connectivityGroupItem)
+$connectivityGroup.Add($connectivityGroupItem2)
+$ConnectivityConfiguration.AppliesToGroups = $connectivityGroup
+Set-AzNetworkManagerConnectivityConfiguration -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -NetworkManagerConnectivityConfiguration $ConnectivityConfiguration
 ```
-Updates a connectivity configuration.
+```output
+ConnectivityTopology  : HubAndSpoke
+Hubs                  : {/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub}
+DeleteExistingPeering : True
+IsGlobal              : False
+AppliesToGroups       : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup,
+                        /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2}
+AppliesToGroupsText   : [
+                          {
+                            "NetworkGroupId":
+                        "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup",
+                            "UseHubGateway": "False",
+                            "IsGlobal": "False",
+                            "GroupConnectivity": "None"
+                          },
+                          {
+                            "NetworkGroupId":
+                        "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup2",
+                            "UseHubGateway": "False",
+                            "IsGlobal": "False",
+                            "GroupConnectivity": "None"
+                          }
+                        ]
+HubsText              : [
+                          {
+                            "ResourceId": "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub",
+                            "ResourceType": "Microsoft.Network/virtualNetworks"
+                          }
+                        ]
+DisplayName           :
+Description           :
+Type                  : Microsoft.Network/networkManagers/connectivityConfigurations
+ProvisioningState     : Succeeded
+SystemData            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText        : {
+                          "CreatedBy": "jaredgorthy@microsoft.com",
+                          "CreatedByType": "User",
+                          "CreatedAt": "2022-08-07T04:37:43.1186543Z",
+                          "LastModifiedBy": "jaredgorthy@microsoft.com",
+                          "LastModifiedByType": "User",
+                          "LastModifiedAt": "2022-08-08T00:58:41.1751638Z"
+                        }
+Name                  : psConnectivityConfig
+Etag                  :
+Id                    : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfig
+```
+Updates a connectivity configuration's group members.
 
 ## PARAMETERS
 

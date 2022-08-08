@@ -24,11 +24,27 @@ The **New-AzNetworkManagerConnectivityGroupItem** cmdlet creates a connectivity 
 
 ### Example 1
 ```powershell
-PS C:\> $TestNetworkGroupId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup"
-PS C:\> New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $TestNetworkGroupId -UseHubGateway –GroupConnectivity "None" -IsGlobal 
+$networkGroupId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup"
+New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroupId -UseHubGateway –GroupConnectivity "None" -IsGlobal 
 ```
+```output
+NetworkGroupId                                                                                                                                           UseHubGateway IsGlobal GroupConnectivity
+--------------                                                                                                                                           ------------- -------- -----------------
+/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup True          True     None
+```
+Creates a connectivity group item using hub as gateway.
 
-Creates a connectivity group item.
+### Example 2
+```powershell
+$networkGroupId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup"
+New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroupId –GroupConnectivity "DirectlyConnected" 
+```
+```output
+NetworkGroupId                                                                                                                                           UseHubGateway IsGlobal GroupConnectivity
+--------------                                                                                                                                           ------------- -------- -----------------
+/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup False         False    DirectlyConnected
+```
+Creates a connectivity group item with direct connectivity.
 
 ## PARAMETERS
 

@@ -32,7 +32,8 @@ The **Get-AzNetworkManager** cmdlet gets one or more network managers in a resou
 ### Example 1: Retrieve a network manager
 ```powershell
 Get-AzNetworkManager -ResourceGroupName "TestResourceGroup" -Name "TestNM"
-
+```
+```output
 DisplayName                     :
 Description                     :
 Location                        : eastus2euap
@@ -62,11 +63,13 @@ SystemData                      : {
 Name                            : TestNM
 Etag                            : W/"00000000-0000-0000-0000-000000000000"
 ```
+Retrieve a network manager.
 
-### Example 2: List network managers
+### Example 2: List all network managers in a resource group
 ```powershell
 Get-AzNetworkManager -ResourceGroupName "TestResourceGroup"
-
+```
+```output
 DisplayName                     :
 Description                     :
 Location                        : eastus2euap
@@ -96,6 +99,7 @@ SystemData                      : {
 Name                            : TestNM
 Etag                            : W/"00000000-0000-0000-0000-000000000000"
 ```
+List all network managers in a resource group.
 
 ## PARAMETERS
 

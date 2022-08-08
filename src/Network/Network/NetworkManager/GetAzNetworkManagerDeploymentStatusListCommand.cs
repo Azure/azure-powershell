@@ -26,8 +26,8 @@ using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerDeploymentStatusList"), OutputType(typeof(PSNetworkManagerDeploymentStatusListResult))]
-    public class GetAzNetworkManagerDeploymentStatusListCommand : NetworkManagerBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerDeploymentStatus"), OutputType(typeof(PSNetworkManagerDeploymentStatusResult))]
+    public class GetAzNetworkManagerDeploymentStatusCommand : NetworkManagerBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -51,13 +51,13 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "List of regions.")]
-        public List<string> Region { get; set; }
+        public string[] Region { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "List of deploymentTypes.")]
-        public List<string> DeploymentType{ get; set; }
+        public string[] DeploymentType{ get; set; }
 
         [Parameter(
           Mandatory = false,
@@ -71,20 +71,20 @@ namespace Microsoft.Azure.Commands.Network
             var parameter = new MNM.NetworkManagerDeploymentStatusParameter();
             if (Region != null)
             {
-                parameter.Regions = this.Region;
+                parameter.Regions = this.Region.ToList();
             }
             if (DeploymentType != null)
             {
-                parameter.DeploymentTypes = this.DeploymentType;
+                parameter.DeploymentTypes = this.DeploymentType.ToList();
             }
             if (!string.IsNullOrEmpty(this.SkipToken))
             {
                 parameter.SkipToken = this.SkipToken;
             }
 
-            var networkManagerDeploymentStatusListResult = this.NetworkClient.NetworkManagementClient.NetworkManagerDeploymentStatus.List(parameter, this.ResourceGroupName, this.NetworkManagerName);
-            var pSNetworkManagerDeploymentStatusListResult = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerDeploymentStatusListResult>(networkManagerDeploymentStatusListResult);
-            WriteObject(pSNetworkManagerDeploymentStatusListResult);
+            var networkManagerDeploymentStatusResult = this.NetworkClient.NetworkManagementClient.NetworkManagerDeploymentStatus.List(parameter, this.ResourceGroupName, this.NetworkManagerName);
+            var pSNetworkManagerDeploymentStatusResult = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerDeploymentStatusResult>(networkManagerDeploymentStatusResult);
+            WriteObject(pSNetworkManagerDeploymentStatusResult);
         }
     }
 }

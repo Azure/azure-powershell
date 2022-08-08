@@ -20,11 +20,12 @@ using Microsoft.Azure.Management.Network.Models;
 using Microsoft.Rest.Azure;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
+using System.Linq;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerActiveSecurityAdminRuleList"), OutputType(typeof(PSNetworkManagerActiveSecurityAdminRuleListResult))]
-    public class GetAzNetworkManagerActiveSecurityAdminRuleListCommand : NetworkManagerBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerActiveSecurityAdminRule"), OutputType(typeof(PSNetworkManagerActiveSecurityAdminRuleResult))]
+    public class GetAzNetworkManagerActiveSecurityAdminRuleCommand : NetworkManagerBaseCmdlet
     {
         [Parameter(
            Mandatory = true,
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "List of regions.")]
-        public List<string> Region { get; set; }
+        public string[] Region { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -62,17 +63,17 @@ namespace Microsoft.Azure.Commands.Network
             var parameter = new ActiveConfigurationParameter();
             if(this.Region != null)
             {
-                parameter.Regions = this.Region;
+                parameter.Regions = this.Region.ToList();
             }
             if(!string.IsNullOrEmpty(this.SkipToken))
             {
                 parameter.SkipToken = this.SkipToken;
             }
                 
-            var networkManagerActiveAdminRuleListResult = this.NetworkClient.NetworkManagementClient.ListActiveSecurityAdminRules(parameter, this.ResourceGroupName, this.NetworkManagerName);
+            var networkManagerActiveAdminRuleResult = this.NetworkClient.NetworkManagementClient.ListActiveSecurityAdminRules(parameter, this.ResourceGroupName, this.NetworkManagerName);
             var pSNetworkManagerActiveSecurityAdminRules = new List<PSNetworkManagerActiveBaseSecurityAdminRule>();
 
-            foreach (var rule in networkManagerActiveAdminRuleListResult.Value)
+            foreach (var rule in networkManagerActiveAdminRuleResult.Value)
             {
                 PSNetworkManagerActiveBaseSecurityAdminRule psActiveAdminRule;
                 if (rule.GetType().Name == "ActiveSecurityAdminRule")
@@ -90,10 +91,10 @@ namespace Microsoft.Azure.Commands.Network
                 pSNetworkManagerActiveSecurityAdminRules.Add(psActiveAdminRule);
             }
 
-            var pSNetworkManagerActiveSecurityAdminRulesList = new PSNetworkManagerActiveSecurityAdminRuleListResult();
-            pSNetworkManagerActiveSecurityAdminRulesList.Value = pSNetworkManagerActiveSecurityAdminRules;
-            pSNetworkManagerActiveSecurityAdminRulesList.SkipToken = networkManagerActiveAdminRuleListResult.SkipToken;
-            WriteObject(pSNetworkManagerActiveSecurityAdminRulesList);
+            var pSNetworkManagerActiveSecurityAdminRulesResult = new PSNetworkManagerActiveSecurityAdminRuleResult();
+            pSNetworkManagerActiveSecurityAdminRulesResult.Value = pSNetworkManagerActiveSecurityAdminRules;
+            pSNetworkManagerActiveSecurityAdminRulesResult.SkipToken = networkManagerActiveAdminRuleResult.SkipToken;
+            WriteObject(pSNetworkManagerActiveSecurityAdminRulesResult);
         }
     }
 }

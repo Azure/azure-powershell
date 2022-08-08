@@ -25,8 +25,9 @@ The **Get-AzNetworkManagerEffectiveConnectivityConfigurationList** cmdlet lists 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetworkManagerEffectiveConnectivityConfigurationList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
- 
+Get-AzNetworkManagerEffectiveConnectivityConfigurationList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
+```
+```output
  Value     : [
               {
                 "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/connectivityConfigurations/TestConn",
@@ -68,7 +69,6 @@ PS C:\> Get-AzNetworkManagerEffectiveConnectivityConfigurationList -VirtualNetwo
             ]
 SkipToken :
 ```
-
 Lists NetworkManager Effective Connectivity Configurations applied on a virtual network 'TestVnet'.
 
 ## PARAMETERS

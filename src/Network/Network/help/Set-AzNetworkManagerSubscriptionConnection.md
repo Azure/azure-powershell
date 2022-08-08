@@ -24,11 +24,24 @@ The **Set-AzNetworkManagerSubscriptionConnection** cmdlet update a network mange
 
 ### Example 1
 ```powershell
-PS C:\> $networkManagerConnection = Get-AzNetworkManagerSubscriptionConnection -NetworkManagerSubscriptionConnection $networkManagerConnection -Name testConnection
-PS C:\> Set-AzNetworkManagerSubscriptionConnection -NetworkManagerSubscriptionConnection $networkManagerConnection
+$networkManagerConnection = Get-AzNetworkManagerSubscriptionConnection -Name "subConnection"
+$networkManagerConnection.description = " new description"
+Set-AzNetworkManagerSubscriptionConnection -NetworkManagerSubscriptionConnection $networkManagerConnection
 ```
-
-Updates a network manger subscription connection.
+```output
+NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
+ConnectionState   : Conflict
+DisplayName       :
+Description       :  new description
+Type              : Microsoft.Network/networkManagerConnections
+ProvisioningState :
+SystemData        :
+SystemDataText    : null
+Name              : subConnection
+Etag              :
+Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/providers/Microsoft.Network/networkManagerConnections/subConnection
+```
+Updates a network manger subscription connection description.
 
 ## PARAMETERS
 

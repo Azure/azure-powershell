@@ -26,11 +26,55 @@ The **Set-AzNetworkManagerSecurityAdminRule** cmdlet updates a network manager s
 
 ### Example 1
 ```powershell
-PS C:\> $SecurityAdminRule = Get-AzNetworkManagerSecurityAdminRule  -Name "testRule" -RuleCollectionName "TestRC" -SecurityAdminConfigurationName "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
-PS C:\> Set-AzNetworkManagerSecurityAdminRule -RuleCollectionName "TestRC" -SecurityAdminConfigurationName "testRule" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -SecurityAdminRule $SecurityAdminRule
+$SecurityAdminRule = Get-AzNetworkManagerSecurityAdminRule  -Name "psRule" -RuleCollectionName "psRuleCollection" -SecurityAdminConfigurationName "psSecurityAdminConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup"
+$SecurityAdminRule.priority = 50
+Set-AzNetworkManagerSecurityAdminRule -RuleCollectionName "psRuleCollection" -SecurityAdminConfigurationName "psSecurityAdminConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -SecurityAdminRule $SecurityAdminRule
 ```
-
-Updates a network manager security admin rule.
+```output
+Protocol                  : Tcp
+Direction                 : Inbound
+Sources                   : {Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem}
+Destinations              : {Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem}
+SourcePortRanges          : {100}
+DestinationPortRanges     : {99}
+Access                    : Allow
+Priority                  : 50
+SourcesText               : [
+                              {
+                                "AddressPrefix": "Internet",
+                                "AddressPrefixType": "ServiceTag"
+                              }
+                            ]
+DestinationsText          : [
+                              {
+                                "AddressPrefix": "10.0.0.1",
+                                "AddressPrefixType": "IPPrefix"
+                              }
+                            ]
+SourcePortRangesText      : [
+                              "100"
+                            ]
+DestinationPortRangesText : [
+                              "99"
+                            ]
+DisplayName               :
+Description               : TestDescription
+Type                      : Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections/rules
+ProvisioningState         : Succeeded
+SystemData                : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText            : {
+                              "CreatedBy": "jaredgorthy@microsoft.com",
+                              "CreatedByType": "User",
+                              "CreatedAt": "2022-08-08T00:39:56.4512419Z",
+                              "LastModifiedBy": "jaredgorthy@microsoft.com",
+                              "LastModifiedByType": "User",
+                              "LastModifiedAt": "2022-08-08T01:23:18.6454664Z"
+                            }
+Name                      : psRule
+Etag                      :
+Id                        : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig/ruleCollections/psRuleCollection/rules/psRule
+```
+Updates a network manager security admin rule's priority'.
 
 ## PARAMETERS
 

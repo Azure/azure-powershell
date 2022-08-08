@@ -30,10 +30,10 @@ The **Get-AzNetworkManagerSecurityAdminConfiguration** cmdlet gets a security ad
 ## EXAMPLES
 
 ### Example 1
-Expand
 ```powershell
-PS C:\> Get-AzNetworkManagerSecurityAdminConfiguration  -Name "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
-
+Get-AzNetworkManagerSecurityAdminConfiguration  -Name "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+```
+```output
 Name               : TestSecConfig
 Description        : DESCription
 Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestSecConfig
@@ -52,12 +52,13 @@ SystemData         : {
                        "LastModifiedAt": "2021-10-18T04:05:59"
                      }
 ```
+Get a security admin configuration.
 
 ### Example 2
-NoExpand
 ```powershell
-PS C:\> Get-AzNetworkManagerSecurityAdminConfiguration -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
-
+Get-AzNetworkManagerSecurityAdminConfiguration -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+```
+```output
 Name               : TestSecConfig
 Description        : DESCription
 Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestSecConfig
@@ -75,7 +76,26 @@ SystemData         : {
                        "LastModifiedByType": "Application",
                        "LastModifiedAt": "2021-10-18T04:05:59"
                      }
+
+                     Name               : TestSecConfig2
+Description        : DESCription
+Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestSecConfig2
+Type               : Microsoft.Network/networkManagers/securityAdminConfigurations
+Etag               : "00000000-0000-0000-0000-000000000000"
+ProvisioningState  : Succeeded
+DeleteExistingNSGs :
+ApplyOnNetworkIntentPolicyBasedServices:
+SecurityType       :
+SystemData         : {
+                       "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                       "CreatedByType": "Application",
+                       "CreatedAt": "2021-10-18T04:05:57",
+                       "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                       "LastModifiedByType": "Application",
+                       "LastModifiedAt": "2021-10-18T04:05:59"
+                     }
 ```
+Gets all security admin configurations on a network manager.
 
 ## PARAMETERS
 

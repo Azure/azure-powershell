@@ -15,7 +15,7 @@ Creates a network manager.
 ```
 New-AzNetworkManager -Name <String> -ResourceGroupName <String> -Location <String> [-Description <String>]
  [-Tag <Hashtable>] -NetworkManagerScope <PSNetworkManagerScopes>
- -NetworkManagerScopeAccess <System.Collections.Generic.List`1[System.String]> [-Force] [-AsJob]
+ -NetworkManagerScopeAccess <String[]> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -24,20 +24,90 @@ The **New-AzNetworkManager** cmdlet creates a network manager.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Creates a connectivity network manager.
 ```powershell
-PS C:\> [System.Collections.Generic.List[string]]$subgroup  = @()
-PS C:\> $subgroup.Add("/subscriptions/00000000-0000-0000-0000-000000000000")
-PS C:\> [System.Collections.Generic.List[string]]$managementGroups  = @()
-PS C:\> $managementGroups.Add("/providers/Microsoft.Management/managementGroups/PowerShellTest")
-PS C:\> $testScope = New-AzNetworkManagerScope -Subscription $subgroup -ManagementGroup $managementGroups
-PS C:\> [System.Collections.Generic.List[String]]$access  = @()
-PS C:\> $access.Add("Connectivity");
-PS C:\> New-AzNetworkManager -ResourceGroupName TestResourceGroup -Name TestNetworkManager -NetworkManagerScope $testScope -NetworkManagerScopeAccess $access -Location "eastus"
-
+$subscriptions  = @("/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884")
+$managementGroups  = @("/providers/Microsoft.Management/managementGroups/PowerShellTest")
+$scope = New-AzNetworkManagerScope -Subscription $subscriptions -ManagementGroup $managementGroups
+$access  = @("Connectivity")
+New-AzNetworkManager -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location "westus"
 ```
+```output
+Location                        : westus
+Tag                             : {}
+NetworkManagerScopes            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerScopes
+NetworkManagerScopeAccesses     : {Connectivity}
+NetworkManagerScopeAccessesText : [
+                                    "Connectivity"
+                                  ]
+NetworkManagerScopesText        : {
+                                    "ManagementGroups": [
+                                      "/providers/Microsoft.Management/managementGroups/PowerShellTest"
+                                    ],
+                                    "Subscriptions": [
+                                      "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884"
+                                    ]
+                                  }
+TagsTable                       :
+DisplayName                     :
+Description                     :
+Type                            : Microsoft.Network/networkManagers
+ProvisioningState               : Succeeded
+SystemData                      : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText                  : {
+                                    "CreatedBy": "jaredgorthy@microsoft.com",
+                                    "CreatedByType": "User",
+                                    "CreatedAt": "2022-08-07T04:12:51.7463424Z",
+                                    "LastModifiedBy": "jaredgorthy@microsoft.com",
+                                    "LastModifiedByType": "User",
+                                    "LastModifiedAt": "2022-08-07T04:12:51.7463424Z"
+                                  }
+Name                            : psNetworkManager
+Etag                            :
+Id                              : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
+```
+Creates a network manager with connectivity access in West US, with a subscription and management group in scope.
 
-Creates a network manager with connectivity access.
+### Example 2: Creates a security admin network manager.
+```powershell
+$subscriptions  = @("/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884")
+$scope = New-AzNetworkManagerScope -Subscription $subscriptions
+$access  = @("SecurityAdmin")
+New-AzNetworkManager -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location "westus"
+```
+```output
+Location                        : westus
+Tag                             : {}
+NetworkManagerScopes            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerScopes
+NetworkManagerScopeAccesses     : {"SecurityAdmin"}
+NetworkManagerScopeAccessesText : [
+                                    "SecurityAdmin"
+                                  ]
+NetworkManagerScopesText        : {
+                                    "Subscriptions": [
+                                      "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884"
+                                    ]
+                                  }
+TagsTable                       :
+DisplayName                     :
+Description                     :
+Type                            : Microsoft.Network/networkManagers
+ProvisioningState               : Succeeded
+SystemData                      : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText                  : {
+                                    "CreatedBy": "jaredgorthy@microsoft.com",
+                                    "CreatedByType": "User",
+                                    "CreatedAt": "2022-08-07T04:12:51.7463424Z",
+                                    "LastModifiedBy": "jaredgorthy@microsoft.com",
+                                    "LastModifiedByType": "User",
+                                    "LastModifiedAt": "2022-08-07T04:12:51.7463424Z"
+                                  }
+Name                            : psNetworkManager
+Etag                            :
+Id                              : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/pr
+                                  oviders/Microsoft.Network/networkManagers/psNetworkManager
+```
+Creates a network manager with security administrator access in West US, with a subscription in scope.
 
 ## PARAMETERS
 
@@ -150,7 +220,7 @@ Accept wildcard characters: False
 Network Manager Scope Access
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -233,7 +303,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerScopes
 
-### System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.String[]
 
 ## OUTPUTS
 

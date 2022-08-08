@@ -13,8 +13,8 @@ Creates a network manager scope.
 ## SYNTAX
 
 ```
-New-AzNetworkManagerScope [-ManagementGroup <System.Collections.Generic.List`1[System.String]>]
- [-Subscription <System.Collections.Generic.List`1[System.String]>] [-DefaultProfile <IAzureContextContainer>]
+New-AzNetworkManagerScope [-ManagementGroup <String[]>]
+ [-Subscription <String[]>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
@@ -25,14 +25,16 @@ The **New-AzNetworkManagerScope** cmdlet creates a network manager scope.
 
 ### Example 1
 ```powershell
-PS C:\> [System.Collections.Generic.List[string]]$subgroup  = @()
-PS C:\> $subgroup.Add("/subscriptions/00000000-0000-0000-0000-000000000000")
-PS C:\> [System.Collections.Generic.List[string]]$mggroup  = @()
-PS C:\> $mggroup.Add("/providers/Microsoft.Management/managementGroups/PowerShellTest")
-PS C:\> New-AzNetworkManagerScope -Subscription $subgroup -ManagementGroup $mggroup
+$subgroup  = @("/subscriptions/00000000-0000-0000-0000-000000000000")
+$mggroup  = @("/providers/Microsoft.Management/managementGroups/PowerShellTest")
+New-AzNetworkManagerScope -Subscription $subgroup -ManagementGroup $mggroup
 ```
-
-Creates a network manager scope for management group and subscription.
+```output
+ManagementGroups                                                  Subscriptions                                         
+----------------                                                  -------------                                         
+{/providers/Microsoft.Management/managementGroups/PowerShellTest} {/subscriptions/00000000-0000-0000-0000-000000000000}
+```
+Creates a network manager scope with management group and subscription.
 
 ## PARAMETERS
 
@@ -55,7 +57,7 @@ Accept wildcard characters: False
 Management Group Lists in Network Manager Scope
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -70,7 +72,7 @@ Accept wildcard characters: False
 Subscription Lists in Network Manager Scope
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -86,7 +88,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.String[]
 
 ## OUTPUTS
 

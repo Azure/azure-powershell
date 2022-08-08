@@ -24,40 +24,90 @@ The **Set-AzNetworkManager** cmdlet updates a network manager.
 
 ### Example 1
 ```powershell
-PS C:\> $networkManager = Get-AzNetworkManager -ResourceGroupName "TestResourceGroup" -Name "TestNM"
-PS C:\> $networkManager.Description = "Sample Description"
-PS C:\> Set-AzNetworkManager -ResourceGroupName "TestResourceGroup" -NetworkManager $networkManager
-
-Description                     : Sample Description
-Location                        : eastus2euap
-Id                              : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/provider
-                                  s/Microsoft.Network/networkManagers/TestNM
-Type                            : Microsoft.Network/networkManagers
+$networkManager = Get-AzNetworkManager -ResourceGroupName "psResourceGroup" -Name "psNetworkManager"
+$networkManager.Description = "updated description"
+Set-AzNetworkManager -ResourceGroupName "psResourceGroup" -NetworkManager $networkManager
+```
+```output
+Location                        : westus
 Tag                             : {}
-ProvisioningState               : Succeeded
-NetworkManagerScopeAccesses     : [
-                                    "SecurityAdmin",
-                                    "SecurityUser"
+NetworkManagerScopes            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerScopes
+NetworkManagerScopeAccesses     : {Connectivity, SecurityAdmin}
+NetworkManagerScopeAccessesText : [
+                                    "Connectivity",
+                                    "SecurityAdmin"
                                   ]
-NetworkManagerScopes            : {
-                                    "ManagementGroups": [],
+NetworkManagerScopesText        : {
+                                    "ManagementGroups": [
+                                      "/providers/Microsoft.Management/managementGroups/PowerShellTest"
+                                    ],
                                     "Subscriptions": [
-                                      "/subscriptions/00000000-0000-0000-0000-000000000000"
+                                      "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884"
                                     ]
                                   }
-SystemData                      : {
-                                    "CreatedBy": "user@microsoft.com",
+TagsTable                       :
+DisplayName                     :
+Description                     : updated description
+Type                            : Microsoft.Network/networkManagers
+ProvisioningState               : Succeeded
+SystemData                      : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText                  : {
+                                    "CreatedBy": "jaredgorthy@microsoft.com",
                                     "CreatedByType": "User",
-                                    "CreatedAt": "2021-10-05T04:15:42",
-                                    "LastModifiedBy": "user@microsoft.com",
+                                    "CreatedAt": "2022-08-07T04:12:51.7463424Z",
+                                    "LastModifiedBy": "jaredgorthy@microsoft.com",
                                     "LastModifiedByType": "User",
-                                    "LastModifiedAt": "2021-10-05T04:15:42"
+                                    "LastModifiedAt": "2022-08-08T00:50:28.6707606Z"
                                   }
-Name                            : TestNM
-Etag                            : W/"00000000-0000-0000-0000-000000000000"
+Name                            : psNetworkManager
+Etag                            :
+Id                              : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
 ```
-Example to update the description of a network manager TestNM
+Example to update the description of a network manager.
 
+### Example 2
+```powershell
+$networkManager = Get-AzNetworkManager -ResourceGroupName "psResourceGroup" -Name "psNetworkManager"
+$access  = @("Connectivity", "SecurityAdmin")
+$networkManager.NetworkManagerScopeAccesses = $access
+Set-AzNetworkManager -ResourceGroupName "psResourceGroup" -NetworkManager $networkManager
+```
+```output
+Location                        : westus
+Tag                             : {}
+NetworkManagerScopes            : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerScopes
+NetworkManagerScopeAccesses     : {Connectivity, SecurityAdmin}
+NetworkManagerScopeAccessesText : [
+                                    "Connectivity",
+                                    "SecurityAdmin"
+                                  ]
+NetworkManagerScopesText        : {
+                                    "ManagementGroups": [
+                                      "/providers/Microsoft.Management/managementGroups/PowerShellTest"
+                                    ],
+                                    "Subscriptions": [
+                                      "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884"
+                                    ]
+                                  }
+TagsTable                       :
+DisplayName                     :
+Description                     : updated description
+Type                            : Microsoft.Network/networkManagers
+ProvisioningState               : Succeeded
+SystemData                      : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText                  : {
+                                    "CreatedBy": "jaredgorthy@microsoft.com",
+                                    "CreatedByType": "User",
+                                    "CreatedAt": "2022-08-07T04:12:51.7463424Z",
+                                    "LastModifiedBy": "jaredgorthy@microsoft.com",
+                                    "LastModifiedByType": "User",
+                                    "LastModifiedAt": "2022-08-08T00:52:45.0100913Z"
+                                  }
+Name                            : psNetworkManager
+Etag                            :
+Id                              : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
+```
+Updates a network manager scope access.
 
 ## PARAMETERS
 

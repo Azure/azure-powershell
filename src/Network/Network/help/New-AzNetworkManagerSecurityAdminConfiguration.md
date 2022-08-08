@@ -15,7 +15,7 @@ Creates a security admin configuration.
 ```
 New-AzNetworkManagerSecurityAdminConfiguration -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String> [-Description <String>]
- [-ApplyOnNetworkIntentPolicyBasedService <System.Collections.Generic.List`1[System.String]>]
+ [-ApplyOnNetworkIntentPolicyBasedService <String[]>]
  [-DeleteExistingNSG] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -27,11 +27,65 @@ The **New-AzNetworkManagerSecurityAdminConfiguration** cmdlet creates a security
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName TestRGName -NetworkManagerName TestNMName -Name TestAdminConfigName -Description "TestDescription" -DeleteExistingNSG  -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedService
-
+$ApplyOnNetworkIntentPolicyBasedService = @("None")
+New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psSecurityAdminConfig" -Description "TestDescription" -DeleteExistingNSG  -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedService
 ```
+```output
+SecurityType                                :
+ApplyOnNetworkIntentPolicyBasedServices     : {None}
+ApplyOnNetworkIntentPolicyBasedServicesText : [
+                                                "None"
+                                              ]
+DeleteExistingNSGs                          :
+DisplayName                                 :
+Description                                 : TestDescription
+Type                                        : Microsoft.Network/networkManagers/securityAdminConfigurations
+ProvisioningState                           : Succeeded
+SystemData                                  : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText                              : {
+                                                "CreatedBy": "jaredgorthy@microsoft.com",
+                                                "CreatedByType": "User",
+                                                "CreatedAt": "2022-08-07T23:58:54.8549506Z",
+                                                "LastModifiedBy": "jaredgorthy@microsoft.com",
+                                                "LastModifiedByType": "User",
+                                                "LastModifiedAt": "2022-08-07T23:59:12.5789979Z"
+                                              }
+Name                                        : psSecurityAdminConfig
+Etag                                        :
+Id                                          : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig
+```
+Creates a security admin configuration that will delete existing NSGs and not apply on NIP based services.
 
-Creates a security admin configuration.
+### Example 2
+```powershell
+$ApplyOnNetworkIntentPolicyBasedService = @("All")
+New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psSecurityAdminConfig" -Description "TestDescription" -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedService
+```
+```output
+SecurityType                                :
+ApplyOnNetworkIntentPolicyBasedServices     : {All}
+ApplyOnNetworkIntentPolicyBasedServicesText : [
+                                                "All"
+                                              ]
+DeleteExistingNSGs                          :
+DisplayName                                 :
+Description                                 : TestDescription
+Type                                        : Microsoft.Network/networkManagers/securityAdminConfigurations
+ProvisioningState                           : Succeeded
+SystemData                                  : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText                              : {
+                                                "CreatedBy": "jaredgorthy@microsoft.com",
+                                                "CreatedByType": "User",
+                                                "CreatedAt": "2022-08-07T23:58:54.8549506Z",
+                                                "LastModifiedBy": "jaredgorthy@microsoft.com",
+                                                "LastModifiedByType": "User",
+                                                "LastModifiedAt": "2022-08-08T00:01:21.391989Z"
+                                              }
+Name                                        : psSecurityAdminConfig
+Etag                                        :
+Id                                          : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig
+```
+Creates a security admin configuration that will apply on NIP based services.
 
 ## PARAMETERS
 
@@ -39,7 +93,7 @@ Creates a security admin configuration.
 ApplyOnNetworkIntentPolicyBasedServices.
 
 ```yaml
-Type: System.Collections.Generic.List`1[System.String]
+Type: System.String[]	
 Parameter Sets: (All)
 Aliases:
 

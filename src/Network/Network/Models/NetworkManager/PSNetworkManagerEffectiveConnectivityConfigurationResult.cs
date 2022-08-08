@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
-    public class PSNetworkManagerDeploymentStatusListResult
+    class PSNetworkManagerEffectiveConnectivityConfigurationResult
     {
-        public IList<PSNetworkManagerDeploymentStatus> Value { get; set; }
+        public IList<PSNetworkManagerEffectiveConnectivityConfiguration> Value { get; set; }
 
         public string SkipToken { get; set; }
 

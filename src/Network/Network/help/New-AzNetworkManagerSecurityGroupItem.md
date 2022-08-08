@@ -24,8 +24,12 @@ The **New-AzNetworkManagerSecurityGroupItem** cmdlet creates a security group it
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkManagerSecurityGroupItem -NetworkGroupId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup"
-
+New-AzNetworkManagerSecurityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
+```
+```output
+NetworkGroupId
+--------------
+/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup
 ```
 Creates a security group item.
 

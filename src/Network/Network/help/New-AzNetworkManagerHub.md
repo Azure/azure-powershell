@@ -24,10 +24,14 @@ The **New-AzNetworkManagerHub** cmdlet creates a network manager hub.
 
 ### Example 1
 ```powershell
-PS C:\>  New-AzNetworkManagerHub -ResourceId $TestVnetId -ResourceType "Microsoft.Network/virtualNetworks" 
+New-AzNetworkManagerHub -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup" -ResourceType "Microsoft.Network/virtualNetworks"
 ```
-
-Creates a network manager hub.
+```output
+ResourceId                                                                                                                                               ResourceType
+----------                                                                                                                                               ------------
+/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup Microsoft.Network/virtualNetworks
+```
+Creates a network manager virtual network hub.
 
 ## PARAMETERS
 

@@ -25,10 +25,32 @@ The **Set-AzNetworkManagerScopeConnection** cmdlet updates a network manager sco
 
 ### Example 1
 ```powershell
-PS C:\> $scopeConnection = Get-AzNetworkManagerScopeConnection -ResourceGroupName "TestResourceGroup" -NetworkManagerName "TestNM" -Name "testsc"
-PS C:\> Set-AzNetworkManagerScopeConnection -ResourceGroupName "TestResourceGroup" -NetworkManagerName "TestNM" -NetworkManagerScopeConnection $scopeConnection
+$scopeConnection = Get-AzNetworkManagerScopeConnection -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "mgConnection"
+$scopeConnection.description = "new description"
+Set-AzNetworkManagerScopeConnection -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -NetworkManagerScopeConnection $scopeConnection
 ```
-Updates a scope connection.
+```output
+TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
+ResourceId        : /providers/Microsoft.Management/managementGroups/newMG
+ConnectionState   : Pending
+DisplayName       :
+Description       : new description
+Type              : Microsoft.Network/networkManagers/scopeConnections
+ProvisioningState :
+SystemData        : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText    : {
+                      "CreatedBy": "jaredgorthy@microsoft.com",
+                      "CreatedByType": "User",
+                      "CreatedAt": "2022-08-08T00:08:30.7250851Z",
+                      "LastModifiedBy": "jaredgorthy@microsoft.com",
+                      "LastModifiedByType": "User",
+                      "LastModifiedAt": "2022-08-08T00:08:30.7250851Z"
+                    }
+Name              : mgConnection
+Etag              :
+Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/scopeConnections/mgConnection
+```
+Updates a scope connection description.
 
 ## PARAMETERS
 

@@ -31,38 +31,50 @@ The **Get-AzNetworkManagerSubscriptionConnection** cmdlet gets a network manager
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzNetworkManagerSubscriptionConnection -Name "testsc"
-
-NetworkManagerId  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PSTestResources/providers/Micros
-                    oft.Network/networkManagers/PSTestNM
-ConnectionState   : Pending
-Description       : SampleDescription
-Type              : Microsoft.Network/networkManagers/networkManagerConnections
+Get-AzNetworkManagerSubscriptionConnection -Name "subConnection"
+```
+```output
+NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
+ConnectionState   : Conflict
+DisplayName       :
+Description       :  new description
+Type              : Microsoft.Network/networkManagerConnections
 ProvisioningState :
 SystemData        :
 SystemDataText    : null
-Name              : testsc
+Name              : subConnection
 Etag              :
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/networkManagerConne
-                    ctions/testsc
+Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/providers/Microsoft.Network/networkManagerConnections/subConnection
 ```
 Gets a network manager connection on a subscription.
 
 ```powershell
-PS C:\> Get-AzNetworkManagerSubscriptionConnection
-
-NetworkManagerId  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PSTestResources/providers/Micros
-                    oft.Network/networkManagers/PSTestNM
-ConnectionState   : Pending
-Description       : SampleDescription
-Type              : Microsoft.Network/networkManagers/networkManagerConnections
+Get-AzNetworkManagerSubscriptionConnection
+```
+```output
+NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
+ConnectionState   : Conflict
+DisplayName       :
+Description       :  new description
+Type              : Microsoft.Network/networkManagerConnections
 ProvisioningState :
 SystemData        :
 SystemDataText    : null
-Name              : testsc
+Name              : subConnection
 Etag              :
-Id                : /subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Network/networkManagerConne
-                    ctions/testsc
+Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/providers/Microsoft.Network/networkManagerConnections/subConnection
+
+NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager2
+ConnectionState   : Conflict
+DisplayName       :
+Description       : SampleDescription
+Type              : Microsoft.Network/networkManagerConnections
+ProvisioningState :
+SystemData        :
+SystemDataText    : null
+Name              : subConnection2
+Etag              :
+Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/providers/Microsoft.Network/networkManagerConnections/subConnection2
 ```
 Gets all network manager connections on a subscription.
 

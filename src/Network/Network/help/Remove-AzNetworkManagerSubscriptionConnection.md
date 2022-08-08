@@ -24,9 +24,9 @@ The **Remove-AzNetworkManagerSubscriptionConnection** cmdlet removes a network m
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName -PassThru -Force -AsJob
+Remove-AzNetworkManagerSubscriptionConnection -Name $networkManagerConnectionName
 ```
-Remove a network manager subscription connection.
+Removes a network manager subscription connection.
 
 ## PARAMETERS
 

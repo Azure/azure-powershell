@@ -19,13 +19,13 @@ Remove-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerN
 ```
 
 ## DESCRIPTION
-The **Remove-AzNetworkManager** cmdlet removes a connectivity configuration.
+The **Remove-AzNetworkManagerConnectivityConfiguration** cmdlet removes a connectivity configuration.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetworkManagerConnectivityConfiguration -Name TestConnConfigName -NetworkManagerName TestNMName -ResourceGroupName TestRGName
+Remove-AzNetworkManagerConnectivityConfiguration -Name TestConnConfigName -NetworkManagerName TestNMName -ResourceGroupName TestRGName -ForceDelete
 ```
 Removes a connectivity configuration.
 

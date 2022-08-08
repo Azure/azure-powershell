@@ -25,10 +25,57 @@ The **New-AzNetworkManagerScopeConnection** cmdlet creates a scope connection.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkManagerScopeConnection -ResourceGroupName "TestRG" -NetworkManagerName "TestNM" -Name "TestScopeConn" -TenantId "00000000-0000-0000-0000-000000000000" -ResourceId "00000000-0000-0000-0000-000000000000" -Description "SampleDescription" 
+New-AzNetworkManagerScopeConnection -ResourceGroupName $psResourceGroup -NetworkManagerName $psNetworkManager -Name "subConnection" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ResourceId "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884" -Description "SampleDescription" 
 ```
+```output
+TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
+ResourceId        : /subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884
+ConnectionState   : Pending
+DisplayName       :
+Description       : SampleDescription
+Type              : Microsoft.Network/networkManagers/scopeConnections
+ProvisioningState :
+SystemData        : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText    : {
+                      "CreatedBy": "jaredgorthy@microsoft.com",
+                      "CreatedByType": "User",
+                      "CreatedAt": "2022-08-07T23:53:52.6942092Z",
+                      "LastModifiedBy": "jaredgorthy@microsoft.com",
+                      "LastModifiedByType": "User",
+                      "LastModifiedAt": "2022-08-07T23:53:52.6942092Z"
+                    }
+Name              : subConnection
+Etag              :
+Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/scopeConnections/subConnection
+```
+Creates a scope connection to a cross-tenant subscription.
 
-Creates a scope connection.
+### Example 2
+```powershell
+New-AzNetworkManagerScopeConnection -ResourceGroupName $psResourceGroup -NetworkManagerName $psNetworkManager -Name "mgConnection" -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ResourceId "/providers/Microsoft.Management/managementGroups/newMG" -Description "SampleDescription" 
+```
+```output
+TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
+ResourceId        : /providers/Microsoft.Management/managementGroups/newMG
+ConnectionState   : Pending
+DisplayName       :
+Description       : SampleDescription
+Type              : Microsoft.Network/networkManagers/scopeConnections
+ProvisioningState :
+SystemData        : Microsoft.Azure.Commands.Network.Models.NetworkManager.PSSystemData
+SystemDataText    : {
+                      "CreatedBy": "jaredgorthy@microsoft.com",
+                      "CreatedByType": "User",
+                      "CreatedAt": "2022-08-07T23:55:14.7516201Z",
+                      "LastModifiedBy": "jaredgorthy@microsoft.com",
+                      "LastModifiedByType": "User",
+                      "LastModifiedAt": "2022-08-07T23:55:14.7516201Z"
+                    }
+Name              : mgConnection
+Etag              :
+Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/scopeConnections/mgConnection
+```
+Creates a scope connection to a cross-tenant management group.
 
 ## PARAMETERS
 

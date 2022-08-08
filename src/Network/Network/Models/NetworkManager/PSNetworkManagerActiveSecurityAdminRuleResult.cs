@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
-    class PSNetworkManagerEffectiveConnectivityConfigurationListResult
+    public class PSNetworkManagerActiveSecurityAdminRuleResult
     {
-        public IList<PSNetworkManagerEffectiveConnectivityConfiguration> Value { get; set; }
+        public IList<PSNetworkManagerActiveBaseSecurityAdminRule> Value { get; set; }
 
         public string SkipToken { get; set; }
 

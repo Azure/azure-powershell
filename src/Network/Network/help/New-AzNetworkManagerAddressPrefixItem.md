@@ -25,10 +25,24 @@ The **New-AzNetworkManagerAddressPrefixItem** cmdlet creates a network manager a
 ### Example 1
 ```powershell
 New-AzNetworkManagerAddressPrefixItem -AddressPrefix "Internet" -AddressPrefixType "ServiceTag"   
-
 ```
+```output
+AddressPrefix AddressPrefixType
+------------- -----------------
+Internet      ServiceTag
+```
+Creates a network manager service tag address prefix item.
 
-Creates a network manager address prefix item.
+### Example 2
+```powershell
+New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.0.0.1" -AddressPrefixType "IPPrefix"   
+```
+```output
+AddressPrefix AddressPrefixType
+------------- -----------------
+10.0.0.1      IPPrefix
+```
+Creates a network manager IP address prefix item.
 
 ## PARAMETERS
 

@@ -32,10 +32,10 @@ The **Get-AzNetworkManagerSecurityAdminRuleCollection** cmdlet gets a security a
 ## EXAMPLES
 
 ### Example 1
-Expand
 ```powershell
-PS C:\> Get-AzNetworkManagerSecurityAdminRuleCollection  -Name "TestRC" -SecurityAdminConfigurationName "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
-
+Get-AzNetworkManagerSecurityAdminRuleCollection  -Name "TestRC" -SecurityAdminConfigurationName "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+```
+```output
 Name              : TestRC
 Description       : Sample rule Collection Description
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestSecConfig/ruleCollections/TestRC
@@ -56,12 +56,13 @@ SystemData        : {
                       "LastModifiedAt": "2021-10-18T04:06:03"
                     }
 ```
+Gets a rule collection with a security admin configuration.
 
 ### Example 2
-NoExpand
 ```powershell
-PS C:\> Get-AzNetworkManagerSecurityAdminRuleCollection  -SecurityAdminConfigurationName "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
-
+Get-AzNetworkManagerSecurityAdminRuleCollection  -SecurityAdminConfigurationName "TestSecConfig" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG"
+```
+```output
 Name              : TestRC
 Description       : Sample rule Collection Description
 Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestSecConfig/ruleCollections/TestRC
@@ -81,7 +82,28 @@ SystemData        : {
                       "LastModifiedByType": "Application",
                       "LastModifiedAt": "2021-10-18T04:06:03"
                     }
+
+                    Name              : TestRC2
+Description       : Sample rule Collection Description
+Id                : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/securityAdminConfigurations/TestSecConfig/ruleCollections/TestRC2
+Type              : Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections
+Etag              : "00000000-0000-0000-0000-000000000000"
+ProvisioningState : Succeeded
+AppliesToGroups   : [
+                      {
+                        "NetworkGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/testng"
+                      }
+                    ]
+SystemData        : {
+                      "CreatedBy": "00000000-0000-0000-0000-000000000000",
+                      "CreatedByType": "Application",
+                      "CreatedAt": "2021-10-18T04:06:01",
+                      "LastModifiedBy": "00000000-0000-0000-0000-000000000000",
+                      "LastModifiedByType": "Application",
+                      "LastModifiedAt": "2021-10-18T04:06:03"
+                    }
 ```
+Gets all rule collections within a security admin configuration.
 
 ## PARAMETERS
 

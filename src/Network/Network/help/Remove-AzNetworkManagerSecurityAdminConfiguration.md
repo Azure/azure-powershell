@@ -25,9 +25,8 @@ The **Remove-AzNetworkManagerSecurityAdminConfiguration** cmdlet removes a secur
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzNetworkManagerSecurityAdminConfiguration -Name TestAdminConfigName -NetworkManagerName TestNMName -ResourceGroupName TestRGName
+PS C:\> Remove-AzNetworkManagerSecurityAdminConfiguration -Name TestAdminConfigName -NetworkManagerName TestNMName -ResourceGroupName TestRGName -ForceDelete
 ```
-
 Removes a security admin configuration.
 
 ## PARAMETERS

@@ -25,8 +25,22 @@ The **Set-AzNetworkManagerManagementGroupConnection** cmdlet update a network ma
 
 ### Example 1
 ```powershell
-PS C:\> $networkManagerConnection = Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "SDKTestMG" -Name "testsc"
-PS C:\> Set-AzNetworkManagerManagementGroupConnection -ManagementGroupId "SDKTestMG" -NetworkManagerManagementGroupConnection $networkManagerConnection
+$networkManagerConnection = Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "newMG" -Name "psConnection"
+$networkManagerConnection.description = "new description"
+Set-AzNetworkManagerManagementGroupConnection -ManagementGroupId "newMG" -NetworkManagerManagementGroupConnection $networkManagerConnection
+```
+```output
+NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
+ConnectionState   : Pending
+DisplayName       :
+Description       : new description
+Type              : Microsoft.Network/networkManagerConnections
+ProvisioningState :
+SystemData        :
+SystemDataText    : null
+Name              : psConnection
+Etag              :
+Id                : /providers/Microsoft.Management/managementGroups/newMG/providers/Microsoft.Network/networkManagerConnections/psConnection
 ```
 
 Updates a network manger management group connection.

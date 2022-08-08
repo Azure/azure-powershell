@@ -25,9 +25,23 @@ The **New-AzNetworkManagerManagementGroupConnection** cmdlet creates a network m
 
 ### Example 1
 ```powershell
-PS C:\> New-AzNetworkManagerManagementGroupConnection -ManagementGroupId $managementGroupId -Name $networkManagerConnectionName -NetworkManagerId $networkManagerId -Description "SampleDescription"
+$networkManagerId = "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager"
+$managementGroupId = "newMG"
+New-AzNetworkManagerManagementGroupConnection -ManagementGroupId $managementGroupId -Name "psConnection" -NetworkManagerId $networkManagerId -Description "sample description"
 ```
-
+```output
+NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
+ConnectionState   : Pending
+DisplayName       :
+Description       : sample description
+Type              : Microsoft.Network/networkManagerConnections
+ProvisioningState :
+SystemData        :
+SystemDataText    : null
+Name              : psConnection
+Etag              :
+Id                : /providers/Microsoft.Management/managementGroups/newMG/providers/Microsoft.Network/networkManagerConnections/psConnection
+```
 Creates a network manager management group connection.
 
 ## PARAMETERS
