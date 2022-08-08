@@ -186,13 +186,13 @@ function createAzureVm{
 		$PasswordString = $(Get-RandomSuffix 12)
 		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
         $VMLocalAdminSecurePassword = $Password
-		$VMLocation = if ($primaryLocation) { $primaryLocation } else { getPrimaryLocation }
-		$VMName = getAzureVmName
+        $VMLocation = if ($primaryLocation) { $primaryLocation } else { getPrimaryLocation }
+        $VMName = getAzureVmName
 		$domain = "domain"+ $seed
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
         $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
         $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain
-		return $vm.Id
+        return $vm.Id
 }
 
 function createAzureVmInProximityPlacementgroup{
@@ -232,18 +232,18 @@ function createAzureVmForCRG{
 function createAzureVmInAvailabilityZone{
     param([string]$primaryLocation)
     
-        $VMLocalAdminUser = "adminUser"
-		$PasswordString = $(Get-RandomSuffix 12)
+    $VMLocalAdminUser = "adminUser"
+    $PasswordString = $(Get-RandomSuffix 12)
 		$Password=$PasswordString| ConvertTo-SecureString -Force -AsPlainText
-        $VMLocalAdminSecurePassword = $Password
+    $VMLocalAdminSecurePassword = $Password
 		$VMLocation = if ($primaryLocation) { $primaryLocation } else { getPrimaryZoneLocation }
 		$VMZone = getPrimaryZone
-		$VMName = getAzureVmName
+    $VMName = getAzureVmName
 		$domain = "domain"+ $seed
         $password=$VMLocalAdminSecurePassword|ConvertTo-SecureString -AsPlainText -Force
-        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
+    $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $password);
         $vm = New-AzVM -Name $VMName -Credential $Credential -location $VMLocation -Image RHEL -DomainNameLabel $domain -Zone $VMZone
-		return $vm.Id
+    return $vm.Id
 }
 
 function createAzureVmInEdgeZone {
@@ -252,8 +252,6 @@ function createAzureVmInEdgeZone {
         [string]$primaryExtendedLocation
     )
 
-    # throw "This is an error."
-    
     $VMLocalAdminUser = "adminUser"
     $PasswordString = $(Get-RandomSuffix 12)
     $Password = $PasswordString | ConvertTo-SecureString -Force -AsPlainText
@@ -336,7 +334,7 @@ function createRecoveryNetworkIdForEdgeZone{
     param([string] $location , [string] $resourceGroup , [string] $edgeZone)
 
 	$NetworkName = getRecoveryNetworkName
-	$NetworkLocation = getPrimaryZoneLocation
+	$NetworkLocation = if ($location) { $location } else { getPrimaryExtendedLocation }
 	$ResourceGroupName = getRecoveryResourceGroupName
     $EdgeZone = if ($edgeZone) { $edgeZone } else { getRecoveryExtendedLocation }
 	$frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name frontendSubnet -AddressPrefix "10.0.1.0/24"
