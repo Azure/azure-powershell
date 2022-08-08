@@ -30,9 +30,9 @@ Remove-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGW -Name "Cert
 Set-AzApplicationGateway -ApplicationGateway $AppGw
 ```
 
-The first command gets the application gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
-The second command removes the SSL certificate named Cert02 from the application gateway stored in the $AppGW variable.
-The last command updates the application gateway.
+The first command gets the application gateway named ApplicationGateway01 and stores the result in the variable named $AppGw.
+The second command removes the SSL certificate named Cert02 from the application gateway stored in the $AppGw variable.
+The last command "Set-AzApplicationGateway" updates the application gateway configuration changes to the $AppGw variable that holds the current configuration of Application gateway.
 
 ## PARAMETERS
 
