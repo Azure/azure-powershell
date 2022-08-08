@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.4.0
 * Fixed the issue that Azure Arc cannot connect to Kubernetes[#19080]
 
 ## Version 0.3.0
