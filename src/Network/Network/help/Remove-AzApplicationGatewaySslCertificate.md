@@ -25,7 +25,7 @@ The **Remove-AzApplicationGatewaySslCertificate** cmdlet removes a Secure Socket
 
 ### Example 1: Remove an SSL certificate from an application gateway
 ```powershell
-$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 Remove-AzApplicationGatewaySslCertificate -ApplicationGateway $AppGw -Name "Cert02"
 Set-AzApplicationGateway -ApplicationGateway $AppGw
 ```
