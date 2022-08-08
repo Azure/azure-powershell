@@ -40,6 +40,7 @@ input-file:
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
+
 # Normally, title is the service name
 title: StorageMover
 subject-prefix: $(service-name)
