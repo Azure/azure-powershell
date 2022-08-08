@@ -24,7 +24,7 @@ Create an in-memory object for SubscriptionLogSettings.
 
 ### Example 1: Create subscription log setting object
 ```powershell
-New-AzSubscriptionLogSettingsObject -Category Recommendation $Enabled $true
+New-AzSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
 ```
 
 Create subscription log setting object, to get supported categories for resource, please see `Get-AzEventCategory`
