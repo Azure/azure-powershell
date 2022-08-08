@@ -81,11 +81,14 @@ function Get-ExamplesDetailsFromMd {
         if($exampleLine.StartsWith("###")){
             if(!$firstExample -and $needRecord){
                 if(!$codeBlockComplete -or !$outputBlockComplete -or !$otherTypeBlockComplete){
-                    $RuleName = "BlockNotClosed"
-                    $ProblemID = 5065
-                    $Description = "The block is not closed."
-                    $Remediation = "Please check whether the closed `````` is missing in code block or output block."
+                    $RuleName = "BlockIdentifiersNotMatched"
+                    $ProblemID = 5064
+                    $Description = "The start and end identifiers of the code block do not match."
+                    $Remediation = "Please check whether the start or end identifier (triple backticks) of the code block is missing."
                     $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+                    if(!$codeBlockComplete){
+                        $exampleCodes = "#BlockIdentifiersNotMatched"
+                    }
                 }
                 $examplesProperties += Set-ExampleProperties $exampleNumber $exampleTitle $exampleCodes $exampleOutputs $hasOutputBlock $exampleDescriptions
             }
@@ -123,8 +126,8 @@ function Get-ExamplesDetailsFromMd {
                 if($blockType -notin $blockTypeList){
                     $RuleName = "BlockTypeUnsupported"
                     $ProblemID = 5062
-                    $Description = "The type of the tag after `````` cannot be recognized."
-                    $Remediation = "Please check the type of the tag for this block."
+                    $Description = "The language identifier $blockType is not supported."
+                    $Remediation = "Please check the spelling or contact Azure PowerShell team."
                     $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
                 }
                 $otherTypeBlockComplete = $false
@@ -139,7 +142,7 @@ function Get-ExamplesDetailsFromMd {
                     else{
                         $RuleName = "UnclearBlockType"
                         $ProblemID = 5063
-                        $Description = "Too many blocks without declared type."
+                        $Description = "The code blocks are missing language identifiers."
                         $Remediation = "The type of the code block needs to be clearly indicated with 'powershell' or 'output'."
                         $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
                         $otherTypeBlockComplete = $false
@@ -157,20 +160,9 @@ function Get-ExamplesDetailsFromMd {
                     # Find the tail of other-type block
                     $otherTypeBlockComplete = $true
                 }
-                else{
-                    $RuleName = "NestedBlock"
-                    $ProblemID = 5064
-                    $Description = "The blocks are nested."
-                    $Remediation = "Make sure the blocks are closed in sequence."
-                    $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
-                }
             }
             elseif(($codeBlockComplete + $outputBlockComplete + $otherTypeBlockComplete)-le 1){
-                $RuleName = "NestedBlock"
-                $ProblemID = 5064
-                $Description = "The blocks are nested."
-                $Remediation = "Make sure the blocks are closed in sequence."
-                $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+                # Report BlockPromptsNotMatched later
             }
             elseif(!$codeBlockComplete){
                 # Find codes in code block
@@ -193,11 +185,14 @@ function Get-ExamplesDetailsFromMd {
     }
     if($needRecord){
         if(!$codeBlockComplete -or !$outputBlockComplete -or !$otherTypeBlockComplete){
-            $RuleName = "BlockNotClosed"
-            $ProblemID = 5065
-            $Description = "The block is not closed."
-            $Remediation = "Please check whether the closed `````` is missing in code block or output block."
+            $RuleName = "BlockIdentifiersNotMatched"
+            $ProblemID = 5064
+            $Description = "The start and end identifiers of the code block do not match."
+            $Remediation = "Please check whether the start or end identifier (triple backticks) of the code block is missing."
             $errors += Set-AnalysisOutput $Module $Cmdlet $exampleNumber 0 $RuleName $ProblemID $missingSeverity $Description $Extent $Remediation
+            if(!$codeBlockComplete){
+                $exampleCodes = "#BlockIdentifiersNotMatched"
+            }
         }
         $examplesProperties += Set-ExampleProperties $exampleNumber $exampleTitle $exampleCodes $exampleOutputs $hasOutputBlock $exampleDescriptions
     }
@@ -239,7 +234,6 @@ function Measure-SectionMissingAndOutputScript {
         [string]$Module,
         [string]$Cmdlet,
         [string]$MarkdownPath,
-        [switch]$OutputScriptsInFile,
         [string]$OutputFolder,
         [int]$TotalLine
     )
@@ -365,7 +359,7 @@ function Measure-SectionMissingAndOutputScript {
 
             
             # Output example codes to "TempScript.ps1"
-            if ($OutputScriptsInFile.IsPresent -and $missingExampleCode -eq 0) {
+            if ($missingExampleCode -eq 0) {
                 $cmdletExamplesScriptPath = "$OutputFolder\TempScript.ps1"
                 $line = $exampleCodes.Count
                 if($line -ne 0){
@@ -496,7 +490,7 @@ function Get-ScriptAnalyzerResult {
                 Severity = $Severity
                 Extent = $analysisResult.Extent.ToString().Trim() -replace "`"","`'" -replace "`n"," " -replace "`r"," "
                 ProblemID = 5200
-                Remediation = "Unexpected Error. Please check https://github.com/Azure/azure-powershell/blob/master/documentation/Debugging-StaticAnalysis-Errors.md for more details."
+                Remediation = "Unexpected Error. Please check [Trouble Shotting for Unexpected Errors in Example Issues](https://github.com/Azure/azure-powershell/blob/main/documentation/Debugging-StaticAnalysis-Errors.md#Troubleshotting-Example-Issues) for more details."
             }
         }
         $errors += $result 

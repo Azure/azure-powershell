@@ -266,7 +266,7 @@
 
   <Target Name="StaticAnalysisExample" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build" AfterTargets="StaticAnalysisHelp">
     <Message Importance="high" Text="Running static analysis for PowerShell examples..." />
-    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoArtifacts)/FilesChanged.txt -RulePaths $(RepoTools)/StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1 -AnalyzeScriptsInFile -OutputScriptsInFile &quot;"/>
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoArtifacts)/FilesChanged.txt -RulePaths $(RepoTools)/StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1 &quot;"/>
   </Target>
 
   <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp;StaticAnalysisExample">

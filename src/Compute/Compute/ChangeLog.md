@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Updated `Update-AzVm` to give constructive error messages when empty variables are passed in parameters. [#15081]
 
 ## Version 4.30.0
 * Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion` 

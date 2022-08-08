@@ -67,8 +67,10 @@ namespace Microsoft.Azure.Commands.Network.Models
             set
             {
                 if (value != null)
+                {
                     ValidatePrivateRange(value);
-                Snat = new PSAzureFirewallPolicySNAT() { PrivateRanges = value };
+                    Snat = new PSAzureFirewallPolicySNAT() { PrivateRanges = value };
+                }
             }
         }
 
