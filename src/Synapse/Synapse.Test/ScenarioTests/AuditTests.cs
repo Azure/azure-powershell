@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
             TestRunner.RunTestScript("Test-BlobAuditSqlPoolRetentionKeepProperties");
         }
 
-        [Fact(Skip = "SQL Data Warehouse audit doesn’t support audit actions.")]
+        [Fact(LiveOnly = "SQL Data Warehouse audit doesn’t support audit actions.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditOnSqlPool()
         {
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
             TestRunner.RunTestScript("Test-BlobAuditOnWorkspace");
         }
 
-        [Fact(Skip = "SQL Data Warehouse audit doesn’t support other audit groups.")]
+        [Fact(LiveOnly = "SQL Data Warehouse audit doesn’t support other audit groups.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditWithAuditActionGroups()
         {
@@ -143,7 +143,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Skip)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnSqlPool()
         {
@@ -151,7 +151,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Skip)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnWorkspace()
         {
@@ -159,42 +159,42 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Skip)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewSqlPoolAuditDiagnosticsAreCreatedOnNeed()
         {
             TestRunner.RunTestScript("Test-NewSqlPoolAuditDiagnosticsAreCreatedOnNeed");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Skip)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewWorkspaceAuditDiagnosticsAreCreatedOnNeed()
         {
             TestRunner.RunTestScript("Test-NewWorkspaceAuditDiagnosticsAreCreatedOnNeed");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Skip)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveAuditOnWorkspace()
         {
             TestRunner.RunTestScript("Test-RemoveAuditOnWorkspace");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Skip)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveAuditOnSqlPool()
         {
             TestRunner.RunTestScript("Test-RemoveAuditOnSqlPool");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Skip)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveSqlPoolAuditingSettingsMultipleDiagnosticSettings()
         {
             TestRunner.RunTestScript("Test-RemoveSqlPoolAuditingSettingsMultipleDiagnosticSettings");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.Skip)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveWorkspaceAuditingSettingsMultipleDiagnosticSettings()
         {
             TestRunner.RunTestScript("Test-RemoveWorkspaceAuditingSettingsMultipleDiagnosticSettings");
