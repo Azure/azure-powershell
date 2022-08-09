@@ -12,7 +12,7 @@
 RootModule = './Az.SpringCloud.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.2.0'
+ModuleVersion = '0.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -165,7 +165,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        # ReleaseNotes = ''
+        ReleaseNotes = '* Updated API version to 2022-04-01.'
 
         # Prerelease string of this module
         # Prerelease = ''
