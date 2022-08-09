@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSentinelAlertRule'))
 Describe 'New-AzSentinelAlertRule' {
     It 'CreateExpanded'  {
         $alertRule = New-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Kind Scheduled -Disabled -Query 'SecurityEvent | take 1' -DisplayName "NewAlertRulePSTest" -Severity Informational `
+            -Kind Scheduled -Query 'SecurityEvent | take 1' -DisplayName "NewAlertRulePSTest" -Severity Informational `
             -QueryFrequency (New-TimeSpan -Hours 1) -QueryPeriod (New-TimeSpan -Days 1) -TriggerOperator "GreaterThan" -TriggerThreshold 1
         $alertRule.DisplayName | Should -Be "NewAlertRulePSTest"
     }

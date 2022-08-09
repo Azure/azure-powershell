@@ -1,17 +1,17 @@
 {
-  "Remove-AzSentinelOnboardingState+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptestdlvh1s/providers/Microsoft.SecurityInsights/onboardingStates/default?api-version=2021-09-01-preview+1": {
+  "Remove-AzSentinelOnboardingState+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstestt6jdws/providers/Microsoft.OperationalInsights/workspaces/asptesty1avre/providers/Microsoft.SecurityInsights/onboardingStates/default?api-version=2021-09-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/1c61ccbf-70b3-45a3-a1fb-848ce46d70a6/resourceGroups/aspstest91v7fr/providers/Microsoft.OperationalInsights/workspaces/asptestdlvh1s/providers/Microsoft.SecurityInsights/onboardingStates/default?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstestt6jdws/providers/Microsoft.OperationalInsights/workspaces/asptesty1avre/providers/Microsoft.SecurityInsights/onboardingStates/default?api-version=2021-09-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "304" ],
-        "x-ms-client-request-id": [ "a1499210-7039-49aa-8d0a-efbddac44cb5" ],
+        "x-ms-unique-id": [ "284" ],
+        "x-ms-client-request-id": [ "2ec47508-a16d-4923-8aef-8c9c14406f48" ],
         "CommandName": [ "Remove-AzSentinelOnboardingState" ],
         "FullCommandName": [ "Remove-AzSentinelOnboardingState_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
@@ -23,13 +23,13 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14981" ],
-        "x-ms-request-id": [ "0a1c6133-0e9e-4d99-b392-2a7de9d73fea" ],
-        "x-ms-correlation-request-id": [ "0a1c6133-0e9e-4d99-b392-2a7de9d73fea" ],
-        "x-ms-routing-request-id": [ "WESTUS2:20211212T021455Z:0a1c6133-0e9e-4d99-b392-2a7de9d73fea" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14985" ],
+        "x-ms-request-id": [ "539bc935-743b-4c6a-bf20-13f0eeef63eb" ],
+        "x-ms-correlation-request-id": [ "539bc935-743b-4c6a-bf20-13f0eeef63eb" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220729T183310Z:539bc935-743b-4c6a-bf20-13f0eeef63eb" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Sun, 12 Dec 2021 02:14:54 GMT" ]
+        "Date": [ "Fri, 29 Jul 2022 18:33:09 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "2" ],

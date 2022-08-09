@@ -17,7 +17,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelBookmarkRela
 Describe 'Update-AzSentinelBookmarkRelation' {
     It 'UpdateExpanded' {
         $incident = New-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Id ((New-Guid).Guid) -Severity Informational -Status New -Title "UpdateBookmarkRelationPSTest"
+            -Severity Informational -Status New -Title "UpdateBookmarkRelationPSTest"
         $bookmarkRelation = Update-AzSentinelBookmarkRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -BookmarkId $env.UpdatebookmarkRelationBookmarkId -RelationName $env.UpdateBookmarkRelationId -RelatedResourceId $incident.Id
         $bookmarkRelation.RelatedResourceId | Should -Be $incident.Id
@@ -25,7 +25,7 @@ Describe 'Update-AzSentinelBookmarkRelation' {
 
     It 'UpdateViaIdentityExpanded' {
         $incident = New-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Id ((New-Guid).Guid) -Severity Informational -Status New -Title "UpdateViaIdBookmarkRelationPSTest"
+            -Severity Informational -Status New -Title "UpdateViaIdBookmarkRelationPSTest"
         $bookmarkRelation = Get-AzSentinelBookmarkRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -BookmarkId $env.UpdateViaIdbookmarkRelationBookmarkId -RelationName $env.UpdateViaIdBookmarkRelationId
         $bookmarkRelationUpdate = Update-AzSentinelBookmarkRelation -InputObject $bookmarkRelation -RelatedResourceId $incident.Id

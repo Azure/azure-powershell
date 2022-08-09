@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSentinelBookmark'))
 
 Describe 'New-AzSentinelBookmark' {
     It 'CreateExpanded' {
-        $bookmark = New-AzSentinelBookmark -Id ((New-Guid).Guid) -ResourceGroupName $env.resourceGroupName `
+        $bookmark = New-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName `
             -WorkspaceName $env.workspaceName -DisplayName "NewBookmarkPSTest" -Query "SecurityEvent | take 1" `
             -QueryStartTime (get-date).AddDays(-1).ToUniversalTime() -QueryEndTime (get-date).ToUniversalTime() -EventTime (get-date).ToUniversalTime()
         $bookmark.DisplayName | Should -Be "NewBookmarkPSTest"

@@ -67,8 +67,8 @@ function Update-AzSentinelSetting {
         ${InputObject},
 
         #Anomalies
-         #.EyesOn
-         #.EntityAnalytics
+        #.EyesOn
+        #.EntityAnalytics
         [Parameter(ParameterSetName = 'UpdateExpandedAnomaliesEyesOnEntityAnalytics')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]

@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelAlertRule'))
 
 Describe 'Update-AzSentinelAlertRule' {
     It 'UpdateExpanded' {
-        $alertRule = Update-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.UpdateAlertRuleId -Disabled
-        $alertRule.Enabled | Should -Be $true
+        $alertRule = Update-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.UpdateAlertRuleId -Scheduled -Disabled
+        $alertRule.Enabled | Should -Be $false
     }
 
     It 'UpdateViaIdentityExpanded' -skip {
