@@ -206,7 +206,7 @@ function New-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${Logs},
+        ${Log},
 
         [Parameter(ParameterSetName = 'AmazonWebServicesS3', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
@@ -606,9 +606,9 @@ function New-AzSentinelDataConnector {
                 $DataConnector.AWSRoleArn = $PSBoundParameters['AWSRoleArn']
                 $null = $PSBoundParameters.Remove('AWSRoleArn')
 
-                If($PSBoundParameters['Logs']){
-                    $DataConnector.LogState = $PSBoundParameters['Logs']
-                    $null = $PSBoundParameters.Remove('Logs')
+                If($PSBoundParameters['Log']){
+                    $DataConnector.LogState = $PSBoundParameters['Log']
+                    $null = $PSBoundParameters.Remove('Log')
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'AmazonWebServicesS3'){
@@ -617,9 +617,9 @@ function New-AzSentinelDataConnector {
                 $DataConnector.RoleArn = $PSBoundParameters['AWSRoleArn']
                 $null = $PSBoundParameters.Remove('AWSRoleArn')
 
-                If($PSBoundParameters['Logs']){
-                    $DataConnector.LogState = $PSBoundParameters['Logs']
-                    $null = $PSBoundParameters.Remove('Logs')
+                If($PSBoundParameters['Log']){
+                    $DataConnector.LogState = $PSBoundParameters['Log']
+                    $null = $PSBoundParameters.Remove('Log')
                 }
                 
                 $DataConnector.SqsUrl = $PSBoundParameters['SQSURL']
@@ -640,7 +640,7 @@ function New-AzSentinelDataConnector {
                 $DataConnector.ConnectorUiConfigDescriptionMarkdown = $PSBoundParameters['UiConfigDescriptionMarkdown']
                 $null = $PSBoundParameters.Remove('UiConfigDescriptionMarkdown')
 
-                If($PSBoundParameters['Logs']){
+                If($PSBoundParameters['UiConfigCustomImage']){
                     $DataConnector.ConnectorUiConfigCustomImage = $PSBoundParameters['UiConfigCustomImage']
                     $null = $PSBoundParameters.Remove('UiConfigCustomImage')
                 }

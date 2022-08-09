@@ -22,14 +22,14 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
 ### AmazonWebServicesCloudTrail
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -AWSRoleArn <String>
- -Kind <DataConnectorKind> [-SubscriptionId <String>] [-Logs <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ -Kind <DataConnectorKind> [-SubscriptionId <String>] [-Log <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AmazonWebServicesS3
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -AWSRoleArn <String>
- -DetinationTable <String> -Kind <DataConnectorKind> -Logs <String> -SQSURL <String[]>
+ -DetinationTable <String> -Kind <DataConnectorKind> -Log <String> -SQSURL <String[]>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -134,6 +134,13 @@ Creates or updates the data connector.
 ## EXAMPLES
 
 ### Example 1: Enables the Threat Intelligence data connector
+```powershell
+
+```
+
+=======
+
+### Example 1: Enable a data connector.
 ```powershell
 New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
 ```
@@ -427,7 +434,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Logs
+### -Log
 
 
 ```yaml

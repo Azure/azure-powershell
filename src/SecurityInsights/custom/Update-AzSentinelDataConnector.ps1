@@ -416,7 +416,7 @@ function Update-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${Logs},
+        ${Log},
 
         [Parameter(ParameterSetName = 'UpdateAmazonWebServicesS3')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesS3')]
@@ -841,9 +841,9 @@ function Update-AzSentinelDataConnector {
                     $null = $PSBoundParameters.Remove('AWSRoleArn')
                 }
 
-                If ($PSBoundParameters['Logs']) {
-                    $DataConnector.LogState = $PSBoundParameters['Logs']
-                    $null = $PSBoundParameters.Remove('Logs')
+                If ($PSBoundParameters['Log']) {
+                    $DataConnector.LogState = $PSBoundParameters['Log']
+                    $null = $PSBoundParameters.Remove('Log')
                 }
                 $null = $PSBoundParameters.Remove('AWSCloudTrail')            
             }
@@ -853,9 +853,9 @@ function Update-AzSentinelDataConnector {
                     $null = $PSBoundParameters.Remove('AWSRoleArn')
                 }
 
-                If ($PSBoundParameters['Logs']) {
-                    $DataConnector.LogState = $PSBoundParameters['Logs']
-                    $null = $PSBoundParameters.Remove('Logs')
+                If ($PSBoundParameters['Log']) {
+                    $DataConnector.LogState = $PSBoundParameters['Log']
+                    $null = $PSBoundParameters.Remove('Log')
                 }
                 
                 If ($PSBoundParameters['SQSURL']) {
