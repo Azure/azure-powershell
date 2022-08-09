@@ -44,35 +44,58 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             return result[0].ToString();
         }
-
-        public static PSObject Deserialize(string json)
+  public static PSObject Deserialize(string json)
         {
             if (string.IsNullOrEmpty(json))
             {
                 return null;
             }
+
             Hashtable parameters = new Hashtable();
-            using (var PS_GetVersion = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace))
-            {
-                PS_GetVersion.AddScript("(Get-Host).Version.Major");
-                var PSVersion = Int32.Parse(PS_GetVersion.Invoke()[0].ToString());
-                if(PSVersion>5)
-                {
-                        if (!(json[0] == '"' && json[json.Length - 1] == '"') && !(json[0] == '\'' && json[json.Length - 1] == '\''))
-                        {
-                            json = "\"" + json + "\"";
-                        }
-                }
-            }
+            int PSVersion = 5;
+            Collection<PSObject> result=null;
+            bool JsonParseStatus = false;
+            PSVersion=AzurePSCmdlet.PowerShellVersion[0]-'0';
             parameters.Add(Constants.PsCommandParamInputObject, json);
-            var result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertFromJson, parameters);
-            if (result.Count != 1)
+            if (PSVersion > 6)
             {
-                return null;
+                try
+                {
+                    result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertFromJson, parameters);
+                    JsonParseStatus = true;
+                }
+                catch (Exception)
+                {
+
+                }
+                if(!JsonParseStatus)
+                {
+                    return json;
+                }
+                else
+                {
+                    if (result.Count != 1)
+                    {
+                        return null;
+                    }
+                    return result[0];
+                }
+                
+            }
+            else
+            {
+                result = PowerShellJsonConverter.InvokeScript(Constants.PsCommandConvertFromJson, parameters);
+
+
+                if (result.Count != 1)
+                {
+                    return null;
+                }
+
+                //count == 1. return the first psobject
+                return result[0];
             }
 
-            //count == 1. return the first psobject
-            return result[0];
         }
 
         private static Collection<PSObject> InvokeScript(string scriptName, Hashtable parameters)
