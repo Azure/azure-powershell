@@ -336,7 +336,7 @@ The account is also created with a default account-level immutability policy whi
 ```
 PS C:\>New-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Location "eastus2euap" -SkuName "Standard_LRS" -Kind StorageV2  -EnableAzureActiveDirectoryKerberosForFile $true `
         -ActiveDirectoryDomainName "mydomain.com" `
-        -ActiveDirectoryDomainGuid "12345678-1234-1234-1234-123456789012" 
+        -ActiveDirectoryDomainGuid "12345678-1234-1234-1234-123456789012"
 ```
 
 This command creates a Storage account with enable Azure Files Active Directory Domain Service Kerberos Authentication.

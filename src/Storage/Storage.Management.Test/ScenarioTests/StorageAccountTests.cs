@@ -287,8 +287,6 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         public void TestNewSetAzStorageAccountFileAADKERB()
         {
             TestRunner.RunTestScript("Test-NewSetAzStorageAccountFileAADKERB");
-        }
-
-        
+        }        
     }
 }
