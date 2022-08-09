@@ -2,7 +2,7 @@
 
 ## Description
 
-<!-- Please add a brief description of the changes made in this PR. If cmdlet design is existing, please post link below. -->
+<!-- Please add a brief description of the changes made in this PR. If you have an ongoing or finished cmdlet design, please paste the link below. -->
 
 ## Checklist
 
