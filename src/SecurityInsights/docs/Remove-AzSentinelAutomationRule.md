@@ -29,7 +29,7 @@ Delete the automation rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Removes a Sentinel automation rule
 ```powershell
 Remove-AzSentinelAutomationRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Id 2f32af32-ad13-4fbb-9fbc-e19e0e7ff767
 ```
@@ -196,7 +196,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
+INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

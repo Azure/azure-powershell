@@ -23,7 +23,5 @@ This command gets insights and activities for an Entity.
  $Entity = Get-AzSentinelEntity -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "4ebb68f3-a435-fac0-d3b6-94712d246f0a"
  $Entity | Get-AzSentinelEntityActivity
 ```
-```output
-```
 
 This command gets insights and activies for an Entity by object

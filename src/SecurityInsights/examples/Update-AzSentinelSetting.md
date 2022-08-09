@@ -2,8 +2,6 @@
 ```powershell
  Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName 'Anomalies' -Enabled
 ```
-```output
-```
 
 This command updates the Anomalies setting, other settings are:
 EyesOn, EntityAnalytics and Ueba

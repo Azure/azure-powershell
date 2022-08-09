@@ -50,6 +50,7 @@ function New-AzSentinelEntityQuery {
         [Parameter(Mandatory)]
         [ArgumentCompleter( { param ( $CommandName, $EntityQueryName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('Activity') })]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityQueryKind]
         # Kind of the the Entity Query
         ${Kind},
 

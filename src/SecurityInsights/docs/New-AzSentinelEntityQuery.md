@@ -14,7 +14,7 @@ Creates or updates the entity query.
 
 ```
 New-AzSentinelEntityQuery -ResourceGroupName <String> -WorkspaceName <String> -Content <String>
- -Description <String> -InputEntityType <EntityType> -Kind <Object> -QueryDefinitionQuery <String>
+ -Description <String> -InputEntityType <EntityType> -Kind <EntityQueryKind> -QueryDefinitionQuery <String>
  -Title <String> [-SubscriptionId <String>] [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>]
  [-RequiredInputFieldsSet <String[]>] [-TemplateName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -148,7 +148,7 @@ Accept wildcard characters: False
 Kind of the the Entity Query
 
 ```yaml
-Type: System.Object
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityQueryKind
 Parameter Sets: (All)
 Aliases:
 
@@ -330,7 +330,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`ENTITIESFILTER <ActivityEntityQueriesPropertiesEntitiesFilter>`: 
+ENTITIESFILTER <ActivityEntityQueriesPropertiesEntitiesFilter>: 
   - `[(Any) <String[]>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS

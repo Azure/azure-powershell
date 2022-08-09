@@ -33,7 +33,7 @@ Creates or updates the automation rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates an automation rule
 ```powershell
  $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myResourceGroup" -Name "Reset-AADPassword"
  $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()
@@ -282,11 +282,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`ACTION <IAutomationRuleAction[]>`: The actions to execute when the automation rule is triggered
+ACTION <IAutomationRuleAction[]>: The actions to execute when the automation rule is triggered
   - `ActionType <AutomationRuleActionType>`: The type of the automation rule action
   - `Order <Int32>`: The order of execution of the automation rule action
 
-`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
+INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID
