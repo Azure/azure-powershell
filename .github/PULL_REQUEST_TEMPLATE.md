@@ -2,7 +2,7 @@
 
 ## Description
 
-<!-- Please add a brief description of the changes made in this PR -->
+<!-- Please add a brief description of the changes made in this PR. If cmdlet design is existing, please post link below. -->
 
 ## Checklist
 
@@ -15,12 +15,11 @@
     * A snippet outlining the change(s) made in the PR should be written under the `## Upcoming Release` header in the past tense. Add changelog in description section if PR goes into [`generation`](https://github.com/Azure/azure-powershell/tree/generation) branch.
     * Should **not** change `ChangeLog.md` if no new release is required, such as fixing test case only.
 * **SHOULD** have approved design review for the changes in [this repository](https://github.com/Azure/azure-powershell-cmdlet-review-pr) ([_Microsoft internal only_](../blob/main/CONTRIBUTING.md#onboarding)) with following situations
-    * Create new module from the scratch
+    * Create new module from scratch
     * Create new resource types which are not easy to conform to [Azure PowerShell Design Guidelines](../blob/main/documentation/development-docs/design-guidelines)
     * Create new resource type which name doesn't use module name as prefix
     * Have design question before implementation
-    * {Link to the design review}
 * **SHOULD** regenerate markdown help files if there is cmdlet API change. [Instruction](../blob/main/documentation/development-docs/help-generation.md#updating-all-markdown-files-in-a-module)
 * **SHOULD** have proper test coverage for changes in pull request.
 * **SHOULD NOT** introduce [breaking changes](../blob/main/documentation/breaking-changes/breaking-changes-definition.md) in Az minor release except preview version.
-* **SHOULD NOT** change version of module in pull request
+* **SHOULD NOT** adjust version of module manually in pull request
