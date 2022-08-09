@@ -20,7 +20,7 @@ Creates or updates the data connector.
 .Description
 Creates or updates the data connector.
 .Example
-New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -DataConnectorId ((New-Guid).Guid) -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
+New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector
@@ -92,13 +92,6 @@ param(
     # Gets subscription credentials which uniquely identify Microsoft Azure subscription.
     # The subscription ID forms part of the URI for every service call.
     ${SubscriptionId},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(New-Guid).Guid')]
-    [System.String]
-    # The Id of the Data Connector.
-    ${DataConnectorId},
 
     [Parameter(Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind])]
@@ -180,7 +173,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${Indicators},
+    ${Indicator},
 
     [Parameter(ParameterSetName='Office365')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
@@ -204,7 +197,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${Incidents},
+    ${Incident},
 
     [Parameter(ParameterSetName='MicrosoftThreatIntelligence')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
@@ -232,7 +225,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${DiscoveryLogs},
+    ${DiscoveryLog},
 
     [Parameter(ParameterSetName='Dynamics365')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
@@ -465,9 +458,6 @@ begin {
         }
         if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365', 'AzureSecurityCenter', 'AmazonWebServicesS3', 'AmazonWebServicesCloudTrail', 'GenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
-        }
-        if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365', 'AzureSecurityCenter', 'AmazonWebServicesS3', 'AmazonWebServicesCloudTrail', 'GenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('DataConnectorId')) {
-            $PSBoundParameters['DataConnectorId'] = (New-Guid).Guid
         }
         if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('TenantId')) {
             $PSBoundParameters['TenantId'] = (Get-AzContext).Tenant.Id

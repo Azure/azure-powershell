@@ -45,13 +45,6 @@ function New-AzSentinelDataConnector {
         [System.String]
         # The name of the workspace.
         ${WorkspaceName},
-
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '(New-Guid).Guid')]
-        [System.String]
-        # The Id of the Data Connector.
-        ${DataConnectorId},
         
         [Parameter(Mandatory)]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind])]
@@ -104,7 +97,7 @@ function New-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${DiscoveryLogs},
+        ${DiscoveryLog},
 
         [Parameter(ParameterSetName = 'MicrosoftThreatIntelligence')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
@@ -134,7 +127,7 @@ function New-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${Incidents},
+        ${Incident},
 
         [Parameter(ParameterSetName = 'Office365')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
@@ -158,7 +151,7 @@ function New-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${Indicators},
+        ${Indicator},
 
         [Parameter(ParameterSetName = 'ThreatIntelligenceTaxii', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
@@ -416,9 +409,9 @@ function New-AzSentinelDataConnector {
                     $null = $PSBoundParameters.Remove('Alerts')
                 }
 
-                If($PSBoundParameters['DiscoveryLogs']){
-                    $DataConnector.DiscoveryLogState = $PSBoundParameters['DiscoveryLogs']
-                    $null = $PSBoundParameters.Remove('DiscoveryLogs')
+                If($PSBoundParameters['DiscoveryLog']){
+                    $DataConnector.DiscoveryLogState = $PSBoundParameters['DiscoveryLog']
+                    $null = $PSBoundParameters.Remove('DiscoveryLog')
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'MicrosoftDefenderAdvancedThreatProtection'){
@@ -493,9 +486,9 @@ function New-AzSentinelDataConnector {
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
 
-                If($PSBoundParameters['Incidents']){
-                    $DataConnector.IncidentState = $PSBoundParameters['Incidents']
-                    $null = $PSBoundParameters.Remove('Incidents')
+                If($PSBoundParameters['Incident']){
+                    $DataConnector.IncidentState = $PSBoundParameters['Incident']
+                    $null = $PSBoundParameters.Remove('Incident')
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'Office365'){
@@ -549,9 +542,9 @@ function New-AzSentinelDataConnector {
 
                 $DataConnector.TipLookbackPeriod = "1970-01-01T00:00:00.000Z"
                 
-                If($PSBoundParameters['Indicators']){
-                    $DataConnector.IndicatorState = $PSBoundParameters['Indicators']
-                    $null = $PSBoundParameters.Remove('Indicators')
+                If($PSBoundParameters['Indicator']){
+                    $DataConnector.IndicatorState = $PSBoundParameters['Indicator']
+                    $null = $PSBoundParameters.Remove('Indicator')
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'ThreatIntelligenceTaxii'){

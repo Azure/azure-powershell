@@ -106,7 +106,7 @@ function Update-AzSentinelDataConnector {
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
         [System.String]
         # The Id of the Data Connector.
-        ${DataConnectorId},
+        ${Id},
 
         [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesCloudTrail', Mandatory, ValueFromPipeline)]
         [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesS3', Mandatory, ValueFromPipeline)]
@@ -128,6 +128,96 @@ function Update-AzSentinelDataConnector {
         # Identity Parameter
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
+
+        [Parameter(ParameterSetName = 'UpdateAmazonWebServicesCloudTrail', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesCloudTrail', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${AWSCloudTrail},
+        
+        [Parameter(ParameterSetName = 'UpdateAmazonWebServicesS3', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityAmazonWebServicesS3', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${AWSS3},
+        
+        [Parameter(ParameterSetName = 'UpdateAADAATP', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityAADAATP', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${AzureADorAATP},
+        
+        [Parameter(ParameterSetName = 'UpdateAzureSecurityCenter', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityAzureSecurityCenter', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${AzureSecurityCenter},
+        
+        [Parameter(ParameterSetName = 'UpdateDynamics365', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityDynamics365', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${Dynamics365},
+        
+        #[Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
+        #[Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory)]
+        #[Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        #[System.Management.Automation.SwitchParameter]
+        #${GenericUI},
+        
+        [Parameter(ParameterSetName = 'UpdateMicrosoftCloudAppSecurity', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftCloudAppSecurity', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${CloudAppSecurity},
+        
+        [Parameter(ParameterSetName = 'UpdateMicrosoftDefenderAdvancedThreatProtection', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${DefenderATP},
+
+        [Parameter(ParameterSetName = 'UpdateMicrosoftThreatIntelligence', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftThreatIntelligence', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${MicrosoftTI},
+        
+        [Parameter(ParameterSetName = 'UpdateMicrosoftThreatProtection', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftThreatProtection', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${MicrosoftThreatProtection},
+        
+        [Parameter(ParameterSetName = 'UpdateOffice365', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityOffice365', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${Office365},
+        
+        [Parameter(ParameterSetName = 'UpdateOfficeATP', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityOfficeATP', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${OfficeATP},
+        
+        [Parameter(ParameterSetName = 'UpdateOfficeIRM', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityOfficeIRM', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${OfficeIRM},
+        
+        [Parameter(ParameterSetName = 'UpdateThreatIntelligence', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityThreatIntelligence', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${ThreatIntelligence},
+        
+        [Parameter(ParameterSetName = 'UpdateThreatIntelligenceTaxii', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityThreatIntelligenceTaxii', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        ${ThreatIntelligenceTaxii},
 
         [Parameter(ParameterSetName = 'UpdateAADAATP')]
         [Parameter(ParameterSetName = 'UpdateDynamics365')]
@@ -197,7 +287,7 @@ function Update-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${DiscoveryLogs},
+        ${DiscoveryLog},
 
         [Parameter(ParameterSetName = 'UpdateMicrosoftThreatIntelligence')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftThreatIntelligence')]
@@ -232,7 +322,7 @@ function Update-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${Incidents},
+        ${Incident},
 
         [Parameter(ParameterSetName = 'UpdateOffice365')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityOffice365')]
@@ -260,7 +350,7 @@ function Update-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${Indicators},
+        ${Indicator},
 
         [Parameter(ParameterSetName = 'UpdateThreatIntelligenceTaxii')]
         [Parameter(ParameterSetName = 'UpdateViaIdentityThreatIntelligenceTaxii')]
@@ -495,7 +585,7 @@ function Update-AzSentinelDataConnector {
             else {
                 $GetPSBoundParameters.Add('ResourceGroupName', $PSBoundParameters['ResourceGroupName'])
                 $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
-                $GetPSBoundParameters.Add('DataConnectorId', $PSBoundParameters['DataConnectorId'])
+                $GetPSBoundParameters.Add('Id', $PSBoundParameters['Id'])
             }
             $DataConnector = Az.SecurityInsights\Get-AzSentinelDataConnector @GetPSBoundParameters
 
@@ -509,6 +599,8 @@ function Update-AzSentinelDataConnector {
                     $DataConnector.AlertState = $PSBoundParameters['Alerts']
                     $null = $PSBoundParameters.Remove('Alerts')
                 }
+
+                $null = $PSBoundParameters.Remove('AzureADorAATP')
             }
             if ($DataConnector.Kind -eq 'AzureAdvancedThreatProtection') {
                 If ($PSBoundParameters['TenantId']) {
@@ -519,6 +611,7 @@ function Update-AzSentinelDataConnector {
                     $DataConnector.AlertState = $PSBoundParameters['Alerts']
                     $null = $PSBoundParameters.Remove('Alerts')
                 }
+                $null = $PSBoundParameters.Remove('AzureADorAATP')
             }
             if ($DataConnector.Kind -eq 'Dynamics365') {
                 If ($PSBoundParameters['TenantId']) {
@@ -530,6 +623,7 @@ function Update-AzSentinelDataConnector {
                     $DataConnector.Dynamics365CdActivityState = $PSBoundParameters['CommonDataServiceActivity']
                     $null = $PSBoundParameters.Remove('CommonDataServiceActivity')
                 }
+                $null = $PSBoundParameters.Remove('Dynamics365')
             }
             if ($DataConnector.Kind -eq 'MicrosoftCloudAppSecurity') {
                 If ($PSBoundParameters['TenantId']) {
@@ -542,10 +636,11 @@ function Update-AzSentinelDataConnector {
                     $null = $PSBoundParameters.Remove('Alerts')
                 }
 
-                If ($PSBoundParameters['DiscoveryLogs']) {
-                    $DataConnector.DiscoveryLogState = $PSBoundParameters['DiscoveryLogs']
-                    $null = $PSBoundParameters.Remove('DiscoveryLogs')
+                If ($PSBoundParameters['DiscoveryLog']) {
+                    $DataConnector.DiscoveryLogState = $PSBoundParameters['DiscoveryLog']
+                    $null = $PSBoundParameters.Remove('DiscoveryLog')
                 }
+                $null = $PSBoundParameters.Remove('CloudAppSecurity')
             }
             if ($DataConnector.Kind -eq 'MicrosoftDefenderAdvancedThreatProtection') {
                 If ($PSBoundParameters['TenantId']) {
@@ -557,6 +652,7 @@ function Update-AzSentinelDataConnector {
                     $DataConnector.AlertState = $PSBoundParameters['Alerts']
                     $null = $PSBoundParameters.Remove('Alerts')
                 }
+                $null = $PSBoundParameters.Remove('DefenderATP')
             }
             if ($DataConnector.Kind -eq 'MicrosoftThreatIntelligence') {
                 If ($PSBoundParameters['TenantId']) {
@@ -605,6 +701,7 @@ function Update-AzSentinelDataConnector {
                     }
                     $null = $PSBoundParameters.Remove('MicrosoftEmergingThreatFeedLookbackPeriod')
                 }
+                $null = $PSBoundParameters.Remove('MicrosoftTI')
             }
             if ($DataConnector.Kind -eq 'MicrosoftThreatProtection') {
                 If ($PSBoundParameters['TenantId']) {
@@ -612,10 +709,11 @@ function Update-AzSentinelDataConnector {
                     $null = $PSBoundParameters.Remove('TenantId')
                 }
 
-                If ($PSBoundParameters['Incidents']) {
-                    $DataConnector.IncidentState = $PSBoundParameters['Incidents']
-                    $null = $PSBoundParameters.Remove('Incidents')
+                If ($PSBoundParameters['Incident']) {
+                    $DataConnector.IncidentState = $PSBoundParameters['Incident']
+                    $null = $PSBoundParameters.Remove('Incident')
                 }
+                $null = $PSBoundParameters.Remove('MicrosoftThreatProtection')
             }
             if ($DataConnector.Kind -eq 'Office365') {
                 If ($PSBoundParameters['TenantId']) {
@@ -637,6 +735,7 @@ function Update-AzSentinelDataConnector {
                     $DataConnector.TeamState = $PSBoundParameters['Teams']
                     $null = $PSBoundParameters.Remove('Teams')
                 }
+                $null = $PSBoundParameters.Remove('Office365')
             }
             if ($DataConnector.Kind -eq 'OfficeATP') {
                 If ($PSBoundParameters['TenantId']) {
@@ -648,6 +747,7 @@ function Update-AzSentinelDataConnector {
                     $DataConnector.AlertState = $PSBoundParameters['Alerts']
                     $null = $PSBoundParameters.Remove('Alerts')
                 }
+                $null = $PSBoundParameters.Remove('OfficeATP')
             }
             if ($DataConnector.Kind -eq 'OfficeIRM') {
                 If ($PSBoundParameters['TenantId']) {
@@ -659,6 +759,7 @@ function Update-AzSentinelDataConnector {
                     $DataConnector.AlertState = $PSBoundParameters['Alerts']
                     $null = $PSBoundParameters.Remove('Alerts')
                 }
+                $null = $PSBoundParameters.Remove('OfficeIRM')
             }
             if ($DataConnector.Kind -eq 'ThreatIntelligence') {
                 If ($PSBoundParameters['TenantId']) {
@@ -666,10 +767,11 @@ function Update-AzSentinelDataConnector {
                     $null = $PSBoundParameters.Remove('TenantId')
                 }
                 
-                If ($PSBoundParameters['Indicators']) {
-                    $DataConnector.IndicatorState = $PSBoundParameters['Indicators']
-                    $null = $PSBoundParameters.Remove('Indicators')
+                If ($PSBoundParameters['Indicator']) {
+                    $DataConnector.IndicatorState = $PSBoundParameters['Indicator']
+                    $null = $PSBoundParameters.Remove('Indicator')
                 }
+                $null = $PSBoundParameters.Remove('ThreatIntelligence')
             }
             if ($DataConnector.Kind -eq 'ThreatIntelligenceTaxii') {
                 If ($PSBoundParameters['TenantId']) {
@@ -719,6 +821,7 @@ function Update-AzSentinelDataConnector {
                     }
                     $null = $PSBoundParameters.Remove('PollingFrequency')
                 }
+                $null = $PSBoundParameters.Remove('ThreatIntelligenceTaxii')
             }
             if ($DataConnector.Kind -eq 'AzureSecurityCenter') {
                 If ($PSBoundParameters['ASCSubscriptionId']) {
@@ -730,6 +833,7 @@ function Update-AzSentinelDataConnector {
                     $DataConnector.AlertState = $PSBoundParameters['Alerts']
                     $null = $PSBoundParameters.Remove('Alerts')
                 }
+                $null = $PSBoundParameters.Remove('AzureSecurityCenter')
             }
             if ($DataConnector.Kind -eq 'AmazonWebServicesCloudTrail') {
                 If ($PSBoundParameters['AWSRoleArn']) {
@@ -740,7 +844,8 @@ function Update-AzSentinelDataConnector {
                 If ($PSBoundParameters['Logs']) {
                     $DataConnector.LogState = $PSBoundParameters['Logs']
                     $null = $PSBoundParameters.Remove('Logs')
-                }            
+                }
+                $null = $PSBoundParameters.Remove('AWSCloudTrail')            
             }
             if ($DataConnector.Kind -eq 'AmazonWebServicesS3') {
                 If ($PSBoundParameters['AWSRoleArn']) {
@@ -761,6 +866,7 @@ function Update-AzSentinelDataConnector {
                     $DataConnector.DestinationTable = $PSBoundParameters['DetinationTable']
                     $null = $PSBoundParameters.Remove('DetinationTable')
                 }
+                $null = $PSBoundParameters.Remove('AWSS3')
             }
             if ($DataConnector.Kind -eq 'GenericUI') {
                 If ($PSBoundParameters['UiConfigTitle']) {

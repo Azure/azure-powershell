@@ -75,26 +75,26 @@ function Update-AzSentinelAlertRule {
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
 
-        [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateFusionMLTI', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${FusionMLorTI},
 
-        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${MicrosoftSecurityIncidentCreation},
 
-        [Parameter(ParameterSetName = 'UpdateNRT')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityNRT')]
+        [Parameter(ParameterSetName = 'UpdateNRT', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityNRT', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${NRT},
 
-        [Parameter(ParameterSetName = 'UpdateScheduled')]
-        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateScheduled', Mandatory)]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
         ${Scheduled},
@@ -122,6 +122,18 @@ function Update-AzSentinelAlertRule {
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [Switch]
         ${Enabled},
+
+        [Parameter(ParameterSetName = 'UpdateFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateNRT')]
+        [Parameter(ParameterSetName = 'UpdateScheduled')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityFusionMLTI')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityNRT')]
+        [Parameter(ParameterSetName = 'UpdateViaIdentityUpdateScheduled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+        [Switch]
+        ${Disabled},
 
         [Parameter(ParameterSetName = 'UpdateMicrosoftSecurityIncidentCreation')]
         [Parameter(ParameterSetName = 'UpdateNRT')]
@@ -447,8 +459,9 @@ function Update-AzSentinelAlertRule {
                     $AlertRule.Enabled = $true
                     $null = $PSBoundParameters.Remove('Enabled')
                 }
-                else {
+                if($PSBoundParameters['Disabled']) {
                     $AlertRule.Enabled = $false
+                    $null = $PSBoundParameters.Remove('Disabled')
                 }
             }
             #MSIC
@@ -462,8 +475,9 @@ function Update-AzSentinelAlertRule {
                     $AlertRule.Enabled = $true
                     $null = $PSBoundParameters.Remove('Enabled')
                 }
-                else {
+                if($PSBoundParameters['Disabled']) {
                     $AlertRule.Enabled = $false
+                    $null = $PSBoundParameters.Remove('Disabled')
                 }
                 
                 If($PSBoundParameters['Description']){
@@ -502,8 +516,9 @@ function Update-AzSentinelAlertRule {
                     $AlertRule.Enabled = $true
                     $null = $PSBoundParameters.Remove('Enabled')
                 }
-                else {
+                if($PSBoundParameters['Disabled']) {
                     $AlertRule.Enabled = $false
+                    $null = $PSBoundParameters.Remove('Disabled')
                 }
             }
 
@@ -515,11 +530,12 @@ function Update-AzSentinelAlertRule {
                 }
                 
                 If($PSBoundParameters['Enabled']){
-                    $AlertRule.Enabled = $PSBoundParameters['Enabled']
+                    $AlertRule.Enabled = $true
                     $null = $PSBoundParameters.Remove('Enabled')
                 }
-                else {
+                if($PSBoundParameters['Disabled']) {
                     $AlertRule.Enabled = $false
+                    $null = $PSBoundParameters.Remove('Disabled')
                 }
                 
                 If($PSBoundParameters['Description']){
@@ -643,11 +659,12 @@ function Update-AzSentinelAlertRule {
                 }
                 
                 If($PSBoundParameters['Enabled']){
-                    $AlertRule.Enabled = $PSBoundParameters['Enabled']
+                    $AlertRule.Enabled = $true
                     $null = $PSBoundParameters.Remove('Enabled')
                 }
-                else {
+                if($PSBoundParameters['Disabled']) {
                     $AlertRule.Enabled = $false
+                    $null = $PSBoundParameters.Remove('Disabled')
                 }
                 
                 If($PSBoundParameters['Description']){
@@ -798,8 +815,9 @@ function Update-AzSentinelAlertRule {
                     $AlertRule.Enabled = $true
                     $null = $PSBoundParameters.Remove('Enabled')
                 }
-                else {
+                if($PSBoundParameters['Disabled']) {
                     $AlertRule.Enabled = $false
+                    $null = $PSBoundParameters.Remove('Disabled')
                 }
             }
             

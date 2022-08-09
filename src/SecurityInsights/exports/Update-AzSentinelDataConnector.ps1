@@ -20,7 +20,7 @@ Updates the data connector.
 .Description
 Updates the data connector.
 .Example
-Update-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -DataConnectorId  3bd6c555-1412-4103-9b9d-2b0b40cda6b6 -SharePoint "Enabled"
+Update-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id  3bd6c555-1412-4103-9b9d-2b0b40cda6b6 -SharePoint "Enabled"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -157,7 +157,7 @@ param(
     [System.String]
     # [Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
     #  The Id of the Data Connector.
-    ${DataConnectorId},
+    ${Id},
 
     [Parameter(ParameterSetName='UpdateAADAATP')]
     [Parameter(ParameterSetName='UpdateThreatIntelligenceTaxii')]
@@ -305,7 +305,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${Indicators},
+    ${Indicator},
 
     [Parameter(ParameterSetName='UpdateOffice365')]
     [Parameter(ParameterSetName='UpdateViaIdentityOffice365')]
@@ -333,7 +333,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${Incidents},
+    ${Incident},
 
     [Parameter(ParameterSetName='UpdateMicrosoftThreatIntelligence')]
     [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftThreatIntelligence')]
@@ -366,7 +366,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${DiscoveryLogs},
+    ${DiscoveryLog},
 
     [Parameter(ParameterSetName='UpdateDynamics365')]
     [Parameter(ParameterSetName='UpdateViaIdentityDynamics365')]
@@ -511,6 +511,12 @@ param(
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
+    [Parameter(ParameterSetName='UpdateAADAATP', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAADAATP', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${AzureADorAATP},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
@@ -560,7 +566,90 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+    ${ProxyUseDefaultCredentials},
+
+    [Parameter(ParameterSetName='UpdateThreatIntelligenceTaxii', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityThreatIntelligenceTaxii', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${ThreatIntelligenceTaxii},
+
+    [Parameter(ParameterSetName='UpdateThreatIntelligence', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityThreatIntelligence', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${ThreatIntelligence},
+
+    [Parameter(ParameterSetName='UpdateOfficeIRM', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityOfficeIRM', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${OfficeIRM},
+
+    [Parameter(ParameterSetName='UpdateOfficeATP', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityOfficeATP', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${OfficeATP},
+
+    [Parameter(ParameterSetName='UpdateOffice365', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityOffice365', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${Office365},
+
+    [Parameter(ParameterSetName='UpdateMicrosoftThreatProtection', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftThreatProtection', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${MicrosoftThreatProtection},
+
+    [Parameter(ParameterSetName='UpdateMicrosoftThreatIntelligence', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftThreatIntelligence', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${MicrosoftTI},
+
+    [Parameter(ParameterSetName='UpdateMicrosoftDefenderAdvancedThreatProtection', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${DefenderATP},
+
+    [Parameter(ParameterSetName='UpdateMicrosoftCloudAppSecurity', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftCloudAppSecurity', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # [Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
+    # [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory)]
+    # [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    # [System.Management.Automation.SwitchParameter]
+    # ${GenericUI},
+    ${CloudAppSecurity},
+
+    [Parameter(ParameterSetName='UpdateDynamics365', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityDynamics365', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${Dynamics365},
+
+    [Parameter(ParameterSetName='UpdateAzureSecurityCenter', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAzureSecurityCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${AzureSecurityCenter},
+
+    [Parameter(ParameterSetName='UpdateAmazonWebServicesS3', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmazonWebServicesS3', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${AWSS3},
+
+    [Parameter(ParameterSetName='UpdateAmazonWebServicesCloudTrail', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmazonWebServicesCloudTrail', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${AWSCloudTrail}
 )
 
 begin {

@@ -1,22 +1,8 @@
-### Example 1: {{ Add title here }}
+### Example 1: Test data connector check requirement
 ```powershell
-{{ Add code here }}
+Test-AzSentinelDataConnectorCheckRequirement -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind "APIPolling"
 ```
 
-```output
-{{ Add output here }}
-```
+Test data connector check requirement
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
