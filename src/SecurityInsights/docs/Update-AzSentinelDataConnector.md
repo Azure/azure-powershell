@@ -22,14 +22,14 @@ Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -Workspa
 ### UpdateAmazonWebServicesCloudTrail
 ```
 Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String> -AWSCloudTrail
- [-SubscriptionId <String>] [-AWSRoleArn <String>] [-Logs <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-SubscriptionId <String>] [-AWSRoleArn <String>] [-Log <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateAmazonWebServicesS3
 ```
 Update-AzSentinelDataConnector -Id <String> -ResourceGroupName <String> -WorkspaceName <String> -AWSS3
- [-SubscriptionId <String>] [-AWSRoleArn <String>] [-DetinationTable <String>] [-Logs <String>]
+ [-SubscriptionId <String>] [-AWSRoleArn <String>] [-DetinationTable <String>] [-Log <String>]
  [-SQSURL <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -138,14 +138,14 @@ Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -AzureAD
 ### UpdateViaIdentityAmazonWebServicesCloudTrail
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -AWSCloudTrail [-AWSRoleArn <String>]
- [-Logs <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-Log <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityAmazonWebServicesS3
 ```
 Update-AzSentinelDataConnector -InputObject <ISecurityInsightsIdentity> -AWSS3 [-AWSRoleArn <String>]
- [-DetinationTable <String>] [-Logs <String>] [-SQSURL <String[]>] [-TenantId <String>]
+ [-DetinationTable <String>] [-Log <String>] [-SQSURL <String[]>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -669,7 +669,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Logs
+### -Log
 
 
 ```yaml
