@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Network
 {
     [GenericBreakingChange("Default behaviour of Zone will be changed", OldWay = "Sku = Standard means the Standard Public IP is zone-redundant.",
         NewWay = "Sku = Standard and Zone = {} means the Standard Public IP has no zones. If you want to create a zone-redundant Public IP address, please specify all the zones in the region. For example, Zone = ['1', '2', '3'].")]
-    [GenericBreakingChange("It is recommended to use parameter '- Sku Standard' to create new IP address. Please note that it will become the default behavior for IP address creation in the future.")]
+    [GenericBreakingChange("It is recommended to use parameter '-Sku Standard' to create new IP address. Please note that it will become the default behavior for IP address creation in the future.")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpAddress", SupportsShouldProcess = true),OutputType(typeof(PSPublicIpAddress))]
     public class NewAzurePublicIpAddressCommand : PublicIpAddressBaseCmdlet
     {
