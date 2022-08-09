@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
             TestRunner.RunTestScript("Test-BlobAuditSqlPoolRetentionKeepProperties");
         }
 
-        [Fact(LiveOnly = "SQL Data Warehouse audit doesn’t support audit actions.")]
+        [Fact(Skip = "SQL Data Warehouse audit doesn’t support audit actions.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditOnSqlPool()
         {
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
             TestRunner.RunTestScript("Test-BlobAuditOnWorkspace");
         }
 
-        [Fact(LiveOnly = "SQL Data Warehouse audit doesn’t support other audit groups.")]
+        [Fact(Skip = "SQL Data Warehouse audit doesn’t support other audit groups.")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestBlobAuditWithAuditActionGroups()
         {
