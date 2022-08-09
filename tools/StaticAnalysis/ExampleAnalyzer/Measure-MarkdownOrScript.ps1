@@ -1,6 +1,24 @@
 <#
     .SYNOPSIS
         The script to find examples in ".md" and analyze the examples by custom rules.
+    .PARAMETER MarkdownPaths
+    Markdown searching paths. Empty for current path. Supports wildcard.
+    .PARAMETER ScriptPath
+    PowerShell script searching path.
+    .PARAMETER RulePaths
+    PSScriptAnalyzer custom rules paths. Empty for current path. Supports wildcard.
+    .PARAMETER CodeMapPath
+    Code map path bound with the PowerShell script.
+    .PARAMETER Recurse
+    To search markdowns recursively in the folders.
+    .PARAMETER IncludeDefaultRules
+    To analyze default rules provided by PSScriptAnalyzer.
+    .PARAMETER OutputFolder
+    Folder path storing output files.
+    .PARAMETER SkipAnalyzing
+    To skip analyzing step. Only extracting example codes from markdowns to the temp script.
+    .PARAMETER CleanScripts
+    To clean the temp script.
     .NOTES
         File Name: Measure-MarkdownOrScript.ps1
 #>
@@ -9,25 +27,21 @@
 
 [CmdletBinding(DefaultParameterSetName = "Markdown")]
 param (
-    [Parameter(Mandatory, HelpMessage = "Markdown searching paths. Empty for current path. Supports wildcard.", ParameterSetName = "Markdown")]
+    [Parameter(Mandatory, ParameterSetName = "Markdown")]
     [AllowEmptyString()]
     [string[]]$MarkdownPaths,
-    [Parameter(Mandatory, HelpMessage = "PowerShell script searching path.", ParameterSetName = "Script")]
+    [Parameter(Mandatory, ParameterSetName = "Script")]
     [AllowEmptyString()]
     [string[]]$ScriptPath,
-    [Parameter(HelpMessage = "PSScriptAnalyzer custom rules paths. Empty for current path. Supports wildcard.")]
     [string[]]$RulePaths,
-    [Parameter(Mandatory, HelpMessage = "Code map path bound with script.", ParameterSetName = "Script")]
+    [Parameter(Mandatory, ParameterSetName = "Script")]
     [string]$CodeMapPath,
-    [Parameter(HelpMessage = "To search markdowns recursively in the folders.", ParameterSetName = "Markdown")]
+    [Parameter(ParameterSetName = "Markdown")]
     [switch]$Recurse,
-    [Parameter(HelpMessage = "To analyze default rules by PSScriptAnalyzer.")]
     [switch]$IncludeDefaultRules,
-    [Parameter(HelpMessage = "Folder path storing output files.")]
     [string]$OutputFolder = "$PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleAnalysis",
-    [Parameter(HelpMessage = "To skip analyzing step. Only extracting example codes from markdowns to the temp script.", ParameterSetName = "Markdown")]
+    [Parameter(ParameterSetName = "Markdown")]
     [switch]$SkipAnalyzing,
-    [Parameter(HelpMessage = "To clean the temp script.")]
     [switch]$CleanScripts
 )
 
