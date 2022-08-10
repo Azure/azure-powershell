@@ -20,7 +20,12 @@
 
 ## Upcoming Release
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
-
+* Updated cmdlets to add new property of `VirtualNetworkGatewayPolicyGroup` and `VpnClientConnectionConfiguration` in Azure Virtual Network Gateway
+    - `New-AzVirtualNetworkGateway`
+    - `Update-AzVirtualNetworkGateway`
+* Added new cmdlets to create 
+    - `New-AzVirtualNetworkGatewayPolicyGroup`
+    - `New-AzVpnClientConnectionConfiguration`
 ## Version 4.19.0
 * Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
     - `New-AzFirewallPolicyExplicitProxy`

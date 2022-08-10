@@ -212,6 +212,14 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "This will enable and disable BgpRouteTranslationForNat on this VirtualNetworkGateway.")]
         public bool? BgpRouteTranslationForNat { get; set; }
 
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "P2S policy group added to this gateway")]
+        public PSVirtualNetworkGatewayPolicyGroup[] VirtualNetworkGatewayPolicyGroups { get; set; }
+
+
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -254,6 +262,11 @@ namespace Microsoft.Azure.Commands.Network
             if (this.EnablePrivateIpAddress.HasValue)
             {
                 this.VirtualNetworkGateway.EnablePrivateIpAddress = this.EnablePrivateIpAddress.Value;
+            }
+
+            if (this.VirtualNetworkGatewayPolicyGroups != null && this.VirtualNetworkGatewayPolicyGroups.Length > 0)
+            {
+                this.VirtualNetworkGateway.VirtualNetworkGatewayPolicyGroups = this.VirtualNetworkGatewayPolicyGroups.ToList();
             }
 
             if (!string.IsNullOrEmpty(GatewaySku))
@@ -361,6 +374,13 @@ namespace Microsoft.Azure.Commands.Network
             }
             if (this.ClientConnectionConfigurations != null && this.ClientConnectionConfigurations.Count() > 0)
             {
+                foreach (var config in this.ClientConnectionConfigurations)
+                {
+                    foreach (var policyGroup in config.VirtualNetworkGatewayPolicyGroups)
+                    {
+                        policyGroup.Id = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/virtualNetworkGatewayPolicyGroups/{3}", this.NetworkClient.NetworkManagementClient.SubscriptionId, this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name, policyGroup.Id);
+                    }
+                }
                 this.VirtualNetworkGateway.VpnClientConfiguration.ClientConnectionConfigurations = this.ClientConnectionConfigurations.ToList();
             }
 
