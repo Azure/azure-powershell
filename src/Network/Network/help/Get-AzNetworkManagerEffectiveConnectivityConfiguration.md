@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzNetworkManagerEffectiveConnectivityConfigurationList
+# Get-AzNetworkManagerEffectiveConnectivityConfiguration
 
 ## SYNOPSIS
 Lists NetworkManager Effective Connectivity Configurations applied on a virtual networks.
@@ -13,19 +13,19 @@ Lists NetworkManager Effective Connectivity Configurations applied on a virtual 
 ## SYNTAX
 
 ```
-Get-AzNetworkManagerEffectiveConnectivityConfigurationList -VirtualNetworkName <String>
+Get-AzNetworkManagerEffectiveConnectivityConfiguration -VirtualNetworkName <String>
  -VirtualNetworkResourceGroupName <String> [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzNetworkManagerEffectiveConnectivityConfigurationList** cmdlet lists NetworkManager Effective Connectivity Configurations applied on a virtual network.
+The **Get-AzNetworkManagerEffectiveConnectivityConfiguration** cmdlet lists NetworkManager Effective Connectivity Configurations applied on a virtual network.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Get-AzNetworkManagerEffectiveConnectivityConfigurationList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
+Get-AzNetworkManagerEffectiveConnectivityConfiguration -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
 ```
 ```output
  Value     : [

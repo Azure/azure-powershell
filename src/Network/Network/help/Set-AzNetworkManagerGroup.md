@@ -25,7 +25,7 @@ The **Set-AzNetworkManagerGroup** cmdlet updates a network manager group.
 
 ### Example 1
 ```powershell
-$networkGroup = Get-AzNetworkManagerGroup  -Name "psNetworkGroup" -NetworkManagerName $nmName -ResourceGroupName $rgName
+$networkGroup = Get-AzNetworkManagerGroup  -Name "psNetworkGroup" -NetworkManagerName psNetworkManager -ResourceGroupName psResourceGroup
 $networkGroup.description = "new description"
 Set-AzNetworkManagerGroup -NetworkManagerName psNetworkManager -ResourceGroupName psResourceGroup -InputObject $networkGroup
 ```

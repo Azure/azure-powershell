@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzNetworkManagerEffectiveSecurityAdminRuleList
+# Get-AzNetworkManagerEffectiveSecurityAdminRule
 
 ## SYNOPSIS
 Lists NetworkManager Effective Security Admin Rules applied on a virtual networks.
@@ -13,19 +13,19 @@ Lists NetworkManager Effective Security Admin Rules applied on a virtual network
 ## SYNTAX
 
 ```
-Get-AzNetworkManagerEffectiveSecurityAdminRuleList -VirtualNetworkName <String>
+Get-AzNetworkManagerEffectiveSecurityAdminRule -VirtualNetworkName <String>
  -VirtualNetworkResourceGroupName <String> [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzNetworkManagerEffectiveSecurityAdminRuleList** cmdlet lists NetworkManager Effective Security Admin Rules applied on a virtual network.
+The **Get-AzNetworkManagerEffectiveSecurityAdminRule** cmdlet lists NetworkManager Effective Security Admin Rules applied on a virtual network.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Get-AzNetworkManagerEffectiveSecurityAdminRuleList -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
+Get-AzNetworkManagerEffectiveSecurityAdminRule -VirtualNetworkName "TestVnet" -ResourceGroupName "TestRG" -SkipToken "FakeSkipToken"
 ```
 ```output
 Value     : [
