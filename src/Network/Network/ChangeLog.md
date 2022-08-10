@@ -26,6 +26,9 @@
     - `Remove-AzPrivateEndpointConnection`
     - `Approve-AzPrivateEndpointConnection`
     - `Deny-AzPrivateEndpointConnection`
+* Added breaking change attribute to notify that public ip address sku default behaviour will be changed
+    - `New-AzPublicIpAddress`
+    - `New-AzLoadBalancer`
 
 ## Version 4.19.0
 * Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
