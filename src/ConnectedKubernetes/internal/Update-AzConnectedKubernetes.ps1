@@ -20,17 +20,9 @@ API to update certain properties of the connected cluster resource
 .Description
 API to update certain properties of the connected cluster resource
 .Example
-PS C:\> Update-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Tag @{'key'='1'}
-
-Location Name              ResourceGroupName
--------- ----              -----------------
-eastus   azps_test_cluster azps_test_group
+Update-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Tag @{'key'='1'}
 .Example
-PS C:\> Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group | Update-AzConnectedKubernetes -Tag @{'key'='2'}
-
-Location Name              ResourceGroupName
--------- ----              -----------------
-eastus   azps_test_cluster azps_test_group
+Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group | Update-AzConnectedKubernetes -Tag @{'key'='2'}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedKubernetesIdentity
@@ -143,6 +135,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             UpdateExpanded = 'Az.ConnectedKubernetes.private\Update-AzConnectedKubernetes_UpdateExpanded';
             UpdateViaIdentityExpanded = 'Az.ConnectedKubernetes.private\Update-AzConnectedKubernetes_UpdateViaIdentityExpanded';
@@ -156,6 +149,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -164,15 +158,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

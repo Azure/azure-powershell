@@ -18,7 +18,23 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-
+* Updated to use the 2021-12-01 API version.
+* Added new features:
+    - System topic
+    - System topic event subscription
+    - System topic event subscription delivery attributes
+* Updated cmdlets:
+    - `New-AzEventGridDomain`:
+        - Add new optional parameters to support auto creation of topic with first subscription.
+        - Add new optional parameters to support auto deletion of topic with last subscription.
+        - Add optional parameters to support azure managed identity
+    - `New-AzEventGridTopic`/`Update-AzEventGridTopic` :
+        - Add optional parameters to support azure managed identity
+    - `New-AzEventGridSubscription `/`Update-AzEventGridSubscription `:
+        - Add new optional parameters to support advanced filtering on arrays.
+		- Add new optional parameters to support delivery attribute mapping.
+		- Add new optional parameters to support storage queue message ttl.
+    
 ## Version 1.3.0
 * Updated to use the 2020-06-01 API version.
 * Added new features:
