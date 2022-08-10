@@ -33,6 +33,7 @@ The **Get-AzNetworkManagerSubscriptionConnection** cmdlet gets a network manager
 ```powershell
 Get-AzNetworkManagerSubscriptionConnection -Name "subConnection"
 ```
+
 ```output
 NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
 ConnectionState   : Conflict
@@ -48,6 +49,7 @@ Id                : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/provider
 ```
 Gets a network manager connection on a subscription.
 
+### Example 2
 ```powershell
 Get-AzNetworkManagerSubscriptionConnection
 ```
