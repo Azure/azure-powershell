@@ -56,13 +56,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
             int PSVersion = 5;
             Collection<PSObject> result=null;
             bool JsonParseStatus = false;
-           // PSVersion=AzurePSCmdlet.PowerShellVersion[0]-'0';
+            PSVersion = Int32.Parse(AzurePSCmdlet.PowerShellVersion[0].ToString());
             parameters.Add(Constants.PsCommandParamInputObject, json);
-            using (var PS_GetVersion = System.Management.Automation.PowerShell.Create(RunspaceMode.CurrentRunspace))
-            {
-               PS_GetVersion.AddScript("(Get-Host).Version.Major");
-               PSVersion = Int32.Parse(PS_GetVersion.Invoke()[0].ToString());
-            }
             if (PSVersion > 6)
             {
                 try
