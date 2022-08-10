@@ -1506,9 +1506,10 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VirtualApplianceSkuProperties, CNM.PSVirtualApplianceSkuProperties>();
 
                 // NetworkManager
-                // CNM to MNM
+                // CNM to MNMs
                 cfg.CreateMap<ANM.PSNetworkManager, MNM.NetworkManager>();
                 cfg.CreateMap<ANM.PSNetworkManagerScopes, MNM.NetworkManagerPropertiesNetworkManagerScopes>();
+                cfg.CreateMap<ANM.PSNetworkManagerCrossTenantScopes, MNM.CrossTenantScopes>();
                 cfg.CreateMap<ANM.PSSystemData, MNM.SystemData>();
                 cfg.CreateMap<ANM.PSNetworkManagerActiveBaseSecurityAdminRule, MNM.ActiveBaseSecurityAdminRule>();
                 cfg.CreateMap<ANM.PSNetworkManagerActiveConfigurationParameter, MNM.ActiveConfigurationParameter>();
@@ -1548,6 +1549,7 @@ namespace Microsoft.Azure.Commands.Network
                 // MNM to CNM
                 cfg.CreateMap<MNM.NetworkManager, ANM.PSNetworkManager>();
                 cfg.CreateMap<MNM.NetworkManagerPropertiesNetworkManagerScopes, ANM.PSNetworkManagerScopes>();
+                cfg.CreateMap<MNM.CrossTenantScopes, ANM.PSNetworkManagerCrossTenantScopes>();
                 cfg.CreateMap<MNM.SystemData, ANM.PSSystemData>();
                 cfg.CreateMap<MNM.ActiveBaseSecurityAdminRule, ANM.PSNetworkManagerActiveBaseSecurityAdminRule>();
                 cfg.CreateMap<MNM.ActiveConfigurationParameter, ANM.PSNetworkManagerActiveConfigurationParameter>();
