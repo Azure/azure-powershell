@@ -90,7 +90,7 @@ This command moves a DNS alias designated with -SourceResourceId to the target m
 
 ### Example 2: Moves a managed instance DNS alias with the given name, source managed instance and source resource group to the target managed instance
 ```powershell
-Move-AzSqlInstanceDnsAlias-DestResourceGroupName ResourceGroup2 -DestInstanceName ManagedInstance2 -SourceResourceGroupName ResourceGroup1 -SourceInstanceName ManagedInstance1 -SourceName DnsAlias1
+Move-AzSqlInstanceDnsAlias -DestResourceGroupName ResourceGroup2 -DestInstanceName ManagedInstance2 -SourceResourceGroupName ResourceGroup1 -SourceInstanceName ManagedInstance1 -SourceName DnsAlias1
 ```
 
 ```output
