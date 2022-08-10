@@ -31,7 +31,6 @@ The **Get-AzNetworkManagerStaticMember** cmdlet gets a network manager static me
 
 ### Example 1
 ```powershell
-Expand
 Get-AzNetworkManagerStaticMember  -Name "TestStaticMember" -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -NetworkGroupName "TestNetworkGroup"
 ```
 ```output

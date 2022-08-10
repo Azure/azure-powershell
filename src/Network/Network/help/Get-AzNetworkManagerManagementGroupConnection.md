@@ -48,10 +48,9 @@ Id                : /providers/Microsoft.Management/managementGroups/newMG/provi
 ```
 Gets a network manager connection on management group 'newMG'.
 
-
 ### Example 2
 ```powershell
-PS C:\> Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "newMG"
+Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "newMG"
 ```
 ```output
 NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/jaredgorthy-testResources/providers/Microsoft.Network/networkManagers/jaredgorthy

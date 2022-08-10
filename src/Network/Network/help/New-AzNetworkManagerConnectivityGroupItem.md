@@ -25,7 +25,7 @@ The **New-AzNetworkManagerConnectivityGroupItem** cmdlet creates a connectivity 
 ### Example 1
 ```powershell
 $networkGroupId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup"
-New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroupId -UseHubGateway –GroupConnectivity "None" -IsGlobal 
+New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroupId -UseHubGateway -GroupConnectivity "None" -IsGlobal 
 ```
 ```output
 NetworkGroupId                                                                                                                                           UseHubGateway IsGlobal GroupConnectivity
@@ -37,7 +37,7 @@ Creates a connectivity group item using hub as gateway.
 ### Example 2
 ```powershell
 $networkGroupId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestRG/providers/Microsoft.Network/networkManagers/TestNMName/networkGroups/TestGroup"
-New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroupId –GroupConnectivity "DirectlyConnected" 
+New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroupId -GroupConnectivity "DirectlyConnected" 
 ```
 ```output
 NetworkGroupId                                                                                                                                           UseHubGateway IsGlobal GroupConnectivity

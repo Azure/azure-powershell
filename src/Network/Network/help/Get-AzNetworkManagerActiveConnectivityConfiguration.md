@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzNetworkManagerActiveConnectivityConfigurationList
+# Get-AzNetworkManagerActiveConnectivityConfiguration
 
 ## SYNOPSIS
 Lists NetworkManager Active Connectivity Configurations in network manager.
@@ -13,20 +13,20 @@ Lists NetworkManager Active Connectivity Configurations in network manager.
 ## SYNTAX
 
 ```
-Get-AzNetworkManagerActiveConnectivityConfigurationList -NetworkManagerName <String>
+Get-AzNetworkManagerActiveConnectivityConfiguration -NetworkManagerName <String>
  -ResourceGroupName <String> [-Region <String[]>] [-SkipToken <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzNetworkManagerActiveConnectivityConfigurationList** cmdlet lists NetworkManager Active Connectivity Configurations in network manager .
+The **Get-AzNetworkManagerActiveConnectivityConfiguration** cmdlet lists NetworkManager Active Connectivity Configurations in network manager .
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 $regions = @("centraluseuap")  
-Get-AzNetworkManagerActiveConnectivityConfigurationList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
+Get-AzNetworkManagerActiveConnectivityConfiguration -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
 ```
 ```output
  Value     : [
@@ -160,7 +160,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.String[]	
 
 ## OUTPUTS
 
@@ -170,4 +170,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzNetworkManagerActiveSecurityAdminRuleList](./Get-AzNetworkManagerActiveSecurityAdminRuleList.md)
+[Get-AzNetworkManagerActiveSecurityAdminRule](./Get-AzNetworkManagerActiveSecurityAdminRule.md)

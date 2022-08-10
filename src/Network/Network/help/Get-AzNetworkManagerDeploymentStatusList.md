@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzNetworkManagerDeploymentStatusList
+# Get-AzNetworkManagerDeploymentStatus
 
 ## SYNOPSIS
 Lists Deployment Status in a network manager.
@@ -13,14 +13,14 @@ Lists Deployment Status in a network manager.
 ## SYNTAX
 
 ```
-Get-AzNetworkManagerDeploymentStatusList -NetworkManagerName <String> -ResourceGroupName <String>
+Get-AzNetworkManagerDeploymentStatus -NetworkManagerName <String> -ResourceGroupName <String>
  [-Region <String[]>]
  [-DeploymentType <String[]>] [-SkipToken <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzNetworkManagerDeploymentStatusList** cmdlet lists Deployment Status in a network manager.
+The **Get-AzNetworkManagerDeploymentStatus** cmdlet lists Deployment Status in a network manager.
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ The **Get-AzNetworkManagerDeploymentStatusList** cmdlet lists Deployment Status 
 ```powershell
 $regions = @("centraluseuap")  
 $DeploymentTypes = @("SecurityAdmin")  
-Get-AzNetworkManagerDeploymentStatusList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken" -DeploymentType $DeploymentTypes
+Get-AzNetworkManagerDeploymentStatus -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -region $regions -skipToken "FakeSkipToken" -DeploymentType $DeploymentTypes
 ```
 ```output
 Value     : [

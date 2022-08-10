@@ -5,7 +5,7 @@ online version:
 schema: 2.0.0
 ---
 
-# Get-AzNetworkManagerActiveSecurityAdminRuleList
+# Get-AzNetworkManagerActiveSecurityAdminRule
 
 ## SYNOPSIS
 Lists NetworkManager Active Security Admin Rules in network manager.
@@ -13,20 +13,20 @@ Lists NetworkManager Active Security Admin Rules in network manager.
 ## SYNTAX
 
 ```
-Get-AzNetworkManagerActiveSecurityAdminRuleList -NetworkManagerName <String> -ResourceGroupName <String>
+Get-AzNetworkManagerActiveSecurityAdminRule -NetworkManagerName <String> -ResourceGroupName <String>
  [-Region <String[]>] [-SkipToken <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzNetworkManagerActiveSecurityAdminRuleList** cmdlet lists NetworkManager Active Security Admin Rules in network manager.
+The **Get-AzNetworkManagerActiveSecurityAdminRule** cmdlet lists NetworkManager Active Security Admin Rules in network manager.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 $regions = @("centraluseuap")  
-Get-AzNetworkManagerActiveSecurityAdminRuleList -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
+Get-AzNetworkManagerActiveSecurityAdminRule -NetworkManagerName "TestNMName" -ResourceGroupName "TestRG" -Region $regions -SkipToken "FakeSkipToken"
 ```
 ```output
 Value     : [
@@ -181,4 +181,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzNetworkManagerActiveConnectivityConfigurationList](./Get-AzNetworkManagerActiveConnectivityConfigurationList.md)
+[Get-AzNetworkManagerActiveConnectivityConfiguration](./Get-AzNetworkManagerActiveConnectivityConfiguration.md)
