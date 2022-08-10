@@ -1,6 +1,24 @@
 <#
     .SYNOPSIS
         The script to find examples in ".md" and analyze the examples by custom rules.
+    .PARAMETER MarkdownPaths
+    Markdown searching paths. Empty for current path. Supports wildcard.
+    .PARAMETER ScriptPath
+    PowerShell script searching paths. Empty for current path. Supports wildcard.
+    .PARAMETER RulePaths
+    PSScriptAnalyzer custom rules paths. Empty for current path. Supports wildcard.
+    .PARAMETER MarkdownRecurse
+    To search markdowns recursively in the folders.
+    .PARAMETER ScriptRecurse
+    To search scripts recursively in the folders.
+    .PARAMETER IncludeDefaultRules
+    To analyze default rules provided by PSScriptAnalyzer.
+    .PARAMETER OutputFolder
+    Folder path storing output files.
+    .PARAMETER SkipAnalyzing
+    To skip analyzing step. Only extracting example codes from markdowns to the temp script.
+    .PARAMETER CleanScripts
+    To clean the temp script.
     .NOTES
         File Name: Measure-MarkdownOrScript.ps1
 #>
@@ -9,25 +27,21 @@
 
 [CmdletBinding(DefaultParameterSetName = "Markdown")]
 param (
-    [Parameter(Mandatory, HelpMessage = "Markdown searching paths. Empty for current path. Supports wildcard.", ParameterSetName = "Markdown")]
+    [Parameter(Mandatory, ParameterSetName = "Markdown")]
     [AllowEmptyString()]
     [string[]]$MarkdownPaths,
-    [Parameter(Mandatory, HelpMessage = "PowerShell script searching path.", ParameterSetName = "Script")]
+    [Parameter(Mandatory, ParameterSetName = "Script")]
     [AllowEmptyString()]
-    [string[]]$ScriptPath,
-    [Parameter(HelpMessage = "PSScriptAnalyzer custom rules paths. Empty for current path. Supports wildcard.")]
+    [string[]]$ScriptPaths,
     [string[]]$RulePaths,
-    [Parameter(Mandatory, HelpMessage = "Code map path bound with script.", ParameterSetName = "Script")]
-    [string]$CodeMapPath,
-    [Parameter(HelpMessage = "To search markdowns recursively in the folders.", ParameterSetName = "Markdown")]
-    [switch]$Recurse,
-    [Parameter(HelpMessage = "To analyze default rules by PSScriptAnalyzer.")]
+    [Parameter(ParameterSetName = "Markdown")]
+    [switch]$MarkdownRecurse,
+    [Parameter(ParameterSetName = "Script")]
+    [switch]$ScriptRecurse,
     [switch]$IncludeDefaultRules,
-    [Parameter(HelpMessage = "Folder path storing output files.")]
     [string]$OutputFolder = "$PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleAnalysis",
-    [Parameter(HelpMessage = "To skip analyzing step. Only extracting example codes from markdowns to the temp script.", ParameterSetName = "Markdown")]
+    [Parameter(ParameterSetName = "Markdown")]
     [switch]$SkipAnalyzing,
-    [Parameter(HelpMessage = "To clean the temp script.")]
     [switch]$CleanScripts
 )
 
@@ -37,16 +51,18 @@ $analysisResultsTable = @()
 $codeMap = @()
 $totalLine = 1
 
+# Clean caches, remove files in "output" folder
+Remove-Item $OutputFolder\TempScript.ps1 -ErrorAction SilentlyContinue
+Remove-Item $OutputFolder\TempCodeMap.csv -ErrorAction SilentlyContinue
+Remove-Item $PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleIssues.csv -ErrorAction SilentlyContinue
+Remove-Item $OutputFolder -ErrorAction SilentlyContinue
+# Create output folder and temp script
+$null = New-Item -ItemType Directory -Path $OutputFolder -ErrorAction SilentlyContinue
+$null = New-Item -ItemType File  $OutputFolder\TempScript.ps1
+
 # Find examples in "help\*.md", output ".ps1"
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
-    # Clean caches, remove files in "output" folder
-    Remove-Item $OutputFolder\TempScript.ps1 -ErrorAction SilentlyContinue
-    Remove-Item $OutputFolder\TempCodeMap.csv -ErrorAction SilentlyContinue
-    Remove-Item $PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleIssues.csv -ErrorAction SilentlyContinue
-    Remove-Item $OutputFolder -ErrorAction SilentlyContinue
-    $null = New-Item -ItemType Directory -Path $OutputFolder -ErrorAction SilentlyContinue
-    $null = New-Item -ItemType File  $OutputFolder\TempScript.ps1
-    # When the input $MarkdownPaths is the path of txt file
+    # When the input $MarkdownPaths is the path of txt file contained markdown paths
     if ($MarkdownPaths -cmatch ".*\.txt") {
         $MarkdownPath = Get-Content $MarkdownPaths
     }
@@ -54,7 +70,7 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     else{
         $MarkdownPath = $MarkdownPaths
     }
-    foreach($_ in Get-ChildItem $MarkdownPath -Recurse:$Recurse.IsPresent){
+    foreach($_ in Get-ChildItem $MarkdownPath -Recurse:$MarkdownRecurse.IsPresent){
         # Filter the .md of overview in "\help\"
         if ((Get-Item -Path $_.FullName).Directory.Name -eq "help" -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^[A-Z][a-z]+-([A-Z][a-z0-9]*)+$") {
             if((Get-Item -Path $_.FullName).Directory.Parent.Name -eq "netcoreapp3.1"){
@@ -77,19 +93,18 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
         }
     }
     $codeMap| Export-Csv "$OutputFolder\TempCodeMap.csv" -NoTypeInformation
-    if (!$SkipAnalyzing.IsPresent) {
-        $ScriptPath = "$OutputFolder\TempScript.ps1"
-        $CodeMapPath = "$OutputFolder\TempCodeMap.csv"
-    }
 }
 
 # Analyze scripts
 if ($PSCmdlet.ParameterSetName -eq "Script" -or !$SkipAnalyzing.IsPresent) {
-    # Read code map from file
-    $codeMap = Import-Csv $CodeMapPath
+    $TempScriptPath = "$OutputFolder\TempScript.ps1"
+    if ($PSCmdlet.ParameterSetName -eq "Script"){
+        $codeMap = Set-ScriptsIntoSingleScript -ScriptPaths $ScriptPaths -Recurse:$ScriptRecurse.IsPresent -OutputFolder $OutputFolder
+        $codeMap| Export-Csv "$OutputFolder\TempCodeMap.csv" -NoTypeInformation
+    }
     # Read and analyze ".ps1" in \ScriptsByExample
     Write-Output "Analyzing file ..."
-    $analysisResultsTable += Get-ScriptAnalyzerResult (Get-Item -Path $ScriptPath) $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent $codeMap -ErrorAction Continue
+    $analysisResultsTable += Get-ScriptAnalyzerResult -ScriptPath $TempScriptPath -RulePaths $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent -CodeMap $codeMap -ErrorAction Continue
     
     # Summarize analysis results, output in Result.csv
     if($analysisResultsTable){
@@ -99,5 +114,6 @@ if ($PSCmdlet.ParameterSetName -eq "Script" -or !$SkipAnalyzing.IsPresent) {
 
 # Clean caches
 if ($CleanScripts.IsPresent) {
-    Remove-Item $ScriptPath -Exclude *.csv -Recurse -ErrorAction Continue
+    Remove-Item $OutputFolder\TempScript.ps1 -ErrorAction Continue
+    Remove-Item $OutputFolder\TempCodeMap.csv -ErrorAction Continue
 }
