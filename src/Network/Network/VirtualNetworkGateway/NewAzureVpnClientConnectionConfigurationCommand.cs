@@ -28,15 +28,15 @@ namespace Microsoft.Azure.Commands.Network
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual Network Gateway Policy Groups")]
-        public PSResourceId[] VirtualNetworkGatewayPolicyGroups { get; set; }
+        public PSVirtualNetworkGatewayPolicyGroup[] VirtualNetworkGatewayPolicyGroups { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The Associatted client address pool")]
-        public PSAddressSpace VpnClientAddressPool { get; set; }
+        public string[] VpnClientAddressPool { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -48,8 +48,8 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             var policyGroup = new PSClientConnectionConfiguration();
             policyGroup.Name = this.Name;
-            policyGroup.VirtualNetworkGatewayPolicyGroups = this.VirtualNetworkGatewayPolicyGroups.ToList();
-            policyGroup.VpnClientAddressPool = this.VpnClientAddressPool;
+            policyGroup.VirtualNetworkGatewayPolicyGroups = this.VirtualNetworkGatewayPolicyGroups.ToList().ConvertAll( x => new PSResourceId() { Id =  x.Name} );
+            policyGroup.VpnClientAddressPool =  new PSAddressSpace() { AddressPrefixes = this.VpnClientAddressPool.ToList() } ;
             WriteObject(policyGroup);
         }
     }

@@ -19,7 +19,13 @@
 --->
 
 ## Upcoming Release
-
+* Updated cmdlets to add new property of `VirtualNetworkGatewayPolicyGroup` and `VpnClientConnectionConfiguration` in Azure Virtual Network Gateway
+    - `New-AzVirtualNetworkGateway`
+    - `Update-AzVirtualNetworkGateway`
+* Added new cmdlets to create 
+    - `New-AzVirtualNetworkGatewayPolicyGroup`
+    - `New-AzVpnClientConnectionConfiguration`
+    
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
 
@@ -58,7 +64,6 @@
     - `New/Get/Remove/Set-AzNetworkManagerManagementGroupConnection` 
 * Onboard AgFoodPlatform to Private Link Common Cmdlets
 * Onboard Project Oak Forest to Private Link Common Cmdlets
-
 ## Version 4.19.0
 * Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
     - `New-AzFirewallPolicyExplicitProxy`

@@ -287,6 +287,12 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "P2S policy group added to this gateway")]
+        public PSVirtualNetworkGatewayPolicyGroup[] VirtualNetworkGatewayPolicyGroups { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "P2S Client Connection Configuration that assiociate between address and policy group")]
         public PSClientConnectionConfiguration[] ClientConnectionConfigurations { get; set; }
 
@@ -375,6 +381,11 @@ namespace Microsoft.Azure.Commands.Network
             vnetGateway.DisableIPsecProtection = this.DisableIPsecProtection;
             vnetGateway.ActiveActive = this.EnableActiveActiveFeature.IsPresent;
             vnetGateway.EnablePrivateIpAddress = this.EnablePrivateIpAddress.IsPresent;
+
+            if (this.VirtualNetworkGatewayPolicyGroups != null && this.VirtualNetworkGatewayPolicyGroups.Length > 0)
+            {
+                vnetGateway.VirtualNetworkGatewayPolicyGroups = this.VirtualNetworkGatewayPolicyGroups.ToList();
+            }
 
             if (this.GatewayDefaultSite != null)
             {
@@ -471,6 +482,13 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.ClientConnectionConfigurations != null && this.ClientConnectionConfigurations.Any())
                 {
+                    foreach( var config in this.ClientConnectionConfigurations)
+                    {
+                        foreach (var policyGroup  in config.VirtualNetworkGatewayPolicyGroups)
+                        {
+                            policyGroup.Id = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/virtualNetworkGatewayPolicyGroups/{3}", this.NetworkClient.NetworkManagementClient.SubscriptionId, vnetGateway.ResourceGroupName, Name, policyGroup.Id);
+                         }
+                    }
                     vnetGateway.VpnClientConfiguration.ClientConnectionConfigurations = this.ClientConnectionConfigurations.ToList();
                 }
             }

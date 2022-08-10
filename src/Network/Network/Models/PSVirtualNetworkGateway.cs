@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         [Ps1Xml(Label = "Sku Name", Target = ViewControl.Table, ScriptBlock = "$_.Sku.Name")]
         public PSVirtualNetworkGatewaySku Sku { get; set; }
 
-        public PSVirtualNetworkGatewayPolicyGroup VirtualNetworkGatewayPolicyGroup { get; set; }
+        public List<PSVirtualNetworkGatewayPolicyGroup> VirtualNetworkGatewayPolicyGroups { get; set; }
 
         public PSVpnClientConfiguration VpnClientConfiguration { get; set; }
 

@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Commands.Network
         public string AttributeType { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "The Attribute Value")]
         public string AttributeValue { get; set; }
 

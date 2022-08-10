@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
         public SwitchParameter DefaultPolicyGroup { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The list of Policy members.")]
         public PSVirtualNetworkGatewayPolicyGroupMember[] PolicyMember { get; set; }
