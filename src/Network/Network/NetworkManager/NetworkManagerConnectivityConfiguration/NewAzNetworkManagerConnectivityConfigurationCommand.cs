@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Connectivity Group.")]
-        public List<PSNetworkManagerConnectivityGroupItem> AppliesToGroup { get; set; }
+        public PSNetworkManagerConnectivityGroupItem[] AppliesToGroup { get; set; }
 
         [Parameter(
            Mandatory = true,
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Hub Id list.")]
-        public List<PSNetworkManagerHub> Hub { get; set; }
+        public PSNetworkManagerHub[] Hub { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -125,7 +125,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 if (this.Hub != null)
                 {
-                    mncc.Hubs = this.Hub;
+                    mncc.Hubs = this.Hub.ToList();
                 }
                 else
                 {
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Commands.Network
             }
 
 
-            mncc.AppliesToGroups = this.AppliesToGroup;
+            mncc.AppliesToGroups = this.AppliesToGroup.ToList();
 
             // Map to the sdk object
             var mnccModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ConnectivityConfiguration>(mncc);

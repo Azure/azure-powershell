@@ -14,7 +14,7 @@ Updates a network manager security admin configuration.
 
 ```
 Set-AzNetworkManagerSecurityAdminConfiguration -NetworkManagerName <String> -ResourceGroupName <String>
- -NetworkManagerSecurityAdminConfiguration <PSNetworkManagerSecurityAdminConfiguration> [-AsJob]
+ -InputObject <PSNetworkManagerSecurityAdminConfiguration> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ The **Set-AzNetworkManagerSecurityAdminConfiguration** cmdlet updates a network 
 ```powershell
 $NetworkManagerSecurityConfiguration = Get-AzNetworkManagerSecurityAdminConfiguration  -Name "psSecurityAdminConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup"
 $NetworkManagerSecurityConfiguration.applyOnNetworkIntentPolicyBasedServices = @("None")
-Set-AzNetworkManagerSecurityAdminConfiguration -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -NetworkManagerSecurityAdminConfiguration $NetworkManagerSecurityConfiguration
+Set-AzNetworkManagerSecurityAdminConfiguration -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -InputObject $NetworkManagerSecurityConfiguration
 ```
 ```output
 SecurityType                                :
@@ -102,7 +102,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -NetworkManagerSecurityAdminConfiguration
+### -InputObject
 The NetworkManagerSecurityAdminConfiguration
 
 ```yaml

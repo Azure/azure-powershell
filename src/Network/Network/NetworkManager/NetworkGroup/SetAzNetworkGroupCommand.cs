@@ -49,27 +49,27 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Network Group")]
-        public PSNetworkManagerGroup NetworkGroup { get; set; }
+        public PSNetworkManagerGroup InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            if (this.ShouldProcess(NetworkGroup.Name, VerbsLifecycle.Restart))
+            if (this.ShouldProcess(InputObject.Name, VerbsLifecycle.Restart))
             {
                 base.Execute();
 
-                if (!this.IsNetworkGroupsPresent(this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroup.Name))
+                if (!this.IsNetworkGroupsPresent(this.ResourceGroupName, this.NetworkManagerName, this.InputObject.Name))
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.NetworkGroup.Name));
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
 
                 // Map to the sdk object
-                var groupModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkGroup>(this.NetworkGroup);
+                var groupModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkGroup>(this.InputObject);
 
                 // Execute the PUT NetworkManagerGroup call
-                var groupResponse = this.NetworkGroupClient.CreateOrUpdate(groupModel, this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroup.Name);
+                var groupResponse = this.NetworkGroupClient.CreateOrUpdate(groupModel, this.ResourceGroupName, this.NetworkManagerName, this.InputObject.Name);
                 var psNetworGroup = this.ToPsNetworkGroup(groupResponse);
                 WriteObject(psNetworGroup);
             }

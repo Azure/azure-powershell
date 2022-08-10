@@ -15,9 +15,9 @@ Creates a network manager connectivity configuration.
 ```
 New-AzNetworkManagerConnectivityConfiguration -Name <String> -NetworkManagerName <String>
  -ResourceGroupName <String>
- -AppliesToGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]>
+ -AppliesToGroup <Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem[]>
  -ConnectivityTopology <String> [-Description <String>]
- [-Hub <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerHub]>]
+ [-Hub <Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerHub[]>]
  [-DeleteExistingPeering] [-IsGlobal] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
  [-Confirm] [<CommonParameters>]
 ```
@@ -30,11 +30,10 @@ The **New-AzNetworkManagerConnectivityConfiguration** cmdlet creates a network m
 ### Example 1
 ```powershell
 $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
-[System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]]$connectivityGroup  = @()  
-$connectivityGroup.Add($connectivityGroupItem)   
-[System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerHub]]$hubList  = @() 
+$connectivityGroup  = @($connectivityGroupItem)  
+
 $hub = New-AzNetworkManagerHub -ResourceId "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnetHub" -ResourceType "Microsoft.Network/virtualNetworks" 
-$hubList.Add($hub)
+$hubList = @($hub)
 New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgName -Name "psConnectivityConfig" -NetworkManagerName $nmName -ConnectivityTopology "HubAndSpoke" -Hub $hublist -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
 ```
 ```output

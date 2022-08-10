@@ -17,8 +17,8 @@ Creates a security admin rule.
 New-AzNetworkManagerSecurityAdminRule -Name <String> -RuleCollectionName <String>
  -SecurityAdminConfigurationName <String> -NetworkManagerName <String> -ResourceGroupName <String>
  [-Description <String>] -Protocol <String> -Direction <String> -Access <String>
- [-Source <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem]>]
- [-Destination <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem]>]
+ [-SourceAddressPrefix <Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem[]>]
+ [-DestinationAddressPrefix <Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem[]>]
  [-SourcePortRange <String[]>]
  [-DestinationPortRange <String[]>] -Priority <Int32> [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -42,11 +42,9 @@ The **New-AzNetworkManagerSecurityAdminRule** cmdlet creates a security admin ru
 ```powershell
 $sourceAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "Internet" -AddressPrefixType "ServiceTag"
 $destinationAddressPrefix = New-AzNetworkManagerAddressPrefixItem -AddressPrefix "10.0.0.1" -AddressPrefixType "IPPrefix" 
-[System.Collections.Generic.List[string]]$sourcePortList = @()
-$sourcePortList.Add("100")
-[System.Collections.Generic.List[String]]$destinationPortList = @()
-$destinationPortList.Add("99");
-New-AzNetworkManagerSecurityAdminRule -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -ConfigName "psSecurityAdminConfig" -RuleCollectionName "psRuleCollection" -Name "psRule" -Description "TestDescription" -Protocol  "TCP" -Direction "Inbound" -Access "Allow" -Priority 100 -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -Source $sourceAddressPrefix -Destination $destinationAddressPrefix 
+$sourcePortList = @("100")
+$destinationPortList = @("99")
+New-AzNetworkManagerSecurityAdminRule -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -ConfigName "psSecurityAdminConfig" -RuleCollectionName "psRuleCollection" -Name "psRule" -Description "TestDescription" -Protocol  "TCP" -Direction "Inbound" -Access "Allow" -Priority 100 -SourcePortRange $sourcePortList -DestinationPortRange $destinationPortList -SourceAddressPrefix $sourceAddressPrefix -DestinationAddressPrefix $destinationAddressPrefix 
 ```
 ```output
 Protocol                  : Tcp
@@ -156,11 +154,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -Destination
+### -DestinationAddressPrefix
 Destination Address Prefixes.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem]
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem[]
 Parameter Sets: Custom
 Aliases:
 
@@ -336,11 +334,11 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -Source
+### -SourceAddressPrefix
 Source Address Prefixes.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem]
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem[]
 Parameter Sets: Custom
 Aliases:
 
@@ -404,7 +402,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem, Microsoft.Azure.PowerShell.Cmdlets.Network, Version=4.16.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerAddressPrefixItem[]
 
 ### System.String[]	
 

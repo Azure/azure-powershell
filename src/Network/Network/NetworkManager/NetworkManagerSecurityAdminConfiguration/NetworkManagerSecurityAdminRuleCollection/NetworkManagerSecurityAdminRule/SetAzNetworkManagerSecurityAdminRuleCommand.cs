@@ -68,26 +68,26 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Network Manager Security Admin Rule")]
-        public PSNetworkManagerSecurityBaseAdminRule SecurityAdminRule { get; set; }
+        public PSNetworkManagerSecurityBaseAdminRule InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            if (this.ShouldProcess(this.SecurityAdminRule.Name, VerbsLifecycle.Restart))
+            if (this.ShouldProcess(this.InputObject.Name, VerbsLifecycle.Restart))
             {
                 base.Execute();
 
                 // Map to the sdk object
                 BaseAdminRule adminRuleModel;
-                if (this.SecurityAdminRule.GetType().Name == "PSNetworkManagerSecurityAdminRule")
+                if (this.InputObject.GetType().Name == "PSNetworkManagerSecurityAdminRule")
                 {
-                    adminRuleModel = NetworkResourceManagerProfile.Mapper.Map<AdminRule>(SecurityAdminRule);
+                    adminRuleModel = NetworkResourceManagerProfile.Mapper.Map<AdminRule>(InputObject);
                 }
-                else if (this.SecurityAdminRule.GetType().Name == "PSNetworkManagerSecurityDefaultAdminRule")
+                else if (this.InputObject.GetType().Name == "PSNetworkManagerSecurityDefaultAdminRule")
                 {
-                    adminRuleModel = NetworkResourceManagerProfile.Mapper.Map<DefaultAdminRule>(SecurityAdminRule);
+                    adminRuleModel = NetworkResourceManagerProfile.Mapper.Map<DefaultAdminRule>(InputObject);
                 }
                 else
                 {
@@ -95,7 +95,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Execute the PUT NetworkManagerSecurityAdminRule call
-                var adminRuleResponse = this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(adminRuleModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.SecurityAdminRule.Name);
+                var adminRuleResponse = this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(adminRuleModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.InputObject.Name);
                 var psAdminRule = this.ToPSSecurityAdminRule(adminRuleResponse);
                 WriteObject(psAdminRule);
             }

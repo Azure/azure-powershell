@@ -14,7 +14,7 @@ Updates a network manager group.
 
 ```
 Set-AzNetworkManagerGroup -NetworkManagerName <String> -ResourceGroupName <String>
- -NetworkGroup <PSNetworkManagerGroup> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ -InputObject <PSNetworkManagerGroup> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ The **Set-AzNetworkManagerGroup** cmdlet updates a network manager group.
 ```powershell
 $networkGroup = Get-AzNetworkManagerGroup  -Name "psNetworkGroup" -NetworkManagerName $nmName -ResourceGroupName $rgName
 $networkGroup.description = "new description"
-Set-AzNetworkManagerGroup -NetworkManagerName $nmName -ResourceGroupName $rgName -NetworkGroup $networkGroup
+Set-AzNetworkManagerGroup -NetworkManagerName $nmName -ResourceGroupName $rgName -InputObject $networkGroup
 ```
 ```output
 MemberType        :
@@ -82,7 +82,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkGroup
+### -InputObject
 The Network Group
 
 ```yaml

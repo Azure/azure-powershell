@@ -13,7 +13,7 @@ Update a network manger subscription connection.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerSubscriptionConnection -NetworkManagerSubscriptionConnection <PSNetworkManagerConnection>
+Set-AzNetworkManagerSubscriptionConnection -InputObject <PSNetworkManagerConnection>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ The **Set-AzNetworkManagerSubscriptionConnection** cmdlet update a network mange
 ```powershell
 $networkManagerConnection = Get-AzNetworkManagerSubscriptionConnection -Name "subConnection"
 $networkManagerConnection.description = " new description"
-Set-AzNetworkManagerSubscriptionConnection -NetworkManagerSubscriptionConnection $networkManagerConnection
+Set-AzNetworkManagerSubscriptionConnection -InputObject $networkManagerConnection
 ```
 ```output
 NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
@@ -75,7 +75,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkManagerSubscriptionConnection
+### -InputObject
 The NetworkManagerSubscriptionConnection
 
 ```yaml

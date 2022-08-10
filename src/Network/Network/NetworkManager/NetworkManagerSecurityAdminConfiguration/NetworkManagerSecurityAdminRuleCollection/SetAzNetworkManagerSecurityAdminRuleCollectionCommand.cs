@@ -59,27 +59,27 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The NetworkManagerSecurityAdminRuleCollection")]
-        public PSNetworkManagerSecurityAdminRuleCollection NetworkManagerSecurityAdminRuleCollection { get; set; }
+        public PSNetworkManagerSecurityAdminRuleCollection InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            if (this.ShouldProcess(this.NetworkManagerSecurityAdminRuleCollection.Name, VerbsLifecycle.Restart))
+            if (this.ShouldProcess(this.InputObject.Name, VerbsLifecycle.Restart))
             {
                 base.Execute();
 
-                if (!this.IsNetworkManagerSecurityAdminRuleCollectionPresent(this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.NetworkManagerSecurityAdminRuleCollection.Name))
+                if (!this.IsNetworkManagerSecurityAdminRuleCollectionPresent(this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.InputObject.Name))
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.NetworkManagerSecurityAdminRuleCollection.Name));
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
 
                 // Map to the sdk object
-                var securityRuleCollectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AdminRuleCollection>(this.NetworkManagerSecurityAdminRuleCollection);
+                var securityRuleCollectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AdminRuleCollection>(this.InputObject);
 
                 // Execute the PUT NetworkManagerSecurityAdminRuleCollection call
-                var securityRuleCollectionResponse = this.NetworkManagerSecurityAdminRuleCollectionClient.CreateOrUpdate(securityRuleCollectionModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.NetworkManagerSecurityAdminRuleCollection.Name);
+                var securityRuleCollectionResponse = this.NetworkManagerSecurityAdminRuleCollectionClient.CreateOrUpdate(securityRuleCollectionModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.InputObject.Name);
                 var psSecurityRuleCollection = this.ToPsNetworkManagerSecurityAdminRuleCollection(securityRuleCollectionResponse);
                 WriteObject(psSecurityRuleCollection);
             }

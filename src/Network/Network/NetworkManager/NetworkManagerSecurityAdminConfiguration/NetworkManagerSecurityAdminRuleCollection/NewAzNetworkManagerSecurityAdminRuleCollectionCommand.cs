@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
          Mandatory = true,
          ValueFromPipelineByPropertyName = true,
          HelpMessage = "Applies To Groups.")]
-        public virtual List<PSNetworkManagerSecurityGroupItem> AppliesToGroup { get; set; }
+        public virtual PSNetworkManagerSecurityGroupItem[] AppliesToGroup { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 ruleCollection.Description = this.Description;
             }
-            ruleCollection.AppliesToGroups = this.AppliesToGroup;
+            ruleCollection.AppliesToGroups = this.AppliesToGroup.ToList();
 
             // Map to the sdk object
             var ruleCollectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AdminRuleCollection>(ruleCollection);

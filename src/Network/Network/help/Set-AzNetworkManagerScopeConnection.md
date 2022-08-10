@@ -14,7 +14,7 @@ Update a network manager scope connection.
 
 ```
 Set-AzNetworkManagerScopeConnection -NetworkManagerName <String> -ResourceGroupName <String>
- -NetworkManagerScopeConnection <PSNetworkManagerScopeConnection> [-AsJob]
+ -InputObject <PSNetworkManagerScopeConnection> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ The **Set-AzNetworkManagerScopeConnection** cmdlet updates a network manager sco
 ```powershell
 $scopeConnection = Get-AzNetworkManagerScopeConnection -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "mgConnection"
 $scopeConnection.description = "new description"
-Set-AzNetworkManagerScopeConnection -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -NetworkManagerScopeConnection $scopeConnection
+Set-AzNetworkManagerScopeConnection -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -InputObject $scopeConnection
 ```
 ```output
 TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
@@ -99,7 +99,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -NetworkManagerScopeConnection
+### -InputObject
 The NetworkManagerScopeConnection
 
 ```yaml

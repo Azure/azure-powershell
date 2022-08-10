@@ -39,27 +39,27 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Network Manager")]
-        public PSNetworkManager NetworkManager { get; set; }
+        public PSNetworkManager InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            if (this.ShouldProcess(this.NetworkManager.Name, VerbsLifecycle.Restart))
+            if (this.ShouldProcess(this.InputObject.Name, VerbsLifecycle.Restart))
             {
                 base.Execute();
 
-                if (!this.IsNetworkManagerPresent(this.ResourceGroupName, this.NetworkManager.Name))
+                if (!this.IsNetworkManagerPresent(this.ResourceGroupName, this.InputObject.Name))
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.NetworkManager.Name));
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
 
                 // Map to the sdk object
-                var networkManagerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManager>(this.NetworkManager);
+                var networkManagerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManager>(this.InputObject);
 
                 // Execute the PUT NetworkManagerGroup call
-                var networkManagerResponse = this.NetworkManagerClient.CreateOrUpdate(networkManagerModel, this.ResourceGroupName, this.NetworkManager.Name);
+                var networkManagerResponse = this.NetworkManagerClient.CreateOrUpdate(networkManagerModel, this.ResourceGroupName, this.InputObject.Name);
                 var psNetworkManager = this.ToPsNetworkManager(networkManagerResponse);
                 WriteObject(psNetworkManager);
             }

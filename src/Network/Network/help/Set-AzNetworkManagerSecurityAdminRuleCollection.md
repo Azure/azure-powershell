@@ -15,7 +15,7 @@ Updates a network manager security admin rule collection.
 ```
 Set-AzNetworkManagerSecurityAdminRuleCollection -SecurityAdminConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String>
- -NetworkManagerSecurityAdminRuleCollection <PSNetworkManagerSecurityAdminRuleCollection> [-AsJob]
+ -InputObject <PSNetworkManagerSecurityAdminRuleCollection> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -33,7 +33,7 @@ $groupItem2 = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId "/subscripti
 $configGroup.Add($groupItem)
 $configGroup.Add($groupItem2)
 $NetworkManagerSecurityAdminRuleCollection.AppliesToGroups = $configGroup
-Set-AzNetworkManagerSecurityAdminRuleCollection -SecurityAdminConfigurationName "psSecurityAdminConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -NetworkManagerSecurityAdminRuleCollection $NetworkManagerSecurityAdminRuleCollection
+Set-AzNetworkManagerSecurityAdminRuleCollection -SecurityAdminConfigurationName "psSecurityAdminConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -InputObject $NetworkManagerSecurityAdminRuleCollection
 ```
 ```output
 AppliesToGroups     : {/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup,
@@ -114,7 +114,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -NetworkManagerSecurityAdminRuleCollection
+### -InputObject
 The NetworkManagerSecurityAdminRuleCollection
 
 ```yaml

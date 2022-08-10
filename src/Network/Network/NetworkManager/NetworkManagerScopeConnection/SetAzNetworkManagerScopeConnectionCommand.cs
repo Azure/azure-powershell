@@ -49,35 +49,35 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The NetworkManagerScopeConnection")]
-        public PSNetworkManagerScopeConnection NetworkManagerScopeConnection { get; set; }
+        public PSNetworkManagerScopeConnection InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            if (this.ShouldProcess(NetworkManagerScopeConnection.Name, VerbsLifecycle.Restart))
+            if (this.ShouldProcess(InputObject.Name, VerbsLifecycle.Restart))
             {
                 base.Execute();
 
-                if (!this.IsNetworkManagerScopeConnectionPresent(this.ResourceGroupName, this.NetworkManagerName, this.NetworkManagerScopeConnection.Name))
+                if (!this.IsNetworkManagerScopeConnectionPresent(this.ResourceGroupName, this.NetworkManagerName, this.InputObject.Name))
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.NetworkManagerScopeConnection.Name));
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
 
                 var psScopeConnectionModel = new PSNetworkManagerScopeConnection();
-                psScopeConnectionModel.TenantId = this.NetworkManagerScopeConnection.TenantId;
-                psScopeConnectionModel.ResourceId = this.NetworkManagerScopeConnection.ResourceId;
+                psScopeConnectionModel.TenantId = this.InputObject.TenantId;
+                psScopeConnectionModel.ResourceId = this.InputObject.ResourceId;
 
-                if (!string.IsNullOrEmpty(this.NetworkManagerScopeConnection.Description))
+                if (!string.IsNullOrEmpty(this.InputObject.Description))
                 {
-                    psScopeConnectionModel.Description = this.NetworkManagerScopeConnection.Description;
+                    psScopeConnectionModel.Description = this.InputObject.Description;
                 }
 
                 // Map to the sdk object
                 var scopeConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ScopeConnection>(psScopeConnectionModel);
                 // Execute the PUT NetworkManagerScopeConnection call
-                var scopeConnectionResponse = this.NetworkManagerScopeConnectionClient.CreateOrUpdate(scopeConnectionModel, this.ResourceGroupName, this.NetworkManagerName, this.NetworkManagerScopeConnection.Name);
+                var scopeConnectionResponse = this.NetworkManagerScopeConnectionClient.CreateOrUpdate(scopeConnectionModel, this.ResourceGroupName, this.NetworkManagerName, this.InputObject.Name);
                 var psScopeConnection = this.ToPsNetworkManagerScopeConnection(scopeConnectionResponse);
                 WriteObject(psScopeConnection);
             }

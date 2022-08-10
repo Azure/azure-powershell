@@ -36,29 +36,29 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
-            HelpMessage = "The NetworkManagerSubscriptionConnection")]
-        public PSNetworkManagerConnection NetworkManagerManagementGroupConnection { get; set; }
+            HelpMessage = "The NetworkManagerManagementGroupConnection")]
+        public PSNetworkManagerConnection InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            if (this.ShouldProcess(NetworkManagerManagementGroupConnection.Name, VerbsLifecycle.Restart))
+            if (this.ShouldProcess(InputObject.Name, VerbsLifecycle.Restart))
             {
                 base.Execute();
 
-                if (!this.IsNetworkManagerManagementGroupConnectionPresent(this.ManagementGroupId, this.NetworkManagerManagementGroupConnection.Name))
+                if (!this.IsNetworkManagerManagementGroupConnectionPresent(this.ManagementGroupId, this.InputObject.Name))
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.NetworkManagerManagementGroupConnection.Name));
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
 
                 // Map to the sdk object
-                var networkManagerManagementGroupConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerConnection>(this.NetworkManagerManagementGroupConnection);
+                var networkManagerManagementGroupConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerConnection>(this.InputObject);
 
                 // Execute the PUT NetworkManagerManagementGroupConnection call
-                this.NetworkManagerManagementGroupConnectionClient.CreateOrUpdate(networkManagerManagementGroupConnectionModel, this.ManagementGroupId, this.NetworkManagerManagementGroupConnection.Name);
-                var networkManagerManagementGroupConnectionResponse = this.NetworkManagerManagementGroupConnectionClient.Get(this.ManagementGroupId, this.NetworkManagerManagementGroupConnection.Name);
+                this.NetworkManagerManagementGroupConnectionClient.CreateOrUpdate(networkManagerManagementGroupConnectionModel, this.ManagementGroupId, this.InputObject.Name);
+                var networkManagerManagementGroupConnectionResponse = this.NetworkManagerManagementGroupConnectionClient.Get(this.ManagementGroupId, this.InputObject.Name);
                 var psNetworkManagerConnection = this.ToPsNetworkManagerManagementGroupConnection(networkManagerManagementGroupConnectionResponse);
                 WriteObject(psNetworkManagerConnection);
             }

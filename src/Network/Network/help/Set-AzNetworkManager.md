@@ -13,7 +13,7 @@ Updates a network manager..
 ## SYNTAX
 
 ```
-Set-AzNetworkManager -ResourceGroupName <String> -NetworkManager <PSNetworkManager> [-AsJob]
+Set-AzNetworkManager -ResourceGroupName <String> -InputObject <PSNetworkManager> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ The **Set-AzNetworkManager** cmdlet updates a network manager.
 ```powershell
 $networkManager = Get-AzNetworkManager -ResourceGroupName "psResourceGroup" -Name "psNetworkManager"
 $networkManager.Description = "updated description"
-Set-AzNetworkManager -ResourceGroupName "psResourceGroup" -NetworkManager $networkManager
+Set-AzNetworkManager -ResourceGroupName "psResourceGroup" -InputObject $networkManager
 ```
 ```output
 Location                        : westus
@@ -70,7 +70,7 @@ Example to update the description of a network manager.
 $networkManager = Get-AzNetworkManager -ResourceGroupName "psResourceGroup" -Name "psNetworkManager"
 $access  = @("Connectivity", "SecurityAdmin")
 $networkManager.NetworkManagerScopeAccesses = $access
-Set-AzNetworkManager -ResourceGroupName "psResourceGroup" -NetworkManager $networkManager
+Set-AzNetworkManager -ResourceGroupName "psResourceGroup" -InputObject $networkManager
 ```
 ```output
 Location                        : westus
@@ -141,7 +141,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkManager
+### -InputObject
 The Network Manager
 
 ```yaml

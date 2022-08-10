@@ -15,7 +15,7 @@ Updates a network manager security admin rule.
 ```
 Set-AzNetworkManagerSecurityAdminRule -RuleCollectionName <String> -SecurityAdminConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String>
- -SecurityAdminRule <PSNetworkManagerSecurityBaseAdminRule> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ -InputObject <PSNetworkManagerSecurityBaseAdminRule> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -28,7 +28,7 @@ The **Set-AzNetworkManagerSecurityAdminRule** cmdlet updates a network manager s
 ```powershell
 $SecurityAdminRule = Get-AzNetworkManagerSecurityAdminRule  -Name "psRule" -RuleCollectionName "psRuleCollection" -SecurityAdminConfigurationName "psSecurityAdminConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup"
 $SecurityAdminRule.priority = 50
-Set-AzNetworkManagerSecurityAdminRule -RuleCollectionName "psRuleCollection" -SecurityAdminConfigurationName "psSecurityAdminConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -SecurityAdminRule $SecurityAdminRule
+Set-AzNetworkManagerSecurityAdminRule -RuleCollectionName "psRuleCollection" -SecurityAdminConfigurationName "psSecurityAdminConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -InputObject $SecurityAdminRule
 ```
 ```output
 Protocol                  : Tcp
@@ -168,7 +168,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
 ```
 
-### -SecurityAdminRule
+### -InputObject
 The Network Manager Security Admin Rule
 
 ```yaml

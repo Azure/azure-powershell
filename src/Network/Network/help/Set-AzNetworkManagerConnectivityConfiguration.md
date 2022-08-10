@@ -14,7 +14,7 @@ Updates a connectivity configuration.
 
 ```
 Set-AzNetworkManagerConnectivityConfiguration -NetworkManagerName <String> -ResourceGroupName <String>
- -NetworkManagerConnectivityConfiguration <PSNetworkManagerConnectivityConfiguration> [-AsJob]
+ -InputObject <PSNetworkManagerConnectivityConfiguration> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -32,7 +32,7 @@ $connectivityGroupItem2 = New-AzNetworkManagerConnectivityGroupItem -NetworkGrou
 $connectivityGroup.Add($connectivityGroupItem)
 $connectivityGroup.Add($connectivityGroupItem2)
 $ConnectivityConfiguration.AppliesToGroups = $connectivityGroup
-Set-AzNetworkManagerConnectivityConfiguration -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -NetworkManagerConnectivityConfiguration $ConnectivityConfiguration
+Set-AzNetworkManagerConnectivityConfiguration -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -InputObject $ConnectivityConfiguration
 ```
 ```output
 ConnectivityTopology  : HubAndSpoke
@@ -114,7 +114,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkManagerConnectivityConfiguration
+### -InputObject
 The NetworkManagerConnectivityConfiguration
 
 ```yaml

@@ -111,14 +111,14 @@ namespace Microsoft.Azure.Commands.Network
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Source Address Prefixes.",
            ParameterSetName = "Custom")]
-        public List<PSNetworkManagerAddressPrefixItem> Source { get; set; }
+        public PSNetworkManagerAddressPrefixItem[] SourceAddressPrefix { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Destination Address Prefixes.",
            ParameterSetName = "Custom")]
-        public List<PSNetworkManagerAddressPrefixItem> Destination { get; set; }
+        public PSNetworkManagerAddressPrefixItem[] DestinationAddressPrefix { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -194,13 +194,13 @@ namespace Microsoft.Azure.Commands.Network
                 {
                     securityAdminRule.DestinationPortRanges = this.DestinationPortRange.ToList();
                 }
-                if (this.Source != null)
+                if (this.SourceAddressPrefix != null)
                 {
-                    securityAdminRule.Sources = this.Source;
+                    securityAdminRule.Sources = this.SourceAddressPrefix.ToList();
                 }
-                if (this.Destination != null)
+                if (this.DestinationAddressPrefix != null)
                 {
-                    securityAdminRule.Destinations = this.Destination;
+                    securityAdminRule.Destinations = this.DestinationAddressPrefix.ToList();
                 }
                 if (!string.IsNullOrEmpty(this.Description))
                 {

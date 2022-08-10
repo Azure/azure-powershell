@@ -31,27 +31,27 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The NetworkManagerSubscriptionConnection")]
-        public PSNetworkManagerConnection NetworkManagerSubscriptionConnection { get; set; }
+        public PSNetworkManagerConnection InputObject { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
         public override void Execute()
         {
-            if (this.ShouldProcess(NetworkManagerSubscriptionConnection.Name, VerbsLifecycle.Restart))
+            if (this.ShouldProcess(InputObject.Name, VerbsLifecycle.Restart))
             {
                 base.Execute();
 
-                if (!this.IsNetworkManagerSubscriptionConnectionPresent(this.NetworkManagerSubscriptionConnection.Name))
+                if (!this.IsNetworkManagerSubscriptionConnectionPresent(this.InputObject.Name))
                 {
-                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.NetworkManagerSubscriptionConnection.Name));
+                    throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
 
                 // Map to the sdk object
-                var networkManagerSubscriptionConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerConnection>(this.NetworkManagerSubscriptionConnection);
+                var networkManagerSubscriptionConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerConnection>(this.InputObject);
 
                 // Execute the PUT NetworkManagerSubscriptionConnection call
-                var networkManagerSubscriptionConnectionResponse = this.NetworkManagerSubscriptionConnectionClient.CreateOrUpdate(networkManagerSubscriptionConnectionModel, this.NetworkManagerSubscriptionConnection.Name);
+                var networkManagerSubscriptionConnectionResponse = this.NetworkManagerSubscriptionConnectionClient.CreateOrUpdate(networkManagerSubscriptionConnectionModel, this.InputObject.Name);
                 var psNetworkManagerConnection = this.ToPsNetworkManagerSubscriptionConnection(networkManagerSubscriptionConnectionResponse);
                 WriteObject(psNetworkManagerConnection);
             }

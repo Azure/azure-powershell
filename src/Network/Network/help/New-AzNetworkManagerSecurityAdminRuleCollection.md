@@ -15,7 +15,7 @@ Creates a security admin rule collection.
 ```
 New-AzNetworkManagerSecurityAdminRuleCollection -Name <String> -SecurityAdminConfigurationName <String>
  -NetworkManagerName <String> -ResourceGroupName <String> [-Description <String>]
- -AppliesToGroup <System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem]>
+ -AppliesToGroup <Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem[]>
  [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,9 +26,8 @@ The **New-AzNetworkManagerSecurityAdminConfiguration** cmdlet creates a security
 
 ### Example 1
 ```powershell
-[System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem]]$configGroup  = @() 
 $groupItem = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId "/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/networkGroups/psNetworkGroup"
-$configGroup.Add($groupItem)
+$configGroup = @($groupItem) 
 New-AzNetworkManagerSecurityAdminRuleCollection -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -ConfigName "psSecurityAdminConfig" -Name "psRuleCollection" -AppliesToGroup $configGroup 
 ```
 ```output
@@ -64,7 +63,7 @@ Creates a security admin rule collection with a network group member.
 Applies To Groups.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem]
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem[]
 Parameter Sets: (All)
 Aliases:
 
@@ -233,7 +232,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List`1[[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem, Microsoft.Azure.PowerShell.Cmdlets.Network, Version=4.16.1.0, Culture=neutral, PublicKeyToken=null]]
+### Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem[]
 
 ## OUTPUTS
 
