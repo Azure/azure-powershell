@@ -21,30 +21,12 @@
 ## Upcoming Release
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command
 * Onboard Azure Virtual Network Manager Cmdlets
-    - `Get-AzNetworkManager` 
-    - `New-AzNetworkManager` 
-    - `Remove-AzNetworkManager` 
-    - `Get-AzNetworkManagerGroup` 
-    - `New-AzNetworkManagerGroup` 
-    - `Remove-AzNetworkManagerGroup`
-    - `Set-AzNetworkManager` 
-    - `Set-AzNetworkManagerGroup` 
-    - `Get-AzNetworkManagerConnectivityConfiguration` 
-    - `New-AzNetworkManagerConnectivityConfiguration` 
-    - `Remove-AzNetworkManagerConnectivityConfiguration` 
-    - `Set-AzNetworkManagerConnectivityConfiguration` 
-    - `Get-AzNetworkManagerSecurityAdminConfiguration` 
-    - `New-AzNetworkManagerSecurityAdminConfiguration` 
-    - `Remove-AzNetworkManagerSecurityAdminConfiguration` 
-    - `Set-AzNetworkManagerSecurityAdminConfiguration` 
-    - `Get-AzNetworkManagerSecurityAdminRuleCollection` 
-    - `New-AzNetworkManagerSecurityAdminRuleCollection` 
-    - `Remove-AzNetworkManagerSecurityAdminRuleCollection` 
-    - `Set-AzNetworkManagerSecurityAdminRuleCollection` 
-    - `Get-AzNetworkManagerSecurityAdminRule` 
-    - `New-AzNetworkManagerSecurityAdminRule` 
-    - `Remove-AzNetworkManagerSecurityAdminRule` 
-    - `Set-AzNetworkManagerSecurityAdminRule` 
+    - `New/Get/Remove/Set-AzNetworkManager` 
+    - `New/Get/Remove/Set-AzNetworkManagerGroup` 
+    - `New/Get/Remove/Set-AzNetworkManagerConnectivityConfiguration` 
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityAdminConfiguration` 
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityAdminRule` 
     - `Get-AzNetworkManagerActiveConnectivityConfiguration` 
     - `Get-AzNetworkManagerActiveSecurityAdminRule` 
     - `Get-AzNetworkManagerEffectiveConnectivityConfiguration` 
@@ -56,21 +38,10 @@
     - `New-AzNetworkManagerSecurityGroupItem`
     - `New-AzNetworkManagerHub` 
     - `New-AzNetworkManagerConnectivityGroupItem`
-    - `Get-AzNetworkManagerStaticMember` 
-    - `New-AzNetworkManagerStaticMember` 
-    - `Remove-AzNetworkManagerStaticMember` 
-    - `Get-AzNetworkManagerScopeConnection` 
-    - `New-AzNetworkManagerScopeConnection` 
-    - `Remove-AzNetworkManagerScopeConnection` 
-    - `Set-AzNetworkManagerScopeConnection` 
-    - `Get-AzNetworkManagerSubscriptionConnection` 
-    - `New-AzNetworkManagerSubscriptionConnection` 
-    - `Remove-AzNetworkManagerSubscriptionConnection` 
-    - `Set-AzNetworkManagerSubscriptionConnection` 
-    - `Get-AzNetworkManagerManagementGroupConnection` 
-    - `New-AzNetworkManagerManagementGroupConnection` 
-    - `Remove-AzNetworkManagerManagementGroupConnection` 
-    - `Set-AzNetworkManagerManagementGroupConnection`
+    - `New/Get/Remove-AzNetworkManagerStaticMember` 
+    - `New/Get/Remove/Set-AzNetworkManagerScopeConnection` 
+    - `New/Get/Remove/Set-AzNetworkManagerSubscriptionConnection` 
+    - `New/Get/Remove/Set-AzNetworkManagerManagementGroupConnection` 
 
 ## Version 4.19.0
 * Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.
