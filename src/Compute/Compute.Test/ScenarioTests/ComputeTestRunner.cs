@@ -14,6 +14,10 @@
 
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.Test.HttpRecorder;
+using Microsoft.IdentityModel.Clients.ActiveDirectory;
+using Microsoft.Rest;
+using Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit.Abstractions;
 
@@ -66,6 +70,32 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                         {"Microsoft.Storage", null},
                     }
                 )
+                /*.WithManagementClients(context =>
+                {
+                    string environmentConnectionString = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
+                    string accessToken = "fakefakefake";
+
+                    // When recording, we should have a connection string passed into the code from the environment
+                    if (!string.IsNullOrEmpty(environmentConnectionString))
+                    {
+                        // Gather test client credential information from the environment
+                        var connectionInfo = new ConnectionString(Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION"));
+                        var mode = connectionInfo.GetValue<string>(ConnectionStringKeys.HttpRecorderModeKey);
+                        if (mode == HttpRecorderMode.Record.ToString())
+                        {
+                            string servicePrincipal = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalKey);
+                            string servicePrincipalSecret = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalSecretKey);
+                            string aadTenant = connectionInfo.GetValue<string>(ConnectionStringKeys.TenantIdKey);
+
+                            // Create credentials
+                            var clientCredentials = new ClientCredential(servicePrincipal, servicePrincipalSecret);
+                            var authContext = new AuthenticationContext($"https://login.windows.net/{aadTenant}", TokenCache.DefaultShared);
+                            accessToken = authContext.AcquireTokenAsync("https://vault.azure.net", clientCredentials).Result.AccessToken;
+                        }
+                    }
+
+                    return new KeyVaultClient(new TokenCredentials(accessToken), HttpMockServer.CreateInstance());
+                })*/
                 .Build();
         }
     }

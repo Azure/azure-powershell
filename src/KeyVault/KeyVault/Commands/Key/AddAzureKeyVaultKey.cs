@@ -355,13 +355,39 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmResourceIdCreateParameterSet)]
         public string ReleasePolicyPath { get; set; }
 
-        [Parameter(Mandatory = false,
+        /*[Parameter(Mandatory = false,
             ParameterSetName = HsmInteractiveCreateParameterSet,
             HelpMessage = "Specifies to use default policy under which the key can be exported for CVM disk encryption.")]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet)]*/
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInteractiveCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveImportParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectImportParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdImportParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInteractiveImportParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmInputObjectImportParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = HsmResourceIdImportParameterSet)]
         public SwitchParameter UseDefaultCVMPolicy { get; set; }
         #endregion
 
