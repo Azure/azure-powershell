@@ -167,7 +167,7 @@ namespace Microsoft.Azure.PowerShell.Tools.AzPredictor
 
             var commandName = commandAst.GetCommandName();
 
-            if (string.IsNullOrWhiteSpace(commandName))
+            if (string.IsNullOrWhiteSpace(commandName) || !commandName.ToLower().Contains("az"))
             {
                 return null;
             }
