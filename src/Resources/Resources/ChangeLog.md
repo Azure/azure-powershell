@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.1.0
 * Removed the warning messages for MSGraph migration [#18856]
 * [Breaking Change] Renamed cmdlet from `{}-AzADAppFederatedIdentityCredential` to `{}-AzADAppFederatedCredential`
 * [Breaking Change] Renamed `-Id` to `-FederatedCredentialId` for

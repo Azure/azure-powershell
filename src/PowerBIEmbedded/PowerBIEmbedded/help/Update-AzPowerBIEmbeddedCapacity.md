@@ -62,7 +62,7 @@ Modifies the capacity named testcapacity in resourcegroup testgroup to set the t
 ## PARAMETERS
 
 ### -Administrator
-A comma separated names to set as administrators on the capacity. For service principal: <service principal object id>@<tenant id>
+A comma separated names to set as administrators on the capacity. For service principal: `<service principal object id>@<tenant id>`
 
 ```yaml
 Type: System.String[]
