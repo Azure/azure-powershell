@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "AddressPrefix Type")]
+           HelpMessage = "AddressPrefix Type. Valid values include 'IPPrefix' and 'ServiceTag'.")]
         public string AddressPrefixType { get; set; }
 
         public override void Execute()

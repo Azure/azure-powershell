@@ -95,7 +95,7 @@ Creates a security admin rule.
 ## PARAMETERS
 
 ### -Access
-Access of Rule.
+Access of Rule. Valid values include 'Allow', 'Deny', and 'AlwaysAllow'.
 
 ```yaml
 Type: String
@@ -185,7 +185,7 @@ Accept wildcard characters: False
 ```
 
 ### -Direction
-Direction of Rule.
+Direction of Rule. Valid values include 'Inbound' and 'Outbound'.
 
 ```yaml
 Type: String
@@ -275,7 +275,7 @@ Accept wildcard characters: False
 ```
 
 ### -Protocol
-Protocol of Rule.
+Protocol of Rule. Valid values include 'Tcp', 'Udp', 'Icmp', 'Esp', 'Any', and 'Ah'.
 
 ```yaml
 Type: String

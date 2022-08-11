@@ -64,7 +64,7 @@ Accept wildcard characters: False
 ```
 
 ### -GroupConnectivity
-Group Connectivity
+Group Connectivity. Valid values include 'None' and 'DirectlyConnected'.
 
 ```yaml
 Type: String

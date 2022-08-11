@@ -65,7 +65,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "ApplyOnNetworkIntentPolicyBasedServices.")]
+           HelpMessage = "ApplyOnNetworkIntentPolicyBasedServices. Valid values include 'None' and 'All'.")]
         public string[] ApplyOnNetworkIntentPolicyBasedService { get; set; }
 
         [Parameter(

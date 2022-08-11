@@ -268,7 +268,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         $configids  = @($newConnConfig.Id)
         $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
-        Start-Sleep -Seconds 120
+        #Start-Sleep -Seconds 60
          
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "Connectivity"
         Assert-NotNull $deploymentStatus;
@@ -304,7 +304,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "True"   $effectiveConnectivityConfig.Value[0].DeleteExistingPeering;
 
         $job = Remove-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $connectivityConfigurationName -ForceDelete -PassThru -Force -AsJob;
-        Start-Sleep -Seconds 120
+        #Start-Sleep -Seconds 60
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
@@ -427,7 +427,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         $configids  = @($securityConfig.Id)
         $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "SecurityAdmin" 
-        #Start-Sleep -Seconds 120
+        #Start-Sleep -Seconds 60
        
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "SecurityAdmin"
         Assert-NotNull $deploymentStatus;
@@ -471,26 +471,26 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-NotNull $effectiveSecurityAdminRuleList;
         #>
 
-        Assert-AreEqual  $newAdminRule.Id $effectiveSecurityAdminRuleList.Value[3].Id;
-        Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[3].RuleGroups[0].Id;
-        Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[3].RuleCollectionAppliesToGroups[0].NetworkGroupId;
+        Assert-AreEqual  $newAdminRule.Id $effectiveSecurityAdminRuleList.Value[0].Id;
+        Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[0].RuleGroups[0].Id;
+        Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[0].RuleCollectionAppliesToGroups[0].NetworkGroupId;
        
 
-        Assert-AreEqual $securityConfig.Description $effectiveSecurityAdminRuleList.Value[3].ConfigurationDescription;
-        Assert-AreEqual $ruleCollection.Description $effectiveSecurityAdminRuleList.Value[3].RuleCollectionDescription;
+        Assert-AreEqual $securityConfig.Description $effectiveSecurityAdminRuleList.Value[0].ConfigurationDescription;
+        Assert-AreEqual $ruleCollection.Description $effectiveSecurityAdminRuleList.Value[0].RuleCollectionDescription;
 
-        Assert-AreEqual "TCP" $effectiveSecurityAdminRuleList.Value[3].Protocol 
-        Assert-AreEqual "Inbound" $effectiveSecurityAdminRuleList.Value[3].Direction 
-        Assert-AreEqual "Allow" $effectiveSecurityAdminRuleList.Value[3].Access 
-        Assert-AreEqual 100 $effectiveSecurityAdminRuleList.Value[3].Priority
+        Assert-AreEqual "TCP" $effectiveSecurityAdminRuleList.Value[0].Protocol 
+        Assert-AreEqual "Inbound" $effectiveSecurityAdminRuleList.Value[0].Direction 
+        Assert-AreEqual "Allow" $effectiveSecurityAdminRuleList.Value[0].Access 
+        Assert-AreEqual 100 $effectiveSecurityAdminRuleList.Value[0].Priority
 
-        Assert-AreEqual "100" $effectiveSecurityAdminRuleList.Value[3].SourcePortRanges[0] 
-        Assert-AreEqual "99" $effectiveSecurityAdminRuleList.Value[3].DestinationPortRanges[0]
-        Assert-AreEqual "10.0.0.1" $effectiveSecurityAdminRuleList.Value[3].Destinations[0].AddressPrefix
-        Assert-AreEqual "Internet" $effectiveSecurityAdminRuleList.Value[3].Sources[0].AddressPrefix
+        Assert-AreEqual "100" $effectiveSecurityAdminRuleList.Value[0].SourcePortRanges[0] 
+        Assert-AreEqual "99" $effectiveSecurityAdminRuleList.Value[0].DestinationPortRanges[0]
+        Assert-AreEqual "10.0.0.1" $effectiveSecurityAdminRuleList.Value[0].Destinations[0].AddressPrefix
+        Assert-AreEqual "Internet" $effectiveSecurityAdminRuleList.Value[0].Sources[0].AddressPrefix
 
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "SecurityAdmin" 
-        #Start-Sleep -Seconds 120
+        #Start-Sleep -Seconds 60
 
         $job = Remove-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;

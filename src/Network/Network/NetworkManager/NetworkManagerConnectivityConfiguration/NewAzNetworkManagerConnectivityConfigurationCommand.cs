@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Connectivity Type.")]
+           HelpMessage = "Connectivity Topology. Valid values include 'HubAndSpoke' and 'Mesh'.")]
         public string ConnectivityTopology { get; set; }
 
         [Parameter(

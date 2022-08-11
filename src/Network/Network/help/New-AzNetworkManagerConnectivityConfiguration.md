@@ -122,7 +122,7 @@ Creates a mesh network manager connectivity configuration.
 Connectivity Group.
 
 ```yaml
-Type: System.Collections.Generic.List`1[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem]
+Type: Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerConnectivityGroupItem[]
 Parameter Sets: (All)
 Aliases:
 
@@ -149,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -ConnectivityTopology
-Connectivity Type.
+Connectivity Topology. Valid values include 'HubAndSpoke' and 'Mesh'.
 
 ```yaml
 Type: String

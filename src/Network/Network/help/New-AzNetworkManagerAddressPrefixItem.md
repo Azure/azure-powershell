@@ -62,7 +62,7 @@ Accept wildcard characters: False
 ```
 
 ### -AddressPrefixType
-AddressPrefix Type
+AddressPrefix Type. Valid values include 'IPPrefix' and 'ServiceTag'.
 
 ```yaml
 Type: String

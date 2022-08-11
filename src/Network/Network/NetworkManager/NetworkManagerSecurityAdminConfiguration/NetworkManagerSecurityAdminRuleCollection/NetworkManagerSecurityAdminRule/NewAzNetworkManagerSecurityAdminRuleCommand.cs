@@ -88,21 +88,21 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Protocol of Rule.",
+            HelpMessage = "Protocol of Rule. Valid values include 'Tcp', 'Udp', 'Icmp', 'Esp', 'Any', and 'Ah'.",
             ParameterSetName = "Custom")]
         public string Protocol { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Direction of Rule.",
+            HelpMessage = "Direction of Rule. Valid values include 'Inbound' and 'Outbound'.",
             ParameterSetName = "Custom")]
         public string Direction { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Access of Rule.",
+            HelpMessage = "Access of Rule. Valid values include 'Allow', 'Deny', and 'AlwaysAllow'.",
             ParameterSetName = "Custom")]
         public string Access { get; set; }
 

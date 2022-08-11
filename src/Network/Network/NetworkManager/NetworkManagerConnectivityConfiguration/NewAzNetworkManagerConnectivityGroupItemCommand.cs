@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Group Connectivity")]
+           HelpMessage = "Group Connectivity. Valid values include 'None' and 'DirectlyConnected'.")]
         public string GroupConnectivity { get; set; }
 
         [Parameter(

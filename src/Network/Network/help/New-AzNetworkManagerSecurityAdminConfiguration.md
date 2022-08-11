@@ -90,7 +90,7 @@ Creates a security admin configuration that will apply on NIP based services.
 ## PARAMETERS
 
 ### -ApplyOnNetworkIntentPolicyBasedService
-ApplyOnNetworkIntentPolicyBasedServices.
+ApplyOnNetworkIntentPolicyBasedServices. Valid values include 'None' and 'All'.
 
 ```yaml
 Type: System.String[]	
@@ -262,7 +262,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
-### System.Collections.Generic.List`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
+### System.String[]
 
 ### System.Management.Automation.SwitchParameter
 

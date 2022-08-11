@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "Network Manager Scope Access")]
+           HelpMessage = "Network Manager Scope Access. Valid values include 'SecurityAdmin' and 'Connectivity'.")]
         public string[] NetworkManagerScopeAccess { get; set; }
 
         [Parameter(
