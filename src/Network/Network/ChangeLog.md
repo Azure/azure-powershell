@@ -20,6 +20,12 @@
 
 ## Upcoming Release
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
+* Fixed required parameter `PrivateLinkResourceType` missing issue for the following cmdlets [#18655]
+    - `Get-AzPrivateEndpointConnection`
+    - `Set-AzPrivateEndpointConnection`
+    - `Remove-AzPrivateEndpointConnection`
+    - `Approve-AzPrivateEndpointConnection`
+    - `Deny-AzPrivateEndpointConnection`
 * Added breaking change attribute to notify that public ip address sku default behaviour will be changed
     - `New-AzPublicIpAddress`
     - `New-AzLoadBalancer`
