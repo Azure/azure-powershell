@@ -118,6 +118,17 @@ namespace Microsoft.Azure.Commands.Compute
         public string[] Zone { get; set; }
 
         [Parameter(
+            ParameterSetName = SimpleParameterSet, 
+            Mandatory = false,
+            HelpMessage = "Specify public IP sku name")]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
+            Mandatory = false,
+            HelpMessage = "Specify public IP sku name")]
+        [PSArgumentCompleter("Basic","Standard")]
+        public string PublicIpSku { get; set; }
+
+        [Parameter(
             ParameterSetName = DefaultParameterSet,
             HelpMessage = "Disable BG Info Extension")]
         public SwitchParameter DisableBginfoExtension { get; set; }
@@ -510,6 +521,15 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
 
+                //Override Zone logic if PublicIpSku is explicitly provided
+                PublicIPAddressStrategy.Sku publicIpSku;
+                if (_cmdlet.PublicIpSku != null) {
+                    publicIpSku = _cmdlet.PublicIpSku;
+                }
+                else {
+                    publicIpSku = _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard,
+                }
+
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
                     name: _cmdlet.VirtualNetworkName, edgeZone: _cmdlet.EdgeZone, addressPrefix: _cmdlet.AddressPrefix);
@@ -519,7 +539,7 @@ namespace Microsoft.Azure.Commands.Compute
                     edgeZone: _cmdlet.EdgeZone,
                     domainNameLabel: _cmdlet.DomainNameLabel,
                     allocationMethod: _cmdlet.AllocationMethod,
-                    sku: _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard,
+                    sku: 
                     zones: _cmdlet.Zone);
 
                 _cmdlet.OpenPorts = ImageAndOsType.UpdatePorts(_cmdlet.OpenPorts);
@@ -653,11 +673,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         async Task StrategyExecuteCmdletAsync(IAsyncCmdlet asyncCmdlet)
         {
-            //Add a PublicIpAddress and Allocation Method (Static?) checek here
-            if (!this.IsParameterBound(c => c.PublicIpAddressName) && this.AllocationMethod == "Static"){
-                WriteWarning("It is recommended to use parameter \"-AllocationMethod Standard\" to create new VM with Standard public IP. Please note that it will become the default behavior for VM creation in the future.");
-
-            }
 
             var client = new Client(DefaultProfile.DefaultContext);
 
