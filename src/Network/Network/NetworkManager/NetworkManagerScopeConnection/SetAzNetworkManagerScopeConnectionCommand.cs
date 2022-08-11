@@ -28,24 +28,6 @@ namespace Microsoft.Azure.Commands.Network
     public class SetAzNetworkManagerScopeConnection : NetworkManagerScopeConnectionBaseCmdlet
     {
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
-        [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The NetworkManagerScopeConnection")]
@@ -60,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 base.Execute();
 
-                if (!this.IsNetworkManagerScopeConnectionPresent(this.ResourceGroupName, this.NetworkManagerName, this.InputObject.Name))
+                if (!this.IsNetworkManagerScopeConnectionPresent(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name))
                 {
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
@@ -77,8 +59,8 @@ namespace Microsoft.Azure.Commands.Network
                 // Map to the sdk object
                 var scopeConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.ScopeConnection>(psScopeConnectionModel);
                 // Execute the PUT NetworkManagerScopeConnection call
-                var scopeConnectionResponse = this.NetworkManagerScopeConnectionClient.CreateOrUpdate(scopeConnectionModel, this.ResourceGroupName, this.NetworkManagerName, this.InputObject.Name);
-                var psScopeConnection = this.ToPsNetworkManagerScopeConnection(scopeConnectionResponse);
+                this.NetworkManagerScopeConnectionClient.CreateOrUpdate(scopeConnectionModel, this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+                var psScopeConnection = this.GetNetworkManagerScopeConnection(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
                 WriteObject(psScopeConnection);
             }
         }

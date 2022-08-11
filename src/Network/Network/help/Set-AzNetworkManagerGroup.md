@@ -13,7 +13,7 @@ Updates a network manager group.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerGroup -NetworkManagerName <String> -ResourceGroupName <String>
+Set-AzNetworkManagerGroup
  -InputObject <PSNetworkManagerGroup> [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -27,7 +27,7 @@ The **Set-AzNetworkManagerGroup** cmdlet updates a network manager group.
 ```powershell
 $networkGroup = Get-AzNetworkManagerGroup  -Name "psNetworkGroup" -NetworkManagerName psNetworkManager -ResourceGroupName psResourceGroup
 $networkGroup.description = "new description"
-Set-AzNetworkManagerGroup -NetworkManagerName psNetworkManager -ResourceGroupName psResourceGroup -InputObject $networkGroup
+Set-AzNetworkManagerGroup -InputObject $networkGroup
 ```
 ```output
 MemberType        :
@@ -95,36 +95,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-```
-
-### -NetworkManagerName
-The network manager name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
 ```
 
 ### -Confirm

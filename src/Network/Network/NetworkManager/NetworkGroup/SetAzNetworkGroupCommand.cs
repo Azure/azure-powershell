@@ -28,24 +28,6 @@ namespace Microsoft.Azure.Commands.Network
     public class SetAzNetworkGroup : NetworkGroupBaseCmdlet
     {
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
-        [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Network Group")]
@@ -60,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 base.Execute();
 
-                if (!this.IsNetworkGroupsPresent(this.ResourceGroupName, this.NetworkManagerName, this.InputObject.Name))
+                if (!this.IsNetworkGroupsPresent(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name))
                 {
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
@@ -69,8 +51,8 @@ namespace Microsoft.Azure.Commands.Network
                 var groupModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkGroup>(this.InputObject);
 
                 // Execute the PUT NetworkManagerGroup call
-                var groupResponse = this.NetworkGroupClient.CreateOrUpdate(groupModel, this.ResourceGroupName, this.NetworkManagerName, this.InputObject.Name);
-                var psNetworGroup = this.ToPsNetworkGroup(groupResponse);
+                this.NetworkGroupClient.CreateOrUpdate(groupModel, this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+                var psNetworGroup = this.GetNetworkGroup(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
                 WriteObject(psNetworGroup);
             }
         }

@@ -88,9 +88,9 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             if (this.Name != null)
             {
-                var secrurityAdminRule = this.GetNetworkManagerSecurityAdminRule(this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.Name);
+                var securityAdminRule = this.GetNetworkManagerSecurityAdminRule(this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.Name);
 
-                WriteObject(secrurityAdminRule);
+                WriteObject(securityAdminRule);
             }
             else
             {
@@ -105,6 +105,10 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var rule in secrurityRuleCollectionList)
                 {
                     var psRule = this.ToPSSecurityAdminRule(rule);
+                    psRule.ResourceGroupName = this.ResourceGroupName;
+                    psRule.NetworkManagerName = this.NetworkManagerName;
+                    psRule.SecurityAdminConfigurationName = this.SecurityAdminConfigurationName;
+                    psRule.RuleCollectionName = this.RuleCollectionName;
                     pSNetworkManagerSecurityAdminRules.Add(psRule);
                 }
 

@@ -110,8 +110,8 @@ namespace Microsoft.Azure.Commands.Network
                 this.IfMatch = null;
             }
 
-            var networkGroupResponse = this.NetworkGroupClient.CreateOrUpdate(networkGroupModel, this.ResourceGroupName, this.NetworkManagerName, this.Name, this.IfMatch);
-            var psNetworkManager = this.ToPsNetworkGroup(networkGroupResponse);
+            this.NetworkGroupClient.CreateOrUpdate(networkGroupModel, this.ResourceGroupName, this.NetworkManagerName, this.Name, this.IfMatch);
+            var psNetworkManager = this.GetNetworkGroup(this.ResourceGroupName, this.NetworkManagerName, this.Name);
 
             return psNetworkManager;
         }

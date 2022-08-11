@@ -124,8 +124,8 @@ namespace Microsoft.Azure.Commands.Network
             
 
             // Execute the Create Security Config call
-            var securityConfigResponse = this.NetworkManagerSecurityAdminConfigurationClient.CreateOrUpdate(securityConfigModel, this.ResourceGroupName, this.NetworkManagerName, this.Name);
-            var psSecuirtyConfig = this.ToPsNetworkManagerSecurityAdminConfiguration(securityConfigResponse);
+            this.NetworkManagerSecurityAdminConfigurationClient.CreateOrUpdate(securityConfigModel, this.ResourceGroupName, this.NetworkManagerName, this.Name);
+            var psSecuirtyConfig = this.GetNetworkManagerSecurityAdminConfiguration(this.ResourceGroupName, this.NetworkManagerName, this.Name);
             return psSecuirtyConfig;
         }
     }

@@ -18,8 +18,11 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
     using System.Collections;
     using WindowsAzure.Commands.Common.Attributes;
-
+    
     public class PSNetworkManagerSecurityBaseAdminRule : PSNetworkManagerBaseResource
     {
+        public string NetworkManagerName { get; set; }
+        public string SecurityAdminConfigurationName { get; set; }
+        public string RuleCollectionName { get; set; }
     }
 }

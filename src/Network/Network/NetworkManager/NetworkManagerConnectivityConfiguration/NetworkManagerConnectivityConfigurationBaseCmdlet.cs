@@ -54,8 +54,9 @@ namespace Microsoft.Azure.Commands.Network
         public PSNetworkManagerConnectivityConfiguration GetNetworkManagerConnectivityConfiguration(string resourceGroupName, string networkManagerName, string name)
         {
             var networkManagerConnectivityConfig = this.NetworkManagerConnectivityConfigurationClient.Get(resourceGroupName, networkManagerName, name);
-
             var psNetworkManagerConnectivityConfiguration = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerConnectivityConfiguration>(networkManagerConnectivityConfig);
+            psNetworkManagerConnectivityConfiguration.ResourceGroupName = resourceGroupName;
+            psNetworkManagerConnectivityConfiguration.NetworkManagerName = networkManagerName;
             return psNetworkManagerConnectivityConfiguration;
         }
 

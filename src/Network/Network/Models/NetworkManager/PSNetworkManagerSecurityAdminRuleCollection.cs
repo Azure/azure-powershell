@@ -21,6 +21,9 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 
     public class PSNetworkManagerSecurityAdminRuleCollection : PSNetworkManagerBaseResource
     {
+        public string NetworkManagerName { get; set; }
+        public string SecurityAdminConfigurationName { get; set; }
+
         [JsonProperty(Order = 1)]
         public IList<PSNetworkManagerSecurityGroupItem> AppliesToGroups { get; set; }
 

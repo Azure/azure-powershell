@@ -120,8 +120,8 @@ namespace Microsoft.Azure.Commands.Network
             networkManagerModel.Tags = TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true);
 
             // Execute the Create Network call
-            var networkManagerResponse = this.NetworkManagerClient.CreateOrUpdate(networkManagerModel, this.ResourceGroupName, this.Name);
-            var psNetworkManager = this.ToPsNetworkManager(networkManagerResponse);
+            this.NetworkManagerClient.CreateOrUpdate(networkManagerModel, this.ResourceGroupName, this.Name);
+            var psNetworkManager = this.GetNetworkManager(this.ResourceGroupName, this.Name);
             return psNetworkManager;
         }
     }

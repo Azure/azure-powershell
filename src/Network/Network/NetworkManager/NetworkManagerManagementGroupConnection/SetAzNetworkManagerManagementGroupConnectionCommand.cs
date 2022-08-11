@@ -29,12 +29,6 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The management group ID.")]
-        public virtual string ManagementGroupId { get; set; }
-
-        [Parameter(
-            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The NetworkManagerManagementGroupConnection")]
         public PSNetworkManagerConnection InputObject { get; set; }
@@ -48,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 base.Execute();
 
-                if (!this.IsNetworkManagerManagementGroupConnectionPresent(this.ManagementGroupId, this.InputObject.Name))
+                if (!this.IsNetworkManagerManagementGroupConnectionPresent(this.InputObject.ScopeId, this.InputObject.Name))
                 {
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
@@ -57,9 +51,8 @@ namespace Microsoft.Azure.Commands.Network
                 var networkManagerManagementGroupConnectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManagerConnection>(this.InputObject);
 
                 // Execute the PUT NetworkManagerManagementGroupConnection call
-                this.NetworkManagerManagementGroupConnectionClient.CreateOrUpdate(networkManagerManagementGroupConnectionModel, this.ManagementGroupId, this.InputObject.Name);
-                var networkManagerManagementGroupConnectionResponse = this.NetworkManagerManagementGroupConnectionClient.Get(this.ManagementGroupId, this.InputObject.Name);
-                var psNetworkManagerConnection = this.ToPsNetworkManagerManagementGroupConnection(networkManagerManagementGroupConnectionResponse);
+                this.NetworkManagerManagementGroupConnectionClient.CreateOrUpdate(networkManagerManagementGroupConnectionModel, this.InputObject.ScopeId, this.InputObject.Name);
+                var psNetworkManagerConnection = this.GetNetworkManagerManagementGroupConnection(this.InputObject.ScopeId, this.InputObject.Name);
                 WriteObject(psNetworkManagerConnection);
             }
         }

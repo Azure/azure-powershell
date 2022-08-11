@@ -23,6 +23,8 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 
     public class PSNetworkManagerSecurityAdminConfiguration : PSNetworkManagerBaseResource
     {
+        public string NetworkManagerName { get; set; }
+
         public string SecurityType { get; set; }
 
         public List<string> ApplyOnNetworkIntentPolicyBasedServices { get; set; }

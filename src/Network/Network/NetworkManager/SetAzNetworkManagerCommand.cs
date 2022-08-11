@@ -29,14 +29,6 @@ namespace Microsoft.Azure.Commands.Network
     {
         [Parameter(
             Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Network Manager")]
         public PSNetworkManager InputObject { get; set; }
@@ -50,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 base.Execute();
 
-                if (!this.IsNetworkManagerPresent(this.ResourceGroupName, this.InputObject.Name))
+                if (!this.IsNetworkManagerPresent(this.InputObject.ResourceGroupName, this.InputObject.Name))
                 {
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
@@ -59,8 +51,8 @@ namespace Microsoft.Azure.Commands.Network
                 var networkManagerModel = NetworkResourceManagerProfile.Mapper.Map<MNM.NetworkManager>(this.InputObject);
 
                 // Execute the PUT NetworkManagerGroup call
-                var networkManagerResponse = this.NetworkManagerClient.CreateOrUpdate(networkManagerModel, this.ResourceGroupName, this.InputObject.Name);
-                var psNetworkManager = this.ToPsNetworkManager(networkManagerResponse);
+                this.NetworkManagerClient.CreateOrUpdate(networkManagerModel, this.InputObject.ResourceGroupName, this.InputObject.Name);
+                var psNetworkManager = this.GetNetworkManager(this.InputObject.ResourceGroupName, this.InputObject.Name);
                 WriteObject(psNetworkManager);
             }
         }

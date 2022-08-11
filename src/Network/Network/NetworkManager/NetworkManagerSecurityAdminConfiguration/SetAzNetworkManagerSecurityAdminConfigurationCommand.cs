@@ -28,24 +28,6 @@ namespace Microsoft.Azure.Commands.Network
     public class SetAzNetworkManagerSecurityAdminConfiguration : NetworkManagerSecurityAdminConfigurationBaseCmdlet
     {
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
-        [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The NetworkManagerSecurityAdminConfiguration")]
@@ -60,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 base.Execute();
 
-                if (!this.IsNetworkManagerSecurityAdminConfigurationPresent(this.ResourceGroupName, this.NetworkManagerName, this.InputObject.Name))
+                if (!this.IsNetworkManagerSecurityAdminConfigurationPresent(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name))
                 {
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
@@ -69,8 +51,8 @@ namespace Microsoft.Azure.Commands.Network
                 var securityConfigModel = NetworkResourceManagerProfile.Mapper.Map<MNM.SecurityAdminConfiguration>(this.InputObject);
 
                 // Execute the PUT NetworkManagerSecurityAdminConfiguration call
-                var securityConfigResponse = this.NetworkManagerSecurityAdminConfigurationClient.CreateOrUpdate(securityConfigModel, this.ResourceGroupName, this.NetworkManagerName, this.InputObject.Name);
-                var psSecurityConfig = this.ToPsNetworkManagerSecurityAdminConfiguration(securityConfigResponse);
+                this.NetworkManagerSecurityAdminConfigurationClient.CreateOrUpdate(securityConfigModel, this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+                var psSecurityConfig = this.GetNetworkManagerSecurityAdminConfiguration(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
                 WriteObject(psSecurityConfig);
             }
         }

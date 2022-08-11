@@ -13,7 +13,7 @@ Update a network manger management group connection
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerManagementGroupConnection -ManagementGroupId <String>
+Set-AzNetworkManagerManagementGroupConnection
  -InputObject <PSNetworkManagerConnection> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -27,7 +27,7 @@ The **Set-AzNetworkManagerManagementGroupConnection** cmdlet update a network ma
 ```powershell
 $networkManagerConnection = Get-AzNetworkManagerManagementGroupConnection -ManagementGroupId "newMG" -Name "psConnection"
 $networkManagerConnection.description = "new description"
-Set-AzNetworkManagerManagementGroupConnection -ManagementGroupId "newMG" -InputObject $networkManagerConnection
+Set-AzNetworkManagerManagementGroupConnection -InputObject $networkManagerConnection
 ```
 ```output
 NetworkManagerId  : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager
@@ -74,21 +74,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ManagementGroupId
-The management group ID.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

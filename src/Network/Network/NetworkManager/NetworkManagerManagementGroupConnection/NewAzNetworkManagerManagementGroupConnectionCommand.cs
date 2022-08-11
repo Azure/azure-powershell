@@ -98,8 +98,7 @@ namespace Microsoft.Azure.Commands.Network
 
             // Execute the Create NetworkManagerManagementGroupConnection call
             this.NetworkManagerManagementGroupConnectionClient.CreateOrUpdate(mnccModel, this.ManagementGroupId, this.Name);
-            var networkManagerManagementGroupConnectionResponse = this.NetworkManagerManagementGroupConnectionClient.Get(this.ManagementGroupId, this.Name);
-            var psNetworkManagerManagementGroupConnection = this.ToPsNetworkManagerManagementGroupConnection(networkManagerManagementGroupConnectionResponse);
+            var psNetworkManagerManagementGroupConnection = this.GetNetworkManagerManagementGroupConnection(this.ManagementGroupId, this.Name);
             return psNetworkManagerManagementGroupConnection;
         }
     }

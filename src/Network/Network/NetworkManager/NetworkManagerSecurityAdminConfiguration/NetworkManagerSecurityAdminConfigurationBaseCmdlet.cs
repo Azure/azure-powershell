@@ -57,6 +57,8 @@ namespace Microsoft.Azure.Commands.Network
             var nmsc = this.NetworkManagerSecurityAdminConfigurationClient.Get(resourceGroupName, networkManagerName, name);
 
             var psNetworkManagerSecurityConfiguration = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerSecurityAdminConfiguration>(nmsc);
+            psNetworkManagerSecurityConfiguration.ResourceGroupName = resourceGroupName;
+            psNetworkManagerSecurityConfiguration.NetworkManagerName = networkManagerName;
             return psNetworkManagerSecurityConfiguration;
         }
 

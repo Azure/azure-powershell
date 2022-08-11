@@ -13,7 +13,7 @@ Updates a connectivity configuration.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerConnectivityConfiguration -NetworkManagerName <String> -ResourceGroupName <String>
+Set-AzNetworkManagerConnectivityConfiguration
  -InputObject <PSNetworkManagerConnectivityConfiguration> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -32,7 +32,7 @@ $connectivityGroupItem2 = New-AzNetworkManagerConnectivityGroupItem -NetworkGrou
 $connectivityGroup.Add($connectivityGroupItem)
 $connectivityGroup.Add($connectivityGroupItem2)
 $ConnectivityConfiguration.AppliesToGroups = $connectivityGroup
-Set-AzNetworkManagerConnectivityConfiguration -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -InputObject $ConnectivityConfiguration
+Set-AzNetworkManagerConnectivityConfiguration -InputObject $ConnectivityConfiguration
 ```
 ```output
 ConnectivityTopology  : HubAndSpoke
@@ -127,36 +127,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-```
-
-### -NetworkManagerName
-The network manager name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
 ```
 
 ### -Confirm

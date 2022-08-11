@@ -13,7 +13,7 @@ Updates a network manager..
 ## SYNTAX
 
 ```
-Set-AzNetworkManager -ResourceGroupName <String> -InputObject <PSNetworkManager> [-AsJob]
+Set-AzNetworkManager -InputObject <PSNetworkManager> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ The **Set-AzNetworkManager** cmdlet updates a network manager.
 ```powershell
 $networkManager = Get-AzNetworkManager -ResourceGroupName "psResourceGroup" -Name "psNetworkManager"
 $networkManager.Description = "updated description"
-Set-AzNetworkManager -ResourceGroupName "psResourceGroup" -InputObject $networkManager
+Set-AzNetworkManager -InputObject $networkManager
 ```
 ```output
 Location                        : westus
@@ -70,7 +70,7 @@ Example to update the description of a network manager.
 $networkManager = Get-AzNetworkManager -ResourceGroupName "psResourceGroup" -Name "psNetworkManager"
 $access  = @("Connectivity", "SecurityAdmin")
 $networkManager.NetworkManagerScopeAccesses = $access
-Set-AzNetworkManager -ResourceGroupName "psResourceGroup" -InputObject $networkManager
+Set-AzNetworkManager -InputObject $networkManager
 ```
 ```output
 Location                        : westus
@@ -153,21 +153,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 

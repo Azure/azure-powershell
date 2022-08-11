@@ -28,24 +28,6 @@ namespace Microsoft.Azure.Commands.Network
     public class SetAzNetworkManagerConnectivityConfiguration : NetworkManagerConnectivityConfigurationBaseCmdlet
     {
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
-        [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The NetworkManagerConnectivityConfiguration")]
@@ -60,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 base.Execute();
 
-                if (!this.IsNetworkManagerConnectivityConfigurationPresent(this.ResourceGroupName, this.NetworkManagerName, this.InputObject.Name))
+                if (!this.IsNetworkManagerConnectivityConfigurationPresent(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name))
                 {
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
@@ -70,8 +52,8 @@ namespace Microsoft.Azure.Commands.Network
 
 
                 // Execute the PUT NetworkManagerConnectivityConfiguration call
-                var networkManagerConnectivityConfiguration =  this.NetworkManagerConnectivityConfigurationClient.CreateOrUpdate(mnccModel, this.ResourceGroupName, this.NetworkManagerName, this.InputObject.Name);
-                var psNetworkManagerConnectivityConfiguration = this.ToPsNetworkManagerConnectivityConfiguration(networkManagerConnectivityConfiguration);
+                this.NetworkManagerConnectivityConfigurationClient.CreateOrUpdate(mnccModel, this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
+                var psNetworkManagerConnectivityConfiguration = this.GetNetworkManagerConnectivityConfiguration(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.Name);
 
                 WriteObject(psNetworkManagerConnectivityConfiguration);
             }

@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 
     public class PSNetworkManagerScopeConnection : PSNetworkManagerBaseResource
     {
+        public string NetworkManagerName { get; set; }
         public string TenantId { get; set; }
 
         public string ResourceId { get; set; }

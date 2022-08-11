@@ -55,8 +55,11 @@ namespace Microsoft.Azure.Commands.Network
         public PSNetworkManagerSecurityAdminRuleCollection GetNetworkManagerSecurityAdminRuleCollection(string resourceGroupName, string networkManagerName, string securityConfigName, string name)
         {
             var ruleCollection = this.NetworkManagerSecurityAdminRuleCollectionClient.Get(resourceGroupName, networkManagerName, securityConfigName, name);
-
             var psRuleCollection = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerSecurityAdminRuleCollection>(ruleCollection);
+
+            psRuleCollection.ResourceGroupName = resourceGroupName;
+            psRuleCollection.NetworkManagerName = networkManagerName;
+            psRuleCollection.SecurityAdminConfigurationName = securityConfigName;
             return psRuleCollection;
         }
 

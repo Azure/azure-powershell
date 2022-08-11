@@ -27,34 +27,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityAdminRuleCollection", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerSecurityAdminRuleCollection))]
     public class SetAzNetworkManagerSecurityAdminRuleCollection : NetworkManagerSecurityAdminRuleCollectionBaseCmdlet
     {
-        [Alias("ConfigName")]
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager security admin configuration name.")]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers/securityAdminConfigurations", "ResourceGroupName", "NetworkManagerName")]
-        [SupportsWildcards]
-        public virtual string SecurityAdminConfigurationName { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
-        [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        [SupportsWildcards]
-        public virtual string ResourceGroupName { get; set; }
-
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
@@ -70,7 +42,7 @@ namespace Microsoft.Azure.Commands.Network
             {
                 base.Execute();
 
-                if (!this.IsNetworkManagerSecurityAdminRuleCollectionPresent(this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.InputObject.Name))
+                if (!this.IsNetworkManagerSecurityAdminRuleCollectionPresent(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityAdminConfigurationName, this.InputObject.Name))
                 {
                     throw new ArgumentException(string.Format(Microsoft.Azure.Commands.Network.Properties.Resources.ResourceNotFound, this.InputObject.Name));
                 }
@@ -79,8 +51,8 @@ namespace Microsoft.Azure.Commands.Network
                 var securityRuleCollectionModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AdminRuleCollection>(this.InputObject);
 
                 // Execute the PUT NetworkManagerSecurityAdminRuleCollection call
-                var securityRuleCollectionResponse = this.NetworkManagerSecurityAdminRuleCollectionClient.CreateOrUpdate(securityRuleCollectionModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.InputObject.Name);
-                var psSecurityRuleCollection = this.ToPsNetworkManagerSecurityAdminRuleCollection(securityRuleCollectionResponse);
+                this.NetworkManagerSecurityAdminRuleCollectionClient.CreateOrUpdate(securityRuleCollectionModel, this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityAdminConfigurationName, this.InputObject.Name);
+                var psSecurityRuleCollection = this.GetNetworkManagerSecurityAdminRuleCollection(this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityAdminConfigurationName, this.InputObject.Name);
                 WriteObject(psSecurityRuleCollection);
             }
         }

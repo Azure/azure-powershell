@@ -66,7 +66,6 @@ namespace Microsoft.Azure.Commands.Network
             if (this.Name != null)
             {
                 var networkGroup = this.GetNetworkGroup(this.ResourceGroupName, this.NetworkManagerName, this.Name);
-
                 WriteObject(networkGroup);
             }
             else
@@ -82,6 +81,8 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var networkGroup in groupList)
                 {
                     var psGroup = this.ToPsNetworkGroup(networkGroup);
+                    psGroup.ResourceGroupName = this.ResourceGroupName;
+                    psGroup.NetworkManagerName = this.NetworkManagerName;
                     psGroupList.Add(psGroup);
                 }
 

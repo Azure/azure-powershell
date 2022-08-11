@@ -88,6 +88,9 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var ruleCollectionModel in ruleCollectionList)
                 {
                     var psRuleCollectionModel = this.ToPsNetworkManagerSecurityAdminRuleCollection(ruleCollectionModel);
+                    psRuleCollectionModel.ResourceGroupName = this.ResourceGroupName;
+                    psRuleCollectionModel.NetworkManagerName = this.NetworkManagerName;
+                    psRuleCollectionModel.SecurityAdminConfigurationName = this.SecurityAdminConfigurationName;
                     psRuleCollectionList.Add(psRuleCollectionModel);
                 }
 

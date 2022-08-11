@@ -29,42 +29,6 @@ namespace Microsoft.Azure.Commands.Network
     public class SetAzNetworkManagerSecurityAdminRuleCommand : NetworkManagerSecurityAdminRuleBaseCmdlet
     {
         [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager security admin rule collection name.")]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers/securityAdminConfigurations/ruleCollections", "ResourceGroupName", "NetworkManagerName", "SecurityAdminConfigurationName")]
-        [SupportsWildcards]
-        public virtual string RuleCollectionName { get; set; }
-
-        [Alias("ConfigName")]
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager security admin configuration name.")]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers/securityAdminConfigurations", "ResourceGroupName", "NetworkManagerName")]
-        [SupportsWildcards]
-        public virtual string SecurityAdminConfigurationName { get; set; }
-
-        [Parameter(
-           Mandatory = true,
-           ValueFromPipelineByPropertyName = true,
-           HelpMessage = "The network manager name.")]
-        [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.Network/networkManagers", "ResourceGroupName")]
-        [SupportsWildcards]
-        public virtual string NetworkManagerName { get; set; }
-
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The resource group name.")]
-        [ResourceGroupCompleter]
-        [ValidateNotNullOrEmpty]
-        public virtual string ResourceGroupName { get; set; }
-
-        [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             HelpMessage = "The Network Manager Security Admin Rule")]
@@ -95,7 +59,7 @@ namespace Microsoft.Azure.Commands.Network
                 }
 
                 // Execute the PUT NetworkManagerSecurityAdminRule call
-                var adminRuleResponse = this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(adminRuleModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.InputObject.Name);
+                var adminRuleResponse = this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(adminRuleModel, this.InputObject.ResourceGroupName, this.InputObject.NetworkManagerName, this.InputObject.SecurityAdminConfigurationName, this.InputObject.RuleCollectionName, this.InputObject.Name);
                 var psAdminRule = this.ToPSSecurityAdminRule(adminRuleResponse);
                 WriteObject(psAdminRule);
             }

@@ -79,6 +79,8 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var networkManagerSecurityConfiguration in nscList)
                 {
                     var psNmsc = this.ToPsNetworkManagerSecurityAdminConfiguration(networkManagerSecurityConfiguration);
+                    psNmsc.ResourceGroupName = this.ResourceGroupName;
+                    psNmsc.NetworkManagerName = this.NetworkManagerName;
                     psNmscList.Add(psNmsc);
                 }
 

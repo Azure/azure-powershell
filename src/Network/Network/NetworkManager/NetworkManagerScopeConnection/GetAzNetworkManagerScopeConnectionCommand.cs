@@ -82,6 +82,8 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var networkManagerScopeConnection in nccList)
                 {
                     var psNmsc = this.ToPsNetworkManagerScopeConnection(networkManagerScopeConnection);
+                    psNmsc.ResourceGroupName = this.ResourceGroupName;
+                    psNmsc.NetworkManagerName = this.NetworkManagerName;
                     psNmccList.Add(psNmsc);
                 }
 

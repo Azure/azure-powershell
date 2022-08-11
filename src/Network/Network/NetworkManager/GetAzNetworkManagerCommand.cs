@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.Network
             if (ShouldGetByName(ResourceGroupName, Name))
             {
                 var networkManager = this.GetNetworkManager(this.ResourceGroupName, this.Name);
-
+                networkManager.ResourceGroupName = this.ResourceGroupName;
                 WriteObject(networkManager);
             }
             else
@@ -87,6 +87,7 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var networkManager in networkManagerList)
                 {
                     var psNetworkManager = this.ToPsNetworkManager(networkManager);
+                    psNetworkManager.ResourceGroupName = NetworkBaseCmdlet.GetResourceGroup(networkManager.Id);
                     psNetworkManagerList.Add(psNetworkManager);
                 }
 

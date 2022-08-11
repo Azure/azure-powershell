@@ -13,7 +13,7 @@ Update a network manager scope connection.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerScopeConnection -NetworkManagerName <String> -ResourceGroupName <String>
+Set-AzNetworkManagerScopeConnection
  -InputObject <PSNetworkManagerScopeConnection> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -27,7 +27,7 @@ The **Set-AzNetworkManagerScopeConnection** cmdlet updates a network manager sco
 ```powershell
 $scopeConnection = Get-AzNetworkManagerScopeConnection -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "mgConnection"
 $scopeConnection.description = "new description"
-Set-AzNetworkManagerScopeConnection -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -InputObject $scopeConnection
+Set-AzNetworkManagerScopeConnection -InputObject $scopeConnection
 ```
 ```output
 TenantId          : 72f988bf-86f1-41af-91ab-2d7cd011db47
@@ -84,21 +84,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkManagerName
-The network manager name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
 ### -InputObject
 The NetworkManagerScopeConnection
 
@@ -112,21 +97,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
 ```
 
 ### -Confirm

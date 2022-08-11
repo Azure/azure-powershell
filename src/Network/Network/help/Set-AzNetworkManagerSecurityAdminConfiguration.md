@@ -13,7 +13,7 @@ Updates a network manager security admin configuration.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerSecurityAdminConfiguration -NetworkManagerName <String> -ResourceGroupName <String>
+Set-AzNetworkManagerSecurityAdminConfiguration
  -InputObject <PSNetworkManagerSecurityAdminConfiguration> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -27,7 +27,7 @@ The **Set-AzNetworkManagerSecurityAdminConfiguration** cmdlet updates a network 
 ```powershell
 $NetworkManagerSecurityConfiguration = Get-AzNetworkManagerSecurityAdminConfiguration  -Name "psSecurityAdminConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup"
 $NetworkManagerSecurityConfiguration.applyOnNetworkIntentPolicyBasedServices = @("None")
-Set-AzNetworkManagerSecurityAdminConfiguration -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -InputObject $NetworkManagerSecurityConfiguration
+Set-AzNetworkManagerSecurityAdminConfiguration -InputObject $NetworkManagerSecurityConfiguration
 ```
 ```output
 SecurityType                                :
@@ -87,21 +87,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkManagerName
-The network manager name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
 ### -InputObject
 The NetworkManagerSecurityAdminConfiguration
 
@@ -115,21 +100,6 @@ Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
 ```
 
 ### -Confirm

@@ -77,6 +77,7 @@ namespace Microsoft.Azure.Commands.Network
             var networkManager = this.NetworkManagerClient.Get(resourceGroupName, name);
             var psNetworkManager = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManager>(networkManager);
             psNetworkManager.Tag = TagsConversionHelper.CreateTagHashtable(networkManager.Tags);
+            psNetworkManager.ResourceGroupName = resourceGroupName;
             return psNetworkManager;
         }
 

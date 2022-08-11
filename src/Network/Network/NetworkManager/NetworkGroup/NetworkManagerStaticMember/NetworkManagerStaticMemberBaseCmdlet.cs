@@ -51,10 +51,13 @@ namespace Microsoft.Azure.Commands.Network
         }
 
 
-        public PSNetworkManagerStaticMember GetNetworkManagerStaticMember(string resourceGroupName, string networkManagerName, string networkManagerGroup, string name)
+        public PSNetworkManagerStaticMember GetNetworkManagerStaticMember(string resourceGroupName, string networkManagerName, string networkManagerGroupName, string name)
         {
-            var networkManagerStaticMember = this.NetworkManagerStaticMemberClient.Get(resourceGroupName, networkManagerName, networkManagerGroup, name);
+            var networkManagerStaticMember = this.NetworkManagerStaticMemberClient.Get(resourceGroupName, networkManagerName, networkManagerGroupName, name);
             var psNetworkManagerStaticMember = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerStaticMember>(networkManagerStaticMember);
+            psNetworkManagerStaticMember.ResourceGroupName = resourceGroupName;
+            psNetworkManagerStaticMember.NetworkGroupName = networkManagerGroupName;
+            psNetworkManagerStaticMember.NetworkManagerName = networkManagerName;
             return psNetworkManagerStaticMember;
         }
 

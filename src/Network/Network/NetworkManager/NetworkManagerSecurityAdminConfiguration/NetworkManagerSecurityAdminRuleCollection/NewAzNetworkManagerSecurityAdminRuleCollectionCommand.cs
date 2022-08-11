@@ -119,8 +119,8 @@ namespace Microsoft.Azure.Commands.Network
             
 
             // Execute the Create Security Rule Collection call
-            var securityRuleCollectionResponse = this.NetworkManagerSecurityAdminRuleCollectionClient.CreateOrUpdate(ruleCollectionModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.Name);
-            var psSecuirtyRuleCollection = this.ToPsNetworkManagerSecurityAdminRuleCollection(securityRuleCollectionResponse);
+            this.NetworkManagerSecurityAdminRuleCollectionClient.CreateOrUpdate(ruleCollectionModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.Name);
+            var psSecuirtyRuleCollection = this.GetNetworkManagerSecurityAdminRuleCollection(this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.Name);
             return psSecuirtyRuleCollection;
         }
     }

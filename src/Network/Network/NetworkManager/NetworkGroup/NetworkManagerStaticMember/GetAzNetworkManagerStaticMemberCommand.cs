@@ -74,9 +74,8 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             if (this.Name != null)
             {
-                var networkGroup = this.GetNetworkManagerStaticMember(this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, this.Name);
-
-                WriteObject(networkGroup);
+                var psStaticMember = this.GetNetworkManagerStaticMember(this.ResourceGroupName, this.NetworkManagerName, this.NetworkGroupName, this.Name);
+                WriteObject(psStaticMember);
             }
             else
             {
@@ -91,6 +90,9 @@ namespace Microsoft.Azure.Commands.Network
                 foreach (var staticMember in staticMemberList)
                 {
                     var psStaticMember = this.ToPsNetworkManagerStaticMember(staticMember);
+                    psStaticMember.ResourceGroupName = this.ResourceGroupName;
+                    psStaticMember.NetworkGroupName = this.NetworkGroupName;
+                    psStaticMember.NetworkManagerName = this.NetworkManagerName;
                     psStaticMemberList.Add(psStaticMember);
                 }
 

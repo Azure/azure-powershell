@@ -55,8 +55,9 @@ namespace Microsoft.Azure.Commands.Network
         public PSNetworkManagerConnection GetNetworkManagerManagementGroupConnection(string managementGroupId, string name)
         {
             var networkManagerManagementGroupConnection = this.NetworkManagerManagementGroupConnectionClient.Get(managementGroupId, name);
-
             var psNetworkManagerManagementGroupConnection = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerConnection>(networkManagerManagementGroupConnection);
+
+            psNetworkManagerManagementGroupConnection.ScopeId = managementGroupId;
             return psNetworkManagerManagementGroupConnection;
         }
 

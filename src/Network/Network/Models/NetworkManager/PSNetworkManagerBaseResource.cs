@@ -21,6 +21,8 @@ namespace Microsoft.Azure.Commands.Network.Models.NetworkManager
 {
     public class PSNetworkManagerBaseResource : PSChildResource
     {
+        [Ps1Xml(Target = ViewControl.Table)]
+        public string ResourceGroupName { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public string Description { get; set; }

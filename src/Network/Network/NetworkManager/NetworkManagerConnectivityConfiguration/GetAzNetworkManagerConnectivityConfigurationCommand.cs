@@ -81,8 +81,10 @@ namespace Microsoft.Azure.Commands.Network
 
                 foreach (var networkManagerConnectivityConfiguration in nccList)
                 {
-                    var psNmsc = this.ToPsNetworkManagerConnectivityConfiguration(networkManagerConnectivityConfiguration);
-                    psNmccList.Add(psNmsc);
+                    var psNmcc = this.ToPsNetworkManagerConnectivityConfiguration(networkManagerConnectivityConfiguration);
+                    psNmcc.ResourceGroupName = this.ResourceGroupName;
+                    psNmcc.NetworkManagerName = this.NetworkManagerName;
+                    psNmccList.Add(psNmcc);
                 }
 
                 WriteObject(psNmccList);

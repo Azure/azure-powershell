@@ -55,6 +55,8 @@ namespace Microsoft.Azure.Commands.Network
         {
             var networkGroup = this.NetworkGroupClient.Get(resourceGroupName, networkManagerName, name);
             var psNetworkGroup = NetworkResourceManagerProfile.Mapper.Map<PSNetworkManagerGroup>(networkGroup);
+            psNetworkGroup.ResourceGroupName = resourceGroupName;
+            psNetworkGroup.NetworkManagerName = networkManagerName;
             return psNetworkGroup;
         }
 

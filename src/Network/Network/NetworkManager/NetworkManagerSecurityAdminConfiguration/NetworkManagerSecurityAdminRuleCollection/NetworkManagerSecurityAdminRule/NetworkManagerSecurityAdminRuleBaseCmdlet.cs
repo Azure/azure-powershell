@@ -56,6 +56,10 @@ namespace Microsoft.Azure.Commands.Network
         {
             var adminRule = this.NetworkManagerSecurityAdminRuleOperationClient.Get(resourceGroupName, networkManagerName, configName, ruleCollectionName, name);
             var psAdminRule = this.ToPSSecurityAdminRule(adminRule);
+            psAdminRule.ResourceGroupName = resourceGroupName;
+            psAdminRule.NetworkManagerName = networkManagerName;
+            psAdminRule.SecurityAdminConfigurationName = configName;
+            psAdminRule.RuleCollectionName = ruleCollectionName;
             return psAdminRule;
         }
 

@@ -174,8 +174,8 @@ namespace Microsoft.Azure.Commands.Network
                 securityDefaultAdminRule.Flag = this.Flag;
                 var securityDefaultAdminRuleModel = NetworkResourceManagerProfile.Mapper.Map<MNM.DefaultAdminRule>(securityDefaultAdminRule);
                 this.NullifySecurityAdminRuleIfAbsent(securityDefaultAdminRuleModel);
-                var adminRuleResponse = this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(securityDefaultAdminRuleModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.Name);
-                var psDefaultAdminRule = this.ToPSSecurityAdminRule(adminRuleResponse);
+                this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(securityDefaultAdminRuleModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.Name);
+                var psDefaultAdminRule = this.GetNetworkManagerSecurityAdminRule(this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.Name);
                 return psDefaultAdminRule;
             }
             else
@@ -210,6 +210,10 @@ namespace Microsoft.Azure.Commands.Network
                 var adminRuleModel = NetworkResourceManagerProfile.Mapper.Map<MNM.AdminRule>(securityAdminRule);
                 var adminRuleResponse = this.NetworkManagerSecurityAdminRuleOperationClient.CreateOrUpdate(adminRuleModel, this.ResourceGroupName, this.NetworkManagerName, this.SecurityAdminConfigurationName, this.RuleCollectionName, this.Name);
                 var psAdminRule = this.ToPSSecurityAdminRule(adminRuleResponse);
+                psAdminRule.ResourceGroupName = this.ResourceGroupName;
+                psAdminRule.NetworkManagerName = this.NetworkManagerName;
+                psAdminRule.SecurityAdminConfigurationName = this.SecurityAdminConfigurationName;
+                psAdminRule.RuleCollectionName = this.RuleCollectionName;
                 return psAdminRule;
             }
         }

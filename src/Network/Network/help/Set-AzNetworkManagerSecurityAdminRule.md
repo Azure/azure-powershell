@@ -13,8 +13,7 @@ Updates a network manager security admin rule.
 ## SYNTAX
 
 ```
-Set-AzNetworkManagerSecurityAdminRule -RuleCollectionName <String> -SecurityAdminConfigurationName <String>
- -NetworkManagerName <String> -ResourceGroupName <String>
+Set-AzNetworkManagerSecurityAdminRule
  -InputObject <PSNetworkManagerSecurityBaseAdminRule> [-AsJob] [-DefaultProfile <IAzureContextContainer>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -28,7 +27,7 @@ The **Set-AzNetworkManagerSecurityAdminRule** cmdlet updates a network manager s
 ```powershell
 $SecurityAdminRule = Get-AzNetworkManagerSecurityAdminRule  -Name "psRule" -RuleCollectionName "psRuleCollection" -SecurityAdminConfigurationName "psSecurityAdminConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup"
 $SecurityAdminRule.priority = 50
-Set-AzNetworkManagerSecurityAdminRule -RuleCollectionName "psRuleCollection" -SecurityAdminConfigurationName "psSecurityAdminConfig" -NetworkManagerName "psNetworkManager" -ResourceGroupName "psResourceGroup" -InputObject $SecurityAdminRule
+Set-AzNetworkManagerSecurityAdminRule -InputObject $SecurityAdminRule
 ```
 ```output
 Protocol                  : Tcp
@@ -106,66 +105,6 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
-```
-
-### -NetworkManagerName
-The network manager name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
-### -ResourceGroupName
-The resource group name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RuleCollectionName
-The network manager security admin rule collection name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
-```
-
-### -SecurityAdminConfigurationName
-The network manager security admin configuration name.
-
-```yaml
-Type: String
-Parameter Sets: (All)
-Aliases: ConfigName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: True
 ```
 
 ### -InputObject
