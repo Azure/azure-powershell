@@ -36,7 +36,7 @@ require:
   - $(this-folder)/../../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/kaushal087/azure-rest-api-specs/blob/nsp_powershell/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
+  - https://github.com/kaushal087/azure-rest-api-specs/blob/b829316a5b69c269d9588297b3737aaa42e736b0/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
 #  - C:\repo\azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -93,7 +93,6 @@ directive:
       subject: NetworkSecurityPerimeter
       parameter-name: Name
     set:
-      parameter-name: Name
       alias: 
         - SecurityPerimeterName
         - NSPName
@@ -176,6 +175,7 @@ directive:
       alias:
         - AssociationName
 
+# feature request for the below change https://github.com/Azure/autorest.powershell/issues/982
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('if (result.NextLink != null)', 'if (result.NextLink != null && result.NextLink != "")')

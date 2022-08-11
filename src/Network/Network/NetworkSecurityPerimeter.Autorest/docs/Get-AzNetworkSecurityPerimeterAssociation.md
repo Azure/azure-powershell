@@ -76,7 +76,8 @@ Gets a NetworkSecurityPerimeterAccessAssociation by Name
 ### Example 3: Gets a NetworkSecurityPerimeterAccessAssociation by identity (using pipe)
 ```powershell
 
- $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3     Get-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj
+ $GETObj = Get-AzNetworkSecurityPerimeterAssociation -Name association3 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
+ Get-AzNetworkSecurityPerimeterAssociation -InputObject $GETObj
 
 ```
 

@@ -77,7 +77,7 @@ Gets a NetworkSecurityPerimeterAccessRule by Name
 ```powershell
 
  Get-AzNetworkSecurityPerimeterAccessRule -Name ar3 -ProfileName profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
- $GETObjViaIdentity = Get-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj
+ Get-AzNetworkSecurityPerimeterAccessRule -InputObject $GETObj
 
 ```
 

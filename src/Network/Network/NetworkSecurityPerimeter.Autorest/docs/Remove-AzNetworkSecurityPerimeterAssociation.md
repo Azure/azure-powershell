@@ -37,9 +37,6 @@ Deletes an NSP association resource.
 
 ```
 
-```output
-
-```
 Deletes a NetworkSecurityPerimeterAccessAssociation by Name
 
 ### Example 2: Deletes a NetworkSecurityPerimeterAccessAssociation by identity (using pipe)
@@ -50,9 +47,6 @@ Deletes a NetworkSecurityPerimeterAccessAssociation by Name
 
 ```
 
-```output
-
-```
 Deletes a NetworkSecurityPerimeterAccessAssociation by identity (using pipe)
 
 ## PARAMETERS

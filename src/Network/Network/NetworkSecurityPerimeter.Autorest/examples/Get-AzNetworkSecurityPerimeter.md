@@ -45,7 +45,7 @@ Gets a NetworkSecurityPerimeter by Name
 ```powershell
 
  $GETObj = Get-AzNetworkSecurityPerimeter -Name nsp3 -ResourceGroupName ResourceGroup-1
- $GETObjViaIdentity = Get-AzNetworkSecurityPerimeter -InputObject $GETObj
+ Get-AzNetworkSecurityPerimeter -InputObject $GETObj
 
 ```
 

@@ -36,9 +36,6 @@ Deletes a network security perimeter.
 
 ```
 
-```output
-
-```
 Deletes a NetworkSecurityPerimeter by Name
 
 ### Example 2: Deletes a NetworkSecurityPerimeter by identity (using pipe)
@@ -49,9 +46,6 @@ Deletes a NetworkSecurityPerimeter by Name
 
 ```
 
-```output
-
-```
 Deletes a NetworkSecurityPerimeter by identity (using pipe)
 
 ## PARAMETERS
