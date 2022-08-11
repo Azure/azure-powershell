@@ -73,8 +73,9 @@ This example creates a Firewall that treats "99.99.99.0/24" and "66.66.0.0/16" a
 $exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
 New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ExplicitProxy $exProxy
 ```
+
 ```output
-		BasePolicy	                : null	
+BasePolicy	                : null	
 		DnsSettings  	            : null	
 		Etag	                    : null	
 		ExplicitProxy	
@@ -106,8 +107,9 @@ New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ExplicitProxy $exProxy
 		ThreatIntelMode	            : "Alert"	
 		ThreatIntelWhitelist	    : null	
 		TransportSecurity	        : null	
-		Type	                    : null	
+		Type	                    : null
 ```
+
 This example creates a firewall policy with explicit proxy settings
 
 ## PARAMETERS
@@ -461,4 +463,5 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [New-AzFirewallPolicyExplicitProxy](./New-AzFirewallPolicyExplicitProxy.md)

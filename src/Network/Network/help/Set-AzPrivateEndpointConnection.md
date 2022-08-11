@@ -14,16 +14,15 @@ Updates a private endpoint connection state on private link service.
 
 ### ByResourceId (Default)
 ```
-Set-AzPrivateEndpointConnection -ResourceId <String>
- -PrivateLinkServiceConnectionState <String> [-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzPrivateEndpointConnection -PrivateLinkServiceConnectionState <String> [-Description <String>]
+ -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Set-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String> [-PrivateLinkResourceType <String>]
- -PrivateLinkServiceConnectionState <String> [-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzPrivateEndpointConnection -Name <String> -PrivateLinkServiceConnectionState <String>
+ [-Description <String>] -ResourceGroupName <String> -ServiceName <String>
+ [-DefaultProfile <IAzureContextContainer>] [-PrivateLinkResourceType <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -92,11 +91,12 @@ The private link resource type.
 Type: System.String
 Parameter Sets: ByResource
 Aliases:
+Accepted values: Microsoft.ApiManagement/service, Microsoft.AppConfiguration/configurationStores, Microsoft.Attestation/attestationProviders, Microsoft.Authorization/resourceManagementPrivateLinks, Microsoft.Automation/automationAccounts, Microsoft.Batch/batchAccounts, Microsoft.Cache/Redis, Microsoft.Cache/redisEnterprise, Microsoft.CognitiveServices/accounts, Microsoft.Compute/diskAccesses, Microsoft.ContainerRegistry/registries, Microsoft.ContainerService/managedClusters, Microsoft.Databricks/workspaces, Microsoft.DataFactory/factories, Microsoft.DBforMariaDB/servers, Microsoft.DBforMySQL/servers, Microsoft.DBforPostgreSQL/servers, Microsoft.DesktopVirtualization/hostpools, Microsoft.DesktopVirtualization/workspaces, Microsoft.Devices/IotHubs, Microsoft.Devices/ProvisioningServices, Microsoft.DeviceUpdate/accounts, Microsoft.DigitalTwins/digitalTwinsInstances, Microsoft.DocumentDB/databaseAccounts, Microsoft.EventGrid/topics, Microsoft.EventGrid/domains, Microsoft.EventHub/namespaces, Microsoft.HealthcareApis/services, Microsoft.HDInsight/clusters, Microsoft.HybridCompute/privateLinkScopes, Microsoft.Insights/privateLinkScopes, Microsoft.KeyVault/vaults, Microsoft.Keyvault/managedHSMs, Microsoft.MachineLearningServices/workspaces, Microsoft.Media/mediaservices, Microsoft.Media/videoanalyzers, Microsoft.Migrate/assessmentProjects, Microsoft.Migrate/migrateProjects, Microsoft.Network/applicationgateways, Microsoft.Network/privateLinkServices, Microsoft.OffAzure/masterSites, Microsoft.PowerBI/privateLinkServicesForPowerBI, Microsoft.Purview/accounts, Microsoft.RecoveryServices/vaults, Microsoft.Relay/namespaces, Microsoft.Search/searchServices, Microsoft.ServiceBus/namespaces, Microsoft.SignalRService/signalr, Microsoft.SignalRService/webPubSub, Microsoft.Sql/servers, Microsoft.Storage/storageAccounts, Microsoft.StorageSync/storageSyncServices, Microsoft.Synapse/privateLinkHubs, Microsoft.Synapse/workspaces, Microsoft.Web/sites, Microsoft.Web/staticSites, Microsoft.Web/hostingEnvironments, Microsoft.BotService/botServices
 
 Required: False
 Position: Named
 Default value: 'Microsoft.Network/privateLinkServices'
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

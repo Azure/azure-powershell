@@ -12,23 +12,25 @@ Updates a CustomIpPrefix
 
 ## SYNTAX
 
-### UpdateByNameParameterSet
+### UpdateByNameParameterSet (Default)
 ```
-Update-AzCustomIpPrefix -Name <String> -ResourceGroupName <String> [-Commission] [-Decomission] [-Provision] [-Deprovision] [-Cidr <String>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+Update-AzCustomIpPrefix -Name <String> -ResourceGroupName <String> [-Commission] [-Decommission] [-Provision]
+ [-Deprovision] [-Cidr <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByInputObjectParameterSet
 ```
-Update-AzCustomIpPrefix -InputObject <PSCustomIpPrefix> [-Commission] [-Decomission] [-Provision] [-Deprovision] [-Cidr <String>] [-Tag <Hashtable>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCustomIpPrefix -InputObject <PSCustomIpPrefix> [-Commission] [-Decommission] [-Provision]
+ [-Deprovision] [-Cidr <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### UpdateByResourceIdParameterSet
 ```
-Update-AzCustomIpPrefix -ResourceId <String> [-Commission] [-Decomission] [-Provision] [-Deprovision] [-Cidr <String>] [-Tag <Hashtable>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Update-AzCustomIpPrefix -ResourceId <String> [-Commission] [-Decommission] [-Provision] [-Deprovision]
+ [-Cidr <String>] [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,7 +86,7 @@ The above command will update the cidr for the CustomIpPrefix. This would work o
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -92,6 +94,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Cidr
+The CIDR to update.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -99,7 +116,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -110,43 +127,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Decomission
-Run cmdlet in the background
+### -Decommission
+start decommissioning process.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Provision
-Run cmdlet in the background
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Deprovision
-Run cmdlet in the background
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases:
+Aliases: Decomission
 
 Required: False
 Position: Named
@@ -159,9 +146,24 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Deprovision
+Run cmdlet in the background
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named
@@ -174,8 +176,8 @@ Accept wildcard characters: False
 The CustomIpPrefix to set.
 
 ```yaml
-Type: PSCustomIpPrefix
-Parameter Sets: SetByInputObjectParameterSet
+Type: Microsoft.Azure.Commands.Network.Models.PSCustomIpPrefix
+Parameter Sets: UpdateByInputObjectParameterSet
 Aliases:
 
 Required: True
@@ -189,29 +191,29 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
-Parameter Sets: SetByNameParameterSet
+Type: System.String
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
-### -Cidr
-The CIDR to update.
+### -Provision
+Run cmdlet in the background
 
 ```yaml
-Type: String
-Parameter Sets: SetByNameParameterSet
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -219,38 +221,38 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
-Parameter Sets: SetByNameParameterSet
+Type: System.String
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
 The resource Id.
 
 ```yaml
-Type: String
-Parameter Sets: SetByResourceIdParameterSet
+Type: System.String
+Parameter Sets: UpdateByResourceIdParameterSet
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -Tag
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
-Parameter Sets: SetByNameParameterSet
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateByNameParameterSet
 Aliases:
 
 Required: False
@@ -261,8 +263,8 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: Hashtable
-Parameter Sets: SetByInputObjectParameterSet, SetByResourceIdParameterSet
+Type: System.Collections.Hashtable
+Parameter Sets: UpdateByInputObjectParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 
 Required: False
@@ -276,7 +278,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -292,7 +294,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 

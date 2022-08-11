@@ -1,0 +1,166 @@
+{
+  "Get-AzNetworkSecurityPerimeterAccessRule+[NoContext]+List+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules?api-version=2021-02-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules?api-version=2021-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "bcc897a1-7d67-4d0e-813a-ebf3f8a51783" ],
+        "CommandName": [ "Get-AzNetworkSecurityPerimeterAccessRule" ],
+        "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAccessRule_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "5caa107d-7fea-4cd8-976d-21b0bcab1a5e" ],
+        "x-ms-correlation-request-id": [ "5caa107d-7fea-4cd8-976d-21b0bcab1a5e" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20220806T120941Z:5caa107d-7fea-4cd8-976d-21b0bcab1a5e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 06 Aug 2022 12:09:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "965" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nextLink\":\"\",\"value\":[{\"name\":\"t-ar2\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules/t-ar2\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles/accessRules\",\"properties\":{\"provisioningState\":\"Succeeded\",\"direction\":\"Outbound\",\"addressPrefixes\":[],\"fullyQualifiedDomainNames\":[\"*\"],\"subscriptions\":[],\"networkSecurityPerimeters\":[]}},{\"name\":\"t-ar1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules/t-ar1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles/accessRules\",\"properties\":{\"provisioningState\":\"Succeeded\",\"direction\":\"Inbound\",\"addressPrefixes\":[\"10.10.0.0/16\"],\"fullyQualifiedDomainNames\":[],\"subscriptions\":[],\"networkSecurityPerimeters\":[]}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkSecurityPerimeterAccessRule+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules/t-ar1?api-version=2021-02-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules/t-ar1?api-version=2021-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "1400c0e7-fa98-45ac-a830-0b5ba6d0f90c" ],
+        "CommandName": [ "Get-AzNetworkSecurityPerimeterAccessRule" ],
+        "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAccessRule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "9dff81de-fd0f-4472-a57d-505516b2c316" ],
+        "x-ms-correlation-request-id": [ "9dff81de-fd0f-4472-a57d-505516b2c316" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20220806T120942Z:9dff81de-fd0f-4472-a57d-505516b2c316" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 06 Aug 2022 12:09:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "474" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"t-ar1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules/t-ar1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles/accessRules\",\"properties\":{\"provisioningState\":\"Succeeded\",\"direction\":\"Inbound\",\"addressPrefixes\":[\"10.10.0.0/16\"],\"fullyQualifiedDomainNames\":[],\"subscriptions\":[],\"networkSecurityPerimeters\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkSecurityPerimeterAccessRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules/t-ar1?api-version=2021-02-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules/t-ar1?api-version=2021-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "60b28c50-8d86-4dde-b6c7-095acc994a13" ],
+        "CommandName": [ "Get-AzNetworkSecurityPerimeterAccessRule" ],
+        "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAccessRule_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "37541603-df2b-4286-8409-73a6e4d10592" ],
+        "x-ms-correlation-request-id": [ "37541603-df2b-4286-8409-73a6e4d10592" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20220806T120943Z:37541603-df2b-4286-8409-73a6e4d10592" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 06 Aug 2022 12:09:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "474" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"t-ar1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules/t-ar1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles/accessRules\",\"properties\":{\"provisioningState\":\"Succeeded\",\"direction\":\"Inbound\",\"addressPrefixes\":[\"10.10.0.0/16\"],\"fullyQualifiedDomainNames\":[],\"subscriptions\":[],\"networkSecurityPerimeters\":[]}}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzNetworkSecurityPerimeterAccessRule+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules/t-ar1?api-version=2021-02-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules/t-ar1?api-version=2021-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "9" ],
+        "x-ms-client-request-id": [ "92685498-c1f0-4a0a-b04a-1ddaf01935ef" ],
+        "CommandName": [ "Get-AzNetworkSecurityPerimeterAccessRule" ],
+        "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAccessRule_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "90f0bb6c-ab63-420c-8898-b4aab00071ff" ],
+        "x-ms-correlation-request-id": [ "90f0bb6c-ab63-420c-8898-b4aab00071ff" ],
+        "x-ms-routing-request-id": [ "SOUTHINDIA:20220806T120944Z:90f0bb6c-ab63-420c-8898-b4aab00071ff" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sat, 06 Aug 2022 12:09:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "474" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"t-ar1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tmqcgt-nsp1/profiles/t-profile1/accessRules/t-ar1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles/accessRules\",\"properties\":{\"provisioningState\":\"Succeeded\",\"direction\":\"Inbound\",\"addressPrefixes\":[\"10.10.0.0/16\"],\"fullyQualifiedDomainNames\":[],\"subscriptions\":[],\"networkSecurityPerimeters\":[]}}",
+      "isContentBase64": false
+    }
+  }
+}

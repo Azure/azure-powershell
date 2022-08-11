@@ -1,0 +1,273 @@
+---
+external help file: Az.NetworkSecurityPerimeter.psm1-help.xml
+Module Name: Az.Network
+online version: https://docs.microsoft.com/powershell/module/az.networksecurityperimeter/new-aznetworksecurityperimeterprofile
+schema: 2.0.0
+---
+
+# New-AzNetworkSecurityPerimeterProfile
+
+## SYNOPSIS
+Creates or updates a network profile.
+
+## SYNTAX
+
+### CreateExpanded (Default)
+```
+New-AzNetworkSecurityPerimeterProfile -Name <String> -ResourceGroupName <String>
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] [-Location <String>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### Create
+```
+New-AzNetworkSecurityPerimeterProfile -Name <String> -ResourceGroupName <String>
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] -Parameter <INspProfileRequest>
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### CreateViaIdentityExpanded
+```
+New-AzNetworkSecurityPerimeterProfile -InputObject <INetworkSecurityPerimeterIdentity> [-Location <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+## DESCRIPTION
+Creates or updates a network profile.
+
+## EXAMPLES
+
+### Example 1: Creates a NetworkSecurityPerimeterProfile
+```powershell
+New-AzNetworkSecurityPerimeterProfile -Name profile1 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
+```
+
+```output
+Location    Name
+--------    ----
+eastus2euap profile1
+```
+
+Creates a NetworkSecurityPerimeterProfile
+
+### Example 2: Creates a NetworkSecurityPerimeterProfile
+```powershell
+New-AzNetworkSecurityPerimeterProfile -Name profile2 -ResourceGroupName ResourceGroup-1 -SecurityPerimeterName nsp3
+```
+
+```output
+Location    Name
+--------    ----
+eastus2euap profile2
+```
+
+Creates a NetworkSecurityPerimeterProfile
+
+## PARAMETERS
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
+Parameter Sets: CreateViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Location
+Resource location.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the NSP profile.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, Create
+Aliases: ProfileName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Parameter
+The network security perimeter profile resource
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspProfileRequest
+Parameter Sets: Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, Create
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SecurityPerimeterName
+The name of the network security perimeter.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, Create
+Aliases: NetworkSecurityPerimeterName, NSPName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The subscription credentials which uniquely identify the Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, Create
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### CommonParameters
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+
+## INPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspProfileRequest
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
+
+## OUTPUTS
+
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspProfile
+
+## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <INetworkSecurityPerimeterIdentity>`: Identity Parameter
+  - `[AccessRuleName <String>]`: The name of the NSP access rule.
+  - `[AssociationName <String>]`: The name of the NSP association.
+  - `[Id <String>]`: Resource identity path
+  - `[NetworkSecurityPerimeterName <String>]`: The name of the network security perimeter.
+  - `[ProfileName <String>]`: The name of the NSP profile.
+  - `[ResourceGroupName <String>]`: The name of the resource group.
+  - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+
+`PARAMETER <INspProfileRequest>`: The network security perimeter profile resource
+  - `[Location <String>]`: Resource location.
+  - `[Tag <IResourceRequestTags>]`: Resource tags.
+    - `[(Any) <String>]`: This indicates any property can be added to this object.
+
+## RELATED LINKS

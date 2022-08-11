@@ -14,8 +14,9 @@ Creates an Azure RouteServer.
 
 ```
 New-AzRouteServer -ResourceGroupName <String> -RouteServerName <String> -HostedSubnet <String>
- [-PublicIpAddress <PSPublicIpAddress>] -Location <String> [-Tag <Hashtable>] [-HubRoutingPreference <String>] [-Force] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PublicIpAddress <PSPublicIpAddress>] -Location <String> [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-HubRoutingPreference <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -95,6 +96,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -HubRoutingPreference
+Routing Preference to route traffic
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: ExpressRoute, VpnGateway, ASPath
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 The location.
 
@@ -167,21 +184,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -HubRoutingPreference
-Routing Preference to route traffic
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: ExpressRoute, VpnGateway, ASPath
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

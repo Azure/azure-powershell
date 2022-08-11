@@ -12,8 +12,9 @@ Creates a RoutingConfiguration object.
 
 ## SYNTAX
 
-```powershell
-New-AzRoutingConfiguration -AssociatedRouteTable <String> -Label <String[]> -Id <String[]> [-StaticRoute <PSStaticRoute[]>]  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+New-AzRoutingConfiguration -AssociatedRouteTable <String> -Label <String[]> -Id <String[]>
+ [-StaticRoute <PSStaticRoute[]>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -61,26 +62,11 @@ The above command will create a RoutingConfiguration object which can then be ad
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AssociatedRouteTable
 The hub route table associated with this routing configuration.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -91,11 +77,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Parameter Sets: (All)
+Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Id
 The list of resource ids of all the hub route tables to advertise the routes to for the PropagatedRouteTables property.
 
 ```yaml
-Type: String[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -110,8 +111,8 @@ Accept wildcard characters: False
 The list of labels for the PropagatedRouteTables property.
 
 ```yaml
-Type: String[]
-Parameter Sets: (all)
+Type: System.String[]
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -125,11 +126,11 @@ Accept wildcard characters: False
 List of routes that control routing from VirtualHub into a virtual network connection.
 
 ```yaml
-Type: PSStaticRoute[]
+Type: Microsoft.Azure.Commands.Network.Models.PSStaticRoute[]
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
