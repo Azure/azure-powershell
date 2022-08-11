@@ -123,7 +123,7 @@ This command moves a managed instance DNS alias DnsAlias1 from the previously so
 
 ### Example 4: Moves a previously fetched managed instance DNS alias to the target managed instance
 ```powershell
-$managedInstanceAlias = Get-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -DestInstanceName ManagedInstance1 -Name DnsAlias1
+$managedInstanceAlias = Get-AzSqlInstanceDnsAlias -ResourceGroupName ResourceGroup1 -InstanceName ManagedInstance1 -Name DnsAlias1
 Move-AzSqlInstanceDnsAlias -DestResourceGroupName ResourceGroup2 -DestInstanceName ManagedInstance2 -SourceInputObject $managedInstanceAlias
 ```
 
