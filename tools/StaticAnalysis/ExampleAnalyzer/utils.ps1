@@ -11,8 +11,8 @@
                     Get-NonExceptionRecord
                     Get-RecordsNotInAllowList
                     Measure-SectionMissingAndOutputScript
-                    Set-SingleScriptAndCodeMap
-                    Set-ScriptsIntoSingleScript
+                    Merge-Contents
+                    Merge-Scripts
                     Get-ScriptAnalyzerResult
                     Set-AnalysisOutput
                     Set-ExampleProperties
@@ -236,7 +236,7 @@ function Measure-SectionMissingAndOutputScript {
         [string]$Module,
         [string]$Cmdlet,
         [string]$MarkdownPath,
-        [string]$OutputFolder,
+        [string]$TempScriptPath,
         [int]$TotalLine
     )
     $missingSeverity = 1
@@ -362,7 +362,7 @@ function Measure-SectionMissingAndOutputScript {
             # Output example codes to "TempScript.ps1"
             if ($missingExampleCode -eq 0) {
                 if($line -ne 0){
-                    ($tempCodeMap, $TotalLine) = Set-SingleScriptAndCodeMap -Content $exampleCodes -Module $Module -Cmdlet $Cmdlet -Example $exampleNumber -TotalLine $TotalLine -OutputFolder $OutputFolder
+                    ($tempCodeMap, $TotalLine) = Merge-Contents -Content $exampleCodes -Module $Module -Cmdlet $Cmdlet -Example $exampleNumber -TotalLine $TotalLine -TempScriptPath $TempScriptPath
                     $codeMap += $tempCodeMap
                 }
             }
@@ -382,20 +382,19 @@ function Measure-SectionMissingAndOutputScript {
 
 <#
     .SYNOPSIS
-    Merge and set PowerShell scripts into one. 
+    Merge the example codes or scripts into one PowerShell script and generate the code map. 
 #>
-function Set-SingleScriptAndCodeMap {
+function Merge-Contents {
     param(
-        [string[]]$Content,
+        [string[]]$Contents,
         [string]$Module,
         [string]$Cmdlet,
         [int]$Example,
         [int]$TotalLine,
-        [string]$OutputFolder
+        [string]$TempScriptPath
     )
     $codeMap =@()
-    $line = $Content.Count
-    $tempScriptPath = "$OutputFolder\TempScript.ps1"
+    $line = $Contents.Count
     $functionHead = "function $Module"
     if($null -ne $Cmdlet){
         $functionHead += "-$Cmdlet"
@@ -404,9 +403,9 @@ function Set-SingleScriptAndCodeMap {
         $functionHead += "-$exampleNumber"
     }
     $functionHead += "{"
-    Add-Content -Path (Get-Item $tempScriptPath).FullName -Value $functionHead
-    Add-Content -Path (Get-Item $tempScriptPath).FullName -Value $Content
-    Add-Content -Path (Get-Item $tempScriptPath).FullName -Value "}"
+    Add-Content -Path (Get-Item $TempScriptPath).FullName -Value $functionHead
+    Add-Content -Path (Get-Item $TempScriptPath).FullName -Value $Contents
+    Add-Content -Path (Get-Item $TempScriptPath).FullName -Value "}"
     for($i = 0; $i -le $line + 1; $i++){
         $codeMap += @{
             TotalLine = $TotalLine + $i
@@ -422,13 +421,13 @@ function Set-SingleScriptAndCodeMap {
 
 <#
     .SYNOPSIS
-    Set PowerShell scripts into one and generate the code map. 
+    Merge PowerShell scripts into one and generate the code map. 
 #>
-function Set-ScriptsIntoSingleScript {
+function Merge-Scripts {
     param(
         [string]$ScriptPaths,
         [switch]$Recurse,
-        [string]$OutputFolder
+        [string]$TempScriptPath
     )
     $TotalLine = 1
     $codeMap = @()
@@ -436,7 +435,7 @@ function Set-ScriptsIntoSingleScript {
         if((Test-Path $_ -PathType Leaf) -and $_.FullName.EndsWith(".ps1")){
             $fileName = (Get-Item -Path $_.FullName).Name
             $scriptContent = Get-Content $_
-            ($tempCodeMap, $TotalLine) = Set-SingleScriptAndCodeMap -Content $scriptContent -Module $fileName -TotalLine $TotalLine -OutputFolder $OutputFolder
+            ($tempCodeMap, $TotalLine) = Merge-Contents -Content $scriptContent -Module $fileName -TotalLine $TotalLine -TempScriptPath $TempScriptPath
             $codeMap += $tempCodeMap  
         }
     }

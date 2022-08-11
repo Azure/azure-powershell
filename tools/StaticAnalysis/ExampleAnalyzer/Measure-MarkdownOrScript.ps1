@@ -7,10 +7,8 @@
     PowerShell script searching paths. Empty for current path. Supports wildcard.
     .PARAMETER RulePaths
     PSScriptAnalyzer custom rules paths. Empty for current path. Supports wildcard.
-    .PARAMETER MarkdownRecurse
-    To search markdowns recursively in the folders.
-    .PARAMETER ScriptRecurse
-    To search scripts recursively in the folders.
+    .PARAMETER Recurse
+    To search files recursively in the folders.
     .PARAMETER IncludeDefaultRules
     To analyze default rules provided by PSScriptAnalyzer.
     .PARAMETER OutputFolder
@@ -34,10 +32,7 @@ param (
     [AllowEmptyString()]
     [string[]]$ScriptPaths,
     [string[]]$RulePaths,
-    [Parameter(ParameterSetName = "Markdown")]
-    [switch]$MarkdownRecurse,
-    [Parameter(ParameterSetName = "Script")]
-    [switch]$ScriptRecurse,
+    [switch]$Recurse,
     [switch]$IncludeDefaultRules,
     [string]$OutputFolder = "$PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleAnalysis",
     [Parameter(ParameterSetName = "Markdown")]
@@ -51,26 +46,31 @@ $analysisResultsTable = @()
 $codeMap = @()
 $totalLine = 1
 
+$tempScript = "TempScript.ps1"
+$tempScriptMap = "TempScript.Map.csv"
+$TempScriptPath = "$OutputFolder\$tempScript"
+$TempScriptMapPath = "$OutputFolder\$tempScriptMap"
+
 # Clean caches, remove files in "output" folder
-Remove-Item $OutputFolder\TempScript.ps1 -ErrorAction SilentlyContinue
-Remove-Item $OutputFolder\TempCodeMap.csv -ErrorAction SilentlyContinue
+Remove-Item $TempScriptPath -ErrorAction SilentlyContinue
+Remove-Item $TempScriptMapPath -ErrorAction SilentlyContinue
 Remove-Item $PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleIssues.csv -ErrorAction SilentlyContinue
 Remove-Item $OutputFolder -ErrorAction SilentlyContinue
 # Create output folder and temp script
 $null = New-Item -ItemType Directory -Path $OutputFolder -ErrorAction SilentlyContinue
-$null = New-Item -ItemType File  $OutputFolder\TempScript.ps1
+$null = New-Item -ItemType File  $TempScriptPath
 
 # Find examples in "help\*.md", output ".ps1"
 if ($PSCmdlet.ParameterSetName -eq "Markdown") {
     # When the input $MarkdownPaths is the path of txt file contained markdown paths
-    if ($MarkdownPaths -cmatch ".*\.txt") {
+    if ((Test-Path $MarkdownPaths -PathType Leaf) -and $MarkdownPaths.EndsWith(".txt")) {
         $MarkdownPath = Get-Content $MarkdownPaths
     }
     # When the input $MarkdownPaths is the path of a folder
     else{
         $MarkdownPath = $MarkdownPaths
     }
-    foreach($_ in Get-ChildItem $MarkdownPath -Recurse:$MarkdownRecurse.IsPresent){
+    foreach($_ in Get-ChildItem $MarkdownPath -Recurse:$Recurse.IsPresent){
         # Filter the .md of overview in "\help\"
         if ((Get-Item -Path $_.FullName).Directory.Name -eq "help" -and $_.FullName -cmatch ".*\.md" -and $_.BaseName -cmatch "^[A-Z][a-z]+-([A-Z][a-z0-9]*)+$") {
             if((Get-Item -Path $_.FullName).Directory.Parent.Name -eq "netcoreapp3.1"){
@@ -85,22 +85,25 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
             }
             $cmdlet = $_.BaseName
             $result = Measure-SectionMissingAndOutputScript $module $cmdlet $_.FullName `
-                -OutputFolder $OutputFolder `
+                -TempScriptPath $TempScriptPath `
                 -TotalLine $totalLine
             $analysisResultsTable += $result.Errors
             $codeMap += $result.CodeMap
             $totalLine = $result.TotalLine
         }
     }
-    $codeMap| Export-Csv "$OutputFolder\TempCodeMap.csv" -NoTypeInformation
+    if(!$CleanScripts.IsPresent){
+       $codeMap| Export-Csv $TempScriptMapPath -NoTypeInformation 
+    }
 }
 
 # Analyze scripts
 if ($PSCmdlet.ParameterSetName -eq "Script" -or !$SkipAnalyzing.IsPresent) {
-    $TempScriptPath = "$OutputFolder\TempScript.ps1"
     if ($PSCmdlet.ParameterSetName -eq "Script"){
-        $codeMap = Set-ScriptsIntoSingleScript -ScriptPaths $ScriptPaths -Recurse:$ScriptRecurse.IsPresent -OutputFolder $OutputFolder
-        $codeMap| Export-Csv "$OutputFolder\TempCodeMap.csv" -NoTypeInformation
+        $codeMap = Merge-Scripts -ScriptPaths $ScriptPaths -Recurse:$Recurse.IsPresent -TempScriptPath $TempScriptPath
+        if(!$CleanScripts.IsPresent){
+            $codeMap| Export-Csv $TempScriptMapPath -NoTypeInformation 
+        }
     }
     # Read and analyze ".ps1" in \ScriptsByExample
     Write-Output "Analyzing file ..."
@@ -114,6 +117,6 @@ if ($PSCmdlet.ParameterSetName -eq "Script" -or !$SkipAnalyzing.IsPresent) {
 
 # Clean caches
 if ($CleanScripts.IsPresent) {
-    Remove-Item $OutputFolder\TempScript.ps1 -ErrorAction Continue
-    Remove-Item $OutputFolder\TempCodeMap.csv -ErrorAction Continue
+    Remove-Item $TempScriptPath -ErrorAction Continue
+    Remove-Item $OutputFolder -ErrorAction SilentlyContinue
 }
