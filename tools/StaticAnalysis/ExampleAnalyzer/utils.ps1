@@ -389,7 +389,7 @@ function Set-SingleScriptAndCodeMap {
         [string[]]$Content,
         [string]$Module,
         [string]$Cmdlet,
-        [string]$Example,
+        [int]$Example,
         [int]$TotalLine,
         [string]$OutputFolder
     )
@@ -412,7 +412,7 @@ function Set-SingleScriptAndCodeMap {
             TotalLine = $TotalLine + $i
             Module = $Module
             Cmdlet = $Cmdlet
-            Example = $exampleNumber
+            Example = $Example
             Line = $i
         }
     }
@@ -430,21 +430,15 @@ function Set-ScriptsIntoSingleScript {
         [switch]$Recurse,
         [string]$OutputFolder
     )
-    $ScriptFilesPaths = $ScriptPaths | Where-Object {Test-Path $_ -PathType Leaf}
-    if ($null -ne $ScriptFilesPaths) {
-        $ScriptFiles = Get-Item $ScriptFilesPaths
-    }
-    $ScriptFoldersPaths = $ScriptPaths | Where-Object {Test-Path $_ -PathType Container}
-    if ($null -ne $ScriptFoldersPaths) {
-        $ScriptFolders = @() + (Get-Item $ScriptFoldersPaths) + (Get-ChildItem $ScriptFoldersPaths -Recurse:$Recurse.IsPresent -Attributes Directory)
-    }
     $TotalLine = 1
     $codeMap = @()
-    @() + $ScriptFiles + $ScriptFolders | Where-Object {$_ -ne $null} | Foreach-Object {
-        $fileName = (Get-Item -Path $_.FullName).Name
-        $scriptContent = Get-Content $_
-        ($tempCodeMap, $TotalLine) = Set-SingleScriptAndCodeMap -Content $scriptContent -Module $fileName -TotalLine $TotalLine -OutputFolder $OutputFolder
-        $codeMap += $tempCodeMap
+    foreach($_ in Get-ChildItem $ScriptPaths -Recurse:$Recurse.IsPresent){
+        if((Test-Path $_ -PathType Leaf) -and $_.FullName.EndsWith(".ps1")){
+            $fileName = (Get-Item -Path $_.FullName).Name
+            $scriptContent = Get-Content $_
+            ($tempCodeMap, $TotalLine) = Set-SingleScriptAndCodeMap -Content $scriptContent -Module $fileName -TotalLine $TotalLine -OutputFolder $OutputFolder
+            $codeMap += $tempCodeMap  
+        }
     }
     return $codeMap
 }
