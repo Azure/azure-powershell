@@ -15,8 +15,8 @@
     Folder path storing output files.
     .PARAMETER SkipAnalyzing
     To skip analyzing step. Only extracting example codes from markdowns to the temp script.
-    .PARAMETER CleanScripts
-    To clean the temp script.
+    .PARAMETER NotCleanScripts
+    Do not clean the temp script.
     .NOTES
         File Name: Measure-MarkdownOrScript.ps1
 #>
@@ -37,7 +37,7 @@ param (
     [string]$OutputFolder = "$PSScriptRoot\..\..\..\artifacts\StaticAnalysisResults\ExampleAnalysis",
     [Parameter(ParameterSetName = "Markdown")]
     [switch]$SkipAnalyzing,
-    [switch]$CleanScripts
+    [switch]$NotCleanScripts
 )
 
 . $PSScriptRoot\utils.ps1
@@ -92,7 +92,7 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
             $totalLine = $result.TotalLine
         }
     }
-    if(!$CleanScripts.IsPresent){
+    if(!$NotCleanScripts.IsPresent){
        $codeMap| Export-Csv $TempScriptMapPath -NoTypeInformation 
     }
 }
@@ -101,7 +101,7 @@ if ($PSCmdlet.ParameterSetName -eq "Markdown") {
 if ($PSCmdlet.ParameterSetName -eq "Script" -or !$SkipAnalyzing.IsPresent) {
     if ($PSCmdlet.ParameterSetName -eq "Script"){
         $codeMap = Merge-Scripts -ScriptPaths $ScriptPaths -Recurse:$Recurse.IsPresent -TempScriptPath $TempScriptPath
-        if(!$CleanScripts.IsPresent){
+        if(!$NotCleanScripts.IsPresent){
             $codeMap| Export-Csv $TempScriptMapPath -NoTypeInformation 
         }
     }
@@ -116,7 +116,7 @@ if ($PSCmdlet.ParameterSetName -eq "Script" -or !$SkipAnalyzing.IsPresent) {
 }
 
 # Clean caches
-if ($CleanScripts.IsPresent) {
+if (!$NotCleanScripts.IsPresent) {
     Remove-Item $TempScriptPath -ErrorAction Continue
     Remove-Item $OutputFolder -ErrorAction SilentlyContinue
 }
