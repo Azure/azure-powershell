@@ -1,6 +1,6 @@
 ### Example 1: Create a new traffic collector
 ```powershell
-New-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroup test -location eastus
+New-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroupname test -location eastus
 ```
 
 ```output

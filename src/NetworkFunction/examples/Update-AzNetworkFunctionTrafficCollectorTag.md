@@ -1,6 +1,6 @@
 ### Example 1: Updates a traffic collector tag
 ```powershell
-Update-AzNetworkFunctionTrafficCollectorTag -azuretrafficcollectorname atc -resourcegroup rg1
+Update-AzNetworkFunctionTrafficCollectorTag -azuretrafficcollectorname atc -resourcegroupname rg1
 ```
 
 ```output

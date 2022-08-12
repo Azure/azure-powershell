@@ -1,6 +1,6 @@
 ### Example 1: Create a new traffic collector policy
 ```powershell
-New-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficcollectorname -atc -resourcegroup rg1 -location eastus
+New-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficcollectorname atc -resourcegroupname rg1 -location eastus
 ```
 
 ```output

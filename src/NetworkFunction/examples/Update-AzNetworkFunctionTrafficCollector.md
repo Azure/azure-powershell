@@ -1,6 +1,6 @@
 ### Example 1: Updates a traffic collector
 ```powershell
-Update-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroup test -location eastus
+Update-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroupname test -location eastus
 ```
 
 ```output

@@ -1,6 +1,6 @@
 ### Example 1: Delete a new traffic collector policy
 ```powershell
-Remove-AzNetworkFunctionCollectorPolicy -azuretrafficcollectorname atctestps -collectorpolicyname cp1 -resourcegroup test
+Remove-AzNetworkFunctionCollectorPolicy -azuretrafficcollectorname atctestps -collectorpolicyname cp1 -resourcegroupname test
 ```
 
 ```output
