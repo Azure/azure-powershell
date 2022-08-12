@@ -126,7 +126,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
                     name, typeof(string),
                     new Collection<Attribute>()
                     {
-                    new ParameterAttribute { Mandatory = false,
+                    new ParameterAttribute { Mandatory = true,
                                             ValueFromPipeline = true,
                                             HelpMessage = "The resource provider and resource type which supports private endpoint connection.",
                                             ParameterSetName = parameterSetName },

@@ -20,6 +20,37 @@
 
 ## Upcoming Release
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
+* Fixed required parameter `PrivateLinkResourceType` missing issue for the following cmdlets [#18655]
+    - `Get-AzPrivateEndpointConnection`
+    - `Set-AzPrivateEndpointConnection`
+    - `Remove-AzPrivateEndpointConnection`
+    - `Approve-AzPrivateEndpointConnection`
+    - `Deny-AzPrivateEndpointConnection`
+* Added breaking change attribute to notify that public ip address sku default behaviour will be changed
+    - `New-AzPublicIpAddress`
+    - `New-AzLoadBalancer`
+* Onboard Azure Virtual Network Manager Cmdlets
+    - `New/Get/Remove/Set-AzNetworkManager` 
+    - `New/Get/Remove/Set-AzNetworkManagerGroup` 
+    - `New/Get/Remove/Set-AzNetworkManagerConnectivityConfiguration` 
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityAdminConfiguration` 
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityAdminRule` 
+    - `Get-AzNetworkManagerActiveConnectivityConfiguration` 
+    - `Get-AzNetworkManagerActiveSecurityAdminRule` 
+    - `Get-AzNetworkManagerEffectiveConnectivityConfiguration` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRule` 
+    - `Deploy-AzNetworkManagerCommit` 
+    - `Get-AzNetworkManagerDeploymentStatus` 
+    - `New-AzNetworkManagerAddressPrefixItem` 
+    - `New-AzNetworkManagerScope` 
+    - `New-AzNetworkManagerSecurityGroupItem`
+    - `New-AzNetworkManagerHub` 
+    - `New-AzNetworkManagerConnectivityGroupItem`
+    - `New/Get/Remove-AzNetworkManagerStaticMember` 
+    - `New/Get/Remove/Set-AzNetworkManagerScopeConnection` 
+    - `New/Get/Remove/Set-AzNetworkManagerSubscriptionConnection` 
+    - `New/Get/Remove/Set-AzNetworkManagerManagementGroupConnection` 
 
 ## Version 4.19.0
 * Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.

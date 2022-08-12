@@ -11,6 +11,8 @@
                     Get-NonExceptionRecord
                     Get-RecordsNotInAllowList
                     Measure-SectionMissingAndOutputScript
+                    Merge-Contents
+                    Merge-Scripts
                     Get-ScriptAnalyzerResult
                     Set-AnalysisOutput
                     Set-ExampleProperties
@@ -234,8 +236,7 @@ function Measure-SectionMissingAndOutputScript {
         [string]$Module,
         [string]$Cmdlet,
         [string]$MarkdownPath,
-        [switch]$OutputScriptsInFile,
-        [string]$OutputFolder,
+        [string]$TempScriptPath,
         [int]$TotalLine
     )
     $missingSeverity = 1
@@ -358,27 +359,11 @@ function Measure-SectionMissingAndOutputScript {
                 }
             }
 
-            
             # Output example codes to "TempScript.ps1"
-            if ($OutputScriptsInFile.IsPresent -and $missingExampleCode -eq 0) {
-                $cmdletExamplesScriptPath = "$OutputFolder\TempScript.ps1"
-                $line = $exampleCodes.Count
+            if ($missingExampleCode -eq 0) {
                 if($line -ne 0){
-                    $functionHead = "function $Module-$Cmdlet-$exampleNumber{"
-                    Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionHead
-                    Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $exampleCodes
-                    $functionTail = "}"
-                    Add-Content -Path (Get-Item $cmdletExamplesScriptPath).FullName -Value $functionTail
-                    for($i = 0; $i -le $line + 1; $i++){
-                        $codeMap += @{
-                            TotalLine = $TotalLine + $i
-                            Module = $Module
-                            Cmdlet = $Cmdlet
-                            Example = $exampleNumber
-                            Line = $i
-                        }
-                    }
-                    $TotalLine = $TotalLine + $line + 2
+                    ($tempCodeMap, $TotalLine) = Merge-Contents -Content $exampleCodes -Module $Module -Cmdlet $Cmdlet -Example $exampleNumber -TotalLine $TotalLine -TempScriptPath $TempScriptPath
+                    $codeMap += $tempCodeMap
                 }
             }
         }
@@ -393,6 +378,68 @@ function Measure-SectionMissingAndOutputScript {
         CodeMap = $codeMap
         TotalLine = $TotalLine
     }
+}
+
+<#
+    .SYNOPSIS
+    Merge the example codes or scripts into one PowerShell script and generate the code map. 
+#>
+function Merge-Contents {
+    param(
+        [string[]]$Contents,
+        [string]$Module,
+        [string]$Cmdlet,
+        [int]$Example,
+        [int]$TotalLine,
+        [string]$TempScriptPath
+    )
+    $codeMap =@()
+    $line = $Contents.Count
+    $functionHead = "function $Module"
+    if($null -ne $Cmdlet){
+        $functionHead += "-$Cmdlet"
+    }
+    if($null -ne $exampleNumber){
+        $functionHead += "-$exampleNumber"
+    }
+    $functionHead += "{"
+    Add-Content -Path (Get-Item $TempScriptPath).FullName -Value $functionHead
+    Add-Content -Path (Get-Item $TempScriptPath).FullName -Value $Contents
+    Add-Content -Path (Get-Item $TempScriptPath).FullName -Value "}"
+    for($i = 0; $i -le $line + 1; $i++){
+        $codeMap += @{
+            TotalLine = $TotalLine + $i
+            Module = $Module
+            Cmdlet = $Cmdlet
+            Example = $Example
+            Line = $i
+        }
+    }
+    $TotalLine = $TotalLine + $line + 2
+    return ($codeMap, $TotalLine)
+}
+
+<#
+    .SYNOPSIS
+    Merge PowerShell scripts into one and generate the code map. 
+#>
+function Merge-Scripts {
+    param(
+        [string]$ScriptPaths,
+        [switch]$Recurse,
+        [string]$TempScriptPath
+    )
+    $TotalLine = 1
+    $codeMap = @()
+    foreach($_ in Get-ChildItem $ScriptPaths -Recurse:$Recurse.IsPresent){
+        if((Test-Path $_ -PathType Leaf) -and $_.FullName.EndsWith(".ps1")){
+            $fileName = (Get-Item -Path $_.FullName).Name
+            $scriptContent = Get-Content $_
+            ($tempCodeMap, $TotalLine) = Merge-Contents -Content $scriptContent -Module $fileName -TotalLine $TotalLine -TempScriptPath $TempScriptPath
+            $codeMap += $tempCodeMap  
+        }
+    }
+    return $codeMap
 }
 
 <#
@@ -430,12 +477,14 @@ function Set-AnalysisOutput {
 <#
     .SYNOPSIS
     Invoke PSScriptAnalyzer with custom rules, return the error set.
+    .PARAMETER RulePath
+    PSScriptAnalyzer custom rules path. Supports wildcard.
 #>
 function Get-ScriptAnalyzerResult {
     param (
         [string]$ScriptPath,
-        [Parameter(Mandatory, HelpMessage = "PSScriptAnalyzer custom rules path. Supports wildcard.")]
-        [string[]]$RulePath,
+        [Parameter(Mandatory)]
+        [string[]]$RulePaths,
         [switch]$IncludeDefaultRules,
         [Object[]]$CodeMap
     )
@@ -445,11 +494,11 @@ function Get-ScriptAnalyzerResult {
     }
     
     # Invoke PSScriptAnalyzer : input scriptblock, output error set in $result with property: RuleName, Message, Extent
-    if ($null -eq $RulePath) {
+    if ($null -eq $RulePaths) {
         $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
     }
     else {
-        $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -CustomRulePath $RulePath -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
+        $analysisResults = Invoke-ScriptAnalyzer -Path $ScriptPath -CustomRulePath $RulePaths -IncludeDefaultRules:$IncludeDefaultRules.IsPresent
     }
     $errors = @()
     foreach($analysisResult in $analysisResults){

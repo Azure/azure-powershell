@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Automation.Properties;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
-using Microsoft.Azure.Commands.Common.Compute.Version2016_04_preview.Models;
 using System;
 using System.Collections;
 using System.Collections.ObjectModel;
@@ -47,8 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             return result[0].ToString();
         }
-
-        public static PSObject Deserialize(string json)
+  public static PSObject Deserialize(string json)
         {
             if (string.IsNullOrEmpty(json))
             {
@@ -92,6 +90,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 {
                     return json;
                 }
+                
             }
 
         }
