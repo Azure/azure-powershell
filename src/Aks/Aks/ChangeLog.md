@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `-NodeResourceGroup` for `New-AzAksCluster`. [#19014]
 
 ## Version 4.2.1
 * Removed the warning messages for MSGraph migration [#18856]
