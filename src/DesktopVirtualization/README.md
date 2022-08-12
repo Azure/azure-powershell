@@ -93,7 +93,7 @@ directive:
       verb: Get
       subject: ActiveApplication
     remove: true
-   - where:      
+  - where:      
       verb: Remove
       parameter-name: Force
       subject: Updated description for clarity.
