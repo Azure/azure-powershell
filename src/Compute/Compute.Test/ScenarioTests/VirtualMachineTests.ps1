@@ -6562,6 +6562,9 @@ function Test-DEBUGConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
     }
 }
 
+<#
+WOrking on this one currently!!!
+#>
 function Test-DebuggingHSMCVMSetAzVmOsDiskDesIdDiskWithVMGuest
 {
     # Setup
@@ -6601,7 +6604,10 @@ function Test-DebuggingHSMCVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $region = $loc;
         #########this worked: az keyvault create --name $KeyVault --resource-group $resourceGroup --location $region --sku Premium --enable-purge-protection ;
         #########New-AzKeyVault -Name $KeyVault -Location $loc -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
-        $administrator = "37f6731d-0484-43e3-b7e2-1f1bbc562109";
+        
+        # Connect-AzureAD
+        # Get-AzureADUser -SearchString "Adam Sandor"
+        $administrator = "f90057dd-422f-49fc-a88f-91e965bc00c8";
         $hsmKVName = "hsm" + $kvname;
         New-AzKeyVaultManagedHsm -Name $hsmKVName -ResourceGroupName $rgname -Location $loc -Administrator $administrator;
         $hsmKV = Get-AzKeyVaultManagedHsm -ResourceGroupName $rgname -Name $hsmKVName;
@@ -6801,6 +6807,7 @@ function Test-ConfVMSetAzDiskSecurityProfile
         $KeySize = 3072;
         az keyvault key create --vault-name $kvname --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
         
+
         # Capture Keyvault and key details
         $keyvaultId = (Get-AzKeyVault -VaultName $kvName -ResourceGroupName $rgName).ResourceId;
         $keyUrl = (Get-AzKeyVaultKey -VaultName $kvName -KeyName $keyName).Key.Kid;
