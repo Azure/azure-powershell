@@ -286,7 +286,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         private bool? publishInternetEndpoint = null;
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             HelpMessage = "Enable Azure Files Active Directory Domain Service Kerberos Authentication for the storage account.",
             ParameterSetName = AzureActiveDirectoryKerberosForFileParameterSet)]
         [ValidateNotNullOrEmpty]
