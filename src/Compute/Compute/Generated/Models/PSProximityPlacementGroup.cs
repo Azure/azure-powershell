@@ -51,5 +51,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public string Location { get; set; }
         public IDictionary<string, string> Tags { get; set; }
 
+        //
+        // Summary:
+        //     Gets or sets specifies the user intent of the proximity placement group.
+        public ProximityPlacementGroupPropertiesIntent Intent { get; set; }
+
+        //
+        // Summary:
+        //     Gets or sets specifies the Availability Zone where virtual machine, virtual machine
+        //     scale set or availability set associated with the proximity placement group can
+        //     be created.
+        public IList<string> Zones { get; set; }
+
     }
 }
