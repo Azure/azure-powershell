@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://docs.microsoft.com/en-us/powershell/module/az.networkfunction/set-aznetworkfunctioncollectorpolicy
+online version: https://docs.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctioncollectorpolicy
 schema: 2.0.0
 ---
 
@@ -12,34 +12,13 @@ Creates or updates a Collector Policy resource
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
 ```
-Update-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
+Update-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -Name <String>
  -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
- [-EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]
- [-IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]
- [-IngestionPolicyIngestionType <IngestionType>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -CollectorPolicyName <String>
- -ResourceGroupName <String> -Location <String> -Parameters <ICollectorPolicy> [-SubscriptionId <String>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzNetworkFunctionCollectorPolicy -InputObject <ITrafficCollectorIdentity>
- -Parameters <ICollectorPolicy> [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzNetworkFunctionCollectorPolicy -InputObject <ITrafficCollectorIdentity>
- [-EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]
- [-IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]
- [-IngestionPolicyIngestionType <IngestionType>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-EmissionPolicy <IEmissionPoliciesPropertiesFormat[]>]
+ [-IngestionPolicyIngestionSource <IIngestionSourcesPropertiesFormat[]>]
+ [-IngestionPolicyIngestionType <IngestionType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -49,7 +28,7 @@ Creates or updates a Collector Policy resource
 
 ### Example 1: Update a traffic collector policy
 ```powershell
-Update-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficcollectorname -atc -resourcegroup rg1 -location eastus
+Update-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficcollectorname atc -resourcegroupname rg1 -location eastus
 ```
 
 ```output
@@ -86,7 +65,6 @@ Update-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficco
 
 This cmdlet updates a traffic collector policy.
 
-
 ## PARAMETERS
 
 ### -AsJob
@@ -109,7 +87,7 @@ Azure Traffic Collector name
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -119,43 +97,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CollectorPolicyName
-Collector Policy Name
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Location
-Resource location.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -EmissionPolicyList
+### -EmissionPolicy
 Emission policies.
-To construct, see NOTES section for EMISSIONPOLICIES properties and create a hash table.
+To construct, see NOTES section for EMISSIONPOLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.IEmissionPoliciesPropertiesFormat[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IEmissionPoliciesPropertiesFormat[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,13 +128,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IngestionPolicyIngestionSourceList
+### -IngestionPolicyIngestionSource
 Ingestion Sources.
-To construct, see NOTES section for INGESTIONPOLICYINGESTIONSOURCES properties and create a hash table.
+To construct, see NOTES section for INGESTIONPOLICYINGESTIONSOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.IIngestionSourcesPropertiesFormat[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IIngestionSourcesPropertiesFormat[]
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -186,7 +149,7 @@ The ingestion type.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Support.IngestionType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -196,19 +159,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -Location
+Resource location.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITrafficCollectorIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+Collector Policy Name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: CollectorPolicyName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -227,28 +204,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Parameters
-Collection policy resource.
-To construct, see NOTES section for PARAMETERS properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ICollectorPolicy
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -263,12 +224,27 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -309,13 +285,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ICollectorPolicy
-
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITrafficCollectorIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ICollectorPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ICollectorPolicy
 
 ## NOTES
 
@@ -326,29 +298,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-EMISSIONPOLICIES <IEmissionPoliciesPropertiesFormat[]>: Emission policies.
-  - `[EmissionDestinations <IEmissionPolicyDestination[]>]`: Emission policy destinations.
+EMISSIONPOLICY <IEmissionPoliciesPropertiesFormat[]>: Emission policies.
+  - `[EmissionDestination <IEmissionPolicyDestination[]>]`: Emission policy destinations.
     - `[DestinationType <DestinationType?>]`: Emission destination type.
   - `[EmissionType <EmissionType?>]`: Emission format type.
 
-INGESTIONPOLICYINGESTIONSOURCES <IIngestionSourcesPropertiesFormat[]>: Ingestion Sources.
+INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>: Ingestion Sources.
   - `[ResourceId <String>]`: Resource ID.
   - `[SourceType <SourceType?>]`: Ingestion source type.
 
-INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
-  - `[AzureTrafficCollectorName <String>]`: Azure Traffic Collector name
-  - `[CollectorPolicyName <String>]`: Collector Policy Name
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[SubscriptionId <String>]`: Azure Subscription ID.
-
-PARAMETERS <ICollectorPolicy>: Collection policy resource.
-  - `[EmissionPolicyList <IEmissionPoliciesPropertiesFormat[]>]`: Emission policies.
-    - `[EmissionDestinations <IEmissionPolicyDestination[]>]`: Emission policy destinations.
-      - `[DestinationType <DestinationType?>]`: Emission destination type.
-    - `[EmissionType <EmissionType?>]`: Emission format type.
-  - `[IngestionPolicyIngestionSourceList <IIngestionSourcesPropertiesFormat[]>]`: Ingestion Sources.
-    - `[ResourceId <String>]`: Resource ID.
-    - `[SourceType <SourceType?>]`: Ingestion source type.
-  - `[IngestionPolicyIngestionType <IngestionType?>]`: The ingestion type.
-
 ## RELATED LINKS
+

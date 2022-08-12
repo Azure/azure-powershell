@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://docs.microsoft.com/en-us/powershell/module/az.networkfunction/remove-aznetworkfunctiontrafficcollector
+online version: https://docs.microsoft.com/powershell/module/az.networkfunction/remove-aznetworkfunctiontrafficcollector
 schema: 2.0.0
 ---
 
@@ -15,13 +15,13 @@ Deletes a specified Azure Traffic Collector resource.
 ### Delete (Default)
 ```
 Remove-AzNetworkFunctionTrafficCollector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzNetworkFunctionTrafficCollector -InputObject <ITrafficCollectorIdentity> [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzNetworkFunctionTrafficCollector -InputObject <INetworkFunctionIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +31,7 @@ Deletes a specified Azure Traffic Collector resource.
 
 ### Example 1: Delete a new traffic collector
 ```powershell
-Remove-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroup SEA-Cust10
+Remove-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroupname SEA-Cust10
 ```
 
 ```output
@@ -40,7 +40,6 @@ Remove-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroup SEA-Cust
 ```
 
 This cmdlet deletes a traffic collector.
-
 
 ## PARAMETERS
 
@@ -59,12 +58,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITrafficCollectorIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -81,7 +95,7 @@ Azure Traffic Collector name
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: AzureTrafficCollectorName
 
 Required: True
 Position: Named
@@ -186,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITrafficCollectorIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 
 ## OUTPUTS
 
@@ -201,9 +215,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
+INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   - `[AzureTrafficCollectorName <String>]`: Azure Traffic Collector name
   - `[CollectorPolicyName <String>]`: Collector Policy Name
+  - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 

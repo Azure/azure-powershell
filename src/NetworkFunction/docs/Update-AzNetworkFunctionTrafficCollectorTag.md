@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://docs.microsoft.com/en-us/powershell/module/az.networkfunction/update-aznetworkfunctiontrafficcollectortag
+online version: https://docs.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctiontrafficcollectortag
 schema: 2.0.0
 ---
 
@@ -15,25 +15,14 @@ Updates the specified Azure Traffic Collector tags.
 ### UpdateExpanded (Default)
 ```
 Update-AzNetworkFunctionTrafficCollectorTag -AzureTrafficCollectorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Tags <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzNetworkFunctionTrafficCollectorTag -AzureTrafficCollectorName <String> -ResourceGroupName <String>
- -Parameters <ITagsObject> [-SubscriptionId <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzNetworkFunctionTrafficCollectorTag -InputObject <ITrafficCollectorIdentity> -Parameters <ITagsObject>
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzNetworkFunctionTrafficCollectorTag -InputObject <ITrafficCollectorIdentity> [-Tags <Hashtable>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzNetworkFunctionTrafficCollectorTag -InputObject <INetworkFunctionIdentity> [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,7 +32,7 @@ Updates the specified Azure Traffic Collector tags.
 
 ### Example 1: Updates a traffic collector tag
 ```powershell
-Update-AzNetworkFunctionTrafficCollectorTag -azuretrafficcollectorname atc -resourcegroup rg1
+Update-AzNetworkFunctionTrafficCollectorTag -azuretrafficcollectorname atc -resourcegroupname rg1
 ```
 
 ```output
@@ -73,10 +62,25 @@ Azure Traffic Collector name
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -88,24 +92,8 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITrafficCollectorIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Parameters
-Tags object for patch operations.
-To construct, see NOTES section for PARAMETERS properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITagsObject
-Parameter Sets: Update, UpdateViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -120,7 +108,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -135,7 +123,7 @@ Azure Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -145,12 +133,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tags
+### -Tag
 Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -196,13 +184,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITagsObject
-
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITrafficCollectorIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.IAzureTrafficCollector
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector
 
 ## NOTES
 
@@ -213,15 +199,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
+INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   - `[AzureTrafficCollectorName <String>]`: Azure Traffic Collector name
   - `[CollectorPolicyName <String>]`: Collector Policy Name
+  - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
-
-PARAMETERS <ITagsObject>: Tags object for patch operations.
-  - `[Tags <ITagsObjectTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
 
