@@ -82,13 +82,10 @@ Gets V2 (non-classic) metric alert rules
 Gets metric definitions.
 
 ### [Get-AzScheduledQueryRule](Get-AzScheduledQueryRule.md)
-Gets Scheduled Query Resources
+Retrieve an scheduled query rule definition.
 
 ### [Get-AzSubscriptionDiagnosticSetting](Get-AzSubscriptionDiagnosticSetting.md)
 Gets the active subscription diagnostic settings for the specified resource.
-
-### [Get-AzSubscriptionDiagnosticSettingCategory](Get-AzSubscriptionDiagnosticSettingCategory.md)
-Get diagnostic setting categories for subscription.
 
 ### [New-AzActionGroupObject](New-AzActionGroupObject.md)
 Create an in-memory object for ActionGroup.
@@ -129,9 +126,6 @@ Create a data collection rule.
 ### [New-AzDataCollectionRuleAssociation](New-AzDataCollectionRuleAssociation.md)
 Create data collection rule association.
 
-### [New-AzDiagnosticDetailSetting](New-AzDiagnosticDetailSetting.md)
-Create PSDiagnosticDetailSetting Object, type could be metric or log
-
 ### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
 Creates or updates diagnostic settings for the specified resource.
 
@@ -157,13 +151,19 @@ Creates a metric dimension filter that can be used to query metrics.
 Create an in-memory object for MetricSettings.
 
 ### [New-AzScheduledQueryRule](New-AzScheduledQueryRule.md)
-Creates a Log Alert Rule (Scheduled Query Rule type)
+Creates or updates a scheduled query rule.
 
 ### [New-AzScheduledQueryRuleAlertingAction](New-AzScheduledQueryRuleAlertingAction.md)
 Creates an object of type Alerting Action
 
 ### [New-AzScheduledQueryRuleAznsActionGroup](New-AzScheduledQueryRuleAznsActionGroup.md)
 Creates an object of type Azns Action Group
+
+### [New-AzScheduledQueryRuleConditionObject](New-AzScheduledQueryRuleConditionObject.md)
+Create an in-memory object for Condition.
+
+### [New-AzScheduledQueryRuleDimensionObject](New-AzScheduledQueryRuleDimensionObject.md)
+Create an in-memory object for Dimension.
 
 ### [New-AzScheduledQueryRuleLogMetricTrigger](New-AzScheduledQueryRuleLogMetricTrigger.md)
 Creates an object of type Log Metric Trigger.
@@ -217,7 +217,7 @@ Removes a log profile.
 Removes a V2 (non-classic) metric alert rule.
 
 ### [Remove-AzScheduledQueryRule](Remove-AzScheduledQueryRule.md)
-Removes a Log Alert Rule
+Deletes a scheduled query rule.
 
 ### [Remove-AzSubscriptionDiagnosticSetting](Remove-AzSubscriptionDiagnosticSetting.md)
 Deletes existing subscription diagnostic settings for the specified resource.
@@ -227,9 +227,6 @@ Creates a new or updates an existing action group.
 
 ### [Set-AzDataCollectionRule](Set-AzDataCollectionRule.md)
 Updates (full replacement) a data collection rule.
-
-### [Set-AzDiagnosticSetting](Set-AzDiagnosticSetting.md)
-Sets the logs and metrics settings for the resource.
 
 ### [Set-AzScheduledQueryRule](Set-AzScheduledQueryRule.md)
 Updates a Log Alert Rule
@@ -246,5 +243,5 @@ Updates a data collection rule tags property.
 Update for private link scope
 
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
-Updates a Log Alert rule
+Update a scheduled query rule.
 

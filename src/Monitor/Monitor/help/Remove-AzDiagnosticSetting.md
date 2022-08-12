@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-help.xml
+external help file: Az.DiagnosticSetting.psm1-help.xml
 Module Name: Az.Monitor
 online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azdiagnosticsetting
 schema: 2.0.0
@@ -14,7 +14,7 @@ Deletes existing diagnostic settings for the specified resource.
 
 ### Delete (Default)
 ```
-Remove-AzDiagnosticSetting -Name <String> [-ResourceId] <String> [-DefaultProfile <PSObject>] [-PassThru]
+Remove-AzDiagnosticSetting -Name <String> -ResourceId <String> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -109,7 +109,7 @@ Parameter Sets: Delete
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-Help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-help.xml
 Module Name: Az.Monitor
 online version: https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule
 schema: 2.0.0
@@ -8,47 +8,33 @@ schema: 2.0.0
 # Remove-AzScheduledQueryRule
 
 ## SYNOPSIS
-Removes a Log Alert Rule
+Deletes a scheduled query rule.
 
 ## SYNTAX
 
-### ByRuleName (Default)
+### Delete (Default)
 ```
-Remove-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
-### ByInputObject
-```
-Remove-AzScheduledQueryRule -InputObject <PSScheduledQueryRuleResource> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzScheduledQueryRule -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ByResourceId
+### DeleteViaIdentity
 ```
-Remove-AzScheduledQueryRule -ResourceId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzScheduledQueryRule -InputObject <IScheduledQueryRuleIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Removes a Log Alert Rule
+Deletes a scheduled query rule.
 
 ## EXAMPLES
 
-### Example 1: Remove by rule name
+### Example 1: Remove scheduled query rule
 ```powershell
-Remove-AzScheduledQueryRule -ResourceGroupName "MyResourceGroup" -Name "LogAlertRule1"
+Remove-AzScheduledQueryRule -ResourceGroupName "test-group" -Name "test-rule"
 ```
 
-### Example 2: Remove by input object
-```powershell
-Remove-AzScheduledQueryRule -InputObject $PSScheduledQueryRuleResource
-```
-
-### Example 3: Remove by resource Id
-```powershell
-Remove-AzScheduledQueryRule -ResourceId "/subscriptions/b67f7fec-69fc-4974-9099-a26bd6ffeda3/resourceGroups/MyResourceGroup/providers/Microsoft.Insights/scheduledQueryRules/LogAlertRule1"
-```
+Remove scheduled query rule
 
 ## PARAMETERS
 
@@ -56,9 +42,9 @@ Remove-AzScheduledQueryRule -ResourceId "/subscriptions/b67f7fec-69fc-4974-9099-
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -68,11 +54,12 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-The Scheduled Query Rule resource
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSScheduledQueryRuleResource
-Parameter Sets: ByInputObject
+Type: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -83,11 +70,11 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The alert name
+The name of the rule.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByRuleName
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -98,8 +85,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-Return a value indicating success or failure.
-This cmdlet does not generate any output.
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -114,11 +100,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The resource group name
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByRuleName
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -128,18 +115,18 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-The resource Id
+### -SubscriptionId
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceId
+Parameter Sets: Delete
 Aliases:
 
-Required: True
+Required: False
 Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -179,14 +166,25 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.Commands.Insights.OutputClasses.PSScheduledQueryRuleResource
-
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.Monitor.ScheduledQueryRule.Models.IScheduledQueryRuleIdentity
 
 ## OUTPUTS
 
 ### System.Boolean
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IScheduledQueryRuleIdentity>`: Identity Parameter
+  - `[Id <String>]`: Resource identity path
+  - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
+  - `[RuleName <String>]`: The name of the rule.
+  - `[SubscriptionId <String>]`: The ID of the target subscription.
 
 ## RELATED LINKS
