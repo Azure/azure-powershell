@@ -221,7 +221,6 @@ Creates a Storage account.
 ### [New-AzStorageAccountKey](New-AzStorageAccountKey.md)
 Regenerates a storage key for an Azure Storage account.
 
-<<<<<<< HEAD
 ### [New-AzStorageLocalUserPermissionScope](New-AzStorageLocalUserPermissionScope.md)
 Creates a permission scope object, which can be used in Set-AzStorageLocalUser.
 
@@ -230,10 +229,9 @@ Regenerate SSH password of a specified local user in a storage account.
 
 ### [New-AzStorageLocalUserSshPublicKey](New-AzStorageLocalUserSshPublicKey.md)
 Creates a SSH public key object, which can be used in Set-AzStorageLocalUser.
-=======
+
 ### [New-AzStorageAccountManagementPolicyBlobIndexMatchObject](New-AzStorageAccountManagementPolicyBlobIndexMatchObject.md)
 Creates a ManagementPolicy BlobIndexMatch object, which can be used in New-AzStorageAccountManagementPolicyFilter.
->>>>>>> 2a60e0f135d49aaa190a360967564e0db19dc852
 
 ### [New-AzStorageAccountManagementPolicyFilter](New-AzStorageAccountManagementPolicyFilter.md)
 Creates a ManagementPolicy rule filter object, which can be used in New-AzStorageAccountManagementPolicyRule.

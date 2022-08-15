@@ -112,6 +112,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// Azure DataLakeGen2 Item constructor
         /// </summary>
         /// <param name="pathClient">DataLakePathClient object</param>
+        /// <param name="fileSystem">File System object</param>
         public AzureDataLakeGen2Item(DataLakePathClient pathClient, DataLakeFileSystemClient fileSystem)
         {
             Name = pathClient.Name;
@@ -140,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Azure DataLakeGen2 Item constructor
         /// </summary>
-        /// <param name="blob">CloudBlockBlob blob object</param>
+        /// <param name="fileClient">Datalake gen2 file object</param>
         public AzureDataLakeGen2Item(DataLakeFileClient fileClient)
         {
             Name = fileClient.Name;
