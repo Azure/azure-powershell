@@ -31,13 +31,13 @@ Enumerate routes learned by a virtual router peer from other sources.
 
 ### Example 1
 ```powershell
-Get-AzVirtualRouterPeerLearnedRouter -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
+Get-AzVirtualRouterPeerLearnedRoute -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
 ```
 
 ### Example 2
 ```powershell
 $virtualRouterPeer = Get-AzVirtualRouterPeer -ResourceGroupName $resourceGroupName -VirtualRouterName $virtualRouterName -PeerName $peerName
-Get-AzVirtualRouterPeerLearnedRouter -InputObject $virtualRouterPeer
+Get-AzVirtualRouterPeerLearnedRoute -InputObject $virtualRouterPeer
 ```
 
 ## PARAMETERS

@@ -14,12 +14,8 @@
 
 using Microsoft.Azure.Commands.Common.Authentication;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
-using Microsoft.Azure.Commands.Sql.Common;
 using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Management.Sql;
-using Microsoft.Azure.Management.Sql.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -48,8 +44,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Services
         /// <summary>
         /// Creates a communicator for Managed instance
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlManagedInstanceCommunicator(IAzureContext context)
         {
             Context = context;

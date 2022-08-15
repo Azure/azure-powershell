@@ -37,6 +37,7 @@ The **Enable-AzStorageContainerDeleteRetentionPolicy** cmdlet enables delete ret
 ## EXAMPLES
 
 ### Example 1: Enable delete retention policy for Blob containers
+<!-- Skip: Output cannot be splitted from code -->
 ```
 C:\PS>Enable-AzStorageContainerDeleteRetentionPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -PassThru -RetentionDays 3
 

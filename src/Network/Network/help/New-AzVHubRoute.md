@@ -63,9 +63,10 @@ The above command will create a VHubRoute object with nextHop as the specified h
 
 
 ### Example 3
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-$hub = Get-AzVirtualHub -ResourceGroupName {rgname} -Name {virtual-hub-name}
-$hubVnetConn = Get-AzVirtualHubVnetConnection -ParentObject $hub -Name {connection-name}
+$hub = Get-AzVirtualHub -ResourceGroupName "rgname" -Name "virtual-hub-name"
+$hubVnetConn = Get-AzVirtualHubVnetConnection -ParentObject $hub -Name "connection-name"
 $hubVnetConn
 
 Name                   : conn_2

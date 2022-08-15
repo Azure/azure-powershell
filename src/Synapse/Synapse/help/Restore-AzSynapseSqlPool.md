@@ -72,7 +72,7 @@ $databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
 	-replace "sqlPools", "databases"
  
 # Get the latest restore point
-$restorePoint = $pool | Get-AzSynapseSqlPoolRestorePoint | Select -Last 1
+$restorePoint = $pool | Get-AzSynapseSqlPoolRestorePoint | Select-Object -Last 1
 
 # Restore to same workspace with source SQL pool
 $restoredPool = Restore-AzSynapseSqlPool -FromRestorePoint -RestorePoint $restorePoint.RestorePointCreationDate -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $databaseId -PerformanceLevel DW200c
@@ -117,7 +117,7 @@ $databaseId = $pool.Id -replace "Microsoft.Synapse", "Microsoft.Sql" `
 	-replace "sqlPools", "databases"
 
 # Get the latest restore point
-$restorePoint = $pool | Get-AzSynapseSqlPoolRestorePoint | Select -Last 1
+$restorePoint = $pool | Get-AzSynapseSqlPoolRestorePoint | Select-Object -Last 1
 
 # Restore to same workspace with source SQL pool
 $restoredPool = Restore-AzSynapseSqlPool -FromRestorePoint -RestorePoint $restorePoint.RestorePointCreationDate -TargetSqlPoolName ContosoRestoredSqlPool -ResourceGroupName $pool.ResourceGroupName -WorkspaceName $pool.WorkspaceName -ResourceId $databaseId -PerformanceLevel DW200c -Tag @{"tagName" = "tagValue"} -StorageAccountType LRS

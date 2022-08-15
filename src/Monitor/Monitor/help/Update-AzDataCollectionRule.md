@@ -78,7 +78,7 @@ This command updates the tags property for the given data collection rule.
 
 ### Example 2: Update data collection rule tags
 ```powershell
-Update-AzDataCollectionRule -RuleId '/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr'
+Update-AzDataCollectionRule -RuleId '/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/newDcr' `
                                    -Tag @{"tag1"="value1"; "tag2"="value2"}
 ```
 

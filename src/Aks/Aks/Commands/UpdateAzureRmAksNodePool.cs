@@ -16,6 +16,7 @@ using System;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Aks.Models;
 using Microsoft.Azure.Commands.Aks.Properties;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.ContainerService;
@@ -63,6 +64,9 @@ namespace Microsoft.Azure.Commands.Aks.Commands
 
         [Parameter(Mandatory = false, HelpMessage = "The number of nodes for the node pools.")]
         public int NodeCount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Will only upgrade the node image of agent pools.")]
+        public SwitchParameter NodeImageOnly { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
@@ -138,6 +142,22 @@ namespace Microsoft.Azure.Commands.Aks.Commands
                     if (this.IsParameterBound(c => c.NodeCount))
                     {
                         pool.Count = NodeCount;
+                    }
+
+                    if (this.IsParameterBound(c => c.NodeImageOnly))
+                    {
+                        if (this.IsParameterBound(c => c.KubernetesVersion))
+                        {
+                            throw new AzPSArgumentException(Resources.UpdateKubernetesVersionAndNodeImageOnlyConflict, "KubernetesVersion");
+                        }
+                        if (!ShouldProcess(Resources.ConfirmOnlyUpgradeNodeVersion, ""))
+                        {
+                            return;
+                        }
+
+                        var upgradedPool = Client.AgentPools.UpgradeNodeImageVersion(ResourceGroupName, ClusterName, Name);
+                        WriteObject(PSMapper.Instance.Map<PSNodePool>(upgradedPool));
+                        return;
                     }
 
                     var updatedPool = Client.AgentPools.CreateOrUpdate(ResourceGroupName, ClusterName, Name, pool);

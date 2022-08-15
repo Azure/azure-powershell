@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -92,14 +94,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).EncryptionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEncryptionDetails) content.GetValueForProperty("EncryptionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).EncryptionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.EncryptionDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).RolloverEncryptionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEncryptionDetails) content.GetValueForProperty("RolloverEncryptionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).RolloverEncryptionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.EncryptionDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).InternalIdentifier = (string) content.GetValueForProperty("InternalIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).InternalIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).BcdrState = (string) content.GetValueForProperty("BcdrState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).BcdrState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).CustomDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricSpecificDetails) content.GetValueForProperty("CustomDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).CustomDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.FabricSpecificDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).HealthErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).HealthErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).Health = (string) content.GetValueForProperty("Health",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).Health, global::System.Convert.ToString);
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("EncryptionDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).EncryptionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEncryptionDetails) content.GetValueForProperty("EncryptionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).EncryptionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.EncryptionDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RolloverEncryptionDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).RolloverEncryptionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEncryptionDetails) content.GetValueForProperty("RolloverEncryptionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).RolloverEncryptionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.EncryptionDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("InternalIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).InternalIdentifier = (string) content.GetValueForProperty("InternalIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).InternalIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("BcdrState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).BcdrState = (string) content.GetValueForProperty("BcdrState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).BcdrState, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).CustomDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricSpecificDetails) content.GetValueForProperty("CustomDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).CustomDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.FabricSpecificDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("HealthErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).HealthErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).HealthErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Health"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).Health = (string) content.GetValueForProperty("Health",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).Health, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -117,14 +143,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).EncryptionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEncryptionDetails) content.GetValueForProperty("EncryptionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).EncryptionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.EncryptionDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).RolloverEncryptionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEncryptionDetails) content.GetValueForProperty("RolloverEncryptionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).RolloverEncryptionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.EncryptionDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).InternalIdentifier = (string) content.GetValueForProperty("InternalIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).InternalIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).BcdrState = (string) content.GetValueForProperty("BcdrState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).BcdrState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).CustomDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricSpecificDetails) content.GetValueForProperty("CustomDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).CustomDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.FabricSpecificDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).HealthErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).HealthErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).Health = (string) content.GetValueForProperty("Health",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).Health, global::System.Convert.ToString);
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("EncryptionDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).EncryptionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEncryptionDetails) content.GetValueForProperty("EncryptionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).EncryptionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.EncryptionDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RolloverEncryptionDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).RolloverEncryptionDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IEncryptionDetails) content.GetValueForProperty("RolloverEncryptionDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).RolloverEncryptionDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.EncryptionDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("InternalIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).InternalIdentifier = (string) content.GetValueForProperty("InternalIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).InternalIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("BcdrState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).BcdrState = (string) content.GetValueForProperty("BcdrState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).BcdrState, global::System.Convert.ToString);
+            }
+            if (content.Contains("CustomDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).CustomDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricSpecificDetails) content.GetValueForProperty("CustomDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).CustomDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.FabricSpecificDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("HealthErrorDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).HealthErrorDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthErrorDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).HealthErrorDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("Health"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).Health = (string) content.GetValueForProperty("Health",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricPropertiesInternal)this).Health, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -132,7 +182,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="FabricProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="FabricProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

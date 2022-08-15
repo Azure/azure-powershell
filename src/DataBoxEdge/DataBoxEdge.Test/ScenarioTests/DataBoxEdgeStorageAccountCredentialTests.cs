@@ -17,36 +17,31 @@ using Xunit;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.DataBoxEdge.Test.ScenarioTests
 {
-    public class DataBoxEdgeStorageAccountCredentialTests : DataBoxEdgeScenarioTestBase
+    public class DataBoxEdgeStorageAccountCredentialTests : DataBoxEdgeTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public DataBoxEdgeStorageAccountCredentialTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataBoxEdgeStorageAccountCredentialTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingStorageAccountCredential()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger,
-                "Test-GetStorageAccountCredentialNonExistent");
+            TestRunner.RunTestScript("Test-GetStorageAccountCredentialNonExistent");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestCreateStorageAccountCredential()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-CreateStorageAccountCredential");
+            TestRunner.RunTestScript("Test-CreateStorageAccountCredential");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveStorageAccountCredential()
         {
-            DataBoxEdgeScenarioTestBase.NewInstance.RunPowerShellTest(_logger, "Test-RemoveStorageAccountCredential");
+            TestRunner.RunTestScript("Test-RemoveStorageAccountCredential");
         }
     }
 }

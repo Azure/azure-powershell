@@ -59,42 +59,42 @@ The **Remove-AzStorageAccountNetworkRule** cmdlet removes IpRules or VirtualNetw
 
 ### Example 1: Remove several IpRules with IPAddressOrRange
 ```
-PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -IPAddressOrRange "10.0.0.0/7,28.1.0.0/16"
+PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -IPAddressOrRange "10.0.0.0/7,28.1.0.0/16"
 ```
 
 This command remove several IpRules with IPAddressOrRange.
 
 ### Example 2: Remove a VirtualNetworkRule with VirtualNetworkRule Object input with JSON
 ```
-PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -VirtualNetworkRules (@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"})
+PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -VirtualNetworkRules (@{VirtualNetworkResourceId="/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1";Action="allow"})
 ```
 
 This command remove a VirtualNetworkRule with VirtualNetworkRule Object input with JSON.
 
 ### Example 3: Remove first IpRule with pipeline
 ```
-PS C:\>(Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount").IpRules[0] | Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount"
+PS C:\>(Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -Name "mystorageaccount").IpRules[0] | Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "myStorageAccount"
 ```
 
 This command remove first IpRule with pipeline.
 
 ### Example 4: Remove several VirtualNetworkRules with VirtualNetworkResourceID
 ```
-PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount" -VirtualNetworkResourceId "/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1","/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet2"
+PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount" -VirtualNetworkResourceId "/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1","/subscriptions/s1/resourceGroups/g1/providers/Microsoft.Network/virtualNetworks/vnet2/subnets/subnet2"
 ```
 
 This command remove several VirtualNetworkRules with VirtualNetworkResourceID.
 
 ### Example 5: Remove a resource access rule with TenantId and ResourceId.
 ```
-PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount"  -TenantId $tenantId -ResourceId $ResourceId
+PS C:\>Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount"  -TenantId $tenantId -ResourceId $ResourceId
 ```
 
 This command removes a resource access rule with TenantId and ResourceId.
 
 ### Example 6: Remove the first 3 resource access rules from a storage account
 ```
-PS C:\> (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -Name "mystorageaccount").ResourceAccessRules | Select-Object -First 3 | Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -AccountName "mystorageaccount"
+PS C:\> (Get-AzStorageAccountNetworkRuleSet -ResourceGroupName "myResourceGroup" -Name "mystorageaccount").ResourceAccessRules | Select-Object -First 3 | Remove-AzStorageAccountNetworkRule -ResourceGroupName "myResourceGroup" -Name "mystorageaccount"
 ```
 
 This command removes the first 3 resource access rules from a storage account.

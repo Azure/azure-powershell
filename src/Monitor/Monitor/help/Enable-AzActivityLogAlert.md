@@ -46,7 +46,7 @@ This command enables the activity log alert called alert1 in the resource group 
 
 ### Example 2: Enable an activity log alert using a PSActivityLogAlertResource object as input
 ```powershell
-$obj = Get-AzActivityLogAlert -ResourceGroup "Default-activityLogAlerts" -Name "alert1"
+$obj = Get-AzActivityLogAlert -ResourceGroupName "Default-activityLogAlerts" -Name "alert1"
 Enable-AzActivityLogAlert -InputObject $obj
 ```
 

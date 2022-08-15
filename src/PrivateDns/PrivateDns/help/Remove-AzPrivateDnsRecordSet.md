@@ -44,22 +44,22 @@ The Remove-AzPrivateDnsRecordSet cmdlet deletes the specified record set from th
 
 ### Example 1: Remove a record set
 ```powershell
- $RecordSet = Get-AzPrivateDnsRecordSet -Name "www" -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
- Remove-AzPrivateDnsRecordSet -RecordSet $RecordSet
+$RecordSet = Get-AzPrivateDnsRecordSet -Name "www" -ResourceGroupName "MyResourceGroup" -ZoneName "myzone.com"
+Remove-AzPrivateDnsRecordSet -RecordSet $RecordSet
 ```
 
 The first command gets the specified record set, and then stores it in the $RecordSet variable.The second command removes the record set in $RecordSet.
 
 ### Example 2: Remove a record set and suppress all confirmation
 ```powershell
- $RecordSet = Get-AzPrivateDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup"
- Remove-AzPrivateDnsRecordSet -RecordSet $RecordSet -Confirm:$False -Overwrite
+$RecordSet = Get-AzPrivateDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup"
+Remove-AzPrivateDnsRecordSet -RecordSet $RecordSet -Confirm:$False -Overwrite
 
 # Alternatively, the record set can be removed as follows.  In this case,
 # because the record set is specified by name rather than by object, the
 # Overwrite parameter is not applicable.
 
- Remove-AzPrivateDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Confirm:$False
+Remove-AzPrivateDnsRecordSet -Name "www" -ZoneName "myzone.com" -ResourceGroupName "MyResourceGroup" -Confirm:$False
 ```
 
 The first command gets the specified record set. The second command deletes the record set, even if it has changed in the meantime. Confirmation prompts are suppressed.

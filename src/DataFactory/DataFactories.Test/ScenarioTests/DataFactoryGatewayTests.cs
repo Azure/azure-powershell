@@ -12,27 +12,23 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.DataFactories.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.DataFactories.Test
 {
-    public class DataFactoryGatewayTests : DataFactoriesScenarioTestsBase
+    public class DataFactoryGatewayTests : DataFactoriesTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public DataFactoryGatewayTests(Xunit.Abstractions.ITestOutputHelper output)
+        public DataFactoryGatewayTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact(Skip = "test takes too long (more than 5 sec)")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetNonExistingDataFactoryGateway()
         {
-            RunPowerShellTest(_logger, "Test-GetNonExistingDataFactoryGateway");
+            TestRunner.RunTestScript("Test-GetNonExistingDataFactoryGateway");
         }
 
 #if NETSTANDARD
@@ -44,7 +40,7 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactoryGateway()
         {
-            RunPowerShellTest(_logger, "Test-DataFactoryGateway");
+            TestRunner.RunTestScript("Test-DataFactoryGateway");
         }
 
 #if NETSTANDARD
@@ -56,14 +52,14 @@ namespace Microsoft.Azure.Commands.DataFactories.Test
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDataFactoryGatewayAuthKey()
         {
-            RunPowerShellTest(_logger, "Test-DataFactoryGatewayAuthKey");
+            TestRunner.RunTestScript("Test-DataFactoryGatewayAuthKey");
         }
 
         [Fact(Skip = "test takes too long (more than 5 sec)")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateDataFactoryGatewayWithDataFactoryParameter()
         {
-            RunPowerShellTest(_logger, "Test-DataFactoryGatewayWithDataFactoryParameter");
+            TestRunner.RunTestScript("Test-DataFactoryGatewayWithDataFactoryParameter");
         }
     }
 }

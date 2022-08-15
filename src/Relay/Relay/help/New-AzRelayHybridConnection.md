@@ -33,7 +33,7 @@ The New-AzRelayHybridConnection cmdlet creates a HybridConnection in the specifi
 
 ### Example 1 - InputObject
 ```powershell
-$getHybirdConnection = Get-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-HybirdConnection -Name TestHybirdConnection1
+$getHybirdConnection = Get-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-HybirdConnection -Name TestHybirdConnection1
 $getHybirdConnection.UserMetadata = "TestHybirdConnection2"
 $getHybirdConnection.RequiresClientAuthorization = $False
 New-AzRelayHybridConnection -ResourceGroupName Default-Storage-WestUS -Namespace TestNameSpace-HybirdConnection -Name TestHybirdConnection2 -InputObject $getHybirdConnection

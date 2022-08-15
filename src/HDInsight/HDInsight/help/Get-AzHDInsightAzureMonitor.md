@@ -40,7 +40,7 @@ The **Get-AzHDInsightAzureMonitor** cmdlet gets the azure monitor status of a sp
 # Cluster info
 $clusterName = "your-hadoop-001"
 $resourceGroupName = "Group"
-Get-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroup $resourceGroupName
+Get-AzHDInsightAzureMonitor -ClusterName $clusterName -ResourceGroupName $resourceGroupName
 ```
 
 This cmdlet gets the azure monitor status of a specified HDInsight cluster.

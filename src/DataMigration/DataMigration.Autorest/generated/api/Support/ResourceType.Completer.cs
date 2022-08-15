@@ -34,6 +34,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Support
             {
                 yield return new global::System.Management.Automation.CompletionResult("'SqlVm'", "SqlVm", global::System.Management.Automation.CompletionResultType.ParameterValue, "SqlVm");
             }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SqlDb".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SqlDb'", "SqlDb", global::System.Management.Automation.CompletionResultType.ParameterValue, "SqlDb");
+            }
         }
     }
 }

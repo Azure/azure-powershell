@@ -1,0 +1,41 @@
+{
+  "Update-AzMLServiceQuota+[NoContext]+UpdateExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/updateQuotas?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MachineLearningServices/locations/eastus/updateQuotas?api-version=2022-05-01",
+      "Content": "{\r\n  \"value\": [ ]\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "20" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-02" ],
+        "x-request-time": [ "0.282" ],
+        "x-ms-request-id": [ "ac116107-e55c-4cfa-801a-1a554634f7ac" ],
+        "x-ms-correlation-request-id": [ "ac116107-e55c-4cfa-801a-1a554634f7ac" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T144445Z:ac116107-e55c-4cfa-801a-1a554634f7ac" ],
+        "Date": [ "Sun, 05 Jun 2022 14:44:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "17" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"value\": []\n}",
+      "isContentBase64": false
+    }
+  }
+}

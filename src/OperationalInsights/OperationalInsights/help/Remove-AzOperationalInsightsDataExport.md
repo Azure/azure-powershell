@@ -38,7 +38,7 @@ Deletes a data export for a given worksace
 
 ### Example 1
 ```powershell
-Remove-AzOperationalInsightsDataExport -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -DataExportName {dataExportName}
+Remove-AzOperationalInsightsDataExport -ResourceGroupName "rg-name" -WorkspaceName "workspace-name" -DataExportName "dataExportName"
 ```
 
 removed data export

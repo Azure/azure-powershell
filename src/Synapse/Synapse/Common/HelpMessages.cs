@@ -64,6 +64,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string TenantId = "Select the tenant Id to use when signing in into the Azure DevOps Git repository.";
 
+        public const string LastCommitId = "The last published commit Id.";
+
         public const string DoNotAssignManagedIdentity = "Do not assign the workspace's system-assigned managed identity CONTROL permissions to SQL pools for pipeline integration.";
 
         public const string SparkPoolName = "Name of Synapse Spark pool.";
@@ -90,7 +92,7 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string AutoPauseDelayInMinute = "Number of minutes idle. This parameter can be specified when Auto-pause is enabled. If it is not specified manually, the default value will be " + SynapseConstants.DefaultAutoPauseDelayInMinute + ".";
 
-        public const string SparkVersion = "Apache Spark version. Allowed values: 2.4";
+        public const string SparkVersion = "Apache Spark version. Allowed values: 2.3,2.4,3.1,3.2";
 
         public const string LibraryRequirementsFilePath = "Environment configuration file (\"PIP freeze\" output).";
 
@@ -227,6 +229,18 @@ namespace Microsoft.Azure.Commands.Synapse.Common
         public const string DisplayName = "Specifies the display name of the user or group for whom to grant permissions. This display name must exist in the active directory associated with the current subscription.";
 
         public const string ObjectId = "Specifies the object ID of the user or group in Azure Active Directory for which to grant permissions.";
+
+        public const string LinkConnectionName = "Name of link connection.";
+
+        public const string MaxSegmentCount = "Max segment count to query table status.";
+
+        public const string SasToken = "Landing zone's sas token.";
+
+        public const string EditTablesRequestFile = "Specifies a local file path for a file to edit link tables";
+
+        public const string LinkTableContinuationToken = "Continuation token to query table status.";
+
+        public const string LinkConnectionObject = "The information about the link connection.";
 
         // TODO: need to update to Synapse link in future
         public const string AuditActionGroup =

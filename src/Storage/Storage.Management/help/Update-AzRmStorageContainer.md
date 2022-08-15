@@ -54,12 +54,13 @@ This command disables public access on a Storage blob container with Storage acc
 
 ### Example 3: Set public access as Blob for all Storage blob containers in a Storage account with pipeline
 ```
-PS C:\>Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Update-AzRmStorageContainer -PublicAccess Blob
+PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Update-AzRmStorageContainer -PublicAccess Blob
 ```
 
 This command set public access as Blob for all Storage blob containers in a Storage account with pipeline.
 
 ### Example 4: Update an Azure storage container with RootSquash
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $container = Update-AzRmStorageContainer -ResourceGroupName "myersourcegroup" -AccountName "mystorageaccount" -Name "mycontainer" -RootSquash NoRootSquash
 

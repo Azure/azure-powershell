@@ -26,9 +26,9 @@ Provide the path to a certificate file to upload.
 ## EXAMPLES
 
 ### Example 1: Create a new certificate
-```
-PS C:\>$Password = ConvertTo-SecureString -String "Password" -AsPlainText -Force
-PS C:\> New-AzAutomationCertificate -AutomationAccountName "Contoso17" -Name "ContosoCertificate" -Path "./cert.pfx" -Password $Password -ResourceGroupName "ResourceGroup01"
+```powershell
+$Password = ConvertTo-SecureString -String "Password" -AsPlainText -Force
+New-AzAutomationCertificate -AutomationAccountName "Contoso17" -Name "ContosoCertificate" -Path "./cert.pfx" -Password $Password -ResourceGroupName "ResourceGroup01"
 ```
 
 The first command converts a plain text password to be a secure string by using the ConvertTo-SecureString cmdlet.

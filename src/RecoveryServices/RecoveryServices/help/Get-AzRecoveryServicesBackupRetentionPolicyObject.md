@@ -45,7 +45,7 @@ $retentionPolicy = Get-AzRecoveryServicesBackupRetentionPolicyObject -WorkloadTy
 $retentionPolicy.DailySchedule.DurationCountInDays = 10
 ```
 
-The first command gets a base hourly **RetentionPolicy** object, and then stores it in the $retentionPolicy variable.
+The first command gets a base hourly **RetentionPolicy** object, and then stores it in the $retentionPolicy variable. Similarly the retention hourly policy can be fetched for enhanced hourly schedule for other workloads.
 The second command sets the retention duration for daily recovery points to 10 days.
 
 ## PARAMETERS

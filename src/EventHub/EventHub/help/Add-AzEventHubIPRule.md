@@ -32,7 +32,7 @@ Add a single IP rule to the NetworkRuleSet of the given Namespace
 
 ### Example 1
 ```powershell
-Add-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -IpMask "11.22.33.44" -Action Allow
+Add-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-2389 -IpMask "11.22.33.44" -Action Allow
 ```
 
 ```output
@@ -47,7 +47,7 @@ add the IPRule with IpMask "11.22.33.44" and Action Allow for the given namespac
 
 ### Example 2
 ```powershell
-Add-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -IpRuleObject $ipruleobject
+Add-AzEventHubIPRule -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-2389 -IpRuleObject $ipruleobject
 ```
 
 ```output

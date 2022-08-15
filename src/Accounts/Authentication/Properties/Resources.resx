@@ -361,4 +361,16 @@
   <data name="FailedToMigrateAdal2Msal" xml:space="preserve">
     <value>INITIALIZATION: Failed to migrate ADAL token to MSAL token with error : {0}</value>
   </data>
+  <data name="HelpMessageOfDefaultSubscriptionForLogin" xml:space="preserve">
+    <value>Subscription name or GUID. Sets the default context for Azure PowerShell when logging in without specifying a subscription.</value>
+  </data>
+  <data name="HelpMessageOfEnableInterceptSurvey" xml:space="preserve">
+    <value>When enabled, you are prompted infrequently to participate in user experience surveys for Azure PowerShell.</value>
+  </data>
+  <data name="HelpMessageOfDisplayBreakingChangeWarnings" xml:space="preserve">
+    <value>Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.</value>
+  </data>
+  <data name="HelpMessageOfEnableDataCollection" xml:space="preserve">
+    <value>When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the customer experience. For more information, see our privacy statement: https://aka.ms/privacy</value>
+  </data>
 </root>

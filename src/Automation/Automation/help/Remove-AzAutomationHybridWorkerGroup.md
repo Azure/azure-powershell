@@ -27,7 +27,7 @@ The Remove-AzAutomationHybridWorkerGroup cmdlet removes a hybrid worker group fr
 This command removes a hybrid worker by name.
 
 ```powershell
-PS C:\> Remove-AzAutomationHybridWorkerGroup -ResourceGroupName "rg1" `
+Remove-AzAutomationHybridWorkerGroup -ResourceGroupName "rg1" `
                                                   -AutomationAccountName "devAccount" `
                                                   -Name "GroupName"
 ```

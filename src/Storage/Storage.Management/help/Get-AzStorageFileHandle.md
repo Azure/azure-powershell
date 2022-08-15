@@ -49,6 +49,7 @@ The **Get-AzStorageFileHandle** cmdlet lists file handles of a  file share, or f
 ## EXAMPLES
 
 ### Example 1: List all file handles on a file share recursively, and sort by ClientIp and OpenTime
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Recursive | Sort-Object ClientIP,OpenTime 
 
@@ -65,6 +66,7 @@ HandleId    Path                  ClientIp       ClientPort OpenTime            
 This command lists file handles on a file share, and sort the output by ClientIp, then by OpenTime.
 
 ### Example 2: List first 2 file handles on a file directory recursively
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2'  -Recursive -First 2
 
@@ -77,6 +79,7 @@ HandleId    Path      ClientIp       ClientPort OpenTime             LastReconne
 This command lists first 2 file handles on a file directory recursively .
 
 ### Example 3: List the 3rd to the 6th file handles on a file
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Get-AzStorageFileHandle -ShareName "mysharename" -Path 'dir1/dir2/test.txt' -skip 2 -First 4 
 

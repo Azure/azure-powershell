@@ -1,4 +1,18 @@
-﻿using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Model;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,6 +99,8 @@ namespace Microsoft.Azure.Commands.Sql.ServerTrustCertificate.Services
         /// <summary>
         /// Convert a Management.Sql.Models.ServerTrustCertificate to AzureSqlInstanceServerTrustCertificateModel
         /// </summary>
+        /// <param name="resourceGroupName">The resource group the managed instance is in</param>
+        /// <param name="instanceName">The name of the managed instance</param>
         /// <param name="serverTrustCertificate">The management client server trust certificate response to convert</param>
         /// <returns>The converted server trust certificate model</returns>
         private static AzureSqlInstanceServerTrustCertificateModel CreateServerTrustCertificateModelFromResponse(string resourceGroupName, string instanceName, Management.Sql.Models.ServerTrustCertificate serverTrustCertificate)

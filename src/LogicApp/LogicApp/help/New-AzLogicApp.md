@@ -75,7 +75,7 @@ The logic app includes the definition and parameters specified by file paths.
 
 ### Example 2: Create a logic app by using definition and parameter objects
 ```powershell
-New-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -Location "westus" -State "Enabled" -Definition [IO.File]::ReadAllText("d:\Workflows\Definition.json") -Parameters @{name1="value1";name2="value2"}
+New-AzLogicApp -ResourceGroupName "ResourceGroup11" -Name "LogicApp05" -Location "westus" -State "Enabled" -Definition ([IO.File]::ReadAllText("d:\Workflows\Definition.json")) -Parameters @{name1="value1";name2="value2"}
 ```
 
 ```output

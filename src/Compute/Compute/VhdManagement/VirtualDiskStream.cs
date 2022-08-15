@@ -116,6 +116,14 @@ namespace Microsoft.WindowsAzure.Commands.Tools.Vhd
             get { return this.vhdFile.DiskType; }
         }
 
+        public long FixedSizeLength
+        {
+            get
+            {
+                return blockFactory.GetFooterRange().EndIndex + 1;
+            }
+        }
+
         public DiskType RootDiskType
         {
             get

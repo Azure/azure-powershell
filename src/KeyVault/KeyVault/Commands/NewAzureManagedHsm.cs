@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.KeyVault.Models;
 using Microsoft.Azure.Commands.KeyVault.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.KeyVault.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 using System;
@@ -86,6 +87,11 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
         public int SoftDeleteRetentionInDays { get; set; }
 
         [Parameter(Mandatory = false,
+            HelpMessage = "Controls permission for data plane traffic coming from public networks while private endpoint is enabled.")]
+        [PSArgumentCompleter("Enabled", "Disabled")]
+        public string PublicNetworkAccess { get; set; }
+
+        [Parameter(Mandatory = false,
             HelpMessage = "specifying whether protection against purge is enabled for this managed HSM pool. The setting is effective only if soft delete is also enabled. Enabling this functionality is irreversible.")]
         public SwitchParameter EnablePurgeProtection { get; set; }
 
@@ -124,7 +130,10 @@ namespace Microsoft.Azure.Commands.KeyVault.Commands
                             ? SoftDeleteRetentionInDays
                             : Constants.DefaultSoftDeleteRetentionDays,
                     // false is not accepted
-                    EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null, 
+                    EnablePurgeProtection = this.EnablePurgeProtection.IsPresent ? true : (bool?)null,
+                    // use default network rule set
+                    MhsmNetworkAcls = new MHSMNetworkRuleSet(),
+                    PublicNetworkAccess = this.PublicNetworkAccess
                 };
 
                 this.WriteObject(KeyVaultManagementClient.CreateNewManagedHsm(vaultCreationParameter, GraphClient));

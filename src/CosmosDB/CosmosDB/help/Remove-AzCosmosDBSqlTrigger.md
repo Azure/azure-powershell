@@ -32,7 +32,7 @@ The **Remove-AzCosmosDBSqlTrigger** cmdlet deletes the CosmosDB Sql Trigger corr
 
 ### Example 1
 ```powershell
-Remove-AzCosmosDBSqlTrigger -ResourceGroupName {resourceGroupName} -AccountName {accountName} -DatabaseName {databaseName} -ContainerName {containerName} -Name {triggerName}
+Remove-AzCosmosDBSqlTrigger -ResourceGroupName "resourceGroupName" -AccountName "accountName" -DatabaseName "databaseName" -ContainerName "containerName" -Name "triggerName"
 ```
 
 ## PARAMETERS

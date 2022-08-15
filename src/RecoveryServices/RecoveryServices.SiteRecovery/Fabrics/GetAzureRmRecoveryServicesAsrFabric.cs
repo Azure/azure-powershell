@@ -152,7 +152,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// <summary>
         ///     Write Powershell Fabric.
         /// </summary>
-        /// <param name="server">Fabric object</param>
+        /// <param name="fabric">Fabric object</param>
         private void WriteFabric(
             Fabric fabric)
         {

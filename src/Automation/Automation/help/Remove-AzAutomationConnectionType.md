@@ -30,8 +30,8 @@ It can have additional fields.
 ## EXAMPLES
 
 ### Example 1: Remove a connection type
-```
-PS C:\>Remove-AzAutomationConnectionType -AutomationAccountName "Contoso17" -Name "ContosoConnectionType" -ResourceGroupName "ResourceGroup01"
+```powershell
+Remove-AzAutomationConnectionType -AutomationAccountName "Contoso17" -Name "ContosoConnectionType" -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes a connection type named ContosoConnectionType in the Automation account named Contoso17.

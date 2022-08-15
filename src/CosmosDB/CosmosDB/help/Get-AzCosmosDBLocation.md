@@ -23,6 +23,7 @@ List Azure Cosmos DB locations with their location properties. It includes Locat
 ## EXAMPLES
 
 ### Example 1: Get Azure Cosmos DB Account Location Properties for Given Location
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Get-AzCosmosDBLocation -Location "Central US"
 
@@ -49,6 +50,7 @@ Get-AzCosmosDBLocation -Location "Central US" | ConvertTo-Json
 ```
 
 ### Example 2: List Azure Cosmos DB Account Locations and their properties
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 Get-AzCosmosDBLocation
 

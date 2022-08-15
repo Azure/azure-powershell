@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="VMNicDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="VMNicDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -104,24 +106,78 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).NicId = (string) content.GetValueForProperty("NicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).NicId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReplicaNicId = (string) content.GetValueForProperty("ReplicaNicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReplicaNicId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SourceNicArmId = (string) content.GetValueForProperty("SourceNicArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SourceNicArmId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).VMNetworkName = (string) content.GetValueForProperty("VMNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).VMNetworkName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryVMNetworkId = (string) content.GetValueForProperty("RecoveryVMNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryVMNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).IPConfig = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigDetails[]) content.GetValueForProperty("IPConfig",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).IPConfig, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPConfigDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SelectionType = (string) content.GetValueForProperty("SelectionType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SelectionType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNetworkSecurityGroupId = (string) content.GetValueForProperty("RecoveryNetworkSecurityGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNetworkSecurityGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery = (bool?) content.GetValueForProperty("EnableAcceleratedNetworkingOnRecovery",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoVMNetworkId = (string) content.GetValueForProperty("TfoVMNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoVMNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoNetworkSecurityGroupId = (string) content.GetValueForProperty("TfoNetworkSecurityGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoNetworkSecurityGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnTfo = (bool?) content.GetValueForProperty("EnableAcceleratedNetworkingOnTfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnTfo, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicName = (string) content.GetValueForProperty("RecoveryNicName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicResourceGroupName = (string) content.GetValueForProperty("RecoveryNicResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReuseExistingNic = (bool?) content.GetValueForProperty("ReuseExistingNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReuseExistingNic, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicName = (string) content.GetValueForProperty("TfoRecoveryNicName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicResourceGroupName = (string) content.GetValueForProperty("TfoRecoveryNicResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoReuseExistingNic = (bool?) content.GetValueForProperty("TfoReuseExistingNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoReuseExistingNic, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("NicId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).NicId = (string) content.GetValueForProperty("NicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).NicId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReplicaNicId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReplicaNicId = (string) content.GetValueForProperty("ReplicaNicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReplicaNicId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceNicArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SourceNicArmId = (string) content.GetValueForProperty("SourceNicArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SourceNicArmId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMNetworkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).VMNetworkName = (string) content.GetValueForProperty("VMNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).VMNetworkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryVMNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryVMNetworkId = (string) content.GetValueForProperty("RecoveryVMNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryVMNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IPConfig"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).IPConfig = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigDetails[]) content.GetValueForProperty("IPConfig",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).IPConfig, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPConfigDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SelectionType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SelectionType = (string) content.GetValueForProperty("SelectionType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SelectionType, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryNetworkSecurityGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNetworkSecurityGroupId = (string) content.GetValueForProperty("RecoveryNetworkSecurityGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNetworkSecurityGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnableAcceleratedNetworkingOnRecovery"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery = (bool?) content.GetValueForProperty("EnableAcceleratedNetworkingOnRecovery",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("TfoVMNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoVMNetworkId = (string) content.GetValueForProperty("TfoVMNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoVMNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoNetworkSecurityGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoNetworkSecurityGroupId = (string) content.GetValueForProperty("TfoNetworkSecurityGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoNetworkSecurityGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnableAcceleratedNetworkingOnTfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnTfo = (bool?) content.GetValueForProperty("EnableAcceleratedNetworkingOnTfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnTfo, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RecoveryNicName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicName = (string) content.GetValueForProperty("RecoveryNicName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryNicResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicResourceGroupName = (string) content.GetValueForProperty("RecoveryNicResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReuseExistingNic"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReuseExistingNic = (bool?) content.GetValueForProperty("ReuseExistingNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReuseExistingNic, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("TfoRecoveryNicName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicName = (string) content.GetValueForProperty("TfoRecoveryNicName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoRecoveryNicResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicResourceGroupName = (string) content.GetValueForProperty("TfoRecoveryNicResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoReuseExistingNic"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoReuseExistingNic = (bool?) content.GetValueForProperty("TfoReuseExistingNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoReuseExistingNic, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -139,24 +195,78 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).NicId = (string) content.GetValueForProperty("NicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).NicId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReplicaNicId = (string) content.GetValueForProperty("ReplicaNicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReplicaNicId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SourceNicArmId = (string) content.GetValueForProperty("SourceNicArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SourceNicArmId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).VMNetworkName = (string) content.GetValueForProperty("VMNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).VMNetworkName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryVMNetworkId = (string) content.GetValueForProperty("RecoveryVMNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryVMNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).IPConfig = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigDetails[]) content.GetValueForProperty("IPConfig",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).IPConfig, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPConfigDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SelectionType = (string) content.GetValueForProperty("SelectionType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SelectionType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNetworkSecurityGroupId = (string) content.GetValueForProperty("RecoveryNetworkSecurityGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNetworkSecurityGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery = (bool?) content.GetValueForProperty("EnableAcceleratedNetworkingOnRecovery",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoVMNetworkId = (string) content.GetValueForProperty("TfoVMNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoVMNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoNetworkSecurityGroupId = (string) content.GetValueForProperty("TfoNetworkSecurityGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoNetworkSecurityGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnTfo = (bool?) content.GetValueForProperty("EnableAcceleratedNetworkingOnTfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnTfo, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicName = (string) content.GetValueForProperty("RecoveryNicName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicResourceGroupName = (string) content.GetValueForProperty("RecoveryNicResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReuseExistingNic = (bool?) content.GetValueForProperty("ReuseExistingNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReuseExistingNic, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicName = (string) content.GetValueForProperty("TfoRecoveryNicName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicResourceGroupName = (string) content.GetValueForProperty("TfoRecoveryNicResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoReuseExistingNic = (bool?) content.GetValueForProperty("TfoReuseExistingNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoReuseExistingNic, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            if (content.Contains("NicId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).NicId = (string) content.GetValueForProperty("NicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).NicId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReplicaNicId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReplicaNicId = (string) content.GetValueForProperty("ReplicaNicId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReplicaNicId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceNicArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SourceNicArmId = (string) content.GetValueForProperty("SourceNicArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SourceNicArmId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMNetworkName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).VMNetworkName = (string) content.GetValueForProperty("VMNetworkName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).VMNetworkName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryVMNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryVMNetworkId = (string) content.GetValueForProperty("RecoveryVMNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryVMNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IPConfig"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).IPConfig = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigDetails[]) content.GetValueForProperty("IPConfig",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).IPConfig, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IPConfigDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("SelectionType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SelectionType = (string) content.GetValueForProperty("SelectionType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).SelectionType, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryNetworkSecurityGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNetworkSecurityGroupId = (string) content.GetValueForProperty("RecoveryNetworkSecurityGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNetworkSecurityGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnableAcceleratedNetworkingOnRecovery"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery = (bool?) content.GetValueForProperty("EnableAcceleratedNetworkingOnRecovery",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnRecovery, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("TfoVMNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoVMNetworkId = (string) content.GetValueForProperty("TfoVMNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoVMNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoNetworkSecurityGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoNetworkSecurityGroupId = (string) content.GetValueForProperty("TfoNetworkSecurityGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoNetworkSecurityGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("EnableAcceleratedNetworkingOnTfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnTfo = (bool?) content.GetValueForProperty("EnableAcceleratedNetworkingOnTfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).EnableAcceleratedNetworkingOnTfo, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RecoveryNicName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicName = (string) content.GetValueForProperty("RecoveryNicName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryNicResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicResourceGroupName = (string) content.GetValueForProperty("RecoveryNicResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).RecoveryNicResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ReuseExistingNic"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReuseExistingNic = (bool?) content.GetValueForProperty("ReuseExistingNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).ReuseExistingNic, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("TfoRecoveryNicName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicName = (string) content.GetValueForProperty("TfoRecoveryNicName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoRecoveryNicResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicResourceGroupName = (string) content.GetValueForProperty("TfoRecoveryNicResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoRecoveryNicResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoReuseExistingNic"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoReuseExistingNic = (bool?) content.GetValueForProperty("TfoReuseExistingNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetailsInternal)this).TfoReuseExistingNic, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
             AfterDeserializePSObject(content);
         }
     }

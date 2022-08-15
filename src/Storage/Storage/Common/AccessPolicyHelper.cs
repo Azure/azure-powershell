@@ -37,6 +37,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <param name="startTime">start time of the policy</param>
         /// <param name="expiryTime">end time of the policy</param>
         /// <param name="permission">the permission of the policy</param>
+        /// <param name="noStartTime"></param>
+        /// <param name="noExpiryTime"></param>
         internal static void SetupAccessPolicy<T>(T policy, DateTime? startTime, DateTime? expiryTime, string permission, bool noStartTime = false, bool noExpiryTime = false)
         {
             if (!(typeof(T) == typeof(SharedAccessTablePolicy) ||

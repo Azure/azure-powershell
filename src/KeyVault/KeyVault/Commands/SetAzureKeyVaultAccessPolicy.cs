@@ -204,13 +204,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ByObjectId,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.")]
+            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions. Its value is in the format of GUID.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByObjectId,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.")]
+            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions. Its value is in the format of GUID.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ResourceIdByObjectId,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.")]
+            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions. Its value is in the format of GUID.")]
         [ValidateNotNullOrEmpty()]
         public string ObjectId { get; set; }
 
@@ -282,7 +282,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdByEmailAddress,
             HelpMessage = "Specifies key operation permissions to grant to a user or service principal.")]
-        [ValidateSet("all", "decrypt", "encrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore", "recover", "purge")]
+        [PSArgumentCompleter("all", "decrypt", "encrypt", "unwrapKey", "wrapKey", "verify", "sign", "get", "list", "update", "create", "import", "delete", "backup", "restore", "recover", "purge", "rotate")]
         public string[] PermissionsToKeys { get; set; }
 
         /// <summary>
@@ -324,7 +324,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdByEmailAddress,
             HelpMessage = "Specifies secret operation permissions to grant to a user or service principal.")]
-        [ValidateSet("all", "get", "list", "set", "delete", "backup", "restore", "recover", "purge")]
+        [PSArgumentCompleter("all", "get", "list", "set", "delete", "backup", "restore", "recover", "purge")]
         public string[] PermissionsToSecrets { get; set; }
 
         /// <summary>
@@ -366,7 +366,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdByEmailAddress,
             HelpMessage = "Specifies certificate operation permissions to grant to a user or service principal.")]
-        [ValidateSet("all", "get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "recover", "purge", "backup", "restore")]
+        [PSArgumentCompleter("all", "get", "list", "delete", "create", "import", "update", "managecontacts", "getissuers", "listissuers", "setissuers", "deleteissuers", "manageissuers", "recover", "purge", "backup", "restore")]
         public string[] PermissionsToCertificates { get; set; }
 
         /// <summary>
@@ -408,7 +408,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdByEmailAddress,
             HelpMessage = "Specifies managed storage account and sas definition  operation permissions to grant to a user or service principal.")]
-        [ValidateSet("all", "get", "list", "delete", "set", "update", "regeneratekey", "getsas", "listsas", "deletesas", "setsas", "recover", "backup", "restore", "purge")]
+        [PSArgumentCompleter("all", "get", "list", "delete", "set", "update", "regeneratekey", "getsas", "listsas", "deletesas", "setsas", "recover", "backup", "restore", "purge")]
         public string[] PermissionsToStorage { get; set; }
 
         [Parameter(Mandatory = false,
@@ -466,8 +466,6 @@ namespace Microsoft.Azure.Commands.KeyVault
 
         public override void ExecuteCmdlet()
         {
-            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
-
             if (InputObject != null)
             {
                 VaultName = InputObject.VaultName;

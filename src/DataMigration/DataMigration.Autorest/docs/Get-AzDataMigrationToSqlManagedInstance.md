@@ -32,8 +32,10 @@ Retrieve the specified database migration for a given SQL Managed Instance.
 
 ### Example 1: Get the details of a given Database Migration to a SQL Managed Instance
 ```powershell
-PS C:\> Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase"
+Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase"
+```
 
+```output
 Name               Type                                       Kind  ProvisioningState MigrationStatus
 ----               ----                                       ----  ----------------- ---------------
 MyDatabase         Microsoft.DataMigration/databaseMigrations SqlMi Succeeded         Succeeded
@@ -43,9 +45,11 @@ This command gets the details of a given Database Migration to a SQL Managed Ins
 
 ### Example 2: Get the expanded details of a given Database Migration to a SQL Managed Instance
 ```powershell
-PS C:\> $miMigration = Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase" -Expand MigrationStatusDetails
-PS C:\> $miMigration.MigrationStatusDetail
+$miMigration = Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase" -Expand MigrationStatusDetails
+$miMigration.MigrationStatusDetail
+```
 
+```output
 BlobContainerName                    CompleteRestoreErrorMessage CurrentRestoringFilename          FileUploadBlockingError 
 -----------------                    --------------------------- ------------------------          ----------------------- 
 2673894b-451c-41cv-ae2b-58a8eefe3546                             AdventureWorks.bak                         
@@ -71,7 +75,7 @@ Accept wildcard characters: False
 ```
 
 ### -Expand
-The child resources to include in the response.
+Complete migration details be included in the response.
 
 ```yaml
 Type: System.String
@@ -203,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlMi
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi
 
 ## NOTES
 
@@ -218,6 +222,7 @@ INPUTOBJECT <IDataMigrationIdentity>: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ManagedInstanceName <String>]`: 
   - `[ResourceGroupName <String>]`: Name of the resource group that contains the resource. You can obtain this value from the Azure Resource Manager API or the portal.
+  - `[SqlDbInstanceName <String>]`: 
   - `[SqlMigrationServiceName <String>]`: Name of the SQL Migration Service.
   - `[SqlVirtualMachineName <String>]`: 
   - `[SubscriptionId <String>]`: Subscription ID that identifies an Azure subscription.

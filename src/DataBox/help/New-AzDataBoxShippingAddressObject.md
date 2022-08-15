@@ -25,8 +25,7 @@ Create an in-memory object for ShippingAddress.
 
 ### Example 1: Shipping Address object 
 ```powershell
-$ShippingDetails = New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
-$ShippingDetails
+New-AzDataBoxShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 ```
 
 ```output

@@ -216,10 +216,10 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
                 parameter.Identity.Type = FindIdentity(identityType);
 
-                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+                /*if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
                 {
                     parameter.Identity.UserAssignedIdentities = null;
-                }
+                }*/
             }
 
             if (identityIds != null)
@@ -236,9 +236,13 @@ namespace Microsoft.Azure.Commands.ServiceBus
                 {
                     parameter.Identity.UserAssignedIdentities = UserAssignedIdentities;
                 }
-                if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+                if (identityIds.Length == 0)
                 {
-                    throw new Exception("Please change -IdentityType to 'UserAssigned' or 'SystemAssigned, UserAssigned' if you want to add User Assigned Identities");
+                    parameter.Identity.UserAssignedIdentities = null;
+                }
+                else if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
+                {
+                    throw new Exception("Please change -IdentityType to UserAssigned or 'SystemAssigned, UserAssigned' if you want to add User Assigned Identities");
                 }
             }
 
@@ -313,6 +317,83 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
         #endregion
 
+        #region PrivateEndpoints
+
+        public PSServiceBusPrivateEndpointConnectionAttributes UpdatePrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName, string connectionState, string description = null)
+        {
+            var privateEndpointConnection = Client.PrivateEndpointConnections.Get(resourceGroupName, namespaceName, privateEndpointName);
+
+            if (connectionState != null)
+            {
+                privateEndpointConnection.PrivateLinkServiceConnectionState.Status = connectionState;
+            }
+
+            if (description != null)
+            {
+                privateEndpointConnection.PrivateLinkServiceConnectionState.Description = description;
+            }
+
+            privateEndpointConnection = Client.PrivateEndpointConnections.CreateOrUpdate(resourceGroupName, namespaceName, privateEndpointName, privateEndpointConnection);
+
+            return new PSServiceBusPrivateEndpointConnectionAttributes(privateEndpointConnection);
+
+        }
+
+        public PSServiceBusPrivateEndpointConnectionAttributes GetPrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName)
+        {
+
+            var privateEndpointConnection = Client.PrivateEndpointConnections.Get(resourceGroupName, namespaceName, privateEndpointName);
+
+            return new PSServiceBusPrivateEndpointConnectionAttributes(privateEndpointConnection);
+
+        }
+
+        public IEnumerable<PSServiceBusPrivateEndpointConnectionAttributes> ListPrivateEndpointConnection(string resourceGroupName, string namespaceName)
+        {
+            var listOfPrivateEndpoints = new List<PSServiceBusPrivateEndpointConnectionAttributes>();
+
+            string nextPageLink = null;
+
+            do
+            {
+                var pageOfPrivateEndpoints = new List<PSServiceBusPrivateEndpointConnectionAttributes>();
+
+                if (!String.IsNullOrEmpty(nextPageLink))
+                {
+                    var result = Client.PrivateEndpointConnections.ListNext(nextPageLink);
+                    nextPageLink = result.NextPageLink;
+                    pageOfPrivateEndpoints = result.Select(resource => new PSServiceBusPrivateEndpointConnectionAttributes(resource)).ToList();
+                }
+                else
+                {
+                    var result = Client.PrivateEndpointConnections.List(resourceGroupName, namespaceName);
+                    nextPageLink = result.NextPageLink;
+                    pageOfPrivateEndpoints = result.Select(resource => new PSServiceBusPrivateEndpointConnectionAttributes(resource)).ToList();
+                }
+
+                listOfPrivateEndpoints.AddRange(pageOfPrivateEndpoints);
+
+            } while (!String.IsNullOrEmpty(nextPageLink));
+
+            return listOfPrivateEndpoints;
+        }
+
+        public void DeletePrivateEndpointConnection(string resourceGroupName, string namespaceName, string privateEndpointName)
+        {
+            Client.PrivateEndpointConnections.Delete(resourceGroupName, namespaceName, privateEndpointName);
+        }
+
+        public IEnumerable<PSServiceBusPrivateLinkResourceAttributes> GetPrivateLinkResource(string resourceGroupName, string namespaceName)
+        {
+            var privateLinks = Client.PrivateLinkResources.Get(resourceGroupName, namespaceName).Value.ToList();
+
+            var resourceList = privateLinks.Select(resource => new PSServiceBusPrivateLinkResourceAttributes(resource));
+
+            return resourceList;
+        }
+
+        #endregion
+
         #region NetworkRuleSet
         public PSNetworkRuleSetAttributes GetNetworkRuleSet(string resourceGroupName, string namespaceName)
         {
@@ -336,6 +417,11 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
             networkRuleSet.PublicNetworkAccess = psNetworkRuleSetAttributes.PublicNetworkAccess;
 
+            if(psNetworkRuleSetAttributes.TrustedServiceAccessEnabled != null)
+            {
+                networkRuleSet.TrustedServiceAccessEnabled = psNetworkRuleSetAttributes.TrustedServiceAccessEnabled;
+            }
+
             foreach (PSNWRuleSetIpRulesAttributes psiprules in psNetworkRuleSetAttributes.IpRules)
             {
                 networkRuleSet.IpRules.Add(new NWRuleSetIpRules { Action = psiprules.Action, IpMask = psiprules.IpMask });
@@ -348,6 +434,55 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
             var response = Client.Namespaces.CreateOrUpdateNetworkRuleSet(resourceGroupName, namespaceName, networkRuleSet);
             return new PSNetworkRuleSetAttributes(response);
+        }
+
+        public PSNetworkRuleSetAttributes UpdateNetworkRuleSet(string resourceGroupName, string namespaceName, string publicNetworkAccess, bool? trustedServiceAccessEnabled, string defaultAction, PSNWRuleSetIpRulesAttributes[] iPRule, PSNWRuleSetVirtualNetworkRulesAttributes[] virtualNetworkRule)
+        {
+            NetworkRuleSet networkRuleSet = Client.Namespaces.GetNetworkRuleSet(resourceGroupName, namespaceName);
+            
+            if(networkRuleSet == null)
+            {
+                networkRuleSet = new NetworkRuleSet();
+            }
+            
+            if(defaultAction != null)
+            {
+                networkRuleSet.DefaultAction = defaultAction;
+            }
+            
+            if (publicNetworkAccess != null)
+            {
+                networkRuleSet.PublicNetworkAccess = publicNetworkAccess;
+            }
+
+            if (trustedServiceAccessEnabled != null)
+            {
+                networkRuleSet.TrustedServiceAccessEnabled = trustedServiceAccessEnabled;
+            }
+
+            if (iPRule != null)
+            {
+                networkRuleSet.IpRules = new List<NWRuleSetIpRules>();
+
+                foreach (PSNWRuleSetIpRulesAttributes psiprules in iPRule)
+                {
+                    networkRuleSet.IpRules.Add(new NWRuleSetIpRules { Action = psiprules.Action, IpMask = psiprules.IpMask });
+                }
+            }
+
+            if(virtualNetworkRule != null)
+            {
+                networkRuleSet.VirtualNetworkRules = new List<NWRuleSetVirtualNetworkRules>();
+
+                foreach (PSNWRuleSetVirtualNetworkRulesAttributes psvisrtualnetworkrules in virtualNetworkRule)
+                {
+                    networkRuleSet.VirtualNetworkRules.Add(new NWRuleSetVirtualNetworkRules { Subnet = new Subnet { Id = psvisrtualnetworkrules.Subnet.Id }, IgnoreMissingVnetServiceEndpoint = psvisrtualnetworkrules.IgnoreMissingVnetServiceEndpoint });
+                }
+            }
+
+            var response = Client.Namespaces.CreateOrUpdateNetworkRuleSet(resourceGroupName, namespaceName, networkRuleSet);
+            return new PSNetworkRuleSetAttributes(response);
+
         }
 
         #endregion
@@ -1029,6 +1164,7 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
         #endregion
+
 
         public static ErrorRecord WriteErrorforBadrequest(ErrorResponseException ex)
         {

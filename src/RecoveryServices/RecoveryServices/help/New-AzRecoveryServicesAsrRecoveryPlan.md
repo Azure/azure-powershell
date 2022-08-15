@@ -56,15 +56,14 @@ Starts the recovery plan creation operation with the specified parameters and re
 
 ### Example 2
 ```powershell
-$currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -PrimaryZone $pZone-RecoveryZone $rZone -ReplicationProtectedItem $RPI
+$currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -PrimaryZone $pZone -RecoveryZone $rZone -ReplicationProtectedItem $RPI
 ```
 
 Starts the recovery plan creation operation for Azure zone to zone replicated items and returns the ASR job used to track the operation.
 
 ### Example 3
 ```powershell
-$currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -PrimaryEdgeZone $pEdgeZone 
--RecoveryZone $rZone -ReplicationProtectedItem $RPI
+$currentJob = New-AzRecoveryServicesAsrRecoveryPlan -Name $RPName -PrimaryFabric $PrimaryFabric -PrimaryEdgeZone $pEdgeZone -RecoveryZone $rZone -ReplicationProtectedItem $RPI
 ```
 
 Starts the recovery plan creation operation for Azure EdgeZone to Availability Zone replicated items and returns the ASR job used to track the operation.

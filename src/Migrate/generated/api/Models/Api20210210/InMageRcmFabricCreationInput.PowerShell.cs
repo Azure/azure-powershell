@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="InMageRcmFabricCreationInput" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="InMageRcmFabricCreationInput" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInput FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,15 +103,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("SourceAgentIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).VmwareSiteId = (string) content.GetValueForProperty("VmwareSiteId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).VmwareSiteId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).PhysicalSiteId = (string) content.GetValueForProperty("PhysicalSiteId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).PhysicalSiteId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricSpecificCreationInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricSpecificCreationInputInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityTenantId = (string) content.GetValueForProperty("SourceAgentIdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityApplicationId = (string) content.GetValueForProperty("SourceAgentIdentityApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityObjectId = (string) content.GetValueForProperty("SourceAgentIdentityObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAudience = (string) content.GetValueForProperty("SourceAgentIdentityAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAadAuthority = (string) content.GetValueForProperty("SourceAgentIdentityAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAadAuthority, global::System.Convert.ToString);
+            if (content.Contains("SourceAgentIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("SourceAgentIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("VmwareSiteId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).VmwareSiteId = (string) content.GetValueForProperty("VmwareSiteId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).VmwareSiteId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PhysicalSiteId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).PhysicalSiteId = (string) content.GetValueForProperty("PhysicalSiteId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).PhysicalSiteId, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricSpecificCreationInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricSpecificCreationInputInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceAgentIdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityTenantId = (string) content.GetValueForProperty("SourceAgentIdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceAgentIdentityApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityApplicationId = (string) content.GetValueForProperty("SourceAgentIdentityApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceAgentIdentityObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityObjectId = (string) content.GetValueForProperty("SourceAgentIdentityObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceAgentIdentityAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAudience = (string) content.GetValueForProperty("SourceAgentIdentityAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceAgentIdentityAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAadAuthority = (string) content.GetValueForProperty("SourceAgentIdentityAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAadAuthority, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -127,15 +156,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("SourceAgentIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).VmwareSiteId = (string) content.GetValueForProperty("VmwareSiteId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).VmwareSiteId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).PhysicalSiteId = (string) content.GetValueForProperty("PhysicalSiteId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).PhysicalSiteId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricSpecificCreationInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricSpecificCreationInputInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityTenantId = (string) content.GetValueForProperty("SourceAgentIdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityTenantId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityApplicationId = (string) content.GetValueForProperty("SourceAgentIdentityApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityApplicationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityObjectId = (string) content.GetValueForProperty("SourceAgentIdentityObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAudience = (string) content.GetValueForProperty("SourceAgentIdentityAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAudience, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAadAuthority = (string) content.GetValueForProperty("SourceAgentIdentityAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAadAuthority, global::System.Convert.ToString);
+            if (content.Contains("SourceAgentIdentity"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentity = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIdentityProviderInput) content.GetValueForProperty("SourceAgentIdentity",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentity, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IdentityProviderInputTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("VmwareSiteId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).VmwareSiteId = (string) content.GetValueForProperty("VmwareSiteId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).VmwareSiteId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PhysicalSiteId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).PhysicalSiteId = (string) content.GetValueForProperty("PhysicalSiteId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).PhysicalSiteId, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricSpecificCreationInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabricSpecificCreationInputInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceAgentIdentityTenantId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityTenantId = (string) content.GetValueForProperty("SourceAgentIdentityTenantId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityTenantId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceAgentIdentityApplicationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityApplicationId = (string) content.GetValueForProperty("SourceAgentIdentityApplicationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityApplicationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceAgentIdentityObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityObjectId = (string) content.GetValueForProperty("SourceAgentIdentityObjectId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceAgentIdentityAudience"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAudience = (string) content.GetValueForProperty("SourceAgentIdentityAudience",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAudience, global::System.Convert.ToString);
+            }
+            if (content.Contains("SourceAgentIdentityAadAuthority"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAadAuthority = (string) content.GetValueForProperty("SourceAgentIdentityAadAuthority",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmFabricCreationInputInternal)this).SourceAgentIdentityAadAuthority, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

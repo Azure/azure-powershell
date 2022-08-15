@@ -40,7 +40,7 @@ This command gets all deployments at the management group "myMG".
 
 ### Example 2: Get a deployment by name
 ```powershell
-Get-AzDeployment -ManagementGroupId "myMG" -Name "Deploy01"
+Get-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "Deploy01"
 ```
 
 This command gets the "Deploy01" deployment at the management group "myMG".

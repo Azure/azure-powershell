@@ -33,7 +33,7 @@ The **Set-AzDataLakeStoreItemExpiry** cmdlet sets or removes the expire time for
 
 ### Example 1: Set the expiration time for a file
 ```powershell
-Set-AzDataLakeStoreItemExpiry -AccountName "ContosoADL" -Path /myfile.txt -Expiration [DateTimeOffset]::Now.AddHours(2)
+Set-AzDataLakeStoreItemExpiry -AccountName "ContosoADL" -Path /myfile.txt -Expiration ([DateTimeOffset]::Now.AddHours(2))
 ```
 
 Sets expiration on the file myfile.txt in account ContosoADL to be two hours from now.
@@ -49,8 +49,8 @@ This means the file will not automatically expire (be marked for delete) and wil
 
 ### Example 3: Set expiration time for a file relative to now
 ```powershell
-Set-AzDataLakeStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToNow -RelativeTime 240000
-Set-AzDataLakeStoreItemExpiry -Account "ContosoADL" -path /myfile.txt -RelativeFileExpiryOption RelativeToCreationDate -RelativeTime 240000
+Set-AzDataLakeStoreItemExpiry -Account "ContosoADL" -Path /myfile.txt -RelativeFileExpiryOption RelativeToNow -RelativeTime 240000
+Set-AzDataLakeStoreItemExpiry -Account "ContosoADL" -Path /myfile.txt -RelativeFileExpiryOption RelativeToCreationDate -RelativeTime 240000
 ```
 
 The first command sets the expiration time of the file /myfile.txt 240 seconds relative to current time at server.

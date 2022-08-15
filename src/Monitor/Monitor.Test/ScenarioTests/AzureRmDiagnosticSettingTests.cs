@@ -12,91 +12,85 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Insights.Test.ScenarioTests
 {
-    public class AzureRmDiagnosticSettingTests : RMTestBase
+    public class AzureRmDiagnosticSettingTests : MonitorTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public AzureRmDiagnosticSettingTests(Xunit.Abstractions.ITestOutputHelper output)
+        public AzureRmDiagnosticSettingTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzureRmDiagnosticSetting()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzureRmDiagnosticSetting");
+            TestRunner.RunTestScript("Test-GetAzureRmDiagnosticSetting");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingCreate()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSettingCreate");
+            TestRunner.RunTestScript("Test-SetAzureRmDiagnosticSettingCreate");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingUpdate()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSettingUpdate");
+            TestRunner.RunTestScript("Test-SetAzureRmDiagnosticSettingUpdate");
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingWithRetention()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSettingWithRetention");
+            TestRunner.RunTestScript("Test-SetAzureRmDiagnosticSettingWithRetention");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingCategoriesOnly()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSetting-CategoriesOnly");
+            TestRunner.RunTestScript("Test-SetAzureRmDiagnosticSetting-CategoriesOnly");
         }
 
         [Fact] //(Skip = "TODO: fixing this test after introducing Swagger specs")]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingTimeGrainsOnly()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSetting-TimegrainsOnly");
+            TestRunner.RunTestScript("Test-SetAzureRmDiagnosticSetting-TimegrainsOnly");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingEventHub()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSetting-EventHub");
+            TestRunner.RunTestScript("Test-SetAzureRmDiagnosticSetting-EventHub");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestSetAzureRmDiagnosticSettingLogAnalytics()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-SetAzureRmDiagnosticSetting-LogAnalytics");
+            TestRunner.RunTestScript("Test-SetAzureRmDiagnosticSetting-LogAnalytics");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetAzDiagnosticSettingCategory()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-GetAzDiagnosticSettingCategory");
+            TestRunner.RunTestScript("Test-GetAzDiagnosticSettingCategory");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestSubscriptionDiagnosticSetting()
         {
-            TestsController.NewInstance.RunPsTest(_logger, "Test-SubscriptionDiagnosticSetting");
+            TestRunner.RunTestScript("Test-SubscriptionDiagnosticSetting");
         }
     }
 }

@@ -131,9 +131,15 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                     tagPairs.Add(key, Tag[key].ToString());
                 }
             }
+            if (ParameterSetName == ParentObjectParameterSet)
+            {
+                ResourceGroupName = AccountObject.ResourceGroupName;
+                AccountName = AccountObject.Name;
+                Location = AccountObject.Location;
+            }
+
             //check existing 
             CapacityPool existingPool = null;
-
             try
             {
                 existingPool = AzureNetAppFilesManagementClient.Pools.Get(ResourceGroupName, AccountName,  Name);
@@ -147,12 +153,6 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Pool
                 throw new AzPSResourceNotFoundCloudException($"A Capacity Pool with name '{this.Name}' in resource group '{this.ResourceGroupName}' already exists. Please use Set/Update-AzNetAppFilesPool to update an existing Capacity Pool.");
             }
 
-            if (ParameterSetName == ParentObjectParameterSet)
-            {
-                ResourceGroupName = AccountObject.ResourceGroupName;
-                AccountName = AccountObject.Name;
-                Location = AccountObject.Location;
-            }
 
             var capacityPoolBody = new CapacityPool()
             {

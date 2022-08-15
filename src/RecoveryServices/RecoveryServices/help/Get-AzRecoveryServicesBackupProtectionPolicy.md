@@ -64,7 +64,14 @@ This command gets all protection policies created in the vault.
 $Pol= Get-AzRecoveryServicesBackupProtectionPolicy -Name "DefaultPolicy"
 ```
 
-This command gets the protection policy named DefaultPolicy, and then stores it in the $Pol variable.
+This command gets the protection policy named DefaultPolicy, and then stores it in the $pol variable.
+
+### Example 3: Get only Enhanced policies in a vault
+```powershell
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -BackupManagementType AzureVM -WorkloadType AzureVM  -PolicySubType Enhanced
+```
+
+This command gets only the Enhanced protection policies in RS vault, and then stores it in the $pol variable.
 
 ## PARAMETERS
 

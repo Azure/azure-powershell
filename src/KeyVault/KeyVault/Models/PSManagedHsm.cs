@@ -45,6 +45,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             HsmUri = managedHsm.Properties.HsmUri;
             EnablePurgeProtection = managedHsm.Properties.EnablePurgeProtection;
             EnableSoftDelete = managedHsm.Properties.EnableSoftDelete;
+            PublicNetworkAccess = managedHsm.Properties.PublicNetworkAccess;
             SoftDeleteRetentionInDays = managedHsm.Properties.SoftDeleteRetentionInDays;
             StatusMessage = managedHsm.Properties.StatusMessage;
             ProvisioningState = managedHsm.Properties.ProvisioningState;
@@ -56,6 +57,8 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             get { return VaultName; } 
             internal set { VaultName = value; } 
         }
+
+        public string PublicNetworkAccess { get; private set; }
 
         public string Sku { get; private set; }
         public Guid TenantId { get; private set; }

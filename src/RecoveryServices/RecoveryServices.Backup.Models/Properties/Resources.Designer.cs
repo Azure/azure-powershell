@@ -1843,7 +1843,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>
-        ///   Looks up a localized string similar to Are you sure you want to copy items to the <TargetVault> whose storage redundancy is <StorageRedundancyType>.
+        ///   Looks up a localized string similar to Are you sure you want to copy items to the {TargetVault} whose storage redundancy is {StorageRedundancyType}.
         /// </summary>
         public static string TargetVaultStorageRedundancy
         {
@@ -2095,7 +2095,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
         }
 
         /// <summary>        
-        ///   Looks up a localized string similar to Number of restore points are more than <Limit>, please reduce the
+        ///   Looks up a localized string similar to Number of restore points are more than {Limit}, please reduce the
         ///   retention duration count for Daily Schedule or reduce number of backups per day
         /// </summary>
         public static string DailyRetentionPointsLimitExceeded
@@ -2312,6 +2312,82 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
             get
             {
                 return ResourceManager.GetString("InvalidPolicyForTrustedVMProtection", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to ProtectedItemURI can't be null as the operation is protected with ResourceGuard
+        /// </summary>
+        public static string ProtectedItemURICantBeNull
+        {
+            get
+            {
+                return ResourceManager.GetString("ProtectedItemURICantBeNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Operation not critical, please try without the Token parameter. MUA currently only protects reducing or disabling retention times
+        /// </summary>
+        public static string PolicyUpdateNotCritical
+        {
+            get
+            {
+                return ResourceManager.GetString("PolicyUpdateNotCritical", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to {0} is not protected via MUA, either protect or try without the Token parameter
+        /// </summary>
+        public static string UnexpectedParameterToken
+        {
+            get
+            {
+                return ResourceManager.GetString("UnexpectedParameterToken", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Operation not critical, please try without the Token parameter. MUA currently protects disabling SoftDelete or SecurityFeatures only when it was previously enabled
+        /// </summary>
+        public static string BackupConfigUpdateNotCritical
+        {
+            get
+            {
+                return ResourceManager.GetString("BackupConfigUpdateNotCritical", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to ResourceGuardMapping not found
+        /// </summary>
+        public static string ResourceGuardMappingNotFound
+        {
+            get
+            {
+                return ResourceManager.GetString("ResourceGuardMappingNotFound", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Invalid parameter Token: Stop protection with retain backup data is not MUA protected
+        /// </summary>
+        public static string DisableWithRetainBackupNotCrititcal{
+            get
+            {
+                return ResourceManager.GetString("DisableWithRetainBackupNotCrititcal", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        /// Looks up a localized string similar to Cross region restore is not supported along with cross subscription restore, please try passing either RestoreToSecondaryRegion or TargetSubscriptionId parameter but not both
+        /// </summary>
+        public static string CRRNotSupportedWIthCSR
+        {
+            get
+            {
+                return ResourceManager.GetString("CRRNotSupportedWIthCSR", resourceCulture);
             }
         }
     }

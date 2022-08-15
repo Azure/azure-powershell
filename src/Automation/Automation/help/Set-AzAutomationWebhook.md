@@ -26,21 +26,21 @@ The **Set-AzAutomationWebhook** cmdlet modifies a webhook for an Azure Automatio
 
 ### Example 1: Disable a webhook
 ```powershell
-PS C:\>Set-AzAutomationWebhook -Name "Webhook01" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -IsEnabled $False
+Set-AzAutomationWebhook -Name "Webhook01" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -IsEnabled $False
 ```
 
 This command disables a webhook named Webhook01 in the Automation account named AutomationAccount01.
 
 ### Example 2
 ```powershell
-PS C:\>Set-AzAutomationWebhook -Name "Webhook01" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -RunOn 'Windows'
+Set-AzAutomationWebhook -Name "Webhook01" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -RunOn 'Windows'
 ```
 
 This command sets the run on value for the webhook and forces the runbook to be run on a Hybrid Worker group called Windows.
 
 ### Example 3
 ```powershell
-PS C:\>Set-AzAutomationWebhook -Name "Webhook01" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -RunOn $null
+Set-AzAutomationWebhook -Name "Webhook01" -ResourceGroupName "ResourceGroup01" -AutomationAccountName "AutomationAccount01" -RunOn $null
 ```
 
 This command updates the run on value for the webhook and forces the runbook to be run on an Azure runbook worker. 

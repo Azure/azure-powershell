@@ -117,14 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ApproveVolumeReplicationMessage" xml:space="preserve">
+    <value>Approving volume replication on {0}</value>
+  </data>
   <data name="CreateResourceMessage" xml:space="preserve">
     <value>Create the new {0}</value>
+  </data>
+  <data name="InitializeVolumeReplicationMessage" xml:space="preserve">
+    <value>Initializing volume replication on {0}</value>
   </data>
   <data name="PoolChangeMessage" xml:space="preserve">
     <value>Changing pool of the volume {0}</value>
   </data>
   <data name="RemoveResourceMessage" xml:space="preserve">
     <value>Remove the {0}</value>
+  </data>
+  <data name="RemoveVolumeReplicationMessage" xml:space="preserve">
+    <value>Removing replication for the volume {0}</value>
+  </data>
+  <data name="RestoringFilesMessage" xml:space="preserve">
+    <value>Restoring files {0}</value>
+  </data>
+  <data name="ResumeVolumeReplicationMessage" xml:space="preserve">
+    <value>Resuming replication for the volume {0}</value>
+  </data>
+  <data name="RevertVolumeMessage" xml:space="preserve">
+    <value>Reverting {0} to snapshot</value>
+  </data>
+  <data name="SuspendVolumeReplicationMessage" xml:space="preserve">
+    <value>Suspending volume replication on {0}</value>
   </data>
   <data name="UpdateResourceMessage" xml:space="preserve">
     <value>Updating the {0}</value>

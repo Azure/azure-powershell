@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.EventHub.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
@@ -49,13 +50,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                 if (this.IsParameterBound(c => c.Name))
                 {
                     // Get a Cluster
-                    PSEventHubClusterAttributes cluster = Client.GetEventHubCluster(ResourceGroupName, Name);
-                    WriteObject(cluster);
+                    Cluster cluster = UtilityClient.GetEventHubCluster(ResourceGroupName, Name);
+                    WriteObject(new PSEventHubClusterAttributes(cluster));
                 }
                 else
                 {
                     // Get all Clusters
-                    IEnumerable<PSEventHubClusterAttributes> clusterList = Client.ListEventHubCluster(ResourceGroupName);
+                    IEnumerable<PSEventHubClusterAttributes> clusterList = UtilityClient.ListEventHubCluster(ResourceGroupName);
                     WriteObject(clusterList.ToList(), true);
                 }
             }

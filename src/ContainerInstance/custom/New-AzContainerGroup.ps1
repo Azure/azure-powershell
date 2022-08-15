@@ -18,7 +18,7 @@
 .Synopsis
 Create or update container groups with specified configurations.
 .Description
-Create or update container groups with specified configurations. For property Volume, we support mounting Azure File share as a volume or specifying git repository as volume directory. The empty directory volume and secret volume are not supported yet.
+Create or update container groups with specified configurations.
 .Link
 https://docs.microsoft.com/powershell/module/az.containerinstance/new-azcontainergroup
 #>

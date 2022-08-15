@@ -39,7 +39,7 @@ Starts the fabric creation with passed name and returns the ASR job used to trac
 ### Example 2
 ```powershell
 $currentJob = New-AzRecoveryServicesAsrFabric -Azure -Name $fabricName -Location "eastus"
-Get-ASRJob -name $currentJob.id
+Get-AzRecoveryServicesAsrJob -name $currentJob.id
 ```
 
 Starts the azure fabric creation with passed name and returns the ASR job used to track the fabric creation operation.

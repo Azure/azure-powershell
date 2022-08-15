@@ -197,7 +197,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMonitoringSolutionsIdentity>: Identity Parameter
+INPUTOBJECT `<IMonitoringSolutionsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ManagementAssociationName <String>]`: User ManagementAssociation Name.
   - `[ManagementConfigurationName <String>]`: User Management Configuration Name.
