@@ -23,7 +23,7 @@ This cmdlet gets list of traffic collectors in selected subscription.
 
 ### Example 2: Get list of traffic collectors by resource group
 ```powershell
-Get-AzNetworkFunctionTrafficCollector -ResourceGroup test
+Get-AzNetworkFunctionTrafficCollector -ResourceGroupName test
 ```
 
 ```output
@@ -46,7 +46,7 @@ This cmdlet gets list of traffic collectors by resource group.
 
 ### Example 3: Get list of traffic collectors by name
 ```powershell
-Get-AzNetworkFunctionTrafficCollector -ResourceGroup test -name test
+Get-AzNetworkFunctionTrafficCollector -ResourceGroupName test -name test
 ```
 
 ```output
