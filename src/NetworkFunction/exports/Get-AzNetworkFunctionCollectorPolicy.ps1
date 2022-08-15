@@ -20,14 +20,12 @@ Gets the collector policy in a specified Traffic Collector
 .Description
 Gets the collector policy in a specified Traffic Collector
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName test -resourcegroupname test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ICollectorPolicy
+Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ICollectorPolicy
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -43,7 +41,7 @@ INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctioncollectorpolicy
 #>
 function Get-AzNetworkFunctionCollectorPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ICollectorPolicy])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ICollectorPolicy])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

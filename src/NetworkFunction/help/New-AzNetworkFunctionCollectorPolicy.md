@@ -14,11 +14,11 @@ Creates or updates a Collector Policy resource
 
 ```
 New-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>]
+ -ResourceGroupName <String> -Location <String> [-SubscriptionId <String>]
  [-EmissionPolicy <IEmissionPoliciesPropertiesFormat[]>]
  [-IngestionPolicyIngestionSource <IIngestionSourcesPropertiesFormat[]>]
- [-IngestionPolicyIngestionType <IngestionType>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-IngestionPolicyIngestionType <IngestionType>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,27 +26,44 @@ Creates or updates a Collector Policy resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new traffic collector policy
 ```powershell
-{{ Add code here }}
+New-AzNetworkFunctionCollectorPolicy -collectorpolicyname cp1 -azuretrafficcollectorname atc -resourcegroupname rg1 -location eastus
 ```
 
 ```output
-{{ Add output here }}
+{
+    "name": "cp1",
+    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.NetworkFunction/AzureTrafficCollector/atc/collectorPolicies/cp1",
+    "etag": "test",
+    "type": "Microsoft.NetworkFunction/azureTrafficCollectors/collectorPolicies",
+    "properties": {
+        "ingestionPolicy": {
+        "ingestionType": "IPFIX",
+        "ingestionSources": [
+            {
+            "resourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName",
+            "sourceType": "Resource"
+            }
+        ]
+        },
+        "emissionPolicies": [
+        {
+            "emissionType": "IPFIX",
+            "emissionDestinations": [
+            {
+                "destinationType": "AzureMonitor"
+            }
+            ]
+        }
+        ],
+        "provisioningState": "Succeeded"
+    }
+    }
+}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet creates a new traffic collector policy.
 
 ## PARAMETERS
 
@@ -100,7 +117,7 @@ Emission policies.
 To construct, see NOTES section for EMISSIONPOLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IEmissionPoliciesPropertiesFormat[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IEmissionPoliciesPropertiesFormat[]
 Parameter Sets: (All)
 Aliases:
 
@@ -116,7 +133,7 @@ Ingestion Sources.
 To construct, see NOTES section for INGESTIONPOLICYINGESTIONSOURCE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.IIngestionSourcesPropertiesFormat[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IIngestionSourcesPropertiesFormat[]
 Parameter Sets: (All)
 Aliases:
 
@@ -136,6 +153,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Resource location.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -202,6 +234,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Tag
+Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -240,7 +287,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220501.ICollectorPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ICollectorPolicy
 
 ## NOTES
 
@@ -251,12 +298,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-EMISSIONPOLICY <IEmissionPoliciesPropertiesFormat[]>: Emission policies.
+`EMISSIONPOLICY <IEmissionPoliciesPropertiesFormat[]>`: Emission policies.
   - `[EmissionDestination <IEmissionPolicyDestination[]>]`: Emission policy destinations.
     - `[DestinationType <DestinationType?>]`: Emission destination type.
   - `[EmissionType <EmissionType?>]`: Emission format type.
 
-INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>: Ingestion Sources.
+`INGESTIONPOLICYINGESTIONSOURCE <IIngestionSourcesPropertiesFormat[]>`: Ingestion Sources.
   - `[ResourceId <String>]`: Resource ID.
   - `[SourceType <SourceType?>]`: Ingestion source type.
 

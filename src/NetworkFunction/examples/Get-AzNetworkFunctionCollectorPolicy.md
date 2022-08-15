@@ -1,22 +1,37 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get list of collector policies by atc name and resource group
 ```powershell
-{{ Add code here }}
+Get-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName test -resourcegroupname test
 ```
 
 ```output
-{{ Add output here }}
+[{
+"name": "atc",
+"id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.NetworkFunction/azureTrafficCollectors/atc/collectorPolicies/cp1",
+"etag": "testEtag",
+"type": "Microsoft.NetworkFunction/azureTrafficCollectors/collectorPolicies",
+"properties": {
+    "ingestionPolicy": {
+    "ingestionType": "IPFIX",
+    "ingestionSources": [
+        {
+        "resourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName",
+        "sourceType": "Resource"
+        }
+    ]
+    },
+    "emissionPolicies": [
+    {
+        "emissionType": "IPFIX",
+        "emissionDestinations": [
+        {
+            "destinationType": "AzureMonitor"
+        }
+        ]
+    }
+    ],
+    "provisioningState": "Succeeded"
+}
+}]
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This cmdlet gets list of traffic collector policies by atc name and resource group.
