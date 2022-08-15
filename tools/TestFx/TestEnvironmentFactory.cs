@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.TestFx
             _environment = new TestEnvironment(envStr);
         }
 
-        internal static TestEnvironment GetTestFxEnvironment()
+        internal static TestEnvironment BuildTestFxEnvironment()
         {
             _environment.SetRecordedEnvironmentVariables();
             return _environment;

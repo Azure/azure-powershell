@@ -30,6 +30,8 @@ namespace Microsoft.Azure.Commands.TestFx
 {
     public class TestEnvironment
     {
+        private const string DummyTenantId = "395544B0-BF41-429D-921F-E1CA2252FCF4";
+
         /// <summary>
         /// Base Uri used by the Test Environment
         /// </summary>
@@ -415,10 +417,24 @@ namespace Microsoft.Azure.Commands.TestFx
         {
             if (HttpMockServer.Mode == HttpRecorderMode.Playback)
             {
-                //Get Subscription Id from MockServer
+                //Get Subscription Id from MockServer. Otherwise, assign zero guid
                 if (HttpMockServer.Variables.ContainsCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey))
                 {
                     SubscriptionId = HttpMockServer.Variables.GetValueUsingCaseInsensitiveKey(ConnectionStringKeys.SubscriptionIdKey);
+                }
+                else
+                {
+                    SubscriptionId = Guid.Empty.ToString();
+                }
+
+                // Get Tenant Id from MockServer. Otherwise, assign dummy guid
+                if (HttpMockServer.Variables.ContainsCaseInsensitiveKey(ConnectionStringKeys.TenantIdKey))
+                {
+                    TenantId = HttpMockServer.Variables.GetValueUsingCaseInsensitiveKey(ConnectionStringKeys.TenantIdKey);
+                }
+                else
+                {
+                    TenantId = DummyTenantId;
                 }
             }
         }

@@ -43,10 +43,6 @@ namespace Microsoft.Azure.Commands.TestFx
 
         private const string TestSubscriptionName = "__test-subscriptions";
 
-        private AzureSubscription testSubscription;
-
-        private AzureAccount testAccount;
-
         private static string PackageDirectoryFromCommon { get; } = GetConfigDirectory();
 
         public static string PackageDirectory { get; }  = GetConfigDirectory();
@@ -391,7 +387,7 @@ namespace Microsoft.Azure.Commands.TestFx
             TestEnvironment currentEnvironment;
             if (mode == AzureModule.AzureResourceManager)
             {
-                currentEnvironment = TestEnvironmentFactory.GetTestFxEnvironment();
+                currentEnvironment = TestEnvironmentFactory.BuildTestFxEnvironment();
             }
             else
             {
@@ -425,7 +421,7 @@ namespace Microsoft.Azure.Commands.TestFx
 
             if (currentEnvironment.SubscriptionId != null)
             {
-                testSubscription = new AzureSubscription
+                var testSubscription = new AzureSubscription
                 {
                     Id = currentEnvironment.SubscriptionId,
                     Name = TestSubscriptionName,
@@ -436,7 +432,7 @@ namespace Microsoft.Azure.Commands.TestFx
                 testSubscription.SetDefault();
                 testSubscription.SetStorageAccount(Environment.GetEnvironmentVariable("AZURE_STORAGE_ACCOUNT"));
 
-                testAccount = new AzureAccount()
+                var testAccount = new AzureAccount()
                 {
                     Id = currentEnvironment.UserName,
                     Type = AzureAccount.AccountType.User,

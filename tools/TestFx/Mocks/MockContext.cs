@@ -40,7 +40,7 @@ namespace Microsoft.Rest.ClientRuntime.Azure.TestFramework
             {
                 if (_testFxEnvironment == null)
                 {
-                    _testFxEnvironment = TestEnvironmentFactory.GetTestFxEnvironment();
+                    _testFxEnvironment = TestEnvironmentFactory.BuildTestFxEnvironment();
                     OptimizeTestRecordingFile = _testFxEnvironment.OptimizeRecordedFile;
                 }
 

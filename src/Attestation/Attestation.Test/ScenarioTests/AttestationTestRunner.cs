@@ -66,12 +66,12 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
 
         private static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ResourceManagementClient>();
         }
 
         private static AttestationManagementClient GetAttestationManagementClient(MockContext context)
         {
-            return context.GetServiceClient<AttestationManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<AttestationManagementClient>();
         }
 
         private static AttestationClient GetAttestationClient(MockContext context)
