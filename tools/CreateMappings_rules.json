@@ -752,6 +752,10 @@
     "module": "ServiceLinker"
   },
   {
+    "module": "StorageMover",
+    "alias": "Storage Mover"
+  },
+  {
     "alias": "NetworkFunction",
     "module": "NetworkFunction"
   }
