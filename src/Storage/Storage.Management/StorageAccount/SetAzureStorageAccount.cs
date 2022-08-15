@@ -293,7 +293,7 @@ namespace Microsoft.Azure.Commands.Management.Storage
         {
             get
             {
-                return enableAzureActiveDirectoryKerberosForFile.Value;
+                return enableAzureActiveDirectoryKerberosForFile.HasValue ? enableAzureActiveDirectoryKerberosForFile.Value : false;
             }
             set
             {
