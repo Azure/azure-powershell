@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://docs.microsoft.com/en-us/powershell/module/az.networkfunction/remove-aznetworkfunctiontrafficcollectorpolicy
+online version: https://docs.microsoft.com/powershell/module/az.networkfunction/remove-aznetworkfunctioncollectorpolicy
 schema: 2.0.0
 ---
 
-# Remove-AzNetworkFunctionTrafficCollectorPolicy
+# Remove-AzNetworkFunctionCollectorPolicy
 
 ## SYNOPSIS
 Deletes a specified Collector Policy resource.
@@ -14,15 +14,15 @@ Deletes a specified Collector Policy resource.
 
 ### Delete (Default)
 ```
-Remove-AzNetworkFunctionTrafficCollectorPolicy -AzureTrafficCollectorName <String>
- -CollectorPolicyName <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-AsJob] [-NoWait]
+Remove-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzNetworkFunctionTrafficCollectorPolicy -InputObject <ITrafficCollectorIdentity> [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzNetworkFunctionCollectorPolicy -InputObject <INetworkFunctionIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -30,27 +30,17 @@ Deletes a specified Collector Policy resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Delete a new traffic collector policy
 ```powershell
-{{ Add code here }}
+Remove-AzNetworkFunctionCollectorPolicy -azuretrafficcollectorname atctestps -collectorpolicyname cp1 -resourcegroupname test
 ```
 
 ```output
-{{ Add output here }}
+{
+}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This cmdlet deletes a traffic collector policy.
 
 ## PARAMETERS
 
@@ -84,15 +74,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CollectorPolicyName
-Collector Policy Name
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -104,7 +94,7 @@ Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITrafficCollectorIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 Parameter Sets: DeleteViaIdentity
 Aliases:
 
@@ -112,6 +102,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+Collector Policy Name
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: CollectorPolicyName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -211,7 +216,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20210501.ITrafficCollectorIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
 
 ## OUTPUTS
 
@@ -226,9 +231,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ITrafficCollectorIdentity>: Identity Parameter
+INPUTOBJECT <INetworkFunctionIdentity>: Identity Parameter
   - `[AzureTrafficCollectorName <String>]`: Azure Traffic Collector name
   - `[CollectorPolicyName <String>]`: Collector Policy Name
+  - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 

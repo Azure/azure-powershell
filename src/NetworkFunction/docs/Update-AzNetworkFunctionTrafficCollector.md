@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://docs.microsoft.com/powershell/module/az.networkfunction/new-aznetworkfunctiontrafficcollector
+online version: https://docs.microsoft.com/powershell/module/az.networkfunction/set-aznetworkfunctiontrafficcollector
 schema: 2.0.0
 ---
 
-# New-AzNetworkFunctionTrafficCollector
+# Update-AzNetworkFunctionTrafficCollector
 
 ## SYNOPSIS
 Creates or updates a Azure Traffic Collector resource
@@ -13,7 +13,7 @@ Creates or updates a Azure Traffic Collector resource
 ## SYNTAX
 
 ```
-New-AzNetworkFunctionTrafficCollector -Name <String> -ResourceGroupName <String> -Location <String>
+Update-AzNetworkFunctionTrafficCollector -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-CollectorPolicy <ICollectorPolicy[]>] [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,9 +23,9 @@ Creates or updates a Azure Traffic Collector resource
 
 ## EXAMPLES
 
-### Example 1: Create a new traffic collector
+### Example 1: Updates a traffic collector
 ```powershell
-New-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroupname test -location eastus
+Update-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroupname test -location eastus
 ```
 
 ```output
@@ -42,7 +42,7 @@ New-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroupname test -l
 }
 ```
 
-This cmdlet creates a new traffic collector.
+This cmdlet updates a traffic collector.
 
 ## PARAMETERS
 

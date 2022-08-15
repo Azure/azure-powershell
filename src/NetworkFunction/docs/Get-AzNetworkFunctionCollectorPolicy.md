@@ -1,59 +1,78 @@
 ---
 external help file:
 Module Name: Az.NetworkFunction
-online version: https://docs.microsoft.com/powershell/module/az.networkfunction/update-aznetworkfunctiontrafficcollectortag
+online version: https://docs.microsoft.com/powershell/module/az.networkfunction/get-aznetworkfunctioncollectorpolicy
 schema: 2.0.0
 ---
 
-# Update-AzNetworkFunctionTrafficCollectorTag
+# Get-AzNetworkFunctionCollectorPolicy
 
 ## SYNOPSIS
-Updates the specified Azure Traffic Collector tags.
+Gets the collector policy in a specified Traffic Collector
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### List (Default)
 ```
-Update-AzNetworkFunctionTrafficCollectorTag -AzureTrafficCollectorName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Get-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName <String> -Name <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzNetworkFunctionCollectorPolicy -InputObject <INetworkFunctionIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### UpdateViaIdentityExpanded
-```
-Update-AzNetworkFunctionTrafficCollectorTag -InputObject <INetworkFunctionIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Updates the specified Azure Traffic Collector tags.
+Gets the collector policy in a specified Traffic Collector
 
 ## EXAMPLES
 
-### Example 1: Updates a traffic collector tag
+### Example 1: Get list of collector policies by atc name and resource group
 ```powershell
-Update-AzNetworkFunctionTrafficCollectorTag -azuretrafficcollectorname atc -resourcegroupname rg1
+Get-AzNetworkFunctionCollectorPolicy -AzureTrafficCollectorName test -resourcegroupname test
 ```
 
 ```output
-{
-    "name": "atc",
-    "id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.NetworkFunction/azureTrafficCollectors/atc",
-    "type": "Microsoft.NetworkFunction/azureTrafficCollectors",
-    "etag": "test",
-    "location": "West US",
-    "tags": {
-        "key1": "value1",
-        "key2": "value2"
+[{
+"name": "atc",
+"id": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.NetworkFunction/azureTrafficCollectors/atc/collectorPolicies/cp1",
+"etag": "testEtag",
+"type": "Microsoft.NetworkFunction/azureTrafficCollectors/collectorPolicies",
+"properties": {
+    "ingestionPolicy": {
+    "ingestionType": "IPFIX",
+    "ingestionSources": [
+        {
+        "resourceId": "/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/expressRouteCircuits/circuitName",
+        "sourceType": "Resource"
+        }
+    ]
     },
-    "properties": {
-        "collectorPolicies": [],
-        "provisioningState": "Succeeded"
+    "emissionPolicies": [
+    {
+        "emissionType": "IPFIX",
+        "emissionDestinations": [
+        {
+            "destinationType": "AzureMonitor"
+        }
+        ]
     }
+    ],
+    "provisioningState": "Succeeded"
 }
+}]
 ```
 
-This cmdlet updates a traffic collector tag.
+This cmdlet gets list of traffic collector policies by atc name and resource group.
+
 
 ## PARAMETERS
 
@@ -62,7 +81,7 @@ Azure Traffic Collector name
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -93,7 +112,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
-Parameter Sets: UpdateViaIdentityExpanded
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -103,12 +122,27 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Collector Policy Name
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases: CollectorPolicyName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -122,59 +156,13 @@ Accept wildcard characters: False
 Azure Subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -188,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.IAzureTrafficCollector
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.Api20220801.ICollectorPolicy
 
 ## NOTES
 
