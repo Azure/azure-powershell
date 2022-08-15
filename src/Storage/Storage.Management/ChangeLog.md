@@ -21,6 +21,17 @@
 * Supported to create or update Storage account with Azure Files Active Directory Domain Service Kerberos Authentication
     -  `New-AzStorageAccount`
     -  `Set-AzStorageAccount`
+* Supported create/upgrade storage account by enable sftp and enable localuser
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
+* Supported manage local user of a storage account
+    -  `Set-AzStorageLocalUser`
+    -  `Get-AzStorageLocalUser`
+    -  `Remove-AzStorageLocalUser`
+    -  `New-AzStorageLocalUserSshPassword`
+    -  `Get-AzStorageLocalUserKey`
+    -  `New-AzStorageLocalUserSshPublicKey`
+    -  `New-AzStorageLocalUserPermissionScope`
 
 ## Version 4.8.0
 * Added check for storage account sas token is secured with the storage account key.
