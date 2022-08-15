@@ -122,8 +122,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                         }
                         else
                         {
-                            // resx
-                            throw new ArgumentException("Please provide the value for DisableAzureMonitorAlertsForJobFailure and DisableClassicAlerts parameters to configure alerts");
+                            throw new ArgumentException(Resources.MissingParameterForAlerts); 
                         }
                     }
                     

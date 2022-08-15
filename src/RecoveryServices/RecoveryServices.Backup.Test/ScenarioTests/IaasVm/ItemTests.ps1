@@ -12,6 +12,58 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
+function Test-AzureMonitorAlerts
+{
+	$location = "centraluseuap"
+	$resourceGroupName = "hiagarg"
+	$vaultName1 = "alerts-pstest-vault1"
+	$vaultName2 = "alerts-pstest-vault2"
+
+	try
+	{	
+		# create a vault without Alert settings
+		$tag= @{"MABUsed"="Yes";"Owner"="hiaga";"Purpose"="Testing";"DeleteBy"="06-2099"}
+		$vault1 = New-AzRecoveryServicesVault -Name $vaultName1 -ResourceGroupName $resourceGroupName -Location "centraluseuap" -Tag $tag
+		
+		Assert-True { $vault1.Properties.AlertSettings -eq $null }
+
+		# create a vault with Alert settings 
+		$vault2 = New-AzRecoveryServicesVault -Name $vaultName2 -ResourceGroupName $resourceGroupName -Location "centraluseuap" `
+			-Tag $tag -DisableAzureMonitorAlertsForJobFailure $false `
+			-DisableClassicAlerts $true			
+		
+		Assert-True { $vault2.Properties.AlertSettings -ne $null }
+		Assert-True { $vault2.Properties.AlertSettings.AzureMonitorAlertsForAllJobFailure -eq "Enabled" }
+		Assert-True { $vault2.Properties.AlertSettings.ClassicAlertsForCriticalOperations -eq "Disabled" }
+
+		$vault = Update-AzRecoveryServicesVault -ResourceGroupName "hiagarg"  -Name "hiagaVault" -DisableClassicAlerts $false
+
+		# update alert settings 
+		$vault1 = Update-AzRecoveryServicesVault -Name $vaultName1 -ResourceGroupName $resourceGroupName `
+			-DisableAzureMonitorAlertsForJobFailure $false `
+			-DisableClassicAlerts $true
+
+		Assert-True { $vault1.Properties.AlertSettings -ne $null }
+		Assert-True { $vault1.Properties.AlertSettings.AzureMonitorAlertsForAllJobFailure -eq "Enabled" }
+		Assert-True { $vault1.Properties.AlertSettings.ClassicAlertsForCriticalOperations -eq "Disabled" }
+		
+		$vault2 = Update-AzRecoveryServicesVault -Name $vaultName2 -ResourceGroupName $resourceGroupName `
+			-DisableAzureMonitorAlertsForJobFailure $true `
+			-DisableClassicAlerts $false
+
+		Assert-True { $vault2.Properties.AlertSettings -ne $null }
+		Assert-True { $vault2.Properties.AlertSettings.AzureMonitorAlertsForAllJobFailure -eq "Disabled" }
+		Assert-True { $vault2.Properties.AlertSettings.ClassicAlertsForCriticalOperations -eq "Enabled" }
+
+	}
+	finally
+	{
+		# Cleanup
+		Remove-AzRecoveryServicesVault -Vault $vault1
+		Remove-AzRecoveryServicesVault -Vault $vault2
+	}
+}
+
 function Test-AzureVMMUA
 {
 	$location = "centraluseuap"
