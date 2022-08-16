@@ -26,12 +26,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement.Test.Scenario
     {
         public static ApiManagementClient GetApiManagementClient(MockContext context)
         {
-            return context.GetServiceClient<ApiManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ApiManagementClient>();
         }
 
         public static ResourceManagementClient GetResourceManagementClient(MockContext context)
         {
-            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ResourceManagementClient>();
         }
 
         private static void ThrowIfTrue(bool condition, string message)
