@@ -72,7 +72,7 @@ directive:
   - where:
       subject: (^ScheduledQueryRule$)(.*)
     set:
-      subject: $2
+      subject-prefix: ""
   # enum integer is not supported
   - from: swagger-document
     where: $.definitions.ScheduledQueryRuleProperties.properties.severity

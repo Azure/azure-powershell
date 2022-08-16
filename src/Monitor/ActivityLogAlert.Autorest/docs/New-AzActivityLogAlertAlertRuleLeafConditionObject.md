@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az./new-AzAlertRuleLeafConditionObject
+online version: https://docs.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertAlertRuleLeafConditionObject
 schema: 2.0.0
 ---
 
-# New-AzAlertRuleLeafConditionObject
+# New-AzActivityLogAlertAlertRuleLeafConditionObject
 
 ## SYNOPSIS
 Create an in-memory object for AlertRuleLeafCondition.
@@ -13,8 +13,8 @@ Create an in-memory object for AlertRuleLeafCondition.
 ## SYNTAX
 
 ```
-New-AzAlertRuleLeafConditionObject [-ContainsAny <String[]>] [-Equal <String>] [-Field <String>]
- [<CommonParameters>]
+New-AzActivityLogAlertAlertRuleLeafConditionObject [-ContainsAny <String[]>] [-Equal <String>]
+ [-Field <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Create an in-memory object for AlertRuleLeafCondition.
 
 ### Example 1: Create Alert rule leaf condition
 ```powershell
-New-AzAlertRuleLeafConditionObject -Field properties.incidentType -Equal Maintenance
+New-AzActivityLogAlertAlertRuleLeafConditionObject -Field properties.incidentType -Equal Maintenance
 ```
 
 Create Alert rule leaf condition

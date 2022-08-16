@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az./new-AzSubscriptionLogSettingsObject
+online version: https://docs.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingSubscriptionLogSettingsObject
 schema: 2.0.0
 ---
 
-# New-AzSubscriptionLogSettingsObject
+# New-AzDiagnosticSettingSubscriptionLogSettingsObject
 
 ## SYNOPSIS
 Create an in-memory object for SubscriptionLogSettings.
@@ -13,8 +13,8 @@ Create an in-memory object for SubscriptionLogSettings.
 ## SYNTAX
 
 ```
-New-AzSubscriptionLogSettingsObject -Enabled <Boolean> [-Category <String>] [-CategoryGroup <String>]
- [<CommonParameters>]
+New-AzDiagnosticSettingSubscriptionLogSettingsObject -Enabled <Boolean> [-Category <String>]
+ [-CategoryGroup <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Create an in-memory object for SubscriptionLogSettings.
 
 ### Example 1: Create subscription log setting object
 ```powershell
-New-AzSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
+New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
 ```
 
 Create subscription log setting object, to get supported categories for resource, please see `Get-AzEventCategory`

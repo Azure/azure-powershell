@@ -39,7 +39,7 @@ input-file:
 root-module-name: $(prefix).Monitor
 title: ActivityLogAlert
 module-version: 0.1.0
-subject-prefix: ""
+subject-prefix: ActivityLogAlert
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.ActivityLogAlert
 resourcegroup-append: true
 nested-object-to-string: true
@@ -77,6 +77,10 @@ directive:
       parameter-name: ActionGroup
     set:
       parameter-name: Action
+  - where:
+      subject: (ActivityLogAlert)(.*)
+    set:
+      subject-prefix: ""
 
   - model-cmdlet:
     - AlertRuleAnyOfOrLeafCondition

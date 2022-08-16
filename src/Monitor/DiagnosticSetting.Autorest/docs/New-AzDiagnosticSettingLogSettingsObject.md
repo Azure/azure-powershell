@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az./new-AzLogSettingsObject
+online version: https://docs.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingLogSettingsObject
 schema: 2.0.0
 ---
 
-# New-AzLogSettingsObject
+# New-AzDiagnosticSettingLogSettingsObject
 
 ## SYNOPSIS
 Create an in-memory object for LogSettings.
@@ -13,7 +13,7 @@ Create an in-memory object for LogSettings.
 ## SYNTAX
 
 ```
-New-AzLogSettingsObject -Enabled <Boolean> [-Category <String>] [-CategoryGroup <String>]
+New-AzDiagnosticSettingLogSettingsObject -Enabled <Boolean> [-Category <String>] [-CategoryGroup <String>]
  [-RetentionPolicyDay <Int32>] [-RetentionPolicyEnabled <Boolean>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Create an in-memory object for LogSettings.
 
 ### Example 1: Create log setting object
 ```powershell
-New-AzLogSettingsObject -Enabled $true -Category ContainerEventLogs -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
+New-AzDiagnosticSettingLogSettingsObject -Enabled $true -Category ContainerEventLogs -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
 ```
 
 Create log setting object, to get supported categories for resource, please see `Get-AzDiagnosticSettingCategory`
