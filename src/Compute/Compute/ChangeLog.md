@@ -20,7 +20,8 @@
 
 -->
 ## Upcoming Release
-
+* Added new Parameter `-PublicIpSku` to the `NewAzVM` cmdlet with acceptable values : "Basic" and "Standard". 
+* Added Generic Breaking Change PublicIpSku Warning and Overridden `-Zone` logic when `-PublicIpSku` is explicitly provided.
 ## Version 4.29.0
 * Added image alias 'Win2022AzureEditionCore'
 * Added the `-DisableIntegrityMonitoring` switch parameter to the `New-AzVM` cmdlet. 
