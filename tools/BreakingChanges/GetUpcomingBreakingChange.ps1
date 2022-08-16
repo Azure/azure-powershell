@@ -514,16 +514,17 @@ Function Export-BreakingChangeMessageOfCmdlet
         {
             If ($ParameterSetName -ne $AllParameterSetsName)
             {
-                $Result += "`n- Cmdlet breaking-change will happen to parameter set ``$ParameterSetName```n`n"
+                $Result += "`n- Cmdlet breaking-change will happen to parameter set ``$ParameterSetName```n"
             }
             Else
             {
-                $Result += "`n- Cmdlet breaking-change will happen to all parameter set`n`n"
+                $Result += "`n- Cmdlet breaking-change will happen to all parameter set`n"
             }
             ForEach ($breakingChangeMsg In $CmdletBreakingChangeInfo[$ParameterSetName]['CmdletBreakingChange'])
             {
                 $Result += (("$breakingChangeMsg" -Split "`n" | ForEach-Object { Return "  $_" }) -Join "`n")
             }
+            $Result += "`n"
         }
         If ($CmdletBreakingChangeInfo[$ParameterSetName].ContainsKey('ParameterBreakingChange'))
         {
@@ -563,7 +564,7 @@ Function Export-BreakingChangeMessageOfModule
     {
         Return ""
     }
-    $Result = "`n`n## $ModuleName`n"
+    $Result = "`n## $ModuleName`n"
 
     ForEach ($CmdletName In ($ModuleBreakingChangeInfo.Keys | Sort-Object))
     {
@@ -585,7 +586,7 @@ Function Export-AllBreakingChangeMessageUnderArtifacts
         [String]
         $MarkdownPath
     )
-    $Result = "# Upcoming breaking changes in Azure PowerShell"
+    $Result = "# Upcoming breaking changes in Azure PowerShell`n"
     $AllModuleList = Get-ChildItem -Path $ArtifactsPath -Filter Az.* | ForEach-Object { $_.Name }
     ForEach ($ModuleName In $AllModuleList)
     {
