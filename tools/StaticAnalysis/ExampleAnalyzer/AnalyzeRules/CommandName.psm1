@@ -3,7 +3,10 @@
     Custom rule for command name.
     .NOTES
     File: CommandName.psm1
+    Import-Module should be at the beginning of the rule to avoid thread conflict.
 #>
+Get-Item "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1" | Import-Module -Global
+
 . $PSScriptRoot\..\utils.ps1
 
 enum RuleNames {
@@ -25,10 +28,6 @@ function Measure-CommandName {
         [System.Management.Automation.Language.ScriptBlockAst]
         $ScriptBlockAst
     )
-    begin{
-        $modulePath = "$PSScriptRoot\..\..\..\..\artifacts\Debug\Az.*\Az.*.psd1"
-        Get-Item $modulePath | Import-Module -Global
-    }
     process {
         $Results = @()
         $global:CommandParameterPair = @()
@@ -52,38 +51,34 @@ function Measure-CommandName {
                     if ($CommandAst.InvocationOperator -eq "Unknown") {
                         $CommandName = $CommandAst.CommandElements[0].Extent.Text
                         $GetCommand = Get-Command $CommandName -ErrorAction SilentlyContinue
-                        $ActualName = $GetCommand.Name
-                        if ($null -eq $GetCommand) {
+                        if($null -eq $GetCommand){
                             # CommandName is not valid.
-                            # Redo import-module
-                            if(!(Redo-ImportModule $CommandName)){
-                                $global:CommandParameterPair += @{
-                                    CommandName = $CommandName
-                                    ParameterName = "<is not valid>"
-                                    ModuleCmdletExNum = $ModuleCmdletExNum
-                                }
-                                return $true
+                            $global:CommandParameterPair += @{
+                                CommandName = $CommandName
+                                ParameterName = "<is not valid>"
+                                ModuleCmdletExNum = $ModuleCmdletExNum
                             }
+                            return $true
                         }
-                        else {
-                            if ($GetCommand.CommandType -eq "Alias") {
-                                # CommandName is an alias.
-                                $global:CommandParameterPair += @{
-                                    CommandName = $CommandName
-                                    ParameterName = "<is an alias>"
-                                    ModuleCmdletExNum = $ModuleCmdletExNum
-                                }
-                                return $true
+
+                        $ActualName = $GetCommand.Name
+                        if ($GetCommand.CommandType -eq "Alias") {
+                            # CommandName is an alias.
+                            $global:CommandParameterPair += @{
+                                CommandName = $CommandName
+                                ParameterName = "<is an alias>"
+                                ModuleCmdletExNum = $ModuleCmdletExNum
                             }
-                            if ($CommandName -cne $ActualName) {
-                                # CommandName doesn't follow the Capitalization Conventions.
-                                $global:CommandParameterPair += @{
-                                    CommandName = "$CommandName#@#$ActualName"
-                                    ParameterName = "<doesn't follow the Capitalization Conventions>"
-                                    ModuleCmdletExNum = $ModuleCmdletExNum
-                                }
-                                return $true
+                            return $true
+                        }
+                        if ($CommandName -cne $ActualName) {
+                            # CommandName doesn't follow the Capitalization Conventions.
+                            $global:CommandParameterPair += @{
+                                CommandName = "$CommandName#@#$ActualName"
+                                ParameterName = "<doesn't follow the Capitalization Conventions>"
+                                ModuleCmdletExNum = $ModuleCmdletExNum
                             }
+                            return $true
                         }
                     }
                 }
@@ -118,7 +113,7 @@ function Measure-CommandName {
                 }
                 $ModuleCmdletExNum = $($CommandParameterPair[$i].ModuleCmdletExNum)
                 $Result = [Microsoft.Windows.PowerShell.ScriptAnalyzer.Generic.DiagnosticRecord]@{
-                    Message = "$ModuleCmdletExNum-#@#$Message#@#$Remediation";
+                    Message = "$Message#@#$Remediation";
                     Extent = $Asts[$i].Extent;
                     RuleName = $RuleName;
                     Severity = $Severity
