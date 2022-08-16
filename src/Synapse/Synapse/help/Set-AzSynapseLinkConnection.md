@@ -62,7 +62,7 @@ linkconnection.json
 	}
 }
 #>
-Set-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -DefinitionFile "C:\\samples\\linkconnection.json"
+Set-AzSynapseLinkConnection -WorkspaceName ContosoWorkspace -DefinitionFile "C:\samples\linkconnection.json"
 ```
 
 This command creates or updates a link connection from definition file linkconnection.json in the workspace named ContosoWorkspace.
@@ -70,7 +70,7 @@ This command creates or updates a link connection from definition file linkconne
 ### Example 2
 ```powershell
 $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-$ws | Set-AzSynapseLinkConnection -DefinitionFile "C:\\samples\\linkconnection.json"
+$ws | Set-AzSynapseLinkConnection -DefinitionFile "C:\samples\linkconnection.json"
 ```
 
 This command creates or updates a link connection from definition file linkconnection.json in the workspace named ContosoWorkspace through pipeline.
