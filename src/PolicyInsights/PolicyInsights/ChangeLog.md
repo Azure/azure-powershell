@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Update parameter documentation for Get-AzPolicyState 
+* Updated parameter documentation for Get-AzPolicyState 
 
 ## Version 1.5.0
 * Added support for new remediation properties allowing the remediation of more resources with better control over the remediation rate and error handling
