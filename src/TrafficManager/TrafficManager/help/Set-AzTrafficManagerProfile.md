@@ -31,7 +31,7 @@ Modify the object locally and then use **Set-AzTrafficManagerProfile** to commit
 ### Example 1: Update a profile
 ```powershell
 $TrafficManagerProfile = Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" 
-$TrafficManagerProfile.ProfileStatus = Disabled
+$TrafficManagerProfile.ProfileStatus = "Disabled"
 Set-AzTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
 ```
 

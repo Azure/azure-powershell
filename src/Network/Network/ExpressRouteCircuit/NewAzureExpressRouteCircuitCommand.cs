@@ -105,6 +105,12 @@ namespace Microsoft.Azure.Commands.Network
         public double BandwidthInGbps { get; set; }
 
         [Parameter(
+             ParameterSetName = "ExpressRoutePort",
+             Mandatory = false,
+             ValueFromPipelineByPropertyName = true)]
+        public string AuthorizationKey { get; set; }
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
@@ -161,7 +167,7 @@ namespace Microsoft.Azure.Commands.Network
             circuit.Name = this.Name;
             circuit.ResourceGroupName = this.ResourceGroupName;
             circuit.Location = this.Location;
-
+            circuit.AuthorizationKey = this.AuthorizationKey;
             // Construct sku
             if (!string.IsNullOrEmpty(this.SkuTier))
             {

@@ -39,11 +39,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
         public string AzureFileStorageAccountName { get => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IAzureFileVolumeInternal)AzureFile).StorageAccountName; set => ((Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IAzureFileVolumeInternal)AzureFile).StorageAccountName = value ?? null; }
 
         /// <summary>Backing field for <see cref="EmptyDir" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IAny _emptyDir;
+        private Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeEmptyDir _emptyDir;
 
         /// <summary>The empty directory volume.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Origin(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.PropertyOrigin.Owned)]
-        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IAny EmptyDir { get => (this._emptyDir = this._emptyDir ?? new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Any()); set => this._emptyDir = value; }
+        public Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeEmptyDir EmptyDir { get => (this._emptyDir = this._emptyDir ?? new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.VolumeEmptyDir()); set => this._emptyDir = value; }
 
         /// <summary>Backing field for <see cref="GitRepo" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IGitRepoVolume _gitRepo;
@@ -137,8 +137,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
         ReadOnly = false,
         Description = @"The empty directory volume.",
         SerializedName = @"emptyDir",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IAny) })]
-        Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IAny EmptyDir { get; set; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeEmptyDir) })]
+        Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeEmptyDir EmptyDir { get; set; }
         /// <summary>
         /// Target directory name. Must not contain or start with '..'. If '.' is supplied, the volume directory will be the git repository.
         /// Otherwise, if specified, the volume will contain the git repository in the subdirectory with the given name.
@@ -201,7 +201,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
         /// <summary>The name of the storage account that contains the Azure File share.</summary>
         string AzureFileStorageAccountName { get; set; }
         /// <summary>The empty directory volume.</summary>
-        Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.IAny EmptyDir { get; set; }
+        Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IVolumeEmptyDir EmptyDir { get; set; }
         /// <summary>The git repo volume.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api20210901.IGitRepoVolume GitRepo { get; set; }
         /// <summary>

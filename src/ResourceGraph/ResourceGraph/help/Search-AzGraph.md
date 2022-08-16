@@ -18,10 +18,16 @@ Search-AzGraph [-Query] <String> [-Subscription <String[]>] [-First <Int32>] [-S
  [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ManagementGroupScopedQuery
+```
+Search-AzGraph [-Query] <String> -ManagementGroup <String[]> [-AllowPartialScope] [-First <Int32>]
+ [-Skip <Int32>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ### TenantScopedQuery
 ```
-Search-AzGraph [-Query] <String> [-ManagementGroup <String[]>] [-AllowPartialScope] [-First <Int32>]
- [-Skip <Int32>] [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Search-AzGraph [-Query] <String> [-UseTenantScope] [-AllowPartialScope] [-First <Int32>] [-Skip <Int32>]
+ [-SkipToken <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,7 +126,7 @@ Indicates if query should succeed when only partial number of subscriptions unde
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: TenantScopedQuery
+Parameter Sets: ManagementGroupScopedQuery, TenantScopedQuery
 Aliases:
 
 Required: False
@@ -150,10 +156,10 @@ Management group(s) to run query against.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: TenantScopedQuery
+Parameter Sets: ManagementGroupScopedQuery
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -199,6 +205,21 @@ Parameter Sets: SubscriptionScopedQuery
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UseTenantScope
+Run query across all available subscriptions in the current tenant.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: TenantScopedQuery
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

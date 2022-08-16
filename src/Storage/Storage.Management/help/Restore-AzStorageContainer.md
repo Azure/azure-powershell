@@ -24,8 +24,9 @@ This cmdlet only works after enabled Container softdelete with Enable-AzStorageB
 ## EXAMPLES
 
 ### Example 1: List containers include deleted containers, and restore all deleted containers with pipeline
+<!-- Skip: Output cannot be splitted from code -->
 ```
-PS C:\> Get-AzStorageContainer -IncludeDeleted -Context $ctx | ? { $_.IsDeleted } | Restore-AzStorageContainer
+PS C:\> Get-AzStorageContainer -IncludeDeleted -Context $ctx | Where-Object { $_.IsDeleted } | Restore-AzStorageContainer
 
    Storage Account Name: storageaccountname
 
@@ -38,8 +39,9 @@ container2           Off
 This command lists all containers include deleted containers, filter out all the deleted containers, then restore all deleted container to the same container name with pipeline.
 
 ### Example 2: Restore a single deleted container
+<!-- Skip: Output cannot be splitted from code -->
 ```
-PS C:\> Get-AzStorageContainer -IncludeDeleted -Context $ctx | ? { $_.IsDeleted } 
+PS C:\> Get-AzStorageContainer -IncludeDeleted -Context $ctx | Where-Object { $_.IsDeleted } 
 
    Storage Account Name: storageaccountname
 

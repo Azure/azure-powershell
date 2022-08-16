@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>AnalysisServices</PsModuleName>
@@ -10,4 +10,6 @@
     <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName).Dataplane</AssemblyName>
     <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName).Dataplane</RootNamespace>
   </PropertyGroup>
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
+
 </Project>

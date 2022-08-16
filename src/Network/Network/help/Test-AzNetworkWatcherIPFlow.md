@@ -43,7 +43,7 @@ The Test-AzNetworkWatcherIPFlow cmdlet, for a specified VM resource and a packet
 
 ### Example 1: Run Test-AzNetworkWatcherIPFlow
 ```powershell
-$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
+$nw = Get-AzResource | Where-Object {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
 $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 $VM = Get-AzVM -ResourceGroupName testResourceGroup -Name VM0 
 $Nics = Get-AzNetworkInterface | Where-Object { $vm.NetworkProfile.NetworkInterfaces.Id -contains $_.Id }

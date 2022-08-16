@@ -12,10 +12,9 @@ Gets a list of application control VM/server groups for the subscription.
 
 ## SYNTAX
 
-### SubscriptionScope (Default)
 ```
-Get-AzSecurityAdaptiveApplicationControl [-SubscriptionId <String>] [-IncludePathRecommendation <Boolean>] [-Summary <Boolean>] 
-[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzSecurityAdaptiveApplicationControl [-SubscriptionId <String>] [-IncludePathRecommendation <Boolean>]
+ [-Summary <Boolean>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,8 +45,8 @@ Name       : GROUP5
 Type       : Microsoft.Security/applicationWhitelistings
 Location   : centralus
 Properties : Microsoft.Azure.Commands.SecurityCenter.Models.AdaptiveApplicationControls.PSSecurityAdaptiveApplicationControlsProperties
-
 ```
+
 Gets a list of application control VM/server groups for the subscription.
 
 ## PARAMETERS
@@ -67,12 +66,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-Azure subscription ID.
+### -IncludePathRecommendation
+Include the policy rules
 
 ```yaml
-Type: System.String
-Parameter Sets: SubscriptionId
+Type: System.Boolean
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -82,12 +81,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IncludePathRecommendations
-Include the policy rules.
+### -SubscriptionId
+Azure subscription ID.
 
 ```yaml
-Type: System.Boolean
-Parameter Sets: IncludePathRecommendations
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -102,7 +101,7 @@ Return output in a summarized form.
 
 ```yaml
 Type: System.Boolean
-Parameter Sets: Summary
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -113,7 +112,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

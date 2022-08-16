@@ -50,7 +50,7 @@ update cluster
 
 ### Example 1
 ```powershell
-Update-AzOperationalInsightsCluster -ResourceGroupName azps-test-group -ClusterName yabo-cluster10 -Location eastus -SkuName CapacityReservation -SkuCapacity 1200 -KeyVaultUri {uri} -KeyName {key-name} -KeyVersion {version}
+Update-AzOperationalInsightsCluster -ResourceGroupName "rg-name" -ClusterName "cluster-name" -SkuName CapacityReservation -SkuCapacity 1200 -KeyVaultUri "uri" -KeyName "key-name" -KeyVersion "version"
 ```
 
 ```output
@@ -151,7 +151,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-the identity type, value can be 'SystemAssigned', 'None'.
+the identity type, value can be 'SystemAssigned', 'None', 'UserAssigned'.
 
 ```yaml
 Type: System.String
@@ -297,7 +297,7 @@ Accept wildcard characters: False
 Sku Capacity
 
 ```yaml
-Type: System.Int64
+Type: System.Nullable`1[System.Int64]
 Parameter Sets: UpdateByNameParameterSet, AllParameterSet, UpdateByResourceIdParameterSet
 Aliases:
 

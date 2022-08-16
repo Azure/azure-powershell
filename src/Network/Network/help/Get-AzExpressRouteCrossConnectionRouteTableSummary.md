@@ -37,7 +37,7 @@ router.
 
 ### Example 1: Display the route summary for the primary path
 ```powershell
-Get-AzExpressRouteCrossConnectionRouteTableSummary -ResourceGroupName $RG -ExpressRouteCrossConnectionName $CrossConnectionName -DevicePath 'Primary'
+Get-AzExpressRouteCrossConnectionRouteTableSummary -ResourceGroupName $RG -CrossConnectionName $CrossConnectionName -PeeringType MicrosoftPeering -DevicePath Primary
 ```
 
 ## PARAMETERS

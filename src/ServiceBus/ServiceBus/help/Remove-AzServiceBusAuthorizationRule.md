@@ -40,21 +40,21 @@ The **Remove-AzServiceBusAuthorizationRule** cmdlet removes the authorization ru
 
 ### Example 1
 ```powershell
-Remove-AzServiceBusAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1
+Remove-AzServiceBusAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Name AuthoRule1
 ```
 
 Removes the authorization rule `SBAuthoRule1` of namespace `SB-Example1` from the specified resource group.
 
 ### Example 2
 ```powershell
-Remove-AzServiceBusAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1
+Remove-AzServiceBusAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Queue SBQueue -Name AuthoRule1
 ```
 
 Removes the authorization rule `SBAuthoRule1` of queue `SBQueue` from the specified resource group.
 
 ### Example 3
 ```powershell
-Remove-AzServiceBusAuthorizationRule -ResourceGroup Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1
+Remove-AzServiceBusAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace SB-Example1 -Topic SBTopic -Name AuthoRule1
 ```
 
 Removes the authorization rule `SBAuthoRule1` of topic `SBTopic` from the specified resource group.

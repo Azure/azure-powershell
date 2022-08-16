@@ -68,7 +68,7 @@ function Test-CortexCRUD
 		Assert-NotNull $virtualWansAll
 
 		# Create the Virtual Hub
-		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan -HubRoutingPreference "ASPath"
 		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
 		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
@@ -94,7 +94,7 @@ function Test-CortexCRUD
 		$route1 = New-AzVirtualHubRoute -AddressPrefix @("10.0.0.0/16", "11.0.0.0/16") -NextHopIpAddress "12.0.0.5"
 		$route2 = New-AzVirtualHubRoute -AddressPrefix @("13.0.0.0/16") -NextHopIpAddress "14.0.0.5"
 		$routeTable = New-AzVirtualHubRouteTable -Route @($route1, $route2)
-		Update-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -RouteTable $routeTable
+		Update-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -RouteTable $routeTable -HubRoutingPreference "ExpressRoute"
 		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
 		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
 		Assert-AreEqual $virtualHubName $virtualHub.Name
@@ -327,6 +327,101 @@ function Test-CortexCRUD
 		Assert-AreEqual $True $delete
 
 		$delete = Remove-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite2Name -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Force -PassThru
+		Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-RoutingIntentCRUD
+{
+ # Setup
+    $rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+	$firewallName = "testFirewall1"
+	$riName = "testRoutingIntent1"
+	$privatePolicyName = "PrivateTraffic"
+	$internetPolicyName = "PublicTraffic"
+
+	$storeName = 'blob' + $rgName
+    
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+
+		# Create the Virtual Hub
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan -HubRoutingPreference "ASPath"
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
+
+		# Create a firewall in the Virtual hub
+		$fwIp = New-AzFirewallHubPublicIpAddress -Count 1
+		$hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwIp
+		New-AzFirewall -Name $firewallName -ResourceGroupName $rgName -Location $rglocation -Sku AZFW_Hub -VirtualHubId $virtualHub.Id -HubIPAddress $hubIpAddresses
+		$firewall = Get-AzFirewall -Name $firewallName -ResourceGroupName $rgName
+
+		$policy1 = New-AzRoutingPolicy -Name $privatePolicyName -Destination @("PrivateTraffic") -NextHop $firewall.Id
+		$policy2 = New-AzRoutingPolicy -Name $internetPolicyName -Destination @("Internet") -NextHop $firewall.Id
+		New-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -RoutingPolicy @($policy1, $policy2)
+		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 2
+		Assert-AreEqual $routingIntent.Name $riName
+
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 1
+		Assert-AreEqual $riPolicy.NextHop $firewall.Id
+
+		$policy3 = New-AzRoutingPolicy -Name $privatePolicyName -Destination @("PrivateTraffic") -NextHop $firewall.Id
+		$routingIntent = Set-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -RoutingPolicy @($policy3)
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 1
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 1
+
+		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
+		Add-AzRoutingPolicy -Name $internetPolicyName -RoutingIntent $routingIntent -Destination @("Internet") -NextHop $firewall.Id
+		Set-AzRoutingIntent -InputObject $routingIntent
+		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 2
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $internetPolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 1
+
+		Remove-AzRoutingPolicy -Name $internetPolicyName -RoutingIntent $routingIntent
+		Set-AzRoutingIntent -InputObject $routingIntent
+		$routingIntent = Get-AzRoutingIntent -Name $riName -VirtualHub $virtualHub
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 1
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 1
+
+		Set-AzRoutingPolicy -Name $privatePolicyName -RoutingIntent $routingIntent -Destination @("Internet", "PrivateTraffic") -NextHop $firewall.Id
+		Set-AzRoutingIntent -InputObject $routingIntent
+		$routingIntent = Get-AzRoutingIntent -Name $riName -VirtualHub $virtualHub
+		Assert-AreEqual $routingIntent.RoutingPolicies.Count 1
+		$riPolicy = Get-AzRoutingPolicy -RoutingIntent $routingIntent -Name $privatePolicyName
+		Assert-AreEqual $riPolicy.Destinations.Count 2
+
+		$delete = Remove-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		$delete = Remove-AzFirewall -Name $firewallName -ResourceGroupName $rgName -Force -PassThru
 		Assert-AreEqual $True $delete
 
 		$delete = Remove-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Force -PassThru
@@ -711,12 +806,24 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $virtualHubName $virtualHub.Name
 		Assert-AreEqual $virtualWan.Id $virtualhub.VirtualWan.Id
 
-		# Create the VpnServerConfiguration1 with VpnClient settings using New-AzVpnServerConfiguration
+		# Create a PolicyGroup1 Object
+		$policyGroup1 = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroup
+		$policyGroup1.Name = "PolicyGroup1"
+		$policyGroup1.IsDefault = $False
+		$policyGroup1.Priority = 0
+		$policyGroupMember1 = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroupMember
+		$policyGroupMember1.Name = "policyGroupMember1"
+		$policyGroupMember1.AttributeType = "AADGroupId"
+		$policyGroupMember1.AttributeValue = "41b23e61-6c1e-4545-b367-cd054e0ed4b5"
+		$policyGroup1.PolicyMembers = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroupMember[] 1
+		$policyGroup1.PolicyMembers[0] = $policyGroupMember1
+
+		# Create the VpnServerConfiguration1 with VpnClient settings (and child PolicyGroup1) using New-AzVpnServerConfiguration
 		$VpnServerConfigCertFilePath = Join-Path -Path $basedir -ChildPath "\ScenarioTests\Data\ApplicationGatewayAuthCert.cer"
 		$listOfCerts = New-Object "System.Collections.Generic.List[String]"
 		$listOfCerts.Add($VpnServerConfigCertFilePath)
 		$vpnclientipsecpolicy1 = New-AzVpnClientIpsecPolicy -IpsecEncryption AES256 -IpsecIntegrity SHA256 -SALifeTime 86471 -SADataSize 429496 -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup14 -PfsGroup PFS14
-		New-AzVpnServerConfiguration -Name $VpnServerConfiguration1Name -ResourceGroupName $rgName -VpnProtocol IkeV2 -VpnAuthenticationType Certificate -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts -VpnClientIpsecPolicy $vpnclientipsecpolicy1 -Location $rglocation
+		New-AzVpnServerConfiguration -Name $VpnServerConfiguration1Name -ResourceGroupName $rgName -VpnProtocol IkeV2 -VpnAuthenticationType Certificate -VpnClientRootCertificateFilesList $listOfCerts -VpnClientRevokedCertificateFilesList $listOfCerts -VpnClientIpsecPolicy $vpnclientipsecpolicy1 -ConfigurationPolicyGroup $policyGroup1 -Location $rglocation
 
 		# Get created VpnServerConfiguration using Get-AzVpnServerConfiguration
 		$vpnServerConfig1 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration1Name
@@ -729,6 +836,8 @@ function Test-CortexExpressRouteCRUD
 		$authenticationTypes = $vpnServerConfig1.VpnAuthenticationTypes
 		Assert-AreEqual 1 @($authenticationTypes).Count
 		Assert-AreEqual "Certificate" $authenticationTypes[0]
+		Assert-AreEqual 1 @($vpnServerConfig1.ConfigurationPolicyGroups).Count
+		Assert-AreEqual "PolicyGroup1" $vpnServerConfig1.ConfigurationPolicyGroups[0].Name
 
 		# Create the P2SVpnGateway using New-AzP2sVpnGateway
 		$vpnClientAddressSpaces = New-Object string[] 2
@@ -746,17 +855,17 @@ function Test-CortexExpressRouteCRUD
 		Assert-AreEqual $vpnServerConfig1.Id $P2SVpnGateway.VpnServerConfiguration.Id
 		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
 		Assert-AreEqual 1 @($P2SVpnGateway.CustomDnsServers).Count
-        	Assert-AreEqual "7.7.7.7" $P2SVpnGateway.CustomDnsServers[0]
+		Assert-AreEqual "7.7.7.7" $P2SVpnGateway.CustomDnsServers[0]
 		Assert-AreEqual $True $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
 		Assert-AreEqual $True $P2SVpnGateway.IsRoutingPreferenceInternet
 
+		$getPolicyGroup1 = Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration1Name -Name "PolicyGroup1"
+		Assert-AreEqual $getPolicyGroup1.Id	$vpnServerConfig1.ConfigurationPolicyGroups[0].Id
+
 		# Reset/Reboot the P2SVpnGateway using Reset-AzP2sVpnGateway
-        	$job = Reset-AzP2sVpnGateway -P2SVpnGateway $P2SVpnGateway -AsJob
-	    	$job | Wait-Job
-	    	$actual = $job | Receive-Job
-		
-		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
-		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
+		$job = Reset-AzP2sVpnGateway -P2SVpnGateway $P2SVpnGateway -AsJob
+		$job | Wait-Job
+		$actual = $job | Receive-Job
 
 		# Get all associated VpnServerConfigurations at Wan level using Get-AzVirtualWanVpnServerConfiguration
 		$associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -Name $virtualWanName -ResourceGroupName $rgName
@@ -789,14 +898,14 @@ function Test-CortexExpressRouteCRUD
 		$Secure_String_Pwd = ConvertTo-SecureString "TestRadiusServerPassword" -AsPlainText -Force
 		New-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName -VpnProtocol IkeV2 -VpnAuthenticationType Radius -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd -RadiusServerRootCertificateFilesList $listOfCerts -RadiusClientRootCertificateFilesList $listOfCerts -Location $rglocation
         
-        	$vpnServerConfig2 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
+        $vpnServerConfig2 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
 		Assert-AreEqual "Succeeded" $vpnServerConfig2.ProvisioningState
 		Assert-AreEqual "TestRadiusServer" $vpnServerConfig2.RadiusServerAddress
 	
 		# Create the VpnServerConfigurationMultiAuth with Radius and Certificate settings using New-AzVpnServerConfiguration
 		New-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnProtocol OpenVpn -VpnAuthenticationType Radius,Certificate -RadiusServerAddress "TestRadiusServer" -RadiusServerSecret $Secure_String_Pwd -RadiusServerRootCertificateFilesList $listOfCerts -RadiusClientRootCertificateFilesList $listOfCerts -VpnClientRootCertificateFilesList $listOfCerts -Location $rglocation
         
-        	$vpnServerConfigMultiAuth = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfigurationMultiAuthName
+        $vpnServerConfigMultiAuth = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfigurationMultiAuthName
 		Assert-AreEqual "Succeeded" $vpnServerConfigMultiAuth.ProvisioningState
 		Assert-AreEqual "TestRadiusServer" $vpnServerConfigMultiAuth.RadiusServerAddress
 		$authenticationTypes = $vpnServerConfigMultiAuth.VpnAuthenticationTypes
@@ -807,19 +916,57 @@ function Test-CortexExpressRouteCRUD
 		Assert-NotNull $vpnServerConfigs
 		Assert-AreEqual 3 @($vpnServerConfigs).Count
 
-		# Update existing VpnServerConfiguration2 using Update-AzVpnServerConfiguration
-		Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName -RadiusServerAddress "TestRadiusServer1"
+		# Create a PolicyGroup2 Object
+		$policyGroup2= New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroup
+		$policyGroup2.Name = "PolicyGroup2"
+		$policyGroup2.IsDefault = $true
+		$policyGroup2.Priority = 0
+		$policyGroupMember2 = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroupMember
+		$policyGroupMember2.Name = "policyGroupMember2"
+		$policyGroupMember2.AttributeType = "AADGroupId"
+		$policyGroupMember2.AttributeValue = "41b23e61-6c1e-4545-b367-cd054e0ed4b5"
+		$policyGroup2.PolicyMembers = New-Object Microsoft.Azure.Commands.Network.Models.PSVpnServerConfigurationPolicyGroupMember[] 1
+		$policyGroup2.PolicyMembers[0] = $policyGroupMember2
+
+		# Update existing VpnServerConfiguration2(adding child PolicyGroup2) using Update-AzVpnServerConfiguration
+		Update-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName -RadiusServerAddress "TestRadiusServer1" -ConfigurationPolicyGroup $policyGroup2
 		$VpnServerConfig2 = Get-AzVpnServerConfiguration -Name $VpnServerConfiguration2Name -ResourceGroupName $rgName
 		Assert-AreEqual $VpnServerConfiguration2Name $VpnServerConfig2.Name
 		Assert-AreEqual "TestRadiusServer1" $VpnServerConfig2.RadiusServerAddress
-		
+		Assert-AreEqual 1 @($VpnServerConfig2.ConfigurationPolicyGroups).Count
+		Assert-AreEqual "PolicyGroup2" $VpnServerConfig2.ConfigurationPolicyGroups[0].Name
+		Assert-AreEqual 0 $VpnServerConfig2.ConfigurationPolicyGroups[0].Priority
+
+		# Delete VpnServerConfiguration2 child PolicyGroup2 using Remove-AzVpnServerConfigurationPolicyGroup		
+		$delete = Remove-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2" -Force -PassThru
+		Assert-AreEqual $True $delete
+		$VpnServerConfig2 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
+		Assert-AreEqual 0 @($VpnServerConfig2.ConfigurationPolicyGroups).Count
+
+		# Create PolicyGroup2 for VpnServerConfiguration2 using New-AzVpnServerConfigurationPolicyGroup
+		New-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2" -DefaultPolicyGroup -Priority 1 -PolicyMember $policyGroupMember2
+		$getPolicyGroup2 = Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2"
+		Assert-AreEqual "PolicyGroup2" $getPolicyGroup2.Name
+		Assert-AreEqual $true $getPolicyGroup2.IsDefault
+		Assert-AreEqual 1 @($getPolicyGroup2.PolicyMembers).Count
+		Assert-AreEqual 1 $getPolicyGroup2.Priority
+
+		$VpnServerConfig2 = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
+		Assert-AreEqual 1 @($VpnServerConfig2.ConfigurationPolicyGroups).Count
+
+		# Update PolicyGroup2 for VpnServerConfiguration2 using Update-AzVpnServerConfigurationPolicyGroup
+		Update-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2" -Priority 2 -DefaultPolicyGroup $true
+		$getPolicyGroup2 = Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration2Name -Name "PolicyGroup2"
+		Assert-AreEqual $true $getPolicyGroup2.IsDefault
+		Assert-AreEqual 2 $getPolicyGroup2.Priority
+
 		Update-AzVpnServerConfiguration -ResourceId  $VpnServerConfig2.Id -RadiusServerAddress "TestRadiusServer2"			
 		$VpnServerConfig2Get = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
 		Assert-AreEqual "TestRadiusServer2" $VpnServerConfig2Get.RadiusServerAddress
 						
 		Update-AzVpnServerConfiguration -InputObject $VpnServerConfig2Get -RadiusServerAddress "TestRadiusServer3"
 		$VpnServerConfig2Get = Get-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration2Name
-        	Assert-AreEqual "TestRadiusServer3" $VpnServerConfig2Get.RadiusServerAddress
+        Assert-AreEqual "TestRadiusServer3" $VpnServerConfig2Get.RadiusServerAddress
 
 		# Update existing VpnServerConfigurationMultiAuth using Update-AzVpnServerConfiguration
 		Update-AzVpnServerConfiguration -Name $VpnServerConfigurationMultiAuthName -ResourceGroupName $rgName -VpnAuthenticationType Radius 
@@ -841,29 +988,41 @@ function Test-CortexExpressRouteCRUD
 		$vpnClientAddressSpaces[1] = "192.168.4.0/24"
 		$updatedP2SVpnGateway = Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -VpnClientAddressPool $vpnClientAddressSpaces -CustomDnsServer 9.9.9.9 -DisableInternetSecurityFlag
 
-        	$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
+        $P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
 		Assert-AreEqual $P2SvpnGatewayName $P2SVpnGateway.Name
 		Assert-AreEqual "Succeeded" $P2SVpnGateway.ProvisioningState
 		Assert-AreEqual $vpnServerConfig1.Id $P2SVpnGateway.VpnServerConfiguration.Id
 		$setVpnClientAddressSpacesString = [system.String]::Join(" ", $vpnClientAddressSpaces)
-        	Assert-AreEqual $setVpnClientAddressSpacesString $P2SVpnGateway.P2SConnectionConfigurations[0].VpnClientAddressPool.AddressPrefixes
+        Assert-AreEqual $setVpnClientAddressSpacesString $P2SVpnGateway.P2SConnectionConfigurations[0].VpnClientAddressPool.AddressPrefixes
 		Assert-AreEqual 1 @($P2SVpnGateway.CustomDnsServers).Count
-        	Assert-AreEqual "9.9.9.9" $P2SVpnGateway.CustomDnsServers[0]
+        Assert-AreEqual "9.9.9.9" $P2SVpnGateway.CustomDnsServers[0]
 		Assert-AreEqual $false $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
 
-		# Update existing P2SVpnGateway to remove the CustomDnsServers & EnableInternetSecurityFlag
+		# Update existing P2SVpnGateway to remove the CustomDnsServers & EnableInternetSecurityFlag & adding new P2SConnectionConfiguration
 		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
-		Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -CustomDnsServer @() -EnableInternetSecurityFlag
+		$p2SConnectionConfigs = New-Object Microsoft.Azure.Commands.Network.Models.PSP2SConnectionConfiguration[] 2
+		$p2SConnectionConfigs[0] = $P2SVpnGateway.P2SConnectionConfigurations[0]
+		$p2SConnectionConfigs[1] =  New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSP2SConnectionConfiguration
+		$p2SConnectionConfigs[1].Name = "P2SConnectionConfigNew"
+		$p2SConnectionConfigs[1].VpnClientAddressPool = New-Object -TypeName Microsoft.Azure.Commands.Network.Models.PSAddressSpace
+		$p2SConnectionConfigs[1].VpnClientAddressPool.AddressPrefixes = New-Object string[] 1
+		$p2SConnectionConfigs[1].VpnClientAddressPool.AddressPrefixes[0] = "192.168.5.0/24"
+		Update-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName -CustomDnsServer @() -EnableInternetSecurityFlag -P2SConnectionConfiguration $p2SConnectionConfigs
+
 		$P2SVpnGateway = Get-AzP2sVpnGateway -ResourceGroupName $rgName -Name $P2SvpnGatewayName
 		Assert-AreEqual 0 @($P2SVpnGateway.CustomDnsServers).Count
+		Assert-AreEqual 2 @($P2SVpnGateway.P2SConnectionConfigurations).Count
+		Assert-AreEqual "P2SConnectionConfigDefault" $P2SVpnGateway.P2SConnectionConfigurations[0].Name
 		Assert-AreEqual $true $P2SVpnGateway.P2SConnectionConfigurations[0].EnableInternetSecurity
+		Assert-AreEqual "P2SConnectionConfigNew" $P2SVpnGateway.P2SConnectionConfigurations[1].Name		
+		Assert-AreEqual $true $P2SVpnGateway.P2SConnectionConfigurations[1].EnableInternetSecurity
 
 		$associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -ResourceId $virtualWan.Id
 		Assert-NotNull $associatedVpnServerConfigs
 		Assert-AreEqual 1 @($associatedVpnServerConfigs.VpnServerConfigurationResourceIds).Count
 		Assert-AreEqual $vpnServerConfig1.Id $associatedVpnServerConfigs.VpnServerConfigurationResourceIds[0]
 
-        	# Delete VpnServerConfiguration2 using Remove-AzVpnServerConfiguration
+        # Delete VpnServerConfiguration2 using Remove-AzVpnServerConfiguration
 		$delete = Remove-AzVpnServerConfiguration -InputObject $VpnServerConfig2Get -Force -PassThru
 		Assert-AreEqual $True $delete
 
@@ -902,14 +1061,18 @@ function Test-CortexExpressRouteCRUD
      }
      finally
      {
-		# Delete P2SVpnGateway using Remove-AzP2sVpnGateway
+	    # Delete P2SVpnGateway using Remove-AzP2sVpnGateway
 		$delete = Remove-AzP2sVpnGateway -Name $P2SVpnGatewayName -ResourceGroupName $rgName -Force -PassThru
 		Assert-AreEqual $True $delete
 
 		# Verify that there are no associated VpnServerConfigurations to Virtual wan anymore
 		$associatedVpnServerConfigs = Get-AzVirtualWanVpnServerConfiguration -Name $virtualWanName -ResourceGroupName $rgName
 		Assert-NotNull $associatedVpnServerConfigs
-		Assert-AreEqual 0 @($associatedVpnServerConfigs.VpnServerConfigurationResourceIds).Count
+		#Assert-AreEqual 0 @($associatedVpnServerConfigs.VpnServerConfigurationResourceIds).Count
+
+		# Verify that Get PolicyGroup1 works even after attached P2SVpnGateway was deleted.
+		$getPolicyGroup1 = Get-AzVpnServerConfigurationPolicyGroup -ResourceGroupName $rgName -ServerConfigurationName $VpnServerConfiguration1Name -Name "PolicyGroup1"
+		Assert-NotNull $getPolicyGroup1
 
 		# Delete VpnServerConfiguration1 using Remove-AzVpnServerConfiguration      
 		$delete = Remove-AzVpnServerConfiguration -ResourceGroupName $rgName -Name $VpnServerConfiguration1Name -Force -PassThru

@@ -42,8 +42,9 @@ WorkspaceName     : OperationalInsights-1
 ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/wo
                     rkspaces/OperationalInsights-1/datasources/DataSource_LinuxSyslogCollection
 Kind              : LinuxSyslogCollection
-Properties        : {"state":"Disabled"} 
+Properties        : {"state":"Disabled"}
 ```
+
 Stops collection of syslog data from connected Linux computers in a workspace.
 
 ## PARAMETERS

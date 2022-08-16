@@ -46,7 +46,7 @@ $appTypeName = "testAppType"
 $version = "v1"
 $newTags = @{new="tags"}
 $packageUrl = "https://sftestapp.blob.core.windows.net/sftestapp/testAppType_v1.sfpkg"
-Set-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $version -Tags $newTags -PackageUrl $packageUrl -Verbose
+Set-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $version -Tag $newTags -PackageUrl $packageUrl -Verbose
 ```
 
 This example will update the managed application type version "v1" tags and packageUrl.
@@ -59,7 +59,7 @@ $appTypeName = "testAppType"
 $newTags = @{new="tags"}
 $packageUrl = "https://sftestapp.blob.core.windows.net/sftestapp/testAppType_v1.sfpkg"
 $appType = Get-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $appTypeName -Version $version
-$appType | Set-AzServiceFabricManagedClusterApplicationTypeVersion -Tags $newTags -PackageUrl $packageUrl -Verbose
+$appType | Set-AzServiceFabricManagedClusterApplicationTypeVersion -Tag $newTags -PackageUrl $packageUrl -Verbose
 ```
 
 This example will update the managed application type version "v1" tags and packageUrl.
@@ -69,7 +69,7 @@ This example will update the managed application type version "v1" tags and pack
 $newTags = @{new="tags"}
 $packageUrl = "https://sftestapp.blob.core.windows.net/sftestapp/testAppType_v1.sfpkg"
 $resourceId = "/subscriptions/13ad2c84-84fa-4798-ad71-e70c07af873f/resourcegroups/testRG/providers/Microsoft.ServiceFabric/managedClusters/testCluster/applicationTypes/testAppType/versions/v1"
-Set-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceId $resourceId -Tags $newTags -PackageUrl $packageUrl -Verbose
+Set-AzServiceFabricManagedClusterApplicationTypeVersion -ResourceId $resourceId -Tag $newTags -PackageUrl $packageUrl -Verbose
 ```
 
 This example will update the managed application type details with the ARM Resource ID specified.

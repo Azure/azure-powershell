@@ -38,7 +38,7 @@ This command gets the deployment template from TestDeployment and saves it as a 
 
 ### Example 2: Get a deployment and save its template
 ```powershell
-Get-AzManagementGroupDeploymentTemplate -ManagementGroupId "myMG" -Name "RolesDeployment" | Save-AzManagementGroupDeploymentTemplate
+Get-AzManagementGroupDeployment -ManagementGroupId "myMG" -Name "RolesDeployment" | Save-AzManagementGroupDeploymentTemplate
 ```
 
 This command gets the deployment "RolesDeployment" at the management group "myMG" and saves its template.

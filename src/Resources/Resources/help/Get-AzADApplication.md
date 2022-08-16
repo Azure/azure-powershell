@@ -25,6 +25,12 @@ Get-AzADApplication -ObjectId <String> [-Select <String[]>] [-First <UInt64>] [-
  [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### OwnedApplicationParameterSet
+```
+Get-AzADApplication [-OwnedApplication] [-Select <String[]>] [-Orderby <String[]>] [-First <UInt64>]
+ [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### SearchStringParameterSet
 ```
 Get-AzADApplication [-Select <String[]>] -DisplayNameStartWith <String> [-First <UInt64>] [-Skip <UInt64>]
@@ -81,6 +87,13 @@ Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
 ```
 
 Get application by object Id and append property 'Tags' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'IdentifierUris', 'Web', 'AppId', 'SignInAudience'
+
+### Example 4: Get applications owned by current user
+```powershell
+Get-AzADapplication -OwnedApplication
+```
+
+Get applications owned by current user
 
 ## PARAMETERS
 
@@ -225,10 +238,25 @@ Order items by property values
 
 ```yaml
 Type: System.String[]
-Parameter Sets: EmptyParameterSet
+Parameter Sets: EmptyParameterSet, OwnedApplicationParameterSet
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OwnedApplication
+get owned application
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: OwnedApplicationParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

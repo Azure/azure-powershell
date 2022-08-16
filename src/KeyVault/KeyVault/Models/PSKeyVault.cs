@@ -46,11 +46,14 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
             EnableSoftDelete = vault.Properties.EnableSoftDelete;
             EnablePurgeProtection = vault.Properties.EnablePurgeProtection;
             EnableRbacAuthorization = vault.Properties.EnableRbacAuthorization;
+            PublicNetworkAccess = vault.Properties.PublicNetworkAccess;
             SoftDeleteRetentionInDays = vault.Properties.SoftDeleteRetentionInDays;
             AccessPolicies = vault.Properties.AccessPolicies.Select(s => new PSKeyVaultAccessPolicy(s, graphClient)).ToArray();
             NetworkAcls = InitNetworkRuleSet(vault.Properties);
             OriginalVault = vault;
         }
+        public string PublicNetworkAccess { get; private set; }
+
         public string VaultUri { get; private set; }
 
         public Guid TenantId { get; private set; }

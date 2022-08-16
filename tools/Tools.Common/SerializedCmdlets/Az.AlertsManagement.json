@@ -1,6 +1,6 @@
 {
   "ModuleName": "Az.AlertsManagement",
-  "ModuleVersion": "0.4.0",
+  "ModuleVersion": "0.4.1",
   "Cmdlets": [
     {
       "VerbName": "Get",
@@ -16,7 +16,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartDateTime": "System.Nullable`1[System.DateTime]",
               "LastModifiedDateTime": "System.Nullable`1[System.DateTime]",
@@ -889,7 +889,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModification",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModification, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModification, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Items": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem]"
             },
@@ -952,7 +952,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
               "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -1052,7 +1052,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
                     "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -1152,7 +1152,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -1462,7 +1462,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
               "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -1754,7 +1754,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModification",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModification, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModification, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Items": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem]"
             },
@@ -1817,7 +1817,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
               "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -1917,7 +1917,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
                     "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -2017,7 +2017,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertsSummary",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertsSummary, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertsSummary, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "AggregatedCounts": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAggregatedCounts",
               "TotalAlerts": "System.Nullable`1[System.Int32]",
@@ -2660,7 +2660,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -2856,7 +2856,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -2985,7 +2985,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -3051,7 +3051,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -3395,7 +3395,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -4513,7 +4513,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -4588,7 +4588,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "CreatedAt": "System.Nullable`1[System.DateTime]",
               "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -4750,7 +4750,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertProcessingRule, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "CreatedAt": "System.Nullable`1[System.DateTime]",
                     "LastModifiedAt": "System.Nullable`1[System.DateTime]",
@@ -4970,7 +4970,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartDateTime": "System.Nullable`1[System.DateTime]",
               "LastModifiedDateTime": "System.Nullable`1[System.DateTime]",
@@ -5059,7 +5059,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "StartDateTime": "System.Nullable`1[System.DateTime]",
               "LastModifiedDateTime": "System.Nullable`1[System.DateTime]",
@@ -5193,7 +5193,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlert, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "StartDateTime": "System.Nullable`1[System.DateTime]",
                     "LastModifiedDateTime": "System.Nullable`1[System.DateTime]",
@@ -5297,7 +5297,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
               "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -5382,7 +5382,7 @@
           "Type": {
             "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
             "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+            "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
             "Properties": {
               "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
               "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -5512,7 +5512,7 @@
                 "Type": {
                   "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
                   "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup",
-                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+                  "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroup, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
                   "Properties": {
                     "Resources": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
                     "ResourceTypes": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.SmartGroupAggregatedProperty]",
@@ -5801,7 +5801,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem"
       ]
@@ -5809,7 +5809,7 @@
     "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem": {
       "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
       "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAlertModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Event": "System.String",
         "ModifiedAt": "System.String",
@@ -5930,7 +5930,7 @@
     "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem]": {
       "Namespace": "System.Collections.Generic",
       "Name": "System.Collections.Generic.List`1[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem]",
-      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
+      "AssemblyQualifiedName": "System.Collections.Generic.List`1[[Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35]], System.Private.CoreLib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e",
       "GenericTypeArguments": [
         "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem"
       ]
@@ -5938,7 +5938,7 @@
     "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem": {
       "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
       "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSSmartGroupModificationItem, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Event": "System.String",
         "ModifiedAt": "System.String",
@@ -5984,7 +5984,7 @@
     "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAggregatedCounts": {
       "Namespace": "Microsoft.Azure.Commands.AlertsManagement.OutputModels",
       "Name": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAggregatedCounts",
-      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAggregatedCounts, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.3.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
+      "AssemblyQualifiedName": "Microsoft.Azure.Commands.AlertsManagement.OutputModels.PSAggregatedCounts, Microsoft.Azure.PowerShell.Cmdlets.AlertsManagement, Version=0.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35",
       "Properties": {
         "Content": "System.Collections.Generic.IList`1[Microsoft.Azure.Management.AlertsManagement.Models.AlertsSummaryGroupItem]"
       },

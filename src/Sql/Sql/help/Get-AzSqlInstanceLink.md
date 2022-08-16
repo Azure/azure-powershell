@@ -42,7 +42,7 @@ The **Get-AzSqlInstanceLink** cmdlet returns information about one or more insta
 
 ### Example 1: Get information about an active link on Azure SQL Managed Instance
 ```powershell
-PS C:\> Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01"
+Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "Link01"
 ```
 
 ```Output
@@ -67,7 +67,7 @@ This command gets information about the instance link named "Link01" on instance
 
 ### Example 2: Get information about all active links on Azure SQL Managed Instance
 ```powershell
-PS C:\> Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
+Get-AzSqlInstanceLink -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01"
 ```
 
 ```Output
@@ -108,8 +108,8 @@ This command gets information about all active instance links on instance "Manag
 
 ### Example 3: Get all instance links on Azure SQL Managed Instance using Instance object
 ```powershell
-PS C:\> $instance = Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Get-AzSqlInstanceLink -InstanceObject $instance
+$instance = Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01"
+Get-AzSqlInstanceLink -InstanceObject $instance
 ```
 
 ```Output
@@ -150,7 +150,7 @@ This command gets information on all active instance links on the instance "Mana
 
 ### Example 4: Get all instance links on Azure SQL Managed Instance using resource identifier
 ```powershell
-PS C:\> Get-AzSqlInstanceLink -InstanceResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01"
+Get-AzSqlInstanceLink -InstanceResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01"
 ```
 
 ```Output
@@ -191,7 +191,7 @@ This command gets information about all instance links for the instance "Managed
 
 ### Example 5: Get an instance link using its resource identifier
 ```powershell
-PS C:\> Get-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01"
+Get-AzSqlInstanceLink -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/ManagedInstance01/distributedAvailabilityGroups/Link01"
 ```
 
 ```Output
@@ -216,7 +216,7 @@ This command gets information about the instance link named "Link01".
 
 ### Example 6: Get all instance links for a Managed Instance by piping an instance object
 ```powershell
-PS C:\> Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceLink
+Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceLink
 ```
 
 ```Output
@@ -257,7 +257,7 @@ This command gets information about all instance links within the instance "Mana
 
 ### Example 7: Get a specific instance link for an instance by piping an instance object and specifying the link name
 ```powershell
-PS C:\> Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceLink -Name "Link01"
+Get-AzSqlInstance -Name "ManagedInstance01" -ResourceGroupName "ResourceGroup01" | Get-AzSqlInstanceLink -Name "Link01"
 ```
 
 ```Output
@@ -282,7 +282,7 @@ This command gets information about the instance link named "Link01: within the 
 
 ### Example 8: Get information about instance link using positional parameters
 ```powershell
-PS C:\> Get-AzSqlInstanceLink "ResourceGroup01" "ManagedInstance01" "Link01"
+Get-AzSqlInstanceLink "ResourceGroup01" "ManagedInstance01" "Link01"
 ```
 
 ```Output

@@ -52,7 +52,7 @@ This command removes a Storage blob container with Storage account object and co
 
 ### Example 3: Remove all Storage blob containers in a Storage account with pipeline
 ```
-PS C:\>Get-AzStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Remove-AzRmStorageContainer -Force
+PS C:\>Get-AzRmStorageContainer -ResourceGroupName "myResourceGroup" -AccountName "myStorageAccount" | Remove-AzRmStorageContainer -Force
 ```
 
 This command removes all Storage blob containers in a Storage account with pipeline.

@@ -1573,6 +1573,7 @@ function Test-VirtualNetworkEncryption
         Assert-AreEqual "dropUnencrypted" $vnet2.Encryption.Enforcement
 
         # Update the encryption policies on both virtual networks
+        $vnet1.Encryption.Enabled = "false"
         $vnet1.Encryption.Enforcement = "allowUnencrypted"
         $vnet2.Encryption.Enforcement = "allowUnencrypted"
         $updateVnet1Job = $vnet1 | Set-AzVirtualNetwork -AsJob
@@ -1585,7 +1586,7 @@ function Test-VirtualNetworkEncryption
          # Perform GET operations to retrieve both virtual networks and verify that the encryption property is set to the expected value
         $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
         $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname
-        Assert-AreEqual "true" $vnet1.Encryption.Enabled
+        Assert-AreEqual "false" $vnet1.Encryption.Enabled
         Assert-AreEqual "true" $vnet2.Encryption.Enabled
         Assert-AreEqual "allowUnencrypted" $vnet1.Encryption.Enforcement
         Assert-AreEqual "allowUnencrypted" $vnet2.Encryption.Enforcement
@@ -1615,7 +1616,7 @@ function Test-VirtualNetworkEncryption
         $vnet1 = Get-AzVirtualNetwork -Name $vnet1Name -ResourceGroupName $rgname
         $vnet2 = Get-AzVirtualNetwork -Name $vnet2Name -ResourceGroupName $rgname   
         Assert-AreEqual "true" $vnet1.VirtualNetworkPeerings[0].RemoteVirtualNetworkEncryption.Enabled
-        Assert-AreEqual "true" $vnet2.VirtualNetworkPeerings[0].RemoteVirtualNetworkEncryption.Enabled
+        Assert-AreEqual "false" $vnet2.VirtualNetworkPeerings[0].RemoteVirtualNetworkEncryption.Enabled
         Assert-AreEqual "allowUnencrypted" $vnet2.VirtualNetworkPeerings[0].RemoteVirtualNetworkEncryption.Enforcement
         Assert-AreEqual "allowUnencrypted" $vnet1.VirtualNetworkPeerings[0].RemoteVirtualNetworkEncryption.Enforcement
 
@@ -1623,7 +1624,7 @@ function Test-VirtualNetworkEncryption
         $peering1 = Get-AzVirtualNetworkPeering -Name $peering1Name -VirtualNetwork $vnet1Name -ResourceGroupName $rgname
         $peering2 = Get-AzVirtualNetworkPeering -Name $peering2Name -VirtualNetwork $vnet2Name -ResourceGroupName $rgname
         Assert-AreEqual "true" $peering1.RemoteVirtualNetworkEncryption.Enabled
-        Assert-AreEqual "true" $peering2.RemoteVirtualNetworkEncryption.Enabled
+        Assert-AreEqual "false" $peering2.RemoteVirtualNetworkEncryption.Enabled
         Assert-AreEqual "allowUnencrypted" $peering1.RemoteVirtualNetworkEncryption.Enforcement
         Assert-AreEqual "allowUnencrypted" $peering2.RemoteVirtualNetworkEncryption.Enforcement
     }

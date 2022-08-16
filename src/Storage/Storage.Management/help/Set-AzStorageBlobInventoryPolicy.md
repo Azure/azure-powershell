@@ -56,13 +56,14 @@ The **Set-AzStorageBlobInventoryPolicy** cmdlet creates or updates blob inventor
 ## EXAMPLES
 
 ### Example 1: Create or update the blob inventory policy with BlobInventoryPolicy rule objects.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $rule1 = New-AzStorageBlobInventoryPolicyRule -Name Test1 -Destination $containerName -Disabled -Format Csv -Schedule Daily -ContainerSchemaField Name,Metadata,PublicAccess,Last-mOdified,LeaseStatus,LeaseState,LeaseDuration,HasImmutabilityPolicy,HasLegalHold -PrefixMatch con1,con2
 
 PS C:\> $rule2 = New-AzStorageBlobInventoryPolicyRule -Name Test2 -Destination $containerName -Format Parquet -Schedule Weekly -IncludeBlobVersion -IncludeSnapshot -BlobType blockBlob,appendBlob -PrefixMatch aaa,bbb `
                 -BlobSchemaField name,Creation-Time,Last-Modified,Content-Length,Content-MD5,BlobType,AccessTier,AccessTierChangeTime,Expiry-Time,hdi_isfolder,Owner,Group,Permissions,Acl,Metadata
 
-PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName myresourcegroup" -AccountName "mystorageaccount" -Disabled -Rule $rule1,$rule2
+PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Disabled -Rule $rule1,$rule2
 
 PS C:\> $policy
 
@@ -87,6 +88,7 @@ This first 2 commands create 2 BlobInventoryPolicy rule objects: rule "Test1" fo
 The following command sets blob inventory policy to a Storage account with the 2 rule objects, then show the updated policy and rules properties.
 
 ### Example 2: Create or update the blob inventory policy of a Storage account with a Json format policy.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $policy = Set-AzStorageBlobInventoryPolicy -ResourceGroupName $resourceGroupName  -StorageAccountName $accountName -Policy (@{
                 Enabled=$true;

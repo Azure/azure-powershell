@@ -29,6 +29,8 @@ Get-AzADApplication -First 10
 Get-AzADApplication -DisplayNameStartsWith $prefix
 .Example
 Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
+.Example
+Get-AzADapplication -OwnedApplication
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -159,6 +161,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Get = 'Az.MSGraph.private\Get-AzADApplication_Get';
             List = 'Az.MSGraph.private\Get-AzADApplication_List';
@@ -169,6 +172,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -177,15 +181,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

@@ -252,7 +252,7 @@ This command gets information about all instances within the instance pool "inst
 
 ### Example 6: Get all instances within an instance pool using instance pool resource identifier
 ```powershell
-Get-AzSqlInstance -InstancePoolResourceIdentifier "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0"
+Get-AzSqlInstance -InstancePoolResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0"
 ```
 
 ```output
@@ -297,7 +297,7 @@ This command gets information about all instances within the instance pool "inst
 
 ### Example 7: Get a managed instance using its resource identifier
 ```powershell
-Get-AzSqlInstance -ResourceIdentifier "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1"
+Get-AzSqlInstance -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/managedInstances/managedInstance1"
 ```
 
 ```output
@@ -323,6 +323,7 @@ ZoneRedundant            : false
 This command gets information about the instance named managedInstance1.
 
 ### Example 8: Get all instances assigned to a resource group with external administrator information
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $val = Get-AzSqlInstance -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
 
@@ -380,6 +381,7 @@ AzureADOnlyAuthentication : True
 This command gets information about all instances assigned to the resource group ResourceGroup01. .
 
 ### Example 9: Get information about an instance with external administrator information
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $val = Get-AzSqlInstance -Name "managedInstance1" -ResourceGroupName "ResourceGroup01" -ExpandActiveDirectoryAdministrator
 
@@ -471,7 +473,7 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -InstancePoolResourceId
@@ -501,7 +503,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceGroupName

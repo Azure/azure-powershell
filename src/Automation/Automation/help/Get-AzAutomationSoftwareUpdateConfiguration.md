@@ -39,8 +39,9 @@ The Get-AzAutomationSoftwareUpdateConfiguration returns a list of software updat
 Get an azure automation software update configuration by name.
 
 ```powershell
-PS C:\> Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" -AutomationAccountName "myaccount" -Name "MyWeeklySchedule"
-
+Get-AzAutomationSoftwareUpdateConfiguration -ResourceGroupName "mygroup" -AutomationAccountName "myaccount" -Name "MyWeeklySchedule"
+```
+```output
 UpdateConfiguration   : Microsoft.Azure.Commands.Automation.Model.UpdateManagement.UpdateConfiguration
 ScheduleConfiguration : Microsoft.Azure.Commands.Automation.Model.Schedule
 ProvisioningState     : Succeeded

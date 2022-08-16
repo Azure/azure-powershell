@@ -257,6 +257,32 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
                     throw new ArgumentException(Resources.InvalidScheduleRunDaysInScheduleException);
                 }                
             }
+
+            if (ScheduleRunFrequency == ScheduleRunType.Hourly || HourlySchedule != null)
+            {
+                if (HourlySchedule.Interval == null || HourlySchedule.WindowStartTime == null || HourlySchedule.WindowDuration == null || ScheduleRunTimeZone == null)
+                {
+                    throw new ArgumentException(String.Format(Resources.HourlyScheduleNullValueException));
+                }
+
+                if (HourlySchedule.WindowDuration < HourlySchedule.Interval)
+                {
+                    throw new ArgumentException(String.Format(Resources.WindowDurationLessThanInterval));
+                }
+
+                if (((DateTime)HourlySchedule.WindowStartTime).Kind != DateTimeKind.Utc)
+                {
+                    throw new ArgumentException(Resources.WindowStartTimeNotInUTC);
+                }
+
+                DateTime windowStartTime = (DateTime)HourlySchedule.WindowStartTime;
+
+                // if non-UTC times are allowed then this exception needs to change 
+                if (windowStartTime.Minute % 30 != 0 || windowStartTime.Second != 0 || windowStartTime.Millisecond != 0)
+                {
+                    throw new ArgumentException(Resources.InvalidScheduleTimeInScheduleException);
+                }
+            }
         }
 
         public override string ToString()

@@ -17,7 +17,7 @@ Creates an Azure VirtualHub resource.
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtualWan> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
  [-RouteTable <PSVirtualHubRouteTable[]>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HubRoutingPreference <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByVirtualWanResourceId
@@ -25,7 +25,7 @@ New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWan <PSVirtu
 New-AzVirtualHub -ResourceGroupName <String> -Name <String> -VirtualWanId <String> -AddressPrefix <String>
  -Location <String> [-HubVnetConnection <PSHubVirtualNetworkConnection[]>]
  [-RouteTable <PSVirtualHubRouteTable[]>] [-Tag <Hashtable>] [-Sku <String>] [-PreferredRoutingGateway <String>]
- [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-HubRoutingPreference <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -53,6 +53,7 @@ RouteTables                           : {}
 Location                  : West US
 Sku                  : Standard
 PreferredRoutingGateway   : ExpressRoute
+HubRoutingPreference      : ExpressRoute
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
@@ -79,6 +80,7 @@ RouteTables                           : {}
 Location                  : West US
 Sku                  : Standard
 PreferredRoutingGateway   : ExpressRoute
+HubRoutingPreference      : ExpressRoute
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
@@ -110,6 +112,7 @@ RouteTables                           : {}
 Location                  : West US
 Sku                  : Standard
 PreferredRoutingGateway   : ExpressRoute
+HubRoutingPreference      : ExpressRoute
 Type                      : Microsoft.Network/virtualHubs
 ProvisioningState         : Succeeded
 ```
@@ -123,8 +126,9 @@ This example is similar to Example 2, but also attaches a route table to the vir
 ```powershell
 New-AzResourceGroup -Location "West US" -Name "testRG"
 $virtualWan = New-AzVirtualWan -ResourceGroupName "testRG" -Name "myVirtualWAN" -Location "West US"
-New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -PreferredRoutingGateway "VpnGateway"    
+New-AzVirtualHub -VirtualWan $virtualWan -ResourceGroupName "testRG" -Name "westushub" -AddressPrefix "10.0.1.0/24" -HubRoutingPreference "VpnGateway"    
 ```
+
 
 ```output
 VirtualWan                : /subscriptions/{subscriptionId}resourceGroups/testRG/providers/Microsoft.Network/virtualWans/myVirtualWAN
@@ -135,7 +139,7 @@ AddressPrefix             : 10.0.1.0/24
 RouteTable                :
 Location                  : West US
 Sku                  : Standard 
-PreferredRoutingGateway   : VpnGateway
+HubRoutingPreference      : VpnGateway
 VirtualNetworkConnections : {}
 Location                  : West US
 Type                      : Microsoft.Network/virtualHubs
@@ -237,13 +241,29 @@ Accept wildcard characters: False
 ```
 
 ### -PreferredRoutingGateway
-Preferred Routing Gateway to Route On-Prem traffic from VNET
+Preferred Routing Gateway to Route On-Prem traffic from VNET (Deprecated, please use HubRoutingPreference)
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: ExpressRoute, VpnGateway
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HubRoutingPreference
+Virtual Hub Routing Preference to route traffic
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: ExpressRoute, VpnGateway, ASPath
 
 Required: False
 Position: Named

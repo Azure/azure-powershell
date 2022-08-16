@@ -14,8 +14,8 @@ Initiate cutover for in-progress online database migration to SQL Managed Instan
 
 ```
 Invoke-AzDataMigrationCutoverToSqlManagedInstance -ManagedInstanceName <String> -ResourceGroupName <String>
- -TargetDbName <String> [-SubscriptionId <String>] [-MigrationOperationId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ -TargetDbName <String> [-SubscriptionId <String>] -MigrationOperationId <String> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,7 +27,7 @@ Initiate cutover for in-progress online database migration to SQL Managed Instan
 ```powershell
 $miMigration = Get-AzDataMigrationToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase"
 Invoke-AzDataMigrationCutoverToSqlManagedInstance -ResourceGroupName "MyResourceGroup" -ManagedInstanceName "MyManagedInstance" -TargetDbName "MyDatabase" -MigrationOperationId $miMigration.MigrationOperationId
-Get-AzDataMigrationToSqlManagedInstance -InputObject $miMigration 
+Get-AzDataMigrationToSqlManagedInstance -InputObject $miMigration
 ```
 
 ```output
@@ -93,7 +93,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -104,9 +104,15 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public string Group { get; set; }
 
         /// <summary>
+        /// The PathItem properties of the item, the property only exist if the item is listout
+        /// </summary>
+        public PathItem ListPathItem { get; set; }
+
+        /// <summary>
         /// Azure DataLakeGen2 Item constructor
         /// </summary>
         /// <param name="pathClient">DataLakePathClient object</param>
+        /// <param name="fileSystem">File System object</param>
         public AzureDataLakeGen2Item(DataLakePathClient pathClient, DataLakeFileSystemClient fileSystem)
         {
             Name = pathClient.Name;
@@ -135,7 +141,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Azure DataLakeGen2 Item constructor
         /// </summary>
-        /// <param name="blob">CloudBlockBlob blob object</param>
+        /// <param name="fileClient">Datalake gen2 file object</param>
         public AzureDataLakeGen2Item(DataLakeFileClient fileClient)
         {
             Name = fileClient.Name;
@@ -170,7 +176,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// <summary>
         /// Azure DataLakeGen2 Item constructor
         /// </summary>
-        /// <param name="blobDir">Cloud blob Directory object</param>
+        /// <param name="directoryClient">Cloud blob Directory object</param>
         public AzureDataLakeGen2Item(DataLakeDirectoryClient directoryClient)
         {
             Name = directoryClient.Name;
@@ -215,10 +221,13 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         /// Azure DataLakeGen2 Item constructor
         /// </summary>
         /// <param name="item">datalake gen2 listout item</param>
+        /// <param name="fetchProperties"></param>
+        /// <param name="fileSystem"></param>
         public AzureDataLakeGen2Item(PathItem item, DataLakeFileSystemClient fileSystem, bool fetchProperties = false)
         {
             this.Name = item.Name;
             this.Path = item.Name;
+            this.ListPathItem = item;
             this.IsDirectory = item.IsDirectory is null ? false : item.IsDirectory.Value;
             DataLakePathClient pathclient = null;
             if (this.IsDirectory) // Directory

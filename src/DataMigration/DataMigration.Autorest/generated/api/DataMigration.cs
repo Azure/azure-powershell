@@ -15,6 +15,1071 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
     public partial class DataMigration
     {
 
+        /// <summary>Stop in-progress database migration to SQL Db.</summary>
+        /// <param name="resourceGroupName">Name of the resource group that contains the resource. You can obtain this value from
+        /// the Azure Resource Manager API or the portal.</param>
+        /// <param name="sqlDbInstanceName"></param>
+        /// <param name="targetDbName">The name of the target database.</param>
+        /// <param name="subscriptionId">Subscription ID that identifies an Azure subscription.</param>
+        /// <param name="body">Required migration operation ID for which cancel will be initiated.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbCancel(string resourceGroupName, string sqlDbInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-03-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Sql/servers/"
+                        + global::System.Uri.EscapeDataString(sqlDbInstanceName)
+                        + "/providers/Microsoft.DataMigration/databaseMigrations/"
+                        + global::System.Uri.EscapeDataString(targetDbName)
+                        + "/cancel"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DatabaseMigrationsSqlDbCancel_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Stop in-progress database migration to SQL Db.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Required migration operation ID for which cancel will be initiated.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbCancelViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-03-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Sql/servers/(?<sqlDbInstanceName>[^/]+)/providers/Microsoft.DataMigration/databaseMigrations/(?<targetDbName>[^/]+)/cancel$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}/cancel'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var sqlDbInstanceName = _match.Groups["sqlDbInstanceName"].Value;
+                var targetDbName = _match.Groups["targetDbName"].Value;
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Sql/servers/"
+                        + sqlDbInstanceName
+                        + "/providers/Microsoft.DataMigration/databaseMigrations/"
+                        + targetDbName
+                        + "/cancel"
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Post, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DatabaseMigrationsSqlDbCancel_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="DatabaseMigrationsSqlDbCancel" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbCancel_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response);
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DatabaseMigrationsSqlDbCancel" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group that contains the resource. You can obtain this value from
+        /// the Azure Resource Manager API or the portal.</param>
+        /// <param name="sqlDbInstanceName"></param>
+        /// <param name="targetDbName">The name of the target database.</param>
+        /// <param name="subscriptionId">Subscription ID that identifies an Azure subscription.</param>
+        /// <param name="body">Required migration operation ID for which cancel will be initiated.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbCancel_Validate(string resourceGroupName, string sqlDbInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertNotNull(nameof(sqlDbInstanceName),sqlDbInstanceName);
+                await eventListener.AssertNotNull(nameof(targetDbName),targetDbName);
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Create a new database migration to a given SQL Db.</summary>
+        /// <param name="resourceGroupName">Name of the resource group that contains the resource. You can obtain this value from
+        /// the Azure Resource Manager API or the portal.</param>
+        /// <param name="sqlDbInstanceName"></param>
+        /// <param name="targetDbName">The name of the target database.</param>
+        /// <param name="subscriptionId">Subscription ID that identifies an Azure subscription.</param>
+        /// <param name="body">Details of Sql Db migration resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbCreateOrUpdate(string resourceGroupName, string sqlDbInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-03-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Sql/servers/"
+                        + global::System.Uri.EscapeDataString(sqlDbInstanceName)
+                        + "/providers/Microsoft.DataMigration/databaseMigrations/"
+                        + global::System.Uri.EscapeDataString(targetDbName)
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DatabaseMigrationsSqlDbCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Create a new database migration to a given SQL Db.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="body">Details of Sql Db migration resource.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-03-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Sql/servers/(?<sqlDbInstanceName>[^/]+)/providers/Microsoft.DataMigration/databaseMigrations/(?<targetDbName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var sqlDbInstanceName = _match.Groups["sqlDbInstanceName"].Value;
+                var targetDbName = _match.Groups["targetDbName"].Value;
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Sql/servers/"
+                        + sqlDbInstanceName
+                        + "/providers/Microsoft.DataMigration/databaseMigrations/"
+                        + targetDbName
+                        + "?"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Put, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // set body content
+                request.Content = new global::System.Net.Http.StringContent(null != body ? body.ToJson(null).ToString() : @"{}", global::System.Text.Encoding.UTF8);
+                request.Content.Headers.ContentType = global::System.Net.Http.Headers.MediaTypeHeaderValue.Parse("application/json");
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BodyContentSet); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DatabaseMigrationsSqlDbCreateOrUpdate_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>
+        /// Actual wire call for <see cref="DatabaseMigrationsSqlDbCreateOrUpdate" /> method.
+        /// </summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_originalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_originalUri), Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.DatabaseMigrationSqlDb.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response);
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DatabaseMigrationsSqlDbCreateOrUpdate" /> method. Call this like the actual call, but
+        /// you will get validation events back.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group that contains the resource. You can obtain this value from
+        /// the Azure Resource Manager API or the portal.</param>
+        /// <param name="sqlDbInstanceName"></param>
+        /// <param name="targetDbName">The name of the target database.</param>
+        /// <param name="subscriptionId">Subscription ID that identifies an Azure subscription.</param>
+        /// <param name="body">Details of Sql Db migration resource.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbCreateOrUpdate_Validate(string resourceGroupName, string sqlDbInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertNotNull(nameof(sqlDbInstanceName),sqlDbInstanceName);
+                await eventListener.AssertNotNull(nameof(targetDbName),targetDbName);
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+                await eventListener.AssertNotNull(nameof(body), body);
+                await eventListener.AssertObjectIsValid(nameof(body), body);
+            }
+        }
+
+        /// <summary>Remove the specified database migration for a given SQL Db.</summary>
+        /// <param name="resourceGroupName">Name of the resource group that contains the resource. You can obtain this value from
+        /// the Azure Resource Manager API or the portal.</param>
+        /// <param name="sqlDbInstanceName"></param>
+        /// <param name="targetDbName">The name of the target database.</param>
+        /// <param name="force">Optional force delete boolean. If this is provided as true, migration will be deleted even if active.</param>
+        /// <param name="subscriptionId">Subscription ID that identifies an Azure subscription.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbDelete(string resourceGroupName, string sqlDbInstanceName, string targetDbName, bool? force, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-03-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Sql/servers/"
+                        + global::System.Uri.EscapeDataString(sqlDbInstanceName)
+                        + "/providers/Microsoft.DataMigration/databaseMigrations/"
+                        + global::System.Uri.EscapeDataString(targetDbName)
+                        + "?"
+                        + (null == force ? global::System.String.Empty : "force=" + global::System.Uri.EscapeDataString(force.ToString()))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DatabaseMigrationsSqlDbDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Remove the specified database migration for a given SQL Db.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="force">Optional force delete boolean. If this is provided as true, migration will be deleted even if active.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbDeleteViaIdentity(global::System.String viaIdentity, bool? force, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-03-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Sql/servers/(?<sqlDbInstanceName>[^/]+)/providers/Microsoft.DataMigration/databaseMigrations/(?<targetDbName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var sqlDbInstanceName = _match.Groups["sqlDbInstanceName"].Value;
+                var targetDbName = _match.Groups["targetDbName"].Value;
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Sql/servers/"
+                        + sqlDbInstanceName
+                        + "/providers/Microsoft.DataMigration/databaseMigrations/"
+                        + targetDbName
+                        + "?"
+                        + (null == force ? global::System.String.Empty : "force=" + global::System.Uri.EscapeDataString(force.ToString()))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Delete, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DatabaseMigrationsSqlDbDelete_Call(request,onOk,onNoContent,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="DatabaseMigrationsSqlDbDelete" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onNoContent">a delegate that is called when the remote service returns 204 (NoContent).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    // this operation supports x-ms-long-running-operation
+                    var _originalUri = request.RequestUri.AbsoluteUri;
+                    // declared final-state-via: default
+                    var _finalUri = _response.GetFirstHeader(@"Location");
+                    var asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                    var location = _response.GetFirstHeader(@"Location");
+                    while (request.Method == System.Net.Http.HttpMethod.Put && _response.StatusCode == global::System.Net.HttpStatusCode.OK || _response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                    {
+
+                        // get the delay before polling. (default to 30 seconds if not present)
+                        int delay = (int)(_response.Headers.RetryAfter?.Delta?.TotalSeconds ?? 30);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.DelayBeforePolling, $"Delaying {delay} seconds before polling.", _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // start the delay timer (we'll await later...)
+                        var waiting = global::System.Threading.Tasks.Task.Delay(delay * 1000, eventListener.Token );
+
+                        // while we wait, let's grab the headers and get ready to poll.
+                        if (!System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Azure-AsyncOperation"))) {
+                            asyncOperation = _response.GetFirstHeader(@"Azure-AsyncOperation");
+                        }
+                        if (!global::System.String.IsNullOrEmpty(_response.GetFirstHeader(@"Location"))) {
+                            location = _response.GetFirstHeader(@"Location");
+                        }
+                        var _uri = global::System.String.IsNullOrEmpty(asyncOperation) ? global::System.String.IsNullOrEmpty(location) ? _originalUri : location : asyncOperation;
+                        request = request.CloneAndDispose(new global::System.Uri(_uri), Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Get);
+
+                        // and let's look at the current response body and see if we have some information we can give back to the listener
+                        var content = await _response.Content.ReadAsStringAsync();
+                        await waiting;
+
+                        // check for cancellation
+                        if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // drop the old response
+                        _response?.Dispose();
+
+                        // make the polling call
+                        _response = await sender.SendAsync(request, eventListener);
+                        await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                        // if we got back an OK, take a peek inside and see if it's done
+                        if( _response.StatusCode == global::System.Net.HttpStatusCode.OK)
+                        {
+                            var error = false;
+                            try {
+                                if( Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(await _response.Content.ReadAsStringAsync()) is Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonObject json)
+                                {
+                                    var state = json.Property("properties")?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonString>("provisioningState") ?? json.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonString>("status");
+                                    if( state is null )
+                                    {
+                                        // the body doesn't contain any information that has the state of the LRO
+                                        // we're going to just get out, and let the consumer have the result
+                                        break;
+                                    }
+
+                                    switch( state?.ToString()?.ToLower() )
+                                    {
+                                      case "failed":
+                                          error = true;
+                                          break;
+                                      case "succeeded":
+                                      case "canceled":
+                                        // we're done polling.
+                                        break;
+
+                                      default:
+                                        // need to keep polling!
+                                        _response.StatusCode = global::System.Net.HttpStatusCode.Created;
+                                        continue;
+                                    }
+                                }
+                            } catch {
+                                // if we run into a problem peeking into the result,
+                                // we really don't want to do anything special.
+                            }
+                            if (error) {
+                                throw new Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.UndeclaredResponseException(_response);
+                            }
+                        }
+
+                        // check for terminal status code
+                        if (_response.StatusCode == global::System.Net.HttpStatusCode.Created || _response.StatusCode == global::System.Net.HttpStatusCode.Accepted )
+                        {
+                            continue;
+                        }
+                        // we are done polling, do a request on final target?
+                        if (!string.IsNullOrWhiteSpace(_finalUri))
+                        {
+                            // create a new request with the final uri
+                            request = request.CloneAndDispose(new global::System.Uri(_finalUri), Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Get);
+
+                            // drop the old response
+                            _response?.Dispose();
+
+                            // make the final call
+                            _response = await sender.SendAsync(request,  eventListener);
+                            break;
+                        }
+                    }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response);
+                            break;
+                        }
+                        case global::System.Net.HttpStatusCode.NoContent:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onNoContent(_response);
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response);
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DatabaseMigrationsSqlDbDelete" /> method. Call this like the actual call, but you will
+        /// get validation events back.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group that contains the resource. You can obtain this value from
+        /// the Azure Resource Manager API or the portal.</param>
+        /// <param name="sqlDbInstanceName"></param>
+        /// <param name="targetDbName">The name of the target database.</param>
+        /// <param name="force">Optional force delete boolean. If this is provided as true, migration will be deleted even if active.</param>
+        /// <param name="subscriptionId">Subscription ID that identifies an Azure subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbDelete_Validate(string resourceGroupName, string sqlDbInstanceName, string targetDbName, bool? force, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertNotNull(nameof(sqlDbInstanceName),sqlDbInstanceName);
+                await eventListener.AssertNotNull(nameof(targetDbName),targetDbName);
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+            }
+        }
+
+        /// <summary>Retrieve the specified database migration for a given SQL Db.</summary>
+        /// <param name="resourceGroupName">Name of the resource group that contains the resource. You can obtain this value from
+        /// the Azure Resource Manager API or the portal.</param>
+        /// <param name="sqlDbInstanceName"></param>
+        /// <param name="targetDbName">The name of the target database.</param>
+        /// <param name="migrationOperationId">Optional migration operation ID. If this is provided, then details of migration operation
+        /// for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.</param>
+        /// <param name="Expand">Complete migration details be included in the response.</param>
+        /// <param name="subscriptionId">Subscription ID that identifies an Azure subscription.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbGet(string resourceGroupName, string sqlDbInstanceName, string targetDbName, string migrationOperationId, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-03-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + global::System.Uri.EscapeDataString(subscriptionId)
+                        + "/resourceGroups/"
+                        + global::System.Uri.EscapeDataString(resourceGroupName)
+                        + "/providers/Microsoft.Sql/servers/"
+                        + global::System.Uri.EscapeDataString(sqlDbInstanceName)
+                        + "/providers/Microsoft.DataMigration/databaseMigrations/"
+                        + global::System.Uri.EscapeDataString(targetDbName)
+                        + "?"
+                        + (string.IsNullOrEmpty(migrationOperationId) ? global::System.String.Empty : "migrationOperationId=" + global::System.Uri.EscapeDataString(migrationOperationId))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DatabaseMigrationsSqlDbGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Retrieve the specified database migration for a given SQL Db.</summary>
+        /// <param name="viaIdentity"></param>
+        /// <param name="migrationOperationId">Optional migration operation ID. If this is provided, then details of migration operation
+        /// for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.</param>
+        /// <param name="Expand">Complete migration details be included in the response.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbGetViaIdentity(global::System.String viaIdentity, string migrationOperationId, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        {
+            var apiVersion = @"2022-03-30-preview";
+            // Constant Parameters
+            using( NoSynchronizationContext )
+            {
+                // verify that Identity format is an exact match for uri
+
+                var _match = new global::System.Text.RegularExpressions.Regex("^/subscriptions/(?<subscriptionId>[^/]+)/resourceGroups/(?<resourceGroupName>[^/]+)/providers/Microsoft.Sql/servers/(?<sqlDbInstanceName>[^/]+)/providers/Microsoft.DataMigration/databaseMigrations/(?<targetDbName>[^/]+)$", global::System.Text.RegularExpressions.RegexOptions.IgnoreCase).Match(viaIdentity);
+                if (!_match.Success)
+                {
+                    throw new global::System.Exception("Invalid identity for URI '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/servers/{sqlDbInstanceName}/providers/Microsoft.DataMigration/databaseMigrations/{targetDbName}'");
+                }
+
+                // replace URI parameters with values from identity
+                var resourceGroupName = _match.Groups["resourceGroupName"].Value;
+                var sqlDbInstanceName = _match.Groups["sqlDbInstanceName"].Value;
+                var targetDbName = _match.Groups["targetDbName"].Value;
+                var subscriptionId = _match.Groups["subscriptionId"].Value;
+                // construct URL
+                var pathAndQuery = global::System.Text.RegularExpressions.Regex.Replace(
+                        "/subscriptions/"
+                        + subscriptionId
+                        + "/resourceGroups/"
+                        + resourceGroupName
+                        + "/providers/Microsoft.Sql/servers/"
+                        + sqlDbInstanceName
+                        + "/providers/Microsoft.DataMigration/databaseMigrations/"
+                        + targetDbName
+                        + "?"
+                        + (string.IsNullOrEmpty(migrationOperationId) ? global::System.String.Empty : "migrationOperationId=" + global::System.Uri.EscapeDataString(migrationOperationId))
+                        + "&"
+                        + (string.IsNullOrEmpty(Expand) ? global::System.String.Empty : "$expand=" + global::System.Uri.EscapeDataString(Expand))
+                        + "&"
+                        + "api-version=" + global::System.Uri.EscapeDataString(apiVersion)
+                        ,"\\?&*$|&*$|(\\?)&+|(&)&+","$1$2");
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.URLCreated, pathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                // generate request object
+                var _url = new global::System.Uri($"https://management.azure.com{pathAndQuery}");
+                var request =  new global::System.Net.Http.HttpRequestMessage(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Method.Get, _url);
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.RequestCreated, request.RequestUri.PathAndQuery); if( eventListener.Token.IsCancellationRequested ) { return; }
+
+                await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.HeaderParametersAdded); if( eventListener.Token.IsCancellationRequested ) { return; }
+                // make the call
+                await this.DatabaseMigrationsSqlDbGet_Call(request,onOk,onDefault,eventListener,sender);
+            }
+        }
+
+        /// <summary>Actual wire call for <see cref="DatabaseMigrationsSqlDbGet" /> method.</summary>
+        /// <param name="request">the prepared HttpRequestMessage to send.</param>
+        /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
+        /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
+        /// elsewhere).</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <param name="sender">an instance of an Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync pipeline to use to make the request.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlDb>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        {
+            using( NoSynchronizationContext )
+            {
+                global::System.Net.Http.HttpResponseMessage _response = null;
+                try
+                {
+                    var sendTask = sender.SendAsync(request, eventListener);
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeCall, request); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    _response = await sendTask;
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.ResponseCreated, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                    var _contentType = _response.Content.Headers.ContentType?.MediaType;
+
+                    switch ( _response.StatusCode )
+                    {
+                        case global::System.Net.HttpStatusCode.OK:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.DatabaseMigrationSqlDb.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            break;
+                        }
+                        default:
+                        {
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
+                            await onDefault(_response);
+                            break;
+                        }
+                    }
+                }
+                finally
+                {
+                    // finally statements
+                    await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.Finally, request, _response);
+                    _response?.Dispose();
+                    request?.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Validation method for <see cref="DatabaseMigrationsSqlDbGet" /> method. Call this like the actual call, but you will get
+        /// validation events back.
+        /// </summary>
+        /// <param name="resourceGroupName">Name of the resource group that contains the resource. You can obtain this value from
+        /// the Azure Resource Manager API or the portal.</param>
+        /// <param name="sqlDbInstanceName"></param>
+        /// <param name="targetDbName">The name of the target database.</param>
+        /// <param name="migrationOperationId">Optional migration operation ID. If this is provided, then details of migration operation
+        /// for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.</param>
+        /// <param name="Expand">Complete migration details be included in the response.</param>
+        /// <param name="subscriptionId">Subscription ID that identifies an Azure subscription.</param>
+        /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
+        /// <returns>
+        /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
+        /// </returns>
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlDbGet_Validate(string resourceGroupName, string sqlDbInstanceName, string targetDbName, string migrationOperationId, string Expand, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        {
+            using( NoSynchronizationContext )
+            {
+                await eventListener.AssertNotNull(nameof(resourceGroupName),resourceGroupName);
+                await eventListener.AssertNotNull(nameof(sqlDbInstanceName),sqlDbInstanceName);
+                await eventListener.AssertNotNull(nameof(targetDbName),targetDbName);
+                await eventListener.AssertRegEx(nameof(migrationOperationId),migrationOperationId,@"^[0-9a-fA-F]{8}(-[0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}$");
+                await eventListener.AssertNotNull(nameof(Expand),Expand);
+                await eventListener.AssertNotNull(nameof(subscriptionId),subscriptionId);
+            }
+        }
+
         /// <summary>Stop in-progress database migration to SQL Managed Instance.</summary>
         /// <param name="resourceGroupName">Name of the resource group that contains the resource. You can obtain this value from
         /// the Azure Resource Manager API or the portal.</param>
@@ -30,9 +1095,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCancel(string resourceGroupName, string managedInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCancel(string resourceGroupName, string managedInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -79,9 +1144,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCancelViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCancelViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -292,7 +1357,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCancel_Validate(string resourceGroupName, string managedInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCancel_Validate(string resourceGroupName, string managedInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -320,9 +1385,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCreateOrUpdate(string resourceGroupName, string managedInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlMi body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlMi>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCreateOrUpdate(string resourceGroupName, string managedInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -368,9 +1433,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlMi body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlMi>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -430,7 +1495,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlMi>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -546,7 +1611,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.DatabaseMigrationSqlMi.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.DatabaseMigrationSqlMi.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -581,7 +1646,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCreateOrUpdate_Validate(string resourceGroupName, string managedInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlMi body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCreateOrUpdate_Validate(string resourceGroupName, string managedInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -611,9 +1676,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCutover(string resourceGroupName, string managedInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCutover(string resourceGroupName, string managedInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -662,9 +1727,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCutoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCutoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -875,7 +1940,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCutover_Validate(string resourceGroupName, string managedInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiCutover_Validate(string resourceGroupName, string managedInstanceName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -895,7 +1960,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <param name="targetDbName">The name of the target database.</param>
         /// <param name="migrationOperationId">Optional migration operation ID. If this is provided, then details of migration operation
         /// for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.</param>
-        /// <param name="Expand">The child resources to include in the response.</param>
+        /// <param name="Expand">Complete migration details be included in the response.</param>
         /// <param name="subscriptionId">Subscription ID that identifies an Azure subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -905,9 +1970,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiGet(string resourceGroupName, string managedInstanceName, string targetDbName, string migrationOperationId, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlMi>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiGet(string resourceGroupName, string managedInstanceName, string targetDbName, string migrationOperationId, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -946,7 +2011,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <param name="viaIdentity"></param>
         /// <param name="migrationOperationId">Optional migration operation ID. If this is provided, then details of migration operation
         /// for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.</param>
-        /// <param name="Expand">The child resources to include in the response.</param>
+        /// <param name="Expand">Complete migration details be included in the response.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -955,9 +2020,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiGetViaIdentity(global::System.String viaIdentity, string migrationOperationId, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlMi>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiGetViaIdentity(global::System.String viaIdentity, string migrationOperationId, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1015,7 +2080,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlMi>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlMiGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlMi>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1033,7 +2098,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.DatabaseMigrationSqlMi.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.DatabaseMigrationSqlMi.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1064,7 +2129,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <param name="targetDbName">The name of the target database.</param>
         /// <param name="migrationOperationId">Optional migration operation ID. If this is provided, then details of migration operation
         /// for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.</param>
-        /// <param name="Expand">The child resources to include in the response.</param>
+        /// <param name="Expand">Complete migration details be included in the response.</param>
         /// <param name="subscriptionId">Subscription ID that identifies an Azure subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -1098,9 +2163,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCancel(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCancel(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1147,9 +2212,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCancelViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCancelViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1360,7 +2425,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCancel_Validate(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCancel_Validate(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1388,9 +2453,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCreateOrUpdate(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCreateOrUpdate(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1436,9 +2501,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1498,7 +2563,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1614,7 +2679,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.DatabaseMigrationSqlVM.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.DatabaseMigrationSqlVM.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -1649,7 +2714,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCreateOrUpdate_Validate(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCreateOrUpdate_Validate(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1677,9 +2742,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCutover(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCutover(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1726,9 +2791,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCutoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCutoverViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1939,7 +3004,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCutover_Validate(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IMigrationOperationInput body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMCutover_Validate(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IMigrationOperationInput body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1959,7 +3024,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <param name="targetDbName">The name of the target database.</param>
         /// <param name="migrationOperationId">Optional migration operation ID. If this is provided, then details of migration operation
         /// for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.</param>
-        /// <param name="Expand">The child resources to include in the response.</param>
+        /// <param name="Expand">Complete migration details be included in the response.</param>
         /// <param name="subscriptionId">Subscription ID that identifies an Azure subscription.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
@@ -1969,9 +3034,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMGet(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string migrationOperationId, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMGet(string resourceGroupName, string sqlVirtualMachineName, string targetDbName, string migrationOperationId, string Expand, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2010,7 +3075,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <param name="viaIdentity"></param>
         /// <param name="migrationOperationId">Optional migration operation ID. If this is provided, then details of migration operation
         /// for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.</param>
-        /// <param name="Expand">The child resources to include in the response.</param>
+        /// <param name="Expand">Complete migration details be included in the response.</param>
         /// <param name="onOk">a delegate that is called when the remote service returns 200 (OK).</param>
         /// <param name="onDefault">a delegate that is called when the remote service returns default (any response code not handled
         /// elsewhere).</param>
@@ -2019,9 +3084,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMGetViaIdentity(global::System.String viaIdentity, string migrationOperationId, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMGetViaIdentity(global::System.String viaIdentity, string migrationOperationId, string Expand, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2079,7 +3144,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationSqlVM>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DatabaseMigrationsSqlVMGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationSqlVM>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2097,7 +3162,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.DatabaseMigrationSqlVM.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.DatabaseMigrationSqlVM.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2128,7 +3193,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <param name="targetDbName">The name of the target database.</param>
         /// <param name="migrationOperationId">Optional migration operation ID. If this is provided, then details of migration operation
         /// for that ID are retrieved. If not provided (default), then details related to most recent or current operation are retrieved.</param>
-        /// <param name="Expand">The child resources to include in the response.</param>
+        /// <param name="Expand">Complete migration details be included in the response.</param>
         /// <param name="subscriptionId">Subscription ID that identifies an Azure subscription.</param>
         /// <param name="eventListener">an <see cref="Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener" /> instance that will receive events.</param>
         /// <returns>
@@ -2156,9 +3221,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsList(global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2192,9 +3257,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OperationsListViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2237,7 +3302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OperationsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IOperationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2255,7 +3320,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.OperationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2306,9 +3371,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesCreateOrUpdate(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesCreateOrUpdate(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2352,9 +3417,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesCreateOrUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2409,7 +3474,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2525,7 +3590,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.SqlMigrationService.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.SqlMigrationService.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2559,7 +3624,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesCreateOrUpdate_Validate(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesCreateOrUpdate_Validate(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2587,7 +3652,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// </returns>
         public async global::System.Threading.Tasks.Task SqlMigrationServicesDelete(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2630,9 +3695,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesDeleteNode(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDeleteNode body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDeleteNode>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesDeleteNode(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDeleteNode body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDeleteNode>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2677,9 +3742,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesDeleteNodeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDeleteNode body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDeleteNode>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesDeleteNodeViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDeleteNode body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDeleteNode>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2735,7 +3800,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesDeleteNode_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDeleteNode>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesDeleteNode_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDeleteNode>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2753,7 +3818,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.DeleteNode.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.DeleteNode.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -2787,7 +3852,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesDeleteNode_Validate(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDeleteNode body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesDeleteNode_Validate(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDeleteNode body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -2812,7 +3877,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// </returns>
         public async global::System.Threading.Tasks.Task SqlMigrationServicesDeleteViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3043,9 +4108,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesGet(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesGet(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3084,9 +4149,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3137,7 +4202,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3155,7 +4220,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.SqlMigrationService.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.SqlMigrationService.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3211,9 +4276,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesListAuthKeys(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IAuthenticationKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesListAuthKeys(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3253,9 +4318,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesListAuthKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IAuthenticationKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesListAuthKeysViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3307,7 +4372,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesListAuthKeys_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IAuthenticationKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesListAuthKeys_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IAuthenticationKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3325,7 +4390,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.AuthenticationKeys.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.AuthenticationKeys.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3380,9 +4445,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesListByResourceGroup(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesListByResourceGroup(string resourceGroupName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3420,9 +4485,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesListByResourceGroupViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3473,7 +4538,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3491,7 +4556,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.SqlMigrationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.SqlMigrationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3542,9 +4607,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesListBySubscription(string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3580,9 +4645,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesListBySubscriptionViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3630,7 +4695,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesListBySubscription_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3648,7 +4713,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.SqlMigrationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.SqlMigrationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3699,9 +4764,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesListMigrations(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesListMigrations(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3741,9 +4806,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesListMigrationsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesListMigrationsViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3795,7 +4860,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesListMigrations_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IDatabaseMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesListMigrations_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IDatabaseMigrationListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3813,7 +4878,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.DatabaseMigrationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.DatabaseMigrationListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -3871,9 +4936,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesListMonitoringData(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IIntegrationRuntimeMonitoringData>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesListMonitoringData(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IIntegrationRuntimeMonitoringData>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3915,9 +4980,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesListMonitoringDataViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IIntegrationRuntimeMonitoringData>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesListMonitoringDataViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IIntegrationRuntimeMonitoringData>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3971,7 +5036,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesListMonitoringData_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IIntegrationRuntimeMonitoringData>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesListMonitoringData_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IIntegrationRuntimeMonitoringData>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3989,7 +5054,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IntegrationRuntimeMonitoringData.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IntegrationRuntimeMonitoringData.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4048,9 +5113,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesRegenerateAuthKeys(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IRegenAuthKeys body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IRegenAuthKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesRegenerateAuthKeys(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4097,9 +5162,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesRegenerateAuthKeysViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IRegenAuthKeys body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IRegenAuthKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesRegenerateAuthKeysViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4157,7 +5222,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesRegenerateAuthKeys_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IRegenAuthKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesRegenerateAuthKeys_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4175,7 +5240,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.RegenAuthKeys.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.RegenAuthKeys.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4209,7 +5274,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesRegenerateAuthKeys_Validate(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IRegenAuthKeys body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesRegenerateAuthKeys_Validate(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IRegenAuthKeys body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -4235,9 +5300,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesUpdate(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationServiceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesUpdate(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationServiceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4281,9 +5346,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task SqlMigrationServicesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationServiceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task SqlMigrationServicesUpdateViaIdentity(global::System.String viaIdentity, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationServiceUpdate body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2021-10-30-preview";
+            var apiVersion = @"2022-03-30-preview";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4338,7 +5403,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationService>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4454,7 +5519,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.SqlMigrationService.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.SqlMigrationService.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
@@ -4488,7 +5553,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task SqlMigrationServicesUpdate_Validate(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.ISqlMigrationServiceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task SqlMigrationServicesUpdate_Validate(string resourceGroupName, string sqlMigrationServiceName, string subscriptionId, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.ISqlMigrationServiceUpdate body, Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

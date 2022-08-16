@@ -44,5 +44,19 @@ namespace Microsoft.Azure.Commands.KeyVault.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-ManagedHsmPurgeProtection");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestCreateManagedHsmWithPublicNetworkAccess()
+        {
+            TestRunner.RunTestScript("Test-CreateManagedHsmWithPublicNetworkAccess");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestUpdateManagedHsmWithPublicNetworkAccess()
+        {
+            TestRunner.RunTestScript("Test-UpdateManagedHsmWithPublicNetworkAccess");
+        }
     }
 }

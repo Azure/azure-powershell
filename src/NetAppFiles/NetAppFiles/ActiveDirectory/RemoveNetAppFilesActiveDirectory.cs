@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Commands.NetAppFiles.ActiveDirectory
                 ActiveDirectoryId = InputObject.ActiveDirectoryId;
             }
 
-            if (ShouldProcess(ActiveDirectoryId, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.CreateResourceMessage, ResourceGroupName)))
+            if (ShouldProcess(ActiveDirectoryId, string.Format(PowerShell.Cmdlets.NetAppFiles.Properties.Resources.RemoveResourceMessage, ResourceGroupName)))
             {
                 var anfAccount = AzureNetAppFilesManagementClient.Accounts.Get(ResourceGroupName, AccountName);
                 var activeDirectory = anfAccount.ActiveDirectories.FirstOrDefault(a => a.ActiveDirectoryId == ActiveDirectoryId);

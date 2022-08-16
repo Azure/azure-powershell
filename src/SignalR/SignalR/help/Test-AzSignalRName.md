@@ -33,7 +33,7 @@ False
 
 ### Check an unexisted name.
 ```powershell
-Test-AzSignalR unexistedsignalr eastus
+Test-AzSignalRName -Name unexistedsignalr -Location eastus
 ```
 
 ```output

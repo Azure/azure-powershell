@@ -26,6 +26,7 @@ The input ACL will merge the the original ACL: If ACL entry with same AccessCont
 ## EXAMPLES
 
 ### Example 1: Update ACL recursively on a root directiry of filesystem
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
 PS C:\>$acl = New-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
@@ -42,6 +43,7 @@ ContinuationToken               :
 This command first creates an ACL object with 3 acl entries, then updates ACL recursively on a root directory of a file system.
 
 ### Example 2: Update ACL recursively on a directory, and resume from failure with ContinuationToken
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $result = Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl  -Context $ctx
 
@@ -75,6 +77,7 @@ ContinuationToken               :
 This command first updateds ACL recursively to a directory and failed, then resume with ContinuationToken after user fix the failed file.
 
 ### Example 3: Update ACL recursively chunk by chunk
+<!-- Skip: Output cannot be splitted from code -->
 ```
 $ContinueOnFailure = $true # Set it to $false if want to terminate the operation quickly on encountering failures
 $token = $null
@@ -113,6 +116,7 @@ echo "FailedEntries:"$($FailedEntries | ft)
 This script will update ACL rescursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 5000 in this script.
 
 ### Example 4: Update ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $result = Update-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
 

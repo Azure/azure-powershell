@@ -99,14 +99,14 @@ This command deletes an Azure Synapse Analytics role assignment with a role assi
 
 ### Example 2
 ```powershell
-Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentName ContosoRole -SignInName ContosoName
+Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName
 ```
 
 This command deletes an Azure Synapse Analytics role assignment at workspace level with a role name and a user principal name.
 
 ### Example 3
 ```powershell
-Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleAssignmentName ContosoRole -SignInName ContosoName -ItemType ContosoItemType -Item ContosoItem
+Remove-AzSynapseRoleAssignment -WorkspaceName ContosoWorkspace -RoleDefinitionName ContosoRole -SignInName ContosoName -ItemType ContosoItemType -Item ContosoItem
 ```
 
 This command deletes an Azure Synapse Analytics role assignment with a role name, a user principal name, a item type and a item.

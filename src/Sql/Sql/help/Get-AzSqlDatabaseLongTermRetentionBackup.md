@@ -97,7 +97,7 @@ This command gets all long term retention backups for all databases (which may b
 
 ### Example 2: Get all backups for a location under a resource group
 ```powershell
-Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ResourceGroup resourceGroup01
+Get-AzSqlDatabaseLongTermRetentionBackup -Location northeurope -ResourceGroupName resourceGroup01
 ```
 
 ```output

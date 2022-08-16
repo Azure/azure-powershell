@@ -15,22 +15,24 @@ Run a shell command (with kubectl, helm) on your aks cluster, support attaching 
 ### GroupNameParameterSet (Default)
 ```
 Invoke-AzAksRunCommand [-ResourceGroupName] <String> [-Name] <String> -Command <String>
- [-CommandContextAttachment <String[]>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-CommandContextAttachment <String[]>] [-CommandContextAttachmentZip <String>] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### InputObjectParameterSet
 ```
 Invoke-AzAksRunCommand -InputObject <PSKubernetesCluster> -Command <String>
- [-CommandContextAttachment <String[]>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
+ [-CommandContextAttachment <String[]>] [-CommandContextAttachmentZip <String>] [-AsJob] [-Force]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
+ [<CommonParameters>]
 ```
 
 ### IdParameterSet
 ```
-Invoke-AzAksRunCommand [-Id] <String> -Command <String> [-CommandContextAttachment <String[]>] [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+Invoke-AzAksRunCommand [-Id] <String> -Command <String> [-CommandContextAttachment <String[]>]
+ [-CommandContextAttachmentZip <String>] [-AsJob] [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [-SubscriptionId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -103,6 +105,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -CommandContextAttachmentZip
+Path of the zip file containing the files required by the command.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -119,7 +136,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Remove managed Kubernetes cluster without prompt
+Execute the command without confirm
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

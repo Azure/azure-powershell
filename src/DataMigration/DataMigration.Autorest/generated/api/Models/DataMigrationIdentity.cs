@@ -35,6 +35,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.PropertyOrigin.Owned)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
+        /// <summary>Backing field for <see cref="SqlDbInstanceName" /> property.</summary>
+        private string _sqlDbInstanceName;
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Origin(Microsoft.Azure.PowerShell.Cmdlets.DataMigration.PropertyOrigin.Owned)]
+        public string SqlDbInstanceName { get => this._sqlDbInstanceName; set => this._sqlDbInstanceName = value; }
+
         /// <summary>Backing field for <see cref="SqlMigrationServiceName" /> property.</summary>
         private string _sqlMigrationServiceName;
 
@@ -98,6 +104,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
         SerializedName = @"resourceGroupName",
         PossibleTypes = new [] { typeof(string) })]
         string ResourceGroupName { get; set; }
+
+        [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"",
+        SerializedName = @"sqlDbInstanceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string SqlDbInstanceName { get; set; }
         /// <summary>Name of the SQL Migration Service.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Runtime.Info(
         Required = false,
@@ -144,6 +158,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models
         /// the portal.
         /// </summary>
         string ResourceGroupName { get; set; }
+
+        string SqlDbInstanceName { get; set; }
         /// <summary>Name of the SQL Migration Service.</summary>
         string SqlMigrationServiceName { get; set; }
 

@@ -43,7 +43,7 @@ $vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resou
 $identity1 = Get-AzUserAssignedIdentity -ResourceGroupName "resourceGroupName" -Name "UserIdentity1"
 $identity2 = Get-AzUserAssignedIdentity -ResourceGroupName "resourceGroupName" -Name "UserIdentity2"
 $updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -IdentityType UserAssigned -IdentityId $identity1.Id, $identity2.Id
-$updatedVault.Identity | fl
+$updatedVault.Identity | Format-List
 ```
 
 ```output
@@ -65,9 +65,9 @@ The fifth cmdlet shows the Identities added to the vault.
 ```powershell
 $vault = Get-AzRecoveryServicesVault -Name "vaultName" -ResourceGroupName "resourceGroupName"
 $updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveSystemAssigned
-$AllUserIdentities =  $vault.Identity.UserAssignedIdentities.Keys | foreach {$_} 
+$AllUserIdentities =  $vault.Identity.UserAssignedIdentities.Keys | ForEach-Object {$_} 
 $updatedVault = Update-AzRecoveryServicesVault -ResourceGroupName $vault.ResourceGroupName -Name $vault.Name -RemoveUserAssigned -IdentityId $AllUserIdentities
-$updatedVault.Identity | fl
+$updatedVault.Identity | Format-List
 ```
 
 ```output

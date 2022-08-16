@@ -23,6 +23,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public PSDomain(Domain domain)
         {
             this.Id = domain.Id;
+            this.Identity = new PsIdentityInfo(domain.Identity);
             this.DomainName = domain.Name;
             this.Type = domain.Type;
             this.ResourceGroupName = EventGridUtils.ParseResourceGroupFromId(domain.Id);
@@ -111,6 +112,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public string DomainName { get; set; }
 
         public string Id { get; set; }
+
+        public PsIdentityInfo Identity { get; set; }
 
         public string Type { get; set; }
 

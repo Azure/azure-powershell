@@ -25,7 +25,7 @@ The New-AzRecoveryServicesAsrProtectionContainer cmdlet creates a Protection Con
 ### Example 1
 ```powershell
 $job = New-AzRecoveryServicesAsrProtectionContainer -Name xyz -Fabric $fabric
-Get-ASRJob -name $job.id
+Get-AzRecoveryServicesAsrJob -name $job.id
 ```
 
 Starts the creation of the protection container with the specified parameters, and returns the ASR job used to track the operation.

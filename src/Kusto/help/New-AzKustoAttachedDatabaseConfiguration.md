@@ -35,8 +35,8 @@ New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName "testrg" -ClusterNam
 ```
 
 ```output
-Name                                         Type                                                    Location
-----                                         ----                                                    --------
+Name                                 Type                                                    Location
+----                                 ----                                                    --------
 testnewkustoclusterf/myfollowerconfiguration Microsoft.Kusto/Clusters/AttachedDatabaseConfigurations East US
 ```
 
@@ -339,7 +339,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api202101.IAttachedDatabaseConfiguration
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IAttachedDatabaseConfiguration
 
 ## NOTES
 

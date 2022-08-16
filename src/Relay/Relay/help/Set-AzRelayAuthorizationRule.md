@@ -53,10 +53,9 @@ The **Set-AzRelayAuthorizationRule** cmdlet updates the description for the spec
 
 ### Example 1.1 - Namespace with InputObject
 ```powershell
-$getAutoRule = Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -NamespaceName TestNameSpace-Relay1 -AuthorizationRuleName
- AuthoRule1
+$getAutoRule = Get-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1
 $getAutoRule.Rights.Add("Send")
-Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -AuthorizationRule AuthoRule1 -InputObject $getAutoRule
+Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -InputObject $getAutoRule
 ```
 
 ```output
@@ -70,7 +69,7 @@ Adds **Send** from the access rights of the authorization rule `AuthoRule1` in n
 
 ### Example 1.2 - Namespace with Rights parameter
 ```powershell
-Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -AuthorizationRule AuthoRule1 -Rights "Send"
+Set-AzRelayAuthorizationRule -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name AuthoRule1 -Rights "Send"
 ```
 
 ```output

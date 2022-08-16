@@ -71,6 +71,22 @@ The second and third command fetches the timezone and updates the timezone in th
 The fourth and fifth command initializes the schedule window start time and updates the $schedulePolicy. Please note the start time must be in UTC even if the timezone is not UTC. 
 The sixth and seventh command updates the interval (in hours) after which the backup will be retriggered on the same day, duration (in hours) for which the schedule will run.
 
+### Example 4: Get enhanced hourly schedule for AzureVM policy
+```powershell
+$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType AzureVM -BackupManagementType AzureVM -PolicySubType Enhanced -ScheduleRunFrequency Hourly
+$timeZone = Get-TimeZone -ListAvailable | Where-Object { $_.Id -match "India" }
+$schedulePolicy.ScheduleRunTimeZone = $timeZone.Id
+$windowStartTime = (Get-Date -Date "2022-04-14T08:00:00.00+00:00").ToUniversalTime()
+$schPol.HourlySchedule.WindowStartTime = $windowStartTime
+$schedulePolicy.HourlySchedule.ScheduleInterval = 4
+$schedulePolicy.HourlySchedule.ScheduleWindowDuration = 23
+```
+
+The first command gets a base enhanced hourly **SchedulePolicyObject** for WorkloadType AzureVM, and then stores it in the $schedulePolicy variable.
+The second and third command fetches the India timezone and updates the timezone in the $schedulePolicy.
+The fourth and fifth command initializes the schedule window start time and updates the $schedulePolicy. Please note that the start time must be in UTC even if the timezone is not UTC. 
+The sixth and seventh command updates the interval (in hours) after which the backup will be retriggered on the same day, duration (in hours) for which the schedule will run.
+
 ## PARAMETERS
 
 ### -BackupManagementType

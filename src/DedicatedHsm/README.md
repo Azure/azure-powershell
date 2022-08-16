@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the DedicatedHsm service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.8.1 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -49,9 +49,9 @@ In this directory, run AutoRest:
 ``` yaml
 require:
   - $(this-folder)/../readme.azure.noprofile.md
-branch: 3dddb7090671b48ce3f569557ed8a1c6ba36c2a7
+branch: f203c1b73639b7e2f85aa96902cfe36c6dd2ffad
 input-file:
-  - $(repo)/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/preview/2018-10-31-preview/dedicatedhsm.json
+  - $(repo)/specification/hardwaresecuritymodules/resource-manager/Microsoft.HardwareSecurityModules/stable/2021-11-30/dedicatedhsm.json
 
 # For new RP, the version is 0.1.0
 module-version: 0.1.0
@@ -88,11 +88,23 @@ directive:
       parameter-name: NetworkProfileNetworkInterface
     set:
       parameter-name: NetworkInterface
+  - where:
+      parameter-name: NetworkProfileSubnetId
+    set:
+      parameter-name: SubnetId
+  - where:
+      parameter-name: ManagementNetworkProfileNetworkInterface
+    set:
+      parameter-name: ManagementNetworkInterface
 
+  - where:
+      parameter-name: ManagementNetworkProfileSubnetId
+    set:
+      parameter-name: ManagementSubnetId
   # Service team asked us to use 2018-10-31, should be the same as 2018-10-31-preview, but it's not ready on swagger yet
-  - from: swagger-document
-    where: $.info
-    transform: $['version'] = '2018-10-31'
+  # - from: swagger-document
+  #   where: $.info
+  #   transform: $['version'] = '2018-10-31'
 
   # table format
   - where:

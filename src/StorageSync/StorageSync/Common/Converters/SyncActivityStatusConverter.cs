@@ -20,9 +20,9 @@ namespace Microsoft.Azure.Commands.StorageSync.Common.Converters
 {
     /// <summary>
     /// Class SyncActivityStatusConverter.
-    /// Implements the <see cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
+    /// Implements the <see cref="Converters.ConverterBase{PSSyncActivityStatus, SyncProgressStatus}" />
     /// </summary>
-    /// <seealso cref="Converters.ConverterBase{PSSyncActivityStatus, StorageSyncModels.SyncProgressStatus}" />
+    /// <seealso cref="Converters.ConverterBase{PSSyncActivityStatus, SyncProgressStatus}" />
     public class SyncActivityStatusConverter : ConverterBase<PSSyncActivityStatus, StorageSyncModels.ServerEndpointSyncActivityStatus>
     {
         /// <summary>

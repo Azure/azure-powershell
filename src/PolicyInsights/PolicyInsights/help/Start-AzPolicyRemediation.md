@@ -37,7 +37,7 @@ The **Start-AzPolicyRemediation** cmdlet creates a policy remediation for a part
 ### Example 1: Start a remediation at subscription scope
 ```powershell
 $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-Select-AzSubscription -Subscription "My Subscription"
+Set-AzContext -Subscription "My Subscription"
 Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1"
 ```
 
@@ -62,7 +62,7 @@ This command creates a new policy remediation in resource group 'myRG' for the g
 ### Example 4: Start a remediation and wait for it to complete in the background
 ```powershell
 $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-Select-AzSubscription -Subscription f0710c27-9663-4c05-19f8-1b4be01e86a5
+Set-AzContext -Subscription f0710c27-9663-4c05-19f8-1b4be01e86a5
 $job = Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -AsJob
 $job | Wait-Job
 $remediation = $job | Receive-Job
@@ -73,7 +73,7 @@ This command starts a new policy remediation in subscription 'My Subscription' f
 ### Example 5: Start a remediation that will discover non-compliant resources before remediating
 ```powershell
 $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-Select-AzSubscription -Subscription "My Subscription"
+Set-AzContext -Subscription "My Subscription"
 Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -ResourceDiscoveryMode ReEvaluateCompliance
 ```
 
@@ -82,21 +82,21 @@ This command creates a new policy remediation in subscription 'My Subscription' 
 ### Example 6: Start a remediation that will remediate up to 10,000 non-compliant resources
 ```powershell
 $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-Select-AzSubscription -Subscription "My Subscription"
+Set-AzContext -Subscription "My Subscription"
 Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -ResourceCount 10000
 ```
 
 ### Example 7: Start a remediation that will remediate 30 resources in parallel
 ```powershell
 $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-Select-AzSubscription -Subscription "My Subscription"
-Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -ParallelDeployments 30
+Set-AzContext -Subscription "My Subscription"
+Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -ParallelDeploymentCount 30
 ```
 
 ### Example 8: Start a remediation that will terminate if more than half of the remediation deployments fail
 ```powershell
 $policyAssignmentId = "/subscriptions/f0710c27-9663-4c05-19f8-1b4be01e86a5/providers/Microsoft.Authorization/policyAssignments/2deae24764b447c29af7c309"
-Select-AzSubscription -Subscription "My Subscription"
+Set-AzContext -Subscription "My Subscription"
 Start-AzPolicyRemediation -PolicyAssignmentId $policyAssignmentId -Name "remediation1" -FailureThreshold 0.5
 ```
 

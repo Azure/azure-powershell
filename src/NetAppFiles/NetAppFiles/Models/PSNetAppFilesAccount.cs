@@ -68,5 +68,10 @@ namespace Microsoft.Azure.Commands.NetAppFiles.Models
         /// Gets or sets active directory
         /// </summary>
         public List<PSNetAppFilesActiveDirectory> ActiveDirectories { get; set; }
+
+        /// <summary>
+        /// Gets or sets System Data
+        /// </summary>
+        public PSSystemData SystemData { get; set; }
     }
 }

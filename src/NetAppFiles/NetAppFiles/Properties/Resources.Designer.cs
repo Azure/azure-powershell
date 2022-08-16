@@ -19,7 +19,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,11 +61,29 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Approving volume replication on {0}.
+        /// </summary>
+        internal static string ApproveVolumeReplicationMessage {
+            get {
+                return ResourceManager.GetString("ApproveVolumeReplicationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Create the new {0}.
         /// </summary>
         internal static string CreateResourceMessage {
             get {
                 return ResourceManager.GetString("CreateResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initializing volume replication on {0}.
+        /// </summary>
+        internal static string InitializeVolumeReplicationMessage {
+            get {
+                return ResourceManager.GetString("InitializeVolumeReplicationMessage", resourceCulture);
             }
         }
         
@@ -84,6 +102,51 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.NetAppFiles.Properties {
         internal static string RemoveResourceMessage {
             get {
                 return ResourceManager.GetString("RemoveResourceMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Removing replication for the volume {0}.
+        /// </summary>
+        internal static string RemoveVolumeReplicationMessage {
+            get {
+                return ResourceManager.GetString("RemoveVolumeReplicationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restoring files {0}.
+        /// </summary>
+        internal static string RestoringFilesMessage {
+            get {
+                return ResourceManager.GetString("RestoringFilesMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resuming replication for the volume {0}.
+        /// </summary>
+        internal static string ResumeVolumeReplicationMessage {
+            get {
+                return ResourceManager.GetString("ResumeVolumeReplicationMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reverting {0} to snapshot.
+        /// </summary>
+        internal static string RevertVolumeMessage {
+            get {
+                return ResourceManager.GetString("RevertVolumeMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suspending volume replication on {0}.
+        /// </summary>
+        internal static string SuspendVolumeReplicationMessage {
+            get {
+                return ResourceManager.GetString("SuspendVolumeReplicationMessage", resourceCulture);
             }
         }
         

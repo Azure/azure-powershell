@@ -17,7 +17,7 @@ Updates properties of a Vault.
 ```
 Set-AzRecoveryServicesVaultProperty [-SoftDeleteFeatureState <String>]
  [-DisableHybridBackupSecurityFeature <Boolean>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### AzureRSVaultCMKParameterSet
@@ -66,6 +66,16 @@ Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $key.ID -VaultId $vault.ID 
 
 First cmdlet gets the RSVault to update encryption properties. Second cmdlet gets the azure key vault. Third cmdlet gets the key from the key vault.
 Fourth cmdlet updates the customer managed encryption key within the RSVault to be accessed via UserAssigned identity.
+
+### Example 4: Update HybridBackupSecurityFeature of a vault
+
+```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"
+$prop = Set-AzRecoveryServicesVaultProperty -VaultId $vault.Id -DisableHybridBackupSecurityFeature $false
+```
+
+The first command gets a Vault object and then stores it in the $vault variable.
+The second command disables the HybridBackupSecurityFeature of the vault, set $true to enable it again.
 
 ## PARAMETERS
 
@@ -152,6 +162,21 @@ Type: System.String
 Parameter Sets: AzureRSVaultSoftDelteParameterSet
 Aliases:
 Accepted values: Enable, Disable
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Token
+Auxiliary access token for authenticating critical operation to resource guard subscription
+
+```yaml
+Type: System.String
+Parameter Sets: AzureRSVaultSoftDelteParameterSet
+Aliases:
 
 Required: False
 Position: Named

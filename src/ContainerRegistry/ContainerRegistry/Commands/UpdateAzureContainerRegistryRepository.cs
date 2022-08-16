@@ -28,19 +28,19 @@ namespace Microsoft.Azure.Commands.ContainerRegistry.Commands
 
         [Parameter(Mandatory = false, HelpMessage = "Delete enable.")]
         [ValidateNotNullOrEmpty]
-        public bool DeleteEnabled { get; set; }
+        public bool? DeleteEnabled { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Write enable.")]
         [ValidateNotNullOrEmpty]
-        public bool WriteEnabled { get; set; }
+        public bool? WriteEnabled { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "List enable.")]
         [ValidateNotNullOrEmpty]
-        public bool ListEnabled { get; set; }
+        public bool? ListEnabled { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = "Read enable.")]
         [ValidateNotNullOrEmpty]
-        public bool ReadEnabled { get; set; }
+        public bool? ReadEnabled { get; set; }
 
         public override void ExecuteChildCmdlet()
         {

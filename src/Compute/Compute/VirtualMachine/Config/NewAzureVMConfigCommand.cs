@@ -132,12 +132,18 @@ namespace Microsoft.Azure.Commands.Compute
         [ResourceIdCompleter("Microsoft.Compute/capacityReservationGroups")]
         public string CapacityReservationGroupId { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specified the gallery image unique id for vm deployment. This can be fetched from gallery image GET call.")]
+        [ResourceIdCompleter("Microsoft.Compute galleries/images/versions")]
+        public string ImageReferenceId { get; set; }
+
         protected override bool IsUsageMetricEnabled
         {
             get { return true; }
         }
 	
-	[Parameter(
+	    [Parameter(
             Mandatory = false,
             ParameterSetName = ExplicitIdentityParameterSet,
             HelpMessage = "UserData for the VM, which will be Base64 encoded. Customer should not pass any secrets in here.",
@@ -304,6 +310,19 @@ namespace Microsoft.Azure.Commands.Compute
                 vm.UserData = this.UserData;
             }
 
+            if (this.IsParameterBound(c => c.ImageReferenceId))
+            {
+                if (vm.StorageProfile == null)
+                {
+                    vm.StorageProfile = new StorageProfile();
+                }
+                if (vm.StorageProfile.ImageReference == null)
+                {
+                    vm.StorageProfile.ImageReference = new ImageReference();
+                }
+                vm.StorageProfile.ImageReference.Id = this.ImageReferenceId;
+            }
+            
             if (this.IsParameterBound(c => c.PlatformFaultDomain))
             {
                 vm.PlatformFaultDomain = this.PlatformFaultDomain;

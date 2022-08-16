@@ -28,15 +28,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Kusto.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "App".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("App", "App", global::System.Management.Automation.CompletionResultType.ParameterValue, "App");
+                yield return new global::System.Management.Automation.CompletionResult("'App'", "App", global::System.Management.Automation.CompletionResultType.ParameterValue, "App");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Group".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Group", "Group", global::System.Management.Automation.CompletionResultType.ParameterValue, "Group");
+                yield return new global::System.Management.Automation.CompletionResult("'Group'", "Group", global::System.Management.Automation.CompletionResultType.ParameterValue, "Group");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "User".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("User", "User", global::System.Management.Automation.CompletionResultType.ParameterValue, "User");
+                yield return new global::System.Management.Automation.CompletionResult("'User'", "User", global::System.Management.Automation.CompletionResultType.ParameterValue, "User");
             }
         }
     }

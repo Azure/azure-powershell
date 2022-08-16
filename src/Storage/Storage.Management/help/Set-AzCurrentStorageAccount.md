@@ -33,7 +33,7 @@ The current Storage account is used as the default when you access Storage witho
 
 ### Example 1: Set the current Storage account
 ```
-PS C:\>Set-AzCurrentStorageAccount -ResourceGroupName "RG01" -AccountName "mystorageaccount"
+PS C:\>Set-AzCurrentStorageAccount -ResourceGroupName "RG01" -Name "mystorageaccount"
 ```
 
 This command sets the default Storage account for the specified subscription.

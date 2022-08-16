@@ -34,10 +34,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public IDictionary<string, string> Tags { get; set; }
         public SnapshotSku Sku { get; set; }
         public bool? SupportsHibernation { get; set; }
+        public SupportedCapabilities SupportedCapabilities { get; set; }
 
         //
         // Summary:
         //     Gets or sets possible values include: 'Enabled', 'Disabled'
         public string PublicNetworkAccess { get; set; }
+        public string DataAccessAuthMode { get; set; }
     }
 }

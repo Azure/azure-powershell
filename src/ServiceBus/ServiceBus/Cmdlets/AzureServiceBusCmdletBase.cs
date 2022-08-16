@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
         protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
         protected const string RuleInputObjectParameterSet = "RuleResourceIdSet";
-        protected const string NetwrokruleSetInputObjectParameterSet = "NetwrokruleSetInputObjectSet";
+        protected const string NetworkRuleSetInputObjectParameterSet = "NetworkRuleSetInputObjectSet";
         protected const string VirtualNetworkRuleInputObjectParameterSet = "VirtualNetworkRuleInputObjectParameterSet";
         protected const string IPRuleInputObjectParameterSet = "IPRuleInputObjectParameterSet";
 
@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string SubscriptionResourceIdParameterSet = "SubscriptionResourceIdSet";
         protected const string RuleResourceIdParameterSet = "RuleResourceIdSet";
         protected const string NetworkRuleSetResourceIdParameterSet = "NetworkRuleSetResourceIdParameterSet";
+        protected const string PrivateEndpointResourceIdParameterSet = "PrivateEndpointResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -100,10 +101,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string MigrationConfigurationParameterSet = "MigrationConfigurationPropertiesSet";
         protected const string RuleResourceParameterSet = "RulePropertiesSet";
         protected const string RuleResourceActionParameterSet = "RuleActionPropertiesSet";
-        protected const string NetwrokruleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
-        protected const string NetwrokruleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
+        protected const string NetworkRuleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
+        protected const string NetworkRuleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
         protected const string VirtualNetworkRulePropertiesParameterSet = "VirtualNetworkRulePropertiesParameterSet";
         protected const string IPRulePropertiesParameterSet = "IPRulePropertiesParameterSet";
+        protected const string PrivateEndpointPropertiesParameterSet = "PrivateEndpointPropertiesSet";
+        protected const string PrivateLinkPropertiesParameterSet = "PrivateLinkPropertiesSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroupname = "ResourceGroupName";
@@ -138,7 +141,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string Send = "Send";
         protected const string Listen = "Listen";
 
-        
+        protected const string PrivateEndpointURL = "Microsoft.ServiceBus/namespaces/privateEndpointConnections";
+        protected const string NamespaceURL = "Microsoft.ServiceBus/namespaces";
+
 
         protected struct SKU
         {

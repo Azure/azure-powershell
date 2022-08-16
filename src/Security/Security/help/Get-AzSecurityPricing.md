@@ -14,20 +14,17 @@ Gets the Azure Defender plans for a subscription in Azure Security Center.
 ## SYNTAX
 
 ### SubscriptionScope (Default)
-
-```powershell
+```
 Get-AzSecurityPricing [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SubscriptionLevelResource
-
-```powershell
+```
 Get-AzSecurityPricing -Name <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
-
-```powershell
+```
 Get-AzSecurityPricing -ResourceId <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -60,12 +57,10 @@ Id                                                                              
 
 Gets the status of each Azure Defender plan for the subscription.
 
-
-
 ### Example 2
 
 ```powershell
-Get-AzSecurityPricing -ResourceId
+Get-AzSecurityPricing -ResourceId '/subscriptions/fbaa2b23-e9dd-4bed-93c1-9e2a44f64bc0/providers/Microsoft.Security/pricings/VirtualMachines'
 ```
 
 Gets pricing details of the specific resource ID. Where ResourceId is one of the IDs returned by `Get-AzSecurityPricing`.
@@ -73,11 +68,10 @@ Gets pricing details of the specific resource ID. Where ResourceId is one of the
 ### Example 3
 
 ```powershell
-Get-AzSecurityPricing -Name
+Get-AzSecurityPricing -Name 'VirtualMachines'
 ```
 
 Gets pricing details of the named Azure Defender plan. Where `name` is one of the names returned by `Get-AzSecurityPricing`.
-
 
 ## PARAMETERS
 
@@ -130,8 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

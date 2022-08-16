@@ -12,7 +12,7 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'Get-AzDataMigrationSqlServiceAuthKey' {
-    It 'List'  {
+    It 'List' -skip  {
         $instance = Get-AzDataMigrationSqlServiceAuthKey -SubscriptionId $env.SubscriptionId -ResourceGroupName $env.TestSqlMigrationService.GroupName -SqlMigrationServiceName $env.TestSqlMigrationService.SqlMigrationServiceName
         $assert = ($instance.psobject.properties.name[0] -eq 'AuthKey1') -AND ($instance.psobject.properties.name[1] -eq 'AuthKey2')
         $assert | Should be $true

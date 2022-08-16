@@ -493,5 +493,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetVirtualMachineById");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachinePlatformFaultDomain()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachinePlatformFaultDomain");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineGuestAttestation()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineGuestAttestation");
+        }
     }
 }

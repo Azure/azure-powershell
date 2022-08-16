@@ -52,7 +52,7 @@ Get the list of vault in resource group in selected subscription.
 
 ```powershell
 $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-$vault.Identity | fl
+$vault.Identity | Format-List
 ```
 
 ```output

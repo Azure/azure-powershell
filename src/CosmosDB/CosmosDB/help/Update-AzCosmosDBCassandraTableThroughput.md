@@ -40,7 +40,7 @@ Updates the throughput value of a CosmosDB Cassandra Table.
 
 ### Example 1
 ```powershell
-Update-AzCosmosDBCassandraTableThroughput -AccountName {myAccountName} -ResourceGroupName {myResourceGroupName} -KeyspaceName {myKeyspacename} -Name {myTableName} -Throughput {updatedThroughputValue}
+Update-AzCosmosDBCassandraTableThroughput -AccountName "myAccountName" -ResourceGroupName "myResourceGroupName" -KeyspaceName "myKeyspaceName" -Name "myTableName" -Throughput $updatedThroughputValue
 ```
 
 ```output

@@ -42,8 +42,10 @@ Gets the identity.
 
 ### Example 1: Lists user assigned identity under a subscription
 ```powershell
-PS C:\>  Get-AzUserAssignedIdentity
+Get-AzUserAssignedIdentity
+```
 
+```output
 Location      Name                                ResourceGroupName
 --------      ----                                -----------------
 eastus        AzSecPackAutoConfigUA-eastus        AzSecPackAutoConfigRG
@@ -55,8 +57,10 @@ This command lists user assigned identity under a subscription.
 
 ### Example 2: List user assigned identity under a resource group
 ```powershell
-PS C:\> Get-AzUserAssignedIdentity -ResourceGroupName azure-rg-test
+Get-AzUserAssignedIdentity -ResourceGroupName azure-rg-test
+```
 
+```output
 Location Name       ResourceGroupName
 -------- ----       -----------------
 eastus   uai-pwsh01 azure-rg-test
@@ -66,8 +70,10 @@ This command lists user assigned identity under a resource group.
 
 ### Example 3: Get an user assigned identity
 ```powershell
-PS C:\> Get-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01
+Get-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01
+```
 
+```output
 Location Name       ResourceGroupName
 -------- ----       -----------------
 eastus   uai-pwsh01 azure-rg-test
@@ -77,9 +83,11 @@ This command gets an user assigned identity.
 
 ### Example 4: Get an user assigned identity by pipeline
 ```powershell
-PS C:\> New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Location eastus
+New-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Location eastus `
  | Get-AzUserAssignedIdentity
+```
 
+```output
 Location Name       ResourceGroupName
 -------- ----       -----------------
 eastus   uai-pwsh01 azure-rg-test
@@ -185,7 +193,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IManagedServiceIdentity>: Identity Parameter
+INPUTOBJECT `<IManagedServiceIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the Resource Group to which the identity belongs.
   - `[ResourceName <String>]`: The name of the identity resource.

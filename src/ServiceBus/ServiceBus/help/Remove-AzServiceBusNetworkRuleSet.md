@@ -37,7 +37,7 @@ Removes the NetworkRuleSet for the Given Namespace
 
 ### Example 1
 ```powershell
-Remove-AzServiceBusNetworkRuleSet -ResourceGroupName  v-ajnavtest -Namespace ServiceBus-Namespace1-1375
+Remove-AzServiceBusNetworkRuleSet -ResourceGroupName  v-ajnavtest -Name ServiceBus-Namespace1-1375
 ```
 
 ```output

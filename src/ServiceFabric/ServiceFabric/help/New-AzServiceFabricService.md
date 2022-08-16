@@ -74,7 +74,7 @@ $clusterName = "testCluster"
 $appName = "testApp"
 $serviceName = "testApp~testService1"
 $serviceTypeName = "testStateless"
-New-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateless -InstanceCount -1 -PartitionSchemaSingleton -Verbose
+New-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateless -InstanceCount -1 -PartitionSchemeSingleton -Verbose
 ```
 
 This example will create a new stateless service "testApp~testService1" with instance count -1 (on all the nodes).
@@ -86,7 +86,7 @@ $clusterName = "testCluster"
 $appName = "testApp"
 $serviceName = "testApp~testService2"
 $serviceTypeName = "testStatefulType"
-New-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateful -TargetReplicaSetSize 3 MinReplicaSetSize 5
+New-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName -Type $serviceTypeName -Stateful -TargetReplicaSetSize 3 -MinReplicaSetSize 5
 ```
 
 This example will create a new stateful service "testApp~testService2" with a target of 5 nodes.

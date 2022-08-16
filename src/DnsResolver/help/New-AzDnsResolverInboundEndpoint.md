@@ -14,9 +14,9 @@ Creates or updates an inbound endpoint for a DNS resolver.
 
 ```
 New-AzDnsResolverInboundEndpoint -DnsResolverName <String> -Name <String> -ResourceGroupName <String>
- -Location <String> [-SubscriptionId <String>] [-IfMatch <String>] [-IfNoneMatch <String>]
- [-IPConfiguration <IIPConfiguration[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -IPConfiguration <IIPConfiguration[]> -Location <String> [-SubscriptionId <String>] [-IfMatch <String>]
+ [-IfNoneMatch <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ Creates or updates an inbound endpoint for a DNS resolver.
 
 ## EXAMPLES
 
-### Example 1: Create  an Inbound Endpoint for DNS Resolver
+### Example 1: Create an Inbound Endpoint for DNS Resolver
 ```powershell
 $ipConfiguration = New-AzDnsResolverIPConfigurationObject -PrivateIPAllocationMethod Dynamic -SubnetId /subscriptions/0e5a46b1-de0b-4ec3-a5d7-dda908b4e076/resourceGroups/powershell-test-rg/providers/Microsoft.Network/virtualNetworks/psvirtualnetworkname31ur3isx/subnets/pssubnetname311tqweg
 
@@ -39,9 +39,9 @@ sampleInboundEndpoint Microsoft.Network/dnsResolvers/inboundEndpoints "0b008451-
 
 This command creates an Inbound Endpoint for DNS Resolver.
 
-### Example 2: Create  an Inbound Endpoint for DNS Resolver with Metadata
+### Example 2: Create an Inbound Endpoint for DNS Resolver with Tag
 ```powershell
-New-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint1 -ResourceGroupName powershell-test-rg -IPConfiguration $ipConfiguration  -Metadata @{"key0" = "value0"}
+New-AzDnsResolverInboundEndpoint -DnsResolverName pstestdnsresolvername -Name sampleInboundEndpoint1 -ResourceGroupName powershell-test-rg -IPConfiguration $ipConfiguration -Tag @{"key0" = "value0"}
 ```
 
 ```output
@@ -50,7 +50,7 @@ Name                   Type                                            Etag
 sampleInboundEndpoint1 Microsoft.Network/dnsResolvers/inboundEndpoints "0b0071aa-0000-0800-0000-60406a2d0000"
 ```
 
-This command creates an Inbound Endpoint for DNS Resolver with Metadata.
+This command creates an Inbound Endpoint for DNS Resolver with Tag.
 
 ## PARAMETERS
 
@@ -137,11 +137,11 @@ IP configurations for the inbound endpoint.
 To construct, see NOTES section for IPCONFIGURATION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IIPConfiguration[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IIPConfiguration[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -277,7 +277,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint
+### Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint
 
 ## NOTES
 
@@ -288,10 +288,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-IPCONFIGURATION <IIPConfiguration[]>: IP configurations for the inbound endpoint.
+`IPCONFIGURATION <IIPConfiguration[]>`: IP configurations for the inbound endpoint.
+  - `SubnetId <String>`: Resource ID.
   - `[PrivateIPAddress <String>]`: Private IP address of the IP configuration.
   - `[PrivateIPAllocationMethod <IPAllocationMethod?>]`: Private IP address allocation method.
-  - `[SubnetId <String>]`: Resource ID.
 
 ## RELATED LINKS
 

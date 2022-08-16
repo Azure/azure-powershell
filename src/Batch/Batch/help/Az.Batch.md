@@ -56,6 +56,9 @@ Gets the certificates in a Batch account.
 ### [Get-AzBatchComputeNode](Get-AzBatchComputeNode.md)
 Gets Batch compute nodes from a pool.
 
+### [Get-AzBatchComputeNodeExtension](Get-AzBatchComputeNodeExtension.md)
+Gets Batch compute node extensions from a compute node.
+
 ### [Get-AzBatchJob](Get-AzBatchJob.md)
 Gets Batch jobs for a Batch account or job schedule.
 
@@ -101,11 +104,17 @@ Gets the subtask information of the specified task.
 ### [Get-AzBatchSupportedImage](Get-AzBatchSupportedImage.md)
 Gets Batch supported images for a Batch account.
 
+### [Get-AzBatchSupportedVirtualMachineSku](Get-AzBatchSupportedVirtualMachineSku.md)
+Gets the list of Batch supported Virtual Machine VM sizes available at the given location.
+
 ### [Get-AzBatchTask](Get-AzBatchTask.md)
 Gets the Batch tasks for a job.
 
 ### [Get-AzBatchTaskCount](Get-AzBatchTaskCount.md)
 Gets the task counts for the specified job.
+
+### [Get-AzBatchTaskSlotCount](Get-AzBatchTaskSlotCount.md)
+Gets the task slot counts for the specified job.
 
 ### [New-AzBatchAccount](New-AzBatchAccount.md)
 Creates a Batch account.

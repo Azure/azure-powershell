@@ -32,9 +32,9 @@ $contactDetail = New-AzEdgeOrderContactDetailsObject -ContactName ContactName -E
 $ShippingDetails = New-AzEdgeOrderShippingAddressObject -StreetAddress1 "101 TOWNSEND ST" -StateOrProvince "CA" -Country "US" -City "San Francisco" -PostalCode "94107" -AddressType "Commercial"
 $HierarchyInformation=New-AzEdgeOrderHierarchyInformationObject -ProductFamilyName "azurestackedge" -ProductLineName "azurestackedge" -ProductName "azurestackedgegpu" -ConfigurationName "EdgeP_High"
 $details = New-AzEdgeOrderOrderItemDetailsObject -OrderItemType "Purchase"  -ProductDetail  @{"HierarchyInformation"=$HierarchyInformation}
-$orderItem = New-AzEdgeOrderItem -Name "examplePowershell" -ResourceGroupName ResourceGroup -ForwardAddressContactDetail $contactDetail -Location "eastus" -OrderId "/subscriptions/"SubscriptionId"/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/locations/eastus/orders/pwOrderItem11" -OrderItemDetail $details -SubscriptionId SubscriptionId -ForwardShippingAddress $ShippingDetails
+$orderItem = New-AzEdgeOrderItem -Name "examplePowershell" -ResourceGroupName ResourceGroup -ForwardAddressContactDetail $contactDetail -Location "eastus" -OrderId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/locations/eastus/orders/pwOrderItem11" -OrderItemDetail $details -SubscriptionId SubscriptionId -ForwardShippingAddress $ShippingDetails
 
-$orderItem = New-AzEdgeOrderItem -Name "examplePowershell" -ResourceGroupName "resourceGroupName" -ForwardAddressContactDetail $contactDetail -Location "eastus" -OrderId "/subscriptions/"SubscriptionId"/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/locations/eastus/orders/pwOrderItem11" -OrderItemDetail $details -SubscriptionId SubscriptionId -ForwardShippingAddress $ShippingDetails
+$orderItem = New-AzEdgeOrderItem -Name "examplePowershell" -ResourceGroupName "resourceGroupName" -ForwardAddressContactDetail $contactDetail -Location "eastus" -OrderId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/locations/eastus/orders/pwOrderItem11" -OrderItemDetail $details -SubscriptionId SubscriptionId -ForwardShippingAddress $ShippingDetails
 $DebugPreference = "Continue"
 # You can use `$DebugPreference = "Continue"`, with any example/usecase to get exact details of error in below format when creation command fails.
 # {
@@ -47,7 +47,7 @@ $DebugPreference = "Continue"
 #     "Target": null
 #   }
 # } 
-$orderItem = New-AzEdgeOrderItem -Name "examplePowershell" -ResourceGroupName "resourceGroupName" -ForwardAddressContactDetail $contactDetail -Location "eastus" -OrderId "/subscriptions/"SubscriptionId"/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/locations/eastus/orders/pwOrderItem11" -OrderItemDetail $details -SubscriptionId SubscriptionId -ForwardShippingAddress $ShippingDetails
+$orderItem = New-AzEdgeOrderItem -Name "examplePowershell" -ResourceGroupName "resourceGroupName" -ForwardAddressContactDetail $contactDetail -Location "eastus" -OrderId "/subscriptions/SubscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.EdgeOrder/locations/eastus/orders/pwOrderItem11" -OrderItemDetail $details -SubscriptionId SubscriptionId -ForwardShippingAddress $ShippingDetails
 $orderItem | Format-List
 ```
 
@@ -325,14 +325,14 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-FORWARDADDRESSCONTACTDETAIL <IContactDetails>: Contact details for the address
+FORWARDADDRESSCONTACTDETAIL `<IContactDetails>`: Contact details for the address
   - `ContactName <String>`: Contact name of the person.
   - `EmailList <String[]>`: List of Email-ids to be notified about job progress.
   - `Phone <String>`: Phone number of the contact person.
   - `[Mobile <String>]`: Mobile number of the contact person.
   - `[PhoneExtension <String>]`: Phone extension number of the contact person.
 
-FORWARDSHIPPINGADDRESS <IShippingAddress>: Shipping details for the address
+FORWARDSHIPPINGADDRESS `<IShippingAddress>`: Shipping details for the address
   - `Country <String>`: Name of the Country.
   - `StreetAddress1 <String>`: Street Address line 1.
   - `[AddressType <AddressType?>]`: Type of address.
@@ -344,7 +344,7 @@ FORWARDSHIPPINGADDRESS <IShippingAddress>: Shipping details for the address
   - `[StreetAddress3 <String>]`: Street Address line 3.
   - `[ZipExtendedCode <String>]`: Extended Zip Code.
 
-ORDERITEMDETAIL <IOrderItemDetails>: Represents order item details.
+ORDERITEMDETAIL `<IOrderItemDetails>`: Represents order item details.
   - `OrderItemType <OrderItemType>`: Order item type.
   - `ProductDetail <IProductDetails>`: Unique identifier for configuration.
     - `HierarchyInformation <IHierarchyInformation>`: Hierarchy of the product which uniquely identifies the product

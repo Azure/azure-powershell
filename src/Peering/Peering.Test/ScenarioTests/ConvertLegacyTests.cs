@@ -21,23 +21,16 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     /// <summary>
     /// The get legacy tests.
     /// </summary>
-    public class ConvertLegacyTests
+    public class ConvertLegacyTests : PeeringTestRunner
     {
-        /// <summary>
-        /// The logger.
-        /// </summary>
-        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="GetLegacyTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public ConvertLegacyTests(Xunit.Abstractions.ITestOutputHelper output)
+        public ConvertLegacyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         /// <summary>
@@ -47,7 +40,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConvertLegacyKindExchangeAshburn()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ConvertLegacyKindExchangeAshburn");
+            TestRunner.RunTestScript("Test-ConvertLegacyKindExchangeAshburn");
         }
 
         /// <summary>
@@ -57,7 +50,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConvertLegacyKindExchangeAmsterdamWithNewConnection()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-ConvertLegacyKindExchangeAmsterdamWithNewConnection");
+            TestRunner.RunTestScript("Test-ConvertLegacyKindExchangeAmsterdamWithNewConnection");
         }
     }
 }

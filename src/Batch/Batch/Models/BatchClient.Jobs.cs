@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
                 Func<CloudJob, PSCloudJob> mappingFunction = j => { return new PSCloudJob(j); };
                 return PSPagedEnumerable<PSCloudJob, CloudJob>.CreateWithMaxCount(
-                    jobs, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                    jobs, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
             }
         }
 
@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 j => new PSJobPreparationAndReleaseTaskExecutionInformation(j);
 
             return PSPagedEnumerable<PSJobPreparationAndReleaseTaskExecutionInformation, JobPreparationAndReleaseTaskExecutionInformation>.CreateWithMaxCount(
-                jobPrepAndReleaseDetails, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                jobPrepAndReleaseDetails, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
         }
     }
 }

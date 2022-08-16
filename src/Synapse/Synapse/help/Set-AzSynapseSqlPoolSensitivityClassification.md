@@ -45,7 +45,7 @@ Set-AzSynapseSqlPoolSensitivityClassification -ResourceGroupName ContosoResource
 
 ### Example 2: Set recommended information types and sensitivity labels of columns in an Azure Synapse SQL pool.
 ```powershell
-Get-AzSynapseSqlPoolSensitivityRecommendation -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -Name ContosoSqlPool | Set-AzSynapseSqlPoolSensitivityClassification
+Get-AzSynapseSqlPoolSensitivityRecommendation -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace -SqlPoolName ContosoSqlPool | Set-AzSynapseSqlPoolSensitivityClassification
 ```
 
 ### Example 3: Set information type and sensitivity label of a column in an Azure Synapse SQL pool, using piping.

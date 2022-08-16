@@ -144,6 +144,7 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
     {
         public bool? Enabled { get; set; }
         public int? Days { get; set; }
+        public bool? AllowPermanentDelete { get; set; }
 
         public PSDeleteRetentionPolicy()
         {
@@ -153,13 +154,15 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         {
             this.Enabled = policy.Enabled;
             this.Days = policy.Days;
+            this.AllowPermanentDelete = policy.AllowPermanentDelete;
         }
         public DeleteRetentionPolicy ParseDeleteRetentionPolicy()
         {
             return new DeleteRetentionPolicy
             {
                 Enabled = this.Enabled,
-                Days = this.Days
+                Days = this.Days,
+                AllowPermanentDelete = this.AllowPermanentDelete
             };
         }
     }

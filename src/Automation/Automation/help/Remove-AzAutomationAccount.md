@@ -25,8 +25,8 @@ For more information about Automation accounts, see the New-AzAutomationAccount 
 ## EXAMPLES
 
 ### Example 1: Remove an automation account
-```
-PS C:\>Remove-AzAutomationAccount -Name "ContosoAutomationAccount" -Force -ResourceGroupName "ResourceGroup01"
+```powershell
+Remove-AzAutomationAccount -Name "ContosoAutomationAccount" -Force -ResourceGroupName "ResourceGroup01"
 ```
 
 This command removes an automation account named ContosoAutomationAccount without prompting for user validation.

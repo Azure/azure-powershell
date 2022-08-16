@@ -32,14 +32,14 @@ Removes the single given VirtualNetworkRule for the NetworkRuleSet of the Namesp
 
 ### Example 1
 ```powershell
-Remove-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01"
+Remove-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-2389 -SubnetId "/subscriptions/SubscriptionId/resourcegroups/ResourceGroup/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/sbdefault01"
 ```
 
 Removes the single given VirtualNetworkRule for the NetworkRuleSet of the Namespace
 
 ### Example 2
 ```powershell
-Remove-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Namespace Eventhub-Namespace1-2389 -VirtualNetworkRuleObject $virtualruleset1
+Remove-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Name Eventhub-Namespace1-2389 -VirtualNetworkRuleObject $virtualruleset1
 ```
 
 Remove the $virtualruleset1 of NetworkRuleSet for the given Namespace

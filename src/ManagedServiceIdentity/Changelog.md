@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.0.0
+* General availability of `Az.ManagedServiceIdentity`
+
 ## Version 0.8.0
 * Bumped API Version to 2018-11-30
 * Added new cmdlets `Get-AzSystemAssignedIdentity` and `Update-AzUserAssignedIdentity`
