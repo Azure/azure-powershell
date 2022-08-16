@@ -912,7 +912,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             ProtectionPolicyResource oldPolicy = null;
             ProtectionPolicyResource newPolicy = null;
-            if (parameterSetName.Contains("Modify"))
+            
+            if (parameterSetName != null && parameterSetName.Contains("Modify") && policy != null && policy.Id != null)
             {
                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.PolicyId);
                 string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, item.PolicyId);
@@ -1004,7 +1005,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             // check for MUA
             bool isMUAProtected = false;
-            if (parameterSetName.Contains("Modify") && oldPolicy != null && newPolicy != null)
+            if (parameterSetName != null && parameterSetName.Contains("Modify") && oldPolicy != null && newPolicy != null)
             {
                 isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(oldPolicy, newPolicy, isMUAOperation);
             }
