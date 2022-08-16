@@ -6564,6 +6564,10 @@ function Test-DEBUGConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
 
 <#
 WOrking on this one currently!!!
+#   "error": {
+    #"code": "ResourceNotFound",
+    #"message": "The Resource 'Microsoft.KeyVault/vaults/hsmkv2adsandwiki26' under resource group 'adsandwiki26' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"
+  #}
 #>
 function Test-DebuggingHSMCVMSetAzVmOsDiskDesIdDiskWithVMGuest
 {
@@ -6575,7 +6579,7 @@ function Test-DebuggingHSMCVMSetAzVmOsDiskDesIdDiskWithVMGuest
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $rgname = "adsandwiki26";
+        $rgname = "adsandwiki28";
 
         $vmname = 'v' + 'vmdesnop';
         $vmSize = "Standard_DC2as_v5";         
