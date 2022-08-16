@@ -78,9 +78,9 @@ directive:
     set:
       parameter-name: Action
   - where:
-      subject: (^ActivityLogAlert$)(.*)
+      subject: (ActivityLogAlert)(.*)
     set:
-      subject: $2
+      subject-prefix: ""
 
   - model-cmdlet:
     - AlertRuleAnyOfOrLeafCondition
