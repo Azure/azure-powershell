@@ -1,9 +1,9 @@
 {
-  "New-AzSentinelAlertRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstestt6jdws/providers/Microsoft.OperationalInsights/workspaces/asptest1qlb2s/providers/Microsoft.SecurityInsights/alertRules/5a84cae5-b8d3-49c5-9418-9f3d635d30b8?api-version=2021-09-01-preview+1": {
+  "New-AzSentinelAlertRule+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/alertRules/12d8cb29-d001-4576-a336-77050c60a1f3?api-version=2021-09-01-preview+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstestt6jdws/providers/Microsoft.OperationalInsights/workspaces/asptest1qlb2s/providers/Microsoft.SecurityInsights/alertRules/5a84cae5-b8d3-49c5-9418-9f3d635d30b8?api-version=2021-09-01-preview",
-      "Content": "{\n  \"kind\": \"Scheduled\",\n  \"properties\": {\n    \"queryFrequency\": \"PT1H\",\n    \"queryPeriod\": \"P1D\",\n    \"triggerOperator\": \"GreaterThan\",\n    \"triggerThreshold\": 1,\n    \"incidentConfiguration\": {\n      \"groupingConfiguration\": {\n        \"enabled\": false,\n        \"reopenClosedIncident\": false,\n        \"lookbackDuration\": \"PT5H\",\n        \"matchingMethod\": \"AllEntities\"\n      },\n      \"createIncident\": false\n    },\n    \"query\": \"SecurityEvent | take 1\",\n    \"displayName\": \"NewAlertRulePSTest\",\n    \"enabled\": false,\n    \"suppressionDuration\": \"PT5H\",\n    \"suppressionEnabled\": false,\n    \"severity\": \"Informational\"\n  }\n}",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/alertRules/12d8cb29-d001-4576-a336-77050c60a1f3?api-version=2021-09-01-preview",
+      "Content": "{\n  \"kind\": \"Scheduled\",\n  \"properties\": {\n    \"queryFrequency\": \"PT1H\",\n    \"queryPeriod\": \"P1D\",\n    \"triggerOperator\": \"GreaterThan\",\n    \"triggerThreshold\": 1,\n    \"incidentConfiguration\": {\n      \"groupingConfiguration\": {\n        \"enabled\": false,\n        \"reopenClosedIncident\": false,\n        \"lookbackDuration\": \"PT5H\",\n        \"matchingMethod\": \"AllEntities\"\n      },\n      \"createIncident\": false\n    },\n    \"query\": \"SecurityEvent | take 1\",\n    \"displayName\": \"NewAlertRulel98w03\",\n    \"enabled\": false,\n    \"suppressionDuration\": \"PT5H\",\n    \"suppressionEnabled\": false,\n    \"severity\": \"Informational\"\n  }\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -19,19 +19,19 @@
         "Pragma": [ "no-cache" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "6bbc7bc0-800d-4e23-9dc9-23def5929916" ],
-        "x-ms-correlation-request-id": [ "6bbc7bc0-800d-4e23-9dc9-23def5929916" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220729T183213Z:6bbc7bc0-800d-4e23-9dc9-23def5929916" ],
+        "x-ms-request-id": [ "fe16e0a3-61ba-4872-be3f-044a0eb6ffbd" ],
+        "x-ms-correlation-request-id": [ "fe16e0a3-61ba-4872-be3f-044a0eb6ffbd" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160754Z:fe16e0a3-61ba-4872-be3f-044a0eb6ffbd" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 29 Jul 2022 18:32:12 GMT" ]
+        "Date": [ "Tue, 16 Aug 2022 16:07:54 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1048" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstestt6jdws/providers/Microsoft.OperationalInsights/workspaces/asptest1qlb2s/providers/Microsoft.SecurityInsights/alertRules/5a84cae5-b8d3-49c5-9418-9f3d635d30b8\",\"name\":\"5a84cae5-b8d3-49c5-9418-9f3d635d30b8\",\"etag\":\"\\\"2e00873f-0000-0100-0000-62e427ad0000\\\"\",\"type\":\"Microsoft.SecurityInsights/alertRules\",\"kind\":\"Scheduled\",\"properties\":{\"incidentConfiguration\":{\"createIncident\":false,\"groupingConfiguration\":{\"enabled\":false,\"reopenClosedIncident\":false,\"lookbackDuration\":\"PT5H\",\"matchingMethod\":\"AllEntities\",\"groupByEntities\":null,\"groupByAlertDetails\":null,\"groupByCustomDetails\":null}},\"queryFrequency\":\"PT1H\",\"queryPeriod\":\"P1D\",\"triggerOperator\":\"GreaterThan\",\"triggerThreshold\":1,\"severity\":\"Informational\",\"query\":\"SecurityEvent | take 1\",\"suppressionDuration\":\"PT5H\",\"suppressionEnabled\":false,\"tactics\":null,\"displayName\":\"NewAlertRulePSTest\",\"enabled\":false,\"description\":null,\"alertRuleTemplateName\":null,\"lastModifiedUtc\":\"2022-07-29T18:32:13.2109287Z\"}}",
+      "Content": "{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/alertRules/12d8cb29-d001-4576-a336-77050c60a1f3\",\"name\":\"12d8cb29-d001-4576-a336-77050c60a1f3\",\"etag\":\"\\\"06007d41-0000-0100-0000-62fbc0da0000\\\"\",\"type\":\"Microsoft.SecurityInsights/alertRules\",\"kind\":\"Scheduled\",\"properties\":{\"incidentConfiguration\":{\"createIncident\":false,\"groupingConfiguration\":{\"enabled\":false,\"reopenClosedIncident\":false,\"lookbackDuration\":\"PT5H\",\"matchingMethod\":\"AllEntities\",\"groupByEntities\":null,\"groupByAlertDetails\":null,\"groupByCustomDetails\":null}},\"queryFrequency\":\"PT1H\",\"queryPeriod\":\"P1D\",\"triggerOperator\":\"GreaterThan\",\"triggerThreshold\":1,\"severity\":\"Informational\",\"query\":\"SecurityEvent | take 1\",\"suppressionDuration\":\"PT5H\",\"suppressionEnabled\":false,\"tactics\":null,\"displayName\":\"NewAlertRulel98w03\",\"enabled\":false,\"description\":null,\"alertRuleTemplateName\":null,\"lastModifiedUtc\":\"2022-08-16T16:07:54.7075662Z\"}}",
       "isContentBase64": false
     }
   }

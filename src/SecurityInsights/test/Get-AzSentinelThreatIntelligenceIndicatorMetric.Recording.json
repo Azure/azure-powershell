@@ -1,13 +1,13 @@
 {
-  "Get-AzSentinelThreatIntelligenceIndicatorMetric+[NoContext]+List+$GET+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstestt6jdws/providers/Microsoft.OperationalInsights/workspaces/asptest1qlb2s/providers/Microsoft.SecurityInsights/threatIntelligence/main/metrics?api-version=2021-09-01-preview+1": {
+  "Get-AzSentinelThreatIntelligenceIndicatorMetric+[NoContext]+List+$GET+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/threatIntelligence/main/metrics?api-version=2021-09-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstestt6jdws/providers/Microsoft.OperationalInsights/workspaces/asptest1qlb2s/providers/Microsoft.SecurityInsights/threatIntelligence/main/metrics?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/threatIntelligence/main/metrics?api-version=2021-09-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "233" ],
-        "x-ms-client-request-id": [ "73164ebf-7ab5-4aa2-b857-973428e1e433" ],
+        "x-ms-unique-id": [ "234" ],
+        "x-ms-client-request-id": [ "07d98062-c08a-4688-902e-85c26b209796" ],
         "CommandName": [ "Get-AzSentinelthreatIntelligenceIndicatorMetric" ],
         "FullCommandName": [ "Get-AzSentinelThreatIntelligenceIndicatorMetric_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,20 +23,20 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "Server": [ "Kestrel" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11947" ],
-        "x-ms-request-id": [ "02893eb6-c78c-4dc4-9786-77e8b20243e5" ],
-        "x-ms-correlation-request-id": [ "02893eb6-c78c-4dc4-9786-77e8b20243e5" ],
-        "x-ms-routing-request-id": [ "EASTUS2:20220729T183211Z:02893eb6-c78c-4dc4-9786-77e8b20243e5" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11944" ],
+        "x-ms-request-id": [ "7a9bc93d-0d83-4bd1-b3fd-502c8102036f" ],
+        "x-ms-correlation-request-id": [ "7a9bc93d-0d83-4bd1-b3fd-502c8102036f" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160752Z:7a9bc93d-0d83-4bd1-b3fd-502c8102036f" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 29 Jul 2022 18:32:10 GMT" ]
+        "Date": [ "Tue, 16 Aug 2022 16:07:52 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "279" ],
+        "Content-Length": [ "278" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"lastUpdatedTimeUtc\":\"2022-07-29T18:32:11.3523407Z\",\"threatTypeMetrics\":[{\"metricName\":\"unknown\",\"metricValue\":5}],\"patternTypeMetrics\":[{\"metricName\":\"ipv4-addr\",\"metricValue\":5}],\"sourceMetrics\":[{\"metricName\":\"Microsoft Sentinel\",\"metricValue\":5}]}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"lastUpdatedTimeUtc\":\"2022-08-16T16:07:52.700472Z\",\"threatTypeMetrics\":[{\"metricName\":\"unknown\",\"metricValue\":5}],\"patternTypeMetrics\":[{\"metricName\":\"ipv4-addr\",\"metricValue\":5}],\"sourceMetrics\":[{\"metricName\":\"Microsoft Sentinel\",\"metricValue\":5}]}}]}",
       "isContentBase64": false
     }
   }

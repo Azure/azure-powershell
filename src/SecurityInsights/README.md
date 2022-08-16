@@ -304,7 +304,6 @@ directive:
       verb: New
       subject: ^AlertRuleAction$|^AutomationRule$|^Bookmark$|^Incident$|^IncidentComment$|
       parameter-name: Id
-    hide: true
     set:
       default:
         script: '(New-Guid).Guid'
@@ -312,7 +311,6 @@ directive:
       verb: New
       subject: ^BookmarkRelation$|^IncidentRelation$
       parameter-name: RelationName
-    hide: true
     set:
       default:
         script: '(New-Guid).Guid'

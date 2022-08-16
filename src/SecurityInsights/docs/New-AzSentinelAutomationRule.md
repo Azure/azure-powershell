@@ -14,8 +14,8 @@ Creates or updates the automation rule.
 
 ### CreateExpanded (Default)
 ```
-New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
- [-Action <IAutomationRuleAction[]>] [-DisplayName <String>] [-Order <Int32>]
+New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Action <IAutomationRuleAction[]>] [-DisplayName <String>] [-Order <Int32>]
  [-TriggeringLogicCondition <IAutomationRuleCondition[]>] [-TriggeringLogicExpirationTimeUtc <DateTime>]
  [-TriggeringLogicIsEnabled] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,8 +23,8 @@ New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String>
 ### Create
 ```
 New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String>
- -AutomationRule <IAutomationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -AutomationRule <IAutomationRule> [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -116,6 +116,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Automation rule ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AutomationRuleId
+
+Required: False
+Position: Named
+Default value: (New-Guid).Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -277,11 +292,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ACTION <IAutomationRuleAction[]>: The actions to execute when the automation rule is triggered
+`ACTION <IAutomationRuleAction[]>`: The actions to execute when the automation rule is triggered
   - `ActionType <AutomationRuleActionType>`: The type of the automation rule action
   - `Order <Int32>`: The order of execution of the automation rule action
 
-AUTOMATIONRULE <IAutomationRule>: Represents an automation rule.
+`AUTOMATIONRULE <IAutomationRule>`: Represents an automation rule.
   - `[Etag <String>]`: Etag of the azure resource
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
