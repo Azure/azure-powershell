@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Commands.Network
         [CmdletParameterBreakingChange("IdentifyTopFatFlow", ReplaceMentCmdletParameterName = "EnableFatFlowLogging")]
         [Parameter(
            Mandatory = false,
-           HelpMessage = "Identify Top Fat Flows. By default it is false."
+           HelpMessage = "Enable Fat Flow Logging. By default it is false."
        )]
         public SwitchParameter EnableFatFlowLogging { get; set; }
 

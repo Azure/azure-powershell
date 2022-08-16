@@ -221,7 +221,7 @@ $azFw | Set-AzFirewall
 
 ```
 
-In this example, Identify Top Fat Flows is enabled on the Firewall.
+In this example, Enable Fat Flow Logging is enabled on the Firewall.
 
 ## PARAMETERS
 
