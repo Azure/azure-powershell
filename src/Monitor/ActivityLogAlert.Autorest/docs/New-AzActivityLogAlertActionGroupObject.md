@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az./new-AzActionGroupObject
+online version: https://docs.microsoft.com/powershell/module/az.ActivityLogAlert/new-AzActivityLogAlertActionGroupObject
 schema: 2.0.0
 ---
 
-# New-AzActionGroupObject
+# New-AzActivityLogAlertActionGroupObject
 
 ## SYNOPSIS
 Create an in-memory object for ActionGroup.
@@ -13,7 +13,8 @@ Create an in-memory object for ActionGroup.
 ## SYNTAX
 
 ```
-New-AzActionGroupObject -Id <String> [-WebhookProperty <IActionGroupWebhookProperties>] [<CommonParameters>]
+New-AzActivityLogAlertActionGroupObject -Id <String> [-WebhookProperty <IActionGroupWebhookProperties>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -23,7 +24,7 @@ Create an in-memory object for ActionGroup.
 
 ### Example 1: Create action group object
 ```powershell
-New-AzActionGroupObject -Id $ActionGroupResourceId -WebhookProperty @{"sampleWebhookProperty"="SamplePropertyValue"}
+New-AzActivityLogAlertActionGroupObject -Id $ActionGroupResourceId -WebhookProperty @{"sampleWebhookProperty"="SamplePropertyValue"}
 ```
 
 Create action group object
@@ -81,7 +82,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-WEBHOOKPROPERTY <IActionGroupWebhookProperties>: the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
+`WEBHOOKPROPERTY <IActionGroupWebhookProperties>`: the dictionary of custom properties to include with the post operation. These data are appended to the webhook payload.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
