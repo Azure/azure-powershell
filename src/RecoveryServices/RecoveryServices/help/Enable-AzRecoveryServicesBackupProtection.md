@@ -219,7 +219,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of the resource group.
+Specifies the name of the resource group of a virtual machine.
 Specify this parameter only for ARM virtual machines.
 
 ```yaml
