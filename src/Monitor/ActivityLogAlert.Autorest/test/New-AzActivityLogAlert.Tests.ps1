@@ -14,21 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzActivityLogAlert'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'New-AzActivityLogAlert' -Tag 'LiveOnly' {
-    It 'CreateExpanded' {
-        #replace this string by a real action group resource id
-        $ActionGroupResourceId = ""
-
-        $actiongroup=New-AzActionGroupObject -Id $ActionGroupResourceId -WebhookProperty @{"sampleWebhookProperty"="SamplePropertyValue"}
-        $condition1=New-AzAlertRuleAnyOfOrLeafConditionObject -Equal Administrative -Field category
-        $condition2=New-AzAlertRuleAnyOfOrLeafConditionObject -Equal Error -Field level
-        $any=New-AzAlertRuleLeafConditionObject -Field properties.incidentType -Equal Maintenance
-        $condition3=New-AzAlertRuleAnyOfOrLeafConditionObject -AnyOf $any
-
-        New-AzActivityLogAlert -Name $env.AlertName -ResourceGroupName $env.ResourceGroupName -Action $actiongroup -Condition @($condition1,$condition2,$condition3) -Location global -Scope $env.AlertScope
-
-        $alert = Get-AzActivityLogAlert -Name $env.AlertName -ResourceGroupName $env.ResourceGroupName
-        Update-AzActivityLogAlert -Name $env.AlertName -ResourceGroupName $env.ResourceGroupName -Enabled $false -Tag @{"key"="val"}
-        $alert | Remove-AzActivityLogAlert
+Describe 'New-AzActivityLogAlert' {
+    It 'CreateExpanded' -skip {
+        { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }
