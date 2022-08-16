@@ -234,7 +234,7 @@ namespace Microsoft.Azure.Commands.Network
         )]
         public SwitchParameter AllowActiveFTP { get; set; }
 
-        [CmdletParameterBreakingChange("IdentifyTopFatFlow", ReplaceMentCmdletParameterName = "EnableFatFlowLogging")]
+        [Alias("IdentifyTopFatFlow")]
         [Parameter(
            Mandatory = false,
            HelpMessage = "Enable Fat Flow Logging. By default it is false."
