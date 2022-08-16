@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzDeployment
 
 ## SYNOPSIS
-Create a deployment
+Create a deployment at the current subscription scope.
 
 ## SYNTAX
 
