@@ -69,7 +69,7 @@ co03-vm         ConfigureBackup  Completed       11-Apr-16 12:19:49 PM      11-A
 
 The first cmdlet gets a default policy object, and then stores it in the $Pol variable.
 The second cmdlet specifies the disk LUNs which are to be backed up and stores it in $inclusionDiskLUNS variable.
-The third cmdlet sets the Backup protection policy for the ARM virtual machine named V2VM using the policy in $Pol.
+The third cmdlet sets the Backup protection policy for the ARM virtual machine named V2VM, in a resource group named RGName1, using the policy in $Pol.
 
 ### Example 2
 Enables backup for an item with a specified Backup protection policy or resumes backup for an item that has data retained when backup was stopped.
