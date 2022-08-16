@@ -35,7 +35,7 @@ Update a scaling plan.
 
 ### Example 1: Update a Windows Virtual Desktop Scaling Plan by name
 ```powershell
-PS C:\> Update-AzWvdScalingPlan `
+Update-AzWvdScalingPlan `
             -ResourceGroupName ResourceGroupName `
             -Name 'scalingPlan1' `
             -Description 'Description' `
