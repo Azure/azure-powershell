@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Monitor
-online version: https://docs.microsoft.com/powershell/module/az./new-AzMetricSettingsObject
+online version: https://docs.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingMetricSettingsObject
 schema: 2.0.0
 ---
 
-# New-AzMetricSettingsObject
+# New-AzDiagnosticSettingMetricSettingsObject
 
 ## SYNOPSIS
 Create an in-memory object for MetricSettings.
@@ -13,8 +13,9 @@ Create an in-memory object for MetricSettings.
 ## SYNTAX
 
 ```
-New-AzMetricSettingsObject -Enabled <Boolean> [-Category <String>] [-RetentionPolicyDay <Int32>]
- [-RetentionPolicyEnabled <Boolean>] [-TimeGrain <TimeSpan>] [<CommonParameters>]
+New-AzDiagnosticSettingMetricSettingsObject -Enabled <Boolean> [-Category <String>]
+ [-RetentionPolicyDay <Int32>] [-RetentionPolicyEnabled <Boolean>] [-TimeGrain <TimeSpan>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,7 +25,7 @@ Create an in-memory object for MetricSettings.
 
 ### Example 1: Create metric setting object
 ```powershell
-New-AzMetricSettingsObject -Enabled $true -Category AllMetrics -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
+New-AzDiagnosticSettingMetricSettingsObject -Enabled $true -Category AllMetrics -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
 ```
 
 Create metric setting object, to get supported categories for resource, please see `Get-AzDiagnosticSettingCategory`

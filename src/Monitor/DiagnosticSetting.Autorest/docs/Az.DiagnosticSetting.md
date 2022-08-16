@@ -27,17 +27,17 @@ Gets the active subscription diagnostic settings for the specified resource.
 ### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
 Creates or updates diagnostic settings for the specified resource.
 
-### [New-AzLogSettingsObject](New-AzLogSettingsObject.md)
+### [New-AzDiagnosticSettingLogSettingsObject](New-AzDiagnosticSettingLogSettingsObject.md)
 Create an in-memory object for LogSettings.
 
-### [New-AzMetricSettingsObject](New-AzMetricSettingsObject.md)
+### [New-AzDiagnosticSettingMetricSettingsObject](New-AzDiagnosticSettingMetricSettingsObject.md)
 Create an in-memory object for MetricSettings.
+
+### [New-AzDiagnosticSettingSubscriptionLogSettingsObject](New-AzDiagnosticSettingSubscriptionLogSettingsObject.md)
+Create an in-memory object for SubscriptionLogSettings.
 
 ### [New-AzSubscriptionDiagnosticSetting](New-AzSubscriptionDiagnosticSetting.md)
 Creates or updates subscription diagnostic settings for the specified resource.
-
-### [New-AzSubscriptionLogSettingsObject](New-AzSubscriptionLogSettingsObject.md)
-Create an in-memory object for SubscriptionLogSettings.
 
 ### [Remove-AzDiagnosticSetting](Remove-AzDiagnosticSetting.md)
 Deletes existing diagnostic settings for the specified resource.
