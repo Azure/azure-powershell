@@ -42,7 +42,7 @@ input-file:
 root-module-name: $(prefix).Monitor
 title: DiagnosticSetting
 module-version: 0.1.0
-subject-prefix: ""
+subject-prefix: DiagnosticSetting
 namespace: Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting
 nested-object-to-string: true
 
@@ -71,6 +71,10 @@ directive:
       subject: DiagnosticSettingsCategory
     set:
       subject: DiagnosticSettingCategory
+  - where:
+      subject: (DiagnosticSetting|EventCategory)(.*)
+    set:
+      subject-prefix: ""
 
   - model-cmdlet:
     - MetricSettings

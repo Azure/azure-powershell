@@ -694,15 +694,15 @@ Creates or updates diagnostic settings for the specified resource.
 $subscriptionId = (Get-AzContext).SubscriptionId
 $metric = @()
 $log = @()
-$metric += New-AzMetricSettingsObject -Enabled $true -Category AllMetrics -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
-$log += New-AzLogSettingsObject -Enabled $true -Category ContainerEventLogs -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
+$metric += New-AzDiagnosticSettingMetricSettingsObject -Enabled $true -Category AllMetrics -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
+$log += New-AzDiagnosticSettingLogSettingsObject -Enabled $true -Category ContainerEventLogs -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
 New-AzDiagnosticSetting -Name test-setting -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001 -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log -Metric $metric
 .Example
 $subscriptionId = (Get-AzContext).SubscriptionId
 $metric = @()
 $log = @()
 $categories = Get-AzDiagnosticSettingCategory -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001
-$categories | ForEach-Object {if($_.CategoryType -eq "Metrics"){$metrics+=New-AzMetricSettingsObject -Enabled $true -Category $_.Name -RetentionPolicyDay 7 -RetentionPolicyEnabled $true} else{$logs+=New-AzLogSettingsObject -Enabled $true -Category $_.Name -RetentionPolicyDay 7 -RetentionPolicyEnabled $true}}
+$categories | ForEach-Object {if($_.CategoryType -eq "Metrics"){$metrics+=New-AzDiagnosticSettingMetricSettingsObject -Enabled $true -Category $_.Name -RetentionPolicyDay 7 -RetentionPolicyEnabled $true} else{$logs+=New-AzDiagnosticSettingLogSettingsObject -Enabled $true -Category $_.Name -RetentionPolicyDay 7 -RetentionPolicyEnabled $true}}
 New-AzDiagnosticSetting -Name test-setting -ResourceId /subscriptions/$subscriptionId/resourceGroups/test-rg-name/providers/Microsoft.AppPlatform/Spring/springcloud-001 -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log -Metric $metric
 
 .Outputs
@@ -937,7 +937,7 @@ Creates or updates subscription diagnostic settings for the specified resource.
 .Example
 $subscriptionId = (Get-AzContext).SubscriptionId
 $log = @()
-$log += New-AzSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
+$log += New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
 New-AzSubscriptionDiagnosticSetting -Name test-setting -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log
 
 .Outputs
@@ -1508,14 +1508,14 @@ Create an in-memory object for LogSettings.
 .Description
 Create an in-memory object for LogSettings.
 .Example
-New-AzLogSettingsObject -Enabled $true -Category ContainerEventLogs -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
+New-AzDiagnosticSettingLogSettingsObject -Enabled $true -Category ContainerEventLogs -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.LogSettings
 .Link
-https://docs.microsoft.com/powershell/module/az./new-AzLogSettingsObject
+https://docs.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingLogSettingsObject
 #>
-function New-AzLogSettingsObject {
+function New-AzDiagnosticSettingLogSettingsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.LogSettings])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
@@ -1579,7 +1579,7 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.DiagnosticSetting.custom\New-AzLogSettingsObject';
+            __AllParameterSets = 'Az.DiagnosticSetting.custom\New-AzDiagnosticSettingLogSettingsObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1633,14 +1633,14 @@ Create an in-memory object for MetricSettings.
 .Description
 Create an in-memory object for MetricSettings.
 .Example
-New-AzMetricSettingsObject -Enabled $true -Category AllMetrics -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
+New-AzDiagnosticSettingMetricSettingsObject -Enabled $true -Category AllMetrics -RetentionPolicyDay 7 -RetentionPolicyEnabled $true
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings
 .Link
-https://docs.microsoft.com/powershell/module/az./new-AzMetricSettingsObject
+https://docs.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingMetricSettingsObject
 #>
-function New-AzMetricSettingsObject {
+function New-AzDiagnosticSettingMetricSettingsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.MetricSettings])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
@@ -1703,7 +1703,7 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.DiagnosticSetting.custom\New-AzMetricSettingsObject';
+            __AllParameterSets = 'Az.DiagnosticSetting.custom\New-AzDiagnosticSettingMetricSettingsObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -1757,14 +1757,14 @@ Create an in-memory object for SubscriptionLogSettings.
 .Description
 Create an in-memory object for SubscriptionLogSettings.
 .Example
-New-AzSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
+New-AzDiagnosticSettingSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings
 .Link
-https://docs.microsoft.com/powershell/module/az./new-AzSubscriptionLogSettingsObject
+https://docs.microsoft.com/powershell/module/az.DiagnosticSetting/new-AzDiagnosticSettingSubscriptionLogSettingsObject
 #>
-function New-AzSubscriptionLogSettingsObject {
+function New-AzDiagnosticSettingSubscriptionLogSettingsObject {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
@@ -1813,7 +1813,7 @@ begin {
         }
 
         $mapping = @{
-            __AllParameterSets = 'Az.DiagnosticSetting.custom\New-AzSubscriptionLogSettingsObject';
+            __AllParameterSets = 'Az.DiagnosticSetting.custom\New-AzDiagnosticSettingSubscriptionLogSettingsObject';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
