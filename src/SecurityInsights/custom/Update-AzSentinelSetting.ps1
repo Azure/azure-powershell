@@ -156,6 +156,9 @@ function Update-AzSentinelSetting {
                 $GetPSBoundParameters.Add('ResourceGroupName', $PSBoundParameters['ResourceGroupName'])
                 $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
                 $Name = $PSBoundParameters['SettingsName']
+                if ($PSBoundParameters['SubscriptionId']) {
+                  $GetPSBoundParameters['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+                }
              }
             if($Name -eq 'Ueba'){
                 $GetPSBoundParameters.Add('SettingsName', 'Ueba')
