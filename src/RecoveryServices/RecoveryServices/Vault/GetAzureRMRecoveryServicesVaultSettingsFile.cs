@@ -26,6 +26,7 @@ using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.RecoveryServices.Properties;
 using Microsoft.Azure.Management.RecoveryServices.Models;
 using Microsoft.Azure.Portal.RecoveryServices.Models.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.RecoveryServices
 {
@@ -86,6 +87,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// <summary>
         /// Gets or sets Certificate.
         /// </summary>
+        [CmdletParameterBreakingChange("Certificate", ChangeDescription = "Parameter is being deprecated without being replaced")]
         [Parameter(ParameterSetName = ARSParameterSets.ForSiteWithCertificate, Mandatory = false)]
         [Parameter(ParameterSetName = ARSParameterSets.ByDefaultWithCertificate, Mandatory = false)]
         [Parameter(ParameterSetName = ARSParameterSets.ForBackupVaultTypeWithCertificate, Mandatory = false)]
@@ -216,15 +218,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         private void GetBackupCredentialsWithCertificate(string certificate)
         {  // for .netStandard
 
-            if (Certificate != null)
-            {
-
-                Logger.Instance.WriteWarning("Certificate parameter will be removed in the next " +
-                    "breaking change release, please make sure to use this cmdlet without " +
-                    "passing the Certificate parameter");
-
-            }
-
             var targetLocation = string.IsNullOrEmpty(Path) ? Utilities.GetDefaultPath() : Path;
             if (!Directory.Exists(targetLocation))
             {
@@ -290,15 +283,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
         private void GetSiteRecoveryCredentialsWithCertificate(string certificate)
         {
-            if (Certificate != null)
-            {
-
-                Logger.Instance.WriteWarning("Certificate parameter will be removed in the next " +
-                    "breaking change release, please make sure to use this cmdlet without " +
-                    "passing the Certificate parameter");
-
-            }
-
             var subscriptionId = DefaultContext.Subscription.Id;
             var site = new ASRSite();
 
