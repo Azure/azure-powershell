@@ -17,12 +17,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSentinelBookmarkRelatio
 Describe 'New-AzSentinelBookmarkRelation' {
     It 'CreateExpanded' {
         $bookmark = New-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName `
-            -WorkspaceName $env.workspaceName -DisplayName "NewBookmarkRelationPSTest" -Query "SecurityEvent\n| take 1" `
+            -WorkspaceName $env.workspaceName -Id $env.NewbookmarkRelationBookmarkId -DisplayName $env.NewbookmarkRelationBookmarkName -Query "SecurityEvent\n| take 1" `
             -QueryStartTime (get-date).AddDays(-1).ToUniversalTime() -QueryEndTime (get-date).ToUniversalTime() -EventTime (get-date).ToUniversalTime()
         $incident = New-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Severity Informational -Status New -Title "NewBookmarkRelationPSTest"
-        $bookmarkRelation = New-AzSentinelBookmarkRelation -BookmarkId $bookmark.Name `
+            -Id $env.NewBookmarkRelationIncidentId -Severity Informational -Status New -Title $env.NewbookmarkRelationIncidentName
+        $bookmarkRelation = New-AzSentinelBookmarkRelation -BookmarkId $bookmark.Name -RelationName $env.NewBookmarkRelationId `
             -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RelatedResourceId $incident.Id
         $bookmarkRelation.RelatedResourceId | Should -Be $incident.Id
     }
-}
+} 

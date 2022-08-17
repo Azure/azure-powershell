@@ -47,6 +47,12 @@ function New-AzSentinelEntityQuery {
         # The name of the workspace.
         ${WorkspaceName},
 
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '(New-Guid).Guid')]
+        [System.String]
+        # The Id of the Entity Query.
+        ${Id},
+
         [Parameter(Mandatory)]
         [ArgumentCompleter( { param ( $CommandName, $EntityQueryName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('Activity') })]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]

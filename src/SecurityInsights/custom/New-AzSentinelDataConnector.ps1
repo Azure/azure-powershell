@@ -45,6 +45,12 @@ function New-AzSentinelDataConnector {
         [System.String]
         # The name of the workspace.
         ${WorkspaceName},
+
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '(New-Guid).Guid')]
+        [System.String]
+        # The Id of the Data Connector.
+        ${Id},
         
         [Parameter(Mandatory)]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind])]
