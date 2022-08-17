@@ -26,7 +26,7 @@ This cmdlet only works if Hierarchical Namespace is enabled for the Storage acco
 
 ### Example 1: List all deleted files or directories from a Filesystem
 ```powershell
-PS C:\> Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" 
+Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" 
 ```
 
 ```output
@@ -43,7 +43,7 @@ This command lists all deleted files or directories from a Filesystem.
 
 ### Example 2: List all deleted files or directories from a directory
 ```powershell
-PS C:\> Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" -Path dir0/dir2
+Get-AzDataLakeGen2DeletedItem -FileSystem "filesystem1" -Path dir0/dir2
 ```
 ```output 
 FileSystem Name: filesystem1

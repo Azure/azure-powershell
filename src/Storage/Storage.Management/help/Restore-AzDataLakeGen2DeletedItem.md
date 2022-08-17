@@ -61,7 +61,7 @@ This command lists all deleted files or directories from a Filesystem, the resto
 
 ### Example 2: Restore an single file with path and DeletionId
 ```powershell
-PS C:\> Restore-AzDataLakeGen2DeletedItem -FileSystem "filesystem1"  -Path dir0/dir1/file1 -DeletionId 132658838415219780
+Restore-AzDataLakeGen2DeletedItem -FileSystem "filesystem1"  -Path dir0/dir1/file1 -DeletionId 132658838415219780
 ```
 
 ```output
