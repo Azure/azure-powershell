@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         static ProviderConfiguration()
         {
-            RegisterConfiguration("Microsoft.AgFoodPlatform/farmBeats", "2021-09-01-preview", flase, true);
+            RegisterConfiguration("Microsoft.AgFoodPlatform/farmBeats", "2021-09-01-preview", false, true);
             RegisterConfiguration("Microsoft.ApiManagement/service", "2021-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.AppConfiguration/configurationStores", "2020-06-01", true, true);
             RegisterConfiguration("Microsoft.Attestation/attestationProviders", "2020-10-01", true, true);
