@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelEntityQuery'
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzSentinelEntityQuery' {
+Describe 'Update-AzSentinelEntityQuery' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         $entityQuery = Update-AzSentinelEntityQuery -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -EntityQueryId $env.UpdateentityQueryActivityId -Title "UpdateEntityQueryPSTest"

@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelSetting'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzSentinelSetting' {
+Describe 'Update-AzSentinelSetting' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         Update-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -SettingsName Anomalies -Enabled $false 
         $settings = get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName

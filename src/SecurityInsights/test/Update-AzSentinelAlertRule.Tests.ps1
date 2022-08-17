@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelAlertRule'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzSentinelAlertRule' {
+Describe 'Update-AzSentinelAlertRule' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         $alertRule = Update-AzSentinelAlertRule -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -RuleId $env.UpdateAlertRuleId -Scheduled -Disabled
         $alertRule.Enabled | Should -Be $false

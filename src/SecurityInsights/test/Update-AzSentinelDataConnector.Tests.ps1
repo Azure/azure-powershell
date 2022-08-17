@@ -14,7 +14,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelDataConnecto
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzSentinelDataConnector' {
+Describe 'Update-AzSentinelDataConnector' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
         $dataConnector = Update-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -Id $env.updateDataConnectorId -Office365 -SharePoint "Enabled"
