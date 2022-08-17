@@ -193,7 +193,7 @@ function Update-AzSentinelEntityQuery {
                 $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
                 $GetPSBoundParameters.Add('EntityQueryId', $PSBoundParameters['EntityQueryId'])
             }
-            $EntityQuery = Az.SecurityInsights\Get-AzSentinelEntityQuery @GetPSBoundParameters
+            $EntityQuery = . Az.SecurityInsights\Get-AzSentinelEntityQuery @GetPSBoundParameters
 
             if ($EntityQuery.Kind -eq 'Activity'){
                 If($PSBoundParameters['Title']){
