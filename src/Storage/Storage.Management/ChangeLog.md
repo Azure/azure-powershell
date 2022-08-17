@@ -21,6 +21,9 @@
 * Supported to create or update Storage account with Azure Files Active Directory Domain Service Kerberos Authentication
     -  `New-AzStorageAccount`
     -  `Set-AzStorageAccount`
+* Supported soft delete DataLake Gen2 item
+    - `Get-AzDataLakeGen2DeletedItem`
+    - `Restore-AzDataLakeGen2DeletedItem`
 
 ## Version 4.8.0
 * Added check for storage account sas token is secured with the storage account key.
