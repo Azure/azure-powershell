@@ -14,16 +14,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelSetting'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Update-AzSentinelSetting' {
+Describe 'Update-AzSentinelSetting' -Tag 'LiveOnly' {
     It 'UpdateExpanded' {
-        Update-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -SettingsName Anomalies -Disabled 
+        Update-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -SettingsName Anomalies -Enabled $false 
         $settings = get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
         $sttings.Name | Should -Not -Contain "Anomalies"
     }
 
     It 'UpdateViaIdentityExpanded'  {
         $setting = Get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName -SettingsName EyesOn 
-        Update-AzSentinelSetting -InputObject $setting -Disabled 
+        Update-AzSentinelSetting -InputObject $setting -Enabled $false 
         $settings = get-AzSentinelSetting -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName
         $sttings.Name | Should -Not -Contain "EyesOn"
     }

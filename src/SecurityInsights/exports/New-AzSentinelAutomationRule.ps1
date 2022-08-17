@@ -92,6 +92,14 @@ param(
     ${WorkspaceName},
 
     [Parameter()]
+    [Alias('AutomationRuleId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(New-Guid).Guid')]
+    [System.String]
+    # Automation rule ID
+    ${Id},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]

@@ -14,8 +14,8 @@ Creates or updates the automation rule.
 
 ### CreateExpanded (Default)
 ```
-New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
- [-Action <IAutomationRuleAction[]>] [-DisplayName <String>] [-Order <Int32>]
+New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Action <IAutomationRuleAction[]>] [-DisplayName <String>] [-Order <Int32>]
  [-TriggeringLogicCondition <IAutomationRuleCondition[]>] [-TriggeringLogicExpirationTimeUtc <DateTime>]
  [-TriggeringLogicIsEnabled] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -23,8 +23,8 @@ New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String>
 ### Create
 ```
 New-AzSentinelAutomationRule -ResourceGroupName <String> -WorkspaceName <String>
- -AutomationRule <IAutomationRule> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ -AutomationRule <IAutomationRule> [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,23 +43,15 @@ Creates or updates the automation rule.
  New-AzSentinelAutomationRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Action $automationRuleAction -DisplayName "Run Playbook to reset AAD password" -Order 2 -TriggeringLogicIsEnabled
 ```
 
-```output
-{{ Add output here }}
-```
-
 This command creates an Automation Rule that has an Action of Run Playbook.
 
-### Example 2: {{ Add title here }}
+### Example 2: Creates an Automation Rule that has an Action of changing the severity
 ```powershell
  $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleModifyPropertiesAction]::new()
  $automationRuleAction.Order = 1
  $automationRuleAction.ActionType = "ModifyProperties"
  $automationRuleAction.ActionConfigurationSeverity = "Low"
  New-AzSentinelAutomationRule -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -Action $automationRuleAction -DisplayName "Change severity to Low" -Order 3 -TriggeringLogicIsEnabled
-```
-
-```output
-{{ Add output here }}
 ```
 
 This command creates an Automation Rule that has an Action of changing the severity.
@@ -124,6 +116,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Automation rule ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: AutomationRuleId
+
+Required: False
+Position: Named
+Default value: (New-Guid).Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

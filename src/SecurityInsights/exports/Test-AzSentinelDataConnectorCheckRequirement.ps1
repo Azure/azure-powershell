@@ -20,9 +20,7 @@ Get requirements state for a data connector type.
 .Description
 Get requirements state for a data connector type.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Test-AzSentinelDataConnectorCheckRequirement -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind "APIPolling"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnectorsCheckRequirements

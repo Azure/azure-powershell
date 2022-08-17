@@ -17,8 +17,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSentinelDataConnector')
 Describe 'New-AzSentinelDataConnector' {
     It 'CreateExpanded' {
         $dataConnector = New-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -DataConnectorId ((New-Guid).Guid) -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All `
+            -Id $env.NewDataConnectorId -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All `
             -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
         $dataConnector | Should -Not -Be $null
     }
 }
+ 

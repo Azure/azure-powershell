@@ -2,8 +2,6 @@
 ```powershell
 Remove-AzSentinelBookmark -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id <bookMarkId> 
 ```
-```output
-```
 
 This command removes a bookmark
 

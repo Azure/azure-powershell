@@ -98,7 +98,7 @@ function setupEnv() {
         $null = $env.Add(("solarigateRuleGuid"), $solarigateRuleGuid)
         $null = $env.Add(("disabledRuleGuid"), $disabledRuleGuid)
         $null = $env.Add(("mlRuleGuid"), $mlRuleGuid)
-    }
+    } 
 
     #Deploy Playbooks
     Write-Host "Start to create test playbooks"
@@ -121,6 +121,8 @@ function setupEnv() {
     
     #Create Alert Rules
     Write-Host "Start to create test alert rules"
+    $null = $env.Add('NewAlertRuleName', ("NewAlertRule" + (RandomString -allChars $false -len 6)))
+    $null = $env.Add('NewAlertRuleId', ((New-Guid).Guid))
     Create-AlertRule -PSVerb Get -WorkspaceName $env.workspaceName
     Create-AlertRule -PSVerb Remove -WorkspaceName $env.workspaceName
     Create-AlertRule -PSVerb RemoveViaId -WorkspaceName $env.workspaceName
@@ -129,6 +131,9 @@ function setupEnv() {
 
     #Create AlertRuleAction
     Write-Host "Start to create test alert rule actions"
+    $null = $env.Add('NewalertRuleActionRuleId', (New-Guid).Guid)
+    $null = $env.Add('NewalertRuleActionRuleName', ("NewalertRuleActionRuleName" + (RandomString -allChars $false -len 6)))
+    $null = $env.Add('NewAlertRuleActionId', (New-Guid).Guid)
     Create-AlertRuleAction -PSVerb Get -WorkspaceName $env.workspaceName -logicAppResourceId $env.Playbook1LogicAppResourceId -triggerUrl $env.Playbook1TriggerUrl
     Create-AlertRuleAction -PSVerb Remove -WorkspaceName $env.workspaceName -logicAppResourceId $env.Playbook1LogicAppResourceId -triggerUrl $env.Playbook1TriggerUrl
     Create-AlertRuleAction -PSVerb RemoveViaId -WorkspaceName $env.workspaceName -logicAppResourceId $env.Playbook1LogicAppResourceId -triggerUrl $env.Playbook1TriggerUrl
@@ -187,6 +192,8 @@ function setupEnv() {
 
     #Create Automation Rule
     Write-Host "Start to create test automation rule"
+    $null = $env.Add('NewAutomationRuleId', (New-Guid).Guid)
+    $null = $env.Add('NewAutomationRule', ("NewAutomationRule" + (RandomString -allChars $false -len 6)))
     Create-AutomationRule -PSVerb Get -WorkspaceName $env.workspaceName -logicAppResourceId $env.Playbook2LogicAppResourceId
     Create-AutomationRule -PSVerb Remove -WorkspaceName $env.workspaceName -logicAppResourceId $env.Playbook2LogicAppResourceId
     Create-AutomationRule -PSVerb RemoveViaId -WorkspaceName $env.workspaceName -logicAppResourceId $env.Playbook2LogicAppResourceId
@@ -195,6 +202,8 @@ function setupEnv() {
 
     #Create Bookmark
     Write-Host "Start to create test bookmark"
+    $null = $env.Add(('NewBookmarkName'), ("Newbookmark"+ (RandomString -allChars $false -len 6)))
+    $null = $env.Add(('NewBookmarkId'), ((New-Guid).Guid))
     Create-Bookmark -PSVerb Get -WorkspaceName $env.workspaceName
     Create-Bookmark -PSVerb Remove -WorkspaceName $env.workspaceName
     Create-Bookmark -PSVerb RemoveViaId -WorkspaceName $env.workspaceName
@@ -208,14 +217,26 @@ function setupEnv() {
 
     #Create Bookmark Realtion
     Write-Host "Start to create test bookmark Relation"
+    $null = $env.Add('NewBookmarkRelationName', ("NewbookmarkRelation"+ (RandomString -allChars $false -len 6)))
+    $null = $env.Add('NewBookmarkRelationId', ((New-Guid).Guid))
+    $null = $env.Add('NewbookmarkRelationBookmarkId', ((New-Guid).Guid))
+    $null = $env.Add('NewbookmarkRelationBookmarkName', ("NewbookmarkRelationBookmarkName"+ (RandomString -allChars $false -len 6)))
+    $null = $env.Add('NewBookmarkRelationIncidentId', ((New-Guid).Guid))
+    $null = $env.Add('NewbookmarkRelationIncidentName', ("NewbookmarkRelationIncidentName"+ (RandomString -allChars $false -len 6)))
     Create-BookmarkRelation -PSVerb Get -WorkspaceName $env.workspaceName
     Create-BookmarkRelation -PSVerb Remove -WorkspaceName $env.workspaceName
     Create-BookmarkRelation -PSVerb RemoveViaId -WorkspaceName $env.workspaceName
     Create-BookmarkRelation -PSVerb Update -WorkspaceName $env.workspaceName
+    $null = $env.Add('UpdateBookmarkRelationIncidentId2', ((New-Guid).Guid))
+    $null = $env.Add('UpdatebookmarkRelationIncidentName2', ("NewbookmarkRelationIncidentName"+ (RandomString -allChars $false -len 6)))
     Create-BookmarkRelation -PSVerb UpdateViaId -WorkspaceName $env.workspaceName
+    $null = $env.Add('UpdateViaIdBookmarkRelationIncidentId2', ((New-Guid).Guid))
+    $null = $env.Add('UpdateViaIdbookmarkRelationIncidentName2', ("NewbookmarkRelationIncidentName"+ (RandomString -allChars $false -len 6)))
+    
 
     #Create DataConnector
     Write-Host "Start to create test dataConnector"
+    $env.Add('NewDataConnectorId', ((New-Guid).Guid))
     $dataConnectorId = (New-Guid).Guid
     $updateDataConnectorId = (New-Guid).Guid
     $dataConnectorParams = Get-Content .\test\deployment-templates\dataConnector\template.parameters.json | ConvertFrom-Json
@@ -230,11 +251,17 @@ function setupEnv() {
         $null = $env.Add('dataConnectorId', $dataConnectorId)
         $null = $env.Add('updateDataConnectorId', $updateDataConnectorId)
     }
+    $null = $env.Add('RemoveDataConnectorId', ((New-Guid).Guid))
+    $null = $env.Add('RemoveDataConnectorIdInputObject', ((New-Guid).Guid))
+
+
     #Entity
     #imported fake data so nothing needed to create in arm.
 
     #Create Entity Queriers
     Write-Host "Start to create test entityQuery"
+    $null = $env.Add('NewentityQueryActivityName', ("NewentityQueryActivity"+ (RandomString -allChars $false -len 6)))
+    $null = $env.Add('NewentityQueryActivityId', ((New-Guid).Guid)) 
     Create-EntityQuery -PSVerb Get -WorkspaceName $env.workspaceName
     Create-EntityQuery -PSVerb Remove -WorkspaceName $env.workspaceName
     Create-EntityQuery -PSVerb RemoveViaId -WorkspaceName $env.workspaceName
@@ -248,7 +275,9 @@ function setupEnv() {
     #System built, can't test without data.  Find way to import data?
 
     #Create Incident
-    Write-Host "Start to create test incident"
+    Write-Host "Start to create test incident" 
+    $null = $env.Add('NewincidentName', ("Newincident"+ (RandomString -allChars $false -len 6)))
+    $null = $env.Add('NewincidentId', ((New-Guid).Guid))   
     Create-Incident -PSVerb Get -WorkspaceName $env.workspaceName
     Create-Incident -PSVerb Remove -WorkspaceName $env.workspaceName
     Create-Incident -PSVerb RemoveViaId -WorkspaceName $env.workspaceName
@@ -263,6 +292,10 @@ function setupEnv() {
 
     #IncidentComment
     Write-Host "Start to create test incident comment"
+    $null = $env.Add('NewincidentCommentName', ("NewincidentComment"+ (RandomString -allChars $false -len 6)))
+    $null = $env.Add('NewincidentCommentId', ((New-Guid).Guid))
+    $null = $env.Add('NewincidentCommentIncidentName', ("NewincidentCommentIncident"+ (RandomString -allChars $false -len 6)))
+    $null = $env.Add('NewincidentCommentIncidentId', ((New-Guid).Guid))
     Create-IncidentComment -PSVerb Get -WorkspaceName $env.workspaceName
     Create-IncidentComment -PSVerb Remove -WorkspaceName $env.workspaceName
     Create-IncidentComment -PSVerb RemoveViaId -WorkspaceName $env.workspaceName
@@ -274,12 +307,27 @@ function setupEnv() {
 
     #IncidentRelation
     Write-Host "Start to create test incident relation"
+    $null = $env.Add('NewincidentRelationName', ("NewincidentRelationName"+ (RandomString -allChars $false -len 6)))
+    $null = $env.Add('NewincidentRelationId', ((New-Guid).Guid))
+    $null = $env.Add('NewincidentRelationIncidentId', ((New-Guid).Guid))
+    $null = $env.Add('NewincidentRelationIncidentName', ("NewincidentRelationIncidentName"+ (RandomString -allChars $false -len 6)))
+    $null = $env.Add('NewincidentRelationBookmarkId', ((New-Guid).Guid))
+    $null = $env.Add('NewincidentRelationBookmarkName', ("NewincidentRelationBookmarkName"+ (RandomString -allChars $false -len 6)))
     Create-IncidentRelation -PSVerb Get -WorkspaceName $env.workspaceName
     Create-IncidentRelation -PSVerb Remove -WorkspaceName $env.workspaceName
     Create-IncidentRelation -PSVerb RemoveViaId -WorkspaceName $env.workspaceName
     Create-IncidentRelation -PSVerb Update -WorkspaceName $env.workspaceName
+    $null = $env.Add('UpdateincidentRelationBookmarkId2', ((New-Guid).Guid))
+    $null = $env.Add('UpdateincidentRelationBookmarkName2', ("NewincidentRelationBookmarkName"+ (RandomString -allChars $false -len 6)))
     Create-IncidentRelation -PSVerb UpdateViaId -WorkspaceName $env.workspaceName
+    $null = $env.Add('UpdateViaIdincidentRelationBookmarkId2', ((New-Guid).Guid))
+    $null = $env.Add('UpdateViaIdincidentRelationBookmarkName2', ("NewincidentRelationBookmarkName"+ (RandomString -allChars $false -len 6)))
+    
 
+    #IncidentTeam
+    $null = $env.Add('NewincidentTeamIncidentId', ((New-Guid).Guid))
+    $null = $env.Add('NewincidentTeamIncidentName', ("NewincidentTeamIncidentName"+ (RandomString -allChars $false -len 6)))
+    
     #Metadata
     #"sourceId": "azuresentinel.azure-sentinel-solution-zerotrust
     Write-Host "Start to create test MetaData"
@@ -327,5 +375,15 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # Remove-AzResourceGroup -Name $env.resourceGroupName
+
+    #clean template parameter files.
+    #$files = Get-ChildItem -Path (Join-Path $PSScriptRoot "deployment-templates") -recurse *.parameters.json
+    #foreach($file in $files){
+    #    $content = Get-Content $file.FullName | ConvertFrom-Json
+    #    foreach($param in $content.parameters.PSObject.Properties){
+    #         $param.Value = "null"
+    #    }
+    #    $content | convertto-json -depth 5 | set-content ($file.FullName)
+    #}
 }
 

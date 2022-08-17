@@ -14,8 +14,8 @@ Creates or updates the incident.
 
 ### CreateExpanded (Default)
 ```
-New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
- [-Classification <IncidentClassification>] [-ClassificationComment <String>]
+New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+ [-SubscriptionId <String>] [-Classification <IncidentClassification>] [-ClassificationComment <String>]
  [-ClassificationReason <IncidentClassificationReason>] [-Description <String>]
  [-FirstActivityTimeUtc <DateTime>] [-Label <IIncidentLabel[]>] [-LastActivityTimeUtc <DateTime>]
  [-OwnerAssignedTo <String>] [-OwnerEmail <String>] [-OwnerObjectId <String>]
@@ -27,7 +27,8 @@ New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> [-Sub
 ### Create
 ```
 New-AzSentinelIncident -ResourceGroupName <String> -WorkspaceName <String> -Incident <IIncident>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -141,6 +142,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Incident ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: IncidentId
+
+Required: False
+Position: Named
+Default value: (New-Guid).Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
