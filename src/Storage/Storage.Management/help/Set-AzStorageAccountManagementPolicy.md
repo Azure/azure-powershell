@@ -56,6 +56,7 @@ The **Set-AzStorageAccountManagementPolicy** cmdlet creates or modifies the mana
 ## EXAMPLES
 
 ### Example 1: Create or update the management policy of a Storage account with ManagementPolicy rule objects.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -DaysAfterCreationGreaterThan 100
 PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50 -DaysAfterLastTierChangeGreaterThan 30
@@ -65,9 +66,10 @@ PS C:\>$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $actio
 PS C:\>$filter1 = New-AzStorageAccountManagementPolicyFilter -PrefixMatch ab,cd 
 PS C:\>$rule1 = New-AzStorageAccountManagementPolicyRule -Name Test -Action $action1 -Filter $filter1
 
-PS C:\>$action2 = Add-AzStorageAccountManagementPolicyAction -SnapshotAction Delete -daysAfterCreationGreaterThan 100
-PS C:\>$action2 = Add-AzStorageAccountManagementPolicyAction -InputObject $action2 -BlobVersionAction Delete -daysAfterCreationGreaterThan 100
-PS C:\>$filter2 = New-AzStorageAccountManagementPolicyFilter -BlobType appendBlob,blockBlob
+PS C:\>$action2 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterCreationGreaterThan 100
+PS C:\>$blobindexmatch1 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag1" -Value "value1"
+PS C:\>$blobindexmatch2 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag2" -Value "value2"
+PS C:\>$filter2 = New-AzStorageAccountManagementPolicyFilter -BlobType appendBlob,blockBlob -BlobIndexMatch $blobindexmatch1,$blobindexmatch2
 PS C:\>$rule2 = New-AzStorageAccountManagementPolicyRule -Name Test2 -Action $action2 -Filter $filter2
 
 PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Rule $rule1,$rule2
@@ -77,7 +79,7 @@ ResourceGroupName  : myresourcegroup
 StorageAccountName : mystorageaccount
 Id                 : /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
 Type               : Microsoft.Storage/storageAccounts/managementPolicies
-LastModifiedTime   : 6/14/2022 1:27:54 PM
+LastModifiedTime   : 7/12/2022 8:32:09 AM
 Rules              : [
                          {
                              "Enabled":  true,
@@ -129,7 +131,8 @@ Rules              : [
                                                                                 ],
                                                                 "BlobTypes":  [
                                                                                   "blockBlob"
-                                                                              ]
+                                                                              ],
+                                                                "BlobIndexMatch":  null
                                                             }
                                             }
                          },
@@ -138,30 +141,38 @@ Rules              : [
                              "Name":  "Test2",
                              "Definition":  {
                                                 "Actions":  {
-                                                                "BaseBlob":  null,
-                                                                "Snapshot":  {
+                                                                "BaseBlob":  {
+                                                                                 "TierToCool":  null,
+                                                                                 "TierToArchive":  null,
                                                                                  "Delete":  {
+                                                                                                "DaysAfterModificationGreaterThan":  null,
+                                                                                                "DaysAfterLastAccessTimeGreaterThan":  null,
                                                                                                 "DaysAfterCreationGreaterThan":  100,
                                                                                                 "DaysAfterLastTierChangeGreaterThan":  null
                                                                                             },
-                                                                                 "TierToCool":  null,
-                                                                                 "TierToArchive":  null
+                                                                                 "EnableAutoTierToHotFromCool":  null
                                                                              },
-                                                                "Version":  {
-                                                                                "Delete":  {
-                                                                                               "DaysAfterCreationGreaterThan":  100,
-                                                                                               "DaysAfterLastTierChangeGreaterThan":  null
-                                                                                           },
-                                                                                "TierToCool":  null,
-                                                                                "TierToArchive":  null
-                                                                            }
+                                                                "Snapshot":  null,
+                                                                "Version":  null
                                                             },
                                                 "Filters":  {
                                                                 "PrefixMatch":  null,
                                                                 "BlobTypes":  [
                                                                                   "appendBlob",
                                                                                   "blockBlob"
-                                                                              ]
+                                                                              ],
+                                                                "BlobIndexMatch":  [
+                                                                                       {
+                                                                                           "Name":  "tag1",
+                                                                                           "Op":  "==",
+                                                                                           "Value":  "value1"
+                                                                                       },
+                                                                                       {
+                                                                                           "Name":  "tag2",
+                                                                                           "Op":  "==",
+                                                                                           "Value":  "value2"
+                                                                                       }
+                                                                                   ]
                                                             }
                                             }
                          }
@@ -171,6 +182,7 @@ Rules              : [
 This command first create 2 ManagementPolicy rule objects, then creates or updates the management policy of a Storage account with the 2 ManagementPolicy rule objects.
 
 ### Example 2: Create or update the management policy of a Storage account with a Json format policy.
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -Policy (@{
     Rules=(@{
@@ -206,12 +218,13 @@ PS C:\>Set-AzStorageAccountManagementPolicy -ResourceGroupName "myresourcegroup"
         Name="Test2";
         Definition=(@{
             Actions=(@{
-                Version=(@{
+                BaseBlob=(@{
                     Delete=@{DaysAfterCreationGreaterThan=100};
                 });
             });
             Filters=(@{
                 BlobTypes=@("blockBlob","appendBlob");
+                BlobIndexMatch=(@{Name="tag1";Op="==";Value ="value1"},@{Name="tag2";Op="==";Value="value2"})
             })
         })
     })
@@ -222,7 +235,7 @@ ResourceGroupName  : myresourcegroup
 StorageAccountName : mystorageaccount
 Id                 : /subscriptions/{subscription-id}/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/managementPolicies/default
 Type               : Microsoft.Storage/storageAccounts/managementPolicies
-LastModifiedTime   : 6/14/2022 1:32:10 PM
+LastModifiedTime   : 7/12/2022 8:34:05 AM
 Rules              : [
                          {
                              "Enabled":  true,
@@ -286,7 +299,8 @@ Rules              : [
                                                                                 ],
                                                                 "BlobTypes":  [
                                                                                   "blockBlob"
-                                                                              ]
+                                                                              ],
+                                                                "BlobIndexMatch":  null
                                                             }
                                             }
                          },
@@ -295,23 +309,38 @@ Rules              : [
                              "Name":  "Test2",
                              "Definition":  {
                                                 "Actions":  {
-                                                                "BaseBlob":  null,
+                                                                "BaseBlob":  {
+                                                                                 "TierToCool":  null,
+                                                                                 "TierToArchive":  null,
+                                                                                 "Delete":  {
+                                                                                                "DaysAfterModificationGreaterThan":  null,
+                                                                                                "DaysAfterLastAccessTimeGreaterThan":  null,
+                                                                                                "DaysAfterCreationGreaterThan":  100,
+                                                                                                "DaysAfterLastTierChangeGreaterThan":  null
+                                                                                            },
+                                                                                 "EnableAutoTierToHotFromCool":  null
+                                                                             },
                                                                 "Snapshot":  null,
-                                                                "Version":  {
-                                                                                "Delete":  {
-                                                                                               "DaysAfterCreationGreaterThan":  100,
-                                                                                               "DaysAfterLastTierChangeGreaterThan":  null
-                                                                                           },
-                                                                                "TierToCool":  null,
-                                                                                "TierToArchive":  null
-                                                                            }
+                                                                "Version":  null
                                                             },
                                                 "Filters":  {
                                                                 "PrefixMatch":  null,
                                                                 "BlobTypes":  [
                                                                                   "blockBlob",
                                                                                   "appendBlob"
-                                                                              ]
+                                                                              ],
+                                                                "BlobIndexMatch":  [
+                                                                                       {
+                                                                                           "Name":  "tag1",
+                                                                                           "Op":  "==",
+                                                                                           "Value":  "value1"
+                                                                                       },
+                                                                                       {
+                                                                                           "Name":  "tag2",
+                                                                                           "Op":  "==",
+                                                                                           "Value":  "value2"
+                                                                                       }
+                                                                                   ]
                                                             }
                                             }
                          }

@@ -17,7 +17,7 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.Resources.Test.ScenarioTests
 {
-    public class ResourceManagementPrivateLinksTests : ResourceTestRunner
+    public class ResourceManagementPrivateLinksTests : ResourcesTestRunner
     {
         public ResourceManagementPrivateLinksTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {

@@ -1288,6 +1288,9 @@ namespace Microsoft.Azure.Commands.ApiManagement.ServiceManagement
                 case PsApiManagementApiFormat.Swagger:
                     headerValue = fromFile ? ContentFormat.SwaggerJson : ContentFormat.SwaggerLinkJson;
                     break;
+                case PsApiManagementApiFormat.GraphQL:
+                    headerValue = ContentFormat.GraphqlLink;
+                    break;
                 case PsApiManagementApiFormat.OpenApi:
                     headerValue = fromFile ? ContentFormat.Openapi : ContentFormat.OpenapiLink;
                     break;

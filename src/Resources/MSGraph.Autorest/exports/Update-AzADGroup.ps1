@@ -20,8 +20,7 @@ Update entity in groups
 .Description
 Update entity in groups
 .Example
-PS C:\> Update-AzADGroup -ObjectId $objectid -Description $description
-
+Update-AzADGroup -ObjectId $objectid -Description $description
 
 .Outputs
 System.Boolean

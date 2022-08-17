@@ -7,6 +7,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Text;
+
 using KeyVaultProperties = Microsoft.Azure.Commands.KeyVault.Properties;
 
 namespace Microsoft.Azure.Commands.KeyVault.Track2Models
@@ -239,7 +241,7 @@ namespace Microsoft.Azure.Commands.KeyVault.Track2Models
 
         public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, string certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)
         {
-            throw new NotImplementedException();
+            return VaultClient.ImportCertificate(vaultName, certName, Encoding.ASCII.GetBytes(certificate), certPassword, tags, contentType);
         }
 
         public PSKeyVaultCertificate ImportCertificate(string vaultName, string certName, byte[] certificate, SecureString certPassword, IDictionary<string, string> tags, string contentType = Constants.Pkcs12ContentType)

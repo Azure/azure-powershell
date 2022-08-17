@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
                             isEnabled = IsEnabled.IsPresent;
                         }
 
-                        WriteObject(Client.UpdateApplicationGroup(resourceGroupName: ResourceGroupName,
+                        WriteObject(UtilityClient.UpdateApplicationGroup(resourceGroupName: ResourceGroupName,
                                                                   namespaceName: NamespaceName,
                                                                   appGroupName: Name,
                                                                   isEnabled: isEnabled,
@@ -99,14 +99,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
                     else if(ParameterSetName == ApplicationGroupInputObjectParameterSet)
                     {
                         //Set Cmdlets must throw exception in case the resource does not already exist
-                        Client.GetApplicationGroup(resourceGroupName: ResourceGroupName,
+                        UtilityClient.GetApplicationGroup(resourceGroupName: ResourceGroupName,
                                                    namespaceName: NamespaceName,
                                                    appGroupName: Name);
                         
                         //When InputObject is given as a parameter, the assumption is that the consumer has given the entire desired state
                         //Hence we reconstruct a new app group object
                         //That is why a create call and not update call.
-                        WriteObject(Client.CreateApplicationGroup(resourceGroupName: ResourceGroupName,
+                        WriteObject(UtilityClient.CreateApplicationGroup(resourceGroupName: ResourceGroupName,
                                                                   namespaceName: NamespaceName,
                                                                   appGroupName: Name,
                                                                   clientAppGroupIdentifier: InputObject.ClientAppGroupIdentifier,

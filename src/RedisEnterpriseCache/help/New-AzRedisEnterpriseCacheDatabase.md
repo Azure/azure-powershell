@@ -16,8 +16,9 @@ Creates a database for a Redis Enterprise cache.
 New-AzRedisEnterpriseCacheDatabase -ClusterName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AofPersistenceEnabled] [-AofPersistenceFrequency <AofFrequency>]
  [-ClientProtocol <Protocol>] [-ClusteringPolicy <ClusteringPolicy>] [-EvictionPolicy <EvictionPolicy>]
- [-Module <IModule[]>] [-Port <Int32>] [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-GroupNickname <String>] [-LinkedDatabase <ILinkedDatabase[]>] [-Module <IModule[]>] [-Port <Int32>]
+ [-RdbPersistenceEnabled] [-RdbPersistenceFrequency <RdbFrequency>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -38,6 +39,21 @@ West US  MyCache Microsoft.Cache/redisEnterprise      {default}
 ```
 
 This command creates a database named default for a Redis Enterprise cache named MyCache.
+
+### Example 2: Create a georeplicated database for a Redis Enterprise cache
+```powershell
+New-AzRedisEnterpriseCacheDatabase -Name "MyCache2" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabase '{id:"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache1/databases/default"}','{id:"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache2/databases/default"}'
+```
+
+```output
+Name    Type
+----    ----
+default Microsoft.Cache/redisEnterprise/databases
+
+```
+
+This command creates a georeplicated database named default for a Redis Enterprise cache named MyCache2.
+This database is supposed to be linked with a database default of a preexisting cache MyCache1
 
 ## PARAMETERS
 
@@ -168,12 +184,44 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -GroupNickname
+Name for the group of linked database resources
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -LinkedDatabase
+List of database resources to link with this database
+To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
+To construct, see NOTES section for LINKEDDATABASE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.ILinkedDatabase[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Module
 Optional set of redis modules to enable in this database - modules can only be added at create time.
 To construct, see NOTES section for MODULE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IModule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -317,7 +365,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IDatabase
 
 ## NOTES
 
@@ -328,9 +376,12 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at create time.
+`LINKEDDATABASE <ILinkedDatabase[]>`: List of database resources to link with this database To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
+  - `[Id <String>]`: Resource ID of a database resource to link with this database.
+
+`MODULE <IModule[]>`: Optional set of redis modules to enable in this database - modules can only be added at create time.
   - `Name <String>`: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
-  - `[Arg <String>]`: Configuration options for the module, e.g. 'ERROR_RATE 0.00 INITIAL_SIZE 400'.
+  - `[Arg <String>]`: Configuration options for the module, e.g. 'ERROR_RATE 0.01 INITIAL_SIZE 400'.
 
 ## RELATED LINKS
 

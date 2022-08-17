@@ -57,26 +57,26 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
                     ResourceGroupName = identifier.ResourceGroupName;
                     Namespace = identifier.ResourceName;
 
-                    PSNetworkRuleSetAttributes netwrokruleSet = Client.GetNetworkRuleSet(ResourceGroupName, Namespace);
+                    PSNetworkRuleSetAttributes netwrokruleSet = UtilityClient.GetNetworkRuleSet(ResourceGroupName, Namespace);
                     WriteObject(netwrokruleSet);
                 }
 
                 if (ParameterSetName.Equals(NetwrokruleSetPropertiesParameterSet))
                 {
                     // Get a VNet Rule
-                    PSNetworkRuleSetAttributes netwrokruleSet = Client.GetNetworkRuleSet(ResourceGroupName, Namespace);
+                    PSNetworkRuleSetAttributes netwrokruleSet = UtilityClient.GetNetworkRuleSet(ResourceGroupName, Namespace);
                     WriteObject(netwrokruleSet);
                 }
 
                 // only Namespacename provided
                 if (ParameterSetName.Equals(NetwrokruleSetNamespacePropertiesParameterSet))
                 {
-                    var namespaceNames = Client.ListNamespacesBySubscription();
+                    var namespaceNames = UtilityClient.ListNamespacesBySubscription();
                     IEnumerable<string>  ResourceGrouplst = from nsName in namespaceNames
                                         where nsName.Name == Namespace
                                         select nsName.ResourceGroup;
 
-                    PSNetworkRuleSetAttributes netwrokruleSet = Client.GetNetworkRuleSet(ResourceGrouplst.FirstOrDefault(), Namespace);
+                    PSNetworkRuleSetAttributes netwrokruleSet = UtilityClient.GetNetworkRuleSet(ResourceGrouplst.FirstOrDefault(), Namespace);
                     WriteObject(netwrokruleSet);                    
                 }
 

@@ -36,7 +36,7 @@ Edits a Site Recovery plan.
 The **Enable-AzRecoveryServicesBackupAutoProtection** cmdlet sets up automatic protection of current and any future SQL DBs within the given instance with the supplied policy.
 
 ### [Enable-AzRecoveryServicesBackupProtection](Enable-AzRecoveryServicesBackupProtection.md)
-Enables backup for an item with a specified Backup protection policy.
+Enables or resumes backup for an item with a specified Backup protection policy.
 
 ### [Get-AzRecoveryServicesAsrAlertSetting](Get-AzRecoveryServicesAsrAlertSetting.md)
 Gets the configured Azure Site Recovery notification settings for the vault.
@@ -325,7 +325,7 @@ Cancels a running job.
 This cmdlet performs necessary validations for DS Move.
 
 ### [Undo-AzRecoveryServicesBackupItemDeletion](Undo-AzRecoveryServicesBackupItemDeletion.md)
-If a backup item is deleted and present in a soft-deleted state, this command brings the item back to a state where the data is retained forever 
+If a backup item is deleted and present in a soft-deleted state, this command brings the item back to a state where the data is retained forever
 
 ### [Unregister-AzRecoveryServicesBackupContainer](Unregister-AzRecoveryServicesBackupContainer.md)
 Unregisters a Windows Server or other container from the vault.

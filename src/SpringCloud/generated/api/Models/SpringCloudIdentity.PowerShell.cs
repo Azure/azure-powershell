@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -50,6 +52,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         /// instantly.</param>
 
         partial void BeforeDeserializePSObject(global::System.Management.Automation.PSObject content, ref bool returnNow);
+
+        /// <summary>
+        /// <c>OverrideToString</c> will be called if it is implemented. Implement this method in a partial class to enable this behavior
+        /// </summary>
+        /// <param name="stringResult">/// instance serialized to a string, normally it is a Json</param>
+        /// <param name="returnNow">/// set returnNow to true if you provide a customized OverrideToString function</param>
+
+        partial void OverrideToString(ref string stringResult, ref bool returnNow);
 
         /// <summary>
         /// Deserializes a <see cref="global::System.Collections.IDictionary" /> into an instance of <see cref="Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.SpringCloudIdentity"
@@ -81,7 +91,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
         /// Creates a new instance of <see cref="SpringCloudIdentity" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="SpringCloudIdentity" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentity FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -98,16 +108,86 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ServiceName = (string) content.GetValueForProperty("ServiceName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ServiceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).AppName = (string) content.GetValueForProperty("AppName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).AppName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BindingName = (string) content.GetValueForProperty("BindingName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BindingName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).CertificateName = (string) content.GetValueForProperty("CertificateName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).CertificateName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DeploymentName = (string) content.GetValueForProperty("DeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DeploymentName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ServiceName = (string) content.GetValueForProperty("ServiceName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ServiceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ConfigurationServiceName = (string) content.GetValueForProperty("ConfigurationServiceName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ConfigurationServiceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceRegistryName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ServiceRegistryName = (string) content.GetValueForProperty("ServiceRegistryName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ServiceRegistryName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BuildServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildServiceName = (string) content.GetValueForProperty("BuildServiceName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildServiceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BuildName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildName = (string) content.GetValueForProperty("BuildName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BuildResultName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildResultName = (string) content.GetValueForProperty("BuildResultName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildResultName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BuildpackName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildpackName = (string) content.GetValueForProperty("BuildpackName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildpackName, global::System.Convert.ToString);
+            }
+            if (content.Contains("StackName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).StackName = (string) content.GetValueForProperty("StackName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).StackName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BuilderName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuilderName = (string) content.GetValueForProperty("BuilderName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuilderName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BuildpackBindingName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildpackBindingName = (string) content.GetValueForProperty("BuildpackBindingName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildpackBindingName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentPoolName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).AgentPoolName = (string) content.GetValueForProperty("AgentPoolName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).AgentPoolName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AppName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).AppName = (string) content.GetValueForProperty("AppName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).AppName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BindingName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BindingName = (string) content.GetValueForProperty("BindingName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BindingName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CertificateName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).CertificateName = (string) content.GetValueForProperty("CertificateName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).CertificateName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DeploymentName = (string) content.GetValueForProperty("DeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DeploymentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -125,16 +205,86 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ServiceName = (string) content.GetValueForProperty("ServiceName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ServiceName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).AppName = (string) content.GetValueForProperty("AppName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).AppName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BindingName = (string) content.GetValueForProperty("BindingName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BindingName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).CertificateName = (string) content.GetValueForProperty("CertificateName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).CertificateName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DomainName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DeploymentName = (string) content.GetValueForProperty("DeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DeploymentName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Id, global::System.Convert.ToString);
+            if (content.Contains("SubscriptionId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).SubscriptionId = (string) content.GetValueForProperty("SubscriptionId",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).SubscriptionId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResourceGroupName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ResourceGroupName = (string) content.GetValueForProperty("ResourceGroupName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ResourceGroupName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ServiceName = (string) content.GetValueForProperty("ServiceName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ServiceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("ConfigurationServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ConfigurationServiceName = (string) content.GetValueForProperty("ConfigurationServiceName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ConfigurationServiceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("ServiceRegistryName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ServiceRegistryName = (string) content.GetValueForProperty("ServiceRegistryName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).ServiceRegistryName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BuildServiceName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildServiceName = (string) content.GetValueForProperty("BuildServiceName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildServiceName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BuildName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildName = (string) content.GetValueForProperty("BuildName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BuildResultName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildResultName = (string) content.GetValueForProperty("BuildResultName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildResultName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BuildpackName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildpackName = (string) content.GetValueForProperty("BuildpackName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildpackName, global::System.Convert.ToString);
+            }
+            if (content.Contains("StackName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).StackName = (string) content.GetValueForProperty("StackName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).StackName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BuilderName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuilderName = (string) content.GetValueForProperty("BuilderName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuilderName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BuildpackBindingName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildpackBindingName = (string) content.GetValueForProperty("BuildpackBindingName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BuildpackBindingName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AgentPoolName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).AgentPoolName = (string) content.GetValueForProperty("AgentPoolName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).AgentPoolName, global::System.Convert.ToString);
+            }
+            if (content.Contains("AppName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).AppName = (string) content.GetValueForProperty("AppName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).AppName, global::System.Convert.ToString);
+            }
+            if (content.Contains("BindingName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BindingName = (string) content.GetValueForProperty("BindingName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).BindingName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CertificateName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).CertificateName = (string) content.GetValueForProperty("CertificateName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).CertificateName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DomainName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DomainName = (string) content.GetValueForProperty("DomainName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DomainName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DeploymentName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DeploymentName = (string) content.GetValueForProperty("DeploymentName",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).DeploymentName, global::System.Convert.ToString);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models.ISpringCloudIdentityInternal)this).Id, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -142,6 +292,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Models
 
         /// <returns>a <see cref="System.String" /> containing this model serialized to JSON text.</returns>
         public string ToJsonString() => ToJson(null, Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Runtime.SerializationMode.IncludeAll)?.ToString();
+
+        public override string ToString()
+        {
+            var returnNow = false;
+            var result = global::System.String.Empty;
+            OverrideToString(ref result, ref returnNow);
+            if (returnNow)
+            {
+                return result;
+            }
+            return ToJsonString();
+        }
     }
     [System.ComponentModel.TypeConverter(typeof(SpringCloudIdentityTypeConverter))]
     public partial interface ISpringCloudIdentity

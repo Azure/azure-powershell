@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the SpringCloud service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 1.7.4 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,90 +47,510 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: f595fe8142bff77ddba974fe8ec53522528eed61
+branch: 0ae34dbf19d039effd9d366e6c12df38ca4c1c2a
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2020-07-01/appplatform.json
+  - $(repo)/specification/appplatform/resource-manager/Microsoft.AppPlatform/stable/2022-04-01/appplatform.json
     
 title: SpringCloud
 module-version: 0.1.0
+resourcegroup-append: true
+nested-object-to-string: true
 identity-correction-for-post: true
-# prefix: Az
-# subject-prefix: ''
 
 directive:
   - where:
       verb: Set
-      subject: App$|Binding$|CustomDomain$|Deployment$|Service$|Certificate$|ConfigServerPut$|MonitoringSettingPut$
-    remove: true
+      subject: BuildServiceAgentPoolPut
+    set:
+      verb: New
+      subject: BuildServiceAgentPool
+
   - where:
-      verb: Get
-      subject: ConfigServer$|MonitoringSetting$|RuntimeVersion$
-    remove: true
-  - where:
-      verb: Test
-      subject: AppDomain$
-    remove: true
-  - where:
+      verb: Set
+      subject: AppActiveDeployment
+    set:
       verb: Update
-      subject: ConfigServerPatch$|MonitoringSettingPatch
-    remove: true
-  # - where:
-  #     verb: Set
-  #     subject: App$|Binding$|CustomDomain$|Deployment$|Service$
-  #   set:
-  #     verb: Update
+      subject: AppActiveDeployment
+
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      verb: Set
     remove: true
-  - from: source-file-csharp
-    where: $
-    transform: $ = $.replace(/internal partial interface/, 'public partial interface');
-  - where:
-      subject: ServiceTestEndpoint$
-      variant: ^DisableViaIdentity$|^EnableViaIdentity$
+  # First rename parameter of the Get-AzSpringCloudService, then rename cmdlet to Get-AzSpringCloud.
+  - where: 
+      subject: ^Service$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
-  - where:
-      subject: ServiceTestKey$
-      variant: ^RegenerateViaIdentityExpanded$|^RegenerateViaIdentity$
+
+  - where: 
+      subject: ^Service$
+      variant: ^Update$|^UpdateViaIdentity$
     remove: true
+
+  - where: 
+      subject: ^Service$
+      parameter-name: NetworkProfileAppNetworkResourceGroup
+    set:
+      parameter-name: NetworkProfileResourceGroup
+
+  - where: 
+      subject: ^Service$
+      parameter-name: NetworkProfileAppSubnetId
+    set:
+      parameter-name: NetworkProfileSubnetId
+
+  - where: 
+      subject: ^Service$
+      parameter-name: NetworkProfileServiceRuntimeNetworkResourceGroup
+    set:
+      parameter-name: NetworkProfileServiceResourceGroup
+
+  - where: 
+      subject: ^Service$
+      parameter-name: NetworkProfileServiceRuntimeSubnetId
+    set:
+      parameter-name: NetworkProfileServiceSubnetId
+  # Customization for add default locatio value when not pass location parameter
   - where:
-      subject: DeploymentClusterDeployment|DeploymentLogFileUrl|ServiceTestKey|Sku|ServiceTestEndpoint|ServiceNameAvailability|Binding|CustomDomain|Certificate
-    remove: true
-  - where:
-      subject: Deployment
-      verb: New|Update
+      verb: New
+      subject: ^Service$
     hide: true
   - where:
-      subject: Deployment
+      subject: ^Service(.*)
+    set:
+      subject: $1
+#------------------------------------------------------------------------------
+# rename subject
+  - where:
+      subject: ^Binding$
+    set:
+      subject: AppBinding
+
+  - where:
+      subject: ^Deployment$
     set:
       subject: AppDeployment
+
   - where:
-      subject: App
-      verb: New|Update
+      subject: ^CustomDomain$
+    set:
+      subject: AppCustomDomain
+
+  - where:
+      subject: ^DeploymentLogFileUrl$
+    set:
+      subject: AppDeploymentLogFileUrl
+
+  - where:
+      subject: ^DeploymentHeapDump$
+    set:
+      subject: AppDeploymentHeapDump
+
+  - where:
+      subject: ^DeploymentThreadDump$
+    set:
+      subject: AppDeploymentThreadDump
+
+  - where:
+      subject: ^DeploymentJfr$
+    set:
+      subject: AppDeploymentJfr
+
+  - where:
+      verb: Update
+      subject: ^ConfigServerPatch$
+    set:
+      subject: ConfigServer
+
+  - where:
+      verb: Update
+      subject: ^MonitoringSettingPatch$
+    set:
+      subject: MonitoringSetting
+
+  - where:
+      verb: Test
+      subject: ^AppDomain$
+    set:
+      subject: AppCustomDomain
+      
+# remove cmdlet
+  - where:
+      subject: AppDeploymentHeapDump
+    remove: true
+  - where:
+      subject: AppDeploymentThreadDump
+    remove: true
+# remove variant
+# |Certificate|ConfigurationService
+  - where: 
+      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^|BuildpackBinding$|^BuildServiceBuild$|^BuildServiceBuilder$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+    remove: true
+  - where: 
+      subject: ^AppDeploymentHeapDump$|^AppDeploymentThreadDump$|^TestKey$
+      variant: ^Generate$|^GenerateViaIdentity$|^GenerateViaIdentityExpanded$
+    remove: true
+  
+  - where:
+      verb: Get
+      subject: BuildServiceBuildResultLog
+      variant: GetViaIdentity
+    remove: true
+
+  - where:
+      verb: Get
+      subject: ^Registry$|^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$
+      variant: List
+    remove: true
+    
+
+  - where: 
+      subject: ^TestKey$
+      variant: ^Regenerate$|^RegenerateViaIdentity$|^RegenerateViaIdentityExpanded$
+    remove: true
+
+  - where: 
+      subject: ^AppActiveDeployment$
+      variant: ^SetViaIdentity$|^Set$
+    remove: true
+
+  - where: 
+      subject: ^DeploymentJfr$
+      variant: ^Start$|^StartViaIdentity$
+    remove: true
+
+  - where:
+      verb: Test 
+      subject: ^AppCustomDomain$
+      variant: ^Validate$|^ValidateViaIdentity$
+    remove: true
+
+  - where:
+      verb: Test 
+      subject: ^ConfigServer$|^ConfigurationService$
+      variant: ^Validate$|^ValidateViaIdentity$
+    remove: true
+
+  - where:
+      verb: Test 
+      subject: ^NameAvailability$
+      variant: ^Check$|^CheckViaIdentity$|^CheckViaIdentityExpanded$
+    remove: true
+
+  - where:
+      subject: ^AppDeploymentJfr$
+      variant: ^Start$|^StartViaIdentity$
+    remove: true
+
+  - where: 
+      subject: ^App$|^AppBinding$|^AppDeployment$|^AppCustomDomain$|^ConfigServer$|^MonitoringSetting$|^BuildServiceAgentPool$
+      variant: ^Update$|^UpdateViaIdentity$
+    remove: true
+
+# rename parameter
+  - where:
+      subject: ^AppDeployment$
+      parameter-name: ^DeploymentSetting(.*)
+    set:
+      parameter-name: $1
+
+  - where:
+      subject: ^AppDeploymentHeapDump$|^AppDeploymentThreadDump$|^AppDeploymentJfr$
+      parameter-name: DeploymentName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^BuildpackBinding$
+      parameter-name: LaunchPropertySecret
+    set:
+      parameter-name: LaunchSecret
+
+  - where:
+      subject: ^ConfigurationService$
+      parameter-name: GitPropertyRepository
+    set:
+      parameter-name: GitRepository
+
+  - where:
+      subject: ^ConfigServer$
+      parameter-name: ServiceName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^TestEndpoint$
+      parameter-name: ServiceName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^AppResourceUploadUrl$
+      parameter-name: AppName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^BuildServiceAgentPool$
+      parameter-name: AgentPoolName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^BuildServiceBuild$|^BuildServiceBuildResult$|^BuildServiceBuildResultLog$
+      parameter-name: BuildName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^BuildServiceBuilder$
+      parameter-name: BuilderName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^BuildServiceResourceUploadUrl$
+      parameter-name: BuildServiceName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^BuildServiceSupportedBuildpack$
+      parameter-name: BuildpackName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^BuildServiceSupportedStack$
+      parameter-name: StackName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^AppCustomDomain$
+      parameter-name: DomainName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^AppDeploymentLogFileUrl$
+      parameter-name: DeploymentName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^MonitoringSetting$|^TestKey$
+      parameter-name: ServiceName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: ^ConfigServer$
+      parameter-name: (^GitProperty)(.*)
+    set:
+      parameter-name: Git$2
+  - where:
+      subject: BuildServiceBuildResult|BuildServiceBuildResultLog
+      parameter-name: Name
+    set:
+      parameter-name: BuildName
+
+  - where:
+      subject: BuildServiceBuildResult|BuildServiceBuildResultLog
+      parameter-name: BuildResultName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: BuildServiceBuild
+      parameter-name: Builder
+    set:
+      parameter-name: BuilderId
+
+  - where:
+      subject: BuildServiceBuild
+      parameter-name: AgentPool
+    set:
+      parameter-name: AgentPoolId
+
+  - where:
+      subject: AppActiveDeployment
+      parameter-name: AppName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: AppActiveDeployment
+      parameter-name: AppName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: AppActiveDeployment
+      parameter-name: ActiveDeploymentName
+    set:
+      parameter-name: DeploymentName
+
+  # Only support default value
+  - where:
+      subject: ^BuildService$|^BuildServiceAgentPool$|^ConfigurationService$|^Registry$
+      parameter-name: Name
+    hide: true
+    set:
+      default:
+        script: "'default'"
+
+  - where:
+      subject: ^BuildServiceAgentPool$|^BuildServiceBuilder$|^BuildServiceSupportedBuildpack$|^BuildServiceSupportedStack$|^BuildpackBinding$
+      parameter-name: BuildServiceName
+    hide: true
+    set:
+      default:
+        script: "'default'"
+
+  # Returns a random value of RelativePath after each execution of Get-AzSpringCloudAppResourceUploadUrl
+  - where:
+      verb: Get
+      subject: ^AppResourceUploadUrl$
+    hide: true
+
+  - where:
+      verb: Get
+      subject: ^BuildServiceResourceUploadUrl$
+    hide: true
+
+  - where:
+      subject: ^BuildServiceBuild$
     hide: true
   - where:
-      subject: Service|AppResourceUploadUrl
+      subject: ^BuildServiceBuildResult$
     hide: true
-  - from: swagger-document
-    where: $.paths["/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AppPlatform/Spring/{serviceName}"].delete.responses
-    transform: >-
-        return {
-          "200": {
-            "description": "Accepted. The response indicates the delete operation is performed in the background."
-          },
-          "202": {
-            "description": "Accepted. The response indicates the delete operation is performed in the background."
-          },
-          "204": {
-            "description": "Success. The response indicates the resource is already deleted."
-          },
-          "default": {
-            "description": "Error response describing why the operation failed.",
-            "schema": {
-              "$ref": "#/definitions/CloudError"
-            }
-          }
-        }
+  - where:
+      subject: ^BuildServiceBuildResultLog$
+    hide: true
+
+  # Customization for add default locatio value when not pass location parameter
+  - where:
+      verb: New
+      subject: ^App$
+    hide: true
+  - where:
+      verb: Remove
+      subject: ^Registry$
+    hide: true
+
+  - where:
+      model-name: BindingResource
+    set:
+      format-table:
+        properties:
+          - ResourceName
+          - Name
+          - ResourceGroupName
+          - ResourceType
+
+  - where:
+      model-name: CertificateResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - Type
+
+  - where:
+      model-name: BuildService
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - KPackVersion
+          - ResourceRequestCpu
+          - ResourceRequestMemory
+
+  - where:
+      model-name: BuildServiceAgentPoolResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - PoolSizeCpu
+          - PoolSizeMemory
+          - PoolSizeName
+
+  - where:
+      model-name: BuilderResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - StackId
+          - StackVersion
+
+  - where:
+      model-name: SupportedBuildpackResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - BuildpackId
+
+  - where:
+      model-name: SupportedStackResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - StackId
+          - Version
+
+  - where:
+      model-name: ConfigServerResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+
+  - where:
+      model-name: MonitoringSettingResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - TraceEnabled
+
+  - no-inline:
+    - UserSourceInfo
+    - CertificateProperties
+
+  - model-cmdlet:
+      # - BuildpacksGroupProperties
+      # - BuildpackProperties
+      - ConfigurationServiceGitRepository
+      - GitPatternRepository
+      # - KeyVaultCertificateProperties
+      # - ContentCertificateProperties
+    # - LoadedCertificate
+    # --> rename  New-AzSpringCloudLoadedCertificateObject New-AzSpringCloudAppLoadedCertificateObject
+    # - JarUploadedUserSourceInfo
+    # --> rename New-AzSpringCloudDeploymentJarUploadedObject --> New-AzSpringCloudAppDeploymentJarUploadedObject
+    # - NetCoreZipUploadedUserSourceInfo
+    # --> rename New-AzSpringCloudDeploymentNetCoreZipUploadedObject --> New-AzSpringCloudAppDeploymentNetCoreZipUploadedObject
+    # - SourceUploadedUserSourceInfo
+    # --> rename New-AzSpringCloudDeploymentSourceUploadedObject --> New-AzSpringCloudAppDeploymentSourceUploadedObject
+      # - BuildResultUserSourceInfo --> New-AzSpringCloudAppDeploymentBuildResultObject
 ```

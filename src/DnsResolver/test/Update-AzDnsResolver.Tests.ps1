@@ -24,14 +24,15 @@ Describe 'Update-AzDnsResolver' {
         # ARRANGE
         $dnsResolverName = "psdnsresolvername47";
         $virtualNetworkName = "psvirtualnetworkname47";
+        $virtualNetworkId = "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$virtualNetworkName"
+        $subnetId = $virtualNetworkId + "/subnets" + $SUBNET_NAME;
         
         if ($TestMode -eq "Record")
         {
             $virtualNetwork = CreateVirtualNetwork -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
-            $subnet = CreateSubnet -SubscriptionId $SUBSCRIPTION_ID -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkName $virtualNetworkName;
         }
 
-        $originalDnsResolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetwork.Id -Location $LOCATION
+        $originalDnsResolver = New-AzDnsResolver -Name $dnsResolverName -ResourceGroupName $RESOURCE_GROUP_NAME -VirtualNetworkId $virtualNetworkId -Location $LOCATION
 
         $tag  = GetRandomHashtable -size 5
 

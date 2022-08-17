@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -66,29 +68,98 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskUri = (string) content.GetValueForProperty("DiskUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryAzureStorageAccountId = (string) content.GetValueForProperty("RecoveryAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryAzureStorageAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryDiskAzureStorageAccountId = (string) content.GetValueForProperty("PrimaryDiskAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryDiskAzureStorageAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryDiskUri = (string) content.GetValueForProperty("RecoveryDiskUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryDiskUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskName = (string) content.GetValueForProperty("DiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskCapacityInByte = (long?) content.GetValueForProperty("DiskCapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskCapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryStagingAzureStorageAccountId = (string) content.GetValueForProperty("PrimaryStagingAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryStagingAzureStorageAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskType = (string) content.GetValueForProperty("DiskType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).ResyncRequired = (bool?) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).ResyncRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringPercentageCompletion = (int?) content.GetValueForProperty("MonitoringPercentageCompletion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringPercentageCompletion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringJobType = (string) content.GetValueForProperty("MonitoringJobType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringJobType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingInStagingStorageAccountInMb = (double?) content.GetValueForProperty("DataPendingInStagingStorageAccountInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingInStagingStorageAccountInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingAtSourceAgentInMb = (double?) content.GetValueForProperty("DataPendingAtSourceAgentInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingAtSourceAgentInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskState = (string) content.GetValueForProperty("DiskState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).AllowedDiskLevelOperation = (string[]) content.GetValueForProperty("AllowedDiskLevelOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).AllowedDiskLevelOperation, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskEncrypted = (bool?) content.GetValueForProperty("IsDiskEncrypted",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskEncrypted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).SecretIdentifier = (string) content.GetValueForProperty("SecretIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).SecretIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DekKeyVaultArmId = (string) content.GetValueForProperty("DekKeyVaultArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DekKeyVaultArmId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskKeyEncrypted = (bool?) content.GetValueForProperty("IsDiskKeyEncrypted",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskKeyEncrypted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KeyIdentifier = (string) content.GetValueForProperty("KeyIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KeyIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KekKeyVaultArmId = (string) content.GetValueForProperty("KekKeyVaultArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KekKeyVaultArmId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).FailoverDiskName = (string) content.GetValueForProperty("FailoverDiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).FailoverDiskName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).TfoDiskName = (string) content.GetValueForProperty("TfoDiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).TfoDiskName, global::System.Convert.ToString);
+            if (content.Contains("DiskUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskUri = (string) content.GetValueForProperty("DiskUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryAzureStorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryAzureStorageAccountId = (string) content.GetValueForProperty("RecoveryAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryAzureStorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryDiskAzureStorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryDiskAzureStorageAccountId = (string) content.GetValueForProperty("PrimaryDiskAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryDiskAzureStorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryDiskUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryDiskUri = (string) content.GetValueForProperty("RecoveryDiskUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryDiskUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskName = (string) content.GetValueForProperty("DiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskCapacityInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskCapacityInByte = (long?) content.GetValueForProperty("DiskCapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskCapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("PrimaryStagingAzureStorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryStagingAzureStorageAccountId = (string) content.GetValueForProperty("PrimaryStagingAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryStagingAzureStorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskType = (string) content.GetValueForProperty("DiskType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResyncRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).ResyncRequired = (bool?) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).ResyncRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("MonitoringPercentageCompletion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringPercentageCompletion = (int?) content.GetValueForProperty("MonitoringPercentageCompletion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringPercentageCompletion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MonitoringJobType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringJobType = (string) content.GetValueForProperty("MonitoringJobType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringJobType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPendingInStagingStorageAccountInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingInStagingStorageAccountInMb = (double?) content.GetValueForProperty("DataPendingInStagingStorageAccountInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingInStagingStorageAccountInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("DataPendingAtSourceAgentInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingAtSourceAgentInMb = (double?) content.GetValueForProperty("DataPendingAtSourceAgentInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingAtSourceAgentInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("DiskState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskState = (string) content.GetValueForProperty("DiskState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskState, global::System.Convert.ToString);
+            }
+            if (content.Contains("AllowedDiskLevelOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).AllowedDiskLevelOperation = (string[]) content.GetValueForProperty("AllowedDiskLevelOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).AllowedDiskLevelOperation, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("IsDiskEncrypted"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskEncrypted = (bool?) content.GetValueForProperty("IsDiskEncrypted",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskEncrypted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecretIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).SecretIdentifier = (string) content.GetValueForProperty("SecretIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).SecretIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("DekKeyVaultArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DekKeyVaultArmId = (string) content.GetValueForProperty("DekKeyVaultArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DekKeyVaultArmId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsDiskKeyEncrypted"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskKeyEncrypted = (bool?) content.GetValueForProperty("IsDiskKeyEncrypted",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskKeyEncrypted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("KeyIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KeyIdentifier = (string) content.GetValueForProperty("KeyIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KeyIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("KekKeyVaultArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KekKeyVaultArmId = (string) content.GetValueForProperty("KekKeyVaultArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KekKeyVaultArmId, global::System.Convert.ToString);
+            }
+            if (content.Contains("FailoverDiskName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).FailoverDiskName = (string) content.GetValueForProperty("FailoverDiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).FailoverDiskName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoDiskName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).TfoDiskName = (string) content.GetValueForProperty("TfoDiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).TfoDiskName, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -106,29 +177,98 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskUri = (string) content.GetValueForProperty("DiskUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryAzureStorageAccountId = (string) content.GetValueForProperty("RecoveryAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryAzureStorageAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryDiskAzureStorageAccountId = (string) content.GetValueForProperty("PrimaryDiskAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryDiskAzureStorageAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryDiskUri = (string) content.GetValueForProperty("RecoveryDiskUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryDiskUri, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskName = (string) content.GetValueForProperty("DiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskCapacityInByte = (long?) content.GetValueForProperty("DiskCapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskCapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryStagingAzureStorageAccountId = (string) content.GetValueForProperty("PrimaryStagingAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryStagingAzureStorageAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskType = (string) content.GetValueForProperty("DiskType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).ResyncRequired = (bool?) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).ResyncRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringPercentageCompletion = (int?) content.GetValueForProperty("MonitoringPercentageCompletion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringPercentageCompletion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringJobType = (string) content.GetValueForProperty("MonitoringJobType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringJobType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingInStagingStorageAccountInMb = (double?) content.GetValueForProperty("DataPendingInStagingStorageAccountInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingInStagingStorageAccountInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingAtSourceAgentInMb = (double?) content.GetValueForProperty("DataPendingAtSourceAgentInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingAtSourceAgentInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskState = (string) content.GetValueForProperty("DiskState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).AllowedDiskLevelOperation = (string[]) content.GetValueForProperty("AllowedDiskLevelOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).AllowedDiskLevelOperation, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskEncrypted = (bool?) content.GetValueForProperty("IsDiskEncrypted",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskEncrypted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).SecretIdentifier = (string) content.GetValueForProperty("SecretIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).SecretIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DekKeyVaultArmId = (string) content.GetValueForProperty("DekKeyVaultArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DekKeyVaultArmId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskKeyEncrypted = (bool?) content.GetValueForProperty("IsDiskKeyEncrypted",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskKeyEncrypted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KeyIdentifier = (string) content.GetValueForProperty("KeyIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KeyIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KekKeyVaultArmId = (string) content.GetValueForProperty("KekKeyVaultArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KekKeyVaultArmId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).FailoverDiskName = (string) content.GetValueForProperty("FailoverDiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).FailoverDiskName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).TfoDiskName = (string) content.GetValueForProperty("TfoDiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).TfoDiskName, global::System.Convert.ToString);
+            if (content.Contains("DiskUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskUri = (string) content.GetValueForProperty("DiskUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryAzureStorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryAzureStorageAccountId = (string) content.GetValueForProperty("RecoveryAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryAzureStorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryDiskAzureStorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryDiskAzureStorageAccountId = (string) content.GetValueForProperty("PrimaryDiskAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryDiskAzureStorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryDiskUri"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryDiskUri = (string) content.GetValueForProperty("RecoveryDiskUri",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).RecoveryDiskUri, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskName = (string) content.GetValueForProperty("DiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskName, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskCapacityInByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskCapacityInByte = (long?) content.GetValueForProperty("DiskCapacityInByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskCapacityInByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("PrimaryStagingAzureStorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryStagingAzureStorageAccountId = (string) content.GetValueForProperty("PrimaryStagingAzureStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).PrimaryStagingAzureStorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskType = (string) content.GetValueForProperty("DiskType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskType, global::System.Convert.ToString);
+            }
+            if (content.Contains("ResyncRequired"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).ResyncRequired = (bool?) content.GetValueForProperty("ResyncRequired",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).ResyncRequired, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("MonitoringPercentageCompletion"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringPercentageCompletion = (int?) content.GetValueForProperty("MonitoringPercentageCompletion",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringPercentageCompletion, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MonitoringJobType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringJobType = (string) content.GetValueForProperty("MonitoringJobType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).MonitoringJobType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DataPendingInStagingStorageAccountInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingInStagingStorageAccountInMb = (double?) content.GetValueForProperty("DataPendingInStagingStorageAccountInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingInStagingStorageAccountInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("DataPendingAtSourceAgentInMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingAtSourceAgentInMb = (double?) content.GetValueForProperty("DataPendingAtSourceAgentInMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DataPendingAtSourceAgentInMb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("DiskState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskState = (string) content.GetValueForProperty("DiskState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DiskState, global::System.Convert.ToString);
+            }
+            if (content.Contains("AllowedDiskLevelOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).AllowedDiskLevelOperation = (string[]) content.GetValueForProperty("AllowedDiskLevelOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).AllowedDiskLevelOperation, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("IsDiskEncrypted"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskEncrypted = (bool?) content.GetValueForProperty("IsDiskEncrypted",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskEncrypted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("SecretIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).SecretIdentifier = (string) content.GetValueForProperty("SecretIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).SecretIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("DekKeyVaultArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DekKeyVaultArmId = (string) content.GetValueForProperty("DekKeyVaultArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).DekKeyVaultArmId, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsDiskKeyEncrypted"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskKeyEncrypted = (bool?) content.GetValueForProperty("IsDiskKeyEncrypted",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).IsDiskKeyEncrypted, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("KeyIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KeyIdentifier = (string) content.GetValueForProperty("KeyIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KeyIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("KekKeyVaultArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KekKeyVaultArmId = (string) content.GetValueForProperty("KekKeyVaultArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).KekKeyVaultArmId, global::System.Convert.ToString);
+            }
+            if (content.Contains("FailoverDiskName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).FailoverDiskName = (string) content.GetValueForProperty("FailoverDiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).FailoverDiskName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoDiskName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).TfoDiskName = (string) content.GetValueForProperty("TfoDiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetailsInternal)this).TfoDiskName, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -162,7 +302,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="A2AProtectedDiskDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="A2AProtectedDiskDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AProtectedDiskDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

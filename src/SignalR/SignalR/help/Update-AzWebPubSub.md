@@ -43,6 +43,7 @@ Operation to update an exiting resource.
 ## EXAMPLES
 
 ### Example 1: Update a Web PubSub resource
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $wps = Update-AzWebPubSub -ResourceGroupName psdemo -Name psdemo-wps `
 -IdentityType SystemAssigned -LiveTraceEnabled true `

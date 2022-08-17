@@ -40,6 +40,7 @@ If the cmdlet finds more than one running deployment, the command fails.
 ## EXAMPLES
 
 ### Example 1: Starting and stopping a resource group deployment
+<!-- Skip: Output cannot be splitted from code -->
 
 ```powershell
 New-AzResourceGroupDeployment -Name mynewstorageaccount -ResourceGroupName myrg -TemplateFile .\storage-account-create-azdeploy.json -TemplateParameterFile .\storage-account-create-azdeploy.parameters.json -AsJob

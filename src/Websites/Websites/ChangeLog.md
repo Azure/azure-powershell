@@ -18,6 +18,10 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as Az-CLI
+
+## Version 2.11.3
+* Fixed `Publish-AzWebapp` to handle relative paths properly [#18028]
 
 ## Version 2.11.2
 * Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetworkSubnetId` property [#18042]

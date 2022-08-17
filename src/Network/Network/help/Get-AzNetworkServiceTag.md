@@ -25,6 +25,7 @@ For example, even if you specify `-Location eastus2` you will get the list of se
 ## EXAMPLES
 
 ### Example 1
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $serviceTags = Get-AzNetworkServiceTag -Location eastus2
 $serviceTags
@@ -73,6 +74,7 @@ Change Number    : 2
 The command gets the list of service tag information resources and stores it in variable `serviceTags`.
 
 ### Example 2: Get all address prefixes for AzureSQL
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $serviceTags = Get-AzNetworkServiceTag -Location eastus2
 $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql" }
@@ -98,6 +100,7 @@ The first command gets the list of service tag information resources and stores 
 The second command filters the list to select information resource for Sql.
 
 ### Example 3: Get Storage's service tag information resource for West US 2
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 $serviceTags = Get-AzNetworkServiceTag -Location eastus2
 $serviceTags.Values | Where-Object { $_.Name -eq "Storage.WestUS2" }

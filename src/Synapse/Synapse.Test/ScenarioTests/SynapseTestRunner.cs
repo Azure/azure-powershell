@@ -81,64 +81,9 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                         {"Microsoft.OperationalInsights", null}
                     }
                 ).WithManagementClients(
-                    GetResourceManagementClient,
-                    GetStorageManagementClient,
-                    GetNewSynapseManagementClient,
-                    GetSynapseManagementClient,
-                    GetSynapseSqlV3ManagementClient,
-                    GetCommonMonitorManagementClient,
-                    GetMonitorManagementClient,
-                    GetOperationalInsightsManagementClient,
-                    GetEventHubManagementClient,
                     GetSynapseClient
                 )
                 .Build();
-        }
-
-        #region client creation helpers
-        protected static NewResourceManagementClient GetResourceManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<NewResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected static StorageManagementClient GetStorageManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected static NewStorageManagementClient GetNewSynapseManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<NewStorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected static SynapseManagementClient GetSynapseManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<SynapseManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected static SynapseSqlV3ManagementClient GetSynapseSqlV3ManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<SynapseSqlV3ManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected static CommonMonitor.MonitorManagementClient GetCommonMonitorManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<CommonMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected static SDKMonitor.MonitorManagementClient GetMonitorManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<SDKMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected static OperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<OperationalInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
-        }
-
-        protected static EventHubManagementClient GetEventHubManagementClient(MockContext context)
-        {
-            return context.GetServiceClient<EventHubManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
         }
 
         protected static SynapseClient GetSynapseClient(MockContext context)
@@ -153,7 +98,7 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
                 var connectionInfo = new ConnectionString(Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION"));
                 string servicePrincipal = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalKey);
                 string servicePrincipalSecret = connectionInfo.GetValue<string>(ConnectionStringKeys.ServicePrincipalSecretKey);
-                string aadTenant = connectionInfo.GetValue<string>(ConnectionStringKeys.AADTenantKey);
+                string aadTenant = connectionInfo.GetValue<string>(ConnectionStringKeys.TenantIdKey);
 
                 // Create credentials
                 var clientCredentials = new ClientCredential(servicePrincipal, servicePrincipalSecret);
@@ -163,6 +108,5 @@ namespace Microsoft.Azure.Commands.Synapse.Test.ScenarioTests
 
             return new SynapseClient(new TokenCredentials(accessToken), HttpMockServer.CreateInstance());
         }
-        #endregion
     }
 }

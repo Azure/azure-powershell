@@ -52,7 +52,6 @@ require:
 
 input-file:
   - ../OpenApiSpecs/v1.0/Applications.yml
-  - ../OpenApiSpecs/beta/Applications.yml
   - ../OpenApiSpecs/v1.0/Groups.yml
   - ../OpenApiSpecs/beta/Groups.yml
   - ../OpenApiSpecs/v1.0/Users.yml
@@ -137,6 +136,10 @@ directive:
     remove: true
 
   - where:
+      subject: ^serviceprincipalfederatedidentitycredentials$
+    remove: true
+
+  - where:
       subject: ^application$|^group$|^serviceprincipal$|^user$|^applicationfederatedidentitycredentials$
       variant: ^Update$|^Create$
     remove: true
@@ -151,7 +154,7 @@ directive:
       subject: ^applicationfederatedidentitycredentials$
       parameter-name: FederatedIdentityCredentialId
     set:
-      parameter-name: Id
+      parameter-name: FederatedCredentialId 
 
   - where:
       subject: ^applicationfederatedidentitycredentials$
@@ -172,7 +175,7 @@ directive:
   - where:
       subject: ^applicationfederatedidentitycredentials$
     set: 
-      subject: AppFederatedIdentityCredential
+      subject: AppFederatedCredential
 
   - where:
       subject: ^application$|^serviceprincipal$|^group$
