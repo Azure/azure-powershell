@@ -159,10 +159,10 @@ function Update-AzSentinelSetting {
              }
             if($Name -eq 'Ueba'){
                 $GetPSBoundParameters.Add('SettingsName', 'Ueba')
-                $ueba = . Az.SecurityInsights\Get-AzSentinelSetting @GetPSBoundParameters
+                $ueba = Get-AzSentinelSetting @GetPSBoundParameters
             }
             else{
-                $Settings = . Az.SecurityInsights.internal\Get-AzSentinelSetting @GetPSBoundParameters
+                $Settings = Get-AzSentinelSetting @GetPSBoundParameters
             }
             
  
