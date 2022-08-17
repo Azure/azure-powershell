@@ -61,9 +61,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
-        //[Parameter(Mandatory = false, HelpMessage = "Return the restored item.")]
-        //public SwitchParameter PassThru { get; set; }
-
         // Overwrite the useless parameter
         public override int? ConcurrentTaskCount { get; set; }
         public override int? ClientTimeoutPerRequest { get; set; }
