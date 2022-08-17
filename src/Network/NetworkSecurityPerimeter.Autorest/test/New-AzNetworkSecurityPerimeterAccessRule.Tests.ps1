@@ -22,4 +22,15 @@ Describe 'New-AzNetworkSecurityPerimeterAccessRule' {
         
         } | Should -Not -Throw
     }
+
+    It 'CreateExpandedWithSubscriptions' {
+        {
+            $sub1 = @{
+                id= '/subscriptions/' + $env.SubscriptionId
+            }
+
+            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule1 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -Subscriptions @($sub1) -Direction 'Inbound' -Location $env.location
+
+        } | Should -Not -Throw
+    }
 }

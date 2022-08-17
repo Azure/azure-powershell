@@ -147,7 +147,6 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         [System.String]
         # The Location of the resource
         ${Location},
-
         
         [Parameter(HelpMessage = "Address Prefix")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
@@ -155,17 +154,15 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         # Address Prefix
         ${AddressPrefix},
 
-
         [Parameter(HelpMessage = "Fully qualified domain name")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.Collections.ArrayList]
         # Fully qualified domain name
         ${FullyQualifiedDomainName},
 
-
         [Parameter(HelpMessage = "Inbound rule specified by the perimeter id")]
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
-        [System.Collections.ArrayList]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]]
         # Inbound rule specified by the perimeter id
         ${NetworkSecurityPerimeters},
 
@@ -173,8 +170,13 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
         [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
         [System.String]
         # Direction
-        ${Direction}
+        ${Direction},
 
+        [Parameter(HelpMessage = "Subscription ids")]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.ISubscriptionId[]]
+        # Subscription ids
+        ${Subscriptions}
 
         # Add only those paramters which can be updated
 
@@ -188,7 +190,7 @@ function Update-AzNetworkSecurityPerimeterAccessRule {
             # 1. GET
 
             # body params and AsJob
-            $bodyParams = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'NetworkSecurityPerimeters', 'Direction', 'Subscription',  'AsJob'
+            $bodyParams = 'Tag', 'Location', 'AddressPrefix', 'FullyQualifiedDomainName', 'NetworkSecurityPerimeters', 'Direction', 'Subscriptions',  'AsJob'
 
             $bodyParamsMap = @{}
 
