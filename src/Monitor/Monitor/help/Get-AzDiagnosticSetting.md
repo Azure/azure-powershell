@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-help.xml
+external help file: Az.DiagnosticSetting.psm1-help.xml
 Module Name: Az.Monitor
 online version: https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting
 schema: 2.0.0
@@ -14,12 +14,12 @@ Gets the active diagnostic settings for the specified resource.
 
 ### List (Default)
 ```
-Get-AzDiagnosticSetting [-ResourceId] <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDiagnosticSetting -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzDiagnosticSetting -Name <String> [-ResourceId] <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzDiagnosticSetting -Name <String> -ResourceId <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -106,7 +106,7 @@ Parameter Sets: List, Get
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

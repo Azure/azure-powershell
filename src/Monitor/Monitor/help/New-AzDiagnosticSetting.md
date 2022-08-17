@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll-help.xml
+external help file: Az.DiagnosticSetting.psm1-help.xml
 Module Name: Az.Monitor
 online version: https://docs.microsoft.com/powershell/module/az.monitor/new-azdiagnosticsetting
 schema: 2.0.0
@@ -13,7 +13,7 @@ Creates or updates diagnostic settings for the specified resource.
 ## SYNTAX
 
 ```
-New-AzDiagnosticSetting -Name <String> [-ResourceId] <String> [-EventHubAuthorizationRuleId <String>]
+New-AzDiagnosticSetting -Name <String> -ResourceId <String> [-EventHubAuthorizationRuleId <String>]
  [-EventHubName <String>] [-Log <ILogSettings[]>] [-LogAnalyticsDestinationType <String>]
  [-MarketplacePartnerId <String>] [-Metric <IMetricSettings[]>] [-ServiceBusRuleId <String>]
  [-StorageAccountId <String>] [-WorkspaceId <String>] [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm]
@@ -185,7 +185,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

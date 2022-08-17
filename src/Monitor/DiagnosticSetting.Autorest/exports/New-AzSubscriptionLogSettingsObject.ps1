@@ -20,7 +20,7 @@ Create an in-memory object for SubscriptionLogSettings.
 .Description
 Create an in-memory object for SubscriptionLogSettings.
 .Example
-New-AzSubscriptionLogSettingsObject -Category Recommendation $Enabled $true
+New-AzSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings

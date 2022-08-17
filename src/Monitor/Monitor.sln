@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ActivityLogAlert", "Acti
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DiagnosticSetting", "DiagnosticSetting.Autorest\Az.DiagnosticSetting.csproj", "{6D7DADBB-815E-4A62-A90F-1521830325E3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScheduledQueryRule", "ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj", "{00A41C24-7BB2-46D1-892A-13B0844A61DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -96,6 +98,10 @@ Global
 		{6D7DADBB-815E-4A62-A90F-1521830325E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6D7DADBB-815E-4A62-A90F-1521830325E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6D7DADBB-815E-4A62-A90F-1521830325E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A41C24-7BB2-46D1-892A-13B0844A61DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A41C24-7BB2-46D1-892A-13B0844A61DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A41C24-7BB2-46D1-892A-13B0844A61DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A41C24-7BB2-46D1-892A-13B0844A61DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -937,8 +937,8 @@ Creates or updates subscription diagnostic settings for the specified resource.
 .Example
 $subscriptionId = (Get-AzContext).SubscriptionId
 $log = @()
-$log += New-AzSubscriptionLogSettingsObject -Category Recommendation $Enabled $true
-New-AzsubscriptionDiagnosticSetting -Name test-setting -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log
+$log += New-AzSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
+New-AzSubscriptionDiagnosticSetting -Name test-setting -WorkspaceId /subscriptions/$subscriptionId/resourcegroups/test-rg-name/providers/microsoft.operationalinsights/workspaces/test-workspace -Log $log
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.ISubscriptionDiagnosticSettingsResource
@@ -1757,7 +1757,7 @@ Create an in-memory object for SubscriptionLogSettings.
 .Description
 Create an in-memory object for SubscriptionLogSettings.
 .Example
-New-AzSubscriptionLogSettingsObject -Category Recommendation $Enabled $true
+New-AzSubscriptionLogSettingsObject -Category Recommendation -Enabled $true
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.DiagnosticSetting.Models.Api20210501Preview.SubscriptionLogSettings
