@@ -48,11 +48,11 @@ using System.Threading.Tasks;
 using System.Diagnostics;
 using CM = Microsoft.Azure.Management.Compute.Models;
 using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
+using Microsoft.Azure.Commands.Compute;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute
-
 {
     [GenericBreakingChange("It is recommended to use parameter \"-PublicIpSku Standard\" in order to create a new VM with a Standard public IP.Specifying zone(s) using the \"-Zone\" parameter will also result in a Standard public IP.If \"-Zone\" is not specified, the VM will be created with a Basic public IP instead.Please note that the Standard SKU IPs will become the default behavior for VM creation in the future")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
@@ -525,6 +525,10 @@ namespace Microsoft.Azure.Commands.Compute
                 //Override Zone logic if PublicIpSku is explicitly provided
                 PublicIPAddressStrategy.Sku publicIpSku;
                 if (_cmdlet.PublicIpSku != null) {
+                    if (_cmdlet.PublicIpSku != "Basic" || _cmdlet.PublicIpSku != "Standard")
+                    {
+                        throw new InvalidDataException("Invalid data entry. Acceptable values for PublicIpSku are \"Basic\" or \"Standard\" only");
+                    }
                     publicIpSku = _cmdlet.PublicIpSku == "Basic" ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
                 }
                 else {
@@ -674,7 +678,6 @@ namespace Microsoft.Azure.Commands.Compute
 
         async Task StrategyExecuteCmdletAsync(IAsyncCmdlet asyncCmdlet)
         {
-
             var client = new Client(DefaultProfile.DefaultContext);
 
             ResourceGroupName = ResourceGroupName ?? Name;
@@ -694,15 +697,6 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 WriteInformation("No Size value has been provided. The VM will be created with the default size Standard_D2s_v3.", new string[] { "PSHOST" });
             }
-
-            if (this.IsParameterBound(c => c.PublicIpSku))
-            {
-                if (this.PublicIpSku != "Basic" || this.PublicIpSku != "Standard")
-                {
-                    throw new InvalidDataException("Invalid data entry. Acceptable values for PublicIpSku are \"Basic\" or \"Standard\" only");
-                }
-            }
-
             if (DiskFile != null)
             {
                 if (!resourceClient.ResourceGroups.CheckExistence(ResourceGroupName))
