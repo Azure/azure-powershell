@@ -162,7 +162,7 @@ function Update-AzSentinelSetting {
                 $ueba = . Az.SecurityInsights\Get-AzSentinelSetting @GetPSBoundParameters
             }
             else{
-                $Settings = . Az.SecurityInsights\Get-AzSentinelSetting @GetPSBoundParameters
+                $Settings = . Az.SecurityInsights.internal\Get-AzSentinelSetting @GetPSBoundParameters
             }
             
  
