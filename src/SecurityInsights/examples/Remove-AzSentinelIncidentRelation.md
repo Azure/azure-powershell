@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ### Example 1: Removes the incident relation
 =======
 ### Example 1: Delete an Incident relation
