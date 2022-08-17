@@ -45,6 +45,11 @@ function getLocationForEZScenario
     return "eastus2euap"
 }
 
+function getLocationForEZAzScenario
+{
+    return "EastUS2"
+}
+
 function getPrimaryZoneLocation
 {
     return "EastUS"
@@ -55,6 +60,10 @@ function getPrimaryExtendedLocation
     return "microsoftrrdclab1"
 }
 
+function getPrimaryExtendedLocationForAz
+{
+    return "microsoftmiami1"
+}
 
 function getPrimaryZone
 {
@@ -139,7 +148,7 @@ function getRecoveryNetworkName{
 }
 
 function getCacheStorageAccountName{
-     return "cache"+ $seed;
+     return "asrcacheps"+ $seed;
 }
 
 function getRecoveryCacheStorageAccountName{
@@ -293,8 +302,8 @@ function createAzureVmInEdgeZone {
 
     $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
     $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
-    $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Linux -ComputerName $ComputerName -Credential $Credential 
-    $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'Canonical' -Offer 'UbuntuServer' -Skus '18.04-lts' -Version latest
+    $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate
+    $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2019-Datacenter' -Version latest
     $VirtualMachine | Set-AzVMBootDiagnostic -disable
     $vm = New-AzVM -ResourceGroupName $primaryResourceGroupName -Location $VMLocation -VM $VirtualMachine -EdgeZone $VMExtendedLocation
     return $vm.Id

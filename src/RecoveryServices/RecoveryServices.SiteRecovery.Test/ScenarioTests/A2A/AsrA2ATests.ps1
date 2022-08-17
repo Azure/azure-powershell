@@ -178,7 +178,7 @@ function Test-NewA2AManagedDiskReplicationConfiguration {
     $RecoveryReplicaDiskAccountType = "Premium_LRS"
     $RecoveryTargetDiskAccountType = "Premium_LRS"
 
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStorageAccountId `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStorageAccountId `
         -DiskId "diskId" -RecoveryResourceGroupId  $RecoveryResourceGroupId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 
@@ -282,7 +282,7 @@ function Test-NewA2AManagedDiskReplicationConfigurationWithCmk {
     #enable Replication
     $RecoveryDiskEncryptionSetId = "/subscriptions/509099b2-9d2c-4636-b43e-bd5cafb6be69/resourceGroups/cmkDELwrg/providers/Microsoft.Compute/diskEncryptionSets/cmkdiskSe1dEL2"
 
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType -RecoveryDiskEncryptionSetId $RecoveryDiskEncryptionSetId
     Assert-True { $v.RecoveryDiskEncryptionSetId -eq $RecoveryDiskEncryptionSetId }
@@ -469,7 +469,7 @@ function Test-RemoveReplicationProtectedItemDisk {
     WaitForJobCompletion -JobId $job.Name
         
     #enable Replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
     $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $v2VmId -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v
@@ -639,7 +639,7 @@ function Test-ReplicateProximityPlacementGroupVm {
     WaitForJobCompletion -JobId $job.Name
 
     #enable Replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
     $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryProximityPlacementGroupId $recPpg.Id
@@ -666,7 +666,7 @@ function Test-ReplicateProximityPlacementGroupVm {
     #Switch replication
     $vm = get-azVm -ResourceGroupName $vmName -Name $vmName
     $vhdid = $recvm.StorageProfile.OSDisk.ManagedDisk.Id
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $recLogStg `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $recLogStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $Rg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
     [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(600 * 1000)
@@ -780,10 +780,9 @@ function Test-VMNicConfig {
     #Reverse network mapping
     $job = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name $recoveryNetMapping -PrimaryFabric $rf -PrimaryAzureNetworkId $RecoveryAzureNetworkId -RecoveryFabric $pf -RecoveryAzureNetworkId $PrimaryAzureNetworkId
     WaitForJobCompletion -JobId $job.Name
-    echo "logStg: $logStg"
 
     #enable Replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
     $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v
@@ -815,128 +814,6 @@ function Test-VMNicConfig {
     #Failover
     $failoverjob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -ReplicationProtectedItem $pe -Direction PrimaryToRecovery -PerformSourceSideAction
     WaitForJobCompletion -JobId $failoverjob.Name
-}
-
-<#
-.SYNOPSIS 
-    Test AzureToEdgeZoneRecoveryPlanReplication new parametersets
-#>
-
-function Test-AzureToEdgeZoneRecoveryPlanReplication {
-    param([string] $seed = '346')
-    $primaryPolicyName = getPrimaryPolicy
-    $recoveryPolicyName = getRecoveryPolicy
-        
-    $primaryContainerMappingName = getPrimaryContainerMapping
-    $recoveryContainerMappingName = getRecoveryContainerMapping
-        
-    $primaryContainerName = getPrimaryContainer
-    $recoveryContainerName = getRecoveryContainer
-    $vaultRgLocation = getVaultRgLocation
-    $vaultName = getVaultName
-    $vaultLocation = getVaultLocation
-    $vaultRg = getVaultRg
-    $primaryLocation = getLocationForEZScenario
-    $recoveryLocation = getLocationForEZScenario
-    $primaryExtendedLocation = getPrimaryExtendedLocation
-    $recoveryExtendedLocation = getRecoveryExtendedLocation
-    $primaryFabricName = getPrimaryFabric
-    $RecoveryReplicaDiskAccountType = "Premium_LRS"
-    $RecoveryTargetDiskAccountType = "Premium_LRS"
-    $policyName = getPrimaryPolicy
-    $mappingName = getPrimaryContainerMapping
-    $RecoveryPlanName = getRecoveryPlanName
-
-    #create recovery side resources
-    $recRgName = getRecoveryResourceGroupName
-    New-AzResourceGroup -name $recRgName -location $recoveryLocation -force
-    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-    # Create recovery network in EdgeZone
-    $RecoveryAzureNetworkId = createRecoveryNetworkIdForEdgeZone -Location $recoveryLocation -EdgeZone $recoveryExtendedLocation
-    $index = $RecoveryAzureNetworkId.IndexOf("/providers/")
-    $recRg = $RecoveryAzureNetworkId.Substring(0, $index)
-
-    #create primary
-    $vmName = getAzureVmName
-    New-AzResourceGroup -name $vmName -location $primaryLocation -force
-    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-    $logStg = createCacheStorageAccount -Location $primaryLocation
-
-    $v2VmId = createAzureVm -PrimaryLocation $primaryLocation
-    $vm = get-azVm -ResourceGroupName $vmName -Name $vmName
-    $vhdid = $vm.StorageProfile.OSDisk.ManagedDisk.Id
-    $index = $vm.Id.IndexOf("/providers/")
-    $Rg = $vm.Id.Substring(0, $index)
-    $PrimaryAzureNetworkId = $Rg + "/providers/Microsoft.Network/virtualNetworks/" + $vmName
-
-    # vault Creation
-    New-AzResourceGroup -name $vaultRg -location $vaultRgLocation -force
-    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-    New-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
-    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
-    Set-ASRVaultContext -Vault $Vault
-
-    # fabric Creation    
-    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
-    WaitForJobCompletion -JobId $fabJob.Name
-    $fab = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
-    Assert-true { $fab.name -eq $primaryFabricName }
-    Assert-AreEqual $fab.FabricSpecificDetails.Location $primaryLocation
-
-    $pf = get-asrFabric -Name $primaryFabricName
-        
-    #Container creation
-    $job = New-AzRecoveryServicesAsrProtectionContainer -Name $primaryContainerName -Fabric $pf
-    WaitForJobCompletion -JobId $Job.Name
-    $pc = Get-asrProtectionContainer -name $primaryContainerName -Fabric $pf
-    Assert-NotNull($pc)
-    $job = New-AzRecoveryServicesAsrProtectionContainer -Name $recoveryContainerName -Fabric $pf
-    WaitForJobCompletion -JobId $Job.Name
-    $rc = Get-asrProtectionContainer -name $recoveryContainerName -Fabric $pf
-    Assert-NotNull($rc)
-
-    #create policy and mapping
-    $job = New-AzRecoveryServicesAsrPolicy -Name $policyName  -RecoveryPointRetentionInHours 12 -AzureToAzure 
-    WaitForJobCompletion -JobId $job.Name
-    $policy = Get-AzRecoveryServicesAsrPolicy  -Name $policyName
-    $job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -Policy $policy -PrimaryProtectionContainer $pc -RecoveryProtectionContainer $rc
-    WaitForJobCompletion -JobId $job.Name
-    $mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -ProtectionContainer $pc 
-
-    #enable Replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
-        -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
-        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
-    $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryAzureNetworkId $RecoveryAzureNetworkId -RecoveryAzureSubnetName "frontendSubnet" -RecoveryExtendedLocation $recoveryExtendedLocation
-    WaitForJobCompletion -JobId $enableDRjob.Name
-    WaitForIRCompletion -affectedObjectId $enableDRjob.TargetObjectId
-
-    $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
-    Assert-NotNull($pe)
-
-    #Create Recovery Plan
-    $createRecoveryJob = New-AzRecoveryServicesAsrRecoveryPlan -AzureToEdgeZone -Name $RecoveryPlanName -PrimaryFabric $pf -ReplicationProtectedItem $pe -RecoveryEdgeZone $recoveryExtendedLocation
-    WaitForJobCompletion -JobId $createRecoveryJob.Name
-
-    #Get Recovery Plan
-    $RecoveryPlan = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName 
-    Assert-NotNull($RecoveryPlan)
-
-    #Failover
-    $failoverjob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -RecoveryPlan $RecoveryPlan -Direction PrimaryToRecovery -PerformSourceSideAction
-    WaitForJobCompletion -JobId $failoverjob.Name
-    #Get recovery vm and verify
-    $recvm = get-azVm -ResourceGroupName $recRgName -Name $vmName
-    Assert-Null($recvm.Zones);
-    Assert-NotNull($recvm.ExtendedLocation);
-
-    $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name $vmName
-    Assert-NotNull($pe)
-
-    #Get Recovery Plan
-    $RecoveryPlan = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName 
-    Assert-NotNull($RecoveryPlan)
 }
 
 <#
@@ -1027,7 +904,7 @@ function Test-EdgeZoneToAzureRecoveryPlanReplication {
     $mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -ProtectionContainer $pc 
 
     #enable Replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
     $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryAzureNetworkId $RecoveryAzureNetworkId -RecoveryAzureSubnetName "frontendSubnet"
@@ -1149,7 +1026,7 @@ function Test-EdgeZoneToEdgeZoneRecoveryPlanReplication {
     $mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -ProtectionContainer $pc 
 
     #enable Replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
     $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryAzureNetworkId $RecoveryAzureNetworkId -RecoveryAzureSubnetName "frontendSubnet" -RecoveryExtendedLocation $recoveryExtendedLocation
@@ -1160,7 +1037,7 @@ function Test-EdgeZoneToEdgeZoneRecoveryPlanReplication {
     Assert-NotNull($pe)
 
     #Create Recovery Plan
-    $createRecoveryJob = New-AzRecoveryServicesAsrRecoveryPlan -EdgeZoneToEdgeZone -Name $RecoveryPlanName -PrimaryFabric $pf -ReplicationProtectedItem $pe -RecoveryEdgeZone $recoveryExtendedLocation
+    $createRecoveryJob = New-AzRecoveryServicesAsrRecoveryPlan -EdgeZoneToEdgeZone -Name $RecoveryPlanName -PrimaryFabric $pf -ReplicationProtectedItem $pe -PrimaryEdgeZone $primaryExtendedLocation -RecoveryEdgeZone $recoveryExtendedLocation
     WaitForJobCompletion -JobId $createRecoveryJob.Name
 
     #Get Recovery Plan
@@ -1198,14 +1075,13 @@ function Test-EdgeZoneToAvailabilityZoneRecoveryPlanReplication {
         
     $primaryContainerName = getPrimaryContainer
     $recoveryContainerName = getRecoveryContainer
-    $vaultRgLocation = getVaultRgLocation
+    $vaultRgLocation = getLocationForEZAzScenario
     $vaultName = getVaultName
-    $vaultLocation = getVaultLocation
+    $vaultLocation = getLocationForEZAzScenario
     $vaultRg = getVaultRg
-    $primaryLocation = getLocationForEZScenario
-    $recoveryLocation = getLocationForEZScenario
-    $primaryExtendedLocation = getPrimaryExtendedLocation
-    $recoveryExtendedLocation = getRecoveryExtendedLocation
+    $primaryLocation = getLocationForEZAzScenario
+    $recoveryLocation = getLocationForEZAzScenario
+    $primaryExtendedLocation = getPrimaryExtendedLocationForAz
     $primaryFabricName = getPrimaryFabric
     $RecoveryReplicaDiskAccountType = "Premium_LRS"
     $RecoveryTargetDiskAccountType = "Premium_LRS"
@@ -1273,7 +1149,7 @@ function Test-EdgeZoneToAvailabilityZoneRecoveryPlanReplication {
     $mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -ProtectionContainer $pc 
 
     #enable Replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
     $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryAzureNetworkId $RecoveryAzureNetworkId -RecoveryAzureSubnetName "frontendSubnet" -RecoveryAvailabilityZone $recZone
@@ -1298,128 +1174,6 @@ function Test-EdgeZoneToAvailabilityZoneRecoveryPlanReplication {
     $recvm = get-azVm -ResourceGroupName $recRgName -Name $vmName
     Assert-NotNull($recvm.Zones);
     Assert-Null($recvm.ExtendedLocation);
-
-    $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name $vmName
-    Assert-NotNull($pe)
-
-    #Get Recovery Plan
-    $RecoveryPlan = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName 
-    Assert-NotNull($RecoveryPlan)
-}
-
-<#
-.SYNOPSIS 
-    Test EdgeZoneToAvailabilityZoneRecoveryPlanReplication new parametersets
-#>
-
-function Test-AvailabilityZoneToEdgeZoneRecoveryPlanReplication {
-    param([string] $seed = '351')
-    $primaryPolicyName = getPrimaryPolicy
-    $recoveryPolicyName = getRecoveryPolicy
-        
-    $primaryContainerMappingName = getPrimaryContainerMapping
-    $recoveryContainerMappingName = getRecoveryContainerMapping
-        
-    $primaryContainerName = getPrimaryContainer
-    $recoveryContainerName = getRecoveryContainer
-    $vaultRgLocation = getVaultRgLocation
-    $vaultName = getVaultName
-    $vaultLocation = getVaultLocation
-    $vaultRg = getVaultRg
-    $primaryLocation = getLocationForEZScenario
-    $recoveryLocation = getLocationForEZScenario
-    $primaryExtendedLocation = getPrimaryExtendedLocation
-    $recoveryExtendedLocation = getRecoveryExtendedLocation
-    $primaryFabricName = getPrimaryFabric
-    $RecoveryReplicaDiskAccountType = "Premium_LRS"
-    $RecoveryTargetDiskAccountType = "Premium_LRS"
-    $policyName = getPrimaryPolicy
-    $mappingName = getPrimaryContainerMapping
-    $RecoveryPlanName = getRecoveryPlanName
-
-    #create recovery side resources
-    $recRgName = getRecoveryResourceGroupName
-    New-AzResourceGroup -name $recRgName -location $recoveryLocation -force
-    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-    # Create recovery network in Azure
-    $RecoveryAzureNetworkId = createRecoveryNetworkIdForEdgeZone -Location $recoveryLocation -EdgeZone $recoveryExtendedLocation
-    $index = $RecoveryAzureNetworkId.IndexOf("/providers/")
-    $recRg = $RecoveryAzureNetworkId.Substring(0, $index)
-
-    #create primary
-    $vmName = getAzureVmName
-    New-AzResourceGroup -name $vmName -location $primaryLocation -force
-    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-    $logStg = createCacheStorageAccount -Location $primaryLocation
-
-    $v2VmId = createAzureVmInAvailabilityZone -PrimaryLocation $primaryLocation
-    $vm = get-azVm -ResourceGroupName $vmName -Name $vmName
-    $vhdid = $vm.StorageProfile.OSDisk.ManagedDisk.Id
-    $index = $vm.Id.IndexOf("/providers/")
-    $Rg = $vm.Id.Substring(0, $index)
-    $PrimaryAzureNetworkId = $Rg + "/providers/Microsoft.Network/virtualNetworks/" + $vmName
-
-    # vault Creation
-    New-AzResourceGroup -name $vaultRg -location $vaultRgLocation -force
-    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-    New-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName -Location $vaultLocation
-    [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-    $Vault = Get-AzRecoveryServicesVault -ResourceGroupName $vaultRg -Name $vaultName
-    Set-ASRVaultContext -Vault $Vault
-
-    # fabric Creation    
-    $fabJob = New-AzRecoveryServicesAsrFabric -Azure -Name $primaryFabricName -Location $primaryLocation
-    WaitForJobCompletion -JobId $fabJob.Name
-    $fab = Get-AzRecoveryServicesAsrFabric -Name $primaryFabricName
-    Assert-true { $fab.name -eq $primaryFabricName }
-    Assert-AreEqual $fab.FabricSpecificDetails.Location $primaryLocation
-
-    $pf = get-asrFabric -Name $primaryFabricName
-        
-    #Container creation
-    $job = New-AzRecoveryServicesAsrProtectionContainer -Name $primaryContainerName -Fabric $pf
-    WaitForJobCompletion -JobId $Job.Name
-    $pc = Get-asrProtectionContainer -name $primaryContainerName -Fabric $pf
-    Assert-NotNull($pc)
-    $job = New-AzRecoveryServicesAsrProtectionContainer -Name $recoveryContainerName -Fabric $pf
-    WaitForJobCompletion -JobId $Job.Name
-    $rc = Get-asrProtectionContainer -name $recoveryContainerName -Fabric $pf
-    Assert-NotNull($rc)
-
-    #create policy and mapping
-    $job = New-AzRecoveryServicesAsrPolicy -Name $policyName  -RecoveryPointRetentionInHours 12 -AzureToAzure 
-    WaitForJobCompletion -JobId $job.Name
-    $policy = Get-AzRecoveryServicesAsrPolicy  -Name $policyName
-    $job = New-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -Policy $policy -PrimaryProtectionContainer $pc -RecoveryProtectionContainer $rc
-    WaitForJobCompletion -JobId $job.Name
-    $mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -ProtectionContainer $pc 
-
-    #enable Replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
-        -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
-        -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
-    $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryAzureNetworkId $RecoveryAzureNetworkId -RecoveryAzureSubnetName "frontendSubnet" -RecoveryExtendedLocation  $recoveryExtendedLocation
-    WaitForJobCompletion -JobId $enableDRjob.Name
-    WaitForIRCompletion -affectedObjectId $enableDRjob.TargetObjectId
-
-    $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name  $vmName
-    Assert-NotNull($pe)
-
-    #Create Recovery Plan
-    $createRecoveryJob = New-AzRecoveryServicesAsrRecoveryPlan -AzureZoneToZone -Name $RecoveryPlanName -PrimaryFabric $pf -ReplicationProtectedItem $pe -RecoveryEdgeZone $recoveryExtendedLocation
-    WaitForJobCompletion -JobId $createRecoveryJob.Name
-
-    #Get Recovery Plan
-    $RecoveryPlan = Get-AzRecoveryServicesAsrRecoveryPlan -Name $RecoveryPlanName 
-    Assert-NotNull($RecoveryPlan)
-
-    #Failover
-    $failoverjob = Start-AzRecoveryServicesAsrUnPlannedFailoverJob -RecoveryPlan $RecoveryPlan -Direction PrimaryToRecovery -PerformSourceSideAction
-    WaitForJobCompletion -JobId $failoverjob.Name
-    #Get recovery vm and verify
-    $recvm = get-azVm -ResourceGroupName $recRgName -Name $vmName
-    Assert-Null($recvm.Zones);
-    Assert-NotNull($recvm.ExtendedLocation);
 
     $pe = Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $pc -Name $vmName
     Assert-NotNull($pe)
@@ -1517,7 +1271,7 @@ function Test-ZoneToZoneRecoveryPlanReplication {
     $mapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -Name $mappingName -ProtectionContainer $pc 
 
     #enable Replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
     $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryAvailabilityZone $recZone -RecoveryAzureNetworkId $RecoveryAzureNetworkId -RecoveryAzureSubnetName "frontendSubnet"
@@ -1653,7 +1407,7 @@ function Test-RecoveryPlanReplication {
     WaitForJobCompletion -JobId $job.Name
 
     #enable Replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
     $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryProximityPlacementGroupId $recPpg.Id
@@ -1789,7 +1543,7 @@ function Test-VMSSReplication {
     WaitForJobCompletion -JobId $job.Name
 
     #enable Replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
     $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryVirtualMachineScaleSetId $recVmss.Id
@@ -1863,8 +1617,8 @@ function Test-CRGReplication {
     New-AzCapacityReservationGroup -ResourceGroupName $recRgName -Location $recoveryLocation -Name $recoveryCRGName1
     New-AzCapacityReservationGroup -ResourceGroupName $recRgName -Location $recoveryLocation -Name $recoveryCRGName2
     [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
-    New-AzCapacityReservation -ResourceGroupName $recRgName -Location $recoveryLocation -ReservationGroupName $recoveryCRGName1 -Name "cr-a2a-pwsh" -Sku "Standard_Ds1_v2" -CapacityToReserve 1
-    New-AzCapacityReservation -ResourceGroupName $recRgName -Location $recoveryLocation -ReservationGroupName $recoveryCRGName2 -Name "cr-a2a-pwsh" -Sku "Standard_Ds1_v2" -CapacityToReserve 1
+    New-AzCapacityReservation -ResourceGroupName $recRgName -Location $recoveryLocation -ReservationGroupName $recoveryCRGName1 -Name "cr-a2a-pwsh" -Sku "Standard_D2s_v3" -CapacityToReserve 1
+    New-AzCapacityReservation -ResourceGroupName $recRgName -Location $recoveryLocation -ReservationGroupName $recoveryCRGName2 -Name "cr-a2a-pwsh" -Sku "Standard_D2s_v3" -CapacityToReserve 1
     [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::Wait(20 * 1000)
     $recCRG1 = Get-AzCapacityReservationGroup -ResourceGroupName $recRgName -Name $recoveryCRGName1 -InstanceView
     $recCRG2 = Get-AzCapacityReservationGroup -ResourceGroupName $recRgName -Name $recoveryCRGName2 -InstanceView
@@ -1938,7 +1692,7 @@ function Test-CRGReplication {
     WaitForJobCompletion -JobId $job.Name
 
     # Enable replication
-    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -managed -LogStorageAccountId $logStg `
+    $v = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $logStg `
         -DiskId $vhdid -RecoveryResourceGroupId  $recRg -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
         -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
     $enableDRjob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $vm.Id -Name $vmName  -ProtectionContainerMapping $mapping -RecoveryResourceGroupId  $recRg -AzureToAzureDiskReplicationConfiguration $v -RecoveryCapacityReservationGroupId $recCRG1.Id
