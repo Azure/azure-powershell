@@ -192,6 +192,9 @@ function Update-AzSentinelEntityQuery {
                 $GetPSBoundParameters.Add('ResourceGroupName', $PSBoundParameters['ResourceGroupName'])
                 $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
                 $GetPSBoundParameters.Add('EntityQueryId', $PSBoundParameters['EntityQueryId'])
+                if ($PSBoundParameters['SubscriptionId']) {
+                  $GetPSBoundParameters['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+                }
             }
             $EntityQuery = Get-AzSentinelEntityQuery @GetPSBoundParameters
 
