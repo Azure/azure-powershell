@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     public abstract class AzureServiceBusCmdletBase : AzureRMCmdlet
     {
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
-        private Microsoft.Azure.Commands.ServiceBus.ServiceBusClient  _client;
+        private ServiceBusClient _client;
 
         protected const string ServiceBusNamespaceVerb = "AzureRmServiceBusNamespace";
 
@@ -158,35 +158,35 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             internal const string SecondaryKey = "SecondaryKey";
         }
         
-        protected static AccessRights ParseAccessRights(string rightsName)
-        {
-            AccessRights returnAccessRights;
-            if (!Enum.TryParse<AccessRights>(rightsName, true, out returnAccessRights))
-            {
-                throw new ArgumentOutOfRangeException("AccessRights");
-            }
-            return returnAccessRights;
-        }
+        //protected static AccessRights ParseAccessRights(string rightsName)
+        //{
+        //    AccessRights returnAccessRights;
+        //    if (!Enum.TryParse<AccessRights>(rightsName, true, out returnAccessRights))
+        //    {
+        //        throw new ArgumentOutOfRangeException("AccessRights");
+        //    }
+        //    return returnAccessRights;
+        //}
         
-        public static SkuName ParseSkuName(string skuName)
-        {
-            SkuName returnSkuName;
-            if (!Enum.TryParse<SkuName>(skuName, true, out returnSkuName))
-            {
-                throw new ArgumentOutOfRangeException("SkuName");
-            }
-            return returnSkuName;
-        }
+        //public static SkuName ParseSkuName(string skuName)
+        //{
+        //    SkuName returnSkuName;
+        //    if (!Enum.TryParse<SkuName>(skuName, true, out returnSkuName))
+        //    {
+        //        throw new ArgumentOutOfRangeException("SkuName");
+        //    }
+        //    return returnSkuName;
+        //}
 
-        public static SkuTier ParseSkuTier(string skuTier)
-        {
-            SkuTier returnSkutier;
-            if (!Enum.TryParse<SkuTier>(skuTier, true, out returnSkutier))
-            {
-                throw new ArgumentOutOfRangeException("skuTier");
-            }
-            return returnSkutier;
-        }
+        //public static SkuTier ParseSkuTier(string skuTier)
+        //{
+        //    SkuTier returnSkutier;
+        //    if (!Enum.TryParse<SkuTier>(skuTier, true, out returnSkutier))
+        //    {
+        //        throw new ArgumentOutOfRangeException("skuTier");
+        //    }
+        //    return returnSkutier;
+        //}
 
         public static TimeSpan ParseTimespan(string strTimespan)
         {
@@ -202,28 +202,28 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             return tspan;
         }
 
-        public string ParseIdentityType(ManagedServiceIdentityType? managedServiceIdentityType)
-        {
-            if(managedServiceIdentityType == ManagedServiceIdentityType.SystemAssigned)
-            {
-                return ServiceBusClient.SystemAssigned;
-            }
-            if (managedServiceIdentityType == ManagedServiceIdentityType.UserAssigned)
-            {
-                return ServiceBusClient.UserAssigned;
-            }
-            if (managedServiceIdentityType == ManagedServiceIdentityType.SystemAssignedUserAssigned)
-            {
-                return ServiceBusClient.SystemAssignedUserAssigned;
-            }
-            if (managedServiceIdentityType == ManagedServiceIdentityType.None)
-            {
-                return ServiceBusClient.None;
-            }
-            return "";
-        }
+        //public string ParseIdentityType(ManagedServiceIdentityType managedServiceIdentityType)
+        //{
+        //    if(managedServiceIdentityType == ManagedServiceIdentityType.SystemAssigned)
+        //    {
+        //        return ServiceBusClient.SystemAssigned;
+        //    }
+        //    if (managedServiceIdentityType == ManagedServiceIdentityType.UserAssigned)
+        //    {
+        //        return ServiceBusClient.UserAssigned;
+        //    }
+        //    if (managedServiceIdentityType == ManagedServiceIdentityType.SystemAssignedUserAssigned)
+        //    {
+        //        return ServiceBusClient.SystemAssignedUserAssigned;
+        //    }
+        //    if (managedServiceIdentityType == ManagedServiceIdentityType.None)
+        //    {
+        //        return ServiceBusClient.None;
+        //    }
+        //    return "";
+        //}
 
-        public Microsoft.Azure.Commands.ServiceBus.ServiceBusClient Client
+        public ServiceBusClient Client
         {
             get
             {
