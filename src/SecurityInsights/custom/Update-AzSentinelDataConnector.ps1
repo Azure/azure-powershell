@@ -587,7 +587,7 @@ function Update-AzSentinelDataConnector {
                 $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
                 $GetPSBoundParameters.Add('Id', $PSBoundParameters['Id'])
             }
-            $DataConnector = . Az.SecurityInsights.internal\Get-AzSentinelDataConnector @GetPSBoundParameters
+            $DataConnector = Get-AzSentinelDataConnector @GetPSBoundParameters
 
 
             if ($DataConnector.Kind -eq 'AzureActiveDirectory') {
