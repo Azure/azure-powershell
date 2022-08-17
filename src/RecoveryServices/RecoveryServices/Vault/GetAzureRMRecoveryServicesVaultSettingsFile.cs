@@ -559,11 +559,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     string aadAudience = aadDetails.AadAudience;
                     if (string.IsNullOrEmpty(aadAudience))
                     {
-                        aadAudience = string.Format(CultureInfo.InvariantCulture,
-                            @"https://RecoveryServiceVault/{0}/{1}/{2}",
-                            Vault.Location,
-                            Vault.Name,
-                            aadDetails.ResourceId);
+                        aadAudience = GetAadAudience(
+                           Vault.Location,
+                           Vault.Name,
+                           aadDetails.ResourceId);
                     }
 
                     var vaultCreds = new RSBackupVaultAADCreds
@@ -634,9 +633,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices
                     string aadAudience = aadDetails.AadAudience;
                     if (string.IsNullOrEmpty(aadAudience))
                     {
-                        //Code taken from Ibiza code
-                        aadAudience = string.Format(CultureInfo.InvariantCulture,
-                            @"https://RecoveryServiceVault/{0}/{1}/{2}",
+                        aadAudience = GetAadAudience(
                             Vault.Location,
                             Vault.Name,
                             aadDetails.ResourceId);
@@ -676,6 +673,23 @@ namespace Microsoft.Azure.Commands.RecoveryServices
 
                 return Encoding.UTF8.GetString(output.ToArray());
             }
+        }
+
+        /// <summary>
+        /// Get AAD audience
+        /// </summary>
+        /// <param name="vaultLocation">Vault location</param>
+        /// <param name="vaultName">Vault name</param>
+        /// <param name="resourceId">Resource Id</param>
+        /// <returns>AAD auduence</returns>
+        private string GetAadAudience(string vaultLocation, string vaultName, long? resourceId)
+        {
+            //Code taken from Ibiza code
+            return string.Format(CultureInfo.InvariantCulture,
+                @"https://RecoveryServiceVault/{0}/{1}/{2}",
+                vaultLocation,
+                vaultName,
+                resourceId);
         }
 
         /// <summary>
