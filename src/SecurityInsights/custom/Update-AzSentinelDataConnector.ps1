@@ -586,6 +586,9 @@ function Update-AzSentinelDataConnector {
                 $GetPSBoundParameters.Add('ResourceGroupName', $PSBoundParameters['ResourceGroupName'])
                 $GetPSBoundParameters.Add('WorkspaceName', $PSBoundParameters['WorkspaceName'])
                 $GetPSBoundParameters.Add('Id', $PSBoundParameters['Id'])
+                if ($PSBoundParameters['SubscriptionId']) {
+                  $GetPSBoundParameters['SubscriptionId'] = $PSBoundParameters['SubscriptionId']
+                }
             }
             $DataConnector = Get-AzSentinelDataConnector @GetPSBoundParameters
 
