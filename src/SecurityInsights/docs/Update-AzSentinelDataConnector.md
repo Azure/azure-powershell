@@ -1250,7 +1250,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <ISecurityInsightsIdentity>`: [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory, ValueFromPipeline)]  Identity Parameter 
+INPUTOBJECT <ISecurityInsightsIdentity>: [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory, ValueFromPipeline)]  Identity Parameter 
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID
@@ -1274,11 +1274,11 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The name of the workspace.
 
-`PERMISSIONCUSTOM <PermissionsCustomsItem[]>`: 
+PERMISSIONCUSTOM <PermissionsCustomsItem[]>: 
   - `[Description <String>]`: Customs permissions description
   - `[Name <String>]`: Customs permissions name
 
-`PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>`: 
+PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>: 
   - `[PermissionsDisplayText <String>]`: Permission description text
   - `[Provider <ProviderName?>]`: Provider name
   - `[ProviderDisplayName <String>]`: Permission provider display name
@@ -1288,27 +1288,27 @@ To create the parameters described below, construct a hash table containing the 
   - `[RequiredPermissionWrite <Boolean?>]`: write permission
   - `[Scope <PermissionProviderScope?>]`: Permission provider scope
 
-`UICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>`: 
+UICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: 
   - `[Type <ConnectivityType?>]`: type of connectivity
   - `[Value <String[]>]`: Queries for checking connectivity
 
-`UICONFIGDATATYPE <LastDataReceivedDataType[]>`: 
+UICONFIGDATATYPE <LastDataReceivedDataType[]>: 
   - `[LastDataReceivedQuery <String>]`: Query for indicate last data received
   - `[Name <String>]`: Name of the data type to show in the graph. can be use with {{graphQueriesTableName}} placeholder
 
-`UICONFIGGRAPHQUERY <GraphQueries[]>`: 
+UICONFIGGRAPHQUERY <GraphQueries[]>: 
   - `[BaseQuery <String>]`: The base query for the graph
   - `[Legend <String>]`: The legend for the graph
   - `[MetricName <String>]`: the metric that the query is checking
 
-`UICONFIGINSTRUCTIONSTEP <InstructionSteps[]>`: 
+UICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: 
   - `[Description <String>]`: Instruction step description
   - `[Instruction <IConnectorInstructionModelBase[]>]`: Instruction step details
     - `Type <SettingType>`: The kind of the setting
     - `[Parameter <IAny>]`: The parameters for the setting
   - `[Title <String>]`: Instruction step title
 
-`UICONFIGSAMPLEQUERY <SampleQueries[]>`: 
+UICONFIGSAMPLEQUERY <SampleQueries[]>: 
   - `[Description <String>]`: The sample query description
   - `[Query <String>]`: the sample query
 

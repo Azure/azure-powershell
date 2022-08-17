@@ -15,15 +15,15 @@ Creates or updates the incident comment.
 ### CreateExpanded (Default)
 ```
 New-AzSentinelIncidentComment -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- [-Id <String>] [-SubscriptionId <String>] [-Message <String>] [-DefaultProfile <PSObject>] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Message <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzSentinelIncidentComment -IncidentId <String> -ResourceGroupName <String> -WorkspaceName <String>
- -IncidentComment <IIncidentComment> [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -IncidentComment <IIncidentComment> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +33,7 @@ Creates or updates the incident comment.
 
 ### Example 1: Create an Incident Comment
 ```powershell
- New-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Id ((New-Guid).Guid) -Message "IncidentCommentGoesHere"
+ New-AzSentinelIncident -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Message "IncidentCommentGoesHere"
 ```
 
 This command creates an Incident Comment.
@@ -51,21 +51,6 @@ Aliases: AzureRMContext, AzureCredential
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-Incident comment ID
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: IncidentCommentId
-
-Required: False
-Position: Named
-Default value: (New-Guid).Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -213,7 +198,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INCIDENTCOMMENT <IIncidentComment>`: Represents an incident comment
+INCIDENTCOMMENT <IIncidentComment>: Represents an incident comment
   - `[Etag <String>]`: Etag of the azure resource
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.

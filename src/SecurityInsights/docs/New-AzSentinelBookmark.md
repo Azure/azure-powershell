@@ -14,8 +14,8 @@ Creates or updates the bookmark.
 
 ### CreateExpanded (Default)
 ```
-New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
- [-SubscriptionId <String>] [-DisplayName <String>] [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>]
+New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
+ [-DisplayName <String>] [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>]
  [-IncidentInfoRelationName <String>] [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>]
  [-Label <String[]>] [-Note <String>] [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>]
  [-QueryStartTime <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -24,8 +24,7 @@ New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-Id 
 ### Create
 ```
 New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> -Bookmark <IBookmark>
- [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -35,8 +34,8 @@ Creates or updates the bookmark.
 
 ### Example 1: Create a Bookmark
 ```powershell
- $queryStartTime = (get-date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
- $queryEndTime = (get-date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+ $queryStartTime = (Get-Date).AddDays(-1).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
+ $queryEndTime = (Get-Date).ToUniversalTime() | Get-Date -Format "yyyy-MM-ddThh:00:00.000Z"
  New-AzSentinelBookmark -ResourceGroupName "myResourceGroup" -WorkspaceName "myWorkspaceName" -Id ((New-Guid).Guid) -DisplayName "Incident Evidence" -Query "SecurityEvent | take 1" -QueryStartTime $queryStartTime -QueryEndTime $queryEndTime -EventTime $queryEndTime
 ```
 
@@ -109,21 +108,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-Bookmark ID
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: BookmarkId
-
-Required: False
-Position: Named
-Default value: (New-Guid).Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -375,7 +359,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BOOKMARK <IBookmark>`: Represents a bookmark in Azure Security Insights.
+BOOKMARK <IBookmark>: Represents a bookmark in Azure Security Insights.
   - `[Etag <String>]`: Etag of the azure resource
   - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
   - `[SystemDataCreatedBy <String>]`: The identity that created the resource.

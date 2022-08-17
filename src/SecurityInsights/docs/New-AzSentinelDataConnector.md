@@ -927,11 +927,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`PERMISSIONCUSTOM <PermissionsCustomsItem[]>`: [Parameter(ParameterSetName = 'APIPolling')]
+PERMISSIONCUSTOM <PermissionsCustomsItem[]>: [Parameter(ParameterSetName = 'APIPolling')]
   - `[Description <String>]`: Customs permissions description
   - `[Name <String>]`: Customs permissions name
 
-`PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>`: [Parameter(ParameterSetName = 'APIPolling')]
+PERMISSIONRESOURCEPROVIDER <PermissionsResourceProviderItem[]>: [Parameter(ParameterSetName = 'APIPolling')]
   - `[PermissionsDisplayText <String>]`: Permission description text
   - `[Provider <ProviderName?>]`: Provider name
   - `[ProviderDisplayName <String>]`: Permission provider display name
@@ -941,27 +941,27 @@ To create the parameters described below, construct a hash table containing the 
   - `[RequiredPermissionWrite <Boolean?>]`: write permission
   - `[Scope <PermissionProviderScope?>]`: Permission provider scope
 
-`UICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>`: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+UICONFIGCONNECTIVITYCRITERION <ConnectivityCriteria[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
   - `[Type <ConnectivityType?>]`: type of connectivity
   - `[Value <String[]>]`: Queries for checking connectivity
 
-`UICONFIGDATATYPE <LastDataReceivedDataType[]>`: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+UICONFIGDATATYPE <LastDataReceivedDataType[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
   - `[LastDataReceivedQuery <String>]`: Query for indicate last data received
   - `[Name <String>]`: Name of the data type to show in the graph. can be use with {{graphQueriesTableName}} placeholder
 
-`UICONFIGGRAPHQUERY <GraphQueries[]>`: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+UICONFIGGRAPHQUERY <GraphQueries[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
   - `[BaseQuery <String>]`: The base query for the graph
   - `[Legend <String>]`: The legend for the graph
   - `[MetricName <String>]`: the metric that the query is checking
 
-`UICONFIGINSTRUCTIONSTEP <InstructionSteps[]>`: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+UICONFIGINSTRUCTIONSTEP <InstructionSteps[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
   - `[Description <String>]`: Instruction step description
   - `[Instruction <IConnectorInstructionModelBase[]>]`: Instruction step details
     - `Type <SettingType>`: The kind of the setting
     - `[Parameter <IAny>]`: The parameters for the setting
   - `[Title <String>]`: Instruction step title
 
-`UICONFIGSAMPLEQUERY <SampleQueries[]>`: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
+UICONFIGSAMPLEQUERY <SampleQueries[]>: [Parameter(ParameterSetName = 'APIPolling', Mandatory)]
   - `[Description <String>]`: The sample query description
   - `[Query <String>]`: the sample query
 

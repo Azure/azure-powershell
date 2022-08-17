@@ -39,7 +39,7 @@ Delete the incident relation.
 
 ### Example 1: Delete an Incident relation
 ```powershell
-Remove-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId 7cc984fe-61a2-43c2-a1a4-3583c8a89da2 -RelatedResourceId 7cc984fe-61a2-43c2-a1a4-3583c8a89db4
+Remove-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "7cc984fe-61a2-43c2-a1a4-3583c8a89da2" -RelatedResourceId "7cc984fe-61a2-43c2-a1a4-3583c8a89db4"
 ```
 
 This command removes the incident relation
@@ -219,7 +219,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <ISecurityInsightsIdentity>`: Identity Parameter
+INPUTOBJECT <ISecurityInsightsIdentity>: Identity Parameter
   - `[ActionId <String>]`: Action ID
   - `[AlertRuleTemplateId <String>]`: Alert rule template ID
   - `[AutomationRuleId <String>]`: Automation rule ID

@@ -14,8 +14,8 @@ Creates or updates the action of alert rule.
 
 ```
 New-AzSentinelAlertRuleAction -ResourceGroupName <String> -RuleId <String> -WorkspaceName <String>
- [-Id <String>] [-SubscriptionId <String>] [-LogicAppResourceId <String>] [-TriggerUri <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-LogicAppResourceId <String>] [-TriggerUri <String>] [-DefaultProfile <PSObject>]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -45,21 +45,6 @@ Aliases: AzureRMContext, AzureCredential
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-Action ID
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: ActionId
-
-Required: False
-Position: Named
-Default value: (New-Guid).Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

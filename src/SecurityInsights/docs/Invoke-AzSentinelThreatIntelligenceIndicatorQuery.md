@@ -347,7 +347,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`SORTBY <IThreatIntelligenceSortingCriteria[]>`: Columns to sort by and sorting order
+SORTBY <IThreatIntelligenceSortingCriteria[]>: Columns to sort by and sorting order
   - `[ItemKey <String>]`: Column name
   - `[SortOrder <ThreatIntelligenceSortingCriteriaEnum?>]`: Sorting order (ascending/descending/unsorted).
 
