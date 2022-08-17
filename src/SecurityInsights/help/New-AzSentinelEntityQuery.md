@@ -14,8 +14,8 @@ Creates or updates the entity query.
 
 ```
 New-AzSentinelEntityQuery -ResourceGroupName <String> -WorkspaceName <String> -Content <String>
- -Description <String> -InputEntityType <EntityType> -Kind <Object> -QueryDefinitionQuery <String>
- -Title <String> [-EntityQueryId <String>] [-SubscriptionId <String>]
+ -Description <String> -InputEntityType <EntityType> -Kind <EntityQueryKind> -QueryDefinitionQuery <String>
+ -Title <String> [-Id <String>] [-SubscriptionId <String>]
  [-EntitiesFilter <ActivityEntityQueriesPropertiesEntitiesFilter>] [-RequiredInputFieldsSet <String[]>]
  [-TemplateName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -29,7 +29,7 @@ Creates or updates the entity query.
 ### Example 1: Create Entity Query
 ```powershell
  $template = Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myEntityQueryTemplateId"
- New-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" [-EntityQueryId <String>] -Kind Activity -Title ($template.title) -InputEntityType ($template.inputEntityType) -TemplateName ($template.Name)
+ New-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Kind Activity -Title ($template.title) -InputEntityType ($template.inputEntityType) -TemplateName ($template.Name)
 ```
 
 ```output
@@ -130,7 +130,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EntityQueryId
+### -Id
 The Id of the Entity Query.
 
 ```yaml
@@ -164,7 +164,7 @@ Accept wildcard characters: False
 Kind of the the Entity Query
 
 ```yaml
-Type: System.Object
+Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityQueryKind
 Parameter Sets: (All)
 Aliases:
 

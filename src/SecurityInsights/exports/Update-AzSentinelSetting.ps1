@@ -20,7 +20,7 @@ Updates setting.
 .Description
 Updates setting.
 .Example
- Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName 'Anomalies' -Enabled
+ Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName 'Anomalies' -Enabled $true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -101,21 +101,15 @@ param(
     # The setting Name
     ${SettingsName},
 
-    [Parameter(ParameterSetName='UpdateExpandedAnomaliesEyesOnEntityAnalytics')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics')]
+    [Parameter(ParameterSetName='UpdateExpandedAnomaliesEyesOnEntityAnalytics', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
+    [System.Boolean]
     # Anomalies
     ${Enabled},
 
-    [Parameter(ParameterSetName='UpdateExpandedAnomaliesEyesOnEntityAnalytics')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    ${Disabled},
-
-    [Parameter(ParameterSetName='UpdateExpandedUeba')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedUeba')]
+    [Parameter(ParameterSetName='UpdateExpandedUeba', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedUeba', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.UebaDataSources])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.UebaDataSources[]]

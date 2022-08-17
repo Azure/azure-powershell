@@ -14,8 +14,8 @@ Creates or updates the bookmark.
 
 ### CreateExpanded (Default)
 ```
-New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-SubscriptionId <String>]
- [-DisplayName <String>] [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>]
+New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-Id <String>]
+ [-SubscriptionId <String>] [-DisplayName <String>] [-EventTime <DateTime>] [-IncidentInfoIncidentId <String>]
  [-IncidentInfoRelationName <String>] [-IncidentInfoSeverity <IncidentSeverity>] [-IncidentInfoTitle <String>]
  [-Label <String[]>] [-Note <String>] [-Query <String>] [-QueryEndTime <DateTime>] [-QueryResult <String>]
  [-QueryStartTime <DateTime>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -24,7 +24,8 @@ New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> [-Sub
 ### Create
 ```
 New-AzSentinelBookmark -ResourceGroupName <String> -WorkspaceName <String> -Bookmark <IBookmark>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Id <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -108,6 +109,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Id
+Bookmark ID
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: BookmarkId
+
+Required: False
+Position: Named
+Default value: (New-Guid).Guid
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

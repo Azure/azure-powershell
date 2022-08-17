@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelIncidentRela
 
 Describe 'Update-AzSentinelIncidentRelation' {
     It 'UpdateExpanded' {
-        $bookmark = New-AzSentinelBookmark -Id ((New-Guid).Guid) -ResourceGroupName $env.resourceGroupName `
-            -WorkspaceName $env.workspaceName -DisplayName "UpdateIncidentRelationPSTest" -Query "SecurityEvent\n| take 1" `
+        $bookmark = New-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName `
+            -Id $env.UpdateincidentRelationBookmarkId2 -WorkspaceName $env.workspaceName -DisplayName $env.UpdateincidentRelationBookmarkName2 -Query "SecurityEvent\n| take 1" `
             -QueryStartTime (get-date).ToUniversalTime() -QueryEndTime (get-date).AddDays(-1).ToUniversalTime() -EventTime (get-date).ToUniversalTime()
         $incidentRelation = Update-AzSentinelIncidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -IncidentId $env.UpdateincidentRelationIncidentId -RelationName $env.UpdateincidentRelationId -RelatedResourceId $bookmark.Id
@@ -25,8 +25,8 @@ Describe 'Update-AzSentinelIncidentRelation' {
     }
 
     It 'UpdateViaIdentityExpanded' {
-        $bookmark = New-AzSentinelBookmark -Id ((New-Guid).Guid) -ResourceGroupName $env.resourceGroupName `
-            -WorkspaceName $env.workspaceName -DisplayName "UpdateIncidentRelationPSTest" -Query "SecurityEvent\n| take 1" `
+        $bookmark = New-AzSentinelBookmark -ResourceGroupName $env.resourceGroupName `
+            -Id $env.UpdateViaIdincidentRelationBookmarkId2 -WorkspaceName $env.workspaceName -DisplayName $env.UpdateViaIdincidentRelationBookmarkName2 -Query "SecurityEvent\n| take 1" `
             -QueryStartTime (get-date).ToUniversalTime() -QueryEndTime (get-date).AddDays(-1).ToUniversalTime() -EventTime (get-date).ToUniversalTime()
         $incidentRelation = Get-AzSentinelIncidentRelation -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
             -IncidentId $env.UpdateViaIdincidentRelationIncidentId -RelationName $env.UpdateViaIdincidentRelationId 

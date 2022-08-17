@@ -5863,6 +5863,14 @@ param(
     ${WorkspaceName},
 
     [Parameter()]
+    [Alias('ActionId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(New-Guid).Guid')]
+    [System.String]
+    # Action ID
+    ${Id},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -6085,6 +6093,14 @@ param(
     [System.String]
     # The name of the workspace.
     ${WorkspaceName},
+
+    [Parameter()]
+    [Alias('AutomationRuleId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(New-Guid).Guid')]
+    [System.String]
+    # Automation rule ID
+    ${Id},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
@@ -6323,6 +6339,13 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(New-Guid).Guid')]
+    [System.String]
+    # Relation Name
+    ${RelationName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The ID of the target subscription.
@@ -6532,6 +6555,14 @@ param(
     [System.String]
     # The name of the workspace.
     ${WorkspaceName},
+
+    [Parameter()]
+    [Alias('BookmarkId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(New-Guid).Guid')]
+    [System.String]
+    # Bookmark ID
+    ${Id},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
@@ -6807,6 +6838,14 @@ param(
     ${WorkspaceName},
 
     [Parameter()]
+    [Alias('IncidentCommentId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(New-Guid).Guid')]
+    [System.String]
+    # Incident comment ID
+    ${Id},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
@@ -7007,6 +7046,13 @@ param(
     [System.String]
     # The name of the workspace.
     ${WorkspaceName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(New-Guid).Guid')]
+    [System.String]
+    # Relation Name
+    ${RelationName},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
@@ -7436,6 +7482,14 @@ param(
     [System.String]
     # The name of the workspace.
     ${WorkspaceName},
+
+    [Parameter()]
+    [Alias('IncidentId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(New-Guid).Guid')]
+    [System.String]
+    # Incident ID
+    ${Id},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
@@ -9611,7 +9665,9 @@ Delete the incident relation.
 .Description
 Delete the incident relation.
 .Example
-Remove-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId 7cc984fe-61a2-43c2-a1a4-3583c8a89da2 -RelationName 7a4c27ea-d61a-496b-b5c3-246770c857c1
+
+.Example
+Remove-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId 7cc984fe-61a2-43c2-a1a4-3583c8a89da2 -RelatedResourceId 7cc984fe-61a2-43c2-a1a4-3583c8a89db4
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -12417,7 +12473,9 @@ Creates or updates the data connector.
 .Description
 Creates or updates the data connector.
 .Example
-New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -DataConnectorId ((New-Guid).Guid) -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
+
+.Example
+New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnector
@@ -12495,7 +12553,7 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(New-Guid).Guid')]
     [System.String]
     # The Id of the Data Connector.
-    ${DataConnectorId},
+    ${Id},
 
     [Parameter(Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind])]
@@ -12577,7 +12635,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${Indicators},
+    ${Indicator},
 
     [Parameter(ParameterSetName='Office365')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
@@ -12601,7 +12659,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${Incidents},
+    ${Incident},
 
     [Parameter(ParameterSetName='MicrosoftThreatIntelligence')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
@@ -12629,7 +12687,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${DiscoveryLogs},
+    ${DiscoveryLog},
 
     [Parameter(ParameterSetName='Dynamics365')]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
@@ -12654,7 +12712,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${Logs},
+    ${Log},
 
     [Parameter(ParameterSetName='AmazonWebServicesS3', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
@@ -12863,8 +12921,8 @@ begin {
         if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365', 'AzureSecurityCenter', 'AmazonWebServicesS3', 'AmazonWebServicesCloudTrail', 'GenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
-        if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365', 'AzureSecurityCenter', 'AmazonWebServicesS3', 'AmazonWebServicesCloudTrail', 'GenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('DataConnectorId')) {
-            $PSBoundParameters['DataConnectorId'] = (New-Guid).Guid
+        if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365', 'AzureSecurityCenter', 'AmazonWebServicesS3', 'AmazonWebServicesCloudTrail', 'GenericUI') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Id')) {
+            $PSBoundParameters['Id'] = (New-Guid).Guid
         }
         if (('AADAATP', 'ThreatIntelligenceTaxii', 'ThreatIntelligence', 'OfficeIRM', 'OfficeATP', 'Office365', 'MicrosoftThreatProtection', 'MicrosoftThreatIntelligence', 'MicrosoftDefenderAdvancedThreatProtection', 'MicrosoftCloudAppSecurity', 'Dynamics365') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('TenantId')) {
             $PSBoundParameters['TenantId'] = (Get-AzContext).Tenant.Id
@@ -12925,7 +12983,7 @@ Creates or updates the entity query.
 Creates or updates the entity query.
 .Example
  $template = Get-AzSentinelEntityQueryTemplate -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id "myEntityQueryTemplateId"
- New-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" [-EntityQueryId <String>] -Kind Activity -Title ($template.title) -InputEntityType ($template.inputEntityType) -TemplateName ($template.Name)
+ New-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Kind Activity -Title ($template.title) -InputEntityType ($template.inputEntityType) -TemplateName ($template.Name)
 .Example
  New-AzSentinelEntityQuery -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityQueryId ((New-Guid).Guid) -Kind Activity -Title 'An account was deleted on this host' -InputEntityType 'Host' -Content "On '{{Computer}}' the account '{{TargetAccount}}' was deleted by '{{AddedBy}}'" -Description "Account deleted on host" -QueryDefinitionQuery 'let GetAccountActions = (v_Host_Name:string, v_Host_NTDomain:string, v_Host_DnsDomain:string, v_Host_AzureID:string, v_Host_OMSAgentID:string){\nSecurityEvent\n| where EventID in (4725, 4726, 4767, 4720, 4722, 4723, 4724)\n// parsing for Host to handle variety of conventions coming from data\n| extend Host_HostName = case(\nComputer has ''@'', tostring(split(Computer, ''@'')[0]),\nComputer has ''\\'', tostring(split(Computer, ''\\'')[1]),\nComputer has ''.'', tostring(split(Computer, ''.'')[0]),\nComputer\n)\n| extend Host_NTDomain = case(\nComputer has ''\\'', tostring(split(Computer, ''\\'')[0]), \nComputer has ''.'', tostring(split(Computer, ''.'')[-2]), \nComputer\n)\n| extend Host_DnsDomain = case(\nComputer has ''\\'', tostring(split(Computer, ''\\'')[0]), \nComputer has ''.'', strcat_array(array_slice(split(Computer,''.''),-2,-1),''.''), \nComputer\n)\n| where (Host_HostName =~ v_Host_Name and Host_NTDomain =~ v_Host_NTDomain) \nor (Host_HostName =~ v_Host_Name and Host_DnsDomain =~ v_Host_DnsDomain) \nor v_Host_AzureID =~ _ResourceId \nor v_Host_OMSAgentID == SourceComputerId\n| project TimeGenerated, EventID, Activity, Computer, TargetAccount, TargetUserName, TargetDomainName, TargetSid, SubjectUserName, SubjectUserSid, _ResourceId, SourceComputerId\n| extend AddedBy = SubjectUserName\n// Future support for Activities\n| extend timestamp = TimeGenerated, HostCustomEntity = Computer, AccountCustomEntity = TargetAccount\n};\nGetAccountActions(''{{Host_HostName}}'', ''{{Host_NTDomain}}'', ''{{Host_DnsDomain}}'', ''{{Host_AzureID}}'', ''{{Host_OMSAgentID}}'')\n \n| where EventID == 4726' -RequiredInputFieldsSet @(@("Host_HostName","Host_NTDomain"),@("Host_HostName","Host_DnsDomain"),@("Host_AzureID"),@("Host_OMSAgentID")) -EntitiesFilter @{"Host_OsFamily" = @("Windows")}
 
@@ -12971,12 +13029,12 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(New-Guid).Guid')]
     [System.String]
     # The Id of the Entity Query.
-    ${EntityQueryId},
+    ${Id},
 
     [Parameter(Mandatory)]
     [ArgumentCompleter({ param ( $CommandName, $EntityQueryName, $WordToComplete, $CommandAst, $FakeBoundParameters ) return @('Activity') })]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.Object]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.EntityQueryKind]
     # Kind of the the Entity Query
     ${Kind},
 
@@ -13113,8 +13171,8 @@ begin {
         if (('Activity') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
-        if (('Activity') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('EntityQueryId')) {
-            $PSBoundParameters['EntityQueryId'] = (New-Guid).Guid
+        if (('Activity') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('Id')) {
+            $PSBoundParameters['Id'] = (New-Guid).Guid
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -13168,9 +13226,7 @@ Get requirements state for a data connector type.
 .Description
 Get requirements state for a data connector type.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Test-AzSentinelDataConnectorCheckRequirement -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Kind "APIPolling"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.DataConnectorsCheckRequirements
@@ -13478,6 +13534,11 @@ param(
     [System.Management.Automation.SwitchParameter]
     ${Enabled},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    ${Disabled},
+
     [Parameter(ParameterSetName='UpdateScheduled')]
     [Parameter(ParameterSetName='UpdateNRT')]
     [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation')]
@@ -13715,8 +13776,8 @@ param(
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
-    [Parameter(ParameterSetName='UpdateScheduled')]
-    [Parameter(ParameterSetName='UpdateViaIdentityUpdateScheduled')]
+    [Parameter(ParameterSetName='UpdateScheduled', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityUpdateScheduled', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     ${Scheduled},
@@ -13772,20 +13833,20 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials},
 
-    [Parameter(ParameterSetName='UpdateNRT')]
-    [Parameter(ParameterSetName='UpdateViaIdentityNRT')]
+    [Parameter(ParameterSetName='UpdateNRT', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNRT', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     ${NRT},
 
-    [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+    [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftSecurityIncidentCreation', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     ${MicrosoftSecurityIncidentCreation},
 
-    [Parameter(ParameterSetName='UpdateFusionMLTI')]
-    [Parameter(ParameterSetName='UpdateViaIdentityFusionMLTI')]
+    [Parameter(ParameterSetName='UpdateFusionMLTI', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityFusionMLTI', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     ${FusionMLorTI}
@@ -13890,7 +13951,7 @@ Updates the data connector.
 .Description
 Updates the data connector.
 .Example
-Update-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -DataConnectorId  3bd6c555-1412-4103-9b9d-2b0b40cda6b6 -SharePoint "Enabled"
+Update-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Id  3bd6c555-1412-4103-9b9d-2b0b40cda6b6 -SharePoint "Enabled"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -14027,7 +14088,7 @@ param(
     [System.String]
     # [Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
     #  The Id of the Data Connector.
-    ${DataConnectorId},
+    ${Id},
 
     [Parameter(ParameterSetName='UpdateAADAATP')]
     [Parameter(ParameterSetName='UpdateThreatIntelligenceTaxii')]
@@ -14175,7 +14236,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${Indicators},
+    ${Indicator},
 
     [Parameter(ParameterSetName='UpdateOffice365')]
     [Parameter(ParameterSetName='UpdateViaIdentityOffice365')]
@@ -14203,7 +14264,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${Incidents},
+    ${Incident},
 
     [Parameter(ParameterSetName='UpdateMicrosoftThreatIntelligence')]
     [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftThreatIntelligence')]
@@ -14236,7 +14297,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${DiscoveryLogs},
+    ${DiscoveryLog},
 
     [Parameter(ParameterSetName='UpdateDynamics365')]
     [Parameter(ParameterSetName='UpdateViaIdentityDynamics365')]
@@ -14267,7 +14328,7 @@ param(
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [System.String]
-    ${Logs},
+    ${Log},
 
     [Parameter(ParameterSetName='UpdateAmazonWebServicesS3')]
     [Parameter(ParameterSetName='UpdateViaIdentityAmazonWebServicesS3')]
@@ -14381,6 +14442,12 @@ param(
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
+    [Parameter(ParameterSetName='UpdateAADAATP', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAADAATP', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${AzureADorAATP},
+
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
@@ -14430,7 +14497,90 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+    ${ProxyUseDefaultCredentials},
+
+    [Parameter(ParameterSetName='UpdateThreatIntelligenceTaxii', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityThreatIntelligenceTaxii', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${ThreatIntelligenceTaxii},
+
+    [Parameter(ParameterSetName='UpdateThreatIntelligence', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityThreatIntelligence', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${ThreatIntelligence},
+
+    [Parameter(ParameterSetName='UpdateOfficeIRM', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityOfficeIRM', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${OfficeIRM},
+
+    [Parameter(ParameterSetName='UpdateOfficeATP', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityOfficeATP', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${OfficeATP},
+
+    [Parameter(ParameterSetName='UpdateOffice365', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityOffice365', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${Office365},
+
+    [Parameter(ParameterSetName='UpdateMicrosoftThreatProtection', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftThreatProtection', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${MicrosoftThreatProtection},
+
+    [Parameter(ParameterSetName='UpdateMicrosoftThreatIntelligence', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftThreatIntelligence', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${MicrosoftTI},
+
+    [Parameter(ParameterSetName='UpdateMicrosoftDefenderAdvancedThreatProtection', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftDefenderAdvancedThreatProtection', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${DefenderATP},
+
+    [Parameter(ParameterSetName='UpdateMicrosoftCloudAppSecurity', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftCloudAppSecurity', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # [Parameter(ParameterSetName = 'UpdateGenericUI', Mandatory)]
+    # [Parameter(ParameterSetName = 'UpdateViaIdentityGenericUI', Mandatory)]
+    # [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    # [System.Management.Automation.SwitchParameter]
+    # ${GenericUI},
+    ${CloudAppSecurity},
+
+    [Parameter(ParameterSetName='UpdateDynamics365', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityDynamics365', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${Dynamics365},
+
+    [Parameter(ParameterSetName='UpdateAzureSecurityCenter', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAzureSecurityCenter', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${AzureSecurityCenter},
+
+    [Parameter(ParameterSetName='UpdateAmazonWebServicesS3', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmazonWebServicesS3', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${AWSS3},
+
+    [Parameter(ParameterSetName='UpdateAmazonWebServicesCloudTrail', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityAmazonWebServicesCloudTrail', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    ${AWSCloudTrail}
 )
 
 begin {
@@ -14825,7 +14975,7 @@ Updates setting.
 .Description
 Updates setting.
 .Example
- Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName 'Anomalies' -Enabled
+ Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName 'Anomalies' -Enabled $true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity
@@ -14906,21 +15056,15 @@ param(
     # The setting Name
     ${SettingsName},
 
-    [Parameter(ParameterSetName='UpdateExpandedAnomaliesEyesOnEntityAnalytics')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics')]
+    [Parameter(ParameterSetName='UpdateExpandedAnomaliesEyesOnEntityAnalytics', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
+    [System.Boolean]
     # Anomalies
     ${Enabled},
 
-    [Parameter(ParameterSetName='UpdateExpandedAnomaliesEyesOnEntityAnalytics')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics')]
-    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    ${Disabled},
-
-    [Parameter(ParameterSetName='UpdateExpandedUeba')]
-    [Parameter(ParameterSetName='UpdateViaIdentityExpandedUeba')]
+    [Parameter(ParameterSetName='UpdateExpandedUeba', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityExpandedUeba', Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.UebaDataSources])]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.UebaDataSources[]]

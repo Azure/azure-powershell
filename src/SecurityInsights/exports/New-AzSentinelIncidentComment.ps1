@@ -71,6 +71,14 @@ param(
     ${WorkspaceName},
 
     [Parameter()]
+    [Alias('IncidentCommentId')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(New-Guid).Guid')]
+    [System.String]
+    # Incident comment ID
+    ${Id},
+
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]

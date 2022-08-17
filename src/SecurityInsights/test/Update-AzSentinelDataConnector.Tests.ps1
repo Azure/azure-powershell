@@ -17,14 +17,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzSentinelDataConnecto
 Describe 'Update-AzSentinelDataConnector' {
     It 'UpdateExpanded' {
         $dataConnector = Update-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -DataConnectorId $env.updateDataConnectorId -SharePoint "Enabled"
+            -Id $env.updateDataConnectorId -Office365 -SharePoint "Enabled"
         $dataConnector.SharePointState | Should -Be "Enabled"
     }
 
     It 'UpdateViaIdentityExpanded' {
         $dataConnector = Get-AzSentinelDataConnector -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -DataConnectorId $env.updateDataConnectorId
-        $dataConnectorUpdate = Update-AzSentinelDataConnector -InputObject $dataConnector -Teams "Enabled"
+            -Id $env.updateDataConnectorId
+        $dataConnectorUpdate = Update-AzSentinelDataConnector -InputObject $dataConnector -Office365 -Teams "Enabled"
         $dataConnectorUpdate.TeamState | Should -Be "Enabled"
     }
 }

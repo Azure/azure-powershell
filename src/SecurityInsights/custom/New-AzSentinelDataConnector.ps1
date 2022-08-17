@@ -46,12 +46,11 @@ function New-AzSentinelDataConnector {
         # The name of the workspace.
         ${WorkspaceName},
 
-        [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Runtime.DefaultInfo(Script = '(New-Guid).Guid')]
         [System.String]
         # The Id of the Data Connector.
-        ${DataConnectorId},
+        ${Id},
         
         [Parameter(Mandatory)]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataConnectorKind])]
@@ -104,7 +103,7 @@ function New-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${DiscoveryLogs},
+        ${DiscoveryLog},
 
         [Parameter(ParameterSetName = 'MicrosoftThreatIntelligence')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
@@ -134,7 +133,7 @@ function New-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${Incidents},
+        ${Incident},
 
         [Parameter(ParameterSetName = 'Office365')]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
@@ -158,7 +157,7 @@ function New-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${Indicators},
+        ${Indicator},
 
         [Parameter(ParameterSetName = 'ThreatIntelligenceTaxii', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
@@ -213,7 +212,7 @@ function New-AzSentinelDataConnector {
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.DataTypeState])]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
         [System.String]
-        ${Logs},
+        ${Log},
 
         [Parameter(ParameterSetName = 'AmazonWebServicesS3', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
@@ -416,9 +415,9 @@ function New-AzSentinelDataConnector {
                     $null = $PSBoundParameters.Remove('Alerts')
                 }
 
-                If($PSBoundParameters['DiscoveryLogs']){
-                    $DataConnector.DiscoveryLogState = $PSBoundParameters['DiscoveryLogs']
-                    $null = $PSBoundParameters.Remove('DiscoveryLogs')
+                If($PSBoundParameters['DiscoveryLog']){
+                    $DataConnector.DiscoveryLogState = $PSBoundParameters['DiscoveryLog']
+                    $null = $PSBoundParameters.Remove('DiscoveryLog')
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'MicrosoftDefenderAdvancedThreatProtection'){
@@ -493,9 +492,9 @@ function New-AzSentinelDataConnector {
                 $DataConnector.TenantId = $PSBoundParameters['TenantId']
                 $null = $PSBoundParameters.Remove('TenantId')
 
-                If($PSBoundParameters['Incidents']){
-                    $DataConnector.IncidentState = $PSBoundParameters['Incidents']
-                    $null = $PSBoundParameters.Remove('Incidents')
+                If($PSBoundParameters['Incident']){
+                    $DataConnector.IncidentState = $PSBoundParameters['Incident']
+                    $null = $PSBoundParameters.Remove('Incident')
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'Office365'){
@@ -549,9 +548,9 @@ function New-AzSentinelDataConnector {
 
                 $DataConnector.TipLookbackPeriod = "1970-01-01T00:00:00.000Z"
                 
-                If($PSBoundParameters['Indicators']){
-                    $DataConnector.IndicatorState = $PSBoundParameters['Indicators']
-                    $null = $PSBoundParameters.Remove('Indicators')
+                If($PSBoundParameters['Indicator']){
+                    $DataConnector.IndicatorState = $PSBoundParameters['Indicator']
+                    $null = $PSBoundParameters.Remove('Indicator')
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'ThreatIntelligenceTaxii'){
@@ -613,9 +612,9 @@ function New-AzSentinelDataConnector {
                 $DataConnector.AWSRoleArn = $PSBoundParameters['AWSRoleArn']
                 $null = $PSBoundParameters.Remove('AWSRoleArn')
 
-                If($PSBoundParameters['Logs']){
-                    $DataConnector.LogState = $PSBoundParameters['Logs']
-                    $null = $PSBoundParameters.Remove('Logs')
+                If($PSBoundParameters['Log']){
+                    $DataConnector.LogState = $PSBoundParameters['Log']
+                    $null = $PSBoundParameters.Remove('Log')
                 }
             }
             if($PSBoundParameters['Kind'] -eq 'AmazonWebServicesS3'){
@@ -624,9 +623,9 @@ function New-AzSentinelDataConnector {
                 $DataConnector.RoleArn = $PSBoundParameters['AWSRoleArn']
                 $null = $PSBoundParameters.Remove('AWSRoleArn')
 
-                If($PSBoundParameters['Logs']){
-                    $DataConnector.LogState = $PSBoundParameters['Logs']
-                    $null = $PSBoundParameters.Remove('Logs')
+                If($PSBoundParameters['Log']){
+                    $DataConnector.LogState = $PSBoundParameters['Log']
+                    $null = $PSBoundParameters.Remove('Log')
                 }
                 
                 $DataConnector.SqsUrl = $PSBoundParameters['SQSURL']
@@ -647,7 +646,7 @@ function New-AzSentinelDataConnector {
                 $DataConnector.ConnectorUiConfigDescriptionMarkdown = $PSBoundParameters['UiConfigDescriptionMarkdown']
                 $null = $PSBoundParameters.Remove('UiConfigDescriptionMarkdown')
 
-                If($PSBoundParameters['Logs']){
+                If($PSBoundParameters['UiConfigCustomImage']){
                     $DataConnector.ConnectorUiConfigCustomImage = $PSBoundParameters['UiConfigCustomImage']
                     $null = $PSBoundParameters.Remove('UiConfigCustomImage')
                 }

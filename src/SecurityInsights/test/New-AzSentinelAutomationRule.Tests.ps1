@@ -21,9 +21,9 @@ Describe 'New-AzSentinelAutomationRule' {
        $automationRuleAction.ActionType = "RunPlaybook"
        $automationRuleAction.ActionConfigurationLogicAppResourceId = $env.Playbook2LogicAppResourceId
         $automationRuleAction.ActionConfigurationTenantId = $env.Tenant
-       $automationRule = New-AzSentinelAutomationRule -Id ((New-Guid).Guid) -ResourceGroupName $env.resourceGroupName `
-        -WorkspaceName $env.workspaceName -Action $automationRuleAction -DisplayName "NewAutomationRulePSTest" -Order 2 `
+       $automationRule = New-AzSentinelAutomationRule -ResourceGroupName $env.resourceGroupName `
+        -WorkspaceName $env.workspaceName -Id $env.NewAutomationRuleId -Action $automationRuleAction -DisplayName $env.NewAutomationRule -Order 2 `
         -TriggeringLogicIsEnabled
-        $automationRule.DisplayName | Should -Be "NewAutomationRulePSTest"
+        $automationRule.DisplayName | Should -Be $env.NewAutomationRule
     }
 }
