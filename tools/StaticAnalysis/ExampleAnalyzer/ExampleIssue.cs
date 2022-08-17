@@ -24,6 +24,7 @@ namespace StaticAnalysis.ExampleAnalyzer
         public string Module { get; set; }
         public string Cmdlet { get; set; }
         public int Example { get; set; }
+        public string Line { get; set; }
         public string RuleName { get; set; }
         public string Extent { get; set; }
         public int ProblemId { get; set; }
@@ -32,13 +33,13 @@ namespace StaticAnalysis.ExampleAnalyzer
         public string Remediation { get; set; }
         public string PrintHeaders()
         {
-            return "\"Module\",\"Cmdlet\",\"Example\",\"RuleName\",\"ProblemId\",\"Severity\",\"Description\",\"Extent\",\"Remediation\"";
+            return "\"Module\",\"Cmdlet\",\"Example\",\"Line\",\"RuleName\",\"ProblemId\",\"Severity\",\"Description\",\"Extent\",\"Remediation\"";
         }
 
         public string FormatRecord()
         {
-            return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\"",
-                Module, Cmdlet, Example, RuleName, ProblemId, Severity, Description, Extent, Remediation);
+            return string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\",\"{9}\"",
+                Module, Cmdlet, Example, Line, RuleName, ProblemId, Severity, Description, Extent, Remediation);
         }
 
         // The code that excludes exceptions is in tools/StaticAnalysis/ExampleAnalyzer/utils.ps1 Get-NonExceptionRecord.
@@ -51,6 +52,7 @@ namespace StaticAnalysis.ExampleAnalyzer
                 result = (record.Module == Module)&&
                 (record.Cmdlet == Cmdlet)&&
                 (record.Example == Example)&&
+                (record.Line == Line)&&
                 (record.Description == Description);
             }
             return result;
@@ -58,21 +60,22 @@ namespace StaticAnalysis.ExampleAnalyzer
 
         public IReportRecord Parse(string line)
         {
-            var matcher = "\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"";
+            var matcher = "\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\",\"([^\"]*)\"";
             var match = Regex.Match(line, matcher);
-            if (!match.Success || match.Groups.Count < 10)
+            if (!match.Success || match.Groups.Count < 11)
             {
                 throw new InvalidOperationException(string.Format("Could not parse '{0}' as ExampleIssue record", line));
             }
             Module = match.Groups[1].Value;
             Cmdlet = match.Groups[2].Value;
             Example = int.Parse(match.Groups[3].Value);
-            RuleName = match.Groups[4].Value;
-            ProblemId = int.Parse(match.Groups[5].Value);
-            Severity = int.Parse(match.Groups[6].Value);
-            Description = match.Groups[7].Value;
-            Extent = match.Groups[8].Value;
-            Remediation = match.Groups[9].Value;
+            Line = match.Groups[4].Value;
+            RuleName = match.Groups[5].Value;
+            ProblemId = int.Parse(match.Groups[6].Value);
+            Severity = int.Parse(match.Groups[7].Value);
+            Description = match.Groups[8].Value;
+            Extent = match.Groups[9].Value;
+            Remediation = match.Groups[10].Value;
             return this;
         }
     }
