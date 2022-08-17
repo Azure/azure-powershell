@@ -19,13 +19,6 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
-
-    $env.AlertName = "test-alert-" + (RandomString -allChars $false -len 6)
-    $env.ResourceGroupName = "test-group-" + (RandomString -allChars $false -len 6)
-    $env.AlertScope = "subscriptions/" + $env.SubscriptionId
-
-    New-AzResourceGroup -Name $env.ResourceGroupName -Location eastus
-
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -34,6 +27,5 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
-    Remove-AzResourceGroupName -Name $env.ResourceGroupName
 }
 
