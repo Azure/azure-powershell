@@ -108,7 +108,7 @@ function setupEnv() {
 function cleanupEnv() {
     # Clean resources you create for testing
     # 0. Restore JsonTemplateFile.json
-    git restore JsonTemplateFile.json
+    # git restore JsonTemplateFile.json
 
     # 1. Remove image builder template    
     Get-AzImageBuilderTemplate -ResourceGroupName $env.rg | Where-Object {$_.Name -Match '^template*'} | Remove-AzImageBuilderTemplate

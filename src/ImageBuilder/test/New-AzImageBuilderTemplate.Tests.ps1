@@ -39,7 +39,7 @@ Describe 'New-AzImageBuilderTemplate' {
     # Source: PlatformImage Distributor: SharedImage
     It 'FromJsonString' {
         $jsonFile = Join-Path $PSScriptRoot "JsonTemplateFile.json"
-        $jsonString = Get-Content  -Raw
+        $jsonString = Get-Content $jsonFile -Raw
         New-AzImageBuilderTemplate -Name $env.newTemplateName3 -ResourceGroupName $env.rg -JsonString $jsonString
         $template = Get-AzImageBuilderTemplate -Name $env.newTemplateName3 -ResourceGroupName $env.rg
     }
