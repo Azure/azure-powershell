@@ -4,8 +4,7 @@ Remove-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroupname SEA-
 ```
 
 ```output
-{
-}
+
 ```
 
 This cmdlet deletes a traffic collector.

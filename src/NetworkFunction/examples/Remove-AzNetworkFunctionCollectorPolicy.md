@@ -4,8 +4,7 @@ Remove-AzNetworkFunctionCollectorPolicy -azuretrafficcollectorname atctestps -co
 ```
 
 ```output
-{
-}
+
 ```
 
 This cmdlet deletes a traffic collector policy.
