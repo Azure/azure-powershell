@@ -61,4 +61,12 @@ directive:
       subject: (^Autoscale$)(.*)
     set:
       subject-prefix: ""
+  # Rename 'Equals'
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ComparisonOperationType Equals = @"Equals";', 'public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ComparisonOperationType Equal = @"Equals";');
+
+  - from: source-file-csharp
+    where: $
+    transform: $ = $.replace('public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleRuleMetricDimensionOperationType Equals = @"Equals";', 'public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleRuleMetricDimensionOperationType Equal = @"Equals";');
 ```
