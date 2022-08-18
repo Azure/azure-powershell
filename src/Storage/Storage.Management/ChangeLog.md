@@ -32,6 +32,9 @@
     -  `Get-AzStorageLocalUserKey`
     -  `New-AzStorageLocalUserSshPublicKey`
     -  `New-AzStorageLocalUserPermissionScope`
+* Supported soft delete DataLake Gen2 item
+    - `Get-AzDataLakeGen2DeletedItem`
+    - `Restore-AzDataLakeGen2DeletedItem`
 
 ## Version 4.8.0
 * Added check for storage account sas token is secured with the storage account key.
