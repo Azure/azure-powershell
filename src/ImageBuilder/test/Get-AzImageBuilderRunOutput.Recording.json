@@ -1,0 +1,166 @@
+{
+  "Get-AzImageBuilderRunOutput+[NoContext]+List+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.VirtualMachineImages/imageTemplates/bez-tmp-2vd7ij/runOutputs?api-version=2022-02-14+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.VirtualMachineImages/imageTemplates/bez-tmp-2vd7ij/runOutputs?api-version=2022-02-14",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "53" ],
+        "x-ms-client-request-id": [ "08ceb6e7-ac3b-4515-a6d1-8d1eaa61ac91" ],
+        "CommandName": [ "Get-AzImageBuilderTemplateRunOutput" ],
+        "FullCommandName": [ "Get-AzImageBuilderTemplateRunOutput_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.6.0", "PSVersion/v7.2.5", "Az.ImageBuilder/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11948" ],
+        "x-ms-correlation-request-id": [ "9e1fcc37-aee1-42ce-91f0-d876fadd6937" ],
+        "x-ms-request-id": [ "783d1283-b3ee-4430-a4de-dbd2f25373e5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220818T094301Z:9e1fcc37-aee1-42ce-91f0-d876fadd6937" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 18 Aug 2022 09:43:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "571" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"value\": [\n  {\n   \"properties\": {\n    \"artifactId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.Compute/galleries/testGalleryNamemx9y1g/images/test-image/versions/0.25342.1993\",\n    \"provisioningState\": \"Succeeded\"\n   },\n   \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg-jutb12/providers/Microsoft.VirtualMachineImages/imageTemplates/bez-tmp-2vd7ij/runOutputs/runOutput1\",\n   \"name\": \"runOutput1\",\n   \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/runOutputs\"\n  }\n ]\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzImageBuilderRunOutput+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.VirtualMachineImages/imageTemplates/bez-tmp-2vd7ij/runOutputs/runOutput1?api-version=2022-02-14+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.VirtualMachineImages/imageTemplates/bez-tmp-2vd7ij/runOutputs/runOutput1?api-version=2022-02-14",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "54" ],
+        "x-ms-client-request-id": [ "e1e2e78f-6aaf-4774-abac-03b64ba117ba" ],
+        "CommandName": [ "Get-AzImageBuilderTemplateRunOutput" ],
+        "FullCommandName": [ "Get-AzImageBuilderTemplateRunOutput_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.6.0", "PSVersion/v7.2.5", "Az.ImageBuilder/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11947" ],
+        "x-ms-correlation-request-id": [ "9f9a70e5-6788-461f-8f19-f36d69307246" ],
+        "x-ms-request-id": [ "f50b4906-b118-498a-adb8-2619ed87ef93" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220818T094302Z:9f9a70e5-6788-461f-8f19-f36d69307246" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 18 Aug 2022 09:43:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "534" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"properties\": {\n  \"artifactId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.Compute/galleries/testGalleryNamemx9y1g/images/test-image/versions/0.25342.1993\",\n  \"provisioningState\": \"Succeeded\"\n },\n \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg-jutb12/providers/Microsoft.VirtualMachineImages/imageTemplates/bez-tmp-2vd7ij/runOutputs/runOutput1\",\n \"name\": \"runOutput1\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/runOutputs\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzImageBuilderRunOutput+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.VirtualMachineImages/imageTemplates/bez-tmp-2vd7ij/runOutputs/runOutput1?api-version=2022-02-14+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.VirtualMachineImages/imageTemplates/bez-tmp-2vd7ij/runOutputs/runOutput1?api-version=2022-02-14",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "55" ],
+        "x-ms-client-request-id": [ "eca704f1-765a-467b-9a1c-d030aabeebb9" ],
+        "CommandName": [ "Get-AzImageBuilderTemplateRunOutput" ],
+        "FullCommandName": [ "Get-AzImageBuilderTemplateRunOutput_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.6.0", "PSVersion/v7.2.5", "Az.ImageBuilder/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11946" ],
+        "x-ms-correlation-request-id": [ "6f36389c-39de-49a8-81cc-3a9f5faf8907" ],
+        "x-ms-request-id": [ "7711dfbf-f27b-4a67-89e9-1e5e4e56cf0d" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220818T094302Z:6f36389c-39de-49a8-81cc-3a9f5faf8907" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 18 Aug 2022 09:43:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "534" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"properties\": {\n  \"artifactId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.Compute/galleries/testGalleryNamemx9y1g/images/test-image/versions/0.25342.1993\",\n  \"provisioningState\": \"Succeeded\"\n },\n \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg-jutb12/providers/Microsoft.VirtualMachineImages/imageTemplates/bez-tmp-2vd7ij/runOutputs/runOutput1\",\n \"name\": \"runOutput1\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/runOutputs\"\n}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzImageBuilderRunOutput+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.VirtualMachineImages/imageTemplates/bez-tmp-2vd7ij/runOutputs/runOutput1?api-version=2022-02-14+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.VirtualMachineImages/imageTemplates/bez-tmp-2vd7ij/runOutputs/runOutput1?api-version=2022-02-14",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "56" ],
+        "x-ms-client-request-id": [ "dbfa1987-cd7f-4cf3-8ba9-afb2c84e2d84" ],
+        "CommandName": [ "Get-AzImageBuilderTemplateRunOutput" ],
+        "FullCommandName": [ "Get-AzImageBuilderTemplateRunOutput_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.6.0", "PSVersion/v7.2.5", "Az.ImageBuilder/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11945" ],
+        "x-ms-correlation-request-id": [ "5e7f24d3-bb05-4667-8771-8c1646de47b6" ],
+        "x-ms-request-id": [ "e60d1603-fff1-48cc-b0c9-e633218cbbe9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "nginx" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220818T094303Z:5e7f24d3-bb05-4667-8771-8c1646de47b6" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 18 Aug 2022 09:43:02 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "534" ],
+        "Content-Type": [ "application/json" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n \"properties\": {\n  \"artifactId\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.Compute/galleries/testGalleryNamemx9y1g/images/test-image/versions/0.25342.1993\",\n  \"provisioningState\": \"Succeeded\"\n },\n \"id\": \"/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg-jutb12/providers/Microsoft.VirtualMachineImages/imageTemplates/bez-tmp-2vd7ij/runOutputs/runOutput1\",\n \"name\": \"runOutput1\",\n \"type\": \"Microsoft.VirtualMachineImages/imageTemplates/runOutputs\"\n}",
+      "isContentBase64": false
+    }
+  }
+}

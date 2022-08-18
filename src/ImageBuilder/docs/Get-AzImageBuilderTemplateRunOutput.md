@@ -41,9 +41,9 @@ Get-AzImageBuilderTemplateRunOutput -ImageTemplateName test-img-temp -ResourceGr
 ```
 
 ```output
-Name          
-----          
-image_lucas_1 
+Name    SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----    ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+testrunoutput                                                                                                                                          bez-rg
 ```
 
 This command lists all run results under a template.
@@ -54,9 +54,9 @@ Get-AzImageBuilderTemplateRunOutput -ImageTemplateName test-img-temp -ResourceGr
 ```
 
 ```output
-Name                       
-----                       
-runout-template-name-u7gjqx
+Name    SystemDataCreatedAt SystemDataCreatedBy SystemDataCreatedByType SystemDataLastModifiedAt SystemDataLastModifiedBy SystemDataLastModifiedByType ResourceGroupName
+----    ------------------- ------------------- ----------------------- ------------------------ ------------------------ ---------------------------- -----------------
+runout-template-name-u7gjq  
 ```
 
 This command gets a run result under a template.

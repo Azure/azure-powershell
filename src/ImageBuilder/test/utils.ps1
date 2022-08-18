@@ -14,69 +14,89 @@ if ($UsePreviousConfigForRecord) {
 # example: $val = $env.AddWithCache('key', $val, $true)
 $env | Add-Member -Type ScriptMethod -Value { param( [string]$key, [object]$val, [bool]$useCache) if ($this.Contains($key) -and $useCache) { return $this[$key] } else { $this[$key] = $val; return $val } } -Name 'AddWithCache'
 function setupEnv() {
+    $DebugPreference = 'Continue'
+
     # Preload subscriptionId and tenant from context, which will be used in test
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     
-    # For any resources you created for test, you should add it to $env here.
-    $rg = $env.AddWithCache("rg", "bez-rg", $UsePreviousConfigForRecord)
-    $location = $env.AddWithCache("location", "eastus", $UsePreviousConfigForRecord)
-    $repLocation = $env.AddWithCache("repLocation", "eastus2", $UsePreviousConfigForRecord)
+    ####### Prerequisite #######
+    # Visit https://github.com/Azure/azvmimagebuilder/tree/main/quickquickstarts to get more details
+    # 1. Create a resource group
+    $rg = $env.AddWithCache("rg", "bez-rg-" + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    $location = $env.AddWithCache("location", "centraluseuap", $UsePreviousConfigForRecord)
+    New-AzResourceGroup -Name $rg -Location $location
 
-    # initialize distributors
-    $distributor = 
+    # 2. Create an user identity
+    Write-Host -ForegroundColor Green "Creating an user identity..."
+    $identityName = $env.AddWithCache("identityName", "bez-id-" + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    $identity = New-AzUserAssignedIdentity -ResourceGroupName $rg -Name $identityName
+    $env.AddWithCache("identity", $identity, $UsePreviousConfigForRecord)
+
+    # 3. Create a role definition
+    Write-Host -ForegroundColor Green "Creating a role definition..."
+    $roleName = $env.AddWithCache("roleName", 'Image Builder Service Image Creation Role ' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    $role = New-AzRoleDefinition -Role @{
+        Name = $roleName;
+        IsCustom = $True;
+        Description = "Image Builder access to create resources for the image build, you should delete or split out as appropriate";
+        Actions = @(
+            "Microsoft.Compute/galleries/read",
+            "Microsoft.Compute/galleries/images/read",
+            "Microsoft.Compute/galleries/images/versions/read",
+            "Microsoft.Compute/galleries/images/versions/write",    
+            "Microsoft.Compute/images/write",
+            "Microsoft.Compute/images/read",
+            "Microsoft.Compute/images/delete"
+        );
+        AssignableScopes = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg"
+    }
+    $env.AddWithCache("role", $role, $UsePreviousConfigForRecord)
+
+    # 4. Grant role definition above to the user assigned identity
+    Start-Sleep -Seconds 60 # Sleep to allow get-azserviceprincipal work
+    Write-Host -ForegroundColor Green "Assigning a role to the user identity..."
+    New-AzRoleAssignment -ObjectId $identity.PrincipalId -RoleDefinitionId $role.Id -Scope "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg"
+
+    # 5. Create an image gallery
+    Write-Host -ForegroundColor Green "Create an image gallery..."
+    $testGalleryName = $env.AddWithCache("testGalleryName", "testGalleryName" + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    New-AzGallery -GalleryName $testGalleryName -ResourceGroupName $rg -Location $location
+
+    # 6. Create a gallery definition
+    Write-Host -ForegroundColor Green "Create a gallery definition..."
+    $imageDefName = $env.AddWithCache("imageDefName", "test-image", $UsePreviousConfigForRecord) 
+    $image = New-AzGalleryImageDefinition -GalleryName $testGalleryName -ResourceGroupName $rg -Location $location -Name $imageDefName -OsState generalized -OsType Linux -Publisher bez -Offer UbuntuServer -Sku '18.04-LTS'
+    $env.AddWithCache("image", $image, $UsePreviousConfigForRecord)
+
+    # 7. Create a template with shared image
+    Write-Host -ForegroundColor Green "Creating a image builder template..."
+    $templateName = $env.AddWithCache("templateName", 'bez-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    $runOutputName = $env.AddWithCache("runOutputName", 'runOutput1', $UsePreviousConfigForRecord)
+    $JsonTemplatePath = Join-Path $PSScriptRoot JsonTemplateFile.json
+    $Content = Get-Content -Path $JsonTemplatePath  -Raw
+    $Content = $Content -replace '<subscriptionID>', $env.SubscriptionId
+    $Content = $Content -replace '<rgName>', $rg
+    $Content = $Content -replace '<identityName>', $identityName
+    $Content = $Content -replace '<testGalleryName>', $testGalleryName
+    $Content = $Content -replace '<imageDefName>', $imageDefName
+    $Content = $Content -replace '<runOutputName>', $runOutputName
+    $Content | Out-File -FilePath $JsonTemplatePath -Force
+    New-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg -JsonTemplatePath $JsonTemplatePath
+
+    # 9. Add user id to access the template
+    Write-Host "Add user id to access the template"
+    New-AzRoleAssignment -ObjectId $identity.PrincipalId -RoleDefinitionName Contributor -ResourceGroupName $rg
+    # 10. Start the image builder above
+    Write-Host -ForegroundColor Green "Starting the image builder template..."
+    Start-Sleep -Seconds 25
+    Start-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg
     
-    # initialize customizers
-    $customizerName = 'customizer-name-' + (RandomString -allChars $false -len 6)
-    $sourceUri = 'https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh'
-    $sha256Checksum = 'ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93'
-    $customizer = New-AzImageBuilderCustomizerObject -ShellCustomizer -CustomizerName $customizerName -ScriptUri $sourceUri -Sha256Checksum $sha256Checksum
-
-
-    $env.Resources = @{Distributor= @{}; Template=@{}; RunOutputName=@{}; Customizer=@{}}
-
-    
-
-    # Deploy resource for test.
-    # Deploy image
-    <#
-    Write-Host -ForegroundColor Green "Start deploying resource for test..."
-    New-AzDeployment -Mode Incremental -TemplateFile .\test\deployment-templates\managed-image\template.json -TemplateParameterFile .\test\deployment-templates\managed-image\parameters.json -ResourceGroupName $env.ResourceGroup
-    # Failed: The source blob https://32rngewd8ofquuqtml5ggf2o.blob.core.windows.net/vhds/ffee76c3-a79b-43ae-a207-4fa9ee5e221a.vhd was not found.
-    Write-Host -ForegroundColor Green "Successfully deployed resources."
-    #>
-    #$UserAssignedIdentity = Get-AzUserAssignedIdentity -ResourceGroupName $env.ResourceGroup -Name image-builder-user-assign-identity
-    
-    $env.userAssignedIdentity = "/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/wyunchi-imagebuilder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/image-builder-user-assign-identity"
-
-    # For any resources you created for test, you should add it to $env here.
-    $env.Source = @{PlatformImageLinux=@{};PlatformImageWind=@{};ManagedImageLinux=@{}; ManagedImageWind=@{}; SharedImageLinux=@{};SharedImageWind=@{}}
-    $env.Source.PlatformImageLinux = @{publisher = 'Canonical';offer = 'UbuntuServer';sku = '18.04-LTS';version = 'latest'};
-    $env.Source.ManagedImageLinux = @{imageId="/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroup)/providers/Microsoft.Compute/images/test-linux-image"}
-    $env.Source.SharedImageLinux = @{ imageVersionId= "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroup)/providers/Microsoft.Compute/galleries/testsharedgallery/images/imagedefinition-linux/versions/1.0.0"}
-    
-    $env.Distributor = @{VHD = @{};ManagedImageLinux=@{}; SharedImageLinux=@{}}
-    $env.Distributor.VHD = @{}
-    $env.Distributor.ManagedImageLinux = @{imageId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroup)/providers/Microsoft.Compute/images/$($env.Resources.Distributor.distributorName00)"}
-    $env.Distributor.SharedImageLinux = @{galleryImageId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.ResourceGroup)/providers/Microsoft.Compute/galleries/myimagegallery/images/lcuas-linux-share"}
-
-    Write-Host -ForegroundColor Green "Start creating template image for test..."
-    $srcPlatform = New-AzImageBuilderSourceObject -SourceTypePlatformImage -Publisher $env.Source.PlatformImageLinux.publisher -Offer $env.Source.PlatformImageLinux.offer -Sku $env.Source.PlatformImageLinux.sku -Version $env.Source.PlatformImageLinux.version  #-PlanName $null -PlanProduct $null -PlanPublisher $null
-    $distributor = New-AzImageBuilderDistributorObject -ManagedImageDistributor -ArtifactTag @{source='platforimage';baseofimg='UbuntuServer'} -ImageId $env.Distributor.ManagedImageLinux.imageId -Location $env.Location -RunOutputName $env.Resources.RunOutputName.runOutputName20
-    $customizerName = 'downloadBuildArtifacts'
-    
-    $tmpImage = New-AzImageBuilderTemplate -ImageTemplateName $env.Resources.Template.templateName10 -Source $srcPlatform -Distribute $distributor -Customize $customizer -ResourceGroupName $env.ResourceGroup -Location $env.Location -UserAssignedIdentityId $env.userAssignedIdentity
-    Write-Host -ForegroundColor Green "Successfully created templeate image."
-    
-    Write-Host -ForegroundColor Green "Start $($env.Resources.Template.templateName10) template image for test."
-    Start-AzImageBuilderTemplate -ResourceGroupName $env.ResourceGroup -ImageTemplateName $env.Resources.Template.templateName10
-    Write-Host -ForegroundColor Green "Successfully started templeate image."
-    
-    # Cache variable
-
-
-
+    # Prepare some variables for test usage
+    $newTemplateName1 = $env.AddWithCache("newTemplateName1", 'bez-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    $newTemplateName2 = $env.AddWithCache("newTemplateName2", 'bez-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
+    $newTemplateName3 = $env.AddWithCache("newTemplateName3", 'bez-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
@@ -84,8 +104,31 @@ function setupEnv() {
     }
     set-content -Path (Join-Path $PSScriptRoot $envFile) -Value (ConvertTo-Json $env)
 }
+
 function cleanupEnv() {
     # Clean resources you create for testing
-    Get-AzImageBuilderTemplate -ResourceGroupName $env.ResourceGroup | Where-Object {$_.Name -Match '^template*'} | Remove-AzImageBuilderTemplate
+    # 0. Restore JsonTemplateFile.json
+    git restore JsonTemplateFile.json
+
+    # 1. Remove image builder template    
+    Get-AzImageBuilderTemplate -ResourceGroupName $env.rg | Where-Object {$_.Name -Match '^template*'} | Remove-AzImageBuilderTemplate
+
+    # 2. Remove image gallery definition
+    Get-AzGalleryImageDefinition -ResourceGroupName $env.rg -GalleryName $env.testGalleryName -Name $env.imageDefName | Remove-AzGalleryImageDefinition -Force
+
+    # 3. Remove image gallery
+    Get-AzGallery -ResourceGroupName $env.rg -Name $env.testGalleryName | Remove-AzGallery -Force
+
+    # 4. Grant role definition above to the user assigned identity
+    Get-AzRoleAssignment -ObjectId $env.identity.PrincipalId -RoleDefinitionName $env.roleName -Scope "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg" | Remove-AzRoleAssignment -Confirm:$false
+
+    # 5. Remove role definition
+    Get-AzRoleDefinition -Name $env.roleName | Remove-AzRoleDefinition -Force
+
+    # 6. Remove identity
+    Get-AzUserAssignedIdentity -ResourceGroupName $env.rg -Name $env.identityName | Remove-AzUserAssignedIdentity -Force
+
+    # 7. remove resource group
+    Get-AzResourceGroup -Name $env.rg | Remove-AzResourceGroup
 }
 

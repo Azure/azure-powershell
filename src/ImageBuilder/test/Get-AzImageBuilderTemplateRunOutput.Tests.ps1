@@ -13,18 +13,18 @@ while(-not $mockingPath) {
 
 Describe 'Get-AzImageBuilderRunOutput' {
     It 'List' {
-        $resultsList = Get-AzImageBuilderRunOutput -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup
+        $resultsList = Get-AzImageBuilderTemplateRunOutput -ImageTemplateName $env.templateName -ResourceGroupName $env.rg
         $resultsList.Count | Should -BeGreaterOrEqual 1
     }
 
     It 'Get' {
-        $result = Get-AzImageBuilderRunOutput -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup -RunOutputName $env.Resources.RunOutputName.runOutputName20
-        $result.Name | Should -Be $env.Resources.RunOutputName.runOutputName20
+        $result = Get-AzImageBuilderTemplateRunOutput -ImageTemplateName $env.templateName -ResourceGroupName $env.rg -Name $env.runOutputName
+        $result.Name | Should -Be $env.runOutputName
     }
 
     It 'GetViaIdentity' {
-        $object = Get-AzImageBuilderRunOutput -ImageTemplateName $env.Resources.Template.templateName10 -ResourceGroupName $env.ResourceGroup -RunOutputName $env.Resources.RunOutputName.runOutputName20
-        $result = Get-AzImageBuilderRunOutput -InputObject $object
-        $result.Name | Should -Be $env.Resources.RunOutputName.runOutputName20
+        $object = Get-AzImageBuilderTemplateRunOutput -ImageTemplateName $env.templateName -ResourceGroupName $env.rg -Name $env.runOutputName
+        $result = Get-AzImageBuilderTemplateRunOutput -InputObject $object
+        $result.Name | Should -Be $env.runOutputName
     }
 }

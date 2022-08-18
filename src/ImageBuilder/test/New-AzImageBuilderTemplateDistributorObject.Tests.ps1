@@ -14,19 +14,19 @@ while(-not $mockingPath) {
 Describe 'New-AzImageBuilderDistributorObject' {
     It 'VhdDistributor' {
         $outName = 'run-template-vhd'
-        $distributor = New-AzImageBuilderDistributorObject -ArtifactTag @{tag='VHD'} -VhdDistributor -RunOutputName $outName
+        $distributor = New-AzImageBuilderTemplateDistributorObject -ArtifactTag @{tag='VHD'} -VhdDistributor -RunOutputName $outName
         $distributor.RunOutputName | Should -Be $outName
     }
 
     It 'ManagedImageDistributor' {
         $outName = 'run-template-managedimg'
-        $distributor = New-AzImageBuilderDistributorObject -ManagedImageDistributor  -ArtifactTag @{tag='lucasManage'} -ImageId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/lucas-linux-image' -RunOutputName $outName -Location $env.Location
+        $distributor = New-AzImageBuilderTemplateDistributorObject -ManagedImageDistributor  -ArtifactTag @{tag='lucasManage'} -ImageId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/images/lucas-linux-image' -RunOutputName $outName -Location $env.Location
         $distributor.RunOutputName | Should -Be $outName
     }
 
     It 'SharedImageDistributor' {
         $outName = 'run-template-sharedimg'
-        $distributor = New-AzImageBuilderDistributorObject -SharedImageDistributor -ArtifactTag @{tag='dis-share'} -GalleryImageId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/galleries/myimagegallery/images/lcuas-linux-share' -ReplicationRegion $env.RepLocation -RunOutputName $outName -ExcludeFromLatest $false 
+        $distributor = New-AzImageBuilderTemplateDistributorObject -SharedImageDistributor -ArtifactTag @{tag='dis-share'} -GalleryImageId '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/wyunchi-imagebuilder/providers/Microsoft.Compute/galleries/myimagegallery/images/lcuas-linux-share' -ReplicationRegion eastus2 -RunOutputName $outName -ExcludeFromLatest $false 
         $distributor.RunOutputName | Should -Be $outName
     }
 }
