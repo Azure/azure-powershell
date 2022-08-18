@@ -29,7 +29,8 @@ New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> 
 ### AzureZoneToZone
 ```
 New-AzRecoveryServicesAsrRecoveryPlan -Name <String> -PrimaryFabric <ASRFabric> -PrimaryZone <String>
- -RecoveryZone <String> [-AzureZoneToZone] -ReplicationProtectedItem <ASRReplicationProtectedItem[]>
+ -RecoveryZone <String> [-AzureZoneToZone] [-PrimaryEdgeZone <string>] [-RecoveryEdgeZone <string>] 
+ -ReplicationProtectedItem <ASRReplicationProtectedItem[]>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -208,6 +209,36 @@ Accept wildcard characters: False
 
 ### -RecoveryZone
 Specifies the primary Availabilty zone of the replication protected items that will be part of this recovery plan.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureZoneToZone
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PrimaryEdgeZone
+Specifies the primary edge zone of the replication protected items that will be part of this recovery plan.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureZoneToZone
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -RecoveryEdgeZone
+Specifies the recovery edge zone of the replication protected items that will be part of this recovery plan.
 
 ```yaml
 Type: System.String
