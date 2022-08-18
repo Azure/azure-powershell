@@ -1,13 +1,13 @@
 {
-  "Remove-AzNetworkSecurityPerimeterAccessRule+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/t8i0ct-nspDelB1/profiles/t-prDelB1/accessRules/tmpAccessRuleDelete1?api-version=2021-02-01-preview+1": {
+  "Remove-AzNetworkSecurityPerimeterAccessRule+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tgnhlt-nspDelB1/profiles/t-prDelB1/accessRules/tmpAccessRuleDelete1?api-version=2021-02-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/t8i0ct-nspDelB1/profiles/t-prDelB1/accessRules/tmpAccessRuleDelete1?api-version=2021-02-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tgnhlt-nspDelB1/profiles/t-prDelB1/accessRules/tmpAccessRuleDelete1?api-version=2021-02-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "26" ],
-        "x-ms-client-request-id": [ "3f9cb442-786c-4e45-a088-b86f8b3f725e" ],
+        "x-ms-client-request-id": [ "9bbef978-fef4-49d8-af4a-ef0ebca82278" ],
         "CommandName": [ "Remove-AzNetworkSecurityPerimeterAccessRule" ],
         "FullCommandName": [ "Remove-AzNetworkSecurityPerimeterAccessRule_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -25,11 +25,11 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
-        "x-ms-request-id": [ "9f23242a-c573-4f73-ba30-f839c65bb78c" ],
-        "x-ms-correlation-request-id": [ "9f23242a-c573-4f73-ba30-f839c65bb78c" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20220817T132312Z:9f23242a-c573-4f73-ba30-f839c65bb78c" ],
+        "x-ms-request-id": [ "1265d743-ed66-40e1-b7ec-b6b30a9764c4" ],
+        "x-ms-correlation-request-id": [ "1265d743-ed66-40e1-b7ec-b6b30a9764c4" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220818T081937Z:1265d743-ed66-40e1-b7ec-b6b30a9764c4" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 17 Aug 2022 13:23:11 GMT" ]
+        "Date": [ "Thu, 18 Aug 2022 08:19:36 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ]
@@ -38,15 +38,15 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkSecurityPerimeterAccessRule+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/t8i0ct-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2021-02-01-preview+1": {
+  "Remove-AzNetworkSecurityPerimeterAccessRule+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tgnhlt-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2021-02-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/t8i0ct-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2021-02-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tgnhlt-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2021-02-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "27" ],
-        "x-ms-client-request-id": [ "78a07289-b54b-4a40-baab-d020f5e2255a" ],
+        "x-ms-client-request-id": [ "12663585-ed62-47f4-9719-b642174a202d" ],
         "CommandName": [ "Get-AzNetworkSecurityPerimeterAccessRule" ],
         "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAccessRule_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -61,33 +61,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
-        "x-ms-request-id": [ "a0dd1f2b-6628-44d0-87e6-2c8a1d914fb9" ],
-        "x-ms-correlation-request-id": [ "a0dd1f2b-6628-44d0-87e6-2c8a1d914fb9" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20220817T132313Z:a0dd1f2b-6628-44d0-87e6-2c8a1d914fb9" ],
+        "x-ms-request-id": [ "391e00bf-80e8-4969-93a1-d6a6c221b223" ],
+        "x-ms-correlation-request-id": [ "391e00bf-80e8-4969-93a1-d6a6c221b223" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220818T081938Z:391e00bf-80e8-4969-93a1-d6a6c221b223" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 17 Aug 2022 13:23:12 GMT" ]
+        "Date": [ "Thu, 18 Aug 2022 08:19:37 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "479" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"name\":\"t-arD2\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/t8i0ct-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles/accessRules\",\"properties\":{\"provisioningState\":\"Succeeded\",\"direction\":\"Inbound\",\"addressPrefixes\":[\"10.10.0.0/16\"],\"fullyQualifiedDomainNames\":[],\"subscriptions\":[],\"networkSecurityPerimeters\":[]}}",
+      "Content": "{\"name\":\"t-arD2\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tgnhlt-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/profiles/accessRules\",\"properties\":{\"provisioningState\":\"Succeeded\",\"direction\":\"Inbound\",\"addressPrefixes\":[\"10.10.0.0/16\"],\"fullyQualifiedDomainNames\":[],\"subscriptions\":[],\"networkSecurityPerimeters\":[]}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzNetworkSecurityPerimeterAccessRule+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/t8i0ct-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2021-02-01-preview+2": {
+  "Remove-AzNetworkSecurityPerimeterAccessRule+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tgnhlt-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2021-02-01-preview+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/t8i0ct-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2021-02-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tgnhlt-nspDelB1/profiles/t-prDelB1/accessRules/t-arD2?api-version=2021-02-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "28" ],
-        "x-ms-client-request-id": [ "28352fa1-32b2-43b9-85c9-cc16db8e55c8" ],
+        "x-ms-client-request-id": [ "01863930-0084-4fc7-8388-1cea894fbc56" ],
         "CommandName": [ "Remove-AzNetworkSecurityPerimeterAccessRule" ],
         "FullCommandName": [ "Remove-AzNetworkSecurityPerimeterAccessRule_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -105,11 +105,11 @@
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Kestrel" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
-        "x-ms-request-id": [ "9348632b-e071-4371-9e88-77f6df816990" ],
-        "x-ms-correlation-request-id": [ "9348632b-e071-4371-9e88-77f6df816990" ],
-        "x-ms-routing-request-id": [ "SOUTHINDIA:20220817T132314Z:9348632b-e071-4371-9e88-77f6df816990" ],
+        "x-ms-request-id": [ "545bd201-3a89-411f-aedd-b886d9e5eea8" ],
+        "x-ms-correlation-request-id": [ "545bd201-3a89-411f-aedd-b886d9e5eea8" ],
+        "x-ms-routing-request-id": [ "JIOINDIACENTRAL:20220818T081939Z:545bd201-3a89-411f-aedd-b886d9e5eea8" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Wed, 17 Aug 2022 13:23:14 GMT" ]
+        "Date": [ "Thu, 18 Aug 2022 08:19:38 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],

@@ -16,18 +16,17 @@ Updates a workspace.
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <ArrayList>] [-Direction <String>]
- [-FullyQualifiedDomainName <ArrayList>] [-Location <String>]
- [-NetworkSecurityPerimeters <IPerimeterBasedAccessRule[]>] [-Subscriptions <ISubscriptionId[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-FullyQualifiedDomainName <ArrayList>] [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>]
+ [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
  [-AddressPrefix <ArrayList>] [-Direction <String>] [-FullyQualifiedDomainName <ArrayList>]
- [-Location <String>] [-NetworkSecurityPerimeters <IPerimeterBasedAccessRule[]>]
- [-Subscriptions <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>] [-Subscription <ISubscriptionId[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -194,12 +193,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkSecurityPerimeters
-Inbound rule specified by the perimeter id
-To construct, see NOTES section for NETWORKSECURITYPERIMETERS properties and create a hash table.
+### -NoWait
+Run the command asynchronously
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -210,11 +208,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -Perimeter
+Inbound rule specified by the perimeter id
+To construct, see NOTES section for PERIMETER properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]
 Parameter Sets: (All)
 Aliases:
 
@@ -271,6 +270,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Subscription
+Subscription ids
+To construct, see NOTES section for SUBSCRIPTION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.ISubscriptionId[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -282,22 +297,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subscriptions
-Subscription ids
-To construct, see NOTES section for SUBSCRIPTIONS properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.ISubscriptionId[]
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -377,10 +376,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-`NETWORKSECURITYPERIMETERS <IPerimeterBasedAccessRule[]>`: Inbound rule specified by the perimeter id
+`PERIMETER <IPerimeterBasedAccessRule[]>`: Inbound rule specified by the perimeter id
   - `[Id <String>]`: NSP id in the ARM id format.
 
-`SUBSCRIPTIONS <ISubscriptionId[]>`: Subscription ids
+`SUBSCRIPTION <ISubscriptionId[]>`: Subscription ids
   - `[Id <String>]`: Subscription id in the ARM id format.
 
 ## RELATED LINKS

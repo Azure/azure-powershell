@@ -17,8 +17,8 @@ Creates or updates a network access rule.
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
  -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>]
  [-Direction <AccessRuleDirection>] [-FullyQualifiedDomainName <String[]>] [-Location <String>]
- [-NetworkSecurityPerimeters <IPerimeterBasedAccessRule[]>] [-Subscriptions <ISubscriptionId[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Perimeter <IPerimeterBasedAccessRule[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
@@ -32,9 +32,8 @@ New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -R
 ```
 New-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
  [-AddressPrefix <String[]>] [-Direction <AccessRuleDirection>] [-FullyQualifiedDomainName <String[]>]
- [-Location <String>] [-NetworkSecurityPerimeters <IPerimeterBasedAccessRule[]>]
- [-Subscriptions <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>] [-Subscription <ISubscriptionId[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -77,7 +76,7 @@ $perimeter2 = @{
 
 $networkSecurityPerimeters  =  @($perimeter1,$perimeter2)
 
-New-AzNetworkSecurityPerimeterAccessRule -Name 'perimeter-ar' -NetworkSecurityPerimeterName 'testt-nsp1'  -ProfileName 't-profile2'  -ResourceGroupName 'ResourceGroup-1'  -Direction 'Inbound' -Location 'eastus2euap' -NetworkSecurityPerimeters $networkSecurityPerimeters
+New-AzNetworkSecurityPerimeterAccessRule -Name 'perimeter-ar' -SecurityPerimeterName 'testt-nsp1'  -ProfileName 't-profile2'  -ResourceGroupName 'ResourceGroup-1'  -Direction 'Inbound' -Location 'eastus2euap' -Perimeter $networkSecurityPerimeters
 
 ```
 
@@ -199,22 +198,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NetworkSecurityPerimeters
-Inbound rule specified by the perimeter id.
-To construct, see NOTES section for NETWORKSECURITYPERIMETERS properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Parameter
 The NSP access rule resource
 To construct, see NOTES section for PARAMETER properties and create a hash table.
@@ -228,6 +211,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Perimeter
+Inbound rule specified by the perimeter id.
+To construct, see NOTES section for PERIMETER properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.IPerimeterBasedAccessRule[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -276,6 +275,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Subscription
+List of subscription ids
+To construct, see NOTES section for SUBSCRIPTION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.ISubscriptionId[]
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The subscription credentials which uniquely identify the Microsoft Azure subscription.
 The subscription ID forms part of the URI for every service call.
@@ -288,22 +303,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Subscriptions
-List of subscription ids
-To construct, see NOTES section for SUBSCRIPTIONS properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.ISubscriptionId[]
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -385,9 +384,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-`NETWORKSECURITYPERIMETERS <IPerimeterBasedAccessRule[]>`: Inbound rule specified by the perimeter id.
-  - `[Id <String>]`: NSP id in the ARM id format.
-
 `PARAMETER <INspAccessRuleRequest>`: The NSP access rule resource
   - `[Location <String>]`: Resource location.
   - `[Tag <IResourceRequestTags>]`: Resource tags.
@@ -400,7 +396,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[Subscription <ISubscriptionId[]>]`: List of subscription ids
     - `[Id <String>]`: Subscription id in the ARM id format.
 
-`SUBSCRIPTIONS <ISubscriptionId[]>`: List of subscription ids
+`PERIMETER <IPerimeterBasedAccessRule[]>`: Inbound rule specified by the perimeter id.
+  - `[Id <String>]`: NSP id in the ARM id format.
+
+`SUBSCRIPTION <ISubscriptionId[]>`: List of subscription ids
   - `[Id <String>]`: Subscription id in the ARM id format.
 
 ## RELATED LINKS

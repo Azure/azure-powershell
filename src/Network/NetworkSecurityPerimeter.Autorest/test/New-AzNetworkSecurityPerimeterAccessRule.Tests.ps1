@@ -29,7 +29,7 @@ Describe 'New-AzNetworkSecurityPerimeterAccessRule' {
                 id= '/subscriptions/' + $env.SubscriptionId
             }
 
-            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule1 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -Subscriptions @($sub1) -Direction 'Inbound' -Location $env.location
+            New-AzNetworkSecurityPerimeterAccessRule -Name $env.accessRule1 -ProfileName $env.tmpProfile2 -ResourceGroupName $env.rgname -SecurityPerimeterName $env.tmpNsp1 -Subscription @($sub1) -Direction 'Inbound' -Location $env.location
 
         } | Should -Not -Throw
     }

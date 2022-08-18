@@ -146,13 +146,7 @@ directive:
       subject: AccessRule
       parameter-name: NetworkSecurityPerimeter
     set:
-      parameter-name: NetworkSecurityPerimeters
-
-  - where:
-      subject: AccessRule
-      parameter-name: Subscription
-    set:
-      parameter-name: Subscriptions
+      parameter-name: Perimeter
 
 # Association
   - where:
