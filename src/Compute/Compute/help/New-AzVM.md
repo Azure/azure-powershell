@@ -912,6 +912,7 @@ The name of a new (or existing) network security group (NSG) for the created VM 
 Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
+
 Required: False
 Position: Named
 Default value: None
