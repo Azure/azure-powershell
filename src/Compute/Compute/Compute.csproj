@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Compute</PsModuleName>
@@ -27,7 +27,6 @@
 
   <PropertyGroup>
     <ModuleAlcEntryAssembly>Microsoft.Azure.Commands.Compute.AlcWrapper</ModuleAlcEntryAssembly>
-    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
