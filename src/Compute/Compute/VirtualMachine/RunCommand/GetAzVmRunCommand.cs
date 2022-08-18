@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AzVmRunCommand")]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmRunCommand")]
     [OutputType(typeof(PSVirtualMachineRunCommand))]
     public class GetAzureVmRunCommand : ComputeAutomationBaseCmdlet
     {
@@ -35,20 +35,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             HelpMessage = "Name of the resource group for the run command.")]
         [ResourceGroupCompleter]
         [SupportsWildcards]
-        public string ResourceGroupNamee { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Name of the virtual machine of the run command.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupNamee")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         public string VMName { get; set; }
 
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Name of the run command.")]
-        [ResourceNameCompleter("virtualMachineScaleSets/virtualMachines/runCommands")]
-        [Alias("Name")]
+        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/runCommands")]
         public string RunCommandName { get; set; }
 
         [Parameter(
@@ -66,14 +65,14 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 if (this.IsParameterBound(c => c.RunCommandName))
                 {
-                    VirtualMachineRunCommand vmRc = VirtualMachineRunCommandsClient.GetByVirtualMachine(this.ResourceGroupNamee, this.VMName, this.RunCommandName, this.Expand);
+                    VirtualMachineRunCommand vmRc = VirtualMachineRunCommandsClient.GetByVirtualMachine(this.ResourceGroupName, this.VMName, this.RunCommandName, this.Expand);
                     PSVirtualMachineRunCommand psObject = new PSVirtualMachineRunCommand();
                     ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineRunCommand, PSVirtualMachineRunCommand>(vmRc, psObject);
                     WriteObject(psObject);
                 }
                 else
                 {
-                    var vmRc = VirtualMachineRunCommandsClient.ListByVirtualMachine(this.ResourceGroupNamee, this.VMName, this.Expand);
+                    var vmRc = VirtualMachineRunCommandsClient.ListByVirtualMachine(this.ResourceGroupName, this.VMName, this.Expand);
                     var resultList = vmRc.ToList();
                     var nextPageLink = vmRc.NextPageLink;
                     while (!string.IsNullOrEmpty(nextPageLink))
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineRunCommand, PSVirtualMachineRunCommandList>(r));
                     }
-                    WriteObject(TopLevelWildcardFilter(this.ResourceGroupNamee, this.VMName, psObject), true);
+                    WriteObject(TopLevelWildcardFilter(this.ResourceGroupName, this.VMName, psObject), true);
                 }
             });
         }
