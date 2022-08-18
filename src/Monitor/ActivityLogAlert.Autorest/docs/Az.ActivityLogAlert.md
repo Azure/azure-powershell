@@ -14,16 +14,16 @@ Microsoft Azure PowerShell: ActivityLogAlert cmdlets
 ### [Get-AzActivityLogAlert](Get-AzActivityLogAlert.md)
 Get an Activity Log Alert rule.
 
-### [New-AzActionGroupObject](New-AzActionGroupObject.md)
-Create an in-memory object for ActionGroup.
-
 ### [New-AzActivityLogAlert](New-AzActivityLogAlert.md)
 Create a new Activity Log Alert rule or update an existing one.
 
-### [New-AzAlertRuleAnyOfOrLeafConditionObject](New-AzAlertRuleAnyOfOrLeafConditionObject.md)
+### [New-AzActivityLogAlertActionGroupObject](New-AzActivityLogAlertActionGroupObject.md)
+Create an in-memory object for ActionGroup.
+
+### [New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject](New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject.md)
 Create an in-memory object for AlertRuleAnyOfOrLeafCondition.
 
-### [New-AzAlertRuleLeafConditionObject](New-AzAlertRuleLeafConditionObject.md)
+### [New-AzActivityLogAlertAlertRuleLeafConditionObject](New-AzActivityLogAlertAlertRuleLeafConditionObject.md)
 Create an in-memory object for AlertRuleLeafCondition.
 
 ### [Remove-AzActivityLogAlert](Remove-AzActivityLogAlert.md)

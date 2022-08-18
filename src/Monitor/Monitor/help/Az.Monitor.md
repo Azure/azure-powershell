@@ -87,23 +87,23 @@ Retrieve an scheduled query rule definition.
 ### [Get-AzSubscriptionDiagnosticSetting](Get-AzSubscriptionDiagnosticSetting.md)
 Gets the active subscription diagnostic settings for the specified resource.
 
-### [New-AzActionGroupObject](New-AzActionGroupObject.md)
-Create an in-memory object for ActionGroup.
-
 ### [New-AzActionGroupReceiver](New-AzActionGroupReceiver.md)
 Creates an new action group receiver.
 
 ### [New-AzActivityLogAlert](New-AzActivityLogAlert.md)
 Create a new Activity Log Alert rule or update an existing one.
 
-### [New-AzAlertRuleAnyOfOrLeafConditionObject](New-AzAlertRuleAnyOfOrLeafConditionObject.md)
+### [New-AzActivityLogAlertActionGroupObject](New-AzActivityLogAlertActionGroupObject.md)
+Create an in-memory object for ActionGroup.
+
+### [New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject](New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject.md)
 Create an in-memory object for AlertRuleAnyOfOrLeafCondition.
+
+### [New-AzActivityLogAlertAlertRuleLeafConditionObject](New-AzActivityLogAlertAlertRuleLeafConditionObject.md)
+Create an in-memory object for AlertRuleLeafCondition.
 
 ### [New-AzAlertRuleEmail](New-AzAlertRuleEmail.md)
 Creates an email action for an alert rule.
-
-### [New-AzAlertRuleLeafConditionObject](New-AzAlertRuleLeafConditionObject.md)
-Create an in-memory object for AlertRuleLeafCondition.
 
 ### [New-AzAlertRuleWebhook](New-AzAlertRuleWebhook.md)
 Creates an alert rule webhook.
@@ -129,14 +129,20 @@ Create data collection rule association.
 ### [New-AzDiagnosticSetting](New-AzDiagnosticSetting.md)
 Creates or updates diagnostic settings for the specified resource.
 
+### [New-AzDiagnosticSettingLogSettingsObject](New-AzDiagnosticSettingLogSettingsObject.md)
+Create an in-memory object for LogSettings.
+
+### [New-AzDiagnosticSettingMetricSettingsObject](New-AzDiagnosticSettingMetricSettingsObject.md)
+Create an in-memory object for MetricSettings.
+
+### [New-AzDiagnosticSettingSubscriptionLogSettingsObject](New-AzDiagnosticSettingSubscriptionLogSettingsObject.md)
+Create an in-memory object for SubscriptionLogSettings.
+
 ### [New-AzInsightsPrivateLinkScope](New-AzInsightsPrivateLinkScope.md)
 create private link scope
 
 ### [New-AzInsightsPrivateLinkScopedResource](New-AzInsightsPrivateLinkScopedResource.md)
 create for private link scoped resource
-
-### [New-AzLogSettingsObject](New-AzLogSettingsObject.md)
-Create an in-memory object for LogSettings.
 
 ### [New-AzMetricAlertRuleV2Criteria](New-AzMetricAlertRuleV2Criteria.md)
 Creates a local criteria object that can be used to create a new metric alert
@@ -147,17 +153,8 @@ Creates a local dimension selection object that can be used to construct a metri
 ### [New-AzMetricFilter](New-AzMetricFilter.md)
 Creates a metric dimension filter that can be used to query metrics.
 
-### [New-AzMetricSettingsObject](New-AzMetricSettingsObject.md)
-Create an in-memory object for MetricSettings.
-
 ### [New-AzScheduledQueryRule](New-AzScheduledQueryRule.md)
 Creates or updates a scheduled query rule.
-
-### [New-AzScheduledQueryRuleAlertingAction](New-AzScheduledQueryRuleAlertingAction.md)
-Creates an object of type Alerting Action
-
-### [New-AzScheduledQueryRuleAznsActionGroup](New-AzScheduledQueryRuleAznsActionGroup.md)
-Creates an object of type Azns Action Group
 
 ### [New-AzScheduledQueryRuleConditionObject](New-AzScheduledQueryRuleConditionObject.md)
 Create an in-memory object for Condition.
@@ -165,23 +162,8 @@ Create an in-memory object for Condition.
 ### [New-AzScheduledQueryRuleDimensionObject](New-AzScheduledQueryRuleDimensionObject.md)
 Create an in-memory object for Dimension.
 
-### [New-AzScheduledQueryRuleLogMetricTrigger](New-AzScheduledQueryRuleLogMetricTrigger.md)
-Creates an object of type Log Metric Trigger.
-
-### [New-AzScheduledQueryRuleSchedule](New-AzScheduledQueryRuleSchedule.md)
-Creates an object of type Schedule
-
-### [New-AzScheduledQueryRuleSource](New-AzScheduledQueryRuleSource.md)
-Creates an object of type Source
-
-### [New-AzScheduledQueryRuleTriggerCondition](New-AzScheduledQueryRuleTriggerCondition.md)
-Creates an object of type Trigger Condition
-
 ### [New-AzSubscriptionDiagnosticSetting](New-AzSubscriptionDiagnosticSetting.md)
 Creates or updates subscription diagnostic settings for the specified resource.
-
-### [New-AzSubscriptionLogSettingsObject](New-AzSubscriptionLogSettingsObject.md)
-Create an in-memory object for SubscriptionLogSettings.
 
 ### [Remove-AzActionGroup](Remove-AzActionGroup.md)
 Removes an action group.
@@ -227,9 +209,6 @@ Creates a new or updates an existing action group.
 
 ### [Set-AzDataCollectionRule](Set-AzDataCollectionRule.md)
 Updates (full replacement) a data collection rule.
-
-### [Set-AzScheduledQueryRule](Set-AzScheduledQueryRule.md)
-Updates a Log Alert Rule
 
 ### [Update-AzActivityLogAlert](Update-AzActivityLogAlert.md)
 Updates 'tags' and 'enabled' fields in an existing Alert rule.
