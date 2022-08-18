@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Supported to create or update Storage account with Azure Files Active Directory Domain Service Kerberos Authentication
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
 
 ## Version 4.8.0
 * Added check for storage account sas token is secured with the storage account key.

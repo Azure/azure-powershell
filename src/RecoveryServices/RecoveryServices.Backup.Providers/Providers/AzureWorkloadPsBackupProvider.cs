@@ -816,7 +816,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             ProtectionPolicyResource oldPolicy = null;
             ProtectionPolicyResource newPolicy = null;
-            if (isMUAOperation)
+            if (isMUAOperation && item != null && item.PolicyId != null && policy != null && policy.Id != null)
             {
                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.PolicyId);
                 string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, item.PolicyId);
