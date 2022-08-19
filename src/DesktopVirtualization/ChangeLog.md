@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Corrected parameter description of `-Force` in `Remove-AzWvdUserSession`.
 
 ## Version 3.1.0
 * Upgraded api version to 2021-07-12.
