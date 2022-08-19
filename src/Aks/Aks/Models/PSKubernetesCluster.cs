@@ -95,6 +95,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string DnsPrefix { get; set; }
 
         /// <summary>
+        /// Gets or sets the FQDN subdomain of the private cluster with custom private dns.
+        /// </summary>
+        public string FqdnSubdomain { get; set; }
+
+        /// <summary>
         /// Gets FQDN for the master pool.
         /// </summary>
         public string Fqdn { get; private set; }
@@ -103,6 +108,13 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// Gets FQDN of private cluster.
         /// </summary>
         public string PrivateFQDN { get; private set; }
+
+        /// <summary>
+        /// Gets the special FQDN used by the Azure Portal to access the Managed Cluster.
+        /// This FQDN is for use only by the Azure Portal and should not be used by other
+        /// clients.
+        /// </summary>
+        public string AzurePortalFQDN { get; private set; }
 
         /// <summary>
         /// Gets or sets properties of the agent pool.
