@@ -2,7 +2,5 @@
 ```powershell
 Remove-AzSentinelOnboardingState -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -Name "default"
 ```
-```output
-```
 
 This commands removes the Sentinel onboarding state

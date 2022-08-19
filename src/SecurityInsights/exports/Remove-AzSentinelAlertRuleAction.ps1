@@ -20,7 +20,7 @@ Delete the action of alert rule.
 .Description
 Delete the action of alert rule.
 .Example
-Remove-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -RuleId 29d2523f-84ce-42d3-b5f1-9e63c85aaed1 -Id 1a33301b-fb83-416a-8d58-3873c7c2dc86
+Remove-AzSentinelAlertRule -ResourceGroupName "myResourceGroupName" -WorkspaceName "myWorkspaceName" -RuleId "29d2523f-84ce-42d3-b5f1-9e63c85aaed1" -Id "1a33301b-fb83-416a-8d58-3873c7c2dc86"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.ISecurityInsightsIdentity

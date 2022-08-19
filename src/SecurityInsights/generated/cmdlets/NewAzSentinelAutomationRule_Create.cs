@@ -90,7 +90,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         Name = @"",
         Description =@"",
         Script = @"(New-Guid).Guid")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.DoNotExport]
         [global::System.Management.Automation.Alias("AutomationRuleId")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.ParameterCategory.Path)]
         public string Id { get => this._id; set => this._id = value; }

@@ -15,38 +15,37 @@ Creates or updates the data connector.
 ### AADAATP (Default)
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
+ [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AmazonWebServicesCloudTrail
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -AWSRoleArn <String>
- -Kind <DataConnectorKind> [-DataConnectorId <String>] [-SubscriptionId <String>] [-Logs <String>]
+ -Kind <DataConnectorKind> [-Id <String>] [-SubscriptionId <String>] [-Log <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### AmazonWebServicesS3
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -AWSRoleArn <String>
- -DetinationTable <String> -Kind <DataConnectorKind> -Logs <String> -SQSURL <String[]>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -DetinationTable <String> -Kind <DataConnectorKind> -Log <String> -SQSURL <String[]> [-Id <String>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### AzureSecurityCenter
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -ASCSubscriptionId <String>
- -Kind <DataConnectorKind> [-DataConnectorId <String>] [-SubscriptionId <String>] [-Alerts <String>]
+ -Kind <DataConnectorKind> [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Dynamics365
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-CommonDataServiceActivity <String>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Id <String>] [-SubscriptionId <String>] [-CommonDataServiceActivity <String>] [-TenantId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### GenericUI
@@ -56,9 +55,8 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String>
  -UiConfigConnectivityCriterion <ConnectivityCriteria[]> -UiConfigDataType <LastDataReceivedDataType[]>
  -UiConfigDescriptionMarkdown <String> -UiConfigGraphQueriesTableName <String>
  -UiConfigGraphQuery <GraphQueries[]> -UiConfigInstructionStep <InstructionSteps[]>
- -UiConfigPublisher <String> -UiConfigSampleQuery <SampleQueries[]> -UiConfigTitle <String>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-AvailabilityStatus <Int32>]
- [-PermissionCustom <PermissionsCustomsItem[]>]
+ -UiConfigPublisher <String> -UiConfigSampleQuery <SampleQueries[]> -UiConfigTitle <String> [-Id <String>]
+ [-SubscriptionId <String>] [-AvailabilityStatus <Int32>] [-PermissionCustom <PermissionsCustomsItem[]>]
  [-PermissionResourceProvider <PermissionsResourceProviderItem[]>] [-UiConfigCustomImage <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -66,22 +64,21 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String>
 ### MicrosoftCloudAppSecurity
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-Alerts <String>] [-DiscoveryLogs <String>]
- [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>] [-DiscoveryLog <String>] [-TenantId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MicrosoftDefenderAdvancedThreatProtection
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
+ [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### MicrosoftThreatIntelligence
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-BingSafetyPhishingURL <String>]
+ [-Id <String>] [-SubscriptionId <String>] [-BingSafetyPhishingURL <String>]
  [-BingSafetyPhishingUrlLookbackPeriod <String>] [-MicrosoftEmergingThreatFeed <String>]
  [-MicrosoftEmergingThreatFeedLookbackPeriod <String>] [-TenantId <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -90,36 +87,36 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
 ### MicrosoftThreatProtection
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-Incidents <String>] [-TenantId <String>]
+ [-Id <String>] [-SubscriptionId <String>] [-Incident <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Office365
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-Exchange <String>] [-SharePoint <String>]
- [-Teams <String>] [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-Id <String>] [-SubscriptionId <String>] [-Exchange <String>] [-SharePoint <String>] [-Teams <String>]
+ [-TenantId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### OfficeATP
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
+ [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### OfficeIRM
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
+ [-Id <String>] [-SubscriptionId <String>] [-Alerts <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### ThreatIntelligence
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -Kind <DataConnectorKind>
- [-DataConnectorId <String>] [-SubscriptionId <String>] [-Indicators <String>] [-TenantId <String>]
+ [-Id <String>] [-SubscriptionId <String>] [-Indicator <String>] [-TenantId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -127,7 +124,7 @@ New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> 
 ```
 New-AzSentinelDataConnector -ResourceGroupName <String> -WorkspaceName <String> -APIRootURL <String>
  -CollectionId <String> -FriendlyName <String> -Kind <DataConnectorKind> -PollingFrequency <PollingFrequency>
- -WorkspaceId <String> [-DataConnectorId <String>] [-SubscriptionId <String>] [-Password <String>]
+ -WorkspaceId <String> [-Id <String>] [-SubscriptionId <String>] [-Password <String>]
  [-TaxiiLookbackPeriod <String>] [-TenantId <String>] [-UserName <String>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -137,9 +134,16 @@ Creates or updates the data connector.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enables the Threat Intelligence data connector
 ```powershell
-New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -DataConnectorId ((New-Guid).Guid) -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
+
+```
+
+=======
+
+### Example 1: Enable a data connector.
+```powershell
+New-AzSentinelDataConnector -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -Kind 'MicrosoftThreatIntelligence' -BingSafetyPhishingURL Enabled -BingSafetyPhishingUrlLookbackPeriod All  -MicrosoftEmergingThreatFeed Enabled -MicrosoftEmergingThreatFeedLookbackPeriod All
 ```
 
 This command enables the Threat Intelligence data connector
@@ -311,21 +315,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DataConnectorId
-The Id of the Data Connector.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: (New-Guid).Guid
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -356,7 +345,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DiscoveryLogs
+### -DiscoveryLog
 
 
 ```yaml
@@ -401,7 +390,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Incidents
+### -Id
+The Id of the Data Connector.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (New-Guid).Guid
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Incident
 
 
 ```yaml
@@ -416,7 +420,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Indicators
+### -Indicator
 
 
 ```yaml
@@ -446,7 +450,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Logs
+### -Log
 
 
 ```yaml

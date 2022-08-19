@@ -17,9 +17,9 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzSentinelIncidentComment
 Describe 'New-AzSentinelIncidentComment' {
     It 'CreateExpanded' {
         $incident = New-AzSentinelIncident -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Id ((New-Guid).Guid) -Severity Informational -Status New -Title "NewIncidentCommentPSTest"
+            -Id $env.NewincidentCommentIncidentId -Severity Informational -Status New -Title $env.NewincidentCommentIncidentName
         $incidentComment = New-AzSentinelIncidentComment -ResourceGroupName $env.resourceGroupName -WorkspaceName $env.workspaceName `
-            -Id ((New-Guid).Guid) -IncidentId $incident.Name -Message "NewIncidentCommentPSTest"
-        $incidentComment.Message | Should -Be "NewIncidentCommentPSTest"
+            -Id $env.NewincidentCommentId -IncidentId $incident.Name -Message $env.NewincidentCommentName
+        $incidentComment.Message | Should -Be $env.NewincidentCommentName
     }
 }

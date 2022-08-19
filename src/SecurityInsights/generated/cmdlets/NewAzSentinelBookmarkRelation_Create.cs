@@ -136,7 +136,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Cmdlets
         Name = @"",
         Description =@"",
         Script = @"(New-Guid).Guid")]
-        [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.DoNotExport]
         [global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category(global::Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.ParameterCategory.Path)]
         public string RelationName { get => this._relationName; set => this._relationName = value; }
 

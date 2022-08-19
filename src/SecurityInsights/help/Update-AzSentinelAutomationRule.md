@@ -33,7 +33,7 @@ Creates or updates the automation rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Updates an automation rule
 ```powershell
  $LogicAppResourceId = Get-AzLogicApp -ResourceGroupName "myResourceGroup" -Name "Reset-AADPassword"
  $automationRuleAction = [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Models.Api20210901Preview.AutomationRuleRunPlaybookAction]::new()

@@ -14,27 +14,27 @@ Updates setting.
 
 ### UpdateExpandedAnomaliesEyesOnEntityAnalytics (Default)
 ```
-Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -SettingsName <String>
- [-SubscriptionId <String>] [-Disabled] [-Enabled] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -Enabled <Boolean>
+ -SettingsName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateExpandedUeba
 ```
-Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -SettingsName <String>
- [-SubscriptionId <String>] [-DataSource <UebaDataSources[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzSentinelSetting -ResourceGroupName <String> -WorkspaceName <String> -DataSource <UebaDataSources[]>
+ -SettingsName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics
 ```
-Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> [-Disabled] [-Enabled]
+Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> -Enabled <Boolean>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpandedUeba
 ```
-Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> [-DataSource <UebaDataSources[]>]
+Update-AzSentinelSetting -InputObject <ISecurityInsightsIdentity> -DataSource <UebaDataSources[]>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -45,7 +45,7 @@ Updates setting.
 
 ### Example 1: Update the Anomalies setting
 ```powershell
- Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName 'Anomalies' -Enabled
+ Update-AzSentinelSetting -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -SettingsName 'Anomalies' -Enabled $true
 ```
 
 This command updates the Anomalies setting, other settings are:
@@ -76,7 +76,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Support.UebaDataSource
 Parameter Sets: UpdateExpandedUeba, UpdateViaIdentityExpandedUeba
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -98,30 +98,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Disabled
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpandedAnomaliesEyesOnEntityAnalytics, UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Enabled
 Anomalies
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Boolean
 Parameter Sets: UpdateExpandedAnomaliesEyesOnEntityAnalytics, UpdateViaIdentityExpandedAnomaliesEyesOnEntityAnalytics
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -126,6 +126,11 @@ param(
     [System.Management.Automation.SwitchParameter]
     ${Enabled},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    ${Disabled},
+
     [Parameter(ParameterSetName='UpdateScheduled')]
     [Parameter(ParameterSetName='UpdateNRT')]
     [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation')]
@@ -363,8 +368,8 @@ param(
     # The credentials, account, tenant, and subscription used for communication with Azure.
     ${DefaultProfile},
 
-    [Parameter(ParameterSetName='UpdateScheduled')]
-    [Parameter(ParameterSetName='UpdateViaIdentityUpdateScheduled')]
+    [Parameter(ParameterSetName='UpdateScheduled', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityUpdateScheduled', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     ${Scheduled},
@@ -420,20 +425,20 @@ param(
     # Use the default credentials for the proxy
     ${ProxyUseDefaultCredentials},
 
-    [Parameter(ParameterSetName='UpdateNRT')]
-    [Parameter(ParameterSetName='UpdateViaIdentityNRT')]
+    [Parameter(ParameterSetName='UpdateNRT', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityNRT', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     ${NRT},
 
-    [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation')]
-    [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftSecurityIncidentCreation')]
+    [Parameter(ParameterSetName='UpdateMicrosoftSecurityIncidentCreation', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityMicrosoftSecurityIncidentCreation', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     ${MicrosoftSecurityIncidentCreation},
 
-    [Parameter(ParameterSetName='UpdateFusionMLTI')]
-    [Parameter(ParameterSetName='UpdateViaIdentityFusionMLTI')]
+    [Parameter(ParameterSetName='UpdateFusionMLTI', Mandatory)]
+    [Parameter(ParameterSetName='UpdateViaIdentityFusionMLTI', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.SecurityInsights.Category('Runtime')]
     [System.Management.Automation.SwitchParameter]
     ${FusionMLorTI}
