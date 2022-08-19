@@ -52,7 +52,6 @@
     - `New/Get/Remove/Set-AzNetworkManagerSubscriptionConnection` 
     - `New/Get/Remove/Set-AzNetworkManagerManagementGroupConnection` 
 * Onboard AgFoodPlatform to Private Link Common Cmdlets
-
 * Onboard Project Oak Forest to Private Link Common Cmdlets
 
 ## Version 4.19.0
