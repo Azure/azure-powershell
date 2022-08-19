@@ -36,7 +36,7 @@ require:
   - $(this-folder)/../../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/kaushal087/azure-rest-api-specs/blob/c59e8f66c517094afe28cb185cd9ac07718e6b75/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
+  - https://github.com/kaushal087/azure-rest-api-specs/blob/8afd9a7cf174025c8d0cb9d8927e4efde1ccc047/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
 #  - C:\repo\azure-rest-api-specs/specification/network/resource-manager/Microsoft.Network/preview/2021-02-01-preview/networkSecurityPerimeter.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
@@ -97,14 +97,30 @@ directive:
         - SecurityPerimeterName
         - NSPName
 
+  - where:
+      subject: NetworkSecurityPerimeter
+      parameter-name: Id
+    set:
+      parameter-name: SecurityPerimeterId
+      alias:
+        - Id
+
 # Profile
   - where:
       subject: Profile
       parameter-name: ProfileName
     set:
       parameter-name: Name
-      alias: 
+      alias:
         - ProfileName
+
+  - where:
+      subject: Profile
+      parameter-name: Id
+    set:
+      parameter-name: ProfileId
+      alias: 
+        - Id
 
   - where:
       subject: Profile
@@ -124,6 +140,14 @@ directive:
       alias: 
         - NetworkSecurityPerimeterName
         - NSPName
+
+  - where:
+      subject: AccessRule
+      parameter-name: Id
+    set:
+      parameter-name: AccessRuleId
+      alias:
+        - Id
 
   - where:
       subject: AccessRule
@@ -174,6 +198,14 @@ directive:
       parameter-name: Name
       alias:
         - AssociationName
+
+  - where:
+      subject: Association
+      parameter-name: Id
+    set:
+      parameter-name: AssociationId
+      alias:
+        - Id
 
 # feature request for the below change https://github.com/Azure/autorest.powershell/issues/982
   - from: source-file-csharp

@@ -15,25 +15,26 @@ Creates or updates a network access rule.
 ### CreateExpanded (Default)
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AddressPrefix <String[]>]
- [-Direction <AccessRuleDirection>] [-FullyQualifiedDomainName <String[]>] [-Location <String>]
- [-Perimeter <IPerimeterBasedAccessRule[]>] [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -SecurityPerimeterName <String> [-SubscriptionId <String>] [-AccessRuleId <String>]
+ [-AddressPrefix <String[]>] [-Direction <AccessRuleDirection>] [-FullyQualifiedDomainName <String[]>]
+ [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>] [-Subscription <ISubscriptionId[]>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### Create
 ```
 New-AzNetworkSecurityPerimeterAccessRule -Name <String> -ProfileName <String> -ResourceGroupName <String>
- -SecurityPerimeterName <String> -Parameter <INspAccessRuleRequest> [-SubscriptionId <String>]
+ -SecurityPerimeterName <String> -Parameter <INspAccessRule> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### CreateViaIdentityExpanded
 ```
 New-AzNetworkSecurityPerimeterAccessRule -InputObject <INetworkSecurityPerimeterIdentity>
- [-AddressPrefix <String[]>] [-Direction <AccessRuleDirection>] [-FullyQualifiedDomainName <String[]>]
- [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>] [-Subscription <ISubscriptionId[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-AccessRuleId <String>] [-AddressPrefix <String[]>] [-Direction <AccessRuleDirection>]
+ [-FullyQualifiedDomainName <String[]>] [-Location <String>] [-Perimeter <IPerimeterBasedAccessRule[]>]
+ [-Subscription <ISubscriptionId[]>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -76,7 +77,7 @@ $perimeter2 = @{
 
 $networkSecurityPerimeters  =  @($perimeter1,$perimeter2)
 
-New-AzNetworkSecurityPerimeterAccessRule -Name 'perimeter-ar' -SecurityPerimeterName 'testt-nsp1'  -ProfileName 't-profile2'  -ResourceGroupName 'ResourceGroup-1'  -Direction 'Inbound' -Location 'eastus2euap' -Perimeter $networkSecurityPerimeters
+New-AzNetworkSecurityPerimeterAccessRule -Name 'perimeter-ar' -SecurityPerimeterName 'testt-nsp1'  -ProfileName 't-profile2'  -ResourceGroupName 'ResourceGroup-1'  -Direction 'Inbound' -Location 'eastus2euap' -NetworkSecurityPerimeters $networkSecurityPerimeters
 
 ```
 
@@ -91,6 +92,21 @@ Location Name
 Creates a NetworkSecurityPerimeterAccessRule
 
 ## PARAMETERS
+
+### -AccessRuleId
+Resource ID.
+
+```yaml
+Type: System.String
+Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Aliases: Id
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AddressPrefix
 Inbound address prefixes (IPv4/IPv6)
@@ -203,7 +219,7 @@ The NSP access rule resource
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRuleRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRule
 Parameter Sets: Create
 Aliases:
 
@@ -358,7 +374,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRuleRequest
+### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.Api20210201Preview.INspAccessRule
 
 ### Microsoft.Azure.PowerShell.Cmdlets.NetworkSecurityPerimeter.Models.INetworkSecurityPerimeterIdentity
 
@@ -384,9 +400,10 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[SubscriptionId <String>]`: The subscription credentials which uniquely identify the Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-`PARAMETER <INspAccessRuleRequest>`: The NSP access rule resource
+`PARAMETER <INspAccessRule>`: The NSP access rule resource
+  - `[Id <String>]`: Resource ID.
   - `[Location <String>]`: Resource location.
-  - `[Tag <IResourceRequestTags>]`: Resource tags.
+  - `[Tag <IResourceTags>]`: Resource tags.
     - `[(Any) <String>]`: This indicates any property can be added to this object.
   - `[AddressPrefix <String[]>]`: Inbound address prefixes (IPv4/IPv6)
   - `[Direction <AccessRuleDirection?>]`: Direction that specifies whether the access rules is inbound/outbound.
