@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* `Get-AzVmRunCommand` now shows all the properties of VMRunCommand in a list format.
 * Added Disk Delete Optional parameters `OsDisk Deletion Option` and `Delete Option` to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
 
 * Improve printed output for `Get-AzComputeResourceSku`

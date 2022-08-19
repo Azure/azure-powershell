@@ -32,6 +32,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
     {
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Name of the resource group for the run command.")]
         [ResourceGroupCompleter]
         [SupportsWildcards]
@@ -39,6 +40,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
+            Mandatory = true,
             HelpMessage = "Name of the virtual machine of the run command.")]
         [ResourceNameCompleter("Microsoft.Compute/virtualMachines", "ResourceGroupName")]
         public string VMName { get; set; }
@@ -47,7 +49,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Name of the run command.")]
-        [ResourceNameCompleter("Microsoft.Compute/virtualMachines/runCommands")]
         public string RunCommandName { get; set; }
 
         [Parameter(
@@ -89,7 +90,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<VirtualMachineRunCommand, PSVirtualMachineRunCommandList>(r));
                     }
-                    WriteObject(TopLevelWildcardFilter(this.ResourceGroupName, this.VMName, psObject), true);
+                    WriteObject(psObject);
                 }
             });
         }
