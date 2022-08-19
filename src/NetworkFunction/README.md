@@ -1,6 +1,6 @@
 <!-- region Generated -->
 # Az.NetworkFunction
-This directory contains the PowerShell module for the Az.NetworkFunction service.
+This directory contains the PowerShell module for the NetworkFunction service.
 
 ---
 ## Status
