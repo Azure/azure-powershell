@@ -1,44 +1,20 @@
 ---
-external help file: Az.Compute-help.xml
+external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmruncommand
 schema: 2.0.0
 ---
 
-# Get-AzVMRunCommand
+# Get-AzVmRunCommand
 
 ## SYNOPSIS
-Gets specific run command for a subscription in a location.
+Gets a specific Run Command or a list of Run Commands for a Virtual Machine
 
 ## SYNTAX
 
-### List (Default)
 ```
-Get-AzVMRunCommand -Location <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzVMRunCommand -CommandId <String> -Location <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzVMRunCommand [-SubscriptionId <String[]>] -ResourceGroupName <String> -VMName <String> [-Expand <String>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzVMRunCommand [-SubscriptionId <String[]>] -ResourceGroupName <String> -RunCommandName <String>
- -VMName <String> [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzVMRunCommand -InputObject <IComputeIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzVmRunCommand -ResourceGroupName <String> -VMName <String> [-RunCommandName <String>] [-Expand <String>]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,11 +27,6 @@ Gets specific run command for a subscription in a location.
 Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand2"
 ```
 
-```output
-Location Name             Type
--------- ----             ----
-eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
-```
 
 Get Run Command by it's name.
 
@@ -64,40 +35,17 @@ Get Run Command by it's name.
 Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname
 ```
 
-```output
-Location Name             Type
--------- ----             ----
-eastus   firstruncommand  Microsoft.Compute/virtualMachines/runCommands
-eastus   firstruncommand2 Microsoft.Compute/virtualMachines/runCommands
-eastus   firstruncommand3 Microsoft.Compute/virtualMachines/runCommands
-```
-
 Get Run Commands by VM name
 
 ## PARAMETERS
-
-### -CommandId
-The command id.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: System.Management.Automation.PSObject
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
+Aliases: AzContext, AzureRmContext, AzureCredential
 
 Required: False
 Position: Named
@@ -107,48 +55,17 @@ Accept wildcard characters: False
 ```
 
 ### -Expand
-The expand expression to apply on the operation.
+The expand expression to apply on the operation. Possible value(s): InstanceView
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.IComputeIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Location
-The location upon which run commands is queried.
-
-```yaml
-Type: System.String
-Parameter Sets: List, Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -157,14 +74,14 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
 ```
 
 ### -RunCommandName
@@ -172,29 +89,13 @@ The name of the virtual machine run command.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get1
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SubscriptionId
-Subscription credentials which uniquely identify Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String[]
-Parameter Sets: List, Get, List1, Get1
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
-Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -203,13 +104,13 @@ The name of the virtual machine containing the run command.
 
 ```yaml
 Type: System.String
-Parameter Sets: List1, Get1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
