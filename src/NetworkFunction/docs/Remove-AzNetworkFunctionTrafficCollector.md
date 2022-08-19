@@ -34,11 +34,6 @@ Deletes a specified Azure Traffic Collector resource.
 Remove-AzNetworkFunctionTrafficCollector -name atctestps -resourcegroupname SEA-Cust10
 ```
 
-```output
-{
-}
-```
-
 This cmdlet deletes a traffic collector.
 
 ## PARAMETERS
