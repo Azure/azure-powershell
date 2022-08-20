@@ -44,7 +44,9 @@ using Runbook = Microsoft.Azure.Commands.Automation.Model.Runbook;
 using Schedule = Microsoft.Azure.Commands.Automation.Model.Schedule;
 using Variable = Microsoft.Azure.Commands.Automation.Model.Variable;
 using HybridRunbookWorkerGroup = Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup;
+using HybridRunbookWorker = Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Azure.ResourceManager.Automation;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -1482,6 +1484,38 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
                 throw;
             }
+        }
+
+        public HybridRunbookWorker GetHybridRunbookWorker(string resourceGroupName, string automationAccountName, string name, string hybridRunbookWorkerGroupName)
+        {
+            var hybridRunbookWorkerGroupModel = this.TryGetHybridRunbookWorkerModel(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupName);
+            if(hybridRunbookWorkerGroupModel == null)
+            {
+                throw new ResourceCommonException(typeof(HybridRunbookWorkerGroup),
+                    String.Format(CultureInfo.CurrentCulture, Resources.HybridRunbookWorkerGroupNotFound, hybridRunbookWorkerGroupName));
+            }
+
+            var hybridRunbookWorkerModel = hybridRunbookWorkerGroupModel.HybridRunbookWorkers.First(x => string.Equals(x.Name, name));
+
+            if(hybridRunbookWorkerModel == null)
+            {
+                throw new ResourceCommonException(typeof(HybridRunbookWorker),
+                    String.Format(CultureInfo.CurrentCulture, Resources.HybridRunbookWorkerNotFound, name));
+            }
+
+            return new HybridRunbookWorker(hybridRunbookWorkerModel);
+        }
+
+        public IEnumerable<HybridRunbookWorker> ListHybridRunbookWorkers(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, ref string nextLink)
+        {
+            var hybridRunbookWorkerGroupModel = this.TryGetHybridRunbookWorkerModel(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupName);
+            if (hybridRunbookWorkerGroupModel == null)
+            {
+                throw new ResourceCommonException(typeof(HybridRunbookWorkerGroup),
+                    String.Format(CultureInfo.CurrentCulture, Resources.HybridRunbookWorkerGroupNotFound, hybridRunbookWorkerGroupName));
+            }
+
+            return hybridRunbookWorkerGroupModel.HybridRunbookWorkers.Select(x => new HybridRunbookWorker(x));
         }
 
         #endregion

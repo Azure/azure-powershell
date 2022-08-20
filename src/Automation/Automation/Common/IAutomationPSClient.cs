@@ -234,6 +234,10 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         void DeleteHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string name);
 
+        HybridRunbookWorker GetHybridRunbookWorker(string resourceGroupName, string automationAccountName, string name, string hybridRunbookWorkerGroupName);
+
+        IEnumerable<HybridRunbookWorker> ListHybridRunbookWorkers(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, ref string nextLink);
+
         #endregion
 
         #region Credentials
