@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                 var nextLink = string.Empty;
                 do
                 {
-                    var results = this.AutomationClient.ListHybridRunbookWorkerGroups(this.ResourceGroupName, this.AutomationAccountName, ref nextLink);
+                    var results = this.AutomationClient.ListHybridRunbookWorkers(this.ResourceGroupName, this.AutomationAccountName, this.HybridRunbookWorkerGroupName, ref nextLink);
                     this.GenerateCmdletOutput(results);
                 }while (!string.IsNullOrEmpty(nextLink));
             }
