@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get a dynatrace SingleSignOn resource
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState SingleSignOnState SingleSignOnUrl
+----    ----------------- ----------------- ----------------- ---------------
+default dyobrg            Succeeded         Initial
 ```
 
-{{ Add description here }}
+This command gets a dynatrace SingleSignOn resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a dynatrace SingleSignOn resource by pipeline
 ```powershell
-{{ Add code here }}
+New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com" | Get-AzDynatraceMonitorSSOConfig
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState SingleSignOnState SingleSignOnUrl
+----    ----------------- ----------------- ----------------- ---------------
+default dyobrg            Succeeded         Initial
 ```
 
-{{ Add description here }}
-
+This command gets a dynatrace SingleSignOn resource by pipeline.

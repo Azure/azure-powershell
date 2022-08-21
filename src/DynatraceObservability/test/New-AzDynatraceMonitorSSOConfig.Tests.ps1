@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzDynatraceMonitorSSOConf
 }
 
 Describe 'New-AzDynatraceMonitorSSOConfig' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { New-AzDynatraceMonitorSSOConfig -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName02 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com" } | Should -Not -Throw
     }
 }

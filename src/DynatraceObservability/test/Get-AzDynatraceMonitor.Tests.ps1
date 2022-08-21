@@ -15,19 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDynatraceMonitor'))
 }
 
 Describe 'Get-AzDynatraceMonitor' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzDynatraceMonitor} | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzDynatraceMonitor -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName01 } | Should -Not -Throw
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        { Get-AzDynatraceMonitor -ResourceGroupName $env.resourceGroup } | Should -Not -Throw
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        { 
+            $obj = Get-AzDynatraceMonitor -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName01
+            Get-AzDynatraceMonitor -InputObject $obj
+        } | Should -Not -Throw
     }
 }

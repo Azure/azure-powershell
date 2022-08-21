@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a tag rule for the dynatrace monitor
 ```powershell
-{{ Add code here }}
+$tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
+Update-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState LogRuleSendAadLog
+----    ----------------- ----------------- -----------------
+default dyobrg            Succeeded         Disabled
 ```
 
-{{ Add description here }}
+This command updates a tag rule for the dynatrace monitor.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a tag rule for the dynatrace monitor by pipeline
 ```powershell
-{{ Add code here }}
+$tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
+Get-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 | Update-AzDynatraceMonitorTagRule -LogRuleFilteringTag $tagFilter
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState LogRuleSendAadLog
+----    ----------------- ----------------- -----------------
+default dyobrg            Succeeded         Disabled
 ```
 
-{{ Add description here }}
-
+This command updates a tag rule for the dynatrace monitor by pipeline.

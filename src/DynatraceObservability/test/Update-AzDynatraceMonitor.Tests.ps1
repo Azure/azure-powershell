@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDynatraceMonitor'))
 }
 
 Describe 'Update-AzDynatraceMonitor' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-AzDynatraceMonitor -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName01 -Tag @{'key' = 'test'} } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded'  {
+        {
+            $obj = Get-AzDynatraceMonitor -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName01 
+            Update-AzDynatraceMonitor -InputObject $obj -Tag @{'key' = 'test'}
+        } | Should -Not -Throw
     }
 }

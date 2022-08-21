@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzDynatraceMonitor'))
 }
 
 Describe 'Remove-AzDynatraceMonitor' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { Remove-AzDynatraceMonitor -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName02 } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        { 
+            $obj = New-AzDynatraceMonitor -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName03 -Location $env.location -UserFirstName 'Lucas' -UserLastName 'Yao' -UserEmailAddress 'v-diya@microsoft.com' -PlanUsageType "COMMITTED" -PlanBillingCycle "Monthly" -PlanDetail "azureportalintegration_privatepreview@TIDhjdtn7tfnxcy" -SingleSignOnAadDomain "mpliftrlogz20210811outlook.onmicrosoft.com" 
+            Remove-AzDynatraceMonitor -InputObject $obj
+        } | Should -Not -Throw
     }
 }

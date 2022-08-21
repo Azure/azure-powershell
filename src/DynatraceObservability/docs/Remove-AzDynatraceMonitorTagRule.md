@@ -14,9 +14,8 @@ Delete a TagRule
 
 ### Delete (Default)
 ```
-Remove-AzDynatraceMonitorTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzDynatraceMonitorTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -30,27 +29,19 @@ Delete a TagRule
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a tag rule for the dynatrace monitor
 ```powershell
-{{ Add code here }}
+Remove-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 ```
 
-```output
-{{ Add output here }}
-```
+This command removes a tag rule for the dynatrace monitor
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a tag rule for the dynatrace monitor by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 | Remove-AzDynatraceMonitorTagRule
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command remove a tag rule for the dynatrace monitor by pipeline.
 
 ## PARAMETERS
 
@@ -101,21 +92,6 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorName
-Monitor resource name
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
 Monitor resource name
 
 ```yaml

@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a dynatrace SingleSignOn resource
 ```powershell
-{{ Add code here }}
+New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
 ```
 
 ```output
-{{ Add output here }}
+Name    ProvisioningState SingleSignOnState SingleSignOnUrl
+----    ----------------- ----------------- ---------------
+default Succeeded         Initial
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command create a dynatrace SingleSignOn resource.

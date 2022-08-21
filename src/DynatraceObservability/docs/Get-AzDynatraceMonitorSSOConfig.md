@@ -12,16 +12,10 @@ Get a DynatraceSingleSignOnResource
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
 Get-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDynatraceMonitorSSOConfig -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -35,27 +29,31 @@ Get a DynatraceSingleSignOnResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a dynatrace SingleSignOn resource
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState SingleSignOnState SingleSignOnUrl
+----    ----------------- ----------------- ----------------- ---------------
+default dyobrg            Succeeded         Initial
 ```
 
-{{ Add description here }}
+This command gets a dynatrace SingleSignOn resource.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a dynatrace SingleSignOn resource by pipeline
 ```powershell
-{{ Add code here }}
+New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com" | Get-AzDynatraceMonitorSSOConfig
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState SingleSignOnState SingleSignOnUrl
+----    ----------------- ----------------- ----------------- ---------------
+default dyobrg            Succeeded         Initial
 ```
 
-{{ Add description here }}
+This command gets a dynatrace SingleSignOn resource by pipeline.
 
 ## PARAMETERS
 
@@ -95,21 +93,6 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Single Sign On Configuration Name
-
-```yaml
-Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -126,7 +109,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -141,7 +124,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False

@@ -22,27 +22,12 @@ List the compute resources currently being monitored by the Dynatrace resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the compute resources currently being monitored by the Dynatrace resource
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitorHost -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command lists the compute resources currently being monitored by the Dynatrace resource.
 
 ## PARAMETERS
 

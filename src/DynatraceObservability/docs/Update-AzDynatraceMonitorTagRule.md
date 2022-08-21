@@ -14,8 +14,8 @@ Update a TagRule
 
 ### UpdateExpanded (Default)
 ```
-Update-AzDynatraceMonitorTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <SendAadLogsStatus>]
+Update-AzDynatraceMonitorTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <SendAadLogsStatus>]
  [-LogRuleSendActivityLog <SendActivityLogsStatus>] [-LogRuleSendSubscriptionLog <SendSubscriptionLogsStatus>]
  [-MetricRuleFilteringTag <IFilteringTag[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -35,27 +35,33 @@ Update a TagRule
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a tag rule for the dynatrace monitor
 ```powershell
-{{ Add code here }}
+$tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
+Update-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState LogRuleSendAadLog
+----    ----------------- ----------------- -----------------
+default dyobrg            Succeeded         Disabled
 ```
 
-{{ Add description here }}
+This command updates a tag rule for the dynatrace monitor.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a tag rule for the dynatrace monitor by pipeline
 ```powershell
-{{ Add code here }}
+$tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
+Get-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 | Update-AzDynatraceMonitorTagRule -LogRuleFilteringTag $tagFilter
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState LogRuleSendAadLog
+----    ----------------- ----------------- -----------------
+default dyobrg            Succeeded         Disabled
 ```
 
-{{ Add description here }}
+This command updates a tag rule for the dynatrace monitor by pipeline.
 
 ## PARAMETERS
 
@@ -174,21 +180,6 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorName
-Monitor resource name
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
 Monitor resource name
 
 ```yaml

@@ -29,27 +29,19 @@ Delete a MonitorResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a dynatrace monitor
 ```powershell
-{{ Add code here }}
+Remove-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02
 ```
 
-```output
-{{ Add output here }}
-```
+This command removes a dynatrace monitor.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a dynatrace monitor by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 | Remove-AzDynatraceMonitor
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command removes a dynatrace monitor by pipeline.
 
 ## PARAMETERS
 

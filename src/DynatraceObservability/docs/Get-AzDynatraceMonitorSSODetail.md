@@ -22,27 +22,18 @@ Gets the SSO configuration details from the partner.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets the SSO configuration details from the partner
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitorSSODetail -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -UserPrincipal "user@microsoft.com"
 ```
 
 ```output
-{{ Add output here }}
+AadDomain AdminUser              IsSsoEnabled MetadataUrl SingleSignOnUrl
+--------- ---------              ------------ ----------- ---------------
+{}        {v-diya@microsoft.com} Disabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command gets the SSO configuration details from the partner.
 
 ## PARAMETERS
 

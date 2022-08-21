@@ -16,10 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDynatraceMonitorVMHostP
 
 Describe 'Get-AzDynatraceMonitorVMHostPayload' {
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { Get-AzDynatraceMonitorVMHostPayload -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 } | Should -Not -Throw
     }
 }

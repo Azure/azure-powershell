@@ -1,22 +1,9 @@
-### Example 1: {{ Add title here }}
+### Example 1: Gets all the Dynatrace environments that a user can link a azure resource
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitorLinkableEnv -ResourceGroupName dyobrg -Name dyob-pwsh01 -Region 'East US' -UserPrincipal 'user@microsoft.com' -TenantId 'xxxxxxxx-xxxxx-xxxx-xxxx-xxxxx'
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command gets all the Dynatrace environments that a user can link a azure resource.

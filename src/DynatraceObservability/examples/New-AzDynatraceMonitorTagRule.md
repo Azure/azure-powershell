@@ -1,22 +1,13 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a tag rule for the dynatrace monitor
 ```powershell
-{{ Add code here }}
+$tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
+New-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState LogRuleSendAadLog
+----    ----------------- ----------------- -----------------
+default dyobrg            Succeeded         Disabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command create a tag rule for the dynatrace monitor.

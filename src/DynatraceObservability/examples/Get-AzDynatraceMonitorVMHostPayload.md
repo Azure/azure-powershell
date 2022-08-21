@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the payload that needs to be passed in the request body for installing Dynatrace agent on a VM
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitorVMHostPayload -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 ```
 
 ```output
-{{ Add output here }}
+EnvironmentId IngestionKey
+------------- ------------
+ihx78752      dt0c01.C3A5JBXDZ4C3SCZDRBJ3D23I.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This coammnd gets the payload that needs to be passed in the request body for installing Dynatrace agent on a VM.

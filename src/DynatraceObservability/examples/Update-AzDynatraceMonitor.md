@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update a dynatrace monitor
 ```powershell
-{{ Add code here }}
+Update-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 -Tag @{'key' = 'test'}
 ```
 
 ```output
-{{ Add output here }}
+Name        ProvisioningState Location    MonitoringStatus SingleSignOnPropertyAadDomain
+----        ----------------- --------    ---------------- -----------------------------
+dyob-pwsh02 Succeeded         eastus2euap Enabled          {mpliftrlogz20210811outlook.onmicrosoft.com}
 ```
 
-{{ Add description here }}
+This command updates a dynatrace monitor.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a dynatrace monitor by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitor -ResourceGroupName dyobrg -Name dyob-pwsh02 | Update-AzDynatraceMonitor -Tag @{'key' = 'test'}
 ```
 
 ```output
-{{ Add output here }}
+Name        ProvisioningState Location    MonitoringStatus SingleSignOnPropertyAadDomain
+----        ----------------- --------    ---------------- -----------------------------
+dyob-pwsh02 Succeeded         eastus2euap Enabled          {mpliftrlogz20210811outlook.onmicrosoft.com}
 ```
 
-{{ Add description here }}
-
+This command updates a dynatrace monitor by pipeline.

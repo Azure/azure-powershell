@@ -16,10 +16,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDynatraceMonitorLinkabl
 
 Describe 'Get-AzDynatraceMonitorLinkableEnv' {
     It 'ListExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        { Get-AzDynatraceMonitorLinkableEnv -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 } | Should -Not -Throw
     }
 }

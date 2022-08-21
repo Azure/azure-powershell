@@ -13,8 +13,8 @@ Create a TagRule
 ## SYNTAX
 
 ```
-New-AzDynatraceMonitorTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <SendAadLogsStatus>]
+New-AzDynatraceMonitorTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-LogRuleFilteringTag <IFilteringTag[]>] [-LogRuleSendAadLog <SendAadLogsStatus>]
  [-LogRuleSendActivityLog <SendActivityLogsStatus>] [-LogRuleSendSubscriptionLog <SendSubscriptionLogsStatus>]
  [-MetricRuleFilteringTag <IFilteringTag[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
@@ -25,27 +25,19 @@ Create a TagRule
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a tag rule for the dynatrace monitor
 ```powershell
-{{ Add code here }}
+$tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
+New-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState LogRuleSendAadLog
+----    ----------------- ----------------- -----------------
+default dyobrg            Succeeded         Disabled
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command create a tag rule for the dynatrace monitor.
 
 ## PARAMETERS
 
@@ -163,21 +155,6 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorName
-Monitor resource name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
 Monitor resource name
 
 ```yaml

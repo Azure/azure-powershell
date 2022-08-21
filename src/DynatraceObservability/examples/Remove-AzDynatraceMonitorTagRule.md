@@ -1,22 +1,20 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a tag rule for the dynatrace monitor
 ```powershell
-{{ Add code here }}
+Remove-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command removes a tag rule for the dynatrace monitor
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a tag rule for the dynatrace monitor by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 | Remove-AzDynatraceMonitorTagRule
 ```
 
 ```output
-{{ Add output here }}
 ```
 
-{{ Add description here }}
+This command remove a tag rule for the dynatrace monitor by pipeline.
 

@@ -19,6 +19,21 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    $env.dynatraceName01 = 'dyob' + (RandomString -allChars $false -len 6)
+    $env.dynatraceName02 = 'dyob' + (RandomString -allChars $false -len 6)
+    $env.dynatraceName03 = 'dyob' + (RandomString -allChars $false -len 6)
+
+    $env.location = 'eastus2euap'
+    Write-Host -ForegroundColor Green "start to create test group"
+    $env.resourceGroup = 'dyobrg' + (RandomString -allChars $false -len 6)
+    New-AzResourceGroup -Name $env.resourceGroup -Location $env.location
+
+    New-AzDynatraceMonitor -ResourceGroupName $env.resourceGroup -Name $env.dynatraceName01 -Location $env.location -UserFirstName 'Lucas' -UserLastName 'Yao' -UserEmailAddress 'v-diya@microsoft.com' -PlanUsageType "COMMITTED" -PlanBillingCycle "Monthly" -PlanDetail "azureportalintegration_privatepreview@TIDhjdtn7tfnxcy" -SingleSignOnAadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
+    
+    New-AzDynatraceMonitorSSOConfig -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
+
+    $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
+    New-AzDynatraceMonitorTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 -LogRuleFilteringTag $tagFilter
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -27,5 +42,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroup
 }
 

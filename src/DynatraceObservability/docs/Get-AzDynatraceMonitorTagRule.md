@@ -12,16 +12,10 @@ Get a TagRule
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
 Get-AzDynatraceMonitorTagRule -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzDynatraceMonitorTagRule -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -35,27 +29,32 @@ Get a TagRule
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get a tag rule of the dynatrace monitor
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState LogRuleSendAadLog
+----    ----------------- ----------------- -----------------
+default dyobrg            Succeeded         Disabled
 ```
 
-{{ Add description here }}
+This command gets a tag rule of the dynatrace monitor.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a tag rule of the dynatrace monitor by pipeline
 ```powershell
-{{ Add code here }}
+$tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
+New-AzDynatraceMonitorTagRule -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -LogRuleFilteringTag $tagFilter | Get-AzDynatraceMonitorTagRule
 ```
 
 ```output
-{{ Add output here }}
+Name    ResourceGroupName ProvisioningState LogRuleSendAadLog
+----    ----------------- ----------------- -----------------
+default dyobrg            Succeeded         Disabled
 ```
 
-{{ Add description here }}
+This command gets a tag rule of the dynatrace monitor by pipeline.
 
 ## PARAMETERS
 
@@ -95,21 +94,6 @@ Monitor resource name
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Monitor resource name
-
-```yaml
-Type: System.String
 Parameter Sets: Get
 Aliases:
 
@@ -126,7 +110,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -141,7 +125,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List
+Parameter Sets: Get
 Aliases:
 
 Required: False

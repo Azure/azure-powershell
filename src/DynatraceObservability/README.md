@@ -49,7 +49,7 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentityExpanded$|^CreateViaIdentity$|^Update$|^UpdateViaIdentity$
     remove: true
-  
+
   # Rename subject
   - where:
       subject: ^MonitorAccountCredentials$
@@ -79,7 +79,7 @@ directive:
   - where:
       subject: ^MonitorMonitoredResource$
     set:
-      subject: MonitorResource
+      subject: MonitoredResource
 
   # remove varinat
   - where:
@@ -96,6 +96,18 @@ directive:
       subject: ^MonitorVMHostPayload$|^MonitorAccountCredential$
       variant: ^GetViaIdentity$
     remove: true
+
+  #  only name allowed for a rule set is 'default'
+  - where:
+      verb: Get
+      subject: ^MonitorTagRule$|^MonitorSSOConfig$
+      variant: ^List$
+    remove: true
+  # remove parameter
+  # - where:
+  #     verb: Get
+  #     parameter-name: Confirm
+  #   hide: true
 
   # rename parameter
   - where:
@@ -230,6 +242,56 @@ directive:
     set:
       parameter-name: Name
 
+#  only name allowed for a rule set is 'default'
+  - where:
+      verb: New|Get|Update|Remove
+      subject: MonitorTagRule
+      parameter-name: Name
+    hide: true
+    set:
+      default:
+        script: '"default"'
+
+  - where:
+      verb: New|Get|Update|Remove
+      subject: MonitorSSOConfig
+      parameter-name: Name
+    hide: true
+    set:
+      default:
+        script: '"default"'
+
+  - where:
+      model-name: TagRule
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - LogRuleSendAadLog
+  - where:
+      model-name: MonitorResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - Location
+          - MonitoringStatus
+          - SingleSignOnPropertyAadDomain
+
+  - where:
+      model-name: DynatraceSingleSignOnResource
+    set:
+      format-table:
+        properties:
+          - Name
+          - ResourceGroupName
+          - ProvisioningState
+          - SingleSignOnState
+          - SingleSignOnUrl
   # - model-cmdlet:
     # - FilteringTag 
     # --> Generate cmdlet: New-AzDynatraceMonitorFilteringTagObject

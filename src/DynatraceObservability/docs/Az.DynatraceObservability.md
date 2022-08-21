@@ -20,14 +20,14 @@ Gets the user account credentials for a Monitor
 ### [Get-AzDynatraceMonitorAppService](Get-AzDynatraceMonitorAppService.md)
 Gets list of App Services with Dynatrace PaaS OneAgent enabled
 
+### [Get-AzDynatraceMonitoredResource](Get-AzDynatraceMonitoredResource.md)
+List the resources currently being monitored by the Dynatrace monitor resource.
+
 ### [Get-AzDynatraceMonitorHost](Get-AzDynatraceMonitorHost.md)
 List the compute resources currently being monitored by the Dynatrace resource.
 
 ### [Get-AzDynatraceMonitorLinkableEnv](Get-AzDynatraceMonitorLinkableEnv.md)
 Gets all the Dynatrace environments that a user can link a azure resource to
-
-### [Get-AzDynatraceMonitorResource](Get-AzDynatraceMonitorResource.md)
-List the resources currently being monitored by the Dynatrace monitor resource.
 
 ### [Get-AzDynatraceMonitorSSOConfig](Get-AzDynatraceMonitorSSOConfig.md)
 Get a DynatraceSingleSignOnResource

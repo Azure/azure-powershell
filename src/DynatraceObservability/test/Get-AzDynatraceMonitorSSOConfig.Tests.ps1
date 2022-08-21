@@ -15,15 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDynatraceMonitorSSOConf
 }
 
 Describe 'Get-AzDynatraceMonitorSSOConfig' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzDynatraceMonitorSSOConfig -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        { 
+            $obj = Get-AzDynatraceMonitorSSOConfig -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01
+            Get-AzDynatraceMonitorSSOConfig -InputObject $obj
+        } | Should -Not -Throw
     }
 }

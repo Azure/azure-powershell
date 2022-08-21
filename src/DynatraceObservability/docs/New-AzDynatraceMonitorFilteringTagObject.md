@@ -22,27 +22,18 @@ Create an in-memory object for FilteringTag.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for FilteringTag
 ```powershell
-{{ Add code here }}
+New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
 ```
 
 ```output
-{{ Add output here }}
+Action  Name        Value
+------  ----        -----
+Include Environment Prod
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates an in-memory object for FilteringTag.
 
 ## PARAMETERS
 

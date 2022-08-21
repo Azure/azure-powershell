@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.DynatraceObservability
-online version: https://docs.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitorresource
+online version: https://docs.microsoft.com/powershell/module/az.dynatraceobservability/get-azdynatracemonitoredresource
 schema: 2.0.0
 ---
 
-# Get-AzDynatraceMonitorResource
+# Get-AzDynatraceMonitoredResource
 
 ## SYNOPSIS
 List the resources currently being monitored by the Dynatrace monitor resource.
@@ -13,8 +13,8 @@ List the resources currently being monitored by the Dynatrace monitor resource.
 ## SYNTAX
 
 ```
-Get-AzDynatraceMonitorResource -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDynatraceMonitoredResource -MonitorName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -22,27 +22,12 @@ List the resources currently being monitored by the Dynatrace monitor resource.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List the resources currently being monitored by the Dynatrace monitor resource
 ```powershell
-{{ Add code here }}
+Get-AzDynatraceMonitoredResource -ResourceGroupName dyobrg -MonitorName dyob-pwsh01
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command lists the resources currently being monitored by the Dynatrace monitor resource.
 
 ## PARAMETERS
 

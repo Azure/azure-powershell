@@ -13,10 +13,10 @@ Create a DynatraceSingleSignOnResource
 ## SYNTAX
 
 ```
-New-AzDynatraceMonitorSSOConfig -MonitorName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AadDomain <String[]>] [-EnterpriseAppId <String>]
- [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+New-AzDynatraceMonitorSSOConfig -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-AadDomain <String[]>] [-EnterpriseAppId <String>] [-SingleSignOnState <SingleSignOnStates>]
+ [-SingleSignOnUrl <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,27 +24,18 @@ Create a DynatraceSingleSignOnResource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a dynatrace SingleSignOn resource
 ```powershell
-{{ Add code here }}
+New-AzDynatraceMonitorSSOConfig -ResourceGroupName dyobrg -MonitorName dyob-pwsh01 -AadDomain "mpliftrlogz20210811outlook.onmicrosoft.com"
 ```
 
 ```output
-{{ Add output here }}
+Name    ProvisioningState SingleSignOnState SingleSignOnUrl
+----    ----------------- ----------------- ---------------
+default Succeeded         Initial
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command create a dynatrace SingleSignOn resource.
 
 ## PARAMETERS
 
@@ -110,21 +101,6 @@ Accept wildcard characters: False
 
 ### -MonitorName
 Monitor resource name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Single Sign On Configuration Name
 
 ```yaml
 Type: System.String

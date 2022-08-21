@@ -15,15 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDynatraceMonitorTagRule
 }
 
 Describe 'Get-AzDynatraceMonitorTagRule' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzDynatraceMonitorTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        { 
+            $obj = Get-AzDynatraceMonitorTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01
+            Get-AzDynatraceMonitorTagRule -InputObject $obj
+        } | Should -Not -Throw
     }
 }

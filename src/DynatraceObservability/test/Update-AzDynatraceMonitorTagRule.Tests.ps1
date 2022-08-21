@@ -15,11 +15,18 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzDynatraceMonitorTagR
 }
 
 Describe 'Update-AzDynatraceMonitorTagRule' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { 
+            $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
+            Update-AzDynatraceMonitorTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName02 -LogRuleFilteringTag $tagFilter
+        } | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        {
+            $tagFilter = New-AzDynatraceMonitorFilteringTagObject -Action 'Include' -Name 'Environment' -Value 'Prod'
+            $obj = Get-AzDynatraceMonitorTagRule -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName02 
+            Update-AzDynatraceMonitorTagRule -InputObject $obj -LogRuleFilteringTag $tagFilter
+        } | Should -Not -Throw
     }
 }
