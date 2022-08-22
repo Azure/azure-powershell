@@ -281,5 +281,12 @@ namespace Microsoft.Azure.Commands.Management.Storage.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-NewAzStorageContext");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestNewSetAzStorageAccountFileAADKERB()
+        {
+            TestRunner.RunTestScript("Test-NewSetAzStorageAccountFileAADKERB");
+        }        
     }
 }

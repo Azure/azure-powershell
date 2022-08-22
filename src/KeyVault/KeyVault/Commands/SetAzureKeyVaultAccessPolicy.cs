@@ -204,13 +204,13 @@ namespace Microsoft.Azure.Commands.KeyVault
         /// </summary>
         [Parameter(Mandatory = true,
             ParameterSetName = ByObjectId,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.")]
+            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions. Its value is in the format of GUID.")]
         [Parameter(Mandatory = true,
             ParameterSetName = InputObjectByObjectId,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.")]
+            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions. Its value is in the format of GUID.")]
         [Parameter(Mandatory = true,
             ParameterSetName = ResourceIdByObjectId,
-            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions.")]
+            HelpMessage = "Specifies the object ID of the user or service principal in Azure Active Directory for which to grant permissions. Its value is in the format of GUID.")]
         [ValidateNotNullOrEmpty()]
         public string ObjectId { get; set; }
 

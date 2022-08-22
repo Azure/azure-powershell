@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support of `FQDN` in `Import-AzAksCredential` [#17711]
+* Added hint when `Import-AzAksCredential` meets bad formatted kubernetes configuration file [#16741]
+* Added parameter `-NodeResourceGroup` for `New-AzAksCluster`. [#19014]
+
+## Version 4.2.1
 * Removed the warning messages for MSGraph migration [#18856]
 
 ## Version 4.2.0

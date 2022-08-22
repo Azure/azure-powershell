@@ -65,6 +65,9 @@ Enable static website for the Azure Storage account.
 ### [Get-AzDataLakeGen2ChildItem](Get-AzDataLakeGen2ChildItem.md)
 Lists sub directorys and files from a directory or filesystem root.
 
+### [Get-AzDataLakeGen2DeletedItem](Get-AzDataLakeGen2DeletedItem.md)
+List all deleted files or directories from a directory or filesystem root.
+
 ### [Get-AzDataLakeGen2Item](Get-AzDataLakeGen2Item.md)
 Gets the details of a file or directory in a filesystem.
 
@@ -358,6 +361,9 @@ Removes a storage table.
 
 ### [Remove-AzStorageTableStoredAccessPolicy](Remove-AzStorageTableStoredAccessPolicy.md)
 Removes a stored access policy from an Azure storage table.
+
+### [Restore-AzDataLakeGen2DeletedItem](Restore-AzDataLakeGen2DeletedItem.md)
+Restores a deleted file or directory in a filesystem.
 
 ### [Restore-AzRmStorageShare](Restore-AzRmStorageShare.md)
 Restores a deleted file share.

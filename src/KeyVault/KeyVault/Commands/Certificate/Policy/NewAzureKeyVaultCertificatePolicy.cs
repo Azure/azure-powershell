@@ -70,6 +70,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                    ValueFromPipelineByPropertyName = true,
                    HelpMessage = "Specifies the DNS names in the certificate. Subject Alternative Names (SANs) can be specified as DNS names.")]
         [Alias("DnsNames")]
+        [AllowEmptyCollection]
         public List<string> DnsName { get; set; }
 
         /// <summary>

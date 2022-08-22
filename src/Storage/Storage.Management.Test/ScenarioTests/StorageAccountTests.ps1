@@ -2205,4 +2205,101 @@ function Test-NewAzStorageContext
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test NewSet-AzStorageAccountFileAADKERB
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-NewSetAzStorageAccountFileAADKERB
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $kind = 'StorageV2'
+
+        $loc = Get-ProviderLocation ResourceManagement;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        $loc = Get-ProviderLocation_Stage ResourceManagement;
+
+        $DomainName = "testaadkerb.com"
+        $DomainGuid = "aebfc118-1111-1111-1111-d98e41a77cd5"
+		
+        # new account with AADKERB
+        $sto = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableAzureActiveDirectoryKerberosForFile $true ;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'AADKERB' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 		
+
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'AADKERB' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 	
+		
+        # update account with AADKERB disabled
+        $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableAzureActiveDirectoryKerberosForFile $false 
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'None' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
+
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'None' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
+		
+        # update account with AADKERB enabled
+        $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableAzureActiveDirectoryKerberosForFile $true 
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'AADKERB' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
+
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'AADKERB' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
+		
+        # update account with AADKERB enabled with domainName and domainGUID
+        $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableAzureActiveDirectoryKerberosForFile $true -ActiveDirectoryDomainName $DomainName -ActiveDirectoryDomainGuid $DomainGuid
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual $DomainName $sto.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties.domainName; 
+        Assert-AreEqual $DomainGuid $sto.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties.domainGUID; 
+
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'AADKERB' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
+        Assert-AreEqual $DomainName $sto.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties.domainName; 
+        Assert-AreEqual $DomainGuid $sto.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties.domainGUID; 
+        
+        Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
   

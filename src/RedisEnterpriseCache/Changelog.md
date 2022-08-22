@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.0
+* Upgraded API version to 2022-01-01
+
 ## Version 1.0.0
 * GA version of Az.RedisEnterpriseCache
 
