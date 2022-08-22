@@ -14,9 +14,6 @@ Microsoft Azure PowerShell: DynatraceObservability cmdlets
 ### [Get-AzDynatraceMonitor](Get-AzDynatraceMonitor.md)
 Get a MonitorResource
 
-### [Get-AzDynatraceMonitorAccountCredential](Get-AzDynatraceMonitorAccountCredential.md)
-Gets the user account credentials for a Monitor
-
 ### [Get-AzDynatraceMonitorAppService](Get-AzDynatraceMonitorAppService.md)
 Gets list of App Services with Dynatrace PaaS OneAgent enabled
 

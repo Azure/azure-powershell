@@ -80,7 +80,11 @@ directive:
       subject: ^MonitorMonitoredResource$
     set:
       subject: MonitoredResource
-
+  # remove cmdlet
+  # unsupport on server
+  - where:
+      subject: ^MonitorAccountCredential$
+    remove: true
   # remove varinat
   - where:
       subject: ^MonitorSSODetail$
@@ -103,11 +107,6 @@ directive:
       subject: ^MonitorTagRule$|^MonitorSSOConfig$
       variant: ^List$
     remove: true
-  # remove parameter
-  # - where:
-  #     verb: Get
-  #     parameter-name: Confirm
-  #   hide: true
 
   # rename parameter
   - where:
@@ -241,6 +240,13 @@ directive:
       parameter-name: RuleSetName
     set:
       parameter-name: Name
+
+  # unwork
+  # - where:
+  #     verb: Get
+  #     subject: MonitorSSODetail
+  #     parameter-name: Confirm
+  #   hide: true
 
 #  only name allowed for a rule set is 'default'
   - where:
