@@ -6579,7 +6579,7 @@ function Test-DebuggingHSMCVMSetAzVmOsDiskDesIdDiskWithVMGuest
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $rgname = "adsandwiki28";
+        $rgname = "adsandwiki29";
 
         $vmname = 'v' + 'vmdesnop';
         $vmSize = "Standard_DC2as_v5";         
@@ -6625,8 +6625,9 @@ function Test-DebuggingHSMCVMSetAzVmOsDiskDesIdDiskWithVMGuest
         
         #########$cvmAgent = Get-AzureADServicePrincipal -ObjectId "bf7b6499-ff71-4aa2-97a4-f372087be7f0" | Out-String | ConvertFrom-Json;
         #########thisworked: az keyvault set-policy --name $KeyVault --object-id $cvmAgent.id --key-permissions get release;
-        Set-AzKeyVaultAccessPolicy -VaultName $hsmKVName -ResourceGroupName $rgname -ObjectId $cvmAgentId -PermissionsToKeys get,release -BypassObjectIdValidation;
-       #   "error": {
+        #######Set-AzKeyVaultAccessPolicy -VaultName $hsmKVName -ResourceGroupName $rgname -ObjectId $cvmAgentId -PermissionsToKeys get,release -BypassObjectIdValidation;
+        New-AzKeyVaultRoleAssignment -HsmName bez-hsm -RoleDefinitionName "Managed Hsm Crypto User" -ObjectId $cvmAgentId;
+        #   "error": {
     #"code": "ResourceNotFound",
     #"message": "The Resource 'Microsoft.KeyVault/vaults/hsmkv2adsandwiki26' under resource group 'adsandwiki26' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"
   #}
