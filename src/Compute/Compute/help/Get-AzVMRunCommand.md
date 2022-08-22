@@ -24,7 +24,7 @@ Gets specific run command for a subscription in a location.
 
 ### Example 1: Get Run Command by Name
 ```powershell
-Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand2"
+Get-AzVmRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand2"
 ```
 
 
@@ -32,7 +32,7 @@ Get Run Command by it's name.
 
 ### Example 2: Get Run Commands by VM
 ```powershell
-Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname
+Get-AzVmRunCommand -ResourceGroupName $rgname -VMName $vmname
 ```
 
 Get Run Commands by VM name
