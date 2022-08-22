@@ -24,12 +24,15 @@ using System.Linq;
 using System.Management.Automation;
 using System.Net;
 using System.Threading;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
     /// <summary>
     /// Removes a named diagnostic setting or disables the setting called 'service' if the name argument is not present or if is 'service'.
     /// </summary>
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzDiagnosticSettingLogSettingsObject")]
+    [GenericBreakingChange("API version bump up to 2021-05-01-preview, output type will be also updated to match the new API version", "4.1.0")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting", DefaultParameterSetName = ResourceIdParameterSet, SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmDiagnosticSettingCommand : DiagnosticSettingCommandBase
     {

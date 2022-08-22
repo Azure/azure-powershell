@@ -20,12 +20,14 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
     /// <summary>
     /// Get all ScheduledQueryRule objects in a subscription, resource group or by rule name
     /// </summary>
+    [GenericBreakingChange("API version bump up to 2021-08-01, output type will be also updated to match the new API version", "4.1.0")]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule", DefaultParameterSetName = BySubscriptionOrResourceGroup), OutputType(typeof(PSScheduledQueryRuleResource))]
     public class GetScheduledQueryRuleCommand : ManagementCmdletBase
     {

@@ -29,6 +29,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// <summary>
     /// Updates a ScheduledQueryRule object
     /// </summary>
+    [GenericBreakingChange("API version bump up to 2021-08-01, input/output type will be also updated to match the new API version", "4.1.0")]
     [Cmdlet(VerbsData.Update, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule",
          SupportsShouldProcess = true, DefaultParameterSetName = ByRuleName), OutputType(typeof(PSScheduledQueryRuleResource))]
     public class UpdateScheduledQueryRuleCommand : ManagementCmdletBase
