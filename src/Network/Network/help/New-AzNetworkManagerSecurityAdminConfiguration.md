@@ -14,8 +14,7 @@ Creates a security admin configuration.
 
 ```
 New-AzNetworkManagerSecurityAdminConfiguration -Name <String> -NetworkManagerName <String>
- -ResourceGroupName <String> [-Description <String>]
- [-ApplyOnNetworkIntentPolicyBasedService <String[]>]
+ -ResourceGroupName <String> [-Description <String>] [-ApplyOnNetworkIntentPolicyBasedService <String[]>]
  [-DeleteExistingNSG] [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -30,6 +29,7 @@ The **New-AzNetworkManagerSecurityAdminConfiguration** cmdlet creates a security
 $ApplyOnNetworkIntentPolicyBasedService = @("None")
 New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psSecurityAdminConfig" -Description "TestDescription" -DeleteExistingNSG  -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedService
 ```
+
 ```output
 SecurityType                                :
 ApplyOnNetworkIntentPolicyBasedServices     : {None}
@@ -54,6 +54,7 @@ Name                                        : psSecurityAdminConfig
 Etag                                        :
 Id                                          : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig
 ```
+
 Creates a security admin configuration that will delete existing NSGs and not apply on NIP based services.
 
 ### Example 2
@@ -61,6 +62,7 @@ Creates a security admin configuration that will delete existing NSGs and not ap
 $ApplyOnNetworkIntentPolicyBasedService = @("All")
 New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName "psResourceGroup" -NetworkManagerName "psNetworkManager" -Name "psSecurityAdminConfig" -Description "TestDescription" -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedService
 ```
+
 ```output
 SecurityType                                :
 ApplyOnNetworkIntentPolicyBasedServices     : {All}
@@ -85,6 +87,7 @@ Name                                        : psSecurityAdminConfig
 Etag                                        :
 Id                                          : /subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig
 ```
+
 Creates a security admin configuration that will apply on NIP based services.
 
 ## PARAMETERS
@@ -93,7 +96,7 @@ Creates a security admin configuration that will apply on NIP based services.
 ApplyOnNetworkIntentPolicyBasedServices. Valid values include 'None' and 'All'.
 
 ```yaml
-Type: System.String[]	
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -108,7 +111,7 @@ Accept wildcard characters: False
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -123,7 +126,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -138,7 +141,7 @@ Accept wildcard characters: False
 DeleteExistingNSGs Flag.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -153,7 +156,7 @@ Accept wildcard characters: False
 Description.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +171,7 @@ Accept wildcard characters: False
 Do not ask for confirmation if you want to overwrite a resource
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -183,7 +186,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -198,7 +201,7 @@ Accept wildcard characters: True
 The network manager name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -213,7 +216,7 @@ Accept wildcard characters: True
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -228,7 +231,7 @@ Accept wildcard characters: True
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -244,7 +247,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -273,6 +276,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
 [Get-AzNetworkManagerSecurityAdminConfiguration](./Get-AzNetworkManagerSecurityAdminConfiguration.md)
 
 [Remove-AzNetworkManagerSecurityAdminConfiguration](./Remove-AzNetworkManagerSecurityAdminConfiguration.md)

@@ -12,10 +12,9 @@ Add a Routing Policy to the Routing Intent object.
 
 ## SYNTAX
 
-### (Default)
 ```
-Add-AzRoutingPolicy -RoutingIntent <PSRoutingIntent> -Name <String> -Destination <String[]> -NextHop <String> 
- [-Force] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Add-AzRoutingPolicy -RoutingIntent <PSRoutingIntent> -Destination <String[]> -NextHop <String> -Name <String>
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,6 +31,7 @@ $routingIntent = Get-AzRoutingIntent -Name "routingIntent1" -HubName "hub1" -Res
 Add-AzRoutingPolicy -Name "PublicTraffic" -RoutingIntent $routingIntent -Destination @("Internet") -NextHop $firewall.Id 
 Set-AzRoutingIntent -InputObject $routingIntent
 ```
+
 ```output
 ProvisioningState   : Succeeded
 RoutingPolicies     : {PublicTraffic}
@@ -49,24 +49,9 @@ RoutingPoliciesText : [
 Name                : routingIntent1
 Etag                : W/"etag"
 Id                  : /subscriptions/testSub/resourceGroups/testRg/providers/Microsoft.Network/virtualHubs/hub1/routingIntent/routingIntent1
-
 ```
+
 ## PARAMETERS
-
-### -AsJob
-Run cmdlet in the background
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -83,15 +68,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
-Do not ask for confirmation if you want to overwrite a resource
+### -Destination
+The list of destinations.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -109,7 +94,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -124,22 +109,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Destination
-The list of destinations.
-
-```yaml
-Type: System.String[]
-Parameter Sets: (All)
-Aliases: ResourceName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -154,7 +124,7 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 

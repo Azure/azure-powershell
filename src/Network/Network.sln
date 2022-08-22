@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -45,6 +45,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute.AlcWrapper", "..\Compute\Compute.AlcWrapper\Compute.AlcWrapper.csproj", "{5628C6FC-CE0D-43F8-9891-3700E5E61C9A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Compute", "..\Compute\Compute.Autorest\Az.Compute.csproj", "{DFA8F114-2825-44B5-9A17-2D23C2024FD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.NetworkSecurityPerimeter", "NetworkSecurityPerimeter.Autorest\Az.NetworkSecurityPerimeter.csproj", "{22DBDCF2-71D8-43F9-91B0-67ECC3C66EC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -136,6 +138,10 @@ Global
 		{DFA8F114-2825-44B5-9A17-2D23C2024FD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFA8F114-2825-44B5-9A17-2D23C2024FD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFA8F114-2825-44B5-9A17-2D23C2024FD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22DBDCF2-71D8-43F9-91B0-67ECC3C66EC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22DBDCF2-71D8-43F9-91B0-67ECC3C66EC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22DBDCF2-71D8-43F9-91B0-67ECC3C66EC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22DBDCF2-71D8-43F9-91B0-67ECC3C66EC0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

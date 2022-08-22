@@ -182,7 +182,7 @@ $azFw | Set-AzFirewall
 ```
 
 ```output
-		AllowActiveFTP	                : null	
+AllowActiveFTP	                : null	
 		ApplicationRuleCollections	    : Count = 0	
 		ApplicationRuleCollectionsText	: "[]"	
 		DNSEnableProxy	                : null	
@@ -217,8 +217,7 @@ $azFw | Set-AzFirewall
 		Type	                        : "Microsoft.Network/azureFirewalls"	
 		VirtualHub	                    : null	
 		Zones	                        : Count = 0	
-		privateRange	                : null	
-
+		privateRange	                : null
 ```
 
 In this example, Identify Top Fat Flows is enabled on the Firewall.

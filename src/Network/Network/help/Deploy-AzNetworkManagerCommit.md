@@ -13,9 +13,9 @@ Deploys a network manager commit.
 ## SYNTAX
 
 ```
-Deploy-AzNetworkManagerCommit -Name <String> -ResourceGroupName <String>
- -TargetLocation <String[]> [-ConfigurationId <String[]>] -CommitType <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Deploy-AzNetworkManagerCommit -Name <String> -ResourceGroupName <String> -TargetLocation <String[]>
+ [-ConfigurationId <String[]>] -CommitType <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -27,23 +27,26 @@ The **Deploy-AzNetworkManagerCommit** cmdlet deploys a network manager commit.
 ```powershell
 $regions = @("eastus", "westus")
 $configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/connectivityConfigurations/psConnectivityConfigMesh")
-Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity"
 ```
+
 This example is used to commit connecitivity confguration in East US and West US regions.
 
 ### Example 2
 ```powershell
 $regions = @( "westus")
-Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Connectivity" 
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Connectivity"
 ```
+
 This example is used to uncommit all connecitivity confgurations in West US region.
 
 ### Example 3
 ```powershell
 $regions = @( "westus")
 $configIds = @("/subscriptions/f0dc2b34-dfad-40e4-83e0-2309fed8d00b/resourceGroups/psResourceGroup/providers/Microsoft.Network/networkManagers/psNetworkManager/securityAdminConfigurations/psSecurityAdminConfig")
-Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Connectivity" 
+Deploy-AzNetworkManagerCommit -ResourceGroupName "psResourceGroup" -Name "psNetworkManager" -TargetLocation $regions -CommitType "Connectivity"
 ```
+
 This example is used to commit a security admin config in West US region.
 
 ## PARAMETERS
@@ -52,7 +55,7 @@ This example is used to commit a security admin config in West US region.
 Commit Type.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +70,7 @@ Accept wildcard characters: True
 List of configuration ids.
 
 ```yaml
-Type: System.String[]	
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -82,7 +85,7 @@ Accept wildcard characters: True
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -97,7 +100,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: ResourceName
 
@@ -112,7 +115,7 @@ Accept wildcard characters: True
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -127,7 +130,7 @@ Accept wildcard characters: True
 List of target locations.
 
 ```yaml
-Type: System.String[]	
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -142,7 +145,7 @@ Accept wildcard characters: True
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -158,7 +161,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
