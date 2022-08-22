@@ -1,0 +1,144 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourcegroups/recRG350?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlZ3JvdXBzL3JlY1JHMzUwP2FwaS12ZXJzaW9uPTIwMTYtMDktMDE=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "18e6bc25-402e-42da-a192-70781be77f94"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Internal.Resources.ResourceManagementClient/1.3.59"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "29"
+        ]
+      },
+      "RequestBody": "{\r\n  \"location\": \"EastUS2\"\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-request-id": [
+          "73cdd248-a388-4a26-a5c6-823f021cbd86"
+        ],
+        "x-ms-correlation-request-id": [
+          "73cdd248-a388-4a26-a5c6-823f021cbd86"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220818T152436Z:73cdd248-a388-4a26-a5c6-823f021cbd86"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 18 Aug 2022 15:24:35 GMT"
+        ],
+        "Content-Length": [
+          "170"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/recRG350\",\r\n  \"name\": \"recRG350\",\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/recRG350/providers/Microsoft.Network/virtualNetworks/A2ARecoveryNetwork350?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNWU3MWM5MGYtMzZhYS00NDhhLThjMjgtY2Q2ZDhkNjY0YWNmL3Jlc291cmNlR3JvdXBzL3JlY1JHMzUwL3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay92aXJ0dWFsTmV0d29ya3MvQTJBUmVjb3ZlcnlOZXR3b3JrMzUwP2FwaS12ZXJzaW9uPTIwMjEtMDgtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1b7a0025-cb45-4078-9a11-4f97ad2877c7"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Network.NetworkManagementClient/22.0.0.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"dbd3e9b5-5e3f-4fbb-af28-eb0f16a38c19\""
+        ],
+        "x-ms-request-id": [
+          "b75f80bb-3b27-45dc-a5ba-109c1822a4c7"
+        ],
+        "x-ms-correlation-request-id": [
+          "aed1d77b-a74b-4a64-ab57-7df1ce1b56a3"
+        ],
+        "x-ms-arm-service-request-id": [
+          "b934299f-1927-4532-970c-77e9efd02241"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTUS:20220818T152457Z:aed1d77b-a74b-4a64-ab57-7df1ce1b56a3"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 18 Aug 2022 15:24:56 GMT"
+        ],
+        "Content-Length": [
+          "1539"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"A2ARecoveryNetwork350\",\r\n  \"id\": \"/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/recRG350/providers/Microsoft.Network/virtualNetworks/A2ARecoveryNetwork350\",\r\n  \"etag\": \"W/\\\"dbd3e9b5-5e3f-4fbb-af28-eb0f16a38c19\\\"\",\r\n  \"type\": \"Microsoft.Network/virtualNetworks\",\r\n  \"location\": \"eastus2\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"92288bf4-62b3-4aae-9d48-2ba1bf45e0eb\",\r\n    \"addressSpace\": {\r\n      \"addressPrefixes\": [\r\n        \"10.0.0.0/16\"\r\n      ]\r\n    },\r\n    \"subnets\": [\r\n      {\r\n        \"name\": \"frontendSubnet\",\r\n        \"id\": \"/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/recRG350/providers/Microsoft.Network/virtualNetworks/A2ARecoveryNetwork350/subnets/frontendSubnet\",\r\n        \"etag\": \"W/\\\"dbd3e9b5-5e3f-4fbb-af28-eb0f16a38c19\\\"\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"addressPrefix\": \"10.0.1.0/24\",\r\n          \"networkSecurityGroup\": {\r\n            \"id\": \"/subscriptions/5e71c90f-36aa-448a-8c28-cd6d8d664acf/resourceGroups/recRG350/providers/Microsoft.Network/networkSecurityGroups/NRMS-yykqnfsyo75yyA2ARecoveryNetwork350\"\r\n          },\r\n          \"serviceEndpoints\": [],\r\n          \"delegations\": [],\r\n          \"privateEndpointNetworkPolicies\": \"Disabled\",\r\n          \"privateLinkServiceNetworkPolicies\": \"Enabled\"\r\n        },\r\n        \"type\": \"Microsoft.Network/virtualNetworks/subnets\"\r\n      }\r\n    ],\r\n    \"virtualNetworkPeerings\": [],\r\n    \"enableDdosProtection\": false\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {
+    "SubscriptionId": "5e71c90f-36aa-448a-8c28-cd6d8d664acf"
+  }
+}
