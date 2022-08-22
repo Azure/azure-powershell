@@ -56,7 +56,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
           HelpMessage = "Sets and Gets Resource Type")]
         public string ResourceType { get; set; }
 
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
