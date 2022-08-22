@@ -1,0 +1,207 @@
+{
+  "Get-AzPostgreSqlFlexibleServerBackup+[NoContext]+List+$GET+https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups?api-version=2022-01-20-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups?api-version=2022-01-20-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "81a9ff1e-ab9d-47bc-91cc-b6fcbfa083b2" ],
+        "CommandName": [ "Get-AzPostgreSqlFlexibleServerBackup" ],
+        "FullCommandName": [ "Get-AzPostgreSqlFlexibleServerBackup_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.PostgreSql/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "c0121c5b-f62b-4490-af8f-a0a6ca4c28c1" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-correlation-request-id": [ "f3a3ec8f-03a2-4807-8dd1-94949e731a5a" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220817T032455Z:f3a3ec8f-03a2-4807-8dd1-94949e731a5a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 17 Aug 2022 03:24:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "419" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"backupType\":\"Full\",\"source\":\"Automatic\",\"completedTime\":\"2022-08-16T23:28:59.7656014+00:00\"},\"id\":\"/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups/backup_637962893397656014\",\"name\":\"backup_637962893397656014\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/backups\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPostgreSqlFlexibleServerBackup+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups?api-version=2022-01-20-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups?api-version=2022-01-20-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "2" ],
+        "x-ms-client-request-id": [ "3f1f6dd9-59f2-49f5-9a2e-7c488ecb6936" ],
+        "CommandName": [ "Get-AzPostgreSqlFlexibleServerBackup" ],
+        "FullCommandName": [ "Get-AzPostgreSqlFlexibleServerBackup_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.PostgreSql/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "d028397e-88f0-45ee-a283-0e9ddc20d2d1" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-correlation-request-id": [ "53aabdd2-78f2-4eac-bab8-f75b9fbc2dd0" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220817T032456Z:53aabdd2-78f2-4eac-bab8-f75b9fbc2dd0" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 17 Aug 2022 03:24:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "419" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"backupType\":\"Full\",\"source\":\"Automatic\",\"completedTime\":\"2022-08-16T23:28:59.7656014+00:00\"},\"id\":\"/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups/backup_637962893397656014\",\"name\":\"backup_637962893397656014\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/backups\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPostgreSqlFlexibleServerBackup+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups/backup_637962893397656014?api-version=2022-01-20-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups/backup_637962893397656014?api-version=2022-01-20-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "a8985325-5015-4525-9aa2-0a5a5d897a5e" ],
+        "CommandName": [ "Get-AzPostgreSqlFlexibleServerBackup" ],
+        "FullCommandName": [ "Get-AzPostgreSqlFlexibleServerBackup_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.PostgreSql/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "8d142e86-ba2a-442b-808a-c4149396aa8d" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-correlation-request-id": [ "9a29b351-568a-4ce4-b552-62ad4285cfb4" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220817T032456Z:9a29b351-568a-4ce4-b552-62ad4285cfb4" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 17 Aug 2022 03:24:55 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "407" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"backupType\":\"Full\",\"source\":\"Automatic\",\"completedTime\":\"2022-08-16T23:28:59.7656014+00:00\"},\"id\":\"/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups/backup_637962893397656014\",\"name\":\"backup_637962893397656014\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/backups\"}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPostgreSqlFlexibleServerBackup+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups?api-version=2022-01-20-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups?api-version=2022-01-20-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "e6de122e-aece-4f6f-ab70-7c58895995f2" ],
+        "CommandName": [ "Get-AzPostgreSqlFlexibleServerBackup" ],
+        "FullCommandName": [ "Get-AzPostgreSqlFlexibleServerBackup_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.PostgreSql/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "694e423a-98ff-4e6c-919d-eceb909aabd7" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
+        "x-ms-correlation-request-id": [ "85159fb6-7399-466c-8c05-d6bca3ca3a5a" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220817T032456Z:85159fb6-7399-466c-8c05-d6bca3ca3a5a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 17 Aug 2022 03:24:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "419" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"backupType\":\"Full\",\"source\":\"Automatic\",\"completedTime\":\"2022-08-16T23:28:59.7656014+00:00\"},\"id\":\"/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups/backup_637962893397656014\",\"name\":\"backup_637962893397656014\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/backups\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzPostgreSqlFlexibleServerBackup+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups/backup_637962893397656014?api-version=2022-01-20-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups/backup_637962893397656014?api-version=2022-01-20-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "dcb4c4f6-b87b-46d2-a390-324ecc9b171a" ],
+        "CommandName": [ "Get-AzPostgreSqlFlexibleServerBackup" ],
+        "FullCommandName": [ "Get-AzPostgreSqlFlexibleServerBackup_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.PostgreSql/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "eec59377-8c0d-4838-a545-c7511086ca00" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
+        "x-ms-correlation-request-id": [ "6e25843b-3516-4e05-92c0-231e92b89c56" ],
+        "x-ms-routing-request-id": [ "WESTCENTRALUS:20220817T032458Z:6e25843b-3516-4e05-92c0-231e92b89c56" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Wed, 17 Aug 2022 03:24:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "407" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"backupType\":\"Full\",\"source\":\"Automatic\",\"completedTime\":\"2022-08-16T23:28:59.7656014+00:00\"},\"id\":\"/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-flexible-test-100/backups/backup_637962893397656014\",\"name\":\"backup_637962893397656014\",\"type\":\"Microsoft.DBforPostgreSQL/flexibleServers/backups\"}",
+      "isContentBase64": false
+    }
+  }
+}

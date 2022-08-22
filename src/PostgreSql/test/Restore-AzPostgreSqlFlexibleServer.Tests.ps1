@@ -14,16 +14,16 @@ while(-not $mockingPath) {
 Describe 'Restore-AzPostgreSqlFlexibleServer' {
     It 'PointInTimeRestore' {
         If ($TestMode -eq 'live' -Or $TestMode -eq 'record') {
-            { 
-                $subnet = '/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourceGroups/PostgreSqlTest/providers/Microsoft.Network/virtualNetworks/postgresqltestvnet/subnets/secondsubnet'
-                $dnszone = '/subscriptions/929287ae-832a-4946-8006-a6cc2a3f7244/resourcegroups/PostgreSqlTest/providers/Microsoft.Network/privateDnsZones/daeunyim-powershell-test.postgres.database.azure.com'
-                $sourceServer = Get-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName
-                $server = Restore-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.restoreName -SourceServerName $env.flexibleServerName -RestorePointInTime 2021-08-23T22:20:00 -Zone 1 -Subnet $subnet -PrivateDnsZone $dnszone
+            {
+                $DnsZone = New-AzPrivateDnsZone -Name $env.DnsZoneName -ResourceGroupName $env.resourceGroup
+                $SubnetId = "/subscriptions/$($env.SubscriptionId)/resourceGroups/$($env.resourceGroup)/providers/Microsoft.Network/virtualNetworks/nonexistingvnetforpowershelltest/subnets/nonexistingsubnetforpowershelltest"
+                $sourceServer = New-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.flexibleServerName2 -Location $env.location -Subnet $SubnetId -PrivateDnsZone $DnsZone.ResourceId
+                Start-Sleep -Seconds 60
+                $server = Restore-AzPostgreSqlFlexibleServer -ResourceGroupName $env.resourceGroup -Name $env.restoreName -SourceServerName $env.flexibleServerName2 -RestorePointInTime $(Get-Date) -Subnet $SubnetId -PrivateDnsZone $DnsZone.ResourceId
 
-                $server.NetworkDelegatedSubnetResourceId | Should -Be $subnet
-                $server.NetworkPrivateDnsZoneArmResourceId | Should -Be $dnszone
-                $server.SourceServerResourceId | Should -Be $sourceServer.Id
-                $server.AvailabilityZone | Should -Be 1
+                $server.NetworkDelegatedSubnetResourceId | Should -Be $SubnetId
+                $server.NetworkPrivateDnsZoneArmResourceId | Should -Be $DnsZone.ResourceId
+                $server.AvailabilityZone | Should -Be $sourceServer.AvailabilityZone
             } | Should -Not -Throw
         }
     }
