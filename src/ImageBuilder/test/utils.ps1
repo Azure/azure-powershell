@@ -88,10 +88,13 @@ function setupEnv() {
     # 9. Add user id to access the template
     Write-Host "Add user id to access the template"
     New-AzRoleAssignment -ObjectId $identity.PrincipalId -RoleDefinitionName Contributor -ResourceGroupName $rg
+    
     # 10. Start the image builder above
-    Write-Host -ForegroundColor Green "Starting the image builder template..."
-    Start-Sleep -Seconds 25
-    Start-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg
+    # Need to record start image builder separetely.
+    # Only below lines are not needed in recording stop test cases
+    # Write-Host -ForegroundColor Green "Starting the image builder template..."
+    # Start-Sleep -Seconds 25
+    # Start-AzImageBuilderTemplate -Name $templateName -ResourceGroupName $rg -NoWait
     
     # Prepare some variables for test usage
     $newTemplateName1 = $env.AddWithCache("newTemplateName1", 'bez-tmp-' + (RandomString -allChars $false -len 6), $UsePreviousConfigForRecord)
@@ -110,25 +113,13 @@ function cleanupEnv() {
     # 0. Restore JsonTemplateFile.json
     # git restore JsonTemplateFile.json
 
-    # 1. Remove image builder template    
-    Get-AzImageBuilderTemplate -ResourceGroupName $env.rg | Where-Object {$_.Name -Match '^template*'} | Remove-AzImageBuilderTemplate
-
-    # 2. Remove image gallery definition
-    Get-AzGalleryImageDefinition -ResourceGroupName $env.rg -GalleryName $env.testGalleryName -Name $env.imageDefName | Remove-AzGalleryImageDefinition -Force
-
-    # 3. Remove image gallery
-    Get-AzGallery -ResourceGroupName $env.rg -Name $env.testGalleryName | Remove-AzGallery -Force
-
-    # 4. Grant role definition above to the user assigned identity
+    # 1. Grant role definition above to the user assigned identity
     Get-AzRoleAssignment -ObjectId $env.identity.PrincipalId -RoleDefinitionName $env.roleName -Scope "/subscriptions/$($env.SubscriptionId)/resourceGroups/$rg" | Remove-AzRoleAssignment -Confirm:$false
 
-    # 5. Remove role definition
+    # 2. Remove role definition
     Get-AzRoleDefinition -Name $env.roleName | Remove-AzRoleDefinition -Force
 
-    # 6. Remove identity
-    Get-AzUserAssignedIdentity -ResourceGroupName $env.rg -Name $env.identityName | Remove-AzUserAssignedIdentity -Force
-
-    # 7. remove resource group
+    # 3. remove resource group
     Get-AzResourceGroup -Name $env.rg | Remove-AzResourceGroup
 }
 

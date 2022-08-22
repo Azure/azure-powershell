@@ -13,15 +13,13 @@ while(-not $mockingPath) {
 
 Describe 'Stop-AzImageBuilderTemplate' {
     It 'Cancel' {
-        Start-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg -NoWait
         $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         Stop-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         $template.LastRunStatusRunState | Should -Be 'Canceling'
     }
 
-    It 'CancelViaIdentity' {
-        Start-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg -NoWait
+    It 'CancelViaIdentity' -Skip {
         $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg
         Stop-AzImageBuilderTemplate -InputObject $template
         $template = Get-AzImageBuilderTemplate -Name $env.templateName -ResourceGroupName $env.rg

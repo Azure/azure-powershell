@@ -19,11 +19,11 @@
       "distribute": [
         {
           "type": "SharedImage",
-          "runOutputName": "runOutput1",
+          "runOutputName": "<runOutputName>",
           "artifactTags": {
             "tag": "dis-share"
           },
-          "galleryImageId": "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/bez-rg-jutb12/providers/Microsoft.Compute/galleries/testGalleryNamemx9y1g/images/test-image",
+          "galleryImageId": "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<testGalleryName>/images/<imageDefName>",
           "replicationRegions": [
             "eastus2"
           ],
@@ -34,13 +34,9 @@
     "identity": {
       "type": "UserAssigned",
       "userAssignedIdentities": {
-        "/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg-jutb12/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id-s3xvgt": {}
+        "/subscriptions/<subscriptionID>/resourcegroups/<rgName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identityName>": {}
       }
     }
   }
-  
-
-
-
 
 
