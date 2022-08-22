@@ -60,7 +60,7 @@ directive:
       subject: PrivateLinkResource
     remove: true
   - where:
-      verb: New
+      verb: New|Update
       subject: Grafana
     hide: true
   - where:

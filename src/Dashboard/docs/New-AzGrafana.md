@@ -228,7 +228,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-.
+The SkuName name of Azure Managed Grafana.
 
 ```yaml
 Type: System.String

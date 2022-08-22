@@ -159,7 +159,7 @@ Accept wildcard characters: False
 ```
 
 ### -MonitorWorkspaceIntegration
-.
+The MonitorWorkspaceIntegration of Azure Managed Grafana.
 To construct, see NOTES section for MONITORWORKSPACEINTEGRATION properties and create a hash table.
 
 ```yaml
@@ -324,7 +324,7 @@ To create the parameters described below, construct a hash table containing the 
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The workspace name of Azure Managed Grafana.
 
-`MONITORWORKSPACEINTEGRATION <IAzureMonitorWorkspaceIntegration[]>`: .
+`MONITORWORKSPACEINTEGRATION <IAzureMonitorWorkspaceIntegration[]>`: The MonitorWorkspaceIntegration of Azure Managed Grafana.
   - `[AzureMonitorWorkspaceResourceId <String>]`: The resource Id of the connected Azure Monitor Workspace.
 
 ## RELATED LINKS
