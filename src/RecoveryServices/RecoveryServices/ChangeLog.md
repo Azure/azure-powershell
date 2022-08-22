@@ -19,6 +19,11 @@
 -->
 ## Upcoming Release
 
+## Version 5.4.2
+* Remove $vmName from non A2A scenarios
+* Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping
+* Added new scenarios: EZ-to-AZ, EZ-to-AZ, EZ-to-EZ
+
 ## Version 5.4.1
 * Fixed delay in long running operations [#18567]
 
