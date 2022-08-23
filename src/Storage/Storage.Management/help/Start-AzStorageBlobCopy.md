@@ -614,7 +614,6 @@ See detail in https://docs.microsoft.com/azure/storage/blobs/storage-blob-storag
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Hot, Cool, Archive
 
 Required: False
 Position: Named

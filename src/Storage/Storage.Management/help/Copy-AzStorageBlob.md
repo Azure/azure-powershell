@@ -71,7 +71,7 @@ C:\PS> $blob = Copy-AzStorageBlob -SrcContainer $containerName -SrcBlob $blobnam
 
 This command update a block blob encryption scope by copy it to itself with a new encryption scope.
 
-### Example 5: Copy a blob to a new append blob 
+### Example 5: Copy a blob to a new append blob
 ```
 C:\PS> $srcBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName  -Context $ctx 
 C:\PS> $destBlob = Copy-AzStorageBlob -SrcContainer "sourcecontainername" -SrcBlob "srcblobname" -DestContainer "destcontainername" -DestBlob "destblobname" -DestBlobType "Append" -DestContext $destCtx
@@ -325,7 +325,6 @@ See detail in https://docs.microsoft.com/en-us/azure/storage/blobs/storage-blob-
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Hot, Cool, Archive
 
 Required: False
 Position: Named
