@@ -61,6 +61,10 @@ directive:
       subject: (^Autoscale$)(.*)
     set:
       subject-prefix: ""
+  - where:
+      verb: Update
+      subject: AutoscaleSetting
+    hide: true
   # Rename 'Equals'
   - from: source-file-csharp
     where: $
@@ -69,4 +73,11 @@ directive:
   - from: source-file-csharp
     where: $
     transform: $ = $.replace('public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleRuleMetricDimensionOperationType Equals = @"Equals";', 'public static Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.ScaleRuleMetricDimensionOperationType Equal = @"Equals";');
+
+  - model-cmdlet:
+    - AutoscaleProfile
+    - ScaleRule
+    - AutoscaleNotification
+    - WebhookNotification
+    - ScaleRuleMetricDimension
 ```
