@@ -8,19 +8,36 @@ schema: 2.0.0
 # New-AzMarketplaceTerms
 
 ## SYNOPSIS
-Save marketplace terms.
+Accept or reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name).
 
 ## SYNTAX
 
+### AcceptTerms (Default)
 ```
-New-AzMarketplaceTerms -OfferId <String> -PlanId <String> -PublisherId <String> [-SubscriptionId <String>]
- [-Accepted] [-LicenseTextLink <String>] [-Plan <String>] [-PrivacyPolicyLink <String>] [-Product <String>]
- [-Publisher <String>] [-RetrieveDatetime <DateTime>] [-Signature <String>] [-TermsLink <String>]
+New-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> -Accepted
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### AcceptTermsViaIdentity
+```
+New-AzMarketplaceTerms -Accepted -Terms <IAgreementTerms> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### RejectTerms
+```
+New-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> -Reject [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### RejectTermsViaIdentity
+```
+New-AzMarketplaceTerms -Reject -Terms <IAgreementTerms> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Save marketplace terms.
+Accept or reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name).
 
 ## EXAMPLES
 
@@ -53,10 +70,10 @@ If any version of the terms have been accepted, otherwise false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: AcceptTerms, AcceptTermsViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -78,75 +95,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LicenseTextLink
-Link to HTML with Microsoft and Publisher terms.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -OfferId
-Offer identifier string of image being deployed.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Plan
+### -Name
 Plan identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanId
-Plan identifier string of image being deployed.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AcceptTerms, RejectTerms
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PrivacyPolicyLink
-Link to the privacy policy of the publisher.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -158,10 +115,10 @@ Offer identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AcceptTerms, RejectTerms
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -173,22 +130,7 @@ Publisher identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PublisherId
-Publisher identifier string of image being deployed.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AcceptTerms, RejectTerms
 Aliases:
 
 Required: True
@@ -198,31 +140,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -RetrieveDatetime
-Date and time in UTC of when the terms were accepted.
-This is empty if Accepted is false.
+### -Reject
+Pass this to reject the legal terms.
 
 ```yaml
-Type: System.DateTime
-Parameter Sets: (All)
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: RejectTerms, RejectTermsViaIdentity
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Signature
-Terms signature.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -234,7 +160,7 @@ The subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AcceptTerms, RejectTerms
 Aliases:
 
 Required: False
@@ -244,18 +170,20 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -TermsLink
-Link to HTML with Azure Marketplace terms.
+### -Terms
+Terms properties for provided Publisher/Offer/Plan tuple
+To construct, see NOTES section for PARAMETER properties and create a hash table.
+To construct, see NOTES section for TERMS properties and create a hash table.
 
 ```yaml
-Type: System.String
-Parameter Sets: (All)
+Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms
+Parameter Sets: AcceptTermsViaIdentity, RejectTermsViaIdentity
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -295,6 +223,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms
+
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms
@@ -302,6 +232,28 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`TERMS <IAgreementTerms>`: Terms properties for provided Publisher/Offer/Plan tuple To construct, see NOTES section for PARAMETER properties and create a hash table.
+  - `[Accepted <Boolean?>]`: If any version of the terms have been accepted, otherwise false.
+  - `[LicenseTextLink <String>]`: Link to HTML with Microsoft and Publisher terms.
+  - `[MarketplaceTermsLink <String>]`: Link to HTML with Azure Marketplace terms.
+  - `[Plan <String>]`: Plan identifier string of image being deployed.
+  - `[PrivacyPolicyLink <String>]`: Link to the privacy policy of the publisher.
+  - `[Product <String>]`: Offer identifier string of image being deployed.
+  - `[Publisher <String>]`: Publisher identifier string of image being deployed.
+  - `[RetrieveDatetime <DateTime?>]`: Date and time in UTC of when the terms were accepted. This is empty if Accepted is false.
+  - `[Signature <String>]`: Terms signature.
+  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
+  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
+  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
+  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
+  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
+  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
 
 ## RELATED LINKS
 

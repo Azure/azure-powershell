@@ -51,22 +51,22 @@ param(
     [Parameter(ParameterSetName='Get1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
     [System.String]
-    # Offer identifier string of image being deployed.
-    ${OfferId},
+    # Plan identifier string of image being deployed.
+    ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='Get1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
     [System.String]
-    # Plan identifier string of image being deployed.
-    ${PlanId},
+    # Offer identifier string of image being deployed.
+    ${Product},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='Get1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
     [System.String]
     # Publisher identifier string of image being deployed.
-    ${PublisherId},
+    ${Publisher},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
@@ -146,7 +146,9 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
-
+        if ($PSBoundParameters.ContainsKey('OfferType')) {
+            $null = $PSBoundParameters.Remove('OfferType')
+        }
         $mapping = @{
             Get = 'Az.MarketplaceOrdering.private\Get-AzMarketplaceTerms_Get';
             Get1 = 'Az.MarketplaceOrdering.private\Get-AzMarketplaceTerms_Get1';

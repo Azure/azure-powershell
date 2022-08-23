@@ -56,7 +56,7 @@ directive:
 
   - where: 
       subject: ^MarketplaceTerms$
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
   - where:
@@ -65,14 +65,35 @@ directive:
       variant: ^GetViaIdentity1$
     remove: true
 
+  # For map old cmdlet
+  - where:
+      verb: Get
+      subject: MarketplaceTerms
+      parameter-name: OfferId
+    set:
+      parameter-name: Product
+
+  - where:
+      verb: Get
+      subject: MarketplaceTerms
+      parameter-name: PublisherId
+    set:
+      parameter-name: Publisher
+
+  - where:
+      verb: Get
+      subject: MarketplaceTerms
+      parameter-name: PlanId
+    set:
+      parameter-name: Name
+
   - where:
       verb: Get
       subject: MarketplaceTerms
     hide: true
 
   - where:
+      verb: New
       subject: MarketplaceTerms
-      parameter-name: MarketplaceTermsLink
-    set:
-      parameter-name: TermsLink
+    hide: true
 ```

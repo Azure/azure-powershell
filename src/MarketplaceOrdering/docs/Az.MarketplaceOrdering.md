@@ -18,7 +18,7 @@ Get marketplace terms.
 Sign marketplace terms.
 
 ### [New-AzMarketplaceTerms](New-AzMarketplaceTerms.md)
-Save marketplace terms.
+Accept or reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name).
 
 ### [Stop-AzMarketplaceTerms](Stop-AzMarketplaceTerms.md)
 Cancel marketplace terms.

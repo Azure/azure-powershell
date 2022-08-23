@@ -19,13 +19,13 @@ Get-AzMarketplaceTerms [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
 
 ### Get
 ```
-Get-AzMarketplaceTerms -OfferId <String> -OfferType <OfferType> -PlanId <String> -PublisherId <String>
+Get-AzMarketplaceTerms -Name <String> -OfferType <OfferType> -Product <String> -Publisher <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get1
 ```
-Get-AzMarketplaceTerms -OfferId <String> -PlanId <String> -PublisherId <String> [-SubscriptionId <String[]>]
+Get-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -95,8 +95,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -OfferId
-Offer identifier string of image being deployed.
+### -Name
+Plan identifier string of image being deployed.
 
 ```yaml
 Type: System.String
@@ -125,8 +125,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PlanId
-Plan identifier string of image being deployed.
+### -Product
+Offer identifier string of image being deployed.
 
 ```yaml
 Type: System.String
@@ -140,7 +140,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublisherId
+### -Publisher
 Publisher identifier string of image being deployed.
 
 ```yaml
