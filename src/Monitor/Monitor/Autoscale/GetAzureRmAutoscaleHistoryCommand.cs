@@ -17,14 +17,12 @@ using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Collections.Generic;
 using System.Management.Automation;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
     /// <summary>
     /// Get the history of events related to an Autoscale setting
     /// </summary>
-    [GenericBreakingChange("API version bump up to 2022-10-01, output type will be also updated to match the new API version", "4.1.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoscaleHistory"), OutputType(typeof(PSEventData))]
     public class GetAzureRmAutoscaleHistoryCommand : LogsCmdletBase
     {
