@@ -1513,13 +1513,14 @@ function Test-AzureFirewallVirtualHubMultiPublicIPCRUD {
     $firewallPIPCount = "2"
     $skuName = "AZFW_Hub"
     $skuTier = "Standard"
+    $privateIPAddress = "10.0.64.4"
 
     try {
         # Create the resource group
         $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "testval" }
 
         $fwpips = New-AzFirewallHubPublicIpAddress -Count $firewallPIPCount
-        $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwpips
+        $hubIpAddresses = New-AzFirewallHubIpAddress -PublicIP $fwpips -PrivateIPAddress $privateIPAddress
         $fw= New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -SkuName $skuName -SkuTier $skuTier -HubIPAddress $hubIpAddresses
 
         # Get AzureFirewall
@@ -1536,6 +1537,7 @@ function Test-AzureFirewallVirtualHubMultiPublicIPCRUD {
         Assert-NotNull $getAzureFirewall.HubIPAddresses
         Assert-NotNull $getAzureFirewall.HubIPAddresses.PublicIPs
         Assert-AreEqual $firewallPIPCount $getAzureFirewall.HubIPAddresses.PublicIPs.Count
+        Assert-AreEqual $privateIPAddress $getAzureFirewall.HubIPAddresses.PrivateIPAddress
     }
     finally {
         # Cleanup

@@ -41,7 +41,8 @@ namespace Microsoft.Azure.Commands.Network
 
             var hubPublicIpAddress = new PSAzureFirewallHubIpAddresses
             {
-                PublicIPs = this.PublicIP
+                PublicIPs = this.PublicIP,
+                PrivateIPAddress = this.PrivateIPAddress
             };
             WriteObject(hubPublicIpAddress);
         }
