@@ -17,16 +17,19 @@ using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Properties;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Azure.ResourceManager.Automation;
+using Azure.ResourceManager.Resources;
+using Azure;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
     /// Removes a hybridworkergroup for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridWorkerGroup",
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorkerGroup",
         SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(void))]
-    public class RemoveAzureAutomationHybridWorkerGroup : AzureAutomationBaseCmdlet
+    public class RemoveAzureAutomationHybridRunbookWorkerGroup : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the hybridworkergroup name.
@@ -47,7 +50,12 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                        Name,
                        () =>
                        {
-                           this.AutomationClient.DeleteHybridRunbookWorkerGroup(this.ResourceGroupName, this.AutomationAccountName, Name);
+                           SubscriptionResource subResource = this.ArmClient.GetDefaultSubscription(new System.Threading.CancellationToken());
+                           var subId = subResource.Data.SubscriptionId;
+
+                           var hybridWorkerGroupResourceId = HybridRunbookWorkerGroupResource.CreateResourceIdentifier(subId, this.ResourceGroupName, this.AutomationAccountName, this.Name);
+
+                           this.ArmClient.GetHybridRunbookWorkerGroupResource(hybridWorkerGroupResourceId).Delete(WaitUntil.Completed);
                        });
         }
     }

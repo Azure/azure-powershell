@@ -68,7 +68,7 @@ namespace Microsoft.Azure.Commands.Automation.Model
             this.LastModifiedTime = automationAccount.LastModifiedTime.ToLocalTime();
             this.State = automationAccount.State;
             this.LastModifiedBy = automationAccount.LastModifiedBy;
-            this.Identity = automationAccount.Identity;
+            //this.Identity = automationAccount.Identity;
             this.Encryption = automationAccount.Encryption;
             this.PublicNetworkAccess = automationAccount.PublicNetworkAccess;
         }
@@ -130,10 +130,8 @@ namespace Microsoft.Azure.Commands.Automation.Model
         /// </summary>
         public Hashtable Tags { get; set; }
 
-        /// <summary>
-        /// Gets or sets the identity.
-        /// </summary>
-        public Identity Identity { get; private set; }
+        
+        //public Identity Identity { get; private set; }
 
         /// <summary>
         /// Gets or sets the encryption properties.

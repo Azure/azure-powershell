@@ -47,6 +47,7 @@ using HybridRunbookWorkerGroup = Microsoft.Azure.Commands.Automation.Model.Hybri
 using HybridRunbookWorker = Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorker;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Azure.ResourceManager.Automation;
+using Azure.ResourceManager;
 
 namespace Microsoft.Azure.Commands.Automation.Common
 {
@@ -169,7 +170,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (addSystemId == true)
             {
-                accountCreateOrUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+                accountCreateOrUpdateParameters.Identity = new Microsoft.Azure.Management.Automation.Models.Identity(null, null, ResourceIdentityType.SystemAssigned);
             }
             if ((userIds != null) && userIds.Any())
             {
@@ -185,7 +186,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     IdType = ResourceIdentityType.SystemAssignedUserAssigned;
                 }
 
-                accountCreateOrUpdateParameters.Identity = new Identity(null, null, IdType, userIdDict);
+                accountCreateOrUpdateParameters.Identity = new Microsoft.Azure.Management.Automation.Models.Identity(null, null, IdType, userIdDict);
             }
             if (enableAMK == true)
             {
@@ -253,7 +254,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
             if (addSystemId == true)
             {
-                accountUpdateParameters.Identity = new Identity(null, null, ResourceIdentityType.SystemAssigned);
+                accountUpdateParameters.Identity = new Microsoft.Azure.Management.Automation.Models.Identity(null, null, ResourceIdentityType.SystemAssigned);
             }
             if ((userIds != null) && userIds.Any())
             {
@@ -269,7 +270,7 @@ namespace Microsoft.Azure.Commands.Automation.Common
                     IdType = ResourceIdentityType.SystemAssignedUserAssigned;
                 }
 
-                accountUpdateParameters.Identity = new Identity(null, null, IdType, userIdDict);
+                accountUpdateParameters.Identity = new Microsoft.Azure.Management.Automation.Models.Identity(null, null, IdType, userIdDict);
             }
             if (enableAMK == true)
             {

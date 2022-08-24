@@ -27,6 +27,11 @@ using System.Text;
 using System.Xml.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Azure.ResourceManager;
+using Azure.Identity;
+using Microsoft.Azure.Commands.Common.Authentication;
+using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
+using Azure.Core;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
@@ -39,6 +44,8 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// The automation client.
         /// </summary>
         private IAutomationPSClient automationClient;
+
+        private ArmClient armClient;
 
         /// <summary>
         /// Gets or sets the automation client base.
@@ -54,6 +61,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
             {
                 this.automationClient = value;
             }
+        }
+
+        public ArmClient ArmClient 
+        {
+            get
+            {
+                return this.armClient = this.armClient ?? new ArmClient(new DefaultAzureCredential(), DefaultProfile.DefaultContext.Subscription.Id.ToString());
+            } 
+            set 
+            {
+                this.armClient = value;
+            } 
         }
 
         /// <summary>

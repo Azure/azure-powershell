@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.7.3'
+ModuleVersion = '1.7.4'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -74,8 +74,14 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Automation.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzAutomationHybridWorkerGroup', 
-               'Remove-AzAutomationHybridWorkerGroup', 
+CmdletsToExport = 'Move-AzAutomationHybridRunbookWorker',
+                'Remove-AzAutomationHybridRunbookWorker',
+                'Get-AzAutomationHybridRunbookWorker',
+                'New-AzAutomationHybridRunbookWorker', 
+                'New-AzAutomationHybridRunbookWorkerGroup',
+               'Remove-AzAutomationHybridRunbookWorkerGroup',
+               'Set-AzAutomationHybridRunbookWorkerGroup', 
+               'Get-AzAutomationHybridRunbookWorkerGroup', 
                'Get-AzAutomationJobOutputRecord', 
                'Import-AzAutomationDscNodeConfiguration', 
                'Export-AzAutomationDscConfiguration', 
