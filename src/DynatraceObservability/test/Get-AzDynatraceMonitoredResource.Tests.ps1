@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzDynatraceMonitoredResou
 }
 
 Describe 'Get-AzDynatraceMonitoredResource' {
-    It 'List' -skip {
+    It 'List' {
         { Get-AzDynatraceMonitoredResource -ResourceGroupName $env.resourceGroup -MonitorName $env.dynatraceName01 } | Should -Not -Throw
     }
 }
