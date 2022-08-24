@@ -1,11 +1,11 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
-online version: https://docs.microsoft.com/powershell/module/az.compute/get-azvmruncommand
+online version: https://docs.microsoft.com/powershell/module/az.compute/Get-AzVMRunCommand
 schema: 2.0.0
 ---
 
-# Get-AzVmRunCommand
+# Get-AzVMRunCommand
 
 ## SYNOPSIS
 Gets a specific Run Command or a list of Run Commands for a Virtual Machine
@@ -13,7 +13,7 @@ Gets a specific Run Command or a list of Run Commands for a Virtual Machine
 ## SYNTAX
 
 ```
-Get-AzVmRunCommand -ResourceGroupName <String> -VMName <String> [-RunCommandName <String>] [-Expand <String>]
+Get-AzVMRunCommand -ResourceGroupName <String> -VMName <String> [-RunCommandName <String>] [-Expand <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -24,7 +24,7 @@ Gets specific run command for a subscription in a location.
 
 ### Example 1: Get Run Command by Name
 ```powershell
-Get-AzVmRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand2"
+Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand2"
 ```
 
 
@@ -32,7 +32,7 @@ Get Run Command by it's name.
 
 ### Example 2: Get Run Commands by VM
 ```powershell
-Get-AzVmRunCommand -ResourceGroupName $rgname -VMName $vmname
+Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname
 ```
 
 Get Run Commands by VM name

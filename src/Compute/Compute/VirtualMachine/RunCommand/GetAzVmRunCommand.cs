@@ -26,7 +26,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute.Automation
 {
-    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VmRunCommand")]
+    [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VMRunCommand")]
     [OutputType(typeof(PSVirtualMachineRunCommand))]
     public class GetAzureVmRunCommand : ComputeAutomationBaseCmdlet
     {
