@@ -11,9 +11,6 @@ Locale: en-US
 This topic displays help topics for the Azure Insights Cmdlets.
 
 ## Az.Monitor Cmdlets
-### [Add-AzAutoscaleSetting](Add-AzAutoscaleSetting.md)
-Creates an Autoscale setting.
-
 ### [Add-AzLogProfile](Add-AzLogProfile.md)
 Creates a new activity log profile. This profile is used to either archive the activity log to an Azure storage account or stream it to an Azure event hub in the same subscription.
 
@@ -44,8 +41,11 @@ Gets classic alert rules.
 ### [Get-AzAutoscaleHistory](Get-AzAutoscaleHistory.md)
 Gets the Autoscale history.
 
+### [Get-AzAutoscalePredictiveMetric](Get-AzAutoscalePredictiveMetric.md)
+get predictive autoscale metric future data
+
 ### [Get-AzAutoscaleSetting](Get-AzAutoscaleSetting.md)
-Gets Autoscale settings.
+Gets an autoscale setting
 
 ### [Get-AzDataCollectionRule](Get-AzDataCollectionRule.md)
 Gets data collection rule(s).
@@ -108,17 +108,23 @@ Creates an email action for an alert rule.
 ### [New-AzAlertRuleWebhook](New-AzAlertRuleWebhook.md)
 Creates an alert rule webhook.
 
-### [New-AzAutoscaleNotification](New-AzAutoscaleNotification.md)
-Creates an Autoscale email notification.
+### [New-AzAutoscaleNotificationObject](New-AzAutoscaleNotificationObject.md)
+Create an in-memory object for AutoscaleNotification.
 
-### [New-AzAutoscaleProfile](New-AzAutoscaleProfile.md)
-Creates an Autoscale profile.
+### [New-AzAutoscaleProfileObject](New-AzAutoscaleProfileObject.md)
+Create an in-memory object for AutoscaleProfile.
 
-### [New-AzAutoscaleRule](New-AzAutoscaleRule.md)
-Creates an Autoscale rule.
+### [New-AzAutoscaleScaleRuleMetricDimensionObject](New-AzAutoscaleScaleRuleMetricDimensionObject.md)
+Create an in-memory object for ScaleRuleMetricDimension.
 
-### [New-AzAutoscaleWebhook](New-AzAutoscaleWebhook.md)
-Creates an Autoscale webhook.
+### [New-AzAutoscaleScaleRuleObject](New-AzAutoscaleScaleRuleObject.md)
+Create an in-memory object for ScaleRule.
+
+### [New-AzAutoscaleSetting](New-AzAutoscaleSetting.md)
+Creates or updates an autoscale setting.
+
+### [New-AzAutoscaleWebhookNotificationObject](New-AzAutoscaleWebhookNotificationObject.md)
+Create an in-memory object for WebhookNotification.
 
 ### [New-AzDataCollectionRule](New-AzDataCollectionRule.md)
 Create a data collection rule.
@@ -175,7 +181,7 @@ Delete an Activity Log Alert rule.
 Removes an alert rule.
 
 ### [Remove-AzAutoscaleSetting](Remove-AzAutoscaleSetting.md)
-Removes an Autoscale setting.
+Deletes and autoscale setting
 
 ### [Remove-AzDataCollectionRule](Remove-AzDataCollectionRule.md)
 Delete a data collection rule.
@@ -223,4 +229,3 @@ Update for private link scope
 
 ### [Update-AzScheduledQueryRule](Update-AzScheduledQueryRule.md)
 Update a scheduled query rule.
-
