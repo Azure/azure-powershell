@@ -32,6 +32,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DiagnosticSetting", "Dia
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScheduledQueryRule", "ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj", "{00A41C24-7BB2-46D1-892A-13B0844A61DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Autoscale", "Autoscale.Autorest\Az.Autoscale.csproj", "{201512D5-675A-40E1-A5BB-ACC091E98DE5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -102,6 +104,10 @@ Global
 		{00A41C24-7BB2-46D1-892A-13B0844A61DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00A41C24-7BB2-46D1-892A-13B0844A61DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00A41C24-7BB2-46D1-892A-13B0844A61DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{201512D5-675A-40E1-A5BB-ACC091E98DE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{201512D5-675A-40E1-A5BB-ACC091E98DE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{201512D5-675A-40E1-A5BB-ACC091E98DE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{201512D5-675A-40E1-A5BB-ACC091E98DE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
