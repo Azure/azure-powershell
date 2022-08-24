@@ -104,6 +104,14 @@ param(
     # The geo-location where the grafana resource lives
     ${Location},
 
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[]]
+    # The MonitorWorkspaceIntegration of Azure Managed Grafana.
+    # To construct, see NOTES section for MONITORWORKSPACEINTEGRATION properties and create a hash table.
+    ${MonitorWorkspaceIntegration},
+
     [Parameter(Mandatory)]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess])]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
@@ -114,7 +122,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
     [System.String]
-    # The SkuName name of Azure Managed Grafana.
+    # The Sku of the grafana resource.
     ${SkuName},
 
     [Parameter()]

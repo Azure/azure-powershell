@@ -45,6 +45,26 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  - from: swagger-document 
+    where: $.definitions.ResourceSku.properties
+    transform: >-
+      return {
+          "name": {
+            "description": "The Sku of the grafana resource.",
+            "type": "string"
+          }
+      }
+  - from: swagger-document 
+    where: $.definitions.GrafanaIntegrations.properties.azureMonitorWorkspaceIntegrations
+    transform: >-
+      return {
+          "type": "array",
+          "x-ms-identifiers": [],
+          "description": "The MonitorWorkspaceIntegration of Azure Managed Grafana.",
+          "items": {
+            "$ref": "#/definitions/AzureMonitorWorkspaceIntegration"
+          }
+      }
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
@@ -60,7 +80,7 @@ directive:
       subject: PrivateLinkResource
     remove: true
   - where:
-      verb: New|Update
+      verb: New
       subject: Grafana
     hide: true
   - where:
