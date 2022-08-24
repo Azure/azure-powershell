@@ -93,7 +93,7 @@ pac91,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Monitor
 pac92,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.MonitoringSolutions,0.1.0
 pac93,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.MySql,1.0.0
 pac94,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.NetAppFiles,0.10.0
-pac95,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Network,4.19.0
+pac95,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Network,4.20.0
 pac96,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.NetworkFunction,0.1.0
 pac97,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.NotificationHubs,1.1.1
 pac98,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.OperationalInsights,3.1.0
