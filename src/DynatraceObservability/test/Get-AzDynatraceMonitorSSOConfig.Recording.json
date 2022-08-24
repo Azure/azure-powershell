@@ -1,8 +1,8 @@
 {
-  "Get-AzDynatraceMonitorSSOConfig+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/singleSignOnConfigurations/default?api-version=2021-09-01-preview+1": {
+  "Get-AzDynatraceMonitorSSOConfig+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/singleSignOnConfigurations/default?api-version=2021-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/singleSignOnConfigurations/default?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/singleSignOnConfigurations/default?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -41,10 +41,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDynatraceMonitorSSOConfig+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/singleSignOnConfigurations/default?api-version=2021-09-01-preview+1": {
+  "Get-AzDynatraceMonitorSSOConfig+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/singleSignOnConfigurations/default?api-version=2021-09-01+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/singleSignOnConfigurations/default?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/singleSignOnConfigurations/default?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -83,10 +83,10 @@
       "isContentBase64": false
     }
   },
-  "Get-AzDynatraceMonitorSSOConfig+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/singleSignOnConfigurations/default?api-version=2021-09-01-preview+2": {
+  "Get-AzDynatraceMonitorSSOConfig+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/singleSignOnConfigurations/default?api-version=2021-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/singleSignOnConfigurations/default?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdxe2m/singleSignOnConfigurations/default?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

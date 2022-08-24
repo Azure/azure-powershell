@@ -1,8 +1,8 @@
 {
-  "Remove-AzDynatraceMonitor+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdassm?api-version=2021-09-01-preview+1": {
+  "Remove-AzDynatraceMonitor+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdassm?api-version=2021-09-01+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdassm?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdassm?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -23,7 +23,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"9e026af6-0000-0300-0000-630227eb0000\"" ],
-        "Location": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01-preview" ],
+        "Location": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
@@ -32,7 +32,7 @@
         "x-ms-client-request-id": [ "6213c1f3-04c0-4923-943d-562e9fc241dd" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01" ],
         "x-ms-request-id": [ "ce1bfd8c-f4f8-4c54-88b6-786014e3a84f" ],
         "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124115Z:5f30ecb5-1243-4f52-b9d3-dfc28c157a4d" ],
         "Date": [ "Sun, 21 Aug 2022 12:41:15 GMT" ]
@@ -46,10 +46,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDynatraceMonitor+[NoContext]+Delete+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01-preview+2": {
+  "Remove-AzDynatraceMonitor+[NoContext]+Delete+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -87,10 +87,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDynatraceMonitor+[NoContext]+Delete+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01-preview+3": {
+  "Remove-AzDynatraceMonitor+[NoContext]+Delete+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -128,10 +128,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDynatraceMonitor+[NoContext]+Delete+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01-preview+4": {
+  "Remove-AzDynatraceMonitor+[NoContext]+Delete+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/ce1bfd8c-f4f8-4c54-88b6-786014e3a84f*1CD31809CF0DAD7C9B19A76B0C3BF44B78794459CA35A3AC893770D5AA192786?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -169,10 +169,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01-preview+1": {
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01+1": {
     "Request": {
       "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01",
       "Content": "{\r\n  \"location\": \"eastus2euap\",\r\n  \"properties\": {\r\n    \"dynatraceEnvironmentProperties\": {\r\n      \"singleSignOnProperties\": {\r\n        \"aadDomains\": [ \"mpliftrlogz20210811outlook.onmicrosoft.com\" ]\r\n      }\r\n    },\r\n    \"userInfo\": {\r\n      \"firstName\": \"Lucas\",\r\n      \"lastName\": \"Yao\",\r\n      \"emailAddress\": \"v-diya@microsoft.com\"\r\n    },\r\n    \"planData\": {\r\n      \"usageType\": \"COMMITTED\",\r\n      \"billingCycle\": \"Monthly\",\r\n      \"planDetails\": \"azureportalintegration_privatepreview@TIDhjdtn7tfnxcy\"\r\n    }\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
@@ -188,7 +188,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"9e027cf7-0000-0300-0000-630228370000\"" ],
-        "Location": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview" ],
+        "Location": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
@@ -197,7 +197,7 @@
         "X-Content-Type-Options": [ "nosniff" ],
         "x-ms-correlation-request-id": [ "5a74d05a-14ce-496c-8a4e-14fa3ca5a74e" ],
         "x-ms-client-request-id": [ "fe535199-34ea-46aa-8c70-fc9dc56d2fce" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01" ],
         "x-ms-request-id": [ "43449c44-c8af-441d-bf1f-c7b8b5a18dfa" ],
         "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124232Z:5a74d05a-14ce-496c-8a4e-14fa3ca5a74e" ],
         "Date": [ "Sun, 21 Aug 2022 12:42:32 GMT" ]
@@ -211,10 +211,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview+2": {
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -252,10 +252,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview+3": {
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/43449c44-c8af-441d-bf1f-c7b8b5a18dfa*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -293,10 +293,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01-preview+4": {
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -335,10 +335,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01-preview+5": {
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01+5": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/dyobrgcv1ai3/providers/Dynatrace.Observability/monitors/dyobwdceam?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -359,7 +359,7 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "ETag": [ "\"9e027af8-0000-0300-0000-630228790000\"" ],
-        "Location": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview" ],
+        "Location": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01" ],
         "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
         "x-ms-providerhub-traffic": [ "True" ],
         "Request-Context": [ "appId=cid-v1:fab059ea-d726-424a-9451-6beb3dc74944" ],
@@ -368,7 +368,7 @@
         "x-ms-client-request-id": [ "c25110a8-d931-478c-85d1-080caf6b8991" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01" ],
         "x-ms-request-id": [ "d2573879-2ccf-41e8-ac78-55428a6f6b9a" ],
         "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220821T124337Z:fe69cc0b-36f5-407e-919e-5b5fbb81a6bc" ],
         "Date": [ "Sun, 21 Aug 2022 12:43:37 GMT" ]
@@ -382,10 +382,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview+6": {
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01+6": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -423,10 +423,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview+7": {
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01+7": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
@@ -464,10 +464,10 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview+8": {
+  "Remove-AzDynatraceMonitor+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01+8": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01-preview",
+      "RequestUri": "https://management.azure.com/providers/Dynatrace.Observability/locations/EASTUS2EUAP/operationStatuses/d2573879-2ccf-41e8-ac78-55428a6f6b9a*FF028CED7B14CBA703C6E0977EE34F750F9FCDEF58351632E7623C4B6E84F020?api-version=2021-09-01",
       "Content": null,
       "isContentBase64": false,
       "Headers": {

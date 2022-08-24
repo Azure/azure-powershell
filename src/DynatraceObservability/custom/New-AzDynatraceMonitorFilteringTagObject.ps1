@@ -21,12 +21,12 @@ Create an in-memory object for FilteringTag.
 Create an in-memory object for FilteringTag.
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901Preview.FilteringTag
+Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.FilteringTag
 .Link
 https://docs.microsoft.com/powershell/module/az.Dynatrace/new-AzDynatraceMonitorFilteringTagObject
 #>
 function New-AzDynatraceMonitorFilteringTagObject {
-    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901Preview.FilteringTag')]
+    [OutputType('Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.FilteringTag')]
     [CmdletBinding(PositionalBinding=$false)]
     Param(
 
@@ -43,7 +43,7 @@ function New-AzDynatraceMonitorFilteringTagObject {
     )
 
     process {
-        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901Preview.FilteringTag]::New()
+        $Object = [Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.FilteringTag]::New()
 
         if ($PSBoundParameters.ContainsKey('Action')) {
             $Object.Action = $Action

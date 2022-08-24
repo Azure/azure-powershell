@@ -104,7 +104,7 @@ If Include actions are specified, the rules will only include resources with the
 To construct, see NOTES section for LOGRULEFILTERINGTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901Preview.IFilteringTag[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IFilteringTag[]
 Parameter Sets: (All)
 Aliases:
 
@@ -168,7 +168,7 @@ If Include actions are specified, the rules will only include resources with the
 To construct, see NOTES section for METRICRULEFILTERINGTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901Preview.IFilteringTag[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.IFilteringTag[]
 Parameter Sets: (All)
 Aliases:
 
@@ -265,7 +265,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901Preview.ITagRule
+### Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Models.Api20210901.ITagRule
 
 ## NOTES
 

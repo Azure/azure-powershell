@@ -30,11 +30,11 @@ For information on how to develop for `Az.DynatraceObservability`, see [how-to.m
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: fd4dd3abc8bf0cdaebdf74215d0dbe3ec705fe9c
+branch: 8820fa48b53c2c5c6cada3d44046b879932893cd
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/dynatrace/resource-manager/Dynatrace.Observability/preview/2021-09-01-preview/dynatrace.json
+  - $(repo)/specification/dynatrace/resource-manager/Dynatrace.Observability/stable/2021-09-01/dynatrace.json
 title: DynatraceObservability
 subject-prefix: Dynatrace
 
@@ -241,12 +241,11 @@ directive:
     set:
       parameter-name: Name
 
-  # unwork
-  # - where:
-  #     verb: Get
-  #     subject: MonitorSSODetail
-  #     parameter-name: Confirm
-  #   hide: true
+  - where:
+      verb: Get
+      subject: MonitorSSODetail
+      parameter-name: Confirm
+    hide: true
 
 #  only name allowed for a rule set is 'default'
   - where:
