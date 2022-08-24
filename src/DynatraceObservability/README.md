@@ -155,7 +155,7 @@ directive:
       subject: Monitor
       parameter-name: IdentityUserAssignedIdentity
     set:
-      parameter-name: IdentityUserAssigned
+      parameter-name: UserAssignedIdentity
 
   - where:
       subject: Monitor

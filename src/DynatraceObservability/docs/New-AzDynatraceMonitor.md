@@ -17,14 +17,13 @@ New-AzDynatraceMonitor -Name <String> -ResourceGroupName <String> -Location <Str
  [-SubscriptionId <String>] [-AccountId <String>] [-AccountRegionId <String>] [-EnvironmentId <String>]
  [-EnvironmentIngestionKey <String>] [-EnvironmentLandingUrl <String>]
  [-EnvironmentLogsIngestionEndpoint <String>] [-EnvironmentUserId <String>]
- [-IdentityType <ManagedIdentityType>] [-IdentityUserAssigned <Hashtable>]
- [-MarketplaceSubscriptionStatus <MarketplaceSubscriptionStatus>] [-MonitoringStatus <MonitoringStatus>]
- [-PlanBillingCycle <String>] [-PlanDetail <String>] [-PlanEffectiveDate <DateTime>] [-PlanUsageType <String>]
- [-SingleSignOnAadDomain <String[]>] [-SingleSignOnEnterpriseAppId <String>]
- [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>] [-Tag <Hashtable>]
- [-UserCountry <String>] [-UserEmailAddress <String>] [-UserFirstName <String>] [-UserLastName <String>]
- [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-IdentityType <ManagedIdentityType>] [-MarketplaceSubscriptionStatus <MarketplaceSubscriptionStatus>]
+ [-MonitoringStatus <MonitoringStatus>] [-PlanBillingCycle <String>] [-PlanDetail <String>]
+ [-PlanEffectiveDate <DateTime>] [-PlanUsageType <String>] [-SingleSignOnAadDomain <String[]>]
+ [-SingleSignOnEnterpriseAppId <String>] [-SingleSignOnState <SingleSignOnStates>] [-SingleSignOnUrl <String>]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-UserCountry <String>] [-UserEmailAddress <String>]
+ [-UserFirstName <String>] [-UserLastName <String>] [-UserPhoneNumber <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -187,21 +186,6 @@ The type of managed identity assigned to this resource.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.DynatraceObservability.Support.ManagedIdentityType
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -IdentityUserAssigned
-The identities assigned to this resource by the user.
-
-```yaml
-Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -442,6 +426,21 @@ Accept wildcard characters: False
 
 ### -Tag
 Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The identities assigned to this resource by the user.
 
 ```yaml
 Type: System.Collections.Hashtable
