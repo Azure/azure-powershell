@@ -6304,6 +6304,8 @@ function Test-ConfidentialVMSetAzVmOsDiskDESIdNoCustPolicyDESPermission
 .SYNOPSIS
 Test confidential vm set-azvmosdisk wiki
 https://dev.azure.com/msazure/AzureWiki/_wiki/wikis/AzureWiki.wiki/232000/How-to-Provision-a-CVM-with-customer-managed-key-(CMK)-using-Azure-CLI
+ADAM trying this for DES wityh CLI test for sanity check if it allworks with cli.
+Try edits with Keyvault module? 
 #>
 function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
 {
@@ -6315,7 +6317,7 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $rgname = "adsandwiki25";
+        $rgname = "adsandwiki30";
 
         $vmname = 'v' + 'vmdesnop';
         $vmSize = "Standard_DC2as_v5";         
@@ -6331,7 +6333,7 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $vmSecurityType = "ConfidentialVM";
         $user = "admin01";
         #$password = Get-PasswordForVM;
-        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force; 
+        $securePassword = "Testing1234567" | ConvertTo-SecureString -AsPlainText -Force; 
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
         $kvname = "kv" + $rgname;
@@ -6342,7 +6344,7 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $KeyVault = $kvName;
         $resourceGroup = $rgname;
         $region = $loc;
-        #########this worked: az keyvault create --name $KeyVault --resource-group $resourceGroup --location $region --sku Premium --enable-purge-protection ;
+        #########az keyvault create --name $KeyVault --resource-group $resourceGroup --location $region --sku Premium --enable-purge-protection ;
         New-AzKeyVault -Name $KeyVault -Location $loc -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
 
         #  install-module -name "Az.Resources" -AllowClobber -Force
@@ -6359,9 +6361,9 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         # az keyvault key create --vault-name $kvname --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
         $KeyName = $keyname;
         $KeySize = 3072;
-        #az keyvault key create --vault-name $KeyVault --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
+        az keyvault key create --vault-name $KeyVault --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
         #######Add-AzKeyVaultKey -Hsmname $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA  -UseDefaultCVMPolicy;#-Destination HSM;
-        Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -UseDefaultCVMPolicy ;#-Destination HSM;
+        ########Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -UseDefaultCVMPolicy ;#-Destination HSM;
 
 
         # Capture Keyvault and key details
@@ -6651,6 +6653,7 @@ function Test-DebuggingHSMCVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $encryptionKeyTmp = Get-AzKeyVaultKey -VaultName $hsmKVName -Name $keyName;
         #using Name or not still runs into this issue. Whenever the test gets to the TestClientFactory to CreateCUstomArmClient, it fails
         # with error " The running command stopped because the preference variable "ErrorActionPreference" or common parameter is set to Stop: can't find constructor (uri, ServiceClientCredentials, DelegatingHandler[]) to create client"
+        # due to this being a data plane operation. 
         $encryptionKeyURL = $encryptionKeyTmp.Key.Kid;
         
         # Create new DES Config and DES
