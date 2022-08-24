@@ -12,6 +12,23 @@ Adds new entity to users
 
 ## SYNTAX
 
+### WithPasswordProfile (Default)
+```
+New-AzADUser -DisplayName <String> -MailNickname <String> -PasswordProfile <IMicrosoftGraphPasswordProfile>
+ -UserPrincipalName <String> [-AboutMe <String>] [-AccountEnabled <Boolean>] [-AgeGroup <String>]
+ [-Birthday <DateTime>] [-City <String>] [-CompanyName <String>] [-ConsentProvidedForMinor <String>]
+ [-Country <String>] [-DeletedDateTime <DateTime>] [-Department <String>] [-DeviceEnrollmentLimit <Int32>]
+ [-EmployeeHireDate <DateTime>] [-EmployeeId <String>] [-EmployeeType <String>] [-ExternalUserState <String>]
+ [-ExternalUserStateChangeDateTime <DateTime>] [-FaxNumber <String>] [-GivenName <String>]
+ [-HireDate <DateTime>] [-ImmutableId <String>] [-Interest <String[]>] [-IsResourceAccount]
+ [-JobTitle <String>] [-Mail <String>] [-MobilePhone <String>] [-MySite <String>] [-OfficeLocation <String>]
+ [-OtherMail <String[]>] [-PasswordPolicy <String>] [-PostalCode <String>] [-PreferredLanguage <String>]
+ [-PreferredName <String>] [-Responsibility <String[]>] [-School <String[]>] [-ShowInAddressList]
+ [-Skill <String[]>] [-State <String>] [-StreetAddress <String>] [-Surname <String>] [-UsageLocation <String>]
+ [-UserType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### WithPassword
 ```
 New-AzADUser -DisplayName <String> -MailNickname <String> -Password <SecureString> -UserPrincipalName <String>
  [-AboutMe <String>] [-AccountEnabled <Boolean>] [-AgeGroup <String>] [-Birthday <DateTime>] [-City <String>]
@@ -21,11 +38,10 @@ New-AzADUser -DisplayName <String> -MailNickname <String> -Password <SecureStrin
  [-FaxNumber <String>] [-ForceChangePasswordNextLogin] [-GivenName <String>] [-HireDate <DateTime>]
  [-ImmutableId <String>] [-Interest <String[]>] [-IsResourceAccount] [-JobTitle <String>] [-Mail <String>]
  [-MobilePhone <String>] [-MySite <String>] [-OfficeLocation <String>] [-OtherMail <String[]>]
- [-PasswordPolicy <String>] [-PasswordProfile <IMicrosoftGraphPasswordProfile>] [-PostalCode <String>]
- [-PreferredLanguage <String>] [-PreferredName <String>] [-Responsibility <String[]>] [-School <String[]>]
- [-ShowInAddressList] [-Skill <String[]>] [-State <String>] [-StreetAddress <String>] [-Surname <String>]
- [-UsageLocation <String>] [-UserType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-PasswordPolicy <String>] [-PostalCode <String>] [-PreferredLanguage <String>] [-PreferredName <String>]
+ [-Responsibility <String[]>] [-School <String[]>] [-ShowInAddressList] [-Skill <String[]>] [-State <String>]
+ [-StreetAddress <String>] [-Surname <String>] [-UsageLocation <String>] [-UserType <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,13 +49,23 @@ Adds new entity to users
 
 ## EXAMPLES
 
-### Example 1: Create user
+### Example 1: Create user with password profile
 ```powershell
+$password = "xxxxxxxxxx"
 $pp = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
 New-AzADUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled $true -MailNickname $nickname -UserPrincipalName $upn
 ```
 
-Create user
+Create user with password profile
+
+### Example 2: Create user with password
+```powershell
+$password = "xxxxxxxxxx"
+$password = ConvertTo-SecureString -AsPlainText -Force $password
+New-AzADUser -DisplayName $uname -Password $password -AccountEnabled $true -MailNickname $nickname -UserPrincipalName $upn
+```
+
+Create user with password
 
 ## PARAMETERS
 
@@ -363,7 +389,7 @@ Default behavior is (false) to not change the password on the next successful lo
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: WithPassword
 Aliases:
 
 Required: False
@@ -585,7 +611,7 @@ It is recommended to set a strong password.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: WithPassword
 Aliases:
 
 Required: True
@@ -619,10 +645,10 @@ To construct, see NOTES section for PASSWORDPROFILE properties and create a hash
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile
-Parameter Sets: (All)
+Parameter Sets: WithPasswordProfile
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
