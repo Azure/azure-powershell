@@ -27,16 +27,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes a hybridworkergroup for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Move, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorkerGroup",
+    [Cmdlet(VerbsCommon.Move, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorker",
         SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(void))]
-    public class MoveAzureAutomationHybridRunbookWorkerGroup : AzureAutomationBaseCmdlet
+    public class MoveAzureAutomationHybridRunbookWorker : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the hybrid worker name.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker name")]
-        [Alias("RunbookWorker")]
+        [Alias("RunbookWorker", "RunbookWorkerId")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the hybrid worker group name.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 3, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The hybrid runbook worker group name")]
-        [Alias("RunbookWorkerGroup")]
+        [Alias("RunbookWorkerGroup", "WorkerGroup")]
         [ValidateNotNullOrEmpty]
         public string HybridRunbookWorkerGroupName { get; set; }
 
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// Gets or sets the target hybrid worker group name.
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 4, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The target hybrid runbook worker group name")]
-        [Alias("TargetRunbookWorkerGroup")]
+        [Alias("TargetRunbookWorkerGroup", "TargetWorkerGroup")]
         [ValidateNotNullOrEmpty]
         public string TargetHybridRunbookWorkerGroupName { get; set; }
 
@@ -62,22 +62,16 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            ConfirmAction(
-                       string.Format(Resources.RemoveAzureAutomationResourceDescription, "HybridWorkerGroup"),
-                       Name,
-                       () =>
-                       {
-                           var hybridWorkerUpdateParams = new HybridRunbookWorkerMoveContent()
-                           {
-                               HybridRunbookWorkerGroupName = this.TargetHybridRunbookWorkerGroupName
-                           };
+            var hybridWorkerUpdateParams = new HybridRunbookWorkerMoveContent()
+            {
+                HybridRunbookWorkerGroupName = this.TargetHybridRunbookWorkerGroupName
+            };
 
-                           SubscriptionResource subResource = this.ArmClient.GetDefaultSubscription(new System.Threading.CancellationToken());
-                           var subId = subResource.Data.SubscriptionId;
+            SubscriptionResource subResource = this.ArmClient.GetDefaultSubscription(new System.Threading.CancellationToken());
+            var subId = subResource.Data.SubscriptionId;
 
-                           var hybridWorkerResource = HybridRunbookWorkerResource.CreateResourceIdentifier(subId, this.ResourceGroupName, this.AutomationAccountName, this.HybridRunbookWorkerGroupName, this.Name);
-                           this.ArmClient.GetHybridRunbookWorkerResource(hybridWorkerResource).Move(hybridWorkerUpdateParams);
-                       });
+            var hybridWorkerResource = HybridRunbookWorkerResource.CreateResourceIdentifier(subId, this.ResourceGroupName, this.AutomationAccountName, this.HybridRunbookWorkerGroupName, this.Name);
+            this.ArmClient.GetHybridRunbookWorkerResource(hybridWorkerResource).Move(hybridWorkerUpdateParams);
         }
     }
 }

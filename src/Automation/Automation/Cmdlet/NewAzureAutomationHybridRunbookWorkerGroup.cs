@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the hybrid worker group Credential.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The credential present in the automation account.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "The credential present in the automation account.")]
         public string CredentialName { get; set; }
 
         /// <summary>

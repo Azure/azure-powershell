@@ -17,7 +17,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(Position = 2, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The hybrid runbook worker group name")]
         [ValidateNotNullOrEmpty]
-        [Alias("Group")]
+        [Alias("RunbookWorkerGroup", "WorkerGroup")]
         public string Name { get; set; }
 
         /// <summary>

@@ -15,7 +15,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     public class GetAzureAutomationHybridRunbookWorkerGroup : AzureAutomationBaseCmdlet
     {
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2,  Mandatory = false, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker Group name")]
-        [Alias("Group")]
+        [Alias("WorkerGroup", "RunbookWorkerGroup")]
         public string Name { get; set; }
 
         protected override void AutomationProcessRecord()

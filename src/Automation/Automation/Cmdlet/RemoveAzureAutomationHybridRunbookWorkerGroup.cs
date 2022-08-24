@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The hybrid worker group name.")]
         [ValidateNotNullOrEmpty]
-        [Alias("Group")]
+        [Alias("RunbookWorkerGroup", "WorkerGroup")]
         public string Name { get; set; }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
             ConfirmAction(
-                       string.Format(Resources.RemoveAzureAutomationResourceDescription, "HybridWorkerGroup"),
+                       string.Format(Resources.RemoveAzureAutomationResourceDescription, "HybridRunbookWorkerGroup"),
                        Name,
                        () =>
                        {

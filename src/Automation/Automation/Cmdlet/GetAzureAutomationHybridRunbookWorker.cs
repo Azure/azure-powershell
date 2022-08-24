@@ -15,11 +15,11 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     public class GetAzureAutomationHybridRunbookWorker : AzureAutomationBaseCmdlet
     {
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2,  Mandatory = false, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker name")]
-        [Alias("RunbookWorker")]
+        [Alias("RunbookWorker", "RunbookWorkerId")]
         public string Name { get; set; }
 
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 3, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker Group name")]
-        [Alias("WorkerGroup")]
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker Group name")]
+        [Alias("WorkerGroup", "RunbookWorkerGroup")]
         [ValidateNotNullOrEmpty]
         public string HybridRunbookWorkerGroupName { get; set; }
 

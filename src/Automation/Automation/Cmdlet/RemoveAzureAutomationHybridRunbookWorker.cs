@@ -34,17 +34,17 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the hybridworkergroup name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The hybrid worker group name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The hybrid runbook worker name.")]
         [ValidateNotNullOrEmpty]
-        [Alias("Group")]
+        [Alias("RunbookWorker", "RunbookWorkerId")]
         public string Name { get; set; }
 
 
         /// <summary>
         /// Gets or sets the hybrid worker group name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 3, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The hybrid runbook worker group name")]
-        [Alias("RunbookWorkerGroup")]
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The hybrid runbook worker group name")]
+        [Alias("RunbookWorkerGroup", "WorkerGroup")]
         [ValidateNotNullOrEmpty]
         public string HybridRunbookWorkerGroupName { get; set; }
 
@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
             ConfirmAction(
-                       string.Format(Resources.RemoveAzureAutomationResourceDescription, "HybridWorkerGroup"),
+                       string.Format(Resources.RemoveAzureAutomationResourceDescription, "HybridRunbookWorker"),
                        Name,
                        () =>
                        {
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 
                            var hybridWorkerResourceId = HybridRunbookWorkerResource.CreateResourceIdentifier(subId, this.ResourceGroupName, this.AutomationAccountName, this.HybridRunbookWorkerGroupName, this.Name);
 
-                           this.ArmClient.GetHybridRunbookWorkerGroupResource(hybridWorkerResourceId).Delete(WaitUntil.Completed);
+                           this.ArmClient.GetHybridRunbookWorkerResource(hybridWorkerResourceId).Delete(WaitUntil.Completed);
                        });
         }
     }
