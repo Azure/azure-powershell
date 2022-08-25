@@ -34,16 +34,18 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         {
             HybridRunbookWorkerGroupCreateOrUpdateParameters data = new HybridRunbookWorkerGroupCreateOrUpdateParameters()
             {
-                CredentialName = this.CredentialName != null ? this.CredentialName : string.Empty,
                 Name = this.Name,
             };
+
+            if (!string.IsNullOrEmpty(this.CredentialName))
+            {
+                data.CredentialName = this.CredentialName;
+            }
 
             SubscriptionResource subResource = this.ArmClient.GetDefaultSubscription(new System.Threading.CancellationToken());
             var subId = subResource.Data.SubscriptionId;
 
             var automationAccountResourceId = AutomationAccountResource.CreateResourceIdentifier(subId, this.ResourceGroupName, this.AutomationAccountName);
-
-            this.ArmClient.GetAutomationAccountResource(automationAccountResourceId).GetHybridRunbookWorkerGroups().CreateOrUpdate(WaitUntil.Completed, this.Name, data);
             var operation = this.ArmClient.GetAutomationAccountResource(automationAccountResourceId).GetHybridRunbookWorkerGroups().CreateOrUpdate(WaitUntil.Completed, this.Name, data);
 
             this.GenerateCmdletOutput(operation.Value);
