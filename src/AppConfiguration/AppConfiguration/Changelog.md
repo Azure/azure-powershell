@@ -19,6 +19,22 @@
 -->
 ## Upcoming Release
 
-## Version 0.1.0
-* First preview release for module Az.AppConfiguration
+## Version 1.1.0
+* Added parameter "PublicNetworkAccess" in `New-AzAppConfigurationStore` and `Update-AzAppConfigurationStore`
 
+## Version 1.0.0
+* General availability of 'Az.AppConfiguration' module
+
+## Version 0.2.0
+* Supported customer-managed keys and configuration of managed identity.
+
+## Version 0.1.4
+
+## Version 0.1.3
+
+## Version 0.1.2
+
+## Version 0.1.1
+
+## Version 0.1.0
+* the first preview release
