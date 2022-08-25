@@ -20,8 +20,7 @@ Delete a virtual machine image template
 .Description
 Delete a virtual machine image template
 .Example
-Remove-AzImageBuilderTemplate -Name bez-test-img-temp13 
--ResourceGroupName bez-rg
+Remove-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg
 .Example
 Get-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg | Remove-AzImageBuilderTemplate
 
