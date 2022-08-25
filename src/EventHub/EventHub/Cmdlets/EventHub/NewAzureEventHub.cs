@@ -15,12 +15,14 @@
 using Microsoft.Azure.Commands.EventHub.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
     /// <summary>
     /// 'New-AzEventHub' Cmdlet creates a new EventHub
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHub", DefaultParameterSetName = EventhubPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubAttributes))]
     public class NewAzureRmEventHub : AzureEventHubsCmdletBase
     {

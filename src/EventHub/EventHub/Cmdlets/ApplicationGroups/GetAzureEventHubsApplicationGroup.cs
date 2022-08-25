@@ -22,7 +22,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
 {
-    [GenericBreakingChange(message: BreakingChangeNotification + "\n-Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubApplicationGroup", DefaultParameterSetName = ApplicationGroupPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubApplicationGroupAttributes))]
     public class GetEventHubsApplicationGroups : AzureEventHubsCmdletBase
     {

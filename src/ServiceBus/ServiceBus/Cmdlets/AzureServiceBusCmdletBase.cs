@@ -157,7 +157,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             internal const string PrimaryKey = "PrimaryKey";
             internal const string SecondaryKey = "SecondaryKey";
         }
-        
+
+        public const string BreakingChangeNotification = "- PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.";
+        public const string DeprecateByVersion = "Az 9.0";
+        public const string ChangeInEffectByDate = "12th October, 2022";
+
         protected static AccessRights ParseAccessRights(string rightsName)
         {
             AccessRights returnAccessRights;

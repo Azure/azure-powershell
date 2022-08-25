@@ -23,7 +23,7 @@ using System.Management.Automation;
 namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
 {
 
-    [GenericBreakingChange(message: BreakingChangeNotification + "\n-Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubApplicationGroup", DefaultParameterSetName = ApplicationGroupPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubApplicationGroupAttributes))]
     public class SetAzureEventHubsApplicationGroups: AzureEventHubsCmdletBase
     {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupResourceIdParameterSet, HelpMessage = "Determines if Application Group is allowed to create connection with namespace or not. Once the isEnabled is set to false, all the existing connections of application group gets dropped and no new connections will be allowed")]
         public SwitchParameter IsEnabled { get; set; }
 
-        [CmdletParameterBreakingChange("ThrottlingPolicyConfig", ReplaceMentCmdletParameterName = "Policy", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy")]
+        [CmdletParameterBreakingChange("ThrottlingPolicyConfig", OldParamaterType = typeof(PSEventHubThrottlingPolicyConfigAttributes), ReplaceMentCmdletParameterName = "Policy", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupPropertiesParameterSet, HelpMessage = "List of Throttling Policy Objects. Please use New-AzEventHubThrottlingPolicyConfig to create in memory object which can be one item in this list.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupResourceIdParameterSet, HelpMessage = "List of Throttling Policy Objects. Please use New-AzEventHubThrottlingPolicyConfig to create in memory object which can be one item in this list.")]
         public PSEventHubThrottlingPolicyConfigAttributes[] ThrottlingPolicyConfig { get; set; }

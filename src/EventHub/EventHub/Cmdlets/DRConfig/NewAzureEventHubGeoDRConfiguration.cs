@@ -16,12 +16,14 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
     /// <summary>
     /// 'New-AzEventHubDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubDRConfigurationAttributes))]
     public class NewAzureRmEventHubGeoDRConfiguration : AzureEventHubsCmdletBase
     {

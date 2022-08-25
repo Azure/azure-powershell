@@ -18,20 +18,22 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
-{    
+{
     /// <summary>
     /// 'Get-AzureRmEventHub' Cmdlet gives the details of a / List of EventHub(s)
     /// <para> If EventHub name provided, a single EventHub detials will be returned</para>
     /// <para> If EventHub name not provided, list of EventHub will be returned</para>
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSet'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubNetworkRuleSet", DefaultParameterSetName = NetwrokruleSetPropertiesParameterSet), OutputType(typeof(PSNetworkRuleSetAttributes))]
     public class GetAzureEventHubNetworkRuleSet : AzureEventHubsCmdletBase
     {
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 0, HelpMessage = "Resource Group Name")]
         [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetNamespacePropertiesParameterSet, HelpMessage = "Resource Group Name")]
-         public string ResourceGroupName { get; set; }
+        public string ResourceGroupName { get; set; }
 
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetPropertiesParameterSet, Position = 1, HelpMessage = "Namespace Name")]
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetNamespacePropertiesParameterSet, Position = 0, HelpMessage = "Namespace Name")]

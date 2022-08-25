@@ -17,12 +17,14 @@ using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.EventHub.Models;
 using System;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands
 {
     /// <summary>
     /// 'New-AzRelayAuthorizationRule' Cmdlet creates a new AuthorizationRule
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
     public class NewAzureEventhubAuthorizationRules : AzureEventHubsCmdletBase
     {
@@ -50,6 +52,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("Rights", ChangeDescription = "- The output type of the parameter would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.AccessRights[]'")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "Rights, e.g.  \"" + Manage + "\",\"" + Send + "\",\"" + Listen + "\"")]
         [ValidateNotNullOrEmpty]
         [ValidateSet("Listen", "Send", "Manage", IgnoreCase = true)]

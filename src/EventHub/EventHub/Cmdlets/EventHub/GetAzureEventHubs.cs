@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
@@ -21,12 +22,13 @@ using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
-{    
+{
     /// <summary>
     /// 'Get-AzEventHub' Cmdlet gives the details of a / List of EventHub(s)
     /// <para> If EventHub name provided, a single EventHub detials will be returned</para>
     /// <para> If EventHub name not provided, list of EventHub will be returned</para>
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHub", DefaultParameterSetName = EventhubPropertiesParameterSet), OutputType(typeof(PSEventHubAttributes))]
     public class GetAzureRmEventHub : AzureEventHubsCmdletBase
     {
