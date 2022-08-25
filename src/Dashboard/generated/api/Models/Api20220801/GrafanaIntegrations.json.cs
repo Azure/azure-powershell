@@ -7,8 +7,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Extensions;
 
-    /// <summary>The properties parameters for a PATCH request to a grafana resource.</summary>
-    public partial class ManagedGrafanaPropertiesUpdateParameters
+    /// <summary>
+    /// GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards,
+    /// alerting defaults) for common monitoring scenarios.
+    /// </summary>
+    public partial class GrafanaIntegrations
     {
 
         /// <summary>
@@ -54,22 +57,22 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         partial void BeforeToJson(ref Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject container, ref bool returnNow);
 
         /// <summary>
-        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParameters.
+        /// Deserializes a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode"/> into an instance of Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations.
         /// </summary>
         /// <param name="node">a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode" /> to deserialize from.</param>
         /// <returns>
-        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParameters.
+        /// an instance of Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations.
         /// </returns>
-        public static Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParameters FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode node)
+        public static Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations FromJson(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode node)
         {
-            return node is Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject json ? new ManagedGrafanaPropertiesUpdateParameters(json) : null;
+            return node is Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject json ? new GrafanaIntegrations(json) : null;
         }
 
         /// <summary>
-        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject into a new instance of <see cref="ManagedGrafanaPropertiesUpdateParameters" />.
+        /// Deserializes a Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject into a new instance of <see cref="GrafanaIntegrations" />.
         /// </summary>
         /// <param name="json">A Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject instance to deserialize from.</param>
-        internal ManagedGrafanaPropertiesUpdateParameters(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject json)
+        internal GrafanaIntegrations(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject json)
         {
             bool returnNow = false;
             BeforeFromJson(json, ref returnNow);
@@ -77,24 +80,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
             {
                 return;
             }
-            {_grafanaIntegration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject>("grafanaIntegrations"), out var __jsonGrafanaIntegrations) ? Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.GrafanaIntegrations.FromJson(__jsonGrafanaIntegrations) : GrafanaIntegration;}
-            {_zoneRedundancy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("zoneRedundancy"), out var __jsonZoneRedundancy) ? (string)__jsonZoneRedundancy : (string)ZoneRedundancy;}
-            {_apiKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("apiKey"), out var __jsonApiKey) ? (string)__jsonApiKey : (string)ApiKey;}
-            {_deterministicOutboundIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("deterministicOutboundIP"), out var __jsonDeterministicOutboundIP) ? (string)__jsonDeterministicOutboundIP : (string)DeterministicOutboundIP;}
-            {_publicNetworkAccess = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("publicNetworkAccess"), out var __jsonPublicNetworkAccess) ? (string)__jsonPublicNetworkAccess : (string)PublicNetworkAccess;}
+            {_azureMonitorWorkspaceIntegration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonArray>("azureMonitorWorkspaceIntegrations"), out var __jsonAzureMonitorWorkspaceIntegrations) ? If( __jsonAzureMonitorWorkspaceIntegrations as Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonArray, out var __v) ? new global::System.Func<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[]>(()=> global::System.Linq.Enumerable.ToArray(global::System.Linq.Enumerable.Select(__v, (__u)=>(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration) (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.AzureMonitorWorkspaceIntegration.FromJson(__u) )) ))() : null : AzureMonitorWorkspaceIntegration;}
             AfterFromJson(json);
         }
 
         /// <summary>
-        /// Serializes this instance of <see cref="ManagedGrafanaPropertiesUpdateParameters" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode"
-        /// />.
+        /// Serializes this instance of <see cref="GrafanaIntegrations" /> into a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode" />.
         /// </summary>
         /// <param name="container">The <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject"/> container to serialize this object into. If the caller
         /// passes in <c>null</c>, a new instance will be created and returned to the caller.</param>
         /// <param name="serializationMode">Allows the caller to choose the depth of the serialization. See <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.SerializationMode"/>.</param>
         /// <returns>
-        /// a serialized instance of <see cref="ManagedGrafanaPropertiesUpdateParameters" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode"
-        /// />.
+        /// a serialized instance of <see cref="GrafanaIntegrations" /> as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode" />.
         /// </returns>
         public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode ToJson(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject container, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.SerializationMode serializationMode)
         {
@@ -106,11 +103,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
             {
                 return container;
             }
-            AddIf( null != this._grafanaIntegration ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) this._grafanaIntegration.ToJson(null,serializationMode) : null, "grafanaIntegrations" ,container.Add );
-            AddIf( null != (((object)this._zoneRedundancy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._zoneRedundancy.ToString()) : null, "zoneRedundancy" ,container.Add );
-            AddIf( null != (((object)this._apiKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._apiKey.ToString()) : null, "apiKey" ,container.Add );
-            AddIf( null != (((object)this._deterministicOutboundIP)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._deterministicOutboundIP.ToString()) : null, "deterministicOutboundIP" ,container.Add );
-            AddIf( null != (((object)this._publicNetworkAccess)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._publicNetworkAccess.ToString()) : null, "publicNetworkAccess" ,container.Add );
+            if (null != this._azureMonitorWorkspaceIntegration)
+            {
+                var __w = new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.XNodeArray();
+                foreach( var __x in this._azureMonitorWorkspaceIntegration )
+                {
+                    AddIf(__x?.ToJson(null, serializationMode) ,__w.Add);
+                }
+                container.Add("azureMonitorWorkspaceIntegrations",__w);
+            }
             AfterToJson(ref container);
             return container;
         }
