@@ -19,6 +19,7 @@
 -->
 ## Upcoming Release
 * Added cmdlets `Get-AzAppConfigurationDeletedStore` and `Clear-AzAppConfigurationDeletedStore`
+* Updated ApiVersion to 2022-05-01.
 
 ## Version 1.1.0
 * Added parameter "PublicNetworkAccess" in `New-AzAppConfigurationStore` and `Update-AzAppConfigurationStore`
