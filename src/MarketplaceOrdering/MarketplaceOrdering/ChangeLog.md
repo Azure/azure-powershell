@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* `Get-AzMarketplaceTerms` will call GET /subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/offerTypes/{offerType}/publishers/{publisherId}/offers/{offerId}/plans/{planId}/agreements/current by default in an upcoming breaking change release.
+* Added upcoming breaking change to `Get-AzMarketplaceTerms`.
 
 ## Version 1.0.2
 * Update references in .psd1 to use relative path
