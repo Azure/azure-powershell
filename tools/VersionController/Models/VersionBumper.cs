@@ -127,7 +127,7 @@ namespace VersionController.Models
                 localVersion = cmdletResult[0]?.ToString();
                 localPreview = !string.IsNullOrEmpty(cmdletResult[1]?.ToString());
             }
-            Console.WriteLine("The version of Az.Accounts in local is " + localVersion);
+            // Console.WriteLine("The version of Az.Accounts in local is " + localVersion);
             return localPreview ? null : localVersion;
         }
 
@@ -144,7 +144,7 @@ namespace VersionController.Models
                 var cmdletResult = powershell.Invoke();
                 version = cmdletResult[0]?.ToString();
             }
-            Console.WriteLine("The version of Az.Accounts in PSGallery is " + version );
+            // Console.WriteLine("The version of Az.Accounts in PSGallery is " + version );
             return version;
         }
 
