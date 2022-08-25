@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// Create or update an Autoscale setting
     /// </summary>
     [CmdletDeprecation(ReplacementCmdletName = "New-AzAutoscaleSetting")]
-    [GenericBreakingChange("API version bump up to 2022-10-01, input/output type will be also updated to match the new API version", "4.1.0")]
+    [GenericBreakingChange("API version bump up to 2022-10-01, input/output type will be also updated to match the new API version", "4.2.0")]
     [Cmdlet("Add", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoscaleSetting", SupportsShouldProcess = true), OutputType(typeof(PSAddAutoscaleSettingOperationResponse))]
     public class AddAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {

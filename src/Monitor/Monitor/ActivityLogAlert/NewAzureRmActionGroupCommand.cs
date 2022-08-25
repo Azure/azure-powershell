@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// <summary>
     /// Create an Activity Log Alert Action Group
     /// </summary>
-    [GenericBreakingChange("API version bump up to 2020-10-01, input/output type will be also updated to match the new API version", "4.1.0")]
+    [GenericBreakingChange("API version bump up to 2020-10-01, input/output type will be also updated to match the new API version", "4.2.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActionGroup"), OutputType(typeof(Management.Monitor.Management.Models.ActivityLogAlertActionGroup))]
     public class NewAzureRmActionGroupCommand : AzureRMCmdlet
     {

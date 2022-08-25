@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Insights.Autoscale
     /// <summary>
     /// Get an Alert rule
     /// </summary>
-    [GenericBreakingChange("API version bump up to 2022-10-01, output type will be also updated to match the new API version", "4.1.0")]
+    [GenericBreakingChange("API version bump up to 2022-10-01, output type will be also updated to match the new API version", "4.2.0")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoscaleSetting"), OutputType(typeof(PSAutoscaleSetting))]
     public class GetAzureRmAutoscaleSettingCommand : ManagementCmdletBase
     {

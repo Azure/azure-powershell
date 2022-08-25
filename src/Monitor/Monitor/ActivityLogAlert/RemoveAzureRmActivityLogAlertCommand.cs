@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
     /// <summary>
     /// Remove an activity log alert.
     /// </summary>
-    [GenericBreakingChange("API version bump up to 2020-10-01, output type will be also updated to match the new API version", "4.1.0")]
+    [GenericBreakingChange("API version bump up to 2020-10-01, output type will be also updated to match the new API version", "4.2.0")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(AzureOperationResponse))]
     public class RemoveAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {

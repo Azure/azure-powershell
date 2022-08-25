@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// <summary>
     /// Get all ScheduledQueryRule objects in a subscription, resource group or by rule name
     /// </summary>
-    [GenericBreakingChange("API version bump up to 2021-08-01, output type will be also updated to match the new API version", "4.1.0")]
+    [GenericBreakingChange("API version bump up to 2021-08-01, output type will be also updated to match the new API version", "4.2.0")]
     [Cmdlet(VerbsCommon.Get, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule", DefaultParameterSetName = BySubscriptionOrResourceGroup), OutputType(typeof(PSScheduledQueryRuleResource))]
     public class GetScheduledQueryRuleCommand : ManagementCmdletBase
     {

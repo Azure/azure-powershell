@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
     /// <summary>
     /// Updates a ScheduledQueryRule object
     /// </summary>
-    [GenericBreakingChange("API version bump up to 2021-08-01, output type will be also updated to match the new API version", "4.1.0")]
+    [GenericBreakingChange("API version bump up to 2021-08-01, output type will be also updated to match the new API version", "4.2.0")]
     [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule", SupportsShouldProcess = true, DefaultParameterSetName = ByRuleName), OutputType(typeof(bool))]
     public class RemoveScheduledQueryRuleCommand : ManagementCmdletBase
     {

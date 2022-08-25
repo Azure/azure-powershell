@@ -23,7 +23,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
-    [GenericBreakingChange("API version bump up to 2021-05-01-preview, input/output type will be also updated to match the new API version", "4.1.0")]
+    [GenericBreakingChange("API version bump up to 2021-05-01-preview, input/output type will be also updated to match the new API version", "4.2.0")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting", DefaultParameterSetName = ResourceIdParameterSet), OutputType(typeof(PSServiceDiagnosticSettings))]
     public class NewAzureRmDiagnosticSettingCommand : DiagnosticSettingCommandBase
     {
