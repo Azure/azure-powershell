@@ -19,8 +19,11 @@
 -->
 
 ## Upcoming Release
+
+## Version 4.1.0
 * Upgraded API version for DiagnosticSetting from 2017-05-01-preview to 2021-05-01-preview
 * Upgraded API version for ScheduledQueryRule from 2018-04-16 to 2021-08-01
+* Upgrade API version for Autoscale from 2015-04-01 to 2022-10-01
 
 ## Version 4.0.0
 * Upgraded API version for ActivityLogAlert from 2017-04-01 to 2020-10-01
