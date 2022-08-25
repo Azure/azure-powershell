@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceBus.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -24,6 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
     /// <para> If ServiceBus Topic name provided, a single ServiceBus Topic detials will be returned</para>
     /// <para> If ServiceBus Topic name not provided, list of ServiceBus Topic will be returned</para>
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusTopic"), OutputType(typeof(PSTopicAttributes))]
     public class GetAzureRmServiceBusTopic : AzureServiceBusCmdletBase
     {

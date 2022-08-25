@@ -17,6 +17,7 @@ using System.Collections;
 using System.Management.Automation;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 {
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
     /// <para> If Subscription name provided, a single Subscription detials will be returned</para>
     /// <para> If Subscription name not provided, list of Subscription will be returned</para>
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusSubscription"), OutputType(typeof(PSSubscriptionAttributes))]
     public class GetAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
     {
