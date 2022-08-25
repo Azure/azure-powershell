@@ -21,7 +21,7 @@ using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
 {
-    [GenericBreakingChange("The OfferType parameter will be added in an upcoming breaking change release.", "1.0.3")]
+    [GenericBreakingChange("Cmdlet will call GET /** by default in an upcoming breaking change release.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MarketplaceTerms", DefaultParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet), OutputType(typeof(PSAgreementTerms))]
     public class GetAzureRmMarketplaceTerms : AzureMarketplaceOrderingCmdletBase
     {

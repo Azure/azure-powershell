@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added upcoming breaking change warning message to `Get-AzMarketplaceTerms` because of upcoming changes on parameters.
+* `Get-AzMarketplaceTerms` will call GET /subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/offerTypes/{offerType}/publishers/{publisherId}/offers/{offerId}/plans/{planId}/agreements/current by default in an upcoming breaking change release.
 
 ## Version 1.0.2
 * Update references in .psd1 to use relative path
