@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Automation</PsModuleName>
@@ -14,7 +14,6 @@
     <PackageReference Include="Microsoft.Azure.Management.Automation" Version="3.8.3-preview" />
     <PackageReference Include="MSTest.TestAdapter" Version="1.2.1" />
     <PackageReference Include="MSTest.TestFramework" Version="1.2.1" />
-    <PackageReference Update="Azure.Core" Version="1.25.0" />
   </ItemGroup>
   
   <ItemGroup>
@@ -24,6 +23,10 @@
   <ItemGroup>
     <None Update="ScenarioTests\*.cer" CopyToOutputDirectory="PreserveNewest" />
     <None Update="ScenarioTests\Resources\*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Azure.Core" Version="1.25.0" />
   </ItemGroup>
 
 </Project>

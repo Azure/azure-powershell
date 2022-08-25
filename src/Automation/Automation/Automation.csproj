@@ -14,7 +14,6 @@
     <PackageReference Include="Microsoft.Azure.Management.Automation" Version="3.8.3-preview" />
     <PackageReference Include="Azure.ResourceManager.Automation" Version="1.0.0-beta.1" />
     <PackageReference Include="System.Security.Permissions" Version="4.5.0" />
-    <PackageReference Include="Azure.Core" Version="1.25.0" />
     <PackageReference Include="Azure.Identity" Version="1.6.1" />
   </ItemGroup>
 
@@ -31,6 +30,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Update="Azure.Core" Version="1.25.0" />
   </ItemGroup>
   <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
