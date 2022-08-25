@@ -38,7 +38,7 @@
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"ingestionKey\":\"dt0c01.HUHVOAA4LVGLLVY5WPFJS23E.MSSHE2PIRUP5TTHALFHEYSXBYXUDSFDXI6LCERO7MSTQSEMXYOXIFE4HOSJ6Q5K2\",\"environmentId\":\"inj68163\"}",
+      "Content": "{\"ingestionKey\":\"dt0c01.xxxxxxxxxxxxxxxxxxx.xxxxxxxxxxxxxxxxxxxxxxxxxxxxx\",\"environmentId\":\"inj68163\"}",
       "isContentBase64": false
     }
   }
