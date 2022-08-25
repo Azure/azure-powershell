@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// <summary>
     /// 'Get-AzEventHubDRConfiguration' CmdletRetrieves Alias(Disaster Recovery configuration) for primary or secondary namespace    
     /// </summary>
-    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet), OutputType(typeof(PSEventHubDRConfigurationAttributes))]
     public class GetEventHubGeoDRConfiguration : AzureEventHubsCmdletBase
     {
@@ -38,10 +38,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSNamespaceAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery")]
         [Parameter(Mandatory = true, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Namespace Object")]
         [ValidateNotNullOrEmpty]
         public PSNamespaceAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

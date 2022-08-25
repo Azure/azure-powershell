@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet, HelpMessage = "Indicates whether TrustedServiceAccessEnabled is enabled")]
         public SwitchParameter TrustedServiceAccessEnabled { get; set; }
 
+        [CmdletParameterBreakingChange("VirtualNetworkRule", OldParamaterType = typeof(PSNWRuleSetIpRulesAttributes[]), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetIPRules[]")]
         [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 2, HelpMessage = "List of IPRuleSet")]
         [ValidateNotNullOrEmpty]
         public PSNWRuleSetIpRulesAttributes[] IPRule { get; set; }
@@ -60,16 +61,18 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [PSDefaultValue(Value = "Enabled")]
         public string PublicNetworkAccess { get; set; }
 
+        [CmdletParameterBreakingChange("VirtualNetworkRule", OldParamaterType = typeof(PSNWRuleSetVirtualNetworkRulesAttributes[]), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules[]")]
         [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 3, HelpMessage = "List of VirtualNetworkRules")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasVirtualNetworkRule)]
         public PSNWRuleSetVirtualNetworkRulesAttributes[] VirtualNetworkRule { get; set; }
 
-        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSEventHubClusterAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster", ChangeDescription = ClusterInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSNetworkRuleSetAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSet", ChangeDescription = NetwrokruleSetInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ParameterSetName = NetwrokruleSetInputObjectParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = "NetworkruleSet Configuration Object")]
         [ValidateNotNullOrEmpty]
         public PSNetworkRuleSetAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Resource ID of Namespace")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "'InputObject' would be removed without being replaced.")]
         [Parameter(Mandatory = false, ParameterSetName = EventhubInputObjectParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "EventHub Input object")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubObj)]

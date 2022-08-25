@@ -51,6 +51,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [ValidateNotNull]
         public int? MaxCount { get; set; }
 
+        [CmdletParameterBreakingChange("NamespaceObject", OldParamaterType = typeof(PSNamespaceAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "Namespace object", ParameterSetName = NamespaceInputObjectParameterSet)]
         [ValidateNotNull]
         public PSNamespaceAttributes NamespaceObject { get; set; }

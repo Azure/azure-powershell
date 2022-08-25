@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
     /// <summary>
     /// 'New-AzEventHubDRConfiguration' Cmdlet Creates an new Alias(Disaster Recovery configuration)
     /// </summary>
-    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubGeoDRConfiguration", DefaultParameterSetName = GeoDRParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubDRConfigurationAttributes))]
     public class NewAzureRmEventHubGeoDRConfiguration : AzureEventHubsCmdletBase
     {
@@ -36,10 +36,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "ResourceId would be removed without being replaced.")]
         [Parameter(Mandatory = true, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Namespace Object")]
         [ValidateNotNullOrEmpty]
         public PSNamespaceAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "ResourceId would be removed without being replaced.")]
         [Parameter(Mandatory = true, ParameterSetName = NamespaceResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

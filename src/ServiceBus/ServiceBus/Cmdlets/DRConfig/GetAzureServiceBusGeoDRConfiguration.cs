@@ -44,6 +44,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public PSNamespaceAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = ResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
