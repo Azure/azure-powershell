@@ -164,6 +164,15 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallVirtualHubPrivateIPAddress()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallVirtualHubPrivateIPAddress");
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
         public void TestAzureFirewallCRUDEnableUDPLogOptimization()
         {
             TestRunner.RunTestScript("Test-AzureFirewallCRUDEnableUDPLogOptimization");
