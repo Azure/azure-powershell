@@ -9,7 +9,7 @@
 @{
 
 # Script module or binary module file associated with this manifest.
-RootModule = './Az.AppConfiguration.psm1'
+# RootModule = ''
 
 # Version number of this module.
 ModuleVersion = '1.1.0'
