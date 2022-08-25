@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added a new cmdlet `New-AzGrafanaMonitorWorkspaceIntegrationObject` to assist in creating Grafana.
+* Added a new cmdlet `New-AzGrafanaMonitorWorkspaceIntegrationObject` to help create Grafana.
 
 ## Version 0.1.0
 * First preview release for module Az.Dashboard
