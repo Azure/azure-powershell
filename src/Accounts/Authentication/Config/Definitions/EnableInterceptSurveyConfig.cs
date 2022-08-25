@@ -36,14 +36,10 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Definitions
 
         public override string ParseFromEnvironmentVariables(IReadOnlyDictionary<string, string> environmentVariables)
         {
-            if (environmentVariables.TryGetValue("Azure_PS_Intercept_Survey", out string configString))
-            {
-                if ("Disabled".Equals(configString, StringComparison.OrdinalIgnoreCase)
-                    || "False".Equals(configString, StringComparison.OrdinalIgnoreCase))
-                {
-                    return false.ToString();
-                }
-            }
+            environmentVariables.TryGetValue("Azure_PS_Intercept_Survey", out string oldConfigString);
+            environmentVariables.TryGetValue("AzSurveyMessage", out string configString);
+            if ("False".Equals(oldConfigString, StringComparison.OrdinalIgnoreCase) || "False".Equals(configString, StringComparison.OrdinalIgnoreCase)) 
+            {return false.ToString();}
             return null;
         }
     }

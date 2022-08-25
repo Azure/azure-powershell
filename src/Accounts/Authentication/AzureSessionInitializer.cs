@@ -39,6 +39,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public static class AzureSessionInitializer
     {
         private const string ContextAutosaveSettingFileName = ContextAutosaveSettings.AutoSaveSettingsFile;
+
+        private static string AzProfileInfoFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),".Azure", "AzureProfile.json");
         private const string DataCollectionFileName = AzurePSDataCollectionProfile.DefaultFileName;
 
         /// <summary>
@@ -173,7 +175,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     result.ContextDirectory = migrated ? profileDirectory : settings.ContextDirectory ?? result.ContextDirectory;
                     result.Mode = settings.Mode;
                     result.ContextFile = settings.ContextFile ?? result.ContextFile;
-                    if (migrated)
+                    result.Settings = settings.Settings;
+                    String installationId = settings.Settings.ContainsKey("InstallationId") ?settings.Settings["InstallationId"] : null;
+                    if (string.IsNullOrEmpty(installationId))
+                    {
+                        result.Settings.Add("InstallationId", GetAzureCLIInstallationId() ?? Guid.NewGuid().ToString());
+                    }
+                    if (migrated || string.IsNullOrEmpty(installationId))
                     {
                         string autoSavePath = Path.Combine(profileDirectory, settingsFile);
                         store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
@@ -188,6 +196,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     }
                     string autoSavePath = Path.Combine(profileDirectory, settingsFile);
                     result.Mode = ContextSaveMode.CurrentUser;
+                    result.Settings.Add("InstallationId", GetAzureCLIInstallationId() ?? Guid.NewGuid().ToString());
                     store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
                 }
             }
@@ -202,6 +211,18 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return result;
         }
 
+        static String GetAzureCLIInstallationId(){
+            String installationId = null;
+            if (File.Exists(AzProfileInfoFile))
+                {
+                    StreamReader sr = new StreamReader(new FileStream(AzProfileInfoFile, FileMode.Open, FileAccess.Read, FileShare.None));                    
+                    AzProfileInfo azInfo = JsonConvert.DeserializeObject<AzProfileInfo>(sr.ReadToEnd());
+                    if (!string.IsNullOrEmpty(azInfo?.installationId)) {
+                        installationId = azInfo.installationId;
+                    }
+                }
+            return installationId;
+        }
         static void InitializeDataCollection(IAzureSession session)
         {
             session.RegisterComponent(DataCollectionController.RegistryKey, () => DataCollectionController.Create(session));
@@ -239,7 +260,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
-
+            session.ExtendedProperties.Add("InstallationId", autoSave.Settings["InstallationId"]);
             InitializeConfigs(session, profilePath, writeWarning);
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());

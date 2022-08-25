@@ -193,6 +193,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
 
             // configs with their own types
             // configManager.RegisterConfig(new EnableInterceptSurveyConfig()); // todo: uncomment after improvements are made to survey
+            configManager.RegisterConfig(new EnableInterceptSurveyConfig());
             configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());
         }
     }
