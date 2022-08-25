@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Fixed an issue that example of the `Get-AzSubscription` is mistake. [#18974]
 
 ## Version 2.9.1
 * Implemented `SupportsShouldProcess` for `Invoke-AzRestMethod`
