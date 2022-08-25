@@ -300,4 +300,27 @@ directive:
   # - model-cmdlet:
     # - FilteringTag 
     # --> Generate cmdlet: New-AzDynatraceMonitorFilteringTagObject
+  - from: GetAzDynatraceMonitorAppService_List.cs
+    where: $
+    transform: $ = $.replace(", SupportsShouldProcess = true" ,"");
+
+  - from: GetAzDynatraceMonitoredResource_List.cs
+    where: $
+    transform: $ = $.replace(", SupportsShouldProcess = true" ,"");
+
+  - from: GetAzDynatraceMonitorHost_List.cs
+    where: $
+    transform: $ = $.replace(", SupportsShouldProcess = true" ,"");
+
+  - from: GetAzDynatraceMonitorLinkableEnv_ListExpanded.cs
+    where: $
+    transform: $ = $.replace(", SupportsShouldProcess = true" ,"");
+
+  - from: GetAzDynatraceMonitorVMHostPayload_Get.cs
+    where: $
+    transform: $ = $.replace(", SupportsShouldProcess = true" ,"");
+
+  - from: GetAzDynatraceMonitorSSODetail_GetExpanded.cs
+    where: $
+    transform: $ = $.replace(", SupportsShouldProcess = true" ,"");
 ```

@@ -14,7 +14,7 @@ Gets the SSO configuration details from the partner.
 
 ```
 Get-AzDynatraceMonitorSSODetail -MonitorName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-UserPrincipal <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-UserPrincipal <String>] [-DefaultProfile <PSObject>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,37 +120,6 @@ user principal id of the user
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
 
 Required: False
 Position: Named
