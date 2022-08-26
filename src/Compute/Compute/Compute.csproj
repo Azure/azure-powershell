@@ -27,6 +27,7 @@
 
   <PropertyGroup>
     <ModuleAlcEntryAssembly>Microsoft.Azure.Commands.Compute.AlcWrapper</ModuleAlcEntryAssembly>
+    <OutputType>Library</OutputType>
   </PropertyGroup>
 
   <ItemGroup>

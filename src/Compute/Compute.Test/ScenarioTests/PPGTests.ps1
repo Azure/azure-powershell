@@ -337,3 +337,80 @@ function Test-ProximityPlacementGroupVM
         Clean-ResourceGroup $rgname
     }
 }
+
+<#
+.SYNOPSIS
+Test the VM vCPU feature in New-AzVm, New-AzVmConfig, and Update-AzVm.
+#>
+function Test-VMvCPUFeatures
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "japaneast";
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # Create a VM first
+        $loc = "westeurope";
+        $rgname = "adsandppg10";
+        $ppgname = $rgname + 'ppg'
+        # japan east skus for zone 1:  Standard_DS1_v2, Standard_D4_v4,  Standard_D4_v3
+        $proxgroup = New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Location $loc -Zone '1' -IntentVMSizeList 'Standard_D4d_v4', 'Standard_D4d_v5';
+
+        $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
+
+        Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -ColocationStatus;
+
+        # Create a subnet configuration
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix 192.168.1.0/24;
+
+        # Create a virtual network
+        $vnet = New-AzVirtualNetwork -ResourceGroupName $rgname -Location $loc -Name  ('vnet' + $rgname) -AddressPrefix 192.168.0.0/16 -Subnet $subnet;
+
+        # Create a public IP address and specify a DNS name
+        $pip = New-AzPublicIpAddress -ResourceGroupName $rgname -Location $loc -Name ('pubip' + $rgname) -AllocationMethod Static -IdleTimeoutInMinutes 4;
+
+        # Create a network security group
+        $nsg = New-AzNetworkSecurityGroup -ResourceGroupName $rgname -Location $loc -Name ('netsg' + $rgname);
+
+        # Create a virtual network card and associate with public IP address and NSG
+        $nic = New-AzNetworkInterface -Name ('nic' + $rgname) -ResourceGroupName $rgname -Location $loc `
+                                      -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id;
+
+        $vmname = 'vm' + $rgname;
+        $user = "Foo12";
+        $password = "Testing1234567";
+        $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+        $vmSize = 'Standard_D4ds_v5';
+
+        # Create a virtual machine configuration
+        $p = New-AzVMConfig -VMName $vmName -VMSize $vmSize -ProximityPlacementGroupId $ppg.Id `
+                  | Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred `
+                  | Add-AzVMNetworkInterface -Id $nic.Id;
+
+        #$imgRef = Get-DefaultCRPImage -loc $loc;
+        #$p = ($imgRef | Set-AzVMSourceImage -VM $p);
+        $publisherName = "MicrosoftWindowsServer";
+        $offer = "WindowsServer";
+        $sku = "2019-DataCenter";
+        $vmconfig = Set-AzVMSourceImage -VM $p -PublisherName $publisherName -Offer $offer -Skus $sku -Version 'latest';
+
+
+        # Create a virtual machine
+        New-AzVM -ResourceGroupName $rgname -Location $loc -VM $p;
+        $vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
+        Assert-AreEqual $ppg.Id $vm.ProximityPlacementGroup.Id;
+
+        $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
+        Assert-AreEqual $vm.Id $ppg.VirtualMachines[0].Id;
+        Assert-AreEqual $vm.ProximityPlacementGroup.Id $ppg.Id; 
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
