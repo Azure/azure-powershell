@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
-            HelpMessage = "Gets or sets possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
+            HelpMessage = "Gets or sets the SecurityType property. Possible values include: TrustedLaunch, ConfidentialVM_DiskEncryptedWithCustomerKey, ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey, ConfidentialVM_DiskEncryptedWithPlatformKey")]
         [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM_DiskEncryptedWithCustomerKey", "ConfidentialVM_VMGuestStateOnlyEncryptedWithPlatformKey",
             "ConfidentialVM_DiskEncryptedWithPlatformKey")]
         public string SecurityType { get; set; }
