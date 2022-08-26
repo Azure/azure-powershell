@@ -42,7 +42,7 @@ Get a MonitorResource
 
 ### Example 1: List all dynatrace monitors under a subsciption
 ```powershell
-Get-AzDynatraceMonito
+Get-AzDynatraceMonitor
 ```
 
 ```output
