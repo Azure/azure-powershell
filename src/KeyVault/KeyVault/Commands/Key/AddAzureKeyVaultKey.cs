@@ -355,7 +355,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmResourceIdCreateParameterSet)]
         public string ReleasePolicyPath { get; set; }
 
-        /*[Parameter(Mandatory = false,
+        /*TODO: try using ReleasePolicyPath (up 1) instead of this one. This one might be restricted on Service code level.
+         * [Parameter(Mandatory = false,
             ParameterSetName = HsmInteractiveCreateParameterSet,
             HelpMessage = "Specifies to use default policy under which the key can be exported for CVM disk encryption.")]
         [Parameter(Mandatory = false,

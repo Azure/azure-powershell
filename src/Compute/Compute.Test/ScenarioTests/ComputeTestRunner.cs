@@ -70,7 +70,9 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                         {"Microsoft.Storage", null},
                     }
                 )
-                /*.WithManagementClients(context =>
+                /* This is an attempt to workaorund the Data Plane Operation not allowed issue in our test framework.
+                 * 
+                 * .WithManagementClients(context =>
                 {
                     string environmentConnectionString = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
                     string accessToken = "fakefakefake";

@@ -310,6 +310,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
             }
 
+            // Disk Encryption set for Confidential VMs. 
             if (this.IsParameterBound(c => c.SecureVMDiskEncryptionSet))
             {
                 if (this.VM.StorageProfile == null)
@@ -334,6 +335,7 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.DiskEncryptionSet.Id = SecureVMDiskEncryptionSet;
             }
+            // SecurityEncryptionType for Confidential VMs. 
             if (this.IsParameterBound(c => c.SecurityEncryptionType))
             {
                 if (this.VM.StorageProfile == null)
@@ -355,9 +357,7 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType = SecurityEncryptionType;
             }
 
-
-
-                WriteObject(this.VM);
+            WriteObject(this.VM);
         }
     }
 }

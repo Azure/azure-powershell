@@ -503,16 +503,17 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestConfidentialVMSetAzVmOsDisk()
-        {
-            TestRunner.RunTestScript("Test-ConfidentialVMSetAzVmOsDisk");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineGuestAttestation()
         {
             TestRunner.RunTestScript("Test-VirtualMachineGuestAttestation");
+        }
+
+        // Test recorded successfully
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestConfidentialVMSetAzVmOsDisk()
+        {
+            TestRunner.RunTestScript("Test-ConfidentialVMSetAzVmOsDisk");
         }
 
         [Fact]
@@ -522,6 +523,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ConfidentialVMSetAzVmOsDiskDESId");
         }
 
+        // Test recorded successfully.
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConfVMSetAzVMSecurityProfile()
@@ -543,6 +545,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ConfVMSetAzDiskEncryptionSetConfig");
         }
 
+        //Test recorded successfully.
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConfVMSetAzDiskSecurityProfileNoDES()
