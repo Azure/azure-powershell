@@ -51,6 +51,16 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         parameters.ProximityPlacementGroupType = this.ProximityPlacementGroupType;
                     }
+                    
+                    if (this.IsParameterBound(c => c.Zone))
+                    {
+                        parameters.Zones = this.Zone;
+                    }
+
+                    if (this.IsParameterBound(c => c.IntentVMSizeList))
+                    {
+                        parameters.Intent = new ProximityPlacementGroupPropertiesIntent(this.IntentVMSizeList);
+                    }
 
                     parameters.Location = this.Location;
                     parameters.Tags = this.IsParameterBound(c => c.Tag) ? this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value) : null;
