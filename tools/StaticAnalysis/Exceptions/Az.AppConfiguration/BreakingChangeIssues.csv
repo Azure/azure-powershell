@@ -1,3 +1,0 @@
-"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
-"Az.AppConfiguration","New-AzAppConfigurationStore","New-AzAppConfigurationStore","0","2020","The cmdlet 'New-AzAppConfigurationStore' no longer supports the type 'System.String[]' for parameter 'UserAssignedIdentity'.","Change the type for parameter 'UserAssignedIdentity' back to 'System.String[]'."
-"Az.AppConfiguration","Update-AzAppConfigurationStore","Update-AzAppConfigurationStore","0","2020","The cmdlet 'Update-AzAppConfigurationStore' no longer supports the type 'System.String[]' for parameter 'UserAssignedIdentity'.","Change the type for parameter 'UserAssignedIdentity' back to 'System.String[]'."
