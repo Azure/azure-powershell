@@ -340,28 +340,37 @@ function Test-ProximityPlacementGroupVM
 
 <#
 .SYNOPSIS
-Test the VM vCPU feature in New-AzVm, New-AzVmConfig, and Update-AzVm.
+Test the PPG Zones and the vmIntentList parameters. 
 #>
-function Test-VMvCPUFeatures
+function Test-PPGVMIntentAndZoneFeatures
 {
     # Setup
     $rgname = Get-ComputeTestResourceName;
-    $loc = "japaneast";
+    $loc = "westeurope";
 
     try
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # Create a VM first
-        $loc = "westeurope";
-        $rgname = "adsandppg10";
-        $ppgname = $rgname + 'ppg'
-        # japan east skus for zone 1:  Standard_DS1_v2, Standard_D4_v4,  Standard_D4_v3
-        $proxgroup = New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Location $loc -Zone '1' -IntentVMSizeList 'Standard_D4d_v4', 'Standard_D4d_v5';
+        $ppgname = $rgname + 'ppg';
+        $vmIntentList1 = 'Standard_D4d_v4';
+        $vmIntentList2 = 'Standard_D4d_v5';
+        $vmIntentListUpdate3 = 'Standard_DS3_v2';
+        $zone = '1';
+        $zone2 = '2';
+        
+        $proxgroup = New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Location $loc -Zone $zone -IntentVMSizeList $vmIntentList1, $vmIntentList2 ;
 
         $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
+        Assert-AreEqual $ppg.Intent.VmSizes[0] $vmIntentList1;
+        Assert-AreEqual $ppg.Intent.VmSizes[1] $vmIntentList2;
+        Assert-AreEqual $ppg.Zones[0] $zone;
 
-        Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -ColocationStatus;
+        $proxgroup = New-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname -Location $loc -Zone $zone -IntentVMSizeList $vmIntentList1, $vmIntentListUpdate3 ;
+        $ppg = Get-AzProximityPlacementGroup -ResourceGroupName $rgname -Name $ppgname;
+        Assert-AreEqual $ppg.Intent.VmSizes[0] $vmIntentList1;
+        Assert-AreEqual $ppg.Intent.VmSizes[1] $vmIntentListUpdate3;
 
         # Create a subnet configuration
         $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix 192.168.1.0/24;
@@ -381,7 +390,7 @@ function Test-VMvCPUFeatures
 
         $vmname = 'vm' + $rgname;
         $user = "Foo12";
-        $password = "Testing1234567";
+        $password = $PLACEHOLDER;
         $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
         $vmSize = 'Standard_D4ds_v5';
@@ -391,8 +400,6 @@ function Test-VMvCPUFeatures
                   | Set-AzVMOperatingSystem -Windows -ComputerName $vmName -Credential $cred `
                   | Add-AzVMNetworkInterface -Id $nic.Id;
 
-        #$imgRef = Get-DefaultCRPImage -loc $loc;
-        #$p = ($imgRef | Set-AzVMSourceImage -VM $p);
         $publisherName = "MicrosoftWindowsServer";
         $offer = "WindowsServer";
         $sku = "2019-DataCenter";
