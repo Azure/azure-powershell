@@ -102,5 +102,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+        
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies the Availability Zone where virtual machine, virtual machine scale set or availability set associated with the  proximity placement group can be created.",
+            ValueFromPipelineByPropertyName = true)]
+        public string[] Zone { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Specifies possible sizes of virtual machines that can be created in the proximity placement group.",
+            ValueFromPipelineByPropertyName = true)]
+        public string[] IntentVMSizeList { get; set; }
     }
 }
