@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/install-azakskubectlandkubelogin
+online version: https://docs.microsoft.com/powershell/module/az.aks/install-azaksclitool
 schema: 2.0.0
 ---
 
-# Install-AzAksKubectlAndKubelogin
+# Install-AzAksCliTool
 
 ## SYNOPSIS
 Download and install kubectl and kubelogin, the Kubernetes command-line tool.
@@ -13,7 +13,7 @@ Download and install kubectl and kubelogin, the Kubernetes command-line tool.
 ## SYNTAX
 
 ```
-Install-AzAksKubectlAndKubelogin [[-Destination] <String>] [[-Version] <String>]
+Install-AzAksCliTool [[-Destination] <String>] [[-Version] <String>]
  [[-KubeloginInstallDestination] <String>] [[-KubeloginInstallVersion] <String>] [-AsJob]
  [-DownloadFromMirror] [-Force] [-KubeloginDownloadFromMirror] [-PassThru] [<CommonParameters>]
 ```
@@ -25,14 +25,14 @@ Download and install kubectl and kubelogin, the Kubernetes command-line tool.
 
 ### Example 1: Install the lateset version of kubectl and kubelogin
 ```powershell
-Install-AzAksKubectlAndKubelogin
+Install-AzAksCliTool
 ```
 
 
 
 ### Example 2: Install the special version of kubectl and kubelogin into custom folder
 ```powershell
-Install-AzAksKubectlAndKubelogin -KubectlInstallVersion "v1.25.0" -KubectlInstallDestination "~/bin/" -KubeloginInstallVersion "v0.0.20" -KubeloginInstallDestination "~/bin"
+Install-AzAksCliTool -KubectlInstallVersion "v1.25.0" -KubectlInstallDestination "~/bin/" -KubeloginInstallVersion "v0.0.20" -KubeloginInstallDestination "~/bin"
 ```
 
 

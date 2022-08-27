@@ -20,7 +20,7 @@ Download and install kubectl and kubelogin, the Kubernetes command-line tool.
 .Description
 Download and install kubectl and kubelogin, the Kubernetes command-line tool.
 #>
-function Install-AzAksKubectlAndKubelogin
+function Install-AzAksCliTool
 {
     [Alias("Install-AzAksKubectl")]
     [CmdletBinding()]
