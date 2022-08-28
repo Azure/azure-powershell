@@ -205,6 +205,10 @@ namespace Microsoft.Azure.Commands.Synapse.Models
 
         public const string DefaultAutoPauseDelayInMinute = "15";
 
+        public const string DefaultMinExecutorCount = "1";
+
+        public const string DefaultMaxExecutorCount = "2";
+
         public const string ActiveDirectoryOnlyAuthentication = nameof(ActiveDirectoryOnlyAuthentication);
 
         public const string LinkConnectionLinkTable = nameof(LinkConnectionLinkTable);

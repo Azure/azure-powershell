@@ -249,7 +249,6 @@ namespace Microsoft.Azure.Commands.TestFx
             using var context = MockContext.Start(className, methodName);
             _mockContextAction?.Invoke(context);
             Helper.SetupEnvironment(AzureModule.AzureResourceManager);
-            SetupAzureContext();
             var serviceClients = SetupServiceClients(context);
             AzureSession.Instance.ClientFactory = new MockClientFactory(context, serviceClients);
             contextAction?.Invoke(context);
@@ -300,41 +299,6 @@ namespace Microsoft.Azure.Commands.TestFx
             {
                 AzureSession.Instance.DataStore = new MemoryDataStore();
             }
-        }
-
-        protected void SetupAzureContext()
-        {
-            const string tenantIdKey = "TenantId";
-            const string subscriptionIdKey = "SubscriptionId";
-            const string undefined = "Undefined";
-            var zeroGuid = Guid.Empty.ToString();
-            const string dummyGuid = "395544B0-BF41-429D-921F-E1CA2252FCF4";
-
-            string tenantId =  null;
-            string subscriptionId = null;
-            switch (HttpMockServer.Mode)
-            {
-                case HttpRecorderMode.Record:
-                    var environment = TestEnvironmentFactory.GetTestEnvironment();
-                    tenantId = environment.TenantId;
-                    subscriptionId = environment.SubscriptionId;
-                    break;
-                case HttpRecorderMode.Playback:
-                    tenantId = HttpMockServer.Variables.ContainsKey(tenantIdKey)
-                        ? HttpMockServer.Variables[tenantIdKey]
-                        : dummyGuid;
-                    subscriptionId = HttpMockServer.Variables.ContainsKey(subscriptionIdKey)
-                        ? HttpMockServer.Variables[subscriptionIdKey]
-                        : zeroGuid;
-                    break;
-                case HttpRecorderMode.None:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            AzureRmProfileProvider.Instance.Profile.DefaultContext.Tenant.Id = tenantId ?? undefined;
-            AzureRmProfileProvider.Instance.Profile.DefaultContext.Subscription.Id = subscriptionId ?? undefined;
         }
 
         protected void SetupMockServer()

@@ -322,4 +322,7 @@ Please provide a storage account with the same location as that of the vault.</v
   <data name="InvalidParameterSet" xml:space="preserve">
     <value>Invalid parameter set</value>
   </data>
+  <data name="MissingParameterForAlerts" xml:space="preserve">
+    <value>Please provide the value for DisableAzureMonitorAlertsForJobFailure and DisableClassicAlerts parameters to configure alerts</value>
+  </data>
 </root>
