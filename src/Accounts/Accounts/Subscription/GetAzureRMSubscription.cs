@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionName);
                     }
 
-                    WriteObject(result?.Select((s) => new PSAzureSubscription(s)));
+                    WriteObject(result?.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
                 }
                 catch (AadAuthenticationException exception)
                 {

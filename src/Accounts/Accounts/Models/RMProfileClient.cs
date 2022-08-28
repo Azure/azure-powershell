@@ -418,7 +418,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             IEnumerable<IAzureSubscription> subscriptionList = ListSubscriptions(tenantId);
             subscriptionList = subscriptionList.Where(s => s.Name.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
             subscriptions = subscriptionList.ToList();
-            return subscriptions != null;
+            return subscriptions.Count != 0;
         }
 
         private IAzureSubscription GetFirstSubscription(string tenantId)
