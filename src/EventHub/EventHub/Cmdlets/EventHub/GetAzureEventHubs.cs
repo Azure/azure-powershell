@@ -47,6 +47,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("MaxCount", ChangeDescription = "'-MaxCount' is being removed. '-Skip' and '-Top' would be added to support pagination.")]
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of EventHubs to return.", ParameterSetName = EventhubPropertiesParameterSet)]
         [ValidateNotNull]
         public int? MaxCount { get; set; }

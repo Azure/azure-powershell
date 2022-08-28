@@ -46,6 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("MaxCount", ChangeDescription = "'-MaxCount' is being removed. '-Skip' and '-Top' would be added to support pagination.")]
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Queues to return.")]
         [ValidateRange(1, 10000)]
         public int? MaxCount { get; set; }
