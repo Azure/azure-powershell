@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
         [Alias(AliasTopicName)]
         public string Name { get; set; }
 
-        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSTopicAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic", ChangeDescription = "InputObject parameter set is changing. Please refer the migration guide for examples.")]
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSTopicAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic")]
         [Parameter(Mandatory = true, ParameterSetName = TopicInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus Topic Object")]
         [ValidateNotNullOrEmpty]
         public PSTopicAttributes InputObject { get; set; }

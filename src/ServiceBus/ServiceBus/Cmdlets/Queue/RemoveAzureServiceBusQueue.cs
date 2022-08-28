@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Queue
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSQueueAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue", ChangeDescription = "InputObject parameter set is changing. Please refer the migration guide for examples.")]
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSQueueAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue")]
         [Parameter(Mandatory = true, ParameterSetName = QueueInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus Queue Object")]
         [ValidateNotNullOrEmpty]
         public PSQueueAttributes InputObject { get; set; }

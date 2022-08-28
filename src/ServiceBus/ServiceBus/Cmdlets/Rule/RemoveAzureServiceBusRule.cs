@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSTopicAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule", ChangeDescription = "InputObject parameter set is changing. Please refer the migration guide for examples.")]
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSTopicAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule")]
         [Parameter(Mandatory = true, ParameterSetName = RuleInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus Rule Object")]
         [ValidateNotNullOrEmpty]
         public PSTopicAttributes InputObject { get; set; }

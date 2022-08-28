@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
         [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet, HelpMessage = "Indicates whether TrustedServiceAccessEnabled is enabled")]
         public SwitchParameter TrustedServiceAccessEnabled { get; set; }
 
-        [CmdletParameterBreakingChange("VirtualNetworkRule", OldParamaterType = typeof(PSNWRuleSetIpRulesAttributes[]), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetIPRules[]")]
+        [CmdletParameterBreakingChange("IPRule", OldParamaterType = typeof(PSNWRuleSetIpRulesAttributes[]), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetIPRules[]")]
         [Parameter(Mandatory = false, ParameterSetName = NetwrokruleSetPropertiesParameterSet,  Position = 2, HelpMessage = "List of IPRuleSet")]
         [ValidateNotNullOrEmpty]
         public PSNWRuleSetIpRulesAttributes[] IPRule { get; set; }
