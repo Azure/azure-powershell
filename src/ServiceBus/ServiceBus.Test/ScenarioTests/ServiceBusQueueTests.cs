@@ -32,7 +32,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void ServiceBusQueueAuth_CURD()
         {
             TestRunner.RunTestScript("ServiceBusQueueAuthTests");
