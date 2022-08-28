@@ -41,6 +41,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

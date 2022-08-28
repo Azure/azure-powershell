@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public string Namespace { get; set; }
 
-        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "ResourceId would be removed without being replaced.")]
+        [CmdletParameterBreakingChange("InputObject", ChangeDescription = "InputObject would be removed without being replaced.")]
         [Parameter(Mandatory = true, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Namespace Object")]
         [ValidateNotNullOrEmpty]
         public PSNamespaceAttributes InputObject { get; set; }

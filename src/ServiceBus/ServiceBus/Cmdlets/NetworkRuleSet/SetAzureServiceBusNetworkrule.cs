@@ -55,13 +55,16 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.NetworkruleSet
         [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, HelpMessage = "Trusted Service Access for NetworkRuleSet")]
         public SwitchParameter TrustedServiceAccessEnabled { get; set; }
 
+        [CmdletParameterBreakingChange("IPRule", OldParamaterType = typeof(PSNWRuleSetIpRulesAttributes[]), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetIPRules[]")]
         [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, Position = 2, HelpMessage = "List of IPRuleSet")]
         public PSNWRuleSetIpRulesAttributes[] IPRule { get; set; }
 
+        [CmdletParameterBreakingChange("VirtualNetworkRule", OldParamaterType = typeof(PSNWRuleSetVirtualNetworkRulesAttributes[]), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INwRuleSetVirtualNetworkRules[]")]
         [Parameter(Mandatory = false, ParameterSetName = NetworkRuleSetPropertiesParameterSet, Position = 3, HelpMessage = "List of VirtualNetworkRules")]
         [Alias(AliasVirtualNetworkRule)]
         public PSNWRuleSetVirtualNetworkRulesAttributes[] VirtualNetworkRule { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSNetworkRuleSetAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet", ChangeDescription = NetworkRuleSetInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ParameterSetName = NetworkRuleSetInputObjectParameterSet, ValueFromPipeline = true, Position = 2, HelpMessage = "NetworkruleSet Configuration Object")]
         [ValidateNotNullOrEmpty]
         public PSNetworkRuleSetAttributes InputObject { get; set; }

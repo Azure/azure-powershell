@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 
         [Parameter(Mandatory = true, Position = 1, HelpMessage = "Standard Namespace Name")]
         [ValidateNotNullOrEmpty]
-        public string Name { get; set; }        
+        public string Name { get; set; }
 
         [Parameter(Mandatory = true,  Position = 2, HelpMessage = "Premium Namespace ARM Id")]
         [ValidateNotNullOrEmpty]

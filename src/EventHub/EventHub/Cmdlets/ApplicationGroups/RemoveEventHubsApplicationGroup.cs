@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupResourceIdParameterSet, Position = 0, HelpMessage = "ResourceId of application group")]
         public string ResourceId { get; set; }
 
-        [CmdletParameterBreakingChange("InputObject", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup", ChangeDescription = ApplicationGroupInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSEventHubApplicationGroupAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup", ChangeDescription = ApplicationGroupInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ApplicationGroupInputObjectParameterSet, Position = 0, HelpMessage = "Input Object of type PSEventHubApplicationGroupAttributes")]
         public PSEventHubApplicationGroupAttributes InputObject { get; set; }
 

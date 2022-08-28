@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
 
-        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSEventHubAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster", ChangeDescription = EventhubInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSEventHubAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub", ChangeDescription = EventhubInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = false, ParameterSetName = EventhubInputObjectParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "EventHub object")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubObj)]

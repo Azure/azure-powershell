@@ -42,7 +42,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [Alias(AliasTopicName)]
         [ValidateNotNullOrEmpty]
         public string Topic { get; set; }
-        
+
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSSubscriptionAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription", ChangeDescription = "InputObject parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 3, HelpMessage = "ServiceBus Subscription definition")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasSubscriptionObj)]
