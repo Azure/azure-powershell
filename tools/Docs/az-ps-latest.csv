@@ -107,7 +107,7 @@ pac105,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Privat
 pac106,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ProviderHub,0.2.0
 pac107,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Purview,0.2.0
 pac108,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Quota,0.1.0
-pac109,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.RecoveryServices,5.4.1
+pac109,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.RecoveryServices,5.5.0
 pac110,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.RedisCache,1.6.0
 pac111,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.RedisEnterpriseCache,1.1.0
 pac112,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Relay,1.0.3
