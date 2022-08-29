@@ -377,6 +377,16 @@ namespace Microsoft.WindowsAzure.Commands.Storage
         }
 
         /// <summary>
+        /// Write a datalake gen2 folder to output.
+        /// </summary>
+        internal void WriteDataLakeGen2Item(IStorageBlobManagement channel, DataLakePathClient pathClient, DataLakeFileSystemClient fileSystem)
+        {
+            AzureDataLakeGen2Item azureDataLakeGen2Item = new AzureDataLakeGen2Item(pathClient, fileSystem);
+            azureDataLakeGen2Item.Context = channel.StorageContext;
+            WriteObject(azureDataLakeGen2Item);
+        }
+
+        /// <summary>
         /// Write a datalake gen2 pathitem to output.
         /// </summary>
         internal void WriteDataLakeGen2Item(IStorageBlobManagement channel, PathItem item, DataLakeFileSystemClient fileSystem, string ContinuationToken = null, bool fetchProperties = false)
@@ -385,6 +395,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage
             azureDataLakeGen2Item.Context = channel.StorageContext;
             azureDataLakeGen2Item.ContinuationToken = ContinuationToken;
             WriteObject(azureDataLakeGen2Item);
+        }
+
+        /// <summary>
+        /// Write a datalake gen2 deleted item to output.
+        /// </summary>
+        internal void WriteDataLakeGen2DeletedItem(IStorageBlobManagement channel, PathDeletedItem item, DataLakeFileSystemClient fileSystem, string ContinuationToken = null)
+        {
+            AzureDataLakeGen2DeletedItem azureDataLakeGen2DeletedItem = new AzureDataLakeGen2DeletedItem(item, fileSystem);
+            azureDataLakeGen2DeletedItem.Context = channel.StorageContext;
+            azureDataLakeGen2DeletedItem.ContinuationToken = ContinuationToken;
+            WriteObject(azureDataLakeGen2DeletedItem);
         }
 
         /// <summary>

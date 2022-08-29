@@ -20,9 +20,12 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzDiagnosticSettingLogSettingsObject")]
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzDiagnosticSettingMetricSettingsObject")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticDetailSetting", DefaultParameterSetName = MetricSettingParameterSet), OutputType(typeof(PSDiagnosticDetailSettings))]
     public class NewAzureRmDiagnosticDetailSettingCommand : ManagementCmdletBase
     {

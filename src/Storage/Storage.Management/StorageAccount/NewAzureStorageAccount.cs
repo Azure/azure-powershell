@@ -208,6 +208,40 @@ namespace Microsoft.Azure.Commands.Management.Storage
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "Enable Secure File Transfer Protocol for the Storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableSftp
+        {
+            get
+            {
+                return enableSftp != null ? enableSftp.Value : false;
+            }
+            set
+            {
+                enableSftp = value;
+            }
+        }
+        private bool? enableSftp = null;
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Enable local users feature for the Storage account.")]
+        [ValidateNotNullOrEmpty]
+        public bool EnableLocalUser
+        {
+            get
+            {
+                return enableLocalUser != null ? enableLocalUser.Value : false;
+            }
+            set
+            {
+                enableLocalUser = value;
+            }
+        }
+        private bool? enableLocalUser = null;
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Enable HierarchicalNamespace for the Storage account.")]
         [ValidateNotNullOrEmpty]
         public bool EnableHierarchicalNamespace
@@ -569,6 +603,11 @@ namespace Microsoft.Azure.Commands.Management.Storage
         [ValidateNotNullOrEmpty]
         public string ImmutabilityPolicyState { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "Set restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'")]
+        [PSArgumentCompleter("PrivateLink", "AAD")]
+        [ValidateNotNullOrEmpty]
+        public string AllowedCopyScope { get; set; }
+
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
@@ -830,6 +869,18 @@ namespace Microsoft.Azure.Commands.Management.Storage
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.ImmutabilityPeriodSinceCreationInDays = this.immutabilityPeriod;
                     createParameters.ImmutableStorageWithVersioning.ImmutabilityPolicy.State = this.ImmutabilityPolicyState;
                 }
+            }
+            if (this.enableSftp != null)
+            {
+                createParameters.IsSftpEnabled = this.enableSftp;
+            }
+            if (this.enableLocalUser != null)
+            {
+                createParameters.IsLocalUserEnabled = this.enableLocalUser;
+            }
+            if(this.AllowedCopyScope != null)
+            {
+                createParameters.AllowedCopyScope = this.AllowedCopyScope;
             }
 
             var createAccountResponse = this.StorageClient.StorageAccounts.Create(

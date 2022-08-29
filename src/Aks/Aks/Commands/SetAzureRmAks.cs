@@ -376,6 +376,8 @@ namespace Microsoft.Azure.Commands.Aks
                     }
                     cluster.NetworkProfile = SetNetworkProfile(cluster.NetworkProfile);
                     cluster.ApiServerAccessProfile = CreateOrUpdateApiServerAccessProfile(cluster.ApiServerAccessProfile);
+                    cluster.HttpProxyConfig = CreateOrUpdateHttpProxyConfig(cluster.HttpProxyConfig);
+                    cluster.AutoUpgradeProfile = CreateOrUpdateAutoUpgradeProfile(cluster.AutoUpgradeProfile);
                     if (this.IsParameterBound(c => c.FqdnSubdomain))
                     {
                         cluster.FqdnSubdomain = FqdnSubdomain;
@@ -383,6 +385,15 @@ namespace Microsoft.Azure.Commands.Aks
                     SetIdentity(cluster);
 
                     var kubeCluster = Client.ManagedClusters.CreateOrUpdate(ResourceGroupName, Name, cluster);
+
+                    if (this.IsParameterBound(c => c.DiskEncryptionSetID))
+                    {
+                        cluster.DiskEncryptionSetID = DiskEncryptionSetID;
+                    }
+                    if (DisableLocalAccount.IsPresent)
+                    {
+                        cluster.DisableLocalAccounts = DisableLocalAccount;
+                    }
 
                     WriteObject(PSMapper.Instance.Map<PSKubernetesCluster>(kubeCluster));
                 });

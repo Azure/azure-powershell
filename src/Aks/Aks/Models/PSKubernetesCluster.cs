@@ -95,6 +95,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         public string DnsPrefix { get; set; }
 
         /// <summary>
+        /// Gets or sets the FQDN subdomain of the private cluster with custom private dns.
+        /// </summary>
+        public string FqdnSubdomain { get; set; }
+
+        /// <summary>
         /// Gets FQDN for the master pool.
         /// </summary>
         public string Fqdn { get; private set; }
@@ -103,6 +108,13 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// Gets FQDN of private cluster.
         /// </summary>
         public string PrivateFQDN { get; private set; }
+
+        /// <summary>
+        /// Gets the special FQDN used by the Azure Portal to access the Managed Cluster.
+        /// This FQDN is for use only by the Azure Portal and should not be used by other
+        /// clients.
+        /// </summary>
+        public string AzurePortalFQDN { get; private set; }
 
         /// <summary>
         /// Gets or sets properties of the agent pool.
@@ -119,6 +131,11 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// Gets or sets profile of managed cluster add-on.
         /// </summary>
         public IDictionary<string, PSManagedClusterAddonProfile> AddonProfiles { get; set; }
+
+        /// <summary>
+        /// Gets or sets the pod identity profile of the Managed Cluster.
+        /// </summary>
+        public PSManagedClusterPodIdentityProfile PodIdentityProfile { get; set; }
 
         /// <summary>
         /// Gets or sets name of the resource group containing agent pool
@@ -147,16 +164,42 @@ namespace Microsoft.Azure.Commands.Aks.Models
         /// Gets or sets profile of Azure Active Directory configuration.
         /// </summary>
         public PSManagedClusterAadProfile AadProfile { get; set; }
+        
+        /// <summary>
+        /// Gets or sets the auto upgrade configuration.
+        /// </summary>
+        public PSManagedClusterAutoUpgradeProfile AutoUpgradeProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets parameters to be applied to the cluster-autoscaler when enabled
+        /// </summary>
+        public PSManagedClusterAutoScalerProfile AutoScalerProfile;
+
+        /// <summary>
+        /// Gets or sets the Resource ID of the disk encryption set to use for enabling encryption
+        /// at rest.
+        /// </summary>
+        public string DiskEncryptionSetID { get; set; }
 
         /// <summary>
         /// Gets or sets access profile for managed cluster API server.
         /// </summary>
         public PSManagedClusterAPIServerAccessProfile ApiServerAccessProfile { get; set; }
 
-        //
-        // Summary:
-        //     Gets or sets identities associated with the cluster.
+        /// <summary>
+        /// Gets or sets identities associated with the cluster.
+        /// </summary>
         public IDictionary<string, PSManagedClusterPropertiesIdentityProfile> IdentityProfile { get; set; }
+
+        /// <summary>
+        /// Gets or sets if local accounts should be disabled on the Managed Cluster.
+        /// </summary>
+        public bool? DisableLocalAccounts { get; set; }
+
+        /// <summary>
+        /// Gets or sets configurations for provisioning the cluster with HTTP proxy servers.
+        /// </summary>
+        public PSManagedClusterHTTPProxyConfig HttpProxyConfig { get; set; }
 
         /// <summary>
         /// Gets or sets the identity of the managed cluster, if configured.

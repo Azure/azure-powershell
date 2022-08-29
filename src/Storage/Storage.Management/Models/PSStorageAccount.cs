@@ -70,6 +70,8 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
             this.PublicNetworkAccess = storageAccount.PublicNetworkAccess;
             this.ImmutableStorageWithVersioning = storageAccount.ImmutableStorageWithVersioning is null ? null : new PSImmutableStorageAccount(storageAccount.ImmutableStorageWithVersioning);
             this.StorageAccountSkuConversionStatus = storageAccount.StorageAccountSkuConversionStatus is null ? null : new PSStorageAccountSkuConversionStatus(storageAccount.StorageAccountSkuConversionStatus);
+            this.EnableSftp = storageAccount.IsSftpEnabled;
+            this.EnableLocalUser = storageAccount.IsLocalUserEnabled;
         }
         public bool? AllowCrossTenantReplication { get; set; }
 
@@ -149,6 +151,9 @@ namespace Microsoft.Azure.Commands.Management.Storage.Models
         public string MinimumTlsVersion { get; set; }
 
         public bool? EnableNfsV3 { get; set; }
+
+        public bool? EnableSftp { get; set; }
+        public bool? EnableLocalUser { get; set; }
 
         public bool? AllowSharedKeyAccess { get; set; }
 

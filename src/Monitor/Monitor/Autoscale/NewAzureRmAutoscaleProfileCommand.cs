@@ -17,12 +17,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
     /// <summary>
     /// Create an autoscale profile
     /// </summary>
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzAutoscaleProfileObject")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoscaleProfile"), OutputType(typeof(Management.Monitor.Management.Models.AutoscaleProfile))]
     public class NewAzureRmAutoscaleProfileCommand : MonitorCmdletBase
     {
