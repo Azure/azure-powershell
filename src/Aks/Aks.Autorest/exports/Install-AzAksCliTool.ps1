@@ -16,83 +16,86 @@
 
 <#
 .Synopsis
-List available version for creating managed Kubernetes cluster.
-The operation returns properties of each orchestrator including version, available upgrades and whether that version or upgrades are in preview.
+Download and install kubectl and kubelogin.
 .Description
-List available version for creating managed Kubernetes cluster.
-The operation returns properties of each orchestrator including version, available upgrades and whether that version or upgrades are in preview.
+Download and install kubectl and kubelogin.
 .Example
-Get-AzAksVersion -location eastus
+Install-AzAksCliTool
+.Example
+Install-AzAksCliTool -KubectlInstallVersion "v1.25.0" -KubectlInstallDestination "~/bin/" -KubeloginInstallVersion "v0.0.20" -KubeloginInstallDestination "~/bin"
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult
+System.Boolean
 .Link
-https://docs.microsoft.com/powershell/module/az.aks/get-azaksversion
+https://docs.microsoft.com/powershell/module/az.aks/install-azaksclitool
 #>
-function Get-AzAksVersion {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Aks.Models.Api20190801.IOrchestratorVersionProfileListResult])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+function Install-AzAksCliTool {
+[Alias('Install-AzAksKubectl')]
+[OutputType([System.Boolean])]
+[CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Path')]
+    [Parameter()]
+    [Alias('KubectlInstallDestination')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
     [System.String]
-    # The name of a supported Azure region.
-    ${Location},
+    # Path at which to install kubectl.
+    # Default to install into ~/.azure-kubectl/
+    ${Destination},
 
     [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
-    # Subscription credentials which uniquely identify Microsoft Azure subscription.
-    # The subscription ID forms part of the URI for every service call.
-    ${SubscriptionId},
+    [Alias('KubectlInstallVersion')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Version of kubectl to install, e.g.
+    # 'v1.17.2'.
+    # Default value: Latest.
+    ${Version},
 
     [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
+    [Alias('KubectlDownloadFromMirror')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Download from mirror site : https://mirror.azure.cn/kubernetes/kubectl/
+    ${DownloadFromMirror},
 
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Runtime')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Path at which to install kubectl.
+    # Default to install into ~/.azure-kubelogin/
+    ${KubeloginInstallDestination},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.String]
+    # Version of kubectl to install, e.g.
+    # 'v0.0.20'.
+    # Default value: Latest
+    ${KubeloginInstallVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Download from mirror site : https://mirror.azure.cn/kubernetes/kubelogin
+    ${KubeloginDownloadFromMirror},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Wait for .NET debugger to attach
-    ${Break},
+    ${PassThru},
 
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Runtime')]
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
+    # Run cmdlet in the background
+    ${AsJob},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # Overwrite existing kubectl and kubelogin without prompt
+    ${Force}
 )
 
 begin {
@@ -121,10 +124,7 @@ begin {
         }
 
         $mapping = @{
-            List = 'Az.Aks.custom\Get-AzAksVersion';
-        }
-        if (('List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+            __AllParameterSets = 'Az.Aks.custom\Install-AzAksCliTool';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
