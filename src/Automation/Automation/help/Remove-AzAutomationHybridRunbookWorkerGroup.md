@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzAutomationHybridRunbookWorkerGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a hybrid runbook worker group.
 
 ## SYNTAX
 
@@ -19,16 +19,13 @@ Remove-AzAutomationHybridRunbookWorkerGroup [-Name] <String> [-ResourceGroupName
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
-
+The **Remove-AzAutomationHybridRunbookWorkerGroup** cmdlet removes a hybrid runbook worker group.
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzAutomationHybridRunbookWorkerGroup -AutomationAccountName "Contoso17" -Name "RunbookWorkerGroupName" -ResourceGroupName "ResourceGroup01"
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 

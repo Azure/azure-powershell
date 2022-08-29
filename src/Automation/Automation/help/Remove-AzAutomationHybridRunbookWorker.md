@@ -8,17 +8,10 @@ schema: 2.0.0
 # Remove-AzAutomationHybridRunbookWorker
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a hybrid runbook worker.
 
 ## SYNTAX
 
-### ByAll (Default)
-```
-Remove-AzAutomationHybridRunbookWorker [-HybridRunbookWorkerGroupName] <String> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByName
 ```
 Remove-AzAutomationHybridRunbookWorker [-Name] <String> [-HybridRunbookWorkerGroupName] <String>
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
@@ -26,16 +19,14 @@ Remove-AzAutomationHybridRunbookWorker [-Name] <String> [-HybridRunbookWorkerGro
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzAutomationHybridRunbookWorker** cmdlet removes a hybrid runbook worker.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzAutomationHybridRunbookWorker -AutomationAccountName "Contoso17" -Name "RunbookWorkerName" -HybridRunbookWorkerGroupName "RunbookWorkerGroupName" -ResourceGroupName "ResourceGroup01"
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -89,7 +80,7 @@ The hybrid runbook worker name.
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: RunbookWorker, RunbookWorkerId
 
 Required: True

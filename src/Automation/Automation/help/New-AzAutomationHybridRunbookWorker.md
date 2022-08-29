@@ -12,13 +12,6 @@ Create a Runbook Worker.
 
 ## SYNTAX
 
-### ByAll (Default)
-```
-New-AzAutomationHybridRunbookWorker [-HybridRunbookWorkerGroupName] <String> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByName
 ```
 New-AzAutomationHybridRunbookWorker [-Name] <String> [-HybridRunbookWorkerGroupName] <String>
  [-VmResourceId] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
@@ -32,10 +25,8 @@ The **New-AzAutomationHybridRunbookWorker** cmdlet creates a Runbook Worker.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzAutomationHybridRunbookWorker -AutomationAccountName "Contoso17" -Name "RunbookWorkerName" -HybridRunbookWorkerGroupName "RunbookWorkerGroupName" -VmResourceId "VmResourceId" -ResourceGroupName "ResourceGroup01"
+New-AzAutomationHybridRunbookWorker -AutomationAccountName "Contoso17" -Name "RunbookWorkerName" -HybridRunbookWorkerGroupName "RunbookWorkerGroupName" -VmResourceId "VmResourceId" -ResourceGroupName "ResourceGroup01"
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -89,7 +80,7 @@ The Hybrid Runbook Worker name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: RunbookWorker, RunbookWorkerId
 
 Required: True
@@ -119,7 +110,7 @@ The resource id of the vm to be added to the hybrid worker group
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: VMId
 
 Required: True

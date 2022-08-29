@@ -8,17 +8,10 @@ schema: 2.0.0
 # Set-AzAutomationHybridRunbookWorkerGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Updates a hybrid runbook worker group.
 
 ## SYNTAX
 
-### ByAll (Default)
-```
-Set-AzAutomationHybridRunbookWorkerGroup [-CredentialName <String>] [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByName
 ```
 Set-AzAutomationHybridRunbookWorkerGroup [-Name] <String> [-CredentialName <String>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
@@ -26,16 +19,14 @@ Set-AzAutomationHybridRunbookWorkerGroup [-Name] <String> [-CredentialName <Stri
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzAutomationHybridRunbookWorkerGroup** cmdlet updates a hybrid runbook worker group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Set-AzAutomationHybridRunbookWorkerGroup -AutomationAccountName "Contoso17" -Name "RunbookWorkerGroupName" -ResourceGroupName "ResourceGroup01" -CredentialName "AutomationCredentialName"
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -89,7 +80,7 @@ The hybrid runbook worker group name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: WorkerGroup, RunbookWorkerGroup
 
 Required: True

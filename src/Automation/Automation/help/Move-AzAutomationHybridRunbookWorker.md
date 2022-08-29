@@ -12,13 +12,6 @@ Moves a runbook worker from one runbook worker group to the other.
 
 ## SYNTAX
 
-### ByAll (Default)
-```
-Move-AzAutomationHybridRunbookWorker [-ResourceGroupName] <String> [-AutomationAccountName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByName
 ```
 Move-AzAutomationHybridRunbookWorker [-Name] <String> [-HybridRunbookWorkerGroupName] <String>
  [-TargetHybridRunbookWorkerGroupName] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
@@ -32,10 +25,8 @@ The **Move-AzAutomationHybridRunbookWorker** cmdlet moves a runbook worker from 
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Move-AzAutomationHybridRunbookWorker -AutomationAccountName "Contoso17" -Name "RunbookWorkerName" -HybridRunbookWorkerGroupName "RunbookWorkerGroupName" -TargetHybridRunbookWorkerGroupName "TargetHybridRunbookWorkerGroupName" -ResourceGroupName 
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -74,7 +65,7 @@ The hybrid runbook worker group name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: RunbookWorkerGroup, WorkerGroup
 
 Required: True
@@ -89,7 +80,7 @@ The Hybrid Runbook Worker name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: RunbookWorker, RunbookWorkerId
 
 Required: True
@@ -119,7 +110,7 @@ The target hybrid runbook worker group name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: TargetRunbookWorkerGroup, TargetWorkerGroup
 
 Required: True

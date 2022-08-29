@@ -31,7 +31,7 @@ The **Get-AzAutomationHybridRunbookWorkerGroup** cmdlet gets a Hybrid Runbook Wo
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAutomationHybridRunbookWorkerGroup -AutomationAccountName "Contoso17" -Name "RunbookWorkerGroupName" -ResourceGroupName "ResourceGroup01"
+Get-AzAutomationHybridRunbookWorkerGroup -AutomationAccountName "Contoso17" -Name "RunbookWorkerGroupName" -ResourceGroupName "ResourceGroup01"
 ```
 
 ## PARAMETERS

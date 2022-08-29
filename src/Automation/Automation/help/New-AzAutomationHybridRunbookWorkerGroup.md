@@ -12,13 +12,6 @@ Creates a Runbook Worker Group.
 
 ## SYNTAX
 
-### ByAll (Default)
-```
-New-AzAutomationHybridRunbookWorkerGroup [-CredentialName <String>] [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
-```
-
-### ByName
 ```
 New-AzAutomationHybridRunbookWorkerGroup [-Name] <String> [-CredentialName <String>]
  [-ResourceGroupName] <String> [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>]
@@ -32,10 +25,8 @@ The **New-AzAutomationRunbookWorkerGroup** cmdlet creates a new runbook worker g
 
 ### Example 1
 ```powershell
-PS C:\>  New-AzAutomationRunbookWorkerGroup -AutomationAccountName "Contoso17" -Name "RunbookWorkerGroupName" -ResourceGroupName "ResourceGroup01"
+New-AzAutomationRunbookWorkerGroup -AutomationAccountName "Contoso17" -Name "RunbookWorkerGroupName" -ResourceGroupName "ResourceGroup01"
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -89,7 +80,7 @@ The hybrid runbook worker group name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByName
+Parameter Sets: (All)
 Aliases: WorkerGroup, RunbookWorkerGroup
 
 Required: True
