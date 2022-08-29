@@ -23,36 +23,6 @@ Get function apps plans in a subscription.
 ### [Get-AzFunctionAppSetting](Get-AzFunctionAppSetting.md)
 Gets app settings for a function app.
 
-### [Get-AzSystemAssignedIdentity](Get-AzSystemAssignedIdentity.md)
-Gets the systemAssignedIdentity available under the specified RP scope.
-
-### [Get-AzWebAppBasicPublishingCredentialsPolicy](Get-AzWebAppBasicPublishingCredentialsPolicy.md)
-Returns whether Scm basic auth is allowed and whether Ftp is allowed for a given site.
-
-### [Get-AzWebAppFtpAllowed](Get-AzWebAppFtpAllowed.md)
-Returns whether FTP is allowed on the site or not.
-
-### [Get-AzWebAppFunctionKey](Get-AzWebAppFunctionKey.md)
-Get function keys for a function in a web site, or a deployment slot.
-
-### [Get-AzWebAppFunctionKeySlot](Get-AzWebAppFunctionKeySlot.md)
-Get function keys for a function in a web site, or a deployment slot.
-
-### [Get-AzWebAppScmAllowed](Get-AzWebAppScmAllowed.md)
-Returns whether Scm basic auth is allowed on the site or not.
-
-### [Get-AzWebAppSettingKeyVaultReference](Get-AzWebAppSettingKeyVaultReference.md)
-Gets the config reference app settings and status of an app
-
-### [Get-AzWebAppSyncStatus](Get-AzWebAppSyncStatus.md)
-This is to allow calling via powershell and ARM template.
-
-### [Get-AzWebAppSyncStatusSlot](Get-AzWebAppSyncStatusSlot.md)
-This is to allow calling via powershell and ARM template.
-
-### [Move-Az](Move-Az.md)
-Move resources between resource groups.
-
 ### [New-AzFunctionApp](New-AzFunctionApp.md)
 Creates a function app.
 
@@ -71,23 +41,11 @@ Removes app settings from a function app.
 ### [Restart-AzFunctionApp](Restart-AzFunctionApp.md)
 Restarts a function app.
 
-### [Set-AzWebAppFtpAllowed](Set-AzWebAppFtpAllowed.md)
-Updates whether FTP is allowed on the site or not.
-
-### [Set-AzWebAppScmAllowed](Set-AzWebAppScmAllowed.md)
-Updates whether user publishing credentials are allowed on the site or not.
-
 ### [Start-AzFunctionApp](Start-AzFunctionApp.md)
 Starts a function app.
 
 ### [Stop-AzFunctionApp](Stop-AzFunctionApp.md)
 Stops a function app.
-
-### [Sync-AzWebAppFunctionSlot](Sync-AzWebAppFunctionSlot.md)
-Syncs function trigger metadata to the management database
-
-### [Test-Az](Test-Az.md)
-Validate if a resource can be created.
 
 ### [Update-AzFunctionApp](Update-AzFunctionApp.md)
 Updates a function app.
