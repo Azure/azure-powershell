@@ -16,12 +16,14 @@ using Microsoft.Azure.Commands.Insights.Properties;
 using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
     /// <summary>
     /// Create an Autoscale rule
     /// </summary>
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzAutoscaleScaleRuleObject")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoscaleRule"), OutputType(typeof(Management.Monitor.Management.Models.ScaleRule))]
     public class NewAzureRmAutoscaleRuleCommand : MonitorCmdletBase
     {
