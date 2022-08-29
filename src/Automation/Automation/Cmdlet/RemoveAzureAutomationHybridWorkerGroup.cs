@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Removes a hybridworkergroup for automation.
     /// </summary>
-    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridWorkerGroup",
+    [Cmdlet(VerbsCommon.Remove, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorkerGroup",
         SupportsShouldProcess = true, DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(void))]
     public class RemoveAzureAutomationHybridWorkerGroup : AzureAutomationBaseCmdlet
@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// </summary>
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The hybrid worker group name.")]
         [ValidateNotNullOrEmpty]
-        [Alias("Group")]
+        [Alias("RunbookWorkerGroup", "WorkerGroup")]
         public string Name { get; set; }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         protected override void AutomationProcessRecord()
         {
             ConfirmAction(
-                       string.Format(Resources.RemoveAzureAutomationResourceDescription, "HybridWorkerGroup"),
+                       string.Format(Resources.RemoveAzureAutomationResourceDescription, "HybridRunbookWorkerGroup"),
                        Name,
                        () =>
                        {
