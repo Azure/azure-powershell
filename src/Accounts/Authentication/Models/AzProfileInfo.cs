@@ -15,7 +15,7 @@
 using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace Microsoft.Azure.Commands.Common.Authentication
+namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
     internal class AzProfileInfo
     {

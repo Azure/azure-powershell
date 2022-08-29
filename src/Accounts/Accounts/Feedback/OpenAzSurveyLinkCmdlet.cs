@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.Profile.Survey
     {
         private const string _surveyLinkFormat = "https://go.microsoft.com/fwlink/?linkid=2201766&ID={0}&v={1}&d={2}";
 
-        private static string SurveyScheduleInfoFile = Path.Combine(
+        private static readonly string SurveyScheduleInfoFile = Path.Combine(
             Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
             ".Azure", "AzureRmSurvey.json");
 
@@ -40,22 +40,20 @@ namespace Microsoft.Azure.Commands.Profile.Survey
 
         public override void ExecuteCmdlet()
         {   
-            StreamReader sr = null;
-            DateTime Today = DateTime.UtcNow;
+            DateTime today = DateTime.UtcNow;
             DateTime LastPromptDate= DateTime.MinValue;
             AzureSession.Instance.ExtendedProperties.TryGetValue("InstallationId", out string InstallationId);
             String Version= AzurePSCmdlet.PowerShellVersion;
+            var dataStore = AzureSession.Instance.DataStore;
             int GapDay = -1;
 
-            if (File.Exists(SurveyScheduleInfoFile))
+            if (dataStore.FileExists(SurveyScheduleInfoFile))
             {
-                sr = new StreamReader(new FileStream(SurveyScheduleInfoFile, FileMode.Open, FileAccess.Read, FileShare.None));                    
-                ScheduleInfo scheduleInfo = JsonConvert.DeserializeObject<ScheduleInfo>(sr.ReadToEnd());
+                ScheduleInfo scheduleInfo = JsonConvert.DeserializeObject<ScheduleInfo>(dataStore.ReadFileAsText(SurveyScheduleInfoFile));
                 LastPromptDate = Convert.ToDateTime(scheduleInfo?.LastPromptDate);
-                sr.Close();
             }
             if (LastPromptDate != DateTime.MinValue){
-                TimeSpan ts = Today.Subtract(LastPromptDate);
+                TimeSpan ts = today.Subtract(LastPromptDate);
                 GapDay = (int) ts.TotalDays;
             }
             String svLink = String.Format(_surveyLinkFormat, InstallationId, Version, GapDay);

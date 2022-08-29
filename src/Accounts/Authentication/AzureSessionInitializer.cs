@@ -26,6 +26,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Config;
 using Newtonsoft.Json;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 
 using TraceLevel = System.Diagnostics.TraceLevel;
 using System.Collections.Generic;
@@ -179,7 +181,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     String installationId = settings.Settings.ContainsKey("InstallationId") ?settings.Settings["InstallationId"] : null;
                     if (string.IsNullOrEmpty(installationId))
                     {
-                        result.Settings.Add("InstallationId", GetAzureCLIInstallationId() ?? Guid.NewGuid().ToString());
+                        result.Settings.Add("InstallationId", GetAzureCLIInstallationId(store) ?? Guid.NewGuid().ToString());
                     }
                     if (migrated || string.IsNullOrEmpty(installationId))
                     {
@@ -196,7 +198,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     }
                     string autoSavePath = Path.Combine(profileDirectory, settingsFile);
                     result.Mode = ContextSaveMode.CurrentUser;
-                    result.Settings.Add("InstallationId", GetAzureCLIInstallationId() ?? Guid.NewGuid().ToString());
+                    result.Settings.Add("InstallationId", GetAzureCLIInstallationId(store) ?? Guid.NewGuid().ToString());
                     store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
                 }
             }
@@ -211,12 +213,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return result;
         }
 
-        static String GetAzureCLIInstallationId(){
+        static String GetAzureCLIInstallationId(IDataStore store){
             String installationId = null;
-            if (File.Exists(AzProfileInfoFile))
+            if (store.FileExists(AzProfileInfoFile))
                 {
-                    StreamReader sr = new StreamReader(new FileStream(AzProfileInfoFile, FileMode.Open, FileAccess.Read, FileShare.None));                    
-                    AzProfileInfo azInfo = JsonConvert.DeserializeObject<AzProfileInfo>(sr.ReadToEnd());
+                    AzProfileInfo azInfo = JsonConvert.DeserializeObject<AzProfileInfo>(store.ReadFileAsText(AzProfileInfoFile));
                     if (!string.IsNullOrEmpty(azInfo?.installationId)) {
                         installationId = azInfo.installationId;
                     }
