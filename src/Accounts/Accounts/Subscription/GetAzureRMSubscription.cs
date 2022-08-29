@@ -19,7 +19,6 @@ using Microsoft.Azure.Commands.Profile.Models;
 using Microsoft.Azure.Commands.Profile.Properties;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Management.Automation;
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Commands.Profile
         {
             if (!string.IsNullOrWhiteSpace(this.SubscriptionName))
             {
-                List<IAzureSubscription> result;
+                IAzureSubscription result;
                 try
                 {
                     if (!this._client.TryGetSubscriptionByName(TenantId, this.SubscriptionName, out result))
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Commands.Profile
                         ThrowSubscriptionNotFoundError(this.TenantId, this.SubscriptionName);
                     }
 
-                    WriteObject(result?.Select((s) => new PSAzureSubscription(s)), enumerateCollection: true);
+                    WriteObject(new PSAzureSubscription(result));
                 }
                 catch (AadAuthenticationException exception)
                 {
