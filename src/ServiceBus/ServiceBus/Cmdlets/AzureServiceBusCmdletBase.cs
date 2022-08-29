@@ -157,36 +157,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             internal const string PrimaryKey = "PrimaryKey";
             internal const string SecondaryKey = "SecondaryKey";
         }
-        
-        //protected static AccessRights ParseAccessRights(string rightsName)
-        //{
-        //    AccessRights returnAccessRights;
-        //    if (!Enum.TryParse<AccessRights>(rightsName, true, out returnAccessRights))
-        //    {
-        //        throw new ArgumentOutOfRangeException("AccessRights");
-        //    }
-        //    return returnAccessRights;
-        //}
-        
-        //public static SkuName ParseSkuName(string skuName)
-        //{
-        //    SkuName returnSkuName;
-        //    if (!Enum.TryParse<SkuName>(skuName, true, out returnSkuName))
-        //    {
-        //        throw new ArgumentOutOfRangeException("SkuName");
-        //    }
-        //    return returnSkuName;
-        //}
-
-        //public static SkuTier ParseSkuTier(string skuTier)
-        //{
-        //    SkuTier returnSkutier;
-        //    if (!Enum.TryParse<SkuTier>(skuTier, true, out returnSkutier))
-        //    {
-        //        throw new ArgumentOutOfRangeException("skuTier");
-        //    }
-        //    return returnSkutier;
-        //}
 
         public static TimeSpan ParseTimespan(string strTimespan)
         {
@@ -201,27 +171,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             }
             return tspan;
         }
-
-        //public string ParseIdentityType(ManagedServiceIdentityType managedServiceIdentityType)
-        //{
-        //    if(managedServiceIdentityType == ManagedServiceIdentityType.SystemAssigned)
-        //    {
-        //        return ServiceBusClient.SystemAssigned;
-        //    }
-        //    if (managedServiceIdentityType == ManagedServiceIdentityType.UserAssigned)
-        //    {
-        //        return ServiceBusClient.UserAssigned;
-        //    }
-        //    if (managedServiceIdentityType == ManagedServiceIdentityType.SystemAssignedUserAssigned)
-        //    {
-        //        return ServiceBusClient.SystemAssignedUserAssigned;
-        //    }
-        //    if (managedServiceIdentityType == ManagedServiceIdentityType.None)
-        //    {
-        //        return ServiceBusClient.None;
-        //    }
-        //    return "";
-        //}
 
         public ServiceBusClient Client
         {
@@ -362,7 +311,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
     }
 
-
     public class LocalResourceIdentifier : ResourceIdentifier
     {
         public LocalResourceIdentifier(string strResourceID ) : base (strResourceID)
@@ -390,8 +338,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public string ParentResource1 { get; set; }
 
         public string ParentResource2 { get; set; }
-
-
-
     }
 }
