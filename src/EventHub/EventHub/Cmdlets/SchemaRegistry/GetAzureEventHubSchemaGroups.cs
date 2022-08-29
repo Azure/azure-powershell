@@ -37,7 +37,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject", ChangeDescription = "Format of resource id must be /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}. Namespace resource id can no longer be used for list calls.")]
         [Parameter(Mandatory = true, ParameterSetName = SchemaGroupResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

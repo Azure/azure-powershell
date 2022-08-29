@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupPropertiesParameterSet, Position = 2, HelpMessage = "Application Group Name")]
         public string Name { get; set; }
 
-        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject", ChangeDescription = "Format of resource id must be /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups/{applicationGroupName}. Namespace resource id can no longer be used for list calls.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupResourceIdParameterSet, Position = 0, HelpMessage = "Resource Id of application group or namespace")]
         public string ResourceId { get; set; }
 

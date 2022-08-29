@@ -50,7 +50,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.PrivateEndpoints
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
-        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject", ChangeDescription = "Format of resource id must be /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}. Namespace resource id can no longer be used for list calls.")]
         [Parameter(Mandatory = true, ParameterSetName = PrivateEndpointResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Private Endpoint Connection ResourceId.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
