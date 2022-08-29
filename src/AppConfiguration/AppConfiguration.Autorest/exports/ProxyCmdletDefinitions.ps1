@@ -1322,6 +1322,14 @@ Creates a configuration store with the specified parameters.
 Creates a configuration store with the specified parameters.
 .Example
 New-AzAppConfigurationStore -Name azpstest-appstore -ResourceGroupName azpstest_gp -Location eastus -Sku Standard
+.Example
+$storeName = "azpstest-appstore-recover"
+$resourceGroupName = "azpstest_gp"
+$location = "eastus"
+New-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupName -Location $location -Sku Standard
+Remove-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupName
+Get-AzAppConfigurationDeletedStore -Location $location -Name $storeName
+New-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupName -Location $location -Sku Standard -CreateMode 'Recover'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore
@@ -1426,7 +1434,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IResourceIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
+    [System.String[]]
     # The list of user-assigned identities associated with the resource.
     # The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
     ${UserAssignedIdentity},
@@ -1685,7 +1693,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IResourceIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
+    [System.String[]]
     # The list of user-assigned identities associated with the resource.
     # The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
     ${UserAssignedIdentity},
