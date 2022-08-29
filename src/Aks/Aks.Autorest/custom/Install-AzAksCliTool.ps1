@@ -292,7 +292,7 @@ Function Install-Kubelogin
         }
         
         #region download and install
-        If ($PSCmdlet.ShouldProcess("Downloading kubectl from internet.", $destFilePath))
+        If ($PSCmdlet.ShouldProcess("Downloading kubelogin from internet.", $destFilePath))
         {
             $downloadFilePath = [System.IO.Path]::Combine($Destination, "kubelogin.zip")
             $uncompressFolderPath = [System.IO.Path]::Combine($Destination, "kubelogin-folder")
