@@ -16,14 +16,15 @@
 
 <#
 .Synopsis
-Download and install kubectl and kubelogin, the Kubernetes command-line tool.
+Download and install kubectl and kubelogin.
 .Description
-Download and install kubectl and kubelogin, the Kubernetes command-line tool.
+Download and install kubectl and kubelogin.
 #>
 function Install-AzAksCliTool
 {
+    [OutputType([System.Boolean])]
     [Alias("Install-AzAksKubectl")]
-    [CmdletBinding()]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Alias("KubectlInstallDestination")]
         [Parameter()]
@@ -70,12 +71,13 @@ function Install-AzAksCliTool
     
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
-        # Overwrite existing kubectl without prompt
+        # Overwrite existing kubectl and kubelogin without prompt
         ${Force}
     )
     
     process
     {
+        #Region Install kubectl
         $KubectlParams = @{}
         If ($PSBoundParameters.ContainsKey("Destination"))
         {
@@ -89,8 +91,14 @@ function Install-AzAksCliTool
         {
             $KubectlParams["DownloadFromMirror"] = $PSBoundParameters["DownloadFromMirror"]
         }
+        If ($PSBoundParameters.ContainsKey("Force"))
+        {
+            $KubectlParams["Force"] = $PSBoundParameters["Force"]
+        }
         Install-Kubectl @KubectlParams
+        #EndRegion
 
+        #Region Install kubelogin
         $KubeloginParams = @{}
         If ($PSBoundParameters.ContainsKey("KubeloginInstallDestination"))
         {
@@ -104,14 +112,19 @@ function Install-AzAksCliTool
         {
             $KubeloginParams["DownloadFromMirror"] = $PSBoundParameters["KubeloginDownloadFromMirror"]
         }
+        If ($PSBoundParameters.ContainsKey("Force"))
+        {
+            $KubeloginParams["Force"] = $PSBoundParameters["Force"]
+        }
         Install-Kubelogin @KubeloginParams
+        #EndRegion
     }
 }
 
 Function Install-Kubectl
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.DoNotExportAttribute()]
-    [CmdletBinding()]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter()]
         [System.String]
@@ -123,18 +136,15 @@ Function Install-Kubectl
     
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
-        ${DownloadFromMirror}
+        ${DownloadFromMirror},
+    
+        [Parameter()]
+        [System.Management.Automation.SwitchParameter]
+        ${Force}
     )
 
     Process
     {
-        Write-Verbose "-----------------------------"
-        Write-Verbose $Destination
-        ForEach ($key In $PSBoundParameters.Keys)
-        {
-            Write-Verbose ("$Key" + $PSBoundParameters[$Key])
-        }
-        Write-Verbose "-----------------------------"
         $kubecliSiteUrl = "https://storage.googleapis.com/kubernetes-release/release"
         $kubecliSiteUrlMirror = "https://mirror.azure.cn/kubernetes/kubectl"
         $baseUrl = $DownloadFromMirror ? $kubecliSiteUrlMirror : $kubecliSiteUrl
@@ -176,20 +186,26 @@ Function Install-Kubectl
             throw $ex
         }
         #region download and install
-        If (Test-Path -Path $destFilePath)
+        If ($PSCmdlet.ShouldProcess("Downloading kubectl from internet.", $destFilePath))
         {
-            $tmpFilePath = "$destFilePath.tmp"
-            Write-Verbose "Downloading from $downloadFileUrl to local: $tmpFilePath"
-            Invoke-WebRequest -Uri $downloadFileUrl -OutFile $tmpFilePath
-            Write-Verbose "Deleting $destFilePath"
-            Remove-Item -Path $destFilePath
-            Write-Verbose "Moving $tmpFilePath to $destFilePath"
-            Move-Item -Path $tmpFilePath -Destination $destFilePath
-        }
-        Else
-        {
-            Write-Verbose "Downloading from $downloadFileUrl to local: $destFilePath"
-            Invoke-WebRequest -Uri $downloadFileUrl -OutFile $destFilePath
+            If (Test-Path -Path $destFilePath)
+            {
+                If ($Force -Or $PSCmdlet.ShouldContinue("File $destFilePath exist, are you want to replace it?", "Replace file"))
+                {
+                    $tmpFilePath = "$destFilePath.tmp"
+                    Write-Verbose "Downloading from $downloadFileUrl to local: $tmpFilePath"
+                    Invoke-WebRequest -Uri $downloadFileUrl -OutFile $tmpFilePath
+                    Write-Verbose "Deleting $destFilePath"
+                    Remove-Item -Path $destFilePath
+                    Write-Verbose "Moving $tmpFilePath to $destFilePath"
+                    Move-Item -Path $tmpFilePath -Destination $destFilePath
+                }
+            }
+            Else
+            {
+                Write-Verbose "Downloading from $downloadFileUrl to local: $destFilePath"
+                Invoke-WebRequest -Uri $downloadFileUrl -OutFile $destFilePath
+            }
         }
         #endregion
     }
@@ -198,7 +214,7 @@ Function Install-Kubectl
 Function Install-Kubelogin
 {
     [Microsoft.Azure.PowerShell.Cmdlets.Aks.DoNotExportAttribute()]
-    [CmdletBinding()]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter()]
         [System.String]
@@ -210,7 +226,11 @@ Function Install-Kubelogin
     
         [Parameter()]
         [System.Management.Automation.SwitchParameter]
-        ${DownloadFromMirror}
+        ${DownloadFromMirror},
+    
+        [Parameter()]
+        [System.Management.Automation.SwitchParameter]
+        ${Force}
     )
 
     Process
@@ -272,23 +292,37 @@ Function Install-Kubelogin
         }
         
         #region download and install
-        $downloadFilePath = [System.IO.Path]::Combine($Destination, "kubelogin.zip")
-        $uncompressFolderPath = [System.IO.Path]::Combine($Destination, "kubelogin-folder")
-        $binFilePath = [System.IO.Path]::Combine($uncompressFolderPath, "bin", $subDir, $binaryName)
-        Write-Verbose "Downloading from $downloadFileUrl to local: $downloadFilePath"
-        Invoke-WebRequest -Uri $downloadFileUrl -OutFile $downloadFilePath
-        Expand-Archive $downloadFilePath -DestinationPath $uncompressFolderPath
-        If (Test-Path -Path $destFilePath)
+        If ($PSCmdlet.ShouldProcess("Downloading kubectl from internet.", $destFilePath))
         {
-            Write-Verbose "Deleting $destFilePath"
-            Remove-Item -Path $destFilePath
+            $downloadFilePath = [System.IO.Path]::Combine($Destination, "kubelogin.zip")
+            $uncompressFolderPath = [System.IO.Path]::Combine($Destination, "kubelogin-folder")
+            $binFilePath = [System.IO.Path]::Combine($uncompressFolderPath, "bin", $subDir, $binaryName)
+            $shouldDownload = $true
+            If (Test-Path -Path $destFilePath)
+            {
+                If ($Force -Or $PSCmdlet.ShouldContinue("File $destFilePath exist, are you want to replace it?", "Replace file"))
+                {
+                    Write-Verbose "Deleting $destFilePath"
+                    Remove-Item -Path $destFilePath
+                }
+                Else
+                {
+                    $shouldDownload = $false
+                }
+            }
+            If ($shouldDownload)
+            {
+                Write-Verbose "Downloading from $downloadFileUrl to local: $downloadFilePath"
+                Invoke-WebRequest -Uri $downloadFileUrl -OutFile $downloadFilePath
+                Expand-Archive $downloadFilePath -DestinationPath $uncompressFolderPath -Force
+                Write-Verbose "Deleting $destFilePath"
+                Move-Item -Path $binFilePath -Destination $destFilePath
+                Write-Verbose "Deleting $downloadFilePath"
+                Remove-Item $downloadFilePath
+                Write-Verbose "Deleting $uncompressFolderPath"
+                Remove-Item $uncompressFolderPath -Recurse
+            }
         }
-        Write-Verbose "Moving $tmpFilePath to $destFilePath"
-        Move-Item -Path $binFilePath -Destination $destFilePath
-        Write-Verbose "Deleting $downloadFilePath"
-        Remove-Item $downloadFilePath
-        Write-Verbose "Deleting $uncompressFolderPath"
-        Remove-Item $uncompressFolderPath -Recurse
         #endregion
     }
 }

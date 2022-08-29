@@ -22,7 +22,7 @@ List available version for creating managed Kubernetes cluster.
 The operation returns properties of each orchestrator including version, available upgrades and whether that version or upgrades are in preview.
 
 ### [Install-AzAksCliTool](Install-AzAksCliTool.md)
-Download and install kubectl and kubelogin, the Kubernetes command-line tool.
+Download and install kubectl and kubelogin.
 
 ### [Start-AzAksCluster](Start-AzAksCluster.md)
 Starts a Stopped Managed Cluster

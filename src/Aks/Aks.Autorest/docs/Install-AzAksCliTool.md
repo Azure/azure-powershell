@@ -8,18 +8,18 @@ schema: 2.0.0
 # Install-AzAksCliTool
 
 ## SYNOPSIS
-Download and install kubectl and kubelogin, the Kubernetes command-line tool.
+Download and install kubectl and kubelogin.
 
 ## SYNTAX
 
 ```
-Install-AzAksCliTool [[-Destination] <String>] [[-Version] <String>]
- [[-KubeloginInstallDestination] <String>] [[-KubeloginInstallVersion] <String>] [-AsJob]
- [-DownloadFromMirror] [-Force] [-KubeloginDownloadFromMirror] [-PassThru] [<CommonParameters>]
+Install-AzAksCliTool [-AsJob] [-Destination <String>] [-DownloadFromMirror] [-Force]
+ [-KubeloginDownloadFromMirror] [-KubeloginInstallDestination <String>] [-KubeloginInstallVersion <String>]
+ [-PassThru] [-Version <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Download and install kubectl and kubelogin, the Kubernetes command-line tool.
+Download and install kubectl and kubelogin.
 
 ## EXAMPLES
 
@@ -64,7 +64,7 @@ Parameter Sets: (All)
 Aliases: KubectlInstallDestination
 
 Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -86,7 +86,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Overwrite existing kubectl without prompt
+Overwrite existing kubectl and kubelogin without prompt
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -125,7 +125,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -142,7 +142,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 3
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -174,7 +174,38 @@ Parameter Sets: (All)
 Aliases: KubectlInstallVersion
 
 Required: False
-Position: 1
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -186,6 +217,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### System.Boolean
 
 ## NOTES
 
