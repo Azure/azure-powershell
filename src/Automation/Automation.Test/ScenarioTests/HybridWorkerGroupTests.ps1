@@ -26,6 +26,11 @@ function Test-E2EHybridWorkerGroup
         GroupType = "User"
     }
 
+    New-AzAutomationHybridRunbookWorkerGroup  -ResourceGroupName $resourceGroupName `
+                                              -AutomationAccountName $automationAccountName  `
+                                              -Name $hybridWorkerGroupName  `
+                                              -ErrorAction SilentlyContinue
+
     $group = Get-AzAutomationHybridRunbookWorkerGroup -ResourceGroupName $resourceGroupName `
                                                      -AutomationAccountName $automationAccountName  `
                                                      -Name $hybridWorkerGroupName 

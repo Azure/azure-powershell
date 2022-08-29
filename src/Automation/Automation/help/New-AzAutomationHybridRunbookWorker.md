@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAutomationHybridRunbookWorker
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create a Runbook Worker.
 
 ## SYNTAX
 
@@ -26,13 +26,13 @@ New-AzAutomationHybridRunbookWorker [-Name] <String> [-HybridRunbookWorkerGroupN
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzAutomationHybridRunbookWorker** cmdlet creates a Runbook Worker.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAutomationHybridRunbookWorker -AutomationAccountName "Contoso17" -Name "RunbookWorkerName" -HybridRunbookWorkerGroupName "RunbookWorkerGroupName" -VmResourceId "VmResourceId" -ResourceGroupName "ResourceGroup01"
 ```
 
 {{ Add example description here }}

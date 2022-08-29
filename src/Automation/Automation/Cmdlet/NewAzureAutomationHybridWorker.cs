@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the hybrid worker name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker name")]
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker name")]
         [Alias("RunbookWorker", "RunbookWorkerId")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the hybrid worker group name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 4, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The resource id of the vm to be added to the hybrid worker group")]
+        [Parameter(Position = 4, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The resource id of the vm to be added to the hybrid worker group")]
         [Alias("VMId")]
         [ValidateNotNullOrEmpty]
         public string VmResourceId { get; set; }

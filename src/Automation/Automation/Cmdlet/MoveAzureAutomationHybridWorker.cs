@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the hybrid worker name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker name")]
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker name")]
         [Alias("RunbookWorker", "RunbookWorkerId")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the hybrid worker group name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 3, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The hybrid runbook worker group name")]
+        [Parameter(Position = 3, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The hybrid runbook worker group name")]
         [Alias("RunbookWorkerGroup", "WorkerGroup")]
         [ValidateNotNullOrEmpty]
         public string HybridRunbookWorkerGroupName { get; set; }
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the target hybrid worker group name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 4, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The target hybrid runbook worker group name")]
+        [Parameter(Position = 4, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The target hybrid runbook worker group name")]
         [Alias("TargetRunbookWorkerGroup", "TargetWorkerGroup")]
         [ValidateNotNullOrEmpty]
         public string TargetHybridRunbookWorkerGroupName { get; set; }

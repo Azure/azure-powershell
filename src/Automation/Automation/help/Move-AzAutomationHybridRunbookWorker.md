@@ -8,7 +8,7 @@ schema: 2.0.0
 # Move-AzAutomationHybridRunbookWorker
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Moves a runbook worker from one runbook worker group to the other.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Move-AzAutomationHybridRunbookWorker [-Name] <String> [-HybridRunbookWorkerGroup
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Move-AzAutomationHybridRunbookWorker** cmdlet moves a runbook worker from one runbook worker group to the other.
 
 ## EXAMPLES
 

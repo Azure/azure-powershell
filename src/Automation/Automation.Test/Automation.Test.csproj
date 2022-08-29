@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <PsModuleName>Automation</PsModuleName>
@@ -26,6 +26,10 @@
   <ItemGroup>
     <None Update="ScenarioTests\*.cer" CopyToOutputDirectory="PreserveNewest" />
     <None Update="ScenarioTests\Resources\*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="SessionRecords\Commands.Automation.Test.HybridWorkerGroupTests\" />
   </ItemGroup>
 
 </Project>

@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAutomationHybridRunbookWorkerGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a Runbook Worker Group.
 
 ## SYNTAX
 
@@ -26,13 +26,13 @@ New-AzAutomationHybridRunbookWorkerGroup [-Name] <String> [-CredentialName <Stri
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzAutomationRunbookWorkerGroup** cmdlet creates a new runbook worker group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>  New-AzAutomationRunbookWorkerGroup -AutomationAccountName "Contoso17" -Name "RunbookWorkerGroupName" -ResourceGroupName "ResourceGroup01"
 ```
 
 {{ Add example description here }}

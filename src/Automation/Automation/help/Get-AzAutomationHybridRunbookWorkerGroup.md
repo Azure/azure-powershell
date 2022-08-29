@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAutomationHybridRunbookWorkerGroup
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Hybrid Runbook Worker Group.
 
 ## SYNTAX
 
@@ -25,16 +25,14 @@ Get-AzAutomationHybridRunbookWorkerGroup [[-Name] <String>] [-ResourceGroupName]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzAutomationHybridRunbookWorkerGroup** cmdlet gets a Hybrid Runbook Worker Group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-AzAutomationHybridRunbookWorkerGroup -AutomationAccountName "Contoso17" -Name "RunbookWorkerGroupName" -ResourceGroupName "ResourceGroup01"
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
