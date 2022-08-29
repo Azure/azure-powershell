@@ -69,6 +69,11 @@ namespace Microsoft.Azure.Commands.ServiceBus
             return new PSNamespaceAttributes(response);
         }
 
+        public SBNamespace GetServiceBusNamespace(string resourceGroupName, string namespaceName)
+        {
+            return Client.Namespaces.Get(resourceGroupName, namespaceName);
+        }
+
         public IEnumerable<PSNamespaceAttributes> ListNamespaces(string resourceGroupName)
         {
             Rest.Azure.IPage<SBNamespace> response = Client.Namespaces.ListByResourceGroup(resourceGroupName);
@@ -97,9 +102,11 @@ namespace Microsoft.Azure.Commands.ServiceBus
 
             if (skuName != null)
             {
-                parameter.Sku = new SBSku();                
-                parameter.Sku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
-                parameter.Sku.Tier = AzureServiceBusCmdletBase.ParseSkuTier(skuName);
+                parameter.Sku = new SBSku();
+                //parameter.Sku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
+                //parameter.Sku.Tier = AzureServiceBusCmdletBase.ParseSkuTier(skuName);
+                parameter.Sku.Name = skuName;
+                parameter.Sku.Tier = skuName;
                 if (parameter.Sku.Name == SkuName.Premium && skuCapacity != null)
                 {
                     parameter.Sku.Capacity = skuCapacity;
@@ -114,7 +121,8 @@ namespace Microsoft.Azure.Commands.ServiceBus
             if (identityType != null)
             {
                 parameter.Identity = new Identity();
-                parameter.Identity.Type = FindIdentity(identityType);
+                //parameter.Identity.Type = FindIdentity(identityType);
+                parameter.Identity.Type = identityType;
             }
 
             if (identityIds != null)
@@ -174,6 +182,55 @@ namespace Microsoft.Azure.Commands.ServiceBus
         }
 
 
+        public PSNamespaceAttributes BeginCreateNamespace(string resourceGroupName, string namespaceName, SBNamespace namespacePayload )
+        {
+           SBNamespace response =  Client.Namespaces.CreateOrUpdate(resourceGroupName, namespaceName, namespacePayload);
+            return new PSNamespaceAttributes(response);
+        }
+
+
+
+
+        public List<KeyVaultProperties> MapEncryptionConfig(PSEncryptionConfigAttributes[] EncryptionConfig)
+        {
+
+            return EncryptionConfig?.Where(x => x != null)
+                                   .Select(x =>
+                                   {
+                                       KeyVaultProperties kvp = new KeyVaultProperties();
+
+                                       if (x.KeyName == null || x.KeyVaultUri == null)
+                                           throw new Exception("KeyName and KeyVaultUri cannot be null");
+
+                                       kvp.KeyName = x.KeyName;
+
+                                       kvp.KeyVaultUri = x.KeyVaultUri;
+
+                                       kvp.KeyVersion = x?.KeyVersion;
+
+                                       if (x.UserAssignedIdentity != null)
+                                           kvp.Identity = new UserAssignedIdentityProperties(x.UserAssignedIdentity);
+
+                                       return kvp;
+                                   })
+                                   .ToList();
+
+        }
+
+        public Dictionary<string, UserAssignedIdentity> MapIdentityId(string[] IdentityId)
+        {
+            Dictionary<string, UserAssignedIdentity> UserAssignedIdentities = new Dictionary<string, UserAssignedIdentity>();
+
+            UserAssignedIdentities = IdentityId.Where(id => id != null).ToDictionary(id => id, id => new UserAssignedIdentity());
+
+            return UserAssignedIdentities;
+        }
+
+        public void InvalidArgumentException(string message)
+        {
+            throw new PSArgumentException(message);
+        }
+
         public PSNamespaceAttributes UpdateNamespace(string resourceGroupName, string namespaceName, string location, string skuName, int? skuCapacity, Hashtable tags, bool? isDisableLocalAuth, string identityType,
             string[] identityIds, PSEncryptionConfigAttributes[] encryptionconfigs)
         {
@@ -191,8 +248,10 @@ namespace Microsoft.Azure.Commands.ServiceBus
             if (skuName != null)
             {
                 parameter.Sku = new SBSku();
-                parameter.Sku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
-                parameter.Sku.Tier = AzureServiceBusCmdletBase.ParseSkuTier(skuName);
+                //parameter.Sku.Name = AzureServiceBusCmdletBase.ParseSkuName(skuName);
+                //parameter.Sku.Tier = AzureServiceBusCmdletBase.ParseSkuTier(skuName);
+                parameter.Sku.Name = skuName;
+                parameter.Sku.Tier = skuName;
             }
 
             if (skuCapacity != null)
@@ -214,7 +273,8 @@ namespace Microsoft.Azure.Commands.ServiceBus
                     parameter.Identity = new Identity();
                 }
 
-                parameter.Identity.Type = FindIdentity(identityType);
+                //parameter.Identity.Type = FindIdentity(identityType);
+                parameter.Identity.Type = identityType;
 
                 /*if (parameter.Identity.Type == ManagedServiceIdentityType.None || parameter.Identity.Type == ManagedServiceIdentityType.SystemAssigned)
                 {
@@ -282,25 +342,23 @@ namespace Microsoft.Azure.Commands.ServiceBus
             return new PSNamespaceAttributes(response);
         }
 
-        public ManagedServiceIdentityType FindIdentity(string identityType)
-        {
-            ManagedServiceIdentityType Type = ManagedServiceIdentityType.None;
-            if (identityType == SystemAssigned)
-                Type = ManagedServiceIdentityType.SystemAssigned;
+        //public ManagedServiceIdentityType FindIdentity(string identityType)
+        //{
+        //    ManagedServiceIdentityType Type = ManagedServiceIdentityType.None;
+        //    if (identityType == SystemAssigned)
+        //        Type = ManagedServiceIdentityType.SystemAssigned;
 
-            else if (identityType == UserAssigned)
-                Type = ManagedServiceIdentityType.UserAssigned;
+        //    else if (identityType == UserAssigned)
+        //        Type = ManagedServiceIdentityType.UserAssigned;
 
-            else if (identityType == SystemAssignedUserAssigned)
-                Type = ManagedServiceIdentityType.SystemAssignedUserAssigned;
+        //    else if (identityType == SystemAssignedUserAssigned)
+        //        Type = ManagedServiceIdentityType.SystemAssignedUserAssigned;
 
-            else if (identityType == None)
-                Type = ManagedServiceIdentityType.None;
+        //    else if (identityType == None)
+        //        Type = ManagedServiceIdentityType.None;
 
-            return Type;
-        }
-
-
+        //    return Type;
+        //}
 
         public bool BeginDeleteNamespace(string resourceGroupName, string namespaceName)
         {

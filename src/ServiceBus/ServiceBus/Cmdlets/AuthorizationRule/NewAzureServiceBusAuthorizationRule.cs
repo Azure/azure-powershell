@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             try
             {
                 PSSharedAccessAuthorizationRuleAttributes sasRule = new PSSharedAccessAuthorizationRuleAttributes();
-                sasRule.Rights = new List<AccessRights?>();
+                sasRule.Rights = new List<string>();
 
                 if (Array.Exists(Rights, element => element.Equals(Manage) && (!Array.Exists(Rights, element1 => element1.Equals(Listen)) || !Array.Exists(Rights, element1 => element1.Equals(Send)))))
                 {
@@ -71,9 +71,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                     throw exManage;
                 }
 
-                foreach (string test in Rights)
+                foreach (string right in Rights)
                 {
-                    sasRule.Rights.Add(ParseAccessRights(test));
+                    sasRule.Rights.Add(right);
                 }
 
                 //Create a new Namespace Authorization Rule
