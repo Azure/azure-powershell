@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+
+## Version 4.20.0
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
 * Fixed required parameter `PrivateLinkResourceType` missing issue for the following cmdlets [#18655]
     - `Get-AzPrivateEndpointConnection`
@@ -51,6 +53,8 @@
     - `New/Get/Remove/Set-AzNetworkManagerScopeConnection` 
     - `New/Get/Remove/Set-AzNetworkManagerSubscriptionConnection` 
     - `New/Get/Remove/Set-AzNetworkManagerManagementGroupConnection` 
+* Onboard AgFoodPlatform to Private Link Common Cmdlets
+* Onboard Project Oak Forest to Private Link Common Cmdlets
 
 ## Version 4.19.0
 * Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.

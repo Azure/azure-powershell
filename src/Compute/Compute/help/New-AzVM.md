@@ -16,7 +16,7 @@ Creates a virtual machine.
 ### SimpleParameterSet (Default)
 ```
 New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] [[-Zone] <String[]>]
- -Name <String> -Credential <PSCredential> [-NetworkInterfaceDeleteOption <String>]
+ [-PublicIpSku <String>] -Name <String> -Credential <PSCredential> [-NetworkInterfaceDeleteOption <String>]
  [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-Image <String>]
@@ -41,14 +41,15 @@ New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-EdgeZone <String>]
 
 ### DiskFileParameterSet
 ```
-New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] -Name <String>
- [-NetworkInterfaceDeleteOption <String>] [-VirtualNetworkName <String>] [-AddressPrefix <String>]
- [-SubnetName <String>] [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>]
- [-DomainNameLabel <String>] [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>]
- -DiskFile <String> [-Linux] [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity]
- [-UserAssignedIdentity <String>] [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>]
- [-DataDiskDeleteOption <String>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
- [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
+New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] [-PublicIpSku <String>]
+ -Name <String> [-NetworkInterfaceDeleteOption <String>] [-VirtualNetworkName <String>]
+ [-AddressPrefix <String>] [-SubnetName <String>] [-SubnetAddressPrefix <String>]
+ [-PublicIpAddressName <String>] [-DomainNameLabel <String>] [-AllocationMethod <String>]
+ [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] -DiskFile <String> [-Linux] [-Size <String>]
+ [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-AsJob]
+ [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>] [-DataDiskDeleteOption <String>]
+ [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
+ [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
  [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -847,6 +848,23 @@ Accept wildcard characters: False
 
 ### -PublicIpAddressName
 The name of a new (or existing) public IP address for the created VM to use.  If not specified, a name will be generated.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PublicIpSku
+Specifies public IP sku name
+
+Accpeted Values are "Basic" and "Standard"
 
 ```yaml
 Type: System.String

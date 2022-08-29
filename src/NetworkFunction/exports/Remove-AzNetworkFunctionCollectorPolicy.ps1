@@ -20,9 +20,7 @@ Deletes a specified Collector Policy resource.
 .Description
 Deletes a specified Collector Policy resource.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Remove-AzNetworkFunctionCollectorPolicy -azuretrafficcollectorname atctestps -collectorpolicyname cp1 -resourcegroupname test
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.NetworkFunction.Models.INetworkFunctionIdentity
