@@ -365,8 +365,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                 else
                 {
                     TryGetSubscriptionByName(tenantId, subscriptionNameOrId, out subscriptionList);
-                    subscription = subscriptionList.FirstOrDefault(s => s.GetTenant() == s.GetHomeTenant()) ??
-                    subscriptionList.FirstOrDefault();
                 }
 
                 if (subscription == null)
