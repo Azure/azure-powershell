@@ -7,7 +7,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
 {
     using static Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Extensions;
 
-    public partial class MicrosoftGraphUser :
+    public partial class MicrosoftGraphEmployeeOrgData :
         Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IAssociativeArray<global::System.Object>
     {
         protected global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object> __additionalProperties = new global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>();
@@ -30,7 +30,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         {
             if (null != source)
             {
-                foreach( var property in  Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShell.TypeConverterExtensions.GetFilteredProperties(source, new global::System.Collections.Generic.HashSet<global::System.String>() { "AccountEnabled","AgeGroup","ApproximateLastSignInDateTime","BusinessPhone","City","CompanyName","ConsentProvidedForMinor","Country","CreatedDateTime","CreationType","ComplianceExpirationDateTime","Department","DeviceVersion","EmployeeHireDate","EmployeeId","EmployeeOrgData","EmployeeType","ExternalUserState","ExternalUserStateChangeDateTime","FaxNumber","GivenName","Identity","ImAddress","IsResourceAccount","JobTitle","LastPasswordChangeDateTime","LegalAgeGroupClassification","Manager","Mail","MailNickname","MobilePhone","OfficeLocation","OtherMail","OnPremisesImmutableId","OnPremisesLastSyncDateTime","OnPremisesSyncEnabled","OperatingSystem","OperatingSystemVersion","PasswordPolicy","PasswordProfile","PostalCode","PreferredLanguage","ProxyAddress","PhysicalId","ShowInAddressList","SignInSessionsValidFromDateTime","State","StreetAddress","Surname","TrustType","UsageLocation","UserPrincipalName","UserType","Id","DeletedDateTime","DisplayName","OdataType","OdataId" } ) )
+                foreach( var property in  Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShell.TypeConverterExtensions.GetFilteredProperties(source, new global::System.Collections.Generic.HashSet<global::System.String>() { "CostCenter","Division" } ) )
                 {
                     if ((null != property.Key && null != property.Value))
                     {
@@ -45,7 +45,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
         {
             if (null != source)
             {
-                foreach( var property in  Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShell.TypeConverterExtensions.GetFilteredProperties(source, new global::System.Collections.Generic.HashSet<global::System.String>() { "AccountEnabled","AgeGroup","ApproximateLastSignInDateTime","BusinessPhone","City","CompanyName","ConsentProvidedForMinor","Country","CreatedDateTime","CreationType","ComplianceExpirationDateTime","Department","DeviceVersion","EmployeeHireDate","EmployeeId","EmployeeOrgData","EmployeeType","ExternalUserState","ExternalUserStateChangeDateTime","FaxNumber","GivenName","Identity","ImAddress","IsResourceAccount","JobTitle","LastPasswordChangeDateTime","LegalAgeGroupClassification","Manager","Mail","MailNickname","MobilePhone","OfficeLocation","OtherMail","OnPremisesImmutableId","OnPremisesLastSyncDateTime","OnPremisesSyncEnabled","OperatingSystem","OperatingSystemVersion","PasswordPolicy","PasswordProfile","PostalCode","PreferredLanguage","ProxyAddress","PhysicalId","ShowInAddressList","SignInSessionsValidFromDateTime","State","StreetAddress","Surname","TrustType","UsageLocation","UserPrincipalName","UserType","Id","DeletedDateTime","DisplayName","OdataType","OdataId" } ) )
+                foreach( var property in  Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.PowerShell.TypeConverterExtensions.GetFilteredProperties(source, new global::System.Collections.Generic.HashSet<global::System.String>() { "CostCenter","Division" } ) )
                 {
                     if ((null != property.Key && null != property.Value))
                     {
@@ -64,6 +64,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
 
         /// <param name="source"></param>
 
-        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphUser source) => source.__additionalProperties;
+        public static implicit operator global::System.Collections.Generic.Dictionary<global::System.String,global::System.Object>(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphEmployeeOrgData source) => source.__additionalProperties;
     }
 }
