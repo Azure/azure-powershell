@@ -1,6 +1,7 @@
 ﻿using Microsoft.Azure.Commands.Automation.Cmdlet;
 using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
+using Microsoft.Azure.Management.Automation.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.WindowsAzure.Commands.Common.Test.Mocks;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
@@ -41,7 +42,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string hybridRunbookWorkerGroupName = "hybridRunbookWorkerGroup";
 
-            this.mockAutomationClient.Setup(f => f.GetHybridRunbookWorkerGroup(resourceGroupName, accountName, hybridRunbookWorkerGroupName));
+            var mockHWG = new Microsoft.Azure.Management.Automation.Models.HybridRunbookWorkerGroup(hybridRunbookWorkerGroupName)
+            {
+                GroupType = "User"
+            };
+
+            this.mockAutomationClient.Setup(f => f.GetHybridRunbookWorkerGroup(resourceGroupName, accountName, hybridRunbookWorkerGroupName)).Returns(mockHWG);
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
@@ -63,7 +69,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             string accountName = "automation";
             string nextLink = string.Empty;
 
-            this.mockAutomationClient.Setup(f => f.ListHybridRunbookWorkerGroups(resourceGroupName, accountName, ref nextLink)).Returns((string a, string b, string c) => new List<HybridRunbookWorkerGroup>()); ;
+            this.mockAutomationClient.Setup(f => f.ListHybridRunbookWorkerGroups(resourceGroupName, accountName, ref nextLink)).Returns((string a, string b, string c) => new List<Microsoft.Azure.Management.Automation.Models.HybridRunbookWorkerGroup>()); ;
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;

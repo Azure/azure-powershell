@@ -26,7 +26,7 @@ function Test-E2EHybridWorkerGroup
         GroupType = "User"
     }
 
-    $group = Get-AzAutomationHybridWorkerGroup -ResourceGroupName $resourceGroupName `
+    $group = Get-AzAutomationHybridRunbookWorkerGroup -ResourceGroupName $resourceGroupName `
                                                      -AutomationAccountName $automationAccountName  `
                                                      -Name $hybridWorkerGroupName 
 
@@ -40,12 +40,12 @@ function Test-E2EHybridWorkerGroup
     }
 
 	# Remove the HybridWorkerGroup
-	Remove-AzAutomationHybridWorkerGroup -ResourceGroupName $resourceGroupName `
+	Remove-AzAutomationHybridRunbookWorkerGroup -ResourceGroupName $resourceGroupName `
                                               -AutomationAccountName $automationAccountName  `
                                               -Name $hybridWorkerGroupName
 	
 	# Make sure it was the hybrid worker group was deleted
-	$group = Get-AzAutomationHybridWorkerGroup -ResourceGroupName $resourceGroupName `
+	$group = Get-AzAutomationHybridRunbookWorkerGroup -ResourceGroupName $resourceGroupName `
                                               -AutomationAccountName $automationAccountName  `
                                               -Name $hybridWorkerGroupName `
                                               -ErrorAction SilentlyContinue
