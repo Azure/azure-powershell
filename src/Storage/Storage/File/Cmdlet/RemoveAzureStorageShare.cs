@@ -21,8 +21,10 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
+    using System;
 
-    [GenericBreakingChange("The returned share properties will be moved from CloudFileShare.Properties to ShareProperties in a future release.")]
     [Cmdlet("Remove", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare",DefaultParameterSetName = Constants.ShareNameParameterSetName,SupportsShouldProcess = true), OutputType(typeof(AzureStorageFileShare))]
     public class RemoveAzureStorageShare : AzureStorageFileCmdletBase
     {
@@ -47,8 +49,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [Alias("CloudFileShare")]
         public CloudFileShare Share { get; set; }
 
+        [Parameter(
+            Position = 0,
+            Mandatory = false,
+            ValueFromPipeline = true,
+            ValueFromPipelineByPropertyName = true,
+            ParameterSetName = Constants.ShareParameterSetName,
+            HelpMessage = "File share Client to be removed.")]
+        [ValidateNotNull]
+        public ShareClient ShareClient { get; set; }
+
         [Parameter(HelpMessage = "Remove File Share with all of its snapshots")]
         public SwitchParameter IncludeAllSnapshot { get; set; }
+
+        [Parameter(
+        Mandatory = false,
+        ParameterSetName = Constants.ShareNameParameterSetName,
+        ValueFromPipelineByPropertyName = true,
+        HelpMessage = "SnapshotTime of the file share snapshot to be removed.")]
+        public DateTimeOffset? SnapshotTime { get; set; }
 
         [Parameter(HelpMessage = "Force to remove the share with all its snapshots, and all content in them.")]
         public SwitchParameter Force
@@ -73,15 +92,26 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
         public override void ExecuteCmdlet()
         {
-            CloudFileShare share;
+            ShareClient share;
             switch (this.ParameterSetName)
             {
                 case Constants.ShareParameterSetName:
-                    share = this.Share;
+                    if (this.ShareClient != null)
+                    {
+                        share = this.ShareClient;
+                    }
+                    else
+                    {
+                        share = AzureStorageFileShare.GetTrack2FileShareClient(this.Share, (AzureStorageContext)this.Context, this.ClientOptions);
+                    }
                     break;
 
                 case Constants.ShareNameParameterSetName:
-                    share = this.BuildFileShareObjectFromName(this.Name);
+                    NamingUtil.ValidateShareName(this.Name, false);
+                    share = Util.GetTrack2ShareReference(this.Name,
+                                (AzureStorageContext)this.Context,
+                                this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"),
+                                ClientOptions);
                     break;
 
                 default:
@@ -91,22 +121,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             if (ShouldProcess(share.Name, "Remove share"))
             {
                 this.RunTask(async taskId =>
-                {
-                    if (share.IsSnapshot && IncludeAllSnapshot.IsPresent)
+                {                   
+                    if (Util.GetSnapshotTimeFromUri(share.Uri) != null // this is share snapshot
+                            && IncludeAllSnapshot.IsPresent)
                     {
-                        throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "'IncludeAllSnapshot' should only be specified to delete a base share, and should not be specified to delete a Share snapshot: {0}", share.SnapshotQualifiedUri));
+                        throw new PSArgumentException(string.Format(CultureInfo.InvariantCulture, "'IncludeAllSnapshot' should only be specified to delete a base share, and should not be specified to delete a Share snapshot: {0}", share.Uri));
                     }
 
                     if (force || ShareIsEmpty(share) || ShouldContinue(string.Format("Remove share and all content in it: {0}", share.Name), ""))
                     {
-                        DeleteShareSnapshotsOption deleteShareSnapshotsOption = DeleteShareSnapshotsOption.None;
+                        bool includeSnapshots = false;
                         bool retryDeleteSnapshot = false;
 
                         //Force means will delete the share anyway, so use 'IncludeSnapshots' to delete the share even has snapshot, or delete will fail when share has snapshot
                         // To delete a Share shapshot, must use 'None' 
                         if (IncludeAllSnapshot.IsPresent)
                         {
-                            deleteShareSnapshotsOption = DeleteShareSnapshotsOption.IncludeSnapshots;
+                            includeSnapshots = true;
                         }
                         else
                         {
@@ -115,13 +146,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                         try
                         {
-                            await this.Channel.DeleteShareAsync(share, deleteShareSnapshotsOption, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                            share.Delete(includeSnapshots, this.CmdletCancellationToken);
                             retryDeleteSnapshot = false;
                         }
-                        catch (StorageException e)
+                        catch (global::Azure.RequestFailedException e)
                         {
                             //If x-ms-delete-snapshots is not specified on the request and the share has associated snapshots, the File service returns status code 409 (Conflict).
-                            if (!(e.IsConflictException() && retryDeleteSnapshot))
+                            if (!(e.Status == 409 && retryDeleteSnapshot))
                             {
                                 throw;
                             }
@@ -131,8 +162,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         {
                             if (force || await OutputStream.ConfirmAsync(string.Format("This share might have snapshots, remove the share and all snapshots?: {0}", share.Name)).ConfigureAwait(false))
                             {
-                                deleteShareSnapshotsOption = DeleteShareSnapshotsOption.IncludeSnapshots;
-                                await this.Channel.DeleteShareAsync(share, deleteShareSnapshotsOption, null, this.RequestOptions, this.OperationContext, this.CmdletCancellationToken).ConfigureAwait(false);
+                                includeSnapshots = true;
+                                share.Delete(includeSnapshots, this.CmdletCancellationToken);
                             }
                             else
                             {
@@ -144,7 +175,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 
                     if (this.PassThru)
                     {
-                        WriteCloudShareObject(taskId, this.Channel, share);
+                        WriteObject(new AzureStorageFileShare(share, (AzureStorageContext)this.Context, shareProperties: null, ClientOptions));
                     }
                 });
             }

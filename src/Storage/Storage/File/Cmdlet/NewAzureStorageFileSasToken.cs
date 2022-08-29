@@ -21,6 +21,10 @@ using Microsoft.Azure.Storage.File;
 using System;
 using System.Management.Automation;
 using System.Security.Permissions;
+using Azure.Storage.Files.Shares;
+using Azure.Storage.Files.Shares.Models;
+using Azure.Storage.Sas;
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
@@ -151,41 +155,51 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            if (String.IsNullOrEmpty(ShareName)) return;
-
-            CloudFileShare fileShare = null;
-            CloudFile file = null;
-
+            ShareClient shareClient;
+            ShareFileClient fileClient;
             if (null != this.File)
             {
-                file = this.File;
-                fileShare = this.File.Share;
+                // when only track1 object input, might miss storage context, so need to build storage context for prepare the output object.
+                if (this.Context == null)
+                {
+                    this.Context = GetStorageContextFromTrack1FileServiceClient(this.File.ServiceClient, DefaultContext);
+                }
+
+                fileClient = AzureStorageFile.GetTrack2FileClient(this.File, this.ClientOptions);
+                shareClient = Util.GetTrack2ShareReference(fileClient.ShareName,
+                        (AzureStorageContext)this.Context,
+                        snapshotTime: Util.GetSnapshotTimeStringFromUri(fileClient.Uri),
+                        ClientOptions);
             }
             else
             {
-                string[] path = NamingUtil.ValidatePath(this.Path, true);
-                fileShare = Channel.GetShareReference(this.ShareName);
-                file = fileShare.GetRootDirectoryReference().GetFileReferenceByPath(path);
+                shareClient = Util.GetTrack2ShareReference(this.ShareName,
+                        (AzureStorageContext)this.Context,
+                        snapshotTime: null,
+                        ClientOptions);
+                fileClient = shareClient.GetRootDirectoryClient().GetFileClient(this.Path);
             }
 
-            SharedAccessFilePolicy accessPolicy = new SharedAccessFilePolicy();
+            // Get share saved policy if any
+            ShareSignedIdentifier identifier = null;
+            if (!string.IsNullOrEmpty(this.Policy))
+            {
+                identifier = SasTokenHelper.GetShareSignedIdentifier(shareClient, this.Policy, CmdletCancellationToken);
+            }
 
-            bool shouldSetExpiryTime = SasTokenHelper.ValidateShareAccessPolicy(
-                Channel,
-                fileShare.Name,
-                accessPolicyIdentifier,
-                !string.IsNullOrEmpty(this.Permission),
-                this.StartTime.HasValue,
-                this.ExpiryTime.HasValue);
+            //Create SAS builder
+            ShareSasBuilder sasBuilder = SasTokenHelper.SetShareSasBuilder_FromFile(fileClient, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol);
 
-            SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
-
-            string sasToken = file.GetSharedAccessSignature(accessPolicy, null, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
+            //Create SAS and output it
+            string sasToken = SasTokenHelper.GetFileSharedAccessSignature((AzureStorageContext)this.Context, sasBuilder, CmdletCancellationToken);
+            if (sasToken[0] != '?')
+            {
+                sasToken = "?" + sasToken;
+            }
 
             if (FullUri)
             {
-                string fullUri = SasTokenHelper.GetFullUriWithSASToken(file.SnapshotQualifiedUri.AbsoluteUri.ToString(), sasToken);
-
+                string fullUri = SasTokenHelper.GetFullUriWithSASToken(fileClient.Uri.AbsoluteUri.ToString(), sasToken);
                 WriteObject(fullUri);
             }
             else
@@ -202,22 +216,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
             }
 
             return this.Channel;
-        }
-
-        /// <summary>
-        /// Update the access policy
-        /// </summary>
-        /// <param name="policy">Access policy object</param>
-        /// <param name="shouldSetExpiryTime">Should set the default expiry time</param>
-        private void SetupAccessPolicy(SharedAccessFilePolicy policy, bool shouldSetExpiryTime)
-        {
-            DateTimeOffset? accessStartTime;
-            DateTimeOffset? accessEndTime;
-            SasTokenHelper.SetupAccessPolicyLifeTime(StartTime, ExpiryTime,
-                out accessStartTime, out accessEndTime, shouldSetExpiryTime);
-            policy.SharedAccessStartTime = accessStartTime;
-            policy.SharedAccessExpiryTime = accessEndTime;
-            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
         }
     }
 }
