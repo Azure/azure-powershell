@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Support returning all valid results while using `Get-AzSubscription` with paramater `SubscriptionName`.
 
 ## Version 2.9.1
 * Implemented `SupportsShouldProcess` for `Invoke-AzRestMethod`
