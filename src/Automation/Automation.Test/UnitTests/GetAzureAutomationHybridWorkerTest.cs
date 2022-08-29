@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureAutomationHybridWorkerGroupByNameSuccessfull()
+        public void GetAzureAutomationHybridWorkerByNameSuccessfull()
         {
             //Setup
             string resourceGroupName = "resourceGroup";
@@ -61,7 +61,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = hybridRunbookWorkerGroupName;
+            this.cmdlet.Name = hybridWorkerId;
+            this.cmdlet.HybridRunbookWorkerGroupName = hybridRunbookWorkerGroupName;
             this.cmdlet.SetParameterSet("ByName");
             this.cmdlet.ExecuteCmdlet();
 
@@ -71,7 +72,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureAutomationHybridWorkerGroupByAllSuccessfull()
+        public void GetAzureAutomationHybridWorkerByAllSuccessfull()
         {
             // Setup
             string resourceGroupName = "resourceGroup";
@@ -81,11 +82,12 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
             string nextLink = string.Empty;
 
-            this.mockAutomationClient.Setup(f => f.ListHybridRunbookWorkers(resourceGroupName, accountName, hybridRunbookWorkerGroupName, ref nextLink)).Returns((string a, string b, string c) => new List<Microsoft.Azure.Management.Automation.Models.HybridRunbookWorker>()); ;
+            this.mockAutomationClient.Setup(f => f.ListHybridRunbookWorkers(resourceGroupName, accountName, hybridRunbookWorkerGroupName, ref nextLink)).Returns((string a, string b, string c, string d) => new List<Microsoft.Azure.Management.Automation.Models.HybridRunbookWorker>()); ;
 
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
+            this.cmdlet.HybridRunbookWorkerGroupName = hybridRunbookWorkerGroupName;
             this.cmdlet.SetParameterSet("ByAll");
             this.cmdlet.ExecuteCmdlet();
 

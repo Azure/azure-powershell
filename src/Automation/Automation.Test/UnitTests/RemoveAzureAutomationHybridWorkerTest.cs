@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetAzureAutomationHybridWorkerGroupByNameSuccessfull()
+        public void RemoveAzureAutomationHybridWorkerByNameSuccessfull()
         {
             //Setup
             string resourceGroupName = "resourceGroup";
@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
             // Test
             this.cmdlet.ResourceGroupName = resourceGroupName;
             this.cmdlet.AutomationAccountName = accountName;
-            this.cmdlet.Name = hybridRunbookWorkerGroupName;
+            this.cmdlet.Name = hybridWorkerId;
+            this.cmdlet.HybridRunbookWorkerGroupName = hybridRunbookWorkerGroupName;
             this.cmdlet.ExecuteCmdlet();
 
             // Assert
