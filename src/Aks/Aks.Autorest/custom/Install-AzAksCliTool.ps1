@@ -145,9 +145,12 @@ Function Install-Kubectl
 
     Process
     {
-        $kubecliSiteUrl = "https://storage.googleapis.com/kubernetes-release/release"
-        $kubecliSiteUrlMirror = "https://mirror.azure.cn/kubernetes/kubectl"
-        $baseUrl = $DownloadFromMirror ? $kubecliSiteUrlMirror : $kubecliSiteUrl
+        $baseUrl = "https://storage.googleapis.com/kubernetes-release/release"
+        If ($DownloadFromMirror)
+        {
+            $baseUrl = "https://mirror.azure.cn/kubernetes/kubectl"
+        }
+
         If (($Null -Eq $Destination) -or ("" -Eq $Destination))
         {
             $Destination = [System.IO.Path]::Combine($env:USERPROFILE, ".azure-kubectl")
