@@ -59,9 +59,6 @@ Gets reports sent from a DSC node to Automation.
 ### [Get-AzAutomationDscOnboardingMetaconfig](Get-AzAutomationDscOnboardingMetaconfig.md)
 Creates meta-configuration .mof files.
 
-### [Get-AzAutomationHybridWorkerGroup](Get-AzAutomationHybridWorkerGroup.md)
-Gets hybrid runbook worker groups.
-
 ### [Get-AzAutomationJob](Get-AzAutomationJob.md)
 Gets Automation runbook jobs.
 
@@ -147,7 +144,10 @@ Creates an Automation schedule.
 Creates a scheduled azure automation software update configuration.
 
 ### [New-AzAutomationSourceControl](New-AzAutomationSourceControl.md)
-Creates an A Automation source control.
+Creates an Azure Automation source control.
+
+### [New-AzAutomationUpdateManagementAzureQuery](New-AzAutomationUpdateManagementAzureQuery.md)
+Creates an Update Management Azure Query object.
 
 ### [New-AzAutomationVariable](New-AzAutomationVariable.md)
 Creates an Automation variable.
@@ -159,7 +159,7 @@ Creates a webhook for an Automation runbook.
 Publishes a runbook.
 
 ### [Register-AzAutomationDscNode](Register-AzAutomationDscNode.md)
-Registers an Azure virtual machine as a DSC node for an Automation account.
+Registers an Azure virtual machine running Windows OS as a DSC node for an Automation account.
 
 ### [Register-AzAutomationScheduledRunbook](Register-AzAutomationScheduledRunbook.md)
 Associates a runbook to a schedule.
@@ -184,9 +184,6 @@ Removes DSC configurations from Automation.
 
 ### [Remove-AzAutomationDscNodeConfiguration](Remove-AzAutomationDscNodeConfiguration.md)
 Removes metadata from DSC node configurations in Automation.
-
-### [Remove-AzAutomationHybridWorkerGroup](Remove-AzAutomationHybridWorkerGroup.md)
-Removes hybrid worker group from Automation.
 
 ### [Remove-AzAutomationModule](Remove-AzAutomationModule.md)
 Removes a module from Automation.

@@ -1,50 +1,41 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationsourcecontrol
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzAutomationSourceControl
+# New-AzAutomationHybridRunbookWorker
 
 ## SYNOPSIS
-Gets a list of Azure Automation source controls.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByAll (Default)
 ```
-Get-AzAutomationSourceControl [-SourceType <String>] [-ResourceGroupName] <String>
+New-AzAutomationHybridRunbookWorker [-HybridRunbookWorkerGroupName] <String> [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzAutomationSourceControl -Name <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+New-AzAutomationHybridRunbookWorker [-Name] <String> [-HybridRunbookWorkerGroupName] <String>
+ [-VmResourceId] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Get-AzAutomationSourceControl cmdlet gets Automation source controls.
-To get a specific source control, specify its name.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
-This command gets an Automation source control named VSTSNative in the account named devAccount.
-
-
 ```powershell
-Get-AzAutomationSourceControl -ResourceGroupName "rg1" `
-                                           -AutomationAccountName "devAccount" `
-                                           -Name "VSTSNative"
+PS C:\> {{ Add example code here }}
 ```
 
-```output
-Name            SourceType Branch FolderPath  AutoSync PublishRunbook RepoUrl
-----            ---------- ------ ----------  -------- -------------- -------
-VSTSNative      VsoTfvc           /MyRunbooks False    True           https://contoso.visualstudio.com/_git/Fin...
-```
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -52,7 +43,7 @@ VSTSNative      VsoTfvc           /MyRunbooks False    True           https://co
 The automation account name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -67,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -78,18 +69,33 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The source control name.
+### -HybridRunbookWorkerGroupName
+The hybrid runbook worker group name
 
 ```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases:
+Type: String
+Parameter Sets: (All)
+Aliases: RunbookWorkerGroup, WorkerGroup
 
 Required: True
-Position: Named
+Position: 3
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The Hybrid Runbook Worker name
+
+```yaml
+Type: String
+Parameter Sets: ByName
+Aliases: RunbookWorker, RunbookWorkerId
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -97,7 +103,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -108,19 +114,18 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -SourceType
-The source control type.
+### -VmResourceId
+The resource id of the vm to be added to the hybrid worker group
 
 ```yaml
-Type: System.String
-Parameter Sets: ByAll
-Aliases:
-Accepted values: GitHub, VsoGit, VsoTfvc
+Type: String
+Parameter Sets: ByName
+Aliases: VMId
 
-Required: False
-Position: Named
+Required: True
+Position: 4
 Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -133,7 +138,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Automation.Model.SourceControl
+### Microsoft.Azure.Management.Automation.Models.HybridRunbookWorker
 
 ## NOTES
 

@@ -1,36 +1,34 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-online version: https://docs.microsoft.com/powershell/module/az.automation/remove-azautomationhybridworkergroup
+online version:
 schema: 2.0.0
 ---
 
-# Remove-AzAutomationHybridWorkerGroup
+# Remove-AzAutomationHybridRunbookWorkerGroup
 
 ## SYNOPSIS
-Removes hybrid worker group from Automation.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ```
-Remove-AzAutomationHybridWorkerGroup [-Name] <String> [-ResourceGroupName] <String>
+Remove-AzAutomationHybridRunbookWorkerGroup [-Name] <String> [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The Remove-AzAutomationHybridWorkerGroup cmdlet removes a hybrid worker group from Automation.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
 ### Example 1
-This command removes a hybrid worker by name.
-
 ```powershell
-Remove-AzAutomationHybridWorkerGroup -ResourceGroupName "rg1" `
-                                                  -AutomationAccountName "devAccount" `
-                                                  -Name "GroupName"
+PS C:\> {{ Add example code here }}
 ```
+
+{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -38,7 +36,7 @@ Remove-AzAutomationHybridWorkerGroup -ResourceGroupName "rg1" `
 The automation account name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -53,7 +51,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -68,9 +66,9 @@ Accept wildcard characters: False
 The hybrid worker group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
-Aliases: Group
+Aliases: RunbookWorkerGroup, WorkerGroup
 
 Required: True
 Position: 2
@@ -83,7 +81,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,7 +96,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -114,7 +112,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -126,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

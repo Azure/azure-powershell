@@ -1,49 +1,49 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-ms.assetid: 2908890B-7A46-41B7-931F-AE94638D1EDF
-online version: https://docs.microsoft.com/powershell/module/az.automation/get-azautomationschedule
+online version:
 schema: 2.0.0
 ---
 
-# Get-AzAutomationSchedule
+# Move-AzAutomationHybridRunbookWorker
 
 ## SYNOPSIS
-Gets an Automation schedule.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
 ### ByAll (Default)
 ```
-Get-AzAutomationSchedule [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Move-AzAutomationHybridRunbookWorker [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByName
 ```
-Get-AzAutomationSchedule [-Name] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Move-AzAutomationHybridRunbookWorker [-Name] <String> [-HybridRunbookWorkerGroupName] <String>
+ [-TargetHybridRunbookWorkerGroupName] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzAutomationSchedule** cmdlet gets an Azure Automation schedule.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Get a schedule
+### Example 1
 ```powershell
-Get-AzAutomationSchedule -AutomationAccountName "Contoso17" -Name "DailySchedule08" -ResourceGroupName "ResourceGroup01"
+PS C:\> {{ Add example code here }}
 ```
 
-This command gets the schedule named DailySchedule08.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -AutomationAccountName
-Specifies the name of an Automation account for which this cmdlet get a schedule.
+The automation account name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -55,10 +55,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -69,26 +69,41 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-Specifies the name of a schedule that this cmdlet gets.
+### -HybridRunbookWorkerGroupName
+The hybrid runbook worker group name
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: ByName
-Aliases: ScheduleName
+Aliases: RunbookWorkerGroup, WorkerGroup
+
+Required: True
+Position: 3
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The Hybrid Runbook Worker name
+
+```yaml
+Type: String
+Parameter Sets: ByName
+Aliases: RunbookWorker, RunbookWorkerId
 
 Required: True
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of a resource group for which this cmdlet gets a schedule.
+The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -96,6 +111,21 @@ Required: True
 Position: 0
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -TargetHybridRunbookWorkerGroupName
+The target hybrid runbook worker group name
+
+```yaml
+Type: String
+Parameter Sets: ByName
+Aliases: TargetRunbookWorkerGroup, TargetWorkerGroup
+
+Required: True
+Position: 4
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -108,16 +138,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Automation.Model.Schedule
+### Microsoft.Azure.Management.Automation.Models.HybridRunbookWorker
 
 ## NOTES
 
 ## RELATED LINKS
-
-[New-AzAutomationSchedule](./New-AzAutomationSchedule.md)
-
-[Remove-AzAutomationSchedule](./Remove-AzAutomationSchedule.md)
-
-[Set-AzAutomationSchedule](./Set-AzAutomationSchedule.md)
-
-

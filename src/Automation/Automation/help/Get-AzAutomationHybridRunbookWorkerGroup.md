@@ -1,43 +1,48 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Automation.dll-Help.xml
 Module Name: Az.Automation
-ms.assetid: BE1A9247-9F8E-45EA-9590-684A5A5662AC
-online version: https://docs.microsoft.com/powershell/module/az.automation/stop-azautomationjob
+online version:
 schema: 2.0.0
 ---
 
-# Stop-AzAutomationJob
+# Get-AzAutomationHybridRunbookWorkerGroup
 
 ## SYNOPSIS
-Stops an Automation job.
+{{ Fill in the Synopsis }}
 
 ## SYNTAX
 
+### ByAll (Default)
 ```
-Stop-AzAutomationJob [-Id] <Guid> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+Get-AzAutomationHybridRunbookWorkerGroup [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### ByName
+```
+Get-AzAutomationHybridRunbookWorkerGroup [[-Name] <String>] [-ResourceGroupName] <String>
+ [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The **Stop-AzAutomationJob** cmdlet stops an Azure Automation job.
-Specify a running Automation job.
+{{ Fill in the Description }}
 
 ## EXAMPLES
 
-### Example 1: Stop a job
+### Example 1
 ```powershell
-Stop-AzAutomationJob -AutomationAccountName "Contoso17" -Id 2989b069-24fe-40b9-b3bd-cb7e5eac4b64 -ResourceGroupName "ResourceGroup01"
+PS C:\> {{ Add example code here }}
 ```
 
-This command stops the job that has the specified ID.
+{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -AutomationAccountName
-Specifies the name of an Automation account in which this cmdlet stops a job.
+The automation account name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -49,10 +54,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -63,26 +68,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Specifies the ID of a job that this cmdlet stops.
+### -Name
+The Hybrid Runbook Worker Group name
 
 ```yaml
-Type: System.Guid
-Parameter Sets: (All)
-Aliases: JobId
+Type: String
+Parameter Sets: ByName
+Aliases: WorkerGroup, RunbookWorkerGroup
 
-Required: True
+Required: False
 Position: 2
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Specifies the name of a resource group.
+The resource group name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -98,24 +103,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.Guid
-
 ### System.String
 
 ## OUTPUTS
 
-### System.Void
+### Microsoft.Azure.Management.Automation.Models.HybridRunbookWorkerGroup
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Get-AzAutomationJob](./Get-AzAutomationJob.md)
-
-[Get-AzAutomationJobOutput](./Get-AzAutomationJobOutput.md)
-
-[Resume-AzAutomationJob](./Resume-AzAutomationJob.md)
-
-[Suspend-AzAutomationJob](./Suspend-AzAutomationJob.md)
-
-
