@@ -138,6 +138,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
+        /// <summary>The MonitorWorkspaceIntegration of Azure Managed Grafana.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The MonitorWorkspaceIntegration of Azure Managed Grafana.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The MonitorWorkspaceIntegration of Azure Managed Grafana.",
+        SerializedName = @"azureMonitorWorkspaceIntegrations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[] MonitorWorkspaceIntegration { get => _requestBodyParametersBody.GrafanaIntegrationAzureMonitorWorkspaceIntegration ?? null /* arrayOf */; set => _requestBodyParametersBody.GrafanaIntegrationAzureMonitorWorkspaceIntegration = value; }
+
         /// <summary>
         /// The instance of the <see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.HttpPipeline" /> that the remote call will use.
         /// </summary>

@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     public abstract class AzureServiceBusCmdletBase : AzureRMCmdlet
     {
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
-        private Microsoft.Azure.Commands.ServiceBus.ServiceBusClient  _client;
+        private ServiceBusClient _client;
 
         protected const string ServiceBusNamespaceVerb = "AzureRmServiceBusNamespace";
 
@@ -163,36 +163,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public const string ChangeInEffectByDate = "12th October, 2022";
         public const string TimespanBreakingChange = "Input type of the parameter has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables.";
 
-        protected static AccessRights ParseAccessRights(string rightsName)
-        {
-            AccessRights returnAccessRights;
-            if (!Enum.TryParse<AccessRights>(rightsName, true, out returnAccessRights))
-            {
-                throw new ArgumentOutOfRangeException("AccessRights");
-            }
-            return returnAccessRights;
-        }
-        
-        public static SkuName ParseSkuName(string skuName)
-        {
-            SkuName returnSkuName;
-            if (!Enum.TryParse<SkuName>(skuName, true, out returnSkuName))
-            {
-                throw new ArgumentOutOfRangeException("SkuName");
-            }
-            return returnSkuName;
-        }
-
-        public static SkuTier ParseSkuTier(string skuTier)
-        {
-            SkuTier returnSkutier;
-            if (!Enum.TryParse<SkuTier>(skuTier, true, out returnSkutier))
-            {
-                throw new ArgumentOutOfRangeException("skuTier");
-            }
-            return returnSkutier;
-        }
-
         public static TimeSpan ParseTimespan(string strTimespan)
         {
             TimeSpan tspan = new TimeSpan();
@@ -207,28 +177,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             return tspan;
         }
 
-        public string ParseIdentityType(ManagedServiceIdentityType? managedServiceIdentityType)
-        {
-            if(managedServiceIdentityType == ManagedServiceIdentityType.SystemAssigned)
-            {
-                return ServiceBusClient.SystemAssigned;
-            }
-            if (managedServiceIdentityType == ManagedServiceIdentityType.UserAssigned)
-            {
-                return ServiceBusClient.UserAssigned;
-            }
-            if (managedServiceIdentityType == ManagedServiceIdentityType.SystemAssignedUserAssigned)
-            {
-                return ServiceBusClient.SystemAssignedUserAssigned;
-            }
-            if (managedServiceIdentityType == ManagedServiceIdentityType.None)
-            {
-                return ServiceBusClient.None;
-            }
-            return "";
-        }
-
-        public Microsoft.Azure.Commands.ServiceBus.ServiceBusClient Client
+        public ServiceBusClient Client
         {
             get
             {
@@ -367,7 +316,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
 
     }
 
-
     public class LocalResourceIdentifier : ResourceIdentifier
     {
         public LocalResourceIdentifier(string strResourceID ) : base (strResourceID)
@@ -395,8 +343,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public string ParentResource1 { get; set; }
 
         public string ParentResource2 { get; set; }
-
-
-
     }
 }

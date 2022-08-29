@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                 }
                 else
                 {
-                    sasRule.Rights = new List<AccessRights?>();
+                    sasRule.Rights = new List<string>();
                     if (Rights != null && Rights.Length > 0)
                     {
                         if (Array.Exists(Rights, element => element == "Manage") && !Array.Exists(Rights, element => element == "Listen") || !Array.Exists(Rights, element => element == "Send"))
@@ -93,9 +93,9 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
                             throw exManage;
                         }
 
-                        foreach (string test in Rights)
+                        foreach (string right in Rights)
                         {
-                            sasRule.Rights.Add(ParseAccessRights(test));
+                            sasRule.Rights.Add(right);
                         }
                     }
                         
