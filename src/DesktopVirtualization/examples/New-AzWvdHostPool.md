@@ -47,7 +47,18 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -SsoadfsAuthority $null `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
+                            -ValidationEnvironment:$false `
+                            -AgentUpdateMaintenanceWindow @(
+                                @{
+                                    'offPeakStartTime'  = @{
+                                                            'hour' = 18
+                                                            'minute' = 0
+                                                        }
+                                }
+                            ) `
+                            -AgentUpdateMaintenanceWindowTimeZone 'Alaskan Standard Time' `
+                            -AgentUpdateType 'Scheduled' `
+                            -useSessionHostLocalTime $false
 ```
 
 ```output

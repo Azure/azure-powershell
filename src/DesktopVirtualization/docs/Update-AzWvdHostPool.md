@@ -59,7 +59,18 @@ Update-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -MaxSessionLimit 6 `
                             -CustomRdpProperty $null `
                             -Ring $null `
-                            -ValidationEnvironment:$false
+                            -ValidationEnvironment:$false `
+                            -AgentUpdateMaintenanceWindow @(
+                                @{
+                                    'offPeakStartTime'  = @{
+                                                            'hour' = 18
+                                                            'minute' = 0
+                                                        }
+                                }
+                            ) `
+                            -AgentUpdateMaintenanceWindowTimeZone 'Alaskan Standard Time' `
+                            -AgentUpdateType 'Scheduled' `
+                            -useSessionHostLocalTime $false
 ```
 
 ```output
