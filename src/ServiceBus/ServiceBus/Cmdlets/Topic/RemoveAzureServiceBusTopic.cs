@@ -25,6 +25,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusTopic", DefaultParameterSetName = TopicPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(bool))]
     public class RemoveAzureRmServiceBusTopic : AzureServiceBusCmdletBase
     {
+        [CmdletParameterBreakingChange("ResourceGroupName", ChangeDescription = "Parameter 'ResourceGroupName' would no longer support alias 'ResourceGroup'.")]
         [Parameter(Mandatory = true, ParameterSetName = TopicPropertiesParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]

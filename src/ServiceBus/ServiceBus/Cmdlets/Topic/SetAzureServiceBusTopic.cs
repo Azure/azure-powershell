@@ -27,6 +27,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusTopic", SupportsShouldProcess = true), OutputType(typeof(PSTopicAttributes))]
     public class SetAzureRmServiceBusTopic : AzureServiceBusCmdletBase
     {
+        [CmdletParameterBreakingChange("ResourceGroupName", ChangeDescription = "Parameter 'ResourceGroupName' would no longer support alias 'ResourceGroup'.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
         [Alias(AliasTopicName)]
         public string Name { get; set; }
 
-        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSTopicAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic", ChangeDescription = "InputObject parameter set is changing. Please refer the migration guide for examples.")]
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSTopicAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic", ChangeDescription = "InputObject parameter set is changing. Please refer the migration guide for examples.\n- InputObject would no longer support alias -TopicObj.")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 3, HelpMessage = "ServiceBus Topic definition")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasTopicObj)]

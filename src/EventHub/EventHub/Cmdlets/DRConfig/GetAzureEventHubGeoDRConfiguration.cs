@@ -48,6 +48,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
+        [CmdletParameterBreakingChange("Name", ChangeDescription = "'Name' would be removed from " + NamespaceInputObjectParameterSet)]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "DR Configuration Name")]
         public string Name { get; set; }
 
