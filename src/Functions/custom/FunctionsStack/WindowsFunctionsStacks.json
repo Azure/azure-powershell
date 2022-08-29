@@ -223,7 +223,7 @@
                         "supportedFunctionsExtensionVersions": [
                             "~4"
                         ],
-                        "isDefault": false,
+                        "isDefault": true,
                         "minorVersions": [],
                         "applicationInsights": true,
                         "appSettingsDictionary": {
