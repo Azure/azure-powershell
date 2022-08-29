@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    [Cmdlet("Move", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorker", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Move", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorker")]
     [OutputType(typeof(Management.Automation.Models.HybridRunbookWorker))]
     public class MoveAzureAutomationHybridWorker : AzureAutomationBaseCmdlet
     {

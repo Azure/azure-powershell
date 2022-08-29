@@ -59,6 +59,12 @@ Gets reports sent from a DSC node to Automation.
 ### [Get-AzAutomationDscOnboardingMetaconfig](Get-AzAutomationDscOnboardingMetaconfig.md)
 Creates meta-configuration .mof files.
 
+### [Get-AzAutomationHybridRunbookWorker](Get-AzAutomationHybridRunbookWorker.md)
+Gets a Hybrid Runbook Worker.
+
+### [Get-AzAutomationHybridRunbookWorkerGroup](Get-AzAutomationHybridRunbookWorkerGroup.md)
+Gets a Hybrid Runbook Worker Group.
+
 ### [Get-AzAutomationJob](Get-AzAutomationJob.md)
 Gets Automation runbook jobs.
 
@@ -116,6 +122,9 @@ Imports a MOF document as a DSC node configuration in Automation.
 ### [Import-AzAutomationRunbook](Import-AzAutomationRunbook.md)
 Imports an Automation runbook.
 
+### [Move-AzAutomationHybridRunbookWorker](Move-AzAutomationHybridRunbookWorker.md)
+Moves a runbook worker from one runbook worker group to the other.
+
 ### [New-AzAutomationAccount](New-AzAutomationAccount.md)
 Creates an Automation account.
 
@@ -127,6 +136,12 @@ Creates an Automation connection.
 
 ### [New-AzAutomationCredential](New-AzAutomationCredential.md)
 Creates an Automation credential.
+
+### [New-AzAutomationHybridRunbookWorker](New-AzAutomationHybridRunbookWorker.md)
+Create a Runbook Worker.
+
+### [New-AzAutomationHybridRunbookWorkerGroup](New-AzAutomationHybridRunbookWorkerGroup.md)
+Creates a Runbook Worker Group.
 
 ### [New-AzAutomationKey](New-AzAutomationKey.md)
 Regenerates registration keys for an Automation account.
@@ -185,6 +200,12 @@ Removes DSC configurations from Automation.
 ### [Remove-AzAutomationDscNodeConfiguration](Remove-AzAutomationDscNodeConfiguration.md)
 Removes metadata from DSC node configurations in Automation.
 
+### [Remove-AzAutomationHybridRunbookWorker](Remove-AzAutomationHybridRunbookWorker.md)
+{{ Fill in the Synopsis }}
+
+### [Remove-AzAutomationHybridRunbookWorkerGroup](Remove-AzAutomationHybridRunbookWorkerGroup.md)
+{{ Fill in the Synopsis }}
+
 ### [Remove-AzAutomationModule](Remove-AzAutomationModule.md)
 Removes a module from Automation.
 
@@ -223,6 +244,9 @@ Modifies an Automation credential.
 
 ### [Set-AzAutomationDscNode](Set-AzAutomationDscNode.md)
 Modifies the node configuration that a DSC node is mapped to.
+
+### [Set-AzAutomationHybridRunbookWorkerGroup](Set-AzAutomationHybridRunbookWorkerGroup.md)
+{{ Fill in the Synopsis }}
 
 ### [Set-AzAutomationModule](Set-AzAutomationModule.md)
 Updates a module in Automation.

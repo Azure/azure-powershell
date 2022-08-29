@@ -43,7 +43,7 @@ PS C:\> New-AzAutomationHybridRunbookWorker -AutomationAccountName "Contoso17" -
 The automation account name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -58,7 +58,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -73,7 +73,7 @@ Accept wildcard characters: False
 The hybrid runbook worker group name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases: RunbookWorkerGroup, WorkerGroup
 
@@ -88,7 +88,7 @@ Accept wildcard characters: False
 The Hybrid Runbook Worker name
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases: RunbookWorker, RunbookWorkerId
 
@@ -103,7 +103,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -118,7 +118,7 @@ Accept wildcard characters: False
 The resource id of the vm to be added to the hybrid worker group
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: ByName
 Aliases: VMId
 

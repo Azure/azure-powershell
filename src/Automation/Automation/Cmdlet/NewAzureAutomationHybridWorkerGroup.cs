@@ -19,7 +19,7 @@ using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorkerGroup", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorkerGroup")]
     [OutputType(typeof(Management.Automation.Models.HybridRunbookWorkerGroup))]
     public class NewAzureAutomationHybridWorkerGroup : AzureAutomationBaseCmdlet
     {

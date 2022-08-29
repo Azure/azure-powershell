@@ -20,7 +20,7 @@ using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorker", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorker")]
     [OutputType(typeof(void))]
     public class RemoveAzureAutomationHybridWorker : AzureAutomationBaseCmdlet
     {
