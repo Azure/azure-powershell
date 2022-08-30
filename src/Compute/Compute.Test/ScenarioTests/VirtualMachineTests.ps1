@@ -6317,7 +6317,7 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $rgname = "adsandwiki30";
+        $rgname = "adsandwiki33";
 
         $vmname = 'v' + 'vmdesnop';
         $vmSize = "Standard_DC2as_v5";         
@@ -6349,6 +6349,7 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
 
         #  install-module -name "Az.Resources" -AllowClobber -Force
         $cvmAgent = Get-AzADServicePrincipal -ApplicationId 'bf7b6499-ff71-4aa2-97a4-f372087be7f0';
+        # $cvmAgentId = "cbab42ea-0ee6-4563-a646-7418ac305278";
         #$cvmAgent = az ad sp show --id "bf7b6499-ff71-4aa2-97a4-f372087be7f0" | Out-String | ConvertFrom-Json;
         #########$cvmAgent = Get-AzureADServicePrincipal -ObjectId "bf7b6499-ff71-4aa2-97a4-f372087be7f0" | Out-String | ConvertFrom-Json;
         #########thisworked: az keyvault set-policy --name $KeyVault --object-id $cvmAgent.id --key-permissions get release;
@@ -6361,10 +6362,10 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         # az keyvault key create --vault-name $kvname --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
         $KeyName = $keyname;
         $KeySize = 3072;
-        az keyvault key create --vault-name $KeyVault --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
-        #######Add-AzKeyVaultKey -Hsmname $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA  -UseDefaultCVMPolicy;#-Destination HSM;
-        ########Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -UseDefaultCVMPolicy ;#-Destination HSM;
-
+        ###########az keyvault key create --vault-name $KeyVault --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
+        #Add-AzKeyVaultKey -Hsmname $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA  -UseDefaultCVMPolicy;#-Destination HSM;
+        Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -ReleasePolicy "C:\repos\ps\skr-policy.json";#-UseDefaultCVMPolicy ;#-Destination HSM;
+        #ERROR: Add-AzKeyVaultKey: Parameter set cannot be resolved using the specified named parameters. One or more parameters issued cannot be used together or an insufficient number of parameters were provided.
 
         # Capture Keyvault and key details
         $encryptionKeyVaultId = (Get-AzKeyVault -VaultName $kvName -ResourceGroupName $rgName).ResourceId;
@@ -6581,7 +6582,7 @@ function Test-DebuggingHSMCVMSetAzVmOsDiskDesIdDiskWithVMGuest
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $rgname = "adsandwiki29";
+        $rgname = "adsandwiki31";
 
         $vmname = 'v' + 'vmdesnop';
         $vmSize = "Standard_DC2as_v5";         
@@ -6609,14 +6610,14 @@ function Test-DebuggingHSMCVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $resourceGroup = $rgname;
         $region = $loc;
         #########this worked: az keyvault create --name $KeyVault --resource-group $resourceGroup --location $region --sku Premium --enable-purge-protection ;
-        #########New-AzKeyVault -Name $KeyVault -Location $loc -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
+        New-AzKeyVault -Name $KeyVault -Location $loc -ResourceGroupName $rgName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
         
         # Connect-AzureAD
         # Get-AzureADUser -SearchString "Adam Sandor"
         $administrator = "f90057dd-422f-49fc-a88f-91e965bc00c8";
-        $hsmKVName = "hsm" + $kvname;
-        New-AzKeyVaultManagedHsm -Name $hsmKVName -ResourceGroupName $rgname -Location $loc -Administrator $administrator;
-        $hsmKV = Get-AzKeyVaultManagedHsm -ResourceGroupName $rgname -Name $hsmKVName;
+        ##$hsmKVName = "hsm" + $kvname;
+        ##New-AzKeyVaultManagedHsm -Name $hsmKVName -ResourceGroupName $rgname -Location $loc -Administrator $administrator;
+        ##$hsmKV = Get-AzKeyVaultManagedHsm -ResourceGroupName $rgname -Name $hsmKVName;
 
         #  install-module -name "Az.Resources" -AllowClobber -Force
         #$cvmAgent = Get-AzADServicePrincipal -ApplicationId 'bf7b6499-ff71-4aa2-97a4-f372087be7f0';
@@ -6627,8 +6628,8 @@ function Test-DebuggingHSMCVMSetAzVmOsDiskDesIdDiskWithVMGuest
         
         #########$cvmAgent = Get-AzureADServicePrincipal -ObjectId "bf7b6499-ff71-4aa2-97a4-f372087be7f0" | Out-String | ConvertFrom-Json;
         #########thisworked: az keyvault set-policy --name $KeyVault --object-id $cvmAgent.id --key-permissions get release;
-        #######Set-AzKeyVaultAccessPolicy -VaultName $hsmKVName -ResourceGroupName $rgname -ObjectId $cvmAgentId -PermissionsToKeys get,release -BypassObjectIdValidation;
-        New-AzKeyVaultRoleAssignment -HsmName bez-hsm -RoleDefinitionName "Managed Hsm Crypto User" -ObjectId $cvmAgentId;
+        Set-AzKeyVaultAccessPolicy -VaultName $hsmKVName -ResourceGroupName $rgname -ObjectId $cvmAgentId -PermissionsToKeys get,release -BypassObjectIdValidation;
+        #New-AzKeyVaultRoleAssignment -HsmName bez-hsm -RoleDefinitionName "Managed Hsm Crypto User" -ObjectId $cvmAgentId;
         #   "error": {
     #"code": "ResourceNotFound",
     #"message": "The Resource 'Microsoft.KeyVault/vaults/hsmkv2adsandwiki26' under resource group 'adsandwiki26' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"

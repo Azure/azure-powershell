@@ -345,28 +345,10 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
         public SwitchParameter Immutable { get; set; }
-
+        
         [Parameter(Mandatory = false,
             ParameterSetName = HsmInteractiveCreateParameterSet,
             HelpMessage = "A path to a file containing JSON policy definition. The policy rules under which a key can be exported.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = HsmInputObjectCreateParameterSet)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = HsmResourceIdCreateParameterSet)]
-        public string ReleasePolicyPath { get; set; }
-
-        /*TODO: try using ReleasePolicyPath (up 1) instead of this one. This one might be restricted on Service code level.
-         * [Parameter(Mandatory = false,
-            ParameterSetName = HsmInteractiveCreateParameterSet,
-            HelpMessage = "Specifies to use default policy under which the key can be exported for CVM disk encryption.")]
-        [Parameter(Mandatory = false,
-            ParameterSetName = HsmInputObjectCreateParameterSet)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = HsmResourceIdCreateParameterSet)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = InteractiveCreateParameterSet)]*/
-        [Parameter(Mandatory = false,
-            ParameterSetName = HsmInteractiveCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
@@ -383,12 +365,17 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectImportParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdImportParameterSet)]
+        public string ReleasePolicyPath { get; set; }
+
         [Parameter(Mandatory = false,
-            ParameterSetName = HsmInteractiveImportParameterSet)]
+            ParameterSetName = HsmInteractiveCreateParameterSet,
+            HelpMessage = "Specifies to use default policy under which the key can be exported for CVM disk encryption.")]
         [Parameter(Mandatory = false,
-            ParameterSetName = HsmInputObjectImportParameterSet)]
+            ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
-            ParameterSetName = HsmResourceIdImportParameterSet)]
+            ParameterSetName = HsmResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet)]
         public SwitchParameter UseDefaultCVMPolicy { get; set; }
         #endregion
 
