@@ -418,7 +418,7 @@ $distributor = New-AzImageBuilderTemplateDistributorObject -SharedImageDistribut
 # the userAssignedIdentity should have access permissions to the image above
 $userAssignedIdentity = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id'
 # Create a virtual machine image template
-New-AzImageBuilderTemplate -Name bez-test-img-temp -ResourceGroupName bez-rg -Location eastus -IdentityType 'UserAssigned' -UserAssignedIdentity @{$userAssignedIdentity= @{}} -Source $source -Customize $customizer -Distribute $distributor  
+New-AzImageBuilderTemplate -Name bez-test-img-temp -ResourceGroupName bez-rg -Location eastus -UserAssignedIdentityId $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor  
 .Example
 # request_body.json
 # {
@@ -575,16 +575,10 @@ param(
     ${Distribute},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]
-    ${IdentityType},
-
-    [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
-    ${UserAssignedIdentity},
+    [System.String]
+    ${UserAssignedIdentityId},
 
     [Parameter(ParameterSetName='CreateExpanded', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
@@ -807,8 +801,7 @@ Delete a virtual machine image template
 .Description
 Delete a virtual machine image template
 .Example
-Remove-AzImageBuilderTemplate -Name bez-test-img-temp13 
--ResourceGroupName bez-rg
+Remove-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg
 .Example
 Get-AzImageBuilderTemplate -Name bez-test-img-temp13 -ResourceGroupName bez-rg | Remove-AzImageBuilderTemplate
 
