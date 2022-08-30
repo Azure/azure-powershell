@@ -19,9 +19,9 @@ using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorkerGroup")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorkerGroup", SupportsShouldProcess = true)]
     [OutputType(typeof(Management.Automation.Models.HybridRunbookWorkerGroup))]
-    public class NewAzureAutomationHybridWorkerGroup : AzureAutomationBaseCmdlet
+    public class NewAzureAutomationHybridRunbookWorkerGroup : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the hybrid worker group name.

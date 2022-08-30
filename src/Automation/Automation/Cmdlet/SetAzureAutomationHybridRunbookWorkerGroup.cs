@@ -18,7 +18,7 @@ using Microsoft.Azure.Commands.Automation.Common;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorkerGroup")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorkerGroup", SupportsShouldProcess = true)]
     [OutputType(typeof(Management.Automation.Models.HybridRunbookWorkerGroup))]
     public class SetAzureAutomationHybridRunbookWorkerGroup : AzureAutomationBaseCmdlet
     {

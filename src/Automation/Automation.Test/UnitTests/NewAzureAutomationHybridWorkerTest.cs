@@ -30,14 +30,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Automation.Test.UnitTests
 
         private MockCommandRuntime mockCommandRuntime;
 
-        private NewAzureAutomationHybridWorker cmdlet;
+        private NewAzureAutomationHybridRunbookWorker cmdlet;
 
         
         public NewAzureAutomationHybridWorkerTest()
         {
             this.mockAutomationClient = new Mock<IAutomationPSClient>();
             this.mockCommandRuntime = new MockCommandRuntime();
-            this.cmdlet = new NewAzureAutomationHybridWorker
+            this.cmdlet = new NewAzureAutomationHybridRunbookWorker
             {
                 AutomationClient = this.mockAutomationClient.Object,
                 CommandRuntime = this.mockCommandRuntime
