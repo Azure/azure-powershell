@@ -462,7 +462,7 @@ namespace VersionController.Models
             script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory}\";";
             script += "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;";
             script += "if ($requiredModules.Count -gt 0){" +
-                "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes" + " -RequiredModules $requiredModules" +
+                  "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes" + " -RequiredModules $requiredModules" +
                 "}else {" +
                    "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes" +
                 "};";
