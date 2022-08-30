@@ -15,11 +15,10 @@ Create or update a virtual machine image template
 ### CreateExpanded (Default)
 ```
 New-AzImageBuilderTemplate -Name <String> -ResourceGroupName <String> -Customize <IImageTemplateCustomizer[]>
- -Distribute <IImageTemplateDistributor[]> -IdentityType <ResourceIdentityType> -Location <String>
- -Source <IImageTemplateSource> -UserAssignedIdentity <Hashtable> [-SubscriptionId <String>]
- [-BuildTimeoutInMinute <Int32>] [-StagingResourceGroup <String>] [-Tag <Hashtable>]
- [-ValidateContinueDistributeOnFailure] [-ValidateSourceValidationOnly]
- [-Validator <IImageTemplateInVMValidator[]>] [-VMProfileOsdiskSizeGb <Int32>]
+ -Distribute <IImageTemplateDistributor[]> -Location <String> -Source <IImageTemplateSource>
+ -UserAssignedIdentityId <String> [-SubscriptionId <String>] [-BuildTimeoutInMinute <Int32>]
+ [-StagingResourceGroup <String>] [-Tag <Hashtable>] [-ValidateContinueDistributeOnFailure]
+ [-ValidateSourceValidationOnly] [-Validator <IImageTemplateInVMValidator[]>] [-VMProfileOsdiskSizeGb <Int32>]
  [-VMProfileUserAssignedIdentity <String[]>] [-VMProfileVmsize <String>] [-VnetConfigProxyVMSize <String>]
  [-VnetConfigSubnetId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
@@ -55,7 +54,7 @@ $distributor = New-AzImageBuilderTemplateDistributorObject -SharedImageDistribut
 # the userAssignedIdentity should have access permissions to the image above
 $userAssignedIdentity = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id'
 # Create a virtual machine image template
-New-AzImageBuilderTemplate -Name bez-test-img-temp -ResourceGroupName bez-rg -Location eastus -IdentityType 'UserAssigned' -UserAssignedIdentity @{$userAssignedIdentity= @{}} -Source $source -Customize $customizer -Distribute $distributor  
+New-AzImageBuilderTemplate -Name bez-test-img-temp -ResourceGroupName bez-rg -Location eastus -UserAssignedIdentityId $userAssignedIdentity -Source $source -Customize $customizer -Distribute $distributor  
 ```
 
 ```output
@@ -249,21 +248,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IdentityType
-
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType
-Parameter Sets: CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -JsonString
 Json string.
 
@@ -415,11 +399,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -UserAssignedIdentity
+### -UserAssignedIdentityId
 
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String
 Parameter Sets: CreateExpanded
 Aliases:
 

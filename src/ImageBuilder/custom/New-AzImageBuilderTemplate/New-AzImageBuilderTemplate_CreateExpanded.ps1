@@ -29,7 +29,7 @@ $customizer = New-AzImageBuilderTemplateCustomizerObject -ShellCustomizer -Name 
 # the userAssignedIdentity should have access permissions to the image above
 $userAssignedIdentity = '/subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourcegroups/bez-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/bez-id'
 # Create a virtual machine image template
-New-AzImageBuilderTemplate -Name bez-test-img-temp -ResourceGroupName bez-rg -Location eastus -Source $source -Distribute $distributor -Customize $customizer -IdentityType 'UserAssigned' -UserAssignedIdentity @{$userAssignedIdentity= @{}}
+New-AzImageBuilderTemplate -Name bez-test-img-temp -ResourceGroupName bez-rg -Location eastus -Source $source -Distribute $distributor -Customize $customizer -UserAssignedIdentityId $userAssignedIdentity
 .Example
 # request_body.json
 # {
@@ -195,21 +195,23 @@ param(
     # To construct, see NOTES section for DISTRIBUTE properties and create a hash table.
     ${Distribute},
 
-    [Parameter(Mandatory)]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType])]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]
-    # The type of identity used for the image template.
-    # The type 'None' will remove any identities from the image template.
-    ${IdentityType},
+    # Hide as IdentityType only can be 'UserAssigned'
+    # 'None' is not supported as removing identity is not supported when creating or updating an image template."
+    # [Parameter(Mandatory)]
+    # [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType])]
+    # [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
+    # [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]
+    # # The type of identity used for the image template.
+    # # The type 'None' will remove any identities from the image template.
+    # ${IdentityType},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models.Api20220214.IImageTemplateIdentityUserAssignedIdentities]))]
-    [System.Collections.Hashtable]
+    [System.String]
     # The list of user identities associated with the image template.
     # The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
-    ${UserAssignedIdentity},
+    ${UserAssignedIdentityId},
 
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Category('Body')]
@@ -357,6 +359,14 @@ param(
 )
 process {
     try {
+      $IdentityType = [Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support.ResourceIdentityType]::UserAssigned
+      $null = $PSBoundParameters.Add("IdentityType", $IdentityType)
+
+      # Transfer from string to hashtable
+      $UserAssignedIdentity = @{$UserAssignedIdentityId= @{}}
+      $null = $PSBoundParameters.Add("UserAssignedIdentity", $UserAssignedIdentity)
+      $null = $PSBoundParameters.Remove('UserAssignedIdentityId')
+
       Az.ImageBuilder.private\New-AzImageBuilderTemplate_CreateExpanded @PSBoundParameters
     } catch {
 
