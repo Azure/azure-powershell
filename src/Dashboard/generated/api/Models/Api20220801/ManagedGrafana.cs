@@ -29,6 +29,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Inlined)]
         public string Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal)Property).Endpoint; }
 
+        /// <summary>The MonitorWorkspaceIntegration of Azure Managed Grafana.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[] GrafanaIntegrationAzureMonitorWorkspaceIntegration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal)Property).GrafanaIntegrationAzureMonitorWorkspaceIntegration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal)Property).GrafanaIntegrationAzureMonitorWorkspaceIntegration = value ?? null /* arrayOf */; }
+
         /// <summary>The Grafana software version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Inlined)]
         public string GrafanaVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal)Property).GrafanaVersion; }
@@ -82,6 +86,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
 
         /// <summary>Internal Acessors for Endpoint</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaInternal.Endpoint { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal)Property).Endpoint; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal)Property).Endpoint = value; }
+
+        /// <summary>Internal Acessors for GrafanaIntegration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaInternal.GrafanaIntegration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal)Property).GrafanaIntegration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal)Property).GrafanaIntegration = value; }
 
         /// <summary>Internal Acessors for GrafanaVersion</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaInternal.GrafanaVersion { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal)Property).GrafanaVersion; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal)Property).GrafanaVersion = value; }
@@ -163,6 +170,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Owned)]
         internal Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IResourceSku Sku { get => (this._sku = this._sku ?? new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.ResourceSku()); set => this._sku = value; }
 
+        /// <summary>The Sku of the grafana resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Inlined)]
         public string SkuName { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IResourceSkuInternal)Sku).Name; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IResourceSkuInternal)Sku).Name = value ?? null; }
 
@@ -257,6 +265,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         SerializedName = @"endpoint",
         PossibleTypes = new [] { typeof(string) })]
         string Endpoint { get;  }
+        /// <summary>The MonitorWorkspaceIntegration of Azure Managed Grafana.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The MonitorWorkspaceIntegration of Azure Managed Grafana.",
+        SerializedName = @"azureMonitorWorkspaceIntegrations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[] GrafanaIntegrationAzureMonitorWorkspaceIntegration { get; set; }
         /// <summary>The Grafana software version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
         Required = false,
@@ -363,11 +379,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         SerializedName = @"publicNetworkAccess",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess) })]
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess? PublicNetworkAccess { get; set; }
-
+        /// <summary>The Sku of the grafana resource.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @"",
+        Description = @"The Sku of the grafana resource.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         string SkuName { get; set; }
@@ -457,6 +473,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP? DeterministicOutboundIP { get; set; }
         /// <summary>The endpoint of the Grafana instance.</summary>
         string Endpoint { get; set; }
+        /// <summary>
+        /// GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards,
+        /// alerting defaults) for common monitoring scenarios.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations GrafanaIntegration { get; set; }
+        /// <summary>The MonitorWorkspaceIntegration of Azure Managed Grafana.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[] GrafanaIntegrationAzureMonitorWorkspaceIntegration { get; set; }
         /// <summary>The Grafana software version.</summary>
         string GrafanaVersion { get; set; }
         /// <summary>ARM id of the grafana resource</summary>
@@ -497,7 +520,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess? PublicNetworkAccess { get; set; }
         /// <summary>The Sku of the grafana resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IResourceSku Sku { get; set; }
-
+        /// <summary>The Sku of the grafana resource.</summary>
         string SkuName { get; set; }
         /// <summary>The system meta data relating to this grafana resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.ISystemData SystemData { get; set; }

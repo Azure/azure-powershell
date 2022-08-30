@@ -16,12 +16,14 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
     /// <summary>
     /// Create a ScheduledQueryRule Trigger Condition object
     /// </summary>
+    [CmdletDeprecation()]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRuleTriggerCondition"), OutputType(typeof(PSScheduledQueryRuleTriggerCondition))]
     public class NewScheduledQueryRuleTriggerConditionCommand : MonitorCmdletBase
     {

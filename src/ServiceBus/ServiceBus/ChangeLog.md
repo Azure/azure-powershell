@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added -MinimumTlsVersion to New-AzServiceBusNamespace and Set-AzServiceBusNamespace
 
 ## Version 1.10.0
 * Added cmdlets for manual approval of Service Bus Private Endpoint Connections. The added cmdlets include,

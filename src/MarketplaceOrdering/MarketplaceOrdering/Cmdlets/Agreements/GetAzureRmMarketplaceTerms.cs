@@ -17,9 +17,11 @@ using Microsoft.Azure.Commands.MarketplaceOrdering.Common;
 using Microsoft.Azure.Commands.MarketplaceOrdering.Models;
 using Microsoft.Azure.Management.MarketplaceOrdering;
 using Microsoft.Azure.Management.MarketplaceOrdering.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.MarketplaceOrdering.Cmdlets.Agreements
 {
+    [GenericBreakingChange("Cmdlet will call GET /subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/offerTypes/{offerType}/publishers/{publisherId}/offers/{offerId}/plans/{planId}/agreements/current by default in an upcoming breaking change release.")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "MarketplaceTerms", DefaultParameterSetName = Constants.ParameterSetNames.AgreementAcceptParameterSet), OutputType(typeof(PSAgreementTerms))]
     public class GetAzureRmMarketplaceTerms : AzureMarketplaceOrderingCmdletBase
     {

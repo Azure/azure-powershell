@@ -77,6 +77,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
             {
                 return;
             }
+            {_grafanaIntegration = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonObject>("grafanaIntegrations"), out var __jsonGrafanaIntegrations) ? Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.GrafanaIntegrations.FromJson(__jsonGrafanaIntegrations) : GrafanaIntegration;}
             {_zoneRedundancy = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("zoneRedundancy"), out var __jsonZoneRedundancy) ? (string)__jsonZoneRedundancy : (string)ZoneRedundancy;}
             {_apiKey = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("apiKey"), out var __jsonApiKey) ? (string)__jsonApiKey : (string)ApiKey;}
             {_deterministicOutboundIP = If( json?.PropertyT<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString>("deterministicOutboundIP"), out var __jsonDeterministicOutboundIP) ? (string)__jsonDeterministicOutboundIP : (string)DeterministicOutboundIP;}
@@ -105,6 +106,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
             {
                 return container;
             }
+            AddIf( null != this._grafanaIntegration ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) this._grafanaIntegration.ToJson(null,serializationMode) : null, "grafanaIntegrations" ,container.Add );
             AddIf( null != (((object)this._zoneRedundancy)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._zoneRedundancy.ToString()) : null, "zoneRedundancy" ,container.Add );
             AddIf( null != (((object)this._apiKey)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._apiKey.ToString()) : null, "apiKey" ,container.Add );
             AddIf( null != (((object)this._deterministicOutboundIP)?.ToString()) ? (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonNode) new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Json.JsonString(this._deterministicOutboundIP.ToString()) : null, "deterministicOutboundIP" ,container.Add );

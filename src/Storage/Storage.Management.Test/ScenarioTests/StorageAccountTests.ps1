@@ -2302,4 +2302,168 @@ function Test-NewSetAzStorageAccountFileAADKERB
         Clean-ResourceGroup $rgname
     }
 }
-  
+
+<#
+.SYNOPSIS
+Test AzureStorageLocalUserSftp
+.DESCRIPTION
+SmokeTest
+#>
+function Test-AzureStorageLocalUserSftp
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableSftp $true -EnableHierarchicalNamespace $true -EnableNfsV3 $false -EnableLocalUser $true
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $true $sto.EnableSftp;
+        Assert-AreEqual $true $sto.EnableLocalUser;
+        
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableSftp $false }
+        Assert-AreEqual $false $sto.EnableSftp;
+        Assert-AreEqual $true $sto.EnableLocalUser;
+        
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableLocalUser $false }
+        Assert-AreEqual $false $sto.EnableSftp;
+        Assert-AreEqual $false $sto.EnableLocalUser;
+        
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableLocalUser $true -EnableSftp $true }
+        Assert-AreEqual $true $sto.EnableSftp;
+        Assert-AreEqual $true $sto.EnableLocalUser;
+        
+        # create local user
+        $userName1 = "testuser1"
+        $userName2 = "testuser2"
+        $sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
+        $sshkey2 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykew=" -Description "sshpulickey name2"
+        $permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rwd -Service blob -ResourceName container1 
+        $permissionScope2 = New-AzStorageLocalUserPermissionScope -Permission rw -Service file -ResourceName share2
+        $localuser1 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1,$sshkey2 -PermissionScope $permissionScope1,$permissionScope2 -HasSharedKey $true -HasSshKey $true -HasSshPassword $true
+        Assert-AreEqual $userName1 $localuser1.Name;
+        Assert-AreEqual $true $localuser1.HasSharedKey;
+        Assert-AreEqual $true $localuser1.HasSshKey;
+        Assert-AreEqual $true $localuser1.HasSshPassword;
+        Assert-AreEqual "/" $localuser1.HomeDirectory;
+        Assert-AreEqual 2 $localuser1.PermissionScopes.Count;
+        Assert-AreEqual "rwd" $localuser1.PermissionScopes[0].Permissions;
+        Assert-AreEqual "blob" $localuser1.PermissionScopes[0].Service;
+        Assert-AreEqual "container1" $localuser1.PermissionScopes[0].ResourceName;
+        Assert-AreEqual "rw" $localuser1.PermissionScopes[1].Permissions;
+        Assert-AreEqual "file" $localuser1.PermissionScopes[1].Service;
+        Assert-AreEqual "share2" $localuser1.PermissionScopes[1].ResourceName;
+        Assert-AreEqual 2 $localuser1.SshAuthorizedKeys.Count;
+        Assert-AreEqual "ssh-rsa keykeykeykeykey="  $localuser1.SshAuthorizedKeys[0].Key;
+        Assert-AreEqual "sshpulickey name1"  $localuser1.SshAuthorizedKeys[0].Description;
+        Assert-AreEqual "ssh-rsa keykeykeykeykew="  $localuser1.SshAuthorizedKeys[1].Key;
+        Assert-AreEqual "sshpulickey name2"  $localuser1.SshAuthorizedKeys[1].Description;
+        $localuser2 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName2 -HomeDirectory "/dir1" 
+        Assert-AreEqual $userName2 $localuser2.Name;
+        Assert-Null $localuser2.HasSharedKey;
+        Assert-Null $localuser2.HasSshKey;
+        Assert-Null $localuser2.HasSshPassword;
+        Assert-AreEqual "/dir1" $localuser2.HomeDirectory;
+        Assert-Null $localuser2.PermissionScopes;
+        Assert-Null $localuser2.SshAuthorizedKeys;
+
+        # update local user
+        $localuser2 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName2 -HomeDirectory "/dir2" -HasSharedKey $true -HasSshKey $true -HasSshPassword $true `
+            -SshAuthorizedKey (@{
+                Description="sshpulickey name3";
+                Key="ssh-rsa keykeykeykeykew=";                
+            },
+            @{
+                Description="sshpulickey name4";
+                Key="ssh-rsa keykeykeykeykew="; 
+            }) `
+            -PermissionScope (@{
+                Permissions="rw";
+                Service="blob"; 
+                ResourceName="container1";                
+            },
+            @{
+                Permissions="rwd";
+                Service="file"; 
+                ResourceName="share1";
+            }) 
+        Assert-AreEqual $userName2 $localuser2.Name;
+        Assert-AreEqual $true $localuser2.HasSharedKey;
+        Assert-AreEqual $true $localuser2.HasSshKey;
+        Assert-AreEqual $true $localuser2.HasSshPassword;
+        Assert-AreEqual "/dir2" $localuser2.HomeDirectory;
+        Assert-AreEqual 2 $localuser2.PermissionScopes.Count;
+        Assert-AreEqual "rw" $localuser2.PermissionScopes[0].Permissions;
+        Assert-AreEqual "blob" $localuser2.PermissionScopes[0].Service;
+        Assert-AreEqual "container1" $localuser2.PermissionScopes[0].ResourceName;
+        Assert-AreEqual "rwd" $localuser2.PermissionScopes[1].Permissions;
+        Assert-AreEqual "file" $localuser2.PermissionScopes[1].Service;
+        Assert-AreEqual "share1" $localuser2.PermissionScopes[1].ResourceName;
+        Assert-AreEqual 2 $localuser2.SshAuthorizedKeys.Count;
+        Assert-AreEqual "ssh-rsa keykeykeykeykew="  $localuser2.SshAuthorizedKeys[0].Key;
+        Assert-AreEqual "sshpulickey name3"  $localuser2.SshAuthorizedKeys[0].Description;
+        Assert-AreEqual "ssh-rsa keykeykeykeykew="  $localuser2.SshAuthorizedKeys[1].Key;
+        Assert-AreEqual "sshpulickey name4"  $localuser2.SshAuthorizedKeys[1].Description;
+
+        # get single local user
+        $localuser1 = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+        Assert-AreEqual $userName1 $localuser1.Name;
+        Assert-AreEqual $true $localuser1.HasSharedKey;
+        Assert-AreEqual $true $localuser1.HasSshKey;
+        Assert-AreEqual $true $localuser1.HasSshPassword;
+        Assert-AreEqual "/" $localuser1.HomeDirectory;
+        Assert-AreEqual 2 $localuser1.PermissionScopes.Count;
+        Assert-AreEqual "rwd" $localuser1.PermissionScopes[0].Permissions;
+        Assert-AreEqual "blob" $localuser1.PermissionScopes[0].Service;
+        Assert-AreEqual "container1" $localuser1.PermissionScopes[0].ResourceName;
+        Assert-AreEqual "rw" $localuser1.PermissionScopes[1].Permissions;
+        Assert-AreEqual "file" $localuser1.PermissionScopes[1].Service;
+        Assert-AreEqual "share2" $localuser1.PermissionScopes[1].ResourceName;
+        Assert-Null $localuser1.SshAuthorizedKeys;
+
+        #list all local users
+        $localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
+        Assert-AreEqual 2 $localusers.Count;
+        Assert-AreEqual $userName1 $localusers[0].Name;
+        Assert-AreEqual $userName2 $localusers[1].Name;
+
+        # get public key
+        $key = Get-AzStorageLocalUserKey -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+        Assert-NotNull $key.SharedKey
+        Assert-AreEqual 2 $key.SshAuthorizedKeys.Count;
+        #Assert-AreEqual "ssh-rsa keykeykeykeykey="  $key.SshAuthorizedKeys[0].Key;
+        Assert-AreEqual "sshpulickey name1"  $key.SshAuthorizedKeys[0].Description;
+        Assert-AreEqual "ssh-rsa keykeykeykeykew="  $key.SshAuthorizedKeys[1].Key;
+        Assert-AreEqual "sshpulickey name2"  $key.SshAuthorizedKeys[1].Description;
+
+        # regenerate ssh password
+        $password = New-AzStorageLocalUserSshPassword -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+        Assert-NotNull $password.SshPassword
+
+        # remove local user
+        Remove-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+        $localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
+        Assert-AreEqual 1 $localusers.Count;
+        Assert-AreEqual $userName2 $localusers[0].Name;
+
+        #clean up
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -66,16 +68,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequest = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMigrationRequestProperties) content.GetValueForProperty("MigrationRequest",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequest, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MigrationRequestPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ObjectId = (string) content.GetValueForProperty("ObjectId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).HostPoolArmPath = (string) content.GetValueForProperty("HostPoolArmPath",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).HostPoolArmPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).WorkspaceArmPath = (string) content.GetValueForProperty("WorkspaceArmPath",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).WorkspaceArmPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ApplicationGroupType = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType) content.GetValueForProperty("ApplicationGroupType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ApplicationGroupType, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).CloudPcResource = (bool?) content.GetValueForProperty("CloudPcResource",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).CloudPcResource, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestOperation = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Operation?) content.GetValueForProperty("MigrationRequestOperation",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestOperation, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Operation.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestMigrationPath = (string) content.GetValueForProperty("MigrationRequestMigrationPath",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestMigrationPath, global::System.Convert.ToString);
+            if (content.Contains("MigrationRequest"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequest = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMigrationRequestProperties) content.GetValueForProperty("MigrationRequest",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequest, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MigrationRequestPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ObjectId = (string) content.GetValueForProperty("ObjectId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("HostPoolArmPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).HostPoolArmPath = (string) content.GetValueForProperty("HostPoolArmPath",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).HostPoolArmPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("WorkspaceArmPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).WorkspaceArmPath = (string) content.GetValueForProperty("WorkspaceArmPath",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).WorkspaceArmPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("ApplicationGroupType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ApplicationGroupType = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType) content.GetValueForProperty("ApplicationGroupType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ApplicationGroupType, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType.CreateFrom);
+            }
+            if (content.Contains("CloudPcResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).CloudPcResource = (bool?) content.GetValueForProperty("CloudPcResource",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).CloudPcResource, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("MigrationRequestOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestOperation = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Operation?) content.GetValueForProperty("MigrationRequestOperation",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestOperation, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Operation.CreateFrom);
+            }
+            if (content.Contains("MigrationRequestMigrationPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestMigrationPath = (string) content.GetValueForProperty("MigrationRequestMigrationPath",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestMigrationPath, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -93,16 +125,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequest = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMigrationRequestProperties) content.GetValueForProperty("MigrationRequest",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequest, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MigrationRequestPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ObjectId = (string) content.GetValueForProperty("ObjectId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ObjectId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).Description, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).HostPoolArmPath = (string) content.GetValueForProperty("HostPoolArmPath",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).HostPoolArmPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).WorkspaceArmPath = (string) content.GetValueForProperty("WorkspaceArmPath",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).WorkspaceArmPath, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ApplicationGroupType = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType) content.GetValueForProperty("ApplicationGroupType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ApplicationGroupType, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).CloudPcResource = (bool?) content.GetValueForProperty("CloudPcResource",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).CloudPcResource, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestOperation = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Operation?) content.GetValueForProperty("MigrationRequestOperation",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestOperation, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Operation.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestMigrationPath = (string) content.GetValueForProperty("MigrationRequestMigrationPath",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestMigrationPath, global::System.Convert.ToString);
+            if (content.Contains("MigrationRequest"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequest = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IMigrationRequestProperties) content.GetValueForProperty("MigrationRequest",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequest, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.MigrationRequestPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ObjectId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ObjectId = (string) content.GetValueForProperty("ObjectId",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ObjectId, global::System.Convert.ToString);
+            }
+            if (content.Contains("Description"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).Description = (string) content.GetValueForProperty("Description",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).Description, global::System.Convert.ToString);
+            }
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("HostPoolArmPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).HostPoolArmPath = (string) content.GetValueForProperty("HostPoolArmPath",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).HostPoolArmPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("WorkspaceArmPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).WorkspaceArmPath = (string) content.GetValueForProperty("WorkspaceArmPath",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).WorkspaceArmPath, global::System.Convert.ToString);
+            }
+            if (content.Contains("ApplicationGroupType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ApplicationGroupType = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType) content.GetValueForProperty("ApplicationGroupType",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).ApplicationGroupType, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.ApplicationGroupType.CreateFrom);
+            }
+            if (content.Contains("CloudPcResource"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).CloudPcResource = (bool?) content.GetValueForProperty("CloudPcResource",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).CloudPcResource, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("MigrationRequestOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestOperation = (Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Operation?) content.GetValueForProperty("MigrationRequestOperation",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestOperation, Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Support.Operation.CreateFrom);
+            }
+            if (content.Contains("MigrationRequestMigrationPath"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestMigrationPath = (string) content.GetValueForProperty("MigrationRequestMigrationPath",((Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupPropertiesInternal)this).MigrationRequestMigrationPath, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -138,7 +200,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api202
         /// Creates a new instance of <see cref="ApplicationGroupProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="ApplicationGroupProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Models.Api20210712.IApplicationGroupProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.DesktopVirtualization.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
