@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/new-aziothubkey
@@ -30,9 +30,11 @@ Generate an Azure IoT Hub key.
 ## EXAMPLES
 
 ### Example 1 Regenerate primary key
+```powershell
+New-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "primary"
 ```
-PS C:\> New-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "primary"
 
+```output
 KeyName		PrimaryKey										SecondaryKey										Rights
 -------		----------										------------										------
 test		SXSdm31aT+i3939xSnA191f8g3uRhIUCTsO26b9s/nE=	6JqGKGUTL0mhQwvcOeIRT7OnT6noK/tie6jBY77sJTE=		ServiceConnect
@@ -41,9 +43,11 @@ test		SXSdm31aT+i3939xSnA191f8g3uRhIUCTsO26b9s/nE=	6JqGKGUTL0mhQwvcOeIRT7OnT6noK
 Regenerated primary key for the authorization policy "testKey" of an azure iot hub.
 
 ### Example 2 Swapping keys
+```powershell
+New-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "swap"
 ```
-PS C:\> New-AzIotHubKey -ResourceGroupName "myresourcegroup" -Name "myiothub" -KeyName "testKey" -RenewKey "swap"
 
+```output
 KeyName		PrimaryKey										SecondaryKey										Rights
 -------		----------										------------										------
 test		6JqGKGUTL0mhQwvcOeIRT7OnT6noK/tie6jBY77sJTE=	SXSdm31aT+i3939xSnA191f8g3uRhIUCTsO26b9s/nE=		ServiceConnect

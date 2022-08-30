@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/powershell/module/az.relay/get-azrelayoperation
@@ -22,9 +22,11 @@ The **Get-AzRelayOperation** cmdlet Lists the Relay supported Operations.
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzRelayOperation
 ```
-PS C:\> Get-AzRelayOperation
 
+```output
 Name                                                                            Display
 ----                                                                            -------
 Microsoft.Relay/checkNamespaceAvailability/action                               Microsoft.Azure.Commands.Relay.Models.OperationDisplayAttributes

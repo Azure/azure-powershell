@@ -12,182 +12,121 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.Test.ScenarioTests;
+using Microsoft.WindowsAzure.Commands.ScenarioTest;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
-using Microsoft.Azure.ServiceManagement.Common.Models;
-using Microsoft.WindowsAzure.Commands.ScenarioTest;
-
 
 namespace RecoveryServices.SiteRecovery.Test
 {
-    public class AsrB2ATests : AsrTestsBase
+    public class AsrB2ATests : RecoveryServicesSiteRecoveryTestRunner
     {
-        public XunitTracingInterceptor _logger;
+        private readonly string _credModule = $"ScenarioTests/B2A/B2A.VaultCredentials";
+        private readonly string _testModule = $"ScenarioTests/B2A/AsrB2ATests.ps1";
 
-        public AsrB2ATests(
-            ITestOutputHelper output)
+        public AsrB2ATests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
-            this.VaultSettingsFilePath = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "B2A", "B2A.VaultCredentials");
-            this.PowershellFile = System.IO.Path.Combine(
-                System.AppDomain.CurrentDomain.BaseDirectory,
-                "ScenarioTests", "B2A", "AsrB2ATests.ps1");
-            this.Initialize();
+
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatePolicy()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-CreatePolicy -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-CreatePolicy -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreatePCMap()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-CreatePCMap -vaultSettingsFilePath \"" + this.VaultSettingsFilePath + "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-CreatePCMap -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestEnableDR()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-SiteRecoveryEnableDR -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-SiteRecoveryEnableDR -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateRPI()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-UpdateRPI -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-UpdateRPI -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTFO()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-TFO -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-TFO -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestPlannedFailover()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-PlannedFailover -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-PlannedFailover -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateRPIWithDES()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-UpdateRPIWithDiskEncryptionSetMap -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-UpdateRPIWithDiskEncryptionSetMap -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateRPIWithAdditionalProperties()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-CreateRPIWithAdditionalProperties -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-CreateRPIWithAdditionalProperties -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateRPIWithAdditionalProperties()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-UpdateRPIWithAdditionalProperties -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-UpdateRPIWithAdditionalProperties -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateRPIWithAvZone()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-CreateRPIWithAvailabilityZone -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-CreateRPIWithAvailabilityZone -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
 
         [Fact]
-        [Trait(
-            Category.AcceptanceType,
-            Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUpdateRPIWithAvZone()
         {
-            this.RunPowerShellTest(
-                _logger,
-                Constants.NewModel,
-                "Test-UpdateRPIWithAvailabilityZone -vaultSettingsFilePath \"" +
-                this.VaultSettingsFilePath +
-                "\"");
+            TestRunner.RunTestScript(
+                $"Import-Module {_testModule.AsAbsoluteLocation()}",
+                $"Test-UpdateRPIWithAvailabilityZone -vaultSettingsFilePath \"{_credModule.AsAbsoluteLocation()}\"");
         }
     }
 }

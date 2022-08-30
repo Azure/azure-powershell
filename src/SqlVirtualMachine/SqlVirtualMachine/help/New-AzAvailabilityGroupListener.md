@@ -37,13 +37,14 @@ The New-AzAvailabilityGroupListener cmdlet creates a new Availability Group List
 
 ### Example 1
 ```powershell
-PS C:\> New-AzAvailabilityGroupListener -AvailabilityGroupName AvailabilityGroup01 -LoadBalancerResourceId $LoadBalanceResourceId -SubnetId $SubnetId -ProbePort 59999 -SqlVirtualMachineId $VmResourceId1,$VmResourceId2 -Name AgListener01  -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -IpAddress 10.0.0.3
+New-AzAvailabilityGroupListener -AvailabilityGroupName AvailabilityGroup01 -LoadBalancerResourceId $LoadBalanceResourceId -SubnetId $SubnetId -ProbePort 59999 -SqlVirtualMachineId $VmResourceId1,$VmResourceId2 -Name AgListener01  -ResourceGroupName ResourceGroup01 -SqlVMGroupName SqlVmGroup01 -IpAddress 10.0.0.3
 ```
 
+```output
 Name         ResourceGroupName GroupName    AvailabilityGroupName
 ----         ----------------- ---------    ---------------------
 AgListener01 ResourceGroup01   SqlVmGroup01 AvailabilityGroup01
-
+```
 Creates a new Availability Group Listener AgListener01 for the Availability Group AvailabilityGroup01 in SQL Virtual Machine Group SqlVmGroup01.
 
 ## PARAMETERS

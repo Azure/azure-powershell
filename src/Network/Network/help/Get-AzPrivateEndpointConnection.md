@@ -14,7 +14,7 @@ Gets a private endpoint connection resource.
 
 ### ByResourceId (Default)
 ```
-Get-AzPrivateEndpointConnection [-Description <String>] -ResourceId <String>
+Get-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -26,9 +26,8 @@ Get-AzPrivateEndpointConnection -PrivateLinkResourceId <String> [-Description <S
 
 ### ByResource
 ```
-Get-AzPrivateEndpointConnection [-Description <String>] [-Name <String>] -ResourceGroupName <String>
- -ServiceName <String> [-DefaultProfile <IAzureContextContainer>] [-PrivateLinkResourceType <String>]
- [<CommonParameters>]
+Get-AzPrivateEndpointConnection -ResourceGroupName <String> -ServiceName <String> -PrivateLinkResourceType <String>
+ [-Name <String>] [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -37,15 +36,15 @@ The **Get-AzPrivateEndpointConnection** cmdlet retrieves a private endpoint conn
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Get-AzPrivateEndpointConnection -PrivateLinkResourceId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/TestResourceGroup/providers/Microsoft.Sql/servers/mySql'
 ```
 
 This example return a list of all private endpoint connections belongs to sql server named Mysql.
 
 ### Example 2
-```
-Get-AzPrivateEndpointConnection -Name MyPrivateEndpointConnection1 -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkService -PrivateLinkResourceType 'Microsoft.Network/privateLinkServices'
+```powershell
+Get-AzPrivateEndpointConnection -Name MyPrivateEndpointConnection1 -ResourceGroupName TestResourceGroup -ServiceName MyPrivateLinkService -PrivateLinkResourceType Microsoft.Network/privateLinkServices
 ```
 
 This example get a private endpoint connection named MyPrivateEndpointConnection1 belongs to private link service named MyPrivateLinkService
@@ -94,7 +93,7 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -PrivateLinkResourceId
@@ -119,11 +118,10 @@ The private link resource type.
 Type: System.String
 Parameter Sets: ByResource
 Aliases:
-Accepted values: 
 
-Required: False
+Required: True
 Position: Named
-Default value: 'Microsoft.Network/privateLinkServices'
+Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```

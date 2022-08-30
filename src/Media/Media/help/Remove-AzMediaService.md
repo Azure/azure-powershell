@@ -24,8 +24,8 @@ The **Remove-AzMediaService** cmdlet removes a media service.
 ## EXAMPLES
 
 ### Example 1: Remove a media service
-```
-PS C:\>Remove-AzMediaService -ResourceGroupName "ResourceGroup001" -AccountName "MediaService0011"
+```powershell
+Remove-AzMediaService -ResourceGroupName "ResourceGroup001" -AccountName "MediaService0011"
 ```
 
 This command removes the media service named MediaService0011 in the resource group named ResourceGroup001.

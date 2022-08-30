@@ -19,7 +19,7 @@ Set-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String
  [-SkuCapacity <Int32>] [[-Tag] <Hashtable>] [-RetentionInDays <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-PublicNetworkAccessForIngestion <String>]
  [-PublicNetworkAccessForQuery <String>] [-DailyQuotaGb <Int32>] [[-ForceCmkForQuery] <Boolean>]
- [[-DisableLocalAuth] <Boolean>] [<CommonParameters>]
+ [[-DisableLocalAuth] <Boolean>] [-DefaultDataCollectionRuleResourceId <String>] [<CommonParameters>]
 ```
 
 ### ByObject
@@ -27,7 +27,8 @@ Set-AzOperationalInsightsWorkspace [-ResourceGroupName] <String> [-Name] <String
 Set-AzOperationalInsightsWorkspace [-Workspace] <PSWorkspace> [[-Sku] <String>] [-SkuCapacity <Int32>]
  [[-Tag] <Hashtable>] [-RetentionInDays <Int32>] [-DefaultProfile <IAzureContextContainer>]
  [-PublicNetworkAccessForIngestion <String>] [-PublicNetworkAccessForQuery <String>] [-DailyQuotaGb <Int32>]
- [[-ForceCmkForQuery] <Boolean>] [[-DisableLocalAuth] <Boolean>] [<CommonParameters>]
+ [[-ForceCmkForQuery] <Boolean>] [[-DisableLocalAuth] <Boolean>]
+ [-DefaultDataCollectionRuleResourceId <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -36,15 +37,15 @@ The **Set-AzOperationalInsightsWorkspace** cmdlet changes the configuration of a
 ## EXAMPLES
 
 ### Example 1: Modify a workspace by name
-```
-PS C:\>Set-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" -Sku Standard -Tags @{ "Department" = "IT" }
+```powershell
+Set-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" -Sku Standard -Tag @{ "Department" = "IT" }
 ```
 
 This command modifies the SKU and tags of the workspace named MyWorkspace in the resource group named ContosoResourceGroup.
 
 ### Example 2: Update a workspace by using the pipeline
-```
-PS C:\>Get-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" | Set-AzOperationalInsightsWorkspace -Sku "Premium"
+```powershell
+Get-AzOperationalInsightsWorkspace -ResourceGroupName "ContosoResourceGroup" -Name "MyWorkspace" | Set-AzOperationalInsightsWorkspace -Sku "Premium"
 ```
 
 This command uses the Get-AzOperationalInsightsWorkspace cmdlet to get the workspace named MyWorkSpace, and then passes it to the **Set-AzOperationalInsightsWorkspace** cmdlet by using the pipeline operator to set the SKU to Premium.
@@ -56,6 +57,21 @@ The daily volume cap for ingestion - number
 
 ```yaml
 Type: System.Nullable`1[System.Int32]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DefaultDataCollectionRuleResourceId
+The resource ID of the default Data Collection Rule to use for this workspace. Expected format is - /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/dataCollectionRules/{dcrName}.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -258,7 +274,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.Collections.Hashtable
 
-### System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]
+### System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]
 
 ## OUTPUTS
 

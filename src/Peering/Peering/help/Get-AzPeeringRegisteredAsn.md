@@ -37,14 +37,14 @@ Get or list a registered ASN.
 
 ### List registered ASNs for peering
 ```powershell
-PS C:\> Get-AzPeeringRegisteredAsn -ResourceGroupName $resourceGroupName -PeeringName $peeringName
+Get-AzPeeringRegisteredAsn -ResourceGroupName $resourceGroupName -PeeringName $peeringName
 ```
 
 Lists registered asn.
 
 ### Gets registered ASN for peering by name
 ```powershell
-PS C:\> Get-AzPeeringRegisteredAsn -ResourceGroupName $resourceGroupName -PeeringName $peeringName -Name $registeredAsnName
+Get-AzPeeringRegisteredAsn -ResourceGroupName $resourceGroupName -PeeringName $peeringName -Name $registeredAsnName
 ```
 
 Gets registered peering asn.

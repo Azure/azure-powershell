@@ -24,8 +24,10 @@ List peering locations.
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzPeeringServiceLocation -Country "United States" | Where-Object { $_.State -match "Washington"}
+Get-AzPeeringServiceLocation -Country "United States" | Where-Object { $_.State -match "Washington"}
+```
 
+```output
 Country     : United States
 State       : Washington
 AzureRegion : West US
@@ -38,8 +40,10 @@ Retrieves the peering locations for washington.
 
 ### Example 2
 ```powershell
-PS C:\>Get-AzPeeringServiceLocation -Country "United States"
+Get-AzPeeringServiceLocation -Country "United States"
+```
 
+```output
 Country     : United States
 State       : Alabama
 AzureRegion : East US

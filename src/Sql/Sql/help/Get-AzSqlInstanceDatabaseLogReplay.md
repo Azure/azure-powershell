@@ -24,7 +24,7 @@ The **Get-AzSqlInstanceDatabaseLogReplay** cmdlet gets the Log Replay service st
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName"
+Get-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName"
 ```
 
 This command will get log replay service status on the given database.

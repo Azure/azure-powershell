@@ -18,8 +18,44 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Hotfix for Azure Active Directory Admin
-    - AzureSqlServerActiveDirectoryAdministratorAdapter and AzureSqlInstanceActiveDirectoryAdministratorAdapter both used AzureEnvironment.Endpoint.AzureEnvironment.Endpoint.Graph instead of AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl
+
+## Version 3.11.0
+* Removed the warning messages for MSGraph migration [#18856] 
+* Moved SQL Server and SQL Instance from ActiveDirectoryClient to MicrosoftGraphClient
+* Supported cross-subscription Failover Group creation using `PartnerSubscriptionId` parameter in `New-AzSqlDatabaseFailoverGroup` cmdlet
+
+## Version 3.10.0
+* Added `GeoZone` option to `BackupStorageRedundancy` parameter to `New-AzSqlDatabase`, `Set-AzSqlDatabase`, `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary`, and `Restore-AzSqlDatabase` to enable create, update, copy, geo secondary and PITR support for GeoZone hyperscale databases
+* Added additional input validation to `Stop-AzSqlInstanceDatabaseLogReplay` cmdlet to ensure the target database was created by log replay service
+* Bug fix for cmdlet `Restore-AzSqlDatabase`. The optional property `Tags` was not working as expected
+* Added isManagedIdentityInUse get parameter for `Get-AzSqlServerAudit` and `Get-AzSqlDatabaseAudit`
+* Added new cmdlet `Set-AzSqlInstanceDatabase`
+
+## Version 3.9.0
+* Added new cmdlet `Get-AzSqlInstanceEndpointCertificate`
+* Added parameter `HighAvailabilityReplicaCount` to `New-AzSqlElasticPool` and `Set-AzSqlElasticPool`
+
+## Version 3.8.0
+* Added parameter `ServicePrincipalType` to `New-AzSqlInstance` and `Set-AzSqlInstance`
+* [Breaking change] Removed `Get-AzSqlDatabaseTransparentDataEncryptionActivity`
+* Added property `CurrentBackupStorageRedundancy` and `RequestedBackupStorageRedundancy` in  the outputs of Managed Instance CRUD commands
+* Added optional property `Tag` to `Restore-AzSqlDatabase`
+* Added new cmdlets for managing Server Trust Certificates
+    - `New-AzSqlInstanceServerTrustCertificate`
+    - `Get-AzSqlInstanceServerTrustCertificate`
+    - `Remove-AzSqlInstanceServerTrustCertificate`
+* Added new cmdlets for managing Managed Instance Link
+    - `New-AzSqlInstanceLink`
+    - `Get-AzSqlInstanceLink`
+    - `Remove-AzSqlInstanceLink`
+    - `Set-AzSqlInstanceLink`
+* Added support for DataWarehouse cross tenant and cross subscription restore operations to `Restore-AzSqlDatabase` cmdlet
+* Upgrading to usage of .NET SDK 3.1.0-preview
+* Declare breaking changes for the AdvancedDataSecurity and AdvancedThreatProtection cmdlets to be effective from 9.0.0.
+
+## Version 3.7.1
+* Deprecation of Get-AzSqlDatabaseTransparentDataEncryptionActivity cmdlet
+* Fixed cmdlets for Azure Active Directory Admin `AzureSqlServerActiveDirectoryAdministratorAdapter` and `AzureSqlInstanceActiveDirectoryAdministratorAdapter` migrate from `AzureEnvironment.Endpoint.AzureEnvironment.Endpoint.Graph` to `AzureEnvironment.ExtendedEndpoint.MicrosoftGraphUrl`
 
 ## Version 3.7.0
 * Added `ZoneRedundant` parameter to `New-AzSqlDatabaseCopy`, `New-AzSqlDatabaseSecondary` and `Restore-AzSqlDatabase` to enable zone redundant copy, geo secondary and PITR support for hyperscale databases

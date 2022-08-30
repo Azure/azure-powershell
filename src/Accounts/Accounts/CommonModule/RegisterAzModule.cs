@@ -17,6 +17,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Management.Automation;
 using System.Net.Http;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Common
 {
@@ -47,6 +48,12 @@ namespace Microsoft.Azure.Commands.Common
 
                     // this gets called for every event that is signaled
                     EventListener = module.EventListener,
+
+                    // this gets called to get the telemetryId
+                    GetTelemetryId = () => { return MetricHelper.TelemetryId; },
+
+                    // this gets called when a telemetry related operation is made, e.g. create/send a telemetry
+                    Telemetry = module.Telemetry,
 
                     // this gets called at module load time (allows you to change the http pipeline)
                     OnModuleLoad = module.OnModuleLoad,

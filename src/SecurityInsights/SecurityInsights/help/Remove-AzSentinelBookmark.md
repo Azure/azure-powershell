@@ -33,7 +33,7 @@ You can use the Confirm parameter and $ConfirmPreference Windows PowerShell vari
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -BookmarkId "MyBookmarkId"
+Remove-AzSentinelBookmark -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -BookmarkId "MyBookmarkId"
 ```
 
 This command removes the Bookmark from the workspace.

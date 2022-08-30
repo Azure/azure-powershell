@@ -36,8 +36,10 @@ Gets information about a configuration of server.
 
 ### Example 1: List all configurations in specified MySql server
 ```powershell
-PS C:\> Get-AzMySqlConfiguration -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+Get-AzMySqlConfiguration -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+```
 
+```output
 Name                                     Type
 ----                                     ----
 audit_log_enabled                        Microsoft.DBforMySQL/servers/configurations
@@ -55,8 +57,10 @@ This cmdlet lists all configurations in specified MySql server.
 
 ### Example 2: Get specified MySql configuration by name
 ```powershell
-PS C:\> Get-AzMySqlConfiguration -Name time_zone -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+Get-AzMySqlConfiguration -Name time_zone -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
+```
 
+```output
 Name      Type
 ----      ----
 time_zone Microsoft.DBforMySQL/servers/configurations
@@ -178,7 +182,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+INPUTOBJECT `<IMySqlIdentity>`: Identity Parameter
   - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.

@@ -24,8 +24,8 @@ The **Get-AzHDInsightScriptActionHistory** cmdlet gets the script action history
 ## EXAMPLES
 
 ### Example 1: Get the history of script actions executions for a cluster
-```
-PS C:\>Get-AzHDInsightScriptActionHistory -ClusterName "your-hadoop-001"
+```powershell
+Get-AzHDInsightScriptActionHistory -ClusterName "your-hadoop-001"
 ```
 
 This command gets the history of script actions for the cluster your-hadoop-001.

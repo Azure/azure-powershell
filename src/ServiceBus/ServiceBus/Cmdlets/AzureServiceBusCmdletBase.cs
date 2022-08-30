@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
     public abstract class AzureServiceBusCmdletBase : AzureRMCmdlet
     {
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
-        private Microsoft.Azure.Commands.ServiceBus.ServiceBusClient  _client;
+        private ServiceBusClient _client;
 
         protected const string ServiceBusNamespaceVerb = "AzureRmServiceBusNamespace";
 
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string AuthoRuleInputObjectParameterSet = "AuthoRuleInputObjectSet";
         protected const string GeoDRInputObjectParameterSet = "GeoDRConfigurationInputObjectSet";
         protected const string RuleInputObjectParameterSet = "RuleResourceIdSet";
-        protected const string NetwrokruleSetInputObjectParameterSet = "NetwrokruleSetInputObjectSet";
+        protected const string NetworkRuleSetInputObjectParameterSet = "NetworkRuleSetInputObjectSet";
         protected const string VirtualNetworkRuleInputObjectParameterSet = "VirtualNetworkRuleInputObjectParameterSet";
         protected const string IPRuleInputObjectParameterSet = "IPRuleInputObjectParameterSet";
 
@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string SubscriptionResourceIdParameterSet = "SubscriptionResourceIdSet";
         protected const string RuleResourceIdParameterSet = "RuleResourceIdSet";
         protected const string NetworkRuleSetResourceIdParameterSet = "NetworkRuleSetResourceIdParameterSet";
+        protected const string PrivateEndpointResourceIdParameterSet = "PrivateEndpointResourceIdParameterSet";
 
         //Parameter sets for Properties
         protected const string NamespacePropertiesParameterSet = "NamespacePropertiesSet";
@@ -100,10 +101,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string MigrationConfigurationParameterSet = "MigrationConfigurationPropertiesSet";
         protected const string RuleResourceParameterSet = "RulePropertiesSet";
         protected const string RuleResourceActionParameterSet = "RuleActionPropertiesSet";
-        protected const string NetwrokruleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
-        protected const string NetwrokruleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
+        protected const string NetworkRuleSetPropertiesParameterSet = "NetworkRuleSetPropertiesSet";
+        protected const string NetworkRuleSetNamespacePropertiesParameterSet = "NetworkRuleSetNamespacePropertiesSet";
         protected const string VirtualNetworkRulePropertiesParameterSet = "VirtualNetworkRulePropertiesParameterSet";
         protected const string IPRulePropertiesParameterSet = "IPRulePropertiesParameterSet";
+        protected const string PrivateEndpointPropertiesParameterSet = "PrivateEndpointPropertiesSet";
+        protected const string PrivateLinkPropertiesParameterSet = "PrivateLinkPropertiesSet";
 
         //Alias - used in Cmdlets
         protected const string AliasResourceGroupname = "ResourceGroupName";
@@ -138,6 +141,10 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         protected const string Send = "Send";
         protected const string Listen = "Listen";
 
+        protected const string PrivateEndpointURL = "Microsoft.ServiceBus/namespaces/privateEndpointConnections";
+        protected const string NamespaceURL = "Microsoft.ServiceBus/namespaces";
+
+
         protected struct SKU
         {
             internal const string Basic = "Basic";
@@ -149,36 +156,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         {
             internal const string PrimaryKey = "PrimaryKey";
             internal const string SecondaryKey = "SecondaryKey";
-        }
-        
-        protected static AccessRights ParseAccessRights(string rightsName)
-        {
-            AccessRights returnAccessRights;
-            if (!Enum.TryParse<AccessRights>(rightsName, true, out returnAccessRights))
-            {
-                throw new ArgumentOutOfRangeException("AccessRights");
-            }
-            return returnAccessRights;
-        }
-        
-        public static SkuName ParseSkuName(string skuName)
-        {
-            SkuName returnSkuName;
-            if (!Enum.TryParse<SkuName>(skuName, true, out returnSkuName))
-            {
-                throw new ArgumentOutOfRangeException("SkuName");
-            }
-            return returnSkuName;
-        }
-
-        public static SkuTier ParseSkuTier(string skuTier)
-        {
-            SkuTier returnSkutier;
-            if (!Enum.TryParse<SkuTier>(skuTier, true, out returnSkutier))
-            {
-                throw new ArgumentOutOfRangeException("skuTier");
-            }
-            return returnSkutier;
         }
 
         public static TimeSpan ParseTimespan(string strTimespan)
@@ -195,7 +172,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
             return tspan;
         }
 
-        public Microsoft.Azure.Commands.ServiceBus.ServiceBusClient Client
+        public ServiceBusClient Client
         {
             get
             {
@@ -331,8 +308,8 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         }
 
         #endregion
-    }
 
+    }
 
     public class LocalResourceIdentifier : ResourceIdentifier
     {
@@ -361,8 +338,5 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         public string ParentResource1 { get; set; }
 
         public string ParentResource2 { get; set; }
-
-
-
     }
 }

@@ -33,7 +33,7 @@ The **Complete-AzSqlInstanceDatabaseLogReplay** cmdlet completes the Log Replay 
 
 ### Example 1
 ```powershell
-PS C:\> Complete-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName" -LastBackupName "last_backup.bak"
+Complete-AzSqlInstanceDatabaseLogReplay -ResourceGroupName "ResourceGroup01" -InstanceName "ManagedInstance01" -Name "ManagedDatabaseName" -LastBackupName "last_backup.bak"
 ```
 
 This command will complete Log Replay service for the given database after last backup gets restored.

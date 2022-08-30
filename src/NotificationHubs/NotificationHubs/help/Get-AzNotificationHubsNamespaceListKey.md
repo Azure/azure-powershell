@@ -26,8 +26,8 @@ Each rule includes a primary and a secondary connection string.
 ## EXAMPLES
 
 ### Example 1: Get the primary and secondary connection strings for an authorization rule
-```
-PS C:\>Get-AzNotificationHubsNamespaceListKey -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -AuthorizationRule "ListenRule"
+```powershell
+Get-AzNotificationHubsNamespaceListKey -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup" -AuthorizationRule "ListenRule"
 ```
 
 This command returns the primary and secondary connection strings for the authorization rule named ListenRule assigned to the ContosoNamespace namespace.

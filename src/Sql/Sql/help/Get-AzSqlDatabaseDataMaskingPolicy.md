@@ -27,8 +27,11 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 ## EXAMPLES
 
 ### Example 1: Get the data masking policy for an Azure SQL database
+```powershell
+Get-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
-PS C:\>Get-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+
+```output
 DatabaseName      : Database01
 ResourceGroupName : ResourceGroup01
 ServerName        : Server01

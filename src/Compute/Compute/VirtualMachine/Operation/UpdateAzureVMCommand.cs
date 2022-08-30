@@ -76,6 +76,7 @@ namespace Microsoft.Azure.Commands.Compute
             Mandatory = false,
             ParameterSetName = ExplicitIdentityParameterSet,
             ValueFromPipelineByPropertyName = false)]
+        [ValidateNotNullOrEmpty]
         public string[] IdentityId { get; set; }
 
         [Parameter(
@@ -141,6 +142,18 @@ namespace Microsoft.Azure.Commands.Compute
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The flag that enables or disables hibernation capability on the VM.")]
         public SwitchParameter HibernationEnabled { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the number of vCPUs available for the VM. When this property is not specified in the request body the default behavior is to set it to the value of vCPUs available for that VM size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list).")]
+        public int vCPUCountAvailable { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
+        public int vCPUCountPerCore { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -291,6 +304,32 @@ namespace Microsoft.Azure.Commands.Compute
                     if (parameters.StorageProfile != null && parameters.StorageProfile.ImageReference != null && parameters.StorageProfile.ImageReference.Id != null)
                     {
                         parameters.StorageProfile.ImageReference.Id = null;
+                    }
+
+                    if (this.IsParameterBound(c => c.vCPUCountPerCore))
+                    {
+                        if (parameters.HardwareProfile == null)
+                        {
+                            parameters.HardwareProfile = new HardwareProfile();
+                        }
+                        if (parameters.HardwareProfile.VmSizeProperties == null)
+                        {
+                            parameters.HardwareProfile.VmSizeProperties = new VMSizeProperties();
+                        }
+                        parameters.HardwareProfile.VmSizeProperties.VCPUsPerCore = this.vCPUCountPerCore;
+                    }
+
+                    if (this.IsParameterBound(c => c.vCPUCountAvailable))
+                    {
+                        if (parameters.HardwareProfile == null)
+                        {
+                            parameters.HardwareProfile = new HardwareProfile();
+                        }
+                        if (parameters.HardwareProfile.VmSizeProperties == null)
+                        {
+                            parameters.HardwareProfile.VmSizeProperties = new VMSizeProperties();
+                        }
+                        parameters.HardwareProfile.VmSizeProperties.VCPUsAvailable = this.vCPUCountAvailable;
                     }
 
                     if (NoWait.IsPresent)

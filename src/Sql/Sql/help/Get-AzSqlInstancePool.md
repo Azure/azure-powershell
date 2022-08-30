@@ -37,7 +37,10 @@ Specify the name of an instance pool to see information for only that instance p
 
 ### Example 1: Get all instance pools across a customer subscription
 ```powershell
-PS C:\> Get-AzSqlInstancePool
+Get-AzSqlInstancePool
+```
+
+```output
 ResourceGroupName : resourcegroup01
 Type              : Microsoft.Sql/instancePools
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
@@ -69,7 +72,10 @@ This command gets information about all instance pools within the customer subsc
 
 ### Example 2: Get all instance pools across a resource group
 ```powershell
-PS C:\> Get-AzSqlInstancePool -ResourceGroupName resourcegroup01
+Get-AzSqlInstancePool -ResourceGroupName resourcegroup01
+```
+
+```output
 ResourceGroupName : resourcegroup01
 Type              : Microsoft.Sql/instancePools
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
@@ -88,7 +94,10 @@ This command gets information about all instance pools within the resource group
 
 ### Example 3: Get information about an instance pool
 ```powershell
-PS C:\> Get-AzSqlInstancePool -ResourceGroupName resourcegroup01 -Name instancePool0
+Get-AzSqlInstancePool -ResourceGroupName resourcegroup01 -Name instancePool0
+```
+
+```output
 ResourceGroupName : resourcegroup01
 Type              : Microsoft.Sql/instancePools
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0
@@ -107,7 +116,10 @@ This command gets information about the instance pool instancePool0.
 
 ### Example 4: Get information about an instance pool using instance pool resource id
 ```powershell
-PS C:\> Get-AzSqlInstancePool -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0"
+Get-AzSqlInstancePool -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0"
+```
+
+```output
 ResourceGroupName : resourcegroup01
 Type              : Microsoft.Sql/instancePools
 Id                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0

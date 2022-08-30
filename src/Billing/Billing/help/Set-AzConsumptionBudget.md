@@ -71,7 +71,7 @@ Type:  Microsoft.Consumption/budgets
 
 ### Example 2: Update a budget with a notification when cost or usage reaches a threshold of 90 percent of amount at subscription level
 ```powershell
-Set-AzConsumptionBudget -Name PSBudget -NotificationKey notificationKey-ps1234 -NotificationEnabled -NotificationThreshold 90 -ContactEmail johndoe@contoso.com,janesmith@contoso.com -ContactRole Owner,Reader,Contributor
+Set-AzConsumptionBudget -Name PSBudget -NotificationKey notificationKey-ps1234 -NotificationEnabled -NotificationThreshold 90 -ContactEmail @('johndoe@contoso.com','janesmith@contoso.com') -ContactRole Owner,Reader,Contributor
 ```
 
 ```output

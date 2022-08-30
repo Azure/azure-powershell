@@ -18,6 +18,39 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added parameter `ContentType` in `Import-AzKeyVaultCertificate` to support importing pem via certificate string
+* Allowed `DnsName` in `New-AzKeyVaultCertificatePolicy` to accept an empty list [#18954]
+
+## Version 4.6.1
+* Removed the warning messages for MSGraph migration [#18856]
+
+## Version 4.6.0
+* Supported importing pem certificate by `Import-AzKeyVaultCertificate` [#18494]
+* Supported accepting rotation policy in a JSON file 
+* [Breaking Change] Changed parameter `ExpiresIn` in `Set-AzKeyVaultKeyRotationPolicy` from TimeSpan? to string. It must be an ISO 8601 duration like "P30D" for 30 days.
+* [Breaking Change] Changed output properties `ExpiresIn`, `TimeAfterCreate` and `TimeBeforeExpiry` of `Set-AzKeyVaultKeyRotationPolicy` and `Get-AzKeyVaultKeyRotationPolicy` from TimeSpan? to string.
+* Supported creating/updating key with release policy in a Managed HSM
+* Removed default value for `EnabledForDeployment`, `EnabledForTemplateDeployment`, `EnabledForDiskEncryption` and `EnableRbacAuthorization` during the process of key vault creation
+* Changed default access policies for Key Vault secret, certificate and storage as `All`
+
+## Version 4.5.0
+* Added `Rotate` into the list of permissions to keys [#17970]
+
+## Version 4.4.0
+* Supported getting random number from managed HSM by `Get-AzKeyVaultRandomNumber`
+* Skipped subscription connection status validation for Az.KeyVault.Extension [#17712]
+* Enabled public network access setting
+
+## Version 4.3.1
+* Fixed a bug to continue visiting `NextPageLink` when listing key vaults from ARM API
+ 
+## Version 4.3.0
+* `New-AzKeyVaultManagedHsm`: supported specifying how long a deleted managed hsm is retained by `SoftDeleteRetentionInDays` and enabling purge protection by `EnablePurgeProtection`
+* `Update-AzKeyVaultManagedHsm`: supported enabling purge protection by `EnablePurgeProtection`
+* `Get-AzKeyVaultManagedHsm`: Supported getting or listing deleted managed HSM(s)
+* `Remove-AzKeyVaultManagedHsm`: Supported purging a specified deleted managed HSM
+
+## Version 4.2.1
 * Improved the error message of Az.KeyVault.Extension [#16798]
 * Added default access policies for Key Vault key as "All but purge"
 * Absorbed KeyOps from parameter when importing key from certificate on managed HSM [#16773]

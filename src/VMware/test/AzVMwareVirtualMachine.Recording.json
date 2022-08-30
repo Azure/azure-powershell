@@ -1,0 +1,62 @@
+{
+  "AzVMwareVirtualMachine+[NoContext]+List+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/virtualMachines?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/virtualMachines?api-version=2021-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "84" ],
+        "x-ms-client-request-id": [ "fb7efd3c-825a-43c9-868c-a37e25b8523b" ],
+        "CommandName": [ "Get-AzVMwareVirtualMachine" ],
+        "FullCommandName": [ "Get-AzVMwareVirtualMachine_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:14:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "695" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-209\",\"name\":\"vm-209\",\"type\":\"Microsoft.AVS/privateClouds/clusters/virtualMachines\",\"properties\":{\"displayName\":\"contoso-vm1\",\"moRefId\":\"vm-209\",\"folderPath\":\"vm/folder-1\",\"restrictMovement\":\"Disabled\"}},{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-128\",\"name\":\"vm-128\",\"type\":\"Microsoft.AVS/privateClouds/clusters/virtualMachines\",\"properties\":{\"displayName\":\"contoso-vm2\",\"moRefId\":\"vm-128\",\"folderPath\":\"vm\",\"restrictMovement\":\"Enabled\"}}]}"
+    }
+  },
+  "AzVMwareVirtualMachine+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/virtualMachines/vm-209?api-version=2021-12-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/cef41485-ad1e-4cc3-a652-4c2620b8a2d0/resourceGroups/testgrouponhszx/providers/Microsoft.AVS/privateClouds/azps_test_cloud9tpn/clusters/uvpsjf/virtualMachines/vm-209?api-version=2021-12-01",
+      "Content": null,
+      "Headers": {
+        "x-ms-unique-id": [ "85" ],
+        "x-ms-client-request-id": [ "cd78cedb-3235-4e8f-858b-34e1122c0e27" ],
+        "CommandName": [ "Get-AzVMwareVirtualMachine" ],
+        "FullCommandName": [ "Get-AzVMwareVirtualMachine_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/Az4.0.0-preview" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Server": [ "Rocket" ],
+        "Date": [ "Tue, 08 Feb 2022 04:14:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "345" ],
+        "Content-Type": [ "application/json" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/{subscription-id}/resourceGroups/group1/providers/Microsoft.AVS/privateClouds/cloud1/clusters/cluster1/virtualMachines/vm-209\",\"name\":\"vm-209\",\"type\":\"Microsoft.AVS/privateClouds/clusters/virtualMachines\",\"properties\":{\"displayName\":\"contoso-vm\",\"moRefId\":\"vm-209\",\"folderPath\":\"vm/folder-1\",\"restrictMovement\":\"Disabled\"}}"
+    }
+  }
+}

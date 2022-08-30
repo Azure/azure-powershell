@@ -24,8 +24,10 @@ The **Get-AzAvailableServiceDelegation** cmdlet allows you to retrieve all of th
 
 ### Example 1: Getting all available service delegations
 ```powershell
-PS C:\> Get-AzAvailableServiceDelegation -Location "westus"
+Get-AzAvailableServiceDelegation -Location "westus"
+```
 
+```output
 Name        : Microsoft.Web.serverFarms
 Id          : /subscriptions/subId/providers/Microsoft.Network/availableDelegations/Microsoft.Web.serverFarms
 Type        : Microsoft.Network/availableDelegations

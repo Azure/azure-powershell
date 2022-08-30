@@ -43,7 +43,7 @@ The user name is TestUser, the password is Password, the account expires in seve
 
 ### Example 2: Create a user account on a compute node by using the pipeline
 ```powershell
-Get-AzBatchComputeNode "MyPool01" -ComputeNodeId "ComputeNode01" -BatchContext $Context | New-AzBatchComputeNodeUser -Name "TestUser" -Password "Password" -BatchContext $Context
+Get-AzBatchComputeNode "MyPool01" -Id "ComputeNode01" -BatchContext $Context | New-AzBatchComputeNodeUser -Name "TestUser" -Password "Password" -BatchContext $Context
 ```
 
 This command gets the compute node named ComputeNode01 by using the **Get-AzBatchComputeNode** cmdlet.

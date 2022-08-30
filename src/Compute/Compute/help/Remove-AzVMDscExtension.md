@@ -24,8 +24,8 @@ The **Remove-AzVMDscExtension** cmdlet removes a Desired State Configuration (DS
 ## EXAMPLES
 
 ### Example 1: Remove a DSC extension
-```
-PS C:\> Remove-AzVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM07" -Name "DSC"
+```powershell
+Remove-AzVMDscExtension -ResourceGroupName "ResourceGroup001" -VMName "VM07" -Name "DSC"
 ```
 
 This command removes the extension named DSC on virtual machine named VM07.

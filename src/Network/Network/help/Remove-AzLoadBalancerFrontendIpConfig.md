@@ -24,9 +24,9 @@ The **Remove-AzLoadBalancerFrontendIpConfig** cmdlet removes a front-end IP conf
 ## EXAMPLES
 
 ### Example 1: Remove a front-end IP configuration from a load balancer
-```
-PS C:\>$loadbalancer = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
-PS C:> Remove-AzLoadBalancerFrontendIpConfig -Name "frontendName" -LoadBalancer $loadbalancer
+```powershell
+$loadbalancer = Get-AzLoadBalancer -Name "MyLoadBalancer" -ResourceGroupName "MyResourceGroup"
+Remove-AzLoadBalancerFrontendIpConfig -Name "frontendName" -LoadBalancer $loadbalancer
 ```
 
 The first command gets the load balancer that is associated with the front-end IP configuration you want to remove, and then stores it in the $loadbalancer variable.

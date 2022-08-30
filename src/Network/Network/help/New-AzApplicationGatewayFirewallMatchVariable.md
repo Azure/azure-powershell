@@ -24,7 +24,7 @@ The **New-AzApplicationGatewayFirewallMatchVariable** creates a match variable f
 
 ### Example 1
 ```powershell
-PS C:\> $variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
+$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Content-Length
 ```
 
 The command creates a new match variable with name of request headers and selector is Content-Length field. The new match variable is saved in $variable.

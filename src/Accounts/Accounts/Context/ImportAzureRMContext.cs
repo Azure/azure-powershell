@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using System;
+using System.Linq;
 using System.Management.Automation;
 
 using Microsoft.Azure.Commands.Common.Authentication;
@@ -22,6 +23,8 @@ using Microsoft.Azure.Commands.Common.Authentication.ResourceManager;
 using Microsoft.Azure.Commands.Profile.Common;
 using Microsoft.Azure.Commands.Profile.Models.Core;
 using Microsoft.Azure.Commands.Profile.Properties;
+using Microsoft.Azure.Commands.ResourceManager.Common;
+using Microsoft.WindowsAzure.Commands.Common;
 
 namespace Microsoft.Azure.Commands.Profile
 {
@@ -60,10 +63,32 @@ namespace Microsoft.Azure.Commands.Profile
                 IAzureEnvironment merged;
                 target.TrySetEnvironment(environment, out merged);
             }
-
+            if (!AzureSession.Instance.TryGetComponent(AzKeyStore.Name, out AzKeyStore keyStore))
+            {
+                keyStore = null;
+            }
             foreach (var context in source.Contexts)
             {
                 target.TrySetContext(context.Key, context.Value);
+                if (keyStore != null)
+                {
+                    var account = context.Value.Account;
+                    if (account != null)
+                    {
+                        var secret = account.GetProperty(AzureAccount.Property.ServicePrincipalSecret);
+                        if (!string.IsNullOrEmpty(secret))
+                        {
+                            keyStore.SaveKey(new ServicePrincipalKey(AzureAccount.Property.ServicePrincipalSecret, account.Id, context.Value.Tenant?.Id)
+                                , secret.ConvertToSecureString());
+                        }
+                        var password = account.GetProperty(AzureAccount.Property.CertificatePassword);
+                        if (!string.IsNullOrEmpty(password))
+                        {
+                            keyStore.SaveKey(new ServicePrincipalKey(AzureAccount.Property.CertificatePassword, account.Id, context.Value.Tenant?.Id)
+                                ,password.ConvertToSecureString());
+                        }
+                    }
+                }
             }
 
             if (!string.IsNullOrWhiteSpace(source.DefaultContextKey))

@@ -24,8 +24,10 @@ Gets information about a database in a Redis Enterprise cluster.
 
 ### Example 1: Get database information
 ```powershell
-PS C:\> Get-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
+Get-AzRedisEnterpriseCacheDatabase -Name "MyCache" -ResourceGroupName "MyGroup"
+```
 
+```output
 Name    Type
 ----    ----
 default Microsoft.Cache/redisEnterprise/databases
@@ -104,7 +106,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IDatabase
 
 ## NOTES
 

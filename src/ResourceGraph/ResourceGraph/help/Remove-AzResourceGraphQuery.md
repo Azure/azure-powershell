@@ -31,15 +31,15 @@ Delete a graph query.
 
 ### Example 1: Remove a resource graph query by name
 ```powershell
-PS C:\> Remove-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03
+Remove-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t03
 ```
 
 This command removes a resource graph query by name.
 
 ### Example 2: Remove a resource graph query by object
 ```powershell
-PS C:\> $query = Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t02
-PS C:\> Remove-AzResourceGraphQuery -InputObject $query
+$query = Get-AzResourceGraphQuery -ResourceGroupName azure-rg-test -Name query-t02
+Remove-AzResourceGraphQuery -InputObject $query
 ```
 
 This command removes a resource graph query by object.
@@ -188,7 +188,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IResourceGraphIdentity>: Identity Parameter
+INPUTOBJECT `<IResourceGraphIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group.
   - `[ResourceName <String>]`: The name of the Graph Query resource.

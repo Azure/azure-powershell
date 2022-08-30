@@ -16,16 +16,15 @@
 
 <#
 .Synopsis
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Description
-Description for Creates or updates an App Service Plan.
+Creates or updates an App Service Plan.
 .Example
-PS C:\> Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
-                                 -Name MyPremiumPlan `
-                                 -MaximumWorkerCount 20 `
-                                 -Sku EP2 `
-                                 -Force
-
+Update-AzFunctionAppPlan -ResourceGroupName MyResourceGroupName `
+                         -Name MyPremiumPlan `
+                         -MaximumWorkerCount 20 `
+                         -Sku EP2 `
+                         -Force
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IAppServicePlanPatchResource
@@ -47,7 +46,7 @@ APPSERVICEPLAN <IAppServicePlanPatchResource>: ARM resource for a app service pl
   [IsXenon <Boolean?>]: Obsolete: If Hyper-V container app service plan <code>true</code>, <code>false</code> otherwise.
   [MaximumElasticWorkerCount <Int32?>]: Maximum number of total workers allowed for this ElasticScaleEnabled App Service Plan
   [PerSiteScaling <Boolean?>]: If <code>true</code>, apps assigned to this App Service plan can be scaled independently.         If <code>false</code>, apps assigned to this App Service plan will scale to all instances of the plan.
-  [Reserved <Boolean?>]: If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+  [Reserved <Boolean?>]: This needs to set to <code>true</code> when creating a Linux App Service Plan, along with <code>kind</code> set to <code>Linux</code>. It should be <code>false</code> otherwise.
   [SpotExpirationTime <DateTime?>]: The time when the server farm expires. Valid only if it is a spot server farm.
   [TargetWorkerCount <Int32?>]: Scaling worker count.
   [TargetWorkerSizeId <Int32?>]: Scaling worker size ID.
@@ -217,7 +216,9 @@ param(
     [Parameter(ParameterSetName='UpdateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # If Linux app service plan <code>true</code>, <code>false</code> otherwise.
+    # This needs to set to <code>true</code>
+    # when creating a Linux App Service Plan, along with <code>kind</code> set to <code>Linux</code>.
+    # It should be <code>false</code> otherwise.
     ${Reserved},
 
     [Parameter(ParameterSetName='UpdateExpanded')]
@@ -304,6 +305,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             Update = 'Az.Functions.private\Update-AzFunctionAppPlan_Update';
             UpdateExpanded = 'Az.Functions.private\Update-AzFunctionAppPlan_UpdateExpanded';
@@ -319,6 +321,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -327,15 +330,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

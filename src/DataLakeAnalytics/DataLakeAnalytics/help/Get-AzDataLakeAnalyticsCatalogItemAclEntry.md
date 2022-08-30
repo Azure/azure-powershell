@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 online version: https://docs.microsoft.com/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticscatalogitemaclentry
@@ -55,8 +55,10 @@ The **Get-AzDataLakeAnalyticsCatalogItemAclEntry** cmdlet gets a list of entries
 
 ### Example 1: Get the ACL for a catalog
 ```powershell
-PS C:\> Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla"
+Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla"
+```
 
+```output
 Type  Id                                   Permissions
 ----  --                                   -----------
 User  90a6f74b-fd73-490e-900a-c4f0f9694d02        Read
@@ -68,8 +70,10 @@ This command gets the ACL for the catalog of the specified Data Lake Analytics a
 
 ### Example 2: Get the ACL entry of user owner for a catalog
 ```powershell
-PS C:\> Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner
+Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner
+```
 
+```output
 Type      Id                                   Permissions
 ----      --                                   -----------
 UserOwner 0316ac75-6703-4ace-984f-a4dd79aeeafc   ReadWrite
@@ -79,8 +83,10 @@ This command gets ACL entry of the user owner for the catalog of the specified D
 
 ### Example 3: Get the ACL entry of group owner for a catalog
 ```powershell
-PS C:\> Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -GroupOwner
+Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -GroupOwner
+```
 
+```output
 Type       Id                                   Permissions
 ----       --                                   -----------
 GroupOwner 0316ac75-6703-4ace-984f-a4dd79aeeafc   ReadWrite
@@ -90,8 +96,10 @@ This command gets ACL entry of the group owner for the catalog of the specified 
 
 ### Example 4: Get the ACL for a database
 ```powershell
-PS C:\> Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -ItemType Database -Path "databaseName"
+Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -ItemType Database -Path "databaseName"
+```
 
+```output
 Type  Id                                   Permissions
 ----  --                                   -----------
 User  90a6f74b-fd73-490e-900a-c4f0f9694d02        Read
@@ -103,8 +111,10 @@ This command gets the ACL for the database of the specified Data Lake Analytics 
 
 ### Example 5: Get the ACL entry of user owner for a database
 ```powershell
-PS C:\> Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner -ItemType Database -Path "databaseName"
+Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -UserOwner -ItemType Database -Path "databaseName"
+```
 
+```output
 Type      Id                                   Permissions
 ----      --                                   -----------
 UserOwner 0316ac75-6703-4ace-984f-a4dd79aeeafc   ReadWrite
@@ -114,8 +124,10 @@ This command gets the ACL entry of the user owner for the database of the specif
 
 ### Example 6: Get the ACL entry of group owner for a database
 ```powershell
-PS C:\> Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -GroupOwner -ItemType Database -Path "databaseName"
+Get-AzDataLakeAnalyticsCatalogItemAclEntry -Account "contosoadla" -GroupOwner -ItemType Database -Path "databaseName"
+```
 
+```output
 Type       Id                                   Permissions
 ----       --                                   -----------
 GroupOwner 0316ac75-6703-4ace-984f-a4dd79aeeafc   ReadWrite

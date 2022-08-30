@@ -24,8 +24,10 @@ Create a in-memory object for DigitalTwinsIdentity
 
 ### Example 1: Create A DigitalTwinsIdentityObject
 ```powershell
-PS C:\> New-AzDigitalTwinsDigitalTwinsIdentityObject -Id '************' -Location eastus
+New-AzDigitalTwinsDigitalTwinsIdentityObject -Id '************' -Location eastus
+```
 
+```output
 EndpointName Location ResourceGroupName ResourceName SubscriptionId
 ------------ -------- ----------------- ------------ --------------
              eastus

@@ -14,6 +14,8 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.KeyVault.Helpers;
 using Microsoft.Azure.Commands.KeyVault.Models;
@@ -98,12 +100,16 @@ namespace Microsoft.Azure.Commands.KeyVault
         #endregion
         public override void ExecuteCmdlet()
         {
-            MSGraphMessageHelper.WriteMessageForCmdletsSwallowException(this);
-
             switch (ParameterSetName)
             {
                 case GetVaultParameterSet:
-                    ResourceGroupName = string.IsNullOrWhiteSpace(ResourceGroupName) ? GetResourceGroupName(VaultName) : ResourceGroupName;
+                    List<PSKeyVaultIdentityItem> vaults = null;
+                    
+                    if (string.IsNullOrWhiteSpace(ResourceGroupName))
+                    {
+                        vaults = ListVaults(ResourceGroupName, Tag);
+                        ResourceGroupName = vaults?.FirstOrDefault(r => r.VaultName.Equals(VaultName, StringComparison.OrdinalIgnoreCase))?.ResourceGroupName;
+                    }
 
                     if (ShouldGetByName(ResourceGroupName, VaultName))
                     {
@@ -115,7 +121,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                     }
                     else
                     {
-                        WriteObject(TopLevelWildcardFilter(ResourceGroupName, VaultName, ListVaults(ResourceGroupName, Tag)), true);
+                        WriteObject(TopLevelWildcardFilter(ResourceGroupName, VaultName, vaults ?? ListVaults(ResourceGroupName, Tag)), true);
                     }
 
                     break;

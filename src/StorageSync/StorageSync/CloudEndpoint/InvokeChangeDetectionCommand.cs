@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
     /// </summary>
     /// <seealso cref="Microsoft.Azure.Commands.StorageSync.Common.StorageSyncClientCmdletBase" />
     [Cmdlet(VerbsLifecycle.Invoke, StorageSyncNouns.NounAzureRmStorageSyncChangeDetection,
-        DefaultParameterSetName = StorageSyncParameterSets.ChangeDetectionStringAndDirectoryParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
+        DefaultParameterSetName = StorageSyncParameterSets.ChangeDetectionFullShareStringParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class InvokeChangeDetectionCommand : StorageSyncClientCmdletBase
     {
         /// <summary>

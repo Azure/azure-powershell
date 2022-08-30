@@ -33,7 +33,7 @@ New-AzApiManagementApiRevision -Context $context -ApiId "echo-api" -ApiRevision 
 New-AzApiManagementApiRevision -Context $context -ApiId "echo-api" -ApiRevision "5"
 ```
 
-This command creates an API Revision `2` of the `echo-api` API.
+This command creates an API Revision `5` of the `echo-api` API.
 
 ### Example 2: Create an API Revision from an Existing Api and copy All operations, tags and Policies
 ```powershell

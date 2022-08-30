@@ -24,7 +24,7 @@ New-AzApplicationGatewayRewriteRuleUrlConfiguration [-ModifiedPath <String>] [-M
 
 ### Example 1
 ```powershell
-PS C:\> $urlConfiguration = New-AzApplicationGatewayRewriteRuleUrlConfiguration -ModifiedPath "/abc" -ModifiedQueryString "x=y&a=b"
+$urlConfiguration = New-AzApplicationGatewayRewriteRuleUrlConfiguration -ModifiedPath "/abc" -ModifiedQueryString "x=y&a=b"
 ```
 
 This command creates a rewrite rule url configuration and stores the result in the variable named $urlConfiguration.

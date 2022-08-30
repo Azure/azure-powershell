@@ -24,7 +24,7 @@ The **Remove-AzCapacityReservation** cmdlet removes a Capacity Reservation resou
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzCapacityReservation -ResourceGroupName "myRG" -ReservationGroupName "myCapacityReservationGroup" -Name "myCapacityReservation"
+Remove-AzCapacityReservation -ResourceGroupName "myRG" -ReservationGroupName "myCapacityReservationGroup" -Name "myCapacityReservation"
 ```
 
 This command removes the Capacity Reservation resource. 

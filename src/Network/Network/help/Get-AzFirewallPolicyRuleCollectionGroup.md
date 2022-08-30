@@ -37,7 +37,7 @@ The **Get-AzFirewallPolicyRuleCollectionGroup** cmdlet gets the RuleCollectionGr
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzFirewallPolicyRuleCollectionGroup -Name rg1 -AzureFirewallPolicy $fp
+Get-AzFirewallPolicyRuleCollectionGroup -Name rg1 -AzureFirewallPolicy $fp
 ```
 
 This example get the rule collectionGroup in the firewall policy $fp

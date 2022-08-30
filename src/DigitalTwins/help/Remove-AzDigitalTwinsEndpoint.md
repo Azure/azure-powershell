@@ -32,17 +32,15 @@ Delete a DigitalTwinsInstance endpoint.
 
 ### Example 1: Delete the azDigitalTwinsEndPoint by EndPointName
 ```powershell
-PS C:\> Remove-AzDigitalTwinsEndpoint -ResourceGroupName youritemp -EndpointName youriEHEndpoint -ResourceName youriDigitalTwinsTest
-
+Remove-AzDigitalTwinsEndpoint -ResourceGroupName youritemp -EndpointName youriEHEndpoint -ResourceName youriDigitalTwinsTest
 ```
 
 Delete the azDigitalTwinsEndPoint by EndPointName ResourceGroupName and ResourceName
 
 ### Example 2: Delete the azDigitalTwinsEndPoint by Object
 ```powershell
-PS C:\> $GetAzdigitalTwinsEndpoint = Get-AzDigitalTwinsEndpoint -EndpointName youriEHEndpoint -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
+$GetAzdigitalTwinsEndpoint = Get-AzDigitalTwinsEndpoint -EndpointName youriEHEndpoint -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
 Remove-AzDigitalTwinsEndpoint -InputObject $GetAzdigitalTwinsEndpoint
-
 ```
 
 Delete the azDigitalTwinsEndPoint by Object
@@ -236,7 +234,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+INPUTOBJECT `<IDigitalTwinsIdentity>`: Identity Parameter
   - `[EndpointName <String>]`: Name of Endpoint Resource.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location of DigitalTwinsInstance.

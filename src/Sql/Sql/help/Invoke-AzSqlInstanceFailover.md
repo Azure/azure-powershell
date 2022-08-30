@@ -25,14 +25,14 @@ The **Invoke-AzSqlInstanceFailover** cmdlet failovers an Azure SQL Managed Insta
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzSqlInstanceFailover -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01"
+Invoke-AzSqlInstanceFailover -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01"
 ```
 
 This command will failover the primary replica of the instance named "ManagedInstance01".
 
 ### Example 2
 ```powershell
-PS C:\> Invoke-AzSqlInstanceFailover -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" -ReadableSecondary
+Invoke-AzSqlInstanceFailover -ResourceGroupName "ResourceGroup01" -Name "ManagedInstance01" -ReadableSecondary
 ```
 
 This command will failover the readable secondary replica of the managed instance "ManagedInstance01".

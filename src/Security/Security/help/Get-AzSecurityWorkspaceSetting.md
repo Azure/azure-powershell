@@ -35,8 +35,10 @@ This cmdlet lets you discover the configured workspace that will hold the securi
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSecurityWorkspaceSetting
+Get-AzSecurityWorkspaceSetting
+```
 
+```output
 Id                                                                                                         Name    WorkspaceId                                                                                                                               
 --                                                                                                         ----    -----------                                                                                                                               
 /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/providers/Microsoft.Security/workspaceSettings/default default /subscriptions/487bb485-b5b0-471e-9c0d-10717612f869/resourcegroups/mainws/providers/microsoft.operationalinsights/workspaces/securityus...

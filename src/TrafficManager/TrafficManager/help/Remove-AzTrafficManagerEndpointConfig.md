@@ -29,10 +29,10 @@ To remove an endpoint and commit changes in a single operation, use the Remove-A
 ## EXAMPLES
 
 ### Example 1: Remove an endpoint
-```
-PS C:\>$TrafficManagerProfile = Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
-PS C:\> Remove-AzTrafficManagerEndpointConfig -EndpointName "contoso" -TrafficManagerProfile $TrafficManagerProfile 
-PS C:\> Set-AzTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
+```powershell
+$TrafficManagerProfile = Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+Remove-AzTrafficManagerEndpointConfig -EndpointName "contoso" -TrafficManagerProfile $TrafficManagerProfile 
+Set-AzTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
 ```
 
 The first command gets an Azure Traffic Manager profile by using the **Get-AzTrafficManagerProfile** cmdlet.

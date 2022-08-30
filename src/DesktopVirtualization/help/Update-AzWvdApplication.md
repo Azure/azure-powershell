@@ -39,7 +39,7 @@ Update an application.
 
 ### Example 1: Update a Windows Virtual Desktop Application
 ```powershell
-PS C:\> Update-AzWvdApplication -ResourceGroupName ResourceGroupName `
+Update-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -GroupName ApplicationGroupName `
                              -Name ApplicationName `
                              -FilePath 'C:\windows\system32\mspaint.exe' `
@@ -49,7 +49,9 @@ PS C:\> Update-AzWvdApplication -ResourceGroupName ResourceGroupName `
                              -IconPath 'C:\windows\system32\mspaint.exe' `
                              -CommandLineSetting 'Allow' `
                              -ShowInPortal:$true
+```
 
+```output
 Name                                 Type
 ----                                 ----
 ApplicationGroupName/ApplicationName Microsoft.DesktopVirtualization/applicationgroups/applications
@@ -382,7 +384,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+`INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group

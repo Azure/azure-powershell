@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/set-aziothubconfiguration
@@ -42,18 +42,18 @@ See https://docs.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -Priority 7 -TargetCondition "tags.building=3 and tags.environment='dev'"
+Set-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -Priority 7 -TargetCondition "tags.building=3 and tags.environment='dev'"
 ```
 
 Alter the priority of a device configuration and update its target condition
 
 ### Example 2
 ```powershell
-PS C:\> $labels = @{}
-PS C:\> $labels.add("key0","value0")
-PS C:\> $metrics = @{}
-PS C:\> $metrics.add("query1", "select deviceId from devices where tags.location='US'")
-PS C:\> Set-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -Label $labels -Metric $metrics
+$labels = @{}
+$labels.add("key0","value0")
+$metrics = @{}
+$metrics.add("query1", "select deviceId from devices where tags.location='US'")
+Set-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1" -Label $labels -Metric $metrics
 ```
 
 Update the metrics and labels of a device configuration

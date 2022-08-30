@@ -1,0 +1,28 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "remediationCount": {
+      "type": "int"
+    },
+    "assignmentId": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.PolicyInsights/Remediations",
+      "apiVersion": "2021-10-01",
+      "name": "[format('testRemediation{0}', copyIndex('remediationCopy'))]",
+      "properties": {
+        "policyAssignmentId": "[parameters('assignmentId')]",
+        "resourceCount": 1
+      },
+      "copy": {
+        "name": "remediationCopy",
+        "count": "[parameters('remediationCount')]",
+        "mode": "Serial"
+      }
+    }
+  ]
+}

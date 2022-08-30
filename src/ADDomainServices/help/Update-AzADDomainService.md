@@ -16,28 +16,35 @@ The update call only supports the properties listed in the PATCH body.
 ### UpdateExpanded (Default)
 ```
 Update-AzADDomainService -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DomainConfigurationType <String>] [-DomainSecuritySettingNtlmV1 <String>]
- [-DomainSecuritySettingSyncKerberosPassword <String>] [-DomainSecuritySettingSyncNtlmPassword <String>]
- [-DomainSecuritySettingSyncOnPremPassword <String>] [-DomainSecuritySettingTlsV1 <String>]
- [-FilteredSync <String>] [-ForestTrust <IForestTrust[]>] [-LdapSettingExternalAccess <String>]
- [-LdapSettingLdaps <String>] [-LdapSettingPfxCertificate <String>]
- [-LdapSettingPfxCertificatePassword <SecureString>] [-NotificationSettingAdditionalRecipient <String[]>]
- [-NotificationSettingNotifyDcAdmin <String>] [-NotificationSettingNotifyGlobalAdmin <String>]
- [-ReplicaSet <IReplicaSet[]>] [-ResourceForest <String>] [-Sku <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DomainConfigurationType <String>] [-DomainName <String>] [-DomainSecuritySettingNtlmV1 <NtlmV1>]
+ [-DomainSecuritySettingSyncKerberosPassword <SyncKerberosPasswords>]
+ [-DomainSecuritySettingSyncNtlmPassword <SyncNtlmPasswords>]
+ [-DomainSecuritySettingSyncOnPremPassword <SyncOnPremPasswords>] [-DomainSecuritySettingTlsV1 <TlsV1>]
+ [-Etag <String>] [-FilteredSync <FilteredSync>] [-ForestTrust <IForestTrust[]>]
+ [-LdapSettingExternalAccess <ExternalAccess>] [-LdapSettingLdaps <Ldaps>]
+ [-LdapSettingPfxCertificateInputFile <String>] [-LdapSettingPfxCertificatePassword <SecureString>]
+ [-Location <String>] [-NotificationSettingAdditionalRecipient <String[]>]
+ [-NotificationSettingNotifyDcAdmin <NotifyDcAdmins>]
+ [-NotificationSettingNotifyGlobalAdmin <NotifyGlobalAdmins>] [-ReplicaSet <IReplicaSet[]>]
+ [-ResourceForest <String>] [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzADDomainService -InputObject <IAdDomainServicesIdentity> [-DomainConfigurationType <String>]
- [-DomainSecuritySettingNtlmV1 <String>] [-DomainSecuritySettingSyncKerberosPassword <String>]
- [-DomainSecuritySettingSyncNtlmPassword <String>] [-DomainSecuritySettingSyncOnPremPassword <String>]
- [-DomainSecuritySettingTlsV1 <String>] [-FilteredSync <String>] [-ForestTrust <IForestTrust[]>]
- [-LdapSettingExternalAccess <String>] [-LdapSettingLdaps <String>] [-LdapSettingPfxCertificate <String>]
- [-LdapSettingPfxCertificatePassword <SecureString>] [-NotificationSettingAdditionalRecipient <String[]>]
- [-NotificationSettingNotifyDcAdmin <String>] [-NotificationSettingNotifyGlobalAdmin <String>]
- [-ReplicaSet <IReplicaSet[]>] [-ResourceForest <String>] [-Sku <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DomainName <String>] [-DomainSecuritySettingNtlmV1 <NtlmV1>]
+ [-DomainSecuritySettingSyncKerberosPassword <SyncKerberosPasswords>]
+ [-DomainSecuritySettingSyncNtlmPassword <SyncNtlmPasswords>]
+ [-DomainSecuritySettingSyncOnPremPassword <SyncOnPremPasswords>] [-DomainSecuritySettingTlsV1 <TlsV1>]
+ [-Etag <String>] [-FilteredSync <FilteredSync>] [-ForestTrust <IForestTrust[]>]
+ [-LdapSettingExternalAccess <ExternalAccess>] [-LdapSettingLdaps <Ldaps>]
+ [-LdapSettingPfxCertificateInputFile <String>] [-LdapSettingPfxCertificatePassword <SecureString>]
+ [-Location <String>] [-NotificationSettingAdditionalRecipient <String[]>]
+ [-NotificationSettingNotifyDcAdmin <NotifyDcAdmins>]
+ [-NotificationSettingNotifyGlobalAdmin <NotifyGlobalAdmins>] [-ReplicaSet <IReplicaSet[]>]
+ [-ResourceForest <String>] [-Sku <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,8 +55,7 @@ The update call only supports the properties listed in the PATCH body.
 
 ### Example 1: Update AzADDomainService By ResourceGroupName and Name
 ```powershell
-PS C:\> $ADDomainSetting = New-AzADDomainServiceDomainSecuritySettingObject -TlsV1 Disabled
-Update-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain -DomainSecuritySetting $ADDomainSetting
+Update-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain -DomainSecuritySettingTlsV1 Disabled
 ```
 
 ```output
@@ -60,11 +66,10 @@ youriADdomain youriAddomain.com westus   Enterprise
 
 Update AzADDomainService By ResourceGroupName and Name
 
-### Example 2: Update AzADDomainService By Inputobject
+### Example 2: Update AzADDomainService By InputObject
 ```powershell
-PS C:\> $getAzAddomain = Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
-$ADDomainSetting = New-AzADDomainServiceDomainSecuritySettingObject -TlsV1 Disabled
-Update-AzADDomainService -InputObject $getAzAddomain -DomainSecuritySetting $ADDomainSetting
+$getAzAddomain = Get-AzADDomainService -Name youriADdomain -ResourceGroupName youriADdomain
+Update-AzADDomainService -InputObject $getAzAddomain -DomainSecuritySettingTlsV1 Disabled
 ```
 
 ```output
@@ -73,7 +78,7 @@ Name          Domain Name       Location Sku
 youriADdomain youriAddomain.com westus   Enterprise
 ```
 
-Update AzADDomainService By Inputobject
+Update AzADDomainService By InputObject
 
 ## PARAMETERS
 
@@ -122,11 +127,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -DomainName
+The name of the Azure domain that the user would like to deploy Domain Services to.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DomainSecuritySettingNtlmV1
 A flag to determine whether or not NtlmV1 is enabled or disabled.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NtlmV1
 Parameter Sets: (All)
 Aliases:
 
@@ -141,7 +161,7 @@ Accept wildcard characters: False
 A flag to determine whether or not SyncKerberosPasswords is enabled or disabled.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncKerberosPasswords
 Parameter Sets: (All)
 Aliases:
 
@@ -156,7 +176,7 @@ Accept wildcard characters: False
 A flag to determine whether or not SyncNtlmPasswords is enabled or disabled.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncNtlmPasswords
 Parameter Sets: (All)
 Aliases:
 
@@ -171,7 +191,7 @@ Accept wildcard characters: False
 A flag to determine whether or not SyncOnPremPasswords is enabled or disabled.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.SyncOnPremPasswords
 Parameter Sets: (All)
 Aliases:
 
@@ -184,6 +204,21 @@ Accept wildcard characters: False
 
 ### -DomainSecuritySettingTlsV1
 A flag to determine whether or not TlsV1 is enabled or disabled.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.TlsV1
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Etag
+Resource etag
 
 ```yaml
 Type: System.String
@@ -201,7 +236,7 @@ Accept wildcard characters: False
 Enabled or Disabled flag to turn on Group-based filtered sync
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.FilteredSync
 Parameter Sets: (All)
 Aliases:
 
@@ -248,7 +283,7 @@ Accept wildcard characters: False
 A flag to determine whether or not Secure LDAP access over the internet is enabled or disabled.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.ExternalAccess
 Parameter Sets: (All)
 Aliases:
 
@@ -263,7 +298,7 @@ Accept wildcard characters: False
 A flag to determine whether or not Secure LDAP is enabled or disabled.
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.Ldaps
 Parameter Sets: (All)
 Aliases:
 
@@ -274,9 +309,9 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -LdapSettingPfxCertificate
-The certificate required to configure Secure LDAP.
-The parameter passed here should be a base64encoded representation of the certificate pfx file.
+### -LdapSettingPfxCertificateInputFile
+Input File for LdapSettingPfxCertificate (The certificate required to configure Secure LDAP.
+The parameter passed here should be a base64encoded representation of the certificate pfx file.)
 
 ```yaml
 Type: System.String
@@ -295,6 +330,21 @@ The password to decrypt the provided Secure LDAP certificate pfx file.
 
 ```yaml
 Type: System.Security.SecureString
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Resource location
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -339,7 +389,7 @@ Accept wildcard characters: False
 Should domain controller admins be notified
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyDcAdmins
 Parameter Sets: (All)
 Aliases:
 
@@ -354,7 +404,7 @@ Accept wildcard characters: False
 Should global admins be notified
 
 ```yaml
-Type: System.String
+Type: Microsoft.Azure.PowerShell.Cmdlets.ADDomainServices.Support.NotifyGlobalAdmins
 Parameter Sets: (All)
 Aliases:
 
@@ -528,10 +578,10 @@ FORESTTRUST <IForestTrust[]>: List of settings for Resource Forest
   - `[FriendlyName <String>]`: Friendly Name
   - `[RemoteDnsIP <String>]`: Remote Dns ips
   - `[TrustDirection <String>]`: Trust Direction
-  - `[TrustPassword <String>]`: Trust Password
+  - `[TrustPassword <SecureString>]`: Trust Password
   - `[TrustedDomainFqdn <String>]`: Trusted Domain FQDN
 
-INPUTOBJECT <IAdDomainServicesIdentity>: Identity Parameter
+INPUTOBJECT `<IAdDomainServicesIdentity>`: Identity Parameter
   - `[DomainServiceName <String>]`: The name of the domain service.
   - `[Id <String>]`: Resource identity path
   - `[ResourceGroupName <String>]`: The name of the resource group within the user's subscription. The name is case insensitive.

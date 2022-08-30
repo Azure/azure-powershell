@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 663D27A3-0B51-48F5-81D0-8DDBC5A3A33C
@@ -31,8 +31,11 @@ The **Set-AzDataFactoryGateway** cmdlet sets the description for the specified g
 ## EXAMPLES
 
 ### Example 1: Set the description for a gateway
+```powershell
+Set-AzDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
 ```
-PS C:\>Set-AzDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
+
+```output
 Name            : ContosoGateway
 Description     : my gateway
 Version         : 1.3.5338.1

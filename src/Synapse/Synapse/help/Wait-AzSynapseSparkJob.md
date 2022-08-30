@@ -38,7 +38,7 @@ The **Wait-AzSynapseSparkJob** cmdlet waits for an Azure Synapse Analytics job t
 
 ### Example 1
 ```powershell
-PS C:\> Wait-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 324
+Wait-AzSynapseSparkJob -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 324
 ```
 
 This command waits for the job with the specified ID to complete.

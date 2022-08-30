@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers;
 using Microsoft.Azure.Commands.RecoveryServices.Backup.Properties;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Newtonsoft.Json;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 {
@@ -94,7 +95,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         {
             ExecutionBlock(() =>
             {
-                base.ExecuteCmdlet();
+                base.ExecuteCmdlet();               
 
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
                 string vaultName = resourceIdentifier.ResourceName;
@@ -164,7 +165,6 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     UseSecondaryRegion.ToString()));
 
                 int resultCount = 0;
-
                 if (UseSecondaryRegion.IsPresent)
                 {
                     ARSVault vault = ServiceClientAdapter.GetVault(resourceGroupName, vaultName);
@@ -179,9 +179,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                         rangeEnd,
                         ServiceClientHelpers.GetServiceClientBackupManagementType(BackupManagementType),
                         secondaryRegion);
-                    
-                    JobConversions.AddServiceClientJobsToPSList(
-                    adapterResponse, result, ref resultCount);
+
+                    JobConversions.AddServiceClientJobsToPSListCrr(adapterResponse, result, ref resultCount);
                 }
                 else
                 {

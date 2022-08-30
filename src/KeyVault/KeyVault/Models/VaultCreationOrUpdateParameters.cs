@@ -26,16 +26,18 @@ namespace Microsoft.Azure.Commands.KeyVault.Models
         public Hashtable Tags { get; set; }
         public string SkuName { get; set; }
         public string SkuFamilyName { get; set; }
-        public bool EnabledForDeployment { get; set; }
-        public bool EnabledForTemplateDeployment { get; set; }
-        public bool EnabledForDiskEncryption { get; set; }
+        public bool? EnabledForDeployment { get; set; }
+        public bool? EnabledForTemplateDeployment { get; set; }
+        public bool? EnabledForDiskEncryption { get; set; }
         public bool? EnableSoftDelete { get; set; }
         public bool? EnablePurgeProtection { get; set; }
         public bool? EnableRbacAuthorization { get; set; }
         public int? SoftDeleteRetentionInDays { get; set; }
+        public string PublicNetworkAccess { get; set; }
         public Guid TenantId { get; set; }
         public AccessPolicyEntry AccessPolicy { get; set; }
         public NetworkRuleSet NetworkAcls { get; set; }
+        public MHSMNetworkRuleSet MhsmNetworkAcls { get; set; }
         public CreateMode? CreateMode { get; set; }
         public string[] Administrator { get; set; }
     }

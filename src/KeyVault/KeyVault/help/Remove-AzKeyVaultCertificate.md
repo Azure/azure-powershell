@@ -32,8 +32,10 @@ The **Remove-AzKeyVaultCertificate** cmdlet removes a certificate from a key vau
 
 ### Example 1: Remove a certificate
 ```powershell
-PS C:\> Remove-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "SelfSigned01" -PassThru -Force
+Remove-AzKeyVaultCertificate -VaultName "ContosoKV01" -Name "SelfSigned01" -PassThru -Force
+```
 
+```output
 Certificate        : [Subject]
                        CN=contoso.com
 
@@ -76,7 +78,7 @@ Therefore, the cmdlet does not prompt you for confirmation.
 
 ### Example 2: Purge the deleted certificate from the key vault permanently
 ```powershell
-PS C:\> Remove-AzKeyVaultCertificate -VaultName 'Contoso' -Name 'MyCert' -InRemovedState
+Remove-AzKeyVaultCertificate -VaultName 'Contoso' -Name 'MyCert' -InRemovedState
 ```
 
 This command permanently removes the certificate named 'MyCert' from the key vault named 'Contoso'.

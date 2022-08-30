@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 ms.assetid: EE3D2BA0-32E7-4A37-BCAF-F0E8FAAC43CE
@@ -33,16 +33,16 @@ Web Apps can be bound to multiple certificates.
 ## EXAMPLES
 
 ### Example 1: Get SSL bindings for a Web App
-```
-PS C:\>Get-AzWebAppSSLBinding -ResourceGroupName "ContosoResourceGroup" -WebAppName "ContosoWebApp"
+```powershell
+Get-AzWebAppSSLBinding -ResourceGroupName "ContosoResourceGroup" -WebAppName "ContosoWebApp"
 ```
 
 This command retrieves the SSL bindings for the Web App ContosoWebApp, which is associated with the resource group ContosoResourceGroup.
 
 ### Example 2: Use an object reference to get SSL bindings for a Web App
-```
-PS C:\>$WebApp = Get-AzWebApp -Name "ContosoWebApp"
-PS C:\> Get-AzWebAppSSLBinding -WebApp $WebApp
+```powershell
+$WebApp = Get-AzWebApp -Name "ContosoWebApp"
+Get-AzWebAppSSLBinding -WebApp $WebApp
 ```
 
 The commands in this example also get the SSL bindings for the Web App ContosoWebApp; in this case, however, an object reference is used instead of the Web App name and the name of the associated resource group.
@@ -147,7 +147,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

@@ -31,8 +31,10 @@ The operation to get the execution history of an export for the defined scope an
 
 ### Example 1: Get AzCostManagementExportExecutionHistory
 ```powershell
-PS C:\> Get-AzCostManagementExportExecutionHistory -ExportName 'TestExport' -Scope 'subscriptions/**********'
+Get-AzCostManagementExportExecutionHistory -ExportName 'TestExport' -Scope 'subscriptions/**********'
+```
 
+```output
 ExecutionType ProcessingStartTime ProcessingEndTime  Status    FileName
 ------------- ------------------- -----------------  ------    --------
 Scheduled     2020/6/11 12:03:20  2020/6/11 12:03:43 Completed ad-hoc/TestExport/20200601-20200630/TestExport_00000000-0000-0000-0000-000000000000.csv
@@ -43,9 +45,11 @@ Get AzCostManagementExportExecutionHistory By ExportName and Scope
 
 ### Example 2: Get AzCostManagementExportExecutionHistory by InputObject
 ```powershell
-PS C:\> $getExport = Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
+$getExport = Get-AzCostManagementExport -Name 'TestExport' -Scope 'subscriptions/**********'
 Get-AzCostManagementExportExecutionHistory -InputObject $getExport
+```
 
+```output
 ExecutionType ProcessingStartTime ProcessingEndTime  Status    FileName
 ------------- ------------------- -----------------  ------    --------
 Scheduled     2020/6/11 12:03:20  2020/6/11 12:03:43 Completed ad-hoc/TestExport/20200601-20200630/TestExport_00000000-0000-0000-0000-000000000000.csv
@@ -137,7 +141,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
+INPUTOBJECT `<ICostManagementIdentity>`: Identity Parameter
   - `[AlertId <String>]`: Alert ID
   - `[ExportName <String>]`: Export Name.
   - `[ExternalCloudProviderId <String>]`: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.

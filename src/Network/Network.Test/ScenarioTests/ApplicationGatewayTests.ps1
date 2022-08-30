@@ -2719,6 +2719,580 @@ function Test-ApplicationGatewayWithFirewallPolicy
 
 <#
 .SYNOPSIS
+This case tests the cmdlets related to TCP Listeners, BackendSettings, RoutingRules and Probes.
+#>
+function Test-ApplicationGatewayWithTCPResources
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	# $location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "South Central US"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$frontendPort02Name = Get-ResourceName
+	$frontendPort03Name = Get-ResourceName
+	$frontendPort04Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+	$listener02Name = Get-ResourceName
+	$listener03Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$poolName02 = Get-ResourceName
+	$trustedRootCertName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+	$poolSetting02Name = Get-ResourceName
+	$poolSetting03Name = Get-ResourceName
+	$probeName = Get-ResourceName
+	$probeName02 = Get-ResourceName
+	$rule01Name = Get-ResourceName
+	$rule02Name = Get-ResourceName
+
+	$redirectName = Get-ResourceName
+	$sslCert01Name = Get-ResourceName
+
+	$rewriteRuleName = Get-ResourceName
+	$rewriteRuleSetName = Get-ResourceName
+
+	try
+	{
+		# The Routing Rule Priortity field will be enabled in upcoming SDK release and  is enabled for selected locations in NRP
+		# Currently West US 3 region does not have priority filed enabled so hardcoding it to this region, This can be removed once it is enabled on all regions in productions and SDK is released.
+		$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 3"
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name -Port 80
+		$fp02 = New-AzApplicationGatewayFrontendPort -Name $frontendPort02Name -Port 443
+		$fp03 = New-AzApplicationGatewayFrontendPort -Name $frontendPort03Name -Port 444
+		$fp04 = New-AzApplicationGatewayFrontendPort -Name $frontendPort04Name -Port 404
+
+		# sku
+		$sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
+		$autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
+		Assert-AreEqual $autoscaleConfig.MinCapacity 3
+		
+		##New commands
+		
+		#New Listener command
+		$listener01 = New-AzApplicationGatewayListener -Name $listener01Name -Protocol TCP -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 
+		Assert-AreEqual $listener01.Name  $listener01Name
+		Assert-AreEqual $listener01.FrontendIPConfiguration.Id  $fipconfig.Id
+		Assert-AreEqual $listener01.FrontendPort.Id   $fp01.Id
+		Assert-AreEqual $listener01.Protocol   "TCP"
+
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		
+		#New BackendSetting Command
+		$poolSetting01 = New-AzApplicationGatewayBackendSetting -Name $poolSetting01Name -Port 443 -Protocol TCP -Timeout 20
+		Assert-AreEqual $poolSetting01.Name    $poolSetting01Name
+		Assert-AreEqual $poolSetting01.Port    443
+		Assert-AreEqual $poolSetting01.Protocol   "TCP"
+		Assert-AreEqual $poolSetting01.Timeout    20
+
+		#New Routing rule  command
+		$rule01 = New-AzApplicationGatewayRoutingRule -Name $rule01Name -RuleType basic -Priority 100  -BackendSettings  $poolSetting01 -Listener  $listener01 -BackendAddressPool  $pool
+		Assert-AreEqual $rule01.BackendSettings.Id   $poolSetting01.Id
+		Assert-AreEqual $rule01.Listener.Id    $listener01.Id
+		Assert-AreEqual $rule01.BackendAddressPool.Id    $pool.Id
+		
+		#new  Health Probe command
+		$probe = New-AzApplicationGatewayProbeConfig -Name $probeName -Protocol TCP  -Interval 89 -Timeout 88 -UnhealthyThreshold 8 
+		Assert-AreEqual $probe.Name   $probeName
+		Assert-AreEqual $probe.Protocol   "TCP"
+		Assert-AreEqual $probe.Interval   89
+		Assert-AreEqual $probe.Timeout   88
+		Assert-AreEqual $probe.UnhealthyThreshold   8
+		
+
+		# Create Application Gateway
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01,$fp02,$fp03,$fp04 -Listeners $listener01 -RoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig  -Probe $probe  
+		
+		
+		##Get Commands
+
+		# Get Listener
+		$listener01 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener01Name
+		Assert-AreEqual $listener01.Name  $listener01Name
+		
+		#Get Backend setting
+		$backendSettingGet = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting01Name
+		Assert-AreEqual $backendSettingGet.Name  $poolSetting01Name
+		#Get Routing Rule 
+		$routingRuleGet = Get-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule01Name
+		Assert-AreEqual $routingRuleGet.Name  $rule01Name
+		#Get Health Probe
+		$healthProbeGet = Get-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName
+		Assert-AreEqual $healthProbeGet.Name  $probeName
+		
+		
+		
+		##Add  to test Remove
+		
+		# Add Backend Setting
+		Add-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name -Port 1234 -Protocol TCP  -Timeout 42
+		$poolSetting02 = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name
+		Assert-AreEqual $poolSetting02.Name    $poolSetting02Name
+		Assert-AreEqual $poolSetting02.Port    1234
+		Assert-AreEqual $poolSetting02.Protocol   "TCP"
+		Assert-AreEqual $poolSetting02.Timeout    42
+		
+		#Add backend Setting
+		Add-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting03Name -Port 4321 -Protocol TCP  -Timeout 24
+		$poolSetting03= Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting03Name
+		Assert-AreEqual $poolSetting03.Name    $poolSetting03Name
+		Assert-AreEqual $poolSetting03.Port    4321
+		Assert-AreEqual $poolSetting03.Protocol   "TCP"
+		Assert-AreEqual $poolSetting03.Timeout    24
+		
+		
+		$fipconfig = Get-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName
+		
+		# Add Listener
+		Add-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name -Protocol TCP -FrontendIPConfiguration $fipconfig -FrontendPort $fp02
+		$listener02 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name
+		Assert-AreEqual $listener02.Name  $listener02Name
+		Assert-AreEqual $listener02.FrontendIPConfiguration.Id  $fipconfig.Id
+		Assert-AreEqual $listener02.FrontendPort.Id   $fp02.Id
+		Assert-AreEqual $listener02.Protocol   "TCP"
+		
+		
+		#Add Listener 3
+		Add-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener03Name -Protocol TCP -FrontendIPConfiguration $fipconfig -FrontendPort $fp03
+		$listener03 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener03Name
+		Assert-AreEqual $listener03.Name  $listener03Name
+		Assert-AreEqual $listener03.FrontendIPConfiguration.Id  $fipconfig.Id
+		Assert-AreEqual $listener03.FrontendPort.Id   $fp03.Id
+		Assert-AreEqual $listener03.Protocol   "TCP"
+		
+
+
+		#Add Routing Rule
+		$poolSetting02 = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name
+		$listener02 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name 
+	    Add-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType Basic -Priority 99  -BackendSettings  $poolSetting02 -Listener  $listener02 -BackendAddressPool  $pool
+		$rule02 =Get-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name
+		Assert-AreEqual $rule02.BackendSettings.Id   $poolSetting02.Id
+		Assert-AreEqual $rule02.Listener.Id    $listener02.Id
+		Assert-AreEqual $rule02.BackendAddressPool.Id    $pool.Id
+
+		#Add Probe
+		Add-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName02 -Protocol TCP  -Interval 79 -Timeout 78 -UnhealthyThreshold 7 
+		$probe02 = Get-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName02
+		Assert-AreEqual $probe02.Name   $probeName02
+		Assert-AreEqual $probe02.Protocol   "TCP"
+		Assert-AreEqual $probe02.Interval   79
+		Assert-AreEqual $probe02.Timeout   78
+		Assert-AreEqual $probe02.UnhealthyThreshold   7
+		
+		#Add backend Pool
+		Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName02 -BackendFqdns www.bing.com,www.microsoft.com
+		
+		## Set Application Gateway
+		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+
+		Assert-AreEqual $appgw.BackendSettingsCollection.Count 3
+		Assert-AreEqual $appgw.Listeners.Count 3
+		Assert-AreEqual $appgw.RoutingRules.Count 2
+		Assert-AreEqual $appgw.Probes.Count 2
+		
+		
+		##Set Commands
+		
+		
+		# Set Backend Setting
+		Set-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name -Port 123 -Protocol TCP  -Timeout 40
+		$poolSetting02 = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name
+		Assert-AreEqual $poolSetting02.Port    123
+		Assert-AreEqual $poolSetting02.Timeout    40
+		
+		
+		$fipconfig = Get-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName
+		
+		# Set Listener
+		Set-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name -Protocol TCP -FrontendIPConfiguration $fipconfig -FrontendPort $fp04
+		$listener02 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name
+		Assert-AreEqual $listener02.FrontendIPConfiguration.Id  $fipconfig.Id
+		Assert-AreEqual $listener02.FrontendPort.Id   $fp04.Id
+		
+		
+		#Set Routing Rule
+		$poolSetting03 = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting03Name
+		$listener03 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener03Name 
+	    Set-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType Basic -Priority 98  -BackendSettings  $poolSetting03 -Listener  $listener03 -BackendAddressPool  $pool
+		$rule02 =Get-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name
+		Assert-AreEqual $rule02.BackendSettings.Id   $poolSetting03.Id
+		Assert-AreEqual $rule02.Listener.Id    $listener03.Id
+		Assert-AreEqual $rule02.BackendAddressPool.Id    $pool.Id
+
+		#Set Probe
+		Set-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName02 -Protocol TCP  -Interval 24 -Timeout 15 -UnhealthyThreshold 6 
+		$probe02 = Get-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName02
+		Assert-AreEqual $probe02.Name   $probeName02
+		Assert-AreEqual $probe02.Protocol   "TCP"
+		Assert-AreEqual $probe02.Interval   24
+		Assert-AreEqual $probe02.Timeout   15
+		Assert-AreEqual $probe02.UnhealthyThreshold   6
+		
+		
+		## Set Application Gateway
+		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+		
+		
+		
+		
+		##Remove
+		Remove-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name
+		
+		Remove-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name
+		
+		Remove-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name
+		
+		Remove-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName02
+		
+		
+		## Set Application Gateway
+		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+		
+		Assert-AreEqual $appgw.BackendSettingsCollection.Count 2
+		Assert-AreEqual $appgw.Listeners.Count 2
+		Assert-AreEqual $appgw.RoutingRules.Count 1
+		Assert-AreEqual $appgw.Probes.Count 1
+		
+		
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+
+
+
+<#
+.SYNOPSIS
+This case tests the cmdlets related to TLS Listeners, BackendSettings, RoutingRules and Probes.
+#>
+function Test-ApplicationGatewayWithTLSResources
+{
+	param
+	(
+		$basedir = "./"
+	)
+
+	# Setup
+	# $location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "South Central US"
+
+	$rgname = Get-ResourceGroupName
+	$appgwName = Get-ResourceName
+	$vnetName = Get-ResourceName
+	$gwSubnetName = Get-ResourceName
+	$publicIpName = Get-ResourceName
+	$gipconfigname = Get-ResourceName
+
+	$frontendPort01Name = Get-ResourceName
+	$frontendPort02Name = Get-ResourceName
+	$frontendPort03Name = Get-ResourceName
+	$frontendPort04Name = Get-ResourceName
+	$fipconfigName = Get-ResourceName
+	$listener01Name = Get-ResourceName
+	$listener02Name = Get-ResourceName
+	$listener03Name = Get-ResourceName
+
+	$poolName = Get-ResourceName
+	$poolName02 = Get-ResourceName
+	$trustedRootCertName = Get-ResourceName
+	$poolSetting01Name = Get-ResourceName
+	$poolSetting02Name = Get-ResourceName
+	$poolSetting03Name = Get-ResourceName
+	$probeName = Get-ResourceName
+	$probeName02 = Get-ResourceName
+	$rule01Name = Get-ResourceName
+	$rule02Name = Get-ResourceName
+
+	$redirectName = Get-ResourceName
+	$sslCert01Name = Get-ResourceName
+
+	$rewriteRuleName = Get-ResourceName
+	$rewriteRuleSetName = Get-ResourceName
+
+	$trustedClientCert01Name = Get-ResourceName
+	$trustedClientCert02Name = Get-ResourceName
+	$sslProfile01Name = Get-ResourceName
+	$sslProfile02Name = Get-ResourceName
+
+	try
+	{
+		# The Routing Rule Priortity field will be enabled in upcoming SDK release and  is enabled for selected locations in NRP
+		# Currently West US 3 region does not have priority filed enabled so hardcoding it to this region, This can be removed once it is enabled on all regions in productions and SDK is released.
+		$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 3"
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+		# Create the Virtual Network
+		$gwSubnet = New-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -AddressPrefix 10.0.0.0/24
+		$vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $gwSubnet
+		$vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
+		$gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name $gwSubnetName -VirtualNetwork $vnet
+
+		# Create public ip
+		$publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -sku Standard
+
+		# Create ip configuration
+		$gipconfig = New-AzApplicationGatewayIPConfiguration -Name $gipconfigname -Subnet $gwSubnet
+
+		$fipconfig = New-AzApplicationGatewayFrontendIPConfig -Name $fipconfigName -PublicIPAddress $publicip
+		$fp01 = New-AzApplicationGatewayFrontendPort -Name $frontendPort01Name -Port 80
+		$fp02 = New-AzApplicationGatewayFrontendPort -Name $frontendPort02Name -Port 443
+		$fp03 = New-AzApplicationGatewayFrontendPort -Name $frontendPort03Name -Port 444
+		$fp04 = New-AzApplicationGatewayFrontendPort -Name $frontendPort04Name -Port 404
+
+
+		#[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
+		$pw01 = ConvertTo-SecureString "P@ssw0rd" -AsPlainText -Force
+		$sslCert01Path = $basedir + "/ScenarioTests/Data/ApplicationGatewaySslCert1.pfx"
+		$sslCert = New-AzApplicationGatewaySslCertificate -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
+		
+		#New  TLS Listener
+		$listener01 = New-AzApplicationGatewayListener -Name $listener01Name -Protocol TLS -FrontendIPConfiguration $fipconfig -FrontendPort $fp01 -SslCertificate $sslCert #-SslProfile  $sslProfile01
+		Assert-AreEqual $listener01.FrontendIPConfiguration.Id  $fipconfig.Id
+		Assert-AreEqual $listener01.FrontendPort.Id   $fp01.Id
+		Assert-AreEqual $listener01.Protocol   "TLS"
+		Assert-AreEqual $listener01.SslCertificate.Id    $sslCert.Id
+		Assert-AreEqual $listener01.SslProfile.Id     $sslProfile01.Id
+		
+		
+		$certFilePath2 = $basedir + "/ScenarioTests/Data/TrustedRootCertificate.cer"
+		
+		$trustedRootCert = New-AzApplicationGatewayTrustedRootCertificate -Name $trustedRootCertName -CertificateFile $certFilePath2
+		
+		$pool = New-AzApplicationGatewayBackendAddressPool -Name $poolName -BackendIPAddresses www.microsoft.com, www.bing.com
+		
+		
+		#add for port also
+		$probe = New-AzApplicationGatewayProbeConfig -Name $probeName -Protocol TLS  -Interval 89 -Timeout 88 -UnhealthyThreshold 8 -Port 777
+		Assert-AreEqual $probe.Interval   89
+		Assert-AreEqual $probe.Timeout   88
+		Assert-AreEqual $probe.UnhealthyThreshold   8
+		
+		
+		#New TLS BackendSettings
+		$poolSetting01 = New-AzApplicationGatewayBackendSetting -Name $poolSetting01Name -Port 443 -Protocol TLS -Timeout 20 -HostName www.google.com -TrustedRootCertificate $trustedRootCert -Probe $probe
+		
+		Assert-AreEqual $poolSetting01.Protocol  TLS
+		Assert-AreEqual $poolSetting01.Timeout   20
+		Assert-AreEqual $poolSetting01.Port   443
+		Assert-AreEqual $poolSetting01.Probe.Id    $probe.Id
+		Assert-AreEqual $poolSetting01.HostName  "www.google.com"
+
+		#New Routing rule
+		$rule01 = New-AzApplicationGatewayRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendSettings  $poolSetting01 -Listener  $listener01 -BackendAddressPool  $pool
+		Assert-AreEqual $rule01.BackendSettings.Id   $poolSetting01.Id
+		Assert-AreEqual $rule01.Listener.Id    $listener01.Id
+		Assert-AreEqual $rule01.BackendAddressPool.Id    $pool.Id
+
+
+
+		# sku
+		$sku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
+		$autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
+		Assert-AreEqual $autoscaleConfig.MinCapacity 3
+		
+        # Create Application Gateway	
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location   -BackendAddressPools $pool -BackendSettingsCollection  $poolSetting01     -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01,$fp02,$fp03,$fp04 -Listeners $listener01 -RoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig  -Probe $probe -SslCertificate $sslCert -TrustedRootCertificate $trustedRootCert 
+		
+
+		
+		##Get Commands
+
+		# Get Listener
+		$listener01 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener01Name
+		Assert-AreEqual $listener01.Name  $listener01Name
+		#Get Backend setting
+		$backendSettingGet = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting01Name
+		Assert-AreEqual $backendSettingGet.Name  $poolSetting01Name
+		#Get Routing Rule 
+		$routingRuleGet = Get-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule01Name
+		Assert-AreEqual $routingRuleGet.Name  $rule01Name
+		#Get Health Probe
+		$healthProbeGet = Get-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName
+		Assert-AreEqual $healthProbeGet.Name  $probeName
+		
+		
+		## Add to test Remove		
+		#Add Probe
+		Add-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName02 -Protocol TLS -Timeout 10 -Interval 10 -UnhealthyThreshold 10
+		$probe02 =Get-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName02
+		Assert-AreEqual $probe02.Name   $probeName02
+		Assert-AreEqual $probe02.Protocol   "TLS"
+		Assert-AreEqual $probe02.Interval   10
+		Assert-AreEqual $probe02.Timeout   10
+		Assert-AreEqual $probe02.UnhealthyThreshold   10
+
+		# Add Backend Setting
+		Add-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name -Port 1234 -Protocol TLS  -Timeout 42 -HostName test -TrustedRootCertificate $trustedRootCert -Probe $probe02
+		$poolSetting02 = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name
+		Assert-AreEqual $poolSetting02.Name    $poolSetting02Name
+		Assert-AreEqual $poolSetting02.Port    1234
+		Assert-AreEqual $poolSetting02.Protocol   "TLS"
+		Assert-AreEqual $poolSetting02.Timeout    42
+		Assert-AreEqual $poolSetting02.HostName    "test"
+		Assert-AreEqual $poolSetting02.Probe.Id    $probe02.Id
+
+		#Add backend Setting
+		Add-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting03Name -Port 4321 -Protocol TCP  -Timeout 24
+		$poolSetting03= Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting03Name
+		Assert-AreEqual $poolSetting03.Name    $poolSetting03Name
+		Assert-AreEqual $poolSetting03.Port    4321
+		Assert-AreEqual $poolSetting03.Protocol   "TCP"
+		Assert-AreEqual $poolSetting03.Timeout    24
+		
+		
+		$fipconfig = Get-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName
+		$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_0 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
+		Add-AzApplicationGatewaySslProfile   -ApplicationGateway $appgw   -Name $sslProfile01Name   -SslPolicy $sslPolicy
+	    $sslProfile01 = Get-AzApplicationGatewaySslProfile   -ApplicationGateway $appgw   -Name $sslProfile01Name
+		
+		# Add Listener
+		Add-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name -Protocol TLS -FrontendIPConfiguration $fipconfig -FrontendPort $fp02   -SslCertificate $sslCert -SslProfile  $sslProfile01
+		$listener02 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name
+		Assert-AreEqual $listener02.Name  $listener02Name
+		Assert-AreEqual $listener02.FrontendIPConfiguration.Id  $fipconfig.Id
+		Assert-AreEqual $listener02.FrontendPort.Id   $fp02.Id
+		Assert-AreEqual $listener02.Protocol   "TLS"
+		Assert-AreEqual $listener02.SslCertificate.Id $sslCert.Id   
+		Assert-AreEqual $listener02.SslProfile.Id $sslProfile01.Id   
+		
+		
+		#Add Listener 3
+		Add-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener03Name -Protocol TCP -FrontendIPConfiguration $fipconfig -FrontendPort $fp03
+		$listener03 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener03Name
+		Assert-AreEqual $listener03.Name  $listener03Name
+		Assert-AreEqual $listener03.FrontendIPConfiguration.Id  $fipconfig.Id
+		Assert-AreEqual $listener03.FrontendPort.Id   $fp03.Id
+		Assert-AreEqual $listener03.Protocol   "TCP"
+		
+
+
+		#Add Routing Rule
+		$poolSetting02 = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name
+		$listener02 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name 
+	    Add-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType Basic -Priority 99 -BackendSettings  $poolSetting02 -Listener  $listener02 -BackendAddressPool  $pool
+		$rule02 =Get-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name
+		Assert-AreEqual $rule02.BackendSettings.Id   $poolSetting02.Id
+		Assert-AreEqual $rule02.Listener.Id    $listener02.Id
+		Assert-AreEqual $rule02.BackendAddressPool.Id    $pool.Id
+
+		
+		#Add backend Pool
+		Add-AzApplicationGatewayBackendAddressPool -ApplicationGateway $appgw -Name $poolName02 -BackendFqdns www.bing.com,www.microsoft.com
+		
+		## Set Application Gateway
+		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+
+		Assert-AreEqual $appgw.BackendSettingsCollection.Count 3
+		Assert-AreEqual $appgw.Listeners.Count 3
+		Assert-AreEqual $appgw.RoutingRules.Count 2
+		Assert-AreEqual $appgw.Probes.Count 2
+		
+		
+		##Set Commands
+		
+		
+		# Set Backend Setting
+		Set-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name -Port 123 -Protocol TCP  -Timeout 40
+		$poolSetting02 = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name
+		Assert-AreEqual $poolSetting02.Port    123
+		Assert-AreEqual $poolSetting02.Timeout    40
+		
+		
+		$fipconfig = Get-AzApplicationGatewayFrontendIPConfig -ApplicationGateway $appgw -Name $fipconfigName
+		
+		# Set Listener
+		Set-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name -Protocol TCP -FrontendIPConfiguration $fipconfig -FrontendPort $fp04
+		$listener02 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name
+		Assert-AreEqual $listener02.FrontendIPConfiguration.Id  $fipconfig.Id
+		Assert-AreEqual $listener02.FrontendPort.Id   $fp04.Id
+		
+		
+		#Set Routing Rule
+		$poolSetting03 = Get-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting03Name
+		$listener03 = Get-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener03Name 
+	    Set-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name -RuleType Basic -Priority 98 -BackendSettings  $poolSetting03 -Listener  $listener03 -BackendAddressPool  $pool
+		$rule02 =Get-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name
+		Assert-AreEqual $rule02.BackendSettings.Id   $poolSetting03.Id
+		Assert-AreEqual $rule02.Listener.Id    $listener03.Id
+		Assert-AreEqual $rule02.BackendAddressPool.Id    $pool.Id
+
+		#Set Probe
+		Set-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName02 -Protocol TCP  -Interval 24 -Timeout 15 -UnhealthyThreshold 6 
+		$probe02 = Get-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName02
+		Assert-AreEqual $probe02.Name   $probeName02
+		Assert-AreEqual $probe02.Protocol   "TCP"
+		Assert-AreEqual $probe02.Interval   24
+		Assert-AreEqual $probe02.Timeout   15
+		Assert-AreEqual $probe02.UnhealthyThreshold   6
+		
+		
+		## Set Application Gateway
+		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+		
+		
+		
+		
+		## Now remove
+		#Remove Listener
+		Remove-AzApplicationGatewayListener -ApplicationGateway $appgw -Name $listener02Name
+		
+		Remove-AzApplicationGatewayBackendSetting -ApplicationGateway $appgw -Name $poolSetting02Name
+		
+		Remove-AzApplicationGatewayRoutingRule -ApplicationGateway $appgw -Name $rule02Name
+		
+		Remove-AzApplicationGatewayProbeConfig -ApplicationGateway $appgw -Name $probeName02
+		
+		
+		## Set Application Gateway
+		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
+		
+		Assert-AreEqual $appgw.BackendSettingsCollection.Count 2
+		Assert-AreEqual $appgw.Listeners.Count 2
+		Assert-AreEqual $appgw.RoutingRules.Count 1
+		Assert-AreEqual $appgw.Probes.Count 1
+		
+		
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+
+
+<#
+.SYNOPSIS
 Application gateway v2 top level waf tests
 #>
 function Test-ApplicationGatewayFirewallPolicyExclusions
@@ -3582,6 +4156,51 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 
 		# Delete Application Gateway
 		Remove-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Force
+	}
+	finally
+	{
+		# Cleanup
+		Clean-ResourceGroup $rgname
+	}
+}
+
+function Test-ApplicationGatewayFirewallPolicyWithCustomRules
+{
+	# Setup
+	$location = Get-ProviderLocation "Microsoft.Network/applicationGateways" "West US 2"
+	$rgname = Get-ResourceGroupName
+	$wafPolicyName = "wafPolicy1"
+
+	try {
+		
+		$resourceGroup = New-AzResourceGroup -Name $rgname -Location $location -Tags @{ testtag = "APPGw tag"}
+
+		# WAF Policy with custom Rule
+		$variable = New-AzApplicationGatewayFirewallMatchVariable -VariableName RequestHeaders -Selector Malicious-Header
+		$condition =  New-AzApplicationGatewayFirewallCondition -MatchVariable $variable -Operator Any -NegationCondition $False
+		$customRule = New-AzApplicationGatewayFirewallCustomRule -Name example -Priority 2 -RuleType MatchRule -MatchCondition $condition -Action Block
+
+		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 70 -MaxRequestBodySizeInKb 70
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2"
+		$managedRule = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet 
+		New-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname -Location $location -ManagedRule $managedRule -PolicySetting $policySettings -CustomRule $customRule
+
+		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
+
+		# Check WAF policy
+		Assert-AreEqual $policy.CustomRules[0].Name $customRule.Name
+		Assert-AreEqual $policy.CustomRules[0].RuleType $customRule.RuleType
+		Assert-AreEqual $policy.CustomRules[0].Action $customRule.Action
+		Assert-AreEqual $policy.CustomRules[0].Priority $customRule.Priority
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].OperatorProperty $customRule.MatchConditions[0].OperatorProperty
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].NegationConditon $customRule.MatchConditions[0].NegationConditon
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].VariableName $customRule.MatchConditions[0].MatchVariables[0].VariableName
+		Assert-AreEqual $policy.CustomRules[0].MatchConditions[0].MatchVariables[0].Selector $customRule.MatchConditions[0].MatchVariables[0].Selector
+		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
+		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
+		Assert-AreEqual $policy.PolicySettings.RequestBodyCheck $policySettings.RequestBodyCheck
+		Assert-AreEqual $policy.PolicySettings.Mode $policySettings.Mode
+		Assert-AreEqual $policy.PolicySettings.State $policySettings.State
 	}
 	finally
 	{

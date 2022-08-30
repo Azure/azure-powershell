@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
 Module Name: Az.EventHub
 online version: https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubconsumergroup
@@ -24,8 +24,8 @@ The Set-AzEventHubConsumerGroup cmdlet updates the specified Event Hubs consumer
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Set-AzEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName -UserMetadata "Testing"
+```powershell
+Set-AzEventHubConsumerGroup -ResourceGroupName MyResourceGroupName -NamespaceName MyNamespaceName -EventHubName MyEventHubName -ConsumerGroupName MyConsumerGroupName -UserMetadata "Testing"
 ```
 
 Sets the user metadata of the consumer group \`MyConsumerGroupName\` to "Testing."

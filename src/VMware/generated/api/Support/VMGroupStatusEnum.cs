@@ -10,7 +10,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Support
     public partial struct VMGroupStatusEnum :
         System.IEquatable<VMGroupStatusEnum>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.VMGroupStatusEnum SuccessFailure = @"SUCCESS, FAILURE";
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.VMGroupStatusEnum Failure = @"FAILURE";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.VMGroupStatusEnum Success = @"SUCCESS";
 
         /// <summary>the value for an instance of the <see cref="VMGroupStatusEnum" /> Enum.</summary>
         private string _value { get; set; }

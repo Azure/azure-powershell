@@ -24,8 +24,8 @@ The **New-AzRedisCachePatchSchedule** cmdlet adds a patch schedule to a cache in
 ## EXAMPLES
 
 ### Example 1: Create and add a patch schedule on a cache
-```
-PS C:\>New-AzRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -Entries @(New-AzRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00")
+```powershell
+New-AzRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06" -Entries @(New-AzRedisCacheScheduleEntry -DayOfWeek "Weekend" -StartHourUtc 2 -MaintenanceWindow "06:00:00")
 ```
 
 This command adds a patch schedule to the cache named RedisCache06.

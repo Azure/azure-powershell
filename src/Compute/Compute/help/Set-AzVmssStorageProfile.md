@@ -17,8 +17,8 @@ Sets the storage profile properties for the VMSS.
 Set-AzVmssStorageProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [[-ImageReferencePublisher] <String>] [[-ImageReferenceOffer] <String>] [[-ImageReferenceSku] <String>]
  [[-ImageReferenceVersion] <String>] [[-OsDiskName] <String>] [[-OsDiskCaching] <CachingTypes>]
- [[-OsDiskCreateOption] <String>] [[-OsDiskOsType] <OperatingSystemTypes>] [[-Image] <String>]
- [[-VhdContainer] <String[]>] [-ImageReferenceId <String>] [-OsDiskWriteAccelerator]
+ [[-OsDiskCreateOption] <String>] [-OsDiskDeleteOption <String>] [[-OsDiskOsType] <OperatingSystemTypes>]
+ [[-Image] <String>] [[-VhdContainer] <String[]>] [-ImageReferenceId <String>] [-OsDiskWriteAccelerator]
  [-DiffDiskSetting <String>] [-DiffDiskPlacement <String>] [-ManagedDisk <String>]
  [-DiskEncryptionSetId <String>] [-DataDisk <VirtualMachineScaleSetDataDisk[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
@@ -30,8 +30,8 @@ The **Set-AzVmssStorageProfile** cmdlet sets the storage profile properties for 
 ## EXAMPLES
 
 ### Example 1: Set the storage profile properties for the VMSS
-```
-PS C:\> Set-AzVmssStorageProfile -VirtualMachineScaleSet "ContosoVMSS" -Name "Test" -OsDiskCreateOption "FromImage" -OsDiskCaching "None" `
+```powershell
+Set-AzVmssStorageProfile -VirtualMachineScaleSet "ContosoVMSS" -Name "Test" -OsDiskCreateOption "FromImage" -OsDiskCaching "None" `
             -ImageReferenceOffer $ImgRef.Offer -ImageReferenceSku $ImgRef.Skus -ImageReferenceVersion $ImgRef.Version `
             -ImageReferencePublisher $ImgRef.PublisherName -VhdContainer $VhdContainer
 ```
@@ -81,7 +81,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -261,6 +261,25 @@ Aliases:
 
 Required: False
 Position: 7
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -OsDiskDeleteOption
+Specifies whether OS disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only).
+
+Accepted Values 
+Delete - If this value is used, the OS disk is deleted when the VMSS Flex VM is deleted.
+Detach - If this value is used, the OS disk is retained after VMSS Flex VM is deleted.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

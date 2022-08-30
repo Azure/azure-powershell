@@ -21,23 +21,16 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
     /// <summary>
     /// The create new peering tests.
     /// </summary>
-    public class CreateNewExchangePeeringTests
+    public class CreateNewExchangePeeringTests : PeeringTestRunner
     {
-        /// <summary>
-        /// The _logger.
-        /// </summary>
-        private ServiceManagement.Common.Models.XunitTracingInterceptor logger;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateNewExchangePeeringTests"/> class.
         /// </summary>
         /// <param name="output">
         /// The output.
         /// </param>
-        public CreateNewExchangePeeringTests(Xunit.Abstractions.ITestOutputHelper output)
+        public CreateNewExchangePeeringTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            this.logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(this.logger);
         }
 
         /// <summary>
@@ -47,7 +40,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewExchangePeering()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewExchangePeering");
+            TestRunner.RunTestScript("Test-NewExchangePeering");
         }
 
         /// <summary>
@@ -57,7 +50,7 @@ namespace Microsoft.Azure.Commands.Peering.Test.ScenarioTests
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestNewExchangePeeringPipe()
         {
-            TestController.NewInstance.RunPowerShellTest(this.logger, "Test-NewExchangePeeringPipe");
+            TestRunner.RunTestScript("Test-NewExchangePeeringPipe");
         }
     }
 }

@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.PolicyInsights.Cmdlets
                     getFirstPage: () => this.PolicyInsightsClient.PolicyMetadata.List(queryOptions: queryOptions),
                     getNextPage: nextLink => this.PolicyInsightsClient.PolicyMetadata.ListNext(nextPageLink: nextLink),
                     action: resources => this.WriteObject(sendToPipeline: resources.Select(m => new PSPolicyMetadata(m)), enumerateCollection: true),
-                    top: queryOptions.Top.GetValueOrDefault(int.MaxValue),
+                    numberOfResults: queryOptions.Top.GetValueOrDefault(int.MaxValue),
                     cancellationToken: CancellationToken.None);
             }
         }

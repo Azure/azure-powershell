@@ -55,9 +55,11 @@ The **Get-AzNetworkInterface** cmdlet gets an Azure network interface or a list 
 ## EXAMPLES
 
 ### Example 1: Get all network interfaces
+```powershell
+Get-AzNetworkInterface
 ```
-PS C:\> Get-AzNetworkInterface
 
+```output
 Name                        : test1
 ResourceGroupName           : ResourceGroup1
 Location                    : eastus
@@ -117,9 +119,11 @@ MacAddress                  :
 This command gets all network interfaces for the current subscription.
 
 ### Example 2: Get all network interfaces with a specific provisioning state
+```powershell
+Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" | Where-Object {$_.ProvisioningState -eq 'Succeeded'}
 ```
-PS C:\> Get-AzNetworkInterface -ResourceGroupName "ResourceGroup1" | Where-Object {$_.ProvisioningState -eq 'Succeeded'}
 
+```output
 Name                        : test1
 ResourceGroupName           : ResourceGroup1
 Location                    : eastus
@@ -179,9 +183,11 @@ MacAddress                  :
 This command gets all network interfaces in the resource group named ResourceGroup1 that has a provisioning state of succeeded.
 
 ### Example 3: Get network interfaces using filtering
+```powershell
+Get-AzNetworkInterface -Name test*
 ```
-PS C:\> Get-AzNetworkInterface -Name test*
 
+```output
 Name                        : test1
 ResourceGroupName           : ResourceGroup1
 Location                    : eastus

@@ -26,8 +26,10 @@ Create PSAzureManagedRuleOverride Object for managed WAF rule group override obj
 Create a managed rule override object for rule 942250 (which is in SQLI group).
 
 ```powershell
-PS C:\> New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942250" -Action Log
+New-AzFrontDoorWafManagedRuleOverrideObject -RuleId "942250" -Action Log
+```
 
+```output
 RuleId EnabledState Action
 ------ ------------ ------
 942250      Enabled    Log

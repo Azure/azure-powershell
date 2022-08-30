@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
 
                 ResourceIdentifier resourceIdentifier = new ResourceIdentifier(VaultId);
                 string vaultName = resourceIdentifier.ResourceName;
-                string resourceGroupName = resourceIdentifier.ResourceGroupName;
+                string resourceGroupName = resourceIdentifier.ResourceGroupName;                
 
                 PsBackupProviderManager providerManager =
                     new PsBackupProviderManager(new Dictionary<Enum, object>()
@@ -172,7 +172,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                     {
                         psBackupProvider = providerManager.GetProviderInstance(Policy.WorkloadType);
                     }
-                    itemModels = psBackupProvider.ListProtectedItems();
+                    
+                    itemModels = psBackupProvider.ListProtectedItems();                    
                 }
 
                 WriteObject(itemModels, enumerateCollection: true);

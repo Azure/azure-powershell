@@ -24,9 +24,9 @@ The **Get-AzApplicationGatewayAuthenticationCertificate** cmdlet gets an authent
 ## EXAMPLES
 
 ### Example 1: Get a specified authentication certificate
-```
-PS C:\> $appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
-PS C:\> $cert = Get-AzApplicationGatewayAuthenticationCertificate -Name "cert01" -ApplicationGateway $appgw
+```powershell
+$appgw = Get-AzApplicationGateway -ResourceGroupName "rg" -Name "appGwName"
+$cert = Get-AzApplicationGatewayAuthenticationCertificate -Name "cert01" -ApplicationGateway $appgw
 ```
 
 The first command gets the application gateway named appGwName and stores it in the $appgw variable.

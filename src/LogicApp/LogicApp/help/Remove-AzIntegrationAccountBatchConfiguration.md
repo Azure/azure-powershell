@@ -37,7 +37,7 @@ The **Remove-AzIntegrationAccountBatchConfiguration** cmdlet removes a batch con
 
 ### Example 1: Remove a batch configuration by parameters
 ```powershell
-PS C:\> Remove-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfig"
+Remove-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfig"
 ```
 
 Removes the batch configuration named "sampleBatchConfig" located in the integration account "sampleIntegrationAccount".

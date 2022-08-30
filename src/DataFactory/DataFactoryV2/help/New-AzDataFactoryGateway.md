@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 4DCF54BA-CFFA-4555-8CA3-66B98F704EFB
@@ -31,8 +31,11 @@ The **New-AzDataFactoryGateway** cmdlet creates a gateway in Azure Data Factory.
 ## EXAMPLES
 
 ### Example 1: Create a gateway
+```powershell
+New-AzDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
 ```
-PS C:\>New-AzDataFactoryGateway -ResourceGroupName "ADF" -Name "ContosoGateway" -DataFactoryName "WikiADF" -Description "my gateway"
+
+```output
 Name              : ContosoGateway
 Description       : my gateway
 Version           : 

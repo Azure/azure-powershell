@@ -36,21 +36,21 @@ This cmdlet will get the service details in the specified application and cluste
 
 ### Example 1
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> $serviceName = "testApp~testService"
-PS C:\> Get-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+$serviceName = "testApp~testService"
+Get-AzServiceFabricService -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName -Name $serviceName
 ```
 
 This example gets the service resource details for the service "testApp~testService".
 
 ### Example 2
 ```powershell
-PS C:\> $resourceGroupName = "testRG"
-PS C:\> $clusterName = "testCluster"
-PS C:\> $appName = "testApp"
-PS C:\> Get-AzServiceFabricApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName
+$resourceGroupName = "testRG"
+$clusterName = "testCluster"
+$appName = "testApp"
+Get-AzServiceFabricApplication -ResourceGroupName $resourceGroupName -ClusterName $clusterName -ApplicationName $appName
 ```
 
 This example gets a list of the services under the application "testApp".

@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 5.0.1
+This release migrates Microsoft.Azure.Graph SDK to MicrosoftGraph SDK.
+
 ## Version 5.0.0
 * Added two parameters `-Zone` and `-PrivateLinkConfiguration` to cmdlet `New-AzHDInsightCluster`
   - Added parameter `-Zone` to cmdlet `New-AzHDInsightCluster` to support to create cluster with availability zones feature

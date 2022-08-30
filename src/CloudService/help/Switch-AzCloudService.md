@@ -32,7 +32,6 @@ Swaps VIPs between two cloud service (extended support) load balancers.
 ### Example 1: Switch cloud service using name
 ```powershell
 Switch-AzCloudService -ResourceGroupName "BRGThree" -CloudServiceName BService -SubscriptionId 1133e0eb-b53c-1234-b478-2eac8f04afca
-
 ```
 
 Above command invokes the vipswap operation on the Cloud service with name 'BService' and will perform the operation once the user confirms the action on the confirmation prompt.
@@ -42,7 +41,6 @@ Above command invokes the vipswap operation on the Cloud service with name 'BSer
 ```powershell
 $cs = Get-AzCloudService -ResourceGroupName "BRGThree" -CloudServiceName BService -SubscriptionId 1133e0eb-b53c-1234-b478-2eac8f04afca
 Switch-AzCloudService -CloudService $cs
-
 ```
 
 Above command invokes the vipswap operation on the Cloud service with name 'BService' and will perform the operation once the user confirms the action on the confirmation prompt.
@@ -205,7 +203,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CLOUDSERVICE <CloudService>: 
+CLOUDSERVICE `<CloudService>`: 
   - `Location <String>`: Resource location.
   - `[AllowModelOverride <Boolean?>]`: (Optional) Indicates whether the role sku properties (roleProfile.roles.sku) specified in the model/template should override the role instance count and vm size specified in the .cscfg and .csdef respectively.         The default value is `false`.
   - `[Configuration <String>]`: Specifies the XML service configuration (.cscfg) for the cloud service.

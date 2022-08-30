@@ -24,7 +24,10 @@ Associates a Microsoft Partner Network(MPN) ID to the current authenticated user
 
 ### Example 1
 ```powershell
-PS C:\> New-AzManagementPartner -PartnerId 4977985
+New-AzManagementPartner -PartnerId 4977985
+```
+
+```output
 PartnerId   : 4977985
 PartnerName : Test_Test_DPORTest
 TenantId    : 1b1121dd-6900-412a-af73-e8d44f81e1c1

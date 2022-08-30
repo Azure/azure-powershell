@@ -25,7 +25,7 @@ relationship for an ExpressRoute circuit.
 ## EXAMPLES
 
 ### Example 1: Display the peering configuration for an ExpressRoute circuit
-```
+```powershell
 $ckt = Get-AzExpressRouteCircuit -Name $CircuitName -ResourceGroupName $RG
 Get-AzExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -ExpressRouteCircuit $ckt
 ```

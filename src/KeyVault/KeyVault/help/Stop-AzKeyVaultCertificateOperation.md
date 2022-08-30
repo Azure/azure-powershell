@@ -32,8 +32,10 @@ The **Stop-AzKeyVaultCertificateOperation** cmdlet cancels a certificate operati
 
 ### Example 1: Cancel a certificate operation
 ```powershell
-PS C:\> Stop-AzKeyVaultCertificateOperation -VaultName "Contoso01" -Name "TestCert02" -Force
+Stop-AzKeyVaultCertificateOperation -VaultName "Contoso01" -Name "TestCert02" -Force
+```
 
+```output
 Status                    : inProgress
 CancellationRequested     : True
 CertificateSigningRequest : MIICpjCCAY4CAQAwFjEUMBIGA1UEAxMLY29udG9zby5jb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCVr6EVwsd48qDVORsF4V4w4N1aQCUirFW7b+kwoTvSOL4SfMiWcPmno0uxmQQoh

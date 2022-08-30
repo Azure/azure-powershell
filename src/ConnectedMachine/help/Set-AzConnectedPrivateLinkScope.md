@@ -35,11 +35,13 @@ Note: You cannot specify a different value for InstrumentationKey nor AppId in t
 
 ### Example 1: Set a private link scope in a subscription by name
 ```powershell
-PS C:\> Set-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $location
+Set-AzConnectedPrivateLinkScope -ResourceGroupName $resourceGroupName -ScopeName $scopeName -PublicNetworkAccess "Disabled" -Tag $tags -Location $location
+```
 
-Name         Location    PublicNetworkAccess ProvisioningState Tag
-----         --------    ------------------- ----------------- ---
-name         eastus2euap Disabled            Succeeded         Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.PrivateLinkScopesRes…
+```output
+Name         Location    PublicNetworkAccess ProvisioningState
+----         --------    ------------------- -----------------
+name         eastus2euap Disabled            Succeeded         
 ```
 
 Updates the PublicNetworkAccess to "Disable" and tags to $tags
@@ -81,7 +83,7 @@ An Azure Arc PrivateLinkScope definition.
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 Parameter Sets: Update
 Aliases:
 
@@ -204,11 +206,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20210520.IHybridComputePrivateLinkScope
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedMachine.Models.Api20220310.IHybridComputePrivateLinkScope
 
 ## NOTES
 
@@ -219,7 +221,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER <IHybridComputePrivateLinkScope>: An Azure Arc PrivateLinkScope definition.
+PARAMETER `<IHybridComputePrivateLinkScope>`: An Azure Arc PrivateLinkScope definition.
   - `Location <String>`: Resource location
   - `[Tag <IPrivateLinkScopesResourceTags>]`: Resource tags
     - `[(Any) <String>]`: This indicates any property can be added to this object.

@@ -30,8 +30,10 @@ The **Get-AzCustomIpPrefix** cmdlet gets one or more CustomIpPrefixes given the 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzCustomIpPrefix -ResourceGroupName myRg -Name myCustomIpPrefix
+Get-AzCustomIpPrefix -ResourceGroupName myRg -Name myCustomIpPrefix
+```
 
+```output
 Name                 : myCustomIpPrefix
 ResourceGroupName    : myRg
 Location             : westus

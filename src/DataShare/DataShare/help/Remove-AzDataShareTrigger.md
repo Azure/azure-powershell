@@ -37,9 +37,11 @@ The **Remove-AzDataShareTrigger** cmdlet removes a datashare trigger
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Remove-AzDataShareTrigger -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -Name "AdsTrigger"
 ```
-PS C:\> Remove-AzDataShareTrigger -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -Name "AdsTrigger"
 
+```output
 Are you sure you want to remove trigger "AdsTrigger"? 
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```

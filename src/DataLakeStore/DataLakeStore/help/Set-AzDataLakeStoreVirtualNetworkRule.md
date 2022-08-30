@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 online version: https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestorevirtualnetworkrule
@@ -24,8 +24,10 @@ The **Set-AzDataLakeStoreVirtualNetworkRule** cmdlet modifies the specified virt
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET" -SubnetId "updatedId"
+Set-AzDataLakeStoreVirtualNetworkRule -Account "dls" -Name "myVNET" -SubnetId "updatedId"
+```
 
+```output
 ResourceGroupName                :
 AccountName                      :
 VirtualNetworkRuleName           : myVNET

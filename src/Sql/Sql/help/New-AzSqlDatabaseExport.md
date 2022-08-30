@@ -33,8 +33,11 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 ## EXAMPLES
 
 ### Example 1: Create an export request for a database
+```powershell
+New-AzSqlDatabaseExport -ResourceGroupName "RG01" -ServerName "Server01" -DatabaseName "Database01" -StorageKeyType "StorageAccessKey" -StorageKey "StorageKey01" -StorageUri "http://account01.blob.core.contoso.net/bacpacs/database01.bacpac" -AdministratorLogin "User" -AdministratorLoginPassword "secure password"
 ```
-PS C:\>New-AzSqlDatabaseExport -ResourceGroupName "RG01" -ServerName "Server01" -DatabaseName "Database01" -StorageKeyType "StorageAccessKey" -StorageKey "StorageKey01" -StorageUri "http://account01.blob.core.contoso.net/bacpacs/database01.bacpac" -AdministratorLogin "User" -AdministratorLoginPassword "secure password"
+
+```output
 ResourceGroupName          : RG01
 ServerName                 : Server01
 DatabaseName               : Database01

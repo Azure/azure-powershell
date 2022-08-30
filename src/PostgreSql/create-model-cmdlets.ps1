@@ -23,7 +23,7 @@ function CreateModelCmdlet {
     }
 
     $ModelCsPath = Join-Path (Join-Path $PSScriptRoot 'generated\api') 'Models'
-    $ModuleName = 'Az.PostgreSql'.Split(".")[1]
+    $ModuleName = 'PostgreSQL'
     $OutputDir = Join-Path $PSScriptRoot 'custom\autogen-model-cmdlets'
     $null = New-Item -ItemType Directory -Force -Path $OutputDir
 

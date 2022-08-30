@@ -41,8 +41,10 @@ Description for Gets the details of a static site.
 
 ### Example 1: List all static web applications under a subscription
 ```powershell
-PS C:\> Get-AzStaticWebApp
+Get-AzStaticWebApp
+```
 
+```output
 Kind Location   Name               Type
 ---- --------   ----               ----
      Central US staticweb-portal04 Microsoft.Web/staticSites
@@ -53,8 +55,10 @@ This commands list all static web applications under a subscription.
 
 ### Example 2: List all static web applications under a resource group
 ```powershell
-PS C:\> Get-AzStaticWebApp -ResourceGroupName azure-rg-test
+Get-AzStaticWebApp -ResourceGroupName azure-rg-test
+```
 
+```output
 Kind Location   Name               Type
 ---- --------   ----               ----
      Central US staticweb-portal04 Microsoft.Web/staticSites
@@ -65,8 +69,10 @@ This commands list all static web applications under a resource group.
 
 ### Example 3: Get a satic web application by name
 ```powershell
-PS C:\> Get-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-portal04
+Get-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-portal04
+```
 
+```output
 Kind Location   Name               Type
 ---- --------   ----               ----
      Central US staticweb-portal04 Microsoft.Web/staticSites
@@ -76,8 +82,10 @@ This commands gets a satic web application by name.
 
 ### Example 4: Get a satic web application by pipline
 ```powershell
-PS C:\> New-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-pwsh01 -Location eastus2 -RepositoryUrl 'https://github.com/username/RepoName' -RepositoryToken 'repoToken123' -Branch 'master' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'free' -SkuTier 'free'  | Get-AzStaticWebApp -InputObejct 
+New-AzStaticWebApp -ResourceGroupName azure-rg-test -Name staticweb-pwsh01 -Location eastus2 -RepositoryUrl 'https://github.com/username/RepoName' -RepositoryToken 'repoToken123' -Branch 'master' -AppLocation 'Client' -ApiLocation 'Api' -OutputLocation 'wwwroot' -SkuName 'free' -SkuTier 'free'  | Get-AzStaticWebApp -InputObejct 
+```
 
+```output
 Kind Location   Name               Type
 ---- --------   ----               ----
      Central US staticweb-portal04 Microsoft.Web/staticSites
@@ -191,12 +199,15 @@ INPUTOBJECT <IWebsitesIdentity>: Identity Parameter
   - `[EnvironmentName <String>]`: The stage site identifier.
   - `[FunctionAppName <String>]`: Name of the function app registered with the static site build.
   - `[Id <String>]`: Resource identity path
+  - `[JobHistoryId <String>]`: History ID.
   - `[Location <String>]`: Location where you plan to create the static site.
   - `[Name <String>]`: Name of the static site.
   - `[PrivateEndpointConnectionName <String>]`: Name of the private endpoint connection.
   - `[ResourceGroupName <String>]`: Name of the resource group to which the resource belongs.
+  - `[Slot <String>]`: Name of the deployment slot. If a slot is not specified, the API deletes a deployment for the production slot.
   - `[SubscriptionId <String>]`: Your Azure subscription ID. This is a GUID-formatted string (e.g. 00000000-0000-0000-0000-000000000000).
   - `[Userid <String>]`: The user id of the user.
+  - `[WebJobName <String>]`: Name of Web Job.
 
 ## RELATED LINKS
 

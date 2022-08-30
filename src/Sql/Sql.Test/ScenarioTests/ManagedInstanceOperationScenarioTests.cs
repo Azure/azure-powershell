@@ -13,41 +13,34 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ManagedInstanceOperationScenarioTests : SqlTestsBase
+    /// <summary>
+    /// These tests depends on the existing resources. Please contact MDCSSQLCustomerExp@microsoft.com for instructions.
+    /// </summary>
+    public class ManagedInstanceOperationScenarioTests : SqlTestRunner
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            var networkClient = GetNetworkClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, newResourcesClient, networkClient);
-        }
-
         public ManagedInstanceOperationScenarioTests(ITestOutputHelper output) : base(output)
         {
             ////base.resourceTypesToIgnoreApiVersion = new string[] { "Microsoft.Sql/managedInstance/operations" };
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetManagedInstanceOperation()
         {
-            RunPowerShellTest("Test-GetManagedInstanceOperation");
+            TestRunner.RunTestScript("Test-GetManagedInstanceOperation");
         }
 
-        [Fact(Skip = "Cannot re-record.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestStopManagedInstanceOperation()
         {
-            RunPowerShellTest("Test-StopManagedInstanceOperation");
+            TestRunner.RunTestScript("Test-StopManagedInstanceOperation");
         }
     }
 }

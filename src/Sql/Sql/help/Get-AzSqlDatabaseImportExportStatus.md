@@ -25,8 +25,11 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 ## EXAMPLES
 
 ### Example 1: Get the import and export status of a SQL database
+```powershell
+Get-AzSqlDatabaseImportExportStatus -OperationStatusLink "https://management.contoso.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource01/providers/Microsoft.Sql/servers/server01/databases/database01/importExportOperationResults/00000000-000-0000-0000-000000000000?api-version=2014-04-01"
 ```
-PS C:\>Get-AzSqlDatabaseImportExportStatus -OperationStatusLink "https://management.contoso.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resource01/providers/Microsoft.Sql/servers/server01/databases/database01/importExportOperationResults/00000000-000-0000-0000-000000000000?api-version=2014-04-01"
+
+```output
 OperationStatusLink : 
 ErrorMessage        : 
 LastModifiedTime    : 4/15/2016 10:16:14 PM

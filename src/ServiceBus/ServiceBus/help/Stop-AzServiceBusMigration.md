@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/stop-azservicebusmigration
@@ -37,7 +37,7 @@ The **Stop-AzServiceBusMigration** cmdlets terminates the Migration between Stan
 
 ### Example 1
 ```powershell
-PS C:\> Stop-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMigration
+Stop-AzServiceBusMigration -ResourceGroupName ResourceGroup -Name TestingNamespaceStandardMigration
 ```
 
 Cmdlet terminates the migration between Standard namespace and Premium namespace provided while creating the migration configuration.

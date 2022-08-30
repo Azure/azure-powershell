@@ -1,0 +1,44 @@
+{
+  "Copy-AzMarketplacePrivateStoreCollectionOffer+[NoContext]+TransferExpanded+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/transferOffers?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/collections/a260d38c-96cf-492d-a340-404d0c4b3ad6/transferOffers?api-version=2021-06-01",
+      "Content": "{\n  \"properties\": {\n    \"targetCollections\": [ \"8c7a91db-cd41-43b6-af47-2e869654126d\" ],\n    \"operation\": \"Copy\",\n    \"offerIdsList\": [ \"aumatics.azure_managedservices\" ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "176" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.01832.0004-467b09b3" ],
+        "Set-Cookie": [ "ARRAffinity=a1932161769a8d1e756ea2a33c09d2511fa99932f8d921493de9f93092d8c165;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=a1932161769a8d1e756ea2a33c09d2511fa99932f8d921493de9f93092d8c165;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1199" ],
+        "x-ms-request-id": [ "6fd5ea4b-5317-4292-8f5e-967be4dbed2b" ],
+        "x-ms-correlation-request-id": [ "6fd5ea4b-5317-4292-8f5e-967be4dbed2b" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220124T135823Z:6fd5ea4b-5317-4292-8f5e-967be4dbed2b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Mon, 24 Jan 2022 13:58:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "108" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"succeeded\":[{\"collectionName\":\"test1\",\"collectionId\":\"8c7a91db-cd41-43b6-af47-2e869654126d\"}],\"failed\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

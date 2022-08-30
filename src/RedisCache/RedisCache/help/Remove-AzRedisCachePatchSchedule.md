@@ -24,8 +24,8 @@ The **Remove-AzRedisCachePatchSchedule** cmdlet removes the patch schedule from 
 ## EXAMPLES
 
 ### Example 1: Remove the patch schedule
-```
-PS C:\>Remove-AzRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06"
+```powershell
+Remove-AzRedisCachePatchSchedule -ResourceGroupName "ResourceGroup13" -Name "RedisCache06"
 ```
 
 This command removes the patch schedule from the cache named RedisCache06.

@@ -44,7 +44,7 @@ The **Update-AzSynapseSqlDatabase** cmdlet updates an Azure Synapse Analytics SQ
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase -Tag @{'key'='value'}
+Update-AzSynapseSqlDatabase -WorkspaceName ContosoWorkspace -Name ContosoSqlDatabase -Tag @{'key'='value'}
 ```
 
 This command updates an Azure Synapse Analytics SQL database.

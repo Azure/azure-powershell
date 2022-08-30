@@ -25,9 +25,9 @@ The **Update-AzSynapseManagedVirtualNetworkConfig** cmdlet updates managed virtu
 
 ### Example 1
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace 
-PS C:\> $ws = $ws | Update-AzSynapseManagedVirtualNetworkConfig -AllowedAadTenantIdsForLinking a96040c4-18dd-4dde-8181-f70daca04919 
-PS C:\> $ws | Update-AzSynapseWorkspace
+$ws = Get-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -WorkspaceName ContosoWorkspace 
+$ws = $ws | Update-AzSynapseManagedVirtualNetworkConfig -AllowedAadTenantIdsForLinking a96040c4-18dd-4dde-8181-f70daca04919 
+$ws | Update-AzSynapseWorkspace
 ```
 
 The first command retrieves a workspace object. The second command updates the allowed AAD tenant IDs. The third command updates the workspace.

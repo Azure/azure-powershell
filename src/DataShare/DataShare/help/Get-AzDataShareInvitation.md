@@ -29,9 +29,11 @@ The **Get-AzDataShareInvitation** cmdlet gets information on invitations added i
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzDataShareInvitation -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsInvitation"
 ```
-PS C:\> Get-AzDataShareInvitation -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareName "AdsShare" -Name "AdsInvitation"
 
+```output
 InvitationId     : 167e06ff-567f-4bc7-be0c-645a6de710f3
 InvitationStatus : Pending
 Sender           : adsprovider@microsoft.com

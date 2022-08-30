@@ -26,7 +26,7 @@ The Set-AzSqlVMConfigGroup cmdlet set the information needed in order to join a 
 
 ### Example 1
 ```powershell
-PS C:\> $config = Set-AzSqlVMConfigGroup -SqlVM $config -SqlVMGroup $group -ClusterOperatorAccountPassword 'password' -SqlServiceAccountPassword 'password'
+$config = Set-AzSqlVMConfigGroup -SqlVM $config -SqlVMGroup $group -ClusterOperatorAccountPassword 'password' -SqlServiceAccountPassword 'password'
 ```
 
 Update the group informations of a sql virtual machine configuration.

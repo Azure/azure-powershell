@@ -27,7 +27,7 @@ The **Remove-AzApiManagementOperation** cmdlet removes an existing operation.
 ### Example 1: Remove an existing API Operation
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-Remove-AzApiManagementOperation -Context $apimContext -ApiId "0123456789" -OperationId "9876543210" -Force
+Remove-AzApiManagementOperation -Context $apimContext -ApiId "0123456789" -OperationId "9876543210"
 ```
 
 This command removes an existing API Operation.

@@ -67,23 +67,23 @@ Invoke-AzDataBoxEdgeDevice -DeviceObject <PSDataBoxEdgeDevice> [-InstallUpdate] 
 ```
 
 ## DESCRIPTION
-The **Invoke-AzDataBoxEdgeDevice** cmdlet invokes actions to scan, download �and install the updates on the Data Box Edge device. An automatic scan runs on the device daily, you can trigger the scan explicitly by running this cmdlet.
+The **Invoke-AzDataBoxEdgeDevice** cmdlet invokes actions to scan, download and install the updates on the Data Box Edge device. An automatic scan runs on the device daily, you can trigger the scan explicitly by running this cmdlet.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> Invoke-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -ScanForUpdate
+Invoke-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -ScanForUpdate
 ```
 
 ### Example 2
 ```powershell
-PS C:\> Invoke-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -FetchUpdate
+Invoke-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -FetchUpdate
 ```
 
 ### Example 3
 ```powershell
-PS C:\> Invoke-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -InstallUpdate
+Invoke-AzDataBoxEdgeDevice -ResourceGroupName resourceGroupName -Name deviceName -InstallUpdate
 ```
 
 ## PARAMETERS

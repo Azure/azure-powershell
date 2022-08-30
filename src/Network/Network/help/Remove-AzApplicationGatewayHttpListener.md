@@ -24,10 +24,10 @@ The **Remove-AzApplicationGatewayHttpListener** cmdlet removes an HTTP listener 
 ## EXAMPLES
 
 ### Example 1: Remove an application gateway HTTP listener
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Remove-AzApplicationGatewayHttpListener -ApplicationGateway $AppGw -Name "Listener02"
-PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGW
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+Remove-AzApplicationGatewayHttpListener -ApplicationGateway $AppGw -Name "Listener02"
+Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
 The first command gets an application gateway and stores it in the $AppGw variable.

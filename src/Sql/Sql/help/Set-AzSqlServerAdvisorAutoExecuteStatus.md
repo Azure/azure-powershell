@@ -25,8 +25,11 @@ The **Set-AzSqlServerAdvisorAutoExecuteStatus** cmdlet sets the auto execute pro
 ## EXAMPLES
 
 ### Example 1: Enable auto execute for an Advisor
+```powershell
+Set-AzSqlServerAdvisorAutoExecuteStatus -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName "CreateIndex" -AutoExecuteStatus Enabled
 ```
-PS C:\>Set-AzSqlServerAdvisorAutoExecuteStatus -ResourceGroupName "WIRunnersProd" -ServerName "wi-runner-australia-east" -AdvisorName "CreateIndex" -AutoExecuteStatus Enabled
+
+```output
 ResourceGroupName              : WIRunnersProd
 ServerName                     : wi-runner-australia-east
 AdvisorName                    : CreateIndex

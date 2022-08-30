@@ -234,6 +234,13 @@ function Delete-Vault($vault)
 	Remove-AzRecoveryServicesVault -Vault $vault
 }
 
+function Delete-VM(
+	[string] $rgName,
+	[string] $vmName)
+{
+	Remove-AzVM -ResourceGroupName $rgName -Name $vmName -Force
+}
+
 <# 
 .SYNOPSIS
 Sleeps but only during recording.

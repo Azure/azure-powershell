@@ -37,23 +37,26 @@ The **Get-AzIntegrationAccountBatchConfiguration** cmdlet gets an batch configur
 
 ### Example 1: Get a batch configuration by parameters
 ```powershell
-PS C:\> Get-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfig"
+Get-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -BatchConfigurationName "sampleBatchConfig"
+```
 
+```output
 Properties : Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties
 Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/batchConfigurations/sampleBatchConfig
 Name       : sampleBatchConfig
 Type       : Microsoft.Logic/integrationAccounts/batchConfigurations
 Location   :
 Tags       :
-
 ```
 
 Get a batch configuration named "sampleBatchConfig" located in the integration account "sampleIntegrationAccount" which is contained in the resource group "sampleResourceGroup".
 
 ### Example 2: List all batch configurations in an integration account by parameters
 ```powershell
-PS C:\> Get-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount"
+Get-AzIntegrationAccountBatchConfiguration -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount"
+```
 
+```output
 Properties : Microsoft.Azure.Management.Logic.Models.BatchConfigurationProperties
 Id         : /subscriptions/{SubscriptionId}/resourceGroups/sampleResourceGroup/providers/Microsoft.Logic/integrationAccounts/sampleIntegrationAccount/batchConfigurations/sampleBatchConfig
 Name       : sampleBatchConfig
@@ -67,7 +70,6 @@ Name       : sampleBatchConfig2
 Type       : Microsoft.Logic/integrationAccounts/batchConfigurations
 Location   :
 Tags       :
-
 ```
 
 Get all batch configurations located in the integration account "sampleIntegrationAccount" which is contained in the resource group "sampleResourceGroup".

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 online version: https://docs.microsoft.com/powershell/module/az.logicapp/get-azintegrationaccountgeneratedicn
@@ -25,8 +25,11 @@ Please do provide the "-AgreementType" parameter to specify whether X12 or Edifa
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Get-AzIntegrationAccountGeneratedIcn -AgreementType "X12" -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "X12IntegrationAccountAgreement"
 ```
-PS C:\> Get-AzIntegrationAccountGeneratedIcn -AgreementType "X12" -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "X12IntegrationAccountAgreement"
+
+```output
 ControlNumber            : 1000
 ControlNumberChangedTime : 2/15/2017 12:36:00 AM
 IsMessageProcessingFailed:
@@ -35,8 +38,11 @@ IsMessageProcessingFailed:
 This command gets the integration account generated X12 interchange control number by agreement name. Please make sure agreement specified is of type "X12"
 
 ### Example 2
+```powershell
+Get-AzIntegrationAccountGeneratedIcn -AgreementType "Edifact" -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "EdifactIntegrationAccountAgreement"
 ```
-PS C:\> Get-AzIntegrationAccountGeneratedIcn -AgreementType "Edifact" -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1" -AgreementName "EdifactIntegrationAccountAgreement"
+
+```output
 ControlNumber            : 1000
 ControlNumberChangedTime : 2/15/2017 12:36:00 AM
 IsMessageProcessingFailed:
@@ -45,8 +51,11 @@ IsMessageProcessingFailed:
 This command gets the integration account generated Edifact interchange control number by agreement name. Please make sure agreement specified is of type "Edifact"
 
 ### Example 3
+```powershell
+Get-AzIntegrationAccountGeneratedIcn -AgreementType "X12" -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1"
 ```
-PS C:\> Get-AzIntegrationAccountGeneratedIcn -AgreementType "X12" -ResourceGroupName "ResourceGroup1" -Name "IntegrationAccount1"
+
+```output
 ControlNumber            : 1000
 ControlNumberChangedTime : 2/22/2017 8:05:41 PM
 AgreementName            : X12IntegrationAccountAgreement1

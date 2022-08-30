@@ -13,7 +13,7 @@ Creates a health probe.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayProbeConfig -Name <String> -Protocol <String> [-HostName <String>] -Path <String>
+New-AzApplicationGatewayProbeConfig -Name <String> -Protocol <String> [-HostName <String>] [-Path <String>]
  -Interval <Int32> -Timeout <Int32> -UnhealthyThreshold <Int32> [-PickHostNameFromBackendHttpSettings]
  [-MinServers <Int32>] [-Match <PSApplicationGatewayProbeHealthResponseMatch>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>] [-Port <Int32>]
@@ -26,7 +26,7 @@ The New-AzApplicationGatewayProbeConfig cmdlet creates a health probe.
 
 ### Example 1: Example1: Create a health probe
 ```powershell
-PS C:\>New-AzApplicationGatewayProbeConfig -Name "Probe03" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
+New-AzApplicationGatewayProbeConfig -Name "Probe03" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
 ```
 
 This command creates a health probe named Probe03, with HTTP protocol, a 30 second interval, timeout of 120 seconds, and an unhealthy threshold of 8 retries.
@@ -146,7 +146,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -176,7 +176,7 @@ Specifies the protocol used to send probe.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Http, Https
+Accepted values: Http, Https, TCP, TLS
 
 Required: True
 Position: Named
@@ -232,6 +232,7 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).

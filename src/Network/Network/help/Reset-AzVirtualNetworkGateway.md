@@ -24,7 +24,7 @@ Resets the Virtual Network Gateway
 ## EXAMPLES
 
 ### Example 1:
-```
+```powershell
 $Gateway = Get-AzVirtualNetworkGateway -Name "ContosoVirtualGateway"
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $Gateway
 ```

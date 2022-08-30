@@ -24,15 +24,15 @@ The **Get-AzVMAccessExtension** cmdlet gets information about the Virtual Machin
 ## EXAMPLES
 
 ### Example 1: Get the VMAccess extension
-```
-PS C:\> $VMAccessExtension = Get-AzVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest"
+```powershell
+$VMAccessExtension = Get-AzVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest"
 ```
 
 This command gets the VMAccess extension named ContosoTest for the virtual machine named VirtualMachine07.
 
 ### Example 2: Get the instance view of the VMAccess extension
-```
-PS C:\> $VMAccessExtension = Get-AzVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest" -Status
+```powershell
+$VMAccessExtension = Get-AzVMAccessExtension -ResourceGroupName "ResourceGroup11" -VMName "VirtualMachine07" -Name "ContosoTest" -Status
 ```
 
 This command gets the instance view of the VMAccess extension named ContosoTest for the virtual machine named VirtualMachine07.

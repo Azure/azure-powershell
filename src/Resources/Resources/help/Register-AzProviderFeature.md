@@ -9,7 +9,7 @@ schema: 2.0.0
 # Register-AzProviderFeature
 
 ## SYNOPSIS
-Registers an Azure provider feature in your account.
+Registers an Azure provider feature in your current subscription context.
 
 ## SYNTAX
 
@@ -19,16 +19,16 @@ Register-AzProviderFeature -FeatureName <String> -ProviderNamespace <String>
 ```
 
 ## DESCRIPTION
-The **Register-AzProviderFeature** cmdlet registers an Azure provider feature in your account.
+The **Register-AzProviderFeature** cmdlet registers an Azure provider feature in your current subscription context.
 
 ## EXAMPLES
 
 ### Example 1: Register a feature
-```
-PS C:\>Register-AzProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
+```powershell
+Register-AzProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
 ```
 
-This adds the AllowApplicationSecurityGroups feature for Microsoft.Network to your account.
+This adds the AllowApplicationSecurityGroups feature for Microsoft.Network to your current subscription context.
 
 ## PARAMETERS
 

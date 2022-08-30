@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="VaultHealthProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="VaultHealthProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>
@@ -104,19 +106,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemsHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummary) content.GetValueForProperty("ProtectedItemsHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemsHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricsHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummary) content.GetValueForProperty("FabricsHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricsHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainersHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummary) content.GetValueForProperty("ContainersHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainersHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).VaultError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("VaultError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).VaultError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthResourceCount = (int?) content.GetValueForProperty("ProtectedItemHealthResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthResourceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthIssue = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary[]) content.GetValueForProperty("ProtectedItemHealthIssue",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthIssue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorSummaryTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthCategorizedResourceCount = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummaryCategorizedResourceCounts) content.GetValueForProperty("ProtectedItemHealthCategorizedResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthCategorizedResourceCount, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryCategorizedResourceCountsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthResourceCount = (int?) content.GetValueForProperty("FabricHealthResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthResourceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthIssue = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary[]) content.GetValueForProperty("FabricHealthIssue",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthIssue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorSummaryTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthCategorizedResourceCount = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummaryCategorizedResourceCounts) content.GetValueForProperty("FabricHealthCategorizedResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthCategorizedResourceCount, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryCategorizedResourceCountsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthResourceCount = (int?) content.GetValueForProperty("ContainerHealthResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthResourceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthIssue = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary[]) content.GetValueForProperty("ContainerHealthIssue",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthIssue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorSummaryTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthCategorizedResourceCount = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummaryCategorizedResourceCounts) content.GetValueForProperty("ContainerHealthCategorizedResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthCategorizedResourceCount, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryCategorizedResourceCountsTypeConverter.ConvertFrom);
+            if (content.Contains("ProtectedItemsHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemsHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummary) content.GetValueForProperty("ProtectedItemsHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemsHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FabricsHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricsHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummary) content.GetValueForProperty("FabricsHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricsHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ContainersHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainersHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummary) content.GetValueForProperty("ContainersHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainersHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("VaultError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).VaultError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("VaultError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).VaultError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ProtectedItemHealthResourceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthResourceCount = (int?) content.GetValueForProperty("ProtectedItemHealthResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthResourceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ProtectedItemHealthIssue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthIssue = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary[]) content.GetValueForProperty("ProtectedItemHealthIssue",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthIssue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorSummaryTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ProtectedItemHealthCategorizedResourceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthCategorizedResourceCount = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummaryCategorizedResourceCounts) content.GetValueForProperty("ProtectedItemHealthCategorizedResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthCategorizedResourceCount, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryCategorizedResourceCountsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FabricHealthResourceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthResourceCount = (int?) content.GetValueForProperty("FabricHealthResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthResourceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("FabricHealthIssue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthIssue = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary[]) content.GetValueForProperty("FabricHealthIssue",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthIssue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorSummaryTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("FabricHealthCategorizedResourceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthCategorizedResourceCount = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummaryCategorizedResourceCounts) content.GetValueForProperty("FabricHealthCategorizedResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthCategorizedResourceCount, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryCategorizedResourceCountsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ContainerHealthResourceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthResourceCount = (int?) content.GetValueForProperty("ContainerHealthResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthResourceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ContainerHealthIssue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthIssue = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary[]) content.GetValueForProperty("ContainerHealthIssue",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthIssue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorSummaryTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ContainerHealthCategorizedResourceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthCategorizedResourceCount = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummaryCategorizedResourceCounts) content.GetValueForProperty("ContainerHealthCategorizedResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthCategorizedResourceCount, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryCategorizedResourceCountsTypeConverter.ConvertFrom);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -134,19 +175,58 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemsHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummary) content.GetValueForProperty("ProtectedItemsHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemsHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricsHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummary) content.GetValueForProperty("FabricsHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricsHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainersHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummary) content.GetValueForProperty("ContainersHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainersHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).VaultError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("VaultError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).VaultError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthResourceCount = (int?) content.GetValueForProperty("ProtectedItemHealthResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthResourceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthIssue = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary[]) content.GetValueForProperty("ProtectedItemHealthIssue",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthIssue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorSummaryTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthCategorizedResourceCount = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummaryCategorizedResourceCounts) content.GetValueForProperty("ProtectedItemHealthCategorizedResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthCategorizedResourceCount, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryCategorizedResourceCountsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthResourceCount = (int?) content.GetValueForProperty("FabricHealthResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthResourceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthIssue = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary[]) content.GetValueForProperty("FabricHealthIssue",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthIssue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorSummaryTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthCategorizedResourceCount = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummaryCategorizedResourceCounts) content.GetValueForProperty("FabricHealthCategorizedResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthCategorizedResourceCount, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryCategorizedResourceCountsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthResourceCount = (int?) content.GetValueForProperty("ContainerHealthResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthResourceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthIssue = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary[]) content.GetValueForProperty("ContainerHealthIssue",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthIssue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorSummaryTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthCategorizedResourceCount = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummaryCategorizedResourceCounts) content.GetValueForProperty("ContainerHealthCategorizedResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthCategorizedResourceCount, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryCategorizedResourceCountsTypeConverter.ConvertFrom);
+            if (content.Contains("ProtectedItemsHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemsHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummary) content.GetValueForProperty("ProtectedItemsHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemsHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FabricsHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricsHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummary) content.GetValueForProperty("FabricsHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricsHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ContainersHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainersHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummary) content.GetValueForProperty("ContainersHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainersHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("VaultError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).VaultError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("VaultError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).VaultError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ProtectedItemHealthResourceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthResourceCount = (int?) content.GetValueForProperty("ProtectedItemHealthResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthResourceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ProtectedItemHealthIssue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthIssue = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary[]) content.GetValueForProperty("ProtectedItemHealthIssue",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthIssue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorSummaryTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ProtectedItemHealthCategorizedResourceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthCategorizedResourceCount = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummaryCategorizedResourceCounts) content.GetValueForProperty("ProtectedItemHealthCategorizedResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ProtectedItemHealthCategorizedResourceCount, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryCategorizedResourceCountsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("FabricHealthResourceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthResourceCount = (int?) content.GetValueForProperty("FabricHealthResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthResourceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("FabricHealthIssue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthIssue = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary[]) content.GetValueForProperty("FabricHealthIssue",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthIssue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorSummaryTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("FabricHealthCategorizedResourceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthCategorizedResourceCount = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummaryCategorizedResourceCounts) content.GetValueForProperty("FabricHealthCategorizedResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).FabricHealthCategorizedResourceCount, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryCategorizedResourceCountsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("ContainerHealthResourceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthResourceCount = (int?) content.GetValueForProperty("ContainerHealthResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthResourceCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("ContainerHealthIssue"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthIssue = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary[]) content.GetValueForProperty("ContainerHealthIssue",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthIssue, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthErrorSummary>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorSummaryTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("ContainerHealthCategorizedResourceCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthCategorizedResourceCount = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceHealthSummaryCategorizedResourceCounts) content.GetValueForProperty("ContainerHealthCategorizedResourceCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultHealthPropertiesInternal)this).ContainerHealthCategorizedResourceCount, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ResourceHealthSummaryCategorizedResourceCountsTypeConverter.ConvertFrom);
+            }
             AfterDeserializePSObject(content);
         }
     }

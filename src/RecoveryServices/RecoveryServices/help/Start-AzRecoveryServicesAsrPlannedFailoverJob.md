@@ -44,8 +44,8 @@ You can check whether the job succeeds by using the Get-AzRecoveryServicesAsrJob
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $currentJob = Start-AzRecoveryServicesAsrPlannedFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery
+```powershell
+$currentJob = Start-AzRecoveryServicesAsrPlannedFailoverJob -RecoveryPlan $RP -Direction PrimaryToRecovery
 ```
 
 Starts the planned failover for the specified ASR recovery plan and returns the ASR job used to track the operation.

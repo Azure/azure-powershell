@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 online version: https://docs.microsoft.com/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticsjobpipeline
@@ -30,15 +30,15 @@ The **Get-AzDataLakeAnalyticsJobPipeline** gets a specified Azure Data Lake Anal
 ## EXAMPLES
 
 ### Example 1: Get a specified pipeline
-```
-PS C:\>Get-AzDataLakeAnalyticsJobPipeline -Account "contosoadla" -PipelineId 83cb7ad2-3523-4b82-b909-d478b0d8aea3
+```powershell
+Get-AzDataLakeAnalyticsJobPipeline -Account "contosoadla" -PipelineId 83cb7ad2-3523-4b82-b909-d478b0d8aea3
 ```
 
 This command gets the specified pipeline with id '83cb7ad2-3523-4b82-b909-d478b0d8aea3' in account 'contosoadla'.
 
 ### Example 2: Get a list of all pipelines in the account
-```
-PS C:\>Get-AzDataLakeAnalyticsJobPipeline -AccountName "contosoadla"
+```powershell
+Get-AzDataLakeAnalyticsJobPipeline -AccountName "contosoadla"
 ```
 
 This command gets a list of all pipelines in the account "contosoadla"

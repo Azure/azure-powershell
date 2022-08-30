@@ -34,8 +34,8 @@ You can modify this object locally, and then apply changes to the profile by usi
 ## EXAMPLES
 
 ### Example 1: Get a profile
-```
-PS C:\>Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+```powershell
+Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
 ```
 
 This command gets the profile named ContosoProfile in ResourceGroup11.

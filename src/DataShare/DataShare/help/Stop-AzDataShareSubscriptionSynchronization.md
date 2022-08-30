@@ -37,9 +37,11 @@ The **Stop-AzDataShareSubscriptionSynchronization** cmdlet stops ongoing synchro
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Stop-AzDataShareSubscriptionSynchronization -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -SynchronizationId 20a4416b-b33b-4539-a908-71dc8ef698fb
 ```
-PS C:\> Stop-AzDataShareSubscriptionSynchronization -ResourceGroupName "ADS" -AccountName "WikiAds" -ShareSubscriptionName "AdsShareSubscription" -SynchronizationId 20a4416b-b33b-4539-a908-71dc8ef698fb
 
+```output
 Confirm
 AdsShareSubscription
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y

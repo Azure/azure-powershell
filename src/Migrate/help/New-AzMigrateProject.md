@@ -24,8 +24,10 @@ Creates a new Migrate project.
 
 ### Example 1: Create (Default)
 ```powershell
-PS C:\> New-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName kuchaturimpkocrg1 -Name kuchaturimpkocrg1pwshp14 -Location "centralus"
+New-AzMigrateProject -SubscriptionId xxx-xxx-xxx -ResourceGroupName kuchaturimpkocrg1 -Name kuchaturimpkocrg1pwshp14 -Location "centralus"
+```
 
+```output
 ETag Location  Name                     Type
 ---- --------  ----                     ----
      centralus kuchaturimpkocrg1pwshp14 Microsoft.Migrate/MigrateProjects
@@ -174,7 +176,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PROPERTY <IMigrateProjectProperties>: Specifies the project properties.
+`PROPERTY <IMigrateProjectProperties>`: Specifies the project properties.
   - `[ProvisioningState <ProvisioningState?>]`: Provisioning state of the migrate project.
   - `[RegisteredTool <String[]>]`: Gets or sets the list of tools registered with the migrate project.
 

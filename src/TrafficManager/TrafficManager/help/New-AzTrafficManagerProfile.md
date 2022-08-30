@@ -37,8 +37,8 @@ Alternatively, you can add endpoints by using the New-AzTrafficManagerEndpoint c
 ## EXAMPLES
 
 ### Example 1: Create a profile
-```
-PS C:\>New-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" -ProfileStatus Enabled -TrafficRoutingMethod Performance -RelativeDnsName "contosoapp" -TTL 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/default.aspx"
+```powershell
+New-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11" -ProfileStatus Enabled -TrafficRoutingMethod Performance -RelativeDnsName "contosoapp" -TTL 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/default.aspx"
 ```
 
 This command creates an Azure Traffic Manager profile named ContosoProfile in resource group ResourceGroup11.

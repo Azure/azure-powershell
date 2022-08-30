@@ -25,22 +25,22 @@ The **Get-AzSqlDatabaseIndexRecommendation** cmdlet gets the recommended index o
 ## EXAMPLES
 
 ### Example 1: Get index recommendations for all databases on server
-```
-PS C:\>Get-AzSqlDatabaseIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+```powershell
+Get-AzSqlDatabaseIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
 ```
 
 This command returns index recommendations for all databases on server server01.
 
 ### Example 2: Get index recommendations for a specific database
-```
-PS C:\>Get-AzSqlDatabaseIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+```powershell
+Get-AzSqlDatabaseIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
 
 This command returns index recommendations for specific database.
 
 ### Example 3: Get a single index recommendation by name
-```
-PS C:\>Get-AzSqlDatabaseIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -IndexRecommendationName "INDEX_NAME"
+```powershell
+Get-AzSqlDatabaseIndexRecommendation -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -IndexRecommendationName "INDEX_NAME"
 ```
 
 This command returns single index recommendation by name.

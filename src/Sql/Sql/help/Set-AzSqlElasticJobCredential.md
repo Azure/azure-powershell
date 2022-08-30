@@ -37,10 +37,12 @@ The Set-AzSqlElasticJobCredential cmdlet updates a job credential
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $cred = Get-AzSqlElasticJobCredential -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -Name cred1
+```powershell
+$cred = Get-AzSqlElasticJobCredential -ResourceGroupName rg -ServerName elasticjobserver -AgentName agent -Name cred1
 $cred | Set-AzSqlElasticJobCredential -Name cred1 -Credential (Get-Credential)
+```
 
+```output
 CredentialName UserName
 -------------- --------
 cred1          user2

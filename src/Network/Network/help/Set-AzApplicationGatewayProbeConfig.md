@@ -14,7 +14,7 @@ Sets the health probe configuration on an existing Application Gateway.
 
 ```
 Set-AzApplicationGatewayProbeConfig -ApplicationGateway <PSApplicationGateway> -Name <String>
- -Protocol <String> [-HostName <String>] -Path <String> -Interval <Int32> -Timeout <Int32>
+ -Protocol <String> [-HostName <String>] [-Path <String>] -Interval <Int32> -Timeout <Int32>
  -UnhealthyThreshold <Int32> [-PickHostNameFromBackendHttpSettings] [-MinServers <Int32>]
  [-Match <PSApplicationGatewayProbeHealthResponseMatch>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]
@@ -27,7 +27,7 @@ The Set-AzApplicationGatewayProbeConfig cmdlet sets the health probe configurati
 
 ### Example 1: Set the configuration for a health probe on an application gateway
 ```powershell
-PS C:\>Set-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe05" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
+Set-AzApplicationGatewayProbeConfig -ApplicationGateway Gateway -Name "Probe05" -Protocol Http -HostName "contoso.com" -Path "/path/custompath.htm" -Interval 30 -Timeout 120 -UnhealthyThreshold 8
 ```
 
 This command sets the configuration for a health probe named Probe05 for the application gateway named Gateway.
@@ -163,7 +163,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -193,7 +193,7 @@ Specifies the protocol used to send probe.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Http, Https
+Accepted values: Http, Https, TCP, TLS
 
 Required: True
 Position: Named

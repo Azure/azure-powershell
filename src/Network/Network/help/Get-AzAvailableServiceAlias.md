@@ -23,8 +23,10 @@ The **Get-AzAvailableServiceAlias** cmdlet allows you to retrieve all of the ava
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzAvailableServiceAlias -Location "westus"
+Get-AzAvailableServiceAlias -Location "westus"
+```
 
+```output
 Name                         Id                                                                                                                                   Type                                      ResourceName
 ----                         --                                                                                                                                   ----                                      ------------
 servicesAzure                /subscriptions/61dc4623-b5f8-41a0-acfc-29537dcf6e5d/providers/Microsoft.Network/AvailableServiceAliases/servicesAzure                Microsoft.Network/AvailableServiceAliases /services/Azure

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothubconfiguration
@@ -37,7 +37,7 @@ See https://docs.microsoft.com/azure/iot-hub/iot-hub-automatic-device-management
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1"
+Remove-AzIotHubConfiguration -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "config1"
 ```
 
 Delete an IoT device configuration.

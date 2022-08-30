@@ -1,0 +1,44 @@
+{
+  "Set-AzMarketplaceBulkPrivateStoreCollectionAction+[NoContext]+BulkExpanded+$POST+https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/bulkCollectionsAction?api-version=2021-06-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.Marketplace/privateStores/a260d38c-96cf-492d-a340-404d0c4b3ad6/bulkCollectionsAction?api-version=2021-06-01",
+      "Content": "{\n  \"properties\": {\n    \"collectionIds\": [ \"a260d38c-96cf-492d-a340-404d0c4b3ad6\", \"8c7a91db-cd41-43b6-af47-2e869654126d\" ],\n    \"action\": \"EnableCollections\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "164" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "X-XSS-Protection": [ "1; mode=block" ],
+        "x-ms-version": [ "6.0.01832.0004-467b09b3" ],
+        "Set-Cookie": [ "ARRAffinity=92773f2c1c67026ec4d9126bfcf778845d6357a27b8781ad374bcfa850a3111a;Path=/;HttpOnly;Secure;Domain=marketplacerp.azure.com", "ARRAffinitySameSite=92773f2c1c67026ec4d9126bfcf778845d6357a27b8781ad374bcfa850a3111a;Path=/;HttpOnly;SameSite=None;Secure;Domain=marketplacerp.azure.com" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-AspNet-Version": [ "4.0.30319" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-tenant-writes": [ "1195" ],
+        "x-ms-request-id": [ "acd4fba8-d488-4d99-b2de-bfa7e4d01d1b" ],
+        "x-ms-correlation-request-id": [ "acd4fba8-d488-4d99-b2de-bfa7e4d01d1b" ],
+        "x-ms-routing-request-id": [ "UAECENTRAL:20220124T135910Z:acd4fba8-d488-4d99-b2de-bfa7e4d01d1b" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Date": [ "Mon, 24 Jan 2022 13:59:09 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "201" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"succeeded\":[{\"collectionName\":\"DefaultCollection\",\"collectionId\":\"a260d38c-96cf-492d-a340-404d0c4b3ad6\"},{\"collectionName\":\"test1\",\"collectionId\":\"8c7a91db-cd41-43b6-af47-2e869654126d\"}],\"failed\":[]}",
+      "isContentBase64": false
+    }
+  }
+}

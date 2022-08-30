@@ -13,7 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Management.RecoveryServices.Backup.Models;
-// using Microsoft.Azure.Commands.RecoveryServices.Backup;
+using CrrModel = Microsoft.Azure.Management.RecoveryServices.Backup.CrossRegionRestore.Models;
 
 namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
 {
@@ -76,6 +76,45 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
             ParentName = protectedItem.ParentName;
             ParentType = protectedItem.ParentType;
             LastBackupErrorDetail = protectedItem.LastBackupErrorDetail;
+            ProtectedItemDataSourceId = protectedItem.ProtectedItemDataSourceId;
+            ProtectedItemHealthStatus = protectedItem.ProtectedItemHealthStatus;
+            LastBackupStatus = protectedItem.LastBackupStatus;
+            LastBackupTime = protectedItem.LastBackupTime;
+            ProtectionState =
+                EnumUtils.GetEnum<ItemProtectionState>(protectedItem.ProtectionState.ToString());
+            ProtectionStatus = EnumUtils.GetEnum<ItemProtectionStatus>(protectedItem.ProtectionStatus);
+            DateOfPurge = null;
+            DeleteState = EnumUtils.GetEnum<ItemDeleteState>("NotDeleted");
+            if (protectedItem.IsScheduledForDeferredDelete.HasValue)
+            {
+                DateOfPurge = protectedItem.DeferredDeleteTimeInUTC.Value.AddDays(14);
+                DeleteState = EnumUtils.GetEnum<ItemDeleteState>("ToBeDeleted");
+            }
+        }
+
+        /// <summary>
+        /// Constructor. Takes the service client object representing the protected item 
+        /// and converts it in to the PS protected item model
+        /// </summary>
+        /// <param name="protectedItemResource">Service client object representing the protected item resource</param>
+        /// <param name="containerName">Name of the container associated with this protected item</param>
+        /// <param name="containerType">Type of the container associated with this protected item</param>
+        /// <param name="policyName">Name of the protection policy associated with this protected item</param>
+        public AzureWorkloadSAPHanaDatabaseProtectedItem(CrrModel.ProtectedItemResource protectedItemResource,
+            string containerName, ContainerType containerType, string policyName)
+            : base(protectedItemResource, containerName, containerType, policyName)
+        {
+            CrrModel.AzureVmWorkloadSAPHanaDatabaseProtectedItem protectedItem = (CrrModel.AzureVmWorkloadSAPHanaDatabaseProtectedItem)protectedItemResource.Properties;
+            FriendlyName = protectedItem.FriendlyName;
+            ServerName = protectedItem.ServerName;
+            ParentName = protectedItem.ParentName;
+            ParentType = protectedItem.ParentType;
+
+            if (protectedItem.LastBackupErrorDetail != null)
+            {
+                LastBackupErrorDetail = new ErrorDetail(protectedItem.LastBackupErrorDetail.Code, protectedItem.LastBackupErrorDetail.Message, protectedItem.LastBackupErrorDetail.Recommendations);
+            }
+
             ProtectedItemDataSourceId = protectedItem.ProtectedItemDataSourceId;
             ProtectedItemHealthStatus = protectedItem.ProtectedItemHealthStatus;
             LastBackupStatus = protectedItem.LastBackupStatus;

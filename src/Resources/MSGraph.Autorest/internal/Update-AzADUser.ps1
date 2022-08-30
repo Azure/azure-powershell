@@ -20,7 +20,7 @@ Represents an Azure Active Directory user object.
 .Description
 Represents an Azure Active Directory user object.
 .Example
-PS C:\> Update-AzADUser -UPNOrObjectId $upn -City $city
+Update-AzADUser -UPNOrObjectId $upn -City $city
 
 .Outputs
 System.Boolean
@@ -29,10 +29,19 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
+EMPLOYEEORGDATA <IMicrosoftGraphEmployeeOrgData>: employeeOrgData
+  [(Any) <Object>]: This indicates any property can be added to this object.
+  [CostCenter <String>]: The cost center associated with the user. Returned only on $select. Supports $filter.
+  [Division <String>]: The name of the division in which the user works. Returned only on $select. Supports $filter.
+
 IDENTITY <IMicrosoftGraphObjectIdentity[]>: Represents the identities that can be used to sign in to this user account. An identity can be provided by Microsoft (also known as a local account), by organizations, or by social identity providers such as Facebook, Google, and Microsoft, and tied to a user account. May contain multiple items with the same signInType value. Supports $filter (eq) only where the signInType is not userPrincipalName.
   [Issuer <String>]: Specifies the issuer of the identity, for example facebook.com.For local accounts (where signInType is not federated), this property is the local B2C tenant default domain name, for example contoso.onmicrosoft.com.For external users from other Azure AD organization, this will be the domain of the federated organization, for example contoso.com.Supports $filter. 512 character limit.
   [IssuerAssignedId <String>]: Specifies the unique identifier assigned to the user by the issuer. The combination of issuer and issuerAssignedId must be unique within the organization. Represents the sign-in name for the user, when signInType is set to emailAddress or userName (also known as local accounts).When signInType is set to: emailAddress, (or a custom string that starts with emailAddress like emailAddress1) issuerAssignedId must be a valid email addressuserName, issuerAssignedId must be a valid local part of an email addressSupports $filter. 100 character limit.
   [SignInType <String>]: Specifies the user sign-in types in your directory, such as emailAddress, userName or federated. Here, federated represents a unique identifier for a user from an issuer, that can be in any format chosen by the issuer. Additional validation is enforced on issuerAssignedId when the sign-in type is set to emailAddress or userName. This property can also be set to any custom string.
+
+MANAGER <IMicrosoftGraphDirectoryObject>: Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.
+  [DeletedDateTime <DateTime?>]: 
+  [DisplayName <String>]: The name displayed in directory
 
 PASSWORDPROFILE <IMicrosoftGraphPasswordProfile>: passwordProfile
   [(Any) <Object>]: This indicates any property can be added to this object.
@@ -78,6 +87,15 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    # The timestamp type represents date and time information using ISO 8601 format and is always in UTC time.
+    # For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    # Read-only.
+    # Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.
+    ${ApproximateLastSignInDateTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The city in which the user is located.
     # Maximum length is 128 characters.
@@ -91,6 +109,15 @@ param(
     # This property can be useful for describing the company that an external user comes from.
     # The maximum length of the company name is 64 characters.Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${CompanyName},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    # The timestamp when the device is no longer deemed compliant.
+    # The timestamp type represents date and time information using ISO 8601 format and is always in UTC time.
+    # For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    # Read-only.
+    ${ComplianceExpirationDateTime},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -124,6 +151,12 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Int32]
+    # For internal use only.
+    ${DeviceVersion},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The name displayed in directory
     ${DisplayName},
@@ -141,6 +174,13 @@ param(
     # The employee identifier assigned to the user by the organization.
     # Supports $filter (eq, ne, NOT , ge, le, in, startsWith).
     ${EmployeeId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEmployeeOrgData]
+    # employeeOrgData
+    # To construct, see NOTES section for EMPLOYEEORGDATA properties and create a hash table.
+    ${EmployeeOrgData},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -225,6 +265,14 @@ param(
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject]
+    # Represents an Azure Active Directory object.
+    # The directoryObject type is the base type for many other directory entity types.
+    # To construct, see NOTES section for MANAGER properties and create a hash table.
+    ${Manager},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.String]
     # The office location in the user's place of business.
     # Maximum length is 128 characters.
@@ -240,6 +288,39 @@ param(
     # Returned only on $select.
     # Supports $filter (eq, ne, NOT, ge, le, in)..
     ${OnPremisesImmutableId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.DateTime]
+    # The last time at which the object was synced with the on-premises directory.
+    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time.
+    # For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only.
+    # Supports $filter (eq, ne, not, ge, le, in).
+    ${OnPremisesLastSyncDateTime},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.Management.Automation.SwitchParameter]
+    # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default).
+    # Read-only.
+    # Supports $filter (eq, ne, not, in, and eq on null values).
+    ${OnPremisesSyncEnabled},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Operating system of the device.
+    # Windows, iOS, etc.
+    # This property is read-only.
+    ${OperatingSystem},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Operating system version of the device.
+    # Required.
+    # Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
+    ${OperatingSystemVersion},
 
     [Parameter()]
     [AllowEmptyCollection()]
@@ -263,6 +344,15 @@ param(
     # passwordProfile
     # To construct, see NOTES section for PASSWORDPROFILE properties and create a hash table.
     ${PasswordProfile},
+
+    [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String[]]
+    # For internal use only.
+    # Not nullable.
+    # Supports $filter (eq, not, ge, le, startsWith).
+    ${PhysicalId},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -314,6 +404,15 @@ param(
     # Maximum length is 64 characters.
     # Supports $filter (eq, ne, NOT, ge, le, in, startsWith).
     ${Surname},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [System.String]
+    # Type of trust for the joined device.
+    # Read-only.
+    # Possible values: Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD).
+    # For more details, see Introduction to device management in Azure Active Directory
+    ${TrustType},
 
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -405,6 +504,7 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
         $mapping = @{
             UpdateExpanded = 'Az.MSGraph.private\Update-AzADUser_UpdateExpanded';
         }
@@ -414,6 +514,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+
         throw
     }
 }
@@ -422,15 +523,18 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+
         throw
     }
-}
 
+}
 end {
     try {
         $steppablePipeline.End()
+
     } catch {
+
         throw
     }
-}
+} 
 }

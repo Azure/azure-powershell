@@ -37,8 +37,10 @@ Update Failover Region Priority of a CosmosDB Account.
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzCosmosDBAccountFailoverPriority -ResourceGroupName rg -Name dbname -FailoverPolicy "region1", "region2", "region3"
+Update-AzCosmosDBAccountFailoverPriority -ResourceGroupName rg -Name dbname -FailoverPolicy "region1", "region2", "region3"
+```
 
+```output
 Id                            : /subscriptions/{subscriptionid}/resourceGroups/rg/providers/Microsoft.DocumentDB/databaseAccounts/dbname
 Name                          : dbname
 Location                      : region1

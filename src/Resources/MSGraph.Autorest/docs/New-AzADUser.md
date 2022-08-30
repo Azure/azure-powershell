@@ -12,20 +12,36 @@ Adds new entity to users
 
 ## SYNTAX
 
+### WithPassword (Default)
 ```
 New-AzADUser -DisplayName <String> -MailNickname <String> -Password <SecureString> -UserPrincipalName <String>
- [-AboutMe <String>] [-AccountEnabled] [-AgeGroup <String>] [-Birthday <DateTime>] [-City <String>]
+ [-AboutMe <String>] [-AccountEnabled <Boolean>] [-AgeGroup <String>] [-Birthday <DateTime>] [-City <String>]
  [-CompanyName <String>] [-ConsentProvidedForMinor <String>] [-Country <String>] [-DeletedDateTime <DateTime>]
  [-Department <String>] [-DeviceEnrollmentLimit <Int32>] [-EmployeeHireDate <DateTime>] [-EmployeeId <String>]
  [-EmployeeType <String>] [-ExternalUserState <String>] [-ExternalUserStateChangeDateTime <DateTime>]
  [-FaxNumber <String>] [-ForceChangePasswordNextLogin] [-GivenName <String>] [-HireDate <DateTime>]
  [-ImmutableId <String>] [-Interest <String[]>] [-IsResourceAccount] [-JobTitle <String>] [-Mail <String>]
  [-MobilePhone <String>] [-MySite <String>] [-OfficeLocation <String>] [-OtherMail <String[]>]
- [-PasswordPolicy <String>] [-PasswordProfile <IMicrosoftGraphPasswordProfile>] [-PostalCode <String>]
- [-PreferredLanguage <String>] [-PreferredName <String>] [-Responsibility <String[]>] [-School <String[]>]
- [-ShowInAddressList] [-Skill <String[]>] [-State <String>] [-StreetAddress <String>] [-Surname <String>]
- [-UsageLocation <String>] [-UserType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-PasswordPolicy <String>] [-PostalCode <String>] [-PreferredLanguage <String>] [-PreferredName <String>]
+ [-Responsibility <String[]>] [-School <String[]>] [-ShowInAddressList] [-Skill <String[]>] [-State <String>]
+ [-StreetAddress <String>] [-Surname <String>] [-UsageLocation <String>] [-UserType <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### WithPasswordProfile
+```
+New-AzADUser -DisplayName <String> -MailNickname <String> -PasswordProfile <IMicrosoftGraphPasswordProfile>
+ -UserPrincipalName <String> [-AboutMe <String>] [-AccountEnabled <Boolean>] [-AgeGroup <String>]
+ [-Birthday <DateTime>] [-City <String>] [-CompanyName <String>] [-ConsentProvidedForMinor <String>]
+ [-Country <String>] [-DeletedDateTime <DateTime>] [-Department <String>] [-DeviceEnrollmentLimit <Int32>]
+ [-EmployeeHireDate <DateTime>] [-EmployeeId <String>] [-EmployeeType <String>] [-ExternalUserState <String>]
+ [-ExternalUserStateChangeDateTime <DateTime>] [-FaxNumber <String>] [-GivenName <String>]
+ [-HireDate <DateTime>] [-ImmutableId <String>] [-Interest <String[]>] [-IsResourceAccount]
+ [-JobTitle <String>] [-Mail <String>] [-MobilePhone <String>] [-MySite <String>] [-OfficeLocation <String>]
+ [-OtherMail <String[]>] [-PasswordPolicy <String>] [-PostalCode <String>] [-PreferredLanguage <String>]
+ [-PreferredName <String>] [-Responsibility <String[]>] [-School <String[]>] [-ShowInAddressList]
+ [-Skill <String[]>] [-State <String>] [-StreetAddress <String>] [-Surname <String>] [-UsageLocation <String>]
+ [-UserType <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,13 +49,23 @@ Adds new entity to users
 
 ## EXAMPLES
 
-### Example 1: Create user
+### Example 1: Create user with password profile
 ```powershell
-PS C:\> $pp=New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
-PS C:\> New-MgUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled -MailNickname $nickname -UserPrincipalName $upn
+$password = "xxxxxxxxxx"
+$pp = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile" -Property @{Password=$password}
+New-AzADUser -DisplayName $uname -PasswordProfile $pp -AccountEnabled $true -MailNickname $nickname -UserPrincipalName $upn
 ```
 
-Create user
+Create user with password profile
+
+### Example 2: Create user with password
+```powershell
+$password = "xxxxxxxxxx"
+$password = ConvertTo-SecureString -AsPlainText -Force $password
+New-AzADUser -DisplayName $uname -Password $password -AccountEnabled $true -MailNickname $nickname -UserPrincipalName $upn
+```
+
+Create user with password
 
 ## PARAMETERS
 
@@ -60,14 +86,12 @@ Accept wildcard characters: False
 ```
 
 ### -AccountEnabled
-true if the account is enabled; otherwise, false.
-This property is required when a user is created.
-Supports $filter (eq, ne, NOT, and in).
+true for enabling the account; otherwise, false.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.Boolean
 Parameter Sets: (All)
-Aliases:
+Aliases: EnableAccount
 
 Required: False
 Position: Named
@@ -365,7 +389,7 @@ Default behavior is (false) to not change the password on the next successful lo
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Parameter Sets: WithPassword
 Aliases:
 
 Required: False
@@ -587,7 +611,7 @@ It is recommended to set a strong password.
 
 ```yaml
 Type: System.Security.SecureString
-Parameter Sets: (All)
+Parameter Sets: WithPassword
 Aliases:
 
 Required: True
@@ -621,10 +645,10 @@ To construct, see NOTES section for PASSWORDPROFILE properties and create a hash
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordProfile
-Parameter Sets: (All)
+Parameter Sets: WithPasswordProfile
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -892,8 +916,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser
@@ -907,7 +929,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PASSWORDPROFILE <IMicrosoftGraphPasswordProfile>: passwordProfile
+`PASSWORDPROFILE <IMicrosoftGraphPasswordProfile>`: passwordProfile
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[ForceChangePasswordNextSignIn <Boolean?>]`: true if the user must change her password on the next login; otherwise false. If not set, default is false. NOTE:  For Azure B2C tenants, set to false and instead use custom policies and user flows to force password reset at first sign in. See Force password reset at first logon.
   - `[ForceChangePasswordNextSignInWithMfa <Boolean?>]`: If true, at next sign-in, the user must perform a multi-factor authentication (MFA) before being forced to change their password. The behavior is identical to forceChangePasswordNextSignIn except that the user is required to first perform a multi-factor authentication before password change. After a password change, this property will be automatically reset to false. If not set, default is false.

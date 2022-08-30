@@ -23,18 +23,22 @@ The **Disable-AzHDInsightMonitoring** cmdlet disables the Classic Azure Monitor 
 ## EXAMPLES
 
 ### Example 1
+```powershell
+Disable-AzHDInsightMonitoring -Name testcluster
 ```
-PS C:\> Disable-AzHDInsightMonitoring -Name testcluster
 
+```output
 True
 ```
 
 Monitoring will be disabled on the HDInsight cluster and relevant logs will stop flowing to the monitoring workspace.
 
 ### Example 2
+```powershell
+Disable-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg
 ```
-PS C:\> Disable-AzHDInsightMonitoring -Name testcluster -ResourceGroupName testrg
 
+```output
 True
 ```
 

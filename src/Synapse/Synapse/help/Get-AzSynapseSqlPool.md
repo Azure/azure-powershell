@@ -37,29 +37,29 @@ The **Get-AzSynapseSqlPool** cmdlet gets information about an Azure Synapse Anal
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace
+Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace
 ```
 
 This command gets all SQL pools under a workspace.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
+Get-AzSynapseSqlPool -WorkspaceName ContosoWorkspace -Name ContosoSqlPool
 ```
 
 This command gets the SQL pool under workspace ContosoWorkspace with name ContosoSqlPool.
 
 ### Example 3
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Get-AzSynapseSqlPool
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Get-AzSynapseSqlPool
 ```
 
 This command gets all the SQL pools under a workspace through pipeline.
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzSynapseSqlPool -ResourceId "/subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool"
+Get-AzSynapseSqlPool -ResourceId "/subscriptions/21686af7-58ec-4f4d-9c68-f431f4db4edd/resourceGroups/ContosoResourceGroup/providers/Microsoft.Synapse/workspaces/ContosoWorkspace/sqlPools/ContosoSqlPool"
 ```
 
 This command gets the SQL pool with the specified resource ID.

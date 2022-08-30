@@ -1,18 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a new database
 ```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+New-AzKustoDatabase -ResourceGroupName testrg -ClusterName testnewkustocluster -Name mykustodatabase -Kind ReadWrite -Location 'East US'
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
+```output
+Kind      Location Name                                Type
+----      -------- ----                                ----
+ReadWrite East US  testnewkustocluster/mykustodatabase Microsoft.Kusto/Clusters/Databases
 ```
 
-{{ Add description here }}
-
+The above command creates a new datebase named "mykustodatabase" in the resource group "testrg".

@@ -42,8 +42,10 @@ Get a host pool.
 
 ### Example 1: Get a Windows Virtual Desktop HostPool by name
 ```powershell
-PS C:\> Get-AzWvdHostPool -ResourceGroupName ResourceGroupName -Name HostPoolName
+Get-AzWvdHostPool -ResourceGroupName ResourceGroupName -Name HostPoolName
+```
 
+```output
 Location   Name                 Type
 --------   ----                 ----
 eastus     HostPoolName Microsoft.DesktopVirtualization/hostpools
@@ -53,8 +55,10 @@ This command gets a Windows Virtual Desktop HostPool in a Resource Group.
 
 ### Example 2: List Windows Virtual Desktop HostPools
 ```powershell
-PS C:\> Get-AzWvdHostPool -ResourceGroupName ResourceGroupName
+Get-AzWvdHostPool -ResourceGroupName ResourceGroupName
+```
 
+```output
 Location   Name          Type
 --------   ----          ----
 eastus     HostPoolName1 Microsoft.DesktopVirtualization/hostpools
@@ -162,7 +166,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+`INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group

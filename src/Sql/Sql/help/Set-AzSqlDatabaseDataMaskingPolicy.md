@@ -30,8 +30,8 @@ This cmdlet is also supported by the SQL Server Stretch Database service on Azur
 ## EXAMPLES
 
 ### Example 1: Set the data masking policy for a database
-```
-PS C:\>Set-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01 -PrivilegedUsers "public" -DataMaskingState "Enabled"
+```powershell
+Set-AzSqlDatabaseDataMaskingPolicy -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" -PrivilegedUsers "public" -DataMaskingState "Enabled"
 ```
 
 This command sets the data masking policy for a database named database01 on the server named server01.

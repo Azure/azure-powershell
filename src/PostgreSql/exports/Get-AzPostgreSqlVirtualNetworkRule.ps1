@@ -20,24 +20,12 @@ Gets a virtual network rule.
 .Description
 Gets a virtual network rule.
 .Example
-PS C:\> Get-AzPostgreSqlVirtualNetworkRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer 
-
-Name Type
----- ----
-vnet Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
+ Get-AzPostgreSqlVirtualNetworkRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer 
 .Example
-PS C:\> Get-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
-Name Type
----- ----
-vnet Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
+ Get-AzPostgreSqlVirtualNetworkRule -Name vnet -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
-PS C:\> Get-AzPostgreSqlVirtualNetworkRule -InputObject $ID
-
-Name Type
----- ----
-vnet Microsoft.DBforPostgreSQL/servers/virtualNetworkRules
+ $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/virtualNetworkRules/vnet"
+ Get-AzPostgreSqlVirtualNetworkRule -InputObject $ID
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity

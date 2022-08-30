@@ -25,8 +25,8 @@ The removed script will no longer be executed when the cluster is scaled up.
 ## EXAMPLES
 
 ### Example 1: Remove a script action from the list of persisted script actions on a cluster
-```
-PS C:\>Remove-AzHDInsightPersistedScriptAction `
+```powershell
+Remove-AzHDInsightPersistedScriptAction `
             -ClusterName "your-hadoop-001" `
             -Name "Scriptaction"
 ```

@@ -20,9 +20,8 @@ Approve-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
 
 ### ByResource
 ```
-Approve-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
- [-PrivateLinkResourceType <string>][-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Approve-AzPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -ServiceName <String> -PrivateLinkResourceType <String>
+ [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,8 +30,8 @@ The **Approve-AzPrivateEndpointConnection** cmdlet approves a private endpoint c
 ## EXAMPLES
 
 ### Example 1
-```
-Approve-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService
+```powershell
+Approve-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService -PrivateLinkResourceType Microsoft.Network/privateLinkServices
 ```
 
 This example approves a private endpoint connection.
@@ -92,10 +91,10 @@ Type: System.String
 Parameter Sets: ByResource
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: 'Microsoft.Network/privateLinkServices'
-Accept pipeline input: True (ByPropertyName)
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -143,7 +142,6 @@ Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
-
 
 ### CommonParameters
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).

@@ -25,15 +25,15 @@ The **New-AzAutoscaleNotification** cmdlet creates an email notification for Aut
 ## EXAMPLES
 
 ### Example 1: Create an Autoscale email notification
-```
-PS C:\>New-AzAutoscaleNotification -CustomEmail "pattif@contoso.com, davidchew@contoso.net"
+```powershell
+New-AzAutoscaleNotification -CustomEmail "pattif@contoso.com, davidchew@contoso.net"
 ```
 
 This command creates an Autosacale email notification for two specified addresses.
 
 ### Example 2: Create an Autoscale email notification for the subscription administrator
-```
-PS C:\>New-AzAutoscaleNotification -SendEmailToSubscriptionAdministrator
+```powershell
+New-AzAutoscaleNotification -SendEmailToSubscriptionAdministrator
 ```
 
 This command creates an Autosacale email notification for the subscription administrator.

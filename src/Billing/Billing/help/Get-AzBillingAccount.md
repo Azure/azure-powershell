@@ -66,7 +66,7 @@ Get all billing accounts user has access to, and include the billing profiles an
 
 ### Example 6
 ```powershell
-Get-AzBillingAccount -ExpandInvoiceSection -ExpandAddress -Name 00000000-0000-0000-0000-000000000000
+Get-AzBillingAccount -ExpandInvoiceSection -IncludeAddress -ExpandBillingProfile -Name 00000000-0000-0000-0000-000000000000
 ```
 
 Get the billing account with the specified name, and include the address, billing profiles and invoice sections under them in the result.

@@ -47,7 +47,9 @@ The **Get-AzPublicIPAddress** cmdlet gets one or more public IP addresses in a r
 ### Example 1: Get a public IP resource
 ```powershell
 Get-AzPublicIpAddress -Name myPublicIp1 -ResourceGroupName myRg
+```
 
+```output
 Name                     : myPublicIp1
 ResourceGroupName        : myRg
 Location                 : westus2
@@ -79,7 +81,9 @@ This command gets a public IP address resource with name myPublicIp in the resou
 ### Example 2: Get public IP resources using filtering
 ```powershell
 Get-AzPublicIpAddress -Name myPublicIp*
+```
 
+```output
 Name                     : myPublicIp1
 ResourceGroupName        : myRg
 Location                 : westus2

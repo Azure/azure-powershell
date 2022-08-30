@@ -69,6 +69,7 @@ namespace Microsoft.Azure.Commands.ServiceFabric.Common
         public static readonly string WindowsTemplateRelativePath = Path.Combine("Template", "Windows");
         public static readonly string UbuntuServer16TemplateRelativePath = Path.Combine("Template", "Linux");
         public static readonly string UbuntuServer18TemplateRelativePath = Path.Combine("Template", "Ubuntu18_04");
+        public static readonly string UbuntuServer20TemplateRelativePath = Path.Combine("Template", "Ubuntu20_04");
         public const string ParameterFileName = @"parameter.json";
         public const string TemplateFileName = @"template.json";
 

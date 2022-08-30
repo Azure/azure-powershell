@@ -15,25 +15,37 @@ Saves a modified azure firewall policy
 ### SetByNameParameterSet (Default)
 ```
 Set-AzFirewallPolicy -Name <String> -ResourceGroupName <String> [-AsJob] [-ThreatIntelMode <String>]
- [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>] [-BasePolicy <String>] [-PrivateRange <String[]>]
- [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] -Location <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>] [-BasePolicy <String>]
+ [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
+ -Location <String> [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
+ [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
+ [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
+ [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
 Set-AzFirewallPolicy [-Name <String>] -InputObject <PSAzureFirewallPolicy> [-AsJob] [-ThreatIntelMode <String>]
- [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>] [-BasePolicy <String>] [-PrivateRange <String[]>]
- [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-Location <String>] [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>] [-BasePolicy <String>]
+ [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
+ [-Location <String>] [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
+ [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
+ [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
+ [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
-Set-AzFirewallPolicy [-AsJob] -ResourceId <String> [-ThreatIntelMode <String>] [-PrivateRange <String[]>]
+Set-AzFirewallPolicy [-AsJob] -ResourceId <String> [-ThreatIntelMode <String>]
  [-ThreatIntelWhitelist <PSAzureFirewallPolicyThreatIntelWhitelist>] [-BasePolicy <String>]
- [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] -Location <String> [-Tag <Hashtable>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DnsSetting <PSAzureFirewallPolicyDnsSettings>] [-SqlSetting <PSAzureFirewallPolicySqlSetting>]
+ -Location <String> [-Tag <Hashtable>] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
+ [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
+ [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
+ [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -43,25 +55,67 @@ The **Set-AzFirewallPolicy** cmdlet updates an Azure Firewall Policy.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzFirewallPolicy -InputObject $fp
+Set-AzFirewallPolicy -InputObject $fp
 ```
 
 This example sets the firewall policy with the new firewall policy value
 
 ### Example 2
 ```powershell
-PS C:\> Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ThreatIntelMode "Alert"
+Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ThreatIntelMode "Alert"
 ```
 
 This example sets the firewall policy with the new threat intel mode
 
 ### Example 3
 ```powershell
-PS C:\> $threatIntelWhitelist = New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
-PS C:\> Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ThreatIntelWhitelist $threatIntelWhitelist
+$threatIntelWhitelist = New-AzFirewallPolicyThreatIntelWhitelist -IpAddress 23.46.72.91,192.79.236.79 -FQDN microsoft.com
+Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ThreatIntelWhitelist $threatIntelWhitelist
 ```
 
 This example sets the firewall policy with the new threat intel whitelist
+
+### Example 4
+```powershell
+$exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
+Set-AzFirewallPolicy -Name firewallPolicy1 -ResourceGroupName TestRg -Location westcentralus -ExplicitProxy $exProxy
+```
+```output
+		BasePolicy	                : null	
+		DnsSettings  	            : null	
+		Etag	                    : null	
+		ExplicitProxy	
+			EnableExplicitProxy	    : true	
+			EnablePacFile	        : true	
+			HttpPort	            : 100	
+			HttpsPort	            : 101	
+			PacFile                 : "sampleurlfortesting.blob.core.windowsnet/nothing"
+			PacFilePort	            : 130	
+		Id	                        : null	
+		Identity	                : null	
+		IntrusionDetection	        : null	
+		Location	                : "westcentralus"	
+		Name	                    : "firewallPolicy1"	
+		PrivateRange	            : null
+		PrivateRangeText	        : "[]"
+		ProvisioningState	        : null	
+		ResourceGroupName	        : "TestRg"	
+		ResourceGuid	            : null	
+		RuleCollectionGroups	    : null	
+		Sku	
+			Tier	                : "Standard"	
+		Snat	
+			AutoLearnPrivateRanges	: null	
+			PrivateRanges	        : null	
+		SqlSetting	                : null	
+		Tag	                        : null	
+		TagsTable	                : null	
+		ThreatIntelMode	            : "Alert"	
+		ThreatIntelWhitelist	    : null	
+		TransportSecurity	        : null	
+		Type	                    : null	
+```
+This example sets the firewall policy with the explicit proxy settings
 
 ## PARAMETERS
 
@@ -69,7 +123,7 @@ This example sets the firewall policy with the new threat intel whitelist
 Run cmdlet in the background
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -84,7 +138,7 @@ Accept wildcard characters: False
 The base policy to inherit from
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -99,7 +153,7 @@ Accept wildcard characters: False
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -114,7 +168,37 @@ Accept wildcard characters: False
 The DNS Setting
 
 ```yaml
-Type: PSAzureFirewallPolicyDnsSettings
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyDnsSettings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExplicitProxy
+The Explicit Proxy Settings
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyExplicitProxy
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Identity
+Firewall Policy Identity to be assigned to Firewall Policy.
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSManagedServiceIdentity
 Parameter Sets: (All)
 Aliases:
 
@@ -129,7 +213,7 @@ Accept wildcard characters: False
 The AzureFirewall Policy
 
 ```yaml
-Type: PSAzureFirewallPolicy
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicy
 Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
@@ -140,11 +224,26 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -IntrusionDetection
+The Intrusion Detection Setting
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyIntrusionDetection
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Location
 location.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -156,7 +255,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByInputObjectParameterSet
 Aliases:
 
@@ -168,7 +267,7 @@ Accept wildcard characters: False
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
@@ -183,7 +282,7 @@ Accept wildcard characters: False
 The resource name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases: ResourceName
 
@@ -191,11 +290,11 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByInputObjectParameterSet
 Aliases: ResourceName
 
@@ -203,6 +302,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
+### -PrivateRange
+The Private IP Range
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -210,7 +324,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByNameParameterSet
 Aliases:
 
@@ -218,14 +332,14 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
+Accept wildcard characters: True
 ```
 
 ### -ResourceId
 The resource Id.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: SetByResourceIdParameterSet
 Aliases:
 
@@ -233,6 +347,37 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: True
+```
+
+### -SkuTier
+Firewall policy sku tier
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: Standard, Premium, Basic
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SqlSetting
+The SQL related setting
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicySqlSetting
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -240,7 +385,7 @@ Accept wildcard characters: False
 A hashtable which represents resource tags.
 
 ```yaml
-Type: Hashtable
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -255,7 +400,7 @@ Accept wildcard characters: False
 The operation mode for Threat Intelligence.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 Accepted values: Alert, Deny, Off
@@ -271,9 +416,54 @@ Accept wildcard characters: False
 The whitelist for Threat Intelligence
 
 ```yaml
-Type: PSAzureFirewallPolicyThreatIntelWhitelist
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyThreatIntelWhitelist
 Parameter Sets: (All)
 Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TransportSecurityKeyVaultSecretId
+Secret Id of (base-64 encoded unencrypted pfx) 'Secret' or 'Certificate' object stored in KeyVault
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TransportSecurityName
+Transport security name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+ResourceId of the user assigned identity to be assigned to Firewall Policy.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases: UserAssignedIdentity
 
 Required: False
 Position: Named
@@ -286,7 +476,7 @@ Accept wildcard characters: False
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
@@ -302,7 +492,7 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: SwitchParameter
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
@@ -331,3 +521,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzFirewallPolicyExplicitProxy](./New-AzFirewallPolicyExplicitProxy.md)

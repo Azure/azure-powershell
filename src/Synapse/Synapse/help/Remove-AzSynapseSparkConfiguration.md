@@ -37,23 +37,23 @@ The **Remove-AzSynapseSparkConfiguration** cmdlet removes a spark configuration 
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContosoSparkConfiguration
+Remove-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContosoSparkConfiguration
 ```
 
 Remove a spark configuration called ContosoSparkConfiguration from the workspace ContosoWorkspace.
 
 ### Example 2
 ```powershell
-PS C:\> $ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
-PS C:\> $ws | Remove-AzSynapseSparkConfiguration -Name ContosoSparkConfiguration
+$ws = Get-AzSynapseWorkspace -Name ContosoWorkspace
+$ws | Remove-AzSynapseSparkConfiguration -Name ContosoSparkConfiguration
 ```
 
 Remove a spark configuration called ContosoSparkConfiguration from the workspace ContosoWorkspace through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $sparkConfiguration = Get-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContosoSparkConfiguration
-PS C:\> $sparkConfiguration | Remove-AzSynapseSparkConfiguration
+$sparkConfiguration = Get-AzSynapseSparkConfiguration -WorkspaceName ContosoWorkspace -Name ContosoSparkConfiguration
+$sparkConfiguration | Remove-AzSynapseSparkConfiguration
 ```
 
 Remove a spark configuration called ContosoSparkConfiguration from the workspace ContosoWorkspace through pipeline.

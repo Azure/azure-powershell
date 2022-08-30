@@ -18,6 +18,45 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as Az-CLI
+
+## Version 2.11.3
+* Fixed `Publish-AzWebapp` to handle relative paths properly [#18028]
+
+## Version 2.11.2
+* Updated `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VirtualNetworkSubnetId` property [#18042]
+* Updated `Publish-AzWebApp` to avoid the false positive result when zip deploy is not reachable. 
+## Version 2.11.1
+* Updated 'New-AzWebAppContainerPSSession' with CmdletDeprecation Attribute [#16646]
+* Updated `Restore-AzDeletedWebApp` to fix issue that prevents the cmdlet from working on hosts with a locale is anything different from `en-US`
+
+## Version 2.11.0
+* Fixed `Set-AzWebAppSlot` to support MinTlsVersion version update [#17663]
+* Fixed `Set-AzAppServicePlan` to keep existing Tags when adding new Tags 
+* Fixed `Set-AzWebApp`,`Set-AzWebAppSlot`, `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `VnetRouteAllEnabled` property in `SiteConfig` [#15663]
+* Fixed `Set-AzWebApp`, `Set-AzWebAppSlot`, `Get-AzWebApp` and `Get-AzWebAppSlot` to expose `HealthCheckPath` property in `SiteConfig` [#16325]
+* Fixed DateTime conversion issue caused by culture [#17253]
+* Added support for the web job feature [#661]
+    - Get-AzWebAppContinuousWebJob
+    - Get-AzWebAppSlotContinuousWebJob
+    - Get-AzWebAppSlotTriggeredWebJob
+    - Get-AzWebAppSlotTriggeredWebJobHistory
+    - Get-AzWebAppSlotWebJob
+    - Get-AzWebAppTriggeredWebJob
+    - Get-AzWebAppTriggeredWebJobHistory
+    - Get-AzWebAppWebJob
+    - Remove-AzWebAppContinuousWebJob
+    - Remove-AzWebAppSlotContinuousWebJob
+    - Remove-AzWebAppSlotTriggeredWebJob
+    - Remove-AzWebAppTriggeredWebJob
+    - Start-AzWebAppContinuousWebJob
+    - Start-AzWebAppSlotContinuousWebJob
+    - Start-AzWebAppSlotTriggeredWebJob
+    - Start-AzWebAppTriggeredWebJob
+    - Stop-AzWebAppContinuousWebJob
+    - Stop-AzWebAppSlotContinuousWebJob
+
+## Version 2.10.0
 * Updated `New-AzAppServicePlan`  to create an app service plan with host environment id #16094
 
 ## Version 2.9.0

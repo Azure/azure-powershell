@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string SqlUniqueKeyPolciyHelpMessage = "UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlUniqueKeyPolicy. ";
         public const string UniqueKeyPolciyHelpMessage = "UniqueKeyPolicy Object of type Microsoft.Azure.Commands.CosmosDB.PSUniqueKeyPolicy. ";
         public const string SqlConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSSqlConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.";
+        public const string SqlClientEncryptionPolicyHelpMessage = "ClientEncryptionPolicy Object of type PSSqlClientEncryptionPolicy, when provided this is set as the ClientEncryptionPolicy of the container.";
         public const string ConflictResolutionPolicyHelpMessage = "ConflictResolutionPolicy Object of type PSConflictResolutionPolicy, when provided this is set as the ConflictResolutionPolicy of the container.";
         public const string PartitionKeyPathHelpMessage = "Partition Key Path, e.g., '/address/zipcode'.";
         public const string SqlContainerThroughputHelpMessage = "The throughput of SQL container (RU/s). Default value is 400.";
@@ -130,6 +131,14 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string CompositePathHelpMessage = "The path for which the indexing behavior applies to. Index paths typically start with root and end with wildcard (/path/*)";
         public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
         public const string SqlContainerAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
+        public const string ClientEncryptionKeyObjectHelpMessage = "Client Encryption Key object.";
+
+        //SQL Client Side Encryption
+        public const string ClientEncryptionKeyName = "Client Encryption Key name.";
+        public const string ClientEncryptionKeyNameAlias = "ClientEncryptionKeyName";
+        public const string EncryptionAlgorithmName = "Client Encryption Algorithm name.";
+        public const string KeyWrapMetaData = "KeyWrapMetaData Object of type Microsoft.Azure.Commands.CosmosDB.PSSqlKeyWrapMetadata.";
+        public const string KeyEncryptionKeyResolver = "KeyEncryptionKeyResolver interface of type Azure.Core.Cryptography.IKeyEncryptionKeyResolver. If KeyEncryptionKeyResolver is not passed Azure Key Vault KeyResolver is used.";
 
         //MongoDB cmdlets help messages
         public const string CollectionNameHelpMessage = "Collection name.";

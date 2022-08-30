@@ -50,8 +50,10 @@ This operation allows adding or replacing the entire set of tags on the specifie
 
 ### Example 1: Create a predefined tag
 ```powershell
-PS C:\>New-AzTag -Name "FY2015"
-                                
+New-AzTag -Name "FY2015"
+```
+
+```output
 Name   ValuesTable Count Values 
 ----   ----------- ----- ------
 FY2015             0     {}
@@ -64,7 +66,10 @@ You can also specify a value when you apply the tag to the resource or resource 
 
 ### Example 2: Create a predefined tag with a value
 ```powershell
-PS C:\>New-AzTag -Name "Department" -Value "Finance"
+New-AzTag -Name "Department" -Value "Finance"
+```
+
+```output
 Name:   Department
 Count:  0
 Values: 
@@ -77,15 +82,19 @@ Values:
 This command creates a predefined tag named Department with a value of Finance.
 
 ### Example 3: Add a value to a predefined tag
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
-PS C:\>New-AzTag -Name "Department" -Value "Finance"
+New-AzTag -Name "Department" -Value "Finance"
+
 Name:   Department
 Count:  0
 Values: 
         Name        Count
         =========   =====
         Finance     0 
-PS C:\>New-AzTag -Name "Department" -Value "IT"
+New-AzTag -Name "Department" -Value "IT"
 Name:   Department
 Count:  0
 Values: 
@@ -99,15 +108,21 @@ These commands create a predefined tag named Department with two values.
 If the tag name exists, **New-AzTag** adds the value to the existing tag instead of creating a new one.
 
 ### Example 4: Use a predefined tag
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
-PS C:\>New-AzTag -Name "CostCenter" -Value "0001"
+New-AzTag -Name "CostCenter" -Value "0001"
+
 Name:   CostCenter
 Count:  0
 Values: 
         Name        Count
         =========   =====
         0001        0 
-PS C:\>Set-AzResourceGroup -Name "EngineerBlog" -Tag @{Name="CostCenter";Value="0001"}
+
+Set-AzResourceGroup -Name "EngineerBlog" -Tag @{Name="CostCenter";Value="0001"}
+
 Name:      EngineerBlog
 Location:  East US
 Resources: 
@@ -121,14 +136,18 @@ Tags:
     Name         Value
     ==========   =====
     CostCenter   0001 
-PS C:\>Get-AzTag -Name "CostCenter"
+
+Get-AzTag -Name "CostCenter"
+
 Name:   CostCenter
 Count:  1
 Values: 
         Name        Count
         =========   =====
         0001        1 
-PS C:\>Get-AzResourceGroup -Tag @{Name="CostCenter"}
+
+Get-AzResourceGroup -Tag @{Name="CostCenter"}
+
 Name:      EngineerBlog
 Location:  East US
 Resources: 
@@ -149,9 +168,11 @@ The commands in this example create and use a predefined tag.
 ### Example 5: Creates or updates the entire set of tags on a subscription
 
 ```powershell
-PS C:\>$Tags = @{"tagKey1"="tagValue1"; "tagKey2"="tagValue2"}
-PS C:\>New-AzTag -ResourceId /subscriptions/{subId} -Tag $Tags
+$Tags = @{"tagKey1"="tagValue1"; "tagKey2"="tagValue2"}
+New-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -Tag $Tags
+```
 
+```output
 Id         : {Id}
 Name       : {Name}
 Type       : {Type}
@@ -167,9 +188,11 @@ This command creates or updates the entire set of tags on the subscription with 
 ### Example 6: Creates or updates the entire set of tags on a resource
 
 ```powershell
-PS C:\>$Tags = @{"Dept"="Finance"; "Status"="Normal"}
-PS C:\>New-AzTag -ResourceId /subscriptions/{subId}/resourcegroups/{rg}/providers/Microsoft.Sql/servers/Server1 -Tag $Tags
+$Tags = @{"Dept"="Finance"; "Status"="Normal"}
+New-AzTag -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/testrg/providers/Microsoft.Sql/servers/Server1 -Tag $Tags
+```
 
+```output
 Id         : {Id}
 Name       : {Name}
 Type       : {Type}

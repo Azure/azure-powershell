@@ -12,27 +12,20 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-
 using Microsoft.Azure.Commands.Management.CognitiveServices;
-using Microsoft.Azure.Commands.ScenarioTest;
-using Microsoft.Azure.ServiceManagement.Common.Models;
+using Microsoft.Azure.Commands.Management.CognitiveServices.Test.ScenarioTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace CognitiveServices.Test.ScenarioTests
 {
-    public class CognitiveServicesUtilsTests : RMTestBase
+    public class CognitiveServicesUtilsTests : CognitiveServicesTestRunner
     {
-        XunitTracingInterceptor traceInterceptor;
-
-        public CognitiveServicesUtilsTests(ITestOutputHelper output)
+        public CognitiveServicesUtilsTests(ITestOutputHelper output) : base(output)
         {
-            this.traceInterceptor = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(this.traceInterceptor);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
+
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestUtils()

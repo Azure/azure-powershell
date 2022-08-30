@@ -28,10 +28,10 @@ Commit your changes to the profile for Traffic Manager by using the Set-AzTraffi
 ## EXAMPLES
 
 ### Example 1: Remove an expected status code range from a profile
-```
-PS C:\> $TrafficManagerProfile = Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
-PS C:\> Remove-AzTrafficManagerExpectedStatusCodeRange -TrafficManagerProfile $TrafficManagerProfile -Min 200
-PS C:\> Set-AzTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
+```powershell
+$TrafficManagerProfile = Get-AzTrafficManagerProfile -Name "ContosoProfile" -ResourceGroupName "ResourceGroup11"
+Remove-AzTrafficManagerExpectedStatusCodeRange -TrafficManagerProfile $TrafficManagerProfile -Min 200
+Set-AzTrafficManagerProfile -TrafficManagerProfile $TrafficManagerProfile
 ```
 
 The first command gets an Azure Traffic Manager profile by using the **Get-AzTrafficManagerProfile** cmdlet.

@@ -1,0 +1,47 @@
+{
+  "Get-AzMLWorkspaceCodeVersion+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/codepwsh01/versions/1?api-version=2022-05-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/codepwsh01/versions/1?api-version=2022-05-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "466a1725-4bd8-4655-ac2a-020f5bf29fc3" ],
+        "CommandName": [ "Get-AzMLWorkspaceCodeVersion" ],
+        "FullCommandName": [ "Get-AzMLWorkspaceCodeVersion_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MachineLearningWorkspaces/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "x-ms-request-id": [ "c40a368b-5773-43ca-8c38-7b6aa8909327" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11989" ],
+        "Request-Context": [ "appId=cid-v1:2d2e8e63-272e-4b3c-8598-4ee570a0e70d" ],
+        "x-ms-response-type": [ "standard" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-aml-cluster": [ "vienna-eastus-01" ],
+        "x-request-time": [ "0.194" ],
+        "x-ms-correlation-request-id": [ "c40a368b-5773-43ca-8c38-7b6aa8909327" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220605T094011Z:c40a368b-5773-43ca-8c38-7b6aa8909327" ],
+        "Date": [ "Sun, 05 Jun 2022 09:40:10 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "898" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\n  \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/ml-rg-test/providers/Microsoft.MachineLearningServices/workspaces/mlworkspace-cli01/codes/codepwsh01/versions/1\",\n  \"name\": \"1\",\n  \"type\": \"Microsoft.MachineLearningServices/workspaces/codes/versions\",\n  \"properties\": {\n    \"description\": null,\n    \"tags\": {},\n    \"properties\": {},\n    \"isArchived\": false,\n    \"isAnonymous\": false,\n    \"codeUri\": \"https://mlworkspacecli9058222679.blob.core.windows.net/azureml-blobstore-85b9e7f0-8ea4-4e3d-a742-06ee40ba4b03/LocalUpload/0266d4558a4fbc95eee31fd4fc0ca48e/src\"\n  },\n  \"systemData\": {\n    \"createdAt\": \"2022-05-24T07:14:05.3150818Z\",\n    \"createdBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"createdByType\": \"User\",\n    \"lastModifiedAt\": \"2022-05-24T07:14:05.3150818Z\",\n    \"lastModifiedBy\": \"Lucas Yao (Wicresoft North America)\",\n    \"lastModifiedByType\": \"User\"\n  }\n}",
+      "isContentBase64": false
+    }
+  }
+}

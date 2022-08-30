@@ -12,15 +12,19 @@
 # limitations under the License.
 # ----------------------------------------------------------------------------------
 
-$location = "southeastasia"
-$resourceGroupName = "pstestwlRG1bca8"
-$vaultName = "pstestwlRSV1bca8"
+# $location = "southeastasia"
+# $resourceGroupName = "pstestwlRG1bca8"
+# $vaultName = "pstestwlRSV1bca8"
+
 $newPolicyName = "testSqlPolicy"
+$location = "centraluseuap"
+$resourceGroupName = "iaasvm-pstest-rg"
+$vaultName = "iaasvm-pstest-vault"
 
 function Test-AzureVmWorkloadPolicy
 {
 	$vault = Get-AzRecoveryServicesVault -ResourceGroupName $resourceGroupName -Name $vaultName
-		
+	
 	# Get default policy objects
 	$schedulePolicy = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType MSSQL
 	Assert-NotNull $schedulePolicy

@@ -47,8 +47,7 @@ namespace Microsoft.Azure.Commands.Sql.InstanceActiveDirectoryAdministrator.Serv
         /// <summary>
         /// Creates a communicator for Azure SQL Instance Active Directory administrator
         /// </summary>
-        /// <param name="profile"></param>
-        /// <param name="subscription"></param>
+        /// <param name="context">The current azure context</param>
         public AzureSqlInstanceActiveDirectoryAdministratorCommunicator(IAzureContext context)
         {
             Context = context;

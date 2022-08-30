@@ -35,15 +35,15 @@ Alternatively, you can specify the endpoint name and type by using the *Name* an
 ## EXAMPLES
 
 ### Example 1: Enable an endpoint from a profile
-```
-PS C:\>Enable-AzTrafficManagerEndpoint -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName ResourceGroup11 -Type ExternalEndpoints
+```powershell
+Enable-AzTrafficManagerEndpoint -Name "contoso" -ProfileName "ContosoProfile" -ResourceGroupName ResourceGroup11 -Type ExternalEndpoints
 ```
 
 This command enables the external endpoint named contoso in the profile named ContosoProfile in resource group ResourceGroup11.
 
 ### Example 2: Enable an endpoint by using the pipeline
-```
-PS C:\>Get-AzTrafficManagerEndpoint -Name "contoso" -Type ExternalEndpoints -ProfileName "ContosoProfile" -ResourceGroupName "ResourceGroup11" | Enable-AzTrafficManagerEndpoint
+```powershell
+Get-AzTrafficManagerEndpoint -Name "contoso" -Type ExternalEndpoints -ProfileName "ContosoProfile" -ResourceGroupName "ResourceGroup11" | Enable-AzTrafficManagerEndpoint
 ```
 
 This command gets the external endpoint named Contoso from the profile named ContosoProfile in ResourceGroup11.

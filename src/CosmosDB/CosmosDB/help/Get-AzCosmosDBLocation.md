@@ -22,18 +22,17 @@ List Azure Cosmos DB locations with their location properties. It includes Locat
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get Azure Cosmos DB Account Location Properties for Given Location
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-Get Azure Cosmos DB Account Location Properties for Given Location
-
-PS C:\> Get-AzCosmosDBLocation -Location "Central US"
+Get-AzCosmosDBLocation -Location "Central US"
 
 Id                                                                                                      Name       Type                           Properties
 --                                                                                                      ----       ----                           ----------
 subscriptionId/subscriptionId/providers/Microsoft.DocumentDB/locations/centralus/ Central US Microsoft.DocumentDB/locations Microsoft.Azure.Commands.CosmosDB.Models.PSLocationP...
 
 
-PS C:\> Get-AzCosmosDBLocation -Location "Central US" | ConvertTo-Json
+Get-AzCosmosDBLocation -Location "Central US" | ConvertTo-Json
 {
     "Id":  "subscriptionId/<subscriptionId>/providers/Microsoft.DocumentDB/locations/centralus/",
     "Name":  "Central US",
@@ -50,11 +49,10 @@ PS C:\> Get-AzCosmosDBLocation -Location "Central US" | ConvertTo-Json
 }
 ```
 
-### Example 2
+### Example 2: List Azure Cosmos DB Account Locations and their properties
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
-List Azure Cosmos DB Account Locations and their properties
-
-PS C:\> Get-AzCosmosDBLocation
+Get-AzCosmosDBLocation
 
 Id                                                                                                               Name                 Type                           Properties
 --                                                                                                               ----                 ----                           ----------
@@ -63,7 +61,7 @@ subscriptionId/<subscriptionId>/providers/Microsoft.DocumentDB/locations/central
 ....
 
 
-PS C:\> Get-AzCosmosDBLocation | ConvertTo-Json
+Get-AzCosmosDBLocation | ConvertTo-Json
 [
     {
         "Id":  "subscriptionId/<subscriptionId>/providers/Microsoft.DocumentDB/locations/brazilsoutheast/",

@@ -12,22 +12,16 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using Microsoft.Azure.ServiceManagement.Common.Models;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
-using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using Xunit;
 using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
 {
-    public class IotHubRoutingTests : RMTestBase
+    public class IotHubRoutingTests : IotHubTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public IotHubRoutingTests(ITestOutputHelper output)
+        public IotHubRoutingTests(ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
         }
 
         [Fact]
@@ -35,7 +29,7 @@ namespace Microsoft.Azure.Commands.IotHub.Test.ScenarioTests
         [Trait("Re-record", "ClientRuntime changes")]
         public void TestAzureIotHubRoutingLifeCycle()
         {
-            IotHubController.NewInstance.RunPsTest(_logger, "Test-AzureRmIotHubRoutingLifecycle");
+            TestRunner.RunTestScript("Test-AzureRmIotHubRoutingLifecycle");
         }
     }
 }

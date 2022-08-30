@@ -24,17 +24,9 @@ Updates an existing server.
 The request body can contain one to many of the properties present in the normal server definition.
 Use Update-AzPostgreSqlFlexibleServerConfiguration instead if you want update server parameters such as wait_timeout or net_retry_count.
 .Example
-PS C:\> Update-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -Sku Standard_D4s_v3
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D4s_v3 GeneralPurpose daeunyim           256 GeneralPurpose
+ Update-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -Sku Standard_D4s_v3
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Update-AzPostgreSqlFlexibleServer -BackupRetentionDay 23 -StorageMb 262144
-
-Name                Location  SkuName         SkuTier        AdministratorLogin StorageSizeGb
-----                --------  -------         -------        ------------------ -------------
-postgresql-test     East US   Standard_D2s_v3 GeneralPurpose daeunyim           256
+ Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Update-AzPostgreSqlFlexibleServer -BackupRetentionDay 23 -StorageMb 262144
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity

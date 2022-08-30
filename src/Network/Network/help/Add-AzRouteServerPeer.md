@@ -32,7 +32,7 @@ The **Add-AzRouteServerPeer** cmdlet adds a RouteServer Peer to an Azure RouteSe
 
 ### Example 1
 ```powershell
-PS C:\> Add-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -PeerIp "192.168.1.5" -PeerAsn "20000"
+Add-AzRouteServerPeer -ResourceGroupName $rgname -RouteServerName $routeServerName -PeerName $peerName -PeerIp "192.168.1.5" -PeerAsn "20000"
 ```
 
 ## PARAMETERS

@@ -43,8 +43,10 @@ Get an application group.
 
 ### Example 1: Get a Windows Virtual Desktop ApplicationGroup by name
 ```powershell
-PS C:\> Get-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName -Name ApplicationGroupName
+Get-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName -Name ApplicationGroupName
+```
 
+```output
 Location   Name                 Type
 --------   ----                 ----
 eastus     ApplicationGroupName Microsoft.DesktopVirtualization/applicationgroups
@@ -54,8 +56,10 @@ This command gets a Windows Virtual Desktop ApplicationGroup in a Resource Group
 
 ### Example 2: List Windows Virtual Desktop ApplicationGroups
 ```powershell
-PS C:\> Get-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName
+Get-AzWvdApplicationGroup -ResourceGroupName ResourceGroupName
+```
 
+```output
 Location   Name                  Type
 --------   ----                  ----
 eastus     ApplicationGroupName1 Microsoft.DesktopVirtualization/applicationgroups
@@ -179,7 +183,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+`INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group

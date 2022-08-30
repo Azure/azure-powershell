@@ -24,9 +24,9 @@ The **Set-AzApplicationGatewayAutoscaleConfiguration** cmdlet modifies the exist
 
 ### Example 1
 ```powershell
-PS C:\> $gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
-PS C:\> $gw = Set-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $gw -MinCapacity 5
-PS C:\> $gw = Set-AzApplicationGateway -ApplicationGateway $gw
+$gw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $resgpName
+$gw = Set-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $gw -MinCapacity 5
+$gw = Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 The first command gets the application gateway and stores it in $gw variable.

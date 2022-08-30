@@ -17,35 +17,31 @@ using Xunit;
 
 namespace Microsoft.Azure.Commands.MixedReality.Test
 {
-    public class RemoteRenderingAccountTests
+    public class RemoteRenderingAccountTests : MixedRealityTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public RemoteRenderingAccountTests(Xunit.Abstractions.ITestOutputHelper output)
+        public RemoteRenderingAccountTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoteRenderingAccountOperations()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RemoteRenderingAccountOperations");
+            TestRunner.RunTestScript("Test-RemoteRenderingAccountOperations");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestRemoteRenderingAccountOperationsWithPiping()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-RemoteRenderingAccountOperationsWithPiping");
+            TestRunner.RunTestScript("Test-RemoteRenderingAccountOperationsWithPiping");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListRemoteRenderingAccounts()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListRemoteRenderingAccounts");
+            TestRunner.RunTestScript("Test-ListRemoteRenderingAccounts");
         }
     }
 }

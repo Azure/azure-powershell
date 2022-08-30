@@ -244,6 +244,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The list of VpnServerConfigurationPolicyGroups that this P2SVpnGateway needs to have.")]
+        public PSVpnServerConfigurationPolicyGroup[] ConfigurationPolicyGroup { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "A hashtable which represents resource tags.")]
         public Hashtable Tag { get; set; }
 
@@ -294,6 +299,13 @@ namespace Microsoft.Azure.Commands.Network
             if (this.VpnClientIpsecPolicy != null && VpnClientIpsecPolicy.Length != 0)
             {
                 vpnServerConfigurationToUpdate.VpnClientIpsecPolicies = new List<PSIpsecPolicy>(this.VpnClientIpsecPolicy);
+            }
+
+            // Modify the vpnServerConfigurationPolicyGroups
+            if (this.ConfigurationPolicyGroup != null)
+            {
+                vpnServerConfigurationToUpdate.ConfigurationPolicyGroups = new List<PSVpnServerConfigurationPolicyGroup>();
+                vpnServerConfigurationToUpdate.ConfigurationPolicyGroups.AddRange(this.ConfigurationPolicyGroup);
             }
 
             // VpnAuthenticationType = Certificate related validations.

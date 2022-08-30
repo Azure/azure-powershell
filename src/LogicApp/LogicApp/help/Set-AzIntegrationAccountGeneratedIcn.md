@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.LogicApp.dll-Help.xml
 Module Name: Az.LogicApp
 online version: https://docs.microsoft.com/powershell/module/az.logicapp/set-azintegrationaccountgeneratedicn
@@ -31,13 +31,16 @@ Please do provide the "-AgreementType" parameter to specify whether X12 or Edifa
 ## EXAMPLES
 
 ### Example 1
+```powershell
+$resourceGroup.ResourceGroupName = "ResourceGroup1"
+$integrationAccountName = "IntegrationAccount1"
+$integrationAccountAgreementName = "X12IntegrationAccountAgreement"
+$initialControlNumber = Get-AzIntegrationAccountGeneratedIcn -AgreementType X12 -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
+$incrementedControlNumberValue = [convert]::ToString([convert]::ToInt32($initialControlNumber.ControlNumber, 10) + 100, 10)
+Set-AzIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber $incrementedControlNumberValue
 ```
-PS C:\> $resourceGroup.ResourceGroupName = "ResourceGroup1"
-PS C:\> $integrationAccountName = "IntegrationAccount1"
-PS C:\> $integrationAccountAgreementName = "X12IntegrationAccountAgreement"
-PS C:\> $initialControlNumber = Get-AzIntegrationAccountGeneratedIcn -AgreementType X12 -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
-PS C:\> $incrementedControlNumberValue = [convert]::ToString([convert]::ToInt32($initialControlNumber.ControlNumber, 10) + 100, 10)
-PS C:\> Set-AzIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber $incrementedControlNumberValue
+
+```output
 ControlNumber            : 1100
 ControlNumberChangedTime : 2/15/2017 12:36:00 AM
 IsMessageProcessingFailed:
@@ -46,13 +49,16 @@ IsMessageProcessingFailed:
 This command gets the integration account generated X12 interchange control number for a specific integration account agreement, increase its value by 100 then writes back the updated value.
 
 ### Example 2
+```powershell
+$resourceGroup.ResourceGroupName = "ResourceGroup1"
+$integrationAccountName = "IntegrationAccount1"
+$integrationAccountAgreementName = "EdifactIntegrationAccountAgreement"
+$initialControlNumber = Get-AzIntegrationAccountGeneratedIcn -AgreementType EdifactIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
+$incrementedControlNumberValue = [convert]::ToString([convert]::ToInt32($initialControlNumber.ControlNumber, 10) + 100, 10)
+Set-AzIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber $incrementedControlNumberValue
 ```
-PS C:\> $resourceGroup.ResourceGroupName = "ResourceGroup1"
-PS C:\> $integrationAccountName = "IntegrationAccount1"
-PS C:\> $integrationAccountAgreementName = "EdifactIntegrationAccountAgreement"
-PS C:\> $initialControlNumber = Get-AzIntegrationAccountGeneratedIcn -AgreementType EdifactIntegrationAccountAgreement -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName
-PS C:\> $incrementedControlNumberValue = [convert]::ToString([convert]::ToInt32($initialControlNumber.ControlNumber, 10) + 100, 10)
-PS C:\> Set-AzIntegrationAccountGeneratedIcn -ResourceGroupName $resourceGroup.ResourceGroupName -Name $integrationAccountName -AgreementName $integrationAccountAgreementName -ControlNumber $incrementedControlNumberValue
+
+```output
 ControlNumber            : 1100
 ControlNumberChangedTime : 2/15/2017 12:36:00 AM
 IsMessageProcessingFailed:

@@ -24,8 +24,10 @@ The command is used to view legacy Peering resources which all you to convert th
 
 ### Example 1
 ```powershell
-PS C:> Get-AzLegacyPeering -PeeringLocation "Seattle" -Kind Direct
+Get-AzLegacyPeering -PeeringLocation "Seattle" -Kind Direct
+```
 
+```output
 Name                       :
 Sku                        : Basic_Direct_Free
 Kind                       : Direct

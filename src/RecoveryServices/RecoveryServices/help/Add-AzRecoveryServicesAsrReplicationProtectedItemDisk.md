@@ -25,14 +25,14 @@ The **Add-AzRecoveryServicesAsrReplicationProtectedItemDisk** cmdlet add the dis
 
 ### Example 1
 ```powershell
-PS C:> Add-AzRecoveryServicesAsrReplicationProtectedItemDisk -ReplicationProtectedItem $rpi -AzureToAzureDiskReplicationConfiguration $disk1,$disk2
+Add-AzRecoveryServicesAsrReplicationProtectedItemDisk -ReplicationProtectedItem $rpi -AzureToAzureDiskReplicationConfiguration $disk1,$disk2
 ```
 
 Start the operation to add specified disk configuration for protection.
 
 ### Example 2
 ```powershell
-PS C:> $ReplicationProtectedItem |Add-AzRecoveryServicesAsrReplicationProtectedItemDisk -AzureToAzureDiskReplicationConfiguration $disk1,$disk2
+$ReplicationProtectedItem |Add-AzRecoveryServicesAsrReplicationProtectedItemDisk -AzureToAzureDiskReplicationConfiguration $disk1,$disk2
 ```
 
 Start the operation to add specified disk configuration for protection.Piping input replication protected item.

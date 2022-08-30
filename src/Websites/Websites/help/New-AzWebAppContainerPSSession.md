@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Websites.dll-Help.xml
 Module Name: Az.Websites
 online version: https://docs.microsoft.com/powershell/module/az.websites/new-azwebappcontainerpssession
@@ -30,9 +30,9 @@ New-AzWebAppContainerPSSession will create new remote PowerShell Session into th
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $s = New-AzWebAppContainerPSSession -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
-PS C:\> Invoke-Command -Session $s -ScriptBlock{Get-Process}
+```powershell
+$s = New-AzWebAppContainerPSSession -ResourceGroupName "Default-Web-WestUS" -Name "ContosoASP"
+Invoke-Command -Session $s -ScriptBlock{Get-Process}
 ```
 
 This will create a new remote PowerShell Session into the windows container app ContosoASP and show the processes that are running on the container ContosoASP
@@ -160,7 +160,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

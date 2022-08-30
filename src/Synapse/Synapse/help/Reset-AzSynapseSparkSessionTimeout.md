@@ -37,23 +37,23 @@ The **Remove-AzSynapseSparkSessionTimeout** cmdlet resets timeout of a Synapse A
 
 ### Example 1
 ```powershell
-PS C:\> Reset-AzSynapseSparkSessionTimeout -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 125
+Reset-AzSynapseSparkSessionTimeout -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 125
 ```
 
 This command resets timeout of the Synapse Analytics Spark session with the specified livy ID.
 
 ### Example 2
 ```powershell
-PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool
-PS C:\> $pool | Reset-AzSynapseSparkSessionTimeout -LivyId 125
+$pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool
+$pool | Reset-AzSynapseSparkSessionTimeout -LivyId 125
 ```
 
 This command resets timeout of the Synapse Analytics Spark session with the specified livy ID through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $session = Get-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 125
-PS C:\> $session | Reset-AzSynapseSparkSessionTimeout
+$session = Get-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 125
+$session | Reset-AzSynapseSparkSessionTimeout
 ```
 
 This command resets timeout of the Synapse Analytics Spark session with the specified livy ID through pipeline.

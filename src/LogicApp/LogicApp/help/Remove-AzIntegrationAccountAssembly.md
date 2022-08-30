@@ -37,7 +37,7 @@ The **Remove-AzIntegrationAccountAssembly** cmdlet removes an assembly from an i
 
 ### Example 1: Remove an assembly by parameters
 ```powershell
-PS C:\> Remove-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly"
+Remove-AzIntegrationAccountAssembly -ResourceGroupName "sampleResourceGroup" -IntegrationAccountName "sampleIntegrationAccount" -AssemblyName "sampleAssembly"
 ```
 
 Removes the assembly named "sampleAssembly" located in the integration account "sampleIntegrationAccount".

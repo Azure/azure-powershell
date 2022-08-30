@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: 0DB9595A-6C8B-4F3F-A707-2DB41D7C7470
@@ -67,15 +67,15 @@ The **Submit-AzDataLakeAnalyticsJob** cmdlet submits an Azure Data Lake Analytic
 ## EXAMPLES
 
 ### Example 1: Submit a job
-```
-PS C:\>Submit-AzDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -AnalyticsUnits 32
+```powershell
+Submit-AzDataLakeAnalyticsJob -Account "ContosoAdlAccount" -Name "New Job" -ScriptPath $LocalScriptPath -AnalyticsUnits 32
 ```
 
 This command submits a Data Lake Analytics job.
 
 ### Example 2: Submit a job with script parameters
-```
-PS C:\>$parameters = [ordered]@{}
+```powershell
+$parameters = [ordered]@{}
 $parameters["Department"] = "Sales"
 $parameters["NumRecords"] = 1000
 $parameters["StartDateTime"] = (Get-Date).AddDays(-14)

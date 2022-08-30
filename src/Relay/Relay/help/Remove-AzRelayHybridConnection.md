@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Relay.dll-Help.xml
 Module Name: Az.Relay
 online version: https://docs.microsoft.com/powershell/module/az.relay/remove-azrelayhybridconnection
@@ -23,8 +23,8 @@ The **Remove-AzRelayHybridConnection** cmdlet removes the HybridConnection from 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> Remove-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
+```powershell
+Remove-AzRelayHybridConnection -ResourceGroupName Default-ServiceBus-WestUS -Namespace TestNameSpace-Relay1 -Name TestHybridConnection
 ```
 
 Removes the HybridConnection `TestHybridConnection` from the namespace `TestNameSpace-Relay1`.

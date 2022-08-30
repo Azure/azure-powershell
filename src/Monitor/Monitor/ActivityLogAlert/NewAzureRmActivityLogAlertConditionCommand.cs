@@ -15,12 +15,14 @@
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Management.Monitor.Models;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
 {
     /// <summary>
     /// Create an Activity Log Alert condition
     /// </summary>
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActivityLogAlertCondition"), OutputType(typeof(Management.Monitor.Management.Models.ActivityLogAlertLeafCondition))]
     public class NewAzureRmActivityLogAlertConditionCommand : AzureRMCmdlet
     {

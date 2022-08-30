@@ -36,36 +36,38 @@ Create or update a MSIX package.
 
 ### Example 1: Creates New MSIX Package in the HostPool via Package Alias
 ```powershell
-PS C:\> New-AzWvdMsixPackage -HostPoolName HostPoolName `
-          -ResourceGroupName resourceGroupName `
-          -SubscriptionId SubscriptionId `
-	  -PackageAlias packagealias `
-	  -ImagePath ImagePathURI  `
+New-AzWvdMsixPackage -HostPoolName HostPoolName `
+                     -ResourceGroupName resourceGroupName `
+                     -SubscriptionId SubscriptionId `
+                     -PackageAlias packagealias `
+                     -ImagePath ImagePathURI
 ```
 
 This command adds MSIX package from specified image path to HostPool
 
 ### Example 2: Creates New MSIX Package in the HostPool
 ```powershell
-PS C:\> New-AzWvdMsixPackage -FullName PackageFullName `
-							-HostPoolName HostPoolName `
-							-ResourceGroupName ResourceGroupName ` 
-							-SubscriptionId SubscriptionId ` 
-							-DisplayName displayname `
-							-ImagePath imageURI ` 
-							-IsActive:$false `
-							-IsRegularRegistration:$false `
-							-LastUpdated datelastupdated `
-							-PackageApplication $apps `
-							-PackageDependency $deps `
-							-PackageFamilyName packagefamilyname `
-							-PackageName packagename `
-							-PackageRelativePath packagerelativepath `
-							-Version packageversion `
+New-AzWvdMsixPackage -FullName PackageFullName `
+                     -HostPoolName HostPoolName `
+                     -ResourceGroupName ResourceGroupName `
+                     -SubscriptionId SubscriptionId `
+                     -DisplayName displayname `
+                     -ImagePath imageURI `
+                     -IsActive:$false `
+                     -IsRegularRegistration:$false `
+                     -LastUpdated datelastupdated `
+                     -PackageApplication $apps `
+                     -PackageDependency $deps `
+                     -PackageFamilyName packagefamilyname `
+                     -PackageName packagename `
+                     -PackageRelativePath packagerelativepath `
+                     -Version packageversion
+```
 
+```output
 Name                              Type
 ----                              ----
-HotPoolName/PackageFullName		 Microsoft.DesktopVirtualization/hostpools/msixpackages
+HotPoolName/PackageFullName       Microsoft.DesktopVirtualization/hostpools/msixpackages
 
 ```
 
@@ -383,7 +385,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications. 
+`PACKAGEAPPLICATION <IMsixPackageApplications[]>`: List of package applications. 
   - `[AppId <String>]`: Package Application Id, found in appxmanifest.xml.
   - `[AppUserModelId <String>]`: Used to activate Package Application. Consists of Package Name and ApplicationID. Found in appxmanifest.xml.
   - `[Description <String>]`: Description of Package Application.
@@ -392,7 +394,7 @@ PACKAGEAPPLICATION <IMsixPackageApplications[]>: List of package applications.
   - `[RawIcon <Byte[]>]`: the icon a 64 bit string as a byte array.
   - `[RawPng <Byte[]>]`: the icon a 64 bit string as a byte array.
 
-PACKAGEDEPENDENCY <IMsixPackageDependencies[]>: List of package dependencies. 
+`PACKAGEDEPENDENCY <IMsixPackageDependencies[]>`: List of package dependencies. 
   - `[DependencyName <String>]`: Name of package dependency.
   - `[MinVersion <String>]`: Dependency version required.
   - `[Publisher <String>]`: Name of dependency publisher.

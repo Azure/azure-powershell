@@ -37,7 +37,7 @@ The Remove-AzEventHubCluster cmdlet deletes the given dedicated eventhub Cluster
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzEventHubCluster -ResourceGroupName RSG-Cluster27651 -Name Eventhub-Cluster-5557
+Remove-AzEventHubCluster -ResourceGroupName RSG-Cluster27651 -Name Eventhub-Cluster-5557
 ```
 
 Deletes Eventhub-Cluster-5557 Cluster from RSG-Cluster27651 resourcegroup

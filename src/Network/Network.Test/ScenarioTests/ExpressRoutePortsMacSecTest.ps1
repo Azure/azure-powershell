@@ -38,11 +38,11 @@ function Test-ExpressRoutePortMacSecConfigCRUD
     $rname = Get-ResourceName
     $vaultName = Get-ResourceName
     $identityName = Get-ResourceName
-	$resourceTypeParent = "Microsoft.Network/expressRoutePorts"
+    $resourceTypeParent = "Microsoft.Network/expressRoutePorts"
     $location = "East US"
-	$peeringLocation = "Equinix-Ashburn-DC2"
-	$encapsulation = "QinQ"
-	$bandwidthInGbps = 10.0
+    $peeringLocation = "Equinix-Ashburn-DC2"
+    $encapsulation = "QinQ"
+    $bandwidthInGbps = 10.0
     $gcmAes128Cipher = "GcmAes128"
     $cakName = "CAK"
     $cknName = "CKN"

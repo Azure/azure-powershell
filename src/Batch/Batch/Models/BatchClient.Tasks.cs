@@ -74,7 +74,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
                 }
                 Func<CloudTask, PSCloudTask> mappingFunction = t => { return new PSCloudTask(t); };
                 return PSPagedEnumerable<PSCloudTask, CloudTask>.CreateWithMaxCount(
-                    tasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                    tasks, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
             }
         }
 
@@ -84,6 +84,26 @@ namespace Microsoft.Azure.Commands.Batch.Models
         /// <param name="options">Options for GetTaskCounts().</param>
         /// <returns>The task counts for the specified job.</returns>
         public PSTaskCounts GetTaskCounts(GetTaskCountsOptions options)
+        {
+            return new PSTaskCounts(GetTaskCountsResult(options).TaskCounts);
+        }
+
+        /// <summary>
+        /// Get task slot counts for the specified job.
+        /// </summary>
+        /// <param name="options">Options for GetTaskSlotCounts().</param>
+        /// <returns>The task slot counts for the specified job.</returns>
+        public PSTaskSlotCounts GetTaskSlotCounts(GetTaskCountsOptions options)
+        {
+            return new PSTaskSlotCounts(GetTaskCountsResult(options).TaskSlotCounts);
+        }
+
+        /// <summary>
+        /// Get task count results for the specified job.
+        /// </summary>
+        /// <param name="options">Options for GetTaskCountsResult().</param>
+        /// <returns>The task count results for the specified job.</returns>
+        internal TaskCountsResult GetTaskCountsResult(GetTaskCountsOptions options)
         {
             if (options == null)
             {
@@ -100,7 +120,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             WriteVerbose(string.Format(Resources.GetTaskCounts, jobId));
 
             JobOperations jobOperations = options.Context.BatchOMClient.JobOperations;
-            return new PSTaskCounts(jobOperations.GetJobTaskCounts(jobId, options.AdditionalBehaviors));
+            return jobOperations.GetJobTaskCounts(jobId, options.AdditionalBehaviors);
         }
 
         /// <summary>
@@ -310,7 +330,7 @@ namespace Microsoft.Azure.Commands.Batch.Models
             }
             Func<SubtaskInformation, PSSubtaskInformation> mappingFunction = s => { return new PSSubtaskInformation(s); };
             return PSPagedEnumerable<PSSubtaskInformation, SubtaskInformation>.CreateWithMaxCount(
-                subtasks, mappingFunction, options.MaxCount, () => WriteVerbose(string.Format(Resources.MaxCount, options.MaxCount)));
+                subtasks, mappingFunction, options.MaxCount, () => WriteMaxCount(options.MaxCount));
         }
 
         /// <summary>

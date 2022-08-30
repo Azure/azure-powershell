@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: D79080D5-2785-4C46-86FD-FDAA11117D17
@@ -26,15 +26,15 @@ If no provider is specified, then lists all providers for the account.
 ## EXAMPLES
 
 ### Example 1: Get a specific trusted identity provider
-```
-PS C:\> Get-AzDataLakeStoreTrustedIdProvider -AccountName "ContosoADL" -Name MyProvider
+```powershell
+Get-AzDataLakeStoreTrustedIdProvider -AccountName "ContosoADL" -Name MyProvider
 ```
 
 Returns the provider named "MyProvider" from account "ContosoADL"
 
 ### Example 2: List all providers in an account
-```
-PS C:\> Get-AzDataLakeStoreTrustedIdProvider -AccountName "ContosoADL"
+```powershell
+Get-AzDataLakeStoreTrustedIdProvider -AccountName "ContosoADL"
 ```
 
 Lists all providers under the account "ContosoADL"

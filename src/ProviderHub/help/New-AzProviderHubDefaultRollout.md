@@ -34,8 +34,10 @@ Creates or updates the rollout details.
 
 ### Example 1: Create/Update a resource provider default rollout.
 ```powershell
-PS C:\> New-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10" -CanarySkipRegion "brazilus" -NoWait
+New-AzProviderHubDefaultRollout -ProviderNamespace "Microsoft.Contoso" -RolloutName "defaultRollout2021w10" -CanarySkipRegion "brazilus" -NoWait
+```
 
+```output
 Name                      Type
 ----                      ----
 defaultRollout2021w10     Microsoft.ProviderHub/providerRegistrations/defaultRollouts
@@ -486,7 +488,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-SPECIFICATIONPROVIDERREGISTRATION <IProviderRegistration>: .
+SPECIFICATIONPROVIDERREGISTRATION `<IProviderRegistration>`: .
   - `[Capability <IResourceProviderCapabilities[]>]`: 
     - `Effect <ResourceProviderCapabilitiesEffect>`: 
     - `QuotaId <String>`: 

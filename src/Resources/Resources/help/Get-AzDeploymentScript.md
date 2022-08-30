@@ -36,28 +36,28 @@ The **Get-AzDeploymentScript** cmdlet gets a single deployment script or a list 
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzDeploymentScript
+Get-AzDeploymentScript
 ```
 
 Lists deployment scripts in the subscription in current user's context.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzDeploymentScript -ResourceGroupName DS-TestRg
+Get-AzDeploymentScript -ResourceGroupName DS-TestRg
 ```
 
 Lists deployment scripts in resource group DS-TestRg.
 
 ### Example 3
 ```powershell
-PS C:\> Get-AzDeploymentScript -Name MyDeploymentScript -ResourceGroupName DS-TestRg
+Get-AzDeploymentScript -Name MyDeploymentScript -ResourceGroupName DS-TestRg
 ```
 
 Gets a deployment script with the name MyDeploymentScript in resource group DS-TestRG.
 
 ### Example 4
 ```powershell
-PS C:\> Get-AzDeploymentScript -Id "/subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deploymentScripts/{deploymentScriptName}"
+Get-AzDeploymentScript -Id "/subscriptions/{subId}/resourceGroups/{rgName}/providers/Microsoft.Resources/deploymentScripts/{deploymentScriptName}"
 ```
 
 Gets a deployment script with the given resource Id. 

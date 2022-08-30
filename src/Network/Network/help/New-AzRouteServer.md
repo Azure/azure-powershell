@@ -14,7 +14,7 @@ Creates an Azure RouteServer.
 
 ```
 New-AzRouteServer -ResourceGroupName <String> -RouteServerName <String> -HostedSubnet <String>
- [-PublicIpAddress <PSPublicIpAddress>] -Location <String> [-Tag <Hashtable>] [-Force] [-AsJob]
+ [-PublicIpAddress <PSPublicIpAddress>] -Location <String> [-Tag <Hashtable>] [-HubRoutingPreference <String>] [-Force] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -25,12 +25,12 @@ The **New-AzRouteServer** cmdlet creates an Azure RouteServer
 
 ### Example 1
 ```powershell
-PS C:\> $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+$subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
 $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -AddressPrefix 10.0.0.0/16 -Subnet $subnet
 $subnetId = (Get-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet).Id
 $publicIpAddress = New-AzPublicIpAddress -Name $publicIpAddressName -ResourceGroupName $rgName -AllocationMethod Static -Location $rglocation -Sku Standard -Tier Regional
 
-New-AzRouteServer -RouteServerName $routeServerName -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -HostedSubnet $subnetId -PublicIpAddress $publicIpAddress
+New-AzRouteServer -RouteServerName $routeServerName -ResourceGroupName $resourceGroupName -Location $resourceGroupLocation -HostedSubnet $subnetId -PublicIpAddress $publicIpAddress -HubRoutingPreference "AsPath"
 ```
 
 ## PARAMETERS
@@ -167,6 +167,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -HubRoutingPreference
+Routing Preference to route traffic
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: ExpressRoute, VpnGateway, ASPath
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

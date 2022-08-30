@@ -33,7 +33,7 @@ The **Set-AzExpressRouteCrossConnection** cmdlet saves the modified ExpressRoute
 ## EXAMPLES
 
 ### Example 1: Change the Service Provider Provisioning State of an ExpressRoute cross connection
-```
+```powershell
 $cc = Get-AzExpressRouteCrossConnection -Name $CrossConnectionName -ResourceGroupName $rg
 $cc.ServiceProviderProvisioningState = 'Provisioned'
 Set-AzExpressRouteCrossConnection -ExpressRouteCrossConnection $cc

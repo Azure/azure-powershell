@@ -7,16 +7,16 @@
       "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b2ffc521-573c-4356-bb01-6d3a7f839cd3"
+          "107e8603-437b-442f-af0c-e1ea1914acd3"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28008.02",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18362.",
-          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/3.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
         ]
       },
       "ResponseHeaders": {
@@ -26,35 +26,35 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-tenant-policy-insights-requests": [
-          "199"
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
-        "x-ms-request-id": [
-          ":7833237c-4e2e-4925-a8ba-44cee62ecabc"
+        "x-ms-ratelimit-remaining-policy-insights-requests": [
+          "149"
         ],
         "Server": [
-          "Microsoft-HTTPAPI/2.0"
+          "Kestrel"
         ],
         "x-ms-ratelimit-remaining-tenant-reads": [
           "11999"
         ],
+        "x-ms-request-id": [
+          "6039ad3d-e7f4-49ee-b3b6-69d3c8e844e3"
+        ],
         "x-ms-correlation-request-id": [
-          "84e2e5b1-0e87-4da9-ac25-cc249e0976c9"
+          "6039ad3d-e7f4-49ee-b3b6-69d3c8e844e3"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS2:20191206T235108Z:84e2e5b1-0e87-4da9-ac25-cc249e0976c9"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "WESTUS:20220113T203356Z:6039ad3d-e7f4-49ee-b3b6-69d3c8e844e3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Fri, 06 Dec 2019 23:51:07 GMT"
+          "Thu, 13 Jan 2022 20:33:55 GMT"
         ],
         "Content-Length": [
-          "788"
+          "685"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -63,7 +63,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"metadataId\": \"Microsoft Managed Control 1348\",\r\n    \"category\": \"Identification and Authentication\",\r\n    \"title\": \"Identification And Authentication (Non-Org. Users) | Acceptance Of Third-Party Credentials\",\r\n    \"owner\": \"Not Applicable\",\r\n    \"description\": \"The information system accepts only FICAM-approved third-party credentials.\",\r\n    \"requirements\": \"Microsoft Azure does not accept or process any government customer credentials.\\n\\nMicrosoft Azure does not utilize or support FICAM-approved third-party credentials for service team users. As such this control is not applicable to Microsoft Azure service team personnel.\",\r\n    \"additionalContentUrl\": \"\",\r\n    \"metadata\": {}\r\n  },\r\n  \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1348\",\r\n  \"name\": \"ACF1348\",\r\n  \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n}",
+      "ResponseBody": "{\r\n  \"properties\": {\r\n    \"metadataId\": \"Microsoft Managed Control 1348\",\r\n    \"category\": \"Identification and Authentication\",\r\n    \"title\": \"Identification And Authentication (Non-Organizational Users) | Acceptance Of Third-Party Credentials\",\r\n    \"owner\": \"Not applicable\",\r\n    \"description\": \"The information system accepts only FICAM-approved third-party credentials.\",\r\n    \"requirements\": \"Azure does not allow any non-organizational users to authenticate to production systems. Azure does not accept or process any third-party credentials.\\r\\n\\r\\n\",\r\n    \"additionalContentUrl\": \"\",\r\n    \"metadata\": {}\r\n  },\r\n  \"id\": \"/providers/Microsoft.PolicyInsights/policyMetadata/ACF1348\",\r\n  \"name\": \"ACF1348\",\r\n  \"type\": \"Microsoft.PolicyInsights/policyMetadata\"\r\n}",
       "StatusCode": 200
     }
   ],

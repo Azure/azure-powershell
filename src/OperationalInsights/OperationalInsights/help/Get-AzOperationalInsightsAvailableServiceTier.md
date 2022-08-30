@@ -24,8 +24,10 @@ This command gets all available service tiers for a given worksapce.
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzOperationalInsightsAvailableServiceTier -ResourceGroupName ContosoResourceGroup -WorkspaceName MyWorkspace
+Get-AzOperationalInsightsAvailableServiceTier -ResourceGroupName ContosoResourceGroup -WorkspaceName MyWorkspace
+```
 
+```output
 ServiceTier              : PerGB2018
 Enabled                  : True
 MinimumRetention         : 30
@@ -51,7 +53,7 @@ This command gets all available service tiers for a given worksapce.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -66,7 +68,7 @@ Accept wildcard characters: False
 The resource group name.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -81,7 +83,7 @@ Accept wildcard characters: False
 The name of the workspace that contains the table.
 
 ```yaml
-Type: String
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

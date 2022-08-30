@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="NetworkMappingProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="NetworkMappingProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,16 +101,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSetting = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingFabricSpecificSettings) content.GetValueForProperty("FabricSpecificSetting",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSetting, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.NetworkMappingFabricSpecificSettingsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).State, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkFriendlyName = (string) content.GetValueForProperty("PrimaryNetworkFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkId = (string) content.GetValueForProperty("PrimaryNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryFabricFriendlyName = (string) content.GetValueForProperty("PrimaryFabricFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryFabricFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkFriendlyName = (string) content.GetValueForProperty("RecoveryNetworkFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkId = (string) content.GetValueForProperty("RecoveryNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricArmId = (string) content.GetValueForProperty("RecoveryFabricArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricArmId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricFriendlyName = (string) content.GetValueForProperty("RecoveryFabricFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSettingInstanceType = (string) content.GetValueForProperty("FabricSpecificSettingInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSettingInstanceType, global::System.Convert.ToString);
+            if (content.Contains("FabricSpecificSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSetting = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingFabricSpecificSettings) content.GetValueForProperty("FabricSpecificSetting",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSetting, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.NetworkMappingFabricSpecificSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).State, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryNetworkFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkFriendlyName = (string) content.GetValueForProperty("PrimaryNetworkFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkId = (string) content.GetValueForProperty("PrimaryNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryFabricFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryFabricFriendlyName = (string) content.GetValueForProperty("PrimaryFabricFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryFabricFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryNetworkFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkFriendlyName = (string) content.GetValueForProperty("RecoveryNetworkFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkId = (string) content.GetValueForProperty("RecoveryNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryFabricArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricArmId = (string) content.GetValueForProperty("RecoveryFabricArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricArmId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryFabricFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricFriendlyName = (string) content.GetValueForProperty("RecoveryFabricFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FabricSpecificSettingInstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSettingInstanceType = (string) content.GetValueForProperty("FabricSpecificSettingInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSettingInstanceType, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -126,16 +158,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSetting = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingFabricSpecificSettings) content.GetValueForProperty("FabricSpecificSetting",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSetting, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.NetworkMappingFabricSpecificSettingsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).State, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkFriendlyName = (string) content.GetValueForProperty("PrimaryNetworkFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkId = (string) content.GetValueForProperty("PrimaryNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryFabricFriendlyName = (string) content.GetValueForProperty("PrimaryFabricFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryFabricFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkFriendlyName = (string) content.GetValueForProperty("RecoveryNetworkFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkId = (string) content.GetValueForProperty("RecoveryNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricArmId = (string) content.GetValueForProperty("RecoveryFabricArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricArmId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricFriendlyName = (string) content.GetValueForProperty("RecoveryFabricFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSettingInstanceType = (string) content.GetValueForProperty("FabricSpecificSettingInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSettingInstanceType, global::System.Convert.ToString);
+            if (content.Contains("FabricSpecificSetting"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSetting = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingFabricSpecificSettings) content.GetValueForProperty("FabricSpecificSetting",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSetting, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.NetworkMappingFabricSpecificSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("State"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).State = (string) content.GetValueForProperty("State",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).State, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryNetworkFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkFriendlyName = (string) content.GetValueForProperty("PrimaryNetworkFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkId = (string) content.GetValueForProperty("PrimaryNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PrimaryFabricFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryFabricFriendlyName = (string) content.GetValueForProperty("PrimaryFabricFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).PrimaryFabricFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryNetworkFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkFriendlyName = (string) content.GetValueForProperty("RecoveryNetworkFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryNetworkId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkId = (string) content.GetValueForProperty("RecoveryNetworkId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryNetworkId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryFabricArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricArmId = (string) content.GetValueForProperty("RecoveryFabricArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricArmId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryFabricFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricFriendlyName = (string) content.GetValueForProperty("RecoveryFabricFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).RecoveryFabricFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("FabricSpecificSettingInstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSettingInstanceType = (string) content.GetValueForProperty("FabricSpecificSettingInstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.INetworkMappingPropertiesInternal)this).FabricSpecificSettingInstanceType, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

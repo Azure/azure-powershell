@@ -37,23 +37,23 @@ The **Stop-AzSynapseSparkSession** cmdlet stops a Synapse Analytics Spark sessio
 
 ### Example 1
 ```powershell
-PS C:\> Stop-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 324
+Stop-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 324
 ```
 
 This command stops a Synapse Analytics Spark session.
 
 ### Example 2
 ```powershell
-PS C:\> $pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool
-PS C:\> $pool | Stop-AzSynapseSparkSession -LivyId 324
+$pool = Get-AzSynapseSparkPool -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool
+$pool | Stop-AzSynapseSparkSession -LivyId 324
 ```
 
 This command stops a Synapse Analytics Spark session through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> $session = Get-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 324
-PS C:\> $session | Stop-AzSynapseSparkSession
+$session = Get-AzSynapseSparkSession -WorkspaceName ContosoWorkspace -SparkPoolName ContosoSparkPool -LivyId 324
+$session | Stop-AzSynapseSparkSession
 ```
 
 This command stops a Synapse Analytics Spark session through pipeline.

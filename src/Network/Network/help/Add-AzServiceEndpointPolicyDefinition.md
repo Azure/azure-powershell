@@ -24,8 +24,8 @@ The **Add-AzServiceEndpointPolicyDefinition** cmdlet add a service endpoint poli
 ## EXAMPLES
 
 ### Example 1: Updates a service endpoint policy definition in a service endpoint policy
-```
-$policydef= New-AzServiceEndpointPolicyDefinition -Name "ServiceEndpointPolicyDefinition1" -ResourceGroupName "ResourceGroup01" -Service "Microsoft.Storage" -ServiceResources "subscriptions/sub1" -Description "New Definition"
+```powershell
+New-AzServiceEndpointPolicyDefinition -Name "ServiceEndpointPolicyDefinition1" -Service "Microsoft.Storage" -ServiceResource "subscriptions/sub1" -Description "New Definition"
 ```
 
 This command updated the service endpoint policy definition with name ServiceEndpointPolicyDefinition1,  service Microsoft.Storage, service resources subscriptions/sub1 and 

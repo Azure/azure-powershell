@@ -40,21 +40,21 @@ The **Enable-AzSynapseSqlAdvancedDataSecurity** cmdlet enables Advanced Data Sec
 
 ### Example 1
 ```powershell
-PS C:\> Enable-AzSynapseSqlAdvancedDataSecurity -WorkspaceName ContosoWorkspace
+Enable-AzSynapseSqlAdvancedDataSecurity -WorkspaceName ContosoWorkspace
 ```
 
 This command enables workspace Advanced Data Security.
 
 ### Example 2
 ```powershell
-PS C:\> Get-AzSynapseWorkspace -Name ContosoWorkspace | Enable-AzSynapseSqlAdvancedDataSecurity
+Get-AzSynapseWorkspace -Name ContosoWorkspace | Enable-AzSynapseSqlAdvancedDataSecurity
 ```
 
 This command enables workspace Advanced Data Security through pipeline.
 
 ### Example 3
 ```powershell
-PS C:\> Enable-AzSynapseSqlAdvancedDataSecurity -WorkspaceName ContosoWorkspace -DoNotConfigureVulnerabilityAssessment
+Enable-AzSynapseSqlAdvancedDataSecurity -WorkspaceName ContosoWorkspace -DoNotConfigureVulnerabilityAssessment
 ```
 
 This command enables workspace Advanced Data Security through pipeline and does not auto enable Vulnerability Assessment.

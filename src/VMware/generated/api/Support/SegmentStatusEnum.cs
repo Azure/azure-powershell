@@ -10,7 +10,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Support
     public partial struct SegmentStatusEnum :
         System.IEquatable<SegmentStatusEnum>
     {
-        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SegmentStatusEnum SuccessFailure = @"SUCCESS, FAILURE";
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SegmentStatusEnum Failure = @"FAILURE";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.SegmentStatusEnum Success = @"SUCCESS";
 
         /// <summary>the value for an instance of the <see cref="SegmentStatusEnum" /> Enum.</summary>
         private string _value { get; set; }

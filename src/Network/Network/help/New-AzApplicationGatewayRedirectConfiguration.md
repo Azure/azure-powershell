@@ -40,7 +40,7 @@ New-AzApplicationGatewayRedirectConfiguration -Name <String> -RedirectType <Stri
 
 ### Example 1
 ```powershell
-PS C:\>$RedirectConfig = New-AzApplicationGatewayRedirectConfiguration -Name "Redirect01" -RedirectType Permanent -TargetListener $listener01
+$RedirectConfig = New-AzApplicationGatewayRedirectConfiguration -Name "Redirect01" -RedirectType Permanent -TargetListener $listener01
 ```
 
 This command creates a redirect configuration named Redirect01 and stores the result in the variable named $RedirectConfig.

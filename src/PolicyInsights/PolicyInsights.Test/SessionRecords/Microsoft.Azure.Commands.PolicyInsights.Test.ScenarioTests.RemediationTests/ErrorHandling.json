@@ -1,22 +1,22 @@
 {
   "Entries": [
     {
-      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.PolicyInsights/remediations/PSTestRemediation?api-version=2019-07-01",
-      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekdvdlBlcmZUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvcmVtZWRpYXRpb25zL1BTVGVzdFJlbWVkaWF0aW9uP2FwaS12ZXJzaW9uPTIwMTktMDctMDE=",
+      "RequestUri": "//providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.PolicyInsights/remediations/Remediation-ErrorHandling?api-version=2021-10-01",
+      "EncodedRequestUri": "Ly9wcm92aWRlcnMvTWljcm9zb2Z0Lk1hbmFnZW1lbnQvbWFuYWdlbWVudEdyb3Vwcy9BekdvdlBlcmZUZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuUG9saWN5SW5zaWdodHMvcmVtZWRpYXRpb25zL1JlbWVkaWF0aW9uLUVycm9ySGFuZGxpbmc/YXBpLXZlcnNpb249MjAyMS0xMC0wMQ==",
       "RequestMethod": "PUT",
-      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/d80d743b97874fd3bfd1d539\",\r\n    \"resourceDiscoveryMode\": \"ReEvaluateCompliance\"\r\n  }\r\n}",
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"policyAssignmentId\": \"/providers/Microsoft.Management/managementGroups/AzGovPerfTest/providers/Microsoft.Authorization/policyAssignments/PSTestDeployAssignmentMG\",\r\n    \"resourceDiscoveryMode\": \"ReEvaluateCompliance\"\r\n  }\r\n}",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ef09bad9-f899-46e3-a651-a28101050620"
+          "fc102ad1-259b-4fa0-a5b4-22cb29bc7941"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.28325.01",
+          "FxVersion/4.6.30411.01",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.18363.",
-          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/3.0.0.0"
+          "OSVersion/Microsoft.Windows.10.0.19044.",
+          "Microsoft.Azure.Management.PolicyInsights.PolicyInsightsClient/5.0.0.0"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -27,28 +27,25 @@
       },
       "ResponseHeaders": {
         "Cache-Control": [
-          "no-cache"
+          "no-store, no-cache"
         ],
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-tenant-policy-insights-requests": [
-          "199"
-        ],
-        "x-ms-request-id": [
-          ":97ebe028-4838-4135-9ce1-1f38d1158bcc"
-        ],
-        "Server": [
-          "Microsoft-HTTPAPI/2.0"
-        ],
         "x-ms-ratelimit-remaining-tenant-writes": [
           "1199"
         ],
+        "Server": [
+          "Kestrel"
+        ],
+        "x-ms-request-id": [
+          "d4862266-8c7e-4d99-b79d-0b94c4c3c105"
+        ],
         "x-ms-correlation-request-id": [
-          "91eac078-a6c0-40a0-8ebc-6df82a9d0ee9"
+          "d4862266-8c7e-4d99-b79d-0b94c4c3c105"
         ],
         "x-ms-routing-request-id": [
-          "WESTUS:20200311T025841Z:91eac078-a6c0-40a0-8ebc-6df82a9d0ee9"
+          "WESTUS:20220125T232128Z:d4862266-8c7e-4d99-b79d-0b94c4c3c105"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -57,24 +54,24 @@
           "nosniff"
         ],
         "Date": [
-          "Wed, 11 Mar 2020 02:58:40 GMT"
+          "Tue, 25 Jan 2022 23:21:27 GMT"
         ],
         "Content-Length": [
-          "329"
+          "337"
         ],
         "Content-Type": [
-          "application/json; charset=utf-8"
+          "application/json"
         ],
         "Expires": [
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidCreateRemediationRequest\",\r\n    \"message\": \"The request to create remediation 'PSTestRemediation' is invalid. Evaluating compliance before remediation is only supported for remediations at subscription scope and below. The requested scope was '/providers/Microsoft.Management/managementGroups/AzGovPerfTest'.\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"InvalidCreateRemediationRequest\",\r\n    \"message\": \"The request to create remediation 'Remediation-ErrorHandling' is invalid. Evaluating compliance before remediation is only supported for remediations at subscription scope and below. The requested scope was '/providers/Microsoft.Management/managementGroups/AzGovPerfTest'.\"\r\n  }\r\n}",
       "StatusCode": 400
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "f67cc918-f64f-4c3f-aa24-a855465f9d41"
+    "SubscriptionId": "086aecf4-23d6-4dfd-99a8-a5c6299f0322"
   }
 }

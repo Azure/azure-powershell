@@ -24,8 +24,10 @@ Delete Maintenance Configuration record
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzMaintenanceConfiguration -ResourceGroupName smdtest -Name workervmscentralus
+Remove-AzMaintenanceConfiguration -ResourceGroupName smdtest -Name workervmscentralus
+```
 
+```output
 Remove-AzMaintenanceConfiguration operation
 This cmdlet will remove the specified resource.  Do you want to continue?
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"):

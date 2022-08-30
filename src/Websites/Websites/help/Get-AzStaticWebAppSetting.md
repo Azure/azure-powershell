@@ -1,5 +1,5 @@
 ---
-external help file:
+external help file: Az.Websites-help.xml
 Module Name: Az.Websites
 online version: https://docs.microsoft.com/powershell/module/az.websites/get-azstaticwebappsetting
 schema: 2.0.0
@@ -14,7 +14,7 @@ Description for Gets the application settings of a static site.
 
 ```
 Get-AzStaticWebAppSetting -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DefaultProfile <PSObject>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -24,8 +24,10 @@ Description for Gets the application settings of a static site.
 
 ### Example 1: Get the application settings of a static site
 ```powershell
-PS C:\> Get-AzStaticWebAppSetting -ResourceGroupName resourceGroup -Name staticweb00
+Get-AzStaticWebAppSetting -ResourceGroupName resourceGroup -Name staticweb00
+```
 
+```output
 Kind Name        Type
 ---- ----        ----
      appsettings Microsoft.Web/staticSites/config
@@ -142,4 +144,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ALIASES
 
 ## RELATED LINKS
-

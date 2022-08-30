@@ -141,6 +141,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         public string BackupStorageRedundancy { get; set; }
 
         /// <summary>
+        /// Gets or sets the managed instance requested backup storage redundancy
+        /// </summary>
+        public string RequestedBackupStorageRedundancy { get; set; }
+
+        /// <summary>
+        /// Gets or sets the managed instance current backup storage redundancy
+        /// </summary>
+        public string CurrentBackupStorageRedundancy { get; set; }
+
+        /// <summary>
         /// Gets or sets the managed instance maintenance configuration id
         /// </summary>
         public string MaintenanceConfigurationId { get; set; }
@@ -164,5 +174,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedInstance.Model
         /// Gets or sets whether or not the multi-az is enabled
         /// </summary>
         public bool? ZoneRedundant { get; set; }
+
+        /// <summary>
+        /// Gets or sets the service principal object
+        /// </summary>
+        public Common.ServicePrincipal ServicePrincipal { get; set; }
     }
 }

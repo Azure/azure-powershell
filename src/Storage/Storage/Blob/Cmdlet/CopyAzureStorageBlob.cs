@@ -387,7 +387,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                         {
                             commitBlockListOptions.Tags = srcBlockblob.GetTags(cancellationToken: this.CmdletCancellationToken).Value.Tags;
                         }
-                        catch (global::Azure.RequestFailedException e) when (e.Status == 403 || e.Status == 404 || e.Status == 401)
+                        catch (global::Azure.RequestFailedException)
                         {
                             if (!this.Force && !OutputStream.ConfirmAsync("Can't get source blob Tags, so source blob tags won't be copied to dest blob. Do you want to continue the blob copy?").Result)
                             {

@@ -29,8 +29,11 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 ## EXAMPLES
 
 ### Example 1: Add a metric alert rule to a website
+```powershell
+Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup "Default-Web-EastUS" -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName "Requests" -Description "Pura Vida" -TimeAggregationOperator Total
 ```
-PS C:\>Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup "Default-Web-EastUS" -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName "Requests" -Description "Pura Vida" -TimeAggregationOperator Total
+
+```output
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 33574ccf-0b01-43b4-aa97-87e6bbcf1c11                                                                         Created
@@ -39,8 +42,11 @@ RequestId                                                                       
 This command creates a metric alert rule for a website.
 
 ### Example 2: Disable a rule
+```powershell
+Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup Default-Web-EastUS -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName "Requests" -TimeAggregationOperator Total 
 ```
-PS C:\>Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup Default-Web-EastUS -Operator GreaterThan -Threshold 2 -WindowSize 00:05:00 -MetricName "Requests" -TimeAggregationOperator Total 
+
+```output
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 96c489f1-8529-46e1-a76d-2c1463ca3116                                                                                 OK
@@ -51,8 +57,11 @@ If the rule does not exist, it creates it disabled.
 If the rule exists, then it just disables it.
 
 ### Example 3: Add a rule with actions
+```powershell
+Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup "Default-Web-EastUS" -Operator GreaterThan -Threshold 1 -TargetResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/mywebsite" -MetricName "Requests" -TimeAggregationOperator Total
 ```
-PS C:\>Add-AzMetricAlertRule -Name "metricRule5" -Location "East US" -ResourceGroup "Default-Web-EastUS" -Operator GreaterThan -Threshold 1 -TargetResourceId "/subscriptions/b93fb07a-6f93-30be-bf3e-4f0deca15f4f/resourceGroups/Default-Web-EastUS/providers/microsoft.web/sites/mywebsite" -MetricName "Requests" -TimeAggregationOperator Total
+
+```output
 RequestId                                                                                                    StatusCode
 ---------                                                                                                    ----------
 9a5bc388-c7ac-4dc6-aa70-f4bc29c2c712                                                                                 OK

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: DFE8C373-2BBA-4A4E-B4B1-926373E68FC4
@@ -24,8 +24,8 @@ The **Get-AzDataLakeStoreItemAclEntry** cmdlet gets an entry (ACE) in the access
 ## EXAMPLES
 
 ### Example 1: Get the ACL for a folder
-```
-PS C:\> Get-AzDataLakeStoreItemAclEntry -AccountName 'ContosoADL' -Path '/'
+```powershell
+Get-AzDataLakeStoreItemAclEntry -AccountName 'ContosoADL' -Path '/'
 ```
 
 This command gets the ACL for the root directory of the specified Data Lake Store account

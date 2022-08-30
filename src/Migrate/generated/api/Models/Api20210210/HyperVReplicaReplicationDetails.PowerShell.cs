@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="HyperVReplicaReplicationDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="HyperVReplicaReplicationDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,16 +103,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInitialReplicationDetails) content.GetValueForProperty("InitialReplicationDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InitialReplicationDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).LastReplicatedTime = (global::System.DateTime?) content.GetValueForProperty("LastReplicatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).LastReplicatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMNic = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetails[]) content.GetValueForProperty("VMNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMNic, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMNicDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMId = (string) content.GetValueForProperty("VMId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionState = (string) content.GetValueForProperty("VMProtectionState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionStateDescription = (string) content.GetValueForProperty("VMProtectionStateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionStateDescription, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMDiskDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails[]) content.GetValueForProperty("VMDiskDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMDiskDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationType = (string) content.GetValueForProperty("InitialReplicationDetailInitialReplicationType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationProgressPercentage = (string) content.GetValueForProperty("InitialReplicationDetailInitialReplicationProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationProgressPercentage, global::System.Convert.ToString);
+            if (content.Contains("InitialReplicationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInitialReplicationDetails) content.GetValueForProperty("InitialReplicationDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InitialReplicationDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LastReplicatedTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).LastReplicatedTime = (global::System.DateTime?) content.GetValueForProperty("LastReplicatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).LastReplicatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("VMNic"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMNic = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetails[]) content.GetValueForProperty("VMNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMNic, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMNicDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("VMId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMId = (string) content.GetValueForProperty("VMId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMProtectionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionState = (string) content.GetValueForProperty("VMProtectionState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionState, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMProtectionStateDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionStateDescription = (string) content.GetValueForProperty("VMProtectionStateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionStateDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMDiskDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMDiskDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails[]) content.GetValueForProperty("VMDiskDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMDiskDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("InitialReplicationDetailInitialReplicationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationType = (string) content.GetValueForProperty("InitialReplicationDetailInitialReplicationType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationType, global::System.Convert.ToString);
+            }
+            if (content.Contains("InitialReplicationDetailInitialReplicationProgressPercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationProgressPercentage = (string) content.GetValueForProperty("InitialReplicationDetailInitialReplicationProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationProgressPercentage, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -128,16 +160,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInitialReplicationDetails) content.GetValueForProperty("InitialReplicationDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InitialReplicationDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).LastReplicatedTime = (global::System.DateTime?) content.GetValueForProperty("LastReplicatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).LastReplicatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMNic = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetails[]) content.GetValueForProperty("VMNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMNic, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMNicDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMId = (string) content.GetValueForProperty("VMId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionState = (string) content.GetValueForProperty("VMProtectionState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionState, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionStateDescription = (string) content.GetValueForProperty("VMProtectionStateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionStateDescription, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMDiskDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails[]) content.GetValueForProperty("VMDiskDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMDiskDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationType = (string) content.GetValueForProperty("InitialReplicationDetailInitialReplicationType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationProgressPercentage = (string) content.GetValueForProperty("InitialReplicationDetailInitialReplicationProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationProgressPercentage, global::System.Convert.ToString);
+            if (content.Contains("InitialReplicationDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInitialReplicationDetails) content.GetValueForProperty("InitialReplicationDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InitialReplicationDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("LastReplicatedTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).LastReplicatedTime = (global::System.DateTime?) content.GetValueForProperty("LastReplicatedTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).LastReplicatedTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("VMNic"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMNic = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetails[]) content.GetValueForProperty("VMNic",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMNic, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMNicDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMNicDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("VMId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMId = (string) content.GetValueForProperty("VMId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMProtectionState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionState = (string) content.GetValueForProperty("VMProtectionState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionState, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMProtectionStateDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionStateDescription = (string) content.GetValueForProperty("VMProtectionStateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMProtectionStateDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("VMDiskDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMDiskDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails[]) content.GetValueForProperty("VMDiskDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).VMDiskDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProviderSpecificSettingsInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("InitialReplicationDetailInitialReplicationType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationType = (string) content.GetValueForProperty("InitialReplicationDetailInitialReplicationType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationType, global::System.Convert.ToString);
+            }
+            if (content.Contains("InitialReplicationDetailInitialReplicationProgressPercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationProgressPercentage = (string) content.GetValueForProperty("InitialReplicationDetailInitialReplicationProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHyperVReplicaReplicationDetailsInternal)this).InitialReplicationDetailInitialReplicationProgressPercentage, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 

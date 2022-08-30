@@ -31,19 +31,15 @@ The operation to delete a export.
 
 ### Example 1: Delete the AzCostManagementExport by Scope and Name
 ```powershell
-PS C:\> Remove-AzCostManagementExport -Scope 'subscriptions/********' -name 'TestExportDatasetAggregationInfoYouri'
-
-
+Remove-AzCostManagementExport -Scope 'subscriptions/********' -name 'TestExportDatasetAggregationInfoYouri'
 ```
 
 Delete the AzCostManagementExport By Scope and ExportName
 
 ### Example 2: Delete the AzCostManagementExport by Export Object
 ```powershell
-PS C:\> $getExport = Get-AzCostManagementExport -Scope 'subscriptions/*********' -name 'TestExportDatasetAggregationYouori'
+$getExport = Get-AzCostManagementExport -Scope 'subscriptions/*********' -name 'TestExportDatasetAggregationYouori'
 Remove-AzCostManagementExport -InputObject $getExport
-
-
 ```
 
 Delete the AzCostManagementExport By InputObject
@@ -177,7 +173,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ICostManagementIdentity>: Identity Parameter
+INPUTOBJECT `<ICostManagementIdentity>`: Identity Parameter
   - `[AlertId <String>]`: Alert ID
   - `[ExportName <String>]`: Export Name.
   - `[ExternalCloudProviderId <String>]`: This can be '{externalSubscriptionId}' for linked account or '{externalBillingAccountId}' for consolidated account used with dimension/query operations.

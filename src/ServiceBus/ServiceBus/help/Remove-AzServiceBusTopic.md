@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
 Module Name: Az.ServiceBus
 online version: https://docs.microsoft.com/powershell/module/az.servicebus/remove-azservicebustopic
@@ -37,31 +37,31 @@ The **Remove-AzServiceBusTopic** cmdlet removes the topic from the specified Ser
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
+Remove-AzServiceBusTopic -ResourceGroup Default-ServiceBus-WestUS -NamespaceName SB-Example1 -TopicName SB-Topic_exampl1
 ```
 
 Removes the topic `SB-Topic_exampl1` from the namespace `SB-Example1`.
 
 ### Example 2: InputObject - Using Variable:
 ```powershell
-PS C:\> $inputobject = Get-AzServiceBusTopic <parmas>
-PS C:\> Remove-AzServiceBusTopic -InputObject $inputobject
+$inputobject = Get-AzServiceBusTopic <parmas>
+Remove-AzServiceBusTopic -InputObject $inputobject
 ```
 
 ### Example 3: InputObject - Using Piping:
 ```powershell
-PS C:\> Get-AzServiceBusTopic <parmas> | Remove-AzServiceBusTopic
+Get-AzServiceBusTopic <parmas> | Remove-AzServiceBusTopic
 ```
 
 ### Example 4: ResourceId Using Variable:
 ```powershell
-PS C:\> $resourceid = Get-AzServiceBusTopic <params>
-PS C:\> Remove-AzServiceBusTopic -ResourceId $resourceid.Id
+$resourceid = Get-AzServiceBusTopic <params>
+Remove-AzServiceBusTopic -ResourceId $resourceid.Id
 ```
 
 ### Example 5: ResourceId Using String value
 ```powershell
-PS C:\> Remove-AzServiceBusTopic -ResourceId "/subscriptions/xxxx-xxxxx-xxxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName"
+Remove-AzServiceBusTopic -ResourceId "/subscriptions/xxxx-xxxxx-xxxxxx-xxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.ServiceBus/namespaces/NamespaceName/topics/TopicName"
 ```
 
 ## PARAMETERS

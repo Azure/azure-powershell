@@ -118,7 +118,7 @@
     <Exec Command="dotnet publish $(RepoTools)BuildPackagesTask/Microsoft.Azure.Build.Tasks/Microsoft.Azure.Build.Tasks.csproj -c $(Configuration)" />
 
     <!-- Get all of the files changed in the given pull request -->
-    <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)" TargetModule="$(TargetModule)">
+    <FilesChangedTask RepositoryOwner="Azure" RepositoryName="azure-powershell" PullRequestNumber="$(PullRequestNumber)" TargetModule="$(TargetModule)" OutputFile="$(RepoArtifacts)/FilesChanged.txt">
       <Output TaskParameter="FilesChanged" ItemName="FilesChanged" />
     </FilesChangedTask>
 
@@ -163,8 +163,8 @@
     <Exec Command="dotnet new sln -n Azure.PowerShell -o $(RepoArtifacts) --force" />
     <CallTarget Targets="BuildNormalModules" />
 
-    <CallTarget Targets="AzToolsPredictor" Condition="$(SubTasks.Contains('predictor'))" />
-    <CallTarget Targets="AzToolsInstaller" Condition="$(SubTasks.Contains('installer'))" />
+    <Exec Command="echo ##vso[task.setvariable variable=BuildAzPredictor;]true" Condition="$(SubTasks.Contains('Predictor')) OR $(SubTasks.Contains('all'))" />
+    <CallTarget Targets="AzToolsInstaller" Condition="$(SubTasks.Contains('Installer')) OR $(SubTasks.Contains('all'))" />
   </Target>
 
   <Target Name="BuildNormalModules">
@@ -191,7 +191,8 @@
       <BuildAction Condition="'$(Configuration)' != 'Release'">build</BuildAction>
       <BuildAction Condition="'$(Configuration)' == 'Release'">publish</BuildAction>
     </PropertyGroup>
-    <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" />
+    <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration)" Condition="$(GenerateDocumentationFile) != 'false'"/>
+    <Exec Command="dotnet $(BuildAction) $(RepoArtifacts)Azure.PowerShell.sln -c $(Configuration) -p:GenerateDocumentationFile=false" Condition="$(GenerateDocumentationFile) == 'false'"/>
 
     <!-- Build version controller -->
     <Exec Command="dotnet build $(RepoTools)VersionController/VersionController.Netcore.csproj -c $(Configuration)" />
@@ -199,7 +200,7 @@
     <!-- Delete powershell runtime files -->
     <PropertyGroup>
       <RuntimeDllsIncludeList>Microsoft.Powershell.*.dll,System*.dll,Microsoft.VisualBasic.dll,Microsoft.CSharp.dll,Microsoft.CodeAnalysis.dll,Microsoft.CodeAnalysis.CSharp.dll</RuntimeDllsIncludeList>
-      <RuntimeDllsExcludeList>System.Security.Cryptography.ProtectedData.dll,System.Configuration.ConfigurationManager.dll,System.Runtime.CompilerServices.Unsafe.dll,System.IO.FileSystem.AccessControl.dll,System.Buffers.dll,System.Text.Encodings.Web.dll,System.CodeDom.dll,System.Management.dll,System.Text.Json.dll,System.Threading.Tasks.Extensions.dll</RuntimeDllsExcludeList>
+      <RuntimeDllsExcludeList>System.Security.Cryptography.ProtectedData.dll,System.Configuration.ConfigurationManager.dll,System.Runtime.CompilerServices.Unsafe.dll,System.IO.FileSystem.AccessControl.dll,System.Buffers.dll,System.Text.Encodings.Web.dll,System.CodeDom.dll,System.Management.dll,System.Text.Json.dll,System.Threading.Tasks.Extensions.dll,System.IO.Hashing.dll</RuntimeDllsExcludeList>
     </PropertyGroup>
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts)/$(Configuration) -Recurse -Include $(RuntimeDllsIncludeList) -Exclude $(RuntimeDllsExcludeList) | Where-Object {$_.FullName -notlike '*PreloadAssemblies*' -and $_.FullName -notlike '*NetCoreAssemblies*' -and $_.FullName -notlike '*AzSharedAlcAssemblies*' -and $_.FullName -notlike '*ModuleAlcAssemblies*'} | Remove-Item -Force&quot;"/>
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;Get-ChildItem -Path $(RepoArtifacts)/$(Configuration) -Recurse -Include 'runtimes' | Remove-Item -Recurse -Force&quot;" Condition="'$(CodeSign)' == 'true'" />
@@ -263,7 +264,12 @@
     <Exec Command="dotnet $(RepoArtifacts)StaticAnalysis/StaticAnalysis.Netcore.dll -p $(RepoArtifacts)$(Configuration) -r $(StaticAnalysisOutputDirectory) --analyzers help -u -m '%(FilterTaskResult.help)'" />
   </Target>
 
-  <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp">
+  <Target Name="StaticAnalysisExample" Condition="'$(RunStaticAnalysis)' == 'true'" DependsOnTargets="Build" AfterTargets="StaticAnalysisHelp">
+    <Message Importance="high" Text="Running static analysis for PowerShell examples..." />
+    <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/StaticAnalysis/ExampleAnalyzer/Measure-MarkdownOrScript.ps1 -MarkdownPaths $(RepoArtifacts)/FilesChanged.txt -RulePaths $(RepoTools)/StaticAnalysis/ExampleAnalyzer/AnalyzeRules/*.psm1 &quot;"/>
+  </Target>
+
+  <Target Name="StaticAnalysis" DependsOnTargets="StaticAnalysisBreakingChange;StaticAnalysisDependency;StaticAnalysisSignature;StaticAnalysisHelp;StaticAnalysisExample">
     <Message Importance="high" Text="Running static analysis..." />
 
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(RepoTools)/CheckAssemblies.ps1 -BuildConfig $(Configuration) &quot;" />
@@ -283,10 +289,6 @@
 
   <Target Name="AzToolsInstaller">
     <Exec Command='dotnet msbuild $(RepoTools)/Az.Tools.Installer/build.proj /t:"clean;build;test"' />
-  </Target>
-
-  <Target Name="AzToolsPredictor">
-    <Exec Command='dotnet msbuild $(RepoTools)/Az.Tools.Predictor/build.proj /t:"clean;build;test"' />
   </Target>
 
   <Target Name="ChangeLogErrorMessage">
@@ -316,7 +318,7 @@
     <Exec Command="$(PowerShellCoreCommandPrefix) &quot;. $(DockerTools)/CleanArtifacts.ps1 -Docker $(DockerRoot) &quot;" />
   </Target>
 
-  <Target Name="Test" DependsOnTargets="FilterBuild">
+  <Target Name="Test" DependsOnTargets="FilterBuild" Condition="'$(IsGenerateBased)' == 'false'">
     <Message Importance="high" Text="Running check in tests..." />
     <MakeDir Directories="$(TestOutputDirectory)" ContinueOnError="false" />
     <!-- https://github.com/Microsoft/msbuild/issues/3157#issuecomment-378002971 -->

@@ -37,7 +37,7 @@ Allows the updating of a registered ASN from parent peering resource.
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzPeeringRegisteredAsn -ResourceId $resourceId -Asn $asn
+Set-AzPeeringRegisteredAsn -ResourceId $resourceId -Asn $asn
 ```
 
 Updates the ASN by resource id.

@@ -31,19 +31,15 @@ Delete a DigitalTwinsInstance.
 
 ### Example 1: Remove an AzDigitalTwinsInstance by name
 ```powershell
-PS C:\> Remove-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwin
-
-
+Remove-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwin
 ```
 
 This command removes an AzDigitalTwinsInstance by name
 
 ### Example 2: Remove an AzDigitalTwinsInstance by InputObject
 ```powershell
-PS C:\> $GetAzDigitalTwins =  Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
+$GetAzDigitalTwins =  Get-AzDigitalTwinsInstance -ResourceGroupName youritemp -ResourceName youriDigitalTwinsTest
 Remove-AzDigitalTwinsInstance -InputObject $GetAzDigitalTwins
-
-
 ```
 
 This command removes an AzDigitalTwinsInstance by name
@@ -222,7 +218,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDigitalTwinsIdentity>: Identity Parameter
+INPUTOBJECT `<IDigitalTwinsIdentity>`: Identity Parameter
   - `[EndpointName <String>]`: Name of Endpoint Resource.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: Location of DigitalTwinsInstance.

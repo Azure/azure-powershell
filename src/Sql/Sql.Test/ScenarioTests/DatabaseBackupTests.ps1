@@ -57,7 +57,7 @@ function Test-ListDatabaseRestorePoints
 function Test-RestoreGeoBackup
 {
 	# Setup
-	$location = "Southeast Asia"
+	$location = "west europe"
 	$serverVersion = "12.0"
 	$rg = Get-AzResourceGroup -ResourceGroupName payi-test
 	$server = Get-AzSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
@@ -115,7 +115,7 @@ function Test-RestoreDeletedDatabaseBackup
 function Test-RestorePointInTimeBackup
 {
 	# Setup
-	$location = "Southeast Asia"
+	$location = "west europe"
 	$serverVersion = "12.0"
 	$rg = Get-AzResourceGroup -ResourceGroupName payi-test
 	$server = Get-AzSqlServer -ServerName payi-testsvr -ResourceGroupName $rg.ResourceGroupName
@@ -136,7 +136,7 @@ function Test-RestorePointInTimeBackup
 # TODO update for LTRv2 backup
 function Test-RestoreLongTermRetentionBackup
 {
-	$location = "southeast asia"
+	$location = "west europe"
 	$serverVersion = "12.0"
 	$rg = Get-AzResourceGroup -ResourceGroupName "brandong-test"
 	$server = Get-AzSqlServer -ServerName "brandong-ltr-test" -ResourceGroupName $rg.ResourceGroupName
@@ -150,7 +150,7 @@ function Test-RestoreLongTermRetentionBackup
 function Test-LongTermRetentionV2Policy($location = "southeastasia")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
+	$location = Get-Location "Microsoft.Sql" "servers" "west europe"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 	$weeklyRetention1 = "P1W"
@@ -186,7 +186,7 @@ function Test-LongTermRetentionV2Policy($location = "southeastasia")
 function Test-LongTermRetentionV2Backup($location = "southeastasia")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
+	$location = Get-Location "Microsoft.Sql" "servers" "west europe"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -213,7 +213,7 @@ function Test-LongTermRetentionV2Backup($location = "southeastasia")
 function Test-LongTermRetentionV2ResourceGroupBasedBackup($location = "southeastasia")
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
+	$location = Get-Location "Microsoft.Sql" "servers" "west europe"
 	$rg = Create-ResourceGroupForTest
 	$server = Create-ServerForTest $rg $location
 
@@ -399,7 +399,7 @@ function Test-NewDatabaseRestorePoint
 function Test-RemoveDatabaseRestorePoint
 {
 	# Setup
-	$location = Get-Location "Microsoft.Sql" "servers" "southeast asia"
+	$location = Get-Location "Microsoft.Sql" "servers" "west europe"
 	$serverVersion = "12.0";
 	$label = "label01";
 	$rg = Create-ResourceGroupForTest
@@ -711,6 +711,111 @@ function Test-CreateRestoreRegularAndZoneRedundantDatabaseWithSourceZoneRedundan
 		Assert-AreEqual $restoreNoZRParamDatabase.CurrentBackupStorageRedundancy "Zone"
 		Assert-NotNull  $restoreNoZRParamDatabase.ZoneRedundant 
 		Assert-True     { $restoreNoZRParamDatabase.ZoneRedundant }
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	1. Restore source vldb with source backup storage redundancy == Zone passing in backup storage redundancy == GeoZone,
+	   Verify restored vldb has backup storage redundancy == GeoZone
+	2. Restore source vldb with source backup storage redundancy == GeoZone without passing in backup storage redundancy,
+	   Verify restored vldb has backup storage redundancy == GeoZone
+#>
+function Test-CreateRestoreWithZonetoGeoZoneBackupStorageRedundancy()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Brazil South"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$db = Get-DatabaseName
+	$sourceZoneDatabaseName = $db + "-zrs"
+	$sourceGeoZoneDatabaseName = $db + "-ragzrs"
+
+	$restoreZonetoGeoZoneDatabaseName = $sourceZoneDatabaseName + "-restore-zrs"
+	$restoreGeoZoneToNoneDatabaseName = $sourceGeoZoneDatabaseName + "-restore-ragzrs"
+
+	try
+	{
+		# Test 1
+		# Create source vldb with and backup storage redundancy == Zone
+		$sourceZoneDatabase = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceZoneDatabaseName `
+		 -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType "LicenseIncluded" -BackupStorageRedundancy "Zone"
+
+		# Verify created source vldb has correct values
+		Assert-AreEqual $sourceZoneDatabase.ServerName $server.ServerName
+		# Assert-AreEqual $sourceZoneDatabase.name $sourceZRDatabaseName
+		Assert-AreEqual $sourceZoneDatabase.Edition "Hyperscale"
+		Assert-AreEqual $sourceZoneDatabase.CurrentBackupStorageRedundancy "Zone"
+
+		# Get current time for PITR
+		$time = Get-Date
+		$utcTime = $Time.ToUniversalTime()
+		$pitrTime = $utcTime.ToString("yyyy-MM-ddTHH:mm:ssZ")
+
+		# Copy source vldb
+		$restoreZonetoGeoZoneParamDatabase = Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pitrTime -TargetDatabaseName $restoreZonetoGeoZoneDatabaseName -ResourceGroupName $rg.ResourceGroupName `
+		-ServerName $server.ServerName -ResourceId $sourceZoneDatabase.ResourceId -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -BackupStorageRedundancy "GeoZone"
+		
+		# Verify restored vldb has correct values 
+		Assert-AreEqual $restoreZonetoGeoZoneParamDatabase.ServerName $server.ServerName
+		# Assert-AreEqual $restoreZonetoGeoZoneParamDatabase.DatabaseName $restoreFalseZRParamDatabaseName
+		Assert-AreEqual $restoreZonetoGeoZoneParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $restoreZonetoGeoZoneParamDatabase.CurrentBackupStorageRedundancy "GeoZone"
+	}
+	finally
+	{
+		Remove-ResourceGroupForTest $rg
+	}
+}
+
+<#
+	.SYNOPSIS
+	1. Restore source vldb with source backup storage redundancy == GeoZone without passing in backup storage redundancy,
+	   Verify restored vldb has backup storage redundancy == GeoZone
+#>
+function Test-CreateRestoreWithGeoZoneBackupStorageRedundancy()
+{
+	# Setup
+	$location = Get-Location "Microsoft.Sql" "operations" "Brazil South"
+	$rg = Create-ResourceGroupForTest $location
+	$server = Create-ServerForTest $rg $location
+	$db = Get-DatabaseName
+	$sourceZoneDatabaseName = $db + "-zrs"
+	$sourceGeoZoneDatabaseName = $db + "-ragzrs"
+
+	$restoreZonetoGeoZoneDatabaseName = $sourceZoneDatabaseName + "-restore-zrs"
+	$restoreGeoZoneToNoneDatabaseName = $sourceGeoZoneDatabaseName + "-restore-ragzrs"
+
+	try
+	{
+		# Create source vldb with and backup storage redundancy == GeoZone
+		$sourceGeoZoneDatabase = New-AzSqlDatabase -ResourceGroupName $rg.ResourceGroupName -ServerName $server.ServerName -DatabaseName $sourceGeoZoneDatabaseName `
+		 -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale -LicenseType "LicenseIncluded" -BackupStorageRedundancy "GeoZone"
+
+		# Verify created source vldb has correct values
+		Assert-AreEqual $sourceGeoZoneDatabase.ServerName $server.ServerName
+		# Assert-AreEqual $sourceGeoZoneDatabase.DatabaseName $sourceZRDatabaseName
+		Assert-AreEqual $sourceGeoZoneDatabase.Edition "Hyperscale"
+		Assert-AreEqual $sourceGeoZoneDatabase.CurrentBackupStorageRedundancy "GeoZone"
+
+		# Get current time for PITR
+		$time = Get-Date
+		$utcTime = $Time.ToUniversalTime()
+		$pitrTime = $utcTime.ToString("yyyy-MM-ddTHH:mm:ssZ")
+
+		# Copy source vldb
+		$restoreGeoZonetoNoneParamDatabase = Restore-AzSqlDatabase -FromPointInTimeBackup -PointInTime $pitrTime -TargetDatabaseName $restoreGeoZoneToNoneDatabaseName -ResourceGroupName $rg.ResourceGroupName `
+		-ServerName $server.ServerName -ResourceId $sourceGeoZoneDatabase.ResourceId -VCore 2 -ComputeGeneration Gen5 -Edition Hyperscale
+		
+		# Verify restored vldb has correct values
+		Assert-AreEqual $restoreGeoZonetoNoneParamDatabase.ServerName $server.ServerName
+		# Assert-AreEqual $restoreGeoZonetoNoneParamDatabase.DatabaseName $restoreFalseZRParamDatabaseName
+		Assert-AreEqual $restoreGeoZonetoNoneParamDatabase.Edition "Hyperscale"
+		Assert-AreEqual $restoreGeoZonetoNoneParamDatabase.CurrentBackupStorageRedundancy "GeoZone"
 	}
 	finally
 	{

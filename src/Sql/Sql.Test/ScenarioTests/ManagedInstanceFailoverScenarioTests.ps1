@@ -24,17 +24,16 @@ function Test-FailoverManagedInstance
 	try
 	{
 		# Setup
-		$rg = Create-ResourceGroupForTest "westeurope"
-		$vnetName = "vnet-pcresizeandcreate"
-		$subnetName = "ManagedInstance"
-
-		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
-		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+		$rg = Create-ResourceGroupForTest
 
 		# Initiate sync create of managed instance.
-		$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
+		$managedInstance1Job = Create-ManagedInstanceForTestAsJob $rg
+		$managedInstance2Job = Create-ManagedInstanceForTestAsJob $rg
 
+		$managedInstance = Create-ManagedInstanceForTest $rg
+		
+		# Wait for first full backup
+		Wait-Seconds 300
 		$job = Invoke-AzSqlInstanceFailover -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName -AsJob
 		$job | Wait-Job
 
@@ -47,106 +46,30 @@ function Test-FailoverManagedInstance
 			$ErrorMessage = $_.Exception.Message
 			Assert-AreEqual True $ErrorMessage.Contains("There was a recent failover on the managed instance")
 		}
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
-}
 
-<#
-.SYNOPSIS
-Tests Managed Instance failover with passthru.
-#>
-function Test-FailoverManagedInstancePassThru
-{
-	try
-	{
-		# Setup
-		$rg = Create-ResourceGroupForTest "westeurope"
-		$vnetName = "vnet-pcresizeandcreate"
-		$subnetName = "ManagedInstance"
+		$managedInstance1Job | Wait-Job
+		$managedInstance1 = $managedInstance1Job.Output
 
-		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
-		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
+		# PassThru #
+		############
 
-		# Initiate sync create of managed instance.
-		$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-
-		$output = Invoke-AzSqlInstanceFailover -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName -PassThru
+		# Wait for first full backup
+		Wait-Seconds 120
+		$output = Invoke-AzSqlInstanceFailover -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName -PassThru
 		Assert-True { $output }
+
+		$managedInstance2Job | Wait-Job
+		$managedInstance2 = $managedInstance2Job.Output
+
+		# Piping #
+		##########
+
+		# Wait for first full backup
+		Wait-Seconds 60
+		Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance2.ManagedInstanceName | Invoke-AzSqlInstanceFailover
 	}
 	finally
 	{
 		Remove-ResourceGroupForTest $rg
 	}
 }
-
-<#
-.SYNOPSIS
-Tests Managed Instance failover using piping.
-#>
-function Test-FailoverManagedInstancePiping
-{
-	try
-	{
-		# Setup
-		$rg = Create-ResourceGroupForTest "westeurope"
-		$vnetName = "vnet-pcresizeandcreate"
-		$subnetName = "ManagedInstance"
-
-		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
-		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-		# Initiate sync create of managed instance.
-		$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-
-		Get-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName | Invoke-AzSqlInstanceFailover
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
-}
-
-<#
-.SYNOPSIS
-Tests Managed Instance failover secondary readable replica.
-
-Managed instance has 3 replicas and intiating failover does not specify which one to failover, so we run test
-with -PassThru and assert on the output.
-#>
-function Test-FailoverManagedInstanceReadableSecondary
-{
-	try
-	{
-		# Setup
-		$rg = Create-ResourceGroupForTest "westeurope"
-		$vnetName = "vnet-pcresizeandcreate"
-		$subnetName = "ManagedInstance"
-
-		# Setup VNET
-		$virtualNetwork1 = CreateAndGetVirtualNetworkForManagedInstance $vnetName $subnetName $rg.Location "toki"
-		$subnetId = $virtualNetwork1.Subnets.where({ $_.Name -eq $subnetName })[0].Id
-
-		# Initiate sync create of managed instance.
-		$managedInstance = Create-ManagedInstanceForTest $rg $subnetId
-
-		# Change instance edition to BusinessCritical to get secondary replicas to failover
-		$credentials = Get-ServerCredential
-		$edition = "BusinessCritical"
-
-		$managedInstance1 = Set-AzSqlInstance -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance.ManagedInstanceName `
-			-Edition $edition -Force
-
-		$output = Invoke-AzSqlInstanceFailover -ResourceGroupName $rg.ResourceGroupName -Name $managedInstance1.ManagedInstanceName -ReadableSecondary -PassThru
-		Assert-True { $output }
-	}
-	finally
-	{
-		Remove-ResourceGroupForTest $rg
-	}
-}
-

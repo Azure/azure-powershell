@@ -36,9 +36,11 @@ Create a firewall rule on a Redis Cache.
 ## EXAMPLES
 
 ### Example 1: Create a firewall rule
+```powershell
+New-AzRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone" -StartIP "10.0.0.1" -EndIP "10.0.0.32"
 ```
-PS C:\>New-AzRedisCacheFirewallRule -Name "mycache" -RuleName "ruleone" -StartIP "10.0.0.1" -EndIP "10.0.0.32"
 
+```output
         ResourceGroupName : myGroup
         Name              : mycache
         FirewallRuleId    : /subscriptions/a559b6fd-3a84-40bb-a450-b0db5ed37dfe/resourceGroups/myGroup/providers/Microsoft.Cache/Redis/mycache/firewallRules/ruleone

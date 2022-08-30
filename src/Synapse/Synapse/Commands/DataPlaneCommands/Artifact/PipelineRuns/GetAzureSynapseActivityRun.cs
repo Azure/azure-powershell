@@ -19,6 +19,7 @@ using Microsoft.Azure.Commands.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Synapse
@@ -85,7 +86,8 @@ namespace Microsoft.Azure.Commands.Synapse
                 filter.Filters.Add(new RunQueryFilter(RunQueryFilterOperand.Status, RunQueryFilterOperator.EqualsValue, new List<string>() { this.Status }));
             }
 
-            WriteObject(new PSActivityRunsQueryResponse(SynapseAnalyticsClient.GetActivityRuns(this.PipelineName,this.PipelineRunId, filter)));
+            WriteObject(SynapseAnalyticsClient.GetActivityRuns(this.PipelineName, this.PipelineRunId, filter)
+                .Select(element => new PSActivityRunsQueryResponse(element)));
         }
     }
 }

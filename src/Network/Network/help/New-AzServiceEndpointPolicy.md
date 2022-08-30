@@ -25,7 +25,7 @@ The **New-AzServiceEndpointPolicy** cmdlet create a service endpoint policy.
 ## EXAMPLES
 
 ### Example 1: Creates a service endpoint policy
-```
+```powershell
 $serviceEndpointPolicy = New-AzServiceEndpointPolicy -Name "Policy1" -ServiceEndpointPolicyDefinition $serviceEndpointDefinition -Location "location";
 ```
 

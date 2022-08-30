@@ -14,8 +14,8 @@ Lists entities from users or get entity from users by key
 
 ### List (Default)
 ```
-Get-AzADUser [-Expand <String[]>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected]
- [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-ConsistencyLevel <String>]
+Get-AzADUser [-Count] [-Expand <String[]>] [-Select <String[]>] [-First <UInt64>] [-Skip <UInt64>]
+ [-AppendSelected] [-Filter <String>] [-Orderby <String[]>] [-Search <String>] [-ConsistencyLevel <String>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -62,21 +62,21 @@ Lists entities from users or get entity from users by key
 
 ### Example 1: Get signin user
 ```powershell
-PS C:\> Get-AzADUser -SignedIn
+Get-AzADUser -SignedIn
 ```
 
 Get signin user
 
 ### Example 2: List users
 ```powershell
-PS C:\> Get-AzADUser -First 10 -Select 'City' -AppendSelected
+Get-AzADUser -First 10 -Select 'City' -AppendSelected
 ```
 
 List first 10 users and append property 'City' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'UserPrincipalName', 'UsageLocation', 'GivenName', 'SurName', 'AccountEnabled', 'MailNickName', 'Mail'
 
 ### Example 3: Get user by display name
 ```powershell
-PS C:\> Get-AzADUser -DisplayName $name
+Get-AzADUser -DisplayName $name
 ```
 
 Get user by display name
@@ -104,6 +104,21 @@ Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-
 
 ```yaml
 Type: System.String
+Parameter Sets: List
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Count
+Include count of items
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: List
 Aliases:
 

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.NotificationHubs.dll-Help.xml
 Module Name: Az.NotificationHubs
 ms.assetid: 5EDFBF19-928F-4F95-BD93-CF8BAEA11C52
@@ -27,8 +27,8 @@ When you run this cmdlet, the specified namespace will be deleted along with all
 ## EXAMPLES
 
 ### Example 1: Remove a notification hub namespace
-```
-PS C:\>Remove-AzNotificationHubsNamespace -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup"
+```powershell
+Remove-AzNotificationHubsNamespace -Namespace "ContosoNamespace" -ResourceGroup "ContosoNotificationsGroup"
 ```
 
 This command removes the namespace named ContosoNamespace.

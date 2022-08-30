@@ -26,7 +26,7 @@ The **Remove-AzApiManagementLogger** cmdlet removes an Azure API Management **Lo
 ### Example 1: Remove a logger
 ```powershell
 $apimContext = New-AzApiManagementContext -ResourceGroupName "Api-Default-WestUS" -ServiceName "contoso"
-Remove-AzApiManagementLogger -Context $apimContext -LoggerId "Logger123" -Force
+Remove-AzApiManagementLogger -Context $apimContext -LoggerId "Logger123"
 ```
 
 This command removes a logger that has the ID Logger123.

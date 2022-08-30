@@ -32,19 +32,19 @@ This **Restart-AzHDInsightHost** cmdlet restart the specific hosts of HDInsight 
 
 ### Example 1
 ```powershell
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> Restart-AzHDInsightHost -ClusterName $clusterName -Name wn0, wn1
+# Cluster info
+$clusterName = "your-hadoop-001"
+Restart-AzHDInsightHost -ClusterName $clusterName -Name wn0, wn1
 ```
 
 This command restarts two hosts of the cluster: worknode1, worknode2.
 
 ### Example 2
 ```powershell
-PS C:\># Cluster info
-PS C:\> $clusterName = "your-hadoop-001"
-PS C:\> $worknode1= Get-AzHDInsightHost -ClusterName $clusterName | Where-Object {$_.Name -like "wn1*"}
-PS C:\> $worknode1 | Restart-AzHDInsightHost -ClusterName $clusterName
+# Cluster info
+$clusterName = "your-hadoop-001"
+$worknode1= Get-AzHDInsightHost -ClusterName $clusterName | Where-Object {$_.Name -like "wn1*"}
+$worknode1 | Restart-AzHDInsightHost -ClusterName $clusterName
 ```
 
 This command shows how to cooperate with the cmdlet 'Get-AzHDInsightHost'.

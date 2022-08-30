@@ -32,8 +32,11 @@ To use the cmdlet, use the *ResourceGroupName*, *ServerName*, and *DatabaseName*
 ## EXAMPLES
 
 ### Example 1: Get the auditing settings of an Azure SQL database
+```powershell
+Get-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
-PS C:\>Get-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+
+```output
 ServerName                          : server01
 DatabaseName                        : database01
 AuditAction                         : {}
@@ -53,8 +56,11 @@ WorkspaceResourceId                 : "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2
 ```
 
 ### Example 2: Get, through pipeline, the auditing settings of an Azure SQL database
+```powershell
+Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Get-AzSqlDatabaseAudit
 ```
-PS C:\> Get-AzSqlDatabase -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01" | Get-AzSqlDatabaseAudit
+
+```output
 ServerName                          : server01
 DatabaseName                        : database01
 AuditAction                         : {}
@@ -74,8 +80,11 @@ WorkspaceResourceId                 : "/subscriptions/4b9e8510-67ab-4e9a-95a9-e2
 ```
 
 ### Example 3: Get the auditing settings of an Azure SQL database
+```powershell
+Get-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
 ```
-PS C:\>Get-AzSqlDatabaseAudit -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -DatabaseName "Database01"
+
+```output
 ServerName                          : server01
 DatabaseName                        : database01
 AuditAction                         : {}

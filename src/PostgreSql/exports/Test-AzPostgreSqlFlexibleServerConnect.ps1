@@ -20,32 +20,16 @@ Test out the connection to the database server
 .Description
 Test out the connection to the database server
 .Example
-PS C:\> $password = ConvertTo-SecureString <YourPassword> -AsPlainText
-PS C:\> Get-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password
-
-The connection testing to postgresql-test.database.azure.com was successful!
+ $password = ConvertTo-SecureString <YourPassword> -AsPlainText
+ Get-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password
 .Example
-PS C:\> $password = ConvertTo-SecureString <YourPassword> -AsPlainText
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword $password
-
-The connection testing to postgresql-test.database.azure.com was successful!
+ $password = ConvertTo-SecureString <YourPassword> -AsPlainText
+ Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -AdministratorLoginPassword $password
 .Example
-PS C:\> $password = ConvertTo-SecureString <YourPassword> -AsPlainText
-PS C:\> Test-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password -Query "SELECT * FROM test"
-
-col
------
-1
-2
-3
+ $password = ConvertTo-SecureString <YourPassword> -AsPlainText
+ Test-AzPostgreSqlFlexibleServerConnect -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test -AdministratorLoginPassword $password -Query "SELECT * FROM test"
 .Example
-PS C:\> Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -Query "SELECT * FROM test" -AdministratorLoginPassword $password
-
-col
------
-1
-2
-3
+ Get-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test | Test-AzPostgreSqlFlexibleServerConnect -Query "SELECT * FROM test" -AdministratorLoginPassword $password
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity

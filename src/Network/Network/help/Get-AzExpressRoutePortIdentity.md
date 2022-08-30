@@ -24,8 +24,8 @@ The **Get-AzExpressRoutePortIdentity** cmdlet gets identity assigned to a local 
 
 ### Example 1
 ```powershell
-PS C:\> $exrPort = Get-AzExpressRoutePort -Name $exrPortName -ResourceGroupName $resgpName
-PS C:\> $identity = Get-AzExpressRoutePortIdentity -ExpressRoutePort $exrPort
+$exrPort = Get-AzExpressRoutePort -Name $exrPortName -ResourceGroupName $resgpName
+$identity = Get-AzExpressRoutePortIdentity -ExpressRoutePort $exrPort
 ```
 
 ## PARAMETERS

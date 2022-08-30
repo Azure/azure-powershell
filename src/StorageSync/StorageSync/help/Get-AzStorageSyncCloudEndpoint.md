@@ -37,7 +37,7 @@ This command lists all cloud endpoints within a given sync group. It can be used
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName"
+Get-AzStorageSyncCloudEndpoint -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName" -SyncGroupName "mySyncGroupName"
 ```
 
 This command gets all cloud endpoints contained within the specified sync group. Specify -CloudEndpointName to return a specific one.

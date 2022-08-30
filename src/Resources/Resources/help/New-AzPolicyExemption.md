@@ -27,9 +27,9 @@ Specify a policy assignment, exemption category and scope.
 
 ### Example 1: Policy exemption at subscription level
 ```powershell
-PS C:\> $Subscription = Get-AzSubscription -SubscriptionName 'Subscription01'
-PS C:\> $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
-PS C:\> New-AzPolicyExemption -Name 'VirtualMachinePolicyExemption' -PolicyAssignment $Assignment -Scope "/subscriptions/$($Subscription.Id)" -ExemptionCategory Waiver
+$Subscription = Get-AzSubscription -SubscriptionName 'Subscription01'
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
+New-AzPolicyExemption -Name 'VirtualMachinePolicyExemption' -PolicyAssignment $Assignment -Scope "/subscriptions/$($Subscription.Id)" -ExemptionCategory Waiver
 ```
 
 The first command gets a subscription named Subscription01 by using the Get-AzSubscription cmdlet and stores it in the $Subscription variable.
@@ -38,9 +38,9 @@ The final command exempts the policy assignment in $Assignment at the level of t
 
 ### Example 2: Policy exemption at resource group level
 ```powershell
-PS C:\> $ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
-PS C:\> $Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
-PS C:\> New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $ResourceGroup.ResourceId -ExemptionCategory Mitigated
+$ResourceGroup = Get-AzResourceGroup -Name 'ResourceGroup11'
+$Assignment = Get-AzPolicyAssignment -Name 'VirtualMachinePolicyAssignment'
+New-AzPolicyExemption -Name 'VirtualMachinePolicyAssignment' -PolicyAssignment $Assignment -Scope $ResourceGroup.ResourceId -ExemptionCategory Mitigated
 ```
 
 The first command gets a resource group named ResourceGroup11 by using the Get-AzResourceGroup cmdlet and stores it in the $ResourceGroup variable.

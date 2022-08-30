@@ -24,11 +24,13 @@ The **New-AzCosmosDBGremlinUniqueKeyPolicy** cmdlet creates a new object of type
 
 ### Example 1
 ```powershell
-PS C:\> $uk = New-AzCosmosDBGremlinUniqueKey -Path "abc"
+$uk = New-AzCosmosDBGremlinUniqueKey -Path "abc"
 
- New-AzCosmosDBGremlinUniqueKeyPolicy -UniqueKey $uk,$uk
- 
- UniqueKey
+New-AzCosmosDBGremlinUniqueKeyPolicy -UniqueKey $uk,$uk
+```
+
+```output
+UniqueKey
 ---------
 {Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKey, Microsoft.Azure.Commands.CosmosDB.Models.PSSqlUniqueKey}
 ```

@@ -25,7 +25,7 @@ If a commitment plan with the same name exists in the resource group, the call a
 ## EXAMPLES
 
 ### Example 1: Create a new commitment plan
-```
+```powershell
 New-AzMlCommitmentPlan -ResourceGroupName "MyResourceGroup" -Name "MyCommitmentPlanName" -Location "South Central US" -SkuName DevTest -SkuTier Standard -SkuCapacity 1
 ```
 

@@ -243,10 +243,15 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Models.Api2021090
                 this._gitRepo = null;
             }
             
-            this._emptyDir = null;
-
-            this._secret = null;
         } 
+
+        partial void AfterToJson(ref Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject container)
+        {
+            if (this._emptyDir != null && this._emptyDir.Count == 0) {
+                container.Add("emptyDir", new Microsoft.Azure.PowerShell.Cmdlets.ContainerInstance.Runtime.Json.JsonObject());
+            }
+        }
+
     
     }
 }

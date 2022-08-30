@@ -32,9 +32,9 @@ Set the vault context by using the -VaultId parameter.
 ### Example 1: Wait for a job to finish
 
 ```powershell
-PS C:\> $vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
-PS C:\> $Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
-PS C:\> Wait-AzRecoveryServicesBackupJob -Job $Jobs[0] -VaultId $vault.ID -Timeout 3600
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "resourceGroup" -Name "vaultName"
+$Jobs = Get-AzRecoveryServicesBackupJob -Status InProgress -VaultId $vault.ID
+Wait-AzRecoveryServicesBackupJob -Job $Jobs[0] -VaultId $vault.ID -Timeout 3600
 ```
 
 This script polls the first job that is currently in progress until the job has completed or timeout period of 1 hour expired.

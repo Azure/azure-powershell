@@ -18,6 +18,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
         public string CloudServiceName { get => this._cloudServiceName; set => this._cloudServiceName = value; }
 
+        /// <summary>Backing field for <see cref="IPConfigurationName" /> property.</summary>
+        private string _iPConfigurationName;
+
+        /// <summary>The IP configuration name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
+        public string IPConfigurationName { get => this._iPConfigurationName; set => this._iPConfigurationName = value; }
+
         /// <summary>Backing field for <see cref="Id" /> property.</summary>
         private string _id;
 
@@ -32,6 +39,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
         public string Location { get => this._location; set => this._location = value; }
 
+        /// <summary>Backing field for <see cref="NetworkInterfaceName" /> property.</summary>
+        private string _networkInterfaceName;
+
+        /// <summary>The name of the network interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
+        public string NetworkInterfaceName { get => this._networkInterfaceName; set => this._networkInterfaceName = value; }
+
         /// <summary>Backing field for <see cref="OSFamilyName" /> property.</summary>
         private string _oSFamilyName;
 
@@ -45,6 +59,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         /// <summary>Name of the OS version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
         public string OSVersionName { get => this._oSVersionName; set => this._oSVersionName = value; }
+
+        /// <summary>Backing field for <see cref="PublicIPAddressName" /> property.</summary>
+        private string _publicIPAddressName;
+
+        /// <summary>The name of the public IP Address.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Origin(Microsoft.Azure.PowerShell.Cmdlets.CloudService.PropertyOrigin.Owned)]
+        public string PublicIPAddressName { get => this._publicIPAddressName; set => this._publicIPAddressName = value; }
 
         /// <summary>Backing field for <see cref="ResourceGroupName" /> property.</summary>
         private string _resourceGroupName;
@@ -102,6 +123,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         SerializedName = @"cloudServiceName",
         PossibleTypes = new [] { typeof(string) })]
         string CloudServiceName { get; set; }
+        /// <summary>The IP configuration name.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The IP configuration name.",
+        SerializedName = @"ipConfigurationName",
+        PossibleTypes = new [] { typeof(string) })]
+        string IPConfigurationName { get; set; }
         /// <summary>Resource identity path</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
@@ -118,6 +147,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         SerializedName = @"location",
         PossibleTypes = new [] { typeof(string) })]
         string Location { get; set; }
+        /// <summary>The name of the network interface.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the network interface.",
+        SerializedName = @"networkInterfaceName",
+        PossibleTypes = new [] { typeof(string) })]
+        string NetworkInterfaceName { get; set; }
         /// <summary>Name of the OS family.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
@@ -134,6 +171,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
         SerializedName = @"osVersionName",
         PossibleTypes = new [] { typeof(string) })]
         string OSVersionName { get; set; }
+        /// <summary>The name of the public IP Address.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The name of the public IP Address.",
+        SerializedName = @"publicIpAddressName",
+        PossibleTypes = new [] { typeof(string) })]
+        string PublicIPAddressName { get; set; }
 
         [Microsoft.Azure.PowerShell.Cmdlets.CloudService.Runtime.Info(
         Required = false,
@@ -186,14 +231,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.CloudService.Models
 
     {
         string CloudServiceName { get; set; }
+        /// <summary>The IP configuration name.</summary>
+        string IPConfigurationName { get; set; }
         /// <summary>Resource identity path</summary>
         string Id { get; set; }
         /// <summary>Name of the location that the OS version pertains to.</summary>
         string Location { get; set; }
+        /// <summary>The name of the network interface.</summary>
+        string NetworkInterfaceName { get; set; }
         /// <summary>Name of the OS family.</summary>
         string OSFamilyName { get; set; }
         /// <summary>Name of the OS version.</summary>
         string OSVersionName { get; set; }
+        /// <summary>The name of the public IP Address.</summary>
+        string PublicIPAddressName { get; set; }
 
         string ResourceGroupName { get; set; }
         /// <summary>Name of the role instance.</summary>

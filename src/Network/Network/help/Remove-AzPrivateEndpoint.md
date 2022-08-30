@@ -23,7 +23,7 @@ The **Remove-AzPrivateEndpoint** cmdlet removes a private endpoint.
 ## EXAMPLES
 
 ### Example 1
-```
+```powershell
 Remove-AzPrivateEndpoint -Name MyPrivateEndpoint1 -ResourceGroupName TestResourceGroup
 ```
 

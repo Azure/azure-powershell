@@ -32,12 +32,18 @@ Name    Type
 ----    ----
 default Microsoft.Cache/redisEnterprise/databases
 
+.Example
+PS C:\> New-AzRedisEnterpriseCacheDatabase -Name "MyCache2" -ResourceGroupName "MyGroup" -ClientProtocol "Encrypted" -EvictionPolicy "NoEviction" -ClusteringPolicy "EnterpriseCluster" -GroupNickname "GroupNickname" -LinkedDatabase '{id:"/subscriptions/6b9ac7d2-7f6d-4de4-962c-43fda44bc3f2/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache/databases/default"}','{id:"/subscriptions/sub1/resourceGroups/MyGroup/providers/Microsoft.Cache/redisEnterprise/MyCache2/databases/default"}'
+
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IDatabase
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+GEOREPLICATIONLINKEDDATABASE <ILinkedDatabase[]>: List of database resources to link with this database
+  [Id <String>]: Resource ID of a database resource to link with this database.
 
 MODULE <IModule[]>: Optional set of redis modules to enable in this database - modules can only be added at creation time.
   Name <String>: The name of the module, e.g. 'RedisBloom', 'RediSearch', 'RedisTimeSeries'
@@ -47,7 +53,7 @@ MODULE <IModule[]>: Optional set of redis modules to enable in this database - m
 https://docs.microsoft.com/powershell/module/az.redisenterprisecache/new-azredisenterprisecachedatabase
 #>
 function New-AzRedisEnterpriseCacheDatabase {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IDatabase])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IDatabase])]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
@@ -66,7 +72,7 @@ function New-AzRedisEnterpriseCacheDatabase {
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
-        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.IModule[]]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.IModule[]]
         # Optional set of redis modules to enable in this database - modules can only be added at create time.
         # To construct, see NOTES section for MODULE properties and create a hash table.
         ${Module},
@@ -93,6 +99,20 @@ function New-AzRedisEnterpriseCacheDatabase {
         # Redis eviction policy - default is VolatileLRU
         # Allowed values: AllKeysLFU, AllKeysLRU, AllKeysRandom, VolatileLRU, VolatileLFU, VolatileTTL, VolatileRandom, NoEviction
         ${EvictionPolicy},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [System.String]
+        # Name for the group of linked database resources
+        ${GroupNickname},
+
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.ILinkedDatabase[]]
+        # List of database resources to link with this database
+        # To construct, see NOTES section for GEOREPLICATIONLINKEDDATABASE properties and create a hash table.
+        ${LinkedDatabase},
 
         [Parameter()]
         [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Support.ClusteringPolicy])]

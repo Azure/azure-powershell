@@ -40,12 +40,12 @@ The Enable-AzSqlDatabaseSensitivityRecommendation cmdlet enables sensitivity rec
 
 ### Example 1: Enable sensitivity recommendations on a given column in an Azure SQL Database.
 ```powershell
-PS C:\> Enable-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -ServerName server -DatabaseName database -SchemaName schema -TableName table -ColumnName column
+Enable-AzSqlDatabaseSensitivityRecommendation -ResourceGroupName resourceGroup -ServerName server -DatabaseName database -SchemaName schema -TableName table -ColumnName column
 ```
 
 ### Example 2: Enable sensitivity recommendations on a given column Azure SQL database using Piping.
 ```powershell
-PS C:\> Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Enable-AzSqlDatabaseSensitivityRecommendation -SchemaName schema -TableName table -ColumnName column
+Get-AzSqlDatabase -ResourceGroupName resourceGroup -ServerName server -DatabaseName database | Enable-AzSqlDatabaseSensitivityRecommendation -SchemaName schema -TableName table -ColumnName column
 ```
 
 ## PARAMETERS

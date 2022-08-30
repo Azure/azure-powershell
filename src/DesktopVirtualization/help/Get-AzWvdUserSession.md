@@ -43,8 +43,10 @@ Get a userSession.
 
 ### Example 1: Get a Windows Virtual Desktop UserSession by name
 ```powershell
-PS C:\> Get-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -SessionHostName SessionHostName -Id 2
+Get-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -SessionHostName SessionHostName -Id 2
+```
 
+```output
 Name                           Type
 ----                           ----
 HostPoolName/SessionHostName/2 Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions
@@ -54,8 +56,10 @@ This command gets a Windows Virtual Desktop UserSession in a Session Host.
 
 ### Example 2: List Windows Virtual Desktop UserSessions
 ```powershell
-PS C:\> Get-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -SessionHostName SessionHostName
+Get-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName -SessionHostName SessionHostName
+```
 
+```output
 Name                           Type
 ----                           ----
 HostPoolName/SessionHostName/2 Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions
@@ -66,8 +70,10 @@ This command lists a Windows Virtual Desktop UserSessions in a Session Host.
 
 ### Example 3: List Windows Virtual Desktop UserSessions in host pool
 ```powershell
-PS C:\> Get-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
+Get-AzWvdUserSession -ResourceGroupName ResourceGroupName -HostPoolName HostPoolName
+```
 
+```output
 Name                           Type
 ----                           ----
 HostPoolName/SessionHostName/2 Microsoft.DesktopVirtualization/hostpools/sessionhosts/usersessions
@@ -221,7 +227,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDesktopVirtualizationIdentity>: Identity Parameter
+`INPUTOBJECT <IDesktopVirtualizationIdentity>`: Identity Parameter
   - `[ApplicationGroupName <String>]`: The name of the application group
   - `[ApplicationName <String>]`: The name of the application within the specified application group
   - `[DesktopName <String>]`: The name of the desktop within the specified desktop group

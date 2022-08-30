@@ -37,8 +37,10 @@ The **Get-AzVirtualWanVpnServerConfiguration** cmdlet will return the list of al
 
 ### Example 1
 ```powershell
-PS C:\> Get-AzVirtualWanVpnServerConfiguration -Name WestUsVirtualWan -ResourceGroupName P2SCortexGATesting
+Get-AzVirtualWanVpnServerConfiguration -Name WestUsVirtualWan -ResourceGroupName P2SCortexGATesting
+```
 
+```output
 VpnServerConfigurationResourceIds : [
                                       "/subscriptions/b1f1deed-af60-4bab-9223-65d340462e24/resourceGroups/P2SCortexGATesting/providers/Microsoft.Network/vpnServerConfigurations/WestUsConfig"                           ]
 ```

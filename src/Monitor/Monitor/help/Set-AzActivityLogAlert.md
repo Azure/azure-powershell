@@ -53,52 +53,52 @@ This cmdlet implements the ShouldProcess pattern, i.e. it might request confirma
 ## EXAMPLES
 
 ### Example 1: Create an Activity Log Alert
-```
-PS C:\>$location = 'Global'
-PS C:\>$alertName = 'myAlert'
-PS C:\>$resourceGroupName = 'theResourceGroupName'
-PS C:\>$condition1 = New-AzActivityLogAlertCondition -Field 'field1' -Equal 'equals1'
-PS C:\>$condition2 = New-AzActivityLogAlertCondition -Field 'field2' -Equal 'equals2'
-PS C:\>$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
-PS C:\>$dict.Add('key1', 'value1')
-PS C:\>$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProperty $dict
-PS C:\>Set-AzActivityLogAlert -Location $location -Name $alertName -ResourceGroupName $resourceGroupName -Scope 'scope1','scope2' -Action $actionGrp1 -Condition $condition1, $condition2
+```powershell
+$location = 'Global'
+$alertName = 'myAlert'
+$resourceGroupName = 'theResourceGroupName'
+$condition1 = New-AzActivityLogAlertCondition -Field 'field1' -Equal 'equals1'
+$condition2 = New-AzActivityLogAlertCondition -Field 'field2' -Equal 'equals2'
+$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+$dict.Add('key1', 'value1')
+$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProperty $dict
+Set-AzActivityLogAlert -Location $location -Name $alertName -ResourceGroupName $resourceGroupName -Scope 'scope1','scope2' -Action $actionGrp1 -Condition $condition1, $condition2
 ```
 
 The first four commands create leaf condition and action group.
 The final command creates an Activity Log Alert using the condition and the action group.
 
 ### Example 2: Create an Activity Log Alert disabled
-```
-PS C:\>$location = 'Global'
-PS C:\>$alertName = 'myAlert'
-PS C:\>$resourceGroupName = 'theResourceGroupName'
-PS C:\>$condition1 = New-AzActivityLogAlertCondition -Field 'field1' -Equal 'equals1'
-PS C:\>$condition2 = New-AzActivityLogAlertCondition -Field 'field2' -Equal 'equals2'
-PS C:\>$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
-PS C:\>$dict.Add('key1', 'value1')
-PS C:\>$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProperty $dict
-PS C:\>Set-AzActivityLogAlert -Location $location -Name $alertName -ResourceGroupName $resourceGroupName -Scope 'scope1','scope2' -Action $actionGrp1 -Condition $condition1, $condition2 -DisableAlert
+```powershell
+$location = 'Global'
+$alertName = 'myAlert'
+$resourceGroupName = 'theResourceGroupName'
+$condition1 = New-AzActivityLogAlertCondition -Field 'field1' -Equal 'equals1'
+$condition2 = New-AzActivityLogAlertCondition -Field 'field2' -Equal 'equals2'
+$dict = New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"
+$dict.Add('key1', 'value1')
+$actionGrp1 = New-AzActionGroup -ActionGroupId 'actiongr1' -WebhookProperty $dict
+Set-AzActivityLogAlert -Location $location -Name $alertName -ResourceGroupName $resourceGroupName -Scope 'scope1','scope2' -Action $actionGrp1 -Condition $condition1, $condition2 -DisableAlert
 ```
 
 The first four commands create leaf condition and action group.
 The final command creates an Activity Log Alert using the condition and the action group, but it creates the alert disabled.
 
 ### Example 3: Set an activity log alert based using a value from the pipe or the InputObject parameter
-```
-PS C:\>Get-AzActivityLogAlert -Name $alertName -ResourceGroupName $resourceGroupName | Set-AzActivityLogAlert
-PS C:\>$alert = Get-AzActivityLogAlert -Name $alertName -ResourceGroupName $resourceGroupName
-PS C:\>$alert.Description = 'Changing the description'
-PS C:\>$alert.Enabled = $false
-PS C:\>Set-AzActivityLogAlert -InputObject $alert
+```powershell
+Get-AzActivityLogAlert -Name $alertName -ResourceGroupName $resourceGroupName | Set-AzActivityLogAlert
+$alert = Get-AzActivityLogAlert -Name $alertName -ResourceGroupName $resourceGroupName
+$alert.Description = 'Changing the description'
+$alert.Enabled = $false
+Set-AzActivityLogAlert -InputObject $alert
 ```
 
 The first command is similar to a nop, it sets the alert with the same values it already contained
 The rest of the commands retrieve the alert rule, change the description and disable it, then use the InputObject parameter to persist those changes
 
 ### Example 4: Set an activity log alert based using the ResourceId value from the pipe
-```
-PS C:\>Get-AzResource -ResourceGroupName "myResourceGroup" -Name "myLogAlert" | Set-AzActivityLogAlert -DisableAlert
+```powershell
+Get-AzResource -ResourceGroupName "myResourceGroup" -Name "myLogAlert" | Set-AzActivityLogAlert -DisableAlert
 ```
 
 If the given log alert rule exists this command disables it.

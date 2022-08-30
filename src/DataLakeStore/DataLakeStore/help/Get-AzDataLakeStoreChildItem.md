@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: CC0E73BD-2063-4CA2-BBBA-1FB6AE04DADE
@@ -24,8 +24,8 @@ The **Get-AzDataLakeStoreChildItem** cmdlet gets the list of items in a folder i
 ## EXAMPLES
 
 ### Example 1: Get the child items for a folder
-```
-PS C:\>Get-AzDataLakeStoreChildItem -AccountName "ContosoADL" -Path "/MyFiles/"
+```powershell
+Get-AzDataLakeStoreChildItem -AccountName "ContosoADL" -Path "/MyFiles/"
 ```
 
 This command gets the child items for the MyFiles folder.

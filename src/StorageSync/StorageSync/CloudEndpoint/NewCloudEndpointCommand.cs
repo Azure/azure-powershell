@@ -12,13 +12,13 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Common.MSGraph.Version1_0.Applications.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.StorageSync.Common;
 
 using Microsoft.Azure.Commands.StorageSync.Common.Extensions;
 using Microsoft.Azure.Commands.StorageSync.Models;
 using Microsoft.Azure.Commands.StorageSync.Properties;
-using Microsoft.Azure.Graph.RBAC.Version1_6_20190326.ActiveDirectory;
 using Microsoft.Azure.Management.Authorization.Version2015_07_01.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.StorageSync;
@@ -211,7 +211,12 @@ namespace Microsoft.Azure.Commands.StorageSync.CloudEndpoint
                     }
                 }
 
-                PSADServicePrincipal servicePrincipal = StorageSyncClientWrapper.EnsureServicePrincipal();
+                MicrosoftGraphServicePrincipal servicePrincipal = StorageSyncClientWrapper.GetServicePrincipalOrNull();
+
+                if (servicePrincipal == null)
+                {
+                    throw new PSArgumentException(StorageSyncResources.MissingServicePrincipalResourceIdErrorMessage);
+                }
                 RoleAssignment roleAssignment = StorageSyncClientWrapper.EnsureRoleAssignment(servicePrincipal, storageAccountResourceIdentifier.Subscription, StorageAccountResourceId);
 
                 var parentResourceIdentifier = default(ResourceIdentifier);

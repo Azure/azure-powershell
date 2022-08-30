@@ -23,22 +23,22 @@ This command gets a specific Azure SQL Server Virtual Network Rule or a list of 
 ## EXAMPLES
 
 ### Example 1
-```
-PS C:\> $virtualNetworkRule = Get-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName -VirtualNetworkRuleName virtualNetworkRuleName
+```powershell
+$virtualNetworkRule = Get-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName -VirtualNetworkRuleName virtualNetworkRuleName
 ```
 
 Gets an single Azure SQL Server virtual network rule
 
 ### Example 2
-```
-PS C:\> $virtualNetworkRules = Get-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName
+```powershell
+$virtualNetworkRules = Get-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName
 ```
 
 Gets the list of Azure SQL Server virtual network rules under the specified server
 
 ### Example 3
-```
-PS C:\> $virtualNetworkRules = Get-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName -VirtualNetworkRuleName virtualNetworkRule*
+```powershell
+$virtualNetworkRules = Get-AzSqlServerVirtualNetworkRule -ResourceGroupName rg -ServerName serverName -VirtualNetworkRuleName virtualNetworkRule*
 ```
 
 Gets the list of Azure SQL Server virtual network rules under the specified server that start with "virtualNetworkRule".

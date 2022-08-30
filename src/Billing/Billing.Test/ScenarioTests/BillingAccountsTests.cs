@@ -13,70 +13,64 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Billing.Test.ScenarioTests.ScenarioTest;
-using Microsoft.Azure.Commands.ScenarioTest;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.Billing.Test.ScenarioTests
 {
-    public class BillingAccountsTests
+    public class BillingAccountsTests : BillingTestRunner
     {
-        private ServiceManagement.Common.Models.XunitTracingInterceptor _logger;
-
-        public BillingAccountsTests(Xunit.Abstractions.ITestOutputHelper output)
+        public BillingAccountsTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new ServiceManagement.Common.Models.XunitTracingInterceptor(output);
-            ServiceManagement.Common.Models.XunitTracingInterceptor.AddToContext(_logger);
-            TestExecutionHelpers.SetUpSessionAndProfile();
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingAccounts()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingAccounts");
+            TestRunner.RunTestScript("Test-ListBillingAccounts");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingAccountsWithAddress()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingAccountsWithAddress");
+            TestRunner.RunTestScript("Test-ListBillingAccountsWithAddress");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingAccountsWithBillingProfiles()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingAccountsWithBillingProfiles");
+            TestRunner.RunTestScript("Test-ListBillingAccountsWithBillingProfiles");
         }
         
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingAccountsWithInvoiceSections()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingAccountsWithInvoiceSections");
+            TestRunner.RunTestScript("Test-ListBillingAccountsWithInvoiceSections");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListBillingEntitiesToCreateSubscription()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-ListBillingEntitiesToCreateSubscription");
+            TestRunner.RunTestScript("Test-ListBillingEntitiesToCreateSubscription");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBillingAccountWithName()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetBillingAccountWithName");
+            TestRunner.RunTestScript("Test-GetBillingAccountWithName");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestGetBillingAccountWithNames()
         {
-            TestController.NewInstance.RunPowerShellTest(_logger, "Test-GetBillingAccountWithNames");
+            TestRunner.RunTestScript("Test-GetBillingAccountWithNames");
         }
     }
 }

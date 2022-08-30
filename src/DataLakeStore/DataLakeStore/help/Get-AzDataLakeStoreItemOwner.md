@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeStore.dll-Help.xml
 Module Name: Az.DataLakeStore
 ms.assetid: 335588D4-4D2C-4DBD-B6B2-B1227C4AF9A9
@@ -24,8 +24,8 @@ The **Get-AzDataLakeStoreItemOwner** cmdlet gets the owner of a file or folder i
 ## EXAMPLES
 
 ### Example 1: Get the owner for a directory
-```
-PS C:\>Get-AzDataLakeStoreItemOwner -AccountName "ContosoADL" -Path / -Type User
+```powershell
+Get-AzDataLakeStoreItemOwner -AccountName "ContosoADL" -Path / -Type User
 ```
 
 This command gets the user owner for the root directory of the ContosoADL account.

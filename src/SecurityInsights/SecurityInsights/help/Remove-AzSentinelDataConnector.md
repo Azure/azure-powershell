@@ -33,7 +33,7 @@ You can use the Confirm parameter and $ConfirmPreference Windows PowerShell vari
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DataConnectorId "MyDataConnectorId"
+Remove-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DataConnectorId "MyDataConnectorId"
 ```
 
 This command removes the DataConnector from the workspace.

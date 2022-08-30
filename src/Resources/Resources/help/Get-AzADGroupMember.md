@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzADGroupMember
 
 ## SYNOPSIS
-Lists members from group. Currently service principals are not listed as group members due to staged roll-out of service principals on Graph V1.0 endpoint. Please see [documentation of the REST API](https://docs.microsoft.com/en-us/graph/api/group-list-members?view=graph-rest-1.0&tabs=http).
+Lists members from group.
 
 ## SYNTAX
 
@@ -40,14 +40,14 @@ Lists members from group.
 
 ### Example 1: List members by group display name
 ```powershell
-PS C:\> Get-AzADGroupMember -GroupDisplayName $name
+Get-AzADGroupMember -GroupDisplayName $name
 ```
 
 List members by group display name
 
 ### Example 2: List members by pipeline input
 ```powershell
-PS C:\> Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
+Get-AzADGroup -DisplayName $name | Get-AzADGroupMember
 ```
 
 List members by pipeline input
@@ -240,7 +240,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-GROUPOBJECT <IMicrosoftGraphGroup>: The target group object, could be used as pipeline input.
+`GROUPOBJECT <IMicrosoftGraphGroup>`: The target group object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

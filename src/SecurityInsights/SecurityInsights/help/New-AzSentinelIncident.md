@@ -29,7 +29,7 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 
 ### Example 1
 ```powershell
-PS C:\> $Incident = New-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -Title "NewIncident" -Description "My Description" -Severity Low -Status New
+$Incident = New-AzSentinelIncident -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -Title "NewIncident" -Description "My Description" -Severity Low -Status New
 ```
 
 This example creates an **Incident** in the specified workspace, and then stores it in the $Incident variable.<br/><br/>

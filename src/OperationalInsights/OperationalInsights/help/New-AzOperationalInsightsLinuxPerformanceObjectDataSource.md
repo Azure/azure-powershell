@@ -33,6 +33,24 @@ The **New-AzOperationalInsightsLinuxPerformanceObjectDataSource** cmdlet adds pe
 
 ## EXAMPLES
 
+### Example 1
+```powershell
+New-AzOperationalInsightsLinuxPerformanceObjectDataSource -ResourceGroupName testrg -WorkspaceName LogAnalyticsWorkspace -Name performance -ObjectName object -CounterNames counter
+```
+
+```output
+Name              : performance
+ResourceGroupName : testrg
+WorkspaceName     : LogAnalyticsWorkspace
+ResourceId        : /subscriptions/xxxx-xxxx-xxxx-xxxx-xxxx/resourceGroups/testrg/providers/Microsoft.Ope
+                    rationalInsights/workspaces/LogAnalyticsWorkspace/datasources/performance
+Kind              : LinuxPerformanceObject
+Properties        : {"objectName":"object","instanceName":"*","intervalSeconds":15,"performanceCounters":[{"counterName
+                    ":"counter"}]}
+```
+
+Add performance counters from which Azure Operational Insights collects data to all Linux computers in a workspace
+
 ## PARAMETERS
 
 ### -CounterNames

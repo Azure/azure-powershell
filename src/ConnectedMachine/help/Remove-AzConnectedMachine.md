@@ -31,16 +31,14 @@ The operation to remove a hybrid machine identity in Azure.
 
 ### Example 1: Remove a connected machine
 ```powershell
-PS C:\> Remove-AzConnectedMachine -Name myMachine -ResourceGroupName myRG
-
+Remove-AzConnectedMachine -Name myMachine -ResourceGroupName myRG
 ```
 
 Deletes the connected machine.
 
 ### Example 2: Remove connected machines via the pipeline
 ```powershell
-PS C:\> Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines | Remove-AzConnectedMachine
-
+Get-AzConnectedMachine -ResourceGroupName contoso-connected-machines | Remove-AzConnectedMachine
 ```
 
 Removes all machines in the `contoso-connected-machines` resource group.
@@ -190,7 +188,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedMachineIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedMachineIdentity>`: Identity Parameter
   - `[ExtensionName <String>]`: The name of the machine extension.
   - `[GroupName <String>]`: The name of the private link resource.
   - `[Id <String>]`: Resource identity path

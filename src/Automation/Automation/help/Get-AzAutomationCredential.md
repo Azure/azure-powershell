@@ -34,15 +34,15 @@ For security purposes, this cmdlet does not return credential passwords.
 ## EXAMPLES
 
 ### Example 1: Get all credentials
-```
-PS C:\>Get-AzAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17"
+```powershell
+Get-AzAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17"
 ```
 
 This command gets metadata for all credentials in the Automation account named Contoso17.
 
 ### Example 2: Get a credential
-```
-PS C:\>Get-AzAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17" -Name "ContosoCredential"
+```powershell
+Get-AzAutomationCredential -ResourceGroupName "ResourceGroup01" -AutomationAccountName "Contoso17" -Name "ContosoCredential"
 ```
 
 This command gets metadata for the credential named ContosoCredential in the Automation account named Contoso17.

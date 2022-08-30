@@ -26,9 +26,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.VMware.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "REGULAR, EDGE, SERVICE".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "REGULAR".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("'REGULAR, EDGE, SERVICE'", "REGULAR, EDGE, SERVICE", global::System.Management.Automation.CompletionResultType.ParameterValue, "REGULAR, EDGE, SERVICE");
+                yield return new global::System.Management.Automation.CompletionResult("'REGULAR'", "REGULAR", global::System.Management.Automation.CompletionResultType.ParameterValue, "REGULAR");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "EDGE".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'EDGE'", "EDGE", global::System.Management.Automation.CompletionResultType.ParameterValue, "EDGE");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "SERVICE".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'SERVICE'", "SERVICE", global::System.Management.Automation.CompletionResultType.ParameterValue, "SERVICE");
             }
         }
     }

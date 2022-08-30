@@ -20,24 +20,12 @@ Gets information about a server firewall rule.
 .Description
 Gets information about a server firewall rule.
 .Example
-PS C:\> Get-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.0        0.0.0.1
+Get-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 .Example
-PS C:\> Get-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.0        0.0.0.1
+Get-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
-PS C:\> Get-AzPostgreSqlFirewallRule -InputObject $ID
-
-Name StartIPAddress EndIPAddress
----- -------------- ------------
-rule 0.0.0.0        0.0.0.1
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
+Get-AzPostgreSqlFirewallRule -InputObject $ID
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.PostgreSql.Models.IPostgreSqlIdentity

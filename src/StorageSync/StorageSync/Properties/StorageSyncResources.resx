@@ -279,4 +279,7 @@
   <data name="SetStorageSyncServiceActionMessage" xml:space="preserve">
     <value>Updating a Storage Sync Service</value>
   </data>
+  <data name="MissingServicePrincipalResourceIdErrorMessage" xml:space="preserve">
+    <value>Service Principal for Azure File Sync was not found. Please contact administrator for further troubleshooting.</value>
+  </data>
 </root>

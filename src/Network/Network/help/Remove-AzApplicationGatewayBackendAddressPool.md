@@ -24,10 +24,10 @@ The **Remove-AzApplicationGatewayBackendAddressPool** cmdlet removes a back-end 
 ## EXAMPLES
 
 ### Example 1: Remove a back-end address pool from an application gateway
-```
-PS C:\>$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
-PS C:\> Remove-AzApplicationGatewayBackendAddressPool -ApplicationGateway $AppGw -Name "BackEndPool02"
-PS C:\> Set-AzApplicationGateway -ApplicationGateway $AppGw
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+Remove-AzApplicationGatewayBackendAddressPool -ApplicationGateway $AppGw -Name "BackEndPool02"
+Set-AzApplicationGateway -ApplicationGateway $AppGw
 ```
 
 The first command gets the application gateway named ApplicationGateway01 belonging to the resource group named ResourceGroup01 and saves it in the $AppGw variable.

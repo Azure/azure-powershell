@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/get-aziothubquotametric
@@ -23,8 +23,8 @@ Gets the Quota Metrics for an IotHub.
 ## EXAMPLES
 
 ### Example 1 Get the Quota Metrics
-```
-PS C:\> Get-AzIotHubQuotaMetric -ResourceGroupName "myresourcegroup" -Name "myiothub"
+```powershell
+Get-AzIotHubQuotaMetric -ResourceGroupName "myresourcegroup" -Name "myiothub"
 ```
 
 Gets the Quota Metric information for the IotHub named "myiothub"

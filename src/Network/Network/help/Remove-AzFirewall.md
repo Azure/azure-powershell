@@ -28,6 +28,9 @@ The **Remove-AzFirewall** cmdlet removes an Azure Firewall.
 New-AzFirewall -Name "azFw" -ResourceGroupName "rgName" -Location centralus 
 
 Remove-AzFirewall -Name "azFw" -ResourceGroupName "rgName"
+```
+
+```output
 Confirm
 Are you sure you want to remove resource 'azFw'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y

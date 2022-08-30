@@ -182,7 +182,8 @@ namespace Microsoft.Azure.Commands.WebApps.Cmdlets.DeploymentSlots
                             AutoSwapSlotName = parameters.Contains("AutoSwapSlotName") ? AutoSwapSlotName : null,
                             NumberOfWorkers = parameters.Contains("NumberOfWorkers") ? NumberOfWorkers : WebApp.SiteConfig.NumberOfWorkers,
                             AlwaysOn = parameters.Contains("AlwaysOn") ? (bool?)AlwaysOn : null,
-                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : WebApp.SiteConfig.FtpsState
+                            FtpsState = parameters.Contains("FtpsState") ? FtpsState : WebApp.SiteConfig.FtpsState,
+                            MinTlsVersion = parameters.Contains("MinTlsVersion") ? MinTlsVersion : WebApp.SiteConfig.MinTlsVersion
                         };
                     }
 

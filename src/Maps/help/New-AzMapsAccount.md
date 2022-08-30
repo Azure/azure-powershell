@@ -27,8 +27,10 @@ A Maps Account holds the keys which allow access to the Maps REST APIs.
 
 ### Example 1: Create a Maps Account.
 ```powershell
-PS C:\> New-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01 -SkuName S0 -Location eastus
+New-AzMapsAccount -ResourceGroupName azure-rg-test -Name pwsh-mapsAccount01 -SkuName S0 -Location eastus
+```
 
+```output
 Location Name               Type                    Kind
 -------- ----               ----                    ----
 eastus   pwsh-mapsAccount01 Microsoft.Maps/accounts Gen1

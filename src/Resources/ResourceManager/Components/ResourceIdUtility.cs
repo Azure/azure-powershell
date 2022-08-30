@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         /// Processes the parameters to return a valid resource Id.
         /// </summary>
         /// <param name="resourceId">The resource Id.</param>
-        /// <param name="resourceGroupName">The resource group</param>
         /// <param name="extensionResourceType">The extension resource type string in the format: '{providerName}/{typeName}/{nestedTypeName}'</param>
         /// <param name="extensionResourceName">The extension resource name in the format: '{resourceName}[/{nestedResourceName}]'</param>
         public static string GetResourceId(string resourceId, string extensionResourceType, string extensionResourceName = null)
@@ -357,7 +356,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         }
 
         /// <summary>
-        /// Gets either a resource type or resource Id based on the value of the <see cref="getResourceName"/> parameter.
+        /// Gets either a resource type or resource Id based on the value of the <paramref name="getResourceName"/> parameter.
         /// </summary>
         /// <param name="resourceId">The resource Id.</param>
         /// <param name="getResourceName">When set to true returns a resource name, otherwise a resource type.</param>
@@ -381,7 +380,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Cmdlets.Components
         }
 
         /// <summary>
-        /// Gets either a resource type or resource Id based on the value of the <see cref="getResourceName"/> parameter.
+        /// Gets either a resource type or resource Id based on the value of the <paramref name="getResourceName"/> parameter.
         /// </summary>
         /// <param name="resourceId">The resource Id.</param>
         /// <param name="getResourceName">When set to true returns a resource name, otherwise a resource type.</param>

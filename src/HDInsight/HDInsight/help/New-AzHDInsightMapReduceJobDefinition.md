@@ -25,12 +25,12 @@ The **New-AzHDInsightMapReduceJobDefinition** cmdlet defines a new MapReduce job
 ## EXAMPLES
 
 ### Example 1: Create a MapReduce job definition
-```
-PS C:\># Cluster info
-PS C:\>$clusterName = "your-hadoop-001"
-PS C:\>$clusterCreds = Get-Credential
+```powershell
+# Cluster info
+$clusterName = "your-hadoop-001"
+$clusterCreds = Get-Credential
 
-PS C:\>New-AzHDInsightMapReduceJobDefinition -StatusFolder $statusFolder `
+New-AzHDInsightMapReduceJobDefinition -StatusFolder $statusFolder `
             -ClassName $className `
             -JarFile $jarFilePath `
         | Start-AzHDInsightJob `

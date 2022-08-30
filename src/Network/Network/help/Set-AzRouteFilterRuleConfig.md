@@ -25,9 +25,9 @@ The **Set-AzRouteFilterRuleConfig** cmdlet modifies the route filter rule of a r
 
 ### Example 1
 ```powershell
-PS C:\> $rf = Get-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
-PS C:\> $rf = Set-AzRouteFilterRuleConfig -RouteFilter $rf -Name "Rule01" -Access Deny -RouteFilterRuleType Community -CommunityList "12076:5010","12076:5040"
-PS C:\> Set-AzRouteFilter -RouteFilter $rf
+$rf = Get-AzRouteFilter -Name "RouteFilter01" -ResourceGroupName "ResourceGroup01"
+$rf = Set-AzRouteFilterRuleConfig -RouteFilter $rf -Name "Rule01" -Access Deny -RouteFilterRuleType Community -CommunityList "12076:5010","12076:5040"
+Set-AzRouteFilter -RouteFilter $rf
 ```
 
 The first command gets the route filter named RouteFilter01 and stores it in the $rf variable.

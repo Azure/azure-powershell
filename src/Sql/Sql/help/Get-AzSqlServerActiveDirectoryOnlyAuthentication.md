@@ -37,7 +37,10 @@ The **Get-AzSqlServerActiveDirectoryOnlyAuthentication** cmdlet gets Azure Activ
 
 ### Example 1
 ```powershell
-PS C:\>Get-AzSqlServerActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+Get-AzSqlServerActiveDirectoryOnlyAuthentication -ResourceGroupName "ResourceGroup01" -ServerName "Server01"
+```
+
+```output
 ResourceGroupName ServerName AzureADOnlyAuthentication
 ----------------- ---------- ----------- -------- -----------
 ResourceGroup01   Server01   True

@@ -501,7 +501,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 factoryIdentityType = this.IdentityType;
             }
 
-            if(this.UserAssignedIdentity != null && this.UserAssignedIdentity.Count > 0)
+            if (this.UserAssignedIdentity != null && this.UserAssignedIdentity.Count > 0)
             {
                 if (!factoryIdentityType.ToLower().Contains(FactoryIdentityType.UserAssigned.ToLower()))
                 {
@@ -511,7 +511,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
             FactoryIdentity factoryIdentity = new FactoryIdentity(factoryIdentityType, userAssignedIdentities: this.UserAssignedIdentity);
 
             EncryptionConfiguration encryption = null;
-            if(!string.IsNullOrWhiteSpace(this.EncryptionVaultBaseUrl) && !string.IsNullOrWhiteSpace(this.EncryptionKeyName))
+            if (!string.IsNullOrWhiteSpace(this.EncryptionVaultBaseUrl) && !string.IsNullOrWhiteSpace(this.EncryptionKeyName))
             {
                 CMKIdentityDefinition cmkIdentity = null;
                 if (!string.IsNullOrWhiteSpace(this.EncryptionUserAssignedIdentity))
@@ -552,14 +552,15 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                 this.ResourceGroupName = InputObject.ResourceGroupName;
                 this.Name = InputObject.DataFactoryName;
                 this.Location = this.Location ?? InputObject.Location;
+                this.PublicNetworkAccess = this.PublicNetworkAccess ?? InputObject.PublicNetworkAccess;
                 this.Tag = this.Tag ?? new Hashtable((IDictionary)InputObject.Tags);
 
-                if(InputObject.Identity != null)
+                if (InputObject.Identity != null)
                 {
                     this.IdentityType = InputObject.Identity.Type;
                     this.UserAssignedIdentity = InputObject.Identity.UserAssignedIdentities;
                 }
-                if(InputObject.Encryption != null)
+                if (InputObject.Encryption != null)
                 {
                     this.EncryptionVaultBaseUrl = InputObject.Encryption.VaultBaseUrl;
                     this.EncryptionKeyName = InputObject.Encryption.KeyName;
@@ -590,7 +591,7 @@ namespace Microsoft.Azure.Commands.DataFactoryV2
                         }
                     }
                 }
-                
+
                 this.GlobalParameterDefinition = InputObject.GlobalParameters;
             }
 

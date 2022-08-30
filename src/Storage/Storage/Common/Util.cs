@@ -31,6 +31,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using global::Azure.Storage.Blobs;
     using global::Azure.Storage;
     using global::Azure.Storage.Files.Shares.Models;
+    using global::Azure.Storage.Files.DataLake;
 
     internal static class Util
     {
@@ -406,7 +407,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 options = new BlobClientOptions();
             }
-            if (context.StorageAccount.Credentials.IsToken) //Oauth
+            if (context!= null && context.StorageAccount != null && context.StorageAccount.Credentials.IsToken) //Oauth
             {
                 if (blobType == null)
                 {
@@ -428,7 +429,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                     }
                 }
             }
-            else if (context.StorageAccount.Credentials.IsSharedKey) //Shared Key
+            else if (context != null && context.StorageAccount != null && context.StorageAccount.Credentials.IsSharedKey) //Shared Key
             {
                 if (blobType == null)
                 {
@@ -499,6 +500,28 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 blobServiceClient = new BlobServiceClient(connectionString, options);
             }
             return blobServiceClient;
+        }
+
+        public static DataLakeServiceClient GetTrack2DataLakeServiceClient(AzureStorageContext context, DataLakeClientOptions options = null)
+        {
+            DataLakeServiceClient serviceClient;
+            if (context.StorageAccount.Credentials.IsToken) //Oauth
+            {
+                serviceClient = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, options);
+            }
+            else if (context.StorageAccount.Credentials.IsSharedKey) //key 
+            {
+                serviceClient = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey()), options);
+            }
+            else if (context.StorageAccount.Credentials.IsSAS) //sas 
+            {
+                serviceClient = new DataLakeServiceClient(new Uri(context.StorageAccount.BlobEndpoint.ToString() + context.StorageAccount.Credentials.SASToken), options);
+            }
+            else // Anonymous
+            {
+                serviceClient = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, options);
+            }
+            return serviceClient;
         }
 
         /// <summary>
@@ -687,6 +710,33 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
                 sas = sas.Substring(1);
             }
             return sas;
+        }
+
+        /// <summary>
+        /// When request doesn't container a proper bearer token, server will return 401 error include the audience of the required bearer token.
+        /// This function will get the audience of bearer token from SDK exception message.
+        /// If server not return audience, will output null.
+        /// </summary>
+        public static string GetAudienceFrom401ExceptionMessage(string exceptionMessage)
+        {
+            string authenticateHeaderName = "WWW-Authenticate";
+            string audienceName = "resource_id=";
+            string[] exceptionMessageTexts = exceptionMessage.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
+            foreach(string messageText in exceptionMessageTexts)
+            {
+                if (messageText.StartsWith(authenticateHeaderName))
+                {
+                    string[] authTexts = messageText.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string authText in authTexts)
+                    {
+                        if (authText.StartsWith(audienceName))
+                        {
+                            return authText.Substring(audienceName.Length);
+                        }
+                    }
+                }
+            }
+            return null;
         }
     }
 }

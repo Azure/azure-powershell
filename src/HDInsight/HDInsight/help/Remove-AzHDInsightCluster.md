@@ -27,8 +27,8 @@ Data stored in external metastores is not deleted.
 ## EXAMPLES
 
 ### Example 1: Delete an Azure HDInsight cluster
-```
-PS C:\>Remove-AzHDInsightCluster -ClusterName "your-hadoop-001"
+```powershell
+Remove-AzHDInsightCluster -ClusterName "your-hadoop-001"
 ```
 
 This command removes the cluster named your-hadoop-001.

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 online version: https://docs.microsoft.com/powershell/module/az.datalakeanalytics/get-azdatalakeanalyticsjobrecurrence
@@ -31,15 +31,15 @@ The **Get-AzDataLakeAnalyticsJobRecurrence** gets a specified Azure Data Lake An
 ## EXAMPLES
 
 ### Example 1: Get a specified recurrence
-```
-PS C:\>Get-AzDataLakeAnalyticsJobRecurrence -Account "contosoadla" -RecurrenceId 83cb7ad2-3523-4b82-b909-d478b0d8aea3
+```powershell
+Get-AzDataLakeAnalyticsJobRecurrence -Account "contosoadla" -RecurrenceId 83cb7ad2-3523-4b82-b909-d478b0d8aea3
 ```
 
 This command gets the specified job recurrence with id '83cb7ad2-3523-4b82-b909-d478b0d8aea3' in account 'contosoadla'.
 
 ### Example 2: Get a list of all recurrences in the account
-```
-PS C:\>Get-AzDataLakeAnalyticsJobRecurrence -AccountName "contosoadla"
+```powershell
+Get-AzDataLakeAnalyticsJobRecurrence -AccountName "contosoadla"
 ```
 
 This command gets a list of all recurrences in the account "contosoadla"

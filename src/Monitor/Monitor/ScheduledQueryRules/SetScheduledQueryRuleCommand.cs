@@ -25,12 +25,14 @@ using Microsoft.Azure.Management.Monitor.Management.Models;
 using Microsoft.Azure.Management.Monitor.Models;
 using ActivityLogAlertResource = Microsoft.Azure.Management.Monitor.Models.ActivityLogAlertResource;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
     /// <summary>
     /// Updates a ScheduledQueryRule object
     /// </summary>
+    [CmdletDeprecation()]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRule", SupportsShouldProcess = true, DefaultParameterSetName = ByRuleName), OutputType(typeof(PSScheduledQueryRuleResource))]
     public class SetScheduledQueryRuleCommand : ManagementCmdletBase
     {

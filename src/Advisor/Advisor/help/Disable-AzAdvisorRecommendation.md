@@ -37,7 +37,7 @@ Creates a suppression for recommendation(s), this enables a particular recommend
 
 ### Example 1
 ```powershell
-Disable-AzAdvisorRecommendation -Name "f380a3a8-9d18-cfad-78e0-55762c72a178"
+Disable-AzAdvisorRecommendation -RecommendationName "f380a3a8-9d18-cfad-78e0-55762c72a178"
 ```
 
 ```output
@@ -49,7 +49,7 @@ Name          : HardCodedSupressionName
 Type          : Microsoft.Advisor/suppressions
 ```
 
-Create a suppression for the given recommendation name with a default-SuppressionName and default days as -1.
+Create a suppression for the given recommendation name with a default SuppressionName and default days as -1.
 
 ### Example 2
 ```powershell
@@ -65,12 +65,11 @@ Name          : HardCodedSupressionName
 Type          : Microsoft.Advisor/suppressions
 ```
 
-A suppression is created for the given recommendation-Id.
+A suppression is created for the given recommendation_id.
 
 ### Example 3
 ```powershell
-Get-AzAdvisorRecommendation -ResourceId "/subscriptions/user_subscription/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz" | Disable-A
-zAdvisorRecommendation
+Get-AzAdvisorRecommendation -ResourceId "/subscriptions/user_subscription/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/Redis/xyz" | Disable-AzAdvisorRecommendation
 ```
 
 ```output

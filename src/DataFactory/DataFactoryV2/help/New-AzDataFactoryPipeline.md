@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataFactories.dll-Help.xml
 Module Name: Az.DataFactory
 ms.assetid: 30C1AF6C-A8DC-4CA0-9E5F-10641A29D0E8
@@ -41,8 +41,11 @@ If you confirm to overwrite the existing pipeline, the pipeline definition is al
 ## EXAMPLES
 
 ### Example 1: Create a pipeline
+```powershell
+New-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" -File "C:\DPWikisample.json" 
 ```
-PS C:\>New-AzDataFactoryPipeline -ResourceGroupName "ADF" -Name "DPWikisample" -DataFactoryName "WikiADF" -File "C:\DPWikisample.json" 
+
+```output
 PipelineName      : DPWikisample
 ResourceGroupName : ADF
 DataFactoryName   : WikiADF11

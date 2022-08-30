@@ -25,6 +25,12 @@ Get-AzADApplication -ObjectId <String> [-Select <String[]>] [-First <UInt64>] [-
  [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### OwnedApplicationParameterSet
+```
+Get-AzADApplication [-OwnedApplication] [-Select <String[]>] [-Orderby <String[]>] [-First <UInt64>]
+ [-Skip <UInt64>] [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### SearchStringParameterSet
 ```
 Get-AzADApplication [-Select <String[]>] -DisplayNameStartWith <String> [-First <UInt64>] [-Skip <UInt64>]
@@ -56,31 +62,38 @@ Lists entities from applications or get entity from applications by key
 
 ### Example 1: Get application by display name
 ```powershell
-PS C:\> Get-AzADApplication -DisplayName $appname
+Get-AzADApplication -DisplayName $appname
 ```
 
 Get application by display name
 
 ### Example 2: List applications
 ```powershell
-PS C:\> Get-AzADApplication -First 10
+Get-AzADApplication -First 10
 ```
 
 List first 10 applications
 
 ### Example 3: Search for application display name starts with
 ```powershell
-PS C:\> Get-AzADApplication -DisplayNameStartsWith $prefix
+Get-AzADApplication -DisplayNameStartsWith $prefix
 ```
 
 Search for application display name starts with
 
 ### Example 4: Get application by object Id
 ```powershell
-PS C:\> Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
+Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
 ```
 
 Get application by object Id and append property 'Tags' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'IdentifierUris', 'Web', 'AppId', 'SignInAudience'
+
+### Example 4: Get applications owned by current user
+```powershell
+Get-AzADapplication -OwnedApplication
+```
+
+Get applications owned by current user
 
 ## PARAMETERS
 
@@ -225,10 +238,25 @@ Order items by property values
 
 ```yaml
 Type: System.String[]
-Parameter Sets: EmptyParameterSet
+Parameter Sets: EmptyParameterSet, OwnedApplicationParameterSet
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -OwnedApplication
+get owned application
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: OwnedApplicationParameterSet
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

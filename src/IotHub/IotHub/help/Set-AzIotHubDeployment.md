@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.IotHub.dll-Help.xml
 Module Name: Az.IotHub
 online version: https://docs.microsoft.com/powershell/module/az.iothub/set-aziothubdeployment
@@ -42,18 +42,18 @@ See https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring  for 
 
 ### Example 1
 ```powershell
-PS C:\> Set-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1" -Priority 7 -TargetCondition "tags.building=3 and tags.environment='dev'"
+Set-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1" -Priority 7 -TargetCondition "tags.building=3 and tags.environment='dev'"
 ```
 
 Alter the priority of IoT Edge deployment and update its target condition.
 
 ### Example 2
 ```powershell
-PS C:\> $labels = @{}
-PS C:\> $labels.add("key0","value0")
-PS C:\> $metrics = @{}
-PS C:\> $metrics.add("query1", "select deviceId from devices where tags.location='US'")
-PS C:\> Set-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1" -Label $labels -Metric $metrics
+$labels = @{}
+$labels.add("key0","value0")
+$metrics = @{}
+$metrics.add("query1", "select deviceId from devices where tags.location='US'")
+Set-AzIotHubDeployment -ResourceGroupName "myresourcegroup" -IotHubName "myiothub" -Name "deploy1" -Label $labels -Metric $metrics
 ```
 
 Update the metrics and labels of IoT Edge deployment.

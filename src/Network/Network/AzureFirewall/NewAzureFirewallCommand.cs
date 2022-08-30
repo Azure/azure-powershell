@@ -205,6 +205,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
                 MNM.AzureFirewallSkuTier.Standard,
                 MNM.AzureFirewallSkuTier.Premium,
+                MNM.FirewallPolicySkuTier.Basic,
                 IgnoreCase = false)]
         public string SkuTier { get; set; }
 
@@ -230,6 +231,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Allow Active FTP. By default it is false."
         )]
         public SwitchParameter AllowActiveFTP { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Identify Top Fat Flows. By default it is false."
+       )]
+        public SwitchParameter IdentifyTopFatFlow { get; set; }
 
         public override void Execute()
         {
@@ -299,7 +306,8 @@ namespace Microsoft.Azure.Commands.Network
                     VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
                     HubIPAddresses = this.HubIPAddress,
-                    Zones = this.Zone == null ? null : this.Zone.ToList()
+                    Zones = this.Zone == null ? null : this.Zone.ToList(),
+                    IdentifyTopFatFlow = (this.IdentifyTopFatFlow.IsPresent ? "True" : null)
                 };
             }
             else
@@ -319,7 +327,8 @@ namespace Microsoft.Azure.Commands.Network
                     DNSEnableProxy = (this.EnableDnsProxy.IsPresent ? "true" : null),
                     DNSServer = this.DnsServer,
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
-                    Sku = sku
+                    Sku = sku,
+                    IdentifyTopFatFlow = (this.IdentifyTopFatFlow.IsPresent ? "True" : null)
                 };
 
                 if (this.Zone != null)
@@ -329,9 +338,15 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.virtualNetwork != null)
                 {
-                    firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                    if (firewall.Sku != null && firewall.Sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic))
+                    {
+                        firewall.AllocateBasicSku(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                    }
+                    else
+                    {
+                        firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                    }
                 }
-
                 firewall.ValidateDNSProxyRequirements();
             }
 

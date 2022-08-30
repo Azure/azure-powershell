@@ -38,7 +38,7 @@ The command must be run locally on the server that is to be registered - either 
 
 ### Example 1
 ```powershell
-PS C:\> Register-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
+Register-AzStorageSyncServer -ResourceGroupName "myResourceGroup" -StorageSyncServiceName "myStorageSyncServiceName"
 ```
 
 This command will register the local server this command is run on.

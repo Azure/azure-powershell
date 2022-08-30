@@ -25,7 +25,7 @@ The **Add-AzVirtualNetworkPeering** cmdlet creates a peering between two virtual
 ## EXAMPLES
 
 ### Example 1: Create a peering between two virtual networks in the same region
-```
+```powershell
 # Variables for common values used throughout the script.
 $rgName='myResourceGroup'
 $location='eastus'
@@ -49,7 +49,7 @@ Add-AzVirtualNetworkPeering -Name 'myVnet2ToMyVnet1' -VirtualNetwork $vnet2 -Rem
 Note that a peering link must be created from vnet1 to vnet2 and vice versa in order for peering to work.
 
 ### Example 2: Create a peering between two virtual networks in different regions
-```
+```powershell
 # Variables for common values used throughout the script.
 $rgName='myResourceGroup'
 

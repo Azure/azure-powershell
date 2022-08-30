@@ -45,7 +45,7 @@ You can use the *Confirm* parameter and $ConfirmPreference Windows PowerShell va
 
 ### Example 1
 ```powershell
-PS C:\> Update-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DataConnectorId "MyDataConnectorId" -Alerts Disabled
+Update-AzSentinelDataConnector -ResourceGroupName "MyResourceGroup" -WorkspaceName "MyWorkspaceName" -DataConnectorId "MyDataConnectorId" -Alerts Disabled
 ```
 
 This example gets the Data Connector by *DataConnectorId* and sets the *Alerts* state to *Disabled*.  All other properties remain the same.

@@ -32,8 +32,11 @@ You can get categories by using `Get-AzDiagnosticSettingCategory`.
 
 ### Example 1
 ```powershell
-PS C:\> $TimeGrain=New-TimeSpan -Days 90
-PS C:\> New-AzDiagnosticDetailSetting -Metric -RetentionInDays 1 -RetentionEnabled -Category AllMetrics -Enabled -TimeGrain $TimeGrain
+$TimeGrain=New-TimeSpan -Days 90
+New-AzDiagnosticDetailSetting -Metric -RetentionInDays 1 -RetentionEnabled -Category AllMetrics -Enabled -TimeGrain $TimeGrain
+```
+
+```output
 TimeGrain       : 90.00:00:00
 Category        : AllMetrics
 Enabled         : True
@@ -47,7 +50,10 @@ Create PSMetricSettings object.
 
 ### Example 2
 ```powershell
-PS C:\> New-AzDiagnosticDetailSetting -Log -RetentionInDays 1 -RetentionEnabled -Category Audit -Enabled
+New-AzDiagnosticDetailSetting -Log -RetentionInDays 1 -RetentionEnabled -Category Audit -Enabled
+```
+
+```output
 Category Enabled RetentionPolicy               CategoryType
 -------- ------- ---------------               ------------
 Audit       True …                                     Logs

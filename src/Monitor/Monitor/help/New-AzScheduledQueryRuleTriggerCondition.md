@@ -26,7 +26,7 @@ This object is to be passed to the command that creates Alerting Action object
 
 ### Example 1
 ```powershell
-PS C:\>  $triggerCondition = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator "GreaterThan" -Threshold 3 -MetricTrigger $metricTrigger
+$triggerCondition = New-AzScheduledQueryRuleTriggerCondition -ThresholdOperator "GreaterThan" -Threshold 3 -MetricTrigger $metricTrigger
 ```
 
 ## PARAMETERS

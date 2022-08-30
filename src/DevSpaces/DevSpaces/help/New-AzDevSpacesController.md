@@ -25,8 +25,10 @@ Create a new Azure DevSpaces controller.
 
 ### Example 1
 ```powershell
-PS C:\> New-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName -TargetResourceGroupName clusterResourceGroup -TargetClusterName clusterName
+New-AzDevSpacesController -ResourceGroupName devSpaceResourceGroup -Name devSpaceControllerName -TargetResourceGroupName clusterResourceGroup -TargetClusterName clusterName
+```
 
+```output
 Name        Resource Group  Location  Provisioning State
 ----------  --------------  --------  ------------------
 devSpaceControllerName   devSpaceResourceGroup     eastus    Succeeded

@@ -1,4 +1,4 @@
-﻿---
+---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.DataLakeAnalytics.dll-Help.xml
 Module Name: Az.DataLakeAnalytics
 ms.assetid: 4EA01047-021C-4FA5-82F0-5102BA114BC2
@@ -36,8 +36,8 @@ The **Get-AzDataLakeAnalyticsAccount** cmdlet gets information about an Azure Da
 ## EXAMPLES
 
 ### Example 1: Get information about a Data Lake Analytics account
-```
-PS C:\>Get-AzDataLakeAnalyticsAccount -Name "ContosoAdlAccount"
+```powershell
+Get-AzDataLakeAnalyticsAccount -Name "ContosoAdlAccount"
 ```
 
 This command gets information about the account named ContosoAdlAccount.

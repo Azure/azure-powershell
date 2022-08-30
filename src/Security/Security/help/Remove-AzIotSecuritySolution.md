@@ -38,7 +38,7 @@ The IoT security solution collects security data and events from iot devices and
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzIotSecuritySolution -Name "MySample" -ResourceGroupName "MyResourceGroup"
+Remove-AzIotSecuritySolution -Name "MySample" -ResourceGroupName "MyResourceGroup"
 ```
 
 Delete IoT security solution "MySample" with resource group "MyResourceGroup"
