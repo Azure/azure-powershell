@@ -274,6 +274,7 @@ function Bump-AzVersion
 
     Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
     Update-ChangeLog -Content $changeLog -RootPath $rootPath
+    return $versionBump
 }
 
 function Generate-AzPreview
@@ -421,7 +422,14 @@ switch ($PSCmdlet.ParameterSetName)
         Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
 
-        Bump-AzVersion
+        $versionBump = Bump-AzVersion
+
+        # We need to generate the upcoming-breaking-changes.md after the process of bump version in minor release
+        if ([PSVersion]::MINOR -Eq $versionBump)
+        {
+            Import-Module $PSScriptRoot/BreakingChanges/GetUpcomingBreakingChange.ps1
+            Export-AllBreakingChangeMessageUnderArtifacts -ArtifactsPath $PSScriptRoot/../artifacts/Release/ -MarkdownPath $PSScriptRoot/../documentation/breaking-changes/upcoming-breaking-changes.md
+        }
     }
 }
 

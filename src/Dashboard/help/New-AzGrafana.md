@@ -19,7 +19,8 @@ New-AzGrafana -Name <String> -ResourceGroupName <String> -ApiKey <ApiKey>
  -DeterministicOutboundIP <DeterministicOutboundIP> -IdentityType <ManagedServiceIdentityType>
  -Location <String> -PublicNetworkAccess <PublicNetworkAccess> -SkuName <String>
  -ZoneRedundancy <ZoneRedundancy> [-SubscriptionId <String>] [-IdentityUserAssignedIdentity <Hashtable>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-MonitorWorkspaceIntegration <IAzureMonitorWorkspaceIntegration[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -166,6 +167,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MonitorWorkspaceIntegration
+The MonitorWorkspaceIntegration of Azure Managed Grafana.
+To construct, see NOTES section for MONITORWORKSPACEINTEGRATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Name
 The workspace name of Azure Managed Grafana.
 
@@ -228,7 +245,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-.
+The Sku of the grafana resource.
 
 ```yaml
 Type: System.String
@@ -330,6 +347,14 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`MONITORWORKSPACEINTEGRATION <IAzureMonitorWorkspaceIntegration[]>`: The MonitorWorkspaceIntegration of Azure Managed Grafana.
+  - `[AzureMonitorWorkspaceResourceId <String>]`: The resource Id of the connected Azure Monitor Workspace.
 
 ## RELATED LINKS
 
