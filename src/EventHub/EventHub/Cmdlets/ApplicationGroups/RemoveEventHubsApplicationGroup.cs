@@ -15,12 +15,14 @@
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
 {
+    [GenericBreakingChange(BreakingChangeNotification, deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubApplicationGroup", DefaultParameterSetName = ApplicationGroupPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(void))]
     public class RemoveEventHubsApplicationGroups : AzureEventHubsCmdletBase
     {
@@ -37,9 +39,11 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupResourceIdParameterSet, Position = 0, HelpMessage = "ResourceId of application group")]
         public string ResourceId { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSEventHubApplicationGroupAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup", ChangeDescription = ApplicationGroupInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ApplicationGroupInputObjectParameterSet, Position = 0, HelpMessage = "Input Object of type PSEventHubApplicationGroupAttributes")]
         public PSEventHubApplicationGroupAttributes InputObject { get; set; }
 
