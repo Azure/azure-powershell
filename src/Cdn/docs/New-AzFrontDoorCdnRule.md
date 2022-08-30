@@ -289,10 +289,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-ACTION <IDeliveryRuleAction1[]>: A list of actions that are executed when all the conditions of a rule are satisfied.
+`ACTION <IDeliveryRuleAction1[]>`: A list of actions that are executed when all the conditions of a rule are satisfied.
   - `Name <DeliveryRuleAction>`: The name of the action for the delivery rule.
 
-CONDITION <IDeliveryRuleCondition[]>: A list of conditions that must be matched for the actions to be executed
+`CONDITION <IDeliveryRuleCondition[]>`: A list of conditions that must be matched for the actions to be executed
   - `Name <MatchVariable>`: The name of the condition for the delivery rule.
 
 ## RELATED LINKS

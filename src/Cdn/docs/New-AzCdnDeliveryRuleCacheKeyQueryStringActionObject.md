@@ -1,24 +1,24 @@
 ---
 external help file:
 Module Name: Az.Cdn
-online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnUrlSigningActionObject
+online version: https://docs.microsoft.com/powershell/module/az.Cdn/new-AzCdnDeliveryRuleCacheKeyQueryStringActionObject
 schema: 2.0.0
 ---
 
-# New-AzCdnUrlSigningActionObject
+# New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject
 
 ## SYNOPSIS
-Create an in-memory object for UrlSigningAction.
+Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 
 ## SYNTAX
 
 ```
-New-AzCdnUrlSigningActionObject -Name <DeliveryRuleAction> [-ParameterAlgorithm <Algorithm>]
- [-ParameterNameOverride <IUrlSigningParamIdentifier[]>] [<CommonParameters>]
+New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject -Name <DeliveryRuleAction>
+ -ParameterQueryStringBehavior <QueryStringBehavior> [-ParameterQueryParameter <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create an in-memory object for UrlSigningAction.
+Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
 
 ## EXAMPLES
 
@@ -61,11 +61,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParameterAlgorithm
-Algorithm to use for URL signing.
+### -ParameterQueryParameter
+query parameters to include or exclude (comma separated).
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.Algorithm
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -76,17 +76,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ParameterNameOverride
-Defines which query string parameters in the url to be considered for expires, key id etc.
-.
-To construct, see NOTES section for PARAMETERNAMEOVERRIDE properties and create a hash table.
+### -ParameterQueryStringBehavior
+Caching behavior for the requests.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUrlSigningParamIdentifier[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Support.QueryStringBehavior
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -100,20 +98,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.UrlSigningAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleCacheKeyQueryStringAction
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`PARAMETERNAMEOVERRIDE <IUrlSigningParamIdentifier[]>`: Defines which query string parameters in the url to be considered for expires, key id etc. .
-  - `ParamIndicator <ParamIndicator>`: Indicates the purpose of the parameter
-  - `ParamName <String>`: Parameter name
 
 ## RELATED LINKS
 
