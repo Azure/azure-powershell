@@ -421,6 +421,13 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return subscription != null;
         }
 
+        public bool TryGetSubscriptionListByName(string tenantId, string subscriptionName, out IEnumerable<IAzureSubscription> subscriptionList)
+        {
+            subscriptionList = ListSubscriptions(tenantId);
+            subscriptionList = subscriptionList.Where(s => s.Name.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
+            return subscriptionList.Any();
+        }
+
         private IAzureSubscription GetFirstSubscription(string tenantId)
         {
             IEnumerable<IAzureSubscription> subscriptionList = ListSubscriptions(tenantId);
