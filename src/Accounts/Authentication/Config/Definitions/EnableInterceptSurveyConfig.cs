@@ -38,9 +38,11 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Definitions
         {
             environmentVariables.TryGetValue("Azure_PS_Intercept_Survey", out string oldConfigString);
             environmentVariables.TryGetValue("AzSurveyMessage", out string configString);
-            if ("False".Equals(oldConfigString, StringComparison.OrdinalIgnoreCase) || "False".Equals(configString, StringComparison.OrdinalIgnoreCase)) 
-            {return false.ToString();}
-            return null;
+            if (!Boolean.Parse(oldConfigString) || !Boolean.Parse(configString))
+            {
+                return Boolean.FalseString;
+            }
+            return string.Empty;
         }
     }
 }

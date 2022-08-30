@@ -28,39 +28,28 @@ namespace Microsoft.Azure.Commands.Profile.Survey
     [Cmdlet(VerbsCommon.Open, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SurveyLink"), OutputType(typeof(void))]
     public class OpenAzSurveyLinkCmdlet : AzurePSCmdlet
     {
-        private const string _surveyLinkFormat = "https://go.microsoft.com/fwlink/?linkid=2201766&ID={0}&v={1}&d={2}";
-
-        private static readonly string SurveyScheduleInfoFile = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
-            ".Azure", "AzureRmSurvey.json");
-
         protected override IAzureContext DefaultContext => null;
 
         protected override string DataCollectionWarning => null;
 
         public override void ExecuteCmdlet()
-        {   
+        {
             DateTime today = DateTime.UtcNow;
-            DateTime LastPromptDate= DateTime.MinValue;
             AzureSession.Instance.ExtendedProperties.TryGetValue("InstallationId", out string InstallationId);
-            String Version= AzurePSCmdlet.PowerShellVersion;
-            var dataStore = AzureSession.Instance.DataStore;
-            int GapDay = -1;
+            String version= AzurePSCmdlet.AzVersion;
+            int gapDays = -1;
 
-            if (dataStore.FileExists(SurveyScheduleInfoFile))
-            {
-                ScheduleInfo scheduleInfo = JsonConvert.DeserializeObject<ScheduleInfo>(dataStore.ReadFileAsText(SurveyScheduleInfoFile));
-                LastPromptDate = Convert.ToDateTime(scheduleInfo?.LastPromptDate);
-            }
+            ScheduleInfo scheduleInfo = SurveyHelper.GetInstance().GetScheduleInfo();
+            DateTime LastPromptDate = Convert.ToDateTime(scheduleInfo?.LastPromptDate);
             if (LastPromptDate != DateTime.MinValue){
                 TimeSpan ts = today.Subtract(LastPromptDate);
-                GapDay = (int) ts.TotalDays;
+                gapDays = (int) ts.TotalDays;
             }
-            String svLink = String.Format(_surveyLinkFormat, InstallationId, Version, GapDay);
+            String svLink = $"https://go.microsoft.com/fwlink/?linkid=2201766&ID={InstallationId}&v={version}&d={gapDays}";
             WriteInformation(new HostInformationMessage() { Message = $"Opening the default browser to {svLink}" }, new string[] { "PSHOST" });
             OpenBrowser(svLink);
         }
-        
+
 
         private void OpenBrowser(string url)
         {
