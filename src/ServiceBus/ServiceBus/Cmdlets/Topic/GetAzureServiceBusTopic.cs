@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceBus.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -24,9 +25,11 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
     /// <para> If ServiceBus Topic name provided, a single ServiceBus Topic detials will be returned</para>
     /// <para> If ServiceBus Topic name not provided, list of ServiceBus Topic will be returned</para>
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusTopic"), OutputType(typeof(PSTopicAttributes))]
     public class GetAzureRmServiceBusTopic : AzureServiceBusCmdletBase
     {
+        [CmdletParameterBreakingChange("ResourceGroupName", ChangeDescription = "Parameter 'ResourceGroupName' would no longer support alias 'ResourceGroup'.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "The name of the resource group")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
@@ -43,6 +46,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Topic
         [Alias(AliasTopicName)]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("MaxCount", ChangeDescription = "'-MaxCount' is being removed. '-Skip' and '-Top' would be added to support pagination.")]
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Topics to return.")]
         [ValidateRange(1, 10000)]
         public int? MaxCount { get; set; }

@@ -18,6 +18,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
@@ -41,10 +42,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSServiceBusDRConfigurationAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery", ChangeDescription = GeoDRInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ParameterSetName = GeoDRInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus GeoDR Configuration Object")]
         [ValidateNotNullOrEmpty]
         public PSServiceBusDRConfigurationAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = GeoDRConfigResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "GeoDRConfiguration Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

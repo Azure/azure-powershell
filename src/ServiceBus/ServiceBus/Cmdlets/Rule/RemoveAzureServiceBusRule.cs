@@ -15,6 +15,8 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceBus.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
 {
     /// <summary>
@@ -48,10 +50,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSTopicAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule")]
         [Parameter(Mandatory = true, ParameterSetName = RuleInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus Rule Object")]
         [ValidateNotNullOrEmpty]
         public PSTopicAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = RuleResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Service Bus Rule Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
