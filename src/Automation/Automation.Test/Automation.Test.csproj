@@ -28,8 +28,4 @@
     <None Update="ScenarioTests\Resources\*.*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="SessionRecords\Commands.Automation.Test.HybridWorkerGroupTests\" />
-  </ItemGroup>
-
 </Project>
