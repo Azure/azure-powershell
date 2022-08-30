@@ -78,6 +78,8 @@ CmdletsToExport = 'Move-AzAutomationHybridRunbookWorker','Remove-AzAutomationHyb
                 'Remove-AzAutomationHybridRunbookWorkerGroup', 'Set-AzAutomationHybridRunbookWorkerGroup',
                 'New-AzAutomationHybridRunbookWorkerGroup',
                 'Get-AzAutomationHybridRunbookWorkerGroup', 
+                'Get-AzAutomationHybridWorkerGroup', 
+               'Remove-AzAutomationHybridWorkerGroup', 
                'Get-AzAutomationJobOutputRecord', 
                'Import-AzAutomationDscNodeConfiguration', 
                'Export-AzAutomationDscConfiguration', 

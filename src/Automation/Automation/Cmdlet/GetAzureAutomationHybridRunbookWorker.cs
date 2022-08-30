@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorker", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
     [OutputType(typeof(Management.Automation.Models.HybridRunbookWorker))]
-    public class GetAzureAutomationHybridWorker : AzureAutomationBaseCmdlet
+    public class GetAzureAutomationHybridRunbookWorker : AzureAutomationBaseCmdlet
     {
         [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker name")]
         [Alias("RunbookWorker", "RunbookWorkerId")]

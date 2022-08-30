@@ -20,18 +20,17 @@ using Microsoft.Azure.Commands.Automation.Properties;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorker")]
-    [OutputType(typeof(void))]
-    public class RemoveAzureAutomationHybridWorker : AzureAutomationBaseCmdlet
+    [Cmdlet("Move", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationHybridRunbookWorker")]
+    [OutputType(typeof(Management.Automation.Models.HybridRunbookWorker))]
+    public class MoveAzureAutomationHybridRunbookWorker : AzureAutomationBaseCmdlet
     {
         /// <summary>
-        /// Gets or sets the hybridworkergroup name.
+        /// Gets or sets the hybrid worker name.
         /// </summary>
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true, HelpMessage = "The hybrid runbook worker name.")]
-        [ValidateNotNullOrEmpty]
+        [Parameter(Position = 2, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker name")]
         [Alias("RunbookWorker", "RunbookWorkerId")]
+        [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-
 
         /// <summary>
         /// Gets or sets the hybrid worker group name.
@@ -42,17 +41,25 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         public string HybridRunbookWorkerGroupName { get; set; }
 
         /// <summary>
+        /// Gets or sets the target hybrid worker group name.
+        /// </summary>
+        [Parameter(Position = 4, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The target hybrid runbook worker group name")]
+        [Alias("TargetRunbookWorkerGroup", "TargetWorkerGroup")]
+        [ValidateNotNullOrEmpty]
+        public string TargetHybridRunbookWorkerGroupName { get; set; }
+
+        /// <summary>
         /// Execute this cmdlet.
         /// </summary>
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
             ConfirmAction(
-                       string.Format(Resources.RemoveAzureAutomationResourceDescription, "HybridRunbookWorker"),
+                       string.Format(Resources.MoveAzureAutomationHybridRunbookWorkerDescription, this.Name, this.HybridRunbookWorkerGroupName, this.TargetHybridRunbookWorkerGroupName), 
                        Name,
                        () =>
                        {
-                           this.AutomationClient.DeleteHybridRunbookWorker(this.ResourceGroupName, this.AutomationAccountName, this.HybridRunbookWorkerGroupName, Name);
+                           this.AutomationClient.MoveRunbookWorker(this.ResourceGroupName, this.AutomationAccountName, this.HybridRunbookWorkerGroupName, this.TargetHybridRunbookWorkerGroupName, this.Name);
                        });
         }
     }
