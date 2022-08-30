@@ -14,7 +14,7 @@ Updates (full replacement) a data collection rule.
 
 ### ByName (Default)
 ```
-Set-AzDataCollectionRule 
+Set-AzDataCollectionRule
    -Location <string>
    -ResourceGroupName <string>
    -RuleName <string>
@@ -29,7 +29,7 @@ Set-AzDataCollectionRule
 
 ### ByResourceId
 ```
-Set-AzDataCollectionRule 
+Set-AzDataCollectionRule
    -Location <string>
    -RuleId <string>
    -RuleFile <string>
@@ -43,8 +43,8 @@ Set-AzDataCollectionRule
 
 ### ByInputObject
 ```
-Set-AzDataCollectionRule 
-   -InputObject <PSDataCollectionRuleResource> 
+Set-AzDataCollectionRule
+   -InputObject <PSDataCollectionRuleResource>
    [-DefaultProfile <IAzureContextContainer>]
    [-WhatIf]
    [-Confirm]
@@ -54,7 +54,7 @@ Set-AzDataCollectionRule
 ## DESCRIPTION
 The **Set-AzDataCollectionRule** cmdlet replaces an existing data collection rule.
 
-Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection-rule-overview).
+Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](/azure/azure-monitor/essentials/data-collection-rule-overview).
 
 To use the -RuleFile parameter, construct a json file containing three properties: dataSources, destinations, dataFlows (see Example #1).
 
