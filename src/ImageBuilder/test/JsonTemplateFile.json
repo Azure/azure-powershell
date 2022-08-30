@@ -1,0 +1,42 @@
+{
+    "location": "eastus",
+    "properties": {
+      "source": {
+        "type": "PlatformImage",
+        "publisher": "Canonical",
+        "offer": "UbuntuServer",
+        "sku": "18.04-LTS",
+        "version": "latest"
+      },
+      "customize": [
+        {
+          "type": "Shell",
+          "name": "CheckSumCompareShellScript",
+          "scriptUri": "https://raw.githubusercontent.com/danielsollondon/azvmimagebuilder/master/quickquickstarts/customizeScript2.sh",
+          "sha256Checksum": "ade4c5214c3c675e92c66e2d067a870c5b81b9844b3de3cc72c49ff36425fc93"
+        }
+      ],
+      "distribute": [
+        {
+          "type": "SharedImage",
+          "runOutputName": "<runOutputName>",
+          "artifactTags": {
+            "tag": "dis-share"
+          },
+          "galleryImageId": "/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<testGalleryName>/images/<imageDefName>",
+          "replicationRegions": [
+            "eastus2"
+          ],
+          "excludeFromLatest": false
+        }
+      ]
+    },
+    "identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+        "/subscriptions/<subscriptionID>/resourcegroups/<rgName>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<identityName>": {}
+      }
+    }
+  }
+
+

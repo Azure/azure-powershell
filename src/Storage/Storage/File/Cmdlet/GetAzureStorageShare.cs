@@ -23,7 +23,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
-
+    [GenericBreakingChange("The returned share properties will be moved from CloudFileShare.Properties to ShareProperties (with '-Name'), or ListShareProperties (without '-Name') in a future release.")]
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShare", DefaultParameterSetName = Constants.MatchingPrefixParameterSetName)]
     [OutputType(typeof(AzureStorageFileShare))]
     public class GetAzureStorageShare : AzureStorageFileCmdletBase

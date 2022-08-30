@@ -68,6 +68,12 @@ function Get-AzADUser {
         [System.String[]]
         # Select properties to be returned
         ${Select},
+
+        [Parameter(ParameterSetName='List')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+        [System.Management.Automation.SwitchParameter]
+        # Include count of items
+        ${Count},
     
         [Parameter(ParameterSetName='List')]
         [Parameter(ParameterSetName='StartsWithParameterSet')]

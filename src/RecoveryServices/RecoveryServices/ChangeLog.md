@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.5.0
 * Fixed GetAzRecoveryServicesVaultSettingsFile cmdlet used for downloading vault credential file.
 * Fixed issue in Disable-AzRecoveryServicesBackupProtection cmdlet.
 * Fixed issue in Enable-AzRecoveryServicesBackupProtection cmdlet.
