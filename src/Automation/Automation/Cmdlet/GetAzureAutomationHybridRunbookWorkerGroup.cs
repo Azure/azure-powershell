@@ -14,6 +14,7 @@
 
 using System.Collections.Generic;
 using System.Management.Automation;
+using System.Security.Permissions;
 using Microsoft.Azure.Commands.Automation.Common;
 
 
@@ -23,10 +24,14 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     [OutputType(typeof(Management.Automation.Models.HybridRunbookWorkerGroup))]
     public class GetAzureAutomationHybridRunbookWorkerGroup : AzureAutomationBaseCmdlet
     {
-        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = false, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker Group name")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Position = 2, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The Hybrid Runbook Worker Group name")]
         [Alias("WorkerGroup", "RunbookWorkerGroup")]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Execute this cmdlet.
+        /// </summary>
+        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
             if (this.ParameterSetName == AutomationCmdletParameterSets.ByName)
