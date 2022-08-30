@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Added breakingchange warning messages for 
+* Added breaking change warning messages for 
     - `ActivityLogAlert`
     - `DiagnosticSetting`
     - `ScheduledQueryRule`
