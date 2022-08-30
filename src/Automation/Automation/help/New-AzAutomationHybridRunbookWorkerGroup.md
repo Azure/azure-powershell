@@ -19,13 +19,13 @@ New-AzAutomationHybridRunbookWorkerGroup [-Name] <String> [-CredentialName <Stri
 ```
 
 ## DESCRIPTION
-The **New-AzAutomationRunbookWorkerGroup** cmdlet creates a new runbook worker group.
+The **New-AzAutomationHybridRunbookWorkerGroup** cmdlet creates a new runbook worker group.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-New-AzAutomationRunbookWorkerGroup -AutomationAccountName "Contoso17" -Name "RunbookWorkerGroupName" -ResourceGroupName "ResourceGroup01"
+New-AzAutomationHybridRunbookWorkerGroup -AutomationAccountName "Contoso17" -Name "RunbookWorkerGroupName" -ResourceGroupName "ResourceGroup01"
 ```
 
 ## PARAMETERS
