@@ -1485,19 +1485,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
             
         }
 
-        public HybridRunbookWorkerGroup GetHybridWorkerGroup(string resourceGroupName, string automationAccountName, string name)
-        {
-            var hybridRunbookWorkerGroupModel = this.TryGetHybridWorkerModel(resourceGroupName, automationAccountName, name);
-            if (hybridRunbookWorkerGroupModel == null)
-            {
-                throw new ResourceCommonException(typeof(HybridRunbookWorkerGroup),
-                    string.Format(CultureInfo.CurrentCulture, Resources.HybridRunbookWorkerGroupNotFound, name));
-            }
-
-            return new HybridRunbookWorkerGroup(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupModel);
-
-        }
-
         public void DeleteHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string name)
         {
             try
@@ -1877,27 +1864,6 @@ namespace Microsoft.Azure.Commands.Automation.Common
             }
             return hybridRunbookWorker;
         }
-        private Azure.Management.Automation.Models.HybridRunbookWorkerGroup TryGetHybridWorkerModel(string resourceGroupName, string automationAccountName, string HybridRunbookWorkerGroupName)
-        {
-            Azure.Management.Automation.Models.HybridRunbookWorkerGroup hybridRunbookWorkerGroup = null;
-            try
-            {
-                hybridRunbookWorkerGroup = this.automationManagementClient.HybridRunbookWorkerGroup.Get(resourceGroupName, automationAccountName, HybridRunbookWorkerGroupName);
-            }
-            catch (ErrorResponseException e)
-            {
-                if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
-                {
-                    hybridRunbookWorkerGroup = null;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            return hybridRunbookWorkerGroup;
-        }
-
 
         private Azure.Management.Automation.Models.Certificate TryGetCertificateModel(string resourceGroupName, string automationAccountName, 
             string certificateName)
