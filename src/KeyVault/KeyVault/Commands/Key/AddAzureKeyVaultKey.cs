@@ -374,8 +374,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = InteractiveCreateParameterSet)]
         public SwitchParameter UseDefaultCVMPolicy { get; set; }
         #endregion
 
