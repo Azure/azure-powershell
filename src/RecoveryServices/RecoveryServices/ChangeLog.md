@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Remove $vmName from non A2A scenarios
+* Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping
+* Added new scenarios: EZ-to-AZ, EZ-to-AZ, EZ-to-EZ
 
 ## Version 5.5.0
 * Fixed GetAzRecoveryServicesVaultSettingsFile cmdlet used for downloading vault credential file.
@@ -25,11 +28,6 @@
 * Fixed issue in Enable-AzRecoveryServicesBackupProtection cmdlet.
 * Fixed output container in re-registration scenario for Register-AzRecoveryServicesBackupContainer cmdlet.
 * Added support for Enabling/Disabling the azure monitor and classic alerts for recovery services vault.
-
-## Version 5.4.2
-* Remove $vmName from non A2A scenarios
-* Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping
-* Added new scenarios: EZ-to-AZ, EZ-to-AZ, EZ-to-EZ
 
 ## Version 5.4.1
 * Fixed delay in long running operations [#18567]
