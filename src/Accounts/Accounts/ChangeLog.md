@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Supported returning all valid results while using `Get-AzSubscription` with paramater `SubscriptionName`. [#19295]
+* Supported returning all subscriptions with specified name while using `Get-AzSubscription` with paramater `SubscriptionName`. [#19295]
 
 ## Version 2.9.1
 * Implemented `SupportsShouldProcess` for `Invoke-AzRestMethod`
