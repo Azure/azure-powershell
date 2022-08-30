@@ -14,7 +14,7 @@ Moves a runbook worker from one runbook worker group to the other.
 
 ```
 Move-AzAutomationHybridRunbookWorker [-Name] <String> [-HybridRunbookWorkerGroupName] <String>
- [-TargetHybridRunbookWorkerGroupName] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ -TargetHybridRunbookWorkerGroupName <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -114,7 +114,7 @@ Parameter Sets: (All)
 Aliases: TargetRunbookWorkerGroup, TargetWorkerGroup
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False

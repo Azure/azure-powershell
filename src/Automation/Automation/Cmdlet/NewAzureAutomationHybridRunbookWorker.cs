@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the hybrid worker group name.
         /// </summary>
-        [Parameter(Position = 4, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The resource id of the vm to be added to the hybrid worker group")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The resource id of the vm to be added to the hybrid worker group")]
         [Alias("VMId")]
         [ValidateNotNullOrEmpty]
         public string VmResourceId { get; set; }

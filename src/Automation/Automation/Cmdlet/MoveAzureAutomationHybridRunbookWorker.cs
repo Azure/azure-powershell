@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         /// <summary>
         /// Gets or sets the target hybrid worker group name.
         /// </summary>
-        [Parameter(Position = 4, Mandatory = true, ValueFromPipeline = true, HelpMessage = "The target hybrid runbook worker group name")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, HelpMessage = "The target hybrid runbook worker group name")]
         [Alias("TargetRunbookWorkerGroup", "TargetWorkerGroup")]
         [ValidateNotNullOrEmpty]
         public string TargetHybridRunbookWorkerGroupName { get; set; }

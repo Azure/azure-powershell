@@ -14,7 +14,7 @@ Create a Runbook Worker.
 
 ```
 New-AzAutomationHybridRunbookWorker [-Name] <String> [-HybridRunbookWorkerGroupName] <String>
- [-VmResourceId] <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
+ -VmResourceId <String> [-ResourceGroupName] <String> [-AutomationAccountName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -114,7 +114,7 @@ Parameter Sets: (All)
 Aliases: VMId
 
 Required: True
-Position: 4
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
