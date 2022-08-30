@@ -36,8 +36,9 @@ function Test-E2EHybridWorkerGroup
                                                      -Name $hybridWorkerGroupName 
 
     # Validate the hybrid worker group properties
-    $propertiesToValidate = @("ResourceGroupName", "AutomationAccountName", "Name", "GroupType")
+    $propertiesToValidate = @("GroupType")
 
+    Assert-AreEqual $group.name $expectedHybridWorkerGroup.Name
     foreach ($property in $propertiesToValidate)
     {
         Assert-AreEqual $group.$property $expectedHybridWorkerGroup.$property `
