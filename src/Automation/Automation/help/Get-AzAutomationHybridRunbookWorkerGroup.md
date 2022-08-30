@@ -20,7 +20,7 @@ Get-AzAutomationHybridRunbookWorkerGroup [-ResourceGroupName] <String> [-Automat
 
 ### ByName
 ```
-Get-AzAutomationHybridRunbookWorkerGroup [[-Name] <String>] [-ResourceGroupName] <String>
+Get-AzAutomationHybridRunbookWorkerGroup [-Name] <String> [-ResourceGroupName] <String>
  [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -74,7 +74,7 @@ Type: System.String
 Parameter Sets: ByName
 Aliases: WorkerGroup, RunbookWorkerGroup
 
-Required: False
+Required: True
 Position: 2
 Default value: None
 Accept pipeline input: True (ByValue)

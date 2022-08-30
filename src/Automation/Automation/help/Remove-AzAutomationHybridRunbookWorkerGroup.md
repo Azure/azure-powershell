@@ -20,6 +20,7 @@ Remove-AzAutomationHybridRunbookWorkerGroup [-Name] <String> [-ResourceGroupName
 
 ## DESCRIPTION
 The **Remove-AzAutomationHybridRunbookWorkerGroup** cmdlet removes a hybrid runbook worker group.
+
 ## EXAMPLES
 
 ### Example 1

@@ -61,6 +61,7 @@ Specifies the name of an Automation account.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
 Required: True
 Position: 1
 Default value: None
@@ -75,6 +76,7 @@ The credentials, account, tenant, and subscription used for communication with a
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
 Required: False
 Position: Named
 Default value: None
@@ -89,6 +91,7 @@ Specifies the hybrid runbook worker group name.
 Type: System.String
 Parameter Sets: ByName
 Aliases: Group
+
 Required: False
 Position: 2
 Default value: None
@@ -103,6 +106,7 @@ Specifies the name of the resource group.
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+
 Required: True
 Position: 0
 Default value: None
@@ -111,7 +115,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -122,5 +126,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Automation.Model.HybridRunbookWorkerGroup
 
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS

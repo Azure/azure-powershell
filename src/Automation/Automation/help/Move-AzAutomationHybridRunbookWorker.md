@@ -25,7 +25,7 @@ The **Move-AzAutomationHybridRunbookWorker** cmdlet moves a runbook worker from 
 
 ### Example 1
 ```powershell
-Move-AzAutomationHybridRunbookWorker -AutomationAccountName "Contoso17" -Name "RunbookWorkerName" -HybridRunbookWorkerGroupName "RunbookWorkerGroupName" -TargetHybridRunbookWorkerGroupName "TargetHybridRunbookWorkerGroupName" -ResourceGroupName 
+Move-AzAutomationHybridRunbookWorker -AutomationAccountName "Contoso17" -Name "RunbookWorkerName" -HybridRunbookWorkerGroupName "RunbookWorkerGroupName" -TargetHybridRunbookWorkerGroupName "TargetHybridRunbookWorkerGroupName" -ResourceGroupName
 ```
 
 ## PARAMETERS

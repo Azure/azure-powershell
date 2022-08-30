@@ -65,6 +65,9 @@ Gets a Hybrid Runbook Worker.
 ### [Get-AzAutomationHybridRunbookWorkerGroup](Get-AzAutomationHybridRunbookWorkerGroup.md)
 Gets a Hybrid Runbook Worker Group.
 
+### [Get-AzAutomationHybridWorkerGroup](Get-AzAutomationHybridWorkerGroup.md)
+Gets hybrid runbook worker groups.
+
 ### [Get-AzAutomationJob](Get-AzAutomationJob.md)
 Gets Automation runbook jobs.
 
@@ -201,10 +204,13 @@ Removes DSC configurations from Automation.
 Removes metadata from DSC node configurations in Automation.
 
 ### [Remove-AzAutomationHybridRunbookWorker](Remove-AzAutomationHybridRunbookWorker.md)
-{{ Fill in the Synopsis }}
+Removes a hybrid runbook worker.
 
 ### [Remove-AzAutomationHybridRunbookWorkerGroup](Remove-AzAutomationHybridRunbookWorkerGroup.md)
-{{ Fill in the Synopsis }}
+Removes a hybrid runbook worker group.
+
+### [Remove-AzAutomationHybridWorkerGroup](Remove-AzAutomationHybridWorkerGroup.md)
+Removes hybrid worker group from Automation.
 
 ### [Remove-AzAutomationModule](Remove-AzAutomationModule.md)
 Removes a module from Automation.
@@ -246,7 +252,7 @@ Modifies an Automation credential.
 Modifies the node configuration that a DSC node is mapped to.
 
 ### [Set-AzAutomationHybridRunbookWorkerGroup](Set-AzAutomationHybridRunbookWorkerGroup.md)
-{{ Fill in the Synopsis }}
+Updates a hybrid runbook worker group.
 
 ### [Set-AzAutomationModule](Set-AzAutomationModule.md)
 Updates a module in Automation.
