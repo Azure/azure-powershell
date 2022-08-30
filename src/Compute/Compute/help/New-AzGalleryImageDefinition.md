@@ -91,7 +91,7 @@ $skuName = "GreatSku"
 $description = "My gallery"
 $IsHibernateSupported = @{Name='IsHibernateSupported';Value='True'}
 $IsAcceleratedNetworkSupported = @{Name='IsAcceleratedNetworkSupported';Value='False'}
-$ConfidentialVMSupported = @{​​​​​Name='SecurityType';Value='ConfidentialVMSupported'}​​​​​
+$ConfidentialVMSupported = @{Name='SecurityType';Value='ConfidentialVMSupported'}
 $features = @($IsHibernateSupported,$IsAcceleratedNetworkSupported, $ConfidentialVMSupported)
 New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Windows" -Description $description -Feature $features
 ```
