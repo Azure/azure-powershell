@@ -18,7 +18,7 @@ Update-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-Subs
  [-DisableLocalAuth] [-EnablePurgeProtection] [-EncryptionKeyIdentifier <String>]
  [-IdentityType <IdentityType>] [-KeyVaultIdentityClientId <String>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-Sku <String>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -27,7 +27,7 @@ Update-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> [-Subs
 Update-AzAppConfigurationStore -InputObject <IAppConfigurationIdentity> [-DisableLocalAuth]
  [-EnablePurgeProtection] [-EncryptionKeyIdentifier <String>] [-IdentityType <IdentityType>]
  [-KeyVaultIdentityClientId <String>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Sku <String>]
- [-Tag <Hashtable>] [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Tag <Hashtable>] [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -297,7 +297,7 @@ The list of user-assigned identities associated with the resource.
 The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

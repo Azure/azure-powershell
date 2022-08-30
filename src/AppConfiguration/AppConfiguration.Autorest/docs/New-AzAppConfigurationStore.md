@@ -17,7 +17,7 @@ New-AzAppConfigurationStore -Name <String> -ResourceGroupName <String> -Location
  [-SubscriptionId <String>] [-CreateMode <CreateMode>] [-DisableLocalAuth] [-EnablePurgeProtection]
  [-EncryptionKeyIdentifier <String>] [-IdentityType <IdentityType>] [-KeyVaultIdentityClientId <String>]
  [-PublicNetworkAccess <PublicNetworkAccess>] [-SoftDeleteRetentionInDay <Int32>] [-Tag <Hashtable>]
- [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [-UserAssignedIdentity <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -322,7 +322,7 @@ The list of user-assigned identities associated with the resource.
 The user-assigned identity dictionary keys will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
 
 ```yaml
-Type: System.Collections.Hashtable
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 

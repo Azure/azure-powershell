@@ -296,6 +296,14 @@ Creates a configuration store with the specified parameters.
 Creates a configuration store with the specified parameters.
 .Example
 New-AzAppConfigurationStore -Name azpstest-appstore -ResourceGroupName azpstest_gp -Location eastus -Sku Standard
+.Example
+$storeName = "azpstest-appstore-recover"
+$resourceGroupName = "azpstest_gp"
+$location = "eastus"
+New-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupName -Location $location -Sku Standard
+Remove-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupName
+Get-AzAppConfigurationDeletedStore -Location $location -Name $storeName
+New-AzAppConfigurationStore -Name $storeName -ResourceGroupName $resourceGroupName -Location $location -Sku Standard -CreateMode 'Recover'
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.AppConfiguration.Models.Api20220501.IConfigurationStore

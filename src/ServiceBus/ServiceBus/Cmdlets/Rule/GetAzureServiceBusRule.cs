@@ -17,6 +17,7 @@ using System.Collections;
 using System.Management.Automation;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
 {
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
     /// <para> If Rule name provided, a single Rule detials will be returned</para>
     /// <para> If Rule name not provided, list of Rule will be returned</para>
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusRule"), OutputType(typeof(PSRulesAttributes))]
     public class GetAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
@@ -53,6 +55,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("MaxCount", ChangeDescription = "'-MaxCount' is being removed. '-Skip' and '-Top' would be added to support pagination.")]
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of Rules to return.")]
         [ValidateRange(1, 10000)]
         public int? MaxCount { get; set; }

@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.Azure.Storage.DataMovement;
     using Microsoft.Azure.Storage.File;
     using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -35,6 +36,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Threading.Tasks;
     using LocalConstants = Microsoft.WindowsAzure.Commands.Storage.File.Constants;
 
+    [GenericBreakingChange("The returned file properties will be moved from CloudFile to FileProperties in a future release.")]
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFile))]
     public class SetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
     {

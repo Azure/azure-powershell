@@ -19,6 +19,7 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.PrivateEndpoints
 {
@@ -48,6 +49,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.PrivateEndpoints
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = PrivateEndpointResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Private Endpoint Connection ResourceId.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
