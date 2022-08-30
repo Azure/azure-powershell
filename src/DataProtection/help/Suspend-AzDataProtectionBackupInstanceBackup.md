@@ -8,7 +8,7 @@ schema: 2.0.0
 # Suspend-AzDataProtectionBackupInstanceBackup
 
 ## SYNOPSIS
-This operation will stop backups for backup instance
+This operation will stop Backup for a Backup Instance and Retains the Backup Data as per the Policy (except Latest Recovery Point, which will be retained forever)
 
 ## SYNTAX
 
