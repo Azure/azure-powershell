@@ -224,4 +224,10 @@ directive:
       subject: VmssVMRunCommand|VMRunCommand
       variant: ^GetViaIdentity1
     remove: true
+  ### Remove Get-AzVmRuncommand so I can code it traditionally.
+  - select: command
+    where: 
+      subject: VMRunCommand
+      verb: Get
+    remove: true
 ```

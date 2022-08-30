@@ -17,6 +17,8 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Management.Automation;
 using System.Collections.Generic;
 using System;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
 {
     /// <summary>
@@ -46,10 +48,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSSubscriptionAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription")]
         [Parameter(Mandatory = true, ParameterSetName = SubscriptionInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus Subscription Object")]
         [ValidateNotNullOrEmpty]
         public PSSubscriptionAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = SubscriptionResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Service Bus Subscription Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

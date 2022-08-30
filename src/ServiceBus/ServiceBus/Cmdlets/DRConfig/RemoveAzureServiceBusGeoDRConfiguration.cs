@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
 {
@@ -39,10 +40,12 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSServiceBusDRConfigurationAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery")]
         [Parameter(Mandatory = true, ParameterSetName = GeoDRInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus GeoDR Configuration Object")]
         [ValidateNotNullOrEmpty]
         public PSServiceBusDRConfigurationAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ChangeDescription = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = GeoDRConfigResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "GeoDRConfiguration Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
