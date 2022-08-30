@@ -13,13 +13,22 @@
 // ----------------------------------------------------------------------------------
 
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Microsoft.Azure.Commands.Common.Authentication.Models
 {
-    internal class AzProfileInfo
+    /// <summary>
+    /// this class defines installation id field in Azure CLI context. This information is shared between Azure CLI and Azure PowerShell
+    /// 
+    /// </summary>
+    internal class AzCLIProfileInfo
     {
         [JsonProperty(PropertyName = "installationId")]
         internal string installationId { get; set; }
+
+
+        public static readonly string AzCLIProfileFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), ".Azure", "AzureProfile.json");
     }
 }

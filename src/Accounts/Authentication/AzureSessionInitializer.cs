@@ -42,7 +42,6 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     {
         private const string ContextAutosaveSettingFileName = ContextAutosaveSettings.AutoSaveSettingsFile;
 
-        private static string AzProfileInfoFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),".Azure", "AzureProfile.json");
         private const string DataCollectionFileName = AzurePSDataCollectionProfile.DefaultFileName;
 
         /// <summary>
@@ -178,12 +177,13 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     result.Mode = settings.Mode;
                     result.ContextFile = settings.ContextFile ?? result.ContextFile;
                     result.Settings = settings.Settings;
-                    String installationId = settings.Settings.ContainsKey("InstallationId") ?settings.Settings["InstallationId"] : null;
-                    if (string.IsNullOrEmpty(installationId))
+                    bool updateSettings = false;
+                    if (!settings.Settings.ContainsKey("InstallationId"))
                     {
                         result.Settings.Add("InstallationId", GetAzureCLIInstallationId(store) ?? Guid.NewGuid().ToString());
+                        updateSettings = true;
                     }
-                    if (migrated || string.IsNullOrEmpty(installationId))
+                    if (migrated || updateSettings)
                     {
                         string autoSavePath = Path.Combine(profileDirectory, settingsFile);
                         store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
@@ -213,16 +213,23 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return result;
         }
 
-        static String GetAzureCLIInstallationId(IDataStore store){
-            String installationId = null;
-            if (store.FileExists(AzProfileInfoFile))
+        private static String GetAzureCLIInstallationId(IDataStore store){
+            if (store.FileExists(AzCLIProfileInfo.AzCLIProfileFile))
+            {
+                try
                 {
-                    AzProfileInfo azInfo = JsonConvert.DeserializeObject<AzProfileInfo>(store.ReadFileAsText(AzProfileInfoFile));
-                    if (!string.IsNullOrEmpty(azInfo?.installationId)) {
-                        installationId = azInfo.installationId;
+                    AzCLIProfileInfo azInfo = JsonConvert.DeserializeObject<AzCLIProfileInfo>(store.ReadFileAsText(AzCLIProfileInfo.AzCLIProfileFile));
+                    if (!string.IsNullOrEmpty(azInfo?.installationId))
+                    {
+                        return azInfo.installationId;
                     }
                 }
-            return installationId;
+                catch (Exception)
+                {
+                    TracingAdapter.Information($"[AzureSessionInitializer]: Cannot read Azure CLI profile from {AzCLIProfileInfo.AzCLIProfileFile}");
+                }
+            }
+            return null;
         }
         static void InitializeDataCollection(IAzureSession session)
         {
