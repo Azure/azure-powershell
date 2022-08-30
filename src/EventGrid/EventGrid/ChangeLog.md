@@ -32,9 +32,9 @@
         - Add optional parameters to support azure managed identity
     - `New-AzEventGridSubscription `/`Update-AzEventGridSubscription `:
         - Add new optional parameters to support advanced filtering on arrays.
-		- Add new optional parameters to support delivery attribute mapping.
-		- Add new optional parameters to support storage queue message ttl.
-    
+        - Add new optional parameters to support delivery attribute mapping.
+        - Add new optional parameters to support storage queue message ttl.
+
 ## Version 1.3.0
 * Updated to use the 2020-06-01 API version.
 * Added new features:

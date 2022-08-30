@@ -452,8 +452,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             {
                 CmdletModel.SimpleSchedulePolicyV2 simpleSchedulePolicyV2 = (CmdletModel.SimpleSchedulePolicyV2)policy;
                 if (simpleSchedulePolicyV2.ScheduleRunFrequency == ScheduleRunType.Hourly)
-                {
-                    // throw new ArgumentException("Enhanced Hourly policy is currently not supported for WorkloadType AzureIaasVM. This will be supported soon");                    
+                {                                      
                     List<int> AllowedScheduleIntervals = new List<int> { 4, 6, 8, 12 };
                     if (!(AllowedScheduleIntervals.Contains((int)simpleSchedulePolicyV2.HourlySchedule.Interval)))
                     {
@@ -463,7 +462,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     // duration should be multiple of Interval and less than or equal to 24
                     if (simpleSchedulePolicyV2.HourlySchedule.WindowDuration > 24 || simpleSchedulePolicyV2.HourlySchedule.WindowDuration % simpleSchedulePolicyV2.HourlySchedule.Interval != 0)
                     {
-                        throw new ArgumentException("Hourly policy ScheduleWindowDuration should be multiple of ScheduleInterval and less than or equal to 24 Hrs. for WorkloadType AzureVM");
+                        throw new ArgumentException(Resources.InvalidScheduleWindow);
                     }
                 }
             }
@@ -985,6 +984,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ((CmdletModel.AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy = retPolicy.FullBackupRetentionPolicy;
             ((CmdletModel.AzureVmWorkloadPolicy)policy).DifferentialBackupRetentionPolicy = retPolicy.DifferentialBackupRetentionPolicy;
             ((CmdletModel.AzureVmWorkloadPolicy)policy).LogBackupRetentionPolicy = retPolicy.LogBackupRetentionPolicy;
+        }
+
+        public void GetUpdatedTieringPolicy(CmdletModel.PolicyBase policy, CmdletModel.TieringPolicy tieringDetails)
+        {
+            ((CmdletModel.AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy = tieringDetails;
         }
 
         public void TriggerInquiry(string vaultName, string vaultResourceGroupName,
