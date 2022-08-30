@@ -6364,7 +6364,7 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $KeySize = 3072;
         ###########az keyvault key create --vault-name $KeyVault --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
         #Add-AzKeyVaultKey -Hsmname $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA  -UseDefaultCVMPolicy;#-Destination HSM;
-        Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -ReleasePolicy "C:\repos\ps\skr-policy.json";#-UseDefaultCVMPolicy ;#-Destination HSM;
+        Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -ReleasePolicyPath "C:\repos\ps\skr-policy.json";#-UseDefaultCVMPolicy ;#-Destination HSM;
         #ERROR: Add-AzKeyVaultKey: Parameter set cannot be resolved using the specified named parameters. One or more parameters issued cannot be used together or an insufficient number of parameters were provided.
 
         # Capture Keyvault and key details
