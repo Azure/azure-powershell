@@ -21,6 +21,8 @@
 ## Upcoming Release
 
 ## Version 4.20.0
+* Replaced IdentifyTopFatFlow parameter of New-AzFirewall cmdlet with EnableFatFlowLogging parameter
+* Fixed a bug that does not display PrivateIPAddress for HubIPAddress when the Firewall is associated with a Virtual Hub
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
 * Fixed required parameter `PrivateLinkResourceType` missing issue for the following cmdlets [#18655]
     - `Get-AzPrivateEndpointConnection`
