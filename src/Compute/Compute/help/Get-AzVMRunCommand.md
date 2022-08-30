@@ -27,7 +27,6 @@ Gets specific run command for a subscription in a location.
 Get-AzVMRunCommand -ResourceGroupName $rgname -VMName $vmname -RunCommandName "firstruncommand2"
 ```
 
-
 Get Run Command by it's name.
 
 ### Example 2: Get Run Commands by VM
