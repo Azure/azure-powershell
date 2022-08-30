@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 using System.Xml;
 
@@ -23,6 +24,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
     /// <summary>
     /// 'New-AzServiceBusSubscription' Cmdlet creates a new Subscription
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusSubscription", SupportsShouldProcess = true), OutputType(typeof(PSSubscriptionAttributes))]
     public class NewAzureRmServiceBusSubscription : AzureServiceBusCmdletBase
     {
@@ -46,11 +48,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [Alias(AliasSubscriptionName)]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
-                
+
+        [CmdletParameterBreakingChange("AutoDeleteOnIdle", ChangeDescription = "AutoDeleteOnIdle, " + TimespanBreakingChange)]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Auto Delete On Idle - the TimeSpan idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.")]
         [ValidateNotNullOrEmpty]
         public string AutoDeleteOnIdle { get; set; }
 
+        [CmdletParameterBreakingChange("DefaultMessageTimeToLive", ChangeDescription = "DefaultMessageTimeToLive, " + TimespanBreakingChange)]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Timespan to live value. This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself. For Standard = Timespan.Max and Basic = 14 days")]
         [ValidateNotNullOrEmpty]
         public string DefaultMessageTimeToLive { get; set; }
@@ -68,6 +72,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Subscription
         [ValidateNotNullOrEmpty]
         public bool? EnableBatchedOperations { get; set; }
 
+        [CmdletParameterBreakingChange("LockDuration", ChangeDescription = "LockDuration, " + TimespanBreakingChange)]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Lock Duration")]
         public string LockDuration { get; set; }
         
