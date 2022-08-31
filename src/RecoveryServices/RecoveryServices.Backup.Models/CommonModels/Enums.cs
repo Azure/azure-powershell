@@ -101,6 +101,16 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
     }
 
     /// <summary>
+    /// Tier mode for automatic tiering of Recovery points
+    /// </summary>
+    public enum TieringMode
+    {
+        TierRecommended = 1,
+        TierAllEligible, 
+        DoNotTier
+    }
+
+    /// <summary>
     /// Type of the backup engine.
     /// </summary>
     public enum BackupEngineType
