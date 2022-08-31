@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.EventHub.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// <summary>
     /// 'Get-AzEventHubClustersAvailableRegion' Cmdlet gives  List of regions where pre-provisioned Event Hubs Clusters are available
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAvailableCluster'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubClustersAvailableRegion", DefaultParameterSetName = ClusterGetPropertiesParameterSet), OutputType(typeof(IEnumerable<PSEventHubsAvailableCluster>))]
     public class GetAzureEventHubAvailableClusters : AzureEventHubsCmdletBase
     {

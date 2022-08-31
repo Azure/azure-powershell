@@ -89,6 +89,15 @@ namespace Microsoft.Azure.Commands.KeyVault
         public string CertificateString { get; set; }
 
         /// <summary>
+        /// Specifies type of the certificate to be imported.
+        /// </summary>
+        [Parameter(Mandatory = false,
+                   ParameterSetName = ImportWithPrivateKeyFromStringParameterSet,
+                   HelpMessage = "Specifies the type of the certificate to be imported. Regards certificate string as PFX format by default.")]
+        [PSArgumentCompleter(Constants.Pkcs12ContentType, Constants.PemContentType)]
+        public string ContentType { get; set; } = Constants.Pkcs12ContentType;
+
+        /// <summary>
         /// Password
         /// </summary>
         [Parameter(Mandatory = false,
@@ -190,7 +199,7 @@ namespace Microsoft.Azure.Commands.KeyVault
                         break;
 
                     case ImportWithPrivateKeyFromStringParameterSet:
-                        certBundle = this.DataServiceClient.ImportCertificate(VaultName, Name, CertificateString, Password, Tag?.ConvertToDictionary());
+                        certBundle = this.Track2DataClient.ImportCertificate(VaultName, Name, CertificateString, Password, Tag?.ConvertToDictionary(), ContentType);
 
                         break;
                 }

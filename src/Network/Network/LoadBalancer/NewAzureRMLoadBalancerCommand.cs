@@ -25,9 +25,11 @@ using System.Linq;
 using System.Management.Automation;
 using AutoMapper;
 using MNM = Microsoft.Azure.Management.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    [GenericBreakingChange("It is recommended to use parameter '-Sku Standard' to create new IP address. Please note that it will become the default behavior for IP address creation in the future.")]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "LoadBalancer", SupportsShouldProcess = true), OutputType(typeof(PSLoadBalancer))]
     public partial class NewAzureRmLoadBalancer : NetworkBaseCmdlet
     {

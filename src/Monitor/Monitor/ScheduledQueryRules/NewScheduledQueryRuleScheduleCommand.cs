@@ -16,12 +16,14 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
     /// <summary>
     /// Create a ScheduledQueryRule Schedule object
     /// </summary>
+    [CmdletDeprecation()]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRuleSchedule"), OutputType(typeof(PSScheduledQueryRuleSchedule))]
     public class NewScheduledQueryRuleScheduleCommand : MonitorCmdletBase
     {

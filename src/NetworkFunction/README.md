@@ -30,11 +30,11 @@ For information on how to develop for `Az.NetworkFunction`, see [how-to.md](how-
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 2f47130d8fb333f55596ca9d149fbdceaff6f4be
+branch: 1cefdabe75c75323c6d3def3f6c80850c624bdea
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-  - $(repo)/specification/networkfunction/resource-manager/Microsoft.NetworkFunction/stable/2022-05-01/AzureTrafficCollector.json
+  - $(repo)/specification/networkfunction/resource-manager/Microsoft.NetworkFunction/stable/2022-08-01/AzureTrafficCollector.json
 module-version: 0.1.0
 title: NetworkFunction
 subject-prefix: $(service-name)
@@ -44,9 +44,19 @@ nested-object-to-string: true
 
 directive:
   - where:
+      subject: ^AzureTrafficCollector(.*)
+    set:
+      subject: TrafficCollector$1
+  - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     hide: true
+  - from: swagger-document
+    where: $.paths..operationId
+    transform: return $.replace(/^(AzureTrafficCollectors)(.+)(_List)$/, "$1$3$2")
   - where:
-      verb: Set
+      subject: (.)*(Operation)$
+    hide: true
+  - where:
+      verb: New|Set
     hide: true
 ```

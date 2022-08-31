@@ -20,6 +20,13 @@
 
 -->
 ## Upcoming Release
+* `Get-AzVMRunCommand` now shows all the properties of VMRunCommand in a list format.
+* Added new Parameter `-PublicIpSku` to the `NewAzVM` cmdlet with acceptable values : "Basic" and "Standard". 
+* Added Generic Breaking Change PublicIpSku Warning and Overridden `-Zone` logic when `-PublicIpSku` is explicitly provided.
+* Added Disk Delete Optional parameters `OsDisk Deletion Option` and `Delete Option` to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
+* Improve printed output for `Get-AzComputeResourceSku`
+* Updated `Update-AzVm` to give constructive error messages when empty variables are passed in parameters. [#15081]
+* Added `Zone` and `IntentVMSizeList` optional parameters to the cmdlet `New-AzProximityPlacementGroup`.
 
 ## Version 4.30.0
 * Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion`

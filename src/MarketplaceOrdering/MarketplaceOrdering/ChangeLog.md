@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added a warning message for an upcoming breaking change to `Get-AzMarketplaceTerms`.
 
 ## Version 1.0.2
 * Update references in .psd1 to use relative path

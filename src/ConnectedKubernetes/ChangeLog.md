@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 0.4.0
+* Fixed the issue that Azure Arc cannot connect to Kubernetes[#19080]
+
 ## Version 0.3.0
 * Updated api-version of ConnectedKubernetes to 2021-10-01
 * Create new cmdlet: Get-AzConnectedKubernetesUserCredential.
