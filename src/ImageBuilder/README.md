@@ -71,7 +71,9 @@ directive:
     remove: true
 
   # 1. Field 'identity' is required => IdentityType and IdentityUserAssignedIdentity are required
-  # 2. Field 'properties' is required => Source, Customize and Distribute are required
+  # 2. Hide IdentityType as only 'UserAssigned' is valid value so far
+  # 3. Wrap UserAssignedIdentity with UserAssignedIdentityId to simplify customer's input 
+  # 4. Field 'properties' is required => Source, Customize and Distribute are required
   - where:
       variant: ^CreateExpanded$
     hide: true

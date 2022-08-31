@@ -29,7 +29,7 @@
     - `Remove-AzPrivateEndpointConnection`
     - `Approve-AzPrivateEndpointConnection`
     - `Deny-AzPrivateEndpointConnection`
-* Added breaking change attribute to notify that public ip address sku default behaviour will be changed
+* Added breaking change attribute to notify that public ip address sku default behavior will be changed
     - `New-AzPublicIpAddress`
     - `New-AzLoadBalancer`
 * Onboard Azure Virtual Network Manager Cmdlets
