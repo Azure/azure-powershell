@@ -36,6 +36,9 @@ The operation returns properties of each orchestrator including version, availab
 ### [Import-AzAksCredential](Import-AzAksCredential.md)
 Import and merge Kubectl config for a managed Kubernetes Cluster.
 
+### [Install-AzAksCliTool](Install-AzAksCliTool.md)
+Download and install kubectl and kubelogin.
+
 ### [Install-AzAksKubectl](Install-AzAksKubectl.md)
 Download and install kubectl, the Kubernetes command-line tool.
 
