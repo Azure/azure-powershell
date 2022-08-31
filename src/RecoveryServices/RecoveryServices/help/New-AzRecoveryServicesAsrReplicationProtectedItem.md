@@ -785,6 +785,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RecoveryExtendedLocation
+Specifies Recovery ExtendedLocation in case of EZ-to-EZ.
+
+```yaml
+Type: System.String
+Parameter Sets: AzureToAzure
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -RecoveryNicTag
 Specify the tags for the target NICs of the VM.
 
