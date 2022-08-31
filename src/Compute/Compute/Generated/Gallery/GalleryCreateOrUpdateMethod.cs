@@ -247,11 +247,12 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                             gallery.SharingProfile = new SharingProfile();
                         }
                         gallery.SharingProfile.Permissions = this.Permission;
-                    }
 
-                    if (gallery.SharingProfile.Permissions.ToLower() == "community")
-                    {
-                        gallery.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
+                        if (gallery.SharingProfile.Permissions.ToLower() == "community")
+                        {
+                            gallery.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
+                        }
+
                     }
 
 
