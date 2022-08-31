@@ -188,30 +188,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
                 var data = JsonConvert.DeserializeObject<List<PSCommunityGallery>>(response.Data.ToString());
                 
-                //string token = response.SkipToken;
-
-                //request.Options.SkipToken = token;
-                //response = rgClient.Resources(request);
-
                 WriteObject(data);
 
-                //var resultList = result.ToList();
-                //var nextPageLink = result.NextPageLink;
-                //while (!string.IsNullOrEmpty(nextPageLink))
-                //{
-                //    var pageResult = SharedGalleriesClient.ListNext(nextPageLink);
-                //    foreach (var pageItem in pageResult)
-                //    {
-                //        //resultList.Add(pageItem);
-                //    }
-                //    nextPageLink = pageResult.NextPageLink;
-                //}
-                //var psObject = new List<PSSharedGalleryList>();
-                //foreach (var r in resultList)
-                //{
-                //    //psObject.Add(ComputeAutomationAutoMapperProfile.Mapper.Map<SharedGallery, PSSharedGalleryList>(r));
-                //}
-                //WriteObject(psObject);
             }
         }
 

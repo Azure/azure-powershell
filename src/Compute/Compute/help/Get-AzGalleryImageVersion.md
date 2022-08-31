@@ -5,228 +5,225 @@ online version: https://docs.microsoft.com/powershell/module/az.compute/get-azga
 schema: 2.0.0
 ---
 
-# Get-AzGalleryImageDefinition
+# Get-AzGalleryImageVersion
 
 ## SYNOPSIS
-Get or list gallery image definitions.
+Get or list gallery image versions.
 
 ## SYNTAX
 
 ### DefaultParameter (Default)
 ```
-Get-AzGalleryImageDefinition [-ResourceGroupName] <String> [-GalleryName] <String> [[-Name] <String>]
+Get-AzGalleryImageVersion [-ResourceGroupName] <String> [-GalleryName] <String>
+ [-GalleryImageDefinitionName] <String> [[-Name] <String>] [-ExpandReplicationStatus]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### SharedGalleryParameterSet
 ```
-Get-AzGalleryImageDefinition [[-Name] <String>] -GalleryUniqueName <String> [-Scope <String>]
- -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzGalleryImageVersion [-GalleryImageDefinitionName] <String> [[-Name] <String>] [-ExpandReplicationStatus]
+ -GalleryUniqueName <String> [-Scope <String>] -Location <String> [-DefaultProfile <IAzureContextContainer>]
+ [<CommonParameters>]
 ```
 
 ### CommunityGalleryParameterSet
 ```
-Get-AzGalleryImageDefinition [[-Name] <String>] -GalleryPublicName <String> -Location <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Get-AzGalleryImageVersion [-GalleryImageDefinitionName] <String> [[-Name] <String>] [-ExpandReplicationStatus]
+ -GalleryPublicName <String> -Location <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceIdParameter
 ```
-Get-AzGalleryImageDefinition [-ResourceId] <String> [-DefaultProfile <IAzureContextContainer>]
- [<CommonParameters>]
+Get-AzGalleryImageVersion [-ResourceId] <String> [-ExpandReplicationStatus]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get or list gallery image definitions.
+Get or list gallery image versions.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1
+Get-AzGalleryImageVersion -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1 -GalleryImageVersionName 1.0.0
 ```
 
 ```output
-ResourceGroupName   : rg1
-Eula                : eula
-PrivacyStatementUri : Https://www.microsoft.com
-ReleaseNoteUri      : https://www.microsoft.com
-OsType              : Windows
-OsState             : Generalized
-EndOfLifeDate       : 2/18/2025 12:07:00 PM
-Identifier          :
-  Publisher         : PsSDKTeamTest
-  Offer             : testgalleryoffer1
-  Sku               : testgallerysku1
-Recommended         :
-  VCPUs             :
-    Min             : 2
-    Max             : 32
-  Memory            :
-    Min             : 1
-    Max             : 100
-Disallowed          :
-  DiskTypes[0]      : Standard_LRS
-PurchasePlan        :
-  Name              : PsSDKTestPlan
-  Publisher         : PSSDKTeam
-  Product           : PsSDKTestProductWindowsVm
-ProvisioningState   : Succeeded
-Id                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provi
-ders/Microsoft.Compute/galleries/gallery1/images/image1
-Name                : image1
-Type                : Microsoft.Compute/galleries/images
-Location            : eastus2
-Tags                : {}
+ResourceGroupName        : rg1
+PublishingProfile        :
+  TargetRegions[0]       :
+    Name                 : South Central US
+    RegionalReplicaCount : 1
+  TargetRegions[1]       :
+    Name                 : East US 2
+    RegionalReplicaCount : 2
+  TargetRegions[2]       :
+    Name                 : Central US
+    RegionalReplicaCount : 1
+  Source                 :
+    ManagedImage         :
+      Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/images/test1
+  ReplicaCount           : 1
+  ExcludeFromLatest      : False
+  PublishedDate          : 11/14/2018 12:00:00 AM
+  EndOfLifeDate          : 2/18/2025 12:07:00 PM
+ProvisioningState        : Succeeded
+StorageProfile           :
+  OsDiskImage            :
+    SizeInGB             : 127
+    HostCaching          : ReadWrite
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/galleries/gallery1/images/image1/versions/1.0.0
+Name                     : 1.0.0
+Type                     : Microsoft.Compute/galleries/images/versions
+Location                 : eastus2
+Tags                     : {}
 ```
 
-Get the gallery image definition.
+Get the gallery image version.
 
 ### Example 2
 ```powershell
-Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image*
+Get-AzGalleryImageVersion -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1 -GalleryImageVersionName 1*
 ```
 
 ```output
-ResourceGroupName   : rg1
-Eula                : eula
-PrivacyStatementUri : Https://www.microsoft.com
-ReleaseNoteUri      : https://www.microsoft.com
-OsType              : Windows
-OsState             : Generalized
-EndOfLifeDate       : 2/18/2025 12:07:00 PM
-Identifier          :
-  Publisher         : PsSDKTeamTest
-  Offer             : testgalleryoffer1
-  Sku               : testgallerysku1
-Recommended         :
-  VCPUs             :
-    Min             : 2
-    Max             : 32
-  Memory            :
-    Min             : 1
-    Max             : 100
-Disallowed          :
-  DiskTypes[0]      : Standard_LRS
-PurchasePlan        :
-  Name              : PsSDKTestPlan
-  Publisher         : PSSDKTeam
-  Product           : PsSDKTestProductWindowsVm
-ProvisioningState   : Succeeded
-Id                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provi
-ders/Microsoft.Compute/galleries/gallery1/images/image1
-Name                : image1
-Type                : Microsoft.Compute/galleries/images
-Location            : eastus2
-Tags                : {}
+ResourceGroupName        : rg1
+PublishingProfile        :
+  TargetRegions[0]       :
+    Name                 : South Central US
+    RegionalReplicaCount : 1
+  TargetRegions[1]       :
+    Name                 : East US 2
+    RegionalReplicaCount : 2
+  TargetRegions[2]       :
+    Name                 : Central US
+    RegionalReplicaCount : 1
+  Source                 :
+    ManagedImage         :
+      Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/images/test1
+  ReplicaCount           : 1
+  ExcludeFromLatest      : False
+  PublishedDate          : 11/14/2018 12:00:00 AM
+  EndOfLifeDate          : 2/18/2025 12:07:00 PM
+ProvisioningState        : Succeeded
+StorageProfile           :
+  OsDiskImage            :
+    SizeInGB             : 127
+    HostCaching          : ReadWrite
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/galleries/gallery1/images/image1/versions/1.0.0
+Name                     : 1.0.0
+Type                     : Microsoft.Compute/galleries/images/versions
+Location                 : eastus2
+Tags                     : {}
 
-ResourceGroupName   : rg1
-Eula                : eula
-PrivacyStatementUri : Https://www.microsoft.com
-ReleaseNoteUri      : https://www.microsoft.com
-OsType              : Windows
-OsState             : Generalized
-EndOfLifeDate       : 2/18/2025 12:07:00 PM
-Identifier          :
-  Publisher         : PsSDKTeamTest
-  Offer             : testgalleryoffer1
-  Sku               : testgallerysku1
-Recommended         :
-  VCPUs             :
-    Min             : 2
-    Max             : 32
-  Memory            :
-    Min             : 1
-    Max             : 100
-Disallowed          :
-  DiskTypes[0]      : Standard_LRS
-PurchasePlan        :
-  Name              : PsSDKTestPlan
-  Publisher         : PSSDKTeam
-  Product           : PsSDKTestProductWindowsVm
-ProvisioningState   : Succeeded
-Id                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provi
-ders/Microsoft.Compute/galleries/gallery1/images/image2
-Name                : image2
-Type                : Microsoft.Compute/galleries/images
-Location            : eastus2
-Tags                : {}
+ResourceGroupName        : rg1
+PublishingProfile        :
+  TargetRegions[0]       :
+    Name                 : South Central US
+    RegionalReplicaCount : 1
+  TargetRegions[1]       :
+    Name                 : East US 2
+    RegionalReplicaCount : 2
+  TargetRegions[2]       :
+    Name                 : Central US
+    RegionalReplicaCount : 1
+  Source                 :
+    ManagedImage         :
+      Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/images/test1
+  ReplicaCount           : 1
+  ExcludeFromLatest      : False
+  PublishedDate          : 11/14/2018 12:00:00 AM
+  EndOfLifeDate          : 2/18/2025 12:07:00 PM
+ProvisioningState        : Succeeded
+StorageProfile           :
+  OsDiskImage            :
+    SizeInGB             : 127
+    HostCaching          : ReadWrite
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/galleries/gallery1/images/image1/versions/1.1.0
+Name                     : 1.1.0
+Type                     : Microsoft.Compute/galleries/images/versions
+Location                 : eastus2
+Tags                     : {}
 ```
 
-Get the gallery image definition that starts with "image".
+Get the gallery image versions that starts with "1".
 
 ### Example 3
 ```powershell
-Get-AzGalleryImageDefinition -ResourceGroupName rg1 -GalleryName gallery1
+Get-AzGalleryImageVersion -ResourceGroupName rg1 -GalleryName gallery1 -GalleryImageDefinitionName image1
 ```
 
 ```output
-ResourceGroupName   : rg1
-Eula                : eula
-PrivacyStatementUri : Https://www.microsoft.com
-ReleaseNoteUri      : https://www.microsoft.com
-OsType              : Windows
-OsState             : Generalized
-EndOfLifeDate       : 2/18/2025 12:07:00 PM
-Identifier          :
-  Publisher         : PsSDKTeamTest
-  Offer             : testgalleryoffer1
-  Sku               : testgallerysku1
-Recommended         :
-  VCPUs             :
-    Min             : 2
-    Max             : 32
-  Memory            :
-    Min             : 1
-    Max             : 100
-Disallowed          :
-  DiskTypes[0]      : Standard_LRS
-PurchasePlan        :
-  Name              : PsSDKTestPlan
-  Publisher         : PSSDKTeam
-  Product           : PsSDKTestProductWindowsVm
-ProvisioningState   : Succeeded
-Id                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provi
-ders/Microsoft.Compute/galleries/gallery1/images/image1
-Name                : image1
-Type                : Microsoft.Compute/galleries/images
-Location            : eastus2
-Tags                : {}
+ResourceGroupName        : rg1
+PublishingProfile        :
+  TargetRegions[0]       :
+    Name                 : South Central US
+    RegionalReplicaCount : 1
+  TargetRegions[1]       :
+    Name                 : East US 2
+    RegionalReplicaCount : 2
+  TargetRegions[2]       :
+    Name                 : Central US
+    RegionalReplicaCount : 1
+  Source                 :
+    ManagedImage         :
+      Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/images/test1
+  ReplicaCount           : 1
+  ExcludeFromLatest      : False
+  PublishedDate          : 11/14/2018 12:00:00 AM
+  EndOfLifeDate          : 2/18/2025 12:07:00 PM
+ProvisioningState        : Succeeded
+StorageProfile           :
+  OsDiskImage            :
+    SizeInGB             : 127
+    HostCaching          : ReadWrite
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/galleries/gallery1/images/image1/versions/1.0.0
+Name                     : 1.0.0
+Type                     : Microsoft.Compute/galleries/images/versions
+Location                 : eastus2
+Tags                     : {}
 
-ResourceGroupName   : rg1
-Eula                : eula
-PrivacyStatementUri : Https://www.microsoft.com
-ReleaseNoteUri      : https://www.microsoft.com
-OsType              : Windows
-OsState             : Generalized
-EndOfLifeDate       : 2/18/2025 12:07:00 PM
-Identifier          :
-  Publisher         : PsSDKTeamTest
-  Offer             : testgalleryoffer1
-  Sku               : testgallerysku1
-Recommended         :
-  VCPUs             :
-    Min             : 2
-    Max             : 32
-  Memory            :
-    Min             : 1
-    Max             : 100
-Disallowed          :
-  DiskTypes[0]      : Standard_LRS
-PurchasePlan        :
-  Name              : PsSDKTestPlan
-  Publisher         : PSSDKTeam
-  Product           : PsSDKTestProductWindowsVm
-ProvisioningState   : Succeeded
-Id                  : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/provi
-ders/Microsoft.Compute/galleries/gallery1/images/image2
-Name                : image2
-Type                : Microsoft.Compute/galleries/images
-Location            : eastus2
-Tags                : {}
+ResourceGroupName        : rg1
+PublishingProfile        :
+  TargetRegions[0]       :
+    Name                 : South Central US
+    RegionalReplicaCount : 1
+  TargetRegions[1]       :
+    Name                 : East US 2
+    RegionalReplicaCount : 2
+  TargetRegions[2]       :
+    Name                 : Central US
+    RegionalReplicaCount : 1
+  Source                 :
+    ManagedImage         :
+      Id                 : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/images/test1
+  ReplicaCount           : 1
+  ExcludeFromLatest      : False
+  PublishedDate          : 11/14/2018 12:00:00 AM
+  EndOfLifeDate          : 2/18/2025 12:07:00 PM
+ProvisioningState        : Succeeded
+StorageProfile           :
+  OsDiskImage            :
+    SizeInGB             : 127
+    HostCaching          : ReadWrite
+Id                       : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/
+providers/Microsoft.Compute/galleries/gallery1/images/image1/versions/1.1.0
+Name                     : 1.1.0
+Type                     : Microsoft.Compute/galleries/images/versions
+Location                 : eastus2
+Tags                     : {}
 ```
 
-Get the gallery image definitions in gallery1.
+Get all gallery image versions.
 
 ## PARAMETERS
 
@@ -242,6 +239,40 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExpandReplicationStatus
+Show replication status.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -GalleryImageDefinitionName
+The name of the gallery image definition.
+
+```yaml
+Type: System.String
+<<<<<<< HEAD
+Parameter Sets: DefaultParameter, SharedGalleryParameterSet, CommunityGalleryParameterSet
+=======
+Parameter Sets: DefaultParameter, SharedGalleryParameterSet
+>>>>>>> origin/main
+Aliases: GalleryImageName
+
+Required: True
+Position: 2
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -306,15 +337,15 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the gallery image definition.
+The name of the gallery image version.
 
 ```yaml
 Type: System.String
 Parameter Sets: DefaultParameter, SharedGalleryParameterSet, CommunityGalleryParameterSet
-Aliases: GalleryImageDefinitionName
+Aliases: GalleryImageVersionName
 
 Required: False
-Position: 2
+Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: True
@@ -336,7 +367,7 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceId
-The resource ID for the gallery image definition
+The resource ID for the gallery image version
 
 ```yaml
 Type: System.String
@@ -372,9 +403,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ### System.String
 
+### System.Management.Automation.SwitchParameter
+
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryImage
+### Microsoft.Azure.Commands.Compute.Automation.Models.PSGalleryImageVersion
 
 ## NOTES
 
