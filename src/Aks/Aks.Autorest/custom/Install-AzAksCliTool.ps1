@@ -25,6 +25,7 @@ function Install-AzAksCliTool
     [OutputType([System.Boolean])]
     [Alias("Install-AzAksKubectl")]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.CmdletBreakingChangeAttribute("9.0.0", "2022/10/12", ReplacementCmdletName = 'Install-AzAksCliTool')]
     param(
         [Alias("KubectlInstallDestination")]
         [Parameter()]
@@ -145,9 +146,11 @@ Function Install-Kubectl
 
     Process
     {
-        $kubecliSiteUrl = "https://storage.googleapis.com/kubernetes-release/release"
-        $kubecliSiteUrlMirror = "https://mirror.azure.cn/kubernetes/kubectl"
-        $baseUrl = $DownloadFromMirror ? $kubecliSiteUrlMirror : $kubecliSiteUrl
+        $baseUrl = "https://storage.googleapis.com/kubernetes-release/release"
+        If ($DownloadFromMirror)
+        {
+            $baseUrl = "https://mirror.azure.cn/kubernetes/kubectl"
+        }
         If (($Null -Eq $Destination) -or ("" -Eq $Destination))
         {
             $Destination = [System.IO.Path]::Combine($env:USERPROFILE, ".azure-kubectl")
