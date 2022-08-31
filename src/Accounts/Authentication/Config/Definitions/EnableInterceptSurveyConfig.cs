@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config.Definitions
             environmentVariables.TryGetValue("Azure_PS_Intercept_Survey", out string oldConfigString);
             environmentVariables.TryGetValue("AzSurveyMessage", out string configString);
 
-            if (string.Equals(Boolean.FalseString, oldConfigString)  || string.Equals(Boolean.FalseString, configString))
+            if (string.Equals(Boolean.FalseString, oldConfigString, StringComparison.OrdinalIgnoreCase)  || string.Equals(Boolean.FalseString, configString, StringComparison.OrdinalIgnoreCase))
             {
                 return Boolean.FalseString;
             }
