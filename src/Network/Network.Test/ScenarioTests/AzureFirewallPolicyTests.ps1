@@ -184,6 +184,20 @@ function Test-AzureFirewallPolicyCRUD {
         Assert-AreEqual $appRule1Fqdn1 $appRule.TargetFqdns[0]
         Assert-AreEqual $appRule1Fqdn2 $appRule.TargetFqdns[1]
 
+        # Verify mssql application rule 
+        $mssqlRule = $filterRuleCollection1.GetRuleByName($appRule3Name)
+        Assert-AreEqual $appRule3Name $mssqlRule.Name
+
+        Assert-AreEqual 1 $mssqlRule.SourceAddresses.Count
+        Assert-AreEqual $appRule3SourceAddress1 $mssqlRule.SourceAddresses[0]
+
+        Assert-AreEqual 1 $mssqlRule.Protocols.Count 
+        Assert-AreEqual "mssql" $mssqlRule.Protocols[0].ProtocolType
+        Assert-AreEqual 1433 $mssqlRule.Protocols[0].Port
+
+        Assert-AreEqual 1 $mssqlRule.TargetFqdns.Count 
+        Assert-AreEqual $appRule3Fqdn1 $mssqlRule.TargetFqdns[0]
+
         # Verify Filter Rule Collection2 
         Assert-AreEqual $networkRcName $filterRuleCollection2.Name
         Assert-AreEqual $networkRcPriority $filterRuleCollection2.Priority

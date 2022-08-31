@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug not able to add MSSQL application rules to an AZURE FIREWALL POLICY
 
 ## Version 4.20.0
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
