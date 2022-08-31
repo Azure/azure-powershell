@@ -47,13 +47,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     string galleryName = this.Name;
                     Gallery gallery = new Gallery();
                     gallery.Location = this.Location;
+                    CommunityGalleryInfo communityGalleryInfo = new CommunityGalleryInfo();
+
                     if (this.IsParameterBound(c => c.Permission)){
                         gallery.SharingProfile = new SharingProfile();
                         gallery.SharingProfile.Permissions = this.Permission;
+
+                        if (gallery.SharingProfile.Permissions.ToLower() == "community")
+                        {
+                            gallery.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
+                        }
+
                     }
-
-                    CommunityGalleryInfo communityGalleryInfo = new CommunityGalleryInfo();
-
 
                     if (this.IsParameterBound(c => c.Description))
                     {
@@ -86,10 +91,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
 
-                    if(gallery.SharingProfile.Permissions.ToLower() == "community")
-                    {
-                        gallery.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
-                    }
 
                     var result = GalleriesClient.CreateOrUpdate(resourceGroupName, galleryName, gallery);
                     var psObject = new PSGallery();
