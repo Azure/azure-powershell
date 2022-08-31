@@ -1,0 +1,27 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "namespace_name": {
+      "value": "random-namespace-ps-testing-V2"
+    },
+    "namespace_auth_rule_name": {
+      "value": "auth-rule"
+    },
+    "eventhub_auth_rule_name": {
+      "value": "auth-rule"
+    },
+    "eventhub_name": {
+      "value": "eh1"
+    },
+    "schema_group_name": {
+      "value": "schema-group"
+    },
+    "appgroup_name": {
+      "value": "app-group"
+    },
+    "resourcegroup_name": {
+      "value":  "resource-group"
+    }
+  }
+}
