@@ -17,12 +17,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
     /// <summary>
     /// Create an WebhookNotification
     /// </summary>
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzAutoscaleWebhookNotificationObject")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoscaleWebhook"), OutputType(typeof(Management.Monitor.Management.Models.WebhookNotification))]
     public class NewAzureRmAutoscaleWebhookCommand : MonitorCmdletBase
     {

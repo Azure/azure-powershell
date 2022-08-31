@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.Eventhub;
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections.Generic;
 using System.Management.Automation;
 
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
     /// <para> If AuthorizationRule name provided, a single AuthorizationRule detials will be returned</para>
     /// <para> If AuthorizationRule name not provided, list of AuthorizationRules will be returned</para>
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubAuthorizationRule", DefaultParameterSetName = NamespaceAuthoRuleParameterSet), OutputType(typeof(PSSharedAccessAuthorizationRuleAttributes))]
     public class GetAzureEventHubAuthorizationRule : AzureEventHubsCmdletBase
     {

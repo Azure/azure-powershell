@@ -19,6 +19,12 @@
 -->
 
 ## Upcoming Release
+* Added breakingchange warning messages for 
+    - `ActivityLogAlert`
+    - `DiagnosticSetting`
+    - `ScheduledQueryRule`
+    - `Autoscale`
+
 ## Version 3.0.2
 * Added optional parameter `Location` for Adding/Update action group cmdlet
 

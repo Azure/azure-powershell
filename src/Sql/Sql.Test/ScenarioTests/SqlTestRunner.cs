@@ -95,37 +95,37 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected SqlManagementClient GetSqlClient(MockContext context)
         {
-            return context.GetServiceClient<SqlManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<SqlManagementClient>();
         }
 
         protected SDKMonitor.IMonitorManagementClient GetMonitorManagementClient(MockContext context)
         {
-            return context.GetServiceClient<SDKMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<SDKMonitor.MonitorManagementClient>();
         }
 
         protected CommonMonitor.IMonitorManagementClient GetCommonMonitorManagementClient(MockContext context)
         {
-            return context.GetServiceClient<CommonMonitor.MonitorManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<CommonMonitor.MonitorManagementClient>();
         }
 
         protected IEventHubManagementClient GetEventHubManagementClient(MockContext context)
         {
-            return context.GetServiceClient<EventHubManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<EventHubManagementClient>();
         }
 
         protected IOperationalInsightsManagementClient GetOperationalInsightsManagementClient(MockContext context)
         {
-            return context.GetServiceClient<OperationalInsightsManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<OperationalInsightsManagementClient>();
         }
 
         protected ResourceManagementClient GetResourcesClient(MockContext context)
         {
-            return context.GetServiceClient<ResourceManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<ResourceManagementClient>();
         }
 
         protected GraphRbacManagementClient GetGraphClient(MockContext context)
         {
-            GraphRbacManagementClient graphClient = context.GetServiceClient<GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            GraphRbacManagementClient graphClient = context.GetServiceClient<GraphRbacManagementClient>();
             graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
             graphClient.TenantID = TestEnvironmentFactory.GetTestEnvironment().TenantId;
             return graphClient;
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient GetGraphClientVersion1_6(MockContext context)
         {
-            Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient graphClient = context.GetServiceClient<Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient graphClient = context.GetServiceClient<Microsoft.Azure.Graph.RBAC.Version1_6.GraphRbacManagementClient>();
             graphClient.BaseUri = TestEnvironmentFactory.GetTestEnvironment().Endpoints.GraphUri;
             string tenantId = null;
 
@@ -162,17 +162,17 @@ namespace Microsoft.Azure.Commands.ScenarioTest.SqlTests
 
         protected KeyVaultManagementClient GetKeyVaultClient(MockContext context)
         {
-            return context.GetServiceClient<KeyVaultManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<KeyVaultManagementClient>();
         }
 
         protected NetworkManagementClient GetNetworkClient(MockContext context)
         {
-            return context.GetServiceClient<NetworkManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<NetworkManagementClient>();
         }
 
         protected static CommonStorage.StorageManagementClient GetStorageManagementClient(MockContext context)
         {
-            return context.GetServiceClient<CommonStorage.StorageManagementClient>(TestEnvironmentFactory.GetTestEnvironment());
+            return context.GetServiceClient<CommonStorage.StorageManagementClient>();
         }
     }
 }

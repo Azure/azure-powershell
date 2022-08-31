@@ -21,6 +21,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP? DeterministicOutboundIP { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)Property).DeterministicOutboundIP; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)Property).DeterministicOutboundIP = value ?? ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP)""); }
 
+        /// <summary>The MonitorWorkspaceIntegration of Azure Managed Grafana.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[] GrafanaIntegrationAzureMonitorWorkspaceIntegration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)Property).GrafanaIntegrationAzureMonitorWorkspaceIntegration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)Property).GrafanaIntegrationAzureMonitorWorkspaceIntegration = value ?? null /* arrayOf */; }
+
         /// <summary>Backing field for <see cref="Identity" /> property.</summary>
         private Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IManagedServiceIdentity _identity;
 
@@ -53,6 +57,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         /// </summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Inlined)]
         public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IUserAssignedIdentities IdentityUserAssignedIdentity { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IManagedServiceIdentityInternal)Identity).UserAssignedIdentity = value ?? null /* model class */; }
+
+        /// <summary>Internal Acessors for GrafanaIntegration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaUpdateParametersInternal.GrafanaIntegration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)Property).GrafanaIntegration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)Property).GrafanaIntegration = value; }
 
         /// <summary>Internal Acessors for Identity</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IManagedServiceIdentity Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaUpdateParametersInternal.Identity { get => (this._identity = this._identity ?? new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.ManagedServiceIdentity()); set { {_identity = value;} } }
@@ -114,6 +121,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         SerializedName = @"deterministicOutboundIP",
         PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP) })]
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP? DeterministicOutboundIP { get; set; }
+        /// <summary>The MonitorWorkspaceIntegration of Azure Managed Grafana.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The MonitorWorkspaceIntegration of Azure Managed Grafana.",
+        SerializedName = @"azureMonitorWorkspaceIntegrations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[] GrafanaIntegrationAzureMonitorWorkspaceIntegration { get; set; }
         /// <summary>
         /// The service principal ID of the system assigned identity. This property will only be provided for a system assigned identity.
         /// </summary>
@@ -190,6 +205,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ApiKey? ApiKey { get; set; }
         /// <summary>Whether a Grafana instance uses deterministic outbound IPs.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP? DeterministicOutboundIP { get; set; }
+        /// <summary>
+        /// GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards,
+        /// alerting defaults) for common monitoring scenarios.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations GrafanaIntegration { get; set; }
+        /// <summary>The MonitorWorkspaceIntegration of Azure Managed Grafana.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[] GrafanaIntegrationAzureMonitorWorkspaceIntegration { get; set; }
         /// <summary>The managed identity of the grafana resource.</summary>
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api30.IManagedServiceIdentity Identity { get; set; }
         /// <summary>

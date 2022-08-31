@@ -114,6 +114,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
                 return;
             }
             // actually deserialize
+            if (content.Contains("GrafanaIntegration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).GrafanaIntegration = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations) content.GetValueForProperty("GrafanaIntegration",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).GrafanaIntegration, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.GrafanaIntegrationsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ZoneRedundancy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).ZoneRedundancy = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ZoneRedundancy?) content.GetValueForProperty("ZoneRedundancy",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).ZoneRedundancy, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ZoneRedundancy.CreateFrom);
@@ -129,6 +133,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
             if (content.Contains("PublicNetworkAccess"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).PublicNetworkAccess = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess?) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).PublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess.CreateFrom);
+            }
+            if (content.Contains("GrafanaIntegrationAzureMonitorWorkspaceIntegration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).GrafanaIntegrationAzureMonitorWorkspaceIntegration = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[]) content.GetValueForProperty("GrafanaIntegrationAzureMonitorWorkspaceIntegration",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).GrafanaIntegrationAzureMonitorWorkspaceIntegration, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.AzureMonitorWorkspaceIntegrationTypeConverter.ConvertFrom));
             }
             AfterDeserializeDictionary(content);
         }
@@ -147,6 +155,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
                 return;
             }
             // actually deserialize
+            if (content.Contains("GrafanaIntegration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).GrafanaIntegration = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations) content.GetValueForProperty("GrafanaIntegration",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).GrafanaIntegration, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.GrafanaIntegrationsTypeConverter.ConvertFrom);
+            }
             if (content.Contains("ZoneRedundancy"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).ZoneRedundancy = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ZoneRedundancy?) content.GetValueForProperty("ZoneRedundancy",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).ZoneRedundancy, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.ZoneRedundancy.CreateFrom);
@@ -162,6 +174,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
             if (content.Contains("PublicNetworkAccess"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).PublicNetworkAccess = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess?) content.GetValueForProperty("PublicNetworkAccess",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).PublicNetworkAccess, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess.CreateFrom);
+            }
+            if (content.Contains("GrafanaIntegrationAzureMonitorWorkspaceIntegration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).GrafanaIntegrationAzureMonitorWorkspaceIntegration = (Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[]) content.GetValueForProperty("GrafanaIntegrationAzureMonitorWorkspaceIntegration",((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesUpdateParametersInternal)this).GrafanaIntegrationAzureMonitorWorkspaceIntegration, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration>(__y, Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.AzureMonitorWorkspaceIntegrationTypeConverter.ConvertFrom));
             }
             AfterDeserializePSObject(content);
         }

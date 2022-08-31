@@ -17,6 +17,7 @@ using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
 {
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
     /// <para> If consumerGroup name provided, a single Consumergroup detials will be returned</para>
     /// <para> If consumerGroup name not provided, list of Consumergroups will be returned</para>
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubConsumerGroup"), OutputType(typeof(PSConsumerGroupAttributes))]
     public class GetAzureRmEventHubConsumerGroup : AzureEventHubsCmdletBase
     {
@@ -65,6 +67,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         [Alias(AliasConsumerGroupName)]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("MaxCount", ChangeDescription = "'-MaxCount' is being removed. '-Skip' and '-Top' would be added to support pagination.")]
         [Parameter(Mandatory = false, HelpMessage = "Determine the maximum number of ConsumerGroups  to return.")]
         [ValidateNotNull]
         public int? MaxCount { get; set; }
