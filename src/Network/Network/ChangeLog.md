@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
 
 ## Version 4.20.0
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
