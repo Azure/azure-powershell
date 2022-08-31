@@ -262,11 +262,7 @@ The name of the gallery image definition.
 
 ```yaml
 Type: System.String
-<<<<<<< HEAD
 Parameter Sets: DefaultParameter, SharedGalleryParameterSet, CommunityGalleryParameterSet
-=======
-Parameter Sets: DefaultParameter, SharedGalleryParameterSet
->>>>>>> origin/main
 Aliases: GalleryImageName
 
 Required: True
