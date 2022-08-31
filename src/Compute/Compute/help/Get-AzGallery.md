@@ -192,7 +192,7 @@ Type: System.Management.Automation.SwitchParameter
 Parameter Sets: CommunityGalleryParameterSet
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)

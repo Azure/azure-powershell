@@ -175,7 +175,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 ComputeAutomationAutoMapperProfile.Mapper.Map<CommunityGallery, PSCommunityGallery>(result, psObject);
                 WriteObject(psObject);
             }
-            else if(this.IsParameterBound(c=> c.Community))
+            else
             {
                 //find out if its ok to create client locally
                 ResourceGraphClient rgClient = AzureSession.Instance.ClientFactory.CreateArmClient<ResourceGraphClient>(DefaultContext, AzureEnvironment.Endpoint.ResourceManager);
@@ -260,7 +260,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string Expand { get; set; }
 
         [Parameter(
-           Mandatory = false,
+           Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            ParameterSetName = "CommunityGalleryParameterSet",
            HelpMessage = "List community galleries.")]
