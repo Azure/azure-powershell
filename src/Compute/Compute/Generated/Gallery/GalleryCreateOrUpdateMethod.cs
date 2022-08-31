@@ -49,16 +49,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     gallery.Location = this.Location;
                     CommunityGalleryInfo communityGalleryInfo = new CommunityGalleryInfo();
 
-                    if (this.IsParameterBound(c => c.Permission)){
-                        gallery.SharingProfile = new SharingProfile();
-                        gallery.SharingProfile.Permissions = this.Permission;
-
-                        if (gallery.SharingProfile.Permissions.ToLower() == "community")
-                        {
-                            gallery.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
-                        }
-
-                    }
 
                     if (this.IsParameterBound(c => c.Description))
                     {
@@ -83,6 +73,17 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     if (this.IsParameterBound(c => c.PublicNamePrefix))
                     {
                         communityGalleryInfo.PublicNamePrefix = this.PublicNamePrefix;
+                    }
+
+                    if (this.IsParameterBound(c => c.Permission))
+                    {
+                        gallery.SharingProfile = new SharingProfile();
+                        gallery.SharingProfile.Permissions = this.Permission;
+
+                        if (gallery.SharingProfile.Permissions.ToLower() == "community")
+                        {
+                            gallery.SharingProfile.CommunityGalleryInfo = communityGalleryInfo;
+                        }
                     }
 
 
@@ -240,6 +241,7 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     {
                         gallery.Tags = this.Tag.Cast<DictionaryEntry>().ToDictionary(ht => (string)ht.Key, ht => (string)ht.Value);
                     }
+
                     if (this.IsParameterBound(c => c.Permission))
                     {
                         if (gallery.SharingProfile == null)
