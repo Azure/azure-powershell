@@ -83,7 +83,7 @@ CmdletsToExport = 'Get-AzAksCluster', 'New-AzAksCluster', 'Remove-AzAksCluster',
                'Import-AzAksCredential', 'Start-AzAksDashboard', 
                'Stop-AzAksDashboard', 'Set-AzAksCluster', 'New-AzAksNodePool', 
                'Update-AzAksNodePool', 'Remove-AzAksNodePool', 'Get-AzAksNodePool', 
-               'Install-AzAksKubectl', 'Enable-AzAksAddOn', 'Disable-AzAksAddOn', 
+               'Enable-AzAksAddOn', 'Disable-AzAksAddOn', 
                'Set-AzAksClusterCredential', 'Invoke-AzAksRunCommand'
 
 # Variables to export from this module
