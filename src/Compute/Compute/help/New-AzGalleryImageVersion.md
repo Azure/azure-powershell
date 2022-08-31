@@ -158,7 +158,7 @@ $sourceImageId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGr
 $diskEncryptionSetId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myVMRG/providers/Microsoft.Compute/diskEncryptionSets/cvmDiskEncryptionSet"
 $replicaCount = 1
 $storageAccountType = "Standard_ZRS"
-$region_eastus = @{Name = 'East US';ReplicaCount = 3;StorageAccountType = 'Standard_LRS'; CVMEncryptionType=EncryptedWithCmk; CVMDiskEncryptionSetID=$diskEncryptionSetId}
+$region_eastus = @{Name = 'East US';ReplicaCount = 3;StorageAccountType = 'Standard_LRS'; CVMEncryptionType="EncryptedWithCmk"; CVMDiskEncryptionSetID=$diskEncryptionSetId}
 $region_westus = @{Name = 'West US'}
 $region_ukwest = @{Name = 'UK West';ReplicaCount = 2}
 $region_southcentralus = @{Name = 'South Central US';StorageAccountType = 'Standard_LRS'}

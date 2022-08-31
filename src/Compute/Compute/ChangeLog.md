@@ -27,7 +27,7 @@
 * Improved printed output for `Get-AzComputeResourceSku`
 * Updated `Update-AzVm` to give constructive error messages when empty variables are passed in parameters. [#15081]
 * Added `Zone` and `IntentVMSizeList` optional parameters to the cmdlet `New-AzProximityPlacementGroup`.
-* For `New-AzGalleryImageVersion`, users can now set `CVMEncryptionType` and `CVMDiskEncryptionSetID` for parameter `-Target`.
+* For `New-AzGalleryImageVersion`, `CVMEncryptionType` and `CVMDiskEncryptionSetID` added as keys for parameter `-Target`.
 
 ## Version 4.30.0
 * Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion` 
