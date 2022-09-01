@@ -6306,6 +6306,7 @@ Test confidential vm set-azvmosdisk wiki
 https://dev.azure.com/msazure/AzureWiki/_wiki/wikis/AzureWiki.wiki/232000/How-to-Provision-a-CVM-with-customer-managed-key-(CMK)-using-Azure-CLI
 ADAM trying this for DES wityh CLI test for sanity check if it allworks with cli.
 Try edits with Keyvault module? 
+Working on this one currently! 
 #>
 function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
 {
@@ -6317,7 +6318,7 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $rgname = "adsandwiki33";
+        $rgname = "adsandwiki37";
 
         $vmname = 'v' + 'vmdesnop';
         $vmSize = "Standard_DC2as_v5";         
@@ -6566,7 +6567,7 @@ function Test-DEBUGConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
 }
 
 <#
-WOrking on this one currently!!!
+
 #   "error": {
     #"code": "ResourceNotFound",
     #"message": "The Resource 'Microsoft.KeyVault/vaults/hsmkv2adsandwiki26' under resource group 'adsandwiki26' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix"

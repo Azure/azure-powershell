@@ -335,6 +335,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet)]
         public SwitchParameter Exportable { get; set; }
 
         [Parameter(Mandatory = false,
@@ -344,6 +346,8 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet)]
         public SwitchParameter Immutable { get; set; }
         
         [Parameter(Mandatory = false,
@@ -355,7 +359,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmResourceIdCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = InteractiveCreateParameterSet)]
-        [Parameter(Mandatory = false,
+        /*[Parameter(Mandatory = false,
             ParameterSetName = InputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdCreateParameterSet)]
@@ -364,7 +368,7 @@ namespace Microsoft.Azure.Commands.KeyVault
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectImportParameterSet)]
         [Parameter(Mandatory = false,
-            ParameterSetName = ResourceIdImportParameterSet)]
+            ParameterSetName = ResourceIdImportParameterSet)]*/
         public string ReleasePolicyPath { get; set; }
 
         [Parameter(Mandatory = false,
