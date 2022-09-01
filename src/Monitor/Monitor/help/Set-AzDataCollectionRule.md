@@ -54,7 +54,7 @@ Set-AzDataCollectionRule
 ## DESCRIPTION
 The **Set-AzDataCollectionRule** cmdlet replaces an existing data collection rule.
 
-Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](/azure/azure-monitor/essentials/data-collection-rule-overview).
+Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
 
 To use the -RuleFile parameter, construct a json file containing three properties: dataSources, destinations, dataFlows (see Example #1).
 
