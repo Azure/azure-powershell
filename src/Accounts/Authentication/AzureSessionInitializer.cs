@@ -269,7 +269,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
             autoSave.Settings.TryGetValue("InstallationId", out string installationId);
-            session.ExtendedProperties.Add("InstallationId", autoSave.Settings[installationId]);
+            session.ExtendedProperties.Add("InstallationId", installationId);
             InitializeConfigs(session, profilePath, writeWarning);
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());
