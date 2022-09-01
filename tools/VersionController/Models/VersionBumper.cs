@@ -461,7 +461,11 @@ namespace VersionController.Models
             script += getRequiredModulesScript;
             script += $"$env:PSModulePath+=\";{_fileHelper.OutputResourceManagerDirectory}\";";
             script += "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope Process;";
-            script += "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes" + " -RequiredModules $requiredmodules;";
+            script += "if ($requiredModules.Count -gt 0){" +
+                   "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes" + " -RequiredModules $requiredModules" +
+                "}else {" +
+                   "Update-ModuleManifest -Path " + tempModuleManifestPath + " -ModuleVersion " + _newVersion + " -ReleaseNotes $releaseNotes" +
+                "};";
             script += "$?";
 
             using (PowerShell powershell = PowerShell.Create())
@@ -472,7 +476,9 @@ namespace VersionController.Models
                 if (result.Count > 0 && 
                     (!bool.TryParse(result.Last()?.ToString(), out exitcode)) || !exitcode)
                 {
-                    Console.WriteLine($"Found error in updating module {_fileHelper.ModuleName}: {powershell.Streams.Error.First()?.ToString()}");
+                    var errorMsg = $"Found error in updating module {_fileHelper.ModuleName}: {powershell.Streams.Error.First()?.ToString()}";
+                    _logger.LogError(errorMsg);
+                    throw new Exception(errorMsg);
                 }
             }
 

@@ -1028,9 +1028,9 @@ namespace Microsoft.Azure.Commands.Compute
                            (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
 
                     UserAssignedIdentities = isUserAssignedEnabled
-                                             ? new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>()
+                                             ? new Dictionary<string, UserAssignedIdentitiesValue>()
                                              {
-                                                 { UserAssignedIdentity, new VirtualMachineIdentityUserAssignedIdentitiesValue() }
+                                                 { UserAssignedIdentity, new UserAssignedIdentitiesValue() }
                                              }
                                              : null,
                 }
