@@ -58,7 +58,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.9.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 RequiredAssemblies = 'AutoMapper.dll', 'Microsoft.Azure.Management.Compute.dll', 
-               'Microsoft.WindowsAzure.Storage.dll', 
+               'Microsoft.WindowsAzure.Storage.dll', 'Microsoft.Azure.Management.ResourceGraph.dll',
                'Compute.Autorest\bin\Az.Compute.private.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.dll'
 
