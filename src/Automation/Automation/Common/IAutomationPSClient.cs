@@ -229,6 +229,8 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region HybridrunbookWorkerGroups
 
+        HybridRunbookWorkerGroup GetHybridWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName);
+        
         Management.Automation.Models.HybridRunbookWorkerGroup CreateOrUpdateRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, string credentialName = null);
 
         Management.Automation.Models.HybridRunbookWorkerGroup GetHybridRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName);

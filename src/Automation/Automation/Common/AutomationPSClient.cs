@@ -1435,6 +1435,19 @@ namespace Microsoft.Azure.Commands.Automation.Common
 
         #region HybridRunbookworkerGroups
 
+        public HybridRunbookWorkerGroup GetHybridWorkerGroup(string resourceGroupName, string automationAccountName, string name)
+        {
+            var hybridRunbookWorkerGroupModel = this.TryGetHybridRunbookWorkerModel(resourceGroupName, automationAccountName, name);
+            if (hybridRunbookWorkerGroupModel == null)
+            {
+                throw new ResourceCommonException(typeof(HybridRunbookWorkerGroup),
+                    string.Format(CultureInfo.CurrentCulture, Resources.HybridRunbookWorkerGroupNotFound, name));
+            }
+
+            return new HybridRunbookWorkerGroup(resourceGroupName, automationAccountName, hybridRunbookWorkerGroupModel);
+
+        }
+
         public AutomationManagement.Models.HybridRunbookWorkerGroup CreateOrUpdateRunbookWorkerGroup(string resourceGroupName, string automationAccountName, string hybridRunbookWorkerGroupName, string credentialName = null)
         {
             AutomationManagement.Models.HybridRunbookWorkerGroup response;
@@ -1820,6 +1833,27 @@ namespace Microsoft.Azure.Commands.Automation.Common
                 }
             }
             return runbook;
+        }
+
+        private Azure.Management.Automation.Models.HybridRunbookWorkerGroup TryGetHybridRunbookWorkerModel(string resourceGroupName, string automationAccountName, string HybridRunbookWorkerGroupName)
+        {
+            Azure.Management.Automation.Models.HybridRunbookWorkerGroup hybridRunbookWorkerGroup = null;
+            try
+            {
+                hybridRunbookWorkerGroup = this.automationManagementClient.HybridRunbookWorkerGroup.Get(resourceGroupName, automationAccountName, HybridRunbookWorkerGroupName);
+            }
+            catch (ErrorResponseException e)
+            {
+                if (e.Response.StatusCode == System.Net.HttpStatusCode.NotFound)
+                {
+                    hybridRunbookWorkerGroup = null;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return hybridRunbookWorkerGroup;
         }
 
         private Management.Automation.Models.HybridRunbookWorkerGroup TryGetHybridRunbookWorkerGroupModel(string resourceGroupName, string automationAccountName, string HybridRunbookWorkerGroupName)
