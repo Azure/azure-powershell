@@ -20,6 +20,7 @@
 
 -->
 ## Upcoming Release
+* Added Trusted Launch Generic Breaking Change warning for `New-AzVM`, `New-AzDisk` and `New-AzVMSS` cmdlets.
 * `Get-AzVMRunCommand` now shows all the properties of VMRunCommand in a list format.
 * Added new Parameter `-PublicIpSku` to the `NewAzVM` cmdlet with acceptable values : "Basic" and "Standard". 
 * Added Generic Breaking Change PublicIpSku Warning and Overridden `-Zone` logic when `-PublicIpSku` is explicitly provided.
@@ -27,10 +28,11 @@
 * Improved printed output for `Get-AzComputeResourceSku`
 * Updated `Update-AzVm` to give constructive error messages when empty variables are passed in parameters. [#15081]
 * Added `Zone` and `IntentVMSizeList` optional parameters to the cmdlet `New-AzProximityPlacementGroup`.
+* Added parameters to Gallery cmdlets for Community Galleries
 * For `New-AzGalleryImageVersion`, `CVMEncryptionType` and `CVMDiskEncryptionSetID` added as keys for parameter `-Target`.
 
 ## Version 4.30.0
-* Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion` 
+* Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion`
 
 ## Version 4.29.0
 * Added image alias 'Win2022AzureEditionCore'
