@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzMarketplaceSignTerms
 }
 
 Describe 'Invoke-AzMarketplaceSignTerms' {
-    It 'Sign' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Sign' {
+        { Invoke-AzMarketplaceSignTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"} | Should -Not -Throw
     }
 
-    It 'SignViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SignViaIdentity' {
+        { 
+            $terms = Get-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
+            Invoke-AzMarketplaceSignTerms -InputObject $terms
+        } | Should -Not -Throw
     }
 }

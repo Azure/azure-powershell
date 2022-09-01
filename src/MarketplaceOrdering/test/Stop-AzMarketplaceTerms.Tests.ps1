@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Stop-AzMarketplaceTerms'))
 }
 
 Describe 'Stop-AzMarketplaceTerms' {
-    It 'Cancel' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Cancel' {
+        { Stop-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" } | Should -Not -Throw
     }
 
-    It 'CancelViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CancelViaIdentity' {
+        { 
+            $terms = Get-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
+            Stop-AzMarketplaceTerms -InputObject $terms
+        } | Should -Not -Throw
     }
 }

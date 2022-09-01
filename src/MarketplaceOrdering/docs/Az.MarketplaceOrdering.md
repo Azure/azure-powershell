@@ -17,7 +17,7 @@ Get marketplace terms.
 ### [Invoke-AzMarketplaceSignTerms](Invoke-AzMarketplaceSignTerms.md)
 Sign marketplace terms.
 
-### [New-AzMarketplaceTerms](New-AzMarketplaceTerms.md)
+### [Set-AzMarketplaceTerms](Set-AzMarketplaceTerms.md)
 Accept or reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name).
 
 ### [Stop-AzMarketplaceTerms](Stop-AzMarketplaceTerms.md)

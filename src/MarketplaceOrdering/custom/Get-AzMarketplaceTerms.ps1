@@ -84,13 +84,6 @@ param(
     # The subscription ID that identifies an Azure subscription.
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
     [ValidateNotNull()]
@@ -152,7 +145,6 @@ begin {
         $mapping = @{
             Get = 'Az.MarketplaceOrdering.private\Get-AzMarketplaceTerms_Get';
             Get1 = 'Az.MarketplaceOrdering.private\Get-AzMarketplaceTerms_Get1';
-            GetViaIdentity = 'Az.MarketplaceOrdering.private\Get-AzMarketplaceTerms_GetViaIdentity';
             List = 'Az.MarketplaceOrdering.private\Get-AzMarketplaceTerms_List';
         }
         if (('Get', 'Get1', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {

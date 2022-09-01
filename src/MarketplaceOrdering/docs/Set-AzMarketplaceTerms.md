@@ -1,38 +1,38 @@
 ---
 external help file:
 Module Name: Az.MarketplaceOrdering
-online version: https://docs.microsoft.com/powershell/module/az.marketplaceordering/new-azmarketplaceterms
+online version: https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms
 schema: 2.0.0
 ---
 
-# New-AzMarketplaceTerms
+# Set-AzMarketplaceTerms
 
 ## SYNOPSIS
 Accept or reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name).
 
 ## SYNTAX
 
-### AcceptTerms (Default)
+### TermsAccept (Default)
 ```
-New-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> -Accepted
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AcceptTermsViaIdentity
-```
-New-AzMarketplaceTerms -Accepted -Terms <IAgreementTerms> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RejectTerms
-```
-New-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> -Reject [-SubscriptionId <String>]
+Set-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> -Accept [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### RejectTermsViaIdentity
+### TermsAcceptViaIdentity
 ```
-New-AzMarketplaceTerms -Reject -Terms <IAgreementTerms> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+Set-AzMarketplaceTerms -Accept -Terms <IAgreementTerms> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### TermsReject
+```
+Set-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> -Reject [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### TermsRejectViaIdentity
+```
+Set-AzMarketplaceTerms -Reject -Terms <IAgreementTerms> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -41,36 +41,66 @@ Accept or reject terms for a given publisher id(Publisher), offer id(Product) an
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Accept terms for a given publisher id(Publisher), offer id(Product) and plan id(Name)
 ```powershell
-{{ Add code here }}
+Set-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -OfferType 'virtualmachine' -Accept
 ```
 
 ```output
-{{ Add output here }}
+Name        Product                 Publisher     Accepted Signature                                                                                               PrivacyPolicyLink
+----        -------                 ---------     -------- ---------                                                                                               -----------------
+windows2016 windows-data-science-vm microsoft-ads True     523GN576A2S5OTTOGVFEZWYIWCUIQN2VE3I4WW3H2MER3ERJGDXZESHHQF5ZB2II2VUYXLRK6NE2A7EPF7GH6LWMQ6ECSYSPOD2SHFQ https://www.microsoft.com/EN-US/privacystatement/OnlineS
 ```
 
-{{ Add description here }}
+This command accept terms for a given publisher id(Publisher), offer id(Product) and plan id(Name).
 
-### Example 2: {{ Add title here }}
+### Example 2: Accept terms for a given publisher id(Publisher), offer id(Product) and plan id(Name) by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -OfferType 'virtualmachine' | Set-AzMarketplaceTerms -Accept
 ```
 
 ```output
-{{ Add output here }}
+Name        Product                 Publisher     Accepted Signature                                                                                               PrivacyPolicyLink
+----        -------                 ---------     -------- ---------                                                                                               -----------------
+windows2016 windows-data-science-vm microsoft-ads True     523GN576A2S5OTTOGVFEZWYIWCUIQN2VE3I4WW3H2MER3ERJGDXZESHHQF5ZB2II2VUYXLRK6NE2A7EPF7GH6LWMQ6ECSYSPOD2SHFQ https://www.microsoft.com/EN-US/privacystatement/OnlineS
 ```
 
-{{ Add description here }}
+This command accept terms for a given publisher id(Publisher), offer id(Product) and plan id(Name) by pipeline.
+
+### Example 3: Reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name)
+```powershell
+Set-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -OfferType 'virtualmachine' -Reject
+```
+
+```output
+Name        Product                 Publisher     Accepted Signature                                                                                               PrivacyPolicyLink
+----        -------                 ---------     -------- ---------                                                                                               -----------------
+windows2016 windows-data-science-vm microsoft-ads False     523GN576A2S5OTTOGVFEZWYIWCUIQN2VE3I4WW3H2MER3ERJGDXZESHHQF5ZB2II2VUYXLRK6NE2A7EPF7GH6LWMQ6ECSYSPOD2SHFQ https://www.microsoft.com/EN-US/privacystatement/OnlineS
+```
+
+This command reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name).
+
+### Example 4: Reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name) by pipeline
+```powershell
+Get-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -OfferType 'virtualmachine' | Set-AzMarketplaceTerms -Reject
+```
+
+```output
+Name        Product                 Publisher     Accepted Signature                                                                                               PrivacyPolicyLink
+----        -------                 ---------     -------- ---------                                                                                               -----------------
+windows2016 windows-data-science-vm microsoft-ads False     523GN576A2S5OTTOGVFEZWYIWCUIQN2VE3I4WW3H2MER3ERJGDXZESHHQF5ZB2II2VUYXLRK6NE2A7EPF7GH6LWMQ6ECSYSPOD2SHFQ https://www.microsoft.com/EN-US/privacystatement/OnlineS
+```
+
+This command reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name) by pipeline.
 
 ## PARAMETERS
 
-### -Accepted
+### -Accept
 If any version of the terms have been accepted, otherwise false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AcceptTerms, AcceptTermsViaIdentity
+Parameter Sets: TermsAccept, TermsAcceptViaIdentity
 Aliases:
 
 Required: True
@@ -100,7 +130,7 @@ Plan identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: AcceptTerms, RejectTerms
+Parameter Sets: TermsAccept, TermsReject
 Aliases:
 
 Required: True
@@ -115,7 +145,7 @@ Offer identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: AcceptTerms, RejectTerms
+Parameter Sets: TermsAccept, TermsReject
 Aliases:
 
 Required: True
@@ -130,7 +160,7 @@ Publisher identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: AcceptTerms, RejectTerms
+Parameter Sets: TermsAccept, TermsReject
 Aliases:
 
 Required: True
@@ -145,7 +175,7 @@ Pass this to reject the legal terms.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: RejectTerms, RejectTermsViaIdentity
+Parameter Sets: TermsReject, TermsRejectViaIdentity
 Aliases:
 
 Required: True
@@ -160,10 +190,10 @@ The subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: AcceptTerms, RejectTerms
+Parameter Sets: TermsAccept, TermsReject
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
@@ -177,7 +207,7 @@ To construct, see NOTES section for TERMS properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms
-Parameter Sets: AcceptTermsViaIdentity, RejectTermsViaIdentity
+Parameter Sets: TermsAcceptViaIdentity, TermsRejectViaIdentity
 Aliases:
 
 Required: True

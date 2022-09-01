@@ -14,8 +14,8 @@ Sign marketplace terms.
 
 ### Sign (Default)
 ```
-Invoke-AzMarketplaceSignTerms -OfferId <String> -PlanId <String> -PublisherId <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzMarketplaceSignTerms -Name <String> -Product <String> -Publisher <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SignViaIdentity
@@ -29,27 +29,31 @@ Sign marketplace terms.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Sign marketplace terms
 ```powershell
-{{ Add code here }}
+Invoke-AzMarketplaceSignTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
 ```
 
 ```output
-{{ Add output here }}
+Name        Product Publisher     Accepted Signature PrivacyPolicyLink
+----        ------- ---------     -------- --------- -----------------
+windows2016         microsoft-ads
 ```
 
-{{ Add description here }}
+This command signs marketplace terms.
 
-### Example 2: {{ Add title here }}
+### Example 2: Sign marketplace terms by pipeline
 ```powershell
-{{ Add code here }}
+Get-AzMarketplaceTerms -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" | Invoke-AzMarketplaceSignTerms
 ```
 
 ```output
-{{ Add output here }}
+Name        Product Publisher     Accepted Signature PrivacyPolicyLink
+----        ------- ---------     -------- --------- -----------------
+windows2016         microsoft-ads
 ```
 
-{{ Add description here }}
+This command signs marketplace terms by pipeline.
 
 ## PARAMETERS
 
@@ -84,22 +88,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -OfferId
-Offer identifier string of image being deployed.
-
-```yaml
-Type: System.String
-Parameter Sets: Sign
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PlanId
+### -Name
 Plan identifier string of image being deployed.
 
 ```yaml
@@ -114,7 +103,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PublisherId
+### -Product
+Offer identifier string of image being deployed.
+
+```yaml
+Type: System.String
+Parameter Sets: Sign
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Publisher
 Publisher identifier string of image being deployed.
 
 ```yaml

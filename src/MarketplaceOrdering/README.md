@@ -56,7 +56,7 @@ directive:
 
   - where: 
       subject: ^MarketplaceTerms$
-      variant: ^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^CreateExpanded$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
   - where:
@@ -67,21 +67,21 @@ directive:
 
   # For map old cmdlet
   - where:
-      verb: Get
+      verb: Get|Stop
       subject: MarketplaceTerms
       parameter-name: OfferId
     set:
       parameter-name: Product
 
   - where:
-      verb: Get
+      verb: Get|Stop
       subject: MarketplaceTerms
       parameter-name: PublisherId
     set:
       parameter-name: Publisher
 
   - where:
-      verb: Get
+      verb: Get|Stop
       subject: MarketplaceTerms
       parameter-name: PlanId
     set:
@@ -95,5 +95,65 @@ directive:
   - where:
       verb: New
       subject: MarketplaceTerms
+    set:
+      verb: Set
+
+  - where:
+      verb: Set
+      subject: MarketplaceTerms
+      parameter-name: OfferId
+    set:
+      parameter-name: Product
+
+  - where:
+      verb: Set
+      subject: MarketplaceTerms
+      parameter-name: PublisherId
+    set:
+      parameter-name: Publisher
+
+  - where:
+      verb: Set
+      subject: MarketplaceTerms
+      parameter-name: PlanId
+    set:
+      parameter-name: Name
+
+  - where:
+      verb: Set
+      subject: MarketplaceTerms
     hide: true
+
+  - where:
+      verb: Invoke
+      subject: SignTerms
+      parameter-name: OfferId
+    set:
+      parameter-name: Product
+
+  - where:
+      verb: Invoke
+      subject: SignTerms
+      parameter-name: PublisherId
+    set:
+      parameter-name: Publisher
+
+  - where:
+      verb: Invoke
+      subject: SignTerms
+      parameter-name: PlanId
+    set:
+      parameter-name: Name
+
+  - where:
+      model-name: AgreementTerms
+    set:
+      format-table:
+        properties:
+          - Name
+          - Product
+          - Publisher
+          - Accepted
+          - Signature
+          - PrivacyPolicyLink
 ```

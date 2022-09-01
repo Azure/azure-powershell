@@ -50,57 +50,57 @@ PARAMETER <IAgreementTerms>: Terms properties for provided Publisher/Offer/Plan 
   [SystemDataLastModifiedBy <String>]: The identity that last modified the resource.
   [SystemDataLastModifiedByType <CreatedByType?>]: The type of identity that last modified the resource.
 .Link
-https://docs.microsoft.com/powershell/module/az.marketplaceordering/new-azmarketplaceterms
+https://docs.microsoft.com/powershell/module/az.marketplaceordering/set-azmarketplaceterms
 #>
-function New-AzMarketplaceTerms {
+function Set-AzMarketplaceTerms {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms])]
-[CmdletBinding(DefaultParameterSetName='AcceptTerms', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[CmdletBinding(DefaultParameterSetName='TermsAccept', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(Mandatory,ParameterSetName='AcceptTerms')]
-    [Parameter(Mandatory,ParameterSetName='RejectTerms')]
+    [Parameter(Mandatory,ParameterSetName='TermsAccept')]
+    [Parameter(Mandatory,ParameterSetName='TermsReject')]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
     [System.String]
     # Offer identifier string of image being deployed.
     ${Product},
 
-    [Parameter(Mandatory,ParameterSetName='AcceptTerms')]
-    [Parameter(Mandatory,ParameterSetName='RejectTerms')]
+    [Parameter(Mandatory,ParameterSetName='TermsAccept')]
+    [Parameter(Mandatory,ParameterSetName='TermsReject')]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
     [System.String]
     # Plan identifier string of image being deployed.
     ${Name},
 
-    [Parameter(Mandatory,ParameterSetName='AcceptTerms')]
-    [Parameter(Mandatory,ParameterSetName='RejectTerms')]
+    [Parameter(Mandatory,ParameterSetName='TermsAccept')]
+    [Parameter(Mandatory,ParameterSetName='TermsReject')]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
     [System.String]
     # Publisher identifier string of image being deployed.
     ${Publisher},
 
-    [Parameter(ParameterSetName='AcceptTerms')]
-    [Parameter(ParameterSetName='RejectTerms')]
+    [Parameter(Mandatory,ParameterSetName='TermsAccept')]
+    [Parameter(Mandatory,ParameterSetName='TermsReject')]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String]
     # The subscription ID that identifies an Azure subscription.
     ${SubscriptionId},
 
-    [Parameter(Mandatory,ParameterSetName='AcceptTerms')]
-    [Parameter(Mandatory,ParameterSetName='AcceptTermsViaIdentity')]
+    [Parameter(Mandatory,ParameterSetName='TermsAccept')]
+    [Parameter(Mandatory,ParameterSetName='TermsAcceptViaIdentity')]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # If any version of the terms have been accepted, otherwise false.
-    ${Accepted},
+    ${Accept},
 
-    [Parameter(Mandatory,ParameterSetName='RejectTerms')]
-    [Parameter(Mandatory,ParameterSetName='RejectTermsViaIdentity')]
+    [Parameter(Mandatory,ParameterSetName='TermsReject')]
+    [Parameter(Mandatory,ParameterSetName='TermsRejectViaIdentity')]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Body')]
     [System.Management.Automation.SwitchParameter]
     # Pass this to reject the legal terms.
     ${Reject},
 
-    [Parameter(ParameterSetName='AcceptTermsViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='RejectTermsViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='TermsAcceptViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='TermsRejectViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms]
     # Terms properties for provided Publisher/Offer/Plan tuple
@@ -165,15 +165,36 @@ param(
             $DeployPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
         }
         $DeployPSBoundParameters['SubscriptionId'] = $SubscriptionId
-
-        $terms = Get-AzMarketplaceTerms -Name $Name -OfferType 'virtualmachine' -Product $Product -Publisher $Publisher @DeployPSBoundParameters
-        if ($PSBoundParameters.ContainsKey('Accepted')) {
-            $terms.Accepted = $true
+        switch ($PSCmdlet.ParameterSetName) {
+            "TermsAccept" {
+                $termsObj = Get-AzMarketplaceTerms -Name $Name -OfferType 'virtualmachine' -Product $Product -Publisher $Publisher @DeployPSBoundParameters
+                $termsObj.Accepted = $true
+                $PSBoundParameters.Add('Parameter', $termsObj)
+            }
+            "TermsAcceptViaIdentity" {
+                $Terms.Accepted = $true
+                $null = $PSBoundParameters.Add('Name',$Terms.Plan)
+                $null = $PSBoundParameters.Add('Product',$Terms.Product)
+                $null = $PSBoundParameters.Add('Publisher',$Terms.Publisher)
+                $PSBoundParameters.Add('Parameter', $Terms)
+            }
+            "TermsReject" {
+                $termsObj = Get-AzMarketplaceTerms -Name $Name -OfferType 'virtualmachine' -Product $Product -Publisher $Publisher @DeployPSBoundParameters
+                $termsObj.Accepted = $false
+                $PSBoundParameters.Add('Parameter', $termsObj)
+            }
+            "TermsRejectViaIdentity" {
+                $Terms.Accepted = $false
+                $null = $PSBoundParameters.Add('Name',$Terms.Plan)
+                $null = $PSBoundParameters.Add('Product',$Terms.Product)
+                $null = $PSBoundParameters.Add('Publisher',$Terms.Publisher)
+                $PSBoundParameters.Add('Parameter', $Terms)
+            }
         }
-        if ($PSBoundParameters.ContainsKey('Accepted')) {
-            $terms.Accepted = $true
-        }
-        Az.SpringCloud.internal\New-AzMarketplaceTerms @PSBoundParameters
+        $null = $PSBoundParameters.Remove('Accept')
+        $null = $PSBoundParameters.Remove('Reject')
+        $null = $PSBoundParameters.Remove('Terms')
+        Az.MarketplaceOrdering.internal\Set-AzMarketplaceTerms @PSBoundParameters
 
     }
 }

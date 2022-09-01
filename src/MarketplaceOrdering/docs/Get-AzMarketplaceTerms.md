@@ -29,38 +29,36 @@ Get-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> [-Su
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### GetViaIdentity
-```
-Get-AzMarketplaceTerms -InputObject <IMarketplaceOrderingIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
 ## DESCRIPTION
 Get marketplace terms.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get marketplace terms
 ```powershell
-{{ Add code here }}
+Get-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016"
 ```
 
 ```output
-{{ Add output here }}
+Name        Product Publisher     Accepted Signature PrivacyPolicyLink
+----        ------- ---------     -------- --------- -----------------
+windows2016         microsoft-ads
 ```
 
-{{ Add description here }}
+This command gets marketplace terms.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get marketplace terms with offter type
 ```powershell
-{{ Add code here }}
+Get-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -OfferType 'virtualmachine'
 ```
 
 ```output
-{{ Add output here }}
+Name        Product                 Publisher     Accepted Signature                                                                                               PrivacyPolicyLink
+----        -------                 ---------     -------- ---------                                                                                               -----------------
+windows2016 windows-data-science-vm microsoft-ads True     523GN576A2S5OTTOGVFEZWYIWCUIQN2VE3I4WW3H2MER3ERJGDXZESHHQF5ZB2II2VUYXLRK6NE2A7EPF7GH6LWMQ6ECSYSPOD2SHFQ https://www.microsoft.com/EN-US/privacystatement/OnlineS
 ```
 
-{{ Add description here }}
+This command gets marketplace terms with offter type.
 
 ## PARAMETERS
 
@@ -76,22 +74,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.IMarketplaceOrderingIdentity
-Parameter Sets: GetViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -160,7 +142,7 @@ The subscription ID that identifies an Azure subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, Get1, List
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -184,19 +166,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IMarketplaceOrderingIdentity>`: Identity Parameter
-  - `[Id <String>]`: Resource identity path
-  - `[OfferId <String>]`: Offer identifier string of image being deployed.
-  - `[OfferType <OfferType?>]`: Offer Type, currently only virtualmachine type is supported.
-  - `[PlanId <String>]`: Plan identifier string of image being deployed.
-  - `[PublisherId <String>]`: Publisher identifier string of image being deployed.
-  - `[SubscriptionId <String>]`: The subscription ID that identifies an Azure subscription.
 
 ## RELATED LINKS
 
