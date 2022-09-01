@@ -2,8 +2,6 @@
 #### Az.Accounts
 * Implemented 'SupportsShouldProcess' for 'Invoke-AzRestMethod'
 * Supported giving suggestions if an Azure PowerShell command cannot be found, for example when there is a typo in command name.
-* Updated survey message and settings
-* Fixed null reference in AzureRestOperation
 
 #### Az.Aks
 * Removed the warning messages for MSGraph migration [#18856]
