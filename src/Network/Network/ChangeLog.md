@@ -22,6 +22,7 @@
 
 * Added `EnableUDPLogOptimization` parameter to `AzureFirewall`
     - `New-AzFirewall`
+* Fixed a bug that does not return HubIPAddresses' PrivateIPAddress during a Get-AzFirewall command 
 * Replaced `IdentifyTopFatFlow` parameter with 'EnableFatFlowLogging' parameter  to `AzureFirewall`
     - `New-AzFirewall`
 * Fixed a bug not able to add MSSQL application rules to an AZURE FIREWALL POLICY
@@ -30,7 +31,6 @@
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
 
 ## Version 4.20.0
-* Fixed a bug that does not return HubIPAddresses' PrivateIPAddress during a Get-AzFirewall command 
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
 * Fixed required parameter `PrivateLinkResourceType` missing issue for the following cmdlets [#18655]
     - `Get-AzPrivateEndpointConnection`
