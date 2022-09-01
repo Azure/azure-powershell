@@ -26,6 +26,8 @@ using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Properties;
 using Microsoft.Azure.Commands.Common.Authentication.Config;
 using Newtonsoft.Json;
+using Microsoft.Azure.Commands.Common.Authentication.Models;
+
 
 using TraceLevel = System.Diagnostics.TraceLevel;
 using System.Collections.Generic;
@@ -39,6 +41,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
     public static class AzureSessionInitializer
     {
         private const string ContextAutosaveSettingFileName = ContextAutosaveSettings.AutoSaveSettingsFile;
+
         private const string DataCollectionFileName = AzurePSDataCollectionProfile.DefaultFileName;
 
         /// <summary>
@@ -173,7 +176,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     result.ContextDirectory = migrated ? profileDirectory : settings.ContextDirectory ?? result.ContextDirectory;
                     result.Mode = settings.Mode;
                     result.ContextFile = settings.ContextFile ?? result.ContextFile;
-                    if (migrated)
+                    result.Settings = settings.Settings;
+                    bool updateSettings = false;
+                    if (!settings.Settings.ContainsKey("InstallationId"))
+                    {
+                        result.Settings.Add("InstallationId", GetAzureCLIInstallationId(store) ?? Guid.NewGuid().ToString());
+                        updateSettings = true;
+                    }
+                    if (migrated || updateSettings)
                     {
                         string autoSavePath = Path.Combine(profileDirectory, settingsFile);
                         store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
@@ -188,6 +198,7 @@ namespace Microsoft.Azure.Commands.Common.Authentication
                     }
                     string autoSavePath = Path.Combine(profileDirectory, settingsFile);
                     result.Mode = ContextSaveMode.CurrentUser;
+                    result.Settings.Add("InstallationId", GetAzureCLIInstallationId(store) ?? Guid.NewGuid().ToString());
                     store.WriteFile(autoSavePath, JsonConvert.SerializeObject(result));
                 }
             }
@@ -202,6 +213,24 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             return result;
         }
 
+        private static String GetAzureCLIInstallationId(IDataStore store){
+            if (store.FileExists(AzCLIProfileInfo.AzCLIProfileFile))
+            {
+                try
+                {
+                    AzCLIProfileInfo azInfo = JsonConvert.DeserializeObject<AzCLIProfileInfo>(store.ReadFileAsText(AzCLIProfileInfo.AzCLIProfileFile));
+                    if (!string.IsNullOrEmpty(azInfo?.installationId))
+                    {
+                        return azInfo.installationId;
+                    }
+                }
+                catch (Exception)
+                {
+                    TracingAdapter.Information($"[AzureSessionInitializer]: Cannot read Azure CLI profile from {AzCLIProfileInfo.AzCLIProfileFile}");
+                }
+            }
+            return null;
+        }
         static void InitializeDataCollection(IAzureSession session)
         {
             session.RegisterComponent(DataCollectionController.RegistryKey, () => DataCollectionController.Create(session));
@@ -239,7 +268,8 @@ namespace Microsoft.Azure.Commands.Common.Authentication
             session.ARMProfileFile = autoSave.ContextFile;
             session.TokenCacheDirectory = autoSave.CacheDirectory;
             session.TokenCacheFile = autoSave.CacheFile;
-
+            autoSave.Settings.TryGetValue("InstallationId", out string installationId);
+            session.ExtendedProperties.Add("InstallationId", installationId);
             InitializeConfigs(session, profilePath, writeWarning);
             InitializeDataCollection(session);
             session.RegisterComponent(HttpClientOperationsFactory.Name, () => HttpClientOperationsFactory.Create());

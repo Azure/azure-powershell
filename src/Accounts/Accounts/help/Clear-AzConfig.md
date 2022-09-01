@@ -22,7 +22,7 @@ Clear-AzConfig [-Force] [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
 ```
 Clear-AzConfig [-PassThru] [-AppliesTo <String>] [-Scope <ConfigScope>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-DefaultSubscriptionForLogin]
- [-DisplayBreakingChangeWarning] [-EnableDataCollection] [<CommonParameters>]
+ [-DisplayBreakingChangeWarning] [-DisplaySurveyMessage] [-EnableDataCollection] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -101,6 +101,21 @@ Accept wildcard characters: False
 
 ### -DisplayBreakingChangeWarning
 Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: ClearByKey
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplaySurveyMessage
+When enabled, you are prompted infrequently to participate in user experience surveys for Azure PowerShell.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
