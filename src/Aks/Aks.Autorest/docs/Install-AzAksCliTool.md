@@ -1,32 +1,41 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.Aks.dll-Help.xml
+external help file:
 Module Name: Az.Aks
-online version: https://docs.microsoft.com/powershell/module/az.aks/install-azakskubectl
+online version: https://docs.microsoft.com/powershell/module/az.aks/install-azaksclitool
 schema: 2.0.0
 ---
 
-# Install-AzAksKubectl
+# Install-AzAksCliTool
 
 ## SYNOPSIS
-Download and install kubectl, the Kubernetes command-line tool.
+Download and install kubectl and kubelogin.
 
 ## SYNTAX
 
 ```
-Install-AzAksKubectl [-Destination <String>] [-Version <String>] [-DownloadFromMirror] [-PassThru] [-AsJob]
- [-Force] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [-SubscriptionId <String>]
- [<CommonParameters>]
+Install-AzAksCliTool [-AsJob] [-Destination <String>] [-DownloadFromMirror] [-Force]
+ [-KubeloginDownloadFromMirror] [-KubeloginInstallDestination <String>] [-KubeloginInstallVersion <String>]
+ [-PassThru] [-Version <String>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Download and install kubectl, the Kubernetes command-line tool.
+Download and install kubectl and kubelogin.
 
 ## EXAMPLES
 
-### Download and install latest version of kubectl
+### Example 1: Install the lateset version of kubectl and kubelogin
 ```powershell
-Install-AzAksKubectl -Version latest
+Install-AzAksCliTool
 ```
+
+
+
+### Example 2: Install the special version of kubectl and kubelogin into custom folder
+```powershell
+Install-AzAksCliTool -KubectlInstallVersion "v1.25.0" -KubectlInstallDestination "~/bin/" -KubeloginInstallVersion "v0.0.20" -KubeloginInstallDestination "~/bin"
+```
+
+
 
 ## PARAMETERS
 
@@ -45,21 +54,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Destination
 Path at which to install kubectl.
 Default to install into ~/.azure-kubectl/
@@ -67,7 +61,7 @@ Default to install into ~/.azure-kubectl/
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: KubectlInstallDestination
 
 Required: False
 Position: Named
@@ -82,7 +76,7 @@ Download from mirror site : https://mirror.azure.cn/kubernetes/kubectl/
 ```yaml
 Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases:
+Aliases: KubectlDownloadFromMirror
 
 Required: False
 Position: Named
@@ -92,10 +86,58 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Overwrite existing kubectl without prompt
+Overwrite existing kubectl and kubelogin without prompt
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KubeloginDownloadFromMirror
+Download from mirror site : https://mirror.azure.cn/kubernetes/kubelogin
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KubeloginInstallDestination
+Path at which to install kubectl.
+Default to install into ~/.azure-kubelogin/
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KubeloginInstallVersion
+Version of kubectl to install, e.g.
+'v0.0.20'.
+Default value: Latest
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -107,7 +149,7 @@ Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Wait for .NET debugger to attach
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -121,32 +163,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-The ID of the subscription.
-By default, cmdlets are executed in the subscription that is set in the current context. If the user specifies another subscription, the current cmdlet is executed in the subscription specified by the user.
-Overriding subscriptions only take effect during the lifecycle of the current cmdlet. It does not change the subscription in the context, and does not affect subsequent cmdlets.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Version
 Version of kubectl to install, e.g.
 'v1.17.2'.
-Default value: Latest
+Default value: Latest.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: KubectlInstallVersion
 
 Required: False
 Position: Named
@@ -191,12 +216,15 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
 ### System.Boolean
 
 ## NOTES
 
+ALIASES
+
+Install-AzAksKubectl
+
 ## RELATED LINKS
+
