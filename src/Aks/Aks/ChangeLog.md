@@ -24,6 +24,7 @@
 * Added support for `Auto Upgrade` in `New-AzAksCluster` and `Set-AzAksCluster`.
 * Added support for `Http Proxy` in `New-AzAksCluster` and `Set-AzAksCluster`.
 * Added parameter `DisableLocalAccount` and `DiskEncryptionSetID` in `New-AzAksCluster` and `Set-AzAksCluster`.
+* Added logic for installing `kubelogin` in `Install-AzAksKubectl`.
 
 ## Version 4.2.1
 * Removed the warning messages for MSGraph migration [#18856]
