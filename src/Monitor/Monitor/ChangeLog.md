@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 3.1.0
 * Added breaking change warning messages for 
     - `ActivityLogAlert`
     - `DiagnosticSetting`

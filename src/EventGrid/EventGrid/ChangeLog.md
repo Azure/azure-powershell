@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.4.0
 * Updated to use the 2021-12-01 API version.
 * Added new features:
     - System topic

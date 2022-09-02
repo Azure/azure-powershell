@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.3.0
 * Added support of `FQDN` in `Import-AzAksCredential` [#17711]
 * Added hint when `Import-AzAksCredential` meets bad formatted kubernetes configuration file [#16741]
 * Added parameter `-NodeResourceGroup` for `New-AzAksCluster`. [#19014]

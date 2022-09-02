@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 0.3.0
 *  Upgraded API verision from 2020-02-14 to 2022-02-14.
     - Supported parameter `replicationRegions` in JSON file for `New-AzImageBuilderTemplate`. [#18924]
     - Added parameter `VMProfileUserAssignedIdentity` in `New-AzImageBuilderTemplate`. [#17273]

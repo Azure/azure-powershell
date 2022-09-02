@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.10.0
 * Supported returning all subscriptions with specified name while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19295]
 * Fixed null reference exception when cmdlet uses AzureRestOperation [#18104]
 * Updated survey message and settings

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.6.0
 * Added support for Archive smart tiering for AzureVM and MSSQL workloads.
 
 ## Version 5.5.0
