@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.7.0
 * Fixed parameter validation logic of `-UseDefaultCVMPolicy`
 * Added parameter `ContentType` in `Import-AzKeyVaultCertificate` to support importing pem via certificate string
 * Allowed `DnsName` in `New-AzKeyVaultCertificatePolicy` to accept an empty list [#18954]

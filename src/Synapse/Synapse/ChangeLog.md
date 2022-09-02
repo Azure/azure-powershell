@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 1.6.0
 * Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool dynamic executor allocation by `-EnableDynamicExecutorAllocation`
 
 ## Version 1.5.0
