@@ -337,6 +337,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmResourceIdCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = InteractiveCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdCreateParameterSet)]
         public SwitchParameter Exportable { get; set; }
 
         [Parameter(Mandatory = false,
@@ -348,6 +352,10 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmResourceIdCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = InteractiveCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdCreateParameterSet)]
         public SwitchParameter Immutable { get; set; }
         
         [Parameter(Mandatory = false,
@@ -359,11 +367,11 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmResourceIdCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = InteractiveCreateParameterSet)]
-        /*[Parameter(Mandatory = false,
+        [Parameter(Mandatory = false,
             ParameterSetName = InputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdCreateParameterSet)]
-        [Parameter(Mandatory = false,
+        /*[Parameter(Mandatory = false,
             ParameterSetName = InteractiveImportParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = InputObjectImportParameterSet)]
@@ -378,6 +386,12 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = HsmInputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = HsmResourceIdCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InteractiveCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = InputObjectCreateParameterSet)]
+        [Parameter(Mandatory = false,
+            ParameterSetName = ResourceIdCreateParameterSet)]
         public SwitchParameter UseDefaultCVMPolicy { get; set; }
         #endregion
 
