@@ -19,6 +19,11 @@
 -->
 
 ## Upcoming Release
+* Supported returning all subscriptions with specified name while using `Get-AzSubscription` with paramater `SubscriptionName`. [#19295]
+
+## Version 2.9.1
+* Implemented `SupportsShouldProcess` for `Invoke-AzRestMethod`
+* Supported giving suggestions if an Azure PowerShell command cannot be found, for example when there is a typo in command name.
 
 ## Version 2.9.0
 * Supported exporting and importing configurations by `Export-AzConfig` and `Import-AzConfig`.

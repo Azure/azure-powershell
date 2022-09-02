@@ -89,7 +89,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
 
             ProtectionPolicyResource oldPolicy = null;
             ProtectionPolicyResource newPolicy = null;
-            if (parameterSetName.Contains("Modify"))
+            if (parameterSetName.Contains("Modify") && item.PolicyId != null && item.PolicyId != "")
             {                
                 Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.PolicyId);
                 string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, item.PolicyId);

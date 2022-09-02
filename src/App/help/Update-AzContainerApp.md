@@ -47,7 +47,12 @@ Patches a Container App using JSON Merge Patch
 
 ### Example 1: Update a Container App.
 ```powershell
-Update-AzContainerApp -Name azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
+$secretObject = Get-AzContainerAppSecret -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp
+$newSecretObject = @(0..($secretObject.Count-1))
+[array]::copy($secretObject,$newSecretObject,$secretObject.Count)
+$secretObject += New-AzContainerAppSecretObject -Name "yourkey" -Value "yourvalue"
+
+Update-AzContainerApp -ContainerAppName azps-containerapp -ResourceGroupName azpstest_gp -Location canadacentral -ConfigurationSecret $secretObject -DaprEnabled -DaprAppProtocol 'http' -DaprAppId "container-app-1" -DaprAppPort 8080
 ```
 
 ```output
@@ -616,7 +621,7 @@ INGRESSTRAFFIC <ITrafficWeight[]>: Traffic weights for app's revisions
   - `[RevisionName <String>]`: Name of a revision
   - `[Weight <Int32?>]`: Traffic weight assigned to a revision
 
-INPUTOBJECT <IAppIdentity>: Identity Parameter
+INPUTOBJECT `<IAppIdentity>`: Identity Parameter
   - `[AuthConfigName <String>]`: Name of the Container App AuthConfig.
   - `[CertificateName <String>]`: Name of the Certificate.
   - `[ComponentName <String>]`: Name of the Dapr Component.

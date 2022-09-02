@@ -17,10 +17,10 @@ Sets the storage profile properties for the VMSS.
 Set-AzVmssStorageProfile [-VirtualMachineScaleSet] <PSVirtualMachineScaleSet>
  [[-ImageReferencePublisher] <String>] [[-ImageReferenceOffer] <String>] [[-ImageReferenceSku] <String>]
  [[-ImageReferenceVersion] <String>] [[-OsDiskName] <String>] [[-OsDiskCaching] <CachingTypes>]
- [[-OsDiskCreateOption] <String>] [[-OsDiskOsType] <OperatingSystemTypes>] [[-Image] <String>]
- [[-VhdContainer] <String[]>] [-ImageReferenceId <String>] [-OsDiskWriteAccelerator]
+ [[-OsDiskCreateOption] <String>] [-OsDiskDeleteOption <String>] [[-OsDiskOsType] <OperatingSystemTypes>]
+ [[-Image] <String>] [[-VhdContainer] <String[]>] [-ImageReferenceId <String>] [-OsDiskWriteAccelerator]
  [-DiffDiskSetting <String>] [-DiffDiskPlacement <String>] [-ManagedDisk <String>]
- [-DiskEncryptionSetId <String>] [-DataDisk <VirtualMachineScaleSetDataDisk[]>] [-ImageReferenceId <String>]
+ [-DiskEncryptionSetId <String>] [-DataDisk <VirtualMachineScaleSetDataDisk[]>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -81,7 +81,7 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -266,6 +266,25 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -OsDiskDeleteOption
+Specifies whether OS disk should be deleted or detached upon VMSS Flex deletion (This feature is available for VMSS with Flexible OrchestrationMode only).
+
+Accepted Values 
+Delete - If this value is used, the OS disk is deleted when the VMSS Flex VM is deleted.
+Detach - If this value is used, the OS disk is retained after VMSS Flex VM is deleted.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -OsDiskName
 Specifies the name of the operating system disk.
 
@@ -303,21 +322,6 @@ Specifies whether WriteAccelerator should be enabled or disabled on the OS disk.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ImageReferenceId
-Specified the shared gallery image unique id for vmss deployment. This can be fetched from shared gallery image GET call.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 

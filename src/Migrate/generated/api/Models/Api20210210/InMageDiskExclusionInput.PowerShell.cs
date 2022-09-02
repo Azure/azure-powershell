@@ -33,7 +33,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -45,7 +46,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="InMageDiskExclusionInput" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="InMageDiskExclusionInput" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInput FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,8 +103,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).VolumeOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions[]) content.GetValueForProperty("VolumeOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).VolumeOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageVolumeExclusionOptionsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).DiskSignatureOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions[]) content.GetValueForProperty("DiskSignatureOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).DiskSignatureOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageDiskSignatureExclusionOptionsTypeConverter.ConvertFrom));
+            if (content.Contains("VolumeOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).VolumeOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions[]) content.GetValueForProperty("VolumeOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).VolumeOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageVolumeExclusionOptionsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DiskSignatureOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).DiskSignatureOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions[]) content.GetValueForProperty("DiskSignatureOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).DiskSignatureOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageDiskSignatureExclusionOptionsTypeConverter.ConvertFrom));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -120,8 +128,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).VolumeOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions[]) content.GetValueForProperty("VolumeOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).VolumeOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageVolumeExclusionOptionsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).DiskSignatureOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions[]) content.GetValueForProperty("DiskSignatureOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).DiskSignatureOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageDiskSignatureExclusionOptionsTypeConverter.ConvertFrom));
+            if (content.Contains("VolumeOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).VolumeOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions[]) content.GetValueForProperty("VolumeOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).VolumeOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageVolumeExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageVolumeExclusionOptionsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("DiskSignatureOption"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).DiskSignatureOption = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions[]) content.GetValueForProperty("DiskSignatureOption",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskExclusionInputInternal)this).DiskSignatureOption, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageDiskSignatureExclusionOptions>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.InMageDiskSignatureExclusionOptionsTypeConverter.ConvertFrom));
+            }
             AfterDeserializePSObject(content);
         }
 

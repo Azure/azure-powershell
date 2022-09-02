@@ -15,12 +15,14 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
 {
     /// <summary>
     /// 'New-AzEventHubConsumerGroup' Cmdlet creates a new Cosumer Group for Specified Eventhub
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(PSConsumerGroupAttributes))]
     public class NewEventHubConsumerGroup : AzureEventHubsCmdletBase
     {
@@ -59,7 +61,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
             {
                 try
                 {
-                    WriteObject(Client.CreateOrUpdateConsumerGroup(ResourceGroupName, Namespace, EventHub, Name, consumerGroup));
+                    WriteObject(UtilityClient.CreateOrUpdateConsumerGroup(ResourceGroupName, Namespace, EventHub, Name, consumerGroup));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

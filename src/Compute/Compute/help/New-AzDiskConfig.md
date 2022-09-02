@@ -24,8 +24,8 @@ New-AzDiskConfig [[-SkuName] <String>] [-Tier <String>] [-LogicalSectorSize <Int
  [-DiskEncryptionKey <KeyVaultAndSecretReference>] [-KeyEncryptionKey <KeyVaultAndKeyReference>]
  [-DiskEncryptionSetId <String>] [-EncryptionType <String>] [-DiskAccessId <String>]
  [-NetworkAccessPolicy <String>] [-BurstingEnabled <Boolean>] [-PublicNetworkAccess <String>]
- [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-AcceleratedNetwork <Boolean>] [-DataAccessAuthMode <String>] [-Architecture <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +52,8 @@ takes the disk object and creates a disk with name 'Disk01' in resource group 'R
 
 ### Example 2
 <!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 $diskconfig = New-AzDiskConfig -Location 'Central US' -DiskSizeGB 1023 -SkuName Standard_LRS -OsType Windows -CreateOption Upload -DiskIOPSReadWrite 500 -DiskMBpsReadWrite 8;
 New-AzDisk -ResourceGroupName 'ResourceGroup01' -DiskName 'Disk01' -Disk $diskconfig;

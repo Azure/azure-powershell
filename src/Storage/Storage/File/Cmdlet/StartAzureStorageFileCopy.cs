@@ -28,6 +28,7 @@ using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    [GenericBreakingChange("The returned file properties will be moved from CloudFile to FileProperties in a future release.")]
     [Cmdlet("Start", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopy", SupportsShouldProcess = true), OutputType(typeof(AzureStorageFile))]
     public class StartAzureStorageFileCopyCommand : StorageFileDataManagementCmdletBase
     {

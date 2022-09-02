@@ -16,12 +16,14 @@ using Microsoft.Azure.Management.ServiceBus.Models;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands
 {
     /// <summary>
     /// 'New-AzServiceBusKey' Cmdlet creates a new specified (PrimaryKey / SecondaryKey) key for the given ServiceBus Namespace/Queue/Topic Authorization Rule
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusKey", DefaultParameterSetName = NamespaceAuthoRuleParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSListKeysAttributes))]
     public class NewAzureServiceBusKey : AzureServiceBusCmdletBase
     {

@@ -15,6 +15,7 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
@@ -45,6 +46,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = PrivateEndpointResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Private Endpoint Connection ARM ID.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -74,7 +76,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
             {
                 try
                 {
-                    Client.DeletePrivateEndpointConnection(ResourceGroupName, NamespaceName, Name);
+                    UtilityClient.DeletePrivateEndpointConnection(ResourceGroupName, NamespaceName, Name);
                     if (PassThru)
                     {
                         WriteObject(true);

@@ -21,15 +21,15 @@ function WaitforStatetoBeSucceded {
 	
     $createdMigrationConfig = Get-AzServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
 
-    while ($createdMigrationConfig.MigrationState -ne "Active" -and $createdMigrationConfig.ProvisioningState -ne "Succeeded") {
-        Wait-Seconds 10
+    while ($createdMigrationConfig.PendingReplicationOperationsCount -ne $null -and $createdMigrationConfig.PendingReplicationOperationsCount -gt 0) {
+        Wait-Seconds 15
         $createdMigrationConfig = Get-AzServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
     }
 
-    while ($createdMigrationConfig.PendingReplicationOperationsCount -ne $null -and $createdMigrationConfig.PendingReplicationOperationsCount -gt 0) {
-        Wait-Seconds 10
+    while ($createdMigrationConfig.MigrationState -ne "Active" -and $createdMigrationConfig.ProvisioningState -ne "Succeeded") {
+        Wait-Seconds 15
         $createdMigrationConfig = Get-AzServiceBusMigration -ResourceGroup $resourceGroupName -Name $namespaceName
-    }
+    }    
 
     return $createdMigrationConfig
 }

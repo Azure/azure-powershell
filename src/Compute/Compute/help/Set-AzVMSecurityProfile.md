@@ -13,19 +13,19 @@ Sets the SecurityType enum for Virtual Machines.
 ## SYNTAX
 
 ```
-Set-AzVMSecurityProfile [-VM] <PSVirtualMachine> [-SecurityType <SecurityTypes>]
+Set-AzVMSecurityProfile [-VM] <PSVirtualMachine> [-SecurityType <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Set-AzVmSecurityProfile** cmdlet sets the Security Type of the VM
+The **Set-AzVMSecurityProfile** cmdlet sets the Security Type of the VM
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
 $VM = Get-AzVM -ResourceGroupName "ResourceGroup11" -VMName "ContosoVM07"
-$VM = Set-AzVmSecurityProfile -VM $VM -SecurityType "TrustedLaunch"
+$VM = Set-AzVMSecurityProfile -VM $VM -SecurityType "TrustedLaunch"
 ```
 
 The first command gets the virtual machine named ContosoVM07 by using **Get-AzVm**.
@@ -38,7 +38,7 @@ The second command sets the SecurityType enum to "TrustedLaunch". Trusted launch
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: IAzureContextContainer
+Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -53,10 +53,9 @@ Accept wildcard characters: False
 Enum that represents the security type (ex: Trusted Launch)
 
 ```yaml
-Type: SecurityTypes
+Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: TrustedLaunch
 
 Required: False
 Position: Named
@@ -69,7 +68,7 @@ Accept wildcard characters: False
 The virtual machine profile.
 
 ```yaml
-Type: PSVirtualMachine
+Type: Microsoft.Azure.Commands.Compute.Models.PSVirtualMachine
 Parameter Sets: (All)
 Aliases: VMProfile
 

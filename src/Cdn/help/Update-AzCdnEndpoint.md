@@ -513,7 +513,7 @@ GEOFILTER <IGeoFilter[]>: List of rules defining the user's geo access within a 
   - `CountryCode <String[]>`: Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US.
   - `RelativePath <String>`: Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+INPUTOBJECT `<ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path

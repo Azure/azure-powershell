@@ -31,9 +31,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsCreateOrUpdate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsCreateOrUpdate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -91,9 +91,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -264,6 +264,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -274,13 +275,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.DnsForwardingRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.DnsForwardingRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -311,7 +312,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -346,9 +347,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsDelete(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsDelete(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -399,9 +400,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -459,7 +460,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -566,6 +567,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -588,7 +590,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -642,9 +644,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsGet(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsGet(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -683,9 +685,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -736,7 +738,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -754,13 +756,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.DnsForwardingRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.DnsForwardingRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -810,9 +812,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsList(string subscriptionId, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsList(string subscriptionId, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -852,9 +854,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsListByResourceGroup(string subscriptionId, string resourceGroupName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsListByResourceGroup(string subscriptionId, string resourceGroupName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -895,9 +897,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsListByResourceGroupViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsListByResourceGroupViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -950,7 +952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -968,13 +970,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.DnsForwardingRulesetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.DnsForwardingRulesetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1025,9 +1027,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsListByVirtualNetwork(string subscriptionId, string resourceGroupName, string virtualNetworkName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsListByVirtualNetwork(string subscriptionId, string resourceGroupName, string virtualNetworkName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1070,9 +1072,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsListByVirtualNetworkViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsListByVirtualNetworkViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1128,7 +1130,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsListByVirtualNetwork_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsListByVirtualNetwork_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1146,13 +1148,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.VirtualNetworkDnsForwardingRulesetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.VirtualNetworkDnsForwardingRulesetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1203,9 +1205,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1253,7 +1255,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRulesetListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1271,13 +1273,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.DnsForwardingRulesetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.DnsForwardingRulesetListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1326,9 +1328,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsUpdate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRulesetPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsUpdate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRulesetPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1380,9 +1382,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRulesetPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsForwardingRulesetsUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRulesetPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1443,7 +1445,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRuleset>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1549,6 +1551,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -1559,13 +1562,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.DnsForwardingRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.DnsForwardingRuleset.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1594,7 +1597,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsForwardingRulesetPatch body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DnsForwardingRulesetsUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsForwardingRulesetPatch body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1627,9 +1630,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversCreateOrUpdate(string subscriptionId, string resourceGroupName, string dnsResolverName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversCreateOrUpdate(string subscriptionId, string resourceGroupName, string dnsResolverName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1687,9 +1690,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1754,7 +1757,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsResolversCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsResolversCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -1860,6 +1863,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -1870,13 +1874,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.DnsResolver.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.DnsResolver.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -1907,7 +1911,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsResolversCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsResolverName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DnsResolversCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsResolverName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -1939,9 +1943,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversDelete(string subscriptionId, string resourceGroupName, string dnsResolverName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversDelete(string subscriptionId, string resourceGroupName, string dnsResolverName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -1989,9 +1993,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2049,7 +2053,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsResolversDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsResolversDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2156,6 +2160,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -2178,7 +2183,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2232,9 +2237,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversGet(string subscriptionId, string resourceGroupName, string dnsResolverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversGet(string subscriptionId, string resourceGroupName, string dnsResolverName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2273,9 +2278,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2326,7 +2331,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsResolversGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsResolversGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2344,13 +2349,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.DnsResolver.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.DnsResolver.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2400,9 +2405,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversList(string subscriptionId, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolverListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversList(string subscriptionId, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolverListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2442,9 +2447,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversListByResourceGroup(string subscriptionId, string resourceGroupName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolverListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversListByResourceGroup(string subscriptionId, string resourceGroupName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolverListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2485,9 +2490,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversListByResourceGroupViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolverListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversListByResourceGroupViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolverListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2538,7 +2543,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsResolversListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolverListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsResolversListByResourceGroup_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolverListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2556,13 +2561,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.DnsResolverListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.DnsResolverListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2613,9 +2618,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversListByVirtualNetwork(string subscriptionId, string resourceGroupName, string virtualNetworkName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ISubResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversListByVirtualNetwork(string subscriptionId, string resourceGroupName, string virtualNetworkName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ISubResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2658,9 +2663,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversListByVirtualNetworkViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ISubResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversListByVirtualNetworkViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ISubResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2714,7 +2719,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsResolversListByVirtualNetwork_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ISubResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsResolversListByVirtualNetwork_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ISubResourceListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2732,13 +2737,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.SubResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.SubResourceListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2789,9 +2794,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolverListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolverListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2839,7 +2844,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsResolversList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolverListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsResolversList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolverListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -2857,13 +2862,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.DnsResolverListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.DnsResolverListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -2912,9 +2917,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversUpdate(string subscriptionId, string resourceGroupName, string dnsResolverName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolverPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversUpdate(string subscriptionId, string resourceGroupName, string dnsResolverName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolverPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -2966,9 +2971,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task DnsResolversUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolverPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task DnsResolversUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolverPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3029,7 +3034,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsResolversUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task DnsResolversUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolver>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3135,6 +3140,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -3145,13 +3151,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.DnsResolver.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.DnsResolver.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3180,7 +3186,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task DnsResolversUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsResolverName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IDnsResolverPatch body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task DnsResolversUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsResolverName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IDnsResolverPatch body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3215,9 +3221,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ForwardingRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string forwardingRuleName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ForwardingRulesCreateOrUpdate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string forwardingRuleName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3278,9 +3284,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ForwardingRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ForwardingRulesCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3349,7 +3355,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ForwardingRulesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ForwardingRulesCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule>, global::System.Threading.Tasks.Task> onCreated, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3367,19 +3373,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ForwardingRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ForwardingRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         case global::System.Net.HttpStatusCode.Created:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ForwardingRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onCreated(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ForwardingRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3411,7 +3417,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ForwardingRulesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string forwardingRuleName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ForwardingRulesCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string forwardingRuleName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -3447,9 +3453,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ForwardingRulesDelete(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string forwardingRuleName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ForwardingRulesDelete(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string forwardingRuleName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3501,9 +3507,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ForwardingRulesDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ForwardingRulesDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3564,7 +3570,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ForwardingRulesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ForwardingRulesDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3594,7 +3600,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3651,9 +3657,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ForwardingRulesGet(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string forwardingRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ForwardingRulesGet(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string forwardingRuleName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3694,9 +3700,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ForwardingRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ForwardingRulesGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3750,7 +3756,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ForwardingRulesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ForwardingRulesGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3768,13 +3774,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ForwardingRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ForwardingRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -3828,9 +3834,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ForwardingRulesList(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ForwardingRulesList(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3873,9 +3879,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ForwardingRulesListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ForwardingRulesListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -3929,7 +3935,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ForwardingRulesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ForwardingRulesList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRuleListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -3947,13 +3953,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ForwardingRuleListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ForwardingRuleListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4009,9 +4015,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ForwardingRulesUpdate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string forwardingRuleName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRulePatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ForwardingRulesUpdate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string forwardingRuleName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRulePatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4065,9 +4071,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task ForwardingRulesUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRulePatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task ForwardingRulesUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRulePatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4131,7 +4137,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ForwardingRulesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task ForwardingRulesUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRule>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4149,13 +4155,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ForwardingRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ForwardingRule.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4185,7 +4191,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task ForwardingRulesUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string forwardingRuleName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IForwardingRulePatch body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task ForwardingRulesUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string forwardingRuleName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IForwardingRulePatch body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -4220,9 +4226,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task InboundEndpointsCreateOrUpdate(string subscriptionId, string resourceGroupName, string dnsResolverName, string inboundEndpointName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task InboundEndpointsCreateOrUpdate(string subscriptionId, string resourceGroupName, string dnsResolverName, string inboundEndpointName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4282,9 +4288,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task InboundEndpointsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task InboundEndpointsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4352,7 +4358,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task InboundEndpointsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task InboundEndpointsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4458,6 +4464,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -4468,13 +4475,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.InboundEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.InboundEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4506,7 +4513,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task InboundEndpointsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsResolverName, string inboundEndpointName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task InboundEndpointsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsResolverName, string inboundEndpointName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -4542,9 +4549,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task InboundEndpointsDelete(string subscriptionId, string resourceGroupName, string dnsResolverName, string inboundEndpointName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task InboundEndpointsDelete(string subscriptionId, string resourceGroupName, string dnsResolverName, string inboundEndpointName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4596,9 +4603,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task InboundEndpointsDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task InboundEndpointsDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4659,7 +4666,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task InboundEndpointsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task InboundEndpointsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4766,6 +4773,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -4788,7 +4796,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -4845,9 +4853,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task InboundEndpointsGet(string subscriptionId, string resourceGroupName, string dnsResolverName, string inboundEndpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task InboundEndpointsGet(string subscriptionId, string resourceGroupName, string dnsResolverName, string inboundEndpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4888,9 +4896,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task InboundEndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task InboundEndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -4944,7 +4952,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task InboundEndpointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task InboundEndpointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -4962,13 +4970,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.InboundEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.InboundEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5022,9 +5030,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task InboundEndpointsList(string subscriptionId, string resourceGroupName, string dnsResolverName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task InboundEndpointsList(string subscriptionId, string resourceGroupName, string dnsResolverName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5067,9 +5075,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task InboundEndpointsListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task InboundEndpointsListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5123,7 +5131,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task InboundEndpointsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task InboundEndpointsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5141,13 +5149,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.InboundEndpointListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.InboundEndpointListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5203,9 +5211,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task InboundEndpointsUpdate(string subscriptionId, string resourceGroupName, string dnsResolverName, string inboundEndpointName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpointPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task InboundEndpointsUpdate(string subscriptionId, string resourceGroupName, string dnsResolverName, string inboundEndpointName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpointPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5259,9 +5267,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task InboundEndpointsUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpointPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task InboundEndpointsUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpointPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5325,7 +5333,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task InboundEndpointsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task InboundEndpointsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5431,6 +5439,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -5441,13 +5450,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.InboundEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.InboundEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5477,7 +5486,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task InboundEndpointsUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsResolverName, string inboundEndpointName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IInboundEndpointPatch body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task InboundEndpointsUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsResolverName, string inboundEndpointName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IInboundEndpointPatch body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5512,9 +5521,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OutboundEndpointsCreateOrUpdate(string subscriptionId, string resourceGroupName, string dnsResolverName, string outboundEndpointName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OutboundEndpointsCreateOrUpdate(string subscriptionId, string resourceGroupName, string dnsResolverName, string outboundEndpointName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5574,9 +5583,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OutboundEndpointsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OutboundEndpointsCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5644,7 +5653,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OutboundEndpointsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OutboundEndpointsCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -5750,6 +5759,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -5760,13 +5770,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.OutboundEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.OutboundEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -5798,7 +5808,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OutboundEndpointsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsResolverName, string outboundEndpointName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task OutboundEndpointsCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsResolverName, string outboundEndpointName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -5834,9 +5844,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OutboundEndpointsDelete(string subscriptionId, string resourceGroupName, string dnsResolverName, string outboundEndpointName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OutboundEndpointsDelete(string subscriptionId, string resourceGroupName, string dnsResolverName, string outboundEndpointName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5888,9 +5898,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OutboundEndpointsDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OutboundEndpointsDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -5951,7 +5961,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OutboundEndpointsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OutboundEndpointsDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6058,6 +6068,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -6080,7 +6091,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6137,9 +6148,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OutboundEndpointsGet(string subscriptionId, string resourceGroupName, string dnsResolverName, string outboundEndpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OutboundEndpointsGet(string subscriptionId, string resourceGroupName, string dnsResolverName, string outboundEndpointName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6180,9 +6191,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OutboundEndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OutboundEndpointsGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6236,7 +6247,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OutboundEndpointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OutboundEndpointsGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6254,13 +6265,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.OutboundEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.OutboundEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6314,9 +6325,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OutboundEndpointsList(string subscriptionId, string resourceGroupName, string dnsResolverName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OutboundEndpointsList(string subscriptionId, string resourceGroupName, string dnsResolverName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6359,9 +6370,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OutboundEndpointsListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OutboundEndpointsListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6415,7 +6426,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OutboundEndpointsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OutboundEndpointsList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpointListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6433,13 +6444,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.OutboundEndpointListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.OutboundEndpointListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6495,9 +6506,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OutboundEndpointsUpdate(string subscriptionId, string resourceGroupName, string dnsResolverName, string outboundEndpointName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpointPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OutboundEndpointsUpdate(string subscriptionId, string resourceGroupName, string dnsResolverName, string outboundEndpointName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpointPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6551,9 +6562,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task OutboundEndpointsUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpointPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task OutboundEndpointsUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpointPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6617,7 +6628,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OutboundEndpointsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task OutboundEndpointsUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpoint>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -6723,6 +6734,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -6733,13 +6745,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.OutboundEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.OutboundEndpoint.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -6769,7 +6781,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task OutboundEndpointsUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsResolverName, string outboundEndpointName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IOutboundEndpointPatch body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task OutboundEndpointsUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsResolverName, string outboundEndpointName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IOutboundEndpointPatch body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -6804,9 +6816,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualNetworkLinksCreateOrUpdate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string virtualNetworkLinkName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualNetworkLinksCreateOrUpdate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string virtualNetworkLinkName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6866,9 +6878,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualNetworkLinksCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualNetworkLinksCreateOrUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -6936,7 +6948,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksCreateOrUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7042,6 +7054,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -7052,13 +7065,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.VirtualNetworkLink.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.VirtualNetworkLink.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7090,7 +7103,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string virtualNetworkLinkName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksCreateOrUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string virtualNetworkLinkName, string ifMatch, string ifNoneMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {
@@ -7126,9 +7139,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualNetworkLinksDelete(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string virtualNetworkLinkName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualNetworkLinksDelete(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string virtualNetworkLinkName, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7180,9 +7193,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualNetworkLinksDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualNetworkLinksDeleteViaIdentity(global::System.String viaIdentity, string ifMatch, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7243,7 +7256,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksDelete_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task> onNoContent, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7350,6 +7363,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -7372,7 +7386,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7429,9 +7443,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualNetworkLinksGet(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string virtualNetworkLinkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualNetworkLinksGet(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string virtualNetworkLinkName, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7472,9 +7486,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualNetworkLinksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualNetworkLinksGetViaIdentity(global::System.String viaIdentity, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7528,7 +7542,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksGet_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7546,13 +7560,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.VirtualNetworkLink.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.VirtualNetworkLink.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7606,9 +7620,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualNetworkLinksList(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLinkListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualNetworkLinksList(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLinkListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7651,9 +7665,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualNetworkLinksListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLinkListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualNetworkLinksListViaIdentity(global::System.String viaIdentity, int? Top, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLinkListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7707,7 +7721,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLinkListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksList_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLinkListResult>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -7725,13 +7739,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.VirtualNetworkLinkListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.VirtualNetworkLinkListResult.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -7787,9 +7801,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualNetworkLinksUpdate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string virtualNetworkLinkName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLinkPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualNetworkLinksUpdate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string virtualNetworkLinkName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLinkPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7843,9 +7857,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        public async global::System.Threading.Tasks.Task VirtualNetworkLinksUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLinkPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        public async global::System.Threading.Tasks.Task VirtualNetworkLinksUpdateViaIdentity(global::System.String viaIdentity, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLinkPatch body, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
-            var apiVersion = @"2020-04-01-preview";
+            var apiVersion = @"2022-07-01";
             // Constant Parameters
             using( NoSynchronizationContext )
             {
@@ -7909,7 +7923,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
+        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksUpdate_Call(global::System.Net.Http.HttpRequestMessage request, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLink>, global::System.Threading.Tasks.Task> onOk, global::System.Func<global::System.Net.Http.HttpResponseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.ICloudError>, global::System.Threading.Tasks.Task> onDefault, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.ISendAsync sender)
         {
             using( NoSynchronizationContext )
             {
@@ -8015,6 +8029,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
 
                             // make the final call
                             _response = await sender.SendAsync(request,  eventListener);
+                            await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.Polling, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
                             break;
                         }
                     }
@@ -8025,13 +8040,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
                         case global::System.Net.HttpStatusCode.OK:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.VirtualNetworkLink.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onOk(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.VirtualNetworkLink.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                         default:
                         {
                             await eventListener.Signal(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Events.BeforeResponseDispatch, _response); if( eventListener.Token.IsCancellationRequested ) { return; }
-                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
+                            await onDefault(_response,_response.Content.ReadAsStringAsync().ContinueWith( body => Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.CloudError.FromJson(Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.Json.JsonNode.Parse(body.Result)) ));
                             break;
                         }
                     }
@@ -8061,7 +8076,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DnsResolver
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the response is completed.
         /// </returns>
-        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string virtualNetworkLinkName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20200401Preview.IVirtualNetworkLinkPatch body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
+        internal async global::System.Threading.Tasks.Task VirtualNetworkLinksUpdate_Validate(string subscriptionId, string resourceGroupName, string dnsForwardingRulesetName, string virtualNetworkLinkName, string ifMatch, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Models.Api20220701.IVirtualNetworkLinkPatch body, Microsoft.Azure.PowerShell.Cmdlets.DnsResolver.Runtime.IEventListener eventListener)
         {
             using( NoSynchronizationContext )
             {

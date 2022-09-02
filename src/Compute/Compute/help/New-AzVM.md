@@ -16,7 +16,7 @@ Creates a virtual machine.
 ### SimpleParameterSet (Default)
 ```
 New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] [[-Zone] <String[]>]
- -Name <String> -Credential <PSCredential> [-NetworkInterfaceDeleteOption <String>]
+ [-PublicIpSku <String>] -Name <String> -Credential <PSCredential> [-NetworkInterfaceDeleteOption <String>]
  [-VirtualNetworkName <String>] [-AddressPrefix <String>] [-SubnetName <String>]
  [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>] [-DomainNameLabel <String>]
  [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] [-Image <String>]
@@ -25,9 +25,9 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
  [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
  [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
  [-HostGroupId <String>] [-SshKeyName <String>] [-GenerateSshKey] [-CapacityReservationGroupId <String>]
- [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>]
- [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+ [-UserData <String>] [-ImageReferenceId <String>] [-PlatformFaultDomain <Int32>] [-HibernationEnabled]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### DefaultParameterSet
@@ -35,21 +35,22 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
 New-AzVM [-ResourceGroupName] <String> [-Location] <String> [-EdgeZone <String>] [-VM] <PSVirtualMachine>
  [[-Zone] <String[]>] [-DisableBginfoExtension] [-Tag <Hashtable>] [-LicenseType <String>] [-AsJob]
  [-OSDiskDeleteOption <String>] [-DataDiskDeleteOption <String>] [-SshKeyName <String>] [-GenerateSshKey]
- [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DisableIntegrityMonitoring] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>] [-DisableIntegrityMonitoring]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### DiskFileParameterSet
 ```
-New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] -Name <String>
- [-NetworkInterfaceDeleteOption <String>] [-VirtualNetworkName <String>] [-AddressPrefix <String>]
- [-SubnetName <String>] [-SubnetAddressPrefix <String>] [-PublicIpAddressName <String>]
- [-DomainNameLabel <String>] [-AllocationMethod <String>] [-SecurityGroupName <String>] [-OpenPorts <Int32[]>]
- -DiskFile <String> [-Linux] [-Size <String>] [-AvailabilitySetName <String>] [-SystemAssignedIdentity]
- [-UserAssignedIdentity <String>] [-AsJob] [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>]
- [-DataDiskDeleteOption <String>] [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>]
- [-VmssId <String>] [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
- [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>] [-ImageReferenceId <String>]
+New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <String>] [-PublicIpSku <String>]
+ -Name <String> [-NetworkInterfaceDeleteOption <String>] [-VirtualNetworkName <String>]
+ [-AddressPrefix <String>] [-SubnetName <String>] [-SubnetAddressPrefix <String>]
+ [-PublicIpAddressName <String>] [-DomainNameLabel <String>] [-AllocationMethod <String>]
+ [-SecurityGroupName <String>] [-OpenPorts <Int32[]>] -DiskFile <String> [-Linux] [-Size <String>]
+ [-AvailabilitySetName <String>] [-SystemAssignedIdentity] [-UserAssignedIdentity <String>] [-AsJob]
+ [-OSDiskDeleteOption <String>] [-DataDiskSizeInGb <Int32[]>] [-DataDiskDeleteOption <String>]
+ [-EnableUltraSSD] [-ProximityPlacementGroupId <String>] [-HostId <String>] [-VmssId <String>]
+ [-Priority <String>] [-EvictionPolicy <String>] [-MaxPrice <Double>] [-EncryptionAtHost]
+ [-HostGroupId <String>] [-CapacityReservationGroupId <String>] [-UserData <String>]
  [-PlatformFaultDomain <Int32>] [-HibernationEnabled] [-vCPUCountAvailable <Int32>] [-vCPUCountPerCore <Int32>]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
@@ -219,7 +220,7 @@ $VirtualMachine = New-AzVMConfig -VMName VirtualMachineName -VMSize Standard_D4s
 $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName computerName -Credential $psCred -ProvisionVMAgent -EnableAutoUpdate
 $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
 $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2022-datacenter-azure-edition-core' -Version latest
-New-AzVm -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $VirtualMachine
+New-AzVM -ResourceGroupName ResourceGroup1 -Location SouthCentralUS -VM $VirtualMachine
 ```
 
 This example deploys a Windows VM from the marketplace in one resource group with an existing subnet in another resource group.
@@ -240,6 +241,8 @@ $vmss = New-AzVmss -ResourceGroupName $resourceGroupName -Name $vmssName -Virtua
 
 $vm = New-AzVM -ResourceGroupName $resourceGroupName -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel -PlatformFaultDomain $platformFaultDomainVMDefaultSet -VmssId $vmss.Id
 ```
+
+This example Creates a new VM as part of a VMSS with a PlatformFaultDomain value.
 
 ### Example 7: Creating a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
 ```
@@ -289,21 +292,23 @@ Set-AzVMOperatingSystem -VM $vmConfig -Windows -ComputerName $vmName -Credential
 Set-AzVMSourceImage -VM $vmConfig -PublisherName $PublisherName -Offer $Offer -Skus $SKU -Version latest;
 Add-AzVMNetworkInterface -VM $vmConfig -Id $nic.Id;
 $vmConfig = Set-AzVMSecurityProfile -VM $vmConfig -SecurityType $securityType;
-$vmConfig = Set-AzVmUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
+$vmConfig = Set-AzVMUefi -VM $vmConfig -EnableVtpm $vtpm -EnableSecureBoot $secureboot;
 New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig;
 
 # Verify values
-$vm = Get-AzVm -ResourceGroupName $rgname -Name $vmName;
+$vm = Get-AzVM -ResourceGroupName $rgname -Name $vmName;
 $vmExt = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName;
 # Check the default extension has been installed, and the Identity.Type defaulted to SystemAssigned.
 # $vmExt.Name
 # $vm.Identity.Type
 
 # Use the DisableIntegrityMonitoring parameter
-Remove-AzVm -ResourceGroupName $rgname -Name $vmname -Force;
+Remove-AzVM -ResourceGroupName $rgname -Name $vmname -Force;
 New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vmConfig -DisableIntegrityMonitoring;
 # This VM does not have the Guest Attestation extension installed on it, and the Identity is not set to SystemAssigned by default.
 ```
+
+This example Creates a new VM with the GuestAttestation extension installed by default, then recreating the VM with DisableIntegrityMonitoring to prevent this.
 
 ## PARAMETERS
 
@@ -455,6 +460,21 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisableIntegrityMonitoring
+This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: DefaultParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
@@ -621,6 +641,21 @@ Aliases: ImageName
 Required: False
 Position: Named
 Default value: Win2016Datacenter
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ImageReferenceId
+Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -826,6 +861,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PublicIpSku
+Specifies public IP sku name
+
+Accpeted Values are "Basic" and "Standard"
+
+```yaml
+Type: System.String
+Parameter Sets: SimpleParameterSet, DiskFileParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 Specifies the name of a resource group.
 
@@ -861,20 +913,6 @@ Type: System.String
 Parameter Sets: SimpleParameterSet, DiskFileParameterSet
 Aliases:
 
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ImageReferenceId
-Specified the shared gallery image unique id for vm deployment. This can be fetched from shared gallery image GET call.
-
-```yaml
-Type: System.String
-Parameter Sets: SimpleParameterSet, DiskFileParameterSet
-Aliases:
 Required: False
 Position: Named
 Default value: None
@@ -1031,21 +1069,6 @@ Required: False
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DisableIntegrityMonitoring
-This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: DefaultParameterSet
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

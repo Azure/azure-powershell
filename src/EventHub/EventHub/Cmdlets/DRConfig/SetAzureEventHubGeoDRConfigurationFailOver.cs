@@ -16,6 +16,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
 {
@@ -38,10 +39,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSEventHubDRConfigurationAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery", ChangeDescription = GeoDRInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ParameterSetName = GeoDRInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Eventhub GeoDR Configuration Object")]
         [ValidateNotNullOrEmpty]
         public PSEventHubDRConfigurationAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = GeoDRConfigResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "GeoDRConfiguration Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -73,7 +76,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.GeoDR
             {
                 try
                 {
-                    Client.SetEventHubDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
+                    UtilityClient.SetEventHubDRConfigurationFailOver(ResourceGroupName, Namespace, Name);
                     if (PassThru)
                     {
                         WriteObject(true);

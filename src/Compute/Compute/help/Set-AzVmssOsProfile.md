@@ -33,7 +33,7 @@ The **Set-AzVmssOsProfile** cmdlet sets the Virtual Machine Scale Set operating 
 ### Example 1: Set the operating system profile properties for a VMSS
 ```powershell
 $vmss = New-AzVmssConfig -Location $Loc -SkuCapacity 2 -SkuName "Standard_A0" -UpgradePolicyMode "Automatic" -NetworkInterfaceConfiguration $NetCfg
-Set-AzVmssOSProfile -VirtualMachineScaleSet $vmss -ComputerNamePrefix "Test" -AdminUsername $AdminUsername -AdminPassword $AdminPassword
+Set-AzVmssOsProfile -VirtualMachineScaleSet $vmss -ComputerNamePrefix "Test" -AdminUsername $AdminUsername -AdminPassword $AdminPassword
 ```
 
 This command sets operating system profile properties for the $vmss object.
@@ -188,6 +188,7 @@ $vmss = New-AzVmss `
     -VirtualMachineScaleSet $vmssConfig;
 ```
 
+Set the operating system profile properties for a Vmss in Flexible mode with Hotpatching enabled
 
 ## PARAMETERS
 
