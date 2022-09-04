@@ -25,10 +25,17 @@ function Get-AzEventHubKey{
 	param(
         [Parameter(ParameterSetName = 'GetExpandedEntity', Mandatory, HelpMessage = "The name of the Authorization Rule")]
         [Parameter(ParameterSetName = 'GetExpandedNamespace', Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the Authorization Rule")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of the Authorization Rule.
         ${Name},
+
+        [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the Disaster Recovery alias")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+        [System.String]
+        # The name of the Disaster Recovery alias
+        ${AliasName},
 
         [Parameter(ParameterSetName = 'GetExpandedEntity', Mandatory, HelpMessage = "The name of the EventHub entity.")]
         [Alias('EventHub')]
@@ -47,6 +54,7 @@ function Get-AzEventHubKey{
 
         [Parameter(ParameterSetName = 'GetExpandedNamespace', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Parameter(ParameterSetName = 'GetExpandedEntity', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of the resource group.
@@ -55,6 +63,7 @@ function Get-AzEventHubKey{
 
         [Parameter(ParameterSetName = 'GetExpandedNamespace', HelpMessage = "The ID of the target subscription.")]
         [Parameter(ParameterSetName = 'GetExpandedEntity', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String[]]
@@ -134,6 +143,13 @@ function Get-AzEventHubKey{
             elseif ($PSCmdlet.ParameterSetName -eq 'GetExpandedEntity'){
                 if ($PSCmdlet.ShouldProcess("EventHub Entity Authorization Rule $($Name)", "List Keys")) {
                     Az.EventHub.private\Get-AzEventHubKey_List @PSBoundParameters
+                }
+            }
+
+            elseif ($PSCmdlet.ParameterSetName -eq 'GetExpandedAlias'){
+                if ($PSCmdlet.ShouldProcess("EventHub Geo DR alias $($Name)", "List Keys")) {
+                    $PSBoundParameters.Remove('AliasName')
+                    Az.EventHub.private\Get-AzEventHubDisasterRecoveryConfigKey_List -Alias $AliasName @PSBoundParameters
                 }
             }
 		}

@@ -15,11 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEventHub'))
 }
 
 Describe 'Remove-AzEventHub' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        New-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name eh1
+        Remove-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name eh1
+        Get-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name eh1 | Should -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $eventhub = New-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name eh1
+        Remove-AzEventHub -InputObject $eventhub
+        Get-AzEventHub -InputObject $eventhub | Should -Throw
     }
 }

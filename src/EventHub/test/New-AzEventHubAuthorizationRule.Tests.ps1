@@ -15,27 +15,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubAuthorizationRu
 }
 
 Describe 'New-AzEventHubAuthorizationRule' {
-    It 'NewExpandedNamespace' -skip {
-        $authRule = New-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule -Rights @("Manage", "Send", "Listen")
-        $authRule.Name | Should -Be "namespaceAuthRule"
+    It 'NewExpandedNamespace' {
+        $authRule = New-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule2 -Rights @("Manage", "Send", "Listen")
+        $authRule.Name | Should -Be $env.authRule2
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
         $authRule.Rights.Count | Should -Be 3
 
-        $env.Add("authRule2", $authRule.Name)
-
-        $listOfAuthRules = New-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+        $listOfAuthRules = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $listOfAuthRules.Count | Should -Be 3
     }
 
-    It 'NewExpandedEntity' -skip {
-        $authRule = New-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name eventHubAuthRule -Rights @("Listen")
-        $authRule.Name | Should -Be "eventHubAuthRule"
+    It 'NewExpandedEntity' {
+        $authRule = New-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.eventHubAuthRule2 -Rights @("Listen")
+        $authRule.Name | Should -Be $env.eventHubAuthRule2
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
         $authRule.Rights.Count | Should -Be 1
 
-        $env.Add("eventHubAuthRule2", $authRule.Name)
-
-        $listOfAuthRules = New-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+        $listOfAuthRules = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub
         $listOfAuthRules.Count | Should -Be 2
     }
 }

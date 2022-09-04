@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the EventHub service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -60,7 +60,8 @@ subject-prefix: $(service-name)
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
-# identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
 
 directive:
   - where:
@@ -102,28 +103,63 @@ directive:
       subject: NamespaceNetworkRuleSet
     set:
       subject: NetworkRuleSet
+
+# Geo Disaster Recovery, cmdlet naming changes
+  - where:
+      subject: DisasterRecoveryConfig
+      parameter-name: Alias
+    set:
+      parameter-name: Name
+
+  - where:
+      verb: Invoke
+      subject: BreakDisasterRecoveryConfigPairing|FailDisasterRecoveryConfigOver
+      parameter-name: Alias
+    set:
+      parameter-name: Name
+
   - where:
       verb: Invoke
       subject: BreakDisasterRecoveryConfigPairing
-    set:
-      verb: Set
-      subject: GeoDRConfigurationBreakPair
+    hide: true
+
   - where:
       verb: Invoke
       subject: FailDisasterRecoveryConfigOver
-    set:
-      verb: Set
-      subject: GeoDRConfigurationFailOver
+    hide: true
+
   - where:
       subject: DisasterRecoveryConfig
     set:
       subject: GeoDRConfiguration
+
+# Remove namespace cmdlets
+  - where:
+      subject: Namespace
+    remove: true
 
 # Hide New-AzEventHubPrivateEndpointConnection
   - where:
       verb: New
       subject: PrivateEndpointConnection
     hide: true
+  
+  - where:
+      subject: PrivateLinkResource
+    set:
+      subject: PrivateLink
+
+  - where:
+      model-name: PrivateEndpointConnection
+      property-name: PrivateLinkServiceConnectionState
+    set:
+      property-name: ConnectionState
+
+  - where:
+      model-name: PrivateEndpointConnection
+      property-name: PrivateLinkServiceConnectionStateDescription
+    set:
+      property-name: Description
 
 # Remove NSP calls
   - where:
@@ -214,3 +250,20 @@ directive:
       property-name: MessageRetentionInDay
     set:
       property-name: MessageRetentionInDays
+
+# Cluster
+  - where:
+      verb: New
+      subject: Cluster
+      parameter-name: SkuCapacity
+    set:
+      parameter-name: Capacity
+  - where:
+      model-name: Cluster
+      property-name: SkuCapacity
+    set:
+      property-name: Capacity
+  - where:
+      subject: ClusterAvailableClusterRegion
+    set:
+      subject: ClustersAvailableRegion

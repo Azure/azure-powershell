@@ -19,28 +19,62 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
 
-    $resourceGroup = "resourceGroupAutorest" + RandomString -allChars $false -len 6
-    $namespaceName = "namespaceName" + RandomString -allChars $false -len 6
-    $authRule = "auth-rule" + RandomString -allChars $false -len 6
-    $eventHubAuthRule = "auth-rule" + RandomString -allChars $false -len 6
-    $appGroup = "appGroup" + RandomString -allChars $false -len 6
-    $schemaGroup = "schemaGroup" + RandomString -allChars $false -len 6
-    $eventHub = "eventHub" + RandomString -allChars $false -len 6
-    $cluster = "cluster" + RandomString -allChars $false -len 6
+    $resourceGroup = "resourceGroupAutorest" + (RandomString -allChars $false -len 6)
+    $namespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
+    $primaryNamespaceResourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.EventHub/namespaces/" + $namespaceName
+    $secondaryNamespace = "namespaceName" + (RandomString -allChars $false -len 6)
+    $secondaryNamespaceResourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.EventHub/namespaces/" + $secondaryNamespace
+    $authRule = "auth-rule" + (RandomString -allChars $false -len 6)
+    $authRule2 = "auth-rule" + (RandomString -allChars $false -len 6)
+    $authRule3 = "auth-rule" + (RandomString -allChars $false -len 6)
+    $eventHubAuthRule = "auth-rule" + (RandomString -allChars $false -len 6)
+    $eventHubAuthRule2 = "auth-rule" + (RandomString -allChars $false -len 6)
+    $eventHubAuthRule3 = "auth-rule" + (RandomString -allChars $false -len 6)
+    $appGroup = "appGroup" + (RandomString -allChars $false -len 6)
+    $appGroup2 = "appGroup" + (RandomString -allChars $false -len 6)
+    $appGroup3 = "appGroup" + (RandomString -allChars $false -len 6)
+    $schemaGroup = "schemaGroup" + (RandomString -allChars $false -len 6)
+    $schemaGroup2 = "schemaGroup" + (RandomString -allChars $false -len 6)
+    $schemaGroup3 = "schemaGroup" + (RandomString -allChars $false -len 6)
+    $consumerGroup2 = "consumerGroup" + (RandomString -allChars $false -len 6)
+    $consumerGroup3 = "consumerGroup" + (RandomString -allChars $false -len 6)
+    $eventHub = "eventHub" + (RandomString -allChars $false -len 6)
+    $eventHub2 = "eventHub" + (RandomString -allChars $false -len 6)
+    $eventHub3 = "eventHub" + (RandomString -allChars $false -len 6)
+    $cluster = "cluster" + (RandomString -allChars $false -len 6)
+    $alias = "alias" + (RandomString -allChars $false -len 6)
+    $pe1 = "privateEndpoint-" + (RandomString -allChars $false -len 6)
+    $pe2 = "privateEndpoint-" + (RandomString -allChars $false -len 6)
 
     New-AzResourceGroup -Name $resourceGroup -Location eastus
 
     $env.Add("resourceGroup", $resourceGroup)
     $env.Add("namespace", $namespaceName)
+    $env.Add("secondaryNamespace", $secondaryNamespace)
+    $env.Add("primaryNamespaceResourceId", $primaryNamespaceResourceId)
+    $env.Add("secondaryNamespaceResourceId", $secondaryNamespaceResourceId)
     $env.Add("authRule", $authRule)
+    $env.Add("authRule2", $authRule2)
+    $env.Add("authRule3", $authRule3)
     $env.Add("eventHubAuthRule", $eventHubAuthRule)
+    $env.Add("eventHubAuthRule2", $eventHubAuthRule2)
+    $env.Add("eventHubAuthRule3", $eventHubAuthRule3)
     $env.Add("appGroup", $appGroup)
+    $env.Add("appGroup2", $appGroup2)
+    $env.Add("appGroup3", $appGroup3)
     $env.Add("schemaGroup", $schemaGroup)
+    $env.Add("schemaGroup2", $schemaGroup2)
+    $env.Add("schemaGroup3", $schemaGroup3)
     $env.Add("eventHub", $eventHub)
+    $env.Add("eventHub2", $eventHub2)
+    $env.Add("eventHub3", $eventHub3)
     $env.Add("createdCluster", "TestClusterAutomatic")
     $env.Add("cluster", $cluster)
     $env.Add("clusterResourceGroup", "AutomatedPowershellTesting")
-    $env.Add("consumerGroup", "default")
+    $env.Add("consumerGroup", "$Default")
+    $env.Add("consumerGroup2", $consumerGroup2)
+    $env.Add("consumerGroup3", $consumerGroup3)
+    $env.Add("alias", $alias)
 
     $eventHubTemplate = Get-Content .\test\deployment-template\parameter.json | ConvertFrom-Json
     $eventHubTemplate.parameters.namespace_name.value = $namespaceName
@@ -49,13 +83,19 @@ function setupEnv() {
     $eventHubTemplate.parameters.eventhub_name.value = $eventHub
     $eventHubTemplate.parameters.schema_group_name.value = $schemaGroup
     $eventHubTemplate.parameters.appgroup_name.value = $appGroup
-    $eventHubTemplate.parameters.resourcegroup_name.value = $resourceGroup
+    $eventHubTemplate.parameters.secondarynamespace_name.value = $secondaryNamespace
+    $eventHubTemplate.parameters.namespaceResourceId.value = $primaryNamespaceResourceId
+    $eventHubTemplate.parameters.peName1.value = $pe1
+    $eventHubTemplate.parameters.peName2.value = $pe2
     Set-Content -Path .\test\deployment-template\parameter.json -Value (ConvertTo-Json $eventHubTemplate)
     $rg = New-AzResourceGroupDeployment -TemplateFile .\test\deployment-template\template.json -TemplateParameterFile .\test\deployment-template\parameter.json -Name eventHubTemplate -ResourceGroupName $resourceGroup
 
     $resourceNames = Get-Content .\test\deployment-template\pre-created-resources\parameter.json | ConvertFrom-Json
     $env.Add("storageAccountId", $resourceNames.parameters.storageAccountId.Value)
     $env.Add("blobContainer", $resourceNames.parameters.blobContainer.Value)
+    $env.Add("subnetId1", $resourceNames.parameters.virtualNetworkId.Value)
+    $env.Add("subnetId2", $resourceNames.parameters.virtualNetworkId2.Value)
+    $env.Add("subnetId3", $resourceNames.parameters.virtualNetworkId3.Value)
 
     Write-Host -ForegroundColor Magenta "Deployed template"
 

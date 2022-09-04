@@ -15,11 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubCluster'))
 }
 
 Describe 'Set-AzEventHubCluster' {
-    It 'SetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded' {
+        $cluster = Set-AzEventHubCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster -Capacity 3
+        $cluster.ResourceGroupName | Should -Be $env.resourceGroup
+        $cluster.Name | Should -Be $env.cluster
+        $cluster.Capacity | Should -Be 3
     }
 
-    It 'SetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetViaIdentityExpanded' {
+        $cluster = Get-AzEventHubCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster
+        $cluster = Set-AzEventHubCluster -InputObject $cluster -Tag @{a=b}
+        $cluster.ResourceGroupName | Should -Be $env.resourceGroup
+        $cluster.Name | Should -Be $env.cluster
+        $cluster.Capacity | Should -Be 3
+        $cluster.Tag.Count | Should -Be 1
     }
 }

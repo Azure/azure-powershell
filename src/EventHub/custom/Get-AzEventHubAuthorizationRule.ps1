@@ -25,11 +25,18 @@ function Get-AzEventHubAuthorizationRule{
 	param(
         [Parameter(ParameterSetName = 'GetExpandedEntity', HelpMessage = "The name of the Authorization Rule")]
         [Parameter(ParameterSetName = 'GetExpandedNamespace', HelpMessage = "The name of the Authorization Rule")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', HelpMessage = "The name of the Authorization Rule")]
         [Alias('AuthorizationRuleName')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of the Authorization Rule.
         ${Name},
+
+        [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the Disaster Recovery alias")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+        [System.String]
+        # The name of the Disaster Recovery alias
+        ${AliasName},
 
         [Parameter(ParameterSetName = 'GetExpandedEntity', Mandatory, HelpMessage = "The name of the EventHub entity.")]
         [Alias('EventHub')]
@@ -40,6 +47,7 @@ function Get-AzEventHubAuthorizationRule{
 
         [Parameter(ParameterSetName = 'GetExpandedNamespace', Mandatory, HelpMessage = "The name of EventHub namespace")]
         [Parameter(ParameterSetName = 'GetExpandedEntity', Mandatory, HelpMessage = "The name of the EventHub namespace.")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the EventHub namespace.")]
         [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
@@ -48,6 +56,7 @@ function Get-AzEventHubAuthorizationRule{
 
         [Parameter(ParameterSetName = 'GetExpandedNamespace', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Parameter(ParameterSetName = 'GetExpandedEntity', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of the resource group.
@@ -56,6 +65,7 @@ function Get-AzEventHubAuthorizationRule{
 
         [Parameter(ParameterSetName = 'GetExpandedNamespace', HelpMessage = "The ID of the target subscription.")]
         [Parameter(ParameterSetName = 'GetExpandedEntity', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String[]]
@@ -139,6 +149,16 @@ function Get-AzEventHubAuthorizationRule{
                 }
             }
 
+            elseif ($PSCmdlet.ParameterSetName -eq 'GetExpandedAlias'){
+                $PSBoundParameters.Remove('AliasName')
+                if(-not $PSBoundParameters.ContainsKey('Name')){
+                    Az.EventHub.private\Get-AzEventHubDisasterRecoveryConfigAuthorizationRule_List -Alias $AliasName @PSBoundParameters
+                }
+                else{
+                    Az.EventHub.private\Get-AzEventHubDisasterRecoveryConfigAuthorizationRule_Get -Alias $AliasName @PSBoundParameters
+                }
+            }
+
             elseif ($PSCmdlet.ParameterSetName -eq 'GetViaIdentityExpanded'){
                 if($InputObject.Id -ne $null){
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject.Id
@@ -149,6 +169,9 @@ function Get-AzEventHubAuthorizationRule{
 
                 if ($ResourceHashTable['EventHubName'] -ne $null){
                     Az.EventHub.private\Get-AzEventHubAuthorizationRule_GetViaIdentity @PSBoundParameters
+                }
+                elseif ($ResourceHashTable['AliasName'] -ne $null){
+                    Az.EventHub.private\Get-AzEventHubDisasterRecoveryConfigAuthorizationRule_GetViaIdentity @PSBoundParameters
                 }
                 elseif ($ResourceHashTable['NamespaceName'] -ne $null){
                     Az.EventHub.private\Get-AzEventHubNamespaceAuthorizationRule_GetViaIdentity @PSBoundParameters
@@ -173,6 +196,7 @@ function ParseResourceId{
     $indexResourceGroup = 0..($array.Length -1) | where {$array[$_] -eq 'resourcegroups'}
     $indexNamespace = 0..($array.Length -1) | where {$array[$_] -eq 'namespaces'}
     $indexEventHub = 0..($array.Length -1) | where {$array[$_] -eq 'eventhubs'}
+    $indexAlias = 0..($array.Length -1) | where {$array[$_] -eq 'disasterrecoveryconfigs'}
     $indexAuthRule = 0..($array.Length -1) | where {$array[$_] -eq 'authorizationrules'}
 
     if(($indexResourceGroup -eq $null) -or ($indexNamespace -eq $null) -or ($indexAuthRule -eq $null)){
@@ -201,6 +225,15 @@ function ParseResourceId{
         }
         else{
             $result.add('EventHubName', $array.get($indexEventHub+1))
+        }
+    }
+
+    if ($indexAlias -ne $null){
+        if (($indexAlias+1) > $array.Length){
+            throw 'Invalid -InputObject Id'
+        }
+        else{
+            $result.add('AliasName', $array.get($indexAlias+1))
         }
     }
 

@@ -51,17 +51,11 @@ function Set-AzEventHubCluster{
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
 
-        [Parameter(HelpMessage = "A value that indicates whether Scaling is Supported.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
-        # A value that indicates whether Scaling is Supported.
-        ${SupportsScaling},
-
         [Parameter(HelpMessage = "The quantity of Event Hubs Cluster Capacity Units contained in this cluster.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [System.Int32]
         # The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
-        ${SkuCapacity},
+        ${Capacity},
 
         [Parameter(HelpMessage = "Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
@@ -131,8 +125,7 @@ function Set-AzEventHubCluster{
 	)
 	process{
 		try{
-            $hasSupportsScaling = $PSBoundParameters.Remove('SupportsScaling')
-            $hasSkuCapacity = $PSBoundParameters.Remove('SkuCapacity')
+            $hasCapacity = $PSBoundParameters.Remove('Capacity')
             $hasTag = $PSBoundParameters.Remove('Tag')
             $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
@@ -145,11 +138,8 @@ function Set-AzEventHubCluster{
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
-            if ($hasSupportsScaling) {
-                $cluster.SupportsScaling = $SupportsScaling
-            }
-            if ($hasSkuCapacity) {
-                $cluster.SkuCapacity = $SkuCapacity
+            if ($hasCapacity) {
+                $cluster.Capacity = $Capacity
             }
             if ($hasTag) {
                 $cluster.Tag = $Tag

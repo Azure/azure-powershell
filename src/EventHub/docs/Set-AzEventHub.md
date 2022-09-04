@@ -15,10 +15,9 @@ Updates an EventHub Entity
 ### SetExpanded (Default)
 ```
 Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled]
- [-CaptureEncoding <EncodingCaptureDescription>] [-CaptureIntervalInSecond <Int32>]
- [-CaptureSizeLimitInByte <Int32>] [-CaptureSkipEmptyArchive] [-DestinationName <String>]
- [-MessageRetentionInDay <Int64>] [-PartitionCount <Int64>] [-Status <EntityStatus>]
+ [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
+ [-Encoding <EncodingCaptureDescription>] [-IntervalInSeconds <Int32>] [-MessageRetentionInDays <Int64>]
+ [-PartitionCount <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>]
  [-StorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -26,11 +25,10 @@ Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHub -InputObject <IEventHubIdentity> [-ArchiveNameFormat <String>] [-BlobContainer <String>]
- [-CaptureEnabled] [-CaptureEncoding <EncodingCaptureDescription>] [-CaptureIntervalInSecond <Int32>]
- [-CaptureSizeLimitInByte <Int32>] [-CaptureSkipEmptyArchive] [-DestinationName <String>]
- [-MessageRetentionInDay <Int64>] [-PartitionCount <Int64>] [-Status <EntityStatus>]
- [-StorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-CaptureEnabled] [-DestinationName <String>] [-Encoding <EncodingCaptureDescription>]
+ [-IntervalInSeconds <Int32>] [-MessageRetentionInDays <Int64>] [-PartitionCount <Int64>]
+ [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>] [-StorageAccountResourceId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -125,67 +123,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -CaptureEncoding
-Enumerates the possible values for the encoding format of capture description.
-Note: 'AvroDeflate' will be deprecated in New API Version
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EncodingCaptureDescription
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CaptureIntervalInSecond
-The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CaptureSizeLimitInByte
-The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CaptureSkipEmptyArchive
-A value that indicates whether to Skip Empty Archives
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -216,6 +153,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Encoding
+Enumerates the possible values for the encoding format of capture description.
+Note: 'AvroDeflate' will be deprecated in New API Version
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EncodingCaptureDescription
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity parameter.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -232,7 +185,22 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MessageRetentionInDay
+### -IntervalInSeconds
+The time window allows you to set the frequency with which the capture to Azure Blobs will happen, value should between 60 to 900 seconds
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MessageRetentionInDays
 Number of days to retain the events for this Event Hub, value should be 1 to 7 days
 
 ```yaml
@@ -317,6 +285,36 @@ Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SizeLimitInBytes
+The size window defines the amount of data built up in your Event Hub before an capture operation, value should be between 10485760 to 524288000 bytes
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SkipEmptyArchive
+A value that indicates whether to Skip Empty Archives
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -419,7 +417,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
+INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[ApplicationGroupName <String>]`: The Application Group name 
   - `[AuthorizationRuleName <String>]`: The authorization rule name.

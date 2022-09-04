@@ -95,12 +95,6 @@ function Set-AzEventHub{
 		# Number of days to retain the events for this Event Hub, value should be 1 to 7 days
 		${MessageRetentionInDays},
 
-        [Parameter(HelpMessage = "Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.")]
-		[Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
-		[System.Int64]
-		# Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
-		${PartitionCount},
-
         [Parameter(HelpMessage = "Enumerates the possible values for the status of the Event Hub.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.EntityStatus]
@@ -198,7 +192,6 @@ function Set-AzEventHub{
             $hasSizeLimitInBytes = $PSBoundParameters.Remove('SizeLimitInBytes')
             $hasSkipEmptyArchive = $PSBoundParameters.Remove('SkipEmptyArchive')
             $hasMessageRetentionInDays = $PSBoundParameters.Remove('MessageRetentionInDays')
-            $hasPartitionCount = $PSBoundParameters.Remove('PartitionCount')
             $hasStatus = $PSBoundParameters.Remove('Status')
             $hasDestinationName = $PSBoundParameters.Remove('DestinationName')
             $hasStorageAccountResourceId = $PSBoundParameters.Remove('StorageAccountResourceId')
@@ -233,9 +226,6 @@ function Set-AzEventHub{
             }
             if ($hasMessageRetentionInDay) {
                 $eventHub.MessageRetentionInDays = $MessageRetentionInDays
-            }
-            if ($hasPartitionCount) {
-                $eventHub.PartitionCount = $PartitionCount
             }
             if ($hasStatus) {
                 $eventHub.Status = $Status

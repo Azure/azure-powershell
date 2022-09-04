@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubConsumerGroup')
 }
 
 Describe 'Get-AzEventHubConsumerGroup' {
-    It 'List' -skip {
+    It 'List' {
         $listOfConsumerGroup = Get-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub
         $listOfConsumerGroup.Count | Should -Be 1
         $listOfConsumerGroup[0].Name | Should -Be $env.consumerGroup
     }
 
-    It 'Get' -skip {
+    It 'Get' {
         $consumerGroup = Get-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.consumerGroup
         $consumerGroup.ResourceGroupName | Should -Be $env.resourceGroup
         $consumerGroup.Name | Should -Be $env.consumerGroup
     }
 
-    It 'GetViaIdentity' -skip {
+    It 'GetViaIdentity' {
         $consumerGroup = Get-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.consumerGroup
         
         $consumerGroup = Get-AzEventHubConsumerGroup $consumerGroup

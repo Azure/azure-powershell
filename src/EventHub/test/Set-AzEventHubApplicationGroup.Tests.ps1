@@ -15,11 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubApplicationGrou
 }
 
 Describe 'Set-AzEventHubApplicationGroup' {
-    It 'SetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded' {
+        $t3 = New-AzEventHubThrottlingPolicyConfig -Name t3 -MetricId OutgoingMessages -RateLimitThreshold 12000
+        $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.appGroup2
+        $appGroup.Policy += $t3
+        $updateAppGroup = Set-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.appGroup2 -Policy $appGroup.Policy
+        $updateAppGroup.Name | Should -Be $env.appGroup2
+        $updateAppGroup.ResourceGroupName | Should -Be $env.resourceGroup
+        $updateAppGroup.Policy.Count | 3
+        $updateAppGroup.ClientAppGroupIdentifier | Should -Be $app.ClientAppGroupIdentifier
     }
 
-    It 'SetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetViaIdentityExpanded' {
+        $t4 = New-AzEventHubThrottlingPolicyConfig -Name t4 -MetricId IncomingBytes -RateLimitThreshold 13000
+        $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.appGroup2
+        $appGroup.Policy += $t4
+        $updateAppGroup = Set-AzEventHubApplicationGroup -InputObject $appGroup -Policy $appGroup.Policy
+        $updateAppGroup.Name | Should -Be $env.appGroup2
+        $updateAppGroup.ResourceGroupName | Should -Be $env.resourceGroup
+        $updateAppGroup.Policy.Count | 4
+        $updateAppGroup.ClientAppGroupIdentifier | Should -Be $app.ClientAppGroupIdentifier
+
+        $updateAppGroup = Set-AzEventHubApplicationGroup -InputObject $appGroup -IsEnabled:$false
+        $updateAppGroup.Name | Should -Be $env.appGroup2
+        $updateAppGroup.ResourceGroupName | Should -Be $env.resourceGroup
+        $updateAppGroup.Policy.Count | 4
+        $updateAppGroup.ClientAppGroupIdentifier | Should -Be $app.ClientAppGroupIdentifier
+        $updateAppGroup.IsEnabled | Should -Be $false
     }
 }

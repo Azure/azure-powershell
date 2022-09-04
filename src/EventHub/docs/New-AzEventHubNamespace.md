@@ -503,13 +503,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`ENCRYPTIONKEYVAULTPROPERTY <IKeyVaultProperties[]>`: Properties of KeyVault
+ENCRYPTIONKEYVAULTPROPERTY <IKeyVaultProperties[]>: Properties of KeyVault
   - `[IdentityUserAssignedIdentity <String>]`: ARM ID of user Identity selected for encryption
   - `[KeyName <String>]`: Name of the Key from KeyVault
   - `[KeyVaultUri <String>]`: Uri of KeyVault
   - `[KeyVersion <String>]`: Key Version
 
-`PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>`: List of private endpoint connections.
+PRIVATEENDPOINTCONNECTION <IPrivateEndpointConnection[]>: List of private endpoint connections.
   - `[PrivateEndpointId <String>]`: The ARM identifier for Private Endpoint.
   - `[PrivateLinkServiceConnectionStateDescription <String>]`: Description of the connection state.
   - `[PrivateLinkServiceConnectionStateStatus <PrivateLinkConnectionStatus?>]`: Status of the connection.

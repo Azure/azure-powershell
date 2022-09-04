@@ -16,14 +16,23 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubSchemaGroup'))
 
 Describe 'Get-AzEventHubSchemaGroup' {
     It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $listOfSchemaGroups = Get-AzEventHubSchemaGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+        $listOfSchemaGroups.Count | Should -Be 1
     }
 
     It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $schemaGroup = Get-AzEventHubSchemaGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.schemaGroup
+        $schemaGroup.ResourceGroupName | Should -Be $env.resourceGroup
+        $schemaGroup.Name | Should -Be $env.schemaGroup
+        $schemaGroup.SchemaCompatibility | Should -Be "None"
+        $schemaGroup.SchemaType | Should -Be "Avro"
     }
 
     It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $schemaGroup = Get-AzEventHubSchemaGroup -InputObject $schemaGroup
+        $schemaGroup.ResourceGroupName | Should -Be $env.resourceGroup
+        $schemaGroup.Name | Should -Be $env.schemaGroup
+        $schemaGroup.SchemaCompatibility | Should -Be "None"
+        $schemaGroup.SchemaType | Should -Be "Avro"
     }
 }

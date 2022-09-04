@@ -69,7 +69,7 @@ function Set-AzEventHubAuthorizationRule{
         # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
         ${InputObject},
 
-        [Parameter(HelpMessage = "The rights associated with the rule.")]
+        [Parameter(Mandatory, HelpMessage = "The rights associated with the rule.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.AccessRights[]]
         # The rights associated with the rule.

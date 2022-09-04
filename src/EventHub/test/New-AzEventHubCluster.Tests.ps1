@@ -20,7 +20,7 @@ Describe 'New-AzEventHubCluster' {
         $cluster = New-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster -SupportsScaling -Capacity 2
 
         $cluster.Name | Should -Be $env.cluster
-        $cluster.ResourceGroupName | Should -Be $env.resourceGroup
+        $cluster.ResourceGroupName | Should -Be $env.clusterResourceGroup
         $cluster.SupportsScaling | Should -Be $true
         $cluster.Capacity | Should -Be 2
     }

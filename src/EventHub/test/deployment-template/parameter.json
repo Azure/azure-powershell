@@ -3,25 +3,31 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "namespace_name": {
-      "value": "random-namespace-ps-testing-V2"
+      "value": "namespaceNameb1o7k5"
     },
     "namespace_auth_rule_name": {
-      "value": "auth-rule"
+      "value": "auth-rulehvlw70"
     },
     "eventhub_auth_rule_name": {
-      "value": "auth-rule"
+      "value": "auth-ruleq4rate"
     },
     "eventhub_name": {
-      "value": "eh1"
+      "value": "eventHub9peqzw"
     },
     "schema_group_name": {
-      "value": "schema-group"
+      "value": "schemaGroupmvhf4e"
     },
     "appgroup_name": {
-      "value": "app-group"
+      "value": "appGrouppm8sv7"
     },
-    "resourcegroup_name": {
-      "value":  "resource-group"
+    "peName1": {
+      "value": "peName1"
+    },
+    "peName2": {
+      "value": "peName2"
+    },
+    "namespaceResourceId": {
+      "value": "id"
     }
   }
 }

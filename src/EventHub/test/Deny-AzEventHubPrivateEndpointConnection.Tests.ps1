@@ -15,11 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deny-AzEventHubPrivateEndpoin
 }
 
 Describe 'Deny-AzEventHubPrivateEndpointConnection' {
-    It 'SetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded' {
+        $privateEndpoint = Deny-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.pe1
+        $privateEndpoint.ConnectionState | Should -Be "Rejected"
+        $privateEndpoint.Description | Should -Be ""
     }
 
-    It 'SetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetViaIdentityExpanded' {
+        $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.pe2
+
+        $privateEndpoint = Deny-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint -Description "Bye"
+        $privateEndpoint.ConnectionState | Should -Be "Rejected"
+        $privateEndpoint.Description | Should -Be "Bye"
     }
 }

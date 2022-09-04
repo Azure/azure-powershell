@@ -14,8 +14,8 @@ Creates or updates an instance of an Event Hubs Cluster.
 
 ```
 New-AzEventHubCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Location <String>] [-SkuCapacity <Int32>] [-SupportsScaling] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Capacity <Int32>] [-Location <String>] [-SupportsScaling] [-Tag <Hashtable>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -52,6 +52,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Capacity
+The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -131,21 +146,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkuCapacity
-The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

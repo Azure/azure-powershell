@@ -13,7 +13,7 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHu
 ## SYNTAX
 
 ```
-New-AzEventHubVirtualNetworkRuleConfig [-SubnetId] <String> [[-IgnoreMissingVnetServiceEndpoint]]
+New-AzEventHubVirtualNetworkRuleConfig -SubnetId <String> [-IgnoreMissingVnetServiceEndpoint]
  [<CommonParameters>]
 ```
 
@@ -55,7 +55,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: 1
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -70,7 +70,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

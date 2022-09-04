@@ -15,8 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubNetworkRuleSet'
 }
 
 Describe 'Get-AzEventHubNetworkRuleSet' {
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $networkRuleSet = Get-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+        $networkRuleSet.PublicNetworkAccess | Should -Be "Enabled"
+        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null
+        $networkRuleSet.VirtualNetworkRule.Count | Should -Be 0
+        $networkRuleSet.IPRule.Count | Should -Be 0
     }
 
     It 'List' -skip {

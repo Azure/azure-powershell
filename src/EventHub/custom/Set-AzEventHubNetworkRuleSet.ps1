@@ -157,7 +157,6 @@ function Set-AzEventHubNetworkRuleSet{
             $null = $PSBoundParameters.Remove('InputObject')
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
             if ($hasPublicNetworkAccess) {
                 $networkRuleSet.PublicNetworkAccess = $PublicNetworkAccess

@@ -15,7 +15,44 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubGeoDRConfigurat
 }
 
 Describe 'Set-AzEventHubGeoDRConfigurationFailOver' {
-    It 'Fail' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Fail' {
+        Set-AzEventHubGeoDRConfigurationFailOver -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.alias
+        
+        while($drConfig -ne "Succeeded"){
+            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
+            Wait-Seconds 10
+        }
+
+        $drConfig.Name | Should -Be $env.alias
+        $drConfig.ResourceGroupName | Should -Be $env.resourceGroup
+        $drConfig.PartnerNamespace | Should -Be ""
+        $drConfig.Role | Should -Be "Primary"
+
+        $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -PartnerNamespace $env.secondaryNamespaceResourceId
+        
+        while($drConfig -ne "Succeeded"){
+            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+            Wait-Seconds 10
+        }
+    }
+    It 'FailViaIdentity' {
+        Set-AzEventHubGeoDRConfigurationFailOver -InputObject $drConfig -Name $env.alias
+        
+        while($drConfig -ne "Succeeded"){
+            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
+            Wait-Seconds 10
+        }
+
+        $drConfig.Name | Should -Be $env.alias
+        $drConfig.ResourceGroupName | Should -Be $env.resourceGroup
+        $drConfig.PartnerNamespace | Should -Be ""
+        $drConfig.Role | Should -Be "Primary"
+
+        $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -PartnerNamespace $env.secondaryNamespaceResourceId
+        
+        while($drConfig -ne "Succeeded"){
+            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+            Wait-Seconds 10
+        }
     }
 }

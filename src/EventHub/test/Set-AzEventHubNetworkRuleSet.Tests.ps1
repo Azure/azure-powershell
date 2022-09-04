@@ -15,11 +15,50 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubNetworkRuleSet'
 }
 
 Describe 'Set-AzEventHubNetworkRuleSet' {
-    It 'SetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded' {
+        $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 1.1.1.1
+        $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2
+
+        $virtualNetworkRule1 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId $env.subnetId1
+        $virtualNetworkRule2 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId $env.subnetId2
+        $virtualNetworkRule3 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId $env.subnetId3
+
+        $networkRuleSet = Set-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -IPRule $ipRule1,$ipRule2 -VirtualNetworkRule $virtualNetworkRule1,$virtualNetworkRule2,$virtualNetworkRule3
+        $networkRuleSet.DefaultAction | Should -Be "Allow"
+        $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
+        $networkRuleSet.IPRule.Count | Should -Be 2
+        $networkRuleSet.PublicNetworkAccess | Should -Be "Enabled"
+        $networkRuleSet.TrustedServiceAccessEnabled | $null
+
+        $networkRuleSet = Set-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -DefaultAction Deny
+        $networkRuleSet.DefaultAction | Should -Be "Deny"
+        $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
+        $networkRuleSet.IPRule.Count | Should -Be 2
+        $networkRuleSet.PublicNetworkAccess | Should -Be "Enabled"
+        $networkRuleSet.TrustedServiceAccessEnabled | $null
+
+        $networkRuleSet = Set-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -PublicNetworkAccess Disabled
+        $networkRuleSet.DefaultAction | Should -Be "Deny"
+        $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
+        $networkRuleSet.IPRule.Count | Should -Be 2
+        $networkRuleSet.PublicNetworkAccess | Should -Be "Disabled"
+        $networkRuleSet.TrustedServiceAccessEnabled | $null
+
+        $networkRuleSet = Set-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TrustedServiceAccessEnabled
+        $networkRuleSet.DefaultAction | Should -Be "Deny"
+        $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
+        $networkRuleSet.IPRule.Count | Should -Be 2
+        $networkRuleSet.PublicNetworkAccess | Should -Be "Disabled"
+        $networkRuleSet.TrustedServiceAccessEnabled | $true
+
     }
 
-    It 'SetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetViaIdentityExpanded' {
+        $networkRuleSet = Set-AzEventHubNetworkRuleSet -InputObject $networkRuleSet -TrustedServiceAccessEnabled:$false
+        $networkRuleSet.DefaultAction | Should -Be "Deny"
+        $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
+        $networkRuleSet.IPRule.Count | Should -Be 2
+        $networkRuleSet.PublicNetworkAccess | Should -Be "Disabled"
+        $networkRuleSet.TrustedServiceAccessEnabled | $false
     }
 }

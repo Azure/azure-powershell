@@ -15,11 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubConsumerGroup')
 }
 
 Describe 'Set-AzEventHubConsumerGroup' {
-    It 'SetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpanded' {
+        $consumerGroup = Set-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.consumerGroup -UserMetadata "Second Metadata"
+        $consumerGroup.Name | Should -Be $env.consumerGroup
+        $consumerGroup.ResourceGroupName | Should -Be $env.resourceGroup
+        $consumerGroup.UserMetadata | Should -Be "Second Metadata"
     }
 
-    It 'SetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetViaIdentityExpanded' {
+        $consumerGroup = Set-AzEventHubConsumerGroup -InputObject $consumerGroup -UserMetadata "Third Metadata"
+        $consumerGroup.Name | Should -Be $env.consumerGroup
+        $consumerGroup.ResourceGroupName | Should -Be $env.resourceGroup
+        $consumerGroup.UserMetadata | Should -Be "Third Metadata"
     }
 }

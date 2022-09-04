@@ -15,7 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubSchemaGroup'))
 }
 
 Describe 'New-AzEventHubSchemaGroup' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $schemaGroup = New-AzEventHubSchemaGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.schemaGroup2 -SchemaCompatibility Forward -SchemaType Avro -GroupProperty @{a='b'}
+        $schemaGroup.Name | Should -Be $env.schemaGroup2
+        $schemaGroup.ResourceGroupName | Should -Be $env.resourceGroup
+        $schemaGroup.SchemaCompatibility | Should -Be "Forward"
+        $schemaGroup.SchemaType | Should -Be "Avro"
+        $schemaGroup.GroupProperty | Should -Be @{a='b'}
     }
 }

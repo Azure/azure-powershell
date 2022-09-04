@@ -15,15 +15,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubAuthorizationRu
 }
 
 Describe 'Set-AzEventHubAuthorizationRule' {
-    It 'SetExpandedNamespace' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpandedNamespace' {
+        $authRule = Set-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule2 -Rights @("Listen")
+        $authRule.Name | Should -Be $env.authRule2
+        $authRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $authRule.Rights.Count | Should -Be 1
+        $authRule.Rights[0] | Should -Be "Listen"
     }
 
-    It 'SetExpandedEntity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetExpandedEntity' {
+        $authRule = Set-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.eventHubAuthRule2 -Rights @("Send")
+        $authRule.Name | Should -Be $env.eventHubAuthRule2
+        $authRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $authRule.Rights.Count | Should -Be 1
+        $authRule.Rights[0] | Should -Be "Send"
     }
 
     It 'SetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $authRule = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule2
+        $authRule = Set-AzEventHubAuthorizationRule -InputObject $authRule -Rights @("Manage", "Send", "Listen")
+        $authRule.Name | Should -Be $env.authRule2
+        $authRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $authRule.Rights.Count | Should -Be 3
+
+        $authRule = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.eventHubAuthRule2
+        $authRule = Set-AzEventHubAuthorizationRule -InputObject $authRule -Rights @("Manage", "Send", "Listen")
+        $authRule.Name | Should -Be $env.eventHubAuthRule2
+        $authRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $authRule.Rights.Count | Should -Be 3
     }
 }

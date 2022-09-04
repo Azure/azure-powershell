@@ -15,11 +15,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubApplicationGrou
 }
 
 Describe 'New-AzEventHubApplicationGroup' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         $t1 = New-AzEventHubThrottlingPolicyConfig -Name t1 -MetricId IncomingMessages -RateLimitThreshold 10000
         $t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000
-        $appGroup = New-AzEventHubApplicationGroup -Name appGroup -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -ClientAppGroupIdentifier SASKeyName=a -Policy $t1, $t2
-        $appGroup.Name | Should -Be "appGroup"
+        $appGroup = New-AzEventHubApplicationGroup -Name $env.appGroup2 -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name $env.appGroup2 -ClientAppGroupIdentifier SASKeyName=a -Policy $t1, $t2
+        $appGroup.Name | Should -Be $env.appGroup2
         $appGroup.ResourceGroupName | Should -Be $env.ResourceGroupName
         $appGroup.ClientAppGroupIdentifier | Should -Be "SASKeyName=a"
         $appGroup.Policy.Count | Should -Be 2

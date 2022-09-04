@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEventHubApplicationG
 }
 
 Describe 'Remove-AzEventHubApplicationGroup' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        $t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000
+        New-AzEventHubApplicationGroup -Name $env.appGroup2 -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup -ClientAppGroupIdentifier SASKeyName=b -Policy $t2
+        Remove-AzEventHubApplicationGroup -Name $env.appGroup2 -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup
+        Get-AzEventHubApplicationGroup -Name $env.appGroup2 -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name appGroup | Should -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
+    It 'DeleteViaIdentity' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

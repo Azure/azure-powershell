@@ -15,19 +15,17 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHub'))
 }
 
 Describe 'New-AzEventHub' {
-    It 'CreateExpanded' -skip {
+    It 'CreateExpanded' {
         # Create EventHub without capture
-        $eventhub = New-AzEventHub -Name eventhub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -MessageRetentionInDays 6 -PartitionCount 5
-        $eventhub.Name | Should -Be "eventhub"
+        $eventhub = New-AzEventHub -Name $env.eventHub2 -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -MessageRetentionInDays 6 -PartitionCount 5
+        $eventhub.Name | Should -Be $env.eventHub2
         $eventhub.ResourceGroupName | Should -Be $env.resourceGroup
         $eventhub.MessageRetentionInDays | Should -Be 6
         $eventhub.PartitionCount | Should -Be 5
 
-        $env.Add("eventHub2", $eventhub.Name)
-
         # Create EventHub with capture enabled 
-        $eventhub = New-AzEventHub -Name eventhubcapture -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -ArchiveNameFormat {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second} -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId
-        $eventhub.Name | Should -Be "eventhubcapture"
+        $eventhub = New-AzEventHub -Name $env.eventHub3 -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -ArchiveNameFormat {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second} -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId
+        $eventhub.Name | Should -Be $env.eventHub3
         $eventhub.ResourceGroupName | Should -Be $env.resourceGroup
         $eventhub.MessageRetentionInDays | Should -Be 1
         $eventhub.PartitionCount | Should -Be 1
@@ -40,7 +38,5 @@ Describe 'New-AzEventHub' {
         $eventhub.IntervalInSeconds | Should -Be 600
         $eventhub.SizeLimitInBytes | Should -Be 11000000
         $eventhub.StorageAccountResourceId | Should -Be $eventhub.StorageAccountResourceId
-
-        $env.Add("eventHub3", $eventhub.Name)
     }
 }

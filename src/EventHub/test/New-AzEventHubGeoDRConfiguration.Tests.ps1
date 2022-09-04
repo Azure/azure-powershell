@@ -16,6 +16,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubGeoDRConfigurat
 
 Describe 'New-AzEventHubGeoDRConfiguration' {
     It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -PartnerNamespace $env.secondaryNamespaceResourceId
+        $drConfig.ResourceGroupName | $env.resourceGroup
+        $drConfig.Name | $env.alias
+        $drConfig.PartnerNamespace | $env.secondaryNamespaceResourceId
+        $drConfig.Role | "Primary"
+
+        while($drConfig -ne "Succeeded"){
+            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+            Wait-Seconds 10
+        }
+
+        $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
+        $drConfig.ResourceGroupName | $env.resourceGroup
+        $drConfig.Name | $env.alias
+        $drConfig.PartnerNamespace | $env.primaryNamespaceResourceId
+        $drConfig.Role | "Secondary"
     }
 }
