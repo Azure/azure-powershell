@@ -103,6 +103,12 @@ Available for Verizon Profiles.
 ### [New-AzCdnCustomDomain](New-AzCdnCustomDomain.md)
 Creates a new custom domain within an endpoint.
 
+### [New-AzCdnDeliveryRuleCacheExpirationActionObject](New-AzCdnDeliveryRuleCacheExpirationActionObject.md)
+Create an in-memory object for DeliveryRuleCacheExpirationAction.
+
+### [New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject](New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject.md)
+Create an in-memory object for DeliveryRuleCacheKeyQueryStringAction.
+
 ### [New-AzCdnDeliveryRuleCookiesConditionObject](New-AzCdnDeliveryRuleCookiesConditionObject.md)
 Create an in-memory object for DeliveryRuleCookiesCondition.
 
@@ -168,6 +174,9 @@ Creates a new origin within the specified endpoint.
 
 ### [New-AzCdnOriginGroup](New-AzCdnOriginGroup.md)
 Creates a new origin group within the specified endpoint.
+
+### [New-AzCdnOriginGroupOverrideActionObject](New-AzCdnOriginGroupOverrideActionObject.md)
+Create an in-memory object for OriginGroupOverrideAction.
 
 ### [New-AzCdnProfile](New-AzCdnProfile.md)
 Creates a new Azure Front Door Standard or Azure Front Door Premium or CDN profile with a profile name under the specified subscription and resource group.
