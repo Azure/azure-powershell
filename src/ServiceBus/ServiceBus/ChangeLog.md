@@ -19,6 +19,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.11.0
 * In the upcoming major breaking change release in October 2022, Az.ServiceBus would be migrating most cmdlets to a new format
 for a better powershell experience and as a result would witness breaking changes. Please refer our migration guide to know more https://go.microsoft.com/fwlink/?linkid=2204584.
 * Added -MinimumTlsVersion to New-AzServiceBusNamespace and Set-AzServiceBusNamespace

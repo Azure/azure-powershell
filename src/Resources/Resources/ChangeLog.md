@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 6.2.0
 * Fixed bug `-Password` overwrite `-PasswordProfile` in `New-AzADUser` [#19265]
 * Exposed `EmployeeOrgData` `Manager` for `Get-AzADUSer` [#18205]
 * Exposed parameter `-Count` for `Get-AzADUser` [#16874] 

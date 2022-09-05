@@ -98,7 +98,7 @@ Function Find-CmdletBreakingChange
             }
             Else
             {
-                $Result[$AllParameterSetsName]["CmdletBreakingChange"].Add($tmp)
+                $Null = $Result[$AllParameterSetsName]["CmdletBreakingChange"].Add($tmp)
             }
         }
     }

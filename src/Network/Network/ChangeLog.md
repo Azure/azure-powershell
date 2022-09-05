@@ -20,6 +20,9 @@
 
 ## Upcoming Release
 
+## Version 4.20.1
+* Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
+
 ## Version 4.20.0
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
 * Fixed required parameter `PrivateLinkResourceType` missing issue for the following cmdlets [#18655]
@@ -28,7 +31,7 @@
     - `Remove-AzPrivateEndpointConnection`
     - `Approve-AzPrivateEndpointConnection`
     - `Deny-AzPrivateEndpointConnection`
-* Added breaking change attribute to notify that public ip address sku default behaviour will be changed
+* Added breaking change attribute to notify that public ip address sku default behavior will be changed
     - `New-AzPublicIpAddress`
     - `New-AzLoadBalancer`
 * Onboard Azure Virtual Network Manager Cmdlets
