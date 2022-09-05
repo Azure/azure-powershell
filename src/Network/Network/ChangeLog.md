@@ -19,6 +19,7 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug not able to add MSSQL application rules to an AZURE FIREWALL POLICY
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
