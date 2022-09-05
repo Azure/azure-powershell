@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Automation.dll'
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.Automation.Sdk.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -74,13 +74,17 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Automation.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzAutomationHybridWorkerGroup', 
+CmdletsToExport = 'Move-AzAutomationHybridRunbookWorker','Remove-AzAutomationHybridRunbookWorker','New-AzAutomationHybridRunbookWorker','Get-AzAutomationHybridRunbookWorker',
+                'Remove-AzAutomationHybridRunbookWorkerGroup', 'Set-AzAutomationHybridRunbookWorkerGroup',
+                'New-AzAutomationHybridRunbookWorkerGroup',
+                'Get-AzAutomationHybridRunbookWorkerGroup',
+                'Get-AzAutomationHybridWorkerGroup', 
                'Remove-AzAutomationHybridWorkerGroup', 
                'Get-AzAutomationJobOutputRecord', 
                'Import-AzAutomationDscNodeConfiguration', 
                'Export-AzAutomationDscConfiguration', 
-               'Export-AzAutomationDscNodeReportContent', 
-               'Get-AzAutomationCertificate', 'Get-AzAutomationConnection', 
+               'Export-AzAutomationDscNodeReportContent',
+               'Get-AzAutomationCertificate', 'Get-AzAutomationConnection',
                'Get-AzAutomationCredential', 'Get-AzAutomationDscCompilationJob', 
                'Get-AzAutomationDscCompilationJobOutput', 
                'Get-AzAutomationDscNodeConfiguration', 
