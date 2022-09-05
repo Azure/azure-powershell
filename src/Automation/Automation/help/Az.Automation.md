@@ -65,6 +65,9 @@ Gets a Hybrid Runbook Worker.
 ### [Get-AzAutomationHybridRunbookWorkerGroup](Get-AzAutomationHybridRunbookWorkerGroup.md)
 Gets a Hybrid Runbook Worker Group.
 
+### [Get-AzAutomationHybridWorkerGroup](Get-AzAutomationHybridWorkerGroup.md)
+Gets hybrid runbook worker groups.
+
 ### [Get-AzAutomationJob](Get-AzAutomationJob.md)
 Gets Automation runbook jobs.
 
@@ -205,6 +208,9 @@ Removes a hybrid runbook worker.
 
 ### [Remove-AzAutomationHybridRunbookWorkerGroup](Remove-AzAutomationHybridRunbookWorkerGroup.md)
 Removes a hybrid runbook worker group.
+
+### [Remove-AzAutomationHybridWorkerGroup](Remove-AzAutomationHybridWorkerGroup.md)
+Removes hybrid worker group from Automation.
 
 ### [Remove-AzAutomationModule](Remove-AzAutomationModule.md)
 Removes a module from Automation.
