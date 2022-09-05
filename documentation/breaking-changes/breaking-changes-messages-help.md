@@ -6,12 +6,9 @@ Breaking change warnings are a means for the cmdlet authors to communicate with 
 
 ## How do I get rid of the warnings?
 
-(use `Update-AzConfig` to suppress the warnings. use appliesTo to constraint).
-
-To suppress these warning messages, set the environment variable 'SuppressAzurePowerShellBreakingChangeWarnings' to 'true'.
-
-```
-Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
+To suppress these warning messages, set the config 'DisplayBreakingChangeWarning' to '$false'.
+```powershell
+Update-AzConfig -DisplayBreakingChangeWarning $false
 ```
 
 More details on breaking change message suppression can be found [here](https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/breaking-changes-attribute-help.md#suppress-the-breaking-change-messages-at-runtime).
