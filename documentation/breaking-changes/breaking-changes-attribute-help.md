@@ -53,6 +53,10 @@ For more info, run `Get-Help Update-AzConfig`.
 
 Alternatively, set the env variable "SuppressAzurePowerShellBreakingChangeWarnings" to "true" to suppress all the breaking change messages.
 
+```powershell
+Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
+```
+
 NOTE :
 - The only time you will see the output (at runtime) of an attribute applied to a parameter (property or field) is if the parameter is actually invoked on the cmdline. The breaking change attributes to all parameters that are not invoked are ignored.
 
