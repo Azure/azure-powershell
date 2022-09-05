@@ -40,6 +40,34 @@ namespace Microsoft.Azure.Commands.Compute.Automation.Models
         public IList<ResourceSkuCosts> Costs { get; set; }
         public IList<ResourceSkuCapabilities> Capabilities { get; set; }
         public IList<ResourceSkuRestrictions> Restrictions { get; set; }
-
+        public IList<string> RestrictionInfo
+        {
+            get
+            {
+                List<string> restrictionInfos = new List<string>();
+                foreach (ResourceSkuRestrictions info in Restrictions)
+                {
+                    string aInfo = "";
+                    if (info.Type != null)
+                    {
+                        aInfo = "type: " + info.Type.ToString();
+                    }
+                    if (info.RestrictionInfo != null)
+                    {
+                        if (info.RestrictionInfo.Locations != null)
+                        {
+                            aInfo = aInfo + ", locations: " + string.Join(", ", info.RestrictionInfo.Locations);
+                        }
+                        if (info.RestrictionInfo.Zones != null)
+                        {
+                            aInfo = aInfo + ", zones: " + string.Join(", ", info.RestrictionInfo.Zones);
+                        }
+                    }
+                    restrictionInfos.Add(aInfo);
+                }
+                //this.restrictionInfo = restrictionInfos;
+                return restrictionInfos;
+            }
+        }
     }
 }

@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="InMageRcmSyncDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="InMageRcmSyncDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,14 +101,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskReplicationProgressHealth?) content.GetValueForProperty("ProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskReplicationProgressHealth.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).TransferredByte = (long?) content.GetValueForProperty("TransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).TransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).Last15MinutesTransferredByte = (long?) content.GetValueForProperty("Last15MinutesTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).Last15MinutesTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastDataTransferTimeUtc = (string) content.GetValueForProperty("LastDataTransferTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastDataTransferTimeUtc, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProcessedByte = (long?) content.GetValueForProperty("ProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).StartTime = (string) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).StartTime, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastRefreshTime = (string) content.GetValueForProperty("LastRefreshTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastRefreshTime, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressPercentage = (int?) content.GetValueForProperty("ProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("ProgressHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskReplicationProgressHealth?) content.GetValueForProperty("ProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskReplicationProgressHealth.CreateFrom);
+            }
+            if (content.Contains("TransferredByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).TransferredByte = (long?) content.GetValueForProperty("TransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).TransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("Last15MinutesTransferredByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).Last15MinutesTransferredByte = (long?) content.GetValueForProperty("Last15MinutesTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).Last15MinutesTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("LastDataTransferTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastDataTransferTimeUtc = (string) content.GetValueForProperty("LastDataTransferTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastDataTransferTimeUtc, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProcessedByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProcessedByte = (long?) content.GetValueForProperty("ProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("StartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).StartTime = (string) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).StartTime, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastRefreshTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastRefreshTime = (string) content.GetValueForProperty("LastRefreshTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastRefreshTime, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProgressPercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressPercentage = (int?) content.GetValueForProperty("ProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -124,14 +150,38 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskReplicationProgressHealth?) content.GetValueForProperty("ProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskReplicationProgressHealth.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).TransferredByte = (long?) content.GetValueForProperty("TransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).TransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).Last15MinutesTransferredByte = (long?) content.GetValueForProperty("Last15MinutesTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).Last15MinutesTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastDataTransferTimeUtc = (string) content.GetValueForProperty("LastDataTransferTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastDataTransferTimeUtc, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProcessedByte = (long?) content.GetValueForProperty("ProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).StartTime = (string) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).StartTime, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastRefreshTime = (string) content.GetValueForProperty("LastRefreshTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastRefreshTime, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressPercentage = (int?) content.GetValueForProperty("ProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            if (content.Contains("ProgressHealth"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressHealth = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskReplicationProgressHealth?) content.GetValueForProperty("ProgressHealth",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressHealth, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.DiskReplicationProgressHealth.CreateFrom);
+            }
+            if (content.Contains("TransferredByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).TransferredByte = (long?) content.GetValueForProperty("TransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).TransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("Last15MinutesTransferredByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).Last15MinutesTransferredByte = (long?) content.GetValueForProperty("Last15MinutesTransferredByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).Last15MinutesTransferredByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("LastDataTransferTimeUtc"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastDataTransferTimeUtc = (string) content.GetValueForProperty("LastDataTransferTimeUtc",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastDataTransferTimeUtc, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProcessedByte"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProcessedByte = (long?) content.GetValueForProperty("ProcessedByte",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProcessedByte, (__y)=> (long) global::System.Convert.ChangeType(__y, typeof(long)));
+            }
+            if (content.Contains("StartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).StartTime = (string) content.GetValueForProperty("StartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).StartTime, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastRefreshTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastRefreshTime = (string) content.GetValueForProperty("LastRefreshTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).LastRefreshTime, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProgressPercentage"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressPercentage = (int?) content.GetValueForProperty("ProgressPercentage",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IInMageRcmSyncDetailsInternal)this).ProgressPercentage, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
             AfterDeserializePSObject(content);
         }
 

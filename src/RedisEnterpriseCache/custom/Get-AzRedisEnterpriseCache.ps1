@@ -44,13 +44,13 @@ West US     MyCache3 Microsoft.Cache/redisEnterprise           {default}
 Central US  MyCache4 Microsoft.Cache/redisEnterprise {1, 2, 3} {default}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster
+Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.ICluster
 .Link
 https://docs.microsoft.com/powershell/module/az.redisenterprisecache/get-azredisenterprisecache
 #>
 
 function Get-AzRedisEnterpriseCache {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api20210301.ICluster])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.RedisEnterpriseCache.Models.Api202201.ICluster])]
     [CmdletBinding(DefaultParameterSetName='ListBySubscriptionId', PositionalBinding=$false)]
     param(
         [Parameter(ParameterSetName='Get', Mandatory)]

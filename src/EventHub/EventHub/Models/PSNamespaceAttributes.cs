@@ -37,34 +37,17 @@ namespace Microsoft.Azure.Commands.EventHub.Models
                     Tier = evResource.Sku.Tier
                 };
 
-                if (evResource.ProvisioningState != null)
-                    ProvisioningState = evResource.ProvisioningState;
-
-                if (evResource.CreatedAt.HasValue)
-                    CreatedAt = evResource.CreatedAt;
-
-                if(evResource.UpdatedAt.HasValue)
-                    UpdatedAt = evResource.UpdatedAt;
-
-                if(evResource.ServiceBusEndpoint != null)
-                    ServiceBusEndpoint = evResource.ServiceBusEndpoint;
-                if (evResource.Location != null)
-                    Location = evResource.Location;
-
-                if(evResource.Id != null)
-                    Id = evResource.Id;
-
-                if (evResource.Name != null)
-                    Name = evResource.Name;
-
-                if (evResource.IsAutoInflateEnabled.HasValue)
-                    IsAutoInflateEnabled = evResource.IsAutoInflateEnabled;
-
-                if (evResource.MaximumThroughputUnits.HasValue)
-                    MaximumThroughputUnits = evResource.MaximumThroughputUnits;
-
-                if (evResource.KafkaEnabled.HasValue)
-                   KafkaEnabled = evResource.KafkaEnabled;
+                ProvisioningState = evResource.ProvisioningState;
+                CreatedAt = evResource.CreatedAt;    
+                UpdatedAt = evResource.UpdatedAt;
+                ServiceBusEndpoint = evResource.ServiceBusEndpoint;
+                Location = evResource.Location;
+                Id = evResource.Id;
+                Name = evResource.Name;
+                IsAutoInflateEnabled = evResource.IsAutoInflateEnabled;
+                MaximumThroughputUnits = evResource.MaximumThroughputUnits;
+                KafkaEnabled = evResource.KafkaEnabled;
+                MinimumTlsVersion = evResource.MinimumTlsVersion;
 
                 if(evResource.Tags.Count > 0)
                     Tags = new Dictionary<string, string>(evResource.Tags);
@@ -196,6 +179,8 @@ namespace Microsoft.Azure.Commands.EventHub.Models
         public string IdentityType { get; set; }
 
         public string[] IdentityId { get; set; }
+
+        public string MinimumTlsVersion { get; set; }
 
         public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
 

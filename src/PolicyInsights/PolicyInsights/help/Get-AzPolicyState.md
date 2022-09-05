@@ -61,7 +61,7 @@ Get-AzPolicyState [-All] [-SubscriptionId <String>] -PolicyAssignmentName <Strin
  [-Apply <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
-### ResourceGroupLevelPolicyAssignmentScope
+### ResourceGroupscopePolicyAssignmentScope
 ```
 Get-AzPolicyState [-All] [-SubscriptionId <String>] -ResourceGroupName <String> -PolicyAssignmentName <String>
  [-Top <Int32>] [-OrderBy <String>] [-Select <String>] [-From <DateTime>] [-To <DateTime>] [-Filter <String>]
@@ -155,14 +155,14 @@ Gets latest policy state records generated in the last day for all resources (wi
 Get-AzPolicyState -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
 ```
 
-Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists in the subscription in current session context).
+Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists at subscription scope in the subscription in current session context).
 
-### Example 13: Get latest policy states for a policy assignment in the specified subscription
+### Example 13: Get latest policy states for a policy assignment with the same scope as the specified subscription
 ```powershell
 Get-AzPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5" -PolicyAssignmentName "ddd8ef92e3714a5ea3d208c1"
 ```
 
-Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists in the specified subscription).
+Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) effected by the specified policy assignment (that exists at subscription scope in the specified subscription).
 
 ### Example 14: Get latest policy states for a policy assignment in the specified resource group in the current subscription
 ```powershell
@@ -262,6 +262,13 @@ Get-AzPolicyState -ResourceId "/subscriptions/fff10b27-fff3-fff5-fff8-fffbe01e86
 ```
 
 Gets latest component counts generated in the last day grouped by compliance state for the specified resource, given a resource provider mode policy assignment.
+
+### Example 26: Get policy states for a management group scope policy assignment
+```powershell
+Get-AzPolicyState -SubscriptionId "fff10b27-fff3-fff5-fff8-fffbe01e86a5" -Filter "policyAssignmentId eq '/providers/Microsoft.Management/managementGroups/myManagementGroup/providers/Microsoft.Authorization/policyAssignments/ddd8ef92e3714a5ea3d208c1'"
+```
+
+Gets latest policy state records generated in the last day for all resources (within the tenant in current session context) in the specified subscription affected by the specified policy assignment (which is assigned to a management group which is an ancestor of the specified subscription).
 
 ## PARAMETERS
 
@@ -388,7 +395,9 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyAssignmentName
-Policy assignment name.
+The name of a policy assignment.
+This policy assignment must have exactly the same scope as the parameter set. It cannot be a management group scope policy assignment.
+For example: if `-SubscriptionId` and `ResourceGroupName` are specified, the policy assignment must be assigned to that resource group. If only `-SubscriptionId` is specified, then the policy assignment must be assigned to that subscription. 
 
 ```yaml
 Type: System.String
@@ -403,7 +412,8 @@ Accept wildcard characters: False
 ```
 
 ### -PolicyDefinitionName
-Policy definition name.
+The name of a policy definition.
+This policy definition must exist in the subscription being queried. It cannot be a management group scope policy definition.
 
 ```yaml
 Type: System.String
@@ -418,7 +428,8 @@ Accept wildcard characters: False
 ```
 
 ### -PolicySetDefinitionName
-Policy set definition name.
+The name of a policy set definition.
+This policy set definition must exist in the subscription being queried. It cannot be a management group scope policy set definition.
 
 ```yaml
 Type: System.String

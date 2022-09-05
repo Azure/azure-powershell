@@ -30,7 +30,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -42,7 +43,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -81,7 +83,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="IPConfigInputDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="IPConfigInputDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -98,17 +100,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IPConfigName = (string) content.GetValueForProperty("IPConfigName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IPConfigName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsPrimary = (bool?) content.GetValueForProperty("IsPrimary",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsPrimary, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsSeletedForFailover = (bool?) content.GetValueForProperty("IsSeletedForFailover",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsSeletedForFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoverySubnetName = (string) content.GetValueForProperty("RecoverySubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoverySubnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryStaticIPAddress = (string) content.GetValueForProperty("RecoveryStaticIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryStaticIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryPublicIPAddressId = (string) content.GetValueForProperty("RecoveryPublicIPAddressId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryPublicIPAddressId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryLbBackendAddressPoolId = (string[]) content.GetValueForProperty("RecoveryLbBackendAddressPoolId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryLbBackendAddressPoolId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoSubnetName = (string) content.GetValueForProperty("TfoSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoSubnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoStaticIPAddress = (string) content.GetValueForProperty("TfoStaticIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoStaticIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoPublicIPAddressId = (string) content.GetValueForProperty("TfoPublicIPAddressId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoPublicIPAddressId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoLbBackendAddressPoolId = (string[]) content.GetValueForProperty("TfoLbBackendAddressPoolId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoLbBackendAddressPoolId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("IPConfigName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IPConfigName = (string) content.GetValueForProperty("IPConfigName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IPConfigName, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsPrimary"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsPrimary = (bool?) content.GetValueForProperty("IsPrimary",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsPrimary, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IsSeletedForFailover"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsSeletedForFailover = (bool?) content.GetValueForProperty("IsSeletedForFailover",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsSeletedForFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RecoverySubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoverySubnetName = (string) content.GetValueForProperty("RecoverySubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoverySubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryStaticIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryStaticIPAddress = (string) content.GetValueForProperty("RecoveryStaticIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryStaticIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPublicIPAddressId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryPublicIPAddressId = (string) content.GetValueForProperty("RecoveryPublicIPAddressId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryPublicIPAddressId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryLbBackendAddressPoolId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryLbBackendAddressPoolId = (string[]) content.GetValueForProperty("RecoveryLbBackendAddressPoolId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryLbBackendAddressPoolId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TfoSubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoSubnetName = (string) content.GetValueForProperty("TfoSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoSubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoStaticIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoStaticIPAddress = (string) content.GetValueForProperty("TfoStaticIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoStaticIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoPublicIPAddressId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoPublicIPAddressId = (string) content.GetValueForProperty("TfoPublicIPAddressId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoPublicIPAddressId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoLbBackendAddressPoolId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoLbBackendAddressPoolId = (string[]) content.GetValueForProperty("TfoLbBackendAddressPoolId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoLbBackendAddressPoolId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -126,17 +161,50 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IPConfigName = (string) content.GetValueForProperty("IPConfigName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IPConfigName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsPrimary = (bool?) content.GetValueForProperty("IsPrimary",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsPrimary, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsSeletedForFailover = (bool?) content.GetValueForProperty("IsSeletedForFailover",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsSeletedForFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoverySubnetName = (string) content.GetValueForProperty("RecoverySubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoverySubnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryStaticIPAddress = (string) content.GetValueForProperty("RecoveryStaticIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryStaticIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryPublicIPAddressId = (string) content.GetValueForProperty("RecoveryPublicIPAddressId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryPublicIPAddressId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryLbBackendAddressPoolId = (string[]) content.GetValueForProperty("RecoveryLbBackendAddressPoolId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryLbBackendAddressPoolId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoSubnetName = (string) content.GetValueForProperty("TfoSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoSubnetName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoStaticIPAddress = (string) content.GetValueForProperty("TfoStaticIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoStaticIPAddress, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoPublicIPAddressId = (string) content.GetValueForProperty("TfoPublicIPAddressId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoPublicIPAddressId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoLbBackendAddressPoolId = (string[]) content.GetValueForProperty("TfoLbBackendAddressPoolId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoLbBackendAddressPoolId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("IPConfigName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IPConfigName = (string) content.GetValueForProperty("IPConfigName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IPConfigName, global::System.Convert.ToString);
+            }
+            if (content.Contains("IsPrimary"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsPrimary = (bool?) content.GetValueForProperty("IsPrimary",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsPrimary, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("IsSeletedForFailover"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsSeletedForFailover = (bool?) content.GetValueForProperty("IsSeletedForFailover",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).IsSeletedForFailover, (__y)=> (bool) global::System.Convert.ChangeType(__y, typeof(bool)));
+            }
+            if (content.Contains("RecoverySubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoverySubnetName = (string) content.GetValueForProperty("RecoverySubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoverySubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryStaticIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryStaticIPAddress = (string) content.GetValueForProperty("RecoveryStaticIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryStaticIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryPublicIPAddressId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryPublicIPAddressId = (string) content.GetValueForProperty("RecoveryPublicIPAddressId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryPublicIPAddressId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryLbBackendAddressPoolId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryLbBackendAddressPoolId = (string[]) content.GetValueForProperty("RecoveryLbBackendAddressPoolId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).RecoveryLbBackendAddressPoolId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
+            if (content.Contains("TfoSubnetName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoSubnetName = (string) content.GetValueForProperty("TfoSubnetName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoSubnetName, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoStaticIPAddress"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoStaticIPAddress = (string) content.GetValueForProperty("TfoStaticIPAddress",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoStaticIPAddress, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoPublicIPAddressId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoPublicIPAddressId = (string) content.GetValueForProperty("TfoPublicIPAddressId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoPublicIPAddressId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoLbBackendAddressPoolId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoLbBackendAddressPoolId = (string[]) content.GetValueForProperty("TfoLbBackendAddressPoolId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IIPConfigInputDetailsInternal)this).TfoLbBackendAddressPoolId, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 

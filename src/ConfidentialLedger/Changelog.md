@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.0.0
 * General availability of `Az.ConfidentialLedger`
 
 ## Version 0.1.1

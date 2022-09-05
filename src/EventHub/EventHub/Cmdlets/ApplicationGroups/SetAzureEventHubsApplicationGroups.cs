@@ -15,12 +15,15 @@
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
 {
+
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubApplicationGroup", DefaultParameterSetName = ApplicationGroupPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubApplicationGroupAttributes))]
     public class SetAzureEventHubsApplicationGroups: AzureEventHubsCmdletBase
     {
@@ -41,13 +44,16 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupResourceIdParameterSet, HelpMessage = "Determines if Application Group is allowed to create connection with namespace or not. Once the isEnabled is set to false, all the existing connections of application group gets dropped and no new connections will be allowed")]
         public SwitchParameter IsEnabled { get; set; }
 
+        [CmdletParameterBreakingChange("ThrottlingPolicyConfig", OldParamaterType = typeof(PSEventHubThrottlingPolicyConfigAttributes), ReplaceMentCmdletParameterName = "Policy", NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupPropertiesParameterSet, HelpMessage = "List of Throttling Policy Objects. Please use New-AzEventHubThrottlingPolicyConfig to create in memory object which can be one item in this list.")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupResourceIdParameterSet, HelpMessage = "List of Throttling Policy Objects. Please use New-AzEventHubThrottlingPolicyConfig to create in memory object which can be one item in this list.")]
         public PSEventHubThrottlingPolicyConfigAttributes[] ThrottlingPolicyConfig { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, ParameterSetName = ApplicationGroupResourceIdParameterSet, HelpMessage = "ResourceId of application group")]
         public string ResourceId { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSEventHubApplicationGroupAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup", ChangeDescription = ApplicationGroupInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ValueFromPipeline = true, ParameterSetName = ApplicationGroupInputObjectParameterSet, Position = 0, HelpMessage = "Input Object of type PSEventHubApplicationGroupAttributes")]
         public PSEventHubApplicationGroupAttributes InputObject { get; set; }
 
@@ -90,7 +96,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
                             isEnabled = IsEnabled.IsPresent;
                         }
 
-                        WriteObject(Client.UpdateApplicationGroup(resourceGroupName: ResourceGroupName,
+                        WriteObject(UtilityClient.UpdateApplicationGroup(resourceGroupName: ResourceGroupName,
                                                                   namespaceName: NamespaceName,
                                                                   appGroupName: Name,
                                                                   isEnabled: isEnabled,
@@ -99,14 +105,14 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.AppicationGroups
                     else if(ParameterSetName == ApplicationGroupInputObjectParameterSet)
                     {
                         //Set Cmdlets must throw exception in case the resource does not already exist
-                        Client.GetApplicationGroup(resourceGroupName: ResourceGroupName,
+                        UtilityClient.GetApplicationGroup(resourceGroupName: ResourceGroupName,
                                                    namespaceName: NamespaceName,
                                                    appGroupName: Name);
                         
                         //When InputObject is given as a parameter, the assumption is that the consumer has given the entire desired state
                         //Hence we reconstruct a new app group object
                         //That is why a create call and not update call.
-                        WriteObject(Client.CreateApplicationGroup(resourceGroupName: ResourceGroupName,
+                        WriteObject(UtilityClient.CreateApplicationGroup(resourceGroupName: ResourceGroupName,
                                                                   namespaceName: NamespaceName,
                                                                   appGroupName: Name,
                                                                   clientAppGroupIdentifier: InputObject.ClientAppGroupIdentifier,

@@ -23,12 +23,14 @@ using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
     /// <summary>
     /// Get the list of events for at a subscription level.
     /// </summary>
+    [CmdletDeprecation()]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "DiagnosticSetting", SupportsShouldProcess = true, DefaultParameterSetName = SetAzureRmDiagnosticSettingOldParamGroup), OutputType(typeof(PSServiceDiagnosticSettings))]
     public class SetAzureRmDiagnosticSettingCommand : ManagementCmdletBase
     {

@@ -72,12 +72,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates an account and resource group for use with the Scenario tests
         /// </summary>
-        public static BatchAccountContext CreateTestAccountAndResourceGroup(BatchController controller, string resourceGroupName, string accountName, string location)
+        public static BatchAccountContext CreateTestAccountAndResourceGroup(BatchTestRunner runner, string resourceGroupName, string accountName, string location)
         {
-            controller.ResourceManagementClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup() { Location = location });
-            BatchAccount createResponse = controller.BatchManagementClient.BatchAccount.Create(resourceGroupName, accountName, new BatchAccountCreateParameters() { Location = location });
+            runner.ResourceManagementClient.ResourceGroups.CreateOrUpdate(resourceGroupName, new ResourceGroup() { Location = location });
+            BatchAccount createResponse = runner.BatchManagementClient.BatchAccount.Create(resourceGroupName, accountName, new BatchAccountCreateParameters() { Location = location });
             BatchAccountContext context = BatchAccountContext.ConvertAccountResourceToNewAccountContext(createResponse, null);
-            BatchAccountKeys response = controller.BatchManagementClient.BatchAccount.GetKeys(resourceGroupName, accountName);
+            BatchAccountKeys response = runner.BatchManagementClient.BatchAccount.GetKeys(resourceGroupName, accountName);
             context.PrimaryAccountKey = response.Primary;
             context.SecondaryAccountKey = response.Secondary;
             return context;
@@ -86,18 +86,18 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Cleans up an account and resource group used in a Scenario test.
         /// </summary>
-        public static void CleanupTestAccount(BatchController controller, string resourceGroupName, string accountName)
+        public static void CleanupTestAccount(BatchTestRunner runner, string resourceGroupName, string accountName)
         {
-            controller.BatchManagementClient.BatchAccount.Delete(resourceGroupName, accountName);
-            controller.ResourceManagementClient.ResourceGroups.Delete(resourceGroupName);
+            runner.BatchManagementClient.BatchAccount.Delete(resourceGroupName, accountName);
+            runner.ResourceManagementClient.ResourceGroups.Delete(resourceGroupName);
         }
 
         /// <summary>
         /// Adds a test certificate for use in Scenario tests. Returns the thumbprint of the cert.
         /// </summary>
-        public static string AddTestCertificate(BatchController controller, BatchAccountContext context, string filePath)
+        public static string AddTestCertificate(BatchTestRunner runner, BatchAccountContext context, string filePath)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             X509Certificate2 cert = new X509Certificate2(filePath);
             ListCertificateOptions getParameters = new ListCertificateOptions(context)
@@ -145,9 +145,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Deletes a certificate.
         /// </summary>
-        public static void DeleteTestCertificate(BatchController controller, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
+        public static void DeleteTestCertificate(BatchTestRunner runner, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             CertificateOperationParameters parameters = new CertificateOperationParameters(context, thumbprintAlgorithm,
                 thumbprint);
@@ -158,9 +158,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Deletes a certificate.
         /// </summary>
-        public static void WaitForCertificateToFailDeletion(BatchController controller, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
+        public static void WaitForCertificateToFailDeletion(BatchTestRunner runner, BatchAccountContext context, string thumbprintAlgorithm, string thumbprint)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             ListCertificateOptions parameters = new ListCertificateOptions(context)
             {
@@ -186,7 +186,7 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// Creates a test pool for use in Scenario tests.
         /// </summary>
         public static void CreateTestPool(
-            BatchController controller,
+            BatchTestRunner runner,
             BatchAccountContext context,
             string poolId,
             int? targetDedicated,
@@ -218,14 +218,14 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 InterComputeNodeCommunicationEnabled = true
             };
 
-            CreatePoolIfNotExists(controller, parameters);
+            CreatePoolIfNotExists(runner, parameters);
         }
 
         public static void CreatePoolIfNotExists(
-            BatchController controller,
+            BatchTestRunner runner,
             NewPoolParameters poolParameters)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             try
             {
@@ -243,9 +243,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates an MPI pool.
         /// </summary>
-        public static void CreateMpiPoolIfNotExists(BatchController controller, BatchAccountContext context, int targetDedicated = 3)
+        public static void CreateMpiPoolIfNotExists(BatchTestRunner runner, BatchAccountContext context, int targetDedicated = 3)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
             ListPoolOptions listOptions = new ListPoolOptions(context)
             {
                 PoolId = MpiPoolId
@@ -266,12 +266,12 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
                 // We got the pool not found error, so continue and create the pool
             }
 
-            CreateTestPool(controller, context, MpiPoolId, targetDedicated, targetLowPriority: 0);
+            CreateTestPool(runner, context, MpiPoolId, targetDedicated, targetLowPriority: 0);
         }
 
-        public static void WaitForSteadyPoolAllocation(BatchController controller, BatchAccountContext context, string poolId)
+        public static void WaitForSteadyPoolAllocation(BatchTestRunner runner, BatchAccountContext context, string poolId)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             ListPoolOptions options = new ListPoolOptions(context)
             {
@@ -294,9 +294,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Gets the number of pools under the specified account
         /// </summary>
-        public static int GetPoolCount(BatchController controller, BatchAccountContext context)
+        public static int GetPoolCount(BatchTestRunner runner, BatchAccountContext context)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             ListPoolOptions options = new ListPoolOptions(context);
 
@@ -307,9 +307,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Deletes a pool used in a Scenario test.
         /// </summary>
-        public static void DeletePool(BatchController controller, BatchAccountContext context, string poolId)
+        public static void DeletePool(BatchTestRunner runner, BatchAccountContext context, string poolId)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             client.DeletePool(context, poolId);
         }
@@ -317,9 +317,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test job schedule for use in Scenario tests.
         /// </summary>
-        public static void CreateTestJobSchedule(BatchController controller, BatchAccountContext context, string jobScheduleId, TimeSpan? recurrenceInterval)
+        public static void CreateTestJobSchedule(BatchTestRunner runner, BatchAccountContext context, string jobScheduleId, TimeSpan? recurrenceInterval)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             PSJobSpecification jobSpecification = new PSJobSpecification();
             jobSpecification.PoolInformation = new PSPoolInformation();
@@ -343,9 +343,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test job for use in Scenario tests.
         /// </summary>
-        public static void CreateTestJob(BatchController controller, BatchAccountContext context, string jobId, string poolId = SharedPool)
+        public static void CreateTestJob(BatchTestRunner runner, BatchAccountContext context, string jobId, string poolId = SharedPool)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             PSPoolInformation poolInfo = new PSPoolInformation();
             poolInfo.PoolId = poolId;
@@ -361,10 +361,10 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Waits for a recent job on a job schedule and returns its id. If a previous job is specified, this method waits until a new job is created.
         /// </summary>
-        public static string WaitForRecentJob(BatchController controller, BatchAccountContext context, string jobScheduleId, string previousJob = null)
+        public static string WaitForRecentJob(BatchTestRunner runner, BatchAccountContext context, string jobScheduleId, string previousJob = null)
         {
             DateTime timeout = DateTime.Now.Add(GetTimeout(TimeSpan.FromMinutes(2)));
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             ListJobScheduleOptions options = new ListJobScheduleOptions(context)
             {
@@ -389,9 +389,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a test task for use in Scenario tests.
         /// </summary>
-        public static void CreateTestTask(BatchController controller, BatchAccountContext context, string jobId, string taskId, string cmdLine = "cmd /c dir /s", int numInstances = 0)
+        public static void CreateTestTask(BatchTestRunner runner, BatchAccountContext context, string jobId, string taskId, string cmdLine = "cmd /c dir /s", int numInstances = 0)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             PSMultiInstanceSettings multiInstanceSettings = null;
             if (numInstances > 1)
@@ -412,9 +412,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Waits for the specified task to complete
         /// </summary>
-        public static void WaitForTaskCompletion(BatchController controller, BatchAccountContext context, string jobId, string taskId)
+        public static void WaitForTaskCompletion(BatchTestRunner runner, BatchAccountContext context, string jobId, string taskId)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             ListTaskOptions options = new ListTaskOptions(context, jobId, null)
             {
@@ -433,9 +433,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Waits for the job to complete
         /// </summary>
-        public static PSCloudJob WaitForJobCompletion(BatchController controller, BatchAccountContext context, string jobId, string taskId)
+        public static PSCloudJob WaitForJobCompletion(BatchTestRunner runner, BatchAccountContext context, string jobId, string taskId)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             PSCloudJob job = client.ListJobs(new ListJobOptions(context)).First(cloudJob => cloudJob.Id == jobId);
 
@@ -454,9 +454,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Gets the id of the compute node that the specified task completed on. Returns null if the task isn't complete.
         /// </summary>
-        public static string GetTaskComputeNodeId(BatchController controller, BatchAccountContext context, string jobId, string taskId)
+        public static string GetTaskComputeNodeId(BatchTestRunner runner, BatchAccountContext context, string jobId, string taskId)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             ListTaskOptions options = new ListTaskOptions(context, jobId, null)
             {
@@ -470,9 +470,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Deletes a job schedule used in a Scenario test.
         /// </summary>
-        public static void DeleteJobSchedule(BatchController controller, BatchAccountContext context, string jobScheduleId)
+        public static void DeleteJobSchedule(BatchTestRunner runner, BatchAccountContext context, string jobScheduleId)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             client.DeleteJobSchedule(context, jobScheduleId);
         }
@@ -480,9 +480,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Deletes a job used in a Scenario test.
         /// </summary>
-        public static void DeleteJob(BatchController controller, BatchAccountContext context, string jobId)
+        public static void DeleteJob(BatchTestRunner runner, BatchAccountContext context, string jobId)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             client.DeleteJob(context, jobId);
         }
@@ -490,9 +490,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Terminates a job
         /// </summary>
-        public static void TerminateJob(BatchController controller, BatchAccountContext context, string jobId)
+        public static void TerminateJob(BatchTestRunner runner, BatchAccountContext context, string jobId)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             TerminateJobParameters parameters = new TerminateJobParameters(context, jobId, null);
 
@@ -502,9 +502,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Gets the id of a compute node in the specified pool
         /// </summary>
-        public static string GetComputeNodeId(BatchController controller, BatchAccountContext context, string poolId, int index = 0)
+        public static string GetComputeNodeId(BatchTestRunner runner, BatchAccountContext context, string poolId, int index = 0)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null);
             List<PSComputeNode> computeNodes = client.ListComputeNodes(options).ToList();
@@ -514,9 +514,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Waits for a compute node to get to the idle state
         /// </summary>
-        public static void WaitForIdleComputeNode(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId)
+        public static void WaitForIdleComputeNode(BatchTestRunner runner, BatchAccountContext context, string poolId, string computeNodeId)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             ListComputeNodeOptions options = new ListComputeNodeOptions(context, poolId, null)
             {
@@ -541,9 +541,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Creates a compute node user for use in Scenario tests.
         /// </summary>
-        public static void CreateComputeNodeUser(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId, string computeNodeUserName)
+        public static void CreateComputeNodeUser(BatchTestRunner runner, BatchAccountContext context, string poolId, string computeNodeId, string computeNodeUserName)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             NewComputeNodeUserParameters parameters = new NewComputeNodeUserParameters(context, poolId, computeNodeId, null)
             {
@@ -557,9 +557,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Deletes a compute node user for use in Scenario tests.
         /// </summary>
-        public static void DeleteComputeNodeUser(BatchController controller, BatchAccountContext context, string poolId, string computeNodeId, string computeNodeUserName)
+        public static void DeleteComputeNodeUser(BatchTestRunner runner, BatchAccountContext context, string poolId, string computeNodeId, string computeNodeUserName)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             ComputeNodeUserOperationParameters parameters = new ComputeNodeUserOperationParameters(context, poolId, computeNodeId, computeNodeUserName);
 
@@ -569,13 +569,13 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Uploads an application package to Storage
         /// </summary>
-        public static ApplicationPackage CreateApplicationPackage(BatchController controller, BatchAccountContext context, string applicationName, string version, string filePath)
+        public static ApplicationPackage CreateApplicationPackage(BatchTestRunner runner, BatchAccountContext context, string applicationName, string version, string filePath)
         {
             ApplicationPackage applicationPackage = null;
 
             if (HttpMockServer.Mode == HttpRecorderMode.Record)
             {
-                applicationPackage = controller.BatchManagementClient.ApplicationPackage.Create(
+                applicationPackage = runner.BatchManagementClient.ApplicationPackage.Create(
                     context.ResourceGroupName,
                     context.AccountName,
                     applicationName,
@@ -595,9 +595,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Deletes an application used in a Scenario test.
         /// </summary>
-        public static void DeleteApplication(BatchController controller, BatchAccountContext context, string applicationName)
+        public static void DeleteApplication(BatchTestRunner runner, BatchAccountContext context, string applicationName)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             client.DeleteApplication(context.ResourceGroupName, context.AccountName, applicationName);
         }
@@ -605,9 +605,9 @@ namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
         /// <summary>
         /// Deletes an application package used in a Scenario test.
         /// </summary>
-        public static void DeleteApplicationPackage(BatchController controller, BatchAccountContext context, string applicationName, string version)
+        public static void DeleteApplicationPackage(BatchTestRunner runner, BatchAccountContext context, string applicationName, string version)
         {
-            BatchClient client = new BatchClient(controller.BatchManagementClient, controller.ResourceManagementClient);
+            BatchClient client = new BatchClient(runner.BatchManagementClient, runner.ResourceManagementClient);
 
             client.DeleteApplicationPackage(context.ResourceGroupName, context.AccountName, applicationName, version);
         }

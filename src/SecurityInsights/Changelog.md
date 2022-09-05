@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* GA autorest-based AzSecurityInsights
 
 ## Version 2.0.0
 * Changed `Az.SecurityInsights` to autorest-based module

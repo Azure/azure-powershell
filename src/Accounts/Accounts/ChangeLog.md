@@ -20,6 +20,15 @@
 
 ## Upcoming Release
 
+## Version 2.10.0
+* Supported returning all subscriptions with specified name while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19295]
+* Fixed null reference exception when cmdlet uses AzureRestOperation [#18104]
+* Updated survey message and settings
+
+## Version 2.9.1
+* Implemented `SupportsShouldProcess` for `Invoke-AzRestMethod`
+* Supported giving suggestions if an Azure PowerShell command cannot be found, for example when there is a typo in command name.
+
 ## Version 2.9.0
 * Supported exporting and importing configurations by `Export-AzConfig` and `Import-AzConfig`.
 * Fixed an issue that Az.Accounts may fail to be imported in parallel PowerShell processes. [#18321] 

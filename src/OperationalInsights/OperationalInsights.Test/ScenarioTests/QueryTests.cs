@@ -25,35 +25,35 @@ namespace Microsoft.Azure.Commands.OperationalInsights.Test
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestSimpleQuery()
         {
             TestRunner.RunTestScript("Test-SimpleQuery");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestSimpleQueryWithTimespan()
         {
             TestRunner.RunTestScript("Test-SimpleQueryWithTimespan");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestExceptionWithSyntaxError()
         {
             TestRunner.RunTestScript("Test-ExceptionWithSyntaxError");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestExceptionWithShortWait()
         {
             TestRunner.RunTestScript("Test-ExceptionWithShortWait");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestAsJob()
         {
             TestRunner.RunTestScript("Test-AsJob");

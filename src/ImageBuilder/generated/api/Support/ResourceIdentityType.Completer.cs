@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "UserAssigned".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("UserAssigned", "UserAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserAssigned");
+                yield return new global::System.Management.Automation.CompletionResult("'UserAssigned'", "UserAssigned", global::System.Management.Automation.CompletionResultType.ParameterValue, "UserAssigned");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "None".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("None", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
+                yield return new global::System.Management.Automation.CompletionResult("'None'", "None", global::System.Management.Automation.CompletionResultType.ParameterValue, "None");
             }
         }
     }

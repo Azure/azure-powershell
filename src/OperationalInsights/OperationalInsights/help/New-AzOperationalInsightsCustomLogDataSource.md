@@ -32,6 +32,27 @@ The **New-AzOperationalInsightsCustomLogDataSource** cmdlet defines a custom log
 
 ## EXAMPLES
 
+### Example 1: Defines a custom log collection policy 
+
+```powershell
+$customLogRawJson = '{"customLogName":"Validation_CL","description":"test","inputs":[{"location":{"fileSystemLocations":{"linuxFileTypeLogPaths":null,"windowsFileTypeLogPaths":["C:\\e2e\\Evan\\ArubaSECURITY\\*.log"]}},"recordDelimiter":{"regexDelimiter":{"pattern":"\\n","matchIndex":0}}}],"extractions":[{"extractionName":"TimeGenerated","extractionType":"DateTime","extractionProperties":{"dateTimeExtraction":{"regex":"((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]","joinStringRegex":null}}}]}'
+New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName rg-name -WorkspaceName workspace-name -CustomLogRawJson $customLogRawJson -Name "MyCustomLog"
+```
+
+```output
+Name              : MyCustomLog
+ResourceGroupName : rg-name
+WorkspaceName     : workspace-name
+ResourceId        : /subscriptions/sub-id/resourceGroups/rg-name/providers/Microsoft.OperationalInsights/workspaces/workspace-name/datasources/MyCustomLog
+Kind              : CustomLog
+Properties        : {"customLogName":"Validation_CL","description":"test","extractions":[{"extractionName":"TimeGenerated","extractionProperties":{"dateTimeExtraction":{"joinStringRegex":null,"regex":[{"m
+                    atchIndex":0,"numberdGroup":null,"pattern":"((\\d{2})|(\\d{4}))-([0-1]\\d)-(([0-3]\\d)|(\\d))\\s((\\d)|([0-1]\\d)|(2[0-4])):[0-5][0-9]:[0-5][0-9]"}],"formatString":null}},"extractionTy
+                    pe":"DateTime"}],"inputs":[{"location":{"fileSystemLocations":{"linuxFileTypeLogPaths":null,"windowsFileTypeLogPaths":["C:\\e2e\\Evan\\ArubaSECURITY\\*.log"]}},"recordDelimiter":{"rege
+                    xDelimiter":{"matchIndex":0,"numberdGroup":null,"pattern":"\\n"}}}]}
+```
+
+The response recieved after defining a custom log collection policy 
+
 ## PARAMETERS
 
 ### -CustomLogRawJson
