@@ -228,7 +228,7 @@ function Bump-AzVersion
         {
             $updatedModules += $localDependency.ModuleName
             $currBump = Get-VersionBump -GalleryVersion $galleryVersion.ToString() -LocalVersion $localVersion
-            Write-Host "Found $currBump version bump for $($localDependency.ModuleName)"
+            Write-Host "Found $currBump version bump for $($localDependency.ModuleName), gallery version is $($galleryVersion.ToString()), local version is localVersion"
             if ($currBump -eq [PSVersion]::MAJOR)
             {
                 $versionBump = [PSVersion]::MAJOR
