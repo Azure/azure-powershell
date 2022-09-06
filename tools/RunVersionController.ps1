@@ -228,7 +228,7 @@ function Bump-AzVersion
         {
             $updatedModules += $localDependency.ModuleName
             $currBump = Get-VersionBump -GalleryVersion $galleryVersion.ToString() -LocalVersion $localVersion
-            Write-Host "Found $currBump version bump for $($localDependency.ModuleName), gallery version is $($galleryVersion.ToString()), local version is localVersion"
+            Write-Host "Found $currBump version bump for $($localDependency.ModuleName), gallery version is $($galleryVersion.ToString()), local version is $localVersion"
             if ($currBump -eq [PSVersion]::MAJOR)
             {
                 $versionBump = [PSVersion]::MAJOR
@@ -276,6 +276,8 @@ function Bump-AzVersion
         $changeLog += $(Get-ReleaseNotes -Module $updatedModule -RootPath $rootPath) + "`n"
     }
 
+    $debugAz = Get-Content -Path "$PSScriptRoot\Az\Az.psd1"
+    Write-Host $debugAz
     Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
     Update-ChangeLog -Content $changeLog -RootPath $rootPath
     return $versionBump
