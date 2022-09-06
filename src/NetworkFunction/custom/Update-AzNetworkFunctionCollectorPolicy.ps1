@@ -166,7 +166,41 @@ param(
 
 process {
     try {
-        Az.NetworkFunction.internal\Set-AzNetworkFunctionCollectorPolicy @PSBoundParameters
+      # 1. GET
+      $hasEmissionPolicy = $PSBoundParameters.Remove('EmissionPolicy')
+      $hasIngestionPolicyIngestionSource = $PSBoundParameters.Remove('IngestionPolicyIngestionSource')
+      $hasIngestionPolicyIngestionType = $PSBoundParameters.Remove('IngestionPolicyIngestionType')
+      $hasTag = $PSBoundParameters.Remove('Tag')
+      $hasAsJob = $PSBoundParameters.Remove('AsJob')
+      $null = $PSBoundParameters.Remove('WhatIf')
+      $null = $PSBoundParameters.Remove('Confirm')
+      $null = $PSBoundParameters.Remove('Location')
+
+      $cp = Get-AzNetworkFunctionCollectorPolicy @PSBoundParameters
+
+      # 2. PUT
+      $null = $PSBoundParameters.Remove('AzureTrafficCollectorName')
+      $null = $PSBoundParameters.Remove('ResourceGroupName')
+      $null = $PSBoundParameters.Remove('Name')
+      $null = $PSBoundParameters.Remove('SubscriptionId')
+
+      if ($hasEmissionPolicy) {
+        $cp.EmissionPolicy = $EmissionPolicy
+      }
+      if ($hasIngestionPolicyIngestionSource) {
+        $cp.IngestionPolicyIngestionSource = $IngestionPolicyIngestionSource
+      }
+      if ($hasIngestionPolicyIngestionType) {
+        $cp.IngestionPolicyIngestionType = $IngestionPolicyIngestionType
+      }
+      if ($hasTag) {
+        $cp.Tag = $Tag
+      }
+      if ($hasAsJob) {
+        $PSBoundParameters.Add('AsJob', $true)
+      }
+      
+      Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_CreateViaIdentity -InputObject $cp -Parameter $cp @PSBoundParameters
     } catch {
         throw
     }
