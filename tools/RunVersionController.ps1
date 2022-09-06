@@ -190,7 +190,7 @@ function Get-ExistSerializedCmdletJsonFile
 function Bump-AzVersion
 {
     Write-Host "Getting local Az information..." -ForegroundColor Yellow
-    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1" -SkipLimitCheck
+    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1"
 
     Write-Host "Getting gallery Az information..." -ForegroundColor Yellow
     $galleryAz = Find-Module -Name Az -Repository $GalleryName
