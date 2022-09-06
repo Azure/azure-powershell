@@ -113,6 +113,5 @@ if ($PSCmdlet.ParameterSetName -eq "Script" -or !$SkipAnalyzing) {
 
 # Clean caches
 if (-not $NotCleanScripts) {
-    Remove-Item $TempScriptPath -ErrorAction Continue
-    Remove-Item $OutputFolder -ErrorAction SilentlyContinue
+    Remove-Item $OutputFolder -Recurse -ErrorAction SilentlyContinue
 }
