@@ -174,15 +174,15 @@ process {
       $hasAsJob = $PSBoundParameters.Remove('AsJob')
       $null = $PSBoundParameters.Remove('WhatIf')
       $null = $PSBoundParameters.Remove('Confirm')
+      $null = $PSBoundParameters.Remove('Location')
 
-      $cp = Az.NetworkFunction.internal\Get-AzNetworkFunctionCollectorPolicy @PSBoundParameters
+      $cp = Get-AzNetworkFunctionCollectorPolicy @PSBoundParameters
 
       # 2. PUT
       $null = $PSBoundParameters.Remove('AzureTrafficCollectorName')
       $null = $PSBoundParameters.Remove('ResourceGroupName')
       $null = $PSBoundParameters.Remove('Name')
       $null = $PSBoundParameters.Remove('SubscriptionId')
-      $null = $PSBoundParameters.Remove('Location')
 
       if ($hasEmissionPolicy) {
         $cp.EmissionPolicy = $EmissionPolicy
@@ -200,7 +200,7 @@ process {
         $PSBoundParameters.Add('AsJob', $true)
       }
       
-      Az.NetworkFunction.internal\New-AzNetworkFunctionCollectorPolicy_CreateViaIdentity -InputObject $cp -Parameter $cp @PSBoundParameters
+      Az.NetworkFunction.private\New-AzNetworkFunctionCollectorPolicy_CreateViaIdentity -InputObject $cp -Parameter $cp @PSBoundParameters
     } catch {
         throw
     }

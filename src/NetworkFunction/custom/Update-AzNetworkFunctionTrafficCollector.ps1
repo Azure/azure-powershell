@@ -161,14 +161,14 @@ function Update-AzNetworkFunctionTrafficCollector {
       $hasAsJob = $PSBoundParameters.Remove('AsJob')
       $null = $PSBoundParameters.Remove('WhatIf')
       $null = $PSBoundParameters.Remove('Confirm')
+      $null = $PSBoundParameters.Remove('Location')
 
-      $atc = Az.NetworkFunction.internal\Get-AzNetworkFunctionTrafficCollector @PSBoundParameters
+      $atc = Get-AzNetworkFunctionTrafficCollector @PSBoundParameters
 
       # 2. PUT
       $null = $PSBoundParameters.Remove('ResourceGroupName')
       $null = $PSBoundParameters.Remove('Name')
       $null = $PSBoundParameters.Remove('SubscriptionId')
-      $null = $PSBoundParameters.Remove('Location')
 
       if ($hasCollectorPolicy) {
         $atc.CollectorPolicy = $CollectorPolicy
@@ -180,7 +180,7 @@ function Update-AzNetworkFunctionTrafficCollector {
         $PSBoundParameters.Add('AsJob', $true)
       }
         
-      Az.NetworkFunction.internal\New-AzNetworkFunctionTrafficCollector_CreateViaIdentity -InputObject $atc -Parameter $atc @PSBoundParameters
+      Az.NetworkFunction.private\New-AzNetworkFunctionTrafficCollector_CreateViaIdentity -InputObject $atc -Parameter $atc @PSBoundParameters
     } catch {
         throw
     }
