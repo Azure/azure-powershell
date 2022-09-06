@@ -103,6 +103,7 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     var token = Environment.GetEnvironmentVariable("NOSCOPEPAT_ADXSDKPS");
                     var client = new GitHubClient(new ProductHeaderValue("Azure"));
                     Console.WriteLine("===================================================");
+                    Console.WriteLine(Environment.GetEnvironmentVariable("NOSCOPEPAT_ADXSDKPS"));
                     Console.WriteLine(Environment.GetEnvironmentVariable("OCTOKITPAT"));
                     Console.WriteLine("===================================================");
                     client.Credentials = new Credentials(Environment.GetEnvironmentVariable("OCTOKITPAT"));
