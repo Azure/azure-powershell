@@ -30,6 +30,8 @@ namespace StaticAnalysis
         {
         };
 
+
+
         static IList<string> ExceptionFileNames = new List<string>()
         {
             "SharedAssemblyConflict.csv",
