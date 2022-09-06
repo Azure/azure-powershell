@@ -1,24 +1,30 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp3?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnAzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
-      "RequestMethod": "GET",
-      "RequestBody": "",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp3?api-version=2022-02-22",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnAzP2FwaS12ZXJzaW9uPTIwMjItMDItMjI=",
+      "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "407f5852-f0ed-437c-bf55-97fef80779dc"
+          "ac197fc0-b441-46c5-bdcc-6ba9b8e865ff"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/4.700.22.36202",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.7.3"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "25"
         ]
       },
+      "RequestBody": "{\r\n  \"name\": \"hw-grp3\"\r\n}",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -27,37 +33,31 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "407f5852-f0ed-437c-bf55-97fef80779dc"
+          "ac197fc0-b441-46c5-bdcc-6ba9b8e865ff"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-writes": [
+          "1198"
+        ],
+        "x-ms-correlation-request-id": [
+          "e91da0e5-e287-481f-a230-6b69a266d121"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220830T071647Z:e91da0e5-e287-481f-a230-6b69a266d121"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11984"
-        ],
-        "x-ms-correlation-request-id": [
-          "075a10b3-8fa8-4386-b257-d2e61524c0f3"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210421T144937Z:075a10b3-8fa8-4386-b257-d2e61524c0f3"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 21 Apr 2021 14:49:37 GMT"
+          "Tue, 30 Aug 2022 07:16:46 GMT"
         ],
         "Content-Length": [
-          "423"
+          "471"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -66,28 +66,28 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp3\",\r\n  \"name\": \"hw-grp3\",\r\n  \"hybridRunbookWorkers\": [\r\n    {\r\n      \"name\": \"hw-vm\",\r\n      \"ip\": \"10.0.4.4\",\r\n      \"registrationTime\": \"2021-04-21T20:18:43.8166666+05:30\",\r\n      \"lastSeenDateTime\": \"2021-04-21T20:19:09.74+05:30\",\r\n      \"azureResourceId\": null\r\n    }\r\n  ],\r\n  \"credential\": {\r\n    \"name\": null\r\n  },\r\n  \"groupType\": \"User\"\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp3\",\r\n  \"name\": \"hw-grp3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/HybridRunbookWorkerGroups\",\r\n  \"properties\": {\r\n    \"groupType\": \"User\",\r\n    \"credential\": {\r\n      \"name\": null\r\n    },\r\n    \"hybridRunbookWorkers\": null\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2022-08-30T12:44:29.4090524+05:30\",\r\n    \"lastModifiedAt\": \"2022-08-30T12:46:46.8943579+05:30\"\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp3?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnAzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp3?api-version=2022-02-22",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnAzP2FwaS12ZXJzaW9uPTIwMjItMDItMjI=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "ea9c60bd-8a80-4d66-a6ee-40f38ab82e5d"
+          "a1c1bcc5-3935-4b29-9d53-e44450e08b92"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/4.700.22.36202",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.7.3"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -96,34 +96,91 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "ea9c60bd-8a80-4d66-a6ee-40f38ab82e5d"
+          "a1c1bcc5-3935-4b29-9d53-e44450e08b92"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-correlation-request-id": [
+          "81e8e3c6-7649-403b-afbf-4c4a43103e78"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220830T071648Z:81e8e3c6-7649-403b-afbf-4c4a43103e78"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11990"
-        ],
-        "x-ms-correlation-request-id": [
-          "d21ab801-eec1-4892-a054-e63fa469df7c"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210421T144940Z:d21ab801-eec1-4892-a054-e63fa469df7c"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 21 Apr 2021 14:49:40 GMT"
+          "Tue, 30 Aug 2022 07:16:48 GMT"
+        ],
+        "Content-Length": [
+          "471"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp3\",\r\n  \"name\": \"hw-grp3\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/HybridRunbookWorkerGroups\",\r\n  \"properties\": {\r\n    \"groupType\": \"User\",\r\n    \"credential\": {\r\n      \"name\": null\r\n    },\r\n    \"hybridRunbookWorkers\": null\r\n  },\r\n  \"systemData\": {\r\n    \"createdAt\": \"2022-08-30T12:44:29.4090524+05:30\",\r\n    \"lastModifiedAt\": \"2022-08-30T12:46:46.8943579+05:30\"\r\n  }\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp3?api-version=2022-02-22",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnAzP2FwaS12ZXJzaW9uPTIwMjItMDItMjI=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "7866fdb9-0ec7-4465-be42-9c32d2c4afe6"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.7.3"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-request-id": [
+          "7866fdb9-0ec7-4465-be42-9c32d2c4afe6"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11997"
+        ],
+        "x-ms-correlation-request-id": [
+          "4f96faa8-040f-4bd8-ac44-7c1a640d7070"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALINDIA:20220830T071651Z:4f96faa8-040f-4bd8-ac44-7c1a640d7070"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Tue, 30 Aug 2022 07:16:51 GMT"
         ],
         "Content-Length": [
           "61"
@@ -139,24 +196,24 @@
       "StatusCode": 404
     },
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp3?api-version=2020-01-13-preview",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnAzP2FwaS12ZXJzaW9uPTIwMjAtMDEtMTMtcHJldmlldw==",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/hw-RG/providers/Microsoft.Automation/automationAccounts/hw-aa123/hybridRunbookWorkerGroups/hw-grp3?api-version=2022-02-22",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL2h3LVJHL3Byb3ZpZGVycy9NaWNyb3NvZnQuQXV0b21hdGlvbi9hdXRvbWF0aW9uQWNjb3VudHMvaHctYWExMjMvaHlicmlkUnVuYm9va1dvcmtlckdyb3Vwcy9ody1ncnAzP2FwaS12ZXJzaW9uPTIwMjItMDItMjI=",
       "RequestMethod": "DELETE",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d500f728-aaf7-493b-a152-f3c936a4778d"
+          "e6ba0d3c-6baa-4588-a61f-acb03eda77d2"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29916.01",
+          "FxVersion/4.700.22.36202",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.7.3"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -165,34 +222,28 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "d500f728-aaf7-493b-a152-f3c936a4778d"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
+          "e6ba0d3c-6baa-4588-a61f-acb03eda77d2"
         ],
         "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
+          "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-deletes": [
           "14998"
         ],
         "x-ms-correlation-request-id": [
-          "a3a51788-4387-4370-bcb8-19570ea4f3a0"
+          "bb5b27ce-babf-4198-b6fb-ff7ff9323d77"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210421T144938Z:a3a51788-4387-4370-bcb8-19570ea4f3a0"
+          "CENTRALINDIA:20220830T071650Z:bb5b27ce-babf-4198-b6fb-ff7ff9323d77"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 21 Apr 2021 14:49:38 GMT"
+          "Tue, 30 Aug 2022 07:16:50 GMT"
         ],
         "Expires": [
           "-1"
@@ -207,6 +258,6 @@
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
+    "SubscriptionId": "cd45f23b-b832-4fa4-a434-1bf7e6f14a5a"
   }
 }

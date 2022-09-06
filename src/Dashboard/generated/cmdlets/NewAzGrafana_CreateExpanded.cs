@@ -162,6 +162,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         /// <summary><see cref="Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener" /> cancellation token.</summary>
         global::System.Threading.CancellationToken Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.IEventListener.Token => _cancellationTokenSource.Token;
 
+        /// <summary>The MonitorWorkspaceIntegration of Azure Managed Grafana.</summary>
+        [global::System.Management.Automation.AllowEmptyCollection]
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The MonitorWorkspaceIntegration of Azure Managed Grafana.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The MonitorWorkspaceIntegration of Azure Managed Grafana.",
+        SerializedName = @"azureMonitorWorkspaceIntegrations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[] MonitorWorkspaceIntegration { get => _requestBodyParametersBody.GrafanaIntegrationAzureMonitorWorkspaceIntegration ?? null /* arrayOf */; set => _requestBodyParametersBody.GrafanaIntegrationAzureMonitorWorkspaceIntegration = value; }
+
         /// <summary>Backing field for <see cref="Name" /> property.</summary>
         private string _name;
 
@@ -232,13 +244,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Cmdlets
         [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Path)]
         public string ResourceGroupName { get => this._resourceGroupName; set => this._resourceGroupName = value; }
 
-        /// <summary>.</summary>
-        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = ".")]
+        /// <summary>The Sku of the grafana resource.</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "The Sku of the grafana resource.")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Dashboard.ParameterCategory.Body)]
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
         Required = false,
         ReadOnly = false,
-        Description = @".",
+        Description = @"The Sku of the grafana resource.",
         SerializedName = @"name",
         PossibleTypes = new [] { typeof(string) })]
         public string SkuName { get => _requestBodyParametersBody.SkuName ?? null; set => _requestBodyParametersBody.SkuName = value; }

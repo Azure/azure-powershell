@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.TestFx.Mocks
         {
             if (!(_serviceClients.FirstOrDefault(o => o is TClient) is TClient client))
             {
-                client = _mockContext?.GetServiceClient<TClient>(TestEnvironmentFactory.GetTestEnvironment());
+                client = _mockContext?.GetServiceClient<TClient>();
             }
 
             if (client == null)

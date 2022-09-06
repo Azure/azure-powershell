@@ -15,6 +15,7 @@
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands
 {
@@ -51,11 +52,13 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSSharedAccessAuthorizationRuleAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule", ChangeDescription = AuthoRuleInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.\n- InputObject would no longer support alias -AuthRuleObj.")]
         [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 4, HelpMessage = "ServiceBus AuthorizationRule Object")]        
         [ValidateNotNullOrEmpty]
         [Alias(AliasAuthRuleObj)]
         public PSSharedAccessAuthorizationRuleAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("Force", ChangeDescription = "Parameter -Force would be removed without being replaced")]
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation.")]
         public SwitchParameter Force { get; set; }
 

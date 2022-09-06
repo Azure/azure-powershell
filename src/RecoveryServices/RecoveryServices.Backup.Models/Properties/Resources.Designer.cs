@@ -2390,5 +2390,203 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Properties {
                 return ResourceManager.GetString("CRRNotSupportedWIthCSR", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Hourly policy ScheduleWindowDuration should be multiple of ScheduleInterval and less than or equal to 24 Hrs. for WorkloadType AzureVM
+        /// </summary>
+        public static string InvalidScheduleWindow
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidScheduleWindow", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Smart tiering is only supported for BackupManagementType AzureVM, AzureWorkload. Please try again after removing MoveToArchiveTier parameter.
+        /// </summary>
+        public static string SmartTieringNotSupported
+        {
+            get
+            {
+                return ResourceManager.GetString("SmartTieringNotSupported", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Please remove TieringMode, TierAfterDuration, TierAfterDurationType parameters to disable smart tiering
+        /// </summary>
+        public static string InvalidParametersForTiering
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidParametersForTiering", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Tiering mode TierRecommended is not supported for BackupManagementType AzureWorkload
+        /// </summary>
+        public static string TierRecommendedNotSupportedForAzureWorkload
+        {
+            get
+            {
+                return ResourceManager.GetString("TierRecommendedNotSupportedForAzureWorkload", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDuration, TierAfterDurationType is only acceptable for TieringMode: TierAllEligible
+        /// </summary>
+        public static string InvalidParameterTierAfterDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidParameterTierAfterDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDuration, TierAfterDurationType is required for tiering mode TierAllEligible and the values should either be in Months or Days
+        /// </summary>
+        public static string MissingParameterTierAfterDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("MissingParameterTierAfterDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Smart tiering is not supported for this subscription, please remove MoveToArchiveTier parameter and try again.
+        /// </summary>
+        public static string SmartTieringNotSupportedForSubscription
+        {
+            get
+            {
+                return ResourceManager.GetString("SmartTieringNotSupportedForSubscription", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Monthly or Yearly retention needs to be set to enable Archive smart tiering
+        /// </summary>
+        public static string MissingMonthlyOrYearlyRetention
+        {
+            get
+            {
+                return ResourceManager.GetString("MissingMonthlyOrYearlyRetention", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Monthly or Yearly retention needs to be set as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.
+        /// </summary>
+        public static string IncompatibleRetentionAndTieringPolicy
+        {
+            get
+            {
+                return ResourceManager.GetString("IncompatibleRetentionAndTieringPolicy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to At least one of monthly or yearly retention should be >= 9 months for enabling TierRecommended mode for smart tiering
+        /// </summary>
+        public static string IncompatibleRetentionPolicyForTierRecommended
+        {
+            get
+            {
+                return ResourceManager.GetString("IncompatibleRetentionPolicyForTierRecommended", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to At least one of monthly or yearly retention should be >= 9 months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.
+        /// </summary>
+        public static string RetentionShouldBeGreaterThan9MonthsOrDisableSmartTiering
+        {
+            get
+            {
+                return ResourceManager.GetString("RetentionShouldBeGreaterThan9MonthsOrDisableSmartTiering", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDurationType should be in Months for workload type AzureVM
+        /// </summary>
+        public static string InvalidDurationTypeForAzureVM
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidDurationTypeForAzureVM", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDuration needs to be >= 3 months, at least one of monthly or yearly retention should be >= (TierAfterDuration + 6) months
+        /// </summary>
+        public static string InvalidDurationForTierAllEligiblePolicy
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidDurationForTierAllEligiblePolicy", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDuration needs to be >= 3 months, at least one of monthly or yearly retention should be >= (TierAfterDuration + 6) months as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.
+        /// </summary>
+        public static string IncompatibleRetentionDurationWithTierAfterDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("IncompatibleRetentionDurationWithTierAfterDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to FullBackupRetentionPolicy can't be null while enabling Archive smart tiering for BackupManagementType AzureWorkload
+        /// </summary>
+        public static string FullBackupRetentionPolicyCantBeNull
+        {
+            get
+            {
+                return ResourceManager.GetString("FullBackupRetentionPolicyCantBeNull", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDurationType should be in Days for workload type AzureWorkload
+        /// </summary>
+        public static string InvalidDurationTypeForAzureWorkload
+        {
+            get
+            {
+                return ResourceManager.GetString("InvalidDurationTypeForAzureWorkload", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDuration needs to be >= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be >= (TierAfter + 180) days
+        /// </summary>
+        public static string IncompatibleRetentionPolicyWithTierAfterDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("IncompatibleRetentionPolicyWithTierAfterDuration", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to TierAfterDuration needs to be >= 45 Days, at least one retention policy for full backup (daily / weekly / monthly / yearly) should be >= (TierAfter + 180) days as smart tiering is enabled for this policy. Please modify retention or disable smart tiering. Please note that disabling smart tiering may involve additional costs.
+        /// </summary>
+        public static string TierAfterDurationCheckFailedWithRetentionDuration
+        {
+            get
+            {
+                return ResourceManager.GetString("TierAfterDurationCheckFailedWithRetentionDuration", resourceCulture);
+            }
+        }
     }
 }
