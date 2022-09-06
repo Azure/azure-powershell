@@ -1,62 +1,79 @@
 ---
 external help file:
 Module Name: Az.ManagedServiceIdentity
-online version: https://docs.microsoft.com/powershell/module/az.managedserviceidentity/update-azuserassignedidentity
+online version: https://docs.microsoft.com/powershell/module/az.managedserviceidentity/update-azfederatedidentitycredentials
 schema: 2.0.0
 ---
 
-# Update-AzUserAssignedIdentity
+# Update-AzFederatedIdentityCredentials
 
 ## SYNOPSIS
-Update an identity in the specified subscription and resource group.
+Create or update a federated identity credential under the specified user assigned identity.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzUserAssignedIdentity -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Location <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzFederatedIdentityCredentials -IdentityName <String> -Name <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-Audience <String[]>] [-Issuer <String>] [-Subject <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzUserAssignedIdentity -InputObject <IManagedServiceIdentity> [-Location <String>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzFederatedIdentityCredentials -InputObject <IManagedServiceIdentity> [-Audience <String[]>]
+ [-Issuer <String>] [-Subject <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Update an identity in the specified subscription and resource group.
+Create or update a federated identity credential under the specified user assigned identity.
 
 ## EXAMPLES
 
-### Example 1: Updates an user assigned identity
+### Example 1: Update federated identity credential under the specified user assigned identity
 ```powershell
-Update-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 -Tag @{'key01'='value01'; 'key02'='value02'}
+Update-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 `
+    -Name fic-pwsh01 -Issuer "https://kubernetes-oauth-upd.azure.com" -Subject "system:serviceaccount-upd:ns:svcaccount"
 ```
 
 ```output
-Location Name       ResourceGroupName
--------- ----       -----------------
-eastus   uai-pwsh01 azure-rg-test
+Name       Issuer                                 Subject                                 Audience
+----       ------                                 -------                                 --------
+fic-pwsh01 https://kubernetes-oauth-upd.azure.com system:serviceaccount-upd:ns:svcaccount {api://AzureADTokenExchange}
 ```
 
-This command updates an user assigned identity.
+This command updates a federated identity credential under the specified user assigned identity.
 
-### Example 2: Updates an user assigned identity by pipeline
+### Example 2: Update federated identity credential under the specified user assigned identity by pipeline
 ```powershell
-Get-AzUserAssignedIdentity -ResourceGroupName azure-rg-test -Name uai-pwsh01 | Update-AzUserAssignedIdentity -Tag @{'key01'='value01'; 'key02'='value02'}
+Get-AzFederatedIdentityCredentials -ResourceGroupName azure-rg-test -IdentityName uai-pwsh01 -Name fic-pwsh01 `
+    | Update-AzFederatedIdentityCredentials -Issuer "https://kubernetes-oauth-upd.azure.com" -Subject "system:serviceaccount-upd:ns:svcaccount"
 ```
 
 ```output
-Location Name       ResourceGroupName
--------- ----       -----------------
-eastus   uai-pwsh01 azure-rg-test
+Name       Issuer                                 Subject                                 Audience
+----       ------                                 -------                                 --------
+fic-pwsh01 https://kubernetes-oauth-upd.azure.com system:serviceaccount-upd:ns:svcaccount {api://AzureADTokenExchange}
 ```
 
-This command updates an user assigned identity by pipeline.
+This command updates a federated identity credential under the specified user assigned identity by pipeline.
 
 ## PARAMETERS
+
+### -Audience
+The list of audiences that can appear in the issued token.
+
+```yaml
+Type: System.String[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: @("api://AzureADTokenExchange")
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -67,6 +84,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityName
+The name of the identity resource.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -89,8 +121,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Location
-The geo-location where the resource lives
+### -Issuer
+The URL of the issuer to be trusted.
 
 ```yaml
 Type: System.String
@@ -105,7 +137,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the identity resource.
+The name of the federated identity credential resource.
 
 ```yaml
 Type: System.String
@@ -134,6 +166,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Subject
+The identifier of the external identity.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -SubscriptionId
 The Id of the Subscription to which the identity belongs.
 
@@ -145,21 +192,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -204,7 +236,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IIdentity
+### Microsoft.Azure.PowerShell.Cmdlets.ManagedServiceIdentity.Models.Api20220131Preview.IFederatedIdentityCredential
 
 ## NOTES
 
