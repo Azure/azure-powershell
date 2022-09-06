@@ -15,13 +15,13 @@ Implements virtual machine template DELETE method.
 ### Delete (Default)
 ```
 Remove-AzConnectedVMwareVirtualMachineTemplate -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-ForceDelete] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzConnectedVMwareVirtualMachineTemplate -InputObject <IConnectedVMwareIdentity> [-Force]
+Remove-AzConnectedVMwareVirtualMachineTemplate -InputObject <IConnectedVMwareIdentity> [-ForceDelete]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -84,7 +84,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
+### -ForceDelete
 Whether force delete was specified.
 
 ```yaml

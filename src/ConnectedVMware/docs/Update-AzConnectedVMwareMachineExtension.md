@@ -14,25 +14,11 @@ The operation to update the extension.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzConnectedVMwareMachineExtension -ExtensionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ForceUpdateTag <String>]
- [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>] [-Tag <Hashtable>] [-Type <String>]
- [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzConnectedVMwareMachineExtension -ExtensionName <String> -Name <String> -ResourceGroupName <String>
- -ExtensionParameter <IMachineExtensionUpdate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzConnectedVMwareMachineExtension -InputObject <IConnectedVMwareIdentity>
- -ExtensionParameter <IMachineExtensionUpdate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzConnectedVMwareMachineExtension -Name <String> -ResourceGroupName <String>
+ -VirtualMachineName <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade]
+ [-ForceUpdateTag <String>] [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>]
+ [-Tag <Hashtable>] [-Type <String>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
@@ -93,7 +79,7 @@ Once deployed, however, the extension will not upgrade minor versions unless red
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -123,7 +109,7 @@ Indicates whether the extension should be automatically upgraded by the platform
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -133,43 +119,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtensionName
-The name of the machine extension.
-
-```yaml
-Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExtensionParameter
-Describes a Machine Extension Update.
-To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IMachineExtensionUpdate
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -ForceUpdateTag
 How the extension handler should be forced to update even if the extension configuration has not changed.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -185,7 +140,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -196,12 +151,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the machine where the extension should be created or updated.
+The name of the machine extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases:
+Parameter Sets: UpdateExpanded
+Aliases: ExtensionName
 
 Required: True
 Position: Named
@@ -230,7 +185,7 @@ The extension can contain either protectedSettings or protectedSettingsFromKeyVa
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IAny
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -245,7 +200,7 @@ The name of the extension handler publisher.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -260,7 +215,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -275,7 +230,7 @@ Json formatted public settings for the extension.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IAny
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -290,7 +245,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -305,7 +260,7 @@ Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -320,7 +275,7 @@ Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -335,10 +290,25 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualMachineName
+The name of the machine where the extension should be created or updated.
+
+```yaml
+Type: System.String
+Parameter Sets: UpdateExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -381,8 +351,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IMachineExtensionUpdate
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
 
 ## OUTPUTS
@@ -397,18 +365,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`EXTENSIONPARAMETER <IMachineExtensionUpdate>`: Describes a Machine Extension Update.
-  - `[Tag <IResourcePatchTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[AutoUpgradeMinorVersion <Boolean?>]`: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-  - `[EnableAutomaticUpgrade <Boolean?>]`: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-  - `[ForceUpdateTag <String>]`: How the extension handler should be forced to update even if the extension configuration has not changed.
-  - `[ProtectedSetting <IAny>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-  - `[Publisher <String>]`: The name of the extension handler publisher.
-  - `[Setting <IAny>]`: Json formatted public settings for the extension.
-  - `[Type <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
-  - `[TypeHandlerVersion <String>]`: Specifies the version of the script handler.
 
 `INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: Name of the cluster.

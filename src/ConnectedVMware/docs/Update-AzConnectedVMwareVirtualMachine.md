@@ -25,19 +25,6 @@ Update-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Update
-```
-Update-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String>
- -Body <IVirtualMachineUpdate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentity
-```
-Update-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> -Body <IVirtualMachineUpdate>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### UpdateViaIdentityExpanded
 ```
 Update-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity>
@@ -95,22 +82,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Defines the virtualMachineUpdate.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualMachineUpdate
-Parameter Sets: Update, UpdateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -131,7 +102,7 @@ Gets or sets memory size in MBs for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -147,7 +118,7 @@ Defaults to 1 if unspecified.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -162,7 +133,7 @@ Gets or sets the number of vCPUs for the vm.
 
 ```yaml
 Type: System.Int32
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -177,7 +148,7 @@ The type of managed service identity.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Support.IdentityType
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -193,7 +164,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -208,7 +179,7 @@ Specifies the assessment mode.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -223,7 +194,7 @@ Specifies the patch mode.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -238,7 +209,7 @@ Name of the virtual machine resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases: VirtualMachineName
 
 Required: True
@@ -254,7 +225,7 @@ To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties an
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.INetworkInterfaceUpdate[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -284,7 +255,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
@@ -300,7 +271,7 @@ To construct, see NOTES section for STORAGEPROFILEDISK properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualDiskUpdate[]
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -315,7 +286,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -330,7 +301,7 @@ Gets or sets the Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -345,7 +316,7 @@ Specifies the assessment mode.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -360,7 +331,7 @@ Specifies the patch mode.
 
 ```yaml
 Type: System.String
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -406,8 +377,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualMachineUpdate
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
 
 ## OUTPUTS
@@ -422,33 +391,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IVirtualMachineUpdate>`: Defines the virtualMachineUpdate.
-  - `[HardwareProfileMemorySizeMb <Int32?>]`: Gets or sets memory size in MBs for the vm.
-  - `[HardwareProfileNumCoresPerSocket <Int32?>]`: Gets or sets the number of cores per socket for the vm. Defaults to 1 if unspecified.
-  - `[HardwareProfileNumCpUs <Int32?>]`: Gets or sets the number of vCPUs for the vm.
-  - `[IdentityType <IdentityType?>]`: The type of managed service identity.
-  - `[LinuxConfigurationPatchSettingsAssessmentMode <String>]`: Specifies the assessment mode.
-  - `[LinuxConfigurationPatchSettingsPatchMode <String>]`: Specifies the patch mode.
-  - `[NetworkProfileNetworkInterface <INetworkInterfaceUpdate[]>]`: Gets or sets the list of network interfaces associated with the virtual machine.
-    - `[DeviceKey <Int32?>]`: Gets or sets the device key value.
-    - `[Name <String>]`: Gets or sets the name of the network interface.
-    - `[NetworkId <String>]`: Gets or sets the ARM Id of the network resource to connect the virtual machine.
-    - `[NicType <NicType?>]`: NIC type
-    - `[PowerOnBoot <PowerOnBootOption?>]`: Gets or sets the power on boot.
-  - `[StorageProfileDisk <IVirtualDiskUpdate[]>]`: Gets or sets the list of virtual disks associated with the virtual machine.
-    - `[ControllerKey <Int32?>]`: Gets or sets the controller id.
-    - `[DeviceKey <Int32?>]`: Gets or sets the device key value.
-    - `[DeviceName <String>]`: Gets or sets the device name.
-    - `[DiskMode <DiskMode?>]`: Gets or sets the disk mode.
-    - `[DiskSizeGb <Int32?>]`: Gets or sets the disk total size.
-    - `[DiskType <DiskType?>]`: Gets or sets the disk backing type.
-    - `[Name <String>]`: Gets or sets the name of the virtual disk.
-    - `[UnitNumber <Int32?>]`: Gets or sets the unit number of the disk on the controller.
-  - `[Tag <IVirtualMachineUpdateTags>]`: Gets or sets the Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[WindowsConfigurationPatchSettingsAssessmentMode <String>]`: Specifies the assessment mode.
-  - `[WindowsConfigurationPatchSettingsPatchMode <String>]`: Specifies the patch mode.
 
 `INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: Name of the cluster.

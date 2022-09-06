@@ -12,33 +12,11 @@ Create Or Update GuestAgent.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzConnectedVMwareGuestAgent -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
- [-SubscriptionId <String>] [-CredentialsPassword <String>] [-CredentialsUsername <String>]
+ [-SubscriptionId <String>] [-CredentialsPassword <SecureString>] [-CredentialsUsername <String>]
  [-HttpProxyConfigHttpsProxy <String>] [-ProvisioningAction <ProvisioningAction>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzConnectedVMwareGuestAgent -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
- -Body <IGuestAgent> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzConnectedVMwareGuestAgent -InputObject <IConnectedVMwareIdentity> -Body <IGuestAgent>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzConnectedVMwareGuestAgent -InputObject <IConnectedVMwareIdentity> [-CredentialsPassword <String>]
- [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>]
- [-ProvisioningAction <ProvisioningAction>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,28 +63,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Defines the GuestAgent.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IGuestAgent
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -CredentialsPassword
 Gets or sets the password to connect with the guest.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Security.SecureString
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -121,7 +83,7 @@ Gets or sets username to connect with the guest.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -151,7 +113,7 @@ Gets or sets httpsProxy url.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -161,28 +123,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Name
 Name of the guestAgents.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -212,7 +158,7 @@ Gets or sets the guest agent provisioning action.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Support.ProvisioningAction
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -227,7 +173,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -242,7 +188,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -257,7 +203,7 @@ Name of the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -303,10 +249,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IGuestAgent
-
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IGuestAgent
@@ -314,40 +256,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IGuestAgent>`: Defines the GuestAgent.
-  - `[CredentialsPassword <String>]`: Gets or sets the password to connect with the guest.
-  - `[CredentialsUsername <String>]`: Gets or sets username to connect with the guest.
-  - `[HttpProxyConfigHttpsProxy <String>]`: Gets or sets httpsProxy url.
-  - `[ProvisioningAction <ProvisioningAction?>]`: Gets or sets the guest agent provisioning action.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-
-`INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
-  - `[ClusterName <String>]`: Name of the cluster.
-  - `[DatastoreName <String>]`: Name of the datastore.
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[HostName <String>]`: Name of the host.
-  - `[Id <String>]`: Resource identity path
-  - `[InventoryItemName <String>]`: Name of the inventoryItem.
-  - `[MetadataName <String>]`: Name of the hybridIdentityMetadata.
-  - `[Name <String>]`: The name of the vSphere VMware machine.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourcePoolName <String>]`: Name of the resourcePool.
-  - `[SubscriptionId <String>]`: The Subscription ID.
-  - `[VcenterName <String>]`: Name of the vCenter.
-  - `[VirtualMachineName <String>]`: Name of the virtual machine resource.
-  - `[VirtualMachineTemplateName <String>]`: Name of the virtual machine template resource.
-  - `[VirtualNetworkName <String>]`: Name of the virtual network resource.
 
 ## RELATED LINKS
 

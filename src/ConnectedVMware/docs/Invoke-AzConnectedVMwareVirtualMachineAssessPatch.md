@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/invoke-azconnectedvmwareassessvirtualmachinepatch
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/invoke-azconnectedvmwarevirtualmachineassesspatch
 schema: 2.0.0
 ---
 
-# Invoke-AzConnectedVMwareAssessVirtualMachinePatch
+# Invoke-AzConnectedVMwareVirtualMachineAssessPatch
 
 ## SYNOPSIS
 The operation to assess patches on a vSphere VMware machine identity in Azure.
@@ -14,14 +14,14 @@ The operation to assess patches on a vSphere VMware machine identity in Azure.
 
 ### Assess (Default)
 ```
-Invoke-AzConnectedVMwareAssessVirtualMachinePatch -Name <String> -ResourceGroupName <String>
+Invoke-AzConnectedVMwareVirtualMachineAssessPatch -Name <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### AssessViaIdentity
 ```
-Invoke-AzConnectedVMwareAssessVirtualMachinePatch -InputObject <IConnectedVMwareIdentity>
+Invoke-AzConnectedVMwareVirtualMachineAssessPatch -InputObject <IConnectedVMwareIdentity>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

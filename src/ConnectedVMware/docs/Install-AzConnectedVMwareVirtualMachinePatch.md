@@ -24,20 +24,6 @@ Install-AzConnectedVMwareVirtualMachinePatch -Name <String> -ResourceGroupName <
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### Install
-```
-Install-AzConnectedVMwareVirtualMachinePatch -Name <String> -ResourceGroupName <String>
- -InstallPatchesInput <IVirtualMachineInstallPatchesParameters> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### InstallViaIdentity
-```
-Install-AzConnectedVMwareVirtualMachinePatch -InputObject <IConnectedVMwareIdentity>
- -InstallPatchesInput <IVirtualMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### InstallViaIdentityExpanded
 ```
 Install-AzConnectedVMwareVirtualMachinePatch -InputObject <IConnectedVMwareIdentity> -MaximumDuration <String>
@@ -115,23 +101,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: InstallViaIdentity, InstallViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -InstallPatchesInput
-Input for InstallPatches as directly received by the API
-To construct, see NOTES section for INSTALLPATCHESINPUT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualMachineInstallPatchesParameters
-Parameter Sets: Install, InstallViaIdentity
+Parameter Sets: InstallViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -146,7 +116,7 @@ The update classifications to select when installing patches for Linux.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Support.VMGuestPatchClassificationLinux[]
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -162,7 +132,7 @@ Format: packageName_packageVersion
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -178,7 +148,7 @@ Format: packageName_packageVersion
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -194,7 +164,7 @@ It must be an ISO 8601-compliant duration string such as PT4H (4 hours)
 
 ```yaml
 Type: System.String
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -209,7 +179,7 @@ The name of the vSphere VMware machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Install, InstallExpanded
+Parameter Sets: InstallExpanded
 Aliases:
 
 Required: True
@@ -239,7 +209,7 @@ Defines when it is acceptable to reboot a VM during a software update operation.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Support.VMGuestPatchRebootSetting
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -254,7 +224,7 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Install, InstallExpanded
+Parameter Sets: InstallExpanded
 Aliases:
 
 Required: True
@@ -269,7 +239,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Install, InstallExpanded
+Parameter Sets: InstallExpanded
 Aliases:
 
 Required: False
@@ -284,7 +254,7 @@ The update classifications to select when installing patches for Windows.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Support.VMGuestPatchClassificationWindows[]
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -299,7 +269,7 @@ Filters out Kbs that don't have an InstallationRebootBehavior of 'NeverReboots' 
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -314,7 +284,7 @@ Kbs to exclude in the patch operation
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -329,7 +299,7 @@ Kbs to include in the patch operation
 
 ```yaml
 Type: System.String[]
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -344,7 +314,7 @@ This is used to install patches that were published on or before this given max 
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: InstallExpanded, InstallViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -390,8 +360,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualMachineInstallPatchesParameters
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
 
 ## OUTPUTS
@@ -423,18 +391,6 @@ To create the parameters described below, construct a hash table containing the 
   - `[VirtualMachineName <String>]`: Name of the virtual machine resource.
   - `[VirtualMachineTemplateName <String>]`: Name of the virtual machine template resource.
   - `[VirtualNetworkName <String>]`: Name of the virtual network resource.
-
-`INSTALLPATCHESINPUT <IVirtualMachineInstallPatchesParameters>`: Input for InstallPatches as directly received by the API
-  - `MaximumDuration <String>`: Specifies the maximum amount of time that the operation will run. It must be an ISO 8601-compliant duration string such as PT4H (4 hours)
-  - `RebootSetting <VMGuestPatchRebootSetting>`: Defines when it is acceptable to reboot a VM during a software update operation.
-  - `[LinuxParameterClassificationsToInclude <VMGuestPatchClassificationLinux[]>]`: The update classifications to select when installing patches for Linux.
-  - `[LinuxParameterPackageNameMasksToExclude <String[]>]`: packages to exclude in the patch operation. Format: packageName_packageVersion
-  - `[LinuxParameterPackageNameMasksToInclude <String[]>]`: packages to include in the patch operation. Format: packageName_packageVersion
-  - `[WindowParameterClassificationsToInclude <VMGuestPatchClassificationWindows[]>]`: The update classifications to select when installing patches for Windows.
-  - `[WindowParameterExcludeKbsRequiringReboot <Boolean?>]`: Filters out Kbs that don't have an InstallationRebootBehavior of 'NeverReboots' when this is set to true.
-  - `[WindowParameterKbNumbersToExclude <String[]>]`: Kbs to exclude in the patch operation
-  - `[WindowParameterKbNumbersToInclude <String[]>]`: Kbs to include in the patch operation
-  - `[WindowParameterMaxPatchPublishDate <DateTime?>]`: This is used to install patches that were published on or before this given max published date.
 
 ## RELATED LINKS
 

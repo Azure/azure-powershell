@@ -12,30 +12,10 @@ Create Or Update HybridIdentityMetadata.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzConnectedVMwareHybridIdentityMetadata -MetadataName <String> -ResourceGroupName <String>
+New-AzConnectedVMwareHybridIdentityMetadata -Name <String> -ResourceGroupName <String>
  -VirtualMachineName <String> [-SubscriptionId <String>] [-PublicKey <String>] [-VMId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzConnectedVMwareHybridIdentityMetadata -MetadataName <String> -ResourceGroupName <String>
- -VirtualMachineName <String> -Body <IHybridIdentityMetadata> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzConnectedVMwareHybridIdentityMetadata -InputObject <IConnectedVMwareIdentity>
- -Body <IHybridIdentityMetadata> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzConnectedVMwareHybridIdentityMetadata -InputObject <IConnectedVMwareIdentity> [-PublicKey <String>]
- [-VMId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -67,22 +47,6 @@ Create Or Update HybridIdentityMetadata.
 
 ## PARAMETERS
 
-### -Body
-Defines the HybridIdentityMetadata.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IHybridIdentityMetadata
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -98,29 +62,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -MetadataName
+### -Name
 Name of the hybridIdentityMetadata.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
+Parameter Sets: (All)
+Aliases: MetadataName
 
 Required: True
 Position: Named
@@ -134,7 +82,7 @@ Gets or sets the Public Key.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -149,7 +97,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -164,7 +112,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -179,7 +127,7 @@ Name of the vm.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -194,7 +142,7 @@ Gets or sets the Vm Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -240,10 +188,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IHybridIdentityMetadata
-
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IHybridIdentityMetadata
@@ -251,39 +195,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IHybridIdentityMetadata>`: Defines the HybridIdentityMetadata.
-  - `[IdentityType <IdentityType?>]`: The type of managed service identity.
-  - `[PublicKey <String>]`: Gets or sets the Public Key.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[VMId <String>]`: Gets or sets the Vm Id.
-
-`INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
-  - `[ClusterName <String>]`: Name of the cluster.
-  - `[DatastoreName <String>]`: Name of the datastore.
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[HostName <String>]`: Name of the host.
-  - `[Id <String>]`: Resource identity path
-  - `[InventoryItemName <String>]`: Name of the inventoryItem.
-  - `[MetadataName <String>]`: Name of the hybridIdentityMetadata.
-  - `[Name <String>]`: The name of the vSphere VMware machine.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourcePoolName <String>]`: Name of the resourcePool.
-  - `[SubscriptionId <String>]`: The Subscription ID.
-  - `[VcenterName <String>]`: Name of the vCenter.
-  - `[VirtualMachineName <String>]`: Name of the virtual machine resource.
-  - `[VirtualMachineTemplateName <String>]`: Name of the virtual machine template resource.
-  - `[VirtualNetworkName <String>]`: Name of the virtual network resource.
 
 ## RELATED LINKS
 

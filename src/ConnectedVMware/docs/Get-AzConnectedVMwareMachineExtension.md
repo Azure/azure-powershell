@@ -14,13 +14,13 @@ The operation to get the extension.
 
 ### List (Default)
 ```
-Get-AzConnectedVMwareMachineExtension -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedVMwareMachineExtension -ResourceGroupName <String> -VirtualMachineName <String>
+ [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzConnectedVMwareMachineExtension -ExtensionName <String> -Name <String> -ResourceGroupName <String>
+Get-AzConnectedVMwareMachineExtension -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -89,21 +89,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtensionName
-The name of the machine extension.
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -121,12 +106,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the machine containing the extension.
+The name of the machine extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Parameter Sets: Get
+Aliases: ExtensionName
 
 Required: True
 Position: Named
@@ -161,6 +146,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualMachineName
+The name of the machine containing the extension.
+
+```yaml
+Type: System.String
+Parameter Sets: Get, List
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

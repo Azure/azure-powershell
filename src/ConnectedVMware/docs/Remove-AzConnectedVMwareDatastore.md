@@ -15,13 +15,13 @@ Implements datastore DELETE method.
 ### Delete (Default)
 ```
 Remove-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-ForceDelete] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzConnectedVMwareDatastore -InputObject <IConnectedVMwareIdentity> [-Force]
+Remove-AzConnectedVMwareDatastore -InputObject <IConnectedVMwareIdentity> [-ForceDelete]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -84,7 +84,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
+### -ForceDelete
 Whether force delete was specified.
 
 ```yaml

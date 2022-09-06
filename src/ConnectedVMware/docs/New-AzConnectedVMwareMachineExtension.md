@@ -12,36 +12,12 @@ The operation to create or update the extension.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
-New-AzConnectedVMwareMachineExtension -ExtensionName <String> -Name <String> -ResourceGroupName <String>
+New-AzConnectedVMwareMachineExtension -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
  [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ForceUpdateTag <String>]
  [-Location <String>] [-PropertiesType <String>] [-ProtectedSetting <IAny>] [-Publisher <String>]
  [-Setting <IAny>] [-Tag <Hashtable>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzConnectedVMwareMachineExtension -ExtensionName <String> -Name <String> -ResourceGroupName <String>
- -ExtensionParameter <IMachineExtension> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzConnectedVMwareMachineExtension -InputObject <IConnectedVMwareIdentity>
- -ExtensionParameter <IMachineExtension> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzConnectedVMwareMachineExtension -InputObject <IConnectedVMwareIdentity> [-AutoUpgradeMinorVersion]
- [-EnableAutomaticUpgrade] [-ForceUpdateTag <String>] [-Location <String>] [-PropertiesType <String>]
- [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>] [-Tag <Hashtable>]
- [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -94,7 +70,7 @@ Once deployed, however, the extension will not upgrade minor versions unless red
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -124,44 +100,13 @@ Indicates whether the extension should be automatically upgraded by the platform
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExtensionName
-The name of the machine extension.
-
-```yaml
-Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ExtensionParameter
-Describes a Machine Extension.
-To construct, see NOTES section for EXTENSIONPARAMETER properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IMachineExtension
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -170,7 +115,7 @@ How the extension handler should be forced to update even if the extension confi
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -180,28 +125,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -Location
 Gets or sets the location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -212,12 +141,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the machine where the extension should be created or updated.
+The name of the machine extension.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases:
+Parameter Sets: (All)
+Aliases: ExtensionName
 
 Required: True
 Position: Named
@@ -246,7 +175,7 @@ Specifies the type of the extension; an example is "CustomScriptExtension".
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -261,7 +190,7 @@ The extension can contain either protectedSettings or protectedSettingsFromKeyVa
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IAny
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -276,7 +205,7 @@ The name of the extension handler publisher.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -291,7 +220,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -306,7 +235,7 @@ Json formatted public settings for the extension.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IAny
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -321,7 +250,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -336,7 +265,7 @@ Gets or sets the Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -351,10 +280,25 @@ Specifies the version of the script handler.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualMachineName
+The name of the machine where the extension should be created or updated.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -397,10 +341,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IMachineExtension
-
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IMachineExtension
@@ -408,47 +348,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`EXTENSIONPARAMETER <IMachineExtension>`: Describes a Machine Extension.
-  - `[AutoUpgradeMinorVersion <Boolean?>]`: Indicates whether the extension should use a newer minor version if one is available at deployment time. Once deployed, however, the extension will not upgrade minor versions unless redeployed, even with this property set to true.
-  - `[EnableAutomaticUpgrade <Boolean?>]`: Indicates whether the extension should be automatically upgraded by the platform if there is a newer version available.
-  - `[ForceUpdateTag <String>]`: How the extension handler should be forced to update even if the extension configuration has not changed.
-  - `[Location <String>]`: Gets or sets the location.
-  - `[PropertiesType <String>]`: Specifies the type of the extension; an example is "CustomScriptExtension".
-  - `[ProtectedSetting <IAny>]`: The extension can contain either protectedSettings or protectedSettingsFromKeyVault or no protected settings at all.
-  - `[Publisher <String>]`: The name of the extension handler publisher.
-  - `[Setting <IAny>]`: Json formatted public settings for the extension.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Tag <IMachineExtensionTags>]`: Gets or sets the Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[TypeHandlerVersion <String>]`: Specifies the version of the script handler.
-
-`INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
-  - `[ClusterName <String>]`: Name of the cluster.
-  - `[DatastoreName <String>]`: Name of the datastore.
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[HostName <String>]`: Name of the host.
-  - `[Id <String>]`: Resource identity path
-  - `[InventoryItemName <String>]`: Name of the inventoryItem.
-  - `[MetadataName <String>]`: Name of the hybridIdentityMetadata.
-  - `[Name <String>]`: The name of the vSphere VMware machine.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourcePoolName <String>]`: Name of the resourcePool.
-  - `[SubscriptionId <String>]`: The Subscription ID.
-  - `[VcenterName <String>]`: Name of the vCenter.
-  - `[VirtualMachineName <String>]`: Name of the virtual machine resource.
-  - `[VirtualMachineTemplateName <String>]`: Name of the virtual machine template resource.
-  - `[VirtualNetworkName <String>]`: Name of the virtual network resource.
 
 ## RELATED LINKS
 

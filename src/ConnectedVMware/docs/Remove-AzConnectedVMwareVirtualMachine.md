@@ -15,13 +15,13 @@ Implements virtual machine DELETE method.
 ### Delete (Default)
 ```
 Remove-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-Retain] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-ForceDelete] [-Retain] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> [-Force] [-Retain]
+Remove-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> [-ForceDelete] [-Retain]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -84,7 +84,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Force
+### -ForceDelete
 Whether force delete was specified.
 
 ```yaml

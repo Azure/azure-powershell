@@ -50,7 +50,7 @@ Implements virtual network GET method.
 ### [Install-AzConnectedVMwareVirtualMachinePatch](Install-AzConnectedVMwareVirtualMachinePatch.md)
 The operation to install patches on a vSphere VMware machine identity in Azure.
 
-### [Invoke-AzConnectedVMwareAssessVirtualMachinePatch](Invoke-AzConnectedVMwareAssessVirtualMachinePatch.md)
+### [Invoke-AzConnectedVMwareVirtualMachineAssessPatch](Invoke-AzConnectedVMwareVirtualMachineAssessPatch.md)
 The operation to assess patches on a vSphere VMware machine identity in Azure.
 
 ### [New-AzConnectedVMwareCluster](New-AzConnectedVMwareCluster.md)

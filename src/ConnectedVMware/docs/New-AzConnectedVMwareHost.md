@@ -12,32 +12,11 @@ Create Or Update host.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
 ```
 New-AzConnectedVMwareHost -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
  [-InventoryItemId <String>] [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzConnectedVMwareHost -Name <String> -ResourceGroupName <String> -Body <IHost> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentity
-```
-New-AzConnectedVMwareHost -InputObject <IConnectedVMwareIdentity> -Body <IHost> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzConnectedVMwareHost -InputObject <IConnectedVMwareIdentity> -Location <String>
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>]
- [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -84,22 +63,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Define the host.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IHost
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -120,7 +83,7 @@ The extended location name.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -135,7 +98,7 @@ The extended location type.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -145,28 +108,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -InventoryItemId
 Gets or sets the inventory Item ID for the host.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -183,7 +130,7 @@ If supported, the resource provider must validate and persist this value.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -198,7 +145,7 @@ Gets or sets the location.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -213,7 +160,7 @@ Gets or sets the vCenter MoRef (Managed Object Reference) ID for the host.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -228,7 +175,7 @@ Name of the host.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases: HostName
 
 Required: True
@@ -258,7 +205,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -273,7 +220,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -288,7 +235,7 @@ Gets or sets the Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -303,7 +250,7 @@ Gets or sets the ARM Id of the vCenter resource in which this host resides.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -349,10 +296,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IHost
-
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IHost
@@ -360,45 +303,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IHost>`: Define the host.
-  - `Location <String>`: Gets or sets the location.
-  - `[ExtendedLocationName <String>]`: The extended location name.
-  - `[ExtendedLocationType <String>]`: The extended location type.
-  - `[InventoryItemId <String>]`: Gets or sets the inventory Item ID for the host.
-  - `[Kind <String>]`: Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  - `[MoRefId <String>]`: Gets or sets the vCenter MoRef (Managed Object Reference) ID for the host.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Tag <IHostTags>]`: Gets or sets the Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[VCenterId <String>]`: Gets or sets the ARM Id of the vCenter resource in which this host resides.
-
-`INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
-  - `[ClusterName <String>]`: Name of the cluster.
-  - `[DatastoreName <String>]`: Name of the datastore.
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[HostName <String>]`: Name of the host.
-  - `[Id <String>]`: Resource identity path
-  - `[InventoryItemName <String>]`: Name of the inventoryItem.
-  - `[MetadataName <String>]`: Name of the hybridIdentityMetadata.
-  - `[Name <String>]`: The name of the vSphere VMware machine.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourcePoolName <String>]`: Name of the resourcePool.
-  - `[SubscriptionId <String>]`: The Subscription ID.
-  - `[VcenterName <String>]`: Name of the vCenter.
-  - `[VirtualMachineName <String>]`: Name of the virtual machine resource.
-  - `[VirtualMachineTemplateName <String>]`: Name of the virtual machine template resource.
-  - `[VirtualNetworkName <String>]`: Name of the virtual network resource.
 
 ## RELATED LINKS
 
