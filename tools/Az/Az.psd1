@@ -51,6 +51,8 @@ DotNetFrameworkVersion = '4.7.2'
 # Processor architecture (None, X86, Amd64) required by this module
 # ProcessorArchitecture = ''
 
+
+
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.0'; }, 
                @{ModuleName = 'Az.Advisor'; RequiredVersion = '1.1.2'; }, 
