@@ -276,8 +276,10 @@ function Bump-AzVersion
         $changeLog += $(Get-ReleaseNotes -Module $updatedModule -RootPath $rootPath) + "`n"
     }
 
-    $debugAz = Get-Content -Path "$PSScriptRoot\Az\Az.psd1"
+    $debugAz = Get-Content -Path "$PSScriptRoot\Az\Az.psd1" -Raw
     Write-Host $debugAz
+    Write-Host "Update-ModuleManifest -Path Az\Az.psd1 -ModuleVersion $newVersion -ReleaseNotes $releaseNotes"
+
     Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
     Update-ChangeLog -Content $changeLog -RootPath $rootPath
     return $versionBump
