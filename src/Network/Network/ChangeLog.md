@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Updated commandlet to support bypassing the ExpressRoute gateway when accessing private-links.
+    - `New-AzVirtualNetworkGatewayConnection`
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
