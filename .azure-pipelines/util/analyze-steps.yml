@@ -56,7 +56,8 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:StaticAnalysis /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
-
+  env:
+      OCTOKITPAT: $(OCTOKITPAT)
 - template: publish-artifacts-steps.yml
   parameters:
     artifactName: analyze-${{ parameters.testFramework }}
