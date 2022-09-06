@@ -42,7 +42,7 @@ jobs:
     displayName: Build
     inputs:
       targetType: inline
-      script: dotnet msbuilc build.proj /t:Build;GenerateHelp /p:PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true
+      script: dotnet msbuilc build.proj /t:"Build;GenerateHelp" /p:"PullRequestNumber=$(System.PullRequest.PullRequestNumber);IsSecurityCheck=true"
     env:
         OCTOKITPAT: $(OCTOKITPAT)
   - task: CredScan@2
@@ -55,13 +55,6 @@ jobs:
       suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
       debugMode: false
       folderSuppression: false
-  - task: CredScan@2
-    displayName: Run Credential for preview branch
-    condition: ne(in(variables['system.pullRequest.targetBranch'], 'generation', 'main'), true)
-    enabled: False
-    inputs:
-      toolMajorVersion: V2
-      suppressionsFile: tools/SecurityTools/CredScanSuppressions.json
   - task: PowerShell@2
     displayName: Cleanup Build
     inputs:
