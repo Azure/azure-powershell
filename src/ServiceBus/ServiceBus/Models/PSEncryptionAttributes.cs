@@ -44,6 +44,6 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// Gets or sets enumerates the possible value of keySource for
         /// Encryption. Possible values include: 'Microsoft.KeyVault'
         /// </summary>
-        public KeySource? KeySource { get; set; }
+        public string KeySource { get; set; }
     }
 }

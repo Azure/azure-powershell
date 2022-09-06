@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventHub.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
 {
@@ -39,10 +40,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSEventHubAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub", ChangeDescription = EventhubInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ParameterSetName = EventhubInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Eventhub Object")]
         [ValidateNotNullOrEmpty]
         public PSEventHubAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = EventhubResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Eventhub Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -76,7 +79,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             {
                 try
                 {
-                    var result = Client.DeleteEventHub(ResourceGroupName, Namespace, Name);
+                    var result = UtilityClient.DeleteEventHub(ResourceGroupName, Namespace, Name);
 
                     if (PassThru.IsPresent)
                     {

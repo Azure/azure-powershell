@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -66,15 +68,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdType = (string) content.GetValueForProperty("VhdType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdId = (string) content.GetValueForProperty("VhdId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskId = (string) content.GetValueForProperty("DiskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdName = (string) content.GetValueForProperty("VhdName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).MaxSizeMb = (string) content.GetValueForProperty("MaxSizeMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).MaxSizeMb, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskLocation = (string) content.GetValueForProperty("TargetDiskLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskName = (string) content.GetValueForProperty("TargetDiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).LunId = (string) content.GetValueForProperty("LunId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).LunId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskEncryptionSetId = (string) content.GetValueForProperty("DiskEncryptionSetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskEncryptionSetId, global::System.Convert.ToString);
+            if (content.Contains("VhdType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdType = (string) content.GetValueForProperty("VhdType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdType, global::System.Convert.ToString);
+            }
+            if (content.Contains("VhdId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdId = (string) content.GetValueForProperty("VhdId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskId = (string) content.GetValueForProperty("DiskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VhdName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdName = (string) content.GetValueForProperty("VhdName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaxSizeMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).MaxSizeMb = (string) content.GetValueForProperty("MaxSizeMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).MaxSizeMb, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetDiskLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskLocation = (string) content.GetValueForProperty("TargetDiskLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetDiskName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskName = (string) content.GetValueForProperty("TargetDiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LunId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).LunId = (string) content.GetValueForProperty("LunId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).LunId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskEncryptionSetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskEncryptionSetId = (string) content.GetValueForProperty("DiskEncryptionSetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskEncryptionSetId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -92,15 +121,42 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdType = (string) content.GetValueForProperty("VhdType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdId = (string) content.GetValueForProperty("VhdId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskId = (string) content.GetValueForProperty("DiskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdName = (string) content.GetValueForProperty("VhdName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).MaxSizeMb = (string) content.GetValueForProperty("MaxSizeMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).MaxSizeMb, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskLocation = (string) content.GetValueForProperty("TargetDiskLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskLocation, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskName = (string) content.GetValueForProperty("TargetDiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).LunId = (string) content.GetValueForProperty("LunId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).LunId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskEncryptionSetId = (string) content.GetValueForProperty("DiskEncryptionSetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskEncryptionSetId, global::System.Convert.ToString);
+            if (content.Contains("VhdType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdType = (string) content.GetValueForProperty("VhdType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdType, global::System.Convert.ToString);
+            }
+            if (content.Contains("VhdId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdId = (string) content.GetValueForProperty("VhdId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskId = (string) content.GetValueForProperty("DiskId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskId, global::System.Convert.ToString);
+            }
+            if (content.Contains("VhdName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdName = (string) content.GetValueForProperty("VhdName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).VhdName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MaxSizeMb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).MaxSizeMb = (string) content.GetValueForProperty("MaxSizeMb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).MaxSizeMb, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetDiskLocation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskLocation = (string) content.GetValueForProperty("TargetDiskLocation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskLocation, global::System.Convert.ToString);
+            }
+            if (content.Contains("TargetDiskName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskName = (string) content.GetValueForProperty("TargetDiskName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).TargetDiskName, global::System.Convert.ToString);
+            }
+            if (content.Contains("LunId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).LunId = (string) content.GetValueForProperty("LunId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).LunId, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskEncryptionSetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskEncryptionSetId = (string) content.GetValueForProperty("DiskEncryptionSetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetailsInternal)this).DiskEncryptionSetId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -134,7 +190,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="AzureVMDiskDetails" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="AzureVMDiskDetails" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IAzureVMDiskDetails FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

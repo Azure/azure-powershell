@@ -28,11 +28,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Java".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Java", "Java", global::System.Management.Automation.CompletionResultType.ParameterValue, "Java");
+                yield return new global::System.Management.Automation.CompletionResult("'Java'", "Java", global::System.Management.Automation.CompletionResultType.ParameterValue, "Java");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || ".NET Core".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult(".NET Core", ".NET Core", global::System.Management.Automation.CompletionResultType.ParameterValue, ".NET Core");
+                yield return new global::System.Management.Automation.CompletionResult("'.NET Core'", ".NET Core", global::System.Management.Automation.CompletionResultType.ParameterValue, ".NET Core");
             }
         }
     }
