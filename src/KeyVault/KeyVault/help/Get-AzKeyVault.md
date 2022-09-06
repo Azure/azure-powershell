@@ -80,7 +80,7 @@ This command gets all the key vaults in your current subscription.
 
 ### Example 2: Get a specific key vault
 ```powershell
-Get-AzKeyVault -VaultName 'myvault'
+Get-AzKeyVault -VaultName 'myvault' -NotExist
 ```
 
 ```output
