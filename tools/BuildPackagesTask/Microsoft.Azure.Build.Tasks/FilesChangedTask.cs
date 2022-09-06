@@ -102,6 +102,9 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     //The variable is set in pipeline: "azure-powershell - powershell-core"
                     var token = Environment.GetEnvironmentVariable("NOSCOPEPAT_ADXSDKPS");
                     var client = new GitHubClient(new ProductHeaderValue("Azure"));
+                    Console.WriteLine("===================================================");
+                    Console.WriteLine(Environment.GetEnvironmentVariable("OCTOKITPAT"));
+                    Console.WriteLine("===================================================");
                     client.Credentials = new Credentials(Environment.GetEnvironmentVariable("OCTOKITPAT"));
                     
                     var files = client.PullRequest.Files(RepositoryOwner, RepositoryName, int.Parse(PullRequestNumber))
