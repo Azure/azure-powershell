@@ -280,14 +280,14 @@ function Bump-AzVersion
     }
     
     $resolvedArtifactsOutputPath = (Resolve-Path $ArtifactsOutputPath).Path
-    if(!Test-Path $resolvedArtifactsOutputPath)
+    if(!(Test-Path $resolvedArtifactsOutputPath))
     {
         throw "Please check artifacts output path: $resolvedArtifactsOutputPath whether exists."
     }
     
     # Update-ModuleManifest requires all required modules in Az.psd1 installed in local
     # Add artifacts as PSModulePath to skip installation
-    if(!$env:PSModulePath.Split(";").Contains($resolvedArtifactsOutputPath))
+    if(!($env:PSModulePath.Split(";").Contains($resolvedArtifactsOutputPath)))
     {
         $env:PSModulePath += ";$resolvedArtifactsOutputPath"
     }
