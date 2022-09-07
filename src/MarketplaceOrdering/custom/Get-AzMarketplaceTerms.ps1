@@ -45,7 +45,7 @@ https://docs.microsoft.com/powershell/module/az.marketplaceordering/get-azmarket
 #>
 function Get-AzMarketplaceTerms {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Models.Api202101.IAgreementTerms])]
-[CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='Get1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='Get1', Mandatory)]
@@ -77,7 +77,6 @@ param(
 
     [Parameter(ParameterSetName='Get')]
     [Parameter(ParameterSetName='Get1')]
-    [Parameter(ParameterSetName='List')]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.MarketplaceOrdering.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -145,9 +144,8 @@ begin {
         $mapping = @{
             Get = 'Az.MarketplaceOrdering.private\Get-AzMarketplaceTerms_Get';
             Get1 = 'Az.MarketplaceOrdering.private\Get-AzMarketplaceTerms_Get1';
-            List = 'Az.MarketplaceOrdering.private\Get-AzMarketplaceTerms_List';
         }
-        if (('Get', 'Get1', 'List') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'Get1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
 

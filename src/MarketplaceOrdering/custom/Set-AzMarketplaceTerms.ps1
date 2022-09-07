@@ -164,6 +164,10 @@ param(
         if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
             $DeployPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
         }
+        if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $DeployPSBoundParameters['SubscriptionId'] = $SubscriptionId
+        }
+        
         switch ($PSCmdlet.ParameterSetName) {
             "TermsAccept" {
                 $termsObj = Get-AzMarketplaceTerms -Name $Name -OfferType 'virtualmachine' -Product $Product -Publisher $Publisher @DeployPSBoundParameters
@@ -175,6 +179,7 @@ param(
                 $null = $PSBoundParameters.Add('Name',$Terms.Plan)
                 $null = $PSBoundParameters.Add('Product',$Terms.Product)
                 $null = $PSBoundParameters.Add('Publisher',$Terms.Publisher)
+                $null = $PSBoundParameters.Add('SubscriptionId',$Terms.Id.Split('/')[2])
                 $PSBoundParameters.Add('Parameter', $Terms)
             }
             "TermsReject" {
@@ -187,6 +192,7 @@ param(
                 $null = $PSBoundParameters.Add('Name',$Terms.Plan)
                 $null = $PSBoundParameters.Add('Product',$Terms.Product)
                 $null = $PSBoundParameters.Add('Publisher',$Terms.Publisher)
+                $null = $PSBoundParameters.Add('SubscriptionId',$Terms.Id.Split('/')[2])
                 $PSBoundParameters.Add('Parameter', $Terms)
             }
         }
