@@ -45,7 +45,7 @@ This command lists all Entity Relations for a given Entity.
 
 ### Example 2: Get an Entity Relation
 ```powershell
- Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -Id "myEntityRelationId"
+ Get-AzSentinelEntityRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -EntityId "myEntityId" -RelationName "myEntityRelationId"
 ```
 
 This command gets an Entity Relation for a given Entity.
