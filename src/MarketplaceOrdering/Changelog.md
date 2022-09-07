@@ -18,7 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Upgraded API version to Api 2021-01-01.
 
-## Version 0.1.0
-* First preview release for module Az.MarketplaceOrdering
+## Version 1.0.3
+* Added a warning message for an upcoming breaking change to `Get-AzMarketplaceTerms`.
 
+## Version 1.0.2
+* Update references in .psd1 to use relative path
+
+## Version 1.0.1
+* Fixed documentation typo where "Azure" was all lowercase letters
+* Fixed miscellaneous typos across module
+
+## Version 1.0.0
+* General availability of `Az.MarketplaceOrdering` module
