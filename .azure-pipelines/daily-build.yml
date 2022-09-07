@@ -56,7 +56,7 @@ jobs:
     displayName: 'Publish Pipeline Artifact'
     inputs:
       targetPath: tools/Az
-      artifact: Az
+      artifact: AzBefore
       
   - task: PowerShell@2
     displayName: 'Bump Version'
@@ -73,7 +73,7 @@ jobs:
     displayName: 'Publish Pipeline Artifact'
     inputs:
       targetPath: tools/Az
-      artifact: Az
+      artifact: AzAfter
 
   - task: PowerShell@2
     displayName: 'Clean artifacts folder'
