@@ -26,7 +26,7 @@ function Get-AzSentinelDataConnector-List
 	# Validate
 	Validate-DataConnectors $DataConnectors
 
-	Start-Sleep 15
+	Start-TestSleep -Seconds 15
 	#Cleanup
 	Remove-AzSentinelDataConnector -ResourceGroupName (Get-TestResourceGroupName) -WorkspaceName (Get-TestWorkspaceName) -DataConnectorId ($DataConnector.Name)
 }
