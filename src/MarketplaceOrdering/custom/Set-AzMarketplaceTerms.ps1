@@ -164,7 +164,9 @@ param(
         if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
             $DeployPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
         }
-        $DeployPSBoundParameters['SubscriptionId'] = $SubscriptionId
+        if ($PSBoundParameters.ContainsKey('SubscriptionId')) {
+            $DeployPSBoundParameters['SubscriptionId'] = $SubscriptionId
+        }
         switch ($PSCmdlet.ParameterSetName) {
             "TermsAccept" {
                 $termsObj = Get-AzMarketplaceTerms -Name $Name -OfferType 'virtualmachine' -Product $Product -Publisher $Publisher @DeployPSBoundParameters
