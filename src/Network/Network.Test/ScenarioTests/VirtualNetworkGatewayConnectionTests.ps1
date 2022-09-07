@@ -45,6 +45,7 @@ function Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD
         Assert-AreEqual "ExpressRoute" $expected.ConnectionType
         Assert-AreEqual "3" $expected.RoutingWeight
         Assert-AreEqual $False $expected.ExpressRouteGatewayBypass
+        Assert-AreEqual $False $expected.EnablePrivateLinkFastPath
 
         $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -Name "*"
         Assert-True { $list.Count -ge 0 }
@@ -58,14 +59,15 @@ function Test-VirtualNetworkeExpressRouteGatewayConnectionCRUD
         $list = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName
         Assert-AreEqual 0 @($list).Count
 
-        # Now Create a Virtual Network Gateway Connection with ExpressRouteGatewayBypass enabled
-        $connection = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $gw  -ConnectionType ExpressRoute -RoutingWeight 3 -PeerId $circuit.Id -ExpressRouteGatewayBypass
+        # Now Create a Virtual Network Gateway Connection with ExpressRouteGatewayBypass and EnablePrivateLinkFastPath
+        $connection = New-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName -location $location -VirtualNetworkGateway1 $gw  -ConnectionType ExpressRoute -RoutingWeight 3 -PeerId $circuit.Id -ExpressRouteGatewayBypass -EnablePrivateLinkFastPath
         $getConnection = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -name $vnetConnectionName
         Assert-AreEqual $getConnection.ResourceGroupName $connection.ResourceGroupName
         Assert-AreEqual $getConnection.Name $connection.Name
         Assert-AreEqual "ExpressRoute" $getConnection.ConnectionType
         Assert-AreEqual "3" $getConnection.RoutingWeight
         Assert-AreEqual $True $getConnection.ExpressRouteGatewayBypass
+        Assert-AreEqual $True $getConnection.EnablePrivateLinkFastPath
 
         # Delete VirtualNetworkGatewayConnection
         $delete = Remove-AzVirtualNetworkGatewayConnection -ResourceGroupName $actual.ResourceGroupName -name $vnetConnectionName -PassThru -Force
