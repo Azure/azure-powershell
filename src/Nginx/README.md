@@ -55,4 +55,6 @@ directive:
     remove: true
   - model-cmdlet:
     - NginxConfigurationFile
+    - NginxPrivateIPAddress
+    - NginxPublicIPAddress
 ```
