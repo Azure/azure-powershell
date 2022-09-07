@@ -61,7 +61,13 @@ jobs:
         Get-PSRepository `
         ./tools/RunVersionController.ps1 -Release 'Daily Build $(today)' `
         Exit"
-        dotnet tool run pwsh -c $command  
+        dotnet tool run pwsh -c $command
+        
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish Pipeline Artifact'
+    inputs:
+      targetPath: tools/Az
+      artifact: Az
 
   - task: PowerShell@2
     displayName: 'Clean artifacts folder'
