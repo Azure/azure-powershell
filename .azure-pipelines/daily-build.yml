@@ -51,7 +51,13 @@ jobs:
       command: custom
       custom: msbuild
       arguments: 'build.proj /t:"Build" /p:"Configuration=Release"'
-
+        
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish Pipeline Artifact'
+    inputs:
+      targetPath: tools/Az
+      artifact: Az
+      
   - task: PowerShell@2
     displayName: 'Bump Version'
     inputs:
