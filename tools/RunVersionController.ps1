@@ -18,7 +18,10 @@ Param(
     [string]$ModuleName,
 
     [Parameter()]
-    [string]$GalleryName = "PSGallery"
+    [string]$GalleryName = "PSGallery",
+
+    [Parameter()]
+    [string]$ArtifactsOutputPath = "$PSScriptRoot/../artifacts/Release/"
 )
 
 enum PSVersion
@@ -275,7 +278,18 @@ function Bump-AzVersion
         $changeLog += "#### $updatedModule"
         $changeLog += $(Get-ReleaseNotes -Module $updatedModule -RootPath $rootPath) + "`n"
     }
-
+    
+    # Update-ModuleManifest requires all required modules in Az.psd1 installed in local
+    if(Test-Path $ArtifactsOutputPath)
+    {
+        # Add artifacts as PSModulePath to skip installation
+        $resolvedArtifactsOutputPath = (Resolve-Path $ArtifactsOutputPath).Path
+        if(!$env:PSModulePath.Split(";").Contains($resolvedArtifactsOutputPath)) $env:PSModulePath += ";$resolvedArtifactsOutputPath"
+    }else
+    {
+        throw "Please check artifacts output path whether exists."
+    }
+    
     Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
     Update-ChangeLog -Content $changeLog -RootPath $rootPath
     return $versionBump
