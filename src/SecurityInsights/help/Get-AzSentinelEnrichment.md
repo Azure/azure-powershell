@@ -43,7 +43,7 @@ Get geodata for a single IP address
 
 ### Example 1: Get a Domain Enrichment
 ```powershell
- Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -Domain "microsoft.com
+ Get-AzSentinelEnrichment -ResourceGroupName "myResourceGroupName" -Domain "microsoft.com"
 ```
 
 ```output
