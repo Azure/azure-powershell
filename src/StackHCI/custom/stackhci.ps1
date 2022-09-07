@@ -102,7 +102,7 @@ $DisablingIMDSOnNode = "Disabling AzureStack HCI IMDS Attestation on {0}"
 $RemovingVmImdsFromNode = "Removing AzureStack HCI IMDS Attestation from guests on {0}"
 $AttestationNotEnabled = "The IMDS Service on {0} needs to be activated. This is required before guests can be configured. Run Enable-AzStackHCIAttestation cmdlet."
 $ErrorAddingAllVMs = "Did not add all guests. Try running Add-AzStackHCIVMAttestation on each node manually."
-
+$MaskString = "XXXXXXX"
 #endregion
 
 #region Constants
@@ -366,7 +366,7 @@ Function Print-FunctionParameters{
         } 
         if ($param.key -in @("ArmAccessToken","ArcSpnCredential","Credential","AccountId","GraphAccessToken","AccessToken")) 
         {
-            $body.add($param.Key, "XXXXXXX") 
+            $body.add($param.Key, $MaskString) 
         }
         else
         {
