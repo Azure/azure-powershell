@@ -15,10 +15,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzMarketplaceTerms'))
 }
 
 Describe 'Get-AzMarketplaceTerms' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'Get' {
         { Get-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" } | Should -Not -Throw
     }

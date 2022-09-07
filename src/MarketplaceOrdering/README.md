@@ -59,10 +59,11 @@ directive:
       variant: ^CreateExpanded$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
     remove: true
 
+  # List response not mapp swagger define.
   - where:
       verb: Get
       subject: MarketplaceTerms
-      variant: ^GetViaIdentity1$
+      variant: ^List$|^GetViaIdentity1$|^GetViaIdentity$
     remove: true
 
   # For map old cmdlet

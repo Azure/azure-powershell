@@ -6,8 +6,257 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "6" ],
-        "x-ms-client-request-id": [ "fb43e111-3904-4301-b006-7484dcce52f5" ],
+        "x-ms-unique-id": [ "1" ],
+        "x-ms-client-request-id": [ "c28ec158-547f-49f3-b22b-a6f57964e012" ],
+        "CommandName": [ "Get-AzMarketplaceTerms" ],
+        "FullCommandName": [ "Get-AzMarketplaceTerms_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MarketplaceOrdering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11999" ],
+        "x-ms-request-id": [ "f8abb7e3-38e1-4fe5-9c3f-55c29ac88d03" ],
+        "x-ms-correlation-request-id": [ "f8abb7e3-38e1-4fe5-9c3f-55c29ac88d03" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220907T122442Z:f8abb7e3-38e1-4fe5-9c3f-55c29ac88d03" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 07 Sep 2022 12:24:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1492" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/VirtualMachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-07T12:24:42.6220158Z\",\"signature\":\"ACDRIPX6WKSK4AKKRXJTLPYBAB5SCY3XKVICZLVGYGGDBYWZEXX7HVJRQCHICG23LW3EE7NBMQJ34JOADQCQESUMEICDNFPWXH4NJOY\",\"accepted\":false},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-07T12:24:42.7782401+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-07T12:24:42.7782401+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzMarketplaceTerms+[NoContext]+TermsAccept+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"publisher\": \"microsoft-ads\",\r\n    \"product\": \"windows-data-science-vm\",\r\n    \"plan\": \"windows2016\",\r\n    \"licenseTextLink\": \"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\r\n    \"privacyPolicyLink\": \"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\r\n    \"marketplaceTermsLink\": \"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\r\n    \"retrieveDatetime\": \"2022-09-07T12:24:42.6220158Z\",\r\n    \"signature\": \"ACDRIPX6WKSK4AKKRXJTLPYBAB5SCY3XKVICZLVGYGGDBYWZEXX7HVJRQCHICG23LW3EE7NBMQJ34JOADQCQESUMEICDNFPWXH4NJOY\",\r\n    \"accepted\": true\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "980" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "51d7e4fb-6ce6-4d81-bc6d-c7fb2680c3a6" ],
+        "x-ms-correlation-request-id": [ "51d7e4fb-6ce6-4d81-bc6d-c7fb2680c3a6" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220907T122444Z:51d7e4fb-6ce6-4d81-bc6d-c7fb2680c3a6" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 07 Sep 2022 12:24:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1517" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/Microsoft.MarketplaceOrdering/offertypes/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-07T12:24:42.6220158Z\",\"signature\":\"ACDRIPX6WKSK4AKKRXJTLPYBAB5SCY3XKVICZLVGYGGDBYWZEXX7HVJRQCHICG23LW3EE7NBMQJ34JOADQCQESUMEICDNFPWXH4NJOY\",\"accepted\":true},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-07T12:24:44.6178492+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-07T12:24:44.6178492+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzMarketplaceTerms+[NoContext]+TermsReject+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "3" ],
+        "x-ms-client-request-id": [ "983ab9f8-b850-484a-a1e8-de8762083041" ],
+        "CommandName": [ "Get-AzMarketplaceTerms" ],
+        "FullCommandName": [ "Get-AzMarketplaceTerms_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MarketplaceOrdering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11998" ],
+        "x-ms-request-id": [ "72344f4d-4dbb-4271-9469-c2cd288ed377" ],
+        "x-ms-correlation-request-id": [ "72344f4d-4dbb-4271-9469-c2cd288ed377" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220907T122449Z:72344f4d-4dbb-4271-9469-c2cd288ed377" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 07 Sep 2022 12:24:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1491" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/VirtualMachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-07T12:24:49.4612105Z\",\"signature\":\"NRX4A2CDI5RCNTEPOTEY62HR2OONMXEA7AUWR4LS4TBHWHMOO552IBQCHE6RRRWCWOODN4PSPORG3HJW74L5RWGS3GFO54FDJPG5VVA\",\"accepted\":true},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-07T12:24:49.6052214+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-07T12:24:49.6052214+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzMarketplaceTerms+[NoContext]+TermsReject+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"publisher\": \"microsoft-ads\",\r\n    \"product\": \"windows-data-science-vm\",\r\n    \"plan\": \"windows2016\",\r\n    \"licenseTextLink\": \"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\r\n    \"privacyPolicyLink\": \"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\r\n    \"marketplaceTermsLink\": \"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\r\n    \"retrieveDatetime\": \"2022-09-07T12:24:49.4612105Z\",\r\n    \"signature\": \"NRX4A2CDI5RCNTEPOTEY62HR2OONMXEA7AUWR4LS4TBHWHMOO552IBQCHE6RRRWCWOODN4PSPORG3HJW74L5RWGS3GFO54FDJPG5VVA\",\r\n    \"accepted\": false\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "981" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
+        "x-ms-request-id": [ "9d8417ca-1d42-4636-814b-a583c2f2c316" ],
+        "x-ms-correlation-request-id": [ "9d8417ca-1d42-4636-814b-a583c2f2c316" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220907T122451Z:9d8417ca-1d42-4636-814b-a583c2f2c316" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 07 Sep 2022 12:24:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1518" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/Microsoft.MarketplaceOrdering/offertypes/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-07T12:24:42.6220158Z\",\"signature\":\"ACDRIPX6WKSK4AKKRXJTLPYBAB5SCY3XKVICZLVGYGGDBYWZEXX7HVJRQCHICG23LW3EE7NBMQJ34JOADQCQESUMEICDNFPWXH4NJOY\",\"accepted\":false},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-07T12:24:50.9715472+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-07T12:24:50.9715472+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzMarketplaceTerms+[NoContext]+TermsAcceptViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "f8432b7c-f968-4373-961e-6c74a9787703" ],
+        "CommandName": [ "Get-AzMarketplaceTerms" ],
+        "FullCommandName": [ "Get-AzMarketplaceTerms_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MarketplaceOrdering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11997" ],
+        "x-ms-request-id": [ "ee4c12ae-42da-4710-83d5-263dea789235" ],
+        "x-ms-correlation-request-id": [ "ee4c12ae-42da-4710-83d5-263dea789235" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220907T122455Z:ee4c12ae-42da-4710-83d5-263dea789235" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 07 Sep 2022 12:24:54 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1492" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/VirtualMachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-07T12:24:55.0489343Z\",\"signature\":\"EXZDJAURJOLBYO3UFXHIKPEQU7SHJKE4ZQKGJFYGXBPZTLFZWHELC7FFEIA6VWG745PGDZYHLH7VQPNA4IMWBQ53UEO2NYZATYD3ZRY\",\"accepted\":false},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-07T12:24:55.1895826+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-07T12:24:55.1895826+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzMarketplaceTerms+[NoContext]+TermsAcceptViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"publisher\": \"microsoft-ads\",\r\n    \"product\": \"windows-data-science-vm\",\r\n    \"plan\": \"windows2016\",\r\n    \"licenseTextLink\": \"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\r\n    \"privacyPolicyLink\": \"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\r\n    \"marketplaceTermsLink\": \"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\r\n    \"retrieveDatetime\": \"2022-09-07T12:24:55.0489343Z\",\r\n    \"signature\": \"EXZDJAURJOLBYO3UFXHIKPEQU7SHJKE4ZQKGJFYGXBPZTLFZWHELC7FFEIA6VWG745PGDZYHLH7VQPNA4IMWBQ53UEO2NYZATYD3ZRY\",\r\n    \"accepted\": true\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "980" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "196b68aa-282a-4856-953d-06f3f619f270" ],
+        "x-ms-correlation-request-id": [ "196b68aa-282a-4856-953d-06f3f619f270" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220907T122500Z:196b68aa-282a-4856-953d-06f3f619f270" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Wed, 07 Sep 2022 12:25:00 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1517" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/Microsoft.MarketplaceOrdering/offertypes/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-07T12:24:55.0489343Z\",\"signature\":\"EXZDJAURJOLBYO3UFXHIKPEQU7SHJKE4ZQKGJFYGXBPZTLFZWHELC7FFEIA6VWG745PGDZYHLH7VQPNA4IMWBQ53UEO2NYZATYD3ZRY\",\"accepted\":true},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-07T12:25:00.6635102+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-07T12:25:00.6635102+00:00\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzMarketplaceTerms+[NoContext]+TermsRejectViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "e97ccfc4-8b54-4247-9727-76ec4e1602d3" ],
         "CommandName": [ "Get-AzMarketplaceTerms" ],
         "FullCommandName": [ "Get-AzMarketplaceTerms_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -27,268 +276,19 @@
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11996" ],
-        "x-ms-request-id": [ "a4159263-435b-485d-bed7-b17e0a6c3af6" ],
-        "x-ms-correlation-request-id": [ "a4159263-435b-485d-bed7-b17e0a6c3af6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220901T061915Z:a4159263-435b-485d-bed7-b17e0a6c3af6" ],
+        "x-ms-request-id": [ "89c0080b-40fd-47bb-b740-e7979cdd0cb2" ],
+        "x-ms-correlation-request-id": [ "89c0080b-40fd-47bb-b740-e7979cdd0cb2" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220907T122505Z:89c0080b-40fd-47bb-b740-e7979cdd0cb2" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 01 Sep 2022 06:19:14 GMT" ]
+        "Date": [ "Wed, 07 Sep 2022 12:25:05 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "1491" ],
+        "Content-Length": [ "1489" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/VirtualMachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-01T06:19:14.8450351Z\",\"signature\":\"7BXJBDD5LJPRCU2DBFWTCOUAGS5Q2CJ6RYTK5JKDCAPQYCZTMVQ5WIIFGLJPBTSXRMRNODWY6PV7E7RXFIVA7ANLNB4VQUYXMZKI44Q\",\"accepted\":true},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-01T06:19:15.0168512+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-01T06:19:15.0168512+00:00\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzMarketplaceTerms+[NoContext]+TermsAccept+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01+2": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"publisher\": \"microsoft-ads\",\r\n    \"product\": \"windows-data-science-vm\",\r\n    \"plan\": \"windows2016\",\r\n    \"licenseTextLink\": \"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\r\n    \"privacyPolicyLink\": \"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\r\n    \"marketplaceTermsLink\": \"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\r\n    \"retrieveDatetime\": \"2022-09-01T06:19:14.8450351Z\",\r\n    \"signature\": \"7BXJBDD5LJPRCU2DBFWTCOUAGS5Q2CJ6RYTK5JKDCAPQYCZTMVQ5WIIFGLJPBTSXRMRNODWY6PV7E7RXFIVA7ANLNB4VQUYXMZKI44Q\",\r\n    \"accepted\": true\r\n  }\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "980" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "X-Frame-Options": [ "SAMEORIGIN" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
-        "x-ms-request-id": [ "bb9a9767-72d1-4547-ae9f-d740ba7db5ae" ],
-        "x-ms-correlation-request-id": [ "bb9a9767-72d1-4547-ae9f-d740ba7db5ae" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220901T061917Z:bb9a9767-72d1-4547-ae9f-d740ba7db5ae" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 01 Sep 2022 06:19:17 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1517" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/Microsoft.MarketplaceOrdering/offertypes/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-01T06:19:14.8450351Z\",\"signature\":\"7BXJBDD5LJPRCU2DBFWTCOUAGS5Q2CJ6RYTK5JKDCAPQYCZTMVQ5WIIFGLJPBTSXRMRNODWY6PV7E7RXFIVA7ANLNB4VQUYXMZKI44Q\",\"accepted\":true},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-01T06:19:17.5176539+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-01T06:19:17.5176539+00:00\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzMarketplaceTerms+[NoContext]+TermsReject+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "8" ],
-        "x-ms-client-request-id": [ "3ad90eab-0e72-4957-88d6-bcaa8c7e8f72" ],
-        "CommandName": [ "Get-AzMarketplaceTerms" ],
-        "FullCommandName": [ "Get-AzMarketplaceTerms_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MarketplaceOrdering/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "X-Frame-Options": [ "SAMEORIGIN" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11995" ],
-        "x-ms-request-id": [ "caf7f2ca-40e9-41d3-94f7-91fa5dca36ec" ],
-        "x-ms-correlation-request-id": [ "caf7f2ca-40e9-41d3-94f7-91fa5dca36ec" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220901T061920Z:caf7f2ca-40e9-41d3-94f7-91fa5dca36ec" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 01 Sep 2022 06:19:19 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1491" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/VirtualMachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-01T06:19:19.9633988Z\",\"signature\":\"CG4GXJ6E43PUSKKG7ZLDAUAUY75CA3Q5WAG5CQ32ZKEFBGQIS6EIO5JXHROKZR6EYFPWIBO2C5VSECFA2LA4PR7IA5HABRX63WQFJCA\",\"accepted\":true},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-01T06:19:20.1040263+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-01T06:19:20.1040263+00:00\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzMarketplaceTerms+[NoContext]+TermsReject+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01+2": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"publisher\": \"microsoft-ads\",\r\n    \"product\": \"windows-data-science-vm\",\r\n    \"plan\": \"windows2016\",\r\n    \"licenseTextLink\": \"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\r\n    \"privacyPolicyLink\": \"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\r\n    \"marketplaceTermsLink\": \"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\r\n    \"retrieveDatetime\": \"2022-09-01T06:19:19.9633988Z\",\r\n    \"signature\": \"CG4GXJ6E43PUSKKG7ZLDAUAUY75CA3Q5WAG5CQ32ZKEFBGQIS6EIO5JXHROKZR6EYFPWIBO2C5VSECFA2LA4PR7IA5HABRX63WQFJCA\",\r\n    \"accepted\": false\r\n  }\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "981" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "X-Frame-Options": [ "SAMEORIGIN" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1198" ],
-        "x-ms-request-id": [ "0756dc1f-0837-4218-8b58-e31e432e6929" ],
-        "x-ms-correlation-request-id": [ "0756dc1f-0837-4218-8b58-e31e432e6929" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220901T061922Z:0756dc1f-0837-4218-8b58-e31e432e6929" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 01 Sep 2022 06:19:21 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1518" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/Microsoft.MarketplaceOrdering/offertypes/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-01T06:19:14.8450351Z\",\"signature\":\"7BXJBDD5LJPRCU2DBFWTCOUAGS5Q2CJ6RYTK5JKDCAPQYCZTMVQ5WIIFGLJPBTSXRMRNODWY6PV7E7RXFIVA7ANLNB4VQUYXMZKI44Q\",\"accepted\":false},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-01T06:19:22.0828238+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-01T06:19:22.0828238+00:00\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzMarketplaceTerms+[NoContext]+TermsAcceptViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "10" ],
-        "x-ms-client-request-id": [ "e9017f24-233e-468a-9adf-6a6377dd78f4" ],
-        "CommandName": [ "Get-AzMarketplaceTerms" ],
-        "FullCommandName": [ "Get-AzMarketplaceTerms_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MarketplaceOrdering/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "X-Frame-Options": [ "SAMEORIGIN" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11994" ],
-        "x-ms-request-id": [ "9597da5a-d7d9-4b36-a368-1752f9ab4ada" ],
-        "x-ms-correlation-request-id": [ "9597da5a-d7d9-4b36-a368-1752f9ab4ada" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220901T061923Z:9597da5a-d7d9-4b36-a368-1752f9ab4ada" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 01 Sep 2022 06:19:23 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1492" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/VirtualMachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-01T06:19:23.4700849Z\",\"signature\":\"BIHUT5PZYFLBFQDTAMIP2CZZKMEELXJRUWJKVAO3YVBZI5OKJTLFZ3RZRYCRFAYX7VXFSPCMRPXT334X2MMHRTYOIZFVUQWBU7H23WY\",\"accepted\":false},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-01T06:19:23.5481923+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-01T06:19:23.5481923+00:00\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzMarketplaceTerms+[NoContext]+TermsAcceptViaIdentity+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01+2": {
-    "Request": {
-      "Method": "PUT",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"publisher\": \"microsoft-ads\",\r\n    \"product\": \"windows-data-science-vm\",\r\n    \"plan\": \"windows2016\",\r\n    \"licenseTextLink\": \"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\r\n    \"privacyPolicyLink\": \"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\r\n    \"marketplaceTermsLink\": \"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\r\n    \"retrieveDatetime\": \"2022-09-01T06:19:23.4700849Z\",\r\n    \"signature\": \"BIHUT5PZYFLBFQDTAMIP2CZZKMEELXJRUWJKVAO3YVBZI5OKJTLFZ3RZRYCRFAYX7VXFSPCMRPXT334X2MMHRTYOIZFVUQWBU7H23WY\",\r\n    \"accepted\": true\r\n  }\r\n}",
-      "isContentBase64": false,
-      "Headers": {
-      },
-      "ContentHeaders": {
-        "Content-Type": [ "application/json" ],
-        "Content-Length": [ "980" ]
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "X-Frame-Options": [ "SAMEORIGIN" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
-        "x-ms-request-id": [ "4de0e0b1-909b-4bf2-990f-d57a78faab83" ],
-        "x-ms-correlation-request-id": [ "4de0e0b1-909b-4bf2-990f-d57a78faab83" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220901T061926Z:4de0e0b1-909b-4bf2-990f-d57a78faab83" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 01 Sep 2022 06:19:25 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1517" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/Microsoft.MarketplaceOrdering/offertypes/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-01T06:19:23.4700849Z\",\"signature\":\"BIHUT5PZYFLBFQDTAMIP2CZZKMEELXJRUWJKVAO3YVBZI5OKJTLFZ3RZRYCRFAYX7VXFSPCMRPXT334X2MMHRTYOIZFVUQWBU7H23WY\",\"accepted\":true},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-01T06:19:26.0698244+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-01T06:19:26.0698244+00:00\"}}",
-      "isContentBase64": false
-    }
-  },
-  "Set-AzMarketplaceTerms+[NoContext]+TermsRejectViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "12" ],
-        "x-ms-client-request-id": [ "58add8ea-189e-4df5-873d-901cf0733716" ],
-        "CommandName": [ "Get-AzMarketplaceTerms" ],
-        "FullCommandName": [ "Get-AzMarketplaceTerms_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MarketplaceOrdering/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "Vary": [ "Accept-Encoding" ],
-        "X-Frame-Options": [ "SAMEORIGIN" ],
-        "Server": [ "Microsoft-IIS/10.0" ],
-        "X-Powered-By": [ "ASP.NET" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11993" ],
-        "x-ms-request-id": [ "0717a5a1-8407-4f08-ab7a-5052d8c8dcbc" ],
-        "x-ms-correlation-request-id": [ "0717a5a1-8407-4f08-ab7a-5052d8c8dcbc" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220901T061928Z:0717a5a1-8407-4f08-ab7a-5052d8c8dcbc" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 01 Sep 2022 06:19:28 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "1491" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/VirtualMachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-01T06:19:28.2411018Z\",\"signature\":\"ENQ7RL4I7IJFG5PHQMA42IREFYYVXWQQHQM5KTNNCPCZYNETNSENHIBUHLTSHNSP5KWPDEFGCUJOMGZWWHVZTEN7KUPZDELONOHWZ3A\",\"accepted\":true},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-01T06:19:28.3819285+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-01T06:19:28.3819285+00:00\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/VirtualMachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-07T12:25:05.5419627Z\",\"signature\":\"LTHZCSZATTCUTMXWPT66QXLW677T45PHEQSZBVJWCDGASIYLHJJC3VX4P5DFVUXE74GEAXDIWFEZDF2PF4IGNOEVZLQDPIJGXQ47D4A\",\"accepted\":true},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-07T12:25:05.682694+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-07T12:25:05.682694+00:00\"}}",
       "isContentBase64": false
     }
   },
@@ -296,7 +296,7 @@
     "Request": {
       "Method": "PUT",
       "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/virtualmachine/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current?api-version=2021-01-01",
-      "Content": "{\r\n  \"properties\": {\r\n    \"publisher\": \"microsoft-ads\",\r\n    \"product\": \"windows-data-science-vm\",\r\n    \"plan\": \"windows2016\",\r\n    \"licenseTextLink\": \"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\r\n    \"privacyPolicyLink\": \"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\r\n    \"marketplaceTermsLink\": \"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\r\n    \"retrieveDatetime\": \"2022-09-01T06:19:28.2411018Z\",\r\n    \"signature\": \"ENQ7RL4I7IJFG5PHQMA42IREFYYVXWQQHQM5KTNNCPCZYNETNSENHIBUHLTSHNSP5KWPDEFGCUJOMGZWWHVZTEN7KUPZDELONOHWZ3A\",\r\n    \"accepted\": false\r\n  }\r\n}",
+      "Content": "{\r\n  \"properties\": {\r\n    \"publisher\": \"microsoft-ads\",\r\n    \"product\": \"windows-data-science-vm\",\r\n    \"plan\": \"windows2016\",\r\n    \"licenseTextLink\": \"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\r\n    \"privacyPolicyLink\": \"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\r\n    \"marketplaceTermsLink\": \"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\r\n    \"retrieveDatetime\": \"2022-09-07T12:25:05.5419627Z\",\r\n    \"signature\": \"LTHZCSZATTCUTMXWPT66QXLW677T45PHEQSZBVJWCDGASIYLHJJC3VX4P5DFVUXE74GEAXDIWFEZDF2PF4IGNOEVZLQDPIJGXQ47D4A\",\r\n    \"accepted\": false\r\n  }\r\n}",
       "isContentBase64": false,
       "Headers": {
       },
@@ -315,19 +315,19 @@
         "Server": [ "Microsoft-IIS/10.0" ],
         "X-Powered-By": [ "ASP.NET" ],
         "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
-        "x-ms-request-id": [ "02e1460d-e03a-4a98-baa7-b34025c1e910" ],
-        "x-ms-correlation-request-id": [ "02e1460d-e03a-4a98-baa7-b34025c1e910" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220901T061930Z:02e1460d-e03a-4a98-baa7-b34025c1e910" ],
+        "x-ms-request-id": [ "645ba609-f9fd-4739-b4a8-f575597b3ddd" ],
+        "x-ms-correlation-request-id": [ "645ba609-f9fd-4739-b4a8-f575597b3ddd" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220907T122509Z:645ba609-f9fd-4739-b4a8-f575597b3ddd" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 01 Sep 2022 06:19:29 GMT" ]
+        "Date": [ "Wed, 07 Sep 2022 12:25:08 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1518" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/Microsoft.MarketplaceOrdering/offertypes/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-01T06:19:23.4700849Z\",\"signature\":\"BIHUT5PZYFLBFQDTAMIP2CZZKMEELXJRUWJKVAO3YVBZI5OKJTLFZ3RZRYCRFAYX7VXFSPCMRPXT334X2MMHRTYOIZFVUQWBU7H23WY\",\"accepted\":false},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-01T06:19:30.2277458+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-01T06:19:30.2277458+00:00\"}}",
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/offerTypes/Microsoft.MarketplaceOrdering/offertypes/publishers/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/agreements/current\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/offertypes\",\"properties\":{\"publisher\":\"microsoft-ads\",\"product\":\"windows-data-science-vm\",\"plan\":\"windows2016\",\"licenseTextLink\":\"https://mpcprodsa.blob.core.windows.net/legalterms/3E5ED_legalterms_MICROSOFT%253a2DADS%253a24WINDOWS%253a2DDATA%253a2DSCIENCE%253a2DVM%253a24WINDOWS2016%253a24T6KYYUE6UICDGSKJBSZ7NUG36TS7TLQNEXKVU5ZKR2Y2KZNYCHB3KPFZZIJSWAYBL3WOEYWIQZASGI2LEGBOM2MSVTDOBSREMDZG2DI.txt\",\"privacyPolicyLink\":\"https://www.microsoft.com/EN-US/privacystatement/OnlineServices/Default.aspx\",\"marketplaceTermsLink\":\"https://mpcprodsa.blob.core.windows.net/marketplaceterms/3EDEF_marketplaceterms_VIRTUALMACHINE%253a24AAK2OAIZEAWW5H4MSP5KSTVB6NDKKRTUBAU23BRFTWN4YC2MQLJUB5ZEYUOUJBVF3YK34CIVPZL2HWYASPGDUY5O2FWEGRBYOXWZE5Y.txt\",\"retrieveDatetime\":\"2022-09-07T12:24:55.0489343Z\",\"signature\":\"EXZDJAURJOLBYO3UFXHIKPEQU7SHJKE4ZQKGJFYGXBPZTLFZWHELC7FFEIA6VWG745PGDZYHLH7VQPNA4IMWBQ53UEO2NYZATYD3ZRY\",\"accepted\":false},\"systemData\":{\"createdBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"createdByType\":\"ManagedIdentity\",\"createdAt\":\"2022-09-07T12:25:09.3362541+00:00\",\"lastModifiedBy\":\"9e223dbe-3399-4e19-88eb-0975f02ac87f\",\"lastModifiedByType\":\"ManagedIdentity\",\"lastModifiedAt\":\"2022-09-07T12:25:09.3362541+00:00\"}}",
       "isContentBase64": false
     }
   }

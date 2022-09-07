@@ -43,7 +43,7 @@ Accept or reject terms for a given publisher id(Publisher), offer id(Product) an
 
 ### Example 1: Accept terms for a given publisher id(Publisher), offer id(Product) and plan id(Name)
 ```powershell
-Set-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -OfferType 'virtualmachine' -Accept
+Set-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Accept
 ```
 
 ```output
@@ -69,7 +69,7 @@ This command accept terms for a given publisher id(Publisher), offer id(Product)
 
 ### Example 3: Reject terms for a given publisher id(Publisher), offer id(Product) and plan id(Name)
 ```powershell
-Set-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -OfferType 'virtualmachine' -Reject
+Set-AzMarketplaceTerms  -Publisher "microsoft-ads" -Product "windows-data-science-vm" -Name "windows2016" -Reject
 ```
 
 ```output

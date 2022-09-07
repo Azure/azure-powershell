@@ -12,21 +12,16 @@ Get marketplace terms.
 
 ## SYNTAX
 
-### List (Default)
+### Get1 (Default)
 ```
-Get-AzMarketplaceTerms [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
 Get-AzMarketplaceTerms -Name <String> -OfferType <OfferType> -Product <String> -Publisher <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get1
-```
-Get-AzMarketplaceTerms -Name <String> -Product <String> -Publisher <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -82,7 +77,7 @@ Plan identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -112,7 +107,7 @@ Offer identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -127,7 +122,7 @@ Publisher identifier string of image being deployed.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, Get1
+Parameter Sets: (All)
 Aliases:
 
 Required: True
