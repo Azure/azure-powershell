@@ -49,6 +49,8 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:GenerateHelp /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+  env:
+      OCTOKITPAT: $(OCTOKITPAT)
 
 - task: DotNetCoreCLI@2
   displayName: 'Static Analysis'
@@ -56,6 +58,8 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:StaticAnalysis /p:Configuration=${{ parameters.configuration }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+  env:
+      OCTOKITPAT: $(OCTOKITPAT)
 
 - template: publish-artifacts-steps.yml
   parameters:

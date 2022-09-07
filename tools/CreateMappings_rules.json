@@ -573,7 +573,7 @@
   },
   {
     "regex": "ImportExport",
-    "alias": "Import/Export"
+    "alias": "ImportExport"
   },
   {
     "regex": "Functions",

@@ -642,25 +642,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             string policyName = ProviderData.ContainsKey(PolicyParams.PolicyName) ?
                 (string)ProviderData[PolicyParams.PolicyName] : null;
-            RetentionPolicyBase retentionPolicy =
-                ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ?
-                (RetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] :
-                null;
-            SchedulePolicyBase schedulePolicy =
-                ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ?
-                (SchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] :
-                null;
-            PolicyBase policy =
-                ProviderData.ContainsKey(PolicyParams.ProtectionPolicy) ?
-                (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy] :
-                null;
-            bool fixForInconsistentItems = ProviderData.ContainsKey(PolicyParams.FixForInconsistentItems) ?
-                (bool)ProviderData[PolicyParams.FixForInconsistentItems] : false;
+            
+            RetentionPolicyBase retentionPolicy = ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ? (RetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] : null;
+            SchedulePolicyBase schedulePolicy = ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ? (SchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] : null;
+            PolicyBase policy = ProviderData.ContainsKey(PolicyParams.ProtectionPolicy) ? (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy] : null;           
+
+            bool fixForInconsistentItems = ProviderData.ContainsKey(PolicyParams.FixForInconsistentItems) ? (bool)ProviderData[PolicyParams.FixForInconsistentItems] : false;
+
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource();
 
             string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
             ProtectionPolicyResource existingPolicy = ProviderData.ContainsKey(PolicyParams.ExistingPolicy) ? (ProtectionPolicyResource)ProviderData[PolicyParams.ExistingPolicy] : null;
+
+            CmdletModel.TieringPolicy tieringDetails = ProviderData.ContainsKey(PolicyParams.TieringPolicy) ? (CmdletModel.TieringPolicy)ProviderData[PolicyParams.TieringPolicy] : null;
+            bool isSmartTieringEnabled = ProviderData.ContainsKey(PolicyParams.IsSmartTieringEnabled) ? (bool)ProviderData[PolicyParams.IsSmartTieringEnabled] : false;
 
             if (policy != null)
             {
@@ -669,7 +665,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Logger.Instance.WriteDebug("Validation of Protection Policy is successful");
 
                 // RetentionPolicy and SchedulePolicy both should not be empty
-                if (retentionPolicy == null && schedulePolicy == null)
+                if (retentionPolicy == null && schedulePolicy == null && tieringDetails == null)
                 {
                     if (fixForInconsistentItems == false)
                     {
@@ -681,7 +677,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ((AzureVmWorkloadPolicy)policy).IsCompression);
                     azureVmWorkloadModifyPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
                     azureVmWorkloadModifyPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
-                    azureVmWorkloadModifyPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy);
+                    azureVmWorkloadModifyPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy, isSmartTieringEnabled);
                     azureVmWorkloadModifyPolicy.MakePolicyConsistent = true;
                     serviceClientRequest.Properties = azureVmWorkloadModifyPolicy;
                 }
@@ -712,6 +708,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         (CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy,
                         (CmdletModel.SimpleSchedulePolicy)((AzureVmWorkloadPolicy)policy).FullBackupSchedulePolicy);
                     Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
+                                        
+                    if (tieringDetails != null)
+                    {
+                        PolicyHelpers.ValidateFullBackupRetentionPolicyWithTieringPolicy((CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy, tieringDetails);
+                        AzureWorkloadProviderHelper.GetUpdatedTieringPolicy(policy, tieringDetails);
+                        Logger.Instance.WriteDebug("Validation of Tiering policy is successful");
+                    }
+                    else if (((AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy != null)
+                    {
+                        PolicyHelpers.ValidateFullBackupRetentionPolicyWithTieringPolicy((CmdletModel.LongTermRetentionPolicy)((AzureVmWorkloadPolicy)policy).FullBackupRetentionPolicy, ((AzureVmWorkloadPolicy)policy).FullBackupTieringPolicy, true);
+                    }
 
                     // construct Service Client policy request
                     AzureVmWorkloadProtectionPolicy azureVmWorkloadProtectionPolicy = new AzureVmWorkloadProtectionPolicy();
@@ -720,7 +727,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                         ((AzureVmWorkloadPolicy)policy).IsCompression);
                     azureVmWorkloadProtectionPolicy.WorkLoadType = ConversionUtils.GetServiceClientWorkloadType(policy.WorkloadType.ToString());
                     azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
-                    azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy);
+                    azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy((AzureVmWorkloadPolicy)policy, isSmartTieringEnabled);
                     serviceClientRequest.Properties = azureVmWorkloadProtectionPolicy;
                 }
             }
@@ -749,6 +756,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                     (SQLSchedulePolicy)schedulePolicy);
                 Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
 
+                // validate tiering policy
+                PolicyHelpers.ValidateFullBackupRetentionPolicyWithTieringPolicy(((SQLRetentionPolicy)retentionPolicy).FullBackupRetentionPolicy, tieringDetails);
+                Logger.Instance.WriteDebug("Validation of Retention policy with Tiering policy is successful");
+
                 // construct Service Client policy request            
                 AzureVmWorkloadProtectionPolicy azureVmWorkloadProtectionPolicy = new AzureVmWorkloadProtectionPolicy();
                 azureVmWorkloadProtectionPolicy.Settings = new Settings("UTC",
@@ -758,7 +769,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 azureVmWorkloadProtectionPolicy.SubProtectionPolicy = new List<SubProtectionPolicy>();
                 azureVmWorkloadProtectionPolicy.SubProtectionPolicy = PolicyHelpers.GetServiceClientSubProtectionPolicy(
                                                     (SQLRetentionPolicy)retentionPolicy,
-                                                    (SQLSchedulePolicy)schedulePolicy);
+                                                    (SQLSchedulePolicy)schedulePolicy, tieringDetails, isSmartTieringEnabled);
                 serviceClientRequest.Properties = azureVmWorkloadProtectionPolicy;
             }
 

@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 4.9.0
 * Supported to create or update Storage account with Azure Files Active Directory Domain Service Kerberos Authentication
     -  `New-AzStorageAccount`
     -  `Set-AzStorageAccount`

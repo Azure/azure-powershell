@@ -19,6 +19,10 @@
 --->
 
 ## Upcoming Release
+* Fixed a bug not able to add MSSQL application rules to an AZURE FIREWALL POLICY
+
+## Version 4.20.1
+* Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
 
 ## Version 4.20.0
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
@@ -28,7 +32,7 @@
     - `Remove-AzPrivateEndpointConnection`
     - `Approve-AzPrivateEndpointConnection`
     - `Deny-AzPrivateEndpointConnection`
-* Added breaking change attribute to notify that public ip address sku default behaviour will be changed
+* Added breaking change attribute to notify that public ip address sku default behavior will be changed
     - `New-AzPublicIpAddress`
     - `New-AzLoadBalancer`
 * Onboard Azure Virtual Network Manager Cmdlets
