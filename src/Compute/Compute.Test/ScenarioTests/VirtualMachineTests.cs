@@ -566,5 +566,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-DEBUGConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestRECORDConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest()
+        {
+            TestRunner.RunTestScript("Test-RECORDConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest");
+        }
     }
 }

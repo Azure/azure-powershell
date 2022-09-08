@@ -21,6 +21,7 @@ using Microsoft.Azure.Commands.Compute.Common;
 using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -51,7 +52,14 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.SecurityProfile = new SecurityProfile();
             }
 
-            this.VM.SecurityProfile.SecurityType = SecurityType;
+            if (this.IsParameterBound(c => c.SecurityType))
+            {
+                if (this.VM.SecurityProfile == null)
+                {
+                    this.VM.SecurityProfile = new SecurityProfile();
+                }
+                this.VM.SecurityProfile.SecurityType = SecurityType;
+            }
 
             WriteObject(this.VM);
         }

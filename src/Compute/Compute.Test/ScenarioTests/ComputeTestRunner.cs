@@ -12,8 +12,10 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using Microsoft.Azure.Commands.TestFx;
+using Microsoft.Azure.KeyVault;
 using Microsoft.Azure.Test.HttpRecorder;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using Microsoft.Rest;
@@ -66,9 +68,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                         {"Microsoft.Storage", null},
                     }
                 )
-                /* This is an attempt to workaorund the Data Plane Operation not allowed issue in our test framework.
-                 * 
-                 * .WithManagementClients(context =>
+                .WithManagementClients(context =>
                 {
                     string environmentConnectionString = Environment.GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION");
                     string accessToken = "fakefakefake";
@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
                     }
 
                     return new KeyVaultClient(new TokenCredentials(accessToken), HttpMockServer.CreateInstance());
-                })*/
+                })
                 .Build();
         }
     }

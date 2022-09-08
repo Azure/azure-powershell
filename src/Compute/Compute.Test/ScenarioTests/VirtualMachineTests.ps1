@@ -6307,6 +6307,8 @@ https://dev.azure.com/msazure/AzureWiki/_wiki/wikis/AzureWiki.wiki/232000/How-to
 ADAM trying this for DES wityh CLI test for sanity check if it allworks with cli.
 Try edits with Keyvault module? 
 Working on this one currently! 
+This now works with the keyvault edit. TODO: test it with the cvm default policy parameter in key vault cmdlet too, 
+will make other tests automateable. 
 #>
 function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
 {
@@ -6316,16 +6318,18 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
 
     try
     {
+        #$rgname = "adsandwiki48";
+        $loc = 'northeurope';
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
-        $rgname = "adsandwiki37";
+        #$rgname = "adsandwiki40";
 
         $vmname = 'v' + 'vmdesnop';
         $vmSize = "Standard_DC2as_v5";         
         $domainNameLabel2 = "d" + $rgname;
         $computerName = "c" + "compnam";
         $identityType = "SystemAssigned";
-        $loc = 'northeurope';
+        #$loc = 'northeurope';
         $subnetPrefix = "subnet2";
         $vnetPrefix = "vnet2";
         $pubIpPrefix = "pubip2";
@@ -6350,8 +6354,8 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
 
         #  install-module -name "Az.Resources" -AllowClobber -Force
         $cvmAgent = Get-AzADServicePrincipal -ApplicationId 'bf7b6499-ff71-4aa2-97a4-f372087be7f0';
-        # $cvmAgentId = "cbab42ea-0ee6-4563-a646-7418ac305278";
-        #$cvmAgent = az ad sp show --id "bf7b6499-ff71-4aa2-97a4-f372087be7f0" | Out-String | ConvertFrom-Json;
+        #### $cvmAgentId = "cbab42ea-0ee6-4563-a646-7418ac305278";
+        ###$cvmAgent = az ad sp show --id "bf7b6499-ff71-4aa2-97a4-f372087be7f0" | Out-String | ConvertFrom-Json;
         #########$cvmAgent = Get-AzureADServicePrincipal -ObjectId "bf7b6499-ff71-4aa2-97a4-f372087be7f0" | Out-String | ConvertFrom-Json;
         #########thisworked: az keyvault set-policy --name $KeyVault --object-id $cvmAgent.id --key-permissions get release;
         Set-AzKeyVaultAccessPolicy -VaultName $kvName -ResourceGroupName $rgname -ObjectId $cvmAgent.id -PermissionsToKeys get,release;
@@ -6365,12 +6369,17 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
         $KeySize = 3072;
         ###########az keyvault key create --vault-name $KeyVault --name $KeyName --ops wrapKey unwrapkey --kty RSA-HSM --size $KeySize --exportable true --policy "C:\repos\ps\skr-policy.json";
         #Add-AzKeyVaultKey -Hsmname $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA  -UseDefaultCVMPolicy;#-Destination HSM;
-        Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -ReleasePolicyPath "C:\repos\ps\skr-policy.json";#-UseDefaultCVMPolicy ;#-Destination HSM;
+        Add-AzKeyVaultKey -VaultName $kvname -Name $KeyName -Size $KeySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -Exportable -ReleasePolicyPath "C:\repos\ps\skr-policy.json";# -UseDefaultCVMPolicy;#-ReleasePolicyPath "C:\repos\ps\skr-policy.json" -Exportable;#-UseDefaultCVMPolicy ;#-Destination HSM;
         #ERROR: Add-AzKeyVaultKey: Parameter set cannot be resolved using the specified named parameters. One or more parameters issued cannot be used together or an insufficient number of parameters were provided.
 
         # Capture Keyvault and key details
         $encryptionKeyVaultId = (Get-AzKeyVault -VaultName $kvName -ResourceGroupName $rgName).ResourceId;
+        #$encryptionKeyVaultId = "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsadnwiki44/providers/Microsoft.KeyVault/vaults/kvadsadnwiki44";
+        #encryptionKeyVaultId: /subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsadnwiki44/providers/Microsoft.KeyVault/vaults/kvadsadnwiki44
+
+        #$encryptionKeyURL = "https://kvadsadnwiki44.vault.azure.net/keys/kadsadnwiki44/73936e9cadc241db9126e0aa144d8cd3";
         $encryptionKeyURL = (Get-AzKeyVaultKey -VaultName $kvName -KeyName $keyName).Key.Kid;
+        ## $encryptionKeyURL: https://kvadsadnwiki44.vault.azure.net/keys/kadsadnwiki44/73936e9cadc241db9126e0aa144d8cd3
         ######$encryptionKeyVaultId = ((az keyvault show -n $KeyVault -g $resourceGroup) | ConvertFrom-Json).id # /subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsandorwiki3/providers/Microsoft.KeyVault/vaults/val3adsandorwiki3
         ######$encryptionKeyURL= ((az keyvault key show --vault-name $KeyVault --name $KeyName) | ConvertFrom-Json).key.kid # https://val3adsandorwiki3.vault.azure.net/keys/keynam/acea0d63764a46e2b73dba4a1c4e081b
 
@@ -6431,6 +6440,89 @@ function Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
     {
         # Cleanup
         Clean-ResourceGroup $rgname;
+    }
+}
+
+function Test-RECORDConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest
+{
+    # Setup
+    #$rgname = Get-ComputeTestResourceName;
+    $loc = "northeurope";
+    $rgname = "adsandwiki48";
+
+    try
+    {
+        #New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmname = 'v' + 'vmdesnop';
+        $vmSize = "Standard_DC2as_v5";         
+        $domainNameLabel2 = "d" + $rgname;
+        $computerName = "c" + "compnam";
+        $identityType = "SystemAssigned";
+        $subnetPrefix = "subnet2";
+        $vnetPrefix = "vnet2";
+        $pubIpPrefix = "pubip2";
+        $nicPrefix = "nic2";
+        $secureEncryptGuestState = 'DiskWithVMGuestState';
+        $vmSecurityType = "ConfidentialVM";
+        $user = "admin01";
+        $password = "Testing1234567";#Get-PasswordForVM;
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force; 
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        $kvname = "kvadsandwiki48";
+        $keyname = "kadsandwiki48";
+        $desName= "desadsandwiki48";
+
+        $encryptionKeyVaultId = "/subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/resourceGroups/adsandwiki48/providers/Microsoft.KeyVault/vaults/kvadsandwiki48";
+        $encryptionKeyURL = "https://kvadsandwiki48.vault.azure.net/keys/kadsandwiki48/143a5a65aae8409d908e6047b375d72a";
+        
+        # Create new DES Config and DES
+        $diskEncryptionType = "ConfidentialVmEncryptedWithCustomerKey";
+        $desConfig = New-AzDiskEncryptionSetConfig -Location $loc -SourceVaultId $encryptionKeyVaultId -KeyUrl $encryptionKeyURL -IdentityType SystemAssigned -EncryptionType $diskEncryptionType;
+        New-AzDiskEncryptionSet -ResourceGroupName $rgName -Name $desName -DiskEncryptionSet $desConfig;
+        
+        $diskencset = Get-AzDiskEncryptionSet -ResourceGroupName $rgname -Name $desName;
+        
+        # Assign DES Access Policy to key vault
+        $desIdentity = (Get-AzDiskEncryptionSet -Name $desName -ResourceGroupName $rgName).Identity.PrincipalId;
+        
+        Set-AzKeyVaultAccessPolicy -VaultName $kvName -ResourceGroupName $rgname -ObjectId $desIdentity -PermissionsToKeys wrapKey,unwrapKey,get;
+        <#
+        $virtualMachine = New-AzVMConfig -VMName $VMName -VMSize $vmSize;
+        $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
+        $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'windowsserver' -Skus '2022-datacenter-smalldisk-g2' -Version "latest";
+        #$VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -Id "/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/northeurope/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windows-cvm/Skus/2019-datacenter-cvm/Versions/latest";
+        # $diskconfig = Set-AzDiskImageReference -Disk $diskconfig -Id "/Subscriptions/e37510d7-33b6-4676-886f-ee75bcc01871/Providers/Microsoft.Compute/Locations/northeurope/Publishers/MicrosoftWindowsServer/ArtifactTypes/VMImage/Offers/windows-cvm/Skus/2019-datacenter-cvm/Versions/latest";
+        
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ($subnetPrefix + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ($vnetPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ($vnetPrefix + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+        $pubip = New-AzPublicIpAddress -Force -Name ($pubIpPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -AllocationMethod Dynamic -DomainNameLabel $domainNameLabel2;
+        $pubip = Get-AzPublicIpAddress -Name ($pubIpPrefix + $rgname) -ResourceGroupName $rgname;
+        $pubipId = $pubip.Id;
+        $nic = New-AzNetworkInterface -Force -Name ($nicPrefix + $rgname) -ResourceGroupName $rgname -Location $loc -SubnetId $subnetId -PublicIpAddressId $pubip.Id;
+        $nic = Get-AzNetworkInterface -Name ($nicPrefix + $rgname) -ResourceGroupName $rgname;
+        $nicId = $nic.Id;
+
+
+        $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $nicId;
+
+        $VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -StorageAccountType "StandardSSD_LRS" -CreateOption "FromImage" -SecurityEncryptionType $secureEncryptGuestState -SecureVMDiskEncryptionSet $diskencset.Id;
+        $VirtualMachine = Set-AzVmSecurityProfile -VM $VirtualMachine -SecurityType $vmSecurityType;
+        $VirtualMachine = Set-AzVmUefi -VM $VirtualMachine -EnableVtpm $true -EnableSecureBoot $true;
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Vm $VirtualMachine;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+
+        Assert-AreEqual $secureEncryptGuestState $vm.StorageProfile.OsDisk.ManagedDisk.SecurityProfile.SecurityEncryptionType;
+        #>
+    }
+    finally
+    {
+        # Cleanup
+        #Clean-ResourceGroup $rgname;
     }
 }
 

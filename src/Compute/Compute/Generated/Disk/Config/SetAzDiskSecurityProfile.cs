@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.Compute.Models;
 using Microsoft.Azure.Management.Compute.Models;
 using Microsoft.Azure.Commands.Compute.Automation.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
 
 namespace Microsoft.Azure.Commands.Compute
 {
@@ -70,8 +71,12 @@ namespace Microsoft.Azure.Commands.Compute
 
             this.Disk.SecurityProfile.SecurityType = SecurityType;
 
-            if (this.SecureVMDiskEncryptionSet != null)
+            if (this.IsParameterBound(c => c.SecureVMDiskEncryptionSet))
             {
+                if (this.Disk.SecurityProfile == null)
+                {
+                    this.Disk.SecurityProfile = new DiskSecurityProfile();
+                }
                 this.Disk.SecurityProfile.SecureVMDiskEncryptionSetId = this.SecureVMDiskEncryptionSet;
             }
 
