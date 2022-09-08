@@ -36,6 +36,8 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:${{ parameters.testTarget }} /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+  env:
+      OCTOKITPAT: $(OCTOKITPAT)
 
 - powershell: |
    Install-Module -Name Pester -RequiredVersion 4.10.1 -Force -SkipPublisherCheck
