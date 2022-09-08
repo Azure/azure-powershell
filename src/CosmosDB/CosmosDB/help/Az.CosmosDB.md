@@ -126,6 +126,9 @@ Gets a Azure Managed Instances for Apache Cassandra cluster.
 ### [Get-AzManagedCassandraDatacenter](Get-AzManagedCassandraDatacenter.md)
 Gets a Azure Managed Instances for Apache Cassandra data center.
 
+### [Get-AzCosmosDBService](Get-AzCosmosDBService.md)
+Gets the Cosmos DB Service
+
 ### [Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration](Invoke-AzCosmosDBCassandraKeyspaceThroughputMigration.md)
 Use this to migrate autoscale throughput to manual throughput and vice versa.
 
@@ -282,6 +285,9 @@ Creates a new Azure Managed Instances for Apache Cassandra cluster.
 ### [New-AzManagedCassandraDatacenter](New-AzManagedCassandraDatacenter.md)
 Create a new Azure Managed Instances for Apache Cassandra data center.
 
+### [New-AzCosmosDBService](New-AzCosmosDBService.md)
+Creates a new Cosmos DB Service
+
 ### [Remove-AzCosmosDBAccount](Remove-AzCosmosDBAccount.md)
 Remove a CosmosDB Account.
 
@@ -332,6 +338,9 @@ Deletes a Azure Managed Instances for Apache Cassandra cluster.
 
 ### [Remove-AzManagedCassandraDatacenter](Remove-AzManagedCassandraDatacenter.md)
 Deletes a Azure Managed Instances for Apache Cassandra data center.
+
+### [Remove-AzCosmosDBService](Remove-AzCosmosDBService.md)
+Deletes a Cosmos DB Service
 
 ### [Restore-AzCosmosDBAccount](Restore-AzCosmosDBAccount.md)
 Restores an existing CosmosDB account (live or deleted) to a given timestamp to a new account

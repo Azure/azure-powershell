@@ -234,5 +234,11 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ManagedCassandraDiskSku = "Disk SKU used for data centers. Default value is P30.";
         public const string ManagedCassandraDiskCapacity = "Number of disk used for data centers. Default value is 4.";
         public const string ManagedCassandraUseAvailabilityZone = "Deploy nodes across availability zones if they are available in this location.";
+
+        // Service constants
+        public const string ServiceName = "Name of the service";
+        public const string ServiceInstanceSize = "Instance count of the service";
+        public const string ServiceInstanceCount = "Instance size of the service";
+
     }
 }
