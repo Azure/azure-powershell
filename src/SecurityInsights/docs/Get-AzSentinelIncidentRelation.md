@@ -57,7 +57,7 @@ This command lists all Incident Relations for a given Incident.
 
 ### Example 2: Get a Incident Relation
 ```powershell
- Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId" -Id "myIncidentRelationId"
+ Get-AzSentinelIncidentRelation -ResourceGroupName "myResourceGroupName" -workspaceName "myWorkspaceName" -IncidentId "myIncidentId" -RelationName "myIncidentRelationId"
 ```
 
 ```output
