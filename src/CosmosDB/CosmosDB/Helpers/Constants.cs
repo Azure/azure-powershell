@@ -256,5 +256,10 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string MongoDBUserDefinitionPasswordHelpMessage = "Password for the user Definition.";
         public const string MongoDBUserDefinitionMechanismsHelpMessage = "Mechanisms(e.g. SCRAM-SHA-256) for the user Definition.";
         public const string MongoDBUserDefinitionCustomDataHelpMessage = "Additional information about the user Definition.";
+
+        // Service constants
+        public const string ServiceName = "Name of the service";
+        public const string ServiceInstanceSize = "Instance count of the service";
+        public const string ServiceInstanceCount = "Instance size of the service";
     }
 }
