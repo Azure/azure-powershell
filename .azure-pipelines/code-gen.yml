@@ -61,6 +61,7 @@ jobs:
   - task: PowerShell@2
     displayName: Checkout main branch
     inputs:
+      targetType: inline
       script: >
         mkdir src/$env:SERVICENAME
         git checkout src/$env:SERVICENAME
