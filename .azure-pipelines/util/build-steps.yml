@@ -49,6 +49,8 @@ steps:
     command: custom
     custom: msbuild
     arguments: 'build.proj /t:Build /p:Configuration=${{ parameters.configuration }};TestFramework=${{ parameters.testFramework }};PullRequestNumber=$(System.PullRequest.PullRequestNumber)'
+  env:
+      OCTOKITPAT: $(OCTOKITPAT)
 
 - task: PowerShell@2
   displayName: Build-AzPredictor
