@@ -66,6 +66,7 @@ Digital Twins                         | `Az.DigitalTwins`                       
 Disk Pool                             | `Az.DiskPool`                           | [![DiskPool]][DiskPoolGallery]
 DNS                                   | `Az.Dns`                                | [![Dns]][DnsGallery]
 DnsResolver                           | `Az.DnsResolver`                        | [![DnsResolver]][DnsResolverGallery]
+DynatraceObservability                | `Az.DynatraceObservability`             | [![DynatraceObservability]][DynatraceObservabilityGallery]
 Stack Edge Order                      | `Az.EdgeOrder`                          | [![EdgeOrder]][EdgeOrderGallery]
 Elastic on Azure                      | `Az.Elastic`                            | [![Elastic]][ElasticGallery]
 Event Grid                            | `Az.EventGrid`                          | [![EventGrid]][EventGridGallery]
@@ -211,6 +212,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [DevTestLabs]:                https://img.shields.io/powershellgallery/v/Az.DevTestLabs.svg?style=flat-square&label=Az.DevTestLabs
 [Dns]:                        https://img.shields.io/powershellgallery/v/Az.Dns.svg?style=flat-square&label=Az.Dns
 [DnsResolver]:                https://img.shields.io/powershellgallery/v/Az.DnsResolver.svg?style=flat-square&label=Az.DnsResolver
+[DynatraceObservability]:     https://img.shields.io/powershellgallery/v/Az.DynatraceObservability.svg?style=flat-square&label=Az.DynatraceObservability
 [EdgeOrder]:                  https://img.shields.io/powershellgallery/v/Az.EdgeOrder.svg?style=flat-square&label=Az.EdgeOrder
 [Elastic]:                    https://img.shields.io/powershellgallery/v/Az.Elastic.svg?style=flat-square&label=Az.Elastic
 [EventGrid]:                  https://img.shields.io/powershellgallery/v/Az.EventGrid.svg?style=flat-square&label=Az.EventGrid
@@ -354,6 +356,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [DevTestLabsGallery]:                https://www.powershellgallery.com/packages/Az.DevTestLabs/
 [DnsGallery]:                        https://www.powershellgallery.com/packages/Az.Dns/
 [DnsResolverGallery]:                https://www.powershellgallery.com/packages/Az.DnsResolver/
+[DynatraceObservabilityGallery]:     https://www.powershellgallery.com/packages/Az.DynatraceObservability/
 [EdgeOrderGallery]:                  https://www.powershellgallery.com/packages/Az.EdgeOrder/
 [ElasticGallery]:                    https://www.powershellgallery.com/packages/Az.Elastic/
 [EventGridGallery]:                  https://www.powershellgallery.com/packages/Az.EventGrid/
