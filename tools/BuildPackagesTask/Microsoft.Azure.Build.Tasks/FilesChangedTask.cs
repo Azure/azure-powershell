@@ -110,7 +110,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     }
                     catch (AuthorizationException e)
                     {
-                        client.Credentials = null;
+                        Console.WriteLine(e.Message);
+                        client = new GitHubClient(new ProductHeaderValue("Azure"));
                         files = client.PullRequest.Files(RepositoryOwner, RepositoryName, int.Parse(PullRequestNumber))
                                         .ConfigureAwait(false).GetAwaiter().GetResult();
                     }
