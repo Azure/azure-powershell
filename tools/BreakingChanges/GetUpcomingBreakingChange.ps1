@@ -240,7 +240,6 @@ Function Get-BreakingChangeOfGeneratedModule
     $AllBreakingChangeMessages = @{}
 
     #Region Dll
-    Write-Host $DllPath
     $Dll = [Reflection.Assembly]::LoadFrom($DllPath)
     $Cmdlets = $Dll.ExportedTypes | Where-Object { $_.CustomAttributes.Attributetype.name -contains "GeneratedAttribute" }
 
