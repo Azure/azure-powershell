@@ -77,6 +77,9 @@
 									$_.EncryptionConfig.GetEnumerator() | ForEach-Object{ "{ KeyName: "+$_.KeyName+",`nKeyVaultUri: "+$_.KeyVaultUri+",`nKeyVersion: "+$_.KeyVersion+",`nUserAssignedIdentity: "+$_.UserAssignedIdentity+" }`n" }
 								</ScriptBlock>
 							</ListItem>
+							<ListItem>
+								<PropertyName>MinimumTlsVersion</PropertyName>
+							</ListItem>
 						</ListItems>
 					</ListEntry>
 				</ListEntries>

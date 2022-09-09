@@ -17,12 +17,14 @@ using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.ScheduledQueryRules
 {
     /// <summary>
     /// Create a ScheduledQueryRule Metric Trigger object
     /// </summary>
+    [CmdletDeprecation()]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ScheduledQueryRuleLogMetricTrigger"), OutputType(typeof(PSScheduledQueryRuleLogMetricTrigger))]
     public class NewScheduledQueryRuleLogMetricTriggerCommand : MonitorCmdletBase
     {

@@ -23,9 +23,8 @@ Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> [-
 ### AzureRSVaultAddMSIdentity
 ```
 Update-AzRecoveryServicesVault [-ResourceGroupName] <String> [-Name] <String> -IdentityType <MSIdentity>
- [-IdentityId <String[]>] [-DisableClassicAlerts <Boolean>]
- [-DisableAzureMonitorAlertsForJobFailure <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-IdentityId <String[]>] [-DisableClassicAlerts <Boolean>] [-DisableAzureMonitorAlertsForJobFailure <Boolean>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -243,6 +243,17 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         PossibleTypes = new [] { typeof(string) })]
         public string EmployeeId { get => _body.EmployeeId ?? null; set => _body.EmployeeId = value; }
 
+        /// <summary>employeeOrgData</summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "employeeOrgData")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"employeeOrgData",
+        SerializedName = @"employeeOrgData",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEmployeeOrgData) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEmployeeOrgData EmployeeOrgData { get => _body.EmployeeOrgData ?? null /* object */; set => _body.EmployeeOrgData = value; }
+
         /// <summary>
         /// Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Supports $filter (eq, ne, NOT
         /// , ge, le, in, startsWith).
@@ -412,6 +423,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Cmdlets
         SerializedName = @"mailNickname",
         PossibleTypes = new [] { typeof(string) })]
         public string MailNickname { get => _body.MailNickname ?? null; set => _body.MailNickname = value; }
+
+        /// <summary>
+        /// Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity
+        /// types.
+        /// </summary>
+        [global::System.Management.Automation.Parameter(Mandatory = false, HelpMessage = "Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.")]
+        [global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category(global::Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.ParameterCategory.Body)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"Represents an Azure Active Directory object. The directoryObject type is the base type for many other directory entity types.",
+        SerializedName = @"manager",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject Manager { get => _body.Manager ?? null /* object */; set => _body.Manager = value; }
 
         /// <summary>
         /// <see cref="Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.IEventListener" /> cancellation delegate. Stops the cmdlet when called.

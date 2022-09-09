@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
@@ -21,6 +22,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
     /// <summary>
     /// 'Set-AzEventHubConsumerGroup' Cmdlet updates the specified of Consumer Group
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubConsumerGroup", SupportsShouldProcess = true), OutputType(typeof(PSConsumerGroupAttributes))]
     public class SetAzureEventHubConsumerGroup : AzureEventHubsCmdletBase
     {

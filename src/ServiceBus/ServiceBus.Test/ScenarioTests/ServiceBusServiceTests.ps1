@@ -36,12 +36,13 @@ function ServiceBusTests {
 
     Write-Debug " Create new eventHub namespace"
     Write-Debug "NamespaceName : $namespaceName"
-    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard" -Tag @{Tag1="Tag1Value"}
+    $result = New-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location  -Name $namespaceName -SkuName "Standard" -Tag @{Tag1="Tag1Value"} -MinimumTlsVersion 1.2
     # Assert
     Assert-AreEqual $result.Name $namespaceName
     Assert-AreEqual $result.ProvisioningState "Succeeded"
     Assert-AreEqual $result.ResourceGroup $resourceGroupName "Namespace create : ResourceGroup name matches"
     Assert-AreEqual $result.ResourceGroupName $resourceGroupName "Namespace create : ResourceGroupName name matches"
+    Assert-AreEqual $result.MinimumTlsVersion "1.2" "Namespace MinimumTlsVersion matches"
 
     Write-Debug "Get the created namespace within the resource group"
     $getNamespace = Get-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName
@@ -49,9 +50,10 @@ function ServiceBusTests {
     Assert-AreEqual $getNamespace.ResourceGroup $resourceGroupName "Namespace get : ResourceGroup name matches"
     Assert-AreEqual $getNamespace.ResourceGroupName $resourceGroupName "Namespace get : ResourceGroupName name matches"
     
-    $UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 2 -Tag @{Tag1="Tag1Value"; Tag2="Tag1Value2"}
+    $UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard" -SkuCapacity 2 -Tag @{Tag1="Tag1Value"; Tag2="Tag1Value2"} -MinimumTlsVersion 1.1
     Assert-AreEqual $UpdatedNameSpace.Name $namespaceName
     Assert-True { $UpdatedNameSpace.Tags.Count -eq 2 }
+    Assert-AreEqual $UpdatedNameSpace.MinimumTlsVersion "1.1" "Namespace MinimumTlsVersion matches after update"
 
     $UpdatedNameSpace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Location $location -Name $namespaceName -SkuName "Standard"
     Assert-AreEqual $UpdatedNameSpace.Name $namespaceName
@@ -218,19 +220,28 @@ function ServiceBusNameSpaceAuthTests {
     $policyKey = "PrimaryKey"
 
     $namespaceRegenerateKeysDefault = New-AzServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey
-    Assert-True { $namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey }
+    if (getTestMode -eq "Record")
+    {
+        Assert-True { $namespaceRegenerateKeys.PrimaryKey -ne $namespaceListKeys.PrimaryKey }
+    }
+    
 
     $namespaceRegenerateKeys = New-AzServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey -KeyValue $namespaceListKeys.PrimaryKey
+    
     Assert-AreEqual $namespaceRegenerateKeys.PrimaryKey $namespaceListKeys.PrimaryKey
 
     $policyKey1 = "SecondaryKey"
 
     $namespaceRegenerateKeys1 = New-AzServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey1 -KeyValue $namespaceListKeys.PrimaryKey
+    
     Assert-AreEqual $namespaceRegenerateKeys1.SecondaryKey $namespaceListKeys.PrimaryKey
 																	
     $namespaceRegenerateKeys1 = New-AzServiceBusKey -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -RegenerateKey $policyKey1
-    Assert-True { $namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.PrimaryKey }
-    Assert-True { $namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey }
+    if (getTestMode -eq "Record")
+    {
+        Assert-True { $namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.PrimaryKey }
+        Assert-True { $namespaceRegenerateKeys1.SecondaryKey -ne $namespaceListKeys.SecondaryKey }
+    }
 
     Write-Debug "Delete the created Namespace AuthorizationRule"
     $result = Remove-AzServiceBusAuthorizationRule -ResourceGroupName $resourceGroupName -Namespace $namespaceName -Name $authRuleName -Force
@@ -271,7 +282,7 @@ function MSITest{
         $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "SystemAssigned, UserAssigned"
         Assert-AreEqual $namespace.Name $namespace1
         Assert-AreEqual $namespace.Sku.Name "Standard"
-        Assert-AreEqual $namespace.IdentityType "SystemAssignedUserAssigned"
+        Assert-AreEqual $namespace.IdentityType "SystemAssigned, UserAssigned"
         Assert-True { $namespace.IdentityId.Count -eq 2 }
 
         $namespace = Set-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $namespace1 -IdentityType "None" -IdentityId @()

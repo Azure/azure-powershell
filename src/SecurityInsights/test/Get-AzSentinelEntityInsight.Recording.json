@@ -1,0 +1,79 @@
+{
+  "Get-AzSentinelEntityInsight+[NoContext]+GetExpanded+$GET+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entities?api-version=2021-09-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entities?api-version=2021-09-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "196" ],
+        "x-ms-client-request-id": [ "4df3c847-e6b8-45da-b944-807a0520c1ed" ],
+        "CommandName": [ "Get-AzSentinelentity" ],
+        "FullCommandName": [ "Get-AzSentinelEntity_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.SecurityInsights/1.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11969" ],
+        "x-ms-request-id": [ "c31f8f05-40c1-4ae6-bfc6-9fd835eee4c2" ],
+        "x-ms-correlation-request-id": [ "c31f8f05-40c1-4ae6-bfc6-9fd835eee4c2" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160714Z:c31f8f05-40c1-4ae6-bfc6-9fd835eee4c2" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:07:14 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "461" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d\",\"name\":\"f76e8451-9f40-544f-61e4-33a50dca269d\",\"type\":\"Microsoft.SecurityInsights/entities\",\"kind\":\"Ip\",\"properties\":{\"address\":\"175.45.176.99\",\"additionalData\":{\"AlertCount\":\"5\"},\"friendlyName\":\"175.45.176.99\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzSentinelEntityInsight+[NoContext]+GetExpanded+$POST+https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d/getInsights?api-version=2021-09-01-preview+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/51a36d38-3b14-471f-8dde-a5867f5e51eb/resourceGroups/aspstest7ptmcr/providers/Microsoft.OperationalInsights/workspaces/asptest4wysui/providers/Microsoft.SecurityInsights/entities/f76e8451-9f40-544f-61e4-33a50dca269d/getInsights?api-version=2021-09-01-preview",
+      "Content": "{\n  \"startTime\": \"2022-08-15T04:00:00.0000000+00:00\",\n  \"endTime\": \"2022-08-16T04:00:00.0000000+00:00\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "104" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11968" ],
+        "x-ms-request-id": [ "3e7d60ca-4911-4419-8092-c1a1a55a27a9" ],
+        "x-ms-correlation-request-id": [ "3e7d60ca-4911-4419-8092-c1a1a55a27a9" ],
+        "x-ms-routing-request-id": [ "EASTUS2:20220816T160718Z:3e7d60ca-4911-4419-8092-c1a1a55a27a9" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 16 Aug 2022 16:07:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1719" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"tableQueryResults\":{\"columns\":[{\"name\":\"Direction\",\"type\":\"string\"},{\"name\":\"IPAddress\",\"type\":\"string\"},{\"name\":\"RemoteIP\",\"type\":\"string\"},{\"name\":\"Total\",\"type\":\"long\"},{\"name\":\"InternalOrder\",\"type\":\"long\"},{\"name\":\"Index\",\"type\":\"long\"}],\"rows\":[]},\"chartQueryResults\":[],\"queryTimeInterval\":{\"startTime\":\"2022-08-15T04:00:00+00:00\",\"endTime\":\"2022-08-16T04:00:00+00:00\"},\"queryId\":\"b8e2df44-f98f-4c95-bcbe-f8210f3e0f23\"},{\"tableQueryResults\":{\"columns\":[{\"name\":\"Direction\",\"type\":\"string\"},{\"name\":\"IPAddress\",\"type\":\"string\"},{\"name\":\"RemoteIP\",\"type\":\"string\"},{\"name\":\"ThreatType\",\"type\":\"string\"},{\"name\":\"InternalOrder\",\"type\":\"long\"},{\"name\":\"Index\",\"type\":\"long\"}],\"rows\":[]},\"chartQueryResults\":[{\"columns\":[{\"name\":\"Time\",\"type\":\"datetime\"},{\"name\":\"RemoteIPAddress\",\"type\":\"string\"},{\"name\":\"Count\",\"type\":\"long\"}],\"rows\":[]},{\"columns\":[{\"name\":\"Time\",\"type\":\"datetime\"},{\"name\":\"RemoteIPAddress\",\"type\":\"string\"},{\"name\":\"Count\",\"type\":\"long\"}],\"rows\":[]},{\"columns\":[{\"name\":\"Time\",\"type\":\"datetime\"},{\"name\":\"RemoteIPAddress\",\"type\":\"string\"},{\"name\":\"Count\",\"type\":\"long\"}],\"rows\":[]}],\"queryTimeInterval\":{\"startTime\":\"2022-08-15T04:00:00+00:00\",\"endTime\":\"2022-08-16T04:00:00+00:00\"},\"queryId\":\"340e5f6f-d218-4a11-8638-09e1af7847cc\"},{\"tableQueryResults\":{\"columns\":[{\"name\":\"Watchlist Insight\",\"type\":\"string\"},{\"name\":\"Additional Data\",\"type\":\"string\"},{\"name\":\"Tags\",\"type\":\"string\"},{\"name\":\"InternalOrder\",\"type\":\"long\"},{\"name\":\"Index\",\"type\":\"long\"}],\"rows\":[]},\"chartQueryResults\":[],\"queryTimeInterval\":{\"startTime\":\"2022-08-15T04:00:00+00:00\",\"endTime\":\"2022-08-16T04:00:00+00:00\"},\"queryId\":\"3834647e-ac3e-4fb4-a5f8-0dd50ba2b66c\"}],\"metaData\":{\"totalCount\":3,\"errors\":[]}}",
+      "isContentBase64": false
+    }
+  }
+}
