@@ -58,13 +58,14 @@ jobs:
         cp -r ./* ../../artifacts/src/$env:SERVICENAME
       pwsh: true
       workingDirectory: src/$(ServiceName)
-  - task: CmdLine@2
+  - task: PowerShell@2
     displayName: Checkout main branch
     inputs:
+      targetType: inline
       script: >
-        RMDIR /Q/S src\%SERVICENAME%
-        git checkout src\%SERVICENAME%
-        git checkout -b codegen/%SERVICENAME% origin/%BaseBranch%
+        mkdir src/$env:SERVICENAME
+        git checkout src/$env:SERVICENAME
+        git checkout -b codegen/$env:SERVICENAME origin/$env:BaseBranch
   - task: PowerShell@2
     displayName: Move code to main
     condition: eq(variables.ServiceSubmoduleName, '')
