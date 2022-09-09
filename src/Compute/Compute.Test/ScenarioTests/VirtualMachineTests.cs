@@ -516,13 +516,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ConfidentialVMSetAzVmOsDisk");
         }
 
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
-        public void TestConfidentialVMSetAzVmOsDiskDESId()
-        {
-            TestRunner.RunTestScript("Test-ConfidentialVMSetAzVmOsDiskDESId");
-        }
-
         // Test recorded successfully.
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
@@ -531,15 +524,19 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
             TestRunner.RunTestScript("Test-ConfVMSetAzVMSecurityProfile");
         }
 
-        [Fact(Skip = "Needs to be run manually.")]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        //[Fact(Skip = "Needs to be run manually.")]
+        //[Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConfVMSetAzDiskSecurityProfile()
         {
             TestRunner.RunTestScript("Test-ConfVMSetAzDiskSecurityProfile");
         }
 
-        [Fact(Skip = "Needs to be run manually.")]
-        [Trait(Category.AcceptanceType, Category.LiveOnly)]
+        //[Fact(Skip = "Needs to be run manually.")]
+        //[Trait(Category.AcceptanceType, Category.LiveOnly)]
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestConfVMSetAzDiskEncryptionSetConfig()
         {
             TestRunner.RunTestScript("Test-ConfVMSetAzDiskEncryptionSetConfig");
@@ -551,20 +548,6 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         public void TestConfVMSetAzDiskSecurityProfileNoDES()
         {
             TestRunner.RunTestScript("Test-ConfVMSetAzDiskSecurityProfileNoDES");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest()
-        {
-            TestRunner.RunTestScript("Test-ConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestDEBUGConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest()
-        {
-            TestRunner.RunTestScript("Test-DEBUGConfidentialVMSetAzVmOsDiskDesIdDiskWithVMGuest");
         }
 
         [Fact]
