@@ -371,12 +371,6 @@ namespace Microsoft.Azure.Commands.KeyVault
             ParameterSetName = InputObjectCreateParameterSet)]
         [Parameter(Mandatory = false,
             ParameterSetName = ResourceIdCreateParameterSet)]
-        /*[Parameter(Mandatory = false,
-            ParameterSetName = InteractiveImportParameterSet)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = InputObjectImportParameterSet)]
-        [Parameter(Mandatory = false,
-            ParameterSetName = ResourceIdImportParameterSet)]*/
         public string ReleasePolicyPath { get; set; }
 
         [Parameter(Mandatory = false,

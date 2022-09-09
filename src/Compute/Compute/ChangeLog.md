@@ -27,6 +27,11 @@
 * Improve printed output for `Get-AzComputeResourceSku`
 * Updated `Update-AzVm` to give constructive error messages when empty variables are passed in parameters. [#15081]
 * Added `Zone` and `IntentVMSizeList` optional parameters to the cmdlet `New-AzProximityPlacementGroup`.
+* Added Confidential VM functionality to multiple cmdlets.
+  This includes:
+  - Added new parameter `SecureVMDiskEncryptionSet` to cmdlet `Set-AzDiskSecurityProfile`.
+  - Added new parameters `SecureVMDiskEncryptionSet` and `SecurityEncryptionType` to cmdlet `Set-AzVMOSDisk`.
+  
 
 ## Version 4.30.0
 * Added parameters `PackageFileName`, `ConfigFileName` for `New-AzGalleryApplicationVersion` 
