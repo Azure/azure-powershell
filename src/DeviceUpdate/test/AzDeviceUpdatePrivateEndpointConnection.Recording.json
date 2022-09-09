@@ -1,0 +1,715 @@
+{
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1?api-version=2022-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"privateLinkServiceConnectionState\": {\r\n      \"status\": \"Approved\",\r\n      \"description\": \"Description: Approved\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "154" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8a04ea9d-0000-0100-0000-6319b2660000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1192" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "f2459c40-0d63-436c-b8f9-ff9533350c14" ],
+        "api-supported-versions": [ "2020-03-01-preview, 2022-04-01-preview, 2022-10-01" ],
+        "x-ms-async-operation-timeout": [ "PT1H" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/165926fc-57ca-4f94-bc92-af44b0b16e08*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792?api-version=2022-10-01" ],
+        "x-ms-request-id": [ "165926fc-57ca-4f94-bc92-af44b0b16e08" ],
+        "x-ms-correlation-request-id": [ "9aaf8d71-dde5-46e1-b90a-38e8e4dafe17" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091415Z:9aaf8d71-dde5-46e1-b90a-38e8e4dafe17" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:14:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "881" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/microsoft.deviceupdate/accounts/azpstest-account/privateendpointconnections/azpstest-privateendpoint-1\",\"name\":\"azpstest-privateendpoint-1\",\"type\":\"microsoft.deviceupdate/accounts/privateendpointconnections\",\"systemData\":{\"createdBy\":\"6ee392c4-d339-4083-b04d-6b7947c6cf78\",\"createdByType\":\"Application\",\"createdAt\":\"2022-09-08T06:35:00.3172372Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-09-08T09:14:13.8606474Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"privateEndpoint\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.Network/privateEndpoints/azpstest-privateendpoint-1\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Description: Approved\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/165926fc-57ca-4f94-bc92-af44b0b16e08*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792?api-version=2022-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/165926fc-57ca-4f94-bc92-af44b0b16e08*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "133" ],
+        "x-ms-client-request-id": [ "74cf0246-9ff2-45e9-8871-ae382daf6c2b" ],
+        "CommandName": [ "New-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "New-AzDeviceUpdatePrivateEndpointConnection_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bb004f21-0000-0100-0000-6319b2670000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11890" ],
+        "x-ms-request-id": [ "9af4390e-5d13-4c1b-a8dc-49a98aad3d33" ],
+        "x-ms-correlation-request-id": [ "b33e9f28-6411-459e-834b-bb7ac2622261" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091445Z:b33e9f28-6411-459e-834b-bb7ac2622261" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:14:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "560" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/165926fc-57ca-4f94-bc92-af44b0b16e08*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792\",\"name\":\"165926fc-57ca-4f94-bc92-af44b0b16e08*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1\",\"status\":\"Updating\",\"startTime\":\"2022-09-08T09:14:14.7595125Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/165926fc-57ca-4f94-bc92-af44b0b16e08*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792?api-version=2022-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/165926fc-57ca-4f94-bc92-af44b0b16e08*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "134" ],
+        "x-ms-client-request-id": [ "74cf0246-9ff2-45e9-8871-ae382daf6c2b" ],
+        "CommandName": [ "New-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "New-AzDeviceUpdatePrivateEndpointConnection_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bb006221-0000-0100-0000-6319b28b0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11889" ],
+        "x-ms-request-id": [ "93b235c6-725a-41fd-b58f-0611403f411c" ],
+        "x-ms-correlation-request-id": [ "28aad793-25ff-46d4-9008-befa038e84d7" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091515Z:28aad793-25ff-46d4-9008-befa038e84d7" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:15:15 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "620" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/165926fc-57ca-4f94-bc92-af44b0b16e08*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792\",\"name\":\"165926fc-57ca-4f94-bc92-af44b0b16e08*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1\",\"status\":\"Succeeded\",\"startTime\":\"2022-09-08T09:14:14.7595125Z\",\"endTime\":\"2022-09-08T09:14:51.0638142Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1?api-version=2022-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "135" ],
+        "x-ms-client-request-id": [ "74cf0246-9ff2-45e9-8871-ae382daf6c2b" ],
+        "CommandName": [ "New-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "New-AzDeviceUpdatePrivateEndpointConnection_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8a0416a8-0000-0100-0000-6319b28b0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "a61ca9dc-183d-46f5-b6ab-eec0d2832024" ],
+        "x-ms-correlation-request-id": [ "7650e09b-2d4b-44ab-bad4-4fa290a98ed1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091517Z:7650e09b-2d4b-44ab-bad4-4fa290a98ed1" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:15:17 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "882" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/microsoft.deviceupdate/accounts/azpstest-account/privateendpointconnections/azpstest-privateendpoint-1\",\"name\":\"azpstest-privateendpoint-1\",\"type\":\"microsoft.deviceupdate/accounts/privateendpointconnections\",\"systemData\":{\"createdBy\":\"6ee392c4-d339-4083-b04d-6b7947c6cf78\",\"createdByType\":\"Application\",\"createdAt\":\"2022-09-08T06:35:00.3172372Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-09-08T09:14:13.8606474Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.Network/privateEndpoints/azpstest-privateendpoint-1\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Description: Approved\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-2?api-version=2022-10-01+5": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-2?api-version=2022-10-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"privateLinkServiceConnectionState\": {\r\n      \"status\": \"Approved\",\r\n      \"description\": \"Description: Approved\"\r\n    }\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "154" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8a0456af-0000-0100-0000-6319b2a70000\"" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "f5f00a94-0bf9-4f95-b354-bd6645682179" ],
+        "api-supported-versions": [ "2020-03-01-preview, 2022-04-01-preview, 2022-10-01" ],
+        "x-ms-async-operation-timeout": [ "PT1H" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/569677f4-4726-4c71-9565-78e640ec8f18*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449?api-version=2022-10-01" ],
+        "x-ms-request-id": [ "569677f4-4726-4c71-9565-78e640ec8f18" ],
+        "x-ms-correlation-request-id": [ "3173c0c5-c475-4d3c-b4ea-b18f51beb6a9" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091519Z:3173c0c5-c475-4d3c-b4ea-b18f51beb6a9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:15:18 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "881" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/microsoft.deviceupdate/accounts/azpstest-account/privateendpointconnections/azpstest-privateendpoint-2\",\"name\":\"azpstest-privateendpoint-2\",\"type\":\"microsoft.deviceupdate/accounts/privateendpointconnections\",\"systemData\":{\"createdBy\":\"6ee392c4-d339-4083-b04d-6b7947c6cf78\",\"createdByType\":\"Application\",\"createdAt\":\"2022-09-08T07:27:58.8814097Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-09-08T09:15:18.5477281Z\"},\"properties\":{\"provisioningState\":\"Accepted\",\"privateEndpoint\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.Network/privateEndpoints/azpstest-privateendpoint-2\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Description: Approved\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/569677f4-4726-4c71-9565-78e640ec8f18*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449?api-version=2022-10-01+6": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/569677f4-4726-4c71-9565-78e640ec8f18*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "137" ],
+        "x-ms-client-request-id": [ "e5b42691-8f18-4d6a-9068-fc0decf3263a" ],
+        "CommandName": [ "New-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "New-AzDeviceUpdatePrivateEndpointConnection_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bb006821-0000-0100-0000-6319b2a70000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11888" ],
+        "x-ms-request-id": [ "5aad9eca-ed1e-40c8-b126-8f0750c505d5" ],
+        "x-ms-correlation-request-id": [ "a6e07ee9-05a8-42ef-b563-1cbb6a393813" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091550Z:a6e07ee9-05a8-42ef-b563-1cbb6a393813" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:15:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "560" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/569677f4-4726-4c71-9565-78e640ec8f18*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449\",\"name\":\"569677f4-4726-4c71-9565-78e640ec8f18*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-2\",\"status\":\"Updating\",\"startTime\":\"2022-09-08T09:15:19.3045063Z\"}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/569677f4-4726-4c71-9565-78e640ec8f18*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449?api-version=2022-10-01+7": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/569677f4-4726-4c71-9565-78e640ec8f18*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "138" ],
+        "x-ms-client-request-id": [ "e5b42691-8f18-4d6a-9068-fc0decf3263a" ],
+        "CommandName": [ "New-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "New-AzDeviceUpdatePrivateEndpointConnection_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bb008021-0000-0100-0000-6319b2cb0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11887" ],
+        "x-ms-request-id": [ "d32b1010-0ab7-469b-bacd-7781f972a2b8" ],
+        "x-ms-correlation-request-id": [ "26e463cc-de8c-43f1-b3e0-676390bc4f19" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091620Z:26e463cc-de8c-43f1-b3e0-676390bc4f19" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:16:19 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "620" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/569677f4-4726-4c71-9565-78e640ec8f18*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449\",\"name\":\"569677f4-4726-4c71-9565-78e640ec8f18*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-2\",\"status\":\"Succeeded\",\"startTime\":\"2022-09-08T09:15:19.3045063Z\",\"endTime\":\"2022-09-08T09:15:55.0431131Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+CreateExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-2?api-version=2022-10-01+8": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-2?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "139" ],
+        "x-ms-client-request-id": [ "e5b42691-8f18-4d6a-9068-fc0decf3263a" ],
+        "CommandName": [ "New-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "New-AzDeviceUpdatePrivateEndpointConnection_CreateExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8a040bb9-0000-0100-0000-6319b2cb0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11984" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "28c4f748-469e-4dda-9273-7298e7b6dc64" ],
+        "x-ms-correlation-request-id": [ "d206772a-0706-41d1-bbf8-f5aa9e8b5cd5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091621Z:d206772a-0706-41d1-bbf8-f5aa9e8b5cd5" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:16:20 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "882" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/microsoft.deviceupdate/accounts/azpstest-account/privateendpointconnections/azpstest-privateendpoint-2\",\"name\":\"azpstest-privateendpoint-2\",\"type\":\"microsoft.deviceupdate/accounts/privateendpointconnections\",\"systemData\":{\"createdBy\":\"6ee392c4-d339-4083-b04d-6b7947c6cf78\",\"createdByType\":\"Application\",\"createdAt\":\"2022-09-08T07:27:58.8814097Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-09-08T09:15:18.5477281Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.Network/privateEndpoints/azpstest-privateendpoint-2\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Description: Approved\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "140" ],
+        "x-ms-client-request-id": [ "a0e5c1da-e956-49ae-b4c6-205de338520b" ],
+        "CommandName": [ "Get-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "Get-AzDeviceUpdatePrivateEndpointConnection_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11983" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "771026c0-d5fe-45f1-aad9-fbbbd7bc5e36" ],
+        "x-ms-correlation-request-id": [ "f4aadbf2-bf10-487d-bf40-7ae9e01c0585" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091622Z:f4aadbf2-bf10-487d-bf40-7ae9e01c0585" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:16:21 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1777" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/microsoft.deviceupdate/accounts/azpstest-account/privateendpointconnections/azpstest-privateendpoint-1\",\"name\":\"azpstest-privateendpoint-1\",\"type\":\"microsoft.deviceupdate/accounts/privateendpointconnections\",\"systemData\":{\"createdBy\":\"6ee392c4-d339-4083-b04d-6b7947c6cf78\",\"createdByType\":\"Application\",\"createdAt\":\"2022-09-08T06:35:00.3172372Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-09-08T09:14:13.8606474Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.Network/privateEndpoints/azpstest-privateendpoint-1\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Description: Approved\"}}},{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/microsoft.deviceupdate/accounts/azpstest-account/privateendpointconnections/azpstest-privateendpoint-2\",\"name\":\"azpstest-privateendpoint-2\",\"type\":\"microsoft.deviceupdate/accounts/privateendpointconnections\",\"systemData\":{\"createdBy\":\"6ee392c4-d339-4083-b04d-6b7947c6cf78\",\"createdByType\":\"Application\",\"createdAt\":\"2022-09-08T07:27:58.8814097Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-09-08T09:15:18.5477281Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.Network/privateEndpoints/azpstest-privateendpoint-2\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Description: Approved\"}}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "141" ],
+        "x-ms-client-request-id": [ "0d492260-32ff-4cba-bc34-5170e5e98503" ],
+        "CommandName": [ "Get-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "Get-AzDeviceUpdatePrivateEndpointConnection_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8a0416a8-0000-0100-0000-6319b28b0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11982" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "305aee04-8e37-408f-b47b-1c122f6b57c9" ],
+        "x-ms-correlation-request-id": [ "ed4a825c-6f5e-4297-83a3-0b1f61eff11f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091623Z:ed4a825c-6f5e-4297-83a3-0b1f61eff11f" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:16:22 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "882" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/microsoft.deviceupdate/accounts/azpstest-account/privateendpointconnections/azpstest-privateendpoint-1\",\"name\":\"azpstest-privateendpoint-1\",\"type\":\"microsoft.deviceupdate/accounts/privateendpointconnections\",\"systemData\":{\"createdBy\":\"6ee392c4-d339-4083-b04d-6b7947c6cf78\",\"createdByType\":\"Application\",\"createdAt\":\"2022-09-08T06:35:00.3172372Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-09-08T09:14:13.8606474Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.Network/privateEndpoints/azpstest-privateendpoint-1\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Description: Approved\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-2?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-2?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "142" ],
+        "x-ms-client-request-id": [ "6d0538cb-2347-4849-9bfd-82afaaad9f60" ],
+        "CommandName": [ "Remove-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "Remove-AzDeviceUpdatePrivateEndpointConnection_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8a046bc1-0000-0100-0000-6319b2ea0000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/5216c640-4644-4342-a7e0-e724a57c7a75*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449?api-version=2022-10-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "e1d80426-f9be-4b2d-8828-1f6ff7578c83" ],
+        "api-supported-versions": [ "2020-03-01-preview, 2022-04-01-preview, 2022-10-01" ],
+        "x-ms-async-operation-timeout": [ "PT1H" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/5216c640-4644-4342-a7e0-e724a57c7a75*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449?api-version=2022-10-01" ],
+        "x-ms-request-id": [ "5216c640-4644-4342-a7e0-e724a57c7a75" ],
+        "x-ms-correlation-request-id": [ "e0929561-2f27-4761-a58f-dce90630888c" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091626Z:e0929561-2f27-4761-a58f-dce90630888c" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:16:25 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/5216c640-4644-4342-a7e0-e724a57c7a75*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449?api-version=2022-10-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/5216c640-4644-4342-a7e0-e724a57c7a75*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "143" ],
+        "x-ms-client-request-id": [ "6d0538cb-2347-4849-9bfd-82afaaad9f60" ],
+        "CommandName": [ "Remove-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "Remove-AzDeviceUpdatePrivateEndpointConnection_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bb008621-0000-0100-0000-6319b2ea0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11886" ],
+        "x-ms-request-id": [ "a4308a8d-440b-4fb5-8447-d9b36beab06e" ],
+        "x-ms-correlation-request-id": [ "5a021db3-7413-4480-8434-9e8d3af771df" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091656Z:5a021db3-7413-4480-8434-9e8d3af771df" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:16:56 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "620" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/5216c640-4644-4342-a7e0-e724a57c7a75*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449\",\"name\":\"5216c640-4644-4342-a7e0-e724a57c7a75*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-2\",\"status\":\"Succeeded\",\"startTime\":\"2022-09-08T09:16:24.0356697Z\",\"endTime\":\"2022-09-08T09:16:26.2066508Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+Delete+$GET+https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/5216c640-4644-4342-a7e0-e724a57c7a75*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449?api-version=2022-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/5216c640-4644-4342-a7e0-e724a57c7a75*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "144" ],
+        "x-ms-client-request-id": [ "6d0538cb-2347-4849-9bfd-82afaaad9f60" ],
+        "CommandName": [ "Remove-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "Remove-AzDeviceUpdatePrivateEndpointConnection_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bb008621-0000-0100-0000-6319b2ea0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11885" ],
+        "x-ms-request-id": [ "7962dfd5-0ccd-42ac-986c-8ce500b440a9" ],
+        "x-ms-correlation-request-id": [ "1728222a-255d-4502-9a6b-de11557baa1a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091657Z:1728222a-255d-4502-9a6b-de11557baa1a" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:16:57 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "620" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/5216c640-4644-4342-a7e0-e724a57c7a75*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449\",\"name\":\"5216c640-4644-4342-a7e0-e724a57c7a75*4F86D4C09ACA13B4F3ADAAEE20067E40912FEB3412FA4A499514E59DF6B8F449\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-2\",\"status\":\"Succeeded\",\"startTime\":\"2022-09-08T09:16:24.0356697Z\",\"endTime\":\"2022-09-08T09:16:26.2066508Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1?api-version=2022-10-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "145" ],
+        "x-ms-client-request-id": [ "0a36fd6f-1e95-4ef0-9ba1-207e9a2348cd" ],
+        "CommandName": [ "Get-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "Get-AzDeviceUpdatePrivateEndpointConnection_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8a0416a8-0000-0100-0000-6319b28b0000\"" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11981" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "x-ms-request-id": [ "8bec6698-99fd-4c65-b1b5-e53255185099" ],
+        "x-ms-correlation-request-id": [ "e64d2bc9-0c4b-496f-929f-7b2e9338f349" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091658Z:e64d2bc9-0c4b-496f-929f-7b2e9338f349" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:16:58 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "882" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/microsoft.deviceupdate/accounts/azpstest-account/privateendpointconnections/azpstest-privateendpoint-1\",\"name\":\"azpstest-privateendpoint-1\",\"type\":\"microsoft.deviceupdate/accounts/privateendpointconnections\",\"systemData\":{\"createdBy\":\"6ee392c4-d339-4083-b04d-6b7947c6cf78\",\"createdByType\":\"Application\",\"createdAt\":\"2022-09-08T06:35:00.3172372Z\",\"lastModifiedBy\":\"v-jinpel@microsoft.com\",\"lastModifiedByType\":\"User\",\"lastModifiedAt\":\"2022-09-08T09:14:13.8606474Z\"},\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.Network/privateEndpoints/azpstest-privateendpoint-1\"},\"privateLinkServiceConnectionState\":{\"status\":\"Approved\",\"description\":\"Description: Approved\"}}}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1?api-version=2022-10-01+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "146" ],
+        "x-ms-client-request-id": [ "51fe6f79-bbf9-42c8-80c6-b9718cada1fa" ],
+        "CommandName": [ "Remove-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "Remove-AzDeviceUpdatePrivateEndpointConnection_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"8a0401cb-0000-0100-0000-6319b30d0000\"" ],
+        "Location": [ "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/ee176da9-8799-406b-8213-4bde406aea8a*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792?api-version=2022-10-01" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-providerhub-traffic": [ "True" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "mise-correlation-id": [ "935e8ff5-1972-4c79-a990-ced98aa58257" ],
+        "api-supported-versions": [ "2020-03-01-preview, 2022-04-01-preview, 2022-10-01" ],
+        "x-ms-async-operation-timeout": [ "PT1H" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/ee176da9-8799-406b-8213-4bde406aea8a*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792?api-version=2022-10-01" ],
+        "x-ms-request-id": [ "ee176da9-8799-406b-8213-4bde406aea8a" ],
+        "x-ms-correlation-request-id": [ "10a728bd-fa72-4eb5-a1f5-b175706bad55" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091701Z:10a728bd-fa72-4eb5-a1f5-b175706bad55" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:17:01 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "4" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "bnVsbA==",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/ee176da9-8799-406b-8213-4bde406aea8a*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792?api-version=2022-10-01+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/ee176da9-8799-406b-8213-4bde406aea8a*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "147" ],
+        "x-ms-client-request-id": [ "51fe6f79-bbf9-42c8-80c6-b9718cada1fa" ],
+        "CommandName": [ "Remove-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "Remove-AzDeviceUpdatePrivateEndpointConnection_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bb009521-0000-0100-0000-6319b30d0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11884" ],
+        "x-ms-request-id": [ "413e5643-25a9-4181-8c7c-9c7b600adc18" ],
+        "x-ms-correlation-request-id": [ "1fecca2a-0526-44bb-990a-e7a1303747cc" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091732Z:1fecca2a-0526-44bb-990a-e7a1303747cc" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:17:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "620" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/ee176da9-8799-406b-8213-4bde406aea8a*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792\",\"name\":\"ee176da9-8799-406b-8213-4bde406aea8a*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1\",\"status\":\"Succeeded\",\"startTime\":\"2022-09-08T09:16:59.3916263Z\",\"endTime\":\"2022-09-08T09:17:01.2621446Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  },
+  "AzDeviceUpdatePrivateEndpointConnection+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/ee176da9-8799-406b-8213-4bde406aea8a*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792?api-version=2022-10-01+4": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/ee176da9-8799-406b-8213-4bde406aea8a*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792?api-version=2022-10-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "148" ],
+        "x-ms-client-request-id": [ "51fe6f79-bbf9-42c8-80c6-b9718cada1fa" ],
+        "CommandName": [ "Remove-AzDeviceUpdatePrivateEndpointConnection" ],
+        "FullCommandName": [ "Remove-AzDeviceUpdatePrivateEndpointConnection_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v6.1.0", "PSVersion/v7.1.2", "Az.DeviceUpdate/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "ETag": [ "\"bb009521-0000-0100-0000-6319b30d0000\"" ],
+        "x-ms-ratelimit-remaining-tenant-reads": [ "11883" ],
+        "x-ms-request-id": [ "d5fba3f0-a0ca-48c9-95c4-d249fc5da3dc" ],
+        "x-ms-correlation-request-id": [ "a9cc3e78-2c70-445c-8b4c-d3666e4c1073" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220908T091732Z:a9cc3e78-2c70-445c-8b4c-d3666e4c1073" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 08 Sep 2022 09:17:32 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "620" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/providers/Microsoft.DeviceUpdate/locations/EASTUS/operationStatuses/ee176da9-8799-406b-8213-4bde406aea8a*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792\",\"name\":\"ee176da9-8799-406b-8213-4bde406aea8a*B1C748810596BF84ACD2857DCF8357452AE0146DC1D3D43DC7BF3FF6F02A5792\",\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest_gp/providers/Microsoft.DeviceUpdate/accounts/azpstest-account/privateEndpointConnections/azpstest-privateendpoint-1\",\"status\":\"Succeeded\",\"startTime\":\"2022-09-08T09:16:59.3916263Z\",\"endTime\":\"2022-09-08T09:17:01.2621446Z\",\"properties\":null}",
+      "isContentBase64": false
+    }
+  }
+}
