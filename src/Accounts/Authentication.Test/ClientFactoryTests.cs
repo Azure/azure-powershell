@@ -21,6 +21,7 @@ using Xunit;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
 using System.Net.Http.Headers;
+using Microsoft.Azure.Commands.TestFx.Mocks;
 
 namespace Common.Authentication.Test
 {

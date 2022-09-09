@@ -15,6 +15,7 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System;
 using System.Linq;
@@ -25,6 +26,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
     /// <summary>
     /// 'Set-AzEventHubNamespace' Cmdlet updates the specified Eventhub Namespace
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Approve", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubPrivateEndpointConnection", SupportsShouldProcess = true, DefaultParameterSetName = PrivateEndpointPropertiesParameterSet), OutputType(typeof(PSEventHubPrivateEndpointConnectionAttributes))]
     public class ApproveAzureEventHubsPrivateEndpointConnection : AzureEventHubsCmdletBase
     {
@@ -48,6 +50,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = PrivateEndpointResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Private Endpoint Connection ARM ID.")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -85,7 +88,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.PrivateEndpoints
                         Description = String.Empty;
                     }
 
-                    WriteObject(Client.UpdatePrivateEndpointConnection(resourceGroupName: ResourceGroupName,
+                    WriteObject(UtilityClient.UpdatePrivateEndpointConnection(resourceGroupName: ResourceGroupName,
                                                                        namespaceName: NamespaceName,
                                                                        privateEndpointName: Name,
                                                                        connectionState: "Approved",

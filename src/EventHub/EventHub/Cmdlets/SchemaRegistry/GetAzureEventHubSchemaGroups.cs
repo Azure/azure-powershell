@@ -19,9 +19,11 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Linq;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using System;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
 {
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ISchemaGroup'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubSchemaGroup", DefaultParameterSetName = NamespaceSchemaGroupParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubsSchemaRegistryAttributes))]
     public class GetAzureEventHubSchemaGroups : AzureEventHubsCmdletBase
     {
@@ -35,6 +37,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject", ChangeDescription = "Format of resource id must be /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/schemagroups/{schemaGroupName}. Namespace resource id can no longer be used for list calls.")]
         [Parameter(Mandatory = true, ParameterSetName = SchemaGroupResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Namespace Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -71,12 +74,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.SchemaRegistry
 
                 if (string.IsNullOrEmpty(Name))
                 {
-                    IEnumerable<PSEventHubsSchemaRegistryAttributes> schemaGroups = Client.ListSchemaGroupByNamespace(ResourceGroupName, Namespace);
+                    IEnumerable<PSEventHubsSchemaRegistryAttributes> schemaGroups = UtilityClient.ListSchemaGroupByNamespace(ResourceGroupName, Namespace);
                     WriteObject(schemaGroups.ToList(), true);
                 }
                 else if (!string.IsNullOrEmpty(Name))
                 {
-                    PSEventHubsSchemaRegistryAttributes schemaGroup = Client.GetSchemaGroup(ResourceGroupName, Namespace, Name);
+                    PSEventHubsSchemaRegistryAttributes schemaGroup = UtilityClient.GetSchemaGroup(ResourceGroupName, Namespace, Name);
                     WriteObject(schemaGroup);
                 }
 

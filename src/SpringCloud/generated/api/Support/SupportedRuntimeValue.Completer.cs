@@ -28,15 +28,19 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Java_8".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Java_8", "Java_8", global::System.Management.Automation.CompletionResultType.ParameterValue, "Java_8");
+                yield return new global::System.Management.Automation.CompletionResult("'Java_8'", "Java_8", global::System.Management.Automation.CompletionResultType.ParameterValue, "Java_8");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Java_11".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Java_11", "Java_11", global::System.Management.Automation.CompletionResultType.ParameterValue, "Java_11");
+                yield return new global::System.Management.Automation.CompletionResult("'Java_11'", "Java_11", global::System.Management.Automation.CompletionResultType.ParameterValue, "Java_11");
+            }
+            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Java_17".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
+            {
+                yield return new global::System.Management.Automation.CompletionResult("'Java_17'", "Java_17", global::System.Management.Automation.CompletionResultType.ParameterValue, "Java_17");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "NetCore_31".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("NetCore_31", "NetCore_31", global::System.Management.Automation.CompletionResultType.ParameterValue, "NetCore_31");
+                yield return new global::System.Management.Automation.CompletionResult("'NetCore_31'", "NetCore_31", global::System.Management.Automation.CompletionResultType.ParameterValue, "NetCore_31");
             }
         }
     }

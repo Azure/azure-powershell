@@ -30,11 +30,11 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Support
         {
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_LRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_LRS", "Standard_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_LRS");
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_LRS'", "Standard_LRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_LRS");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Standard_ZRS".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Standard_ZRS", "Standard_ZRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_ZRS");
+                yield return new global::System.Management.Automation.CompletionResult("'Standard_ZRS'", "Standard_ZRS", global::System.Management.Automation.CompletionResultType.ParameterValue, "Standard_ZRS");
             }
         }
     }

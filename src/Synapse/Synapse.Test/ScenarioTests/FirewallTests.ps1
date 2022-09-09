@@ -87,7 +87,7 @@ function Get-FirewallRuleTestEnvironmentParameters ($testSuffix)
 			  fileSystemName = "fwcmdletfs" + $testSuffix;
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
-              location = "canadacentral";
+              location = "eastus";
 		}
 }
 

@@ -60,6 +60,8 @@ Get-AzOperationalInsightsDataSource `
    -Kind 'WindowsEvent'
 ```
 
+Adds a data source that collects Windows event logs from connected computers that run the Windows operating system in Azure Operational Insights.
+
 ## PARAMETERS
 
 ### -CollectErrors
