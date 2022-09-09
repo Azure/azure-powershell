@@ -65,17 +65,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 if (this.IsParameterBound(c => c.Location))
                 {
                     string filter = String.Format("location eq '{0}'", this.Location);
-                    result = ResourceSkusClient.List(filter);
+                    result = ResourceSkusClient.List(filter, this.EdgeZone);
                 }
                 else
                 {
-                    result = ResourceSkusClient.List();
-                }
-                // ExtendedLocation
-                ExtendedLocation vExtendedLocation = null;
-                if (this.IsParameterBound(c => c.EdgeZone))
-                {
-                    vExtendedLocation = new ExtendedLocation { Name = this.EdgeZone, Type = ExtendedLocationTypes.EdgeZone };
+                    result = ResourceSkusClient.List(includeExtendedLocations: this.EdgeZone);
                 }
                 var resultList = result.ToList();
                 var nextPageLink = result.NextPageLink;
