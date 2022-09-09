@@ -1,4 +1,4 @@
-pac0,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Accounts,2.10.0
+pac0,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Accounts,2.10.1
 pac1,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ADDomainServices,0.2.0
 pac2,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Advisor,1.1.2
 pac3,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Aks,4.3.0
@@ -118,7 +118,7 @@ pac116,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Resour
 pac117,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Resources,6.2.0
 pac118,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Search,0.8.0
 pac119,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Security,1.3.0
-pac120,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.SecurityInsights,1.1.0
+pac120,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.SecurityInsights,2.0.0
 pac121,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ServiceBus,1.11.0
 pac122,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ServiceFabric,3.1.0
 pac123,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ServiceLinker,0.1.0
