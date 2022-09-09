@@ -37,6 +37,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public List<PSResourceId> ChildCustomIpPrefixes { get; set; }
 
+        public bool NoInternetAdvertise { get; set; }
+
         [JsonIgnore]
         public string PublicIpPrefixesText
         {
