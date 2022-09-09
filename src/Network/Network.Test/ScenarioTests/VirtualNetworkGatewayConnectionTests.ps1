@@ -661,7 +661,7 @@ function Test-VirtualNetworkGatewayConnectionSharedKeyCRUD
       Assert-AreEqual "TestSharedKeyValue" $expected
 
       # Wait to avoid conflict
-      Start-TestSleep 60000
+      Start-TestSleep -Seconds 60
 
       # Reset VirtualNetworkGatewayConnectionSharedKey
       $actual = Reset-AzVirtualNetworkGatewayConnectionSharedKey -ResourceGroupName $rgname -name $vnetConnectionName -KeyLength 50 -Force
@@ -945,13 +945,13 @@ function Test-VirtualNetworkGatewayConnectionGetIkeSa
       $job2 | Wait-Job
       $conn2 = $job2 | Receive-Job
 
-      Start-Sleep -Seconds 300
+      Start-TestSleep -Seconds 300
       
       # Get Virtual Network Gateway Connection 1 and 2
       $connection1 = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -Name $vnetConnectionName1
       $connection2 = Get-AzVirtualNetworkGatewayConnection -ResourceGroupName $rgname -Name $vnetConnectionName2
 
-      Start-Sleep -Seconds 150
+      Start-TestSleep -Seconds 150
 
       $ikesa = Get-AzVirtualNetworkGatewayConnectionIkeSa -InputObject $connection1
       Assert-NotNull $ikesa

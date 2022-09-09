@@ -81,6 +81,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string IdentifyTopFatFlow { get; set; }
 
+        public string EnableUDPLogOptimization { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {

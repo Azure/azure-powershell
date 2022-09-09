@@ -482,11 +482,12 @@ namespace Microsoft.Azure.Commands.KeyVault
                 if (Destination != HsmDestination) { throw new ArgumentException(Resources.KEKMustBeHSM); }
             }
 
-            if (this.IsParameterBound(c => c.Exportable) && (!this.IsParameterBound(c => c.ReleasePolicyPath) && !this.IsParameterBound(c => c.UseDefaultCVMPolicy)) )
+            if (this.IsParameterBound(c => c.Exportable) && !this.IsParameterBound(c => c.ReleasePolicyPath) && !this.IsParameterBound(c => c.UseDefaultCVMPolicy))
             {
                 throw new AzPSArgumentException("Exportable keys must have release policy.", nameof(ReleasePolicyPath), ErrorKind.UserError);
             }
-            else if (this.IsParameterBound(c => c.ReleasePolicyPath) && !this.IsParameterBound(c => c.Exportable))
+            else if ((this.IsParameterBound(c => c.ReleasePolicyPath) || this.IsParameterBound(c => c.UseDefaultCVMPolicy))
+                && !this.IsParameterBound(c => c.Exportable))
             {
                 throw new AzPSArgumentException("Non-exportable keys must not have release policy.", nameof(ReleasePolicyPath), ErrorKind.UserError);
             }

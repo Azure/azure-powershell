@@ -1,4 +1,4 @@
----
+﻿---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Compute.dll-Help.xml
 Module Name: Az.Compute
 online version: https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimagedefinition
@@ -91,7 +91,8 @@ $skuName = "GreatSku"
 $description = "My gallery"
 $IsHibernateSupported = @{Name='IsHibernateSupported';Value='True'}
 $IsAcceleratedNetworkSupported = @{Name='IsAcceleratedNetworkSupported';Value='False'}
-$features = @($IsHibernateSupported,$IsAcceleratedNetworkSupported)
+$ConfidentialVMSupported = @{Name='SecurityType';Value='ConfidentialVMSupported'}
+$features = @($IsHibernateSupported,$IsAcceleratedNetworkSupported, $ConfidentialVMSupported)
 New-AzGalleryImageDefinition -ResourceGroupName $rgName -GalleryName $galleryName -Name $galleryImageDefinitionName -Location $location -Publisher $publisherName -Offer $offerName -Sku $skuName -OsState "Generalized" -OsType "Windows" -Description $description -Feature $features
 ```
 
