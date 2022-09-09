@@ -475,6 +475,110 @@ namespace Microsoft.Azure.Management.Storage
             }
 
             /// <summary>
+            /// List SAS credentials of a storage account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='parameters'>
+            /// The parameters to provide to list SAS credentials for the storage account.
+            /// </param>
+            public static ListAccountSasResponse ListAccountSAS(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, AccountSasParameters parameters)
+            {
+                return operations.ListAccountSASAsync(resourceGroupName, accountName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List SAS credentials of a storage account.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='parameters'>
+            /// The parameters to provide to list SAS credentials for the storage account.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ListAccountSasResponse> ListAccountSASAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, AccountSasParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListAccountSASWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
+            /// List service SAS credentials of a specific resource.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='parameters'>
+            /// The parameters to provide to list service SAS credentials.
+            /// </param>
+            public static ListServiceSasResponse ListServiceSAS(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, ServiceSasParameters parameters)
+            {
+                return operations.ListServiceSASAsync(resourceGroupName, accountName, parameters).GetAwaiter().GetResult();
+            }
+
+            /// <summary>
+            /// List service SAS credentials of a specific resource.
+            /// </summary>
+            /// <param name='operations'>
+            /// The operations group for this extension method.
+            /// </param>
+            /// <param name='resourceGroupName'>
+            /// The name of the resource group within the user's subscription. The name is
+            /// case insensitive.
+            /// </param>
+            /// <param name='accountName'>
+            /// The name of the storage account within the specified resource group.
+            /// Storage account names must be between 3 and 24 characters in length and use
+            /// numbers and lower-case letters only.
+            /// </param>
+            /// <param name='parameters'>
+            /// The parameters to provide to list service SAS credentials.
+            /// </param>
+            /// <param name='cancellationToken'>
+            /// The cancellation token.
+            /// </param>
+            public static async Task<ListServiceSasResponse> ListServiceSASAsync(this IStorageAccountsOperations operations, string resourceGroupName, string accountName, ServiceSasParameters parameters, CancellationToken cancellationToken = default(CancellationToken))
+            {
+                using (var _result = await operations.ListServiceSASWithHttpMessagesAsync(resourceGroupName, accountName, parameters, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Body;
+                }
+            }
+
+            /// <summary>
             /// Failover request can be triggered for a storage account in case of
             /// availability issues. The failover occurs from the storage account's primary
             /// cluster to secondary cluster for RA-GRS accounts. The secondary cluster

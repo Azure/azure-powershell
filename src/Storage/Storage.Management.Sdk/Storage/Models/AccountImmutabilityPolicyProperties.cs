@@ -102,13 +102,16 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ImmutabilityPeriodSinceCreationInDays > 146000)
+            if (ImmutabilityPeriodSinceCreationInDays != null)
             {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "ImmutabilityPeriodSinceCreationInDays", 146000);
-            }
-            if (ImmutabilityPeriodSinceCreationInDays < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "ImmutabilityPeriodSinceCreationInDays", 1);
+                if (ImmutabilityPeriodSinceCreationInDays > 146000)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMaximum, "ImmutabilityPeriodSinceCreationInDays", 146000);
+                }
+                if (ImmutabilityPeriodSinceCreationInDays < 1)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMinimum, "ImmutabilityPeriodSinceCreationInDays", 1);
+                }
             }
         }
     }

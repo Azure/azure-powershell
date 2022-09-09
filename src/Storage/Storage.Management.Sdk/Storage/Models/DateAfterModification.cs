@@ -102,37 +102,49 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (DaysAfterModificationGreaterThan < 0)
+            if (DaysAfterModificationGreaterThan != null)
             {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterModificationGreaterThan", 0);
+                if (DaysAfterModificationGreaterThan < 0)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterModificationGreaterThan", 0);
+                }
+                if (DaysAfterModificationGreaterThan % 1 != 0)
+                {
+                    throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterModificationGreaterThan", 1);
+                }
             }
-            if (DaysAfterModificationGreaterThan % 1 != 0)
+            if (DaysAfterLastAccessTimeGreaterThan != null)
             {
-                throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterModificationGreaterThan", 1);
+                if (DaysAfterLastAccessTimeGreaterThan < 0)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterLastAccessTimeGreaterThan", 0);
+                }
+                if (DaysAfterLastAccessTimeGreaterThan % 1 != 0)
+                {
+                    throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterLastAccessTimeGreaterThan", 1);
+                }
             }
-            if (DaysAfterLastAccessTimeGreaterThan < 0)
+            if (DaysAfterLastTierChangeGreaterThan != null)
             {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterLastAccessTimeGreaterThan", 0);
+                if (DaysAfterLastTierChangeGreaterThan < 0)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterLastTierChangeGreaterThan", 0);
+                }
+                if (DaysAfterLastTierChangeGreaterThan % 1 != 0)
+                {
+                    throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterLastTierChangeGreaterThan", 1);
+                }
             }
-            if (DaysAfterLastAccessTimeGreaterThan % 1 != 0)
+            if (DaysAfterCreationGreaterThan != null)
             {
-                throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterLastAccessTimeGreaterThan", 1);
-            }
-            if (DaysAfterLastTierChangeGreaterThan < 0)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterLastTierChangeGreaterThan", 0);
-            }
-            if (DaysAfterLastTierChangeGreaterThan % 1 != 0)
-            {
-                throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterLastTierChangeGreaterThan", 1);
-            }
-            if (DaysAfterCreationGreaterThan < 0)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterCreationGreaterThan", 0);
-            }
-            if (DaysAfterCreationGreaterThan % 1 != 0)
-            {
-                throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterCreationGreaterThan", 1);
+                if (DaysAfterCreationGreaterThan < 0)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterCreationGreaterThan", 0);
+                }
+                if (DaysAfterCreationGreaterThan % 1 != 0)
+                {
+                    throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterCreationGreaterThan", 1);
+                }
             }
         }
     }

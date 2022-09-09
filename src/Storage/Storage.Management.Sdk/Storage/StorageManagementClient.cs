@@ -75,9 +75,24 @@ namespace Microsoft.Azure.Management.Storage
         public bool? GenerateClientRequestId { get; set; }
 
         /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        public virtual IOperations Operations { get; private set; }
+
+        /// <summary>
+        /// Gets the ISkusOperations.
+        /// </summary>
+        public virtual ISkusOperations Skus { get; private set; }
+
+        /// <summary>
         /// Gets the IStorageAccountsOperations.
         /// </summary>
         public virtual IStorageAccountsOperations StorageAccounts { get; private set; }
+
+        /// <summary>
+        /// Gets the IDeletedAccountsOperations.
+        /// </summary>
+        public virtual IDeletedAccountsOperations DeletedAccounts { get; private set; }
 
         /// <summary>
         /// Gets the IUsagesOperations.
@@ -93,6 +108,16 @@ namespace Microsoft.Azure.Management.Storage
         /// Gets the IBlobInventoryPoliciesOperations.
         /// </summary>
         public virtual IBlobInventoryPoliciesOperations BlobInventoryPolicies { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        public virtual IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; private set; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        public virtual IPrivateLinkResourcesOperations PrivateLinkResources { get; private set; }
 
         /// <summary>
         /// Gets the IObjectReplicationPoliciesOperations.
@@ -370,10 +395,15 @@ namespace Microsoft.Azure.Management.Storage
         /// </summary>
         private void Initialize()
         {
+            Operations = new Operations(this);
+            Skus = new SkusOperations(this);
             StorageAccounts = new StorageAccountsOperations(this);
+            DeletedAccounts = new DeletedAccountsOperations(this);
             Usages = new UsagesOperations(this);
             ManagementPolicies = new ManagementPoliciesOperations(this);
             BlobInventoryPolicies = new BlobInventoryPoliciesOperations(this);
+            PrivateEndpointConnections = new PrivateEndpointConnectionsOperations(this);
+            PrivateLinkResources = new PrivateLinkResourcesOperations(this);
             ObjectReplicationPolicies = new ObjectReplicationPoliciesOperations(this);
             LocalUsers = new LocalUsersOperations(this);
             EncryptionScopes = new EncryptionScopesOperations(this);

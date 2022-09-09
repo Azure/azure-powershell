@@ -82,13 +82,16 @@ namespace Microsoft.Azure.Management.Storage.Models
             {
                 throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterCreationGreaterThan", 1);
             }
-            if (DaysAfterLastTierChangeGreaterThan < 0)
+            if (DaysAfterLastTierChangeGreaterThan != null)
             {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterLastTierChangeGreaterThan", 0);
-            }
-            if (DaysAfterLastTierChangeGreaterThan % 1 != 0)
-            {
-                throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterLastTierChangeGreaterThan", 1);
+                if (DaysAfterLastTierChangeGreaterThan < 0)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMinimum, "DaysAfterLastTierChangeGreaterThan", 0);
+                }
+                if (DaysAfterLastTierChangeGreaterThan % 1 != 0)
+                {
+                    throw new ValidationException(ValidationRules.MultipleOf, "DaysAfterLastTierChangeGreaterThan", 1);
+                }
             }
         }
     }

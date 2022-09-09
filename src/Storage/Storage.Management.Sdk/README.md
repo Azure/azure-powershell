@@ -20,20 +20,4 @@ output-folder: Storage
 
 payload-flattening-threshold: 2
 namespace: Microsoft.Azure.Management.Storage
-
-directive:
-  - remove-operation:
-    - Operations_List
-    - Skus_List
-    - DeletedAccounts_List
-    - DeletedAccounts_Get
-    - StorageAccounts_ListAccountSAS
-    - StorageAccounts_ListServiceSAS
-    - PrivateEndpointConnections_List
-    - PrivateEndpointConnections_Get
-    - PrivateEndpointConnections_Put
-    - PrivateEndpointConnections_Delete
-    - PrivateLinkResources_ListByStorageAccount
-    - BlobServices_List
-    - FileServices_List
 ```

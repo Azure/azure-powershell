@@ -70,9 +70,24 @@ namespace Microsoft.Azure.Management.Storage
 
 
         /// <summary>
+        /// Gets the IOperations.
+        /// </summary>
+        IOperations Operations { get; }
+
+        /// <summary>
+        /// Gets the ISkusOperations.
+        /// </summary>
+        ISkusOperations Skus { get; }
+
+        /// <summary>
         /// Gets the IStorageAccountsOperations.
         /// </summary>
         IStorageAccountsOperations StorageAccounts { get; }
+
+        /// <summary>
+        /// Gets the IDeletedAccountsOperations.
+        /// </summary>
+        IDeletedAccountsOperations DeletedAccounts { get; }
 
         /// <summary>
         /// Gets the IUsagesOperations.
@@ -88,6 +103,16 @@ namespace Microsoft.Azure.Management.Storage
         /// Gets the IBlobInventoryPoliciesOperations.
         /// </summary>
         IBlobInventoryPoliciesOperations BlobInventoryPolicies { get; }
+
+        /// <summary>
+        /// Gets the IPrivateEndpointConnectionsOperations.
+        /// </summary>
+        IPrivateEndpointConnectionsOperations PrivateEndpointConnections { get; }
+
+        /// <summary>
+        /// Gets the IPrivateLinkResourcesOperations.
+        /// </summary>
+        IPrivateLinkResourcesOperations PrivateLinkResources { get; }
 
         /// <summary>
         /// Gets the IObjectReplicationPoliciesOperations.
