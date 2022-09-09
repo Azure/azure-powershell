@@ -268,7 +268,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         $configids  = @($newConnConfig.Id)
         $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "Connectivity" 
-        Start-Sleep -Seconds 60
+        Start-TestSleep -Seconds 60
          
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "Connectivity"
         Assert-NotNull $deploymentStatus;
@@ -304,7 +304,7 @@ function Test-NetworkManagerConnectivityConfigurationCRUD
         Assert-AreEqual "True"   $effectiveConnectivityConfig.Value[0].DeleteExistingPeering;
 
         $job = Remove-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $connectivityConfigurationName -ForceDelete -PassThru -Force -AsJob;
-        Start-Sleep -Seconds 60
+        Start-TestSleep -Seconds 60
         $job | Wait-Job;
         $removeResult = $job | Receive-Job;
 
@@ -427,7 +427,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         $configids  = @($securityConfig.Id)
         $regions = @($rglocation)  
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -ConfigurationId $configids -CommitType "SecurityAdmin" 
-        Start-Sleep -Seconds 60
+        Start-TestSleep -Seconds 60
        
         $deploymentStatus = Get-AzNetworkManagerDeploymentStatus -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Region $regions -DeploymentType "SecurityAdmin"
         Assert-NotNull $deploymentStatus;
@@ -490,7 +490,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual "Internet" $effectiveSecurityAdminRuleList.Value[0].Sources[0].AddressPrefix
 
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "SecurityAdmin" 
-        Start-Sleep -Seconds 60
+        Start-TestSleep -Seconds 60
 
         $job = Remove-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -SecurityAdminConfigurationName $SecurityConfigurationName -RuleCollectionName $RuleCollectionName -Name $RuleName -ForceDelete -PassThru -Force -AsJob;
         $job | Wait-Job;
