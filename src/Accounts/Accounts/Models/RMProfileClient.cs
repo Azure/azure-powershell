@@ -425,20 +425,22 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
         {
             subscriptions = ListSubscriptions(tenantId).Where(s => s.Name.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
             List<IAzureSubscription>  subscriptionList = new List<IAzureSubscription>();
-            HashSet<Guid> subscriptionIds = new HashSet<Guid>();
+            HashSet<Guid> existedSubscriptionIds = new HashSet<Guid>();
+
+            // Consider subscription in Home tenant first, exclude duplicate subscriptions by id.
             foreach(IAzureSubscription subscription in subscriptions)
             {
-
-                if(subscription is PSAzureSubscription && subscription.GetTenant() != null 
-                    && subscription.GetHomeTenant().Equals(subscription.GetTenant()) && subscriptionIds.Add(subscription.GetId()))
+                if (subscription is PSAzureSubscription && subscription.GetTenant() != null 
+                    && subscription.GetHomeTenant().Equals(subscription.GetTenant()) && existedSubscriptionIds.Add(subscription.GetId()))
                 {
                     subscriptionList.Add(subscription);
                 }
                 
             }
+            // Consider other subscriptions.
             foreach (IAzureSubscription subscription in subscriptions)
             {
-                if (subscriptionIds.Add(subscription.GetId()))
+                if (existedSubscriptionIds.Add(subscription.GetId()))
                 {
                     subscriptionList.Add(subscription);
                 }
