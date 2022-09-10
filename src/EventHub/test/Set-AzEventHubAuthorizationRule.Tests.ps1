@@ -31,7 +31,7 @@ Describe 'Set-AzEventHubAuthorizationRule' {
         $authRule.Rights[0] | Should -Be "Send"
     }
 
-    It 'SetViaIdentityExpanded' -skip {
+    It 'SetViaIdentityExpanded' {
         $authRule = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule2
         $authRule = Set-AzEventHubAuthorizationRule -InputObject $authRule -Rights @("Manage", "Send", "Listen")
         $authRule.Name | Should -Be $env.authRule2

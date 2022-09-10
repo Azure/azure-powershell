@@ -15,15 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubPrivateEndpoint
 }
 
 Describe 'Get-AzEventHubPrivateEndpointConnection' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    $listOfPrivateEndpoints = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+    
+    It 'List' {
+        $listOfPrivateEndpoints.Count | Should -Be 2
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name
+        $privateEndpoint.ConnectionState | Should -Be "Approved"
+        $privateEndpoint.Description | Should -Be ""
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[1].Name
+        $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint
+        $privateEndpoint.ConnectionState | Should -Be "Approved"
+        $privateEndpoint.Description | Should -Be "Bye"
     }
 }

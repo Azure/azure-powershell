@@ -152,15 +152,26 @@ function Set-AzEventHubApplicationGroup{
             $null = $PSBoundParameters.Remove('NamespaceName')
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
+
+            $hasProperty = $false
+
             if ($hasIsEnabled) {
                 $appGroup.IsEnabled = $IsEnabled
+                $hasProperty = $true
             }
             if ($hasPolicy) {
                 $appGroup.Policy = $Policy
+                $hasProperty = $true
             }
             if ($hasClientAppGroupIdentifier) {
                 $appGroup.ClientAppGroupIdentifier = $ClientAppGroupIdentifier
+                $hasProperty = $true
             }
+
+            if (($hasProperty -eq $false) -and ($PSCmdlet.ParameterSetName -eq 'SetViaIdentityExpanded')){
+                throw 'Please specify the property you want to update on the -InputObject. Refer https://go.microsoft.com/fwlink/?linkid=2204690#behavior-of--inputobject for example.'
+            }
+
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
             }

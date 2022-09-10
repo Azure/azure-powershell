@@ -15,15 +15,14 @@ Sets an EventHub Cluster
 ### SetExpanded (Default)
 ```
 Set-AzEventHubCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-SkuCapacity <Int32>] [-SupportsScaling] [-Tag <ITrackedResourceTags>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-Capacity <Int32>] [-Tag <ITrackedResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
-Set-AzEventHubCluster -InputObject <IEventHubIdentity> [-SkuCapacity <Int32>] [-SupportsScaling]
- [-Tag <ITrackedResourceTags>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Set-AzEventHubCluster -InputObject <IEventHubIdentity> [-Capacity <Int32>] [-Tag <ITrackedResourceTags>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -60,6 +59,21 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Capacity
+The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -147,21 +161,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SkuCapacity
-The quantity of Event Hubs Cluster Capacity Units contained in this cluster.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -SubscriptionId
 The ID of the target subscription.
 
@@ -173,21 +172,6 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SupportsScaling
-A value that indicates whether Scaling is Supported.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -259,7 +243,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IEventHubIdentity>: Identity parameter.
+`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[ApplicationGroupName <String>]`: The Application Group name 
   - `[AuthorizationRuleName <String>]`: The authorization rule name.
@@ -274,7 +258,7 @@ INPUTOBJECT <IEventHubIdentity>: Identity parameter.
   - `[SchemaGroupName <String>]`: The Schema Group name 
   - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
-TAG <ITrackedResourceTags>: Resource tags.
+`TAG <ITrackedResourceTags>`: Resource tags.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS

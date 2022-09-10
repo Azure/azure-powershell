@@ -15,17 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deny-AzEventHubPrivateEndpoin
 }
 
 Describe 'Deny-AzEventHubPrivateEndpointConnection' {
+    $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+
     It 'SetExpanded' {
-        $privateEndpoint = Deny-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.pe1
-        $privateEndpoint.ConnectionState | Should -Be "Rejected"
-        $privateEndpoint.Description | Should -Be ""
+        $privateEndpoint[0].ConnectionState | Should -Be "Approved"
+        $privateEndpoint[0].Description | Should -Be ""
+        
+        $firstPrivateEndpoint = Deny-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $privateEndpoint[0].Name
+        $firstPrivateEndpoint.ConnectionState | Should -Be "Rejected"
+        $firstPrivateEndpoint.Description | Should -Be ""
     }
 
     It 'SetViaIdentityExpanded' {
-        $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.pe2
+        $secondPrivateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $privateEndpoint[1].Name
 
-        $privateEndpoint = Deny-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint -Description "Bye"
-        $privateEndpoint.ConnectionState | Should -Be "Rejected"
-        $privateEndpoint.Description | Should -Be "Bye"
+        $secondPrivateEndpoint = Deny-AzEventHubPrivateEndpointConnection -InputObject $secondPrivateEndpoint -Description "Bye"
+        $secondPrivateEndpoint.ConnectionState | Should -Be "Rejected"
+        $secondPrivateEndpoint.Description | Should -Be "Bye"
     }
 }

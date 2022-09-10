@@ -37,7 +37,11 @@ function New-AzEventHubVirtualNetworkRuleConfig{
 		try{
 			$virtualNetworkRule = [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules]@{
 				SubnetId = $SubnetId
-				IgnoreMissingVnetServiceEndpoint = $IgnoreMissingVnetServiceEndpoint
+			}
+
+			$hasIgnoreMissing = $PSBoundParameters.Remove('IgnoreMissingVnetServiceEndpoint')
+			if ($hasIgnoreMissing){
+				$virtualNetworkRule.IgnoreMissingVnetServiceEndpoint = $IgnoreMissingVnetServiceEndpoint
 			}
 			
 			return $virtualNetworkRule

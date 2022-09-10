@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHub'))
 
 Describe 'Set-AzEventHub' {
     It 'SetExpanded' {
-        $eventhub = Set-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.eventHub2 -ArchiveNameFormat {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second} -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId
+        $eventhub = Set-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.eventHub2 -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId
         $eventhub.MessageRetentionInDays | Should -Be 6
         $eventhub.PartitionCount | Should -Be 5
         $eventhub.ArchiveNameFormat | Should -Be "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
@@ -31,7 +31,7 @@ Describe 'Set-AzEventHub' {
 
         $eventhub = Set-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.eventHub3 -MessageRetentionInDays 4
         $eventhub.MessageRetentionInDays | Should -Be 4
-        $eventhub.PartitionCount | Should -Be 1
+        $eventhub.PartitionCount | Should -Be 4
         $eventhub.ArchiveNameFormat | Should -Be "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
         $eventhub.BlobContainer | Should -Be $env.blobContainer
         $eventhub.CaptureEnabled | Should -Be $true
@@ -45,9 +45,9 @@ Describe 'Set-AzEventHub' {
 
     It 'SetViaIdentityExpanded' {
         $eventhub = New-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name eventhub
-        $eventhub = Set-AzEventHub -InputObject $eventhub -ArchiveNameFormat {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second} -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId
-        $eventhub.MessageRetentionInDays | Should -Be 1
-        $eventhub.PartitionCount | Should -Be 1
+        $eventhub = Set-AzEventHub -InputObject $eventhub -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId
+        $eventhub.MessageRetentionInDays | Should -Be 7
+        $eventhub.PartitionCount | Should -Be 4
         $eventhub.ArchiveNameFormat | Should -Be "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
         $eventhub.BlobContainer | Should -Be $env.blobContainer
         $eventhub.CaptureEnabled | Should -Be $true
@@ -59,8 +59,8 @@ Describe 'Set-AzEventHub' {
         $eventhub.StorageAccountResourceId | Should -Be $eventhub.StorageAccountResourceId
 
         $eventhub = Set-AzEventHub -InputObject $eventhub.Id -CaptureEnabled:$false
-        $eventhub.MessageRetentionInDays | Should -Be 1
-        $eventhub.PartitionCount | Should -Be 1
+        $eventhub.MessageRetentionInDays | Should -Be 7
+        $eventhub.PartitionCount | Should -Be 4
         $eventhub.ArchiveNameFormat | Should -Be "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
         $eventhub.BlobContainer | Should -Be $env.blobContainer
         $eventhub.CaptureEnabled | Should -Be $false

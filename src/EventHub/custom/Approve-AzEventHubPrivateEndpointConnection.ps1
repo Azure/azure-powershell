@@ -131,7 +131,7 @@ function Approve-AzEventHubPrivateEndpointConnection{
 
             $connection = Get-AzEventHubPrivateEndpointConnection @PSBoundParameters
 
-            $connection.PrivateLinkServiceConnectionStateStatus = "Approved"
+            $connection.ConnectionState = "Approved"
 
             if($hasDescription){
                 $connection.Description = $Description

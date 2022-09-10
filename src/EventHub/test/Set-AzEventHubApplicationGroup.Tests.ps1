@@ -22,8 +22,8 @@ Describe 'Set-AzEventHubApplicationGroup' {
         $updateAppGroup = Set-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.appGroup2 -Policy $appGroup.Policy
         $updateAppGroup.Name | Should -Be $env.appGroup2
         $updateAppGroup.ResourceGroupName | Should -Be $env.resourceGroup
-        $updateAppGroup.Policy.Count | 3
-        $updateAppGroup.ClientAppGroupIdentifier | Should -Be $app.ClientAppGroupIdentifier
+        $updateAppGroup.Policy.Count | Should -Be 3
+        $updateAppGroup.ClientAppGroupIdentifier | Should -Be $appGroup.ClientAppGroupIdentifier
     }
 
     It 'SetViaIdentityExpanded' {
@@ -33,14 +33,14 @@ Describe 'Set-AzEventHubApplicationGroup' {
         $updateAppGroup = Set-AzEventHubApplicationGroup -InputObject $appGroup -Policy $appGroup.Policy
         $updateAppGroup.Name | Should -Be $env.appGroup2
         $updateAppGroup.ResourceGroupName | Should -Be $env.resourceGroup
-        $updateAppGroup.Policy.Count | 4
-        $updateAppGroup.ClientAppGroupIdentifier | Should -Be $app.ClientAppGroupIdentifier
+        $updateAppGroup.Policy.Count | Should -Be 4
+        $updateAppGroup.ClientAppGroupIdentifier | Should -Be $appGroup.ClientAppGroupIdentifier
 
         $updateAppGroup = Set-AzEventHubApplicationGroup -InputObject $appGroup -IsEnabled:$false
         $updateAppGroup.Name | Should -Be $env.appGroup2
         $updateAppGroup.ResourceGroupName | Should -Be $env.resourceGroup
-        $updateAppGroup.Policy.Count | 4
-        $updateAppGroup.ClientAppGroupIdentifier | Should -Be $app.ClientAppGroupIdentifier
+        $updateAppGroup.Policy.Count | Should -Be 4
+        $updateAppGroup.ClientAppGroupIdentifier | Should -Be $appGroup.ClientAppGroupIdentifier
         $updateAppGroup.IsEnabled | Should -Be $false
     }
 }

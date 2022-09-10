@@ -20,7 +20,7 @@ Get-AzEventHubSchemaGroup -NamespaceName <String> -ResourceGroupName <String> [-
 
 ### Get
 ```
-Get-AzEventHubSchemaGroup -NamespaceName <String> -ResourceGroupName <String> -SchemaGroupName <String>
+Get-AzEventHubSchemaGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -89,6 +89,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+The Schema Group name
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -NamespaceName
 The Namespace name
 
@@ -110,21 +125,6 @@ Name of the resource group within the azure subscription.
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SchemaGroupName
-The Schema Group name
-
-```yaml
-Type: System.String
-Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -201,7 +201,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IEventHubIdentity>: Identity Parameter
+`INPUTOBJECT <IEventHubIdentity>`: Identity Parameter
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[ApplicationGroupName <String>]`: The Application Group name 
   - `[AuthorizationRuleName <String>]`: The authorization rule name.

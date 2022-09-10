@@ -16,11 +16,11 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubGeoDRConfigurat
 
 Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
     It 'Break' {
-        Set-AzEventHubGeoDRConfigurationBreakPair -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.alias
+        Set-AzEventHubGeoDRConfigurationBreakPair -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -Name $env.alias
         
-        while($drConfig -ne "Succeeded"){
-            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-            Wait-Seconds 10
+        while($drConfig.ProvisioningState -ne "Succeeded"){
+            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+            Start-Sleep 10
         }
 
         $drConfig.Name | Should -Be $env.alias
@@ -28,22 +28,24 @@ Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
         $drConfig.PartnerNamespace | Should -Be ""
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
-        $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -PartnerNamespace $env.secondaryNamespaceResourceId
+        Remove-AzEventHub -Name eh1 -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
+
+        $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
         
-        while($drConfig -ne "Succeeded"){
-            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-            Wait-Seconds 10
+        while($drConfig.ProvisioningState -ne "Succeeded"){
+            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+            Start-Sleep 10
         }
     }
 
     It 'BreakViaIdentity' {
-        $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+        $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
 
         Set-AzEventHubGeoDRConfigurationBreakPair -InputObject $drConfig
         
-        while($drConfig -ne "Succeeded"){
-            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-            Wait-Seconds 10
+        while($drConfig.ProvisioningState -ne "Succeeded"){
+            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+            Start-Sleep 10
         }
 
         $drConfig.Name | Should -Be $env.alias
@@ -51,11 +53,13 @@ Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
         $drConfig.PartnerNamespace | Should -Be ""
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
-        $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -PartnerNamespace $env.secondaryNamespaceResourceId
+        Remove-AzEventHub -Name eh1 -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
+
+        $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
         
-        while($drConfig -ne "Succeeded"){
-            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-            Wait-Seconds 10
+        while($drConfig.ProvisioningState -ne "Succeeded"){
+            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+            Start-Sleep 10
         }
     }
 }

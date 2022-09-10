@@ -23,7 +23,7 @@ Describe 'Get-AzEventHubApplicationGroup' {
     It 'Get' {
         $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.appGroup
         $appGroup.Name | Should -Be $env.appGroup
-        $appGroup.Policy.Count | Should -Be $1
+        $appGroup.Policy.Count | Should -Be 1
         $appGroup.Policy[0].Name | Should -Be "t1"
         $appGroup.IsEnabled | Should -Be $true
     }

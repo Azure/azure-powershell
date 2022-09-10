@@ -16,16 +16,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubCluster'))
 
 Describe 'Set-AzEventHubCluster' {
     It 'SetExpanded' {
-        $cluster = Set-AzEventHubCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster -Capacity 3
-        $cluster.ResourceGroupName | Should -Be $env.resourceGroup
+        $cluster = Set-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster -Capacity 3
+        $cluster.ResourceGroupName | Should -Be $env.clusterResourceGroup
         $cluster.Name | Should -Be $env.cluster
         $cluster.Capacity | Should -Be 3
     }
 
     It 'SetViaIdentityExpanded' {
-        $cluster = Get-AzEventHubCluster -ResourceGroupName $env.resourceGroup -Name $env.cluster
-        $cluster = Set-AzEventHubCluster -InputObject $cluster -Tag @{a=b}
-        $cluster.ResourceGroupName | Should -Be $env.resourceGroup
+        $cluster = Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster
+        $cluster = Set-AzEventHubCluster -InputObject $cluster -Tag @{a='b'}
+        $cluster.ResourceGroupName | Should -Be $env.clusterResourceGroup
         $cluster.Name | Should -Be $env.cluster
         $cluster.Capacity | Should -Be 3
         $cluster.Tag.Count | Should -Be 1

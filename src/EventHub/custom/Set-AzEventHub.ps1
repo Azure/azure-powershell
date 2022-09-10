@@ -209,39 +209,68 @@ function Set-AzEventHub{
             $null = $PSBoundParameters.Remove('NamespaceName')
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
+
+            $hasProperty = $false
+
             if ($hasCaptureEnabled) {
                 $eventHub.CaptureEnabled = $CaptureEnabled
+                $hasProperty = $true
             }
+
             if ($hasEncoding) {
                 $eventHub.Encoding = $Encoding
+                $hasProperty = $true
             }
+
             if ($hasIntervalInSeconds) {
                 $eventHub.IntervalInSeconds = $IntervalInSeconds
+                $hasProperty = $true
             }
+
             if ($hasSizeLimitInBytes) {
                 $eventHub.SizeLimitInBytes = $SizeLimitInBytes
+                $hasProperty = $true
             }
+
             if ($hasSkipEmptyArchive) {
                 $eventHub.SkipEmptyArchive = $SkipEmptyArchive
+                $hasProperty = $true
             }
-            if ($hasMessageRetentionInDay) {
+
+            if ($hasMessageRetentionInDays) {
                 $eventHub.MessageRetentionInDays = $MessageRetentionInDays
+                $hasProperty = $true
             }
+
             if ($hasStatus) {
                 $eventHub.Status = $Status
+                $hasProperty = $true
             }
+
             if ($hasDestinationName) {
                 $eventHub.DestinationName = $DestinationName
+                $hasProperty = $true
             }
+
             if ($hasStorageAccountResourceId) {
                 $eventHub.StorageAccountResourceId = $StorageAccountResourceId
+                $hasProperty = $true
             }
+
             if ($hasArchiveNameFormat) {
                 $eventHub.ArchiveNameFormat = $ArchiveNameFormat
+                $hasProperty = $true
             }
+
             if ($hasBlobContainer) {
                 $eventHub.BlobContainer = $BlobContainer
+                $hasProperty = $true
             }
+
+            if (($hasProperty -eq $false) -and ($PSCmdlet.ParameterSetName -eq 'SetViaIdentityExpanded')){
+                throw 'Please specify the property you want to update on the -InputObject. Refer https://go.microsoft.com/fwlink/?linkid=2204690#behavior-of--inputobject for example.'
+            }
+
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
             }

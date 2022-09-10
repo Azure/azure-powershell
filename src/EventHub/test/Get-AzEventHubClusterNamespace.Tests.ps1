@@ -16,7 +16,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzEventHubClusterNamespac
 
 Describe 'Get-AzEventHubClusterNamespace' {
     It 'List' {
-        $listOfNamespaces = Get-AzEventHubClusterNamespace -ResourceGroupName $env.clusterResourceGroup -ClusterName $env.cluster
+        $listOfNamespaces = Get-AzEventHubClusterNamespace -ResourceGroupName $env.clusterResourceGroup -ClusterName $env.createdCluster
         $listOfNamespaces.Count | Should -Be 2
     }
 }

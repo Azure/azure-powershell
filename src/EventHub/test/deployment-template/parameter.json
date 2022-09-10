@@ -3,31 +3,31 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "namespace_name": {
-      "value": "namespaceNameb1o7k5"
+      "value": "namespaceNamelix6wt"
     },
     "namespace_auth_rule_name": {
-      "value": "auth-rulehvlw70"
+      "value": "auth-rulejak0xu"
     },
     "eventhub_auth_rule_name": {
-      "value": "auth-ruleq4rate"
+      "value": "auth-rulew0zrbl"
     },
     "eventhub_name": {
-      "value": "eventHub9peqzw"
+      "value": "eventHub4mch89"
     },
     "schema_group_name": {
-      "value": "schemaGroupmvhf4e"
+      "value": "schemaGroup1qt2ru"
     },
     "appgroup_name": {
-      "value": "appGrouppm8sv7"
+      "value": "appGroupc6gt0w"
     },
     "peName1": {
-      "value": "peName1"
+      "value": "privateEndpoint-u0f81b"
     },
     "peName2": {
-      "value": "peName2"
+      "value": "privateEndpoint-cj37ng"
     },
     "namespaceResourceId": {
-      "value": "id"
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpdj078/providers/Microsoft.EventHub/namespaces/namespaceNamelix6wt"
     }
   }
 }

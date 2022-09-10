@@ -138,12 +138,22 @@ function Set-AzEventHubCluster{
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('Name')
             $null = $PSBoundParameters.Remove('SubscriptionId')
+
+            $hasProperty = $false
+
             if ($hasCapacity) {
                 $cluster.Capacity = $Capacity
+                $hasProperty = $true
             }
             if ($hasTag) {
                 $cluster.Tag = $Tag
+                $hasProperty = $true
             }
+
+            if (($hasProperty -eq $false) -and ($PSCmdlet.ParameterSetName -eq 'SetViaIdentityExpanded')){
+                throw 'Please specify the property you want to update on the -InputObject. Refer https://go.microsoft.com/fwlink/?linkid=2204690#behavior-of--inputobject for example.'
+            }
+
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
             }

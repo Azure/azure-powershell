@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the EventHub service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -95,10 +95,7 @@ directive:
       parameter-name: AuthorizationRuleName
     set:
       parameter-name: Name
-  - where:
-      subject: SchemaRegistry
-    set:
-      subject: SchemaGroup
+
   - where:
       subject: NamespaceNetworkRuleSet
     set:
@@ -151,7 +148,7 @@ directive:
 
   - where:
       model-name: PrivateEndpointConnection
-      property-name: PrivateLinkServiceConnectionState
+      property-name: PrivateLinkServiceConnectionStateStatus
     set:
       property-name: ConnectionState
 
@@ -267,3 +264,34 @@ directive:
       subject: ClusterAvailableClusterRegion
     set:
       subject: ClustersAvailableRegion
+  - where:
+      verb: New
+      subject: Cluster
+      parameter-name: Capacity
+    set:
+      default:
+        script: '1'
+
+# Schema Group
+  - where:
+      verb: New|Remove|Get 
+      subject: SchemaRegistry
+      parameter-name: SchemaGroupName
+    set:
+      parameter-name: Name
+
+  - where:
+      subject: SchemaRegistry
+    set:
+      subject: SchemaGroup
+
+# Name Availability
+  - where:
+      verb: Test
+      subject: NamespaceNameAvailability
+    hide: true
+
+  - where:
+      verb: Test
+      subject: DisasterRecoveryConfigNameAvailability
+    hide: true

@@ -20,7 +20,7 @@ Get-AzEventHubGeoDRConfiguration -NamespaceName <String> -ResourceGroupName <Str
 
 ### Get
 ```
-Get-AzEventHubGeoDRConfiguration -Alias <String> -NamespaceName <String> -ResourceGroupName <String>
+Get-AzEventHubGeoDRConfiguration -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -59,21 +59,6 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 
 ## PARAMETERS
 
-### -Alias
-The Disaster Recovery configuration name
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -102,6 +87,21 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The Disaster Recovery configuration name
+
+```yaml
+Type: System.String
+Parameter Sets: Get
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -171,7 +171,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IEventHubIdentity>: Identity Parameter
+`INPUTOBJECT <IEventHubIdentity>`: Identity Parameter
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[ApplicationGroupName <String>]`: The Application Group name 
   - `[AuthorizationRuleName <String>]`: The authorization rule name.

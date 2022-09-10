@@ -15,11 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEventHubConsumerGrou
 }
 
 Describe 'Remove-AzEventHubConsumerGroup' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        New-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name consumerGroup
+        Remove-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name consumerGroup
+        { Get-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name consumerGroup } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $consumerGroup = New-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name consumerGroup
+        Remove-AzEventHubConsumerGroup -InputObject $consumerGroup
+        { Get-AzEventHubConsumerGroup -InputObject $consumerGroup } | Should -Throw
     }
 }

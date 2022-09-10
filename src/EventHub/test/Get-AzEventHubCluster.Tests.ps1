@@ -23,8 +23,8 @@ Describe 'Get-AzEventHubCluster' {
     It 'Get' {
         $cluster = Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.createdCluster
         $cluster.Name | Should -Be $env.createdCluster
-        $cluster.Sku.Capacity | Should -Be 1
-        $cluster.Sku.Name | Should -Be "Dedicated"
+        $cluster.Capacity | Should -Be 1
+        $cluster.SkuName | Should -Be "Dedicated"
     }
 
     It 'List1' {
@@ -36,13 +36,13 @@ Describe 'Get-AzEventHubCluster' {
         $cluster = Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.createdCluster
         
         $cluster = Get-AzEventHubCluster -InputObject $cluster
-        $cluster.Name | Should -Be $env.cluster
-        $cluster.Sku.Capacity | Should -Be 1
-        $cluster.Sku.Name | Should -Be "Dedicated"
+        $cluster.Name | Should -Be $env.createdCluster
+        $cluster.Capacity | Should -Be 1
+        $cluster.SkuName | Should -Be "Dedicated"
 
         $cluster = Get-AzEventHubCluster -InputObject $cluster.Id
-        $cluster.Name | Should -Be $env.cluster
-        $cluster.Sku.Capacity | Should -Be 1
-        $cluster.Sku.Name | Should -Be "Dedicated"
+        $cluster.Name | Should -Be $env.createdCluster
+        $cluster.Capacity | Should -Be 1
+        $cluster.SkuName | Should -Be "Dedicated"
     }
 }

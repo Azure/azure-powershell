@@ -37,6 +37,12 @@ function Set-AzEventHubConsumerGroup{
         # The name of EventHub namespace
         ${NamespaceName},
 
+        [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub")]
+        [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
+        [System.String]
+        # The name of EventHub
+        ${EventHubName},
+
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]

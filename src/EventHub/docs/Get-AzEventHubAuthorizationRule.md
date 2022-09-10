@@ -18,6 +18,12 @@ Get-AzEventHubAuthorizationRule -NamespaceName <String> -ResourceGroupName <Stri
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetExpandedAlias
+```
+Get-AzEventHubAuthorizationRule -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-Name <String>] [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetExpandedEntity
 ```
 Get-AzEventHubAuthorizationRule -EventHubName <String> -NamespaceName <String> -ResourceGroupName <String>
@@ -58,6 +64,21 @@ Gets an EventHub Authorization Rule
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AliasName
+The name of the Disaster Recovery alias
+
+```yaml
+Type: System.String
+Parameter Sets: GetExpandedAlias
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -110,7 +131,7 @@ The name of the Authorization Rule
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpandedEntity, GetExpandedNamespace
+Parameter Sets: GetExpandedAlias, GetExpandedEntity, GetExpandedNamespace
 Aliases: AuthorizationRuleName
 
 Required: False
@@ -125,7 +146,7 @@ The name of EventHub namespace
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpandedEntity, GetExpandedNamespace
+Parameter Sets: GetExpandedAlias, GetExpandedEntity, GetExpandedNamespace
 Aliases: Namespace
 
 Required: True
@@ -141,7 +162,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpandedEntity, GetExpandedNamespace
+Parameter Sets: GetExpandedAlias, GetExpandedEntity, GetExpandedNamespace
 Aliases:
 
 Required: True
@@ -156,7 +177,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpandedEntity, GetExpandedNamespace
+Parameter Sets: GetExpandedAlias, GetExpandedEntity, GetExpandedNamespace
 Aliases:
 
 Required: False
@@ -186,7 +207,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IEventHubIdentity>: Identity parameter.
+`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[ApplicationGroupName <String>]`: The Application Group name 
   - `[AuthorizationRuleName <String>]`: The authorization rule name.

@@ -14,14 +14,14 @@ Sets an EventHub Consumer Group
 
 ### SetExpanded (Default)
 ```
-Set-AzEventHubConsumerGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-UserMetadata <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzEventHubConsumerGroup -EventHubName <String> -Name <String> -NamespaceName <String>
+ -ResourceGroupName <String> -UserMetadata <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
-Set-AzEventHubConsumerGroup -InputObject <IEventHubIdentity> [-UserMetadata <String>]
+Set-AzEventHubConsumerGroup -InputObject <IEventHubIdentity> -UserMetadata <String>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -78,6 +78,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EventHubName
+The name of EventHub
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -186,7 +201,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -244,7 +259,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IEventHubIdentity>: Identity parameter.
+`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[ApplicationGroupName <String>]`: The Application Group name 
   - `[AuthorizationRuleName <String>]`: The authorization rule name.

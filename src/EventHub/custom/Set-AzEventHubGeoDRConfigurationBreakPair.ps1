@@ -24,10 +24,8 @@ function Set-AzEventHubGeoDRConfigurationBreakPair{
     [CmdletBinding(DefaultParameterSetName = 'Break', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'Break', Mandatory, HelpMessage = "The name of the Consumer Group.")]
-        [Alias('ConsumerGroupName')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
-        # The name of the Consumer Group.
         ${Name},
 
         [Parameter(ParameterSetName = 'Break', Mandatory, HelpMessage = "The name of EventHub namespace")]
@@ -127,10 +125,6 @@ function Set-AzEventHubGeoDRConfigurationBreakPair{
 
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
 
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
@@ -138,7 +132,7 @@ function Set-AzEventHubGeoDRConfigurationBreakPair{
 
             if($PSCmdlet.ParameterSetName -eq 'Break'){
                 if ($PSCmdlet.ShouldProcess("EventHub Disaster Recovery Alias $($Name)", "Break Pair")) {
-                    Az.EventHub.private\Invoke-BreakDisasterRecoveryConfigPairing @PSBoundParameters
+                    Az.EventHub.private\Invoke-AzEventHubBreakDisasterRecoveryConfigPairing_Break @PSBoundParameters
                 }
             }
             elseif($PSCmdlet.ParameterSetName -eq 'BreakViaIdentity'){
@@ -149,7 +143,7 @@ function Set-AzEventHubGeoDRConfigurationBreakPair{
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject
                 }
                 if ($PSCmdlet.ShouldProcess("EventHub Disaster Recovery Alias $($Name)", "Break Pair")) {
-                    Az.EventHub.private\Invoke-BreakDisasterRecoveryConfigPairing -Name $ResourceHashTable['AliasName'] -NamespaceName $ResourceHashTable['NamespaceName'] -ResourceGroupName $ResourceHashTable['ResourceGroupName']
+                    Az.EventHub.private\Invoke-AzEventHubBreakDisasterRecoveryConfigPairing_Break -Name $ResourceHashTable['AliasName'] -NamespaceName $ResourceHashTable['NamespaceName'] -ResourceGroupName $ResourceHashTable['ResourceGroupName'] -SubscriptionId $ResourceHashTable['SubscriptionName']
                 }
             }
 		}
@@ -157,22 +151,4 @@ function Set-AzEventHubGeoDRConfigurationBreakPair{
 			throw
 		}
 	}
-}
-
-function ParseResourceId{
-    param (
-        [string]$ResourceId
-    )
-    $array = $resourceID.ToLower().Split('/')
-    $indexResourceGroup = 0..($array.Length -1) | where {$array[$_] -eq 'resourcegroups'}
-    $indexNamespace = 0..($array.Length -1) | where {$array[$_] -eq 'namespaces'}
-    $indexAlias = 0..($array.Length -1) | where {$array[$_] -eq 'disasterrecoveryconfigs'}
-
-    $result = @{
-        'ResourceGroupName' = $array.get($indexResourceGroup+1)
-        'NamespaceName' = $array.get($indexNamespace+1)
-        'AliasName' = $array.get($indexAlias+1)
-    }
-
-    return $result
 }

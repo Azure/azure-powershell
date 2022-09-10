@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzEventHubSchemaGroup'
 }
 
 Describe 'Remove-AzEventHubSchemaGroup' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzEventHubSchemaGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.schemaGroup2
+        { Get-AzEventHubSchemaGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.schemaGroup2 } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $schemaGroup = Get-AzEventHubSchemaGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.schemaGroup3
+        Remove-AzEventHubSchemaGroup -InputObject $schemaGroup
+        { Get-AzEventHubSchemaGroup -InputObject $schemaGroup } | Should -Throw
     }
 }

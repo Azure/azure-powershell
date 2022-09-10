@@ -30,11 +30,11 @@ Describe 'Get-AzEventHubConsumerGroup' {
     It 'GetViaIdentity' {
         $consumerGroup = Get-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.consumerGroup
         
-        $consumerGroup = Get-AzEventHubConsumerGroup $consumerGroup
+        $consumerGroup = Get-AzEventHubConsumerGroup -InputObject $consumerGroup
         $consumerGroup.ResourceGroupName | Should -Be $env.resourceGroup
         $consumerGroup.Name | Should -Be $env.consumerGroup
 
-        $consumerGroup = Get-AzEventHubConsumerGroup $consumerGroup.Id
+        $consumerGroup = Get-AzEventHubConsumerGroup -InputObject $consumerGroup.Id
         $consumerGroup.ResourceGroupName | Should -Be $env.resourceGroup
         $consumerGroup.Name | Should -Be $env.consumerGroup
     }

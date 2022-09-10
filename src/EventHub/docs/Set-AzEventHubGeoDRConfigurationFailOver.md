@@ -8,17 +8,25 @@ schema: 2.0.0
 # Set-AzEventHubGeoDRConfigurationFailOver
 
 ## SYNOPSIS
-Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
+This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
 
 ## SYNTAX
 
+### Fail (Default)
 ```
-Set-AzEventHubGeoDRConfigurationFailOver -Alias <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzEventHubGeoDRConfigurationFailOver -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
+```
+
+### FailViaIdentity
+```
+Set-AzEventHubGeoDRConfigurationFailOver -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
+This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
 
 ## EXAMPLES
 
@@ -46,15 +54,15 @@ Invokes GEO DR failover and reconfigure the alias to point to the secondary name
 
 ## PARAMETERS
 
-### -Alias
-The Disaster Recovery configuration name
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: System.String
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -76,12 +84,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -NamespaceName
-The Namespace name
+### -InputObject
+Identity parameter.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: FailViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Consumer Group.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Fail
 Aliases:
 
 Required: True
@@ -91,8 +115,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -NamespaceName
+The name of EventHub namespace
+
+```yaml
+Type: System.String
+Parameter Sets: Fail
+Aliases: Namespace
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -107,11 +146,12 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Name of the resource group within the azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Fail
 Aliases:
 
 Required: True
@@ -122,12 +162,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Fail
 Aliases:
 
 Required: False
@@ -173,6 +212,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+
 ## OUTPUTS
 
 ### System.Boolean
@@ -180,6 +221,26 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
+  - `[Alias <String>]`: The Disaster Recovery configuration name
+  - `[ApplicationGroupName <String>]`: The Application Group name 
+  - `[AuthorizationRuleName <String>]`: The authorization rule name.
+  - `[ClusterName <String>]`: The name of the Event Hubs Cluster.
+  - `[ConsumerGroupName <String>]`: The consumer group name
+  - `[EventHubName <String>]`: The Event Hub name
+  - `[Id <String>]`: Resource identity path
+  - `[NamespaceName <String>]`: The Namespace name
+  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
+  - `[ResourceAssociationName <String>]`: The ResourceAssociation Name
+  - `[ResourceGroupName <String>]`: Name of the resource group within the azure subscription.
+  - `[SchemaGroupName <String>]`: The Schema Group name 
+  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
 

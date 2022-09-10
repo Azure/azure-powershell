@@ -15,22 +15,40 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzEventHubGeoDRConfigurat
 }
 
 Describe 'New-AzEventHubGeoDRConfiguration' {
-    It 'CreateExpanded' -skip {
-        $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -PartnerNamespace $env.secondaryNamespaceResourceId
-        $drConfig.ResourceGroupName | $env.resourceGroup
-        $drConfig.Name | $env.alias
-        $drConfig.PartnerNamespace | $env.secondaryNamespaceResourceId
-        $drConfig.Role | "Primary"
+    It 'CreateExpanded' {
+        $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
+        $drConfig.ResourceGroupName | Should -Be $env.resourceGroup
+        $drConfig.Name | Should -Be $env.alias
+        $drConfig.PartnerNamespace | Should -Be $env.secondaryNamespaceResourceId
+        $drConfig.Role | Should -Be "Primary"
 
-        while($drConfig -ne "Succeeded"){
-            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
-            Wait-Seconds 10
+        while($drConfig.ProvisioningState -ne "Succeeded"){
+            $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+            Start-Sleep 10
         }
 
         $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
-        $drConfig.ResourceGroupName | $env.resourceGroup
-        $drConfig.Name | $env.alias
-        $drConfig.PartnerNamespace | $env.primaryNamespaceResourceId
-        $drConfig.Role | "Secondary"
+        $drConfig.ResourceGroupName | Should -Be $env.resourceGroup
+        $drConfig.Name | Should -Be $env.alias
+        $drConfig.PartnerNamespace | Should -Be $env.primaryNamespaceResourceId
+        $drConfig.Role | Should -Be "Secondary"
+
+        $namespaceAuthRules = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+
+        $drAuthRules = Get-AzEventHubAuthorizationRule -AliasName $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+        $drAuthRules.Count | Should -Be $namespaceAuthRules.Count
+
+        $authRule = Get-AzEventHubAuthorizationRule -Name RootManageSharedAccessKey -AliasName $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+        $authRule.Name | Should -Be "RootManageSharedAccessKey"
+        $authRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $authRule.Rights.Count | Should -Be 3
+
+        $drKeys = Get-AzEventHubKey -Name RootManageSharedAccessKey -AliasName $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+        $namespaceKeys = Get-AzEventHubKey -Name RootManageSharedAccessKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+        $drKeys.PrimaryKey | Should -Be $namespaceKeys.PrimaryKey
+        $drKeys.SecondaryKey | Should -Be $namespaceKeys.SecondaryKey
+
+        $eventHubs = Get-AzEventHub -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+        $eventHubs.Count | Should -be 1
     }
 }

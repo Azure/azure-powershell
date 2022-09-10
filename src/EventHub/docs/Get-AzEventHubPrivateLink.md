@@ -1,50 +1,37 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubnamespace
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubprivatelink
 schema: 2.0.0
 ---
 
-# Get-AzEventHubNamespace
+# Get-AzEventHubPrivateLink
 
 ## SYNOPSIS
-Gets the description of the specified namespace.
+Gets lists of resources that supports Privatelinks.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
-Get-AzEventHubNamespace [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzEventHubNamespace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzEventHubPrivateLink -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzEventHubNamespace -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzEventHubNamespace -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzEventHubPrivateLink -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets the description of the specified namespace.
+Gets lists of resources that supports Privatelinks.
 
 ## EXAMPLES
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
+PS C:\> {{ Add code here }}
 
-```output
 {{ Add output here }}
 ```
 
@@ -52,10 +39,8 @@ Gets the description of the specified namespace.
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
+PS C:\> {{ Add code here }}
 
-```output
 {{ Add output here }}
 ```
 
@@ -94,13 +79,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
+### -NamespaceName
 The Namespace name
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: NamespaceName
+Aliases:
 
 Required: True
 Position: Named
@@ -114,7 +99,7 @@ Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Get
 Aliases:
 
 Required: True
@@ -130,7 +115,7 @@ The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: Get, List, List1
+Parameter Sets: Get
 Aliases:
 
 Required: False
@@ -149,7 +134,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEhNamespace
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateLinkResourcesListResult
 
 ## NOTES
 
@@ -160,7 +145,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IEventHubIdentity>: Identity Parameter
+`INPUTOBJECT <IEventHubIdentity>`: Identity Parameter
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[ApplicationGroupName <String>]`: The Application Group name 
   - `[AuthorizationRuleName <String>]`: The authorization rule name.

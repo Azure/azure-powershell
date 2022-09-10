@@ -15,24 +15,32 @@ if(($null -eq $TestName) -or ($TestName -contains 'Approve-AzEventHubPrivateEndp
 }
 
 Describe 'Approve-AzEventHubPrivateEndpointConnection' {
+    $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+    
     It 'SetExpanded' {
-        $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $privateEndpoint[0].ConnectionState | Should -Be "Pending"
         $privateEndpoint[0].Description | Should -Be "Hello"
 
-        $env.Add("pe1", $privateEndpoint[0].Name)
-        $env.Add("pe2", $privateEndpoint[1].Name)
+        $firstPrivateEndpoint = Approve-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $privateEndpoint[0].Name
+        $firstPrivateEndpoint.ConnectionState | Should -Be "Approved"
+        $firstPrivateEndpoint.Description | Should -Be ""
 
-        $privateEndpoint = Approve-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.pe1
-        $privateEndpoint.ConnectionState | Should -Be "Approved"
-        $privateEndpoint.Description | Should -Be ""
+        while($firstPrivateEndpoint.ProvisioningState -ne "Succeeded"){
+            $firstPrivateEndpoint = Get-AzEventHubPrivateEndpointConnection -Name $privateEndpoint[0].Name -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+            Start-Sleep 10
+        }
     }
 
     It 'SetViaIdentityExpanded' {
-        $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.pe2
+        $secondPrivateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $privateEndpoint[1].Name
 
-        $privateEndpoint = Approve-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint -Description "Bye"
-        $privateEndpoint.ConnectionState | Should -Be "Approved"
-        $privateEndpoint.Description | Should -Be "Bye"
+        $secondPrivateEndpoint = Approve-AzEventHubPrivateEndpointConnection -InputObject $secondPrivateEndpoint -Description "Bye"
+        $secondPrivateEndpoint.ConnectionState | Should -Be "Approved"
+        $secondPrivateEndpoint.Description | Should -Be "Bye"
+
+        while($secondPrivateEndpoint.ProvisioningState -ne "Succeeded"){
+            $secondPrivateEndpoint = Get-AzEventHubPrivateEndpointConnection -Name $privateEndpoint[1].Name -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+            Start-Sleep 10
+        }
     }
 }

@@ -18,6 +18,12 @@ Get-AzEventHubKey -Name <String> -NamespaceName <String> -ResourceGroupName <Str
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
+### GetExpandedAlias
+```
+Get-AzEventHubKey -AliasName <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+```
+
 ### GetExpandedEntity
 ```
 Get-AzEventHubKey -EventHubName <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
@@ -52,6 +58,21 @@ Gets an EventHub SAS key
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AliasName
+The name of the Disaster Recovery alias
+
+```yaml
+Type: System.String
+Parameter Sets: GetExpandedAlias
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job

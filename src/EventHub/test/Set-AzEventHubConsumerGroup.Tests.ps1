@@ -23,6 +23,7 @@ Describe 'Set-AzEventHubConsumerGroup' {
     }
 
     It 'SetViaIdentityExpanded' {
+        $consumerGroup = Get-AzEventHubConsumerGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -EventHubName $env.eventHub -Name $env.consumerGroup
         $consumerGroup = Set-AzEventHubConsumerGroup -InputObject $consumerGroup -UserMetadata "Third Metadata"
         $consumerGroup.Name | Should -Be $env.consumerGroup
         $consumerGroup.ResourceGroupName | Should -Be $env.resourceGroup

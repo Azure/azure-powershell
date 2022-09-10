@@ -131,7 +131,7 @@ function Deny-AzEventHubPrivateEndpointConnection{
 
             $connection = Get-AzEventHubPrivateEndpointConnection @PSBoundParameters
 
-            $connection.PrivateLinkServiceConnectionStateStatus = "Rejected"
+            $connection.ConnectionState = "Rejected"
 
             if($hasDescription){
                 $connection.Description = $Description

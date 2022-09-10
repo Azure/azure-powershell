@@ -14,21 +14,21 @@ Sets an EventHub Authorization Rule
 
 ### SetExpandedNamespace (Default)
 ```
-Set-AzEventHubAuthorizationRule -NamespaceName <String> -ResourceGroupName <String> [-Name <String>]
- [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzEventHubAuthorizationRule -NamespaceName <String> -ResourceGroupName <String> -Rights <AccessRights[]>
+ [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
+ [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetExpandedEntity
 ```
 Set-AzEventHubAuthorizationRule -EventHubName <String> -NamespaceName <String> -ResourceGroupName <String>
- [-Name <String>] [-SubscriptionId <String>] [-Rights <AccessRights[]>] [-DefaultProfile <PSObject>] [-AsJob]
+ -Rights <AccessRights[]> [-Name <String>] [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
-Set-AzEventHubAuthorizationRule -InputObject <IEventHubIdentity> [-Rights <AccessRights[]>]
+Set-AzEventHubAuthorizationRule -InputObject <IEventHubIdentity> -Rights <AccessRights[]>
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -191,7 +191,7 @@ Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.AccessRights[]
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -264,7 +264,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IEventHubIdentity>: Identity parameter.
+`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[ApplicationGroupName <String>]`: The Application Group name 
   - `[AuthorizationRuleName <String>]`: The authorization rule name.

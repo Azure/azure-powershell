@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Set-AzEventHubNetworkRuleSet'
 
 Describe 'Set-AzEventHubNetworkRuleSet' {
     It 'SetExpanded' {
-        $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 1.1.1.1
-        $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2
+        $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 1.1.1.1 -Action Allow
+        $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 
         $virtualNetworkRule1 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId $env.subnetId1
         $virtualNetworkRule2 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId $env.subnetId2
@@ -28,37 +28,38 @@ Describe 'Set-AzEventHubNetworkRuleSet' {
         $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
         $networkRuleSet.IPRule.Count | Should -Be 2
         $networkRuleSet.PublicNetworkAccess | Should -Be "Enabled"
-        $networkRuleSet.TrustedServiceAccessEnabled | $null
+        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null
 
         $networkRuleSet = Set-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -DefaultAction Deny
         $networkRuleSet.DefaultAction | Should -Be "Deny"
         $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
         $networkRuleSet.IPRule.Count | Should -Be 2
         $networkRuleSet.PublicNetworkAccess | Should -Be "Enabled"
-        $networkRuleSet.TrustedServiceAccessEnabled | $null
+        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null
 
         $networkRuleSet = Set-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -PublicNetworkAccess Disabled
         $networkRuleSet.DefaultAction | Should -Be "Deny"
         $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
         $networkRuleSet.IPRule.Count | Should -Be 2
         $networkRuleSet.PublicNetworkAccess | Should -Be "Disabled"
-        $networkRuleSet.TrustedServiceAccessEnabled | $null
+        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null
 
         $networkRuleSet = Set-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TrustedServiceAccessEnabled
         $networkRuleSet.DefaultAction | Should -Be "Deny"
         $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
         $networkRuleSet.IPRule.Count | Should -Be 2
         $networkRuleSet.PublicNetworkAccess | Should -Be "Disabled"
-        $networkRuleSet.TrustedServiceAccessEnabled | $true
+        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $true
 
     }
 
     It 'SetViaIdentityExpanded' {
+        $networkRuleSet = Get-AzEventHubNetworkRuleSet -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $networkRuleSet = Set-AzEventHubNetworkRuleSet -InputObject $networkRuleSet -TrustedServiceAccessEnabled:$false
         $networkRuleSet.DefaultAction | Should -Be "Deny"
         $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
         $networkRuleSet.IPRule.Count | Should -Be 2
         $networkRuleSet.PublicNetworkAccess | Should -Be "Disabled"
-        $networkRuleSet.TrustedServiceAccessEnabled | $false
+        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $false
     }
 }

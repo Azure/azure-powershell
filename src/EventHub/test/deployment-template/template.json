@@ -26,16 +26,16 @@
       "defaultValue": "appGroup",
       "type": "String"
     },
-    "secondarynamespace_name": {
-      "type": "String"
-    },
     "namespaceResourceId": {
+      "defaultValue": "id",
       "type": "String"
     },
     "peName1": {
+      "defaultValue": "pe1",
       "type": "String"
     },
     "peName2": {
+      "defaultValue": "pe2",
       "type": "String"
     }
   },
@@ -194,26 +194,6 @@
       ],
       "properties": {}
     },
-    {
-      "type": "Microsoft.EventHub/namespaces",
-      "apiVersion": "2022-01-01-preview",
-      "name": "[parameters('secondarynamespace_name')]",
-      "location": "Australia East",
-      "sku": {
-        "name": "Premium",
-        "tier": "Premium",
-        "capacity": 1
-      },
-      "properties": {
-        "minimumTlsVersion": "1.2",
-        "publicNetworkAccess": "Enabled",
-        "disableLocalAuth": false,
-        "zoneRedundant": true,
-        "isAutoInflateEnabled": false,
-        "maximumThroughputUnits": 0,
-        "kafkaEnabled": true
-      }
-    }
     {
       "type": "Microsoft.Network/privateEndpoints",
       "apiVersion": "2020-11-01",

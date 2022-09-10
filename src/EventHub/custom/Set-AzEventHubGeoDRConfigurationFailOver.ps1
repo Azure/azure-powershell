@@ -24,10 +24,8 @@ function Set-AzEventHubGeoDRConfigurationFailOver{
     [CmdletBinding(DefaultParameterSetName = 'Fail', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(ParameterSetName = 'Fail', Mandatory, HelpMessage = "The name of the Consumer Group.")]
-        [Alias('ConsumerGroupName')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
-        # The name of the Consumer Group.
         ${Name},
 
         [Parameter(ParameterSetName = 'Fail', Mandatory, HelpMessage = "The name of EventHub namespace")]
@@ -127,18 +125,14 @@ function Set-AzEventHubGeoDRConfigurationFailOver{
 
             # 2. PUT
             $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
 
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
             }
 
             if($PSCmdlet.ParameterSetName -eq 'Fail'){
-                if ($PSCmdlet.ShouldProcess("EventHub Disaster Recovery Alias $($Name)", "Break Pair")) {
-                    Az.EventHub.private\Invoke-FailDisasterRecoveryConfigOver @PSBoundParameters
+                if ($PSCmdlet.ShouldProcess("EventHub Disaster Recovery Alias $($Name)", "Fail Over")) {
+                    Az.EventHub.private\Invoke-AzEventHubFailDisasterRecoveryConfigOver_Fail @PSBoundParameters
                 }
             }
             elseif($PSCmdlet.ParameterSetName -eq 'FailViaIdentity'){
@@ -149,7 +143,7 @@ function Set-AzEventHubGeoDRConfigurationFailOver{
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject
                 }
                 if ($PSCmdlet.ShouldProcess("EventHub Disaster Recovery Alias $($Name)", "Fail Over")) {
-                    Az.EventHub.private\Invoke-FailDisasterRecoveryConfigOver -Name $ResourceHashTable['AliasName'] -NamespaceName $ResourceHashTable['NamespaceName'] -ResourceGroupName $ResourceHashTable['ResourceGroupName']
+                    Az.EventHub.private\Invoke-AzEventHubFailDisasterRecoveryConfigOver_Fail -Name $ResourceHashTable['AliasName'] -NamespaceName $ResourceHashTable['NamespaceName'] -ResourceGroupName $ResourceHashTable['ResourceGroupName'] -SubscriptionId $ResourceHashTable['SubscriptionName']
                 }
             }
 		}
@@ -157,22 +151,4 @@ function Set-AzEventHubGeoDRConfigurationFailOver{
 			throw
 		}
 	}
-}
-
-function ParseResourceId{
-    param (
-        [string]$ResourceId
-    )
-    $array = $resourceID.ToLower().Split('/')
-    $indexResourceGroup = 0..($array.Length -1) | where {$array[$_] -eq 'resourcegroups'}
-    $indexNamespace = 0..($array.Length -1) | where {$array[$_] -eq 'namespaces'}
-    $indexAlias = 0..($array.Length -1) | where {$array[$_] -eq 'disasterrecoveryconfigs'}
-
-    $result = @{
-        'ResourceGroupName' = $array.get($indexResourceGroup+1)
-        'NamespaceName' = $array.get($indexNamespace+1)
-        'AliasName' = $array.get($indexAlias+1)
-    }
-
-    return $result
 }

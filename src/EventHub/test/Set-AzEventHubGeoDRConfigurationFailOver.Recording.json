@@ -1,0 +1,44 @@
+{
+  "Set-AzEventHubGeoDRConfigurationFailOver+[NoContext]+Fail+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpdj078/providers/Microsoft.EventHub/namespaces/namespaceNameuaqchy/disasterRecoveryConfigs/aliass4hleq?api-version=2022-01-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpdj078/providers/Microsoft.EventHub/namespaces/namespaceNameuaqchy/disasterRecoveryConfigs/aliass4hleq?api-version=2022-01-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "403" ],
+        "x-ms-client-request-id": [ "0bba8297-fb3b-412c-ad7f-b0f7c81f9b8d" ],
+        "CommandName": [ "Get-AzEventHubGeoDRConfiguration" ],
+        "FullCommandName": [ "Get-AzEventHubGeoDRConfiguration_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.EventHub/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 404,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "a90ce5df-d4a4-4dad-8030-f863ac9da294_M11CH3_M11CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11815" ],
+        "x-ms-correlation-request-id": [ "a00fb990-75b9-4656-9e6b-edcec03a8acb" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220909T201923Z:a00fb990-75b9-4656-9e6b-edcec03a8acb" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 09 Sep 2022 20:19:23 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "187" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"error\":{\"message\":\"Alias \u0027aliass4hleq\u0027 does not exist or is not associated with namespace \u0027namespaceNameuaqchy\u0027. CorrelationId: a00fb990-75b9-4656-9e6b-edcec03a8acb\",\"code\":\"NotFound\"}}",
+      "isContentBase64": false
+    }
+  }
+}

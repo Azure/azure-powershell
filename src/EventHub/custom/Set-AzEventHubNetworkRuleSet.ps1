@@ -158,27 +158,40 @@ function Set-AzEventHubNetworkRuleSet{
             $null = $PSBoundParameters.Remove('ResourceGroupName')
             $null = $PSBoundParameters.Remove('NamespaceName')
             $null = $PSBoundParameters.Remove('SubscriptionId')
+
+            $hasProperty = $false
+
             if ($hasPublicNetworkAccess) {
                 $networkRuleSet.PublicNetworkAccess = $PublicNetworkAccess
+                $hasProperty = $true
             }
             if ($hasTrustedServiceAccessEnabled) {
                 $networkRuleSet.TrustedServiceAccessEnabled = $TrustedServiceAccessEnabled
+                $hasProperty = $true
             }
             if ($hasDefaultAction) {
                 $networkRuleSet.DefaultAction = $DefaultAction
+                $hasProperty = $true
             }
             if ($hasIPRule) {
                 $networkRuleSet.IPRule = $IPRule
+                $hasProperty = $true
             }
             if ($hasVirtualNetworkRule) {
                 $networkRuleSet.VirtualNetworkRule = $VirtualNetworkRule
+                $hasProperty = $true
             }
+
+            if (($hasProperty -eq $false) -and ($PSCmdlet.ParameterSetName -eq 'SetViaIdentityExpanded')){
+                throw 'Please specify the property you want to update on the -InputObject. Refer https://go.microsoft.com/fwlink/?linkid=2204690#behavior-of--inputobject for example.'
+            }
+
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
             }
 
             if ($PSCmdlet.ShouldProcess("EventHub Network Rule Set on namespace $($networkRuleSet.Name)", "Create or update")) {
-                Az.EventHub.private\New-AzEventHubNetworkRuleSey_CreateViaIdentity -InputObject $networkRuleSet -Parameter $networkRuleSet @PSBoundParameters
+                Az.EventHub.private\New-AzEventHubNetworkRuleSet_CreateViaIdentity -InputObject $networkRuleSet -Parameter $networkRuleSet @PSBoundParameters
             }
 		}
 		catch{

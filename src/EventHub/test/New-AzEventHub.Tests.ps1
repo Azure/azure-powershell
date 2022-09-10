@@ -24,11 +24,11 @@ Describe 'New-AzEventHub' {
         $eventhub.PartitionCount | Should -Be 5
 
         # Create EventHub with capture enabled 
-        $eventhub = New-AzEventHub -Name $env.eventHub3 -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -ArchiveNameFormat {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second} -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId
+        $eventhub = New-AzEventHub -Name $env.eventHub3 -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer $env.blobContainer -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId $env.storageAccountId
         $eventhub.Name | Should -Be $env.eventHub3
         $eventhub.ResourceGroupName | Should -Be $env.resourceGroup
-        $eventhub.MessageRetentionInDays | Should -Be 1
-        $eventhub.PartitionCount | Should -Be 1
+        $eventhub.MessageRetentionInDays | Should -Be 7
+        $eventhub.PartitionCount | Should -Be 4
         $eventhub.ArchiveNameFormat | Should -Be "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}"
         $eventhub.BlobContainer | Should -Be $env.blobContainer
         $eventhub.CaptureEnabled | Should -Be $true

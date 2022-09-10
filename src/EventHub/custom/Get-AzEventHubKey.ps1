@@ -46,6 +46,7 @@ function Get-AzEventHubKey{
 
         [Parameter(ParameterSetName = 'GetExpandedNamespace', Mandatory, HelpMessage = "The name of EventHub namespace")]
         [Parameter(ParameterSetName = 'GetExpandedEntity', Mandatory, HelpMessage = "The name of the EventHub namespace.")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the EventHub namespace.")]
         [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
@@ -148,7 +149,7 @@ function Get-AzEventHubKey{
 
             elseif ($PSCmdlet.ParameterSetName -eq 'GetExpandedAlias'){
                 if ($PSCmdlet.ShouldProcess("EventHub Geo DR alias $($Name)", "List Keys")) {
-                    $PSBoundParameters.Remove('AliasName')
+                    $null = $PSBoundParameters.Remove('AliasName')
                     Az.EventHub.private\Get-AzEventHubDisasterRecoveryConfigKey_List -Alias $AliasName @PSBoundParameters
                 }
             }

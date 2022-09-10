@@ -150,7 +150,7 @@ function Get-AzEventHubAuthorizationRule{
             }
 
             elseif ($PSCmdlet.ParameterSetName -eq 'GetExpandedAlias'){
-                $PSBoundParameters.Remove('AliasName')
+                $null = $PSBoundParameters.Remove('AliasName')
                 if(-not $PSBoundParameters.ContainsKey('Name')){
                     Az.EventHub.private\Get-AzEventHubDisasterRecoveryConfigAuthorizationRule_List -Alias $AliasName @PSBoundParameters
                 }
@@ -193,15 +193,12 @@ function ParseResourceId{
         [string]$ResourceId
     )
     $array = $resourceID.ToLower().Split('/')
+    $indexSubscription = 0..($array.Length -1) | where {$array[$_] -eq 'subscriptions'}
     $indexResourceGroup = 0..($array.Length -1) | where {$array[$_] -eq 'resourcegroups'}
     $indexNamespace = 0..($array.Length -1) | where {$array[$_] -eq 'namespaces'}
     $indexEventHub = 0..($array.Length -1) | where {$array[$_] -eq 'eventhubs'}
     $indexAlias = 0..($array.Length -1) | where {$array[$_] -eq 'disasterrecoveryconfigs'}
     $indexAuthRule = 0..($array.Length -1) | where {$array[$_] -eq 'authorizationrules'}
-
-    if(($indexResourceGroup -eq $null) -or ($indexNamespace -eq $null) -or ($indexAuthRule -eq $null)){
-        throw 'Invalid -InputObject Id'
-    }
     
     if (($indexResourceGroup+1) > $array.Length){
         throw 'Invalid -InputObject Id'
@@ -209,14 +206,10 @@ function ParseResourceId{
     if (($indexNamespace+1) > $array.Length){
         throw 'Invalid -InputObject Id'
     }
-    if (($indexAuthRule+1) > $array.Length){
-        throw 'Invalid -InputObject Id'
-    }
 
     $result = @{
         'ResourceGroupName' = $array.get($indexResourceGroup+1)
         'NamespaceName' = $array.get($indexNamespace+1)
-        'AuthorizationRuleName' = $array.get($indexAuthRule+1)
     }
 
     if ($indexEventHub -ne $null){
@@ -225,6 +218,24 @@ function ParseResourceId{
         }
         else{
             $result.add('EventHubName', $array.get($indexEventHub+1))
+        }
+    }
+
+    if ($indexSubscription -ne $null){
+        if (($indexSubscription+1) > $array.Length){
+            throw 'Invalid -InputObject Id'
+        }
+        else{
+            $result.add('SubscriptionName', $array.get($indexSubscription+1))
+        }
+    }
+
+    if ($indexAuthRule -ne $null){
+        if (($indexAuthRule+1) > $array.Length){
+            throw 'Invalid -InputObject Id'
+        }
+        else{
+            $result.add('AuthorizationRuleName', $array.get($indexAuthRule+1))
         }
     }
 

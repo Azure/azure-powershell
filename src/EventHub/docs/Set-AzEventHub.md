@@ -17,17 +17,16 @@ Updates an EventHub Entity
 Set-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
  [-Encoding <EncodingCaptureDescription>] [-IntervalInSeconds <Int32>] [-MessageRetentionInDays <Int64>]
- [-PartitionCount <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>]
- [-StorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+ [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>] [-StorageAccountResourceId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzEventHub -InputObject <IEventHubIdentity> [-ArchiveNameFormat <String>] [-BlobContainer <String>]
  [-CaptureEnabled] [-DestinationName <String>] [-Encoding <EncodingCaptureDescription>]
- [-IntervalInSeconds <Int32>] [-MessageRetentionInDays <Int64>] [-PartitionCount <Int64>]
- [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>] [-StorageAccountResourceId <String>]
+ [-IntervalInSeconds <Int32>] [-MessageRetentionInDays <Int64>] [-SizeLimitInBytes <Int32>]
+ [-SkipEmptyArchive] [-Status <EntityStatus>] [-StorageAccountResourceId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -260,21 +259,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PartitionCount
-Number of partitions created for the Event Hub, allowed values are from 1 to 32 partitions.
-
-```yaml
-Type: System.Int64
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
 The name of the resource group.
 The name is case insensitive.
@@ -417,7 +401,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IEventHubIdentity>: Identity parameter.
+`INPUTOBJECT <IEventHubIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[ApplicationGroupName <String>]`: The Application Group name 
   - `[AuthorizationRuleName <String>]`: The authorization rule name.

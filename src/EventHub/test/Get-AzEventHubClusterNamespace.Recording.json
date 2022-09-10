@@ -1,41 +1,43 @@
 {
-  "Get-AzEventHubClusterNamespace+[NoContext]+List+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/clusterver1nu/namespaces?api-version=2022-01-01-preview+1": {
+  "Get-AzEventHubClusterNamespace+[NoContext]+List+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/TestClusterAutomatic/namespaces?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/clusterver1nu/namespaces?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/clusters/TestClusterAutomatic/namespaces?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "20" ],
-        "x-ms-client-request-id": [ "82a778a2-0968-4631-9bee-18c538fd69b4" ],
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "180cb78e-874b-43fa-acb6-f3644f1e9443" ],
         "CommandName": [ "Get-AzEventHubClusterNamespace" ],
         "FullCommandName": [ "Get-AzEventHubClusterNamespace_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v8.2.0", "PSVersion/v7.1.3", "Az.EventHub/0.1.0" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.EventHub/0.1.0" ],
         "Authorization": [ "[Filtered]" ]
       },
       "ContentHeaders": {
       }
     },
     "Response": {
-      "StatusCode": 404,
+      "StatusCode": 200,
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-failure-cause": [ "gateway" ],
-        "x-ms-request-id": [ "0ee216b5-79d7-43fc-a07a-4c121c6ada94" ],
-        "x-ms-correlation-request-id": [ "0ee216b5-79d7-43fc-a07a-4c121c6ada94" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220901T053634Z:0ee216b5-79d7-43fc-a07a-4c121c6ada94" ],
+        "x-ms-request-id": [ "084384e8-e2d2-40e5-a419-fab6a5210214_M8CH3_M8CH3" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
+        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11961" ],
+        "x-ms-correlation-request-id": [ "0edf6ac8-e243-4715-8a7a-61ccf473bb6d" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220909T182854Z:0edf6ac8-e243-4715-8a7a-61ccf473bb6d" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 01 Sep 2022 05:36:34 GMT" ]
+        "Date": [ "Fri, 09 Sep 2022 18:28:53 GMT" ]
       },
       "ContentHeaders": {
+        "Content-Length": [ "332" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ],
-        "Content-Length": [ "239" ]
+        "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"code\":\"ResourceNotFound\",\"message\":\"The Resource \u0027Microsoft.EventHub/clusters/clusterver1nu\u0027 under resource group \u0027AutomatedPowershellTesting\u0027 was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"}}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/namespaces/clusterNamespace2\"},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.EventHub/namespaces/clusterNamespace\"}]}",
       "isContentBase64": false
     }
   }

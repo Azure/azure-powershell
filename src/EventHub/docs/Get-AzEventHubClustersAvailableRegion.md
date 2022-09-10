@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.EventHub
-online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubclusteravailableclusterregion
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubclustersavailableregion
 schema: 2.0.0
 ---
 
-# Get-AzEventHubClusterAvailableClusterRegion
+# Get-AzEventHubClustersAvailableRegion
 
 ## SYNOPSIS
 List the quantity of available pre-provisioned Event Hubs Clusters, indexed by Azure region.
@@ -13,7 +13,7 @@ List the quantity of available pre-provisioned Event Hubs Clusters, indexed by A
 ## SYNTAX
 
 ```
-Get-AzEventHubClusterAvailableClusterRegion [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Get-AzEventHubClustersAvailableRegion [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
@@ -24,10 +24,8 @@ List the quantity of available pre-provisioned Event Hubs Clusters, indexed by A
 
 ### Example 1: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
+PS C:\> {{ Add code here }}
 
-```output
 {{ Add output here }}
 ```
 
@@ -35,10 +33,8 @@ List the quantity of available pre-provisioned Event Hubs Clusters, indexed by A
 
 ### Example 2: {{ Add title here }}
 ```powershell
-{{ Add code here }}
-```
+PS C:\> {{ Add code here }}
 
-```output
 {{ Add output here }}
 ```
 
