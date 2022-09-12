@@ -23,14 +23,14 @@ Describe 'Get-AzEventHubPrivateEndpointConnection' {
 
     It 'Get' {
         $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name
-        $privateEndpoint.ConnectionState | Should -Be "Approved"
+        $privateEndpoint.ConnectionState | Should -Be "Rejected"
         $privateEndpoint.Description | Should -Be ""
     }
 
     It 'GetViaIdentity' {
         $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[1].Name
         $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint
-        $privateEndpoint.ConnectionState | Should -Be "Approved"
+        $privateEndpoint.ConnectionState | Should -Be "Rejected"
         $privateEndpoint.Description | Should -Be "Bye"
     }
 }

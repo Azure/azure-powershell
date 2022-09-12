@@ -1,13 +1,13 @@
 {
-  "Get-AzEventHubNetworkRuleSet+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpdj078/providers/Microsoft.EventHub/namespaces/namespaceNamelix6wt/networkRuleSets/default?api-version=2022-01-01-preview+1": {
+  "Get-AzEventHubNetworkRuleSet+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestk3bhao/providers/Microsoft.EventHub/namespaces/namespaceNamezf7q9d/networkRuleSets/default?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpdj078/providers/Microsoft.EventHub/namespaces/namespaceNamelix6wt/networkRuleSets/default?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestk3bhao/providers/Microsoft.EventHub/namespaces/namespaceNamezf7q9d/networkRuleSets/default?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "52" ],
-        "x-ms-client-request-id": [ "453e2bda-74b6-43ba-a257-f276b5c2b018" ],
+        "x-ms-client-request-id": [ "f390dd78-7e8c-40ca-95cb-57cdf732ecc1" ],
         "CommandName": [ "Get-AzEventHubNetworkRuleSet" ],
         "FullCommandName": [ "Get-AzEventHubNetworkRuleSet_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,22 +22,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "70888fe8-bcd1-45b3-a639-1789228570ce_M8CH3_M8CH3" ],
+        "x-ms-request-id": [ "48bd2003-ab52-4831-97cc-6242e4e95aa2_M5CH3_M5CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11955" ],
-        "x-ms-correlation-request-id": [ "f89aa873-a87e-4ba3-9b59-ff8bb5899787" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220909T183001Z:f89aa873-a87e-4ba3-9b59-ff8bb5899787" ],
+        "x-ms-correlation-request-id": [ "10316ea9-a392-43b4-a91d-b25fd1815e5c" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220911T164729Z:10316ea9-a392-43b4-a91d-b25fd1815e5c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 09 Sep 2022 18:30:00 GMT" ]
+        "Date": [ "Sun, 11 Sep 2022 16:47:29 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "389" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpdj078/providers/Microsoft.EventHub/namespaces/namespaceNamelix6wt/networkRuleSets/default\",\"name\":\"default\",\"type\":\"Microsoft.EventHub/Namespaces/NetworkRuleSets\",\"location\":\"East US\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Allow\",\"virtualNetworkRules\":[],\"ipRules\":[]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestk3bhao/providers/Microsoft.EventHub/namespaces/namespaceNamezf7q9d/networkRuleSets/default\",\"name\":\"default\",\"type\":\"Microsoft.EventHub/Namespaces/NetworkRuleSets\",\"location\":\"East US\",\"properties\":{\"publicNetworkAccess\":\"Enabled\",\"defaultAction\":\"Allow\",\"virtualNetworkRules\":[],\"ipRules\":[]}}",
       "isContentBase64": false
     }
   }

@@ -60,6 +60,6 @@ Describe 'Set-AzEventHubNetworkRuleSet' {
         $networkRuleSet.VirtualNetworkRule.Count | Should -Be 3
         $networkRuleSet.IPRule.Count | Should -Be 2
         $networkRuleSet.PublicNetworkAccess | Should -Be "Disabled"
-        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $false
+        $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null
     }
 }

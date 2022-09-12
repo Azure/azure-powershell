@@ -142,7 +142,7 @@ function Set-AzEventHubGeoDRConfigurationBreakPair{
                 else{
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject
                 }
-                if ($PSCmdlet.ShouldProcess("EventHub Disaster Recovery Alias $($Name)", "Break Pair")) {
+                if ($PSCmdlet.ShouldProcess("EventHub Disaster Recovery Alias $($InputObject.Name)", "Break Pair")) {
                     Az.EventHub.private\Invoke-AzEventHubBreakDisasterRecoveryConfigPairing_Break -Name $ResourceHashTable['AliasName'] -NamespaceName $ResourceHashTable['NamespaceName'] -ResourceGroupName $ResourceHashTable['ResourceGroupName'] -SubscriptionId $ResourceHashTable['SubscriptionName']
                 }
             }

@@ -28,8 +28,6 @@ Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
         $drConfig.PartnerNamespace | Should -Be ""
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
-        Remove-AzEventHub -Name eh1 -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
-
         $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
         
         while($drConfig.ProvisioningState -ne "Succeeded"){
@@ -43,17 +41,15 @@ Describe 'Set-AzEventHubGeoDRConfigurationBreakPair' {
 
         Set-AzEventHubGeoDRConfigurationBreakPair -InputObject $drConfig
         
-        while($drConfig.ProvisioningState -ne "Succeeded"){
+        do{
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             Start-Sleep 10
-        }
+        } while($drConfig.ProvisioningState -ne "Succeeded")
 
         $drConfig.Name | Should -Be $env.alias
         $drConfig.ResourceGroupName | Should -Be $env.resourceGroup
         $drConfig.PartnerNamespace | Should -Be ""
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
-
-        Remove-AzEventHub -Name eh1 -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
 
         $drConfig = New-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
         

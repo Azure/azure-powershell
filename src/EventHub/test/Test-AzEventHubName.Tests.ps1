@@ -21,7 +21,7 @@ Describe 'Test-AzEventHubName' {
     }
 
     It 'AliasAvailability' {
-        $checkName = Test-AzEventHubName -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -Name $env.alias
+        $checkName = Test-AzEventHubName -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup -AliasName $env.alias
         $checkName.NameAvailable | Should -Be $false
     }
 }

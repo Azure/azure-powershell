@@ -1,13 +1,13 @@
 {
-  "Get-AzEventHubPrivateLink+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpdj078/providers/Microsoft.EventHub/namespaces/namespaceNamelix6wt/privateLinkResources?api-version=2022-01-01-preview+1": {
+  "Get-AzEventHubPrivateLink+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestk3bhao/providers/Microsoft.EventHub/namespaces/namespaceNamezf7q9d/privateLinkResources?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpdj078/providers/Microsoft.EventHub/namespaces/namespaceNamelix6wt/privateLinkResources?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestk3bhao/providers/Microsoft.EventHub/namespaces/namespaceNamezf7q9d/privateLinkResources?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "57" ],
-        "x-ms-client-request-id": [ "8cffac55-0832-4984-b2a3-693422824c1d" ],
+        "x-ms-client-request-id": [ "095e96a8-951c-4990-9b2e-40ba2873b267" ],
         "CommandName": [ "Get-AzEventHubPrivateLink" ],
         "FullCommandName": [ "Get-AzEventHubPrivateLink_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,64 +22,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "910d7ae4-166a-4af9-a76c-3b095f259c0c_M0CH3_M0CH3" ],
+        "x-ms-request-id": [ "03583925-10ab-459b-b880-94de55daf360_M9CH3_M9CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11950" ],
-        "x-ms-correlation-request-id": [ "f53b638e-8634-4009-a59a-d2ca9a4f77d2" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220909T183030Z:f53b638e-8634-4009-a59a-d2ca9a4f77d2" ],
+        "x-ms-correlation-request-id": [ "81d8d721-c951-4b6f-ae56-eb466cc06f50" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220911T164757Z:81d8d721-c951-4b6f-ae56-eb466cc06f50" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 09 Sep 2022 18:30:29 GMT" ]
+        "Date": [ "Sun, 11 Sep 2022 16:47:57 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "412" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpdj078/providers/Microsoft.EventHub/namespaces/namespaceNamelix6wt/privateLinkResources/namespace\",\"name\":\"namespace\",\"type\":\"Microsoft.EventHub/namespaces/privateLinkResources\",\"properties\":{\"groupId\":\"namespace\",\"requiredMembers\":[\"namespace\"],\"requiredZoneNames\":[\"privatelink.servicebus.windows.net\"]}}]}",
-      "isContentBase64": false
-    }
-  },
-  "Get-AzEventHubPrivateLink+[NoContext]+GetViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpdj078/providers/Microsoft.EventHub/namespaces/namespaceNamelix6wt/privateLinkResources?api-version=2022-01-01-preview+1": {
-    "Request": {
-      "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpdj078/providers/Microsoft.EventHub/namespaces/namespaceNamelix6wt/privateLinkResources?api-version=2022-01-01-preview",
-      "Content": null,
-      "isContentBase64": false,
-      "Headers": {
-        "x-ms-unique-id": [ "58" ],
-        "x-ms-client-request-id": [ "64e03c16-e7d7-4df9-9b89-a240d3c7883b" ],
-        "CommandName": [ "Get-AzEventHubPrivateLink" ],
-        "FullCommandName": [ "Get-AzEventHubPrivateLink_Get" ],
-        "ParameterSetName": [ "__AllParameterSets" ],
-        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.EventHub/0.1.0" ],
-        "Authorization": [ "[Filtered]" ]
-      },
-      "ContentHeaders": {
-      }
-    },
-    "Response": {
-      "StatusCode": 200,
-      "Headers": {
-        "Cache-Control": [ "no-cache" ],
-        "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "079b63e6-1228-47ff-80d1-558a08a15e51_M0CH3_M0CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11949" ],
-        "x-ms-correlation-request-id": [ "d6db9949-99e3-4ea4-aef7-1c1a705509e6" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220909T183030Z:d6db9949-99e3-4ea4-aef7-1c1a705509e6" ],
-        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Fri, 09 Sep 2022 18:30:29 GMT" ]
-      },
-      "ContentHeaders": {
-        "Content-Length": [ "412" ],
-        "Content-Type": [ "application/json; charset=utf-8" ],
-        "Expires": [ "-1" ]
-      },
-      "Content": "{\"value\":[{\"id\":\"subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestpdj078/providers/Microsoft.EventHub/namespaces/namespaceNamelix6wt/privateLinkResources/namespace\",\"name\":\"namespace\",\"type\":\"Microsoft.EventHub/namespaces/privateLinkResources\",\"properties\":{\"groupId\":\"namespace\",\"requiredMembers\":[\"namespace\"],\"requiredZoneNames\":[\"privatelink.servicebus.windows.net\"]}}]}",
+      "Content": "{\"value\":[{\"id\":\"subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestk3bhao/providers/Microsoft.EventHub/namespaces/namespaceNamezf7q9d/privateLinkResources/namespace\",\"name\":\"namespace\",\"type\":\"Microsoft.EventHub/namespaces/privateLinkResources\",\"properties\":{\"groupId\":\"namespace\",\"requiredMembers\":[\"namespace\"],\"requiredZoneNames\":[\"privatelink.servicebus.windows.net\"]}}]}",
       "isContentBase64": false
     }
   }

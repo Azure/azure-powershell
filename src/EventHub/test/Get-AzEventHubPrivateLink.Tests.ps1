@@ -19,13 +19,4 @@ Describe 'Get-AzEventHubPrivateLink' {
         $privateLink.RequiredMember[0] | Should -Be "namespace"
         $privateLink.RequiredZoneName[0] | Should -Be "privatelink.servicebus.windows.net"
     }
-
-    It 'GetViaIdentity' {
-        $privateLink = Get-AzEventHubPrivateLink -NamespaceName $env.namespace -ResourceGroupName $env.resourceGroup
-        $privateLink = Get-AzEventHubPrivateLink -InputObject $privateLink
-        $privateLink.Name | Should -Be "namespace"
-        $privateLink.GroupId | Should -Be "namespace"
-        $privateLink.RequiredMember[0] | Should -Be "namespace"
-        $privateLink.RequiredZoneName[0] | Should -Be "privatelink.servicebus.windows.net"
-    }
 }

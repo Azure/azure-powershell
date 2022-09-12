@@ -29,5 +29,7 @@ Describe 'Set-AzEventHubCluster' {
         $cluster.Name | Should -Be $env.cluster
         $cluster.Capacity | Should -Be 3
         $cluster.Tag.Count | Should -Be 1
+
+        Remove-AzEventHubCluster -InputObject $cluster
     }
 }

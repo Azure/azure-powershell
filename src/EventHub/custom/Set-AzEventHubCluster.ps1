@@ -60,7 +60,6 @@ function Set-AzEventHubCluster{
         [Parameter(HelpMessage = "Resource tags.")]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api10.ITrackedResourceTags]
-        [System.Collections.Hashtable]
         # Resource tags.
         ${Tag},
 

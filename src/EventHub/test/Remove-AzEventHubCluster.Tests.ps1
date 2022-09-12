@@ -22,7 +22,7 @@ Describe 'Remove-AzEventHubCluster' {
         { Get-AzEventHubCluster -ResourceGroupName $env.clusterResourceGroup -Name $env.cluster2 } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' {
+    It 'DeleteViaIdentity' -skip {
         { Remove-AzEventHubCluster -InputObject $cluster } | Should -Throw
     }
 }

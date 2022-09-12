@@ -147,6 +147,12 @@ directive:
       subject: PrivateLink
 
   - where:
+      verb: Get
+      subject: PrivateLink
+      variant: GetViaIdentity
+    remove: true
+
+  - where:
       model-name: PrivateEndpointConnection
       property-name: PrivateLinkServiceConnectionStateStatus
     set:

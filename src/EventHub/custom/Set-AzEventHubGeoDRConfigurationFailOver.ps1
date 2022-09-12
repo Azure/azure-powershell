@@ -142,7 +142,7 @@ function Set-AzEventHubGeoDRConfigurationFailOver{
                 else{
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject
                 }
-                if ($PSCmdlet.ShouldProcess("EventHub Disaster Recovery Alias $($Name)", "Fail Over")) {
+                if ($PSCmdlet.ShouldProcess("EventHub Disaster Recovery Alias $($InputObject.Name)", "Fail Over")) {
                     Az.EventHub.private\Invoke-AzEventHubFailDisasterRecoveryConfigOver_Fail -Name $ResourceHashTable['AliasName'] -NamespaceName $ResourceHashTable['NamespaceName'] -ResourceGroupName $ResourceHashTable['ResourceGroupName'] -SubscriptionId $ResourceHashTable['SubscriptionName']
                 }
             }
