@@ -1564,7 +1564,7 @@ param(
             Write-VerboseLog ("Initiating Arc AAD App creation by HCI RP")
             Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $ArcAADAppCreationMessage -PercentComplete 30
             $arcIdentity = Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action createArcIdentity -Force }  
-            $ArcResource = Get-AzResource -ResourceId $arcResourceId -ErrorAction Ignore
+            $ArcResource = Get-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -ErrorAction Ignore
             Write-VerboseLog ("Created Arc AAD App by HCI service")
         }
         else
@@ -1867,13 +1867,13 @@ param(
     if ($disabled)
     {
         # Call HCI RP to clean up all Arc proxy resources
-        $arcResource = Get-AzResource -ResourceId $arcResourceId -ErrorAction Ignore
+        $arcResource = Get-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -ErrorAction Ignore
 
         if($arcResource -ne $Null)
         {
             $DeletingArcCloudResourceMessageProgress = $DeletingArcCloudResourceMessage -f $arcResourceId
             Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $UnregisterArcProgressActivityName -Status $DeletingArcCloudResourceMessageProgress -PercentComplete 40
-            Execute-Without-ProgressBar -ScriptBlock {Remove-AzResource -ResourceId $arcResourceId -Force | Out-Null }
+            Execute-Without-ProgressBar -ScriptBlock {Remove-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Force | Out-Null } 
             if(($Null -ne $arcStatus) -and ($Null -ne $arcStatus.ApplicationId))
             {
                 $arcAADApplication = Get-AzADApplication -ApplicationId $arcStatus.ApplicationId -ErrorAction:SilentlyContinue
@@ -2228,7 +2228,11 @@ param(
             AccountId: $AccountId EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint `
             RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer IsWAC: $IsWAC"
         Write-VerboseLog ($registrationBeginMsg)
-        Write-NodeEventLog -Message $registrationBeginMsg -EventID 9001 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+        $registrationBeginMsgPIIScrubbed="Register-AzStackHCI triggered - Region: $Region ResourceName: $ResourceName `
+        SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName `
+        EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint `
+        RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer IsWAC: $IsWAC"
+        Write-NodeEventLog -Message $registrationBeginMsgPIIScrubbed -EventID 9001 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
         if(($EnvironmentName -eq $AzureChinaCloud) -and ($EnableAzureArcServer -eq $true))
         {
             $ArcNotAvailableMessage = $ArcIntegrationNotAvailableForCloudError -f $EnvironmentName
@@ -2249,7 +2253,7 @@ param(
 
         $resourceId = Get-ResourceId -ResourceName $ResourceName -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName
         Write-VerboseLog ("ResourceId of cluster resource: $resourceId")
-        $resource = Get-AzResource -ResourceId $resourceId -ErrorAction Ignore
+        $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore 
         $resGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction Ignore
 
         if($resource -ne $null)
@@ -2390,7 +2394,7 @@ param(
                 # create cluster identity by calling HCI RP
                 $clusterIdentity =  Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $resourceId -ApiVersion $RPAPIVersion -Action createClusterIdentity -Force }
                 # Get cluster again for identity details
-                $resource = Get-AzResource -ResourceId $resourceId -ErrorAction Ignore
+                $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
             }
             $serviceEndpoint = $resource.properties.serviceEndpoint
             $appId = $resource.Properties.aadClientId
@@ -2589,7 +2593,9 @@ param(
         
 
         Write-Output $registrationOutput | Format-List
-        Write-NodeEventLog -Message $RegistrationSuccessDetailsMessage -EventID 9004 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+        $RegistrationCompleteEvent = "Registration completed with status:  {0}" -f ($registrationOutput | Format-List | Out-String )
+        Write-InfoLog($RegistrationCompleteEvent)
+        Write-NodeEventLog -Message $RegistrationCompleteEvent -EventID 9004 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
     }
     catch
     {
@@ -2897,14 +2903,14 @@ param(
                 }
             }
 
-            $resource = Get-AzResource -ResourceId $resourceId -ErrorAction Ignore
+            $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
 
             if($resource -ne $Null)
             {
                 $DeletingCloudResourceMessageProgress = $DeletingCloudResourceMessage -f $ResourceName
                 Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $DeletingCloudResourceMessageProgress -percentcomplete 80
                 Write-VerboseLog ("$DeletingCloudResourceMessageProgress")
-                $remResource =  Execute-Without-ProgressBar -ScriptBlock { Remove-AzResource -ResourceId $resourceId -Force }
+                $remResource =  Execute-Without-ProgressBar -ScriptBlock { Remove-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -Force } 
                 $clusterAADApplication = Get-AzADApplication -ApplicationId $resource.Properties.aadClientId -ErrorAction:SilentlyContinue
                 if($clusterAADApplication -ne $Null)
                 {
@@ -3436,7 +3442,7 @@ param(
             }    
         }
 
-        $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ErrorAction Stop
+        $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop bhat
 
         $properties  = $armResource.Properties
 
