@@ -1848,6 +1848,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             }
         }
 
+        List<string> NoValueOperators = new List<string>() { "IsNullOrUndefined", "IsNotNull" };
+        bool IsValueRequired(string operatorValue)
+        {
+            return !NoValueOperators.Exists(o => string.Equals(o, operatorValue, StringComparison.OrdinalIgnoreCase));
+        }
+
         void UpdatedAdvancedFilterParameters(Hashtable[] advancedFilter, EventSubscriptionFilter filter)
         {
             filter.AdvancedFilters = new List<AdvancedFilter>();
@@ -1856,15 +1862,14 @@ namespace Microsoft.Azure.Commands.EventGrid
             for (int i = 0; i < advancedFilter.Count(); i++)
             {
                 // Validate entries.
-                if (advancedFilter[i].Count != 3)
+                if (advancedFilter[i].Count < 2 || advancedFilter[i].Count > 3)
                 {
-                    throw new Exception($"Invalid Advanced Filter parameter:. Unexpected number of entries for advanced filter #{i + 1} as we expect 3 key-value pair while we received {advancedFilter[i].Count}");
+                    throw new Exception($"Invalid Advanced Filter parameter:. Unexpected number of entries for advanced filter #{i + 1} as we expect 2-3 key-value pair while we received {advancedFilter[i].Count}");
                 }
 
                 if (!advancedFilter[i].ContainsKey("Operator") ||
                     !advancedFilter[i].ContainsKey("keY") ||
-                    !(advancedFilter[i].ContainsKey("value")
-                    || advancedFilter[i].ContainsKey("values")))
+                    (IsValueRequired((string)advancedFilter[i]["operator"]) && !(advancedFilter[i].ContainsKey("value") || advancedFilter[i].ContainsKey("values"))))
                 {
                     throw new Exception($"Invalid Advanced Filter parameter:. At least one of the key parameters is invalid for advanced filter #{i + 1}. The expected keys are either: Operator, key, and value or values.");
                 }
@@ -1885,6 +1890,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
                 List<string> keyValuesList = null;
                 List<double?> keyValuesListForDouble = null;
+                List<IList<double?>> keyValuesListForDoubleRanges = null;
                 Object[] tempValues = (Object[])advancedFilter[i]["values"];
 
                 if (tempValues != null)
@@ -1895,6 +1901,23 @@ namespace Microsoft.Azure.Commands.EventGrid
                         for (int val = 0; val < tempValues.Count(); val++)
                         {
                             keyValuesList.Add((string)tempValues[val]);
+                        }
+                    }
+                    else if (operatorValue.ToLower().Contains("range"))
+                    {
+                        keyValuesListForDoubleRanges = new List<IList<double?>>();
+                        for (int val = 0; val < tempValues.Count(); val++)
+                        {
+                            var range = ((object[])tempValues[val]);
+                            double? minimum = Convert.ToDouble(range[0]);
+                            double? maximum = Convert.ToDouble(range[1]);
+
+                            if (minimum > maximum)
+                            {
+                                throw new Exception($"Invalid Advanced Filter parameter. The minimum value of the range cannot be greater than the maximum value for advanced filter #{i + 1}");
+                            }
+
+                            keyValuesListForDoubleRanges.Add(new List<double?>() { minimum, maximum });
                         }
                     }
                     else if (operatorValue.ToLower().Contains("number"))
@@ -1944,6 +1967,16 @@ namespace Microsoft.Azure.Commands.EventGrid
 
                     filter.AdvancedFilters.Add(stringContainsAdvFilter);
                 }
+                else if (string.Equals(operatorValue, "StringNotContains", StringComparison.OrdinalIgnoreCase))
+                {
+                    var stringNotContainsAdvFilter = new StringNotContainsAdvancedFilter
+                    {
+                        Key = keyValue,
+                        Values = keyValuesList
+                    };
+
+                    filter.AdvancedFilters.Add(stringNotContainsAdvFilter);
+                }
                 else if (string.Equals(operatorValue, "StringBeginsWith", StringComparison.OrdinalIgnoreCase))
                 {
                     var stringBeginsWithAdvFilter = new StringBeginsWithAdvancedFilter
@@ -1954,6 +1987,16 @@ namespace Microsoft.Azure.Commands.EventGrid
 
                     filter.AdvancedFilters.Add(stringBeginsWithAdvFilter);
                 }
+                else if (string.Equals(operatorValue, "StringNotBeginsWith", StringComparison.OrdinalIgnoreCase))
+                {
+                    var stringNotBeginsWithAdvFilter = new StringNotBeginsWithAdvancedFilter
+                    {
+                        Key = keyValue,
+                        Values = keyValuesList
+                    };
+
+                    filter.AdvancedFilters.Add(stringNotBeginsWithAdvFilter);
+                }
                 else if (string.Equals(operatorValue, "StringEndsWith", StringComparison.OrdinalIgnoreCase))
                 {
                     var stringEndsWithAdvFilter = new StringEndsWithAdvancedFilter
@@ -1963,6 +2006,16 @@ namespace Microsoft.Azure.Commands.EventGrid
                     };
 
                     filter.AdvancedFilters.Add(stringEndsWithAdvFilter);
+                }
+                else if (string.Equals(operatorValue, "StringNotEndsWith", StringComparison.OrdinalIgnoreCase))
+                {
+                    var stringNotEndsWithAdvFilter = new StringNotEndsWithAdvancedFilter
+                    {
+                        Key = keyValue,
+                        Values = keyValuesList
+                    };
+
+                    filter.AdvancedFilters.Add(stringNotEndsWithAdvFilter);
                 }
                 else if (string.Equals(operatorValue, "NumberIn", StringComparison.OrdinalIgnoreCase))
                 {
@@ -2024,6 +2077,26 @@ namespace Microsoft.Azure.Commands.EventGrid
 
                     filter.AdvancedFilters.Add(numberLessThanOrEqualsAdvFilter);
                 }
+                else if (string.Equals(operatorValue, "NumberInRange", StringComparison.OrdinalIgnoreCase))
+                {
+                    var numberInRangeAdvFilter = new NumberInRangeAdvancedFilter
+                    {
+                        Key = keyValue,
+                        Values = (IList<IList<double?>>)keyValuesListForDoubleRanges
+                    };
+
+                    filter.AdvancedFilters.Add(numberInRangeAdvFilter);
+                }
+                else if (string.Equals(operatorValue, "NumberNotInRange", StringComparison.OrdinalIgnoreCase))
+                {
+                    var numberNotInRangeAdvFilter = new NumberNotInRangeAdvancedFilter
+                    {
+                        Key = keyValue,
+                        Values = (IList<IList<double?>>)keyValuesListForDoubleRanges
+                    };
+
+                    filter.AdvancedFilters.Add(numberNotInRangeAdvFilter);
+                }
                 else if (string.Equals(operatorValue, "BoolEquals", StringComparison.OrdinalIgnoreCase))
                 {
                     var boolEqualsAdvFilter = new BoolEqualsAdvancedFilter
@@ -2033,6 +2106,24 @@ namespace Microsoft.Azure.Commands.EventGrid
                     };
 
                     filter.AdvancedFilters.Add(boolEqualsAdvFilter);
+                }
+                else if (string.Equals(operatorValue, "IsNullOrUndefined", StringComparison.OrdinalIgnoreCase))
+                {
+                    var isNullOrUndefinedAdvFilter = new IsNullOrUndefinedAdvancedFilter
+                    {
+                        Key = keyValue
+                    };
+
+                    filter.AdvancedFilters.Add(isNullOrUndefinedAdvFilter);
+                }
+                else if (string.Equals(operatorValue, "IsNotNull", StringComparison.OrdinalIgnoreCase))
+                {
+                    var isNotNullAdvFilter = new IsNotNullAdvancedFilter
+                    {
+                        Key = keyValue
+                    };
+
+                    filter.AdvancedFilters.Add(isNotNullAdvFilter);
                 }
                 else
                 {
