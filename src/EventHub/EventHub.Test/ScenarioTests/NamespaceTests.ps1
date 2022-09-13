@@ -715,7 +715,7 @@ function ApplicationGroupTest{
         Get-AzEventHubApplicationGroup -ResourceId $appGroup3.Id | Remove-AzEventHubApplicationGroup
         Remove-AzEventHubApplicationGroup -InputObject $appGroup4
 
-        Start-Sleep -Seconds 10
+        Start-TestSleep -Seconds 10
 
         $listOfAppGroups = Get-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
         Assert-AreEqual $listOfAppGroups.Count 0

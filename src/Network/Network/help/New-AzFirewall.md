@@ -22,7 +22,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String>
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
  [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-SkuName <String>]
  [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddress <PSAzureFirewallHubIpAddresses>]
- [-FirewallPolicyId <String>] [-AllowActiveFTP] [-IdentifyTopFatFlow]
+ [-FirewallPolicyId <String>] [-AllowActiveFTP] [-IdentifyTopFatFlow] [-EnableUDPLogOptimization]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
  [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-SkuName <String>]
  [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddress <PSAzureFirewallHubIpAddresses>]
- [-FirewallPolicyId <String>] [-AllowActiveFTP] [-IdentifyTopFatFlow]
+ [-FirewallPolicyId <String>] [-AllowActiveFTP] [-IdentifyTopFatFlow] [-EnableUDPLogOptimization]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -49,7 +49,7 @@ New-AzFirewall -Name <String> -ResourceGroupName <String> -Location <String> -Vi
  [-ThreatIntelWhitelist <PSAzureFirewallThreatIntelWhitelist>] [-PrivateRange <String[]>] [-EnableDnsProxy]
  [-DnsServer <String[]>] [-Tag <Hashtable>] [-Force] [-AsJob] [-Zone <String[]>] [-SkuName <String>]
  [-SkuTier <String>] [-VirtualHubId <String>] [-HubIPAddress <PSAzureFirewallHubIpAddresses>]
- [-FirewallPolicyId <String>] [-AllowActiveFTP] [-IdentifyTopFatFlow]
+ [-FirewallPolicyId <String>] [-AllowActiveFTP] [-IdentifyTopFatFlow] [-EnableUDPLogOptimization]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -345,6 +345,21 @@ Accept wildcard characters: False
 ### -EnableDnsProxy
 Enable DNS Proxy. By default it is disabled.
 
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableUDPLogOptimization
+Enable UDP Log Optimization. By default it is false.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

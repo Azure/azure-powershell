@@ -1448,7 +1448,7 @@ function Test-KeyVaultIntegrationTest
 			$certificate01 = Add-AzKeyVaultCertificate -VaultName $keyVaultName -Name $sslCert01Name -CertificatePolicy $policy
 			$certificate02 = Add-AzKeyVaultCertificate -VaultName $keyVaultName -Name $sslCert02Name -CertificatePolicy $policy
 
-			Start-Sleep 30
+			Start-TestSleep -Seconds 30
 
 			$certificate01 = Get-AzKeyVaultCertificate -VaultName $keyVaultName -Name $sslCert01Name
 			$secretId01 = $certificate01.SecretId.Replace($certificate01.Version, "")
@@ -3962,17 +3962,17 @@ function Test-ApplicationGatewayPrivateEndpointWorkFlows
 		$approve = Approve-AzPrivateEndpointConnection -ResourceId $connection.Id
 		Assert-NotNull $approve;
         Assert-AreEqual "Approved" $approve.PrivateLinkServiceConnectionState.Status
-		Start-TestSleep -s 30
+		Start-TestSleep -Seconds 30
 
 		# Deny Connection
 		$deny = Deny-AzPrivateEndpointConnection -ResourceId $connection.Id
 		Assert-NotNull $deny;
         Assert-AreEqual "Rejected" $deny.PrivateLinkServiceConnectionState.Status
-		Start-TestSleep -s 30
+		Start-TestSleep -Seconds 30
 
 		# Remove Connection
 		$remove = Remove-AzPrivateEndpointConnection -ResourceId $connection.Id -Force
-		Start-TestSleep -s 30
+		Start-TestSleep -Seconds 30
 
 		# Verify PrivateEndpointConnections on Application Gateway
 		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname

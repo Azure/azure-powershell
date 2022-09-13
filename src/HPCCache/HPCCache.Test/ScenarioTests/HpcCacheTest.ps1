@@ -20,7 +20,7 @@ function Test-FlushCache
 		# In loop to check if cache is healthy yet
 		for ($i = 0; $i -le 5; $i++)
 		{
-			Start-Sleep -s 60
+			Start-TestSleep -Seconds 60
 			$cacheGet = Get-AzHPCCache -ResourceGroupName $ResourceGroupName -CacheName $CacheName
 			if ([string]::Compare("Healthy", $cacheGet.Health.state, $True) -eq 0)
 			{
@@ -44,7 +44,7 @@ function Test-Stop-Start-Cache
 		# In loop to check if cache is stopped
 		for ($i = 0; $i -le 15; $i++)
 		{
-			Start-Sleep -s 60
+			Start-TestSleep -Seconds 60
 			$cacheGet = Get-AzHPCCache -ResourceGroupName $ResourceGroupName -CacheName $CacheName
 			if ([string]::Compare("Stopped", $cacheGet.Health.state, $True) -eq 0)
 			{
@@ -63,7 +63,7 @@ function Test-Stop-Start-Cache
 		# In loop to check if cache is healthy/started
 		for ($i = 0; $i -le 20; $i++)
 		{
-			Start-Sleep -s 60
+			Start-TestSleep -Seconds 60
 			$cacheGet = Get-AzHPCCache -ResourceGroupName $ResourceGroupName -CacheName $CacheName
 			if ([string]::Compare("Healthy", $cacheGet.Health.state, $True) -eq 0)
 			{
@@ -83,7 +83,7 @@ function Test-NewCache-RemoveCache
 	$sku = "Standard_2G"
 	$subnetUri = "/subscriptions/" + $SubID +"/resourceGroups/" + $ResourceGroupName + "/providers/Microsoft.Network/virtualNetworks/" + $Vnet + "/subnets/" + $Subnet
 	$cacheCreate = New-AzHpcCache -ResourceGroupName $ResourceGroupName -Name $cache -Location $Location -CacheSize 3072 -Sku $sku -SubnetUri $subnetUri
-	Start-Sleep -s 2
+	Start-TestSleep -Seconds 2
 	$cacheCreated = Get-AzHpcCache -ResourceGroupName $resourceGroupName -CacheName $cache
 
 	Assert-AreEqual $cache $cacheCreated.CacheName
@@ -104,7 +104,7 @@ function Test-SetCache
 	$tags = @{"tag1" = "value1"; "tag2" = "value2"}
 	$updateCache = Set-AzHpcCache -ResourceGroupName $ResourceGroupName -Name $CacheName -Tag $tags
 	Assert-Match $updateCache.Tags '"tag2": "value2" "tag1": "value1"'
-	Start-Sleep -s 2
+	Start-TestSleep -Seconds 2
 	$getCache = Get-AzHpcCache -ResourceGroupName $ResourceGroupName -CacheName $CacheName
 	Assert-AreEqual $CacheName $getCache.CacheName
 	Assert-Match getCache.Tags '"tag2": "value2" "tag1": "value1"'

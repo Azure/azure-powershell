@@ -196,7 +196,7 @@ function Test-AzureRSVaultCMK
 		$prop = Get-AzRecoveryServicesVaultProperty -VaultId $vault.ID
 		Assert-True { $prop.encryptionProperties.UserAssignedIdentity -eq $vault.Identity.UserAssignedIdentities.Keys[0] }
 
-		Start-TestSleep 10000
+		Start-TestSleep -Seconds 10
 
 		# set and verify - CMK encryption property to system identity 	
 		Set-AzRecoveryServicesVaultProperty -EncryptionKeyId $encryptionKeyId -VaultId $vault.ID -UseSystemAssignedIdentity $true
@@ -258,13 +258,13 @@ function Test-AzureVMCrossRegionRestore
 		$vault = Create-RecoveryServicesVault $resourceGroupName $location 25
 
 		# waiting for service to reflect
-		Start-TestSleep 20000
+		Start-TestSleep -Seconds 20
 
 		# Enable CRR
 		Set-AzRecoveryServicesBackupProperty -Vault $vault -EnableCrossRegionRestore
 
 		# waiting for service to reflect
-		Start-TestSleep 30000
+		Start-TestSleep -Seconds 30
 
 		# Assert that the vault is now CRR enabled
 		$crr = Get-AzRecoveryServicesBackupProperty -Vault $vault
@@ -519,7 +519,7 @@ function Test-AzureVMProtection
 		# $vault = Create-RecoveryServicesVault $resourceGroupName $location
 		
 		# Sleep to give the service time to add the default policy to the vault
-        Start-TestSleep 5000
+        Start-TestSleep -Seconds 5
 
 		# Enable protection
 		Enable-AzRecoveryServicesBackupProtection `
@@ -822,7 +822,7 @@ function Test-AzureVMSetVaultContext
 		Set-AzRecoveryServicesVaultProperty -VaultId $vault.ID -SoftDeleteFeatureState "Disable"
 
 		# Sleep to give the service time to add the default policy to the vault
-        Start-TestSleep 5000
+        Start-TestSleep -Seconds 5
 
 		Set-AzRecoveryServicesVaultContext -Vault $vault | Out-Null
 
