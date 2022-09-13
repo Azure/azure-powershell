@@ -17,43 +17,6 @@
 Tests pagination of various resources
 #>
 
-function ApplicationGroupPagination{
-	# Max allowed application groups in a namespace is 100
-	# Pagination does not really come into picture
-	# But for any list call that gives a ListNext function we have to take pagination into account in the code
-	# This is because if tommorrow, the server allows more than 100 app groups
-	# We do not need any effort here to keep the code updated
-
-	$resourceGroupName = "ps-testing"
-	$namespaceName = "ps-pagination-testing"
-
-	$listOfAppGroups = Get-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
-	Assert-AreEqual 100 $listOfAppGroups.Count
-
-	$namespaceId = Get-AzEventHubNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
-	
-	$listOfAppGroups = Get-AzEventHubApplicationGroup -ResourceId $namespaceId.Id
-	Assert-AreEqual 100 $listOfAppGroups.Count
-
-	$t1 = New-AzEventHubThrottlingPolicyConfig -Name t1 -MetricId IncomingMessages -RateLimitThreshold 10000
-
-	Assert-ThrowsContains { New-AzEventHubApplicationGroup -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName -Name test -ClientAppGroupIdentifier SASKeyName=test -ThrottlingPolicyConfig $t1 }  "Operation returned an invalid status code 'BadRequest'"
-}
-
-function PrivateEndpointPagination{
-	#Max allowed private endpoints : 120
-	$resourceGroupName = "ps-testing"
-	$namespaceName = "ps-pagination-testing"
-	
-	$listOfPrivateEndpoints = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
-
-	Assert-AreEqual 120 $listOfPrivateEndpoints.Count
-
-	$namespace = Get-AzEventHubNamespace -ResourceGroupName $resourceGroupName -NamespaceName $namespaceName
-
-    Assert-AreEqual 120 $namespace.PrivateEndpointConnections.Count
-}
-
 function NamespacePagination{
 	$resourceGroupName = "testpaginationforps"
 

@@ -75,38 +75,12 @@ FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'New-AzEventHubNamespace', 'Get-AzEventHubNamespace', 
-               'Set-AzEventHubNamespace', 'Remove-AzEventHubNamespace', 
-               'New-AzEventHubAuthorizationRule', 
-               'Get-AzEventHubAuthorizationRule', 
-               'Set-AzEventHubAuthorizationRule', 
-               'Remove-AzEventHubAuthorizationRule', 'Get-AzEventHubKey', 
-               'New-AzEventHubKey', 'New-AzEventHub', 'Get-AzEventHub', 
-               'Set-AzEventHub', 'Remove-AzEventHub', 'New-AzEventHubConsumerGroup', 
-               'Get-AzEventHubConsumerGroup', 'Set-AzEventHubConsumerGroup', 
-               'Remove-AzEventHubConsumerGroup', 
-               'New-AzEventHubGeoDRConfiguration', 
-               'Get-AzEventHubGeoDRConfiguration', 
-               'Remove-AzEventHubGeoDRConfiguration', 
-               'Set-AzEventHubGeoDRConfigurationBreakPair', 
-               'Set-AzEventHubGeoDRConfigurationFailOver', 'Test-AzEventHubName', 
+               'Set-AzEventHubNamespace', 'Remove-AzEventHubNamespace',
                'Remove-AzEventHubIPRule', 'Add-AzEventHubIPRule', 
                'Remove-AzEventHubVirtualNetworkRule', 
-               'Add-AzEventHubVirtualNetworkRule', 'Get-AzEventHubNetworkRuleSet', 
-               'Remove-AzEventHubNetworkRuleSet', 'Set-AzEventHubNetworkRuleSet', 
-               'New-AzEventHubAuthorizationRuleSASToken', 'New-AzEventHubCluster', 
-               'Set-AzEventHubCluster', 'Get-AzEventHubCluster', 
-               'Remove-AzEventHubCluster', 'Get-AzEventHubClustersAvailableRegion', 
-               'Get-AzEventHubSchemaGroup', 'New-AzEventHubSchemaGroup', 
-               'Remove-AzEventHubSchemaGroup', 'New-AzEventHubEncryptionConfig', 
-               'New-AzEventHubApplicationGroup', 'Set-AzEventHubApplicationGroup', 
-               'Remove-AzEventHubApplicationGroup', 
-               'Get-AzEventHubApplicationGroup', 
-               'New-AzEventHubThrottlingPolicyConfig', 
-               'Approve-AzEventHubPrivateEndpointConnection', 
-               'Deny-AzEventHubPrivateEndpointConnection', 
-               'Get-AzEventHubPrivateEndpointConnection', 
-               'Remove-AzEventHubPrivateEndpointConnection', 
-               'Get-AzEventHubPrivateLink'
+               'Add-AzEventHubVirtualNetworkRule',
+               'Remove-AzEventHubNetworkRuleSet',
+               'New-AzEventHubAuthorizationRuleSASToken', 'New-AzEventHubEncryptionConfig'
 
 # Variables to export from this module
 # VariablesToExport = @()
