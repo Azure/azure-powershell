@@ -1,27 +1,27 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/powershell/module/az.subscription/invoke-azsubscriptionacceptsubscriptionownershipstatus
+online version: https://docs.microsoft.com/powershell/module/az.subscription/invoke-azsubscriptionacceptownershipstatus
 schema: 2.0.0
 ---
 
-# Invoke-AzSubscriptionAcceptSubscriptionOwnershipStatus
+# Invoke-AzSubscriptionAcceptOwnershipStatus
 
 ## SYNOPSIS
 Accept subscription ownership status.
 
 ## SYNTAX
 
-### Accept (Default)
+### AcceptExpanded (Default)
 ```
-Invoke-AzSubscriptionAcceptSubscriptionOwnershipStatus [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
+Invoke-AzSubscriptionAcceptOwnershipStatus [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
-### AcceptViaIdentity
+### AcceptViaIdentityExpanded
 ```
-Invoke-AzSubscriptionAcceptSubscriptionOwnershipStatus -InputObject <ISubscriptionIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Invoke-AzSubscriptionAcceptOwnershipStatus -InputObject <ISubscriptionIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,7 +74,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
-Parameter Sets: AcceptViaIdentity
+Parameter Sets: AcceptViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -89,7 +89,7 @@ Subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Accept
+Parameter Sets: AcceptExpanded
 Aliases:
 
 Required: False

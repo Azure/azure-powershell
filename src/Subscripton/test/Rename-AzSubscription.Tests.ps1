@@ -19,15 +19,7 @@ Describe 'Rename-AzSubscription' {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 
-    It 'Rename' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
     It 'RenameViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'RenameViaIdentity' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 }

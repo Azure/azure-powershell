@@ -13,11 +13,10 @@ Create Alias Subscription.
 ## SYNTAX
 
 ```
-New-AzSubscriptionAlias -Name <String> [-AdditionalPropertyManagementGroupId <String>]
- [-AdditionalPropertySubscriptionOwnerId <String>] [-AdditionalPropertySubscriptionTenantId <String>]
- [-AdditionalPropertyTag <Hashtable>] [-BillingScope <String>] [-DisplayName <String>] [-ResellerId <String>]
- [-SubscriptionId <String>] [-Workload <Workload>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+New-AzSubscriptionAlias -Name <String> [-BillingScope <String>] [-DisplayName <String>]
+ [-ManagementGroupId <String>] [-ResellerId <String>] [-SubscriptionId <String>]
+ [-SubscriptionOwnerId <String>] [-SubscriptionTenantId <String>] [-Tag <Hashtable>] [-Workload <Workload>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -48,66 +47,6 @@ Create Alias Subscription.
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -AdditionalPropertyManagementGroupId
-Management group Id for the subscription.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AdditionalPropertySubscriptionOwnerId
-Owner Id of the subscription
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AdditionalPropertySubscriptionTenantId
-Tenant Id of the subscription
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -AdditionalPropertyTag
-Tags for the subscription
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -AsJob
 Run the command as a job
@@ -156,6 +95,21 @@ Accept wildcard characters: False
 
 ### -DisplayName
 The friendly name of the subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ManagementGroupId
+Management group Id for the subscription.
 
 ```yaml
 Type: System.String
@@ -226,6 +180,51 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionOwnerId
+Owner Id of the subscription
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionTenantId
+Tenant Id of the subscription
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Tags for the subscription
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

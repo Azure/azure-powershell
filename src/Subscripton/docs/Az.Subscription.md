@@ -11,7 +11,7 @@ Locale: en-US
 Microsoft Azure PowerShell: Subscription cmdlets
 
 ## Az.Subscription Cmdlets
-### [Add-AzSubscriptionPolicyUpdatePolicy](Add-AzSubscriptionPolicyUpdatePolicy.md)
+### [Add-AzSubscriptionUpdatePolicy](Add-AzSubscriptionUpdatePolicy.md)
 Create or Update Subscription tenant policy for user's tenant.
 
 ### [Enable-AzSubscription](Enable-AzSubscription.md)
@@ -26,23 +26,14 @@ Get Billing Account Policy.
 ### [Get-AzSubscriptionPolicy](Get-AzSubscriptionPolicy.md)
 Get the subscription tenant policy for the user's tenant.
 
-### [Invoke-AzSubscriptionAcceptSubscriptionOwnership](Invoke-AzSubscriptionAcceptSubscriptionOwnership.md)
+### [Invoke-AzSubscriptionAcceptOwnership](Invoke-AzSubscriptionAcceptOwnership.md)
 Accept subscription ownership.
 
-### [Invoke-AzSubscriptionAcceptSubscriptionOwnershipStatus](Invoke-AzSubscriptionAcceptSubscriptionOwnershipStatus.md)
+### [Invoke-AzSubscriptionAcceptOwnershipStatus](Invoke-AzSubscriptionAcceptOwnershipStatus.md)
 Accept subscription ownership status.
-
-### [New-AzSubscriptionAcceptOwnershipRequestObject](New-AzSubscriptionAcceptOwnershipRequestObject.md)
-Create an in-memory object for AcceptOwnershipRequest.
 
 ### [New-AzSubscriptionAlias](New-AzSubscriptionAlias.md)
 Create Alias Subscription.
-
-### [New-AzSubscriptionNameObject](New-AzSubscriptionNameObject.md)
-Create an in-memory object for SubscriptionName.
-
-### [New-AzSubscriptionPutTenantPolicyRequestPropertiesObject](New-AzSubscriptionPutTenantPolicyRequestPropertiesObject.md)
-Create an in-memory object for PutTenantPolicyRequestProperties.
 
 ### [Remove-AzSubscriptionAlias](Remove-AzSubscriptionAlias.md)
 Delete Alias.

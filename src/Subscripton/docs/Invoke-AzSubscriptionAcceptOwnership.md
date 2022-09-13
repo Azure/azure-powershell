@@ -1,11 +1,11 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/powershell/module/az.subscription/invoke-azsubscriptionacceptsubscriptionownership
+online version: https://docs.microsoft.com/powershell/module/az.subscription/invoke-azsubscriptionacceptownership
 schema: 2.0.0
 ---
 
-# Invoke-AzSubscriptionAcceptSubscriptionOwnership
+# Invoke-AzSubscriptionAcceptOwnership
 
 ## SYNOPSIS
 Accept subscription ownership.
@@ -14,27 +14,14 @@ Accept subscription ownership.
 
 ### AcceptExpanded (Default)
 ```
-Invoke-AzSubscriptionAcceptSubscriptionOwnership [-SubscriptionId <String>] [-DisplayName <String>]
+Invoke-AzSubscriptionAcceptOwnership [-SubscriptionId <String>] [-DisplayName <String>]
  [-ManagementGroupId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Accept
-```
-Invoke-AzSubscriptionAcceptSubscriptionOwnership -Body <IAcceptOwnershipRequest> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AcceptViaIdentity
-```
-Invoke-AzSubscriptionAcceptSubscriptionOwnership -InputObject <ISubscriptionIdentity>
- -Body <IAcceptOwnershipRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
 ### AcceptViaIdentityExpanded
 ```
-Invoke-AzSubscriptionAcceptSubscriptionOwnership -InputObject <ISubscriptionIdentity> [-DisplayName <String>]
+Invoke-AzSubscriptionAcceptOwnership -InputObject <ISubscriptionIdentity> [-DisplayName <String>]
  [-ManagementGroupId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -83,22 +70,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-The parameters required to accept subscription ownership.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipRequest
-Parameter Sets: Accept, AcceptViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -119,7 +90,7 @@ The friendly name of the subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: AcceptExpanded, AcceptViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -135,7 +106,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
-Parameter Sets: AcceptViaIdentity, AcceptViaIdentityExpanded
+Parameter Sets: AcceptViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -150,7 +121,7 @@ Management group Id for the subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: AcceptExpanded, AcceptViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -180,7 +151,7 @@ Subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Accept, AcceptExpanded
+Parameter Sets: AcceptExpanded
 Aliases:
 
 Required: False
@@ -195,7 +166,7 @@ Tags for the subscription
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: AcceptExpanded, AcceptViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -241,8 +212,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IAcceptOwnershipRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
 
 ## OUTPUTS
@@ -257,12 +226,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IAcceptOwnershipRequest>`: The parameters required to accept subscription ownership.
-  - `[DisplayName <String>]`: The friendly name of the subscription.
-  - `[ManagementGroupId <String>]`: Management group Id for the subscription.
-  - `[Tag <IAcceptOwnershipRequestPropertiesTags>]`: Tags for the subscription
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 `INPUTOBJECT <ISubscriptionIdentity>`: Identity Parameter
   - `[AliasName <String>]`: AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.

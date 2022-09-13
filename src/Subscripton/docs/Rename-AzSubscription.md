@@ -18,18 +18,6 @@ Rename-AzSubscription -Id <String> [-SubscriptionName <String>] [-DefaultProfile
  [-WhatIf] [<CommonParameters>]
 ```
 
-### Rename
-```
-Rename-AzSubscription -Id <String> -Body <ISubscriptionName> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### RenameViaIdentity
-```
-Rename-AzSubscription -InputObject <ISubscriptionIdentity> -Body <ISubscriptionName>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 ### RenameViaIdentityExpanded
 ```
 Rename-AzSubscription -InputObject <ISubscriptionIdentity> [-SubscriptionName <String>]
@@ -65,22 +53,6 @@ The operation to rename a subscription
 
 ## PARAMETERS
 
-### -Body
-The new name of the subscription.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionName
-Parameter Sets: Rename, RenameViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -101,7 +73,7 @@ Subscription Id.
 
 ```yaml
 Type: System.String
-Parameter Sets: Rename, RenameExpanded
+Parameter Sets: RenameExpanded
 Aliases: SubscriptionId
 
 Required: True
@@ -117,7 +89,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
-Parameter Sets: RenameViaIdentity, RenameViaIdentityExpanded
+Parameter Sets: RenameViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -132,7 +104,7 @@ New subscription name
 
 ```yaml
 Type: System.String
-Parameter Sets: RenameExpanded, RenameViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -178,8 +150,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.ISubscriptionName
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.ISubscriptionIdentity
 
 ## OUTPUTS
@@ -194,9 +164,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <ISubscriptionName>`: The new name of the subscription.
-  - `[SubscriptionName1 <String>]`: New subscription name
 
 `INPUTOBJECT <ISubscriptionIdentity>`: Identity Parameter
   - `[AliasName <String>]`: AliasName is the name for the subscription creation request. Note that this is not the same as subscription name and this doesn’t have any other lifecycle need beyond the request for subscription creation.

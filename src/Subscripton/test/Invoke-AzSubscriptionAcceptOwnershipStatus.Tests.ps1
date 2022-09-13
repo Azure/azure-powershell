@@ -1,11 +1,11 @@
-if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSubscriptionAcceptSubscriptionOwnership'))
+if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSubscriptionAcceptOwnershipStatus'))
 {
   $loadEnvPath = Join-Path $PSScriptRoot 'loadEnv.ps1'
   if (-Not (Test-Path -Path $loadEnvPath)) {
       $loadEnvPath = Join-Path $PSScriptRoot '..\loadEnv.ps1'
   }
   . ($loadEnvPath)
-  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzSubscriptionAcceptSubscriptionOwnership.Recording.json'
+  $TestRecordingFile = Join-Path $PSScriptRoot 'Invoke-AzSubscriptionAcceptOwnershipStatus.Recording.json'
   $currentPath = $PSScriptRoot
   while(-not $mockingPath) {
       $mockingPath = Get-ChildItem -Path $currentPath -Recurse -Include 'HttpPipelineMocking.ps1' -File
@@ -14,16 +14,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzSubscriptionAcceptSu
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-Describe 'Invoke-AzSubscriptionAcceptSubscriptionOwnership' {
-    It 'AcceptExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
+Describe 'Invoke-AzSubscriptionAcceptOwnershipStatus' {
     It 'Accept' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'AcceptViaIdentityExpanded' -skip {
         { throw [System.NotImplementedException] } | Should -Not -Throw
     }
 

@@ -51,10 +51,52 @@ nested-object-to-string: true
 
 directive:
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
+      subject: AcceptSubscriptionOwnershipStatus
+      variant: Accept
+    set:
+      variant: AcceptExpanded
+  - where:
+      subject: AcceptSubscriptionOwnershipStatus
+      variant: AcceptViaIdentity
+    set:
+      variant: AcceptViaIdentityExpanded
+  - where:
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Rename$|^RenameViaIdentity$|^Add$|^Accept$|^AcceptViaIdentity$
     remove: true
-  - model-cmdlet:
-      - SubscriptionName
-      - AcceptOwnershipRequest
-      - PutTenantPolicyRequestProperties
+  - where:
+      subject: SubscriptionPolicyUpdatePolicy
+    set:
+      subject: SubscriptionUpdatePolicy
+  - where:
+      subject: AcceptSubscriptionOwnership
+    set:
+      subject: AcceptOwnership
+  - where:
+      subject: AcceptSubscriptionOwnershipStatus
+    set:
+      subject: AcceptOwnershipStatus
+  - where:
+      verb: New
+      subject: Alias
+      parameter-name: AdditionalPropertyManagementGroupId
+    set:
+      parameter-name: ManagementGroupId
+  - where:
+      verb: New
+      subject: Alias
+      parameter-name: AdditionalPropertySubscriptionOwnerId
+    set:
+      parameter-name: SubscriptionOwnerId
+  - where:
+      verb: New
+      subject: Alias
+      parameter-name: AdditionalPropertySubscriptionTenantId
+    set:
+      parameter-name: SubscriptionTenantId
+  - where:
+      verb: New
+      subject: Alias
+      parameter-name: AdditionalPropertyTag
+    set:
+      parameter-name: Tag
 ```

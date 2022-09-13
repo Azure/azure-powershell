@@ -1,27 +1,20 @@
 ---
 external help file:
 Module Name: Az.Subscription
-online version: https://docs.microsoft.com/powershell/module/az.subscription/add-azsubscriptionpolicyupdatepolicy
+online version: https://docs.microsoft.com/powershell/module/az.subscription/add-azsubscriptionupdatepolicy
 schema: 2.0.0
 ---
 
-# Add-AzSubscriptionPolicyUpdatePolicy
+# Add-AzSubscriptionUpdatePolicy
 
 ## SYNOPSIS
 Create or Update Subscription tenant policy for user's tenant.
 
 ## SYNTAX
 
-### AddExpanded (Default)
 ```
-Add-AzSubscriptionPolicyUpdatePolicy [-BlockSubscriptionsIntoTenant] [-BlockSubscriptionsLeavingTenant]
+Add-AzSubscriptionUpdatePolicy [-BlockSubscriptionsIntoTenant] [-BlockSubscriptionsLeavingTenant]
  [-ExemptedPrincipal <String[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Add
-```
-Add-AzSubscriptionPolicyUpdatePolicy -Body <IPutTenantPolicyRequestProperties> [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,7 +51,7 @@ Blocks the entering of subscriptions into user's tenant.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AddExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -73,29 +66,13 @@ Blocks the leaving of subscriptions from user's tenant.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: AddExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-Put tenant policy request properties.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IPutTenantPolicyRequestProperties
-Parameter Sets: Add
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
@@ -119,7 +96,7 @@ List of user objectIds that are exempted from the set subscription tenant polici
 
 ```yaml
 Type: System.String[]
-Parameter Sets: AddExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -165,8 +142,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IPutTenantPolicyRequestProperties
-
 ## OUTPUTS
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Subscription.Models.Api20211001.IGetTenantPolicyResponse
@@ -174,16 +149,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`BODY <IPutTenantPolicyRequestProperties>`: Put tenant policy request properties.
-  - `[BlockSubscriptionsIntoTenant <Boolean?>]`: Blocks the entering of subscriptions into user's tenant.
-  - `[BlockSubscriptionsLeavingTenant <Boolean?>]`: Blocks the leaving of subscriptions from user's tenant.
-  - `[ExemptedPrincipal <String[]>]`: List of user objectIds that are exempted from the set subscription tenant policies for the user's tenant.
 
 ## RELATED LINKS
 
