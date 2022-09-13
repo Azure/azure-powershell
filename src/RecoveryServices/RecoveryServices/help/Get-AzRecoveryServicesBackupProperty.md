@@ -49,7 +49,7 @@ Accept wildcard characters: False
 ### -Vault
 Specifies the name of the vault.
 The vault must be an **AzureRmRecoveryServicesVault** object.
-Run the [Get-AzRecoveryServicesVault](https://docs.microsoft.com/en-us/powershell/module/az.recoveryservices/get-azrecoveryservicesvault?view=azps-8.3.0) cmdlet to get the recovery services vault details.
+Run the [Get-AzRecoveryServicesVault](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesvault) cmdlet to get the recovery services vault details.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.ARSVault
