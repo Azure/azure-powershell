@@ -29,7 +29,7 @@ function setupEnv() {
 
     $null = $env.Add("receiverName", 'test-receiver' + (RandomString -allChars $false -len 6))
     $null = $env.Add("actionGroupName", 'test-action-group' + (RandomString -allChars $false -len 6))
-    $scriptblock = {write-host "start to create action group $($env['actionGroupName'])"; Import-Module Az.Monitor; $receiver = New-AzActionGroupReceiver -Name $env['receiverName'] -EmailAddress test@microsoft.com; Set-AzActionGroup -ResourceGroupName $env['resourceGroupName'] -Name $env['actionGroupName'] -ShortName 'short' -Receiver $receiver; Write-Output (Get-AzActionGroup -ResourceGroupName $env['resourceGroupName'] -Name $env['actionGroupName'])}
+    $script = {write-host "start to create action group $($env['actionGroupName'])"; Import-Module Az.Monitor; $receiver = New-AzActionGroupReceiver -Name $env['receiverName'] -EmailAddress test@microsoft.com; Set-AzActionGroup -ResourceGroupName $env['resourceGroupName'] -Name $env['actionGroupName'] -ShortName 'short' -Receiver $receiver; Write-Output (Get-AzActionGroup -ResourceGroupName $env['resourceGroupName'] -Name $env['actionGroupName'])}
 
     $pwsh = [System.Diagnostics.Process]::GetCurrentProcess().Path
     & "$pwsh" -NonInteractive -NoLogo -NoProfile -Command $script
