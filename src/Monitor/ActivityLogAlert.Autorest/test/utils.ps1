@@ -19,6 +19,24 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+
+    $null = $env.Add("scope", "subscriptions/"+$env['SubscriptionId'])
+
+    $resourceGroupName = 'activity-log-alert-group' + (RandomString -allChars $false -len 6)
+    write-host "start to create test group $resourceGroupName"
+    New-AzResourceGroup -Name $resourceGroupName -Location eastus
+    $null = $env.Add("resourceGroupName", $resourceGroupName)
+
+    $null = $env.Add("receiverName", 'test-receiver' + (RandomString -allChars $false -len 6))
+    $null = $env.Add("actionGroupName", 'test-action-group' + (RandomString -allChars $false -len 6))
+    $scriptblock = {write-host "start to create action group $($env['actionGroupName'])"; Import-Module Az.Monitor; $receiver = New-AzActionGroupReceiver -Name $env['receiverName'] -EmailAddress test@microsoft.com; Set-AzActionGroup -ResourceGroupName $env['resourceGroupName'] -Name $env['actionGroupName'] -ShortName 'short' -Receiver $receiver; Write-Output (Get-AzActionGroup -ResourceGroupName $env['resourceGroupName'] -Name $env['actionGroupName'])}
+
+    $pwsh = [System.Diagnostics.Process]::GetCurrentProcess().Path
+    & "$pwsh" -NonInteractive -NoLogo -NoProfile -Command $script
+    $env.Add("actionGroupResourceId", "/subscriptions/$($env['SubscriptionId'])/resourceGroups/$($env['resourceGroupName'])/providers/microsoft.insights/actionGroups/$($env['actionGroupName'])")
+
+    $null = $env.Add('alertName', 'test-alert' + (RandomString -allChars $false -len 6))
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -27,5 +45,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env['resourceGroupName']
 }
 
