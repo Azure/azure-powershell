@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzDeviceUpdateInstance'))
 }
 
 Describe 'AzDeviceUpdateInstance' {
-    It 'CreateExpanded' {
-        {
-            $resourceId2 = (Get-AzIotHub -ResourceGroupName $env.resourceGroup -Name azpstest-iothub-2).Id
-            $iotHubSetting = New-AzDeviceUpdateIotHubSettingsObject -ResourceId $resourceId2
-            $config = New-AzDeviceUpdateInstance -AccountName $env.accountName1 -Name $env.instanceName1 -ResourceGroupName $env.resourceGroup -Location $env.location -IotHub $iotHubSetting -EnableDiagnostic:$false
-            $config.Name | Should -Be $env.instanceName1
+    # It 'CreateExpanded' {
+    #     {
+    #         $resourceId2 = (Get-AzIotHub -ResourceGroupName $env.resourceGroup -Name azpstest-iothub-2).Id
+    #         $iotHubSetting = New-AzDeviceUpdateIotHubSettingsObject -ResourceId $resourceId2
+    #         $config = New-AzDeviceUpdateInstance -AccountName $env.accountName1 -Name $env.instanceName1 -ResourceGroupName $env.resourceGroup -Location $env.location -IotHub $iotHubSetting -EnableDiagnostic:$false
+    #         $config.Name | Should -Be $env.instanceName1
 
-            $resourceId3 = (Get-AzIotHub -ResourceGroupName $env.resourceGroup -Name azpstest-iothub-3).Id
-            $iotHubSetting = New-AzDeviceUpdateIotHubSettingsObject -ResourceId $resourceId3
-            $config = New-AzDeviceUpdateInstance -AccountName $env.accountName1 -Name $env.instanceName2 -ResourceGroupName $env.resourceGroup -Location $env.location -IotHub $iotHubSetting -EnableDiagnostic:$false
-            $config.Name | Should -Be $env.instanceName2
-        } | Should -Not -Throw
-    }
+    #         $resourceId3 = (Get-AzIotHub -ResourceGroupName $env.resourceGroup -Name azpstest-iothub-3).Id
+    #         $iotHubSetting = New-AzDeviceUpdateIotHubSettingsObject -ResourceId $resourceId3
+    #         $config = New-AzDeviceUpdateInstance -AccountName $env.accountName1 -Name $env.instanceName2 -ResourceGroupName $env.resourceGroup -Location $env.location -IotHub $iotHubSetting -EnableDiagnostic:$false
+    #         $config.Name | Should -Be $env.instanceName2
+    #     } | Should -Not -Throw
+    # }
 
     It 'List' {
         {
