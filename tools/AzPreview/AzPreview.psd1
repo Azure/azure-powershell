@@ -52,7 +52,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.0'; }, 
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.1'; }, 
             @{ModuleName = 'Az.ADDomainServices'; RequiredVersion = '0.2.0'; }, 
             @{ModuleName = 'Az.Advisor'; RequiredVersion = '1.1.2'; }, 
             @{ModuleName = 'Az.Aks'; RequiredVersion = '4.3.0'; }, 
@@ -172,7 +172,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.0'; },
             @{ModuleName = 'Az.Resources'; RequiredVersion = '6.2.0'; }, 
             @{ModuleName = 'Az.Search'; RequiredVersion = '0.8.0'; }, 
             @{ModuleName = 'Az.Security'; RequiredVersion = '1.3.0'; }, 
-            @{ModuleName = 'Az.SecurityInsights'; RequiredVersion = '1.1.0'; }, 
+            @{ModuleName = 'Az.SecurityInsights'; RequiredVersion = '2.0.0'; }, 
             @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '1.11.0'; }, 
             @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '3.1.0'; }, 
             @{ModuleName = 'Az.ServiceLinker'; RequiredVersion = '0.1.0'; }, 

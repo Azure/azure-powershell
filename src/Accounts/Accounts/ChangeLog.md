@@ -19,6 +19,8 @@
 -->
 
 ## Upcoming Release
+
+## Version 2.10.1
 * Deduplicated subscriptions belonging to multiple tenants while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19427]
 
 ## Version 2.10.0
