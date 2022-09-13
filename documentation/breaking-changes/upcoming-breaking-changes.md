@@ -1,12 +1,19 @@
 # Upcoming breaking changes in Azure PowerShell
 
+## Az.Accounts
+
+### `Resolve-AzError`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The `Resolve-Error` alias will be removed in a future release.  Please change any scripts that use this alias to use `Resolve-AzError` instead.
+
 ## Az.Aks
 
 ### `Install-AzAksCliTool`
 
 - Cmdlet breaking-change will happen to all parameter set
   The cmdlet 'Install-AzAksCliTool' is replacing this cmdlet.
-  - This change will take effect on '2022/10/12'
+  - This change will take effect on '10/12/2022'
   - The change is expected to take effect from the version : '9.0.0'
 
 ## Az.AnalysisServices
@@ -57,6 +64,46 @@
 
 ## Az.Batch
 
+### `Get-AzBatchAccountKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzBatchAccountKeys alias will be removed in an upcoming breaking change release
+
+### `Get-AzBatchJobStatistic`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzBatchJobStatistics alias will be removed in an upcoming breaking change release
+
+### `Get-AzBatchLocationQuota`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzBatchLocationQuotas alias will be removed in an upcoming breaking change release
+
+### `Get-AzBatchPoolNodeCount`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzBatchPoolNodeCounts alias will be removed in an upcoming breaking change release
+
+### `Get-AzBatchPoolStatistic`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzBatchPoolStatistics alias will be removed in an upcoming breaking change release
+
+### `Get-AzBatchPoolUsageMetric`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzBatchPoolUsageMetrics alias will be removed in an upcoming breaking change release
+
+### `Get-AzBatchRemoteLoginSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzBatchRemoteLoginSettings alias will be removed in an upcoming breaking change release
+
+### `Get-AzBatchTaskCount`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzBatchTaskCounts alias will be removed in an upcoming breaking change release
+
 ### `New-AzBatchPool`
 
 - Parameter breaking-change will happen to all parameter sets
@@ -70,9 +117,248 @@
 - Cmdlet breaking-change will happen to all parameter set
   - The cmdlet is being deprecated. There will be no replacement for it.
 
+## Az.CognitiveServices
+
+### `Get-AzCognitiveServicesAccountSku`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzCognitiveServicesAccountSkus alias will be removed in an upcoming breaking change release
+
+## Az.Compute
+
+### `New-AzDisk`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Starting on 10/12/2022 the "New-AzDisk" cmdlet will deploy with the Trusted Launch configuration by default. This includes defaulting the "HyperVGeneration" parameter to "v2". To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch
+
+### `New-AzVM`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Starting on 10/12/2022 the "New-AzVM" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch
+  - It is recommended to use parameter "-PublicIpSku Standard" in order to create a new VM with a Standard public IP.Specifying zone(s) using the "-Zone" parameter will also result in a Standard public IP.If "-Zone" and "-PublicIpSku" are not specified, the VM will be created with a Basic public IP instead.Please note that the Standard SKU IPs will become the default behavior for VM creation in the future
+
+### `New-AzVmss`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Starting on 10/12/2022 the "New-AzVmss" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch
+
+## Az.DataLakeStore
+
+### `Export-AzDataLakeStoreChildItemProperty`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Export-AzDataLakeStoreChildItemProperties alias will be removed in an upcoming breaking change release
+
+### `Export-AzDataLakeStoreItem`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - For store side export failures, Export-AzDataLakeStoreItem will throw exception instead of printing message on screen
+
+### `Import-AzDataLakeStoreItem`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - For store side import failures, Import-AzDataLakeStoreItem will throw exception instead of printing message on screen
+
+## Az.DataShare
+
+### `Get-AzDataShare`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareAccount`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareDataSet`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareDataSetMapping`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareInvitation`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareProviderShareSubscription`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareReceivedInvitation`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareSourceDataSet`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareSubscription`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareSubscriptionSynchronization`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareSubscriptionSynchronizationDetail`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareSynchronization`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareSynchronizationDetail`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareSynchronizationSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Get-AzDataShareTrigger`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Grant-AzDataShareSubscriptionAccess`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `New-AzDataShare`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `New-AzDataShareAccount`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `New-AzDataShareDataSet`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `New-AzDataShareDataSetMapping`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `New-AzDataShareInvitation`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `New-AzDataShareSubscription`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Parameter SourceShareLocation is mandatory to support cross region share subscription creation.
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `New-AzDataShareSynchronizationSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `New-AzDataShareTrigger`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Remove-AzDataShare`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Remove-AzDataShareAccount`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Remove-AzDataShareDataSet`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Remove-AzDataShareDataSetMapping`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Remove-AzDataShareInvitation`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Remove-AzDataShareSubscription`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Remove-AzDataShareSynchronizationSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Remove-AzDataShareTrigger`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Revoke-AzDataShareSubscriptionAccess`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Set-AzDataShare`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Start-AzDataShareSubscriptionSynchronization`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
+### `Stop-AzDataShareSubscriptionSynchronization`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - DataShare APIs cmdlets will bump up API version which may introduce breaking change. Please contact us for more information.
+
 ## Az.EventHub
 
+### `Add-AzEventHubIPRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - This cmdlet would be deprecated in a future release. Please use Set-AzEventHubNetworkRuleSet.
+
+### `Add-AzEventHubVirtualNetworkRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - This cmdlet would be deprecated in a future release. Please use Set-AzEventHubNetworkRuleSet.
+
 ### `Approve-AzEventHubPrivateEndpointConnection`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-ResourceId`
@@ -80,11 +366,19 @@
 
 ### `Deny-AzEventHubPrivateEndpointConnection`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-ResourceId`
     - The parameter : 'ResourceId' is being replaced by parameter : 'InputObject'.
 
 ### `Get-AzEventHub`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-MaxCount`
@@ -95,23 +389,51 @@
 
 ### `Get-AzEventHubApplicationGroup`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`
+
 - Parameter breaking-change will happen to all parameter sets
   - `-ResourceId`
     - Format of resource id must be /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/applicationGroups/{applicationGroupName}. Namespace resource id can no longer be used for list calls.
 
+### `Get-AzEventHubAuthorizationRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule'
+
 ### `Get-AzEventHubCluster`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-Name`
     - The alias of this parameter would change to 'ClusterName'
 
+### `Get-AzEventHubClustersAvailableRegion`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAvailableCluster'
+
 ### `Get-AzEventHubConsumerGroup`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-MaxCount`
     - '-MaxCount' is being removed. '-Skip' and '-Top' would be added to support pagination.
 
 ### `Get-AzEventHubGeoDRConfiguration`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
@@ -122,6 +444,12 @@
   - `-ResourceId`
     - The parameter : 'ResourceId' is being replaced by parameter : 'InputObject'.
 
+### `Get-AzEventHubKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys'
+
 ### `Get-AzEventHubNamespace`
 
 - Cmdlet breaking-change will happen to all parameter set
@@ -131,17 +459,35 @@
 
 ### `Get-AzEventHubNetworkRuleSet`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSet'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-ResourceId`
     - The parameter : 'ResourceId' is being replaced by parameter : 'InputObject'.
 
 ### `Get-AzEventHubPrivateEndpointConnection`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateEndpointConnection'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-ResourceId`
     - Format of resource id must be /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}. Namespace resource id can no longer be used for list calls.
 
+### `Get-AzEventHubPrivateLink`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IPrivateLinkResourcesListResult'
+
 ### `Get-AzEventHubSchemaGroup`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ISchemaGroup'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-ResourceId`
@@ -149,11 +495,19 @@
 
 ### `New-AzEventHub`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
     - 'InputObject' would be removed without being replaced.
 
 ### `New-AzEventHubApplicationGroup`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`
 
 - Parameter breaking-change will happen to all parameter sets
   - `-ThrottlingPolicyConfig`
@@ -162,11 +516,19 @@
 
 ### `New-AzEventHubAuthorizationRule`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-Rights`
     - The output type of the parameter would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.AccessRights[]'
 
 ### `New-AzEventHubCluster`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-Name`
@@ -174,7 +536,17 @@
   - `-ResourceId`
     - 'ResourceId' Parameter is being deprecated without being replaced.
 
+### `New-AzEventHubConsumerGroup`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup'
+
 ### `New-AzEventHubGeoDRConfiguration`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
@@ -183,6 +555,10 @@
     - ResourceId would be removed without being replaced.
 
 ### `New-AzEventHubKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAccessKeys'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-ResourceGroupName`
@@ -195,6 +571,18 @@
   - The following properties in the output type are being deprecated : 'ResourceGroup' 'Identity'
   - The following properties are being added to the output type : 'ResourceGroupName' 'Tags' 'IdentityType'
 
+### `New-AzEventHubSchemaGroup`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ISchemaGroup'
+
+### `New-AzEventHubThrottlingPolicyConfig`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy`
+
 ### `Remove-AzEventHub`
 
 - Parameter breaking-change will happen to all parameter sets
@@ -204,6 +592,9 @@
     - The parameter : 'ResourceId' is being replaced by parameter : 'InputObject'.
 
 ### `Remove-AzEventHubApplicationGroup`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
 
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
@@ -241,6 +632,16 @@
   - `-ResourceId`
     - The parameter : 'ResourceId' is being replaced by parameter : 'InputObject'.
 
+### `Remove-AzEventHubIPRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - This cmdlet would be deprecated in a future release. Please use Set-AzEventHubNetworkRuleSet.
+
+### `Remove-AzEventHubNetworkRuleSet`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - This cmdlet would be deprecated in a future release. Please use Set-AzEventHubNetworkRuleSet.
+
 ### `Remove-AzEventHubPrivateEndpointConnection`
 
 - Parameter breaking-change will happen to all parameter sets
@@ -253,7 +654,16 @@
   - `-ResourceId`
     - The parameter : 'ResourceId' is being replaced by parameter : 'InputObject'.
 
+### `Remove-AzEventHubVirtualNetworkRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - This cmdlet would be deprecated in a future release. Please use Set-AzEventHubNetworkRuleSet.
+
 ### `Set-AzEventHub`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
@@ -261,6 +671,10 @@
     - InputObject would no longer support alias -EventHubObj.
 
 ### `Set-AzEventHubApplicationGroup`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to `Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IApplicationGroup`
 
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
@@ -273,6 +687,10 @@
 
 ### `Set-AzEventHubAuthorizationRule`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IAuthorizationRule'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
     - AuthoRuleInputObjectSet parameter set is changing. Please refer the migration guide for examples.
@@ -281,6 +699,10 @@
     - The output type of the parameter would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.AccessRights[]'
 
 ### `Set-AzEventHubCluster`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
@@ -291,6 +713,12 @@
     - 'Name' Parameter is being deprecated from ClusterResourceIdParameterSet without being replaced. ResourceId's are implicit of resource name.
   - `-ResourceId`
     - The parameter : 'ResourceId' is being replaced by parameter : 'InputObject'.
+
+### `Set-AzEventHubConsumerGroup`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup'
 
 ### `Set-AzEventHubGeoDRConfigurationBreakPair`
 
@@ -317,6 +745,10 @@
 
 ### `Set-AzEventHubNetworkRuleSet`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INetworkRuleSet'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
     - NetwrokruleSetInputObjectSet parameter set is changing. Please refer the migration guide for examples.
@@ -328,6 +760,12 @@
   - `-VirtualNetworkRule`
     - The parameter : 'VirtualNetworkRule' is changing.
     The type of the parameter is changing from 'Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetVirtualNetworkRulesAttributes[]' to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules[]'.
+
+### `Test-AzEventHubName`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICheckNameAvailabilityResult'
 
 ## Az.HDInsight
 
@@ -353,12 +791,39 @@
   - `-ContentType`
     - ContentType is being deprecated without being replaced. It will be inferred from MapType
 
+## Az.MachineLearning
+
+### `Get-AzMlWebServiceKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzMlWebServiceKeys alias will be removed in an upcoming breaking change release
+
+## Az.MarketplaceOrdering
+
+### `Get-AzMarketplaceTerms`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Cmdlet will call GET /subscriptions/{subscriptionId}/providers/Microsoft.MarketplaceOrdering/offerTypes/{offerType}/publishers/{publisherId}/offers/{offerId}/plans/{planId}/agreements/current by default in an upcoming breaking change release.
+
+## Az.Media
+
+### `Get-AzMediaServiceKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzMediaServiceKeys alias will be removed in an upcoming breaking change release
+
+### `Sync-AzMediaServiceStorageKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Sync-AzMediaServiceStorageKeys alias will be removed in an upcoming breaking change release
+
 ## Az.Monitor
 
 ### `Add-AzAutoscaleSetting`
 
 - Cmdlet breaking-change will happen to all parameter set
   - The cmdlet 'New-AzAutoscaleSetting' is replacing this cmdlet.
+  - API version bump up to 2022-10-01, input/output type will be also updated to match the new API version
 
 ### `Disable-AzActivityLogAlert`
 
@@ -370,10 +835,40 @@
 - Cmdlet breaking-change will happen to all parameter set
   - The cmdlet 'Update-AzActivityLogAlert' is replacing this cmdlet.
 
+### `Get-AzActivityLogAlert`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - API version bump up to 2020-10-01, output type will be also updated to match the new API version
+
+### `Get-AzAutoscaleSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - API version bump up to 2022-10-01, output type will be also updated to match the new API version
+
+### `Get-AzDiagnosticSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - API version bump up to 2021-05-01-preview, output type will be also updated to match the new API version
+
+### `Get-AzDiagnosticSettingCategory`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - API version bump up to 2021-05-01-preview, output type will be also updated to match the new API version
+
+### `Get-AzScheduledQueryRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - API version bump up to 2021-08-01, output type will be also updated to match the new API version
+
 ### `Get-AzSubscriptionDiagnosticSettingCategory`
 
 - Cmdlet breaking-change will happen to all parameter set
   - The cmdlet 'Get-AzEventCategory' is replacing this cmdlet.
+
+### `New-AzActionGroup`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - API version bump up to 2020-10-01, input/output type will be also updated to match the new API version
 
 ### `New-AzActivityLogAlertCondition`
 
@@ -403,7 +898,18 @@
 ### `New-AzDiagnosticDetailSetting`
 
 - Cmdlet breaking-change will happen to all parameter set
-  - The cmdlet 'New-AzDiagnosticSettingLogSettingsObject' is replacing this cmdlet.  - The cmdlet 'New-AzDiagnosticSettingMetricSettingsObject' is replacing this cmdlet.
+  - The cmdlet 'New-AzDiagnosticSettingLogSettingsObject' is replacing this cmdlet.
+  - The cmdlet 'New-AzDiagnosticSettingMetricSettingsObject' is replacing this cmdlet.
+
+### `New-AzDiagnosticSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - API version bump up to 2021-05-01-preview, input/output type will be also updated to match the new API version
+
+### `New-AzScheduledQueryRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - API version bump up to 2021-08-01, input/output type will be also updated to match the new API version
 
 ### `New-AzScheduledQueryRuleAlertingAction`
 
@@ -435,10 +941,26 @@
 - Cmdlet breaking-change will happen to all parameter set
   - The cmdlet is being deprecated. There will be no replacement for it.
 
+### `Remove-AzActivityLogAlert`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - API version bump up to 2020-10-01, output type will be also updated to match the new API version
+
+### `Remove-AzAutoscaleSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - API version bump up to 2022-10-01, output type will be also updated to match the new API version
+
 ### `Remove-AzDiagnosticSetting`
 
 - Cmdlet breaking-change will happen to all parameter set
   - The cmdlet 'New-AzDiagnosticSettingLogSettingsObject' is replacing this cmdlet.
+  - API version bump up to 2021-05-01-preview, output type will be also updated to match the new API version
+
+### `Remove-AzScheduledQueryRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - API version bump up to 2021-08-01, output type will be also updated to match the new API version
 
 ### `Set-AzActivityLogAlert`
 
@@ -454,6 +976,11 @@
 
 - Cmdlet breaking-change will happen to all parameter set
   - The cmdlet is being deprecated. There will be no replacement for it.
+
+### `Update-AzScheduledQueryRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - API version bump up to 2021-08-01, input/output type will be also updated to match the new API version
 
 ## Az.NetAppFiles
 
@@ -514,6 +1041,11 @@
 
 ## Az.Network
 
+### `Add-AzApplicationGatewayBackendHttpSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Add-AzApplicationGatewayBackendHttpSettings alias will be removed in an upcoming breaking change release
+
 ### `Add-AzExpressRouteCircuitAuthorization`
 
 - Cmdlet breaking-change will happen to all parameter set
@@ -542,10 +1074,33 @@
 - Cmdlet breaking-change will happen to all parameter set
   - The cmdlet 'New-AzVHubRouteTable' is replacing this cmdlet.
 
+### `Add-AzVirtualNetworkSubnetConfig`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-InputObject`
+    - Update Property Name
+  - `-ResourceId`
+    - Update Property Name
+
 ### `Add-AzVirtualRouterPeer`
 
 - Cmdlet breaking-change will happen to all parameter set
   - The cmdlet 'Add-AzRouteServerPeer' is replacing this cmdlet.
+
+### `Get-AzApplicationGatewayAvailableSslOption`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzApplicationGatewayAvailableSslOptions alias will be removed in an upcoming breaking change release
+
+### `Get-AzApplicationGatewayAvailableWafRuleSet`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzApplicationGatewayAvailableWafRuleSets alias will be removed in an upcoming breaking change release
+
+### `Get-AzApplicationGatewayBackendHttpSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzApplicationGatewayBackendHttpSettings alias will be removed in an upcoming breaking change release
 
 ### `Get-AzExpressRouteCircuit`
 
@@ -565,11 +1120,17 @@
   - The output type 'Microsoft.Azure.Commands.Network.Models.PSExpressRouteCircuit' is changing
   - The following properties in the output type are being deprecated : 'AllowGlobalReach'
 
+### `Get-AzExpressRouteCircuitStat`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzExpressRouteCircuitStats alias will be removed in an upcoming breaking change release
+
 ### `Get-AzFirewall`
 
 - Cmdlet breaking-change will happen to all parameter set
   - The output type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewallHubIpAddresses' is changing
-  - The following properties in the output type are being deprecated : 'publicIPAddresses'  - The output type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewall' is changing
+  - The following properties in the output type are being deprecated : 'publicIPAddresses'
+  - The output type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewall' is changing
   - The following properties in the output type are being deprecated : 'IdentifyTopFatFlow'
 
 ### `Get-AzPrivateEndpointConnection`
@@ -615,6 +1176,11 @@
   - `-UserAssignedIdentityId`
     - The parameter : 'UserAssignedIdentityId' is being replaced by parameter : 'Identity'.
 
+### `New-AzApplicationGatewayBackendHttpSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - New-AzApplicationGatewayBackendHttpSettings alias will be removed in an upcoming breaking change release
+
 ### `New-AzExpressRouteCircuit`
 
 - Cmdlet breaking-change will happen to all parameter set
@@ -625,7 +1191,8 @@
 
 - Cmdlet breaking-change will happen to all parameter set
   - The output type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewallHubIpAddresses' is changing
-  - The following properties in the output type are being deprecated : 'publicIPAddresses'  - The output type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewall' is changing
+  - The following properties in the output type are being deprecated : 'publicIPAddresses'
+  - The output type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewall' is changing
   - The following properties in the output type are being deprecated : 'IdentifyTopFatFlow'
 
 - Parameter breaking-change will happen to all parameter sets
@@ -654,6 +1221,16 @@
   - `-SourceAddress`
     - This parameter is becoming optional as SourceIpGroup can be provided without this.
 
+### `New-AzLoadBalancer`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - It is recommended to use parameter '-Sku Standard' to create new IP address. Please note that it will become the default behavior for IP address creation in the future.
+
+### `New-AzLoadBalancerFrontendIpConfig`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Default behaviour of Zone will be changed
+
 ### `New-AzPrivateLinkServiceIpConfig`
 
 - Cmdlet breaking-change will happen to all parameter set
@@ -664,6 +1241,17 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-PublicIpAddress`
     - Parameter is being deprecated without being replaced
+
+### `New-AzPublicIpAddress`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Default behaviour of Zone will be changed
+  - It is recommended to use parameter '-Sku Standard' to create new IP address. Please note that it will become the default behavior for IP address creation in the future.
+
+### `New-AzPublicIpPrefix`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Default behaviour of Zone will be changed
 
 ### `New-AzVirtualHub`
 
@@ -692,10 +1280,23 @@
     - The parameter : 'EnableInternetSecurity' is changing.
     The type of the parameter is changing from 'System.Management.Automation.SwitchParameter' to 'EnableInternetSecurityFlag'.
 
+### `New-AzVirtualNetworkSubnetConfig`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-InputObject`
+    - Update Property Name
+  - `-ResourceId`
+    - Update Property Name
+
 ### `New-AzVirtualRouter`
 
 - Cmdlet breaking-change will happen to all parameter set
   - The cmdlet 'New-AzRouteServer' is replacing this cmdlet.
+
+### `Remove-AzApplicationGatewayBackendHttpSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Remove-AzApplicationGatewayBackendHttpSettings alias will be removed in an upcoming breaking change release
 
 ### `Remove-AzExpressRouteCircuitAuthorization`
 
@@ -736,6 +1337,11 @@
 - Cmdlet breaking-change will happen to all parameter set
   - The cmdlet 'Remove-AzRouteServerPeer' is replacing this cmdlet.
 
+### `Set-AzApplicationGatewayBackendHttpSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Set-AzApplicationGatewayBackendHttpSettings alias will be removed in an upcoming breaking change release
+
 ### `Set-AzExpressRouteCircuit`
 
 - Cmdlet breaking-change will happen to all parameter set
@@ -758,7 +1364,8 @@
 
 - Cmdlet breaking-change will happen to all parameter set
   - The output type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewallHubIpAddresses' is changing
-  - The following properties in the output type are being deprecated : 'publicIPAddresses'  - The output type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewall' is changing
+  - The following properties in the output type are being deprecated : 'publicIPAddresses'
+  - The output type 'Microsoft.Azure.Commands.Network.Models.PSAzureFirewall' is changing
   - The following properties in the output type are being deprecated : 'IdentifyTopFatFlow'
 
 ### `Set-AzVirtualHub`
@@ -766,6 +1373,14 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-RouteTable`
     - Parameter is being deprecated without being replaced. Use *VHubRouteTable* commands.
+
+### `Set-AzVirtualNetworkSubnetConfig`
+
+- Parameter breaking-change will happen to all parameter sets
+  - `-InputObject`
+    - Update Property Name
+  - `-ResourceId`
+    - Update Property Name
 
 ### `Update-AzVirtualHub`
 
@@ -787,6 +1402,63 @@
 - Cmdlet breaking-change will happen to all parameter set
   - The cmdlet 'Update-AzRouteServerPeer' is replacing this cmdlet.
 
+## Az.NotificationHubs
+
+### `Get-AzNotificationHubAuthorizationRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzNotificationHubAuthorizationRules alias will be removed in an upcoming breaking change release
+
+### `Get-AzNotificationHubListKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzNotificationHubListKeys alias will be removed in an upcoming breaking change release
+
+### `Get-AzNotificationHubPNSCredential`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzNotificationHubPNSCredentials alias will be removed in an upcoming breaking change release
+
+### `Get-AzNotificationHubsNamespaceAuthorizationRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzNotificationHubsNamespaceAuthorizationRules alias will be removed in an upcoming breaking change release
+
+### `Get-AzNotificationHubsNamespaceListKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzNotificationHubsNamespaceListKeys alias will be removed in an upcoming breaking change release
+
+### `New-AzNotificationHubAuthorizationRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - New-AzNotificationHubAuthorizationRules alias will be removed in an upcoming breaking change release
+
+### `New-AzNotificationHubsNamespaceAuthorizationRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - New-AzNotificationHubsNamespaceAuthorizationRules alias will be removed in an upcoming breaking change release
+
+### `Remove-AzNotificationHubAuthorizationRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Remove-AzNotificationHubAuthorizationRules alias will be removed in an upcoming breaking change release
+
+### `Remove-AzNotificationHubsNamespaceAuthorizationRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Remove-AzNotificationHubsNamespaceAuthorizationRules alias will be removed in an upcoming breaking change release
+
+### `Set-AzNotificationHubAuthorizationRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Set-AzNotificationHubAuthorizationRules alias will be removed in an upcoming breaking change release
+
+### `Set-AzNotificationHubsNamespaceAuthorizationRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Set-AzNotificationHubsNamespaceAuthorizationRules alias will be removed in an upcoming breaking change release
+
 ## Az.OperationalInsights
 
 ### `Get-AzOperationalInsightsCluster`
@@ -794,6 +1466,21 @@
 - Cmdlet breaking-change will happen to all parameter set
   - The output type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster' is changing
   - The following properties in the output type are being deprecated : 'NextLink' 'Sku'
+
+### `Get-AzOperationalInsightsIntelligencePack`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzOperationalInsightsIntelligencePacks alias will be removed in an upcoming breaking change release
+
+### `Get-AzOperationalInsightsWorkspaceManagementGroup`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzOperationalInsightsWorkspaceManagementGroups alias will be removed in an upcoming breaking change release
+
+### `Get-AzOperationalInsightsWorkspaceSharedKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzOperationalInsightsWorkspaceSharedKeys alias will be removed in an upcoming breaking change release
 
 ### `New-AzOperationalInsightsCluster`
 
@@ -807,6 +1494,18 @@
   - The output type 'Microsoft.Azure.Commands.OperationalInsights.Models.PSCluster' is changing
   - The following properties in the output type are being deprecated : 'NextLink' 'Sku'
 
+## Az.PowerBIEmbedded
+
+### `Get-AzPowerBIWorkspaceCollectionAccessKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzPowerBIWorkspaceCollectionAccessKeys alias will be removed in an upcoming breaking change release
+
+### `Reset-AzPowerBIWorkspaceCollectionAccessKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Reset-AzPowerBIWorkspaceCollectionAccessKeys alias will be removed in an upcoming breaking change release
+
 ## Az.RecoveryServices
 
 ### `Get-AzRecoveryServicesVaultSettingsFile`
@@ -814,6 +1513,18 @@
 - Parameter breaking-change will happen to all parameter sets
   - `-Certificate`
     - Parameter is being deprecated without being replaced
+
+## Az.RedisCache
+
+### `Remove-AzRedisCacheDiagnostic`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Remove-AzRedisCacheDiagnostics alias will be removed in an upcoming breaking change release
+
+### `Set-AzRedisCacheDiagnostic`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Set-AzRedisCacheDiagnostics alias will be removed in an upcoming breaking change release
 
 ## Az.Resources
 
@@ -937,7 +1648,21 @@
 
 ## Az.ServiceBus
 
+### `Add-AzServiceBusIPRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - This cmdlet would be deprecated in a future release. Please use Set-AzServiceBusNetworkRuleSet.
+
+### `Add-AzServiceBusVirtualNetworkRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - This cmdlet would be deprecated in a future release. Please use Set-AzServiceBusNetworkRuleSet.
+
 ### `Approve-AzServiceBusPrivateEndpointConnection`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-ResourceId`
@@ -954,11 +1679,25 @@
 
 ### `Deny-AzServiceBusPrivateEndpointConnection`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-ResourceId`
     - The parameter : 'ResourceId' is being replaced by parameter : 'InputObject'.
 
+### `Get-AzServiceBusAuthorizationRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule'
+
 ### `Get-AzServiceBusGeoDRConfiguration`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
@@ -968,7 +1707,17 @@
   - `-ResourceId`
     - The parameter : 'ResourceId' is being replaced by parameter : 'InputObject'.
 
+### `Get-AzServiceBusKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys'
+
 ### `Get-AzServiceBusMigration`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
@@ -984,17 +1733,35 @@
 
 ### `Get-AzServiceBusNetworkRuleSet`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-ResourceId`
     - The parameter : 'ResourceId' is being replaced by parameter : 'InputObject'.
 
 ### `Get-AzServiceBusPrivateEndpointConnection`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-ResourceId`
     - Format of resource id must be /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}. Namespace resource id can no longer be used for list calls.
 
+### `Get-AzServiceBusPrivateLink`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateLinkResourcesListResult'
+
 ### `Get-AzServiceBusQueue`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-MaxCount`
@@ -1002,11 +1769,19 @@
 
 ### `Get-AzServiceBusRule`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-MaxCount`
     - '-MaxCount' is being removed. '-Skip' and '-Top' would be added to support pagination.
 
 ### `Get-AzServiceBusSubscription`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-MaxCount`
@@ -1014,19 +1789,39 @@
 
 ### `Get-AzServiceBusTopic`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-MaxCount`
     - '-MaxCount' is being removed. '-Skip' and '-Top' would be added to support pagination.
   - `-ResourceGroupName`
     - Parameter 'ResourceGroupName' would no longer support alias 'ResourceGroup'.
 
+### `New-AzServiceBusAuthorizationRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule'
+
 ### `New-AzServiceBusGeoDRConfiguration`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
     - 'InputObject' would be removed without being replaced.
   - `-ResourceId`
     - 'ResourceId' would be removed without being replaced.
+
+### `New-AzServiceBusKey`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys'
 
 ### `New-AzServiceBusNamespace`
 
@@ -1036,6 +1831,10 @@
   - The following properties are being added to the output type : 'ResourceGroupName'
 
 ### `New-AzServiceBusQueue`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-AutoDeleteOnIdle`
@@ -1047,7 +1846,17 @@
   - `-LockDuration`
     - LockDuration, Input type of the parameter has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables.
 
+### `New-AzServiceBusRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule'
+
 ### `New-AzServiceBusSubscription`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-AutoDeleteOnIdle`
@@ -1058,6 +1867,10 @@
     - LockDuration, Input type of the parameter has been changed from System.String to System.Timespan. Hence, ISO 8601 format for timespan can NO longer be fed as input to these parameters. Please use New-TimeSpan cmdlet object to construct Timespan variables.
 
 ### `New-AzServiceBusTopic`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-AutoDeleteOnIdle`
@@ -1087,12 +1900,22 @@
   - `-ResourceId`
     - InputObject
 
+### `Remove-AzServiceBusIPRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - This cmdlet would be deprecated in a future release. Please use Set-AzServiceBusNetworkRuleSet.
+
 ### `Remove-AzServiceBusMigration`
 
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
     - The parameter : 'InputObject' is changing.
     The type of the parameter is changing from 'Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes' to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties'.
+
+### `Remove-AzServiceBusNetworkRuleSet`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - This cmdlet would be deprecated in a future release. Please use Set-AzServiceBusNetworkRuleSet.
 
 ### `Remove-AzServiceBusPrivateEndpointConnection`
 
@@ -1138,7 +1961,16 @@
   - `-ResourceId`
     - The parameter : 'ResourceId' is being replaced by parameter : 'InputObject'.
 
+### `Remove-AzServiceBusVirtualNetworkRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - This cmdlet would be deprecated in a future release. Please use Set-AzServiceBusNetworkRuleSet.
+
 ### `Set-AzServiceBusAuthorizationRule`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
@@ -1170,6 +2002,10 @@
 
 ### `Set-AzServiceBusNetworkRuleSet`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
     - NetworkRuleSetInputObjectSet parameter set is changing. Please refer the migration guide for examples.
@@ -1184,6 +2020,10 @@
 
 ### `Set-AzServiceBusQueue`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbQueue'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
     - InputObject parameter set is changing. Please refer the migration guide for examples.
@@ -1191,11 +2031,19 @@
 
 ### `Set-AzServiceBusRule`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
     - InputObject parameter set is changing. Please refer the migration guide for examples.
 
 ### `Set-AzServiceBusSubscription`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbSubscription'
 
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
@@ -1204,12 +2052,22 @@
 
 ### `Set-AzServiceBusTopic`
 
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbTopic'
+
 - Parameter breaking-change will happen to all parameter sets
   - `-InputObject`
     - InputObject parameter set is changing. Please refer the migration guide for examples.
     - InputObject would no longer support alias -TopicObj.
   - `-ResourceGroupName`
     - Parameter 'ResourceGroupName' would no longer support alias 'ResourceGroup'.
+
+### `Start-AzServiceBusMigration`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties'
 
 ### `Stop-AzServiceBusMigration`
 
@@ -1219,6 +2077,12 @@
     The type of the parameter is changing from 'Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusDRConfigurationAttributes' to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties'.
   - `-ResourceId`
     - InputObject
+
+### `Test-AzServiceBusName`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204584 TO KNOW MORE ABOUT BREAKING CHANGES.
+  - Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult'
 
 ## Az.SignalR
 
@@ -1241,6 +2105,26 @@
   - The following properties in the output type are being deprecated : 'HostNamePrefix'
 
 ## Az.Sql
+
+### `Clear-AzSqlDatabaseAdvancedThreatProtectionSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Clear-AzSqlDatabaseAdvancedThreatProtectionSetting cmdlet will be removed in an upcoming breaking change release
+
+### `Clear-AzSqlServerAdvancedThreatProtectionSetting`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Clear-AzSqlServerAdvancedThreatProtectionSetting cmdlet will be removed in an upcoming breaking change release
+
+### `Disable-AzSqlServerAdvancedDataSecurity`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Disable-AzSqlServerAdvancedThreatProtection alias will be removed in an upcoming breaking change release
+
+### `Enable-AzSqlServerAdvancedDataSecurity`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Enable-AzSqlServerAdvancedThreatProtection alias will be removed in an upcoming breaking change release
 
 ### `Get-AzSqlDatabase`
 
@@ -1267,6 +2151,11 @@
   - The output type 'Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel' is changing
   - The following properties in the output type are being deprecated : 'BackupStorageRedundancy'
   - The following properties are being added to the output type : 'CurrentBackupStorageRedundancy' 'RequestedBackupStorageRedundancy'
+
+### `Get-AzSqlServerAdvancedDataSecurityPolicy`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - Get-AzSqlServerAdvancedThreatProtectionPolicy alias will be removed in an upcoming breaking change release
 
 ### `Get-AzSqlServerAdvancedThreatProtectionSetting`
 
@@ -1370,6 +2259,53 @@
     - The parameter : 'RetentionInDays' is changing.
   - `-StorageAccountName`
     - The parameter : 'StorageAccountName' is changing.
+
+## Az.Storage
+
+### `Get-AzStorageBlob`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The returned blob properties will be moved from ICloudBlob.Properties to BlobProperties in a future release.
+
+### `Get-AzStorageFileContent`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The returned file properties will be moved from CloudFile to FileProperties in a future release.
+
+### `Get-AzStorageShare`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The returned share properties will be moved from CloudFileShare.Properties to ShareProperties (with '-Name'), or ListShareProperties (without '-Name') in a future release.
+
+### `New-AzStorageDirectory`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The returned Directory properties will be moved from CloudFileDirectory to ShareDirectoryProperties in a future release.
+
+### `New-AzStorageShare`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The returned share properties will be moved from CloudFileShare.Properties to ShareProperties in a future release.
+
+### `Remove-AzStorageShare`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The returned share properties will be moved from CloudFileShare.Properties to ShareProperties in a future release.
+
+### `Set-AzStorageFileContent`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The returned file properties will be moved from CloudFile to FileProperties in a future release.
+
+### `Set-AzStorageShareQuota`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The returned share properties will be moved from CloudFileShare.Properties to ShareProperties.
+
+### `Start-AzStorageFileCopy`
+
+- Cmdlet breaking-change will happen to all parameter set
+  - The returned file properties will be moved from CloudFile to FileProperties in a future release.
 
 ## Az.StorageSync
 
