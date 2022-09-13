@@ -5882,7 +5882,7 @@ function Test-VirtualMachineGuestAttestation
 
 <#
 .SYNOPSIS
-Test Test GetVirtualMachineById Parameter Set
+Test to ensure the TimeCreated property is returned in the VM and VMSS models.
 #>
 function Test-VMandVMSSTimeCreated
 {
@@ -5895,8 +5895,6 @@ function Test-VMandVMSSTimeCreated
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        #$domainNameLabel = "d1" + $rgname;
-
         $vnetname = "myVnet";
         $vnetAddress = "10.0.0.0/16";
         $subnetname = "slb" + $rgname;
@@ -5904,15 +5902,6 @@ function Test-VMandVMSSTimeCreated
         $vmssName = "vmss" + $rgname;
         $FaultDomainNumber = 2;
         $vmssFaultDomain = 3;
-
-        $OSDiskName = $vmname + "-osdisk";
-        $NICName = $vmname+ "-nic";
-        $NSGName = $vmname + "-NSG";
-        $OSDiskSizeinGB = 128;
-        $VMSize = "Standard_DS2_v2";
-        $PublisherName = "MicrosoftWindowsServer";
-        $Offer = "WindowsServer";
-        $SKU = "2019-Datacenter";
 
         # Creating a new vmss
         $VmSku = "Standard_E2s_v3"
