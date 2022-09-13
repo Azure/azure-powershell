@@ -12,13 +12,13 @@
 RootModule = './Az.MarketplaceOrdering.psm1'
 
 # Version number of this module.
-ModuleVersion = '0.1.0'
+ModuleVersion = '1.0.3'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
 
 # ID used to uniquely identify this module
-GUID = 'f781d2f9-c4c6-4d0b-bcfb-26973544c41d'
+GUID = '95b51ba9-b0c9-430e-bab9-69492bc277cf'
 
 # Author of this module
 Author = 'Microsoft Corporation'
