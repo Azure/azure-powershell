@@ -507,5 +507,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineGuestAttestation");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVMandVMSSTimeCreated()
+        {
+            TestRunner.RunTestScript("Test-VMandVMSSTimeCreated");
+        }
     }
 }

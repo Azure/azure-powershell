@@ -5879,3 +5879,68 @@ function Test-VirtualMachineGuestAttestation
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Test GetVirtualMachineById Parameter Set
+#>
+function Test-VMandVMSSTimeCreated
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        #$domainNameLabel = "d1" + $rgname;
+
+        $vnetname = "myVnet";
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $vmssName = "vmss" + $rgname;
+        $FaultDomainNumber = 2;
+        $vmssFaultDomain = 3;
+
+        $OSDiskName = $vmname + "-osdisk";
+        $NICName = $vmname+ "-nic";
+        $NSGName = $vmname + "-NSG";
+        $OSDiskSizeinGB = 128;
+        $VMSize = "Standard_DS2_v2";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2019-Datacenter";
+
+        # Creating a new vmss
+        $VmSku = "Standard_E2s_v3"
+        $domainNameLabel = "d1"+ $rgname;
+        $vmssname = "MyVmss"
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssname;
+        Assert-NotNull $vmss.TimeCreated;
+        
+
+        # Creating a VM using Simple parameterset
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Create VM using Default Parameter set
+        $domainNameLabel = "d2" + $rgname;
+        $vmname = "vmnam";
+        New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+        Assert-NotNull $vm.TimeCreated;
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
