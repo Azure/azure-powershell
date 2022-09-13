@@ -736,4 +736,16 @@
   <data name="StopLogReplayErrorDatabaseOrigin" xml:space="preserve">
     <value>Cannot stop the log replay as database {0} on the instance {1} in the resource group {2} was not created with log replay service.</value>
   </data>
+  <data name="RemoveAzureSqlServerIpv6FirewallRuleDescription" xml:space="preserve">
+    <value>Permanently removing IPv6 Firewall Rule '{0}' for Azure Sql Database Server '{1}'.</value>
+  </data>
+  <data name="RemoveAzureSqlServerIpv6FirewallRuleWarning" xml:space="preserve">
+    <value>Are you sure you want to remove the IPv6 Firewall Rule '{0}' for Azure Sql Database Server  '{1}'?</value>
+  </data>
+  <data name="ServerIpv6FirewallRuleNameExists" xml:space="preserve">
+    <value>IPv6 Firewall Rule with name: '{0}' already exists for server '{1}'.</value>
+  </data>
+  <data name="ServerIpv6FirewallRuleNameDoesNotExist" xml:space="preserve">
+    <value>IPv6 Firewall Rule with name: '{0}' does not exist for server '{1}'.</value>
+  </data>
 </root>
