@@ -3442,7 +3442,7 @@ param(
             }    
         }
 
-        $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop bhat
+        $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop
 
         $properties  = $armResource.Properties
 
