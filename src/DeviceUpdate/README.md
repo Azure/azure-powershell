@@ -185,6 +185,12 @@ directive:
       subject: PrivateEndpointConnectionProxyPrivateEndpointProperty
     remove: true
   - where:
+      subject: PrivateEndpointConnection
+    remove: true
+  - where:
+      subject: PrivateLinkResource
+    remove: true
+  - where:
       parameter-name: IdentityUserAssignedIdentity
     set:
       parameter-name: UserAssignedIdentity

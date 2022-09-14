@@ -27,8 +27,7 @@ Creates or updates Account.
 
 ### Example 1: Creates or updates Account.
 ```powershell
-$privateEndpointConnection = New-AzDeviceUpdatePrivateEndpointConnectionObject -PrivateLinkServiceConnectionStateDescription "Description: Approved" -PrivateLinkServiceConnectionStateStatus 'Approved'
-New-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp -Location eastus -IdentityType 'SystemAssigned' -PrivateEndpointConnection $privateEndpointConnection -PublicNetworkAccess 'Enabled' -Sku 'Standard'
+New-AzDeviceUpdateAccount -Name azpstest-account -ResourceGroupName azpstest_gp -Location eastus -IdentityType 'SystemAssigned' -PublicNetworkAccess 'Enabled' -Sku 'Standard'
 ```
 
 ```output

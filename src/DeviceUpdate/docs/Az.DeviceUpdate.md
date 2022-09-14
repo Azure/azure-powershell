@@ -17,12 +17,6 @@ Returns account details for the given account name.
 ### [Get-AzDeviceUpdateInstance](Get-AzDeviceUpdateInstance.md)
 Returns instance details for the given instance and account name.
 
-### [Get-AzDeviceUpdatePrivateEndpointConnection](Get-AzDeviceUpdatePrivateEndpointConnection.md)
-Get the specified private endpoint connection associated with the device update account.
-
-### [Get-AzDeviceUpdatePrivateLinkResource](Get-AzDeviceUpdatePrivateLinkResource.md)
-Get the specified private link resource associated with the device update account.
-
 ### [Invoke-AzDeviceUpdateHeadAccount](Invoke-AzDeviceUpdateHeadAccount.md)
 Checks whether account exists.
 
@@ -41,20 +35,11 @@ Creates or updates instance.
 ### [New-AzDeviceUpdateIotHubSettingsObject](New-AzDeviceUpdateIotHubSettingsObject.md)
 Create an in-memory object for IotHubSettings.
 
-### [New-AzDeviceUpdatePrivateEndpointConnection](New-AzDeviceUpdatePrivateEndpointConnection.md)
-Update the state of specified private endpoint connection associated with the device update account.
-
-### [New-AzDeviceUpdatePrivateEndpointConnectionObject](New-AzDeviceUpdatePrivateEndpointConnectionObject.md)
-Create an in-memory object for PrivateEndpointConnection.
-
 ### [Remove-AzDeviceUpdateAccount](Remove-AzDeviceUpdateAccount.md)
 Deletes account.
 
 ### [Remove-AzDeviceUpdateInstance](Remove-AzDeviceUpdateInstance.md)
 Deletes instance.
-
-### [Remove-AzDeviceUpdatePrivateEndpointConnection](Remove-AzDeviceUpdatePrivateEndpointConnection.md)
-Deletes the specified private endpoint connection associated with the device update account.
 
 ### [Test-AzDeviceUpdateNameAvailability](Test-AzDeviceUpdateNameAvailability.md)
 Checks ADU resource name availability.

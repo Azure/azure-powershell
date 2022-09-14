@@ -15,13 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'AzDeviceUpdateAccount'))
 }
 
 Describe 'AzDeviceUpdateAccount' {
-    It 'CreateExpanded' {
-        {
-            $privateEndpointConnection = New-AzDeviceUpdatePrivateEndpointConnectionObject -PrivateLinkServiceConnectionStateDescription "Description: Approved" -PrivateLinkServiceConnectionStateStatus 'Approved'
-            $config = New-AzDeviceUpdateAccount -Name $env.accountName1 -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType 'SystemAssigned' -PrivateEndpointConnection $privateEndpointConnection -PublicNetworkAccess 'Enabled' -Sku 'Standard'
-            $config.Name | Should -Be $env.accountName1
-        } | Should -Not -Throw
-    }
+    # It 'CreateExpanded' {
+    #     {
+    #         $privateEndpointConnection = New-AzDeviceUpdatePrivateEndpointConnectionObject -PrivateLinkServiceConnectionStateDescription "Description: Approved" -PrivateLinkServiceConnectionStateStatus 'Approved'
+    #         $config = New-AzDeviceUpdateAccount -Name $env.accountName1 -ResourceGroupName $env.resourceGroup -Location $env.location -IdentityType 'SystemAssigned' -PrivateEndpointConnection $privateEndpointConnection -PublicNetworkAccess 'Enabled' -Sku 'Standard'
+    #         $config.Name | Should -Be $env.accountName1
+    #     } | Should -Not -Throw
+    # }
 
     It 'List' {
         {
