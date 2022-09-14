@@ -60,6 +60,8 @@ subject-prefix: $(service-name)
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
 # identity-correction-for-post: true
+resourcegroup-append: true
+nested-object-to-string: true
 
 directive:
   - where:
@@ -71,6 +73,11 @@ directive:
   - where:
       verb: Set
     remove: true
+  - where:
+      verb: Update
+    remove: true
+
+# Migration Configs
   - where:
       verb: New
       subject: MigrationConfigAndStartMigration
@@ -91,22 +98,11 @@ directive:
       subject: MigrationConfig
     set:
       subject: Migration
+
+# Remove namespace cmdlets
   - where:
-      verb: Invoke
-      subject: BreakDisasterRecoveryConfigPairing
-    set:
-      verb: Set
-      subject: GeoDRConfigurationBreakPair
-  - where:
-      verb: Invoke
-      subject: FailDisasterRecoveryConfigOver
-    set:
-      verb: Set
-      subject: GeoDRConfigurationFailOver
-  - where:
-      subject: DisasterRecoveryConfig
-    set:
-      subject: GeoDRConfiguration
+      subject: Namespace
+    remove: true
 
 # Rules
   - where:
@@ -184,18 +180,6 @@ directive:
   - where:
       verb: New
       subject: Rule
-      parameter-name: CorrelationFilterReplyToSessionId
-    set:
-      parameter-name: ReplyToSessionId
-  - where:
-      model-name: Rule
-      property-name: CorrelationFilterReplyToSessionId
-    set:
-      property-name: ReplyToSessionId
-
-  - where:
-      verb: New
-      subject: Rule
       parameter-name: CorrelationFilterTo
     set:
       parameter-name: To
@@ -247,3 +231,136 @@ directive:
       parameter-name: AuthorizationRuleName
     set:
       parameter-name: Name
+
+# Disaster Recovery Configs
+  - where:
+      subject: DisasterRecoveryConfig
+      parameter-name: Alias
+    set:
+      parameter-name: Name
+
+  - where:
+      verb: Invoke
+      subject: BreakDisasterRecoveryConfigPairing|FailDisasterRecoveryConfigOver
+      parameter-name: Alias
+    set:
+      parameter-name: Name
+
+  - where:
+      verb: Invoke
+      subject: BreakDisasterRecoveryConfigPairing
+    hide: true
+
+  - where:
+      verb: Invoke
+      subject: FailDisasterRecoveryConfigOver
+    hide: true
+
+  - where:
+      subject: DisasterRecoveryConfig
+    set:
+      subject: GeoDRConfiguration
+
+# Change singular names to plural
+  - where:
+      parameter-name: MaxMessageSizeInKilobyte
+    set:
+      parameter-name: MaxMessageSizeInKilobytes
+  - where:
+      property-name: MaxMessageSizeInKilobyte
+    set:
+      property-name: MaxMessageSizeInKilobytes
+
+  - where:
+      parameter-name: MaxSizeInMegabyte
+    set:
+      parameter-name: MaxSizeInMegabytes
+  - where:
+      property-name: MaxSizeInMegabyte
+    set:
+      property-name: MaxSizeInMegabytes
+
+  - where:
+      parameter-name: EnableBatchedOperation
+    set:
+      parameter-name: EnableBatchedOperations
+  - where:
+      property-name: EnableBatchedOperation
+    set:
+      property-name: EnableBatchedOperations
+
+# Re-Write descriptions for TimeSpan objects
+# Reason being the swagger descriptions specify ISO 8601 format for timespan objects which will no longer be supported by powershell
+  - where:
+      parameter-name: LockDuration
+      verb: New|Set
+      subject: Queue|Topic|Subscription
+    set:
+      parameter-description: Timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers. The maximum value for LockDuration is 5 minutes; the default value is 1 minute.
+
+  - where:
+      parameter-name: DefaultMessageTimeToLive
+      verb: New|Set
+      subject: Queue|Topic|Subscription
+    set:
+      parameter-description: This is the duration after which the message expires, starting from when the message is sent to Service Bus. This is the default value used when TimeToLive is not set on a message itself.
+
+  - where:
+      parameter-name: DuplicateDetectionHistoryTimeWindow
+      verb: New|Set
+      subject: Queue|Topic|Subscription
+    set:
+      parameter-description: Defines the duration of the duplicate detection history. The default value is 10 minutes.
+
+  - where:
+      parameter-name: AutoDeleteOnIdle
+      verb: New|Set
+      subject: Queue|Topic|Subscription
+    set:
+      parameter-description: Idle interval after which the queue is automatically deleted. The minimum duration is 5 minutes.
+
+# Name Availability
+  - where:
+      verb: Test
+      subject: NamespaceNameAvailability
+    hide: true
+
+  - where:
+      verb: Test
+      subject: DisasterRecoveryConfigNameAvailability
+    hide: true
+
+# Hide New-AzEventHubPrivateEndpointConnection
+  - where:
+      verb: New
+      subject: PrivateEndpointConnection
+    hide: true
+  
+  - where:
+      subject: PrivateLinkResource
+    set:
+      subject: PrivateLink
+
+  - where:
+      verb: Get
+      subject: PrivateLink
+      variant: GetViaIdentity
+    remove: true
+
+  - where:
+      model-name: PrivateEndpointConnection
+      property-name: PrivateLinkServiceConnectionStateStatus
+    set:
+      property-name: ConnectionState
+
+  - where:
+      model-name: PrivateEndpointConnection
+      property-name: PrivateLinkServiceConnectionStateDescription
+    set:
+      property-name: Description
+
+# Network Rule Sets
+  - where:
+      subject: NamespaceNetworkRuleSet
+    set:
+      subject: NetworkRuleSet

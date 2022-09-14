@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceBusQueue'))
 
 Describe 'New-AzServiceBusQueue' {
     It 'CreateExpanded' {
-        $queue = New-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queue1 -LockDuration (New-TimeSpan -Minutes 4) -MaxMessageSizeInKilobytes 102400 -MaxSizeInMegabytes 4096 -RequiresDuplicateDetection -DuplicateDetectionHistoryTimeWindow (New-TimeSpan -Minutes 10) -DeadLetteringOnMessageExpiration -MaxDeliveryCount 8 -Status Active -EnableBatchedOperations:$false -DefaultMessageTimeToLive (New-TimeSpan -Days 428 -Hours 3 -Minutes 11 -Seconds 10) -ForwardTo $env.queue -ForwardDeadLetteredMessagesTo $env.queue
-        $queue.Name | Should -Be "queue1"
+        $queue = New-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queue2 -LockDuration (New-TimeSpan -Minutes 4) -MaxMessageSizeInKilobytes 102400 -MaxSizeInMegabytes 4096 -RequiresDuplicateDetection -DuplicateDetectionHistoryTimeWindow (New-TimeSpan -Minutes 10) -DeadLetteringOnMessageExpiration -MaxDeliveryCount 8 -Status Active -EnableBatchedOperations:$false -DefaultMessageTimeToLive (New-TimeSpan -Days 428 -Hours 3 -Minutes 11 -Seconds 10) -ForwardTo $env.queue -ForwardDeadLetteredMessagesTo $env.queue
+        $queue.Name | Should -Be "queue2"
         $queue.ResourceGroupName | Should -Be $env.resourceGroup
         $queue.LockDuration | Should -Be (New-TimeSpan -Minutes 4)
         $queue.DuplicateDetectionHistoryTimeWindow | Should -Be (New-TimeSpan -Minutes 10)
@@ -31,12 +31,15 @@ Describe 'New-AzServiceBusQueue' {
         $queue.ForwardDeadLetteredMessagesTo | Should -Be $env.queue
         $queue.MaxMessageSizeInKilobytes | Should -Be 102400
 
-        $queue2 = New-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queue2 -RequiresSession -EnableExpress -EnablePartitioning -AutoDeleteOnIdle (New-Timespan -Days 7)
-        $queue2.Name | Should -Be "queue2"
+        $queue2 = New-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queue3 -RequiresSession -EnableExpress -EnablePartitioning -AutoDeleteOnIdle (New-Timespan -Days 7)
+        $queue2.Name | Should -Be "queue3"
         $queue2.ResourceGroupName | Should -Be $env.resourceGroup
         $queue2.EnablePartitioning | Should -Be $true
         $queue2.EnableExpress | Should -Be $true
         $queue2.RequiresSession | Should -Be $true
         $queue2.AutoDeleteOnIdle | Should -Be (New-TimeSpan -Days 7)
+
+        $listOfQueues = Get-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+        $listOfQueues.Count | Should -Be 3
     }
 }

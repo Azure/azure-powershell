@@ -1,37 +1,32 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusgeodrconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/approve-azservicebusprivateendpointconnection
 schema: 2.0.0
 ---
 
-# Get-AzServiceBusGeoDRConfiguration
+# Approve-AzServiceBusPrivateEndpointConnection
 
 ## SYNOPSIS
-Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
+Approves a ServiceBus PrivateEndpointConnection
 
 ## SYNTAX
 
-### List (Default)
+### SetExpanded (Default)
 ```
-Get-AzServiceBusGeoDRConfiguration -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzServiceBusGeoDRConfiguration -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Approve-AzServiceBusPrivateEndpointConnection -NamespaceName <String> -ResourceGroupName <String>
+ [-Name <String>] [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [<CommonParameters>]
 ```
 
-### GetViaIdentity
+### SetViaIdentityExpanded
 ```
-Get-AzServiceBusGeoDRConfiguration -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Approve-AzServiceBusPrivateEndpointConnection -InputObject <IServiceBusIdentity> [-Description <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
+Approves a ServiceBus PrivateEndpointConnection
 
 ## EXAMPLES
 
@@ -59,6 +54,21 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -74,13 +84,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Description
+PrivateEndpoint information.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
-Identity Parameter
+Identity parameter.
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: SetViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -91,14 +116,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The Disaster Recovery configuration name
+The name of the Private Endpoint Connection
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: SetExpanded
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -106,12 +131,12 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-The namespace name
+The name of ServiceBus namespace
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
-Aliases:
+Parameter Sets: SetExpanded
+Aliases: Namespace
 
 Required: True
 Position: Named
@@ -120,12 +145,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
-Name of the Resource group within the Azure subscription.
+The name of the resource group.
+The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: True
@@ -136,12 +177,11 @@ Accept wildcard characters: False
 ```
 
 ### -SubscriptionId
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
+The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List
+Type: System.String
+Parameter Sets: SetExpanded
 Aliases:
 
 Required: False
@@ -160,7 +200,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection
 
 ## NOTES
 
@@ -171,7 +211,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`INPUTOBJECT <IServiceBusIdentity>`: Identity Parameter
+`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[AuthorizationRuleName <String>]`: The authorization rule name.
   - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".

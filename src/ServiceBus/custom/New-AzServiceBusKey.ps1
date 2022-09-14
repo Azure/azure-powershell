@@ -64,7 +64,8 @@ function New-AzServiceBusKey{
         ${ResourceGroupName},
 
         [Parameter(ParameterSetName = 'NewExpandedNamespace', HelpMessage = "The ID of the target subscription.")]
-        [Parameter(ParameterSetName = 'NewExpandedEntity', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName = 'NewExpandedQueue', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName = 'NewExpandedTopic', HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]

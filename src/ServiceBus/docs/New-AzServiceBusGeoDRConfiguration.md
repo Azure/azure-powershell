@@ -13,7 +13,7 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 ## SYNTAX
 
 ```
-New-AzServiceBusGeoDRConfiguration -Alias <String> -NamespaceName <String> -ResourceGroupName <String>
+New-AzServiceBusGeoDRConfiguration -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AlternateName <String>] [-PartnerNamespace <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -47,21 +47,6 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 
 ## PARAMETERS
 
-### -Alias
-The Disaster Recovery configuration name
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -AlternateName
 Primary/Secondary eventhub namespace name, which is part of GEO DR pairing
 
@@ -86,6 +71,21 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Name
+The Disaster Recovery configuration name
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

@@ -15,11 +15,15 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzServiceBusPrivateEnd
 }
 
 Describe 'Remove-AzServiceBusPrivateEndpointConnection' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    $listOfPrivateEndpoints = Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+    It 'Delete' {
+        Remove-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name
+        { Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[0].Name } | Should -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $privateEndpoint = Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $listOfPrivateEndpoints[1].Name
+        Remove-AzServiceBusPrivateEndpointConnection -InputObject $privateEndpoint
+        { Get-AzServiceBusPrivateEndpointConnection -InputObject $privateEndpoint } | Should -Throw
     }
 }

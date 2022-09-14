@@ -1,37 +1,37 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusgeodrconfiguration
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebusnetworkruleset
 schema: 2.0.0
 ---
 
-# Get-AzServiceBusGeoDRConfiguration
+# Get-AzServiceBusNetworkRuleSet
 
 ## SYNOPSIS
-Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
+Gets NetworkRuleSet for a Namespace.
 
 ## SYNTAX
 
-### List (Default)
+### Get (Default)
 ```
-Get-AzServiceBusGeoDRConfiguration -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### Get
-```
-Get-AzServiceBusGeoDRConfiguration -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+Get-AzServiceBusNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzServiceBusGeoDRConfiguration -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
+Get-AzServiceBusNetworkRuleSet -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzServiceBusNetworkRuleSet -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
+Gets NetworkRuleSet for a Namespace.
 
 ## EXAMPLES
 
@@ -90,21 +90,6 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -Name
-The Disaster Recovery configuration name
-
-```yaml
-Type: System.String
-Parameter Sets: Get
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NamespaceName
 The namespace name
 
@@ -160,7 +145,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IArmDisasterRecovery
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.INetworkRuleSet
 
 ## NOTES
 

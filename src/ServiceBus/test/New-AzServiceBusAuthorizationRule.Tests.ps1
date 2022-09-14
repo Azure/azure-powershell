@@ -15,15 +15,33 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceBusAuthorization
 }
 
 Describe 'New-AzServiceBusAuthorizationRule' {
-    It 'NewExpandedNamespace' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'NewExpandedNamespace' {
+        $authRule = New-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule4 -Rights @("Send", "Manage", "Listen")
+        $authRule.Name | Should -Be "namespaceAuthRule4"
+        $authRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $authRule.Rights.Count | Should -Be 3
+
+        $listOfAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+        $listOfAuthRules.Count | Should -Be 4
     }
 
-    It 'NewExpandedQueue' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'NewExpandedQueue' {
+        $authRule = New-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule3 -Rights @("Listen")
+        $authRule.Name | Should -Be "queueAuthRule3"
+        $authRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $authRule.Rights.Count | Should -Be 1
+
+        $listOfAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1
+        $listOfAuthRules.Count | Should -Be 3
     }
 
-    It 'NewExpandedTopic' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'NewExpandedTopic' {
+        $authRule = New-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name topicAuthRule3 -Rights @("Send")
+        $authRule.Name | Should -Be "topicAuthRule3"
+        $authRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $authRule.Rights.Count | Should -Be 1
+
+        $listOfAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1
+        $listOfAuthRules.Count | Should -Be 2
     }
 }

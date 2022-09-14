@@ -16,8 +16,8 @@ Sets a ServiceBus Topic
 ```
 Set-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
- [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation] [-EnableExpress]
- [-EnablePartitioning] [-MaxMessageSizeInKilobyte <Int64>] [-MaxSizeInMegabyte <Int32>]
+ [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations] [-EnableExpress]
+ [-EnablePartitioning] [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>]
  [-RequiresDuplicateDetection] [-Status <EntityStatus>] [-SupportOrdering] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -26,8 +26,8 @@ Set-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName 
 ```
 Set-AzServiceBusTopic -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <TimeSpan>]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
- [-EnableBatchedOperation] [-EnableExpress] [-EnablePartitioning] [-MaxMessageSizeInKilobyte <Int64>]
- [-MaxSizeInMegabyte <Int32>] [-RequiresDuplicateDetection] [-Status <EntityStatus>] [-SupportOrdering]
+ [-EnableBatchedOperations] [-EnableExpress] [-EnablePartitioning] [-MaxMessageSizeInKilobytes <Int64>]
+ [-MaxSizeInMegabytes <Int32>] [-RequiresDuplicateDetection] [-Status <EntityStatus>] [-SupportOrdering]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -139,7 +139,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableBatchedOperation
+### -EnableBatchedOperations
 Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
@@ -201,7 +201,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MaxMessageSizeInKilobyte
+### -MaxMessageSizeInKilobytes
 Maximum size (in KB) of the message payload that can be accepted by the topic.
 This property is only used in Premium today and default is 1024.
 
@@ -217,7 +217,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxSizeInMegabyte
+### -MaxSizeInMegabytes
 The maximum delivery count.
 A message is automatically deadlettered after this number of deliveries.
 default value is 10.

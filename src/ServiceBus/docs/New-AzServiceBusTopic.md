@@ -15,8 +15,8 @@ Creates a topic in the specified namespace.
 ```
 New-AzServiceBusTopic -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AutoDeleteOnIdle <TimeSpan>] [-DefaultMessageTimeToLive <TimeSpan>]
- [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation] [-EnableExpress]
- [-EnablePartitioning] [-MaxMessageSizeInKilobyte <Int64>] [-MaxSizeInMegabyte <Int32>]
+ [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations] [-EnableExpress]
+ [-EnablePartitioning] [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>]
  [-RequiresDuplicateDetection] [-Status <EntityStatus>] [-SupportOrdering] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -51,7 +51,7 @@ Creates a topic in the specified namespace.
 ## PARAMETERS
 
 ### -AutoDeleteOnIdle
-ISO 8601 timespan idle interval after which the topic is automatically deleted.
+Idle interval after which the queue is automatically deleted.
 The minimum duration is 5 minutes.
 
 ```yaml
@@ -67,7 +67,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultMessageTimeToLive
-ISO 8601 Default message timespan to live value.
 This is the duration after which the message expires, starting from when the message is sent to Service Bus.
 This is the default value used when TimeToLive is not set on a message itself.
 
@@ -99,7 +98,7 @@ Accept wildcard characters: False
 ```
 
 ### -DuplicateDetectionHistoryTimeWindow
-ISO8601 timespan structure that defines the duration of the duplicate detection history.
+Defines the duration of the duplicate detection history.
 The default value is 10 minutes.
 
 ```yaml
@@ -114,7 +113,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableBatchedOperation
+### -EnableBatchedOperations
 Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
@@ -160,7 +159,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxMessageSizeInKilobyte
+### -MaxMessageSizeInKilobytes
 Maximum size (in KB) of the message payload that can be accepted by the topic.
 This property is only used in Premium today and default is 1024.
 
@@ -176,7 +175,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxSizeInMegabyte
+### -MaxSizeInMegabytes
 Maximum size of the topic in megabytes, which is the size of the memory allocated for the topic.
 Default is 1024.
 

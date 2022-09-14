@@ -15,11 +15,22 @@ if(($null -eq $TestName) -or ($TestName -contains 'Deny-AzServiceBusPrivateEndpo
 }
 
 Describe 'Deny-AzServiceBusPrivateEndpointConnection' {
-    It 'SetExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    $privateEndpoint = Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+
+    It 'SetExpanded' {
+        $privateEndpoint[0].ConnectionState | Should -Be "Approved"
+        $privateEndpoint[0].Description | Should -Be ""
+        
+        $firstPrivateEndpoint = Deny-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $privateEndpoint[0].Name
+        $firstPrivateEndpoint.ConnectionState | Should -Be "Rejected"
+        $firstPrivateEndpoint.Description | Should -Be ""
     }
 
-    It 'SetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'SetViaIdentityExpanded' {
+        $secondPrivateEndpoint = Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $privateEndpoint[1].Name
+
+        $secondPrivateEndpoint = Deny-AzServiceBusPrivateEndpointConnection -InputObject $secondPrivateEndpoint -Description "Bye"
+        $secondPrivateEndpoint.ConnectionState | Should -Be "Rejected"
+        $secondPrivateEndpoint.Description | Should -Be "Bye"
     }
 }

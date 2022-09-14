@@ -26,6 +26,7 @@ function Get-AzServiceBusKey{
         [Parameter(ParameterSetName = 'GetExpandedQueue', Mandatory, HelpMessage = "The name of the Authorization Rule")]
         [Parameter(ParameterSetName = 'GetExpandedTopic', Mandatory, HelpMessage = "The name of the Authorization Rule")]
         [Parameter(ParameterSetName = 'GetExpandedNamespace', Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the Authorization Rule")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Authorization Rule.
@@ -166,7 +167,7 @@ function Get-AzServiceBusKey{
 
             elseif ($PSCmdlet.ParameterSetName -eq 'GetExpandedAlias'){
                 if ($PSCmdlet.ShouldProcess("ServiceBus Alias Authorization Rule $($Name)", "List Keys")) {
-                    Az.ServiceBus.private\Get-AzServiceBusTopicKey_List @PSBoundParameters
+                    Az.ServiceBus.private\Get-AzServiceBusDisasterRecoveryConfigKey_List @PSBoundParameters
                 }
             }
 		}

@@ -18,7 +18,7 @@ Set-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGro
  -TopicName <String> [-SubscriptionId <String>] [-AutoDeleteOnIdle <TimeSpan>] [-ClientId <String>]
  [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
- [-EnableBatchedOperation] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine]
+ [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine]
  [-IsDurable] [-IsShared] [-MaxDeliveryCount <Int32>] [-RequiresSession] [-Status <EntityStatus>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -28,7 +28,7 @@ Set-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGro
 Set-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <TimeSpan>]
  [-ClientId <String>] [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
- [-EnableBatchedOperation] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine]
+ [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine]
  [-IsDurable] [-IsShared] [-MaxDeliveryCount <Int32>] [-RequiresSession] [-Status <EntityStatus>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -186,7 +186,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableBatchedOperation
+### -EnableBatchedOperations
 Value that indicates whether server-side batched operations are enabled.
 
 ```yaml

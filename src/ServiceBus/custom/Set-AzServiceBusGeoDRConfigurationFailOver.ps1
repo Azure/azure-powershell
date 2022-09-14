@@ -14,59 +14,43 @@
 
 <#
 .Synopsis
-Removes an ServiceBus Namespace, Queue or Topic Authorization Rule
+Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 .Description
-Removes an ServiceBus Namespace, Queue or Topic Authorization Rule
+Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 #>
 
-function Remove-AzServiceBusAuthorizationRule{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
-    [CmdletBinding(DefaultParameterSetName = 'RemoveExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
+function Set-AzServiceBusGeoDRConfigurationFailOver{
+	[OutputType([System.Boolean])]
+    [CmdletBinding(DefaultParameterSetName = 'Fail', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
-        [Parameter(Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Parameter(ParameterSetName = 'Fail', Mandatory, HelpMessage = "The name of the disaster recovery config or alias")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
-        # The name of the Authorization Rule.
+        # The name of the disaster recovery config or alias
         ${Name},
 
-        [Parameter(ParameterSetName = 'RemoveExpandedQueue', Mandatory, HelpMessage = "The name of the ServiceBus Queue entity.")]
-        [Alias('Queue')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
-        [System.String]
-        # The name of the ServiceBus Queue entity.
-        ${QueueName},
-
-        [Parameter(ParameterSetName = 'RemoveExpandedTopic', Mandatory, HelpMessage = "The name of the ServiceBus Topic entity.")]
-        [Alias('Topic')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
-        [System.String]
-        # The name of the ServiceBus Topic entity.
-        ${TopicName},
-
-        [Parameter(ParameterSetName = 'RemoveExpandedQueue', Mandatory, HelpMessage = "The name of Service Bus namespace")]
-        [Parameter(ParameterSetName = 'RemoveExpandedTopic', Mandatory, HelpMessage = "The name of Service Bus namespace")]
-        [Parameter(ParameterSetName = 'RemoveExpandedNamespace', Mandatory, HelpMessage = "The name of Service Bus namespace")]
+        [Parameter(ParameterSetName = 'Fail', Mandatory, HelpMessage = "The name of ServiceBus namespace")]
         [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of ServiceBus namespace
         ${NamespaceName},
 
-        [Parameter(Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(ParameterSetName = 'Fail', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName = 'Fail', HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
 
-        [Parameter(ParameterSetName = 'RemoveViaIdentityExpanded', Mandatory, ValueFromPipeline, HelpMessage = "Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.")]
+        [Parameter(ParameterSetName = 'FailViaIdentity', Mandatory, ValueFromPipeline, HelpMessage = "Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
         # Identity Parameter
@@ -134,55 +118,34 @@ function Remove-AzServiceBusAuthorizationRule{
 	)
 	process{
 		try{
+            $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            if ($PSCmdlet.ParameterSetName -eq 'RemoveExpandedNamespace'){
-                if ($PSCmdlet.ShouldProcess("ServiceBus Namespace Authorization Rule $($Name)", "Deleting")) {
-                    Az.ServiceBus.private\Remove-AzServiceBusNamespaceAuthorizationRule_Delete @PSBoundParameters
-                }
+            $drConfig = Get-AzServiceBusGeoDRConfiguration @PSBoundParameters
+
+            # 2. PUT
+            $null = $PSBoundParameters.Remove('InputObject')
+
+            if ($hasAsJob) {
+                $PSBoundParameters.Add('AsJob', $true)
             }
 
-            elseif ($PSCmdlet.ParameterSetName -eq 'RemoveExpandedQueue'){
-                if ($PSCmdlet.ShouldProcess("ServiceBus Queue Authorization Rule $($Name)", "Deleting")) {
-                    Az.ServiceBus.private\Remove-AzServiceBusQueueAuthorizationRule_Delete @PSBoundParameters
+            if($PSCmdlet.ParameterSetName -eq 'Fail'){
+                if ($PSCmdlet.ShouldProcess("ServiceBus Disaster Recovery Alias $($Name)", "Fail Over")) {
+                    Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_Fail @PSBoundParameters
                 }
             }
-
-            elseif ($PSCmdlet.ParameterSetName -eq 'RemoveExpandedTopic'){
-                if ($PSCmdlet.ShouldProcess("ServiceBus Topic Authorization Rule $($Name)", "Deleting")) {
-                    Az.ServiceBus.private\Remove-AzServiceBusTopicAuthorizationRule_Delete @PSBoundParameters
-                }
-            }
-
-            elseif ($PSCmdlet.ParameterSetName -eq 'RemoveViaIdentityExpanded'){
-                
-                if($InputObject.Id -ne $null){
+            elseif($PSCmdlet.ParameterSetName -eq 'FailViaIdentity'){
+                if ($InputObject.Id -ne $null){
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject.Id
                 }
                 else{
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject
                 }
-                
-                if ($ResourceHashTable['QueueName'] -ne $null){
-                    if ($PSCmdlet.ShouldProcess("ServiceBus Queue Authorization Rule $($ResourceHashTable['AuthorizationRuleName'])", "Deleting")) {
-                        Az.ServiceBus.private\Remove-AzServiceBusQueueAuthorizationRule_DeleteViaIdentity @PSBoundParameters
-                    }
+                if ($PSCmdlet.ShouldProcess("ServiceBus Disaster Recovery Alias $($InputObject.Name)", "Fail Over")) {
+                    Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_Fail -Name $ResourceHashTable['AliasName'] -NamespaceName $ResourceHashTable['NamespaceName'] -ResourceGroupName $ResourceHashTable['ResourceGroupName'] -SubscriptionId $ResourceHashTable['SubscriptionName']
                 }
-                elseif ($ResourceHashTable['TopicName'] -ne $null){
-                    if ($PSCmdlet.ShouldProcess("ServiceBus Entity Authorization Rule $($ResourceHashTable['AuthorizationRuleName'])", "Deleting")) {
-                        Az.ServiceBus.private\Remove-AzServiceBusTopicAuthorizationRule_DeleteViaIdentity @PSBoundParameters
-                    }
-                }
-                elseif ($ResourceHashTable['NamespaceName'] -ne $null){
-                    if ($PSCmdlet.ShouldProcess("ServiceBus Namespace Authorization Rule $($ResourceHashTable['AuthorizationRuleName'])", "Deleting")) {
-                        Az.ServiceBus.private\Remove-AzServiceBusNamespaceAuthorizationRule_DeleteViaIdentity @PSBoundParameters
-                    }
-                }
-                else{
-                    throw 'Invalid -InputObject'
-                }
-
             }
 		}
 		catch{

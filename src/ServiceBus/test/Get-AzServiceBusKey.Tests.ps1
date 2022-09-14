@@ -15,15 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusKey'))
 }
 
 Describe 'Get-AzServiceBusKey' {
-    It 'GetExpandedNamespace' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetExpandedNamespace' {
+        $namespaceKeys = Get-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule1
+        $namespaceKeys.PrimaryKey | Should -Not -Be $null
+        $namespaceKeys.SecondaryKey | Should -Not -Be $null
     }
 
-    It 'GetExpandedTopic' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetExpandedQueue' {
+        $queueKeys = Get-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule1
+        $queueKeys.PrimaryKey | Should -Not -Be $null
+        $queueKeys.SecondaryKey | Should -Not -Be $null
     }
 
-    It 'GetExpandedQueue' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetExpandedTopic' {
+        $topicKeys = Get-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule1
+        $topicKeys.PrimaryKey | Should -Not -Be $null
+        $topicKeys.SecondaryKey | Should -Not -Be $null
     }
 }

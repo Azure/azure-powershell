@@ -19,7 +19,7 @@ Approves a ServiceBus PrivateEndpointConnection
 Approves a ServiceBus PrivateEndpointConnection
 #>
 
-function Deny-AzServiceBusPrivateEndpointConnection{
+function Approve-AzServiceBusPrivateEndpointConnection{
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(

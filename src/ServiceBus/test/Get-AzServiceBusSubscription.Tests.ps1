@@ -15,15 +15,21 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusSubscription'
 }
 
 Describe 'Get-AzServiceBusSubscription' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    $sub = Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription1
+    
+    It 'List' {
+        $listOfSubscriptions = Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1
+        $listOfSubscriptions.Count | Should -Be 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $sub.Name | Should -Be "subscription1"
+        $sub.ResourceGroupName | Should -Be $env.resourceGroup
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $sub = Get-AzServiceBusSubscription -InputObject $sub
+        $sub.Name | Should -Be "subscription1"
+        $sub.ResourceGroupName | Should -Be $env.resourceGroup
     }
 }

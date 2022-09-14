@@ -17,9 +17,9 @@ This operation is idempotent.
 New-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnMessageExpiration]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
- [-EnableBatchedOperation] [-EnableExpress] [-EnablePartitioning] [-ForwardDeadLetteredMessagesTo <String>]
+ [-EnableBatchedOperations] [-EnableExpress] [-EnablePartitioning] [-ForwardDeadLetteredMessagesTo <String>]
  [-ForwardTo <String>] [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>]
- [-MaxMessageSizeInKilobyte <Int64>] [-MaxSizeInMegabyte <Int32>] [-RequiresDuplicateDetection]
+ [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>] [-RequiresDuplicateDetection]
  [-RequiresSession] [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -55,7 +55,7 @@ This operation is idempotent.
 ## PARAMETERS
 
 ### -AutoDeleteOnIdle
-ISO 8061 timeSpan idle interval after which the queue is automatically deleted.
+Idle interval after which the queue is automatically deleted.
 The minimum duration is 5 minutes.
 
 ```yaml
@@ -86,7 +86,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultMessageTimeToLive
-ISO 8601 default message timespan to live value.
 This is the duration after which the message expires, starting from when the message is sent to Service Bus.
 This is the default value used when TimeToLive is not set on a message itself.
 
@@ -118,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -DuplicateDetectionHistoryTimeWindow
-ISO 8601 timeSpan structure that defines the duration of the duplicate detection history.
+Defines the duration of the duplicate detection history.
 The default value is 10 minutes.
 
 ```yaml
@@ -133,7 +132,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableBatchedOperation
+### -EnableBatchedOperations
 Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
@@ -210,7 +209,7 @@ Accept wildcard characters: False
 ```
 
 ### -LockDuration
-ISO 8601 timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers.
+Timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers.
 The maximum value for LockDuration is 5 minutes; the default value is 1 minute.
 
 ```yaml
@@ -242,7 +241,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxMessageSizeInKilobyte
+### -MaxMessageSizeInKilobytes
 Maximum size (in KB) of the message payload that can be accepted by the queue.
 This property is only used in Premium today and default is 1024.
 
@@ -258,7 +257,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxSizeInMegabyte
+### -MaxSizeInMegabytes
 The maximum size of the queue in megabytes, which is the size of memory allocated for the queue.
 Default is 1024.
 

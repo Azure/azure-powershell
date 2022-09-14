@@ -18,6 +18,12 @@ Get-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <S
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
+### GetExpandedAlias
+```
+Get-AzServiceBusKey -AliasName <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+```
+
 ### GetExpandedQueue
 ```
 Get-AzServiceBusKey -Name <String> -NamespaceName <String> -QueueName <String> -ResourceGroupName <String>
@@ -58,6 +64,21 @@ Gets a ServiceBus SAS key
 {{ Add description here }}
 
 ## PARAMETERS
+
+### -AliasName
+The name of the Service Disaster Recovery Config.
+
+```yaml
+Type: System.String
+Parameter Sets: GetExpandedAlias
+Aliases: Alias
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -AsJob
 Run the command as a job

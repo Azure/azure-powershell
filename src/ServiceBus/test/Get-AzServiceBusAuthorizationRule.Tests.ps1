@@ -15,19 +15,51 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusAuthorization
 }
 
 Describe 'Get-AzServiceBusAuthorizationRule' {
-    It 'GetExpandedNamespace' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    $namespaceAuthRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule1
+    $queueAuthRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule1
+    $topicAuthRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule1
+    
+    It 'GetExpandedNamespace' {
+        $namespaceAuthRule.Name | Should -Be "namespaceAuthRule1"
+        $namespaceAuthRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $namespaceAuthRule.Rights.Count | Should -Be 3
+
+        $listOfAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
+        $listOfAuthRules.Count | Should -Be 3
     }
 
-    It 'GetExpandedQueue' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetExpandedQueue' {
+        $queueAuthRule.Name | Should -Be "queueAuthRule1"
+        $queueAuthRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $queueAuthRule.Rights.Count | Should -Be 2
+
+        $listOfAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 
+        $listOfAuthRules.Count | Should -Be 2
     }
 
-    It 'GetExpandedTopic' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetExpandedTopic' {
+        $topicAuthRule.Name | Should -Be "topicAuthRule1"
+        $topicAuthRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $topicAuthRule.Rights.Count | Should -Be 1
+
+        $listOfAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 
+        $listOfAuthRules.Count | Should -Be 1
     }
 
-    It 'GetViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentityExpanded' {
+        $namespaceAuthRule = Get-AzServiceBusAuthorizationRule -InputObject $namespaceAuthRule
+        $namespaceAuthRule.Name | Should -Be "namespaceAuthRule1"
+        $namespaceAuthRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $namespaceAuthRule.Rights.Count | Should -Be 3
+
+        $queueAuthRule = Get-AzServiceBusAuthorizationRule -InputObject $queueAuthRule
+        $queueAuthRule.Name | Should -Be "queueAuthRule1"
+        $queueAuthRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $queueAuthRule.Rights.Count | Should -Be 2
+
+        $topicAuthRule = Get-AzServiceBusAuthorizationRule -InputObject $topicAuthRule
+        $topicAuthRule.Name | Should -Be "topicAuthRule1"
+        $topicAuthRule.ResourceGroupName | Should -Be $env.resourceGroup
+        $topicAuthRule.Rights.Count | Should -Be 2
     }
 }

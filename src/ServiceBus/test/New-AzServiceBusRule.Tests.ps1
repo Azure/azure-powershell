@@ -17,8 +17,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceBusRule'))
 Describe 'New-AzServiceBusRule' {
     It 'CreateExpanded' {
         # Create Sql Filter Rule
-        $rule1 = New-AzServiceBusRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName $env.topic -SubscriptionName $env.subscription -Name sqlRule1 -FilterType SqlFilter -SqlExpression 1=2 -ActionSqlExpression "SET a=b"
-        $rule1.Name | Should -Be "sqlRule1"
+        $rule1 = New-AzServiceBusRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName $env.topic -SubscriptionName $env.subscription -Name sqlRule2 -FilterType SqlFilter -SqlExpression 1=2 -ActionSqlExpression "SET a=b"
+        $rule1.Name | Should -Be "sqlRule2"
         $rule1.ResourceGroupName | Should -Be $env.resourceGroup
         $rule1.FilterType | Should -Be "SqlFilter"
         $rule1.SqlExpression | Should -Be "1=2"

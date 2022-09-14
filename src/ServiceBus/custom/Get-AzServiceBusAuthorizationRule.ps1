@@ -26,10 +26,17 @@ function Get-AzServiceBusAuthorizationRule{
         [Parameter(ParameterSetName = 'GetExpandedQueue', HelpMessage = "The name of the Authorization Rule")]
         [Parameter(ParameterSetName = 'GetExpandedTopic', HelpMessage = "The name of the Authorization Rule")]
         [Parameter(ParameterSetName = 'GetExpandedNamespace', HelpMessage = "The name of the Authorization Rule")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', HelpMessage = "The name of the Authorization Rule")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Authorization Rule.
         ${Name},
+
+        [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the disaster recovery config")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+        [System.String]
+        # The name of the disaster recovery config
+        ${AliasName},
 
         [Parameter(ParameterSetName = 'GetExpandedQueue', Mandatory, HelpMessage = "The name of the Service Bus queue.")]
         [Alias('Queue')]
@@ -48,6 +55,7 @@ function Get-AzServiceBusAuthorizationRule{
         [Parameter(ParameterSetName = 'GetExpandedNamespace', Mandatory, HelpMessage = "The name of ServiceBus namespace")]
         [Parameter(ParameterSetName = 'GetExpandedQueue', Mandatory, HelpMessage = "The name of the ServiceBus namespace.")]
         [Parameter(ParameterSetName = 'GetExpandedTopic', Mandatory, HelpMessage = "The name of the ServiceBus namespace.")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the ServiceBus namespace.")]
         [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
@@ -57,6 +65,7 @@ function Get-AzServiceBusAuthorizationRule{
         [Parameter(ParameterSetName = 'GetExpandedNamespace', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Parameter(ParameterSetName = 'GetExpandedQueue', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Parameter(ParameterSetName = 'GetExpandedTopic', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the resource group.
@@ -66,6 +75,7 @@ function Get-AzServiceBusAuthorizationRule{
         [Parameter(ParameterSetName = 'GetExpandedNamespace', HelpMessage = "The ID of the target subscription.")]
         [Parameter(ParameterSetName = 'GetExpandedQueue', HelpMessage = "The ID of the target subscription.")]
         [Parameter(ParameterSetName = 'GetExpandedTopic', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName = 'GetExpandedAlias', HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String[]]
@@ -158,6 +168,15 @@ function Get-AzServiceBusAuthorizationRule{
                 }
             }
 
+            elseif ($PSCmdlet.ParameterSetName -eq 'GetExpandedAlias'){
+                if (-not $PSBoundParameters.ContainsKey('Name')) {
+                    Az.ServiceBus.private\Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule_List @PSBoundParameters
+                }
+                else {
+                    Az.ServiceBus.private\Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule_Get @PSBoundParameters
+                }
+            }
+
             elseif ($PSCmdlet.ParameterSetName -eq 'GetViaIdentityExpanded'){
 
                 if($InputObject.Id -ne $null) {
@@ -172,6 +191,9 @@ function Get-AzServiceBusAuthorizationRule{
                 }
                 elseif ($ResourceHashTable['TopicName'] -ne $null) {
                     Az.ServiceBus.private\Get-AzServiceBusTopicAuthorizationRule_GetViaIdentity @PSBoundParameters
+                }
+                elseif ($ResourceHashTable['AliasName'] -ne $null) {
+                    Az.ServiceBus.private\Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule_GetViaIdentity @PSBoundParameters
                 }
                 elseif ($ResourceHashTable['NamespaceName'] -ne $null) {
                     Az.ServiceBus.private\Get-AzServiceBusNamespaceAuthorizationRule_GetViaIdentity @PSBoundParameters
@@ -193,15 +215,13 @@ function ParseResourceId{
         [string]$ResourceId
     )
     $array = $resourceID.ToLower().Split('/')
+    $indexSubscription = 0..($array.Length -1) | where {$array[$_] -eq 'subscriptions'}
     $indexResourceGroup = 0..($array.Length -1) | where {$array[$_] -eq 'resourcegroups'}
     $indexNamespace = 0..($array.Length -1) | where {$array[$_] -eq 'namespaces'}
     $indexQueue = 0..($array.Length -1) | where {$array[$_] -eq 'queues'}
     $indexTopic = 0..($array.Length -1) | where {$array[$_] -eq 'topics'}
+    $indexAlias = 0..($array.Length -1) | where {$array[$_] -eq 'disasterrecoveryconfigs'}
     $indexAuthRule = 0..($array.Length -1) | where {$array[$_] -eq 'authorizationrules'}
-
-    if(($indexResourceGroup -eq $null) -or ($indexNamespace -eq $null) -or ($indexAuthRule -eq $null)){
-        throw 'Invalid -InputObject Id'
-    }
     
     if (($indexResourceGroup+1) > $array.Length){
         throw 'Invalid -InputObject Id'
@@ -209,14 +229,10 @@ function ParseResourceId{
     if (($indexNamespace+1) > $array.Length){
         throw 'Invalid -InputObject Id'
     }
-    if (($indexAuthRule+1) > $array.Length){
-        throw 'Invalid -InputObject Id'
-    }
 
     $result = @{
         'ResourceGroupName' = $array.get($indexResourceGroup+1)
         'NamespaceName' = $array.get($indexNamespace+1)
-        'AuthorizationRuleName' = $array.get($indexAuthRule+1)
     }
 
     if ($indexQueue -ne $null){
@@ -234,6 +250,33 @@ function ParseResourceId{
         }
         else{
             $result.add('TopicName', $array.get($indexTopic+1))
+        }
+    }
+
+    if ($indexSubscription -ne $null){
+        if (($indexSubscription+1) > $array.Length){
+            throw 'Invalid -InputObject Id'
+        }
+        else{
+            $result.add('SubscriptionName', $array.get($indexSubscription+1))
+        }
+    }
+
+    if ($indexAuthRule -ne $null){
+        if (($indexAuthRule+1) > $array.Length){
+            throw 'Invalid -InputObject Id'
+        }
+        else{
+            $result.add('AuthorizationRuleName', $array.get($indexAuthRule+1))
+        }
+    }
+
+    if ($indexAlias -ne $null){
+        if (($indexAlias+1) > $array.Length){
+            throw 'Invalid -InputObject Id'
+        }
+        else{
+            $result.add('AliasName', $array.get($indexAlias+1))
         }
     }
 

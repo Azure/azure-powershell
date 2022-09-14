@@ -16,21 +16,21 @@ Sets a ServiceBus Rule
 ```
 Set-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  -SubscriptionName <String> -TopicName <String> [-SubscriptionId <String>] [-ActionRequiresPreprocessing]
- [-ActionSqlExpression <String>] [-ContentType <String>] [-CorrelationFilterRequiresPreprocessing]
- [-CorrelationId <String>] [-FilterType <FilterType>] [-Label <String>] [-MessageId <String>]
- [-Property <Hashtable>] [-ReplyTo <String>] [-ReplyToSessionId <String>] [-SessionId <String>]
- [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ActionSqlExpression <String>] [-ContentType <String>] [-CorrelationFilterProperty <Hashtable>]
+ [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <FilterType>]
+ [-Label <String>] [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>]
+ [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
 ```
 Set-AzServiceBusRule -InputObject <IServiceBusIdentity> [-ActionRequiresPreprocessing]
- [-ActionSqlExpression <String>] [-ContentType <String>] [-CorrelationFilterRequiresPreprocessing]
- [-CorrelationId <String>] [-FilterType <FilterType>] [-Label <String>] [-MessageId <String>]
- [-Property <Hashtable>] [-ReplyTo <String>] [-ReplyToSessionId <String>] [-SessionId <String>]
- [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-ActionSqlExpression <String>] [-ContentType <String>] [-CorrelationFilterProperty <Hashtable>]
+ [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <FilterType>]
+ [-Label <String>] [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>]
+ [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -114,6 +114,21 @@ Content type of the message.
 
 ```yaml
 Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -CorrelationFilterProperty
+dictionary object for custom filters
+
+```yaml
+Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
@@ -265,21 +280,6 @@ Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Property
-dictionary object for custom filters
-
-```yaml
-Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 

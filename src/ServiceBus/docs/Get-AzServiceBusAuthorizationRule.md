@@ -18,6 +18,12 @@ Get-AzServiceBusAuthorizationRule -NamespaceName <String> -ResourceGroupName <St
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### GetExpandedAlias
+```
+Get-AzServiceBusAuthorizationRule -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-Name <String>] [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### GetExpandedQueue
 ```
 Get-AzServiceBusAuthorizationRule -NamespaceName <String> -QueueName <String> -ResourceGroupName <String>
@@ -65,6 +71,21 @@ Gets an ServiceBus Authorization Rule
 
 ## PARAMETERS
 
+### -AliasName
+The name of the disaster recovery config
+
+```yaml
+Type: System.String
+Parameter Sets: GetExpandedAlias
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -101,7 +122,7 @@ The name of the Authorization Rule
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpandedNamespace, GetExpandedQueue, GetExpandedTopic
+Parameter Sets: GetExpandedAlias, GetExpandedNamespace, GetExpandedQueue, GetExpandedTopic
 Aliases:
 
 Required: False
@@ -116,7 +137,7 @@ The name of ServiceBus namespace
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpandedNamespace, GetExpandedQueue, GetExpandedTopic
+Parameter Sets: GetExpandedAlias, GetExpandedNamespace, GetExpandedQueue, GetExpandedTopic
 Aliases: Namespace
 
 Required: True
@@ -147,7 +168,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpandedNamespace, GetExpandedQueue, GetExpandedTopic
+Parameter Sets: GetExpandedAlias, GetExpandedNamespace, GetExpandedQueue, GetExpandedTopic
 Aliases:
 
 Required: True
@@ -162,7 +183,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String[]
-Parameter Sets: GetExpandedNamespace, GetExpandedQueue, GetExpandedTopic
+Parameter Sets: GetExpandedAlias, GetExpandedNamespace, GetExpandedQueue, GetExpandedTopic
 Aliases:
 
 Required: False

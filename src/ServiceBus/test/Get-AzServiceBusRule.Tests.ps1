@@ -15,13 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusRule'))
 }
 
 Describe 'Get-AzServiceBusRule' {
+    $rule = Get-AzServiceBusRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName $env.topic -SubscriptionName $env.subscription -Name $env.rule
+    
     It 'List' {
         $listOfRules = Get-AzServiceBusRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName $env.topic -SubscriptionName $env.subscription
         $listOfRules.Count | Should -Be 1
     }
 
     It 'Get' {
-        $rule = Get-AzServiceBusRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName $env.topic -SubscriptionName $env.subscription -Name $env.rule
         $rule.Name | Should -Be $env.rule
         $rule.ResourceGroupName | Should -Be $env.resourceGroup
     }

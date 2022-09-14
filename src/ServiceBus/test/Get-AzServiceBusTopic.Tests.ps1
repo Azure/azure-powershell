@@ -15,13 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusTopic'))
 }
 
 Describe 'Get-AzServiceBusTopic' {
+    $topic = Get-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.topic
+
     It 'List' {
         $listOfTopics = Get-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $listOfTopics.Count | Should -Be 1
     }
 
     It 'Get' {
-        $topic = Get-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.topic
         $topic.Name | Should -Be $env.topic
         $topic.ResourceGroupName | Should -Be $env.resourceGroup
     }

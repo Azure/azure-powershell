@@ -8,7 +8,7 @@ schema: 2.0.0
 # Deny-AzServiceBusPrivateEndpointConnection
 
 ## SYNOPSIS
-Denies an ServiceBus PrivateEndpointConnection
+Denies a ServiceBus PrivateEndpointConnection
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Deny-AzServiceBusPrivateEndpointConnection -InputObject <IServiceBusIdentity> [-
 ```
 
 ## DESCRIPTION
-Denies an ServiceBus PrivateEndpointConnection
+Denies a ServiceBus PrivateEndpointConnection
 
 ## EXAMPLES
 

@@ -221,14 +221,14 @@ function Set-AzServiceBusQueue{
             $hasDeadLetteringOnMessageExpiration = $PSBoundParameters.Remove('DeadLetteringOnMessageExpiration')
             $hasDuplicateDetectionHistoryTimeWindow = $PSBoundParameters.Remove('DuplicateDetectionHistoryTimeWindow')
             $hasLockDuration = $PSBoundParameters.Remove('LockDuration')
-            $hasEnableBatchedOperation = $PSBoundParameters.Remove('EnableBatchedOperation')
+            $hasEnableBatchedOperations = $PSBoundParameters.Remove('EnableBatchedOperations')
             $hasEnableExpress = $PSBoundParameters.Remove('EnableExpress')
             $hasEnablePartitioning = $PSBoundParameters.Remove('EnablePartitioning')
             $hasForwardDeadLetteredMessagesTo = $PSBoundParameters.Remove('ForwardDeadLetteredMessagesTo')
             $hasForwardTo = $PSBoundParameters.Remove('ForwardTo')
             $hasMaxDeliveryCount = $PSBoundParameters.Remove('MaxDeliveryCount')
-            $hasMaxMessageSizeInKilobyte = $PSBoundParameters.Remove('MaxMessageSizeInKilobyte')
-            $hasMaxSizeInMegabyte = $PSBoundParameters.Remove('MaxSizeInMegabyte')
+            $hasMaxMessageSizeInKilobytes = $PSBoundParameters.Remove('MaxMessageSizeInKilobytes')
+            $hasMaxSizeInMegabytes = $PSBoundParameters.Remove('MaxSizeInMegabytes')
             $hasRequiresDuplicateDetection = $PSBoundParameters.Remove('RequiresDuplicateDetection')
             $hasRequiresSession = $PSBoundParameters.Remove('RequiresSession')
             $hasStatus = $PSBoundParameters.Remove('Status')
@@ -259,8 +259,8 @@ function Set-AzServiceBusQueue{
             if ($hasLockDuration) {
                 $queue.LockDuration = $LockDuration
             }
-            if ($hasEnableBatchedOperation) {
-                $queue.EnableBatchedOperation = $EnableBatchedOperation
+            if ($hasEnableBatchedOperations) {
+                $queue.EnableBatchedOperations = $EnableBatchedOperations
             }
             if ($hasEnableExpress) {
                 $queue.EnableExpress = $EnableExpress
@@ -277,11 +277,11 @@ function Set-AzServiceBusQueue{
             if ($hasMaxDeliveryCount) {
                 $queue.MaxDeliveryCount = $MaxDeliveryCount
             }
-            if ($hasMaxMessageSizeInKilobyte) {
-                $queue.MaxMessageSizeInKilobyte = $MaxMessageSizeInKilobyte
+            if ($hasMaxMessageSizeInKilobytes) {
+                $queue.MaxMessageSizeInKilobytes = $MaxMessageSizeInKilobytes
             }
-            if ($hasMaxSizeInMegabyte) {
-                $queue.MaxSizeInMegabyte = $MaxSizeInMegabyte
+            if ($hasMaxSizeInMegabytes) {
+                $queue.MaxSizeInMegabytes = $MaxSizeInMegabytes
             }
             if ($hasRequiresDuplicateDetection) {
                 $queue.RequiresDuplicateDetection = $RequiresDuplicateDetection
@@ -295,6 +295,11 @@ function Set-AzServiceBusQueue{
             if ($hasAsJob) {
                 $PSBoundParameters.Add('AsJob', $true)
             }
+
+            if (queue.DefaultMessageTimeToLive -gt (New-TimeSpan -Days )) {
+                queue.DefaultMessageTimeToLive 
+            }
+
 
             if ($PSCmdlet.ShouldProcess("ServiceBus Queue $($queue.Name)", "Create or update")) {
                 Az.ServiceBus.private\New-AzServiceBusQueue_CreateViaIdentity -InputObject $queue -Parameter $queue @PSBoundParameters

@@ -16,8 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceBusSubscription'
 
 Describe 'New-AzServiceBusSubscription' {
     It 'CreateExpanded' {
-        $sub = New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName $env.topic -Name subscription1 -LockDuration (New-TimeSpan -Minutes 3) -DeadLetteringOnMessageExpiration -MaxDeliveryCount 12 -Status Active -EnableBatchedOperations -ForwardTo $env.queue -ForwardDeadLetteredMessagesTo $env.queue -DefaultMessageTimeToLive (New-TimeSpan -Days 428 -Hours 3 -Minutes 11 -Seconds 10)
-        $sub.Name | Should -Be "subscription1"
+        $sub = New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName $env.topic -Name subscription2 -LockDuration (New-TimeSpan -Minutes 3) -DeadLetteringOnMessageExpiration -MaxDeliveryCount 12 -Status Active -EnableBatchedOperations -ForwardTo $env.queue -ForwardDeadLetteredMessagesTo $env.queue -DefaultMessageTimeToLive (New-TimeSpan -Days 428 -Hours 3 -Minutes 11 -Seconds 10)
+        $sub.Name | Should -Be "subscription2"
         $sub.ResourceGroupName | Should -Be $env.resourceGroup
         $sub.LockDuration | Should -Be (New-TimeSpan -Minutes 3)
         $sub.DeadLetteringOnMessageExpiration | Should -Be $true
@@ -28,8 +28,8 @@ Describe 'New-AzServiceBusSubscription' {
         $sub.ForwardTo | Should -Be $env.queue
         $sub.ForwardDeadLetteredMessagesTo | Should -Be $env.queue
 
-        $sub = New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName $env.topic -Name subscription2 -RequiresSession -AutoDeleteOnIdle (New-TimeSpan -Days 7) -DeadLetteringOnFilterEvaluationException -IsClientAffine -ClientId clientid -IsShared -IsDurable
-        $sub.Name | Should -Be "subscription2"
+        $sub = New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName $env.topic -Name subscription3 -RequiresSession -AutoDeleteOnIdle (New-TimeSpan -Days 7) -DeadLetteringOnFilterEvaluationException -IsClientAffine -ClientId clientid -IsShared -IsDurable
+        $sub.Name | Should -Be "subscription3"
         $sub.ResourceGroupName | Should -Be $env.resourceGroup
         $sub.AutoDeleteOnIdle | Should -Be (New-TimeSpan -Days 7)
         $sub.DeadLetteringOnFilterEvaluationException | Should -Be $true
@@ -37,5 +37,8 @@ Describe 'New-AzServiceBusSubscription' {
         $sub.ClientId | Should -Be "clientid"
         $sub.IsShared | Should -Be $true
         $sub.IsDurable | Should -Be $true
+
+        $listOfSubscription = Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1
+        $listOfSubscription.Count | Should -Be 3
     }
 }

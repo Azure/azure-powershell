@@ -15,13 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzServiceBusQueue'))
 }
 
 Describe 'Get-AzServiceBusQueue' {
+    $queue = Get-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.queue
+    
     It 'List' {
         $listOfQueues = Get-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $listOfQueues.Count | Should -Be 1
     }
 
     It 'Get' {
-        $queue = Get-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.queue
         $queue.Name | Should -Be $env.queue
         $queue.ResourceGroupName | Should -Be $env.resourceGroup
     }

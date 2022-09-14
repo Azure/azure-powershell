@@ -85,7 +85,7 @@ function Set-AzServiceBusSubscription{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Value that indicates whether server-side batched operations are enabled.
-        ${EnableBatchedOperation},
+        ${EnableBatchedOperations},
 
         [Parameter(HelpMessage = "Enumerates the possible values for the status of a messaging entity.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
@@ -219,7 +219,7 @@ function Set-AzServiceBusSubscription{
             $hasDefaultMessageTimeToLive = $PSBoundParameters.Remove('DefaultMessageTimeToLive')
             $hasLockDuration = $PSBoundParameters.Remove('LockDuration')
             $hasDuplicateDetectionHistoryTimeWindow = $PSBoundParameters.Remove('DuplicateDetectionHistoryTimeWindow')
-            $hasEnableBatchedOperation = $PSBoundParameters.Remove('EnableBatchedOperation')
+            $hasEnableBatchedOperations = $PSBoundParameters.Remove('EnableBatchedOperations')
             $hasRequiresSession = $PSBoundParameters.Remove('RequiresSession')
             $hasIsClientAffine = $PSBoundParameters.Remove('IsClientAffine')
             $hasClientId = $PSBoundParameters.Remove('ClientId')
@@ -256,8 +256,8 @@ function Set-AzServiceBusSubscription{
             if ($hasDuplicateDetectionHistoryTimeWindow) {
                 $subscription.DuplicateDetectionHistoryTimeWindow = $DuplicateDetectionHistoryTimeWindow
             }
-            if ($hasEnableBatchedOperation) {
-                $subscription.EnableBatchedOperation = $EnableBatchedOperation
+            if ($hasEnableBatchedOperations) {
+                $subscription.EnableBatchedOperations = $EnableBatchedOperations
             }
             if ($hasRequiresSession) {
                 $subscription.RequiresSession = $RequiresSession

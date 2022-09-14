@@ -78,7 +78,7 @@ function Set-AzServiceBusTopic{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Value that indicates whether server-side batched operations are enabled.
-        ${EnableBatchedOperation},
+        ${EnableBatchedOperations},
 
         [Parameter(HelpMessage = "A value that indicates whether Express Entities are enabled. An express topic holds a message in memory temporarily before writing it to persistent storage.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
@@ -108,13 +108,13 @@ function Set-AzServiceBusTopic{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Int32]
         # The maximum delivery count. A message is automatically deadlettered after this number of deliveries. default value is 10.
-        ${MaxSizeInMegabyte},
+        ${MaxSizeInMegabytes},
 
         [Parameter(HelpMessage = "Maximum size (in KB) of the message payload that can be accepted by the topic. This property is only used in Premium today and default is 1024.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Int64]
         # Maximum size (in KB) of the message payload that can be accepted by the topic. This property is only used in Premium today and default is 1024.
-        ${MaxMessageSizeInKilobyte},
+        ${MaxMessageSizeInKilobytes},
 
         [Parameter(HelpMessage = "Maximum size (in KB) of the message payload that can be accepted by the topic. This property is only used in Premium today and default is 1024.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
@@ -187,11 +187,11 @@ function Set-AzServiceBusTopic{
             $hasAutoDeleteOnIdle = $PSBoundParameters.Remove('AutoDeleteOnIdle')
             $hasDefaultMessageTimeToLive = $PSBoundParameters.Remove('DefaultMessageTimeToLive')
             $hasDuplicateDetectionHistoryTimeWindow = $PSBoundParameters.Remove('DuplicateDetectionHistoryTimeWindow')
-            $hasEnableBatchedOperation = $PSBoundParameters.Remove('EnableBatchedOperation')
+            $hasEnableBatchedOperations = $PSBoundParameters.Remove('EnableBatchedOperations')
             $hasEnableExpress = $PSBoundParameters.Remove('EnableExpress')
             $hasEnablePartitioning = $PSBoundParameters.Remove('EnablePartitioning')
-            $hasMaxMessageSizeInKilobyte = $PSBoundParameters.Remove('MaxMessageSizeInKilobyte')
-            $hasMaxSizeInMegabyte = $PSBoundParameters.Remove('MaxSizeInMegabyte')
+            $hasMaxMessageSizeInKilobytes = $PSBoundParameters.Remove('MaxMessageSizeInKilobytes')
+            $hasMaxSizeInMegabytes = $PSBoundParameters.Remove('MaxSizeInMegabytes')
             $hasRequiresDuplicateDetection = $PSBoundParameters.Remove('RequiresDuplicateDetection')
             $hasRequiresSession = $PSBoundParameters.Remove('RequiresSession')
             $hasSupportOrdering = $PSBoundParameters.Remove('SupportOrdering')
@@ -217,8 +217,8 @@ function Set-AzServiceBusTopic{
             if ($hasDuplicateDetectionHistoryTimeWindow) {
                 $topic.DuplicateDetectionHistoryTimeWindow = $DuplicateDetectionHistoryTimeWindow
             }
-            if ($hasEnableBatchedOperation) {
-                $topic.EnableBatchedOperation = $EnableBatchedOperation
+            if ($hasEnableBatchedOperations) {
+                $topic.EnableBatchedOperations = $EnableBatchedOperations
             }
             if ($hasEnableExpress) {
                 $topic.EnableExpress = $EnableExpress
@@ -226,11 +226,11 @@ function Set-AzServiceBusTopic{
             if ($hasEnablePartitioning) {
                 $topic.EnablePartitioning = $EnablePartitioning
             }
-            if ($hasMaxMessageSizeInKilobyte) {
-                $topic.MaxMessageSizeInKilobyte = $MaxMessageSizeInKilobyte
+            if ($hasMaxMessageSizeInKilobytes) {
+                $topic.MaxMessageSizeInKilobytes = $MaxMessageSizeInKilobytes
             }
             if ($hasMaxSizeInMegabyte) {
-                $topic.MaxSizeInMegabyte = $MaxSizeInMegabyte
+                $topic.MaxSizeInMegabytes = $MaxSizeInMegabytes
             }
             if ($hasRequiresDuplicateDetection) {
                 $topic.RequiresDuplicateDetection = $RequiresDuplicateDetection

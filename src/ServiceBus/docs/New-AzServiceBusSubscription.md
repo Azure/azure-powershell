@@ -17,7 +17,7 @@ New-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String>
  -TopicName <String> [-AutoDeleteOnIdle <TimeSpan>] [-ClientAffinePropertyClientId <String>]
  [-ClientAffinePropertyIsDurable] [-ClientAffinePropertyIsShared] [-DeadLetteringOnFilterEvaluationException]
  [-DeadLetteringOnMessageExpiration] [-DefaultMessageTimeToLive <TimeSpan>]
- [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation]
+ [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations]
  [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine] [-LockDuration <TimeSpan>]
  [-MaxDeliveryCount <Int32>] [-RequiresSession] [-Status <EntityStatus>] [-DefaultProfile <PSObject>]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -53,7 +53,7 @@ Creates a topic subscription.
 ## PARAMETERS
 
 ### -AutoDeleteOnIdle
-ISO 8061 timeSpan idle interval after which the topic is automatically deleted.
+Idle interval after which the queue is automatically deleted.
 The minimum duration is 5 minutes.
 
 ```yaml
@@ -144,7 +144,6 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultMessageTimeToLive
-ISO 8061 Default message timespan to live value.
 This is the duration after which the message expires, starting from when the message is sent to Service Bus.
 This is the default value used when TimeToLive is not set on a message itself.
 
@@ -176,7 +175,7 @@ Accept wildcard characters: False
 ```
 
 ### -DuplicateDetectionHistoryTimeWindow
-ISO 8601 timeSpan structure that defines the duration of the duplicate detection history.
+Defines the duration of the duplicate detection history.
 The default value is 10 minutes.
 
 ```yaml
@@ -191,7 +190,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableBatchedOperation
+### -EnableBatchedOperations
 Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
@@ -268,8 +267,8 @@ Accept wildcard characters: False
 ```
 
 ### -LockDuration
-ISO 8061 lock duration timespan for the subscription.
-The default value is 1 minute.
+Timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers.
+The maximum value for LockDuration is 5 minutes; the default value is 1 minute.
 
 ```yaml
 Type: System.TimeSpan
