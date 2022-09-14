@@ -1843,7 +1843,7 @@ function Test-VirtualHubAndVpnGatewayWithCustomAsn
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
 		Assert-AreEqual $vpnGatewayName $vpnGateway.Name
-		Assert-AreEqual 65100 $vpnGateway.Asn
+		Assert-AreEqual 65100 $vpnGateway.BgpSettings.Asn
 
 		# Update Virtual Hub
 		$updatedVirtualHub = Update-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -VirtualRouterAsn 65001
@@ -1857,7 +1857,7 @@ function Test-VirtualHubAndVpnGatewayWithCustomAsn
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
 		Assert-AreEqual $vpnGatewayName $vpnGateway.Name
-		Assert-AreEqual 65101 $vpnGateway.Asn
+		Assert-AreEqual 65101 $vpnGateway.BgpSettings.Asn
 
 		# Delete Vpn Gateway
 		$delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
