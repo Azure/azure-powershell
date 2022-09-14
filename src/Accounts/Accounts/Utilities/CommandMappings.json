@@ -3036,9 +3036,7 @@
     },
     "Az.MarketplaceOrdering": {
       "Get-AzMarketplaceTerms": {},
-      "Invoke-AzMarketplaceSignTerms": {},
-      "Set-AzMarketplaceTerms": {},
-      "Stop-AzMarketplaceTerms": {}
+      "Set-AzMarketplaceTerms": {}
     },
     "Az.Media": {
       "Sync-AzMediaServiceStorageKey": {},
