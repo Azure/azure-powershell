@@ -16,24 +16,27 @@ Updates a Synapse Analytics workspace.
 ```
 Update-AzSynapseWorkspace [-ResourceGroupName <String>] -Name <String> [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
- [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
+ [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
 ```
 Update-AzSynapseWorkspace -InputObject <PSSynapseWorkspace> [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
- [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
+ [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
 ```
 Update-AzSynapseWorkspace -ResourceId <String> [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
- [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>] [-AsJob]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
+ [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,6 +74,13 @@ Update-AzSynapseWorkspace -Name ContosoWorkspace -GitRepository $config
 
 This commands updates Git repository which workspace is conneceted to for the specififed Azure Synapse Analytics workspace.
 
+### Example 5
+```powershell
+Update-AzSynapseWorkspace -Name ContosoWorkspace -EnablePublicNetworkAccess $True
+```
+
+This commands updates the specififed Azure Synapse Analytics workspace to enable public network access.
+
 ## PARAMETERS
 
 ### -AsJob
@@ -95,6 +105,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePublicNetworkAccess
+Enable or Disable public network access to workspace. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

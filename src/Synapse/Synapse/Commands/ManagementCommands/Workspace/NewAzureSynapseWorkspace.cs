@@ -22,6 +22,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Commands.Synapse.Common;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using static Microsoft.Azure.Commands.Synapse.Models.SynapseConstants;
 
 namespace Microsoft.Azure.Commands.Synapse
 {
@@ -93,6 +94,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSWorkspaceRepositoryConfiguration GitRepository { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.PublicNetworkAccess)]
+        [ValidateNotNull]
+        public bool EnablePublicNetworkAccess { get; set; }
+
         public override void ExecuteCmdlet()
         {
             try
@@ -153,7 +158,8 @@ namespace Microsoft.Azure.Commands.Synapse
                         }
                     }
                 } : null,
-                WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.GitRepository) ? this.GitRepository.ToSdkObject() : null
+                WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.GitRepository) ? this.GitRepository.ToSdkObject() : null,
+                PublicNetworkAccess = this.IsParameterBound(c => c.EnablePublicNetworkAccess) ? (this.EnablePublicNetworkAccess? PublicNetworkAccess.Enabled : PublicNetworkAccess.Disabled): null
             };
 
             if (ShouldProcess(Name, string.Format(Resources.CreatingSynapseWorkspace, this.ResourceGroupName, this.Name)))

@@ -46,6 +46,8 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string GitRepository = "Git Repository Settings. Connect workspace to the repository for source control and collaboration for work on your workspace pipelines";
 
+        public const string PublicNetworkAccess = "Enable or Disable public network access to workspace. Possible values include: 'Enabled', 'Disabled'";
+
         public const string RepositoryType = "Select the repository type that you want to use to store your artifacts for this Synapse Analytics workspace, the type include DevOps and GitHub.";
 
         public const string HostName = "GitHub Enterprise host name. For example: https://github.mydomain.com";

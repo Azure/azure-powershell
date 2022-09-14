@@ -18,7 +18,8 @@ New-AzSynapseWorkspace -ResourceGroupName <String> -Name <String> -Location <Str
  -SqlAdministratorLoginCredential <PSCredential> [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
  [-EncryptionKeyName <String>] [-EncryptionKeyIdentifier <String>] [-AsJob]
  [-ManagedResourceGroupName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-EnablePublicNetworkAccess <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -46,6 +47,16 @@ New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWork
 The first command creates a managed virtual network configuration. Then the rest methods uses the configuration to creates a new Synapse workspace.
 
 ### Example 3
+```powershell
+$config = New-AzSynapseManagedVirtualNetworkConfig -PreventDataExfiltration -AllowedAadTenantIdsForLinking ContosoTenantId
+$password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
+$creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
+New-AzSynapseWorkspace -ResourceGroupName ContosoResourceGroup -Name ContosoWorkspace -Location northeurope -DefaultDataLakeStorageAccountName ContosoAdlGen2Storage -DefaultDataLakeStorageFilesystem ContosoFileSystem -SqlAdministratorLoginCredential $creds -ManagedVirtualNetwork $config -EnablePublicNetworkAccess $True
+```
+
+The first command creates a managed virtual network configuration. Then the rest methods uses the configuration to creates a new Synapse workspace with enabled managed virtual network and enabled public network access.
+
+### Example 4
 ```powershell
 $password = ConvertTo-SecureString "Password123!" -AsPlainText -Force
 $creds = New-Object System.Management.Automation.PSCredential ("ContosoUser", $password)
@@ -109,6 +120,21 @@ The credentials, account, tenant, and subscription used for communication with A
 Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnablePublicNetworkAccess
+Enable or Disable public network access to workspace. Possible values include: 'Enabled', 'Disabled'
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
 
 Required: False
 Position: Named

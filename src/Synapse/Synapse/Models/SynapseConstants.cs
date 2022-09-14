@@ -308,6 +308,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             Remove
         }
 
+        public class PublicNetworkAccess
+        {
+            public const string Enabled = "Enabled";
+            public const string Disabled = "Disabled";
+        }
+
         public const string SparkConfiguration = nameof(SparkConfiguration);
     }
 }
