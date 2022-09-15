@@ -5895,18 +5895,12 @@ function Test-VMandVMSSTimeCreated
         New-AzResourceGroup -Name $rgname -Location $loc -Force;
 
         # VM Profile & Hardware
-        $vnetname = "myVnet";
-        $vnetAddress = "10.0.0.0/16";
-        $subnetname = "slb" + $rgname;
-        $subnetAddress = "10.0.2.0/24";
         $vmssName = "vmss" + $rgname;
-        $FaultDomainNumber = 2;
         $vmssFaultDomain = 3;
 
         # Creating a new vmss
         $VmSku = "Standard_E2s_v3"
         $domainNameLabel = "d1"+ $rgname;
-        $vmssname = "MyVmss"
         $username = "admin01"
         $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
         $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
