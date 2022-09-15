@@ -17,12 +17,6 @@ Returns account details for the given account name.
 ### [Get-AzDeviceUpdateInstance](Get-AzDeviceUpdateInstance.md)
 Returns instance details for the given instance and account name.
 
-### [Invoke-AzDeviceUpdateHeadAccount](Invoke-AzDeviceUpdateHeadAccount.md)
-Checks whether account exists.
-
-### [Invoke-AzDeviceUpdateHeadInstance](Invoke-AzDeviceUpdateHeadInstance.md)
-Checks whether instance exists.
-
 ### [New-AzDeviceUpdateAccount](New-AzDeviceUpdateAccount.md)
 Creates or updates Account.
 
