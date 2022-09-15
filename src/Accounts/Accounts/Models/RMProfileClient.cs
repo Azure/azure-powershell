@@ -172,7 +172,8 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                     if (!Guid.TryParse(tenantIdOrName, out tempGuid))
                     {
                         var tenants = ListAccountTenants(account, environment, password, promptBehavior, promptAction);
-                        var matchesName = tenants.Where(t => t.GetPropertyAsArray(AzureTenant.Property.Domains).Contains(tenantIdOrName, StringComparer.InvariantCultureIgnoreCase));
+                        var matchesName = tenants.Where(t => t.GetPropertyAsArray(AzureTenant.Property.Domains)
+                                                                                           .Contains(tenantIdOrName, StringComparer.InvariantCultureIgnoreCase));
                         var homeTenants = matchesName.FirstOrDefault(t => t.IsHome);
                         var tenant = homeTenants ?? matchesName.FirstOrDefault();
                         if (tenant == null || tenant.Id == null)
