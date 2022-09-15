@@ -64,7 +64,9 @@ jobs:
       targetType: inline
       script: >
         mkdir src/$env:SERVICENAME
+        
         git checkout src/$env:SERVICENAME
+
         git checkout -b codegen/$env:SERVICENAME origin/$env:BaseBranch
   - task: PowerShell@2
     displayName: Move code to main
@@ -74,11 +76,15 @@ jobs:
       script: >-
         #Uninstall-Module -Name PackageManagement -AllVersions
         Install-Module -Name PowerShellGet -RequiredVersion 2.2.3 -Force
+
         Install-Module -Name platyPS -RequiredVersion 0.14.2 -Force
+
         Install-Module -Name Az.Accounts -Force
+
         Import-Module .\tools\Gen2Master\MoveFromGeneration2Master.ps1
 
         $subModuleFolders = Get-ChildItem .\artifacts\src\$env:SERVICENAME -Directory -Filter *.Autorest
+
         if ($subModuleFolders -eq $null) {
           Move-Generation2Master -SourcePath .\artifacts\src\$env:SERVICENAME -DestPath .\src\$env:SERVICENAME
         } else {
@@ -86,11 +92,17 @@ jobs:
         }
 
         git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
+
         git config user.name "azure-powershell-bot"
+
         git add ./src
+
         git add tools/CreateMappings_rules.json
+
         git commit -m "Move $env:SERVICENAME to $env:BaseBranch"
+
         git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git
+
         git push origin codegen/$env:SERVICENAME
       pwsh: true
 
