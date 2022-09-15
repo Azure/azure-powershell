@@ -1,4 +1,4 @@
-pac0,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Accounts,2.10.0
+pac0,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Accounts,2.10.1
 pac1,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ADDomainServices,0.2.0
 pac2,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Advisor,1.1.2
 pac3,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Aks,4.3.0
