@@ -157,6 +157,31 @@ namespace Microsoft.Azure.Commands.Compute
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. <br><br> Default: UefiSettings will not be enabled unless this property is set.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        public string SecurityType { get; set; }
+
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
+           HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableVtpm { get; set; } = null;
+
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableSecureBoot { get; set; } = null;
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
         public PSCredential Credential { get; set; }
 
@@ -536,6 +561,13 @@ namespace Microsoft.Azure.Commands.Compute
                     publicIpSku = _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
                 }
 
+                if (_cmdlet.IsParameterBound(c => c.SecurityType) && (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM"))
+                {
+                    _cmdlet.SecurityType = _cmdlet.SecurityType;
+                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm == null ? true : _cmdlet.EnableVtpm;
+                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot == null ? true : _cmdlet.EnableSecureBoot;
+                }
+
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
                     name: _cmdlet.VirtualNetworkName, edgeZone: _cmdlet.EdgeZone, addressPrefix: _cmdlet.AddressPrefix);
@@ -625,6 +657,9 @@ namespace Microsoft.Azure.Commands.Compute
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
                         encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        securityType: _cmdlet.SecurityType,
+                        enableVtpm: _cmdlet.EnableVtpm,
+                        enableSecureBoot: _cmdlet.EnableSecureBoot,
                         sshPublicKeys: sshPublicKeyList,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
@@ -664,6 +699,9 @@ namespace Microsoft.Azure.Commands.Compute
                         evictionPolicy: _cmdlet.EvictionPolicy,
                         maxPrice: _cmdlet.IsParameterBound(c => c.MaxPrice) ? _cmdlet.MaxPrice : (double?)null,
                         encryptionAtHostPresent: _cmdlet.EncryptionAtHost.IsPresent,
+                        securityType: _cmdlet.SecurityType,
+                        enableVtpm: _cmdlet.EnableVtpm,
+                        enableSecureBoot: _cmdlet.EnableSecureBoot,
                         networkInterfaceDeleteOption: _cmdlet.NetworkInterfaceDeleteOption,
                         osDiskDeleteOption: _cmdlet.OSDiskDeleteOption,
                         dataDiskDeleteOption: _cmdlet.DataDiskDeleteOption,
@@ -835,6 +873,11 @@ namespace Microsoft.Azure.Commands.Compute
                 this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
             }
 
+            if (this.VM.SecurityProfile.SecurityType == "TrustedLaunch" || this.VM.SecurityProfile.SecurityType == "ConfidentialVM")
+            {
+                this.VM.SecurityProfile.UefiSettings.VTpmEnabled = this.VM.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.VM.SecurityProfile.UefiSettings.VTpmEnabled;
+                this.VM.SecurityProfile.UefiSettings.SecureBootEnabled = this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.VM.SecurityProfile.UefiSettings.SecureBootEnabled;
+            }
 
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {

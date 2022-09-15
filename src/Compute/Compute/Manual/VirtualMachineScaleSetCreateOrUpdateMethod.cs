@@ -55,6 +55,31 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Win10")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. <br><br> Default: UefiSettings will not be enabled unless this property is set.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        public string SecurityType { get; set; }
+
+        [Parameter(
+         ParameterSetName = SimpleParameterSet,
+         HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01",
+         ValueFromPipelineByPropertyName = true,
+         Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableVtpm { get; set; } = null;
+
+        [Parameter(
+           ParameterSetName = SimpleParameterSet,
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableSecureBoot { get; set; } = null;
+
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = true)]
         public PSCredential Credential { get; set; }
 
@@ -355,6 +380,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
 
+                if (_cmdlet.IsParameterBound(c => c.SecurityType) && (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM"))
+                {
+                    _cmdlet.SecurityType = _cmdlet.SecurityType;
+                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm == null ? true : _cmdlet.EnableVtpm;
+                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot == null ? true : _cmdlet.EnableSecureBoot;
+                }
+
                 Dictionary<string, List<string>> auxAuthHeader = null;
                 if (!string.IsNullOrEmpty(_cmdlet.ImageReferenceId))
                 {
@@ -401,6 +433,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                     encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
+                    securityType: _cmdlet.SecurityType,
+                    enableVtpm: _cmdlet.EnableVtpm,
+                    enableSecureBoot: _cmdlet.EnableSecureBoot,
                     platformFaultDomainCount: _cmdlet.IsParameterBound(c => c.PlatformFaultDomainCount) ? _cmdlet.PlatformFaultDomainCount : (int?)null,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
@@ -491,6 +526,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     }
                 }
 
+                if (_cmdlet.IsParameterBound(c => c.SecurityType) && (_cmdlet.SecurityType == "TrustedLaunch" || _cmdlet.SecurityType == "ConfidentialVM"))
+                {
+                    _cmdlet.SecurityType = _cmdlet.SecurityType;
+                    _cmdlet.EnableVtpm = _cmdlet.EnableVtpm == null ? true : _cmdlet.EnableVtpm;
+                    _cmdlet.EnableSecureBoot = _cmdlet.EnableSecureBoot == null ? true : _cmdlet.EnableSecureBoot;
+                }
+
                 _cmdlet.NatBackendPort = ImageAndOsType.UpdatePorts(_cmdlet.NatBackendPort);
 
                 var networkSecurityGroup = noZones
@@ -526,6 +568,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     scaleInPolicy: _cmdlet.ScaleInPolicy,
                     doNotRunExtensionsOnOverprovisionedVMs: _cmdlet.SkipExtensionsOnOverprovisionedVMs.IsPresent,
                     encryptionAtHost: _cmdlet.EncryptionAtHost.IsPresent,
+                    securityType: _cmdlet.SecurityType,
+                    enableVtpm: _cmdlet.EnableVtpm,
+                    enableSecureBoot: _cmdlet.EnableSecureBoot,
                     platformFaultDomainCount: platformFaultDomainCountFlexibleDefault,
                     edgeZone: _cmdlet.EdgeZone,
                     orchestrationMode: _cmdlet.IsParameterBound(c => c.OrchestrationMode) ? _cmdlet.OrchestrationMode : null,
