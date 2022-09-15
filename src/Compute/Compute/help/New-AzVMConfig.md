@@ -392,7 +392,7 @@ Accept wildcard characters: False
 ```
 
 ### -VMSize
-Specifies the size for the virtual machine.
+Specifies the size for the virtual machine. [Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region. 
 
 ```yaml
 Type: System.String

@@ -903,7 +903,7 @@ Accept wildcard characters: False
 ```
 
 ### -VmSize
-The size of the VM instances in this scale set.  A default size (Standard_DS1_v2) will be used if no Size is specified.
+The size of the VM instances in this scale set. [Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region. A default size (Standard_DS1_v2) will be used if no Size is specified. 
 
 ```yaml
 Type: System.String

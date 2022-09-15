@@ -662,7 +662,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuName
-Specifies the size of all the instances of VMSS.
+Specifies the size of all the instances of VMSS. [Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region. 
 
 ```yaml
 Type: System.String
