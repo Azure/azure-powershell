@@ -390,7 +390,14 @@ Accept wildcard characters: False
 
 ### -Credential
 The administrator credentials for the VM.
-
+#### For username
+**Restriction:** <br>
+Windows: Cannot contain special characters \/""[]:|<>+=;,?*@& or end in \".\" <br>
+Linux: Username must only contain letters, numbers, hyphens, and underscores and may not start with a hyphen or number. <br>
+**Disallowed values:** \"administrator\", \"admin\", \"user\", \"user1\", \"test\", \"user2\", \"test1\", \"user3\", \"admin1\", \"1\", \"123\", \"a\", \"actuser\", \"adm\", \"admin2\", \"aspnet\", \"backup\", \"console\", \"david\", \"guest\", \"john\", \"owner\", \"root\", \"server\", \"sql\", \"support\", \"support_388945a0\", \"sys\", \"test2\", \"test3\", \"user4\", \"user5\". <br>
+**Minimum-length:** 1  character <br>
+**Max-length:** Linux: 64 characters, Windows: 20 characters  <br>
+#### For password
 ```yaml
 Type: System.Management.Automation.PSCredential
 Parameter Sets: SimpleParameterSet
