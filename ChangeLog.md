@@ -26,6 +26,7 @@
 * Fixed bug: Get-AzAutomationDscCompilationJobOutput returns complete summaries [#12322]
 * Fixed bug: Get-AzAutomationDscNode [#10404]
 * Fixed bug: Get-AzAutomationJob fails for some jobIds
+* Added cmdlets "Remove-AzAutomationHybridRunbookWorker", "Remove-AzAutomationHybridRunbookWorkerGroup", "Set-AzAutomationHybridRunbookWorkerGroup", "Get-AzAutomationHybridRunbookWorker", "Get-AzAutomationHybridRunbookWorkerGroup", "Move-AzAutomationHybridRunbookWorker", "New-AzAutomationHybridRunbookWorker", "New-AzAutomationHybridRunbookWorkerGroup" for Hybrid Runbook Worker group management.
 
 #### Az.Batch
 * Fixed a bug wherein creating a new JobSchedule does not properly submit Output Files.
