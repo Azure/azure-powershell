@@ -1839,7 +1839,7 @@ function Test-VirtualHubAndVpnGatewayWithCustomAsn
 		Assert-AreEqual 65000 $virtualHub.VirtualRouterAsn
 
 		# Create the VpnGateway
-		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Asn 65100
+		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3 -Asn 65100
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
 		Assert-AreEqual $vpnGatewayName $vpnGateway.Name
@@ -1853,7 +1853,7 @@ function Test-VirtualHubAndVpnGatewayWithCustomAsn
 		Assert-AreEqual 65001 $virtualHub.VirtualRouterAsn
 
 		# Update the VpnGateway
-		$updatedVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3 -Asn 65101
+		$updatedVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Asn 65101
 		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
 		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
 		Assert-AreEqual $vpnGatewayName $vpnGateway.Name
