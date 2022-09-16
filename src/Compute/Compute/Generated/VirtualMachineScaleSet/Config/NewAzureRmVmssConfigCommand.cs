@@ -139,6 +139,28 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public string[] Zone { get; set; }
 
         [Parameter(
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. <br><br> Default: UefiSettings will not be enabled unless this property is set.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        public string SecurityType { get; set; }
+
+        [Parameter(
+           HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableVtpm { get; set; } = null;
+
+        [Parameter(
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableSecureBoot { get; set; } = null;
+
+        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true)]
         public string PlanName { get; set; }
@@ -529,6 +551,62 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     vVirtualMachineProfile.NetworkProfile = new VirtualMachineScaleSetNetworkProfile();
                 }
                 vVirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations = this.NetworkInterfaceConfiguration;
+            }
+
+            if (this.IsParameterBound(c => c.SecurityType))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vVirtualMachineProfile.SecurityProfile.SecurityType = this.SecurityType;
+                if (vVirtualMachineProfile.SecurityProfile.SecurityType == "TrustedLaunch" || vVirtualMachineProfile.SecurityProfile.SecurityType == "ConfidentialVM")
+                {
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EnableVtpm))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vVirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = this.EnableVtpm;
+            }
+
+            if (this.IsParameterBound(c => c.EnableSecureBoot))
+            {
+                if (vVirtualMachineProfile == null)
+                {
+                    vVirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile = new SecurityProfile();
+                }
+                if (vVirtualMachineProfile.SecurityProfile.UefiSettings == null)
+                {
+                    vVirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vVirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
             }
 
             if (this.IsParameterBound(c => c.BootDiagnostic))

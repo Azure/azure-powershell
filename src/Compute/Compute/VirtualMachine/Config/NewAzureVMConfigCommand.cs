@@ -78,6 +78,28 @@ namespace Microsoft.Azure.Commands.Compute
         public string [] Zone { get; set; }
 
         [Parameter(
+           HelpMessage = "Specifies the SecurityType of the virtual machine. It has to be set to any specified value to enable UefiSettings. <br><br> Default: UefiSettings will not be enabled unless this property is set.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        public string SecurityType { get; set; }
+
+        [Parameter(
+           HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableVtpm { get; set; } = null;
+
+        [Parameter(
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
+           ValueFromPipelineByPropertyName = true,
+           Mandatory = false)]
+        [ValidateNotNullOrEmpty]
+        public bool? EnableSecureBoot { get; set; } = null;
+
+        [Parameter(
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Id of ProximityPlacementGroup")]
         public string ProximityPlacementGroupId { get; set; }
@@ -322,7 +344,51 @@ namespace Microsoft.Azure.Commands.Compute
                 }
                 vm.StorageProfile.ImageReference.Id = this.ImageReferenceId;
             }
-            
+
+            if (this.IsParameterBound(c => c.SecurityType))
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+                if (vm.SecurityProfile.UefiSettings == null)
+                {
+                    vm.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vm.SecurityProfile.SecurityType = this.SecurityType;
+                if (vm.SecurityProfile.SecurityType == "TrustedLaunch" || vm.SecurityProfile.SecurityType == "ConfidentialVM")
+                {
+                    vm.SecurityProfile.UefiSettings.VTpmEnabled = vm.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.EnableVtpm;
+                    vm.SecurityProfile.UefiSettings.SecureBootEnabled = vm.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
+                }
+            }
+
+            if (this.IsParameterBound(c => c.EnableVtpm))
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+                if (vm.SecurityProfile.UefiSettings == null)
+                {
+                    vm.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vm.SecurityProfile.UefiSettings.VTpmEnabled = this.EnableVtpm;
+            }
+
+            if (this.IsParameterBound(c => c.EnableSecureBoot))
+            {
+                if (vm.SecurityProfile == null)
+                {
+                    vm.SecurityProfile = new SecurityProfile();
+                }
+                if (vm.SecurityProfile.UefiSettings == null)
+                {
+                    vm.SecurityProfile.UefiSettings = new UefiSettings();
+                }
+                vm.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
+            }
+
             if (this.IsParameterBound(c => c.PlatformFaultDomain))
             {
                 vm.PlatformFaultDomain = this.PlatformFaultDomain;
