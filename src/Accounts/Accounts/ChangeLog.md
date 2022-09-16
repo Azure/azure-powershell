@@ -19,6 +19,7 @@
 -->
 
 ## Upcoming Release
+* Supported tenant domain as input while using `Connect-AzAccount` with parameter `Tenant`. [#19471]
 
 ## Version 2.10.1
 * Deduplicated subscriptions belonging to multiple tenants while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19427]
