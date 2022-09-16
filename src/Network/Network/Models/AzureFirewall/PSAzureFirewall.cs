@@ -55,6 +55,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public PSAzureFirewallHubIpAddresses HubIPAddresses { get; set; }
 
+        public PSAzureFirewallIpPrefix LearnedIPPrefixes { get; set; }
+
         public string[] PrivateRange
         {
             get

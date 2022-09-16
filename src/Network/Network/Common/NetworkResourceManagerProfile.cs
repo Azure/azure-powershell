@@ -1324,6 +1324,7 @@ namespace Microsoft.Azure.Commands.Network
                     }.Where(kvp => kvp.Value != null).ToDictionary(key => key.Key, val => val.Value);   // TODO: remove after backend code is refactored
                 });
                 cfg.CreateMap<CNM.PSAzureFirewallSku, MNM.AzureFirewallSku>();
+                cfg.CreateMap<CNM.PSAzureFirewallIpPrefix, MNM.IPPrefixesList>();
                 cfg.CreateMap<CNM.PSAzureFirewallIpConfiguration, MNM.AzureFirewallIPConfiguration>();
                 cfg.CreateMap<CNM.PSAzureFirewallApplicationRuleCollection, MNM.AzureFirewallApplicationRuleCollection>();
                 cfg.CreateMap<CNM.PSAzureFirewallNatRuleCollection, MNM.AzureFirewallNatRuleCollection>();
@@ -1379,6 +1380,7 @@ namespace Microsoft.Azure.Commands.Network
                     }
                 });
                 cfg.CreateMap<MNM.AzureFirewallSku, CNM.PSAzureFirewallSku>();
+                cfg.CreateMap<MNM.IPPrefixesList, CNM.PSAzureFirewallIpPrefix>();
                 cfg.CreateMap<MNM.AzureFirewallIPConfiguration, CNM.PSAzureFirewallIpConfiguration>();
                 cfg.CreateMap<MNM.AzureFirewallApplicationRuleCollection, CNM.PSAzureFirewallApplicationRuleCollection>();
                 cfg.CreateMap<MNM.AzureFirewallNatRuleCollection, CNM.PSAzureFirewallNatRuleCollection>();
