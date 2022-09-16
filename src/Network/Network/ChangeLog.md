@@ -23,6 +23,12 @@
     - `New-AzVirtualNetworkGatewayConnection`
 * Updated commandlet to support no-internet advertise CustomIpPrefix.
     - `Update-AzCustomIpPrefix`
+* Updated commandlets to support specifying a VirtualRouterAsn on Virtual Hub
+    - `NewAzureRmVirtualHubCommand.cs`
+    - `UpdateAzureRmVirtualHubCommand.cs`
+* Updated commandlets to support specifying an ASN on VPN Gateway
+    - `NewAzureRmVpnGatewayCommand.cs`
+    - `UpdateAzureRmVpnGatewayCommand.cs`
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
