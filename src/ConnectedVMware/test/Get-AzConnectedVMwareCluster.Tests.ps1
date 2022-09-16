@@ -15,19 +15,24 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzConnectedVMwareCluster'
 }
 
 Describe 'Get-AzConnectedVMwareCluster' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $clusters = Get-AzConnectedVMwareCluster
+        $clusters.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $cluster = Get-AzConnectedVMwareCluster -ResourceGroupName $env.ResourceGroupName -Name $env.clusterName
+        $cluster.Name | Should -Be $env.clusterName
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        $clusters = Get-AzConnectedVMwareCluster -ResourceGroupName $env.ResourceGroupName
+        $clusters.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $cluster1 = Get-AzConnectedVMwareCluster -ResourceGroupName $env.ResourceGroupName -Name $env.clusterName
+        $cluster2 = Get-AzConnectedVMwareCluster -InputObject $cluster1
+        $cluster2.Name | Should -Be $env.clusterName
     }
 }

@@ -19,6 +19,16 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+
+    $resourceGroupName = "test-rg" + (RandomString -allChars $false -len 5)
+    $env.AddWithCache('resourceGroupName', $resourceGroupName, $UsePreviousConfigForRecord)
+
+    $location = "eastus"
+    $env.AddWithCache('location', $location, $UsePreviousConfigForRecord)
+
+    $clusterName = "test-cluster" + (RandomString -allChars $false -len 5)
+    $env.AddWithCache('clusterName', $clusterName, $UsePreviousConfigForRecord)
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
