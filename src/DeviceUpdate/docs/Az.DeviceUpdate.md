@@ -26,9 +26,6 @@ Create an in-memory object for CheckNameAvailabilityRequest.
 ### [New-AzDeviceUpdateInstance](New-AzDeviceUpdateInstance.md)
 Creates or updates instance.
 
-### [New-AzDeviceUpdateIotHubSettingsObject](New-AzDeviceUpdateIotHubSettingsObject.md)
-Create an in-memory object for IotHubSettings.
-
 ### [Remove-AzDeviceUpdateAccount](Remove-AzDeviceUpdateAccount.md)
 Deletes account.
 

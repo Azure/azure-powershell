@@ -194,6 +194,10 @@ directive:
       parameter-name: IdentityUserAssignedIdentity
     set:
       parameter-name: UserAssignedIdentity
+  - where:
+      verb: New
+      subject: Instance
+    hide: true
   # The cmdlet's name to long, Re-name it
   # - model-cmdlet:
   #     - IotHubSettings
