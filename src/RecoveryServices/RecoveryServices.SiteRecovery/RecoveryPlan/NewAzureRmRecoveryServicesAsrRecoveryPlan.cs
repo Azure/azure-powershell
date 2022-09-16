@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureZoneToZone,
-            Mandatory = false)]
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string PrimaryZone { get; set; }
 
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.SiteRecovery
         /// </summary>
         [Parameter(
             ParameterSetName = ASRParameterSets.AzureZoneToZone,
-            Mandatory = false)]
+            Mandatory = true)]
         [ValidateNotNullOrEmpty]
         public string RecoveryZone { get; set; }
 
