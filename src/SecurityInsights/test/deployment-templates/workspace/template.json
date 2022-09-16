@@ -1,0 +1,139 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspaceName": {
+            "defaultValue": "asps",
+            "type": "String"
+        },
+        "newOnboardingStateWS": {
+            "defaultValue": "asps",
+            "type":"string"
+        },
+        "removeOnboardingStateWS": {
+            "defaultValue": "asps",
+            "type":"string"
+        }
+    },
+    "variables": {
+    },
+    "resources": [
+        {
+            "name": "[parameters('workspaceName')]",
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "apiVersion": "2015-11-01-preview",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "retentionInDays": 90,
+                "features": {
+                    "immediatePurgeDataOn30Days": true
+                },
+                "sku": {
+                    "name": "PerGB2018"
+                }
+            }
+        },
+        {
+            "name": "[concat('SecurityInsights','(', parameters('workspaceName'),')')]",
+            "type": "Microsoft.OperationsManagement/solutions",
+            "apiVersion": "2015-11-01-preview",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            ],
+            "properties": {
+                "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceName'))]"
+            },
+            "plan": {
+                "name": "[concat('SecurityInsights','(', parameters('workspaceName'),')')]",
+                "product": "OMSGallery/SecurityInsights",
+                "publisher": "Microsoft",
+                "promotionCode": ""
+            }
+        },
+        {
+            "type": "Microsoft.OperationalInsights/workspaces/providers/onboardingStates",
+            "name": "[concat(parameters('workspaceName'),'/Microsoft.SecurityInsights/default')]",
+            "apiVersion": "2021-03-01-preview",
+            "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+            ],
+            "properties": {
+              "customerManagedKey": false
+            }
+        },
+        {
+            "name": "[parameters('newOnboardingStateWS')]",
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "apiVersion": "2015-11-01-preview",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "retentionInDays": 90,
+                "features": {
+                    "immediatePurgeDataOn30Days": true
+                },
+                "sku": {
+                    "name": "PerGB2018"
+                }
+            }
+        },
+        {
+            "name": "[parameters('removeOnboardingStateWS')]",
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "apiVersion": "2015-11-01-preview",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "retentionInDays": 90,
+                "features": {
+                    "immediatePurgeDataOn30Days": true
+                },
+                "sku": {
+                    "name": "PerGB2018"
+                }
+            }
+        },
+        {
+            "name": "[concat('SecurityInsights','(', parameters('removeOnboardingStateWS'),')')]",
+            "type": "Microsoft.OperationsManagement/solutions",
+            "apiVersion": "2015-11-01-preview",
+            "location": "[resourceGroup().location]",
+            "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('removeOnboardingStateWS'))]"
+            ],
+            "properties": {
+                "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces', parameters('removeOnboardingStateWS'))]"
+            },
+            "plan": {
+                "name": "[concat('SecurityInsights','(', parameters('removeOnboardingStateWS'),')')]",
+                "product": "OMSGallery/SecurityInsights",
+                "publisher": "Microsoft",
+                "promotionCode": ""
+            }
+        },
+        {
+            "type": "Microsoft.OperationalInsights/workspaces/providers/onboardingStates",
+            "name": "[concat(parameters('removeOnboardingStateWS'),'/Microsoft.SecurityInsights/default')]",
+            "apiVersion": "2021-03-01-preview",
+            "dependsOn": [
+                "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('removeOnboardingStateWS'))]"
+            ],
+            "properties": {
+              "customerManagedKey": false
+            }
+        }
+    ],
+    "outputs": {
+        "workspaceId": {
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName')), '2015-11-01-preview').customerId]"
+        },
+        "workspaceKey": {
+            "type": "string",
+            "value": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName')), '2015-11-01-preview').primarySharedKey]"
+        },
+        "workspaceResourceId": {
+            "type": "string",
+            "value": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]"
+        }
+    }
+}

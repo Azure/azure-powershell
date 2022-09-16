@@ -174,6 +174,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private EventHubsClient  _client;
+
+        public const string BreakingChangeNotification = "- PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.";
+        public const string DeprecateByVersion = "Az 9.0";
+        public const string ChangeInEffectByDate = "12th October, 2022";
         
         public EventHubsClient UtilityClient
         {

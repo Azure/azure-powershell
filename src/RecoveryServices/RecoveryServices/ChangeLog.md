@@ -18,9 +18,13 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed AFEC feature check for Archive smart tiering
 * Remove $vmName from non A2A scenarios
 * Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping
 * Added new scenarios: EZ-to-AZ, EZ-to-AZ, EZ-to-EZ
+
+## Version 5.6.0
+* Added support for Archive smart tiering for AzureVM and MSSQL workloads.
 
 ## Version 5.5.0
 * Fixed GetAzRecoveryServicesVaultSettingsFile cmdlet used for downloading vault credential file.

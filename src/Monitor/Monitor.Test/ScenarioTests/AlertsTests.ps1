@@ -423,7 +423,7 @@ function Test-AddAzureRmMetricAlertRuleV2-skipMetricValidation
 	New-AzResourceGroup -Name $rgname -Location $location -Force
 	New-AzStorageAccount -ResourceGroupName $rgname -Name $resourceName -Location $location -Type Standard_GRS
 	$condition = New-AzMetricAlertRuleV2Criteria -MetricName "UsedCapacityCustom" -Operator GreaterThan -Threshold 8 -TimeAggregation Average -MetricNamespace "customNamespace" -SkipMetricValidation $true
-	Start-TestSleep 30000
+	Start-TestSleep -Seconds 30
 	try
     {		
 		# Test - create metric alert with SkipMetricValidation = true

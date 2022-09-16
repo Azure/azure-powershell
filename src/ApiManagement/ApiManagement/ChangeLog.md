@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.0.1
 * Added warning message for upcoming breaking change: changed the type of parameter Sku from Enum to String
 * Supported GraphQL Specification Format
 

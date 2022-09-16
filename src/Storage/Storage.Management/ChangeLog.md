@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Replaced "Microsoft.Azure.Management.Storage" SDK reference to the generated SDK code
+
+## Version 4.9.0
 * Supported to create or update Storage account with Azure Files Active Directory Domain Service Kerberos Authentication
     -  `New-AzStorageAccount`
     -  `Set-AzStorageAccount`
