@@ -977,6 +977,49 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #endregion
 
+        #region VerifiedPartner
+        public VerifiedPartner GetVerifiedParter(string verifiedPartnerName)
+        {
+            var verifiedPartner = this.Client.VerifiedPartners.Get(verifiedPartnerName);
+            return verifiedPartner;
+        }
+
+        public (IEnumerable<VerifiedPartner>, string) ListVerifiedPartners(string oDataQuery, int? top)
+        {
+            List<VerifiedPartner> verifiedPartnersList = new List<VerifiedPartner>();
+            IPage <VerifiedPartner> verifiedPartnerPage = this.Client.VerifiedPartners.List(oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (verifiedPartnerPage != null)
+            {
+                verifiedPartnersList.AddRange(verifiedPartnerPage);
+                nextLink = verifiedPartnerPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<VerifiedPartner> newVerifiedPartnersList;
+                    (newVerifiedPartnersList, nextLink) = this.ListVerifiedPartnerNext(nextLink);
+                    verifiedPartnersList.AddRange(newVerifiedPartnersList);
+                }
+            }
+
+            return (verifiedPartnersList, nextLink);
+        }
+
+        public (IEnumerable<VerifiedPartner>, string) ListVerifiedPartnerNext(string nextLink)
+        {
+            List<VerifiedPartner> verifiedPartnersList = new List<VerifiedPartner>();
+            string newNextLink = null;
+            IPage<VerifiedPartner> verifiedPartnersPage = this.Client.VerifiedPartners.ListNext(nextLink);
+            if (verifiedPartnersPage != null)
+            {
+                verifiedPartnersList.AddRange(verifiedPartnersPage);
+                newNextLink = verifiedPartnersPage.NextPageLink;
+            }
+
+            return (verifiedPartnersList, newNextLink);
+        }
+
+        #endregion
 
         public EventSubscription CreateEventSubscription(
             string scope,
