@@ -1,24 +1,3 @@
-#### Invoke-AzConnectedVMwareAssessVirtualMachinePatch
-
-#### SYNOPSIS
-The operation to assess patches on a vSphere VMware machine identity in Azure.
-
-#### SYNTAX
-
-+ Assess (Default)
-```powershell
-Invoke-AzConnectedVMwareAssessVirtualMachinePatch -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-+ AssessViaIdentity
-```powershell
-Invoke-AzConnectedVMwareAssessVirtualMachinePatch -InputObject <IConnectedVMwareIdentity>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-
 #### New-AzConnectedVMwareCluster
 
 #### SYNOPSIS
@@ -26,33 +5,11 @@ Create Or Update cluster.
 
 #### SYNTAX
 
-+ CreateExpanded (Default)
 ```powershell
 New-AzConnectedVMwareCluster -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
  [-InventoryItemId <String>] [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ Create
-```powershell
-New-AzConnectedVMwareCluster -Name <String> -ResourceGroupName <String> -Body <ICluster>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-+ CreateViaIdentity
-```powershell
-New-AzConnectedVMwareCluster -InputObject <IConnectedVMwareIdentity> -Body <ICluster>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentityExpanded
-```powershell
-New-AzConnectedVMwareCluster -InputObject <IConnectedVMwareIdentity> -Location <String>
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>]
- [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
@@ -96,14 +53,15 @@ Implements cluster DELETE method.
 
 + Delete (Default)
 ```powershell
-Remove-AzConnectedVMwareCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedVMwareCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ForceDeletion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 + DeleteViaIdentity
 ```powershell
-Remove-AzConnectedVMwareCluster -InputObject <IConnectedVMwareIdentity> [-Force] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedVMwareCluster -InputObject <IConnectedVMwareIdentity> [-ForceDeletion]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
@@ -120,18 +78,6 @@ Update-AzConnectedVMwareCluster -Name <String> -ResourceGroupName <String> [-Sub
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-+ Update
-```powershell
-Update-AzConnectedVMwareCluster -Name <String> -ResourceGroupName <String> -Body <IResourcePatch>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ UpdateViaIdentity
-```powershell
-Update-AzConnectedVMwareCluster -InputObject <IConnectedVMwareIdentity> -Body <IResourcePatch>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 + UpdateViaIdentityExpanded
 ```powershell
 Update-AzConnectedVMwareCluster -InputObject <IConnectedVMwareIdentity> [-Tag <Hashtable>]
@@ -146,33 +92,11 @@ Create Or Update datastore.
 
 #### SYNTAX
 
-+ CreateExpanded (Default)
 ```powershell
 New-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
  [-InventoryItemId <String>] [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ Create
-```powershell
-New-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> -Body <IDatastore>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-+ CreateViaIdentity
-```powershell
-New-AzConnectedVMwareDatastore -InputObject <IConnectedVMwareIdentity> -Body <IDatastore>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentityExpanded
-```powershell
-New-AzConnectedVMwareDatastore -InputObject <IConnectedVMwareIdentity> -Location <String>
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>]
- [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
@@ -217,13 +141,13 @@ Implements datastore DELETE method.
 + Delete (Default)
 ```powershell
 Remove-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-ForceDeletion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 + DeleteViaIdentity
 ```powershell
-Remove-AzConnectedVMwareDatastore -InputObject <IConnectedVMwareIdentity> [-Force]
+Remove-AzConnectedVMwareDatastore -InputObject <IConnectedVMwareIdentity> [-ForceDeletion]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -241,18 +165,6 @@ Update-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> [-S
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-+ Update
-```powershell
-Update-AzConnectedVMwareDatastore -Name <String> -ResourceGroupName <String> -Body <IResourcePatch>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ UpdateViaIdentity
-```powershell
-Update-AzConnectedVMwareDatastore -InputObject <IConnectedVMwareIdentity> -Body <IResourcePatch>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 + UpdateViaIdentityExpanded
 ```powershell
 Update-AzConnectedVMwareDatastore -InputObject <IConnectedVMwareIdentity> [-Tag <Hashtable>]
@@ -267,33 +179,11 @@ Create Or Update GuestAgent.
 
 #### SYNTAX
 
-+ CreateExpanded (Default)
 ```powershell
 New-AzConnectedVMwareGuestAgent -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
- [-SubscriptionId <String>] [-CredentialsPassword <String>] [-CredentialsUsername <String>]
+ [-SubscriptionId <String>] [-CredentialsPassword <SecureString>] [-CredentialsUsername <String>]
  [-HttpProxyConfigHttpsProxy <String>] [-ProvisioningAction <ProvisioningAction>] [-DefaultProfile <PSObject>]
  [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ Create
-```powershell
-New-AzConnectedVMwareGuestAgent -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
- -Body <IGuestAgent> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentity
-```powershell
-New-AzConnectedVMwareGuestAgent -InputObject <IConnectedVMwareIdentity> -Body <IGuestAgent>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentityExpanded
-```powershell
-New-AzConnectedVMwareGuestAgent -InputObject <IConnectedVMwareIdentity> [-CredentialsPassword <String>]
- [-CredentialsUsername <String>] [-HttpProxyConfigHttpsProxy <String>]
- [-ProvisioningAction <ProvisioningAction>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
 ```
 
 
@@ -351,32 +241,11 @@ Create Or Update host.
 
 #### SYNTAX
 
-+ CreateExpanded (Default)
 ```powershell
 New-AzConnectedVMwareHost -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
  [-InventoryItemId <String>] [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ Create
-```powershell
-New-AzConnectedVMwareHost -Name <String> -ResourceGroupName <String> -Body <IHost> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentity
-```powershell
-New-AzConnectedVMwareHost -InputObject <IConnectedVMwareIdentity> -Body <IHost> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentityExpanded
-```powershell
-New-AzConnectedVMwareHost -InputObject <IConnectedVMwareIdentity> -Location <String>
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>]
- [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
@@ -420,14 +289,15 @@ Implements host DELETE method.
 
 + Delete (Default)
 ```powershell
-Remove-AzConnectedVMwareHost -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedVMwareHost -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ForceDeletion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 + DeleteViaIdentity
 ```powershell
-Remove-AzConnectedVMwareHost -InputObject <IConnectedVMwareIdentity> [-Force] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedVMwareHost -InputObject <IConnectedVMwareIdentity> [-ForceDeletion]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
@@ -444,18 +314,6 @@ Update-AzConnectedVMwareHost -Name <String> -ResourceGroupName <String> [-Subscr
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-+ Update
-```powershell
-Update-AzConnectedVMwareHost -Name <String> -ResourceGroupName <String> -Body <IResourcePatch>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ UpdateViaIdentity
-```powershell
-Update-AzConnectedVMwareHost -InputObject <IConnectedVMwareIdentity> -Body <IResourcePatch>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 + UpdateViaIdentityExpanded
 ```powershell
 Update-AzConnectedVMwareHost -InputObject <IConnectedVMwareIdentity> [-Tag <Hashtable>]
@@ -470,30 +328,10 @@ Create Or Update HybridIdentityMetadata.
 
 #### SYNTAX
 
-+ CreateExpanded (Default)
 ```powershell
-New-AzConnectedVMwareHybridIdentityMetadata -MetadataName <String> -ResourceGroupName <String>
+New-AzConnectedVMwareHybridIdentityMetadata -Name <String> -ResourceGroupName <String>
  -VirtualMachineName <String> [-SubscriptionId <String>] [-PublicKey <String>] [-VMId <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ Create
-```powershell
-New-AzConnectedVMwareHybridIdentityMetadata -MetadataName <String> -ResourceGroupName <String>
- -VirtualMachineName <String> -Body <IHybridIdentityMetadata> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentity
-```powershell
-New-AzConnectedVMwareHybridIdentityMetadata -InputObject <IConnectedVMwareIdentity>
- -Body <IHybridIdentityMetadata> [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentityExpanded
-```powershell
-New-AzConnectedVMwareHybridIdentityMetadata -InputObject <IConnectedVMwareIdentity> [-PublicKey <String>]
- [-VMId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
@@ -512,7 +350,7 @@ Get-AzConnectedVMwareHybridIdentityMetadata -ResourceGroupName <String> -Virtual
 
 + Get
 ```powershell
-Get-AzConnectedVMwareHybridIdentityMetadata -MetadataName <String> -ResourceGroupName <String>
+Get-AzConnectedVMwareHybridIdentityMetadata -Name <String> -ResourceGroupName <String>
  -VirtualMachineName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -532,7 +370,7 @@ Implements HybridIdentityMetadata DELETE method.
 
 + Delete (Default)
 ```powershell
-Remove-AzConnectedVMwareHybridIdentityMetadata -MetadataName <String> -ResourceGroupName <String>
+Remove-AzConnectedVMwareHybridIdentityMetadata -Name <String> -ResourceGroupName <String>
  -VirtualMachineName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -551,31 +389,10 @@ Create Or Update InventoryItem.
 
 #### SYNTAX
 
-+ CreateExpanded (Default)
 ```powershell
 New-AzConnectedVMwareInventoryItem -Name <String> -ResourceGroupName <String> -VcenterName <String>
  -InventoryType <InventoryType> [-SubscriptionId <String>] [-Kind <String>] [-ManagedResourceId <String>]
  [-MoName <String>] [-MoRefId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ Create
-```powershell
-New-AzConnectedVMwareInventoryItem -Name <String> -ResourceGroupName <String> -VcenterName <String>
- -Body <IInventoryItem> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-+ CreateViaIdentity
-```powershell
-New-AzConnectedVMwareInventoryItem -InputObject <IConnectedVMwareIdentity> -Body <IInventoryItem>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentityExpanded
-```powershell
-New-AzConnectedVMwareInventoryItem -InputObject <IConnectedVMwareIdentity> -InventoryType <InventoryType>
- [-Kind <String>] [-ManagedResourceId <String>] [-MoName <String>] [-MoRefId <String>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
@@ -632,36 +449,12 @@ The operation to create or update the extension.
 
 #### SYNTAX
 
-+ CreateExpanded (Default)
 ```powershell
-New-AzConnectedVMwareMachineExtension -ExtensionName <String> -Name <String> -ResourceGroupName <String>
+New-AzConnectedVMwareMachineExtension -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
  [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ForceUpdateTag <String>]
  [-Location <String>] [-PropertiesType <String>] [-ProtectedSetting <IAny>] [-Publisher <String>]
  [-Setting <IAny>] [-Tag <Hashtable>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ Create
-```powershell
-New-AzConnectedVMwareMachineExtension -ExtensionName <String> -Name <String> -ResourceGroupName <String>
- -ExtensionParameter <IMachineExtension> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentity
-```powershell
-New-AzConnectedVMwareMachineExtension -InputObject <IConnectedVMwareIdentity>
- -ExtensionParameter <IMachineExtension> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-+ CreateViaIdentityExpanded
-```powershell
-New-AzConnectedVMwareMachineExtension -InputObject <IConnectedVMwareIdentity> [-AutoUpgradeMinorVersion]
- [-EnableAutomaticUpgrade] [-ForceUpdateTag <String>] [-Location <String>] [-PropertiesType <String>]
- [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>] [-Tag <Hashtable>]
- [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
 ```
 
 
@@ -674,13 +467,13 @@ The operation to get the extension.
 
 + List (Default)
 ```powershell
-Get-AzConnectedVMwareMachineExtension -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedVMwareMachineExtension -ResourceGroupName <String> -VirtualMachineName <String>
+ [-SubscriptionId <String[]>] [-Expand <String>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 + Get
 ```powershell
-Get-AzConnectedVMwareMachineExtension -ExtensionName <String> -Name <String> -ResourceGroupName <String>
+Get-AzConnectedVMwareMachineExtension -Name <String> -ResourceGroupName <String> -VirtualMachineName <String>
  [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -700,9 +493,9 @@ The operation to delete the extension.
 
 + Delete (Default)
 ```powershell
-Remove-AzConnectedVMwareMachineExtension -ExtensionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzConnectedVMwareMachineExtension -Name <String> -ResourceGroupName <String>
+ -VirtualMachineName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + DeleteViaIdentity
@@ -721,25 +514,11 @@ The operation to update the extension.
 
 + UpdateExpanded (Default)
 ```powershell
-Update-AzConnectedVMwareMachineExtension -ExtensionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade] [-ForceUpdateTag <String>]
- [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>] [-Tag <Hashtable>] [-Type <String>]
- [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-+ Update
-```powershell
-Update-AzConnectedVMwareMachineExtension -ExtensionName <String> -Name <String> -ResourceGroupName <String>
- -ExtensionParameter <IMachineExtensionUpdate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ UpdateViaIdentity
-```powershell
-Update-AzConnectedVMwareMachineExtension -InputObject <IConnectedVMwareIdentity>
- -ExtensionParameter <IMachineExtensionUpdate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Update-AzConnectedVMwareMachineExtension -Name <String> -ResourceGroupName <String>
+ -VirtualMachineName <String> [-SubscriptionId <String>] [-AutoUpgradeMinorVersion] [-EnableAutomaticUpgrade]
+ [-ForceUpdateTag <String>] [-ProtectedSetting <IAny>] [-Publisher <String>] [-Setting <IAny>]
+ [-Tag <Hashtable>] [-Type <String>] [-TypeHandlerVersion <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + UpdateViaIdentityExpanded
@@ -758,33 +537,11 @@ Create Or Update resourcePool.
 
 #### SYNTAX
 
-+ CreateExpanded (Default)
 ```powershell
 New-AzConnectedVMwareResourcePool -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
  [-InventoryItemId <String>] [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ Create
-```powershell
-New-AzConnectedVMwareResourcePool -Name <String> -ResourceGroupName <String> -Body <IResourcePool>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-+ CreateViaIdentity
-```powershell
-New-AzConnectedVMwareResourcePool -InputObject <IConnectedVMwareIdentity> -Body <IResourcePool>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentityExpanded
-```powershell
-New-AzConnectedVMwareResourcePool -InputObject <IConnectedVMwareIdentity> -Location <String>
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>]
- [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
@@ -830,13 +587,13 @@ Implements resourcePool DELETE method.
 + Delete (Default)
 ```powershell
 Remove-AzConnectedVMwareResourcePool -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [-ForceDeletion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 + DeleteViaIdentity
 ```powershell
-Remove-AzConnectedVMwareResourcePool -InputObject <IConnectedVMwareIdentity> [-Force]
+Remove-AzConnectedVMwareResourcePool -InputObject <IConnectedVMwareIdentity> [-ForceDeletion]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -854,18 +611,6 @@ Update-AzConnectedVMwareResourcePool -Name <String> -ResourceGroupName <String> 
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-+ Update
-```powershell
-Update-AzConnectedVMwareResourcePool -Name <String> -ResourceGroupName <String> -Body <IResourcePatch>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ UpdateViaIdentity
-```powershell
-Update-AzConnectedVMwareResourcePool -InputObject <IConnectedVMwareIdentity> -Body <IResourcePatch>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 + UpdateViaIdentityExpanded
 ```powershell
 Update-AzConnectedVMwareResourcePool -InputObject <IConnectedVMwareIdentity> [-Tag <Hashtable>]
@@ -880,33 +625,11 @@ Create Or Update vCenter.
 
 #### SYNTAX
 
-+ CreateExpanded (Default)
 ```powershell
 New-AzConnectedVMwareVCenter -Name <String> -ResourceGroupName <String> -Fqdn <String> -Location <String>
- [-SubscriptionId <String>] [-CredentialsPassword <String>] [-CredentialsUsername <String>]
+ [-SubscriptionId <String>] [-CredentialsPassword <SecureString>] [-CredentialsUsername <String>]
  [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-Kind <String>] [-Port <Int32>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ Create
-```powershell
-New-AzConnectedVMwareVCenter -Name <String> -ResourceGroupName <String> -Body <IVCenter>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-+ CreateViaIdentity
-```powershell
-New-AzConnectedVMwareVCenter -InputObject <IConnectedVMwareIdentity> -Body <IVCenter>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentityExpanded
-```powershell
-New-AzConnectedVMwareVCenter -InputObject <IConnectedVMwareIdentity> -Fqdn <String> -Location <String>
- [-CredentialsPassword <String>] [-CredentialsUsername <String>] [-ExtendedLocationName <String>]
- [-ExtendedLocationType <String>] [-Kind <String>] [-Port <Int32>] [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
@@ -950,14 +673,15 @@ Implements vCenter DELETE method.
 
 + Delete (Default)
 ```powershell
-Remove-AzConnectedVMwareVCenter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-Force]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedVMwareVCenter -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ForceDeletion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 + DeleteViaIdentity
 ```powershell
-Remove-AzConnectedVMwareVCenter -InputObject <IConnectedVMwareIdentity> [-Force] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedVMwareVCenter -InputObject <IConnectedVMwareIdentity> [-ForceDeletion]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
@@ -974,18 +698,6 @@ Update-AzConnectedVMwareVCenter -Name <String> -ResourceGroupName <String> [-Sub
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-+ Update
-```powershell
-Update-AzConnectedVMwareVCenter -Name <String> -ResourceGroupName <String> -Body <IResourcePatch>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ UpdateViaIdentity
-```powershell
-Update-AzConnectedVMwareVCenter -InputObject <IConnectedVMwareIdentity> -Body <IResourcePatch>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 + UpdateViaIdentityExpanded
 ```powershell
 Update-AzConnectedVMwareVCenter -InputObject <IConnectedVMwareIdentity> [-Tag <Hashtable>]
@@ -993,16 +705,15 @@ Update-AzConnectedVMwareVCenter -InputObject <IConnectedVMwareIdentity> [-Tag <H
 ```
 
 
-#### New-AzConnectedVMwareVirtualMachine
+#### New-AzConnectedVMwareVM
 
 #### SYNOPSIS
 Create Or Update virtual machine.
 
 #### SYNTAX
 
-+ CreateExpanded (Default)
 ```powershell
-New-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzConnectedVMwareVM -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
  [-FirmwareType <FirmwareType>] [-HardwareProfileMemorySizeMb <Int32>]
  [-HardwareProfileNumCoresPerSocket <Int32>] [-HardwareProfileNumCpUs <Int32>] [-IdentityType <IdentityType>]
@@ -1019,40 +730,8 @@ New-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> -
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-+ Create
-```powershell
-New-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> -Body <IVirtualMachine>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
 
-+ CreateViaIdentity
-```powershell
-New-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> -Body <IVirtualMachine>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentityExpanded
-```powershell
-New-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> -Location <String>
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-FirmwareType <FirmwareType>]
- [-HardwareProfileMemorySizeMb <Int32>] [-HardwareProfileNumCoresPerSocket <Int32>]
- [-HardwareProfileNumCpUs <Int32>] [-IdentityType <IdentityType>] [-InventoryItemId <String>] [-Kind <String>]
- [-LinuxConfigurationPatchSettingsAssessmentMode <String>]
- [-LinuxConfigurationPatchSettingsPatchMode <String>] [-MoRefId <String>]
- [-NetworkProfileNetworkInterface <INetworkInterface[]>] [-OSProfileAdminPassword <String>]
- [-OSProfileAdminUsername <String>] [-OSProfileComputerName <String>] [-OSProfileGuestId <String>]
- [-OSProfileOstype <OSType>] [-PlacementProfileClusterId <String>] [-PlacementProfileDatastoreId <String>]
- [-PlacementProfileHostId <String>] [-PlacementProfileResourcePoolId <String>] [-ResourcePoolId <String>]
- [-SmbiosUuid <String>] [-StorageProfileDisk <IVirtualDisk[]>] [-Tag <Hashtable>] [-TemplateId <String>]
- [-UefiSettingSecureBootEnabled] [-VCenterId <String>]
- [-WindowsConfigurationPatchSettingsAssessmentMode <String>]
- [-WindowsConfigurationPatchSettingsPatchMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-
-#### Get-AzConnectedVMwareVirtualMachine
+#### Get-AzConnectedVMwareVM
 
 #### SYNOPSIS
 Implements virtual machine GET method.
@@ -1061,30 +740,29 @@ Implements virtual machine GET method.
 
 + List (Default)
 ```powershell
-Get-AzConnectedVMwareVirtualMachine [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzConnectedVMwareVM [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 + Get
 ```powershell
-Get-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzConnectedVMwareVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 + GetViaIdentity
 ```powershell
-Get-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
+Get-AzConnectedVMwareVM -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 + List1
 ```powershell
-Get-AzConnectedVMwareVirtualMachine -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedVMwareVM -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 
-#### Remove-AzConnectedVMwareVirtualMachine
+#### Remove-AzConnectedVMwareVM
 
 #### SYNOPSIS
 Implements virtual machine DELETE method.
@@ -1093,19 +771,19 @@ Implements virtual machine DELETE method.
 
 + Delete (Default)
 ```powershell
-Remove-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-Retain] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Remove-AzConnectedVMwareVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ForceDeletion] [-Retain] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 + DeleteViaIdentity
 ```powershell
-Remove-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> [-Force] [-Retain]
+Remove-AzConnectedVMwareVM -InputObject <IConnectedVMwareIdentity> [-ForceDeletion] [-Retain]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
-#### Restart-AzConnectedVMwareVirtualMachine
+#### Restart-AzConnectedVMwareVM
 
 #### SYNOPSIS
 Restart virtual machine.
@@ -1114,18 +792,18 @@ Restart virtual machine.
 
 + Restart (Default)
 ```powershell
-Restart-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Restart-AzConnectedVMwareVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + RestartViaIdentity
 ```powershell
-Restart-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzConnectedVMwareVM -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
-#### Start-AzConnectedVMwareVirtualMachine
+#### Start-AzConnectedVMwareVM
 
 #### SYNOPSIS
 Start virtual machine.
@@ -1134,18 +812,18 @@ Start virtual machine.
 
 + Start (Default)
 ```powershell
-Start-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Start-AzConnectedVMwareVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + StartViaIdentity
 ```powershell
-Start-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Start-AzConnectedVMwareVM -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
-#### Stop-AzConnectedVMwareVirtualMachine
+#### Stop-AzConnectedVMwareVM
 
 #### SYNOPSIS
 Stop virtual machine.
@@ -1154,33 +832,31 @@ Stop virtual machine.
 
 + StopExpanded (Default)
 ```powershell
-Stop-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-SkipShutdown] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Stop-AzConnectedVMwareVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-SkipShutdown]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + Stop
 ```powershell
-Stop-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String>
- -Body <IStopVirtualMachineOptions> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzConnectedVMwareVM -Name <String> -ResourceGroupName <String> -Body <IStopVirtualMachineOptions>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 + StopViaIdentity
 ```powershell
-Stop-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity>
- -Body <IStopVirtualMachineOptions> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Stop-AzConnectedVMwareVM -InputObject <IConnectedVMwareIdentity> -Body <IStopVirtualMachineOptions>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + StopViaIdentityExpanded
 ```powershell
-Stop-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> [-SkipShutdown]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Stop-AzConnectedVMwareVM -InputObject <IConnectedVMwareIdentity> [-SkipShutdown] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
-#### Update-AzConnectedVMwareVirtualMachine
+#### Update-AzConnectedVMwareVM
 
 #### SYNOPSIS
 API to update certain properties of the virtual machine resource.
@@ -1189,7 +865,7 @@ API to update certain properties of the virtual machine resource.
 
 + UpdateExpanded (Default)
 ```powershell
-Update-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzConnectedVMwareVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-HardwareProfileMemorySizeMb <Int32>] [-HardwareProfileNumCoresPerSocket <Int32>]
  [-HardwareProfileNumCpUs <Int32>] [-IdentityType <IdentityType>]
  [-LinuxConfigurationPatchSettingsAssessmentMode <String>]
@@ -1198,26 +874,12 @@ Update-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String
  [-Tag <Hashtable>] [-WindowsConfigurationPatchSettingsAssessmentMode <String>]
  [-WindowsConfigurationPatchSettingsPatchMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ Update
-```powershell
-Update-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String>
- -Body <IVirtualMachineUpdate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ UpdateViaIdentity
-```powershell
-Update-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> -Body <IVirtualMachineUpdate>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + UpdateViaIdentityExpanded
 ```powershell
-Update-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity>
- [-HardwareProfileMemorySizeMb <Int32>] [-HardwareProfileNumCoresPerSocket <Int32>]
- [-HardwareProfileNumCpUs <Int32>] [-IdentityType <IdentityType>]
+Update-AzConnectedVMwareVM -InputObject <IConnectedVMwareIdentity> [-HardwareProfileMemorySizeMb <Int32>]
+ [-HardwareProfileNumCoresPerSocket <Int32>] [-HardwareProfileNumCpUs <Int32>] [-IdentityType <IdentityType>]
  [-LinuxConfigurationPatchSettingsAssessmentMode <String>]
  [-LinuxConfigurationPatchSettingsPatchMode <String>]
  [-NetworkProfileNetworkInterface <INetworkInterfaceUpdate[]>] [-StorageProfileDisk <IVirtualDiskUpdate[]>]
@@ -1227,7 +889,27 @@ Update-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity>
 ```
 
 
-#### Install-AzConnectedVMwareVirtualMachinePatch
+#### Invoke-AzConnectedVMwareVMAssessPatch
+
+#### SYNOPSIS
+The operation to assess patches on a vSphere VMware machine identity in Azure.
+
+#### SYNTAX
+
++ Assess (Default)
+```powershell
+Invoke-AzConnectedVMwareVMAssessPatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
++ AssessViaIdentity
+```powershell
+Invoke-AzConnectedVMwareVMAssessPatch -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+
+#### Install-AzConnectedVMwareVMPatch
 
 #### SYNOPSIS
 The operation to install patches on a vSphere VMware machine identity in Azure.
@@ -1236,8 +918,8 @@ The operation to install patches on a vSphere VMware machine identity in Azure.
 
 + InstallExpanded (Default)
 ```powershell
-Install-AzConnectedVMwareVirtualMachinePatch -Name <String> -ResourceGroupName <String>
- -MaximumDuration <String> -RebootSetting <VMGuestPatchRebootSetting> [-SubscriptionId <String>]
+Install-AzConnectedVMwareVMPatch -Name <String> -ResourceGroupName <String> -MaximumDuration <String>
+ -RebootSetting <VMGuestPatchRebootSetting> [-SubscriptionId <String>]
  [-LinuxParameterClassificationsToInclude <VMGuestPatchClassificationLinux[]>]
  [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
  [-WindowParameterClassificationsToInclude <VMGuestPatchClassificationWindows[]>]
@@ -1246,23 +928,9 @@ Install-AzConnectedVMwareVirtualMachinePatch -Name <String> -ResourceGroupName <
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-+ Install
-```powershell
-Install-AzConnectedVMwareVirtualMachinePatch -Name <String> -ResourceGroupName <String>
- -InstallPatchesInput <IVirtualMachineInstallPatchesParameters> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ InstallViaIdentity
-```powershell
-Install-AzConnectedVMwareVirtualMachinePatch -InputObject <IConnectedVMwareIdentity>
- -InstallPatchesInput <IVirtualMachineInstallPatchesParameters> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
 + InstallViaIdentityExpanded
 ```powershell
-Install-AzConnectedVMwareVirtualMachinePatch -InputObject <IConnectedVMwareIdentity> -MaximumDuration <String>
+Install-AzConnectedVMwareVMPatch -InputObject <IConnectedVMwareIdentity> -MaximumDuration <String>
  -RebootSetting <VMGuestPatchRebootSetting>
  [-LinuxParameterClassificationsToInclude <VMGuestPatchClassificationLinux[]>]
  [-LinuxParameterPackageNameMasksToExclude <String[]>] [-LinuxParameterPackageNameMasksToInclude <String[]>]
@@ -1273,45 +941,22 @@ Install-AzConnectedVMwareVirtualMachinePatch -InputObject <IConnectedVMwareIdent
 ```
 
 
-#### New-AzConnectedVMwareVirtualMachineTemplate
+#### New-AzConnectedVMwareVMTemplate
 
 #### SYNOPSIS
 Create Or Update virtual machine template.
 
 #### SYNTAX
 
-+ CreateExpanded (Default)
 ```powershell
-New-AzConnectedVMwareVirtualMachineTemplate -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzConnectedVMwareVMTemplate -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
  [-InventoryItemId <String>] [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-+ Create
-```powershell
-New-AzConnectedVMwareVirtualMachineTemplate -Name <String> -ResourceGroupName <String>
- -Body <IVirtualMachineTemplate> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
-```
 
-+ CreateViaIdentity
-```powershell
-New-AzConnectedVMwareVirtualMachineTemplate -InputObject <IConnectedVMwareIdentity>
- -Body <IVirtualMachineTemplate> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-+ CreateViaIdentityExpanded
-```powershell
-New-AzConnectedVMwareVirtualMachineTemplate -InputObject <IConnectedVMwareIdentity> -Location <String>
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>]
- [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-
-#### Get-AzConnectedVMwareVirtualMachineTemplate
+#### Get-AzConnectedVMwareVMTemplate
 
 #### SYNOPSIS
 Implements virtual machine template GET method.
@@ -1320,30 +965,29 @@ Implements virtual machine template GET method.
 
 + List (Default)
 ```powershell
-Get-AzConnectedVMwareVirtualMachineTemplate [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzConnectedVMwareVMTemplate [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 + Get
 ```powershell
-Get-AzConnectedVMwareVirtualMachineTemplate -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedVMwareVMTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 + GetViaIdentity
 ```powershell
-Get-AzConnectedVMwareVirtualMachineTemplate -InputObject <IConnectedVMwareIdentity>
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzConnectedVMwareVMTemplate -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
 ```
 
 + List1
 ```powershell
-Get-AzConnectedVMwareVirtualMachineTemplate -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzConnectedVMwareVMTemplate -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 
-#### Remove-AzConnectedVMwareVirtualMachineTemplate
+#### Remove-AzConnectedVMwareVMTemplate
 
 #### SYNOPSIS
 Implements virtual machine template DELETE method.
@@ -1352,19 +996,19 @@ Implements virtual machine template DELETE method.
 
 + Delete (Default)
 ```powershell
-Remove-AzConnectedVMwareVirtualMachineTemplate -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
+Remove-AzConnectedVMwareVMTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ForceDeletion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 + DeleteViaIdentity
 ```powershell
-Remove-AzConnectedVMwareVirtualMachineTemplate -InputObject <IConnectedVMwareIdentity> [-Force]
+Remove-AzConnectedVMwareVMTemplate -InputObject <IConnectedVMwareIdentity> [-ForceDeletion]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
-#### Update-AzConnectedVMwareVirtualMachineTemplate
+#### Update-AzConnectedVMwareVMTemplate
 
 #### SYNOPSIS
 API to update certain properties of the virtual machine template resource.
@@ -1373,69 +1017,33 @@ API to update certain properties of the virtual machine template resource.
 
 + UpdateExpanded (Default)
 ```powershell
-Update-AzConnectedVMwareVirtualMachineTemplate -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-+ Update
-```powershell
-Update-AzConnectedVMwareVirtualMachineTemplate -Name <String> -ResourceGroupName <String>
- -Body <IResourcePatch> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-+ UpdateViaIdentity
-```powershell
-Update-AzConnectedVMwareVirtualMachineTemplate -InputObject <IConnectedVMwareIdentity> -Body <IResourcePatch>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzConnectedVMwareVMTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + UpdateViaIdentityExpanded
 ```powershell
-Update-AzConnectedVMwareVirtualMachineTemplate -InputObject <IConnectedVMwareIdentity> [-Tag <Hashtable>]
+Update-AzConnectedVMwareVMTemplate -InputObject <IConnectedVMwareIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
-#### New-AzConnectedVMwareVirtualNetwork
+#### New-AzConnectedVMwareVNet
 
 #### SYNOPSIS
 Create Or Update virtual network.
 
 #### SYNTAX
 
-+ CreateExpanded (Default)
 ```powershell
-New-AzConnectedVMwareVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String>
+New-AzConnectedVMwareVNet -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
  [-InventoryItemId <String>] [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-+ Create
-```powershell
-New-AzConnectedVMwareVirtualNetwork -Name <String> -ResourceGroupName <String> -Body <IVirtualNetwork>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
 
-+ CreateViaIdentity
-```powershell
-New-AzConnectedVMwareVirtualNetwork -InputObject <IConnectedVMwareIdentity> -Body <IVirtualNetwork>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ CreateViaIdentityExpanded
-```powershell
-New-AzConnectedVMwareVirtualNetwork -InputObject <IConnectedVMwareIdentity> -Location <String>
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>]
- [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-
-#### Get-AzConnectedVMwareVirtualNetwork
+#### Get-AzConnectedVMwareVNet
 
 #### SYNOPSIS
 Implements virtual network GET method.
@@ -1444,30 +1052,29 @@ Implements virtual network GET method.
 
 + List (Default)
 ```powershell
-Get-AzConnectedVMwareVirtualNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzConnectedVMwareVNet [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 + Get
 ```powershell
-Get-AzConnectedVMwareVirtualNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzConnectedVMwareVNet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 + GetViaIdentity
 ```powershell
-Get-AzConnectedVMwareVirtualNetwork -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
+Get-AzConnectedVMwareVNet -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 + List1
 ```powershell
-Get-AzConnectedVMwareVirtualNetwork -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzConnectedVMwareVNet -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 
-#### Remove-AzConnectedVMwareVirtualNetwork
+#### Remove-AzConnectedVMwareVNet
 
 #### SYNOPSIS
 Implements virtual network DELETE method.
@@ -1476,19 +1083,19 @@ Implements virtual network DELETE method.
 
 + Delete (Default)
 ```powershell
-Remove-AzConnectedVMwareVirtualNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Force] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
+Remove-AzConnectedVMwareVNet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ForceDeletion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
 + DeleteViaIdentity
 ```powershell
-Remove-AzConnectedVMwareVirtualNetwork -InputObject <IConnectedVMwareIdentity> [-Force]
+Remove-AzConnectedVMwareVNet -InputObject <IConnectedVMwareIdentity> [-ForceDeletion]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 
-#### Update-AzConnectedVMwareVirtualNetwork
+#### Update-AzConnectedVMwareVNet
 
 #### SYNOPSIS
 API to update certain properties of the virtual network resource.
@@ -1497,25 +1104,13 @@ API to update certain properties of the virtual network resource.
 
 + UpdateExpanded (Default)
 ```powershell
-Update-AzConnectedVMwareVirtualNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzConnectedVMwareVNet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ Update
-```powershell
-Update-AzConnectedVMwareVirtualNetwork -Name <String> -ResourceGroupName <String> -Body <IResourcePatch>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-+ UpdateViaIdentity
-```powershell
-Update-AzConnectedVMwareVirtualNetwork -InputObject <IConnectedVMwareIdentity> -Body <IResourcePatch>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 + UpdateViaIdentityExpanded
 ```powershell
-Update-AzConnectedVMwareVirtualNetwork -InputObject <IConnectedVMwareIdentity> [-Tag <Hashtable>]
+Update-AzConnectedVMwareVNet -InputObject <IConnectedVMwareIdentity> [-Tag <Hashtable>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 

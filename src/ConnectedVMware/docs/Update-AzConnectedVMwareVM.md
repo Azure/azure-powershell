@@ -1,48 +1,44 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/new-azconnectedvmwarevirtualnetwork
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/update-azconnectedvmwarevm
 schema: 2.0.0
 ---
 
-# New-AzConnectedVMwareVirtualNetwork
+# Update-AzConnectedVMwareVM
 
 ## SYNOPSIS
-Create Or Update virtual network.
+API to update certain properties of the virtual machine resource.
 
 ## SYNTAX
 
-### CreateExpanded (Default)
+### UpdateExpanded (Default)
 ```
-New-AzConnectedVMwareVirtualNetwork -Name <String> -ResourceGroupName <String> -Location <String>
- [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
- [-InventoryItemId <String>] [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Create
-```
-New-AzConnectedVMwareVirtualNetwork -Name <String> -ResourceGroupName <String> -Body <IVirtualNetwork>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Update-AzConnectedVMwareVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-HardwareProfileMemorySizeMb <Int32>] [-HardwareProfileNumCoresPerSocket <Int32>]
+ [-HardwareProfileNumCpUs <Int32>] [-IdentityType <IdentityType>]
+ [-LinuxConfigurationPatchSettingsAssessmentMode <String>]
+ [-LinuxConfigurationPatchSettingsPatchMode <String>]
+ [-NetworkProfileNetworkInterface <INetworkInterfaceUpdate[]>] [-StorageProfileDisk <IVirtualDiskUpdate[]>]
+ [-Tag <Hashtable>] [-WindowsConfigurationPatchSettingsAssessmentMode <String>]
+ [-WindowsConfigurationPatchSettingsPatchMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### CreateViaIdentity
+### UpdateViaIdentityExpanded
 ```
-New-AzConnectedVMwareVirtualNetwork -InputObject <IConnectedVMwareIdentity> -Body <IVirtualNetwork>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### CreateViaIdentityExpanded
-```
-New-AzConnectedVMwareVirtualNetwork -InputObject <IConnectedVMwareIdentity> -Location <String>
- [-ExtendedLocationName <String>] [-ExtendedLocationType <String>] [-InventoryItemId <String>]
- [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzConnectedVMwareVM -InputObject <IConnectedVMwareIdentity> [-HardwareProfileMemorySizeMb <Int32>]
+ [-HardwareProfileNumCoresPerSocket <Int32>] [-HardwareProfileNumCpUs <Int32>] [-IdentityType <IdentityType>]
+ [-LinuxConfigurationPatchSettingsAssessmentMode <String>]
+ [-LinuxConfigurationPatchSettingsPatchMode <String>]
+ [-NetworkProfileNetworkInterface <INetworkInterfaceUpdate[]>] [-StorageProfileDisk <IVirtualDiskUpdate[]>]
+ [-Tag <Hashtable>] [-WindowsConfigurationPatchSettingsAssessmentMode <String>]
+ [-WindowsConfigurationPatchSettingsPatchMode <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create Or Update virtual network.
+API to update certain properties of the virtual machine resource.
 
 ## EXAMPLES
 
@@ -85,22 +81,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Define the virtualNetwork.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualNetwork
-Parameter Sets: Create, CreateViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -116,12 +96,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtendedLocationName
-The extended location name.
+### -HardwareProfileMemorySizeMb
+Gets or sets memory size in MBs for the vm.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Int32
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -131,12 +111,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtendedLocationType
-The extended location type.
+### -HardwareProfileNumCoresPerSocket
+Gets or sets the number of cores per socket for the vm.
+Defaults to 1 if unspecified.
 
 ```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -HardwareProfileNumCpUs
+Gets or sets the number of vCPUs for the vm.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IdentityType
+The type of managed service identity.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Support.IdentityType
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -152,7 +163,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: CreateViaIdentity, CreateViaIdentityExpanded
+Parameter Sets: UpdateViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -162,12 +173,12 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -InventoryItemId
-Gets or sets the inventory Item ID for the virtual network.
+### -LinuxConfigurationPatchSettingsAssessmentMode
+Specifies the assessment mode.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -177,44 +188,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Kind
-Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
-ApiApps are a kind of Microsoft.Web/sites type.
-If supported, the resource provider must validate and persist this value.
+### -LinuxConfigurationPatchSettingsPatchMode
+Specifies the patch mode.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Location
-Gets or sets the location.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -MoRefId
-Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual network.
-
-```yaml
-Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -225,14 +204,30 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the virtual network resource.
+Name of the virtual machine resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
-Aliases: VirtualNetworkName
+Parameter Sets: UpdateExpanded
+Aliases: VirtualMachineName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetworkProfileNetworkInterface
+Gets or sets the list of network interfaces associated with the virtual machine.
+To construct, see NOTES section for NETWORKPROFILENETWORKINTERFACE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.INetworkInterfaceUpdate[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -259,10 +254,26 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -StorageProfileDisk
+Gets or sets the list of virtual disks associated with the virtual machine.
+To construct, see NOTES section for STORAGEPROFILEDISK properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualDiskUpdate[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -274,7 +285,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Create, CreateExpanded
+Parameter Sets: UpdateExpanded
 Aliases:
 
 Required: False
@@ -289,7 +300,7 @@ Gets or sets the Resource tags.
 
 ```yaml
 Type: System.Collections.Hashtable
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -299,12 +310,27 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VCenterId
-Gets or sets the ARM Id of the vCenter resource in which this template resides.
+### -WindowsConfigurationPatchSettingsAssessmentMode
+Specifies the assessment mode.
 
 ```yaml
 Type: System.String
-Parameter Sets: CreateExpanded, CreateViaIdentityExpanded
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WindowsConfigurationPatchSettingsPatchMode
+Specifies the patch mode.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -350,13 +376,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualNetwork
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualNetwork
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualMachine
 
 ## NOTES
 
@@ -366,23 +390,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IVirtualNetwork>`: Define the virtualNetwork.
-  - `Location <String>`: Gets or sets the location.
-  - `[ExtendedLocationName <String>]`: The extended location name.
-  - `[ExtendedLocationType <String>]`: The extended location type.
-  - `[InventoryItemId <String>]`: Gets or sets the inventory Item ID for the virtual network.
-  - `[Kind <String>]`: Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g. ApiApps are a kind of Microsoft.Web/sites type.  If supported, the resource provider must validate and persist this value.
-  - `[MoRefId <String>]`: Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual network.
-  - `[SystemDataCreatedAt <DateTime?>]`: The timestamp of resource creation (UTC).
-  - `[SystemDataCreatedBy <String>]`: The identity that created the resource.
-  - `[SystemDataCreatedByType <CreatedByType?>]`: The type of identity that created the resource.
-  - `[SystemDataLastModifiedAt <DateTime?>]`: The timestamp of resource last modification (UTC)
-  - `[SystemDataLastModifiedBy <String>]`: The identity that last modified the resource.
-  - `[SystemDataLastModifiedByType <CreatedByType?>]`: The type of identity that last modified the resource.
-  - `[Tag <IVirtualNetworkTags>]`: Gets or sets the Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
-  - `[VCenterId <String>]`: Gets or sets the ARM Id of the vCenter resource in which this template resides.
 
 `INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: Name of the cluster.
@@ -400,6 +407,23 @@ To create the parameters described below, construct a hash table containing the 
   - `[VirtualMachineName <String>]`: Name of the virtual machine resource.
   - `[VirtualMachineTemplateName <String>]`: Name of the virtual machine template resource.
   - `[VirtualNetworkName <String>]`: Name of the virtual network resource.
+
+`NETWORKPROFILENETWORKINTERFACE <INetworkInterfaceUpdate[]>`: Gets or sets the list of network interfaces associated with the virtual machine.
+  - `[DeviceKey <Int32?>]`: Gets or sets the device key value.
+  - `[Name <String>]`: Gets or sets the name of the network interface.
+  - `[NetworkId <String>]`: Gets or sets the ARM Id of the network resource to connect the virtual machine.
+  - `[NicType <NicType?>]`: NIC type
+  - `[PowerOnBoot <PowerOnBootOption?>]`: Gets or sets the power on boot.
+
+`STORAGEPROFILEDISK <IVirtualDiskUpdate[]>`: Gets or sets the list of virtual disks associated with the virtual machine.
+  - `[ControllerKey <Int32?>]`: Gets or sets the controller id.
+  - `[DeviceKey <Int32?>]`: Gets or sets the device key value.
+  - `[DeviceName <String>]`: Gets or sets the device name.
+  - `[DiskMode <DiskMode?>]`: Gets or sets the disk mode.
+  - `[DiskSizeGb <Int32?>]`: Gets or sets the disk total size.
+  - `[DiskType <DiskType?>]`: Gets or sets the disk backing type.
+  - `[Name <String>]`: Gets or sets the name of the virtual disk.
+  - `[UnitNumber <Int32?>]`: Gets or sets the unit number of the disk on the controller.
 
 ## RELATED LINKS
 

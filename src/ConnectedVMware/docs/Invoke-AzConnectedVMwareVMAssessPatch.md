@@ -1,31 +1,31 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/start-azconnectedvmwarevirtualmachine
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/invoke-azconnectedvmwarevmassesspatch
 schema: 2.0.0
 ---
 
-# Start-AzConnectedVMwareVirtualMachine
+# Invoke-AzConnectedVMwareVMAssessPatch
 
 ## SYNOPSIS
-Start virtual machine.
+The operation to assess patches on a vSphere VMware machine identity in Azure.
 
 ## SYNTAX
 
-### Start (Default)
+### Assess (Default)
 ```
-Start-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzConnectedVMwareVMAssessPatch -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### StartViaIdentity
+### AssessViaIdentity
 ```
-Start-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzConnectedVMwareVMAssessPatch -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Start virtual machine.
+The operation to assess patches on a vSphere VMware machine identity in Azure.
 
 ## EXAMPLES
 
@@ -89,7 +89,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: StartViaIdentity
+Parameter Sets: AssessViaIdentity
 Aliases:
 
 Required: True
@@ -100,12 +100,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the virtual machine resource.
+The name of the vSphere VMware machine.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
-Aliases: VirtualMachineName
+Parameter Sets: Assess
+Aliases:
 
 Required: True
 Position: Named
@@ -129,27 +129,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-The Resource Group Name.
+The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Assess
 Aliases:
 
 Required: True
@@ -164,7 +149,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Start
+Parameter Sets: Assess
 Aliases:
 
 Required: False
@@ -214,7 +199,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualMachineAssessPatchesResult
 
 ## NOTES
 

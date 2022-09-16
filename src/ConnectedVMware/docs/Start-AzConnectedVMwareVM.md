@@ -1,46 +1,31 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/stop-azconnectedvmwarevirtualmachine
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/start-azconnectedvmwarevm
 schema: 2.0.0
 ---
 
-# Stop-AzConnectedVMwareVirtualMachine
+# Start-AzConnectedVMwareVM
 
 ## SYNOPSIS
-Stop virtual machine.
+Start virtual machine.
 
 ## SYNTAX
 
-### StopExpanded (Default)
+### Start (Default)
 ```
-Stop-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-SkipShutdown] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### Stop
-```
-Stop-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String>
- -Body <IStopVirtualMachineOptions> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### StopViaIdentity
-```
-Stop-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity>
- -Body <IStopVirtualMachineOptions> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm]
- [-WhatIf] [<CommonParameters>]
-```
-
-### StopViaIdentityExpanded
-```
-Stop-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> [-SkipShutdown]
+Start-AzConnectedVMwareVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
+### StartViaIdentity
+```
+Start-AzConnectedVMwareVM -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-Stop virtual machine.
+Start virtual machine.
 
 ## EXAMPLES
 
@@ -83,22 +68,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Body
-Defines the stop action properties.
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IStopVirtualMachineOptions
-Parameter Sets: Stop, StopViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -120,7 +89,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: StopViaIdentity, StopViaIdentityExpanded
+Parameter Sets: StartViaIdentity
 Aliases:
 
 Required: True
@@ -135,7 +104,7 @@ Name of the virtual machine resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop, StopExpanded
+Parameter Sets: Start
 Aliases: VirtualMachineName
 
 Required: True
@@ -180,27 +149,10 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop, StopExpanded
+Parameter Sets: Start
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -SkipShutdown
-Gets or sets a value indicating whether to request non-graceful VM shutdown.
-True value for this flag indicates non-graceful shutdown whereas false indicates otherwise.
-Defaults to false.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: StopExpanded, StopViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -212,7 +164,7 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Stop, StopExpanded
+Parameter Sets: Start
 Aliases:
 
 Required: False
@@ -258,8 +210,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IStopVirtualMachineOptions
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
 
 ## OUTPUTS
@@ -274,9 +224,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IStopVirtualMachineOptions>`: Defines the stop action properties.
-  - `[SkipShutdown <Boolean?>]`: Gets or sets a value indicating whether to request non-graceful VM shutdown. True value for this flag indicates non-graceful shutdown whereas false indicates otherwise. Defaults to false.
 
 `INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: Name of the cluster.

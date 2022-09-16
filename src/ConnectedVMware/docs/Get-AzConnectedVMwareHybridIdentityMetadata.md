@@ -20,7 +20,7 @@ Get-AzConnectedVMwareHybridIdentityMetadata -ResourceGroupName <String> -Virtual
 
 ### Get
 ```
-Get-AzConnectedVMwareHybridIdentityMetadata -MetadataName <String> -ResourceGroupName <String>
+Get-AzConnectedVMwareHybridIdentityMetadata -Name <String> -ResourceGroupName <String>
  -VirtualMachineName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
@@ -90,13 +90,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MetadataName
+### -Name
 Name of the HybridIdentityMetadata.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: MetadataName
 
 Required: True
 Position: Named

@@ -14,9 +14,9 @@ The operation to delete the extension.
 
 ### Delete (Default)
 ```
-Remove-AzConnectedVMwareMachineExtension -ExtensionName <String> -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzConnectedVMwareMachineExtension -Name <String> -ResourceGroupName <String>
+ -VirtualMachineName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
@@ -84,21 +84,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExtensionName
-The name of the machine extension.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
@@ -116,12 +101,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the machine where the extension should be deleted.
+The name of the machine extension.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: ExtensionName
 
 Required: True
 Position: Named
@@ -186,6 +171,21 @@ Aliases:
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VirtualMachineName
+The name of the machine where the extension should be deleted.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

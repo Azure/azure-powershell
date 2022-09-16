@@ -58,9 +58,61 @@ directive:
   # 1. Remove the unexpanded parameter set
   # 2. For New-* cmdlets, ViaIdentity is not required, so CreateViaIdentityExpanded is removed as well
   - where:
-      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$
+      variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$|^Install$|^InstallViaIdentity$
+    remove: true
   # Remove the set-* cmdlet
   - where:
       verb: Set
     remove: true
+  # Rename Invoke-AzConnectedVMwareAssessVirtualMachinePatch to Invoke-AzConnectedVMwareVirtualMachineAssessPatch
+  - where:
+      verb: Invoke
+      subject: AssessVirtualMachinePatch
+    set:
+      subject: VirtualMachineAssessPatch
+  # Set the format of password in GuestCredential as password
+  - from: swagger-document 
+    where: $.definitions.GuestCredential.properties.password
+    transform: $.format = "password"
+  # Set the format of password in VICredential as password
+  - from: swagger-document 
+    where: $.definitions.VICredential.properties.password
+    transform: $.format = "password"
+  # Rename MetadataName in *-Az*HybridIdentityMetadata as Name
+  # Set MetadataName as the alias of Name in *-Az*HybridIdentityMetadata
+  - where:
+      subject: HybridIdentityMetadata
+      parameter-name: MetadataName
+    set:
+      parameter-name: Name
+      alias: MetadataName
+  # Rename Name in *-Az*MachineExtension as VirtualMachineName
+  - where:
+      subject: MachineExtension
+      parameter-name: Name
+    set:
+      parameter-name: VirtualMachineName
+  # Rename ExtensionName in *-Az*MachineExtension as Name
+  # Set ExtensionName as the alias of Name in *-Az*MachineExtension
+  - where:
+      subject: MachineExtension
+      parameter-name: ExtensionName
+    set:
+      parameter-name: Name
+      alias: ExtensionName
+  # Rename Force in delete operation to ForceDelete
+  - where:
+      verb: Remove
+      parameter-name: Force
+    set:
+      parameter-name: ForceDeletion
+  # Shorten cmdlet name
+  - where:
+      subject: VirtualMachine(.*)
+    set:
+      subject: VM$1
+  - where:
+      subject: VirtualNetwork(.*)
+    set:
+      subject: VNet$1
 ```

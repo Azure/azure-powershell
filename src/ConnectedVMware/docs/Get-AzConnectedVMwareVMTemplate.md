@@ -1,31 +1,42 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/restart-azconnectedvmwarevirtualmachine
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwarevmtemplate
 schema: 2.0.0
 ---
 
-# Restart-AzConnectedVMwareVirtualMachine
+# Get-AzConnectedVMwareVMTemplate
 
 ## SYNOPSIS
-Restart virtual machine.
+Implements virtual machine template GET method.
 
 ## SYNTAX
 
-### Restart (Default)
+### List (Default)
 ```
-Restart-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzConnectedVMwareVMTemplate [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### RestartViaIdentity
+### Get
 ```
-Restart-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzConnectedVMwareVMTemplate -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzConnectedVMwareVMTemplate -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzConnectedVMwareVMTemplate -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Restart virtual machine.
+Implements virtual machine template GET method.
 
 ## EXAMPLES
 
@@ -53,21 +64,6 @@ Restart virtual machine.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -89,7 +85,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: RestartViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -100,44 +96,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the virtual machine resource.
+Name of the virtual machine template resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
-Aliases: VirtualMachineName
+Parameter Sets: Get
+Aliases: VirtualMachineTemplateName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -149,7 +115,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Restart
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
@@ -163,44 +129,13 @@ Accept wildcard characters: False
 The Subscription ID.
 
 ```yaml
-Type: System.String
-Parameter Sets: Restart
+Type: System.String[]
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -214,7 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualMachineTemplate
 
 ## NOTES
 

@@ -1,43 +1,32 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwarevirtualnetwork
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/remove-azconnectedvmwarevnet
 schema: 2.0.0
 ---
 
-# Get-AzConnectedVMwareVirtualNetwork
+# Remove-AzConnectedVMwareVNet
 
 ## SYNOPSIS
-Implements virtual network GET method.
+Implements virtual network DELETE method.
 
 ## SYNTAX
 
-### List (Default)
+### Delete (Default)
 ```
-Get-AzConnectedVMwareVirtualNetwork [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
+Remove-AzConnectedVMwareVNet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-ForceDeletion] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
-### Get
+### DeleteViaIdentity
 ```
-Get-AzConnectedVMwareVirtualNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
-```
-
-### GetViaIdentity
-```
-Get-AzConnectedVMwareVirtualNetwork -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
- [<CommonParameters>]
-```
-
-### List1
-```
-Get-AzConnectedVMwareVirtualNetwork -ResourceGroupName <String> [-SubscriptionId <String[]>]
- [-DefaultProfile <PSObject>] [<CommonParameters>]
+Remove-AzConnectedVMwareVNet -InputObject <IConnectedVMwareIdentity> [-ForceDeletion]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Implements virtual network GET method.
+Implements virtual network DELETE method.
 
 ## EXAMPLES
 
@@ -65,6 +54,21 @@ Implements virtual network GET method.
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -80,13 +84,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ForceDeletion
+Whether force delete was specified.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: GetViaIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
@@ -101,10 +120,40 @@ Name of the virtual network resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get
+Parameter Sets: Delete
 Aliases: VirtualNetworkName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -116,7 +165,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Get, List1
+Parameter Sets: Delete
 Aliases:
 
 Required: True
@@ -130,13 +179,44 @@ Accept wildcard characters: False
 The Subscription ID.
 
 ```yaml
-Type: System.String[]
-Parameter Sets: Get, List, List1
+Type: System.String
+Parameter Sets: Delete
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -150,7 +230,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualNetwork
+### System.Boolean
 
 ## NOTES
 

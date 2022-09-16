@@ -14,7 +14,7 @@ Implements HybridIdentityMetadata DELETE method.
 
 ### Delete (Default)
 ```
-Remove-AzConnectedVMwareHybridIdentityMetadata -MetadataName <String> -ResourceGroupName <String>
+Remove-AzConnectedVMwareHybridIdentityMetadata -Name <String> -ResourceGroupName <String>
  -VirtualMachineName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm]
  [-WhatIf] [<CommonParameters>]
 ```
@@ -85,13 +85,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -MetadataName
+### -Name
 Name of the HybridIdentityMetadata.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: MetadataName
 
 Required: True
 Position: Named

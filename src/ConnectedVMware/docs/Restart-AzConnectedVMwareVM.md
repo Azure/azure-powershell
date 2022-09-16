@@ -1,43 +1,31 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/update-azconnectedvmwarevirtualnetwork
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/restart-azconnectedvmwarevm
 schema: 2.0.0
 ---
 
-# Update-AzConnectedVMwareVirtualNetwork
+# Restart-AzConnectedVMwareVM
 
 ## SYNOPSIS
-API to update certain properties of the virtual network resource.
+Restart virtual machine.
 
 ## SYNTAX
 
-### UpdateExpanded (Default)
+### Restart (Default)
 ```
-Update-AzConnectedVMwareVirtualNetwork -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Update
-```
-Update-AzConnectedVMwareVirtualNetwork -Name <String> -ResourceGroupName <String> -Body <IResourcePatch>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzConnectedVMwareVM -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### UpdateViaIdentity
+### RestartViaIdentity
 ```
-Update-AzConnectedVMwareVirtualNetwork -InputObject <IConnectedVMwareIdentity> -Body <IResourcePatch>
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### UpdateViaIdentityExpanded
-```
-Update-AzConnectedVMwareVirtualNetwork -InputObject <IConnectedVMwareIdentity> [-Tag <Hashtable>]
- [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Restart-AzConnectedVMwareVM -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-API to update certain properties of the virtual network resource.
+Restart virtual machine.
 
 ## EXAMPLES
 
@@ -65,19 +53,18 @@ API to update certain properties of the virtual network resource.
 
 ## PARAMETERS
 
-### -Body
-Object containing updates for patch operations.
-To construct, see NOTES section for BODY properties and create a hash table.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IResourcePatch
-Parameter Sets: Update, UpdateViaIdentity
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -102,7 +89,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: UpdateViaIdentity, UpdateViaIdentityExpanded
+Parameter Sets: RestartViaIdentity
 Aliases:
 
 Required: True
@@ -113,14 +100,44 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the virtual network resource.
+Name of the virtual machine resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
-Aliases: VirtualNetworkName
+Parameter Sets: Restart
+Aliases: VirtualMachineName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -PassThru
+Returns true when the command succeeds
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -132,7 +149,7 @@ The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Restart
 Aliases:
 
 Required: True
@@ -147,27 +164,12 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Update, UpdateExpanded
+Parameter Sets: Restart
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Tag
-Resource tags.
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: UpdateExpanded, UpdateViaIdentityExpanded
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -208,13 +210,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IResourcePatch
-
 ### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualNetwork
+### System.Boolean
 
 ## NOTES
 
@@ -224,10 +224,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IResourcePatch>`: Object containing updates for patch operations.
-  - `[Tag <IResourcePatchTags>]`: Resource tags.
-    - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 `INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
   - `[ClusterName <String>]`: Name of the cluster.

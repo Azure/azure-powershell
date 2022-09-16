@@ -1,43 +1,42 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwarevirtualmachine
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/get-azconnectedvmwarevnet
 schema: 2.0.0
 ---
 
-# Get-AzConnectedVMwareVirtualMachine
+# Get-AzConnectedVMwareVNet
 
 ## SYNOPSIS
-Implements virtual machine GET method.
+Implements virtual network GET method.
 
 ## SYNTAX
 
 ### List (Default)
 ```
-Get-AzConnectedVMwareVirtualMachine [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
- [<CommonParameters>]
+Get-AzConnectedVMwareVNet [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzConnectedVMwareVirtualMachine -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzConnectedVMwareVNet -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
 ```
-Get-AzConnectedVMwareVirtualMachine -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
+Get-AzConnectedVMwareVNet -InputObject <IConnectedVMwareIdentity> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
 ### List1
 ```
-Get-AzConnectedVMwareVirtualMachine -ResourceGroupName <String> [-SubscriptionId <String[]>]
+Get-AzConnectedVMwareVNet -ResourceGroupName <String> [-SubscriptionId <String[]>]
  [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Implements virtual machine GET method.
+Implements virtual network GET method.
 
 ## EXAMPLES
 
@@ -97,12 +96,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the virtual machine resource.
+Name of the virtual network resource.
 
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: VirtualMachineName
+Aliases: VirtualNetworkName
 
 Required: True
 Position: Named
@@ -150,7 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualMachine
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualNetwork
 
 ## NOTES
 

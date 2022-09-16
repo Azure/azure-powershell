@@ -38,19 +38,19 @@ Implements resourcePool GET method.
 ### [Get-AzConnectedVMwareVCenter](Get-AzConnectedVMwareVCenter.md)
 Implements vCenter GET method.
 
-### [Get-AzConnectedVMwareVirtualMachine](Get-AzConnectedVMwareVirtualMachine.md)
+### [Get-AzConnectedVMwareVM](Get-AzConnectedVMwareVM.md)
 Implements virtual machine GET method.
 
-### [Get-AzConnectedVMwareVirtualMachineTemplate](Get-AzConnectedVMwareVirtualMachineTemplate.md)
+### [Get-AzConnectedVMwareVMTemplate](Get-AzConnectedVMwareVMTemplate.md)
 Implements virtual machine template GET method.
 
-### [Get-AzConnectedVMwareVirtualNetwork](Get-AzConnectedVMwareVirtualNetwork.md)
+### [Get-AzConnectedVMwareVNet](Get-AzConnectedVMwareVNet.md)
 Implements virtual network GET method.
 
-### [Install-AzConnectedVMwareVirtualMachinePatch](Install-AzConnectedVMwareVirtualMachinePatch.md)
+### [Install-AzConnectedVMwareVMPatch](Install-AzConnectedVMwareVMPatch.md)
 The operation to install patches on a vSphere VMware machine identity in Azure.
 
-### [Invoke-AzConnectedVMwareAssessVirtualMachinePatch](Invoke-AzConnectedVMwareAssessVirtualMachinePatch.md)
+### [Invoke-AzConnectedVMwareVMAssessPatch](Invoke-AzConnectedVMwareVMAssessPatch.md)
 The operation to assess patches on a vSphere VMware machine identity in Azure.
 
 ### [New-AzConnectedVMwareCluster](New-AzConnectedVMwareCluster.md)
@@ -80,13 +80,13 @@ Create Or Update resourcePool.
 ### [New-AzConnectedVMwareVCenter](New-AzConnectedVMwareVCenter.md)
 Create Or Update vCenter.
 
-### [New-AzConnectedVMwareVirtualMachine](New-AzConnectedVMwareVirtualMachine.md)
+### [New-AzConnectedVMwareVM](New-AzConnectedVMwareVM.md)
 Create Or Update virtual machine.
 
-### [New-AzConnectedVMwareVirtualMachineTemplate](New-AzConnectedVMwareVirtualMachineTemplate.md)
+### [New-AzConnectedVMwareVMTemplate](New-AzConnectedVMwareVMTemplate.md)
 Create Or Update virtual machine template.
 
-### [New-AzConnectedVMwareVirtualNetwork](New-AzConnectedVMwareVirtualNetwork.md)
+### [New-AzConnectedVMwareVNet](New-AzConnectedVMwareVNet.md)
 Create Or Update virtual network.
 
 ### [Remove-AzConnectedVMwareCluster](Remove-AzConnectedVMwareCluster.md)
@@ -116,22 +116,22 @@ Implements resourcePool DELETE method.
 ### [Remove-AzConnectedVMwareVCenter](Remove-AzConnectedVMwareVCenter.md)
 Implements vCenter DELETE method.
 
-### [Remove-AzConnectedVMwareVirtualMachine](Remove-AzConnectedVMwareVirtualMachine.md)
+### [Remove-AzConnectedVMwareVM](Remove-AzConnectedVMwareVM.md)
 Implements virtual machine DELETE method.
 
-### [Remove-AzConnectedVMwareVirtualMachineTemplate](Remove-AzConnectedVMwareVirtualMachineTemplate.md)
+### [Remove-AzConnectedVMwareVMTemplate](Remove-AzConnectedVMwareVMTemplate.md)
 Implements virtual machine template DELETE method.
 
-### [Remove-AzConnectedVMwareVirtualNetwork](Remove-AzConnectedVMwareVirtualNetwork.md)
+### [Remove-AzConnectedVMwareVNet](Remove-AzConnectedVMwareVNet.md)
 Implements virtual network DELETE method.
 
-### [Restart-AzConnectedVMwareVirtualMachine](Restart-AzConnectedVMwareVirtualMachine.md)
+### [Restart-AzConnectedVMwareVM](Restart-AzConnectedVMwareVM.md)
 Restart virtual machine.
 
-### [Start-AzConnectedVMwareVirtualMachine](Start-AzConnectedVMwareVirtualMachine.md)
+### [Start-AzConnectedVMwareVM](Start-AzConnectedVMwareVM.md)
 Start virtual machine.
 
-### [Stop-AzConnectedVMwareVirtualMachine](Stop-AzConnectedVMwareVirtualMachine.md)
+### [Stop-AzConnectedVMwareVM](Stop-AzConnectedVMwareVM.md)
 Stop virtual machine.
 
 ### [Update-AzConnectedVMwareCluster](Update-AzConnectedVMwareCluster.md)
@@ -152,12 +152,12 @@ API to update certain properties of the resourcePool resource.
 ### [Update-AzConnectedVMwareVCenter](Update-AzConnectedVMwareVCenter.md)
 API to update certain properties of the vCenter resource.
 
-### [Update-AzConnectedVMwareVirtualMachine](Update-AzConnectedVMwareVirtualMachine.md)
+### [Update-AzConnectedVMwareVM](Update-AzConnectedVMwareVM.md)
 API to update certain properties of the virtual machine resource.
 
-### [Update-AzConnectedVMwareVirtualMachineTemplate](Update-AzConnectedVMwareVirtualMachineTemplate.md)
+### [Update-AzConnectedVMwareVMTemplate](Update-AzConnectedVMwareVMTemplate.md)
 API to update certain properties of the virtual machine template resource.
 
-### [Update-AzConnectedVMwareVirtualNetwork](Update-AzConnectedVMwareVirtualNetwork.md)
+### [Update-AzConnectedVMwareVNet](Update-AzConnectedVMwareVNet.md)
 API to update certain properties of the virtual network resource.
 

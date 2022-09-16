@@ -1,32 +1,26 @@
 ---
 external help file:
 Module Name: Az.ConnectedVMware
-online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/invoke-azconnectedvmwareassessvirtualmachinepatch
+online version: https://docs.microsoft.com/powershell/module/az.connectedvmware/new-azconnectedvmwarevmtemplate
 schema: 2.0.0
 ---
 
-# Invoke-AzConnectedVMwareAssessVirtualMachinePatch
+# New-AzConnectedVMwareVMTemplate
 
 ## SYNOPSIS
-The operation to assess patches on a vSphere VMware machine identity in Azure.
+Create Or Update virtual machine template.
 
 ## SYNTAX
 
-### Assess (Default)
 ```
-Invoke-AzConnectedVMwareAssessVirtualMachinePatch -Name <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### AssessViaIdentity
-```
-Invoke-AzConnectedVMwareAssessVirtualMachinePatch -InputObject <IConnectedVMwareIdentity>
+New-AzConnectedVMwareVMTemplate -Name <String> -ResourceGroupName <String> -Location <String>
+ [-SubscriptionId <String>] [-ExtendedLocationName <String>] [-ExtendedLocationType <String>]
+ [-InventoryItemId <String>] [-Kind <String>] [-MoRefId <String>] [-Tag <Hashtable>] [-VCenterId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The operation to assess patches on a vSphere VMware machine identity in Azure.
+Create Or Update virtual machine template.
 
 ## EXAMPLES
 
@@ -84,29 +78,105 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -InputObject
-Identity Parameter
-To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+### -ExtendedLocationName
+The extended location name.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-Parameter Sets: AssessViaIdentity
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExtendedLocationType
+The extended location type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -InventoryItemId
+Gets or sets the inventory Item ID for the virtual machine template.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Kind
+Metadata used by portal/tooling/etc to render different UX experiences for resources of the same type; e.g.
+ApiApps are a kind of Microsoft.Web/sites type.
+If supported, the resource provider must validate and persist this value.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Location
+Gets or sets the location.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByValue)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MoRefId
+Gets or sets the vCenter MoRef (Managed Object Reference) ID for the virtual machinetemplate.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the vSphere VMware machine.
+Name of the virtual machine template resource.
 
 ```yaml
 Type: System.String
-Parameter Sets: Assess
-Aliases:
+Parameter Sets: (All)
+Aliases: VirtualMachineTemplateName
 
 Required: True
 Position: Named
@@ -131,11 +201,11 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-The name of the resource group.
+The Resource Group Name.
 
 ```yaml
 Type: System.String
-Parameter Sets: Assess
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -150,12 +220,42 @@ The Subscription ID.
 
 ```yaml
 Type: System.String
-Parameter Sets: Assess
+Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Tag
+Gets or sets the Resource tags.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -VCenterId
+Gets or sets the ARM Id of the vCenter resource in which this template resides.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -196,37 +296,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.IConnectedVMwareIdentity
-
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualMachineAssessPatchesResult
+### Microsoft.Azure.PowerShell.Cmdlets.ConnectedVMware.Models.Api20220110Preview.IVirtualMachineTemplate
 
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`INPUTOBJECT <IConnectedVMwareIdentity>`: Identity Parameter
-  - `[ClusterName <String>]`: Name of the cluster.
-  - `[DatastoreName <String>]`: Name of the datastore.
-  - `[ExtensionName <String>]`: The name of the machine extension.
-  - `[HostName <String>]`: Name of the host.
-  - `[Id <String>]`: Resource identity path
-  - `[InventoryItemName <String>]`: Name of the inventoryItem.
-  - `[MetadataName <String>]`: Name of the hybridIdentityMetadata.
-  - `[Name <String>]`: The name of the vSphere VMware machine.
-  - `[ResourceGroupName <String>]`: The name of the resource group.
-  - `[ResourcePoolName <String>]`: Name of the resourcePool.
-  - `[SubscriptionId <String>]`: The Subscription ID.
-  - `[VcenterName <String>]`: Name of the vCenter.
-  - `[VirtualMachineName <String>]`: Name of the virtual machine resource.
-  - `[VirtualMachineTemplateName <String>]`: Name of the virtual machine template resource.
-  - `[VirtualNetworkName <String>]`: Name of the virtual network resource.
 
 ## RELATED LINKS
 
