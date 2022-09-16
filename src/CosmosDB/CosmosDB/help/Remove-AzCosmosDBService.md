@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzCosmosDBService
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Deletes the CosmosDB Service.
 
 ## SYNTAX
 
@@ -25,16 +25,16 @@ Remove-AzCosmosDBService -ServiceName <String> -InputObject <PSServiceGetResults
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzCosmosDBService** cmdlet deletes the CosmosDB Service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Remove-AzCosmosDBService -ResourceGroupName "ResourceGroup" -AccountName "AccountName" -ServiceName "ServiceName"
 ```
 
-{{ Add example description here }}
+The cmdlet returns an object of type bool(when -PassThru is passed) which is true, if the delete was successful.
 
 ## PARAMETERS
 

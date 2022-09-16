@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzCosmosDBService
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a new CosmosDB Service.
 
 ## SYNTAX
 
@@ -25,16 +25,21 @@ New-AzCosmosDBService -ServiceName <String> -InstanceSize <String> -InstanceCoun
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzCosmosDBService** cmdlet creates a new CosmosDB Service.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+New-AzCosmosDBService -ResourceGroupName "ResourceGroup"" -AccountName "AccountName" -ServiceName "ServiceName""
+ -InstanceSize "Cosmos.D4s" -InstanceCount 1
 ```
 
-{{ Add example description here }}
+```output
+Name     : {serviceName}
+Id       : {id}
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSServiceGetResults
+```
 
 ## PARAMETERS
 

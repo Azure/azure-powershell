@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzCosmosDBService
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the CosmosDB Service
 
 ## SYNTAX
 
@@ -25,16 +25,20 @@ Get-AzCosmosDBService [-ServiceName <String>] -ParentObject <PSDatabaseAccountGe
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzCosmosDBService** cmdlet gets the list of all existing CosmosDB Services for a given ResourceGroupName, AccountName and DatabaseName and gets a single CosmosDB Service for a given ResourceGroupName, AccountName, DatabaseName and ServiceName.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+Get-AzCosmosDBService -AccountName "accountName" -ResourceGroupName "resourceGroupName" -ServiceName "sqlDedicatedGateway"
 ```
 
-{{ Add example description here }}
+```output
+Name                     : sqlDedicatedGateway
+Id                       : {Id}
+Resource                 : Microsoft.Azure.Commands.CosmosDB.Models.PSServiceGetResults
+```
 
 ## PARAMETERS
 
