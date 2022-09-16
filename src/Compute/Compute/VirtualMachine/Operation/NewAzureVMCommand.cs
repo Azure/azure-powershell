@@ -168,7 +168,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
            ParameterSetName = SimpleParameterSet,
-           HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01",
+           HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         [ValidateNotNullOrEmpty]
@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Commands.Compute
 
         [Parameter(
            ParameterSetName = SimpleParameterSet,
-           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01",
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         [ValidateNotNullOrEmpty]

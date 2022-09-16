@@ -152,14 +152,14 @@ namespace Microsoft.Azure.Commands.Compute
         public string SecurityType { get; set; }
 
         [Parameter(
-         HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01",
+         HelpMessage = "Specifies whether vTPM should be enabled on the virtual machine.",
          ValueFromPipelineByPropertyName = true,
          Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public bool? EnableVtpm { get; set; } = null;
 
         [Parameter(
-           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine. <br><br>Minimum api-version: 2020-12-01",
+           HelpMessage = "Specifies whether secure boot should be enabled on the virtual machine.",
            ValueFromPipelineByPropertyName = true,
            Mandatory = false)]
         [ValidateNotNullOrEmpty]
@@ -320,6 +320,10 @@ namespace Microsoft.Azure.Commands.Compute
                         {
                             parameters.SecurityProfile = new SecurityProfile();
                         }
+                        if (parameters.SecurityProfile.UefiSettings == null)
+                        {
+                            parameters.SecurityProfile.UefiSettings = new UefiSettings();
+                        }
                         parameters.SecurityProfile.SecurityType = this.SecurityType;
                         if (parameters.SecurityProfile.SecurityType == "TrustedLaunch" || parameters.SecurityProfile.SecurityType == "ConfidentialVM")
                         {
@@ -327,16 +331,33 @@ namespace Microsoft.Azure.Commands.Compute
                             parameters.SecurityProfile.UefiSettings.SecureBootEnabled = parameters.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.EnableSecureBoot;
                         }
                     }
-                    else
+
+                    if (this.IsParameterBound(c => c.EnableVtpm))
                     {
                         if (parameters.SecurityProfile == null)
                         {
                             parameters.SecurityProfile = new SecurityProfile();
                         }
-                        parameters.SecurityProfile.UefiSettings.VTpmEnabled = parameters.SecurityProfile.UefiSettings.VTpmEnabled != null ? this.EnableVtpm : null;
-                        parameters.SecurityProfile.UefiSettings.SecureBootEnabled = parameters.SecurityProfile.UefiSettings.SecureBootEnabled != null ? this.EnableSecureBoot : null;
+                        if (parameters.SecurityProfile.UefiSettings == null)
+                        {
+                            parameters.SecurityProfile.UefiSettings = new UefiSettings();
+                        }
+                        parameters.SecurityProfile.UefiSettings.VTpmEnabled = this.EnableVtpm;    
                     }
-        
+
+                    if (this.IsParameterBound(c => c.EnableSecureBoot))
+                    {
+                        if (parameters.SecurityProfile == null)
+                        {
+                            parameters.SecurityProfile = new SecurityProfile();
+                        }
+                        if (parameters.SecurityProfile.UefiSettings == null)
+                        {
+                            parameters.SecurityProfile.UefiSettings = new UefiSettings();
+                        }
+                        parameters.SecurityProfile.UefiSettings.SecureBootEnabled = this.EnableSecureBoot;
+                    }
+
                     if (this.IsParameterBound(c => c.CapacityReservationGroupId))
                     {
                         if (parameters.CapacityReservation == null)
