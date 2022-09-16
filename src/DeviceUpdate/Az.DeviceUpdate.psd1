@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.DeviceUpdate.private.dll'
   FormatsToProcess = './Az.DeviceUpdate.format.ps1xml'
-  FunctionsToExport = 'Get-AzDeviceUpdateAccount', 'Get-AzDeviceUpdateInstance', 'New-AzDeviceUpdateAccount', 'New-AzDeviceUpdateCheckNameAvailabilityRequestObject', 'New-AzDeviceUpdateInstance', 'New-AzDeviceUpdateIotHubSettingsObject', 'Remove-AzDeviceUpdateAccount', 'Remove-AzDeviceUpdateInstance', 'Test-AzDeviceUpdateNameAvailability', 'Update-AzDeviceUpdateAccount', 'Update-AzDeviceUpdateInstance', '*'
+  FunctionsToExport = 'Get-AzDeviceUpdateAccount', 'Get-AzDeviceUpdateInstance', 'New-AzDeviceUpdateAccount', 'New-AzDeviceUpdateCheckNameAvailabilityRequestObject', 'New-AzDeviceUpdateInstance', 'Remove-AzDeviceUpdateAccount', 'Remove-AzDeviceUpdateInstance', 'Test-AzDeviceUpdateNameAvailability', 'Update-AzDeviceUpdateAccount', 'Update-AzDeviceUpdateInstance', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

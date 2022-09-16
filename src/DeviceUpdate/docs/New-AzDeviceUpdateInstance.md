@@ -15,8 +15,8 @@ Creates or updates instance.
 ```
 New-AzDeviceUpdateInstance -AccountName <String> -Name <String> -ResourceGroupName <String> -Location <String>
  [-SubscriptionId <String>] [-DiagnosticStoragePropertyConnectionString <String>]
- [-DiagnosticStoragePropertyResourceId <String>] [-EnableDiagnostic] [-IotHub <IIotHubSettings[]>]
- [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-DiagnosticStoragePropertyResourceId <String>] [-EnableDiagnostic] [-IotHubId <String[]>] [-Tag <Hashtable>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -26,8 +26,7 @@ Creates or updates instance.
 
 ### Example 1: Creates or updates instance.
 ```powershell
-$iotHubSetting = New-AzDeviceUpdateIotHubSettingsObject -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/azpstest-iothub"
-New-AzDeviceUpdateInstance -AccountName azpstest-account -Name azpstest-instance -ResourceGroupName azpstest_gp -Location eastus -IotHub $iotHubSetting -EnableDiagnostic:$false
+New-AzDeviceUpdateInstance -AccountName azpstest-account -Name azpstest-instance -ResourceGroupName azpstest_gp -Location eastus -IotHubId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azpstest_gp/providers/Microsoft.Devices/IotHubs/azpstest-iothub" -EnableDiagnostic:$false -DiagnosticStoragePropertyResourceId "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azpstest_gp/providers/Microsoft.Storage/storageAccounts/azpsteststorageaccount" -DiagnosticStoragePropertyConnectionString "De******et"
 ```
 
 ```output
@@ -130,12 +129,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -IotHub
+### -IotHubId
 List of IoT Hubs associated with the account.
 To construct, see NOTES section for IOTHUB properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DeviceUpdate.Models.Api20221001.IIotHubSettings[]
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -279,14 +278,6 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
-
-COMPLEX PARAMETER PROPERTIES
-
-To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
-
-
-`IOTHUB <IIotHubSettings[]>`: List of IoT Hubs associated with the account.
-  - `ResourceId <String>`: IoTHub resource ID
 
 ## RELATED LINKS
 
