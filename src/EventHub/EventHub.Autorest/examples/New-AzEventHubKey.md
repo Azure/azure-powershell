@@ -1,4 +1,4 @@
-### Example 1: {{ Add title here }}
+### Example 1: Regenerate Primary Key of an EventH
 ```powershell
 {{ Add code here }}
 ```
