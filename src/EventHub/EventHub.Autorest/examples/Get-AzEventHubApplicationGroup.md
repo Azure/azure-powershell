@@ -1,22 +1,30 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get an application group from an EventHub namespace
 ```powershell
-{{ Add code here }}
+Get-AzEventHubApplicationGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAppGroup
 ```
 
 ```output
-{{ Add output here }}
+ClientAppGroupIdentifier     : SASKeyName=RootManageSharedAccessKey
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/applicationGroups/
+                               myAppGroup
+IsEnabled                    : True
+Location                     : Central US
+Name                         : myAppGroup
+Policy                       : {{
+                                 "name": "throttlingPolicy1",
+                                 "type": "ThrottlingPolicy",
+                                 "rateLimitThreshold": 10000,
+                                 "metricId": "OutgoingMessages"
+                               }, {
+                                 "name": "throttlingPolicy2",
+                                 "type": "ThrottlingPolicy",
+                                 "rateLimitThreshold": 11111,
+                                 "metricId": "OutgoingBytes"
+                               }}
+ResourceGroupName            : myResourceGroup
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Lists all application groups in an EventHub namespace
 ```powershell
-{{ Add code here }}
+Get-AzEventHubApplicationGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-

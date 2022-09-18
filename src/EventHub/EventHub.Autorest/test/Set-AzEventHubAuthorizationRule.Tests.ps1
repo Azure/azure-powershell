@@ -33,6 +33,7 @@ Describe 'Set-AzEventHubAuthorizationRule' {
 
     It 'SetViaIdentityExpanded' {
         $authRule = Get-AzEventHubAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.authRule2
+        
         $authRule = Set-AzEventHubAuthorizationRule -InputObject $authRule -Rights @("Manage", "Send", "Listen")
         $authRule.Name | Should -Be $env.authRule2
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup

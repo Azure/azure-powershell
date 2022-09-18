@@ -35,27 +35,64 @@ Updates an EventHub Entity
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Set capture on an existing EventHub entity
 ```powershell
-{{ Add code here }}
+Set-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
 ```
 
 ```output
-{{ Add output here }}
+ArchiveNameFormat            : {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}
+BlobContainer                : container
+CaptureEnabled               : true
+CreatedAt                    : 9/1/2022 5:55:46 AM
+DataLakeAccountName          :
+DataLakeFolderPath           :
+DataLakeSubscriptionId       :
+DestinationName              :
+Encoding                     : Avro
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myFirstEventHub
+IntervalInSeconds            : 600
+Location                     : centralus
+MessageRetentionInDays       : 6
+Name                         : myFirstEventHub
+PartitionCount               : 5
+PartitionId                  : {0}
+ResourceGroupName            : myResourceGroup
+SizeLimitInBytes             : 11000000
+SkipEmptyArchive             : true
+Status                       : Active
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Update EventHub EventHub entity using InputObject parameter set
 ```powershell
-{{ Add code here }}
+$eventhub = Get-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+Set-AzEventHub -InputObject $eventhub -MessageRetentionInDays 3
 ```
 
 ```output
-{{ Add output here }}
+ArchiveNameFormat            : {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}
+BlobContainer                : container
+CaptureEnabled               : true
+CreatedAt                    : 9/1/2022 5:55:46 AM
+DataLakeAccountName          :
+DataLakeFolderPath           :
+DataLakeSubscriptionId       :
+DestinationName              :
+Encoding                     : Avro
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myFirstEventHub
+IntervalInSeconds            : 600
+Location                     : centralus
+MessageRetentionInDays       : 6
+Name                         : myFirstEventHub
+PartitionCount               : 5
+PartitionId                  : {0}
+ResourceGroupName            : myResourceGroup
+SizeLimitInBytes             : 11000000
+SkipEmptyArchive             : true
+Status                       : Active
 ```
 
-{{ Add description here }}
+Updates `MessageRetentionInDays` in EventHub entity `myEventHub` to 3 days.
 
 ## PARAMETERS
 
@@ -220,7 +257,7 @@ The name of EventHub Entity.
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded
-Aliases: ApplicationGroupName
+Aliases: EventHubName
 
 Required: True
 Position: Named

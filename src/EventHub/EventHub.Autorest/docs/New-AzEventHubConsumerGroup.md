@@ -23,27 +23,22 @@ Creates or updates an Event Hubs consumer group as a nested resource within a Na
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an EventHub ConsumerGroup
 ```powershell
-{{ Add code here }}
+New-AzEventHubConsumerGroup -Name myConsumerGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -EventHubName myEventHub -UserMetadata "Test ConsumerGroup"
 ```
 
 ```output
-{{ Add output here }}
+CreatedAt                    : 9/13/2022 9:20:47 AM
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+                               /eventhubs/eh1/consumergroups/myConsumerGroup
+Location                     : australiaeast
+Name                         : myConsumerGroup
+ResourceGroupName            : myResourceGroup
+UpdatedAt                    : 9/13/2022 9:20:47 AM
+UserMetadata                 : Test ConsumerGroup
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -68,7 +63,7 @@ The Event Hub name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: EventHub
 
 Required: True
 Position: Named
@@ -98,7 +93,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

@@ -1,22 +1,18 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get an EventHub cluster
 ```powershell
-{{ Add code here }}
+Get-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myCluster
 ```
 
 ```output
-{{ Add output here }}
+Capacity                     : 1
+CreatedAt                    : 2022-08-29T09:38:30.453Z
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myCluster
+Location                     : australiaeast
+MetricId                     : PROD-00-000
+Name                         : TestClusterAutomatic
+ResourceGroupName            : AutomatedPowershellTesting
+SkuName                      : Dedicated
+Status                       :
+SupportsScaling              : False
+Tag                          : {}
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-

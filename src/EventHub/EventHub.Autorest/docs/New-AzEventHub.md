@@ -25,27 +25,61 @@ Creates or updates a new Event Hub as a nested resource within a Namespace.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an EventHub entity
 ```powershell
-{{ Add code here }}
+New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -MessageRetentionInDays 6 -PartitionCount 5
 ```
 
 ```output
-{{ Add output here }}
+ArchiveNameFormat            :
+BlobContainer                :
+CaptureEnabled               :
+CreatedAt                    : 9/1/2022 5:55:46 AM
+DataLakeAccountName          :
+DataLakeFolderPath           :
+DataLakeSubscriptionId       :
+DestinationName              :
+Encoding                     :
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub
+IntervalInSeconds            :
+Location                     : centralus
+MessageRetentionInDays       : 6
+Name                         : myFirstEventHub
+PartitionCount               : 5
+PartitionId                  : {0}
+ResourceGroupName            : myResourceGroup
+SizeLimitInBytes             :
+SkipEmptyArchive             :
+Status                       : Active
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create EventHub with Capture Enabled
 ```powershell
-{{ Add code here }}
+New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
 ```
 
 ```output
-{{ Add output here }}
+ArchiveNameFormat            : {Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}
+BlobContainer                : container
+CaptureEnabled               : true
+CreatedAt                    : 9/1/2022 5:55:46 AM
+DataLakeAccountName          :
+DataLakeFolderPath           :
+DataLakeSubscriptionId       :
+DestinationName              :
+Encoding                     : Avro
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myFirstEventHub
+IntervalInSeconds            : 600
+Location                     : centralus
+MessageRetentionInDays       : 6
+Name                         : myFirstEventHub
+PartitionCount               : 5
+PartitionId                  : {0}
+ResourceGroupName            : myResourceGroup
+SizeLimitInBytes             : 11000000
+SkipEmptyArchive             : true
+Status                       : Active
 ```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -194,7 +228,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

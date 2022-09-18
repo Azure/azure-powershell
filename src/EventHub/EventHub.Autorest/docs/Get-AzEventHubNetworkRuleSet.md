@@ -35,27 +35,22 @@ Gets NetworkRuleSet for a Namespace.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets the network rule set of an EventHub namespace
 ```powershell
-{{ Add code here }}
+Get-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
 ```output
-{{ Add output here }}
+DefaultAction                : Allow
+IPRule                       : {}
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/networkRuleSets/default
+Location                     : Central US
+Name                         : default
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : myResourceGroup
+VirtualNetworkRule           :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -96,7 +91,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

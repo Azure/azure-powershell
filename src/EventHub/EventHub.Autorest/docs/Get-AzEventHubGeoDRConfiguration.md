@@ -35,27 +35,22 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the disaster recovery configuration details of an eventhubs namespace
 ```powershell
-{{ Add code here }}
+Get-AzEventHubGeoDRConfiguration -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAlias
 ```
 
 ```output
-{{ Add output here }}
+AlternateName                     :
+Id                                : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/disasterRecoveryConfigs/myAlias
+Location                          :
+Name                              : myalias
+PartnerNamespace                  : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
+PendingReplicationOperationsCount : 0
+ProvisioningState                 : Succeeded
+ResourceGroupName                 : myResourceGroup
+Role                              : Primary
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -111,7 +106,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

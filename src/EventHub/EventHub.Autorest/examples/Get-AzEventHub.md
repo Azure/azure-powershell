@@ -1,22 +1,33 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get an EventHub entity
 ```powershell
-{{ Add code here }}
+Get-AzEventHub -ResourceGroupName {resourceGroup} -NamespaceName {namespace} -Name {eventhub}
 ```
 
 ```output
-{{ Add output here }}
+ArchiveNameFormat            :
+BlobContainer                :
+CaptureEnabled               :
+CreatedAt                    : 9/13/2022 9:20:38 AM
+DataLakeAccountName          :
+DataLakeFolderPath           :
+DataLakeSubscriptionId       :
+DestinationName              :
+Encoding                     :
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.EventHub/namespaces/{namespace}/eventhubs/{eventhub}
+IntervalInSeconds            :
+Location                     : australiaeast
+MessageRetentionInDays       : 1
+Name                         : {eventhub}
+PartitionCount               : 1
+PartitionId                  : {0}
+ResourceGroupName            : {resourceGroup}
+SizeLimitInBytes             :
+SkipEmptyArchive             :
+Status                       : Active
+StorageAccountResourceId     :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List All EventHubs in a namespace
 ```powershell
-{{ Add code here }}
+Get-AzEventHub -ResourceGroupName {resourceGroup} -NamespaceName {namespace
 ```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-

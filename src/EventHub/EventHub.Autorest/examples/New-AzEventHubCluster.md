@@ -36,5 +36,3 @@ SupportsScaling              :
 Tag                          : {}
 ```
 
-{{ Add description here }}
-

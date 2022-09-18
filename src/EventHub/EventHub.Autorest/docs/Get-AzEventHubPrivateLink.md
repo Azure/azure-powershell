@@ -22,23 +22,18 @@ Gets lists of resources that supports Privatelinks.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get private links associated with an EventHub namespace
 ```powershell
-PS C:\> {{ Add code here }}
+PS C:\>  Get-AzEventHubPrivateLink -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 
-{{ Add output here }}
+GroupId          : namespace
+Id               : subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateLinkResources/namespace
+Name             : namespace
+RequiredMember   : {namespace}
+RequiredZoneName : {privatelink.servicebus.windows.net}
+Type             : Microsoft.EventHub/namespaces/privateLinkResources
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -63,7 +58,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

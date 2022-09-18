@@ -1,22 +1,11 @@
-### Example 1: {{ Add title here }}
+### Example 1: List all Namespace ID's in a cluster
 ```powershell
-{{ Add code here }}
+Get-AzEventHubClusterNamespace -ResourceGroupName myResourceGroup -ClusterName myCluster
 ```
 
 ```output
-{{ Add output here }}
+Id
+--
+/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace1
+/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace2
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-

@@ -1,8 +1,8 @@
 bin
 obj
 .vs
-internal
 generated
+internal
 exports
 tools
 custom/*.psm1

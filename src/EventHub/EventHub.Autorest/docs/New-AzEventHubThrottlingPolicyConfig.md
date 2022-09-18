@@ -22,27 +22,7 @@ Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHu
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Please refer https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubapplicationgroup for examples.
 
 ## PARAMETERS
 

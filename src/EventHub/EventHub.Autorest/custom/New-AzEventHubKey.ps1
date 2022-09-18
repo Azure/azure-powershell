@@ -25,6 +25,7 @@ function New-AzEventHubKey{
 	param(
         [Parameter(ParameterSetName = 'NewExpandedEntity', Mandatory, HelpMessage = "The name of the Authorization Rule")]
         [Parameter(ParameterSetName = 'NewExpandedNamespace', Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Alias('AuthorizationRuleName')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of the Authorization Rule.

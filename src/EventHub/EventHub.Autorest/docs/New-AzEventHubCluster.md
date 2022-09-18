@@ -23,27 +23,43 @@ Creates or updates an instance of an Event Hubs Cluster.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a self-serve cluster
 ```powershell
-{{ Add code here }}
+New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myCluster -Location "eastasia" -SupportsScaling -Capacity 2
 ```
 
 ```output
-{{ Add output here }}
+Capacity                     : 2
+CreatedAt                    : 2022-08-29T09:38:30.453Z
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myCluster
+Location                     : australiaeast
+MetricId                     : PROD-00-000
+Name                         : myCluster
+ResourceGroupName            : myResourceGroup
+SkuName                      : Dedicated
+Status                       :
+SupportsScaling              : True
+Tag                          : {}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create an EventHubs dedicated cluster of Capacity 1CU
 ```powershell
-{{ Add code here }}
+New-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myCluster -Location "eastasia"
 ```
 
 ```output
-{{ Add output here }}
+Capacity                     : 1
+CreatedAt                    : 2022-08-29T09:38:30.453Z
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/myCluster
+Location                     : australiaeast
+MetricId                     : PROD-00-000
+Name                         : myCluster
+ResourceGroupName            : myResourceGroup
+SkuName                      : Dedicated
+Status                       :
+SupportsScaling              :
+Tag                          : {}
 ```
-
-{{ Add description here }}
 
 ## PARAMETERS
 

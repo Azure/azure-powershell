@@ -50,7 +50,6 @@ ResourceGroupName            : {resourceGroup}
 ### Example 2: Reject an Event Hub Namespace Private Endpoint Connection using InputObject
 ```powershell
 $privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName {resourceGroup} -NamespaceName {namespace} -Name 00000000000
-
 Deny-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint
 ```
 

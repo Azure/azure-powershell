@@ -30,27 +30,12 @@ Deletes a consumer group from the specified Event Hub and resource group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an EventHub consumer group
 ```powershell
-{{ Add code here }}
+Remove-AzEventHubConsumerGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name myConsumerGroup
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes consumer group `myConsumerGroup` from EventHub entity `myEventHub` on namespace `myNamespace`.
 
 ## PARAMETERS
 
@@ -75,7 +60,7 @@ The Event Hub name
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: EventHub
 
 Required: True
 Position: Named
@@ -121,7 +106,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

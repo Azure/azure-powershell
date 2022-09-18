@@ -38,6 +38,7 @@ function Set-AzEventHubConsumerGroup{
         ${NamespaceName},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of EventHub")]
+        [Alias('EventHub')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of EventHub

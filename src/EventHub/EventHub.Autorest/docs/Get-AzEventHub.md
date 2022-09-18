@@ -34,7 +34,6 @@ Gets an Event Hubs description for the specified Event Hub.
 
 ## EXAMPLES
 
-### Example 1: Get an EventHub entity
 ```powershell
 Get-AzEventHub -ResourceGroupName {resourceGroup} -NamespaceName {namespace} -Name {eventhub}
 ```
@@ -122,7 +121,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

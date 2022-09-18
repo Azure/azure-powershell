@@ -19,7 +19,7 @@ Tag                          : {}
 
 Updates the capacity of an EventHubs dedicated cluster to 3.
 
-### Example 1: Update EventHubs dedicated cluster using InputObject parameter set
+### Example 2: Update EventHubs dedicated cluster using InputObject parameter set
 ```powershell
 $cluster = Get-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myCluster
 Set-AzEventHubCluster -InputObject $cluster -Capacity 3

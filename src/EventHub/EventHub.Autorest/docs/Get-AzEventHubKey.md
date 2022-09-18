@@ -35,27 +35,36 @@ Gets an EventHub SAS key
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get keys of an EventHub Namespace authorization rule
 ```powershell
-{{ Add code here }}
+Get-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name RootManageSharedAccessKey
 ```
 
 ```output
-{{ Add output here }}
+AliasPrimaryConnectionString   :
+AliasSecondaryConnectionString :
+KeyName                        : RootManageSharedAccessKey
+PrimaryConnectionString        : 000000000000
+PrimaryKey                     : 000000000000
+SecondaryConnectionString      : {ConnectionString}
+SecondaryKey                   : {ConnectionString}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Get keys of an EventHub Entity authorization rule
 ```powershell
-{{ Add code here }}
+Get-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name RootManageSharedAccessKey
 ```
 
 ```output
-{{ Add output here }}
+AliasPrimaryConnectionString   :
+AliasSecondaryConnectionString :
+KeyName                        : RootManageSharedAccessKey
+PrimaryConnectionString        : 000000000000
+PrimaryKey                     : 000000000000
+SecondaryConnectionString      : {ConnectionString}
+SecondaryKey                   : {ConnectionString}
 ```
 
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -125,7 +134,7 @@ The name of the Authorization Rule
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: AuthorizationRuleName
 
 Required: True
 Position: Named

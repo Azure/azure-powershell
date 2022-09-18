@@ -31,27 +31,35 @@ Regenerates an EventHub SAS key
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Regenerate Primary Key of an EventHub Namespace
 ```powershell
-{{ Add code here }}
+New-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name rootmanagesharedaccesskey -KeyType PrimaryKey
 ```
 
 ```output
-{{ Add output here }}
+KeyName                        : RootManageSharedAccessKey
+PrimaryConnectionString        : {primaryConnectionString}
+PrimaryKey                     : {primaryKey}
+SecondaryConnectionString      : {secondaryConnectionString}
+SecondaryKey                   : {secondaryKey}
 ```
 
-{{ Add description here }}
+Regenerate primary key of authorization rule `rootmanagesharedaccesskey` on EventHub Namespace `myNamespace`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Regenerate Secondary Key of an EventHub Entity
 ```powershell
-{{ Add code here }}
+New-AzEventHubKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name rootmanagesharedaccesskey -KeyType SecondaryKey
 ```
 
 ```output
-{{ Add output here }}
+KeyName                        : RootManageSharedAccessKey
+PrimaryConnectionString        : {primaryConnectionString}
+PrimaryKey                     : {primaryKey}
+SecondaryConnectionString      : {secondaryConnectionString}
+SecondaryKey                   : {secondaryKey}
 ```
 
-{{ Add description here }}
+Regenerate primary key of authorization rule `rootmanagesharedaccesskey` on EventHub entity `myEventHub` on EventHub Namespace `myNamespace`.
 
 ## PARAMETERS
 
@@ -136,7 +144,7 @@ The name of the Authorization Rule
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: AuthorizationRuleName
 
 Required: True
 Position: Named

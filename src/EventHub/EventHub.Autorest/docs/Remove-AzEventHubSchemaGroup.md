@@ -29,27 +29,12 @@ Remove-AzEventHubSchemaGroup -InputObject <IEventHubIdentity> [-DefaultProfile <
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a Schema Group from an EventHub namespace
 ```powershell
-{{ Add code here }}
+Remove-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name mySchemaGroup
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes a schema group `mySchemaGroup` from EventHub namespace `myNamespace`.
 
 ## PARAMETERS
 
@@ -90,7 +75,7 @@ The Schema Group name
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: SchemaGroupName
 
 Required: True
 Position: Named
@@ -105,7 +90,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

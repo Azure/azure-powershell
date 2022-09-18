@@ -23,27 +23,25 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a disaster recovery 
 ```powershell
-{{ Add code here }}
+New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
 ```
 
 ```output
-{{ Add output here }}
+AlternateName                     :
+Id                                : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myPrimaryNamespace/disasterRecoveryCon
+                                    figs/myAlias
+Location                          :
+Name                              : myAlias
+PartnerNamespace                  : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
+PendingReplicationOperationsCount :
+ProvisioningState                 : Succeeded
+ResourceGroupName                 : myResourceGroup
+Role                              : Primary
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates a Disaster Recovery configuration which sets `mySecondaryNamespace` as secondary to `myPrimaryNamespace`.
 
 ## PARAMETERS
 
@@ -98,7 +96,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

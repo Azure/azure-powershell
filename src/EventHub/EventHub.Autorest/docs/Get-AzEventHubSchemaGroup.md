@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventHubSchemaGroup
 
 ## SYNOPSIS
-
+Gets the details of an EventHub Schema group
 
 ## SYNTAX
 
@@ -30,31 +30,34 @@ Get-AzEventHubSchemaGroup -InputObject <IEventHubIdentity> [-DefaultProfile <PSO
 ```
 
 ## DESCRIPTION
-
+Gets the details of an EventHub Schema group
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get details of a schema group from an EventHub namespace
 ```powershell
-{{ Add code here }}
+Get-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name mySchemaGroup
 ```
 
 ```output
-{{ Add output here }}
+CreatedAtUtc                 : 9/14/2022 6:05:47 AM
+ETag                         : {etag}
+GroupProperty                : {
+                               }
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/schemagroups/mySchemaGroup
+Location                     : Central US
+Name                         : mySchemaGroup
+ResourceGroupName            : myResourceGroup
+SchemaCompatibility          : None
+SchemaType                   : Avro
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: List all schema groups in an EventHub namespace
 ```powershell
-{{ Add code here }}
+Get-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
-```output
-{{ Add output here }}
-```
 
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -95,7 +98,7 @@ The Schema Group name
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases:
+Aliases: SchemaGroupName
 
 Required: True
 Position: Named
@@ -110,7 +113,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

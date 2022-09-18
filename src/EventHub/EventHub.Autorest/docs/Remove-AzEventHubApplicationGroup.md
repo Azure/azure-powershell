@@ -29,27 +29,13 @@ Deletes an ApplicationGroup for a Namespace.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove an application group from an EventHub Namespace
 ```powershell
-{{ Add code here }}
+Remove-AzEventHubApplicationGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -Name myAppGroup
 ```
 
-```output
-{{ Add output here }}
-```
+Deletes application group `myAppGroup` from namespace `myNamespace`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
 
 ## PARAMETERS
 
@@ -105,7 +91,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases:
+Aliases: Namespace
 
 Required: True
 Position: Named

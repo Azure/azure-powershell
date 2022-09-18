@@ -308,3 +308,33 @@ directive:
       model-name: (.*)
     set:
       suppress-format: true
+
+# Parameter aliasing
+
+  - where:
+      parameter-name: NamespaceName
+    set:
+      alias: Namespace
+
+  - where:
+      parameter-name: EventHubName
+    set:
+      alias: EventHub
+
+  - where:
+      subject: EventHub
+      parameter-name: Name
+    set:
+      alias: EventHubName
+
+  - where:
+      subject: ConsumerGroup
+      parameter-name: Name
+    set:
+      alias: ConsumerGroupName
+
+  - where:
+      subject: SchemaGroup
+      parameter-name: Name
+    set:
+      alias: SchemaGroupName

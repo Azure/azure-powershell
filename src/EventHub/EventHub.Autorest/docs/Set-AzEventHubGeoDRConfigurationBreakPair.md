@@ -30,27 +30,12 @@ This operation disables the Disaster Recovery and stops replicating changes from
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Break Pairing between Primary and Secondary namespace
 ```powershell
-{{ Add code here }}
+Set-AzEventHubGeoDRConfigurationBreakPair -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -Name myAlias
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Break Pairing between primary namespace `myPrimaryNamespace` and it's secondary namespace.
 
 ## PARAMETERS
 

@@ -30,6 +30,9 @@ Describe 'Set-AzEventHubApplicationGroup' {
         $t4 = New-AzEventHubThrottlingPolicyConfig -Name t4 -MetricId IncomingBytes -RateLimitThreshold 13000
         $appGroup = Get-AzEventHubApplicationGroup -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name $env.appGroup2
         $appGroup.Policy += $t4
+        
+        { Set-AzEventHubApplicationGroup -InputObject $appGroup } | Should -Throw 'Please specify the property you want to update on the -InputObject'
+        
         $updateAppGroup = Set-AzEventHubApplicationGroup -InputObject $appGroup -Policy $appGroup.Policy
         $updateAppGroup.Name | Should -Be $env.appGroup2
         $updateAppGroup.ResourceGroupName | Should -Be $env.resourceGroup

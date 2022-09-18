@@ -9,8 +9,6 @@ Message                                                                         
 The specified name is not available. For more information visit https://aka.ms/eventhubsarmexceptions.         False NameInUse
 ```
 
-{{ Add description here }}
-
 ### Example 2: Check the availability of an EventHub Geo Disaster Recovery Alias
 ```powershell
 Test-AzEventHubName -NamespaceName myNamespace -ResourceGroupName myResourceGroup -AliasName myAlias
