@@ -1,22 +1,17 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create EventHub schema group
 ```powershell
-{{ Add code here }}
+$schemaGroup = New-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name mySchemaGroup -SchemaCompatibility Backward -SchemaType Avro
 ```
 
 ```output
-{{ Add output here }}
+CreatedAtUtc                 : 9/14/2022 6:05:47 AM
+ETag                         : {etag}
+GroupProperty                : {
+                               }
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/schemagroups/mySchemaGroup
+Location                     : Central US
+Name                         : mySchemaGroup
+ResourceGroupName            : myResourceGroup
+SchemaCompatibility          : Backward
+SchemaType                   : Avro
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-

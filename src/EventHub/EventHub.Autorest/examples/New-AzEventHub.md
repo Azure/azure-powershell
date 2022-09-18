@@ -54,5 +54,3 @@ SkipEmptyArchive             : true
 Status                       : Active
 ```
 
-{{ Add description here }}
-

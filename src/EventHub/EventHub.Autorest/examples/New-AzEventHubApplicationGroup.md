@@ -1,7 +1,7 @@
 ### Example 1: Create an application group with 2 Throttling policies
 ```powershell
 $t1 = New-AzEventHubThrottlingPolicyConfig -Name t1 -MetricId IncomingMessages -RateLimitThreshold 10000
-$t2 = New-AzEventHubThrottlingPolicyConfig -Name t1 -MetricId OutgoingBytes -RateLimitThreshold 20000
+$t2 = New-AzEventHubThrottlingPolicyConfig -Name t2 -MetricId OutgoingBytes -RateLimitThreshold 20000
 New-AzEventHubApplicationGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -Name myAppGroup -ClientAppGroupIdentifier SASKeyName=a -Policy $t1,$t2
 ```
 

@@ -1,22 +1,27 @@
-### Example 1: {{ Add title here }}
+### Example 1: Update an authorization rule for an EventHub namespace
 ```powershell
-{{ Add code here }}
+Set-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule -Rights @('Manage', 'Send', 'Listen')
 ```
 
 ```output
-{{ Add output here }}
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/authorizationRules/myAuthRule
+Location                     : Central US
+Name                         : myAuthRule
+ResourceGroupName            : myResourceGroup
+Rights                       : {Listen, Manage, Send}
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Create an authorization rule for an EventHub entity
 ```powershell
-{{ Add code here }}
+Set-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name myAuthRule -Rights @('Manage', 'Send', 'Listen')
 ```
 
 ```output
-{{ Add output here }}
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub/authorizationRules/myAuthRule
+Location                     : Central US
+Name                         : myAuthRule
+ResourceGroupName            : myResourceGroup
+Rights                       : {Listen, Manage, Send}
 ```
 
-{{ Add description here }}
 

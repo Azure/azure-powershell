@@ -1,22 +1,14 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove authorization rule from an EventHub namespace
 ```powershell
-{{ Add code here }}
+Remove-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule
 ```
 
-```output
-{{ Add output here }}
-```
+Deletes authorization rule `myAuthRule` from EventHub namespace `myNamespace`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove authorization rule from an EventHub entity
 ```powershell
-{{ Add code here }}
+Remove-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name myAuthRule
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes authorization rule `myAuthRule` from EventHub entity `myEventHub` on namespace `myNamespace`.
 

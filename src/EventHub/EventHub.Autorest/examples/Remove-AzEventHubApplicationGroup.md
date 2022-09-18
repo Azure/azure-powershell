@@ -1,22 +1,6 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove an application group from an EventHub Namespace
 ```powershell
-{{ Add code here }}
+Remove-AzEventHubApplicationGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -Name myAppGroup
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+Deletes application group `myAppGroup` from namespace `myNamespace`.

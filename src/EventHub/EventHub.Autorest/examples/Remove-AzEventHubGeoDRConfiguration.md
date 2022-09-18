@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove Disaster Recovery Config from an EventHub namespace
 ```powershell
-{{ Add code here }}
+Remove-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes alias `myAlias` from EventHub namespace `myPrimaryNamespace`.
 

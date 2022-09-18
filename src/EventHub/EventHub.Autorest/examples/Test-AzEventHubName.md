@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check the availability of an EventHub namespace name
 ```powershell
-{{ Add code here }}
+Test-AzEventHubName -NamespaceName myNamespace
 ```
 
 ```output
-{{ Add output here }}
+Message                                                                                                NameAvailable Reason
+-------                                                                                                ------------- ------
+The specified name is not available. For more information visit https://aka.ms/eventhubsarmexceptions.         False NameInUse
 ```
 
 {{ Add description here }}
 
-### Example 2: {{ Add title here }}
+### Example 2: Check the availability of an EventHub Geo Disaster Recovery Alias
 ```powershell
-{{ Add code here }}
+Test-AzEventHubName -NamespaceName myNamespace -ResourceGroupName myResourceGroup -AliasName myAlias
 ```
 
 ```output
-{{ Add output here }}
+Message                                                                                                NameAvailable Reason
+-------                                                                                                ------------- ------
+The specified name is not available. For more information visit https://aka.ms/eventhubsarmexceptions.         False NameInUse
 ```
 
-{{ Add description here }}
 
