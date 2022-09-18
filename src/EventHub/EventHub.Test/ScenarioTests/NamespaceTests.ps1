@@ -78,11 +78,6 @@ function NamespaceTests
         Write-Debug "ResourceGroup name : $resourceGroupName"
 	    New-AzResourceGroup -Name $resourceGroupName -Location $location -Force 
 
-	    # Check Namespace Name Availability
-
-	    $checkNameResult = Test-AzEventHubName -Namespace $namespaceName 
-	    Assert-True {$checkNameResult.NameAvailable}
-
         $namespace = New-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespaceName -SkuCapacity 10 -MaximumThroughputUnits 18 -SkuName Standard -Location $location -ZoneRedundant -Tag @{k1='v1'; k2='v2'} -EnableAutoInflate -DisableLocalAuth -EnableKafka -MinimumTlsVersion 1.1
     
         Assert-AreEqual 10 $namespace.Sku.Capacity
@@ -140,8 +135,8 @@ function NamespaceTests
         $listOfNamespaces = Get-AzEventHubNamespace -ResourceGroupName $resourceGroupName
         Assert-AreEqual 3 $listOfNamespaces.Count
 
-        $listOfNamespaces = Get-AzEventHubNamespace
-        Assert-True { $listOfNamespaces.Count -gt 0 }
+        # $listOfNamespaces = Get-AzEventHubNamespace
+        # Assert-True { $listOfNamespaces.Count -gt 0 }
 
     }
     finally{
@@ -197,7 +192,6 @@ function MSITest{
     }
     finally{
         Remove-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1
-        Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
 
@@ -266,7 +260,6 @@ function EncryptionTest{
      
     finally{
         Remove-AzEventHubNamespace -ResourceGroupName $resourceGroupName -Name $namespace1
-        Remove-AzResourceGroup -Name $resourceGroupName -Force
     }
 }
 

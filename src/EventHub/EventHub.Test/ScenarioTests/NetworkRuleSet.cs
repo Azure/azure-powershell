@@ -11,24 +11,25 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 // ----------------------------------------------------------------------------------
+
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 
 namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
 {
-    public class PaginationTests : EventHubTestRunner
+    public class NetworkRuleSetTests : EventHubTestRunner
     {
 
-        public PaginationTests(Xunit.Abstractions.ITestOutputHelper output)
+        public NetworkRuleSetTests(Xunit.Abstractions.ITestOutputHelper output)
             : base(output)
         {
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void NamespacePaginationTests()
+        public void NetworkRuleSetCRUD()
         {
-            TestRunner.RunTestScript("NamespacePagination");
+            TestRunner.RunTestScript("NetworkRuleSetTests");
         }
     }
 }
