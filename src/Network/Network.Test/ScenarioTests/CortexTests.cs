@@ -45,6 +45,14 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestStaticRoutesConfig()
+        {
+            TestRunner.RunTestScript("Test-StaticRoutesConfigCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
         public void TestVpnSiteIsSecurity()
         {

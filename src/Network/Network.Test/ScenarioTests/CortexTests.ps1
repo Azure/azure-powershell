@@ -341,6 +341,58 @@ function Test-CortexCRUD
 	}
 }
 
+function Test-StaticRoutesConfigCRUD
+{
+	$rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+	$route1 = New-AzStaticRoute -Name "route1" -AddressPrefix @("10.20.0.0/16", "10.30.0.0/16") -NextHopIpAddress "10.90.0.5"
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+
+		# Create the Virtual Hub
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan -HubRoutingPreference "ASPath"
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+
+		$rt1 = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "defaultRouteTable"
+		$RoutingConfig1 = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -StaticRoute @($route1) -Label @("default") -Id @($rt1.Id) -VnetLocalRouteOverrideCriteria "Equal"
+		$RoutingConfig2 = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -StaticRoute @($route1) -Label @("default") -Id @($rt1.Id)
+
+		Assert-AreEqual ($RoutingConfig1.PropagatedRouteTables.Labels.Count -gt 0) $true
+		Assert-AreEqual ($RoutingConfig1.VnetRoutes.StaticRoutes.Count -gt 0) $true
+		
+		Assert-AreEqual $RoutingConfig1.VnetRoutes.StaticRoutesConfig.VnetLocalRouteOverrideCriteria "Equal"
+		Assert-AreEqual $RoutingConfig2.VnetRoutes.StaticRoutesConfig.VnetLocalRouteOverrideCriteria "Contains"
+
+		$besubnet = New-AzVirtualNetworkSubnetConfig -Name 'default' -AddressPrefix '10.1.0.0/16'
+		$vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'MyVnet' -AddressPrefix '10.1.0.0/16' `
+		-Location $rglocation -Subnet $besubnet
+
+		New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHub.Name -Name "TestConn" -RemoteVirtualNetwork $vnet -RoutingConfiguration $RoutingConfig1
+		$hubVnetConn = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHub.Name -Name "TestConn"
+
+		Assert-AreEqual $hubVnetConn.RoutingConfiguration.VnetRoutes.StaticRoutesConfig.VnetLocalRouteOverrideCriteria "Equal"
+
+	}
+
+	finally
+	{
+		Clean-ResourceGroup $rgName
+	}
+}
+
 function Test-RoutingIntentCRUD
 {
  # Setup
@@ -350,6 +402,7 @@ function Test-RoutingIntentCRUD
 	$virtualHubName = Get-ResourceName
 	$firewallName = "testFirewall1"
 	$riName = "testRoutingIntent1"
+	$riName2 = "testRoutingIntent2"
 	$privatePolicyName = "PrivateTraffic"
 	$internetPolicyName = "PublicTraffic"
 
@@ -382,6 +435,7 @@ function Test-RoutingIntentCRUD
 		$policy1 = New-AzRoutingPolicy -Name $privatePolicyName -Destination @("PrivateTraffic") -NextHop $firewall.Id
 		$policy2 = New-AzRoutingPolicy -Name $internetPolicyName -Destination @("Internet") -NextHop $firewall.Id
 		New-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -RoutingPolicy @($policy1, $policy2)
+		New-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName2 -RoutingPolicy @($policy1, $policy2)
 		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
 		Assert-AreEqual $routingIntent.RoutingPolicies.Count 2
 		Assert-AreEqual $routingIntent.Name $riName
