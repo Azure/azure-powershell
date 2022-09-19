@@ -1,48 +1,47 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/powershell/module/az.databricks/remove-azdatabricksworkspace
+online version: https://docs.microsoft.com/powershell/module/az.databricks/remove-azdatabricksaccessconnector
 schema: 2.0.0
 ---
 
-# Remove-AzDatabricksWorkspace
+# Remove-AzDatabricksAccessConnector
 
 ## SYNOPSIS
-Deletes the workspace.
+Deletes the azure databricks accessConnector.
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzDatabricksAccessConnector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+Remove-AzDatabricksAccessConnector -InputObject <IDatabricksIdentity> [-DefaultProfile <PSObject>] [-AsJob]
  [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the workspace.
+Deletes the azure databricks accessConnector.
 
 ## EXAMPLES
 
-### Example 1: Remove a Databricks workspace
+### Example 1: Deletes the azure databricks accessConnector
 ```powershell
-Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test
+Remove-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac
 ```
 
-This command removes a Databricks workspace from a resource group.
+This command deletes the azure databricks accessConnector.
 
-### Example 2: Remove a Databricks workspace by object
+### Example 2: Deletes the azure databricks accessConnector by pipeline
 ```powershell
-$dbr = Get-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test02
-Remove-AzDatabricksWorkspace -InputObject $dbr
+Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac | Remove-AzDatabricksAccessConnector
 ```
 
-This command removes a Databricks workspace from a resource group.
+This command deletes the azure databricks accessConnector by pipeline
 
 ## PARAMETERS
 
@@ -93,12 +92,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the workspace.
+The name of the azure databricks accessConnector.
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: WorkspaceName
+Aliases:
 
 Required: True
 Position: Named
