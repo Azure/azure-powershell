@@ -23,6 +23,7 @@
 * Added `-EdgeZone` optional parameter for `Get-AzComputeResourceSku` and `New-AzSnapshotUpdateConfig` cmdlets.
 * Added Disk Delete Optional parameters `OsDisk Deletion Option` and `Delete Option` to the `Set-AzVmssStorageProfile` (OS Disk) and `Add-AzVmssDataDisk` (Data Disk)
 * Improve printed output for `Get-AzComputeResourceSku`
+* Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
 
 ## Version 4.31.0
 * Added Trusted Launch Generic Breaking Change warning for `New-AzVM`, `New-AzDisk` and `New-AzVMSS` cmdlets.

@@ -237,9 +237,15 @@ namespace Microsoft.Azure.Commands.Network
         [CmdletParameterBreakingChange("IdentifyTopFatFlow", ReplaceMentCmdletParameterName = "EnableFatFlowLogging")]
         [Parameter(
            Mandatory = false,
-           HelpMessage = "Identify Top Fat Flows. By default it is false."
+           HelpMessage = "Enable Fat Flow Logging. By default it is false."
        )]
-        public SwitchParameter IdentifyTopFatFlow { get; set; }
+        public SwitchParameter EnableFatFlowLogging { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = "Enable UDP Log Optimization. By default it is false."
+       )]
+        public SwitchParameter EnableUDPLogOptimization { get; set; }
 
         public override void Execute()
         {
@@ -310,7 +316,8 @@ namespace Microsoft.Azure.Commands.Network
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
                     HubIPAddresses = this.HubIPAddress,
                     Zones = this.Zone == null ? null : this.Zone.ToList(),
-                    IdentifyTopFatFlow = (this.IdentifyTopFatFlow.IsPresent ? "True" : null)
+                    EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
+                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
                 };
             }
             else
@@ -331,7 +338,8 @@ namespace Microsoft.Azure.Commands.Network
                     DNSServer = this.DnsServer,
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
                     Sku = sku,
-                    IdentifyTopFatFlow = (this.IdentifyTopFatFlow.IsPresent ? "True" : null)
+                    EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
+                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
                 };
 
                 if (this.Zone != null)

@@ -52,7 +52,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.0'; }, 
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.1'; }, 
                @{ModuleName = 'Az.Advisor'; RequiredVersion = '1.1.2'; }, 
                @{ModuleName = 'Az.Aks'; RequiredVersion = '4.3.0'; }, 
                @{ModuleName = 'Az.AnalysisServices'; RequiredVersion = '1.1.4'; }, 
@@ -60,7 +60,7 @@ RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.0'; },
                @{ModuleName = 'Az.AppConfiguration'; RequiredVersion = '1.2.0'; }, 
                @{ModuleName = 'Az.ApplicationInsights'; RequiredVersion = '2.1.0'; }, 
                @{ModuleName = 'Az.Attestation'; RequiredVersion = '1.0.0'; }, 
-               @{ModuleName = 'Az.Automation'; RequiredVersion = '1.7.4'; }, 
+               @{ModuleName = 'Az.Automation'; RequiredVersion = '1.8.0'; }, 
                @{ModuleName = 'Az.Batch'; RequiredVersion = '3.2.1'; }, 
                @{ModuleName = 'Az.Billing'; RequiredVersion = '2.0.0'; }, 
                @{ModuleName = 'Az.Cdn'; RequiredVersion = '2.1.0'; }, 

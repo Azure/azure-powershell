@@ -1,4 +1,4 @@
-pac0,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Accounts,2.10.0
+pac0,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Accounts,2.10.1
 pac1,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ADDomainServices,0.2.0
 pac2,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Advisor,1.1.2
 pac3,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Aks,4.3.0
@@ -9,7 +9,7 @@ pac7,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.App,0.1.
 pac8,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.AppConfiguration,1.2.0
 pac9,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.ApplicationInsights,2.1.0
 pac10,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Attestation,1.0.0
-pac11,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Automation,1.7.4
+pac11,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Automation,1.8.0
 pac12,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.BareMetal,0.1.0
 pac13,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Batch,3.2.1
 pac14,[ps=true;customSource=https://www.powershellgallery.com/api/v2/]Az.Billing,2.0.0
