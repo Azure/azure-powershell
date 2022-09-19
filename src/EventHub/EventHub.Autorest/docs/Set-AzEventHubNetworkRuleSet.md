@@ -121,6 +121,8 @@ VirtualNetworkRule           : {{
                                }}
 ```
 
+Enabled Trusted Service Access on the eventhub namespace `myNamespace`.
+
 ## PARAMETERS
 
 ### -AsJob

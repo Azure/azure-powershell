@@ -51,6 +51,7 @@ ResourceGroupName            : myResourceGroup
 VirtualNetworkRule           :
 ```
 
+Gets the network rule set of EventHub namespace `myNamespace`.
 
 ## PARAMETERS
 

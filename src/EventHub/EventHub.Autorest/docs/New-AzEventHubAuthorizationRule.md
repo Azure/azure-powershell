@@ -44,6 +44,8 @@ ResourceGroupName            : myResourceGroup
 Rights                       : {Listen, Manage, Send}
 ```
 
+Creates a new authorization rule `myAuthRule` on namespace `myNamespace`.
+
 ### Example 2: Create an authorization rule for an EventHub entity
 ```powershell
 New-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name myAuthRule -Rights @('Manage', 'Send', 'Listen')
@@ -56,6 +58,8 @@ Name                         : myAuthRule
 ResourceGroupName            : myResourceGroup
 Rights                       : {Listen, Manage, Send}
 ```
+
+Creates a new authorization rule `myAuthRule` on EventHubs entity `myEventHub` from namespace `myNamespace`.
 
 ## PARAMETERS
 

@@ -35,7 +35,7 @@ Gets an Event Hubs description for the specified Event Hub.
 ## EXAMPLES
 
 ```powershell
-Get-AzEventHub -ResourceGroupName {resourceGroup} -NamespaceName {namespace} -Name {eventhub}
+Get-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myEventHub
 ```
 
 ```output
@@ -48,24 +48,28 @@ DataLakeFolderPath           :
 DataLakeSubscriptionId       :
 DestinationName              :
 Encoding                     :
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.EventHub/namespaces/{namespace}/eventhubs/{eventhub}
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub
 IntervalInSeconds            :
 Location                     : australiaeast
 MessageRetentionInDays       : 1
-Name                         : {eventhub}
+Name                         : myEventHub
 PartitionCount               : 1
 PartitionId                  : {0}
-ResourceGroupName            : {resourceGroup}
+ResourceGroupName            : myResourceGroup
 SizeLimitInBytes             :
 SkipEmptyArchive             :
 Status                       : Active
 StorageAccountResourceId     :
 ```
 
+Gets details of eventhub entity `myEventHub` from namespace `myNamespace`.
+
 ### Example 2: List All EventHubs in a namespace
 ```powershell
-Get-AzEventHub -ResourceGroupName {resourceGroup} -NamespaceName {namespace
+Get-AzEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
+
+Lists all EventHub entities from namespace `myNamespace`.
 
 ## PARAMETERS
 

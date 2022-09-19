@@ -50,10 +50,14 @@ UpdatedAt                    : 9/13/2022 9:20:47 AM
 UserMetadata                 :
 ```
 
+Gets default consumer group of eventhub entity `myEventHub`.
+
 ### Example 2: List all consumer groups in an EventHub entity
 ```powershell
 Get-AzEventHubConsumerGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -EventHubName myEventHub
 ```
+
+Lists all consumer groups in entity `myEventHub` from namespace `myNamespace`.
 
 ## PARAMETERS
 

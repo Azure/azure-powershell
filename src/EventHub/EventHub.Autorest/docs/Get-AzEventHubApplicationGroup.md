@@ -61,10 +61,14 @@ Policy                       : {{
 ResourceGroupName            : myResourceGroup
 ```
 
+Gets details of application group `myAppGroup` from namespace `myNamespace`.
+
 ### Example 2: Lists all application groups in an EventHub namespace
 ```powershell
 Get-AzEventHubApplicationGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
+
+Lists all application groups from namespace `myNamespace`.
 
 ## PARAMETERS
 

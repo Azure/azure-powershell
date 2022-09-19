@@ -41,6 +41,7 @@ SchemaCompatibility          : Backward
 SchemaType                   : Avro
 ```
 
+Create a new schema group `mySchemaGroup` for namespace `myNamespace`.
 
 ## PARAMETERS
 

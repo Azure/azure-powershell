@@ -51,6 +51,7 @@ Policy                       : {{
 ResourceGroupName            : myResourceGroup
 ```
 
+Creates a new application group `myAppGroup` on namespace `myNamespace` with 2 throttling policies.
 
 ## PARAMETERS
 

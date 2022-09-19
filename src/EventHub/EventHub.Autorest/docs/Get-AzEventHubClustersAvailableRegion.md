@@ -27,6 +27,8 @@ List the quantity of available pre-provisioned Event Hubs Clusters, indexed by A
 PS C:\> Get-AzEventHubClustersAvailableRegion
 ```
 
+Lists all regions that are available for cluster creation.
+
 ## PARAMETERS
 
 ### -DefaultProfile

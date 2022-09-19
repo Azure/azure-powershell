@@ -63,6 +63,8 @@ SkipEmptyArchive             : true
 Status                       : Active
 ```
 
+Updates EventHub entity `myEventHub` from namespace `myNamespace` to enable capture on it.
+
 ### Example 2: Update EventHub EventHub entity using InputObject parameter set
 ```powershell
 $eventhub = Get-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace

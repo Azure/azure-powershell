@@ -34,6 +34,7 @@ RequiredZoneName : {privatelink.servicebus.windows.net}
 Type             : Microsoft.EventHub/namespaces/privateLinkResources
 ```
 
+Gets private link resources available on EventHubs namespace `myNamespace`.
 
 ## PARAMETERS
 
