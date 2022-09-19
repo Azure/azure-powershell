@@ -53,8 +53,189 @@ directive:
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
+  - where:
+      subject: Configuration
+      verb: Set
+    remove: true
+  # ProvisioningState readonly
+  - from: swagger-document
+    where: $.definitions.ProvisioningState
+    transform: >-
+      return {
+          "enum": [
+          "Accepted",
+          "Creating",
+          "Updating",
+          "Deleting",
+          "Succeeded",
+          "Failed",
+          "Canceled",
+          "Deleted",
+          "NotSpecified"
+        ],
+        "type": "string",
+        "readOnly": true,
+        "x-ms-enum": {
+          "modelAsString": true,
+          "name": "ProvisioningState"
+        }
+      }
+  # Required properties for deployment
+  - from: swagger-document
+    where: $.definitions.NginxDeploymentProperties
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+          "provisioningState": {
+            "$ref": "#/definitions/ProvisioningState"
+          },
+          "nginxVersion": {
+            "type": "string",
+            "readOnly": true
+          },
+          "managedResourceGroup": {
+            "type": "string",
+            "description": "The managed resource group to deploy VNet injection related network resources."
+          },
+          "networkProfile": {
+            "$ref": "#/definitions/NginxNetworkProfile"
+          },
+          "ipAddress": {
+            "type": "string",
+            "description": "The IP address of the deployment.",
+            "readOnly": true
+          },
+          "enableDiagnosticsSupport": {
+            "type": "boolean"
+          },
+          "logging": {
+            "$ref": "#/definitions/NginxLogging"
+          }
+        },
+        "required": [
+          "networkProfile"
+        ]
+      }
+  - from: swagger-document
+    where: $.definitions.NginxDeployment
+    transform: >-
+      return {
+        "type": "object",
+        "x-ms-azure-resource": true,
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "readOnly": true
+          },
+          "type": {
+            "type": "string",
+            "readOnly": true
+          },
+          "identity": {
+            "$ref": "#/definitions/IdentityProperties"
+          },
+          "properties": {
+            "$ref": "#/definitions/NginxDeploymentProperties"
+          },
+          "tags": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "sku": {
+            "$ref": "#/definitions/ResourceSku",
+          },
+          "location": {
+            "type": "string",
+          },
+          "systemData": {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/systemData",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "properties",
+          "location",
+          "sku"
+        ]
+      }
+  # Required properties for Certificates
+  - from: swagger-document
+    where: $.definitions.NginxCertificate
+    transform: >-
+      return {
+        "type": "object",
+        "x-ms-azure-resource": true,
+        "properties": {
+          "id": {
+            "type": "string",
+            "readOnly": true
+          },
+          "name": {
+            "type": "string",
+            "readOnly": true
+          },
+          "type": {
+            "type": "string",
+            "readOnly": true
+          },
+          "properties": {
+            "$ref": "#/definitions/NginxCertificateProperties"
+          },
+          "tags": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "location": {
+            "type": "string"
+          },
+          "systemData": {
+            "$ref": "../../../../../common-types/resource-management/v2/types.json#/definitions/systemData",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "properties"
+        ]
+      }
+  - from: swagger-document
+    where: $.definitions.NginxCertificateProperties
+    transform: >-
+      return {
+        "type": "object",
+        "properties": {
+          "provisioningState": {
+            "$ref": "#/definitions/ProvisioningState"
+          },
+          "keyVirtualPath": {
+            "type": "string"
+          },
+          "certificateVirtualPath": {
+            "type": "string"
+          },
+          "keyVaultSecretId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "keyVirtualPath",
+          "certificateVirtualPath",
+          "keyVaultSecretId"
+        ]
+      }
   - model-cmdlet:
     - NginxConfigurationFile
     - NginxPrivateIPAddress
     - NginxPublicIPAddress
+    - NginxNetworkProfile
+  - no-inline:
+    - NginxNetworkProfile
 ```
