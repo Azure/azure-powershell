@@ -78,8 +78,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Attestation.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'New-AzAttestation', 'Get-AzAttestation', 'Remove-AzAttestation', 
-               'Get-AzAttestationPolicy', 'Set-AzAttestationPolicy', 
+CmdletsToExport = 'Get-AzAttestationPolicy', 'Set-AzAttestationPolicy', 
                'Reset-AzAttestationPolicy', 'Get-AzAttestationPolicySigners', 
                'Add-AzAttestationPolicySigner', 'Remove-AzAttestationPolicySigner'
 
