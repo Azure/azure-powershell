@@ -402,7 +402,6 @@ function Test-RoutingIntentCRUD
 	$virtualHubName = Get-ResourceName
 	$firewallName = "testFirewall1"
 	$riName = "testRoutingIntent1"
-	$riName2 = "testRoutingIntent2"
 	$privatePolicyName = "PrivateTraffic"
 	$internetPolicyName = "PublicTraffic"
 
@@ -435,7 +434,6 @@ function Test-RoutingIntentCRUD
 		$policy1 = New-AzRoutingPolicy -Name $privatePolicyName -Destination @("PrivateTraffic") -NextHop $firewall.Id
 		$policy2 = New-AzRoutingPolicy -Name $internetPolicyName -Destination @("Internet") -NextHop $firewall.Id
 		New-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName -RoutingPolicy @($policy1, $policy2)
-		New-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName2 -RoutingPolicy @($policy1, $policy2)
 		$routingIntent = Get-AzRoutingIntent -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name $riName
 		Assert-AreEqual $routingIntent.RoutingPolicies.Count 2
 		Assert-AreEqual $routingIntent.Name $riName
