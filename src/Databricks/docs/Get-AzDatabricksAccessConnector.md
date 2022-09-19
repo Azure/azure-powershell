@@ -1,65 +1,98 @@
 ---
 external help file:
 Module Name: Az.Databricks
-online version: https://docs.microsoft.com/powershell/module/az.databricks/remove-azdatabricksworkspace
+online version: https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksaccessconnector
 schema: 2.0.0
 ---
 
-# Remove-AzDatabricksWorkspace
+# Get-AzDatabricksAccessConnector
 
 ## SYNOPSIS
-Deletes the workspace.
+Gets an azure databricks accessConnector.
 
 ## SYNTAX
 
-### Delete (Default)
+### List1 (Default)
 ```
-Remove-AzDatabricksWorkspace -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDatabricksAccessConnector [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Get
 ```
-Remove-AzDatabricksWorkspace -InputObject <IDatabricksIdentity> [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzDatabricksAccessConnector -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzDatabricksAccessConnector -InputObject <IDatabricksIdentity> [-DefaultProfile <PSObject>]
+ [<CommonParameters>]
+```
+
+### List
+```
+Get-AzDatabricksAccessConnector -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Deletes the workspace.
+Gets an azure databricks accessConnector.
 
 ## EXAMPLES
 
-### Example 1: Remove a Databricks workspace
+### Example 1: List all access connectors under a subscription
 ```powershell
-Remove-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test
+Get-AzDatabricksAccessConnector
 ```
 
-This command removes a Databricks workspace from a resource group.
-
-### Example 2: Remove a Databricks workspace by object
-```powershell
-$dbr = Get-AzDatabricksWorkspace -ResourceGroupName testgroup -Name databricks-test02
-Remove-AzDatabricksWorkspace -InputObject $dbr
+```output
+Location Name          ResourceGroupName
+-------- ----          -----------------
+eastus   databricks-ac databricks-rg-xyv4k5
 ```
 
-This command removes a Databricks workspace from a resource group.
+This command lists all access connectors under a subscription.
+
+### Example 2: List all access connectors under a resource group
+```powershell
+Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5
+```
+
+```output
+Location Name          ResourceGroupName
+-------- ----          -----------------
+eastus   databricks-ac databricks-rg-xyv4k5
+```
+
+This command lists all access connectors under a resource group.
+
+### Example 3: Get a access connectors by name
+```powershell
+Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac
+```
+
+```output
+Location Name          ResourceGroupName
+-------- ----          -----------------
+eastus   databricks-ac databricks-rg-xyv4k5
+```
+
+This command gets a access connectors by name.
+
+### Example 4: Get a access connectors by pipeline
+```powershell
+New-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Location eastus | Get-AzDatabricksAccessConnector
+```
+
+```output
+Location Name          ResourceGroupName
+-------- ----          -----------------
+eastus   databricks-ac databricks-rg-xyv4k5
+```
+
+This command gets a access connectors by pipeline.
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -82,7 +115,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -93,44 +126,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The name of the workspace.
+The name of the azure databricks accessConnector.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: WorkspaceName
+Parameter Sets: Get
+Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -143,7 +146,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -157,44 +160,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.String[]
+Parameter Sets: Get, List, List1
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -208,7 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IAccessConnector
 
 ## NOTES
 
