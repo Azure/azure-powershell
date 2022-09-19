@@ -14,7 +14,7 @@ Updates the Attestation Provider.
 
 ### UpdateExpanded (Default)
 ```
-Update-AzAttestationProvider -ProviderName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Update-AzAttestationProvider -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-Tag <Hashtable>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,27 +29,63 @@ Updates the Attestation Provider.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Update a specific Attestation Provider.
 ```powershell
-{{ Add code here }}
+Update-AzAttestationProvider -Name testprovider -ResourceGroupName test-rg -Tag @{"k"="v"} | fl
 ```
 
 ```output
-{{ Add output here }}
+AttestUri                    : https://testprovider.eus.attest.azure.net
+Id                           : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg/providers/Microsoft.Attestation/ 
+                               attestationProviders/testprovider
+Location                     : eastus
+Name                         : testprovider
+PrivateEndpointConnection    : 
+ResourceGroupName            : test-rg
+Status                       : Ready
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {
+                                 "k": "v"
+                               }
+TrustModel                   : AAD
+Type                         : Microsoft.Attestation/attestationProviders
 ```
 
-{{ Add description here }}
+This command updates a specific Attestation Provider.
 
-### Example 2: {{ Add title here }}
+### Example 2: Update a specific Attestation Provider by piping
 ```powershell
-{{ Add code here }}
+Get-AzAttestationProvider -Name testprovider -ResourceGroupName test-rg | Update-AzAttestationProvider -Tag @{"k"="v"} | fl
 ```
 
 ```output
-{{ Add output here }}
+AttestUri                    : https://testprovider.eus.attest.azure.net
+Id                           : /subscriptions/0b1f6471-1bf0-4dda-aec3-cb9272f09590/resourceGroups/test-rg/providers/Microsoft.Attestation/ 
+                               attestationProviders/testprovider
+Location                     : eastus
+Name                         : testprovider
+PrivateEndpointConnection    : 
+ResourceGroupName            : test-rg
+Status                       : Ready
+SystemDataCreatedAt          : 
+SystemDataCreatedBy          : 
+SystemDataCreatedByType      : 
+SystemDataLastModifiedAt     : 
+SystemDataLastModifiedBy     : 
+SystemDataLastModifiedByType : 
+Tag                          : {
+                                 "k": "v"
+                               }
+TrustModel                   : AAD
+Type                         : Microsoft.Attestation/attestationProviders
 ```
 
-{{ Add description here }}
+These commands update a specific Attestation Provider by piping.
 
 ## PARAMETERS
 
@@ -84,13 +120,13 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -ProviderName
+### -Name
 Name of the attestation provider.
 
 ```yaml
 Type: System.String
 Parameter Sets: UpdateExpanded
-Aliases:
+Aliases: ProviderName
 
 Required: True
 Position: Named

@@ -14,7 +14,7 @@ Delete Attestation Service.
 
 ### Delete (Default)
 ```
-Remove-AzAttestationProvider -ProviderName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
+Remove-AzAttestationProvider -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>]
  [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,27 +29,28 @@ Delete Attestation Service.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a specific Attestation Provider.
 ```powershell
-{{ Add code here }}
+Remove-AzAttestationProvider -Name testprovider -ResourceGroupName test-rg -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
+This command removes a specific Attestation Provider.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a specific Attestation Provider by piping
 ```powershell
-{{ Add code here }}
+Get-AzAttestationProvider -Name testprovider -ResourceGroupName test-rg | Remove-AzAttestationProvider -PassThru
+
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
+These commands remove a specific Attestation Provider by piping.
 
 ## PARAMETERS
 
@@ -84,6 +85,21 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -Name
+Name of the attestation service
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases: ProviderName
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PassThru
 Returns true when the command succeeds
 
@@ -93,21 +109,6 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ProviderName
-Name of the attestation service
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases:
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False

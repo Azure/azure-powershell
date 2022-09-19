@@ -73,4 +73,17 @@ directive:
       subject: AttestationProviderDefault
     set:
       subject: AttestationDefaultProvider
+  # Rename ProviderName in *-AttestationProvider as Name and keep it as alias
+  - where:
+      subject: AttestationProvider
+      parameter-name: ProviderName
+    set:
+      parameter-name: Name
+      alias: ProviderName
+  # Hide New-AzAttestationProvider to customize PolicySigningCertificateKey as PolicySigningCertificateKeyPath
+  - where:
+      subject: AttestationProvider
+      verb: New
+    hide: true
+  
 ```

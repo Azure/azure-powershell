@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a specific Attestation Provider.
+ 
 ```powershell
-{{ Add code here }}
+Remove-AzAttestationProvider -Name testprovider -ResourceGroupName test-rg -PassThru
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
+This command removes a specific Attestation Provider.
 
-### Example 2: {{ Add title here }}
+### Example 2: Remove a specific Attestation Provider by piping
+
 ```powershell
-{{ Add code here }}
+Get-AzAttestationProvider -Name testprovider -ResourceGroupName test-rg | Remove-AzAttestationProvider -PassThru
+
 ```
 
 ```output
-{{ Add output here }}
+True
 ```
 
-{{ Add description here }}
+These commands remove a specific Attestation Provider by piping.
 
