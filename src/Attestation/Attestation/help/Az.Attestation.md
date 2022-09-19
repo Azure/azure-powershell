@@ -14,9 +14,6 @@ This topic displays help topics for the Azure Attestation Cmdlets.
 ### [Add-AzAttestationPolicySigner](Add-AzAttestationPolicySigner.md)
 Adds a trusted policy signer for a tenant in Azure Attestation.
 
-### [Get-AzAttestation](Get-AzAttestation.md)
-Gets an attestation.
-
 ### [Get-AzAttestationDefaultProvider](Get-AzAttestationDefaultProvider.md)
 Get the default provider by location.
 
@@ -29,14 +26,8 @@ Gets the trusted policy signers from a tenant in Azure Attestation.
 ### [Get-AzAttestationProvider](Get-AzAttestationProvider.md)
 Get the status of Attestation Provider.
 
-### [New-AzAttestation](New-AzAttestation.md)
-Creates an attestation
-
 ### [New-AzAttestationProvider](New-AzAttestationProvider.md)
 Creates a new Attestation Provider.
-
-### [Remove-AzAttestation](Remove-AzAttestation.md)
-Deletes an attestation.
 
 ### [Remove-AzAttestationPolicySigner](Remove-AzAttestationPolicySigner.md)
 Removes a trusted policy signer for a tenant in Azure Attestation.
