@@ -1,36 +1,38 @@
-### Example 1: Rejects an Event Hub Namespace Private Endpoint Connection
+### Example 1: Reject an Event Hub Namespace Private Endpoint Connection
 ```powershell
-Deny-AzEventHubPrivateEndpointConnection -ResourceGroupName {resourceGroup} -NamespaceName {namespace} -Name 00000000000
+Deny-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 ```
 
 ```output
 ConnectionState              : Rejected
 Description                  :
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.EventHub/namespaces/{namespace}/privateEndpointC
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateEndpointC
                                onnections/00000000000
 Location                     : Australia East
 Name                         : 00000000000
-PrivateEndpointId            : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
+PrivateEndpointId            : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
 ProvisioningState            : Succeeded
-ResourceGroupName            : {resourceGroup}
+ResourceGroupName            : myResourceGroup
 ```
 
-### Example 2: Rejects an Event Hub Namespace Private Endpoint Connection using InputObject
-```powershell
-$privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName {resourceGroup} -NamespaceName {namespace} -Name 00000000000
+Rejects private endpoint connection `00000000000` on EventHub namespace `myNamespace`.
 
+### Example 2: Reject an Event Hub Namespace Private Endpoint Connection using InputObject
+```powershell
+$privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 Deny-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint
 ```
 
 ```output
 ConnectionState              : Rejected
 Description                  :
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.EventHub/namespaces/{namespace}/privateEndpointC
+Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateEndpointC
                                onnections/00000000000
 Location                     : Australia East
 Name                         : 00000000000
-PrivateEndpointId            : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
+PrivateEndpointId            : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
 ProvisioningState            : Succeeded
-ResourceGroupName            : {resourceGroup}
+ResourceGroupName            : myResourceGroup
 ```
 
+Rejects private endpoint connection `00000000000` on EventHub namespace `myNamespace` using InputObject parameter set.

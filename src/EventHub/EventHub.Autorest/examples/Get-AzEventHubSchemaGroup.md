@@ -16,8 +16,11 @@ SchemaCompatibility          : None
 SchemaType                   : Avro
 ```
 
+Gets details of schema group `mySchemaGroup` from EventHub namespace `myNamespace`.
+
 ### Example 2: List all schema groups in an EventHub namespace
 ```powershell
 Get-AzEventHubSchemaGroup -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
+Lists all schema groups created within EventHub namespace `myNamespace`.

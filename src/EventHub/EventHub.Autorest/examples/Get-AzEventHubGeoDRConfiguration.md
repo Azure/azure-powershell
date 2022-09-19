@@ -15,3 +15,4 @@ ResourceGroupName                 : myResourceGroup
 Role                              : Primary
 ```
 
+Gets disaster recovery configuration details of alias `myAlias` created for namespace `myNamespace`.

@@ -2,3 +2,5 @@
 ```powershell
 PS C:\> Get-AzEventHubClustersAvailableRegion
 ```
+
+Lists all regions that are available for cluster creation.

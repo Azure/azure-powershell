@@ -15,8 +15,11 @@ ProvisioningState            : Succeeded
 ResourceGroupName            : {resourceGroup}
 ```
 
+Gets details of private endpoint connection `00000000000` created under EventHub namespace `myNamespace`.
+
 ### Example 2: List all private endpoint connections on an EventHub namespace
 ```powershell
 Get-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
+Lists all private endpoint connections of EventHub namespace `myNamespace`.

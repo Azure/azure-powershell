@@ -2,14 +2,11 @@
 ```powershell
 $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
-
 $virtualNetworkRule1 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId /subscriptions/{subscriptionId}/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default
-
 $networkRuleSet = Get-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 $networkRuleSet.IPRule += $ipRule1
 $networkRuleSet.IPRule += $ipRule2
 $networkRuleSet.VirtualNetworkRule += $virtualNetworkRule1
-
 Set-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace -IPRule $ipRule1,$ipRule2 -VirtualNetworkRule $virtualNetworkRule1,$virtualNetworkRule2,$virtualNetworkRule3
 ```
 
@@ -70,7 +67,7 @@ Id                           : /subscriptions/{subscriptionId}/resourceGroups/my
 Location                     : Australia East
 Name                         : default
 PublicNetworkAccess          : Enabled
-ResourceGroupName            : Default-EventHub-6229
+ResourceGroupName            : myResourceGroup
 TrustedServiceAccessEnabled  : True
 Type                         : Microsoft.EventHub/Namespaces/NetworkRuleSets
 VirtualNetworkRule           : {{
@@ -86,3 +83,4 @@ VirtualNetworkRule           : {{
                                }}
 ```
 
+Enabled Trusted Service Access on the eventhub namespace `myNamespace`.

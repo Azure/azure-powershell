@@ -12,6 +12,8 @@ ResourceGroupName            : myResourceGroup
 Rights                       : {Listen, Manage, Send}
 ```
 
+Gets details of authorization rule `myAuthRule` of EventHub namespace `myNamespace`.
+
 ### Example 2: Get an EventHub entity authorization rule
 ```powershell
 Get-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -EventHubName myEventHub -Name myAuthRule
@@ -25,3 +27,5 @@ Name                         : myAuthRule
 ResourceGroupName            : myResourceGroup
 Rights                       : {Listen, Manage, Send}
 ```
+
+Gets details of authorization rule `myAuthRule` of EventHub entity `myEventHub` from namespace `myNamespace`.

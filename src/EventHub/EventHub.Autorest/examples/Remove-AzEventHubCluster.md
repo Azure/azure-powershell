@@ -1,6 +1,6 @@
 ### Example 1: Remove EventHubs dedicated cluster
 ```powershell
-Remove-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myCluster
+Remove-AzEventHubCluster -ResourceGroupName myResourceGroup -Name myEventHubsCluster
 ```
 
-Removes EventHubs dedicated cluster by the name `myCluster`.
+Removes EventHubs dedicated cluster by the name `myEventHubsCluster`.

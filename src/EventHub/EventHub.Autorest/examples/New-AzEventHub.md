@@ -26,6 +26,9 @@ SkipEmptyArchive             :
 Status                       : Active
 ```
 
+
+Creates a new eventhub entity `myEventHub` on namespace `myNamespace`.
+
 ### Example 2: Create EventHub with Capture Enabled
 ```powershell
 New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
@@ -54,3 +57,4 @@ SkipEmptyArchive             : true
 Status                       : Active
 ```
 
+Creates a new eventhub entity `myEventHub` on namespace `myNamespace` with capture enabled.
