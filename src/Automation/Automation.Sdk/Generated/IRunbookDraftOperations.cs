@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The runbook name.
         /// </param>
         /// <param name='runbookContent'>
-        /// The runbook draft content.
+        /// The runbook draft content.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -78,13 +78,10 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Stream,RunbookDraftReplaceContentHeaders>> ReplaceContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<RunbookDraftReplaceContentHeaders>> ReplaceContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Retrieve the runbook draft identified by runbook name.
         /// <see href="http://aka.ms/azureautomationsdk/runbookdraftoperations" />
@@ -137,13 +134,10 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<RunbookDraftUndoEditResult>> UndoEditWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationResponse> UndoEditWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
         /// <summary>
         /// Replaces the runbook draft content.
         /// <see href="http://aka.ms/azureautomationsdk/runbookdraftoperations" />
@@ -158,7 +152,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The runbook name.
         /// </param>
         /// <param name='runbookContent'>
-        /// The runbook draft content.
+        /// The runbook draft content.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -169,12 +163,9 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="Microsoft.Rest.SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="Microsoft.Rest.ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
-        Task<AzureOperationResponse<Stream,RunbookDraftReplaceContentHeaders>> BeginReplaceContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
+        Task<AzureOperationHeaderResponse<RunbookDraftReplaceContentHeaders>> BeginReplaceContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
-            string apiVersion = "2018-06-30";
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -350,7 +350,7 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
-            string apiVersion = "2018-06-30";
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -576,7 +576,7 @@ namespace Microsoft.Azure.Management.Automation
             {
                 parameters.Validate();
             }
-            string apiVersion = "2018-06-30";
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -822,7 +822,7 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "parameters");
             }
-            string apiVersion = "2018-06-30";
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1040,7 +1040,7 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
-            string apiVersion = "2018-06-30";
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1229,7 +1229,7 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "automationAccountName");
             }
-            string apiVersion = "2018-06-30";
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -1438,7 +1438,7 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
-            string apiVersion = "2018-06-30";
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;

@@ -67,11 +67,6 @@ namespace Microsoft.Azure.Management.Automation
 
 
         /// <summary>
-        /// Gets the ISourceControlOperations.
-        /// </summary>
-        ISourceControlOperations SourceControl { get; }
-
-        /// <summary>
         /// Gets the IAgentRegistrationInformationOperations.
         /// </summary>
         IAgentRegistrationInformationOperations AgentRegistrationInformation { get; }
@@ -155,6 +150,11 @@ namespace Microsoft.Azure.Management.Automation
         /// Gets the IConnectionTypeOperations.
         /// </summary>
         IConnectionTypeOperations ConnectionType { get; }
+
+        /// <summary>
+        /// Gets the ISourceControlOperations.
+        /// </summary>
+        ISourceControlOperations SourceControl { get; }
 
         /// <summary>
         /// Gets the ISourceControlSyncJobOperations.
@@ -250,6 +250,11 @@ namespace Microsoft.Azure.Management.Automation
         /// Gets the IHybridRunbookWorkerGroupOperations.
         /// </summary>
         IHybridRunbookWorkerGroupOperations HybridRunbookWorkerGroup { get; }
+
+        /// <summary>
+        /// Gets the IPython3PackageOperations.
+        /// </summary>
+        IPython3PackageOperations Python3Package { get; }
 
     }
 }

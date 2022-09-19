@@ -10,6 +10,7 @@
 
 namespace Microsoft.Azure.Management.Automation
 {
+    using Microsoft.Azure.Management.Automation.Models;
     using Microsoft.Rest;
     using Microsoft.Rest.Azure;
     using Microsoft.Rest.Serialization;
@@ -20,6 +21,8 @@ namespace Microsoft.Azure.Management.Automation
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// APIs for managing software update configurations.
@@ -70,11 +73,6 @@ namespace Microsoft.Azure.Management.Automation
         /// each request. Default is true.
         /// </summary>
         public bool? GenerateClientRequestId { get; set; }
-
-        /// <summary>
-        /// Gets the ISourceControlOperations.
-        /// </summary>
-        public virtual ISourceControlOperations SourceControl { get; private set; }
 
         /// <summary>
         /// Gets the IAgentRegistrationInformationOperations.
@@ -160,6 +158,11 @@ namespace Microsoft.Azure.Management.Automation
         /// Gets the IConnectionTypeOperations.
         /// </summary>
         public virtual IConnectionTypeOperations ConnectionType { get; private set; }
+
+        /// <summary>
+        /// Gets the ISourceControlOperations.
+        /// </summary>
+        public virtual ISourceControlOperations SourceControl { get; private set; }
 
         /// <summary>
         /// Gets the ISourceControlSyncJobOperations.
@@ -257,6 +260,11 @@ namespace Microsoft.Azure.Management.Automation
         public virtual IHybridRunbookWorkerGroupOperations HybridRunbookWorkerGroup { get; private set; }
 
         /// <summary>
+        /// Gets the IPython3PackageOperations.
+        /// </summary>
+        public virtual IPython3PackageOperations Python3Package { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the AutomationClient class.
         /// </summary>
         /// <param name='httpClient'>
@@ -337,6 +345,11 @@ namespace Microsoft.Azure.Management.Automation
                 throw new System.ArgumentNullException("baseUri");
             }
             BaseUri = baseUri;
+        }
+
+        internal Task<AzureOperationHeaderResponse<RunbookDraftReplaceContentHeaders>> GetPutOrPatchOperationResultAsync(AzureOperationHeaderResponse<RunbookDraftReplaceContentHeaders> response, Dictionary<string, List<string>> customHeaders, CancellationToken cancellationToken)
+        {
+            throw new System.NotImplementedException();
         }
 
         /// <summary>
@@ -497,7 +510,6 @@ namespace Microsoft.Azure.Management.Automation
         /// </summary>
         private void Initialize()
         {
-            SourceControl = new SourceControlOperations(this);
             AgentRegistrationInformation = new AgentRegistrationInformationOperations(this);
             DscNode = new DscNodeOperations(this);
             NodeReports = new NodeReportsOperations(this);
@@ -515,6 +527,7 @@ namespace Microsoft.Azure.Management.Automation
             Variable = new VariableOperations(this);
             Connection = new ConnectionOperations(this);
             ConnectionType = new ConnectionTypeOperations(this);
+            SourceControl = new SourceControlOperations(this);
             SourceControlSyncJob = new SourceControlSyncJobOperations(this);
             SourceControlSyncJobStreams = new SourceControlSyncJobStreamsOperations(this);
             DscConfiguration = new DscConfigurationOperations(this);
@@ -534,6 +547,7 @@ namespace Microsoft.Azure.Management.Automation
             TestJob = new TestJobOperations(this);
             HybridRunbookWorkers = new HybridRunbookWorkersOperations(this);
             HybridRunbookWorkerGroup = new HybridRunbookWorkerGroupOperations(this);
+            Python3Package = new Python3PackageOperations(this);
             BaseUri = new System.Uri("https://management.azure.com");
             AcceptLanguage = "en-US";
             LongRunningOperationRetryTimeout = 30;

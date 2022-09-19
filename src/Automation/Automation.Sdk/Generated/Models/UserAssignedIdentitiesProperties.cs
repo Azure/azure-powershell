@@ -13,26 +13,26 @@ namespace Microsoft.Azure.Management.Automation.Models
     using Newtonsoft.Json;
     using System.Linq;
 
-    public partial class IdentityUserAssignedIdentitiesValue
+    public partial class UserAssignedIdentitiesProperties
     {
         /// <summary>
-        /// Initializes a new instance of the
-        /// IdentityUserAssignedIdentitiesValue class.
+        /// Initializes a new instance of the UserAssignedIdentitiesProperties
+        /// class.
         /// </summary>
-        public IdentityUserAssignedIdentitiesValue()
+        public UserAssignedIdentitiesProperties()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the
-        /// IdentityUserAssignedIdentitiesValue class.
+        /// Initializes a new instance of the UserAssignedIdentitiesProperties
+        /// class.
         /// </summary>
         /// <param name="principalId">The principal id of user assigned
         /// identity.</param>
         /// <param name="clientId">The client id of user assigned
         /// identity.</param>
-        public IdentityUserAssignedIdentitiesValue(string principalId = default(string), string clientId = default(string))
+        public UserAssignedIdentitiesProperties(string principalId = default(string), string clientId = default(string))
         {
             PrincipalId = principalId;
             ClientId = clientId;

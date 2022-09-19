@@ -86,9 +86,9 @@ namespace Microsoft.Azure.Management.Automation
             /// The runbook name.
             /// </param>
             /// <param name='runbookContent'>
-            /// The runbook draft content.
+            /// The runbook draft content.
             /// </param>
-            public static Stream ReplaceContent(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent)
+            public static RunbookDraftReplaceContentHeaders ReplaceContent(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent)
             {
                 return operations.ReplaceContentAsync(resourceGroupName, automationAccountName, runbookName, runbookContent).GetAwaiter().GetResult();
             }
@@ -110,16 +110,17 @@ namespace Microsoft.Azure.Management.Automation
             /// The runbook name.
             /// </param>
             /// <param name='runbookContent'>
-            /// The runbook draft content.
+            /// The runbook draft content.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Stream> ReplaceContentAsync(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<RunbookDraftReplaceContentHeaders> ReplaceContentAsync(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent, CancellationToken cancellationToken = default(CancellationToken))
             {
-                var _result = await operations.ReplaceContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, runbookContent, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
+                using (var _result = await operations.ReplaceContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, runbookContent, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
             /// <summary>
@@ -186,9 +187,9 @@ namespace Microsoft.Azure.Management.Automation
             /// <param name='runbookName'>
             /// The runbook name.
             /// </param>
-            public static RunbookDraftUndoEditResult UndoEdit(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName)
+            public static void UndoEdit(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName)
             {
-                return operations.UndoEditAsync(resourceGroupName, automationAccountName, runbookName).GetAwaiter().GetResult();
+                operations.UndoEditAsync(resourceGroupName, automationAccountName, runbookName).GetAwaiter().GetResult();
             }
 
             /// <summary>
@@ -210,12 +211,9 @@ namespace Microsoft.Azure.Management.Automation
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<RunbookDraftUndoEditResult> UndoEditAsync(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task UndoEditAsync(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, CancellationToken cancellationToken = default(CancellationToken))
             {
-                using (var _result = await operations.UndoEditWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, null, cancellationToken).ConfigureAwait(false))
-                {
-                    return _result.Body;
-                }
+                (await operations.UndoEditWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, null, cancellationToken).ConfigureAwait(false)).Dispose();
             }
 
             /// <summary>
@@ -235,9 +233,9 @@ namespace Microsoft.Azure.Management.Automation
             /// The runbook name.
             /// </param>
             /// <param name='runbookContent'>
-            /// The runbook draft content.
+            /// The runbook draft content.
             /// </param>
-            public static Stream BeginReplaceContent(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent)
+            public static RunbookDraftReplaceContentHeaders BeginReplaceContent(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent)
             {
                 return operations.BeginReplaceContentAsync(resourceGroupName, automationAccountName, runbookName, runbookContent).GetAwaiter().GetResult();
             }
@@ -259,16 +257,17 @@ namespace Microsoft.Azure.Management.Automation
             /// The runbook name.
             /// </param>
             /// <param name='runbookContent'>
-            /// The runbook draft content.
+            /// The runbook draft content.
             /// </param>
             /// <param name='cancellationToken'>
             /// The cancellation token.
             /// </param>
-            public static async Task<Stream> BeginReplaceContentAsync(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent, CancellationToken cancellationToken = default(CancellationToken))
+            public static async Task<RunbookDraftReplaceContentHeaders> BeginReplaceContentAsync(this IRunbookDraftOperations operations, string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent, CancellationToken cancellationToken = default(CancellationToken))
             {
-                var _result = await operations.BeginReplaceContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, runbookContent, null, cancellationToken).ConfigureAwait(false);
-                _result.Request.Dispose();
-                return _result.Body;
+                using (var _result = await operations.BeginReplaceContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, runbookContent, null, cancellationToken).ConfigureAwait(false))
+                {
+                    return _result.Headers;
+                }
             }
 
     }

@@ -118,7 +118,7 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
-            string apiVersion = "2018-06-30";
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -271,7 +271,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The runbook name.
         /// </param>
         /// <param name='runbookContent'>
-        /// The runbook draft content.
+        /// The runbook draft content.
         /// </param>
         /// <param name='customHeaders'>
         /// The headers that will be added to request.
@@ -279,10 +279,10 @@ namespace Microsoft.Azure.Management.Automation
         /// <param name='cancellationToken'>
         /// The cancellation token.
         /// </param>
-        public async Task<AzureOperationResponse<Stream,RunbookDraftReplaceContentHeaders>> ReplaceContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationHeaderResponse<RunbookDraftReplaceContentHeaders>> ReplaceContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             // Send Request
-            AzureOperationResponse<Stream,RunbookDraftReplaceContentHeaders> _response = await BeginReplaceContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, runbookContent, customHeaders, cancellationToken).ConfigureAwait(false);
+            AzureOperationHeaderResponse<RunbookDraftReplaceContentHeaders> _response = await BeginReplaceContentWithHttpMessagesAsync(resourceGroupName, automationAccountName, runbookName, runbookContent, customHeaders, cancellationToken).ConfigureAwait(false);
             return await Client.GetPutOrPatchOperationResultAsync(_response, customHeaders, cancellationToken).ConfigureAwait(false);
         }
 
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
-            string apiVersion = "2018-06-30";
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -522,9 +522,6 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -534,7 +531,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<RunbookDraftUndoEditResult>> UndoEditWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationResponse> UndoEditWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -567,7 +564,7 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookName");
             }
-            string apiVersion = "2018-06-30";
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -682,30 +679,12 @@ namespace Microsoft.Azure.Management.Automation
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<RunbookDraftUndoEditResult>();
+            var _result = new AzureOperationResponse();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
-                try
-                {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<RunbookDraftUndoEditResult>(_responseContent, Client.DeserializationSettings);
-                }
-                catch (JsonException ex)
-                {
-                    _httpRequest.Dispose();
-                    if (_httpResponse != null)
-                    {
-                        _httpResponse.Dispose();
-                    }
-                    throw new SerializationException("Unable to deserialize the response.", _responseContent, ex);
-                }
             }
             if (_shouldTrace)
             {
@@ -728,7 +707,7 @@ namespace Microsoft.Azure.Management.Automation
         /// The runbook name.
         /// </param>
         /// <param name='runbookContent'>
-        /// The runbook draft content.
+        /// The runbook draft content.
         /// </param>
         /// <param name='customHeaders'>
         /// Headers that will be added to request.
@@ -739,9 +718,6 @@ namespace Microsoft.Azure.Management.Automation
         /// <exception cref="ErrorResponseException">
         /// Thrown when the operation returned an invalid status code
         /// </exception>
-        /// <exception cref="SerializationException">
-        /// Thrown when unable to deserialize the response
-        /// </exception>
         /// <exception cref="ValidationException">
         /// Thrown when a required parameter is null
         /// </exception>
@@ -751,7 +727,7 @@ namespace Microsoft.Azure.Management.Automation
         /// <return>
         /// A response object containing the response body and response headers.
         /// </return>
-        public async Task<AzureOperationResponse<Stream,RunbookDraftReplaceContentHeaders>> BeginReplaceContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
+        public async Task<AzureOperationHeaderResponse<RunbookDraftReplaceContentHeaders>> BeginReplaceContentWithHttpMessagesAsync(string resourceGroupName, string automationAccountName, string runbookName, Stream runbookContent, Dictionary<string, List<string>> customHeaders = null, CancellationToken cancellationToken = default(CancellationToken))
         {
             if (Client.SubscriptionId == null)
             {
@@ -788,7 +764,7 @@ namespace Microsoft.Azure.Management.Automation
             {
                 throw new ValidationException(ValidationRules.CannotBeNull, "runbookContent");
             }
-            string apiVersion = "2018-06-30";
+            string apiVersion = "2022-08-08";
             // Tracing
             bool _shouldTrace = ServiceClientTracing.IsEnabled;
             string _invocationId = null;
@@ -875,7 +851,7 @@ namespace Microsoft.Azure.Management.Automation
                 ServiceClientTracing.SendRequest(_invocationId, _httpRequest);
             }
             cancellationToken.ThrowIfCancellationRequested();
-            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, System.Net.Http.HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false);
+            _httpResponse = await Client.HttpClient.SendAsync(_httpRequest, cancellationToken).ConfigureAwait(false);
             if (_shouldTrace)
             {
                 ServiceClientTracing.ReceiveResponse(_invocationId, _httpResponse);
@@ -913,17 +889,12 @@ namespace Microsoft.Azure.Management.Automation
                 throw ex;
             }
             // Create Result
-            var _result = new AzureOperationResponse<Stream,RunbookDraftReplaceContentHeaders>();
+            var _result = new AzureOperationHeaderResponse<RunbookDraftReplaceContentHeaders>();
             _result.Request = _httpRequest;
             _result.Response = _httpResponse;
             if (_httpResponse.Headers.Contains("x-ms-request-id"))
             {
                 _result.RequestId = _httpResponse.Headers.GetValues("x-ms-request-id").FirstOrDefault();
-            }
-            // Deserialize Response
-            if ((int)_statusCode == 200)
-            {
-                _result.Body = await _httpResponse.Content.ReadAsStreamAsync().ConfigureAwait(false);
             }
             try
             {
