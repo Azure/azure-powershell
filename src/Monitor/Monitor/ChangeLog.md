@@ -19,7 +19,9 @@
 -->
 
 ## Upcoming Release
-* Added breakingchange warning messages for 
+
+## Version 3.1.0
+* Added breaking change warning messages for 
     - `ActivityLogAlert`
     - `DiagnosticSetting`
     - `ScheduledQueryRule`

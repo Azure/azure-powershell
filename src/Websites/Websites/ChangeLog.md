@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.11.4
 * Fixed `Import-AzWebAppKeyVaultCertificate` to use certificate naming convention same as Az-CLI
 
 ## Version 2.11.3

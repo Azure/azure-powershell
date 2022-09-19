@@ -1006,9 +1006,7 @@ function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId)
 
 	# The previous command keeps polling until managed instance becomes ready. However, it can happen that the managed instance
 	# becomes ready but the create operation is still in progress. Because of that, we should wait until the operation is completed.
-	if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-		Start-Sleep -s 30
-	}
+	Start-TestSleep -Seconds 30
 
 	return $managedInstance
 }

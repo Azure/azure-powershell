@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 2.2.1
 * In the upcoming major breaking change release in October 2022, Az.EventHub would be migrating most cmdlets to a new format
 for a better powershell experience and as a result would witness breaking changes. Please refer our migration guide to know more https://go.microsoft.com/fwlink/?linkid=2204690.
 

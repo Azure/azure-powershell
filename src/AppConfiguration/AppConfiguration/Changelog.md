@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.2.0
 * Added cmdlets `Get-AzAppConfigurationDeletedStore` and `Clear-AzAppConfigurationDeletedStore`
 * Updated ApiVersion to 2022-05-01.
 
