@@ -286,40 +286,36 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     string phaseName = phase.Split(':')[0];
                     string scope = phase.Split(':')[1];
                     HashSet<string> scopes = influencedModuleInfo.ContainsKey(phaseName) ? influencedModuleInfo[phaseName] : new HashSet<string>();
-                    if (!scopes.Contains(AllModule))
+                    if (scope.Equals(AllModule))
                     {
-                        if (scope.Equals(AllModule))
+                        scopes.UnionWith(GetSelectedModuleList());
+                    }
+                    else
+                    {
+                        string moduleName = matchedModuleName == "" ? filePath.Split('/')[1] : matchedModuleName;
+                        if (scope.Equals(SingleModule))
                         {
-                            scopes.Clear();
-                            scopes.Add(AllModule);
+                            scopes.Add(moduleName);
+                        }
+                        else if (scope.Equals(DependenceModule))
+                        {
+                            scopes.UnionWith(GetDependenceModuleList(moduleName, csprojMap));
+                        }
+                        else if (scope.Equals(DependentModule))
+                        {
+                            scopes.UnionWith(GetDependentModuleList(moduleName, csprojMap));
+                        }
+                        else if (scope.Equals(RelatedModule))
+                        {
+                            scopes.UnionWith(GetDependenceModuleList(moduleName, csprojMap));
+                            scopes.UnionWith(GetDependentModuleList(moduleName, csprojMap));
                         }
                         else
                         {
-                            string moduleName = matchedModuleName == "" ? filePath.Split('/')[1] : matchedModuleName;
-                            if (scope.Equals(SingleModule))
-                            {
-                                scopes.Add(moduleName);
-                            }
-                            else if (scope.Equals(DependenceModule))
-                            {
-                                scopes.UnionWith(GetDependenceModuleList(moduleName, csprojMap));
-                            }
-                            else if (scope.Equals(DependentModule))
-                            {
-                                scopes.UnionWith(GetDependentModuleList(moduleName, csprojMap));
-                            }
-                            else if (scope.Equals(RelatedModule))
-                            {
-                                scopes.UnionWith(GetDependenceModuleList(moduleName, csprojMap));
-                                scopes.UnionWith(GetDependentModuleList(moduleName, csprojMap));
-                            }
-                            else
-                            {
-                                scopes.Add(scope);
-                            }
+                            scopes.Add(scope);
                         }
-                        influencedModuleInfo[phaseName] = scopes;
                     }
+                    influencedModuleInfo[phaseName] = scopes;
                 }
             }
             List<string> expectedKeyList = new List<string>()
