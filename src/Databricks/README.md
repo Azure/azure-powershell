@@ -47,13 +47,14 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
+branch: 53740f04d2b1f9fab8ba6b0bdc0fde9b178c5987
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 # lock the commit
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/blob/53740f04d2b1f9fab8ba6b0bdc0fde9b178c5987/specification/databricks/resource-manager/Microsoft.Databricks/preview/2022-04-01-preview/databricks.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/53740f04d2b1f9fab8ba6b0bdc0fde9b178c5987/specification/databricks/resource-manager/Microsoft.Databricks/preview/2022-04-01-preview/vnetpeering.json
-  - https://github.com/Azure/azure-rest-api-specs/blob/53740f04d2b1f9fab8ba6b0bdc0fde9b178c5987/specification/databricks/resource-manager/Microsoft.Databricks/preview/2022-04-01-preview/accessconnector.json
+  - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/preview/2022-04-01-preview/databricks.json
+  - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/preview/2022-04-01-preview/vnetpeering.json
+  - $(repo)/specification/databricks/resource-manager/Microsoft.Databricks/preview/2022-04-01-preview/accessconnector.json
 module-version: 1.1.0
 title: Databricks
 subject-prefix: $(service-name)
