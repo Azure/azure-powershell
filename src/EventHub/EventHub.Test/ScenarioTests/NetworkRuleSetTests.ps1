@@ -72,13 +72,13 @@ function NetworkRuleSetTests
 	Assert-AreEqual $getResult1.PublicNetworkAccess "Enabled"
 
 	Write-Debug "Remove a new IPRule to the default NetworkRuleSet"
-    $getResult =  Remove-AzEventHubIPRule -ResourceGroup $resourceGroupName -Name $namespaceName -IpMask "3.3.3.3"	
+    $getResult =  Remove-AzEventHubIPRule -ResourceGroup $resourceGroupName -Name $namespaceName -IpMask "3.3.3.3" -PassThru
 
 	Assert-AreEqual $getResult.IpRules.Count 2 "IPRules count did not matched after deleting one IPRule"
 	Assert-AreEqual $getResult.VirtualNetworkRules.Count 3 "VirtualNetworkRules count did not matched"
 
 	Write-Debug "Add a new VirtualNetworkRule to the default NetworkRuleSet"
-    $result =  Remove-AzEventHubVirtualNetworkRule -ResourceGroup $resourceGroupName -Name $namespaceName -SubnetId "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default"
+    $result =  Remove-AzEventHubVirtualNetworkRule -ResourceGroup $resourceGroupName -Name $namespaceName -SubnetId "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default" -PassThru
 	
 	Write-Debug "Delete NetworkRuleSet"
     $result =  Remove-AzEventHubNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName   
