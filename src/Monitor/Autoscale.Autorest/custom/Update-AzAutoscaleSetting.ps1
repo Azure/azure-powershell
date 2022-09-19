@@ -93,8 +93,9 @@ function Update-AzAutoscaleSetting {
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Path')]
         [System.String]
+        [Alias("AutoscaleSettingName")]
         # The autoscale setting name.
-        ${AutoscaleSettingName},
+        ${Name},
     
         [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Path')]
@@ -119,17 +120,11 @@ function Update-AzAutoscaleSetting {
     
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
+        [System.Boolean]
         # the enabled flag.
         # Specifies whether automatic scaling is enabled for the resource.
         # The default value is 'false'.
         ${Enabled},
-    
-        [Parameter()]
-        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-        [System.String]
-        # the name of the autoscale setting.
-        ${Name},
     
         [Parameter()]
         [AllowEmptyCollection()]
@@ -229,9 +224,8 @@ function Update-AzAutoscaleSetting {
         ${ProxyUseDefaultCredentials}
     )
     process {
-      try {
+      try {        
         $hasEnabled = $PSBoundParameters.Remove("Enabled")
-        $hasName = $PSBoundParameters.Remove("Name")
         $hasNotification = $PSBoundParameters.Remove("Notification")
         $hasPredictiveAutoscalePolicyScaleLookAheadTime = $PSBoundParameters.Remove("PredictiveAutoscalePolicyScaleLookAheadTime")
         $hasPredictiveAutoscalePolicyScaleMode = $PSBoundParameters.Remove("PredictiveAutoscalePolicyScaleMode")
@@ -252,9 +246,6 @@ function Update-AzAutoscaleSetting {
 
         if ($hasEnabled) {
           $AutoscaleSetting.Enabled = $Enabled
-        }
-        if ($hasName) {
-          $AutoscaleSetting.Name = $Name
         }
         if ($hasNotification) {
           $AutoscaleSetting.Notification = $Notification
@@ -282,11 +273,10 @@ function Update-AzAutoscaleSetting {
         }
 
         if ($PSCmdlet.ShouldProcess("AutoscaleSetting $($AutoscaleSetting.Name)", "Create or update")) {
-          Az.Autoscale.private\New-AzAutoscaleSetting_CreateViaIdentity -InputObject $AutoscaleSetting -Parameter $AutoscaleSetting @PSBoundParameters
+          Az.Autoscale.private\New-AzAutoscaleSetting_CreateViaIdentity @PSBoundParameters -InputObject $AutoscaleSetting -Parameter $AutoscaleSetting
         }
       } catch {
 
       }
     }
 }
-    
