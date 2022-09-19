@@ -85,6 +85,8 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string EnableUDPLogOptimization { get; set; }
 
+        public string RouteServerId { get; set; }
+
         [JsonIgnore]
         public string IpConfigurationsText
         {
