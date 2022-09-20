@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzFrontDoorCdnEndpointCustomDomain
 
 ## SYNOPSIS
-Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.This api isn't work for apex domain.
+Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Test-AzFrontDoorCdnEndpointCustomDomain -InputObject <ICdnIdentity> -HostName <S
 ```
 
 ## DESCRIPTION
-Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.This api isn't work for apex domain.
+Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
 
 ## EXAMPLES
 
@@ -192,7 +192,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IValidateCustomDomainOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IValidateCustomDomainOutput
 
 ## NOTES
 

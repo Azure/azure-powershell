@@ -105,7 +105,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRuleRequestHeaderAction
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.DeliveryRuleRequestHeaderAction
 
 ## NOTES
 

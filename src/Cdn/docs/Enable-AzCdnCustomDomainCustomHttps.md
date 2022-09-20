@@ -15,7 +15,7 @@ Enable https delivery of the custom domain.
 ### EnableViaIdentity (Default)
 ```
 Enable-AzCdnCustomDomainCustomHttps -InputObject <ICdnIdentity>
- -CustomDomainHttpsParameter <ICustomDomainHttpsParameters> [-DefaultProfile <PSObject>] [-PassThru]
+ -CustomDomainHttpsParameter <ICustomDomainHttpsParameters> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -23,7 +23,8 @@ Enable-AzCdnCustomDomainCustomHttps -InputObject <ICdnIdentity>
 ```
 Enable-AzCdnCustomDomainCustomHttps -CustomDomainName <String> -EndpointName <String> -ProfileName <String>
  -ResourceGroupName <String> -CustomDomainHttpsParameter <ICustomDomainHttpsParameters>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -47,12 +48,27 @@ Enable an AzureCDN custom domain under the AzureCDN endpoint
 
 ## PARAMETERS
 
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -CustomDomainHttpsParameter
 The JSON object that contains the properties to secure a custom domain.
 To construct, see NOTES section for CUSTOMDOMAINHTTPSPARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICustomDomainHttpsParameters
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ICustomDomainHttpsParameters
 Parameter Sets: (All)
 Aliases:
 
@@ -124,8 +140,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -PassThru
-Returns true when the command succeeds
+### -NoWait
+Run the command asynchronously
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -220,13 +236,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICustomDomainHttpsParameters
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ICustomDomainHttpsParameters
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.ICdnIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICustomDomain
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ICustomDomain
 
 ## NOTES
 

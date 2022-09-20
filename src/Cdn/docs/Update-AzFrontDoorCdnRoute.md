@@ -142,7 +142,7 @@ Domains referenced by this endpoint.
 To construct, see NOTES section for CUSTOMDOMAIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IActivatedResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IActivatedResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -372,7 +372,7 @@ rule sets referenced by this endpoint.
 To construct, see NOTES section for RULESET properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -453,7 +453,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRoute
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IRoute
 
 ## NOTES
 

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Test-AzFrontDoorCdnProfileHostNameAvailability
 
 ## SYNOPSIS
-Check the name availability of a host name.
+Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
 
 ## SYNTAX
 
@@ -26,7 +26,7 @@ Test-AzFrontDoorCdnProfileHostNameAvailability -InputObject <ICdnIdentity> -Host
 ```
 
 ## DESCRIPTION
-Check the name availability of a host name.
+Validates the custom domain mapping to ensure it maps to the correct CDN endpoint in DNS.
 
 ## EXAMPLES
 
@@ -176,7 +176,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.ICheckNameAvailabilityOutput
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.ICheckNameAvailabilityOutput
 
 ## NOTES
 

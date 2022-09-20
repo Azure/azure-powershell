@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzFrontDoorCdnOriginGroupResourceUsage
 
 ## SYNOPSIS
-Checks the quota and actual usage of the given AzureFrontDoor origin group under the given CDN profile.
+Checks the quota and actual usage of endpoints under the given CDN profile.
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-AzFrontDoorCdnOriginGroupResourceUsage -OriginGroupName <String> -ProfileNam
 ```
 
 ## DESCRIPTION
-Checks the quota and actual usage of the given AzureFrontDoor origin group under the given CDN profile.
+Checks the quota and actual usage of endpoints under the given CDN profile.
 
 ## EXAMPLES
 
@@ -151,7 +151,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IUsage
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IUsage
 
 ## NOTES
 
