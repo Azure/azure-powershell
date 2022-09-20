@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzApplicationGatewayRoutingRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Modifies a routing rule for an application gateway.
 
 ## SYNTAX
 
@@ -28,16 +28,19 @@ Set-AzApplicationGatewayRoutingRule -ApplicationGateway <PSApplicationGateway> -
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzApplicationGatewayRoutingRule** cmdlet modifies a routing rule.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Update a routing rule
 ```powershell
-PS C:\> {{ Add example code here }}
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Set-AzApplicationGatewayRoutingRule -ApplicationGateway $AppGw -Name "Rule01" -RuleType Basic -Priority 100 -BackendSettings $Setting -Listener $Listener -BackendAddressPool $Pool
 ```
 
-{{ Add example description here }}
+The first command gets the application gateway named ApplicationGateway01 and stores it in the $AppGw variable.
+The second command modifies the routing rule for the application gateway to use back-end settings specified in the $Setting variable, a listener specified in the $Listener variable, and a back-end address pool specified in the $Pool variable.
+
 
 ## PARAMETERS
 
@@ -221,3 +224,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzApplicationGatewayRoutingRule](./Add-AzApplicationGatewayRoutingRule.md)
+																
+[Get-AzApplicationGatewayRoutingRule](./Get-AzApplicationGatewayRoutingRule.md)
+																
+[New-AzApplicationGatewayRoutingRule](./New-AzApplicationGatewayRoutingRule.md)
+
+[Remove-AzApplicationGatewayRoutingRule](./Remove-AzApplicationGatewayRoutingRule.md)

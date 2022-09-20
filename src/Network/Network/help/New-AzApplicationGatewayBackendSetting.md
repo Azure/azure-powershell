@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzApplicationGatewayBackendSetting
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates back-end TCP\TLS setting for an application gateway.
 
 ## SYNTAX
 
@@ -20,16 +20,18 @@ New-AzApplicationGatewayBackendSetting -Name <String> -Port <Int32> -Protocol <S
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The New-AzApplicationGatewayBackendSetting cmdlet creates back-end TCP\TLS settings for an application gateway.
+Back-end settings are applied to all back-end servers in a pool.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create back-end TCP\TLS settings
 ```powershell
-PS C:\> {{ Add example code here }}
+$Setting = New-AzApplicationGatewayBackendSetting -Name "Setting01" -Port 80 -Protocol Tcp
 ```
 
-{{ Add example description here }}
+This command creates back-end settings named Setting01 on port 80, using the Tcp protocol
+The settings are stored in the $Setting variable.
 
 ## PARAMETERS
 
@@ -199,3 +201,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzApplicationGatewayBackendSetting](./Add-AzApplicationGatewayBackendSetting.md)
+																		  
+[Get-AzApplicationGatewayBackendSetting](./Get-AzApplicationGatewayBackendSetting.md)
+
+[Remove-AzApplicationGatewayBackendSetting](./Remove-AzApplicationGatewayBackendSetting.md)
+
+[Set-AzApplicationGatewayBackendSetting](./Set-AzApplicationGatewayBackendSetting.md)

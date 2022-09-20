@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzApplicationGatewayListener
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the TCP\TLS listener of an application gateway.
 
 ## SYNTAX
 
@@ -18,16 +18,25 @@ Get-AzApplicationGatewayListener [-Name <String>] -ApplicationGateway <PSApplica
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzApplicationGatewayListener** cmdlet gets the TCP\TLS listener of an application gateway.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get a specific TCP\TLS listener
 ```powershell
-PS C:\> {{ Add example code here }}
+$Appgw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$Listener = Get-AzApplicationGatewayListener -Name "Listener01" -ApplicationGateway $Appgw
 ```
 
-{{ Add example description here }}
+This command gets a TCP\TLS listener named Listener01.
+
+### Example 2: Get a list of TCP\TLS listeners
+```powershell
+$Appgw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$Listeners = Get-AzApplicationGatewayListener -ApplicationGateway $Appgw
+```
+
+This command gets a list of TCP\TLS listeners.
 
 ## PARAMETERS
 
@@ -90,3 +99,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzApplicationGatewayListener](./Add-AzApplicationGatewayListener.md)
+															 
+[New-AzApplicationGatewayListener](./New-AzApplicationGatewayListener.md)
+
+[Remove-AzApplicationGatewayListener](./Remove-AzApplicationGatewayListener.md)
+
+[Set-AzApplicationGatewayListener](./Set-AzApplicationGatewayListener.md)

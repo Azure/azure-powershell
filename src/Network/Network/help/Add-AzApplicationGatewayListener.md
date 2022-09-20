@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzApplicationGatewayListener
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Adds an listener to an application gateway.
 
 ## SYNTAX
 
@@ -29,16 +29,17 @@ Add-AzApplicationGatewayListener -ApplicationGateway <PSApplicationGateway> -Nam
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Add-AzApplicationGatewayListener** cmdlet adds a TCP\TLS listener to an application gateway.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Add a listener
 ```powershell
-PS C:\> {{ Add example code here }}
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Add-AzApplicationGatewayListener -ApplicationGateway $Appgw -Name "Listener01" -Protocol "TCP" -FrontendIpConfiguration $FIp01 -FrontendPort $FP01
 ```
 
-{{ Add example description here }}
+The first command gets the application gateway and stores it in the $AppGw variable.The second command adds the listener to the application gateway.
 
 ## PARAMETERS
 
@@ -237,3 +238,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzApplicationGatewayListener](./Get-AzApplicationGatewayListener.md)
+															 
+[New-AzApplicationGatewayListener](./New-AzApplicationGatewayListener.md)
+
+[Remove-AzApplicationGatewayListener](./Remove-AzApplicationGatewayListener.md)
+
+[Set-AzApplicationGatewayListener](./Set-AzApplicationGatewayListener.md)

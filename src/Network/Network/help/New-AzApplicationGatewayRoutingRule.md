@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzApplicationGatewayRoutingRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates a routing rule for an application gateway.
 
 ## SYNTAX
 
@@ -28,16 +28,16 @@ New-AzApplicationGatewayRoutingRule -Name <String> -RuleType <String> -Priority 
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+**The Add-AzApplicationGatewayRoutingRule** cmdlet creates a routing rule for an Azure application gateway.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a routing rule for an application gateway
 ```powershell
-PS C:\> {{ Add example code here }}
+$Rule = New-AzApplicationGatewayRoutingRule -Name "Rule01" -RuleType Basic -Priority 100 -BackendSettings $Setting -Listener $Listener -BackendAddressPool $Pool
 ```
 
-{{ Add example description here }}
+This command creates a basic routing rule named Rule01 and stores the result in the variable named $Rule.
 
 ## PARAMETERS
 
@@ -206,3 +206,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzApplicationGatewayRoutingRule](./Add-AzApplicationGatewayRoutingRule.md)
+																
+[Get-AzApplicationGatewayRoutingRule](./Get-AzApplicationGatewayRoutingRule.md)
+
+[Remove-AzApplicationGatewayRoutingRule](./Remove-AzApplicationGatewayRoutingRule.md)
+
+[Set-AzApplicationGatewayRoutingRule](./Set-AzApplicationGatewayRoutingRule.md)

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzApplicationGatewayListener
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes a TCP\TLS listener from an application gateway.
 
 ## SYNTAX
 
@@ -18,16 +18,21 @@ Remove-AzApplicationGatewayListener -Name <String> -ApplicationGateway <PSApplic
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzApplicationGatewayListener** cmdlet removes a TCP\TLS listener from an Azure application gateway.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove an application gateway TCP\TLS listener
 ```powershell
-PS C:\> {{ Add example code here }}
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+Remove-AzApplicationGatewayListener -ApplicationGateway $AppGw -Name "Listener02"
+Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
-{{ Add example description here }}
+The first command gets an application gateway and stores it in the $AppGw variable.
+The second command removes the TCP\TLS listener named Listener02 from the application gateway stored in $AppGw.
+The last command updates the application gateway.
+
 
 ## PARAMETERS
 
@@ -90,3 +95,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzApplicationGatewayListener](./Add-AzApplicationGatewayListener.md)
+															 
+[Get-AzApplicationGatewayListener](./Get-AzApplicationGatewayListener.md)
+															 
+[New-AzApplicationGatewayListener](./New-AzApplicationGatewayListener.md)
+															 
+[Set-AzApplicationGatewayListener](./Set-AzApplicationGatewayListener.md)

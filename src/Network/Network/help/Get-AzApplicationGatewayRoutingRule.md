@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzApplicationGatewayRoutingRule
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets the routing rule of an application gateway.
 
 ## SYNTAX
 
@@ -18,16 +18,27 @@ Get-AzApplicationGatewayRoutingRule [-Name <String>] -ApplicationGateway <PSAppl
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzApplicationGatewayRoutingRule** cmdlet gets the routing rule of an application gateway.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Get a specific routing rule
 ```powershell
-PS C:\> {{ Add example code here }}
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$Rule = Get-AzApplicationGatewayRoutingRule -Name "Rule01" -ApplicationGateway $AppGW
 ```
 
-{{ Add example description here }}
+The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
+The second command gets the routing rule named Rule01 from the Application Gateway stored in the variable named $AppGW.
+
+### Example 2: Get a list of routing rules
+```powershell
+$AppGW = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$Rules = Get-AzApplicationGatewayRoutingRule -ApplicationGateway $AppGW
+```
+
+The first command gets the Application Gateway named ApplicationGateway01 and stores the result in the variable named $AppGW.
+The second command gets a list of routing rules from the Application Gateway stored in the variable named $AppGW.
 
 ## PARAMETERS
 
@@ -90,3 +101,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzApplicationGatewayRoutingRule](./Add-AzApplicationGatewayRoutingRule.md)
+																
+[New-AzApplicationGatewayRoutingRule](./New-AzApplicationGatewayRoutingRule.md)
+
+[Remove-AzApplicationGatewayRoutingRule](./Remove-AzApplicationGatewayRoutingRule.md)
+
+[Set-AzApplicationGatewayRoutingRule](./Set-AzApplicationGatewayRoutingRule.md)

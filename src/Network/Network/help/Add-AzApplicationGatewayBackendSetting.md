@@ -8,7 +8,7 @@ schema: 2.0.0
 # Add-AzApplicationGatewayBackendSetting
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Adds back-end TCP\TLS settings to an application gateway.
 
 ## SYNTAX
 
@@ -20,21 +20,23 @@ Add-AzApplicationGatewayBackendSetting -ApplicationGateway <PSApplicationGateway
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Add-AzApplicationGatewayBackendSetting cmdlet adds back-end TCP\TLS settings to an application gateway.
+Back-end settings are applied to all back-end servers in the pool.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Add back-end TCP\TLS settings to an application gateway
 ```powershell
-PS C:\> {{ Add example code here }}
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Add-AzApplicationGatewayBackendSetting -ApplicationGateway $Appgw -Name "Setting01" -Port 88 -Protocol TCP
 ```
 
-{{ Add example description here }}
+The first command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.The second command adds back-end settings to the application gateway, setting the port to 88 and the protocol to TCP and names the settings Setting01.
 
 ## PARAMETERS
 
 ### -ApplicationGateway
-The applicationGateway
+Specifies the name of application gateway for which this cmdlet adds settings.
 
 ```yaml
 Type: PSApplicationGateway
@@ -214,3 +216,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Get-AzApplicationGatewayBackendSetting](./Get-AzApplicationGatewayBackendSetting.md)
+																		  
+[New-AzApplicationGatewayBackendSetting](./New-AzApplicationGatewayBackendSetting.md)
+
+[Remove-AzApplicationGatewayBackendSetting](./Remove-AzApplicationGatewayBackendSetting.md)
+
+[Set-AzApplicationGatewayBackendSetting](./Set-AzApplicationGatewayBackendSetting.md)

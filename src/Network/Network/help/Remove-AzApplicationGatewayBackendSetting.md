@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzApplicationGatewayBackendSetting
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Removes back-end TCP\TLS settings from an application gateway.
 
 ## SYNTAX
 
@@ -18,16 +18,19 @@ Remove-AzApplicationGatewayBackendSetting -Name <String> -ApplicationGateway <PS
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The Remove-AzApplicationGatewayBackendSetting cmdlet removes back-end TCP\TLS settings from an Azure application gateway.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove back-end TCP\TLS settings from an application gateway
 ```powershell
-PS C:\> {{ Add example code here }}
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+Remove-AzApplicationGatewayBackendSetting -ApplicationGateway $AppGw -Name "BackEndSetting02"
+Set-AzApplicationGateway -ApplicationGateway $AppGW
 ```
 
-{{ Add example description here }}
+The first command gets an application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
+The second command removes the back-end TCP\TLS setting named BackEndSetting02 from the application gateway stored in $AppGw. Finally, the third command updates the application gateway.
 
 ## PARAMETERS
 
@@ -90,3 +93,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzApplicationGatewayBackendSetting](./Add-AzApplicationGatewayBackendSetting.md)
+																		  
+[New-AzApplicationGatewayBackendSetting](./New-AzApplicationGatewayBackendSetting.md)
+																		  
+[Get-AzApplicationGatewayBackendSetting](./Get-AzApplicationGatewayBackendSetting.md)
+																		  
+[Set-AzApplicationGatewayBackendSetting](./Set-AzApplicationGatewayBackendSetting.md)

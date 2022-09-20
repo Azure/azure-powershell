@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzApplicationGatewayListener
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Creates an TCP\TLS listener for an application gateway.
 
 ## SYNTAX
 
@@ -29,16 +29,24 @@ New-AzApplicationGatewayListener -Name <String> [-FrontendIPConfigurationId <Str
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzApplicationGatewayListener** cmdlet creates an TCP\TLS listener for an Azure application gateway.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create an TCP listener
 ```powershell
-PS C:\> {{ Add example code here }}
+$Listener = New-AzApplicationGatewayListener -Name "Listener01" -Protocol "Tcp" -FrontendIpConfiguration $FIp01 -FrontendPort $FP01
 ```
 
-{{ Add example description here }}
+This command creates an Tcp listener named Listener01 and stores the result in the variable named $Listener.
+
+### Example 2: Create an TLS listener with SSL
+```powershell
+$Listener = New-AzApplicationGatewayListener -Name "Listener01" -Protocol "Tls" -FrontendIpConfiguration $FIp01 -FrontendPort $FP01 -SslCertificate $SSLCert01
+```
+
+This command creates an Tls listener that uses SSL offload and provides the SSL certificate in the $SSLCert01 variable.
+The command stores the result in the variable named $Listener.
 
 ## PARAMETERS
 
@@ -222,3 +230,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzApplicationGatewayListener](./Add-AzApplicationGatewayListener.md)
+															 
+[Get-AzApplicationGatewayListener](./Get-AzApplicationGatewayListener.md)
+
+[Remove-AzApplicationGatewayListener](./Remove-AzApplicationGatewayListener.md)
+
+[Set-AzApplicationGatewayListener](./Set-AzApplicationGatewayListener.md)

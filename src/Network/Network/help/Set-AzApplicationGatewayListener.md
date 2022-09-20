@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzApplicationGatewayListener
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Modifies a TCP\TLS listener for an application gateway.
 
 ## SYNTAX
 
@@ -27,18 +27,28 @@ Set-AzApplicationGatewayListener -ApplicationGateway <PSApplicationGateway> -Nam
  [-FrontendIPConfigurationId <String>] [-FrontendPortId <String>] [-SslCertificateId <String>]
  [-SslProfileId <String>] -Protocol <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
-
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzApplicationGatewayListener** cmdlet modifies a TCP\TLS listener for an Azure application gateway.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Set a TCP listener
 ```powershell
-PS C:\> {{ Add example code here }}
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Set-AzApplicationGatewayListener -ApplicationGateway $AppGw -Name "Listener01" -Protocol Tcp -FrontendIpConfiguration $FIP01 -FrontendPort 80
 ```
 
-{{ Add example description here }}
+The first command gets the application gateway named ApplicationGateway01 that belongs to the resource group named ResourceGroup01 and stores it in the $AppGw variable.
+The second command sets the listener for the gateway to use the front-end configuration stored in $FIP01 with the Tcp protocol on port 80.
+
+### Example 2: Add a TLS listener with SSL Certificate
+```powershell
+$AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
+$AppGw = Set-AzApplicationGatewayListener -ApplicationGateway $AppGw -Name "Listener01" -Protocol "Tls" -FrontendIpConfiguration $FIP01 -FrontendPort $FP01 -SslCertificate $SSLCert01
+```
+
+The first command gets the application gateway and stores it in the $AppGw variable.
+The second command adds the listener, which uses the Tls protocol, with SSL Certificates , to the application gateway.
 
 ## PARAMETERS
 
@@ -237,3 +247,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+
+[Add-AzApplicationGatewayListener](./Add-AzApplicationGatewayListener.md)
+															 
+[Get-AzApplicationGatewayListener](./Get-AzApplicationGatewayListener.md)
+															 
+[New-AzApplicationGatewayListener](./New-AzApplicationGatewayListener.md)
+
+[Remove-AzApplicationGatewayListener](./Remove-AzApplicationGatewayListener.md)
