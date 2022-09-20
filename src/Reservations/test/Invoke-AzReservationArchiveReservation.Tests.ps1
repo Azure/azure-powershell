@@ -15,11 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Invoke-AzReservationArchiveRe
 }
 
 Describe 'Invoke-AzReservationArchiveReservation' {
-    It 'Archive' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Archive' {
+        {
+            Invoke-AzReservationArchiveReservation -ReservationId "50000000-aaaa-bbbb-cccc-100000000003" -ReservationOrderId "30000000-aaaa-bbbb-cccc-100000000003"
+        } | Should -Not -Throw
     }
 
-    It 'ArchiveViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'ArchiveViaIdentity' {
+        { 
+            $param = @{
+                ReservationOrderId = "50000000-aaaa-bbbb-cccc-100000000005" 
+                ReservationId = "30000000-aaaa-bbbb-cccc-100000000005" 
+            }
+            Invoke-AzReservationArchiveReservation -InputObject $param
+        } | Should -Not -Throw
     }
 }
