@@ -1,84 +1,79 @@
 ---
 external help file:
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescope
+online version: https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationcalculaterefund
 schema: 2.0.0
 ---
 
-# Get-AzReservationAvailableScope
+# Invoke-AzReservationCalculateRefund
 
 ## SYNOPSIS
-Get Available Scopes for `Reservation`.\n
+Calculate price for returning `Reservations` if there are no policy errors.\n
 
 ## SYNTAX
 
-### AvailableExpanded (Default)
+### PostExpanded (Default)
 ```
-Get-AzReservationAvailableScope -ReservationId <String> -ReservationOrderId <String> [-Scope <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Available
-```
-Get-AzReservationAvailableScope -ReservationId <String> -ReservationOrderId <String>
- -Body <IAvailableScopeRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Invoke-AzReservationCalculateRefund -ReservationOrderId <String> [-Id <String>]
+ [-ReservationToReturnQuantity <Int32>] [-ReservationToReturnReservationId <String>] [-Scope <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### AvailableViaIdentity
+### Post
 ```
-Get-AzReservationAvailableScope -InputObject <IReservationsIdentity> -Body <IAvailableScopeRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzReservationCalculateRefund -ReservationOrderId <String> -Body <ICalculateRefundRequest>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### AvailableViaIdentityExpanded
+### PostViaIdentity
 ```
-Get-AzReservationAvailableScope -InputObject <IReservationsIdentity> [-Scope <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzReservationCalculateRefund -InputObject <IReservationsIdentity> -Body <ICalculateRefundRequest>
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+```
+
+### PostViaIdentityExpanded
+```
+Invoke-AzReservationCalculateRefund -InputObject <IReservationsIdentity> [-Id <String>]
+ [-ReservationToReturnQuantity <Int32>] [-ReservationToReturnReservationId <String>] [-Scope <String>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get Available Scopes for `Reservation`.\n
+Calculate price for returning `Reservations` if there are no policy errors.\n
 
 ## EXAMPLES
 
-### Example 1: List available reservation scope
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzReservationAvailableScope -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a  -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9 -Scope "/subscriptions/3f0487ff-27ca-4b9c-2a23-000770724b1b"
+{{ Add code here }}
 ```
 
 ```output
-Scope                                               Valid
------                                               -----
-/subscriptions/3f0487fd-27ca-4f9c-8a23-000770724b1b True
+{{ Add output here }}
 ```
 
-List available reservation scope
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Body
-Available scope
+.
 To construct, see NOTES section for BODY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAvailableScopeRequest
-Parameter Sets: Available, AvailableViaIdentity
+Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest
+Parameter Sets: Post, PostViaIdentity
 Aliases:
 
 Required: True
@@ -103,13 +98,28 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Id
+Fully qualified identifier of the reservation order being returned
+
+```yaml
+Type: System.String
+Parameter Sets: PostExpanded, PostViaIdentityExpanded
+Aliases: ReservationId
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -InputObject
 Identity Parameter
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
-Parameter Sets: AvailableViaIdentity, AvailableViaIdentityExpanded
+Parameter Sets: PostViaIdentity, PostViaIdentityExpanded
 Aliases:
 
 Required: True
@@ -119,12 +129,28 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -ReservationOrderId
+Order Id of the reservation
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Post, PostExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ReservationToReturnQuantity
+Quantity to be returned.
+Must be greater than zero.
+
+```yaml
+Type: System.Int32
+Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -134,30 +160,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ReservationId
-Id of the Reservation Item
+### -ReservationToReturnReservationId
+Fully qualified identifier of the Reservation being returned
 
 ```yaml
 Type: System.String
-Parameter Sets: Available, AvailableExpanded
+Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ReservationOrderId
-Order Id of the reservation
-
-```yaml
-Type: System.String
-Parameter Sets: Available, AvailableExpanded
-Aliases:
-
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -165,11 +176,12 @@ Accept wildcard characters: False
 ```
 
 ### -Scope
-.
+The scope of the refund, e.g.
+Reservation
 
 ```yaml
-Type: System.String[]
-Parameter Sets: AvailableExpanded, AvailableViaIdentityExpanded
+Type: System.String
+Parameter Sets: PostExpanded, PostViaIdentityExpanded
 Aliases:
 
 Required: False
@@ -215,13 +227,13 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAvailableScopeRequest
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundRequest
 
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ISubscriptionScopeProperties
+### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ICalculateRefundResponse
 
 ## NOTES
 
@@ -232,8 +244,11 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-`BODY <IAvailableScopeRequest>`: Available scope
-  - `[Scope <String[]>]`: 
+`BODY <ICalculateRefundRequest>`: .
+  - `[Id <String>]`: Fully qualified identifier of the reservation order being returned
+  - `[ReservationToReturnQuantity <Int32?>]`: Quantity to be returned. Must be greater than zero.
+  - `[ReservationToReturnReservationId <String>]`: Fully qualified identifier of the Reservation being returned
+  - `[Scope <String>]`: The scope of the refund, e.g. Reservation
 
 `INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
