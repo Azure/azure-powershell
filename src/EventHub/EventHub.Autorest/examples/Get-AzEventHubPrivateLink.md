@@ -1,6 +1,9 @@
 ### Example 1: Get private links associated with an EventHub namespace
 ```powershell
-PS C:\>  Get-AzEventHubPrivateLink -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+Get-AzEventHubPrivateLink -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+```
+
+```output
 GroupId          : namespace
 Id               : subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateLinkResources/namespace
 Name             : namespace
