@@ -23,6 +23,8 @@ using Microsoft.Azure.Management.Synapse.Models;
 using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using System.Management.Automation;
 using static Microsoft.Azure.Commands.Synapse.Models.SynapseConstants;
 using SecureString = System.Security.SecureString;
@@ -80,6 +82,13 @@ namespace Microsoft.Azure.Commands.Synapse
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.GitRepository)]
         [ValidateNotNull]
         public PSWorkspaceRepositoryConfiguration GitRepository { get; set; }
+        
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.UserAssignedIdentityAction)]
+        public SynapseConstants.UserAssignedManagedIdentityActionType UserAssignedIdentityAction { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.UserAssignedIdentityId)]
+        [ValidateNotNull]
+        public List<string> UserAssignedIdentityId { get; set; }
 
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.PublicNetworkAccess)]
         [ValidateNotNull]
@@ -127,7 +136,7 @@ namespace Microsoft.Azure.Commands.Synapse
             WorkspacePatchInfo patchInfo = new WorkspacePatchInfo();
             patchInfo.Tags = this.IsParameterBound(c => c.Tag) ? TagsConversionHelper.CreateTagDictionary(this.Tag, validate: true) : TagsConversionHelper.CreateTagDictionary(this.InputObject?.Tags, validate:true);
             patchInfo.SqlAdministratorLoginPassword = this.IsParameterBound(c => c.SqlAdministratorLoginPassword) ? this.SqlAdministratorLoginPassword.ConvertToString() : null;
-            patchInfo.ManagedVirtualNetworkSettings = this.IsParameterBound(c => c.ManagedVirtualNetwork) ? this.ManagedVirtualNetwork?.ToSdkObject() : this.InputObject?.ManagedVirtualNetworkSettings?.ToSdkObject();
+            patchInfo.ManagedVirtualNetworkSettings = this.IsParameterBound(c => c.ManagedVirtualNetwork) ? this.ManagedVirtualNetwork?.ToSdkObject() : this.InputObject?.ManagedVirtualNetworkSettings?.ToSdkObject();           
             string encrptionKeyName = this.IsParameterBound(c => c.EncryptionKeyName) ? this.EncryptionKeyName : this.InputObject?.Encryption?.CustomerManagedKeyDetails?.Key?.Name;
             patchInfo.Encryption = !string.IsNullOrEmpty(encrptionKeyName) ? new EncryptionDetails
             {
@@ -141,6 +150,47 @@ namespace Microsoft.Azure.Commands.Synapse
             } : null;
             patchInfo.WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.GitRepository) ? this.GitRepository.ToSdkObject() : null;
             patchInfo.PublicNetworkAccess = this.IsParameterBound(c => c.EnablePublicNetworkAccess) ? (this.EnablePublicNetworkAccess ? PublicNetworkAccess.Enabled : PublicNetworkAccess.Disabled): existingWorkspace.PublicNetworkAccess;
+
+            if ((!this.IsParameterBound(c => c.UserAssignedIdentityAction) && this.IsParameterBound(c => c.UserAssignedIdentityId))
+               || ((this.IsParameterBound(c => c.UserAssignedIdentityAction) && !this.IsParameterBound(c => c.UserAssignedIdentityId))))
+            {
+                throw new AzPSInvalidOperationException(Resources.FailedToValidateUserAssignedIdentityParameter);
+            }
+
+            if (this.IsParameterBound(c => c.UserAssignedIdentityAction) && this.IsParameterBound(c => c.UserAssignedIdentityId))
+            {
+                patchInfo.Identity = existingWorkspace.Identity;
+                patchInfo.Identity.Type = ResourceIdentityType.SystemAssignedUserAssigned;
+                if (patchInfo.Identity.UserAssignedIdentities == null)
+                {
+                    patchInfo.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedManagedIdentity>();
+                }
+
+                if (this.UserAssignedIdentityAction == SynapseConstants.UserAssignedManagedIdentityActionType.Add)
+                {
+                    UserAssignedIdentityId.Where(identity => !patchInfo.Identity.UserAssignedIdentities.ContainsKey(identity))?.ForEach(
+                        item => patchInfo.Identity.UserAssignedIdentities.Add(item, new UserAssignedManagedIdentity()));
+                }
+                else if (this.UserAssignedIdentityAction == SynapseConstants.UserAssignedManagedIdentityActionType.Remove)
+                {
+                    UserAssignedIdentityId.Where(identity => patchInfo.Identity.UserAssignedIdentities.ContainsKey(identity))?.ForEach(
+                        item => patchInfo.Identity.UserAssignedIdentities[item] = null);
+                }
+                else if (this.UserAssignedIdentityAction == SynapseConstants.UserAssignedManagedIdentityActionType.Set)
+                {
+                    patchInfo.Identity.UserAssignedIdentities.Where(identity => !UserAssignedIdentityId.Contains(identity.Key))?.ForEach(
+                        item => patchInfo.Identity.UserAssignedIdentities[item.Key] = null);
+
+                    UserAssignedIdentityId.Where(identity => !patchInfo.Identity.UserAssignedIdentities.ContainsKey(identity))?.ForEach(
+                        item => patchInfo.Identity.UserAssignedIdentities.Add(item, new UserAssignedManagedIdentity()));
+                }
+
+                if (patchInfo.Identity.UserAssignedIdentities.All(identity => identity.Value == null))
+                {
+                    patchInfo.Identity.Type = ResourceIdentityType.SystemAssigned;
+                    patchInfo.Identity.UserAssignedIdentities = null;
+                }
+            }
 
             if (ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseWorkspace, this.Name, this.ResourceGroupName)))
             {
