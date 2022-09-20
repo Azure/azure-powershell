@@ -59,6 +59,28 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The customIpPrefix ASN code.")]
+        public string Asn { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The customIpPrefix GEO code.")]
+        [ValidateSet(
+            MNM.Geo.AFRI,
+            MNM.Geo.APAC,
+            MNM.Geo.AQ,
+            MNM.Geo.EURO,
+            MNM.Geo.LATAM,
+            MNM.Geo.ME,
+            MNM.Geo.NAM,
+            MNM.Geo.OCEANIA,
+            IgnoreCase = true)]
+        public string Geo { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Signed message for WAN validation.",
             ValueFromPipelineByPropertyName = true)]
         public string SignedMessage { get; set; }
@@ -68,6 +90,12 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Authorization message for WAN validation.",
             ValueFromPipelineByPropertyName = true)]
         public string AuthorizationMessage { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "Using expressRoute advertise.",
+            ValueFromPipelineByPropertyName = true)]
+        public SwitchParameter ExpressRouteAdvertise { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -118,7 +146,10 @@ namespace Microsoft.Azure.Commands.Network
                 Zones = this.Zone?.ToList(),
                 SignedMessage = this.SignedMessage,
                 AuthorizationMessage = this.AuthorizationMessage,
-                CustomIpPrefixParent = this.CustomIpPrefixParent
+                CustomIpPrefixParent = this.CustomIpPrefixParent,
+                Geo = this.Geo,
+                Asn = this.Asn,
+                ExpressRouteAdvertise = this.ExpressRouteAdvertise
             };
 
             var sdkModel = NetworkResourceManagerProfile.Mapper.Map<MNM.CustomIpPrefix>(psModel);
