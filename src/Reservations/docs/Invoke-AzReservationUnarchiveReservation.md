@@ -29,27 +29,15 @@ Unarchiving a `Reservation` moves it to the state it was before archiving.\n
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Unarchive Reservation which is in cancelled/expired/failed state
 ```powershell
-{{ Add code here }}
+Invoke-AzReservationUnarchiveReservation -ReservationId "50000000-aaaa-bbbb-cccc-100000000003" -ReservationOrderId "30000000-aaaa-bbbb-cccc-100000000003"
 ```
 
 ```output
-{{ Add output here }}
+200
 ```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Unarchive Reservation which is in cancelled/expired/failed state
 
 ## PARAMETERS
 
