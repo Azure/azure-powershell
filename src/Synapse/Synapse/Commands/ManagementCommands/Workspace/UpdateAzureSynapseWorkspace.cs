@@ -24,6 +24,7 @@ using Microsoft.WindowsAzure.Commands.Common;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections;
 using System.Management.Automation;
+using static Microsoft.Azure.Commands.Synapse.Models.SynapseConstants;
 using SecureString = System.Security.SecureString;
 
 namespace Microsoft.Azure.Commands.Synapse
@@ -80,6 +81,10 @@ namespace Microsoft.Azure.Commands.Synapse
         [ValidateNotNull]
         public PSWorkspaceRepositoryConfiguration GitRepository { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = HelpMessages.PublicNetworkAccess)]
+        [ValidateNotNull]
+        public bool EnablePublicNetworkAccess { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = HelpMessages.AsJob)]
         public SwitchParameter AsJob { get; set; }
 
@@ -135,6 +140,7 @@ namespace Microsoft.Azure.Commands.Synapse
                 }
             } : null;
             patchInfo.WorkspaceRepositoryConfiguration = this.IsParameterBound(c => c.GitRepository) ? this.GitRepository.ToSdkObject() : null;
+            patchInfo.PublicNetworkAccess = this.IsParameterBound(c => c.EnablePublicNetworkAccess) ? (this.EnablePublicNetworkAccess ? PublicNetworkAccess.Enabled : PublicNetworkAccess.Disabled): existingWorkspace.PublicNetworkAccess;
 
             if (ShouldProcess(this.Name, string.Format(Resources.UpdatingSynapseWorkspace, this.Name, this.ResourceGroupName)))
             {

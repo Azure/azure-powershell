@@ -14,16 +14,14 @@ Updates a private endpoint connection state on private link service.
 
 ### ByResourceId (Default)
 ```
-Set-AzPrivateEndpointConnection -ResourceId <String>
- -PrivateLinkServiceConnectionState <String> [-Description <String>]
+Set-AzPrivateEndpointConnection -ResourceId <String> -PrivateLinkServiceConnectionState <String> [-Description <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ByResource
 ```
-Set-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String> [-PrivateLinkResourceType <String>]
- -PrivateLinkServiceConnectionState <String> [-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Set-AzPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -ServiceName <String> -PrivateLinkResourceType <String> -PrivateLinkServiceConnectionState <String>
+ [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -33,7 +31,7 @@ The **Set-AzPrivateEndpointConnection** cmdlet updates a private endpoint connec
 
 ### Example 1
 ```powershell
-Set-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService -PrivateLinkServiceConnectionState "Approved"
+Set-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService -PrivateLinkResourceType Microsoft.Network/privateLinkServices -PrivateLinkServiceConnectionState "Approved"
 ```
 
 This example updates a private endpoint connection state to Approved.
@@ -93,10 +91,10 @@ Type: System.String
 Parameter Sets: ByResource
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: 'Microsoft.Network/privateLinkServices'
-Accept pipeline input: True (ByPropertyName)
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

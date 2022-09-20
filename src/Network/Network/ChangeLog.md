@@ -19,10 +19,59 @@
 --->
 
 ## Upcoming Release
+
+* Added `EnableUDPLogOptimization` parameter to `AzureFirewall`
+    - `New-AzFirewall`
+* Replaced `IdentifyTopFatFlow` parameter with 'EnableFatFlowLogging' parameter  to `AzureFirewall`
+    - `New-AzFirewall`
+* Fixed a bug not able to add MSSQL application rules to an AZURE FIREWALL POLICY
+
+* Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
+    - `New-AzLoadBalancer`
+
+## Version 4.20.1
+* Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
+
+## Version 4.20.0
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
-* Added message in breaking change attribute to notify that public ip address and load balancer sku default behaviour will be changed
+
+* Added message in breaking change attribute to notify that public ip address sku default behaviour will be changed
     - `New-AzLoadBalancer`
     - `New-AzPublicIpAddress`
+
+* Fixed required parameter `PrivateLinkResourceType` missing issue for the following cmdlets [#18655]
+    - `Get-AzPrivateEndpointConnection`
+    - `Set-AzPrivateEndpointConnection`
+    - `Remove-AzPrivateEndpointConnection`
+    - `Approve-AzPrivateEndpointConnection`
+    - `Deny-AzPrivateEndpointConnection`
+* Added breaking change attribute to notify that public ip address sku default behavior will be changed
+    - `New-AzPublicIpAddress`
+    - `New-AzLoadBalancer`
+* Onboard Azure Virtual Network Manager Cmdlets
+    - `New/Get/Remove/Set-AzNetworkManager` 
+    - `New/Get/Remove/Set-AzNetworkManagerGroup` 
+    - `New/Get/Remove/Set-AzNetworkManagerConnectivityConfiguration` 
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityAdminConfiguration` 
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityAdminRuleCollection` 
+    - `New/Get/Remove/Set-AzNetworkManagerSecurityAdminRule` 
+    - `Get-AzNetworkManagerActiveConnectivityConfiguration` 
+    - `Get-AzNetworkManagerActiveSecurityAdminRule` 
+    - `Get-AzNetworkManagerEffectiveConnectivityConfiguration` 
+    - `Get-AzNetworkManagerEffectiveSecurityAdminRule` 
+    - `Deploy-AzNetworkManagerCommit` 
+    - `Get-AzNetworkManagerDeploymentStatus` 
+    - `New-AzNetworkManagerAddressPrefixItem` 
+    - `New-AzNetworkManagerScope` 
+    - `New-AzNetworkManagerSecurityGroupItem`
+    - `New-AzNetworkManagerHub` 
+    - `New-AzNetworkManagerConnectivityGroupItem`
+    - `New/Get/Remove-AzNetworkManagerStaticMember` 
+    - `New/Get/Remove/Set-AzNetworkManagerScopeConnection` 
+    - `New/Get/Remove/Set-AzNetworkManagerSubscriptionConnection` 
+    - `New/Get/Remove/Set-AzNetworkManagerManagementGroupConnection` 
+* Onboard AgFoodPlatform to Private Link Common Cmdlets
+* Onboard Project Oak Forest to Private Link Common Cmdlets
 
 ## Version 4.19.0
 * Updated cmdlets to add new property of `ExplicitProxy` in Azure Firewall Policy.

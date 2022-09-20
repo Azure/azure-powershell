@@ -16,16 +16,20 @@ Update a workspace for Grafana resource.
 ```
 Update-AzGrafana -Name <String> -ResourceGroupName <String> [-SubscriptionId <String>] [-ApiKey <ApiKey>]
  [-DeterministicOutboundIP <DeterministicOutboundIP>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
- [-ZoneRedundancy <ZoneRedundancy>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityUserAssignedIdentity <Hashtable>]
+ [-MonitorWorkspaceIntegration <IAzureMonitorWorkspaceIntegration[]>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-ZoneRedundancy <ZoneRedundancy>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
 Update-AzGrafana -InputObject <IDashboardIdentity> [-ApiKey <ApiKey>]
  [-DeterministicOutboundIP <DeterministicOutboundIP>] [-IdentityType <ManagedServiceIdentityType>]
- [-IdentityUserAssignedIdentity <Hashtable>] [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>]
- [-ZoneRedundancy <ZoneRedundancy>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-IdentityUserAssignedIdentity <Hashtable>]
+ [-MonitorWorkspaceIntegration <IAzureMonitorWorkspaceIntegration[]>]
+ [-PublicNetworkAccess <PublicNetworkAccess>] [-Tag <Hashtable>] [-ZoneRedundancy <ZoneRedundancy>]
+ [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -151,6 +155,22 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -MonitorWorkspaceIntegration
+The MonitorWorkspaceIntegration of Azure Managed Grafana.
+To construct, see NOTES section for MONITORWORKSPACEINTEGRATION properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -303,6 +323,9 @@ To create the parameters described below, construct a hash table containing the 
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[WorkspaceName <String>]`: The workspace name of Azure Managed Grafana.
+
+`MONITORWORKSPACEINTEGRATION <IAzureMonitorWorkspaceIntegration[]>`: The MonitorWorkspaceIntegration of Azure Managed Grafana.
+  - `[AzureMonitorWorkspaceResourceId <String>]`: The resource Id of the connected Azure Monitor Workspace.
 
 ## RELATED LINKS
 

@@ -18,6 +18,26 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Replaced "Microsoft.Azure.Management.Storage" SDK reference to the generated SDK code
+
+## Version 4.9.0
+* Supported to create or update Storage account with Azure Files Active Directory Domain Service Kerberos Authentication
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
+* Supported create/upgrade storage account by enable sftp and enable localuser
+    -  `New-AzStorageAccount`
+    -  `Set-AzStorageAccount`
+* Supported manage local user of a storage account
+    -  `Set-AzStorageLocalUser`
+    -  `Get-AzStorageLocalUser`
+    -  `Remove-AzStorageLocalUser`
+    -  `New-AzStorageLocalUserSshPassword`
+    -  `Get-AzStorageLocalUserKey`
+    -  `New-AzStorageLocalUserSshPublicKey`
+    -  `New-AzStorageLocalUserPermissionScope`
+* Supported soft delete DataLake Gen2 item
+    - `Get-AzDataLakeGen2DeletedItem`
+    - `Restore-AzDataLakeGen2DeletedItem`
 
 ## Version 4.8.0
 * Added check for storage account sas token is secured with the storage account key.

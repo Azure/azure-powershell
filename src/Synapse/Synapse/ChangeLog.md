@@ -19,6 +19,10 @@
 -->
 
 ## Upcoming Release
+* Added EnablePublicNetworkAccess parameter to `New-AzureSynapseWorkspace` and `Update-AzSynapseWorkspace`
+
+## Version 1.6.0
+* Updated `New-AzSynapseSparkPool` and `Update-AzSynapseSparkPool` to support for setting spark pool dynamic executor allocation by `-EnableDynamicExecutorAllocation`
 
 ## Version 1.5.0
 * Set `ResourceGroupName` as optional for `Set-AzSynapseSqlAuditSetting` cmdlet

@@ -181,7 +181,7 @@ function Get-SqlBlobAuditingTestEnvironmentParameters ($testSuffix)
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
 			  perfLevel = 'DW200c';
-			  location = "canadacentral";
+			  location = "eastus";
 			  eventHubNamespace = "audit-cmdlet-event-hub-ns" + $testSuffix
 			  logworkspaceName = "audit-cmdlet-logworkspace" +$testSuffix
 			  storageAccountResourceId = "/subscriptions/" + $subscriptionId + "/resourceGroups/" + "audit-cmdlet-test-rg" + $testSuffix + "/providers/Microsoft.Storage/storageAccounts/" + "sqlstorage" + $testSuffix

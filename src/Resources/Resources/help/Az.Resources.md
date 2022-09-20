@@ -252,7 +252,7 @@ Creates key credentials or password credentials for an service principal.
 Adds new entity to users
 
 ### [New-AzDeployment](New-AzDeployment.md)
-Create a deployment
+Create a deployment at the current subscription scope.
 
 ### [New-AzManagedApplication](New-AzManagedApplication.md)
 Creates an Azure managed application.

@@ -83,7 +83,7 @@ namespace Microsoft.Azure.Commands.TestFx
         /// <summary>
         /// A raw JWT token for AAD authentication
         /// </summary>
-        public const string RawTokenKey = "VidaiTestFxToken";
+        public const string RawTokenKey = "RawToken";
 
         /// <summary>
         /// A raw JWT token for Graph authentication

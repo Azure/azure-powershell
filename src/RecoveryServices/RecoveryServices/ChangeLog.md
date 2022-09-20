@@ -18,6 +18,17 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Removed AFEC feature check for Archive smart tiering
+
+## Version 5.6.0
+* Added support for Archive smart tiering for AzureVM and MSSQL workloads.
+
+## Version 5.5.0
+* Fixed GetAzRecoveryServicesVaultSettingsFile cmdlet used for downloading vault credential file.
+* Fixed issue in Disable-AzRecoveryServicesBackupProtection cmdlet.
+* Fixed issue in Enable-AzRecoveryServicesBackupProtection cmdlet.
+* Fixed output container in re-registration scenario for Register-AzRecoveryServicesBackupContainer cmdlet.
+* Added support for Enabling/Disabling the azure monitor and classic alerts for recovery services vault.
 
 ## Version 5.4.1
 * Fixed delay in long running operations [#18567]

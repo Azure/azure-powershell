@@ -41,6 +41,20 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Owned)]
         public string Endpoint { get => this._endpoint; }
 
+        /// <summary>Backing field for <see cref="GrafanaIntegration" /> property.</summary>
+        private Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations _grafanaIntegration;
+
+        /// <summary>
+        /// GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards,
+        /// alerting defaults) for common monitoring scenarios.
+        /// </summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Owned)]
+        internal Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations GrafanaIntegration { get => (this._grafanaIntegration = this._grafanaIntegration ?? new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.GrafanaIntegrations()); set => this._grafanaIntegration = value; }
+
+        /// <summary>The MonitorWorkspaceIntegration of Azure Managed Grafana.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Origin(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.PropertyOrigin.Inlined)]
+        public Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[] GrafanaIntegrationAzureMonitorWorkspaceIntegration { get => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrationsInternal)GrafanaIntegration).AzureMonitorWorkspaceIntegration; set => ((Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrationsInternal)GrafanaIntegration).AzureMonitorWorkspaceIntegration = value ?? null /* arrayOf */; }
+
         /// <summary>Backing field for <see cref="GrafanaVersion" /> property.</summary>
         private string _grafanaVersion;
 
@@ -50,6 +64,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
 
         /// <summary>Internal Acessors for Endpoint</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal.Endpoint { get => this._endpoint; set { {_endpoint = value;} } }
+
+        /// <summary>Internal Acessors for GrafanaIntegration</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal.GrafanaIntegration { get => (this._grafanaIntegration = this._grafanaIntegration ?? new Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.GrafanaIntegrations()); set { {_grafanaIntegration = value;} } }
 
         /// <summary>Internal Acessors for GrafanaVersion</summary>
         string Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafanaPropertiesInternal.GrafanaVersion { get => this._grafanaVersion; set { {_grafanaVersion = value;} } }
@@ -140,6 +157,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         SerializedName = @"endpoint",
         PossibleTypes = new [] { typeof(string) })]
         string Endpoint { get;  }
+        /// <summary>The MonitorWorkspaceIntegration of Azure Managed Grafana.</summary>
+        [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
+        Required = false,
+        ReadOnly = false,
+        Description = @"The MonitorWorkspaceIntegration of Azure Managed Grafana.",
+        SerializedName = @"azureMonitorWorkspaceIntegrations",
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration) })]
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[] GrafanaIntegrationAzureMonitorWorkspaceIntegration { get; set; }
         /// <summary>The Grafana software version.</summary>
         [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Runtime.Info(
         Required = false,
@@ -202,6 +227,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801
         Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.DeterministicOutboundIP? DeterministicOutboundIP { get; set; }
         /// <summary>The endpoint of the Grafana instance.</summary>
         string Endpoint { get; set; }
+        /// <summary>
+        /// GrafanaIntegrations is a bundled observability experience (e.g. pre-configured data source, tailored Grafana dashboards,
+        /// alerting defaults) for common monitoring scenarios.
+        /// </summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IGrafanaIntegrations GrafanaIntegration { get; set; }
+        /// <summary>The MonitorWorkspaceIntegration of Azure Managed Grafana.</summary>
+        Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[] GrafanaIntegrationAzureMonitorWorkspaceIntegration { get; set; }
         /// <summary>The Grafana software version.</summary>
         string GrafanaVersion { get; set; }
         /// <summary>List of outbound IPs if deterministicOutboundIP is enabled.</summary>

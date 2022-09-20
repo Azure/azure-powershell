@@ -2,12 +2,12 @@
   {
     "alias": "Container Apps",
     "module": "App"
-  }, 
+  },
   {
     "alias": "Dashboard",
     "module": "Dashboard",
     "group": "Grafana"
-  },  
+  },
   {
     "alias": "Confidential Ledger",
     "module": "ConfidentialLedger"
@@ -573,7 +573,7 @@
   },
   {
     "regex": "ImportExport",
-    "alias": "Import/Export"
+    "alias": "ImportExport"
   },
   {
     "regex": "Functions",
@@ -752,7 +752,19 @@
     "module": "ServiceLinker"
   },
   {
+    "module": "StorageMover",
+    "alias": "Storage Mover"
+  },
+  {
     "alias": "NetworkFunction",
     "module": "NetworkFunction"
+  },
+  {
+    "module": "DynatraceObservability",
+    "alias": "DynatraceObservability"
+  },
+  {
+    "module": "DeviceUpdate",
+    "alias": "DeviceUpdate"
   }
 ]
