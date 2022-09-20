@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusAuthorizationRuleSASToken
 
 ## SYNOPSIS
-Generates a SAS tolen for Azure servicebus authorization rule of namespace/queue/topic. 
+Generates a SAS token for Azure servicebus authorization rule of namespace/queue/topic. 
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ $EndTime = $StartTime.AddHours(2.0)
 $SasToken = New-AzServiceBusAuthorizationRuleSASToken -AuthorizationRuleId $updatedAuthRule.Id  -KeyType Primary -ExpiryTime $EndTime -StartTime $StartTime
 ```
 
-Generate SAS token for the given authorixation rule for Namespace with start and expiry time..
+Generate SAS token for the given authorization rule for Namespace with start and expiry time..
 
 ### Example 2
 ```powershell
