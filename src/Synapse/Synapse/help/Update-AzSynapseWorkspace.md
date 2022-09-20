@@ -17,8 +17,9 @@ Updates a Synapse Analytics workspace.
 Update-AzSynapseWorkspace [-ResourceGroupName <String>] -Name <String> [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
  [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
- [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnablePublicNetworkAccess <Boolean>] [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByInputObjectParameterSet
@@ -26,8 +27,9 @@ Update-AzSynapseWorkspace [-ResourceGroupName <String>] -Name <String> [-Tag <Ha
 Update-AzSynapseWorkspace -InputObject <PSSynapseWorkspace> [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
  [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
- [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnablePublicNetworkAccess <Boolean>] [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### SetByResourceIdParameterSet
@@ -35,8 +37,9 @@ Update-AzSynapseWorkspace -InputObject <PSSynapseWorkspace> [-Tag <Hashtable>]
 Update-AzSynapseWorkspace -ResourceId <String> [-Tag <Hashtable>]
  [-SqlAdministratorLoginPassword <SecureString>] [-ManagedVirtualNetwork <PSManagedVirtualNetworkSettings>]
  [-EncryptionKeyName <String>] [-GitRepository <PSWorkspaceRepositoryConfiguration>]
- [-EnablePublicNetworkAccess <Boolean>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-EnablePublicNetworkAccess <Boolean>] [-UserAssignedIdentityAction <UserAssignedManagedIdentityActionType>]
+ [-UserAssignedIdentityId <System.Collections.Generic.List`1[System.String]>] [-AsJob]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -80,6 +83,45 @@ Update-AzSynapseWorkspace -Name ContosoWorkspace -EnablePublicNetworkAccess $Tru
 ```
 
 This commands updates the specififed Azure Synapse Analytics workspace to enable public network access.
+
+### Example 6
+```powershell
+$uamis = Get-AzUserAssignedIdentity -ResourceGroupName bigdataqa
+$uamilist = New-Object System.Collections.Generic.List[string]
+foreach($uami in $uamis){
+	$uamilist.Add($uami.Id)
+}
+
+Update-AzSynapseWorkspace -Name ContosoWorkspace -UserAssignedIdentityAction Add -UserAssignedIdentityId $uamilist
+```
+
+This commands updates workspace to add user assigned managed identites in $uamilist.
+
+### Example 7
+```powershell
+$uamis = Get-AzUserAssignedIdentity -ResourceGroupName bigdataqa
+$uamilist = New-Object System.Collections.Generic.List[string]
+foreach($uami in $uamis){
+	$uamilist.Add($uami.Id)
+}
+
+Update-AzSynapseWorkspace -Name ContosoWorkspace -UserAssignedIdentityAction Remove -UserAssignedIdentityId $uamilist[0]
+```
+
+This commands removes user assigned managed identites $uamilist[0] from workspace.
+
+### Example 8
+```powershell
+$uamis = Get-AzUserAssignedIdentity -ResourceGroupName bigdataqa
+$uamilist = New-Object System.Collections.Generic.List[string]
+foreach($uami in $uamis){
+	$uamilist.Add($uami.Id)
+}
+
+Update-AzSynapseWorkspace -Name ContosoWorkspace -UserAssignedIdentityAction Set -UserAssignedIdentityId $uamilist
+```
+
+This commands updates workspace with user assigned managed identites $uamilist that will cover current identities.
 
 ## PARAMETERS
 
@@ -253,6 +295,42 @@ A string,string dictionary of tags associated with the resource.
 
 ```yaml
 Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityAction
+Action must be specified when you add/remove/set user assigned managed identities for workspace. 
+The supported actions are:
+Add
+Remove
+Set
+Add means to add user assigned managed identities for workspace, Remove means to remove user assigned managed identities from workspace, Set can be used when you want to add and remove user assigned managed identities at the same time.
+
+```yaml
+Type: Microsoft.Azure.Commands.Synapse.Models.SynapseConstants+UserAssignedManagedIdentityActionType
+Parameter Sets: (All)
+Aliases:
+Accepted values: Add, Remove, Set
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentityId
+User assigned managed identity Id for workspace.
+
+```yaml
+Type: System.Collections.Generic.List`1[System.String]
 Parameter Sets: (All)
 Aliases:
 

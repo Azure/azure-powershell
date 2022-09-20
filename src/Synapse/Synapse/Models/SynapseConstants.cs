@@ -307,6 +307,12 @@ namespace Microsoft.Azure.Commands.Synapse.Models
             Add,
             Remove
         }
+        public enum UserAssignedManagedIdentityActionType
+        {
+            Add,
+            Remove,
+            Set
+        }
 
         public class PublicNetworkAccess
         {
