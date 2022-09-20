@@ -23,7 +23,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 
 namespace Microsoft.Azure.Commands.CosmosDB
 {
-    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBService", DefaultParameterSetName = NameParameterSet), OutputType(typeof(PSServiceGetResults))]
+    [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "CosmosDBService", DefaultParameterSetName = NameParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSServiceGetResults))]
     public class NewAzCosmosDBService : AzureCosmosDBCmdletBase
     {
         [ResourceGroupCompleter]
