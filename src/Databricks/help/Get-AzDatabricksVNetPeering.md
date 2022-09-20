@@ -51,7 +51,7 @@ This command lists all vnet peering under a databricks.
 
 ### Example 2: Get a vnet peering
 ```powershell
-Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -PeeringName MyPeering-test01
+Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -Name MyPeering-test01
 ```
 
 ```output
