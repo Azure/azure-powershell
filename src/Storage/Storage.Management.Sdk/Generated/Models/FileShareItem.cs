@@ -18,22 +18,21 @@ namespace Microsoft.Azure.Management.Storage.Models
     using System.Linq;
 
     /// <summary>
-    /// Properties of the file share, including Id, resource name, resource
-    /// type, Etag.
+    /// The file share properties be listed out.
     /// </summary>
     [Rest.Serialization.JsonTransformation]
-    public partial class FileShare : AzureEntityResource
+    public partial class FileShareItem : AzureEntityResource
     {
         /// <summary>
-        /// Initializes a new instance of the FileShare class.
+        /// Initializes a new instance of the FileShareItem class.
         /// </summary>
-        public FileShare()
+        public FileShareItem()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the FileShare class.
+        /// Initializes a new instance of the FileShareItem class.
         /// </summary>
         /// <param name="id">Fully qualified resource ID for the resource. Ex -
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}</param>
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// <param name="snapshotTime">Creation time of share snapshot returned
         /// in the response of list shares with expand param
         /// "snapshots".</param>
-        public FileShare(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), IDictionary<string, string> metadata = default(IDictionary<string, string>), int? shareQuota = default(int?), string enabledProtocols = default(string), string rootSquash = default(string), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?), string accessTier = default(string), System.DateTime? accessTierChangeTime = default(System.DateTime?), string accessTierStatus = default(string), long? shareUsageBytes = default(long?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), IList<SignedIdentifier> signedIdentifiers = default(IList<SignedIdentifier>), System.DateTime? snapshotTime = default(System.DateTime?))
+        public FileShareItem(string id = default(string), string name = default(string), string type = default(string), string etag = default(string), System.DateTime? lastModifiedTime = default(System.DateTime?), IDictionary<string, string> metadata = default(IDictionary<string, string>), int? shareQuota = default(int?), string enabledProtocols = default(string), string rootSquash = default(string), string version = default(string), bool? deleted = default(bool?), System.DateTime? deletedTime = default(System.DateTime?), int? remainingRetentionDays = default(int?), string accessTier = default(string), System.DateTime? accessTierChangeTime = default(System.DateTime?), string accessTierStatus = default(string), long? shareUsageBytes = default(long?), string leaseStatus = default(string), string leaseState = default(string), string leaseDuration = default(string), IList<SignedIdentifier> signedIdentifiers = default(IList<SignedIdentifier>), System.DateTime? snapshotTime = default(System.DateTime?))
             : base(id, name, type, etag)
         {
             LastModifiedTime = lastModifiedTime;
@@ -248,16 +247,13 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (ShareQuota != null)
+            if (ShareQuota > 102400)
             {
-                if (ShareQuota > 102400)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMaximum, "ShareQuota", 102400);
-                }
-                if (ShareQuota < 1)
-                {
-                    throw new ValidationException(ValidationRules.InclusiveMinimum, "ShareQuota", 1);
-                }
+                throw new ValidationException(ValidationRules.InclusiveMaximum, "ShareQuota", 102400);
+            }
+            if (ShareQuota < 1)
+            {
+                throw new ValidationException(ValidationRules.InclusiveMinimum, "ShareQuota", 1);
             }
         }
     }
