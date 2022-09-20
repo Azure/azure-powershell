@@ -20,6 +20,7 @@
 
 
 ## Upcoming Release
+* Upgraded API version from 2018-09-01-preview to 2020-10-01
 
 ## Version 1.0.0
 * General availability of `Az.Attestation` module
