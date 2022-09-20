@@ -421,6 +421,10 @@ directive:
           - Type
           - Values
           - ReasonCode
+  - where:
+      model-name: CalculateRefundResponse
+    set:
+      suppress-format: true
           
   - no-inline:
     - Price
