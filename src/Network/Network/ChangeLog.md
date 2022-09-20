@@ -20,8 +20,7 @@
 
 ## Upcoming Release
 * Fixed a bug that removes existing resource tags during a Set-AzFirewallPolicy command 
-* Added breaking change attribute to notify that public ip address sku default behaviour will be changed
-    - `New-AzPublicIpAddress`
+* Added breaking change attribute to notify that load balancer sku default behaviour will be changed
     - `New-AzLoadBalancer`
 
 ## Version 4.19.0
