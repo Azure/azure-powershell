@@ -76,7 +76,7 @@ ConsumedRefundsTotal                                       : {
                                                                "currencyCode": "USD",
                                                                "amount": 365.43
                                                              }
-Id                                                         : /providers/Microsoft.Capacity/reservationOrders/4336d060-da34-4228-91b0-feab5b2a1e1d/reservations/5e012942-5692-41c0-bc71-86303e11104d
+Id                                                         : /providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003
 MaxRefundLimit                                             : {
                                                                "currencyCode": "USD",
                                                                "amount": 50000
@@ -90,9 +90,6 @@ Quantity                                                   : 1
 ResourceGroupName                                          :
 SessionId                                                  : b0a96155-5f75-4138-b01f-443130f5516e
 ```
-
-
-
 ## PARAMETERS
 
 ### -Body

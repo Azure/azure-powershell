@@ -425,6 +425,10 @@ directive:
       model-name: CalculateRefundResponse
     set:
       suppress-format: true
+  - where:
+      model-name: RefundResponse
+    set:
+      suppress-format: true
           
   - no-inline:
     - Price

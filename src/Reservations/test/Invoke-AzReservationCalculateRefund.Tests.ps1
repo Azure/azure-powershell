@@ -85,8 +85,6 @@ Describe 'Invoke-AzReservationCalculateRefund' {
             ReservationToReturnReservationId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
             Scope = "Reservation"
         }
-        $fullyQualifiedId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003/reservations/30000000-aaaa-bbbb-cccc-100000000003"
-        $fullyQualifiedOrderId = "/providers/microsoft.capacity/reservationOrders/50000000-aaaa-bbbb-cccc-100000000003"
         $response = Invoke-AzReservationCalculateRefund -InputObject $param -Body $body
         ExecuteTestCases($response)
     }
