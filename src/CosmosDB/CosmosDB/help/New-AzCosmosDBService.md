@@ -31,8 +31,7 @@ The **New-AzCosmosDBService** cmdlet creates a new CosmosDB Service.
 
 ### Example 1
 ```powershell
-New-AzCosmosDBService -ResourceGroupName "ResourceGroup"" -AccountName "AccountName" -ServiceName "ServiceName""
- -InstanceSize "Cosmos.D4s" -InstanceCount 1
+New-AzCosmosDBService -ResourceGroupName "ResourceGroup" -AccountName "AccountName" -ServiceName "ServiceName" -InstanceSize "Cosmos.D4s" -InstanceCount 1
 ```
 
 ```output
