@@ -38,6 +38,7 @@
   
   <ItemGroup>
     <Folder Include="Bastion\" />
+    <Folder Include="Microsoft\Azure\Commands\Network\Models\" />
     <Folder Include="RouteServerPeer\" />
   </ItemGroup>
 
