@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzAttestationProvider'
 }
 
 Describe 'Update-AzAttestationProvider' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        { Update-AzAttestationProvider -Name $env.providername -ResourceGroupName $env.rg -Tag @{"k1" = "v1"}} | Should -Not -Throw
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        { 
+            $provider = Get-AzAttestationProvider -Name $env.providername -ResourceGroupName $env.rg
+            Update-AzAttestationProvider -InputObject $provider -Tag @{"k1" = "v1"}
+        } | Should -Not -Throw
     }
 }

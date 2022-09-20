@@ -15,7 +15,7 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzAttestationProvider'))
 }
 
 Describe 'New-AzAttestationProvider' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        { New-AzAttestationProvider -Name $env.providername -ResourceGroupName $env.rg -Location "eastus" } | Should -Not -Throw
     }
 }

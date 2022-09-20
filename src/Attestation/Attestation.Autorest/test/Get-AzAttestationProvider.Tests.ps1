@@ -15,16 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAttestationProvider'))
 }
 
 Describe 'Get-AzAttestationProvider' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzAttestationProvider } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzAttestationProvider -Name $env.providername1 -ResourceGroupName $env.rg } | Should -Not -Throw
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List1' {
+        { Get-AzAttestationProvider -ResourceGroupName $env.rg } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

@@ -15,12 +15,12 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzAttestationDefaultProvi
 }
 
 Describe 'Get-AzAttestationDefaultProvider' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        { Get-AzAttestationDefaultProvider } | Should -Not -Throw
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        { Get-AzAttestationDefaultProvider -Location "East US" } | Should -Not -Throw
     }
 
     It 'GetViaIdentity' -skip {

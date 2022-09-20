@@ -19,6 +19,20 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    $rg = "test-rg" + (RandomString -allChars $false -len 13)
+    $rg = $env.AddWithCache('rg', $rg, $UsePreviousConfigForRecord)
+    New-AzResourceGroup -Name $rg -Location "eastus"
+
+    $providername1 = "provider" + (RandomString -allChars $false -len 13)
+    $providername1 = $env.AddWithCache('providername1', $providername1, $UsePreviousConfigForRecord)
+    $providername2 = "provider" + (RandomString -allChars $false -len 13)
+    $providername2 = $env.AddWithCache('providername2', $providername2, $UsePreviousConfigForRecord)
+    $providername = "provider" + (RandomString -allChars $false -len 13)
+    $providername = $env.AddWithCache('providername', $providername, $UsePreviousConfigForRecord)
+
+    New-AzAttestationProvider -Name $providername1 -ResourceGroupName $rg -Location "eastus"
+    New-AzAttestationProvider -Name $providername2 -ResourceGroupName $rg -Location "eastus"
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -27,5 +41,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.rg
 }
 

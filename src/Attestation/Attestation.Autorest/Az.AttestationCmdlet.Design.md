@@ -58,7 +58,8 @@ Get-AzAttestationProvider -Name <String> -ResourceGroupName <String> [-Subscript
 
 + GetViaIdentity
 ```powershell
-Get-AzAttestationProvider -InputObject <IAttestationIdentity> [-DefaultProfile <PSObject>]
+Get-AzAttestationProvider -InputObject <
+> [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 

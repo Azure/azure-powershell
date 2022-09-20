@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzAttestationProvider'
 }
 
 Describe 'Remove-AzAttestationProvider' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        { Remove-AzAttestationProvider -Name $env.providername1 -ResourceGroupName $env.rg -PassThru } | Should -Not -Throw
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        { 
+            $provider = Get-AzAttestationProvider -Name $env.providername2 -ResourceGroupName $env.rg
+            Remove-AzAttestationProvider -InputObject $provider -PassThru 
+        } | Should -Not -Throw
     }
 }
