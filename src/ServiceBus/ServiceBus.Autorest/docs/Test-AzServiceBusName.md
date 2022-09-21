@@ -1,43 +1,31 @@
 ---
 external help file:
 Module Name: Az.ServiceBus
-online version: https://docs.microsoft.com/powershell/module/az.servicebus/get-azservicebuskey
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/test-azservicebusname
 schema: 2.0.0
 ---
 
-# Get-AzServiceBusKey
+# Test-AzServiceBusName
 
 ## SYNOPSIS
-Gets a ServiceBus SAS key
+Checks availability of a namespace name or disaster recovery alias.
 
 ## SYNTAX
 
-### GetExpandedNamespace (Default)
+### NamespaceAvailability (Default)
 ```
-Get-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
-```
-
-### GetExpandedAlias
-```
-Get-AzServiceBusKey -AliasName <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+Test-AzServiceBusName -NamespaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [<CommonParameters>]
 ```
 
-### GetExpandedQueue
+### AliasAvailability
 ```
-Get-AzServiceBusKey -Name <String> -NamespaceName <String> -QueueName <String> -ResourceGroupName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
-```
-
-### GetExpandedTopic
-```
-Get-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <String> -TopicName <String>
- [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
+Test-AzServiceBusName -AliasName <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Gets a ServiceBus SAS key
+Checks availability of a namespace name or disaster recovery alias.
 
 ## EXAMPLES
 
@@ -66,11 +54,11 @@ Gets a ServiceBus SAS key
 ## PARAMETERS
 
 ### -AliasName
-The name of the Service Disaster Recovery Config.
+The name of Disaster Recovery Config alias.
 
 ```yaml
 Type: System.String
-Parameter Sets: GetExpandedAlias
+Parameter Sets: AliasAvailability
 Aliases:
 
 Required: True
@@ -110,21 +98,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Name
-The name of the Authorization Rule
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: AuthorizationRuleName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -NamespaceName
 The name of ServiceBus namespace
 
@@ -155,28 +128,12 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -QueueName
-The name of the ServiceBus queue.
-
-```yaml
-Type: System.String
-Parameter Sets: GetExpandedQueue
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -ResourceGroupName
-The name of the resource group.
-The name is case insensitive.
+The name of the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: AliasAvailability
 Aliases:
 
 Required: True
@@ -190,28 +147,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String[]
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -TopicName
-The name of the ServiceBus topic.
-
-```yaml
-Type: System.String
-Parameter Sets: GetExpandedTopic
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -223,7 +165,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult
 
 ## NOTES
 

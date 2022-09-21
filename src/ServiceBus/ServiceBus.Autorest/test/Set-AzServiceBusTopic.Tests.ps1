@@ -91,11 +91,6 @@ Describe 'Set-AzServiceBusTopic' {
         AssertTopicUpdates $currentTopic $updatedTopic
         $currentTopic = $updatedTopic
 
-        $updatedTopic = Set-AzServiceBusTopic -InputObject $currentTopic -EnableExpress
-        $currentTopic.EnableExpress = $true
-        AssertTopicUpdates $currentTopic $updatedTopic
-        $currentTopic = $updatedTopic
-
         $updatedTopic = Set-AzServiceBusTopic -InputObject $currentTopic -Status SendDisabled
         $currentTopic.Status = "SendDisabled"
         AssertTopicUpdates $currentTopic $updatedTopic

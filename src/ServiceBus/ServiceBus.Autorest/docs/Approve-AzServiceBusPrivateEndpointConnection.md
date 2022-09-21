@@ -121,7 +121,7 @@ The name of the Private Endpoint Connection
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded
-Aliases:
+Aliases: PrivateEndpointConnectionName
 
 Required: False
 Position: Named
@@ -136,7 +136,7 @@ The name of ServiceBus namespace
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named
@@ -211,7 +211,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
+`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[AuthorizationRuleName <String>]`: The authorization rule name.
   - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".

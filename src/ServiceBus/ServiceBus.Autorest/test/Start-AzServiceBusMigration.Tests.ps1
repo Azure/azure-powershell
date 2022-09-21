@@ -15,7 +15,47 @@ if(($null -eq $TestName) -or ($TestName -contains 'Start-AzServiceBusMigration')
 }
 
 Describe 'Start-AzServiceBusMigration' {
-    It 'CreateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'CreateExpanded' {
+        $migrationConfig = Start-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace -PostMigrationName $env.postMigrationName -TargetNamespace $env.migrationSecondaryNamespaceResourceId
+        $migrationConfig.Name | Should -Be $env.migrationPrimaryNamespace
+        $migrationConfig.PostMigrationName | Should -Be $env.postMigrationName
+        $migrationConfig.TargetNamespace | Should -Be $env.migrationSecondaryNamespaceResourceId
+
+        do {
+            $migrationConfig = Get-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace
+            Start-Sleep 10
+        } while($migrationConfig.ProvisioningState -ne 'Succeeded')
+
+        Stop-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace
+
+        do {
+            $migrationConfig = Get-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace
+            Start-Sleep 10
+        } while($migrationConfig.ProvisioningState -ne 'Succeeded')
+
+        $migrationConfig.TargetNamespace | Should -Be ""
+
+        { Remove-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace } | Should -Throw
+    
+        $migrationConfig = Start-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace -PostMigrationName $env.postMigrationName -TargetNamespace $env.migrationSecondaryNamespaceResourceId
+        $migrationConfig.Name | Should -Be $env.migrationPrimaryNamespace
+        $migrationConfig.PostMigrationName | Should -Be $env.postMigrationName
+        $migrationConfig.TargetNamespace | Should -Be $env.migrationSecondaryNamespaceResourceId
+
+        do {
+            $migrationConfig = Get-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace
+            Start-Sleep 10
+        } while($migrationConfig.ProvisioningState -ne 'Succeeded')
+
+        Complete-AzServiceBusMigration -ResourceGroupName $env.resourceGroup -NamespaceName $env.migrationPrimaryNamespace
+        
+        Start-Sleep 240
+
+        $drConfig = Get-AzServiceBusGeoDRConfiguration -ResourceGroupName $env.resourceGroup -Name $env.migrationPrimaryNamespace -NamespaceName $env.migrationSecondaryNamespace
+        $drConfig.Name | Should -Be $env.migrationPrimaryNamespace
+        $drConfig.ResourceGroupName | Should -Be $env.resourceGroup
+        $drConfig.PartnerNamespace | Should -Be ""
+        $drConfig.Role | Should -Be "PrimaryNotReplicating"
+    
     }
 }

@@ -24,13 +24,13 @@ function Set-AzServiceBusSubscription{
     [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
 		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Subscription.")]
+        [Alias('SubscriptionName')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Subscription.
         ${Name},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Topic.")]
-        [Alias('Topic')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Topic.
@@ -80,6 +80,12 @@ function Set-AzServiceBusSubscription{
         [System.TimeSpan]
         # timeSpan.
         ${DuplicateDetectionHistoryTimeWindow},
+
+        [Parameter(HelpMessage = "ISO 8601 timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers. The maximum value for LockDuration is 5 minutes; the default value is 1 minute.")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
+        [System.TimeSpan]
+        # timeSpan.
+        ${LockDuration},
 
         [Parameter(HelpMessage = "Value that indicates whether server-side batched operations are enabled.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]

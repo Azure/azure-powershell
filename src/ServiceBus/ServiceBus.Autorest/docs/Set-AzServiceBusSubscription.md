@@ -19,8 +19,8 @@ Set-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGro
  [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
- [-MaxDeliveryCount <Int32>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### SetViaIdentityExpanded
@@ -29,8 +29,8 @@ Set-AzServiceBusSubscription -InputObject <IServiceBusIdentity> [-AutoDeleteOnId
  [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
- [-MaxDeliveryCount <Int32>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>]
+ [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -232,6 +232,22 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
+### -LockDuration
+ISO 8601 timespan duration of a peek-lock; that is, the amount of time that the message is locked for other receivers.
+The maximum value for LockDuration is 5 minutes; the default value is 1 minute.
+
+```yaml
+Type: System.TimeSpan
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MaxDeliveryCount
 The maximum delivery count.
 A message is automatically deadlettered after this number of deliveries.
@@ -255,7 +271,7 @@ The name of the Subscription.
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded
-Aliases:
+Aliases: SubscriptionName
 
 Required: True
 Position: Named
@@ -346,7 +362,7 @@ The name of the Topic.
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded
-Aliases: Topic
+Aliases:
 
 Required: True
 Position: Named
@@ -406,7 +422,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
+`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[AuthorizationRuleName <String>]`: The authorization rule name.
   - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".

@@ -123,7 +123,7 @@ The name of the Authorization Rule
 ```yaml
 Type: System.String
 Parameter Sets: GetExpandedAlias, GetExpandedNamespace, GetExpandedQueue, GetExpandedTopic
-Aliases:
+Aliases: AuthorizationRuleName
 
 Required: False
 Position: Named
@@ -138,7 +138,7 @@ The name of ServiceBus namespace
 ```yaml
 Type: System.String
 Parameter Sets: GetExpandedAlias, GetExpandedNamespace, GetExpandedQueue, GetExpandedTopic
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named
@@ -153,7 +153,7 @@ The name of the Service Bus queue.
 ```yaml
 Type: System.String
 Parameter Sets: GetExpandedQueue
-Aliases: Queue
+Aliases:
 
 Required: True
 Position: Named
@@ -199,7 +199,7 @@ The name of the Service Bus topic.
 ```yaml
 Type: System.String
 Parameter Sets: GetExpandedTopic
-Aliases: Topic
+Aliases:
 
 Required: True
 Position: Named
@@ -228,7 +228,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
+`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[AuthorizationRuleName <String>]`: The authorization rule name.
   - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".

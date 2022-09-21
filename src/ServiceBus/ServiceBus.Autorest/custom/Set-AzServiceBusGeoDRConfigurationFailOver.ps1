@@ -30,7 +30,6 @@ function Set-AzServiceBusGeoDRConfigurationFailOver{
         ${Name},
 
         [Parameter(ParameterSetName = 'Fail', Mandatory, HelpMessage = "The name of ServiceBus namespace")]
-        [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of ServiceBus namespace
@@ -133,7 +132,7 @@ function Set-AzServiceBusGeoDRConfigurationFailOver{
 
             if($PSCmdlet.ParameterSetName -eq 'Fail'){
                 if ($PSCmdlet.ShouldProcess("ServiceBus Disaster Recovery Alias $($Name)", "Fail Over")) {
-                    Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_Fail @PSBoundParameters
+                    Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailExpanded @PSBoundParameters
                 }
             }
             elseif($PSCmdlet.ParameterSetName -eq 'FailViaIdentity'){
@@ -144,7 +143,7 @@ function Set-AzServiceBusGeoDRConfigurationFailOver{
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject
                 }
                 if ($PSCmdlet.ShouldProcess("ServiceBus Disaster Recovery Alias $($InputObject.Name)", "Fail Over")) {
-                    Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_Fail -Name $ResourceHashTable['AliasName'] -NamespaceName $ResourceHashTable['NamespaceName'] -ResourceGroupName $ResourceHashTable['ResourceGroupName'] -SubscriptionId $ResourceHashTable['SubscriptionName']
+                    Az.ServiceBus.private\Invoke-AzServiceBusFailDisasterRecoveryConfigOver_FailExpanded -Name $ResourceHashTable['AliasName'] -NamespaceName $ResourceHashTable['NamespaceName'] -ResourceGroupName $ResourceHashTable['ResourceGroupName'] -SubscriptionId $ResourceHashTable['SubscriptionName']
                 }
             }
 		}

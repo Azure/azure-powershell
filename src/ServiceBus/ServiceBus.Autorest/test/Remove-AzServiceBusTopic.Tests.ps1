@@ -18,12 +18,12 @@ Describe 'Remove-AzServiceBusTopic' {
     It 'Delete' {
         New-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name topicToRemove
         Remove-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name topicToRemove
-        { Get-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name topicToRemove } | Should -Not -Throw
+        { Get-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name topicToRemove } | Should -Throw
     }
 
     It 'DeleteViaIdentity' {
         $topic = New-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name topicToRemove
         Remove-AzServiceBusTopic -InputObject $topic
-        { Get-AzServiceBusTopic -InputObject $topic } | Should -Not -Throw
+        { Get-AzServiceBusTopic -InputObject $topic } | Should -Throw
     }
 }

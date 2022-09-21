@@ -31,11 +31,9 @@ Describe 'New-AzServiceBusQueue' {
         $queue.ForwardDeadLetteredMessagesTo | Should -Be "queue1"
         $queue.MaxMessageSizeInKilobytes | Should -Be 102400
 
-        $queue2 = New-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queue3 -RequiresSession -EnableExpress -EnablePartitioning -AutoDeleteOnIdle (New-Timespan -Days 7)
+        $queue2 = New-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queue3 -RequiresSession -AutoDeleteOnIdle (New-Timespan -Days 7)
         $queue2.Name | Should -Be "queue3"
         $queue2.ResourceGroupName | Should -Be $env.resourceGroup
-        $queue2.EnablePartitioning | Should -Be $true
-        $queue2.EnableExpress | Should -Be $true
         $queue2.RequiresSession | Should -Be $true
         $queue2.AutoDeleteOnIdle | Should -Be (New-TimeSpan -Days 7)
 

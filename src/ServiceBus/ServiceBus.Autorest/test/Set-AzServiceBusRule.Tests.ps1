@@ -33,7 +33,7 @@ function AssertCorrelationFilterUpdates{
 
 Describe 'Set-AzServiceBusRule' {
     It 'SetExpanded' {
-        Set-AzServiceBusRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -SubscriptionName subscription1 -Name sqlRule2 -FilterType SqlFilter -SqlExpression x=y
+        $rule1 = Set-AzServiceBusRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -SubscriptionName subscription1 -Name sqlRule2 -FilterType SqlFilter -SqlExpression x=y
         $rule1.Name | Should -Be "sqlRule2"
         $rule1.ResourceGroupName | Should -Be $env.resourceGroup
         $rule1.FilterType | Should -Be "SqlFilter"

@@ -91,7 +91,7 @@ function Set-AzServiceBusQueue{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Management.Automation.SwitchParameter]
         # Value that indicates whether server-side batched operations are enabled.
-        ${EnableBatchedOperation},
+        ${EnableBatchedOperations},
 
         [Parameter(HelpMessage = "A value that indicates whether Express Entities are enabled. An express queue holds a message in memory temporarily before writing it to persistent storage.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
@@ -121,13 +121,13 @@ function Set-AzServiceBusQueue{
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Int32]
         # The maximum delivery count. A message is automatically deadlettered after this number of deliveries. default value is 10.
-        ${MaxSizeInMegabyte},
+        ${MaxSizeInMegabytes},
 
         [Parameter(HelpMessage = "Maximum size (in KB) of the message payload that can be accepted by the queue. This property is only used in Premium today and default is 1024.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
         [System.Int64]
         # Maximum size (in KB) of the message payload that can be accepted by the queue. This property is only used in Premium today and default is 1024.
-        ${MaxMessageSizeInKilobyte},
+        ${MaxMessageSizeInKilobytes},
 
         [Parameter(HelpMessage = "Maximum size (in KB) of the message payload that can be accepted by the queue. This property is only used in Premium today and default is 1024.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]

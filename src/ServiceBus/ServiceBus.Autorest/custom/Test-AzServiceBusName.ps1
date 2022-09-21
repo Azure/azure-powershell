@@ -14,54 +14,40 @@
 
 <#
 .Synopsis
-Denies a ServiceBus PrivateEndpointConnection
+Checks availability of a namespace name or disaster recovery alias.
 .Description
-Denies a ServiceBus PrivateEndpointConnection
+Checks availability of a namespace name or disaster recovery alias.
 #>
 
-function Deny-AzServiceBusPrivateEndpointConnection{
-	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection])]
-    [CmdletBinding(DefaultParameterSetName = 'SetExpanded', PositionalBinding = $false, ConfirmImpact = 'Medium')]
+function Test-AzServiceBusName {
+	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ICheckNameAvailabilityResult])]
+    [CmdletBinding(DefaultParameterSetName = 'NamespaceAvailability', PositionalBinding = $false, ConfirmImpact = 'Medium')]
 	param(
-        [Parameter(ParameterSetName = 'SetExpanded', HelpMessage = "The name of the Private Endpoint Connection")]
-        [Alias('PrivateEndpointConnectionName')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
-        [System.String]
-        # The name of the Private Endpoint Connection
-        ${Name},
-
-		[Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of ServiceBus namespace")]
+        [Parameter(Mandatory, ParameterSetName = 'AliasAvailability', HelpMessage = "The name of ServiceBus namespace")]
+		[Parameter(Mandatory, ParameterSetName = 'NamespaceAvailability', HelpMessage = "The name of ServiceBus namespace")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of ServiceBus namespace
         ${NamespaceName},
 
-        [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+		[Parameter(Mandatory, ParameterSetName = 'AliasAvailability', HelpMessage = "The name of Disaster Recovery Config alias.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
-        # The name of the resource group.
-        # The name is case insensitive.
+        # The name of Disaster Recovery Config alias.
+        ${AliasName},
+
+		[Parameter(Mandatory, ParameterSetName = 'AliasAvailability', HelpMessage = "The name of the resource")]
+        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
+        [System.String]
+        # The name of Disaster Recovery Config alias.
         ${ResourceGroupName},
 
-        [Parameter(ParameterSetName = 'SetExpanded', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
         # The ID of the target subscription.
         ${SubscriptionId},
-
-        [Parameter(ParameterSetName = 'SetViaIdentityExpanded', Mandatory, ValueFromPipeline, HelpMessage = "Identity parameter. To construct, see NOTES section for INPUTOBJECT properties and create a hash table.")]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity]
-        # Identity Parameter
-        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-        ${InputObject},
-
-        [Parameter(HelpMessage = "PrivateEndpoint information.")]
-		[Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-		[System.String]
-		# PrivateEndpoint information.
-		${Description},
 
         [Parameter(HelpMessage = "The credentials, account, tenant, and subscription used for communication with Azure.")]
         [Alias('AzureRMContext', 'AzureCredential')]
@@ -124,31 +110,17 @@ function Deny-AzServiceBusPrivateEndpointConnection{
 	)
 	process{
 		try{
-            $hasDescription = $PSBoundParameters.Remove('Description')
-            $hasAsJob = $PSBoundParameters.Remove('AsJob')
             $null = $PSBoundParameters.Remove('WhatIf')
             $null = $PSBoundParameters.Remove('Confirm')
 
-            $connection = Get-AzServiceBusPrivateEndpointConnection @PSBoundParameters
-
-            $connection.ConnectionState = "Rejected"
-
-            if($hasDescription){
-                $connection.Description = $Description
-            }
-            else{
-                $connection.Description = ''
+            if ($PSCmdlet.ParameterSetName -eq 'NamespaceAvailability'){
+                $null = $PSBoundParameters.Remove('NamespaceName')
+                Az.ServiceBus.private\Test-AzServiceBusNamespaceNameAvailability_CheckExpanded -Name $NamespaceName @PSBoundParameters
             }
 
-            # 2. PUT
-            $null = $PSBoundParameters.Remove('InputObject')
-            $null = $PSBoundParameters.Remove('ResourceGroupName')
-            $null = $PSBoundParameters.Remove('NamespaceName')
-            $null = $PSBoundParameters.Remove('Name')
-            $null = $PSBoundParameters.Remove('SubscriptionId')
-
-            if ($PSCmdlet.ShouldProcess("Approve ServiceBus Namespace PrivateEndpoint Connection $($Name)", "Create or update")) {
-                Az.ServiceBus.private\New-AzServiceBusPrivateEndpointConnection_CreateViaIdentity -InputObject $connection -Parameter $connection @PSBoundParameters
+            if ($PSCmdlet.ParameterSetName -eq 'AliasAvailability'){
+                $null = $PSBoundParameters.Remove('AliasName')
+                Az.ServiceBus.private\Test-AzServiceBusDisasterRecoveryConfigNameAvailability_CheckExpanded -Name $AliasName @PSBoundParameters
             }
 		}
 		catch{

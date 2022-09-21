@@ -23,41 +23,47 @@ function Set-AzServiceBusAuthorizationRule{
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
     [CmdletBinding(DefaultParameterSetName = 'SetExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
-        [Parameter(Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Parameter(ParameterSetName = 'SetExpandedTopic', Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Parameter(ParameterSetName = 'SetExpandedQueue', Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Parameter(ParameterSetName = 'SetExpandedNamespace', Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Alias('AuthorizationRuleName')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Authorization Rule.
         ${Name},
 
         [Parameter(ParameterSetName = 'SetExpandedQueue', Mandatory, HelpMessage = "The name of the ServiceBus queue.")]
-        [Alias('Queue')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the ServiceBus queue.
         ${QueueName},
 
         [Parameter(ParameterSetName = 'SetExpandedTopic', Mandatory, HelpMessage = "The name of the ServiceBus topic.")]
-        [Alias('Topic')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the ServiceBus queue.
         ${TopicName},
 
-        [Parameter(Mandatory, HelpMessage = "The name of the ServiceBus namespace.")]
-        [Alias('Namespace')]
+        [Parameter(ParameterSetName = 'SetExpandedTopic', Mandatory, HelpMessage = "The name of the ServiceBus namespace.")]
+        [Parameter(ParameterSetName = 'SetExpandedQueue', Mandatory, HelpMessage = "The name of the ServiceBus namespace.")]
+        [Parameter(ParameterSetName = 'SetExpandedNamespace', Mandatory, HelpMessage = "The name of the ServiceBus namespace.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of ServiceBus namespace
         ${NamespaceName},
 
-        [Parameter(Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(ParameterSetName = 'SetExpandedTopic', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(ParameterSetName = 'SetExpandedQueue', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(ParameterSetName = 'SetExpandedNamespace', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName = 'SetExpandedTopic', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName = 'SetExpandedQueue', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName = 'SetExpandedNamespace', HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
@@ -227,7 +233,7 @@ function Set-AzServiceBusAuthorizationRule{
 
                 elseif ($ResourceHashTable['TopicName'] -ne $null){
                     if ($PSCmdlet.ShouldProcess("ServiceBus Topic Authorization Rule $($ResourceHashTable['AuthorizationRuleName'])", "Create or update")) {
-                        Az.ServiceBus.private\New-AzServiceBusQueueAuthorizationRule_CreateViaIdentity -InputObject $authRule -Parameter $authRule @PSBoundParameters
+                        Az.ServiceBus.private\New-AzServiceBusTopicAuthorizationRule_CreateViaIdentity -InputObject $authRule -Parameter $authRule @PSBoundParameters
                     }
                 }
 

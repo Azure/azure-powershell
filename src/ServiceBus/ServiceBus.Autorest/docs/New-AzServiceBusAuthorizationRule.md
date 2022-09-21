@@ -98,7 +98,7 @@ The name of the Authorization Rule
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: AuthorizationRuleName
 
 Required: True
 Position: Named
@@ -113,7 +113,7 @@ The name of Service Bus namespace
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named
@@ -143,7 +143,7 @@ The name of the Service Bus Queue.
 ```yaml
 Type: System.String
 Parameter Sets: NewExpandedQueue
-Aliases: Queue
+Aliases:
 
 Required: True
 Position: Named
@@ -204,7 +204,7 @@ The name of the Service Bus Topic.
 ```yaml
 Type: System.String
 Parameter Sets: NewExpandedTopic
-Aliases: Topic
+Aliases:
 
 Required: True
 Position: Named

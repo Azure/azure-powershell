@@ -74,7 +74,7 @@ Describe 'New-AzServiceBusKey' {
         $currentKeys = $newKeys
         $newPrimaryKey = GenerateSASKey
 
-        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule1 -KeyType PrimaryKey -KeyValue $newPrimaryKey
+        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule1 -KeyType PrimaryKey -KeyValue $newPrimaryKey
         $newKeys.PrimaryKey | Should -Be $newPrimaryKey
         $newKeys.SecondaryKey | Should -Be $currentKeys.SecondaryKey
 

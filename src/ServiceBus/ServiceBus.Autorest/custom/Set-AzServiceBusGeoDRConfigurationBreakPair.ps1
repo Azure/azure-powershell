@@ -30,7 +30,6 @@ function Set-AzServiceBusGeoDRConfigurationBreakPair{
         ${Name},
 
         [Parameter(ParameterSetName = 'Break', Mandatory, HelpMessage = "The name of ServiceBus namespace")]
-        [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of ServiceBus namespace

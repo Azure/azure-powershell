@@ -27,11 +27,10 @@ Describe 'New-AzServiceBusTopic' {
         $topic1.EnablePartitioning | Should -Be $false
         $topic1.MaxMessageSizeInKilobytes | Should -Be 102400
 
-        $topic2 = New-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name topic3 -EnableExpress -MaxSizeInMegabytes 2048
+        $topic2 = New-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name topic3 -MaxSizeInMegabytes 2048
         $topic2.Name | Should -Be "topic3"
         $topic2.ResourceGroupName | Should -Be $env.resourceGroup
         $topic2.MaxSizeInMegabytes | Should -Be 2048
-        $topic2.EnableExpress | Should -Be $true
 
         $listOfTopics = Get-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $listOfTopics.Count | Should -Be 3

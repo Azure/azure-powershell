@@ -19,7 +19,7 @@ Set-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <
  [-ActionSqlExpression <String>] [-ContentType <String>] [-CorrelationFilterProperty <Hashtable>]
  [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <FilterType>]
  [-Label <String>] [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>]
- [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To]
+ [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -29,7 +29,7 @@ Set-AzServiceBusRule -InputObject <IServiceBusIdentity> [-ActionRequiresPreproce
  [-ActionSqlExpression <String>] [-ContentType <String>] [-CorrelationFilterProperty <Hashtable>]
  [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <FilterType>]
  [-Label <String>] [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>]
- [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To]
+ [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -266,7 +266,7 @@ The name of ServiceBus namespace
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named
@@ -404,7 +404,7 @@ The name of the SubscriptionName.
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded
-Aliases: Subscription
+Aliases:
 
 Required: True
 Position: Named
@@ -417,7 +417,7 @@ Accept wildcard characters: False
 Address to send to.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -434,7 +434,7 @@ The name of the Topic.
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded
-Aliases: Topic
+Aliases:
 
 Required: True
 Position: Named
@@ -494,7 +494,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
+`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[AuthorizationRuleName <String>]`: The authorization rule name.
   - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".

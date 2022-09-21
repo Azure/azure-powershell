@@ -19,7 +19,7 @@ Describe 'Set-AzServiceBusGeoDRConfigurationFailOver' {
         Set-AzServiceBusGeoDRConfigurationFailOver -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace -Name $env.alias
         
         while($drConfig.ProvisioningState -ne "Succeeded"){
-            $drConfig = Get-AzServiceBusGeoDRConfigurationFailOver -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
+            $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
             Start-Sleep 10
         }
 
@@ -28,22 +28,22 @@ Describe 'Set-AzServiceBusGeoDRConfigurationFailOver' {
         $drConfig.PartnerNamespace | Should -Be ""
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
-        $drConfig = Remove-AzServiceBusGeoDRConfigurationFailOver -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
+        $drConfig = Remove-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
         Start-Sleep 180
-        $drConfig = New-AzServiceBusGeoDRConfigurationFailOver -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
+        $drConfig = New-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
         
         while($drConfig.ProvisioningState -ne "Succeeded"){
-            $drConfig = Get-AzServiceBusGeoDRConfigurationFailOver -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+            $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             Start-Sleep 10
         }
     }
     It 'FailViaIdentity' {
-        $drConfig = Get-AzServiceBusGeoDRConfigurationFailOver -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
+        $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
         
         Set-AzServiceBusGeoDRConfigurationFailOver -InputObject $drConfig
         
         do {
-            $drConfig = Get-AzServiceBusGeoDRConfigurationFailOver -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
+            $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
             Start-Sleep 10
         } while($drConfig.ProvisioningState -ne "Succeeded")
 
@@ -52,10 +52,10 @@ Describe 'Set-AzServiceBusGeoDRConfigurationFailOver' {
         $drConfig.PartnerNamespace | Should -Be ""
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
-        $drConfig = Remove-AzServiceBusGeoDRConfigurationFailOver -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
+        $drConfig = Remove-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace
         
         Start-Sleep 180
 
-        { Get-AzServiceBusGeoDRConfigurationFailOver -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace } | Should -Throw
+        { Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace } | Should -Throw
     }
 }

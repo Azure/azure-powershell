@@ -28,8 +28,8 @@
       "name": "[parameters('primarynamespace_name')]",
       "location": "East US",
       "sku": {
-        "name": "Standard",
-        "tier": "Standard"
+        "name": "Premium",
+        "tier": "Premium"
       },
       "properties": {
         "minimumTlsVersion": "1.2",
@@ -44,8 +44,8 @@
       "name": "[parameters('secondarynamespace_name')]",
       "location": "West US",
       "sku": {
-        "name": "Standard",
-        "tier": "Standard"
+        "name": "Premium",
+        "tier": "Premium"
       },
       "properties": {
         "minimumTlsVersion": "1.2",

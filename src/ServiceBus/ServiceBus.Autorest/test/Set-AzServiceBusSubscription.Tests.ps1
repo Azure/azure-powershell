@@ -25,7 +25,6 @@ function AssertSubscriptionUpdates{
     $expectedSub.ForwardTo | Should -Be $actualSub.ForwardTo
     $expectedSub.ForwardDeadLetteredMessagesTo | Should -Be $actualSub.ForwardDeadLetteredMessagesTo
     $expectedSub.DeadLetteringOnFilterEvaluationException | Should -Be $actualSub.DeadLetteringOnFilterEvaluationException
-    $expectedSub.AutoDeleteOnIdle | Should -Be $actualSub.AutoDeleteOnIdle
     $expectedSub.IsClientAffine | Should -Be $actualSub.IsClientAffine
     $expectedSub.ClientId | Should -Be $actualSub.ClientId
     $expectedSub.IsShared | Should -Be $actualSub.IsShared
@@ -62,18 +61,13 @@ function AssertSubscriptionUpdates{
 
 Describe 'Set-AzServiceBusSubscription' {
     It 'SetExpanded' {
-        $currentSub = Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3
-        $updatedSub = Set-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3 -AutoDeleteOnIdle (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4)
-        $currentSub.AutoDeleteOnIdle = (New-TimeSpan -Days 1 -Minutes 3 -Seconds 4)
-        AssertSubscriptionUpdates $currentSub $updatedSub
-        $currentSub = $updatedSub
-
-        $updatedSub = Set-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3 -DeadLetteringOnFilterEvaluationException:$false
+        $currentSub = Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name 'subscription3$$D'
+        $updatedSub = Set-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name 'subscription3$$D' -DeadLetteringOnFilterEvaluationException:$false
         $currentSub.DeadLetteringOnFilterEvaluationException = $false
         AssertSubscriptionUpdates $currentSub $updatedSub
         $currentSub = $updatedSub
 
-        $updatedSub = Set-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3 -DeadLetteringOnFilterEvaluationException
+        $updatedSub = Set-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name 'subscription3$$D' -DeadLetteringOnFilterEvaluationException
         $currentSub.DeadLetteringOnFilterEvaluationException = $true
         AssertSubscriptionUpdates $currentSub $updatedSub
         $currentSub = $updatedSub
@@ -91,8 +85,8 @@ Describe 'Set-AzServiceBusSubscription' {
         AssertSubscriptionUpdates $currentSub $updatedSub
         $currentSub = $updatedSub
 
-        $updatedSub = Set-AzServiceBusSubscription -InputObject $currentSub -LockDuration (New-TimeSpan Minutes -1)
-        $currentSub.LockDuration = (New-TimeSpan Minutes -1)
+        $updatedSub = Set-AzServiceBusSubscription -InputObject $currentSub -LockDuration (New-TimeSpan -Minutes 1)
+        $currentSub.LockDuration = (New-TimeSpan -Minutes 1)
         AssertSubscriptionUpdates $currentSub $updatedSub
         $currentSub = $updatedSub
 
@@ -118,6 +112,11 @@ Describe 'Set-AzServiceBusSubscription' {
 
         $updatedSub = Set-AzServiceBusSubscription -InputObject $currentSub -Status ReceiveDisabled
         $currentSub.Status = "ReceiveDisabled"
+        AssertSubscriptionUpdates $currentSub $updatedSub
+        $currentSub = $updatedSub
+
+        $updatedSub = Set-AzServiceBusSubscription -InputObject $currentSub -AutoDeleteOnIdle (New-TimeSpan -Days 5)
+        $currentSub.AutoDeleteOnIdle = (New-TimeSpan -Days 5)
         AssertSubscriptionUpdates $currentSub $updatedSub
         $currentSub = $updatedSub
     }

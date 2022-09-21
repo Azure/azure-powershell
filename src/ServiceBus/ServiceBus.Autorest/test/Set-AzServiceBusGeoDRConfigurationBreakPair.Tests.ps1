@@ -19,7 +19,7 @@ Describe 'Set-AzServiceBusGeoDRConfigurationBreakPair' {
         Set-AzServiceBusGeoDRConfigurationBreakPair -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -Name $env.alias
         
         while($drConfig.ProvisioningState -ne "Succeeded"){
-            $drConfig = Get-AzServiceBusGeoDRConfigurationBreakPair -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+            $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             Start-Sleep 10
         }
 
@@ -28,21 +28,21 @@ Describe 'Set-AzServiceBusGeoDRConfigurationBreakPair' {
         $drConfig.PartnerNamespace | Should -Be ""
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
-        $drConfig = New-AzServiceBusGeoDRConfigurationBreakPair -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
+        $drConfig = New-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
         
         while($drConfig.ProvisioningState -ne "Succeeded"){
-            $drConfig = Get-AzServiceBusGeoDRConfigurationBreakPair -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+            $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             Start-Sleep 10
         }
     }
 
     It 'BreakViaIdentity' {
-        $drConfig = Get-AzServiceBusGeoDRConfigurationBreakPair -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+        $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
 
         Set-AzServiceBusGeoDRConfigurationBreakPair -InputObject $drConfig
         
         do{
-            $drConfig = Get-AzServiceBusGeoDRConfigurationBreakPair -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+            $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             Start-Sleep 10
         } while($drConfig.ProvisioningState -ne "Succeeded")
 
@@ -51,10 +51,10 @@ Describe 'Set-AzServiceBusGeoDRConfigurationBreakPair' {
         $drConfig.PartnerNamespace | Should -Be ""
         $drConfig.Role | Should -Be "PrimaryNotReplicating"
 
-        $drConfig = New-AzServiceBusGeoDRConfigurationBreakPair -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
+        $drConfig = New-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace -PartnerNamespace $env.secondaryNamespaceResourceId
         
         while($drConfig.ProvisioningState -ne "Succeeded"){
-            $drConfig = Get-AzServiceBusGeoDRConfigurationBreakPair -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
+            $drConfig = Get-AzServiceBusGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
             Start-Sleep 10
         }
     }

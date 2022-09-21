@@ -68,16 +68,6 @@ Describe 'Set-AzServiceBusQueue' {
         AssertQueueUpdates $currentQueue $updatedQueue
         $currentQueue = $updatedQueue
 
-        $updatedQueue = Set-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queue3 -EnableExpress:$false
-        $currentQueue.EnableExpress = $false
-        AssertQueueUpdates $currentQueue $updatedQueue
-        $currentQueue = $updatedQueue
-
-        $updatedQueue = Set-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queue3 -EnableExpress
-        $currentQueue.EnableExpress = $true
-        AssertQueueUpdates $currentQueue $updatedQueue
-        $currentQueue = $updatedQueue
-
         $updatedQueue = Set-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queue3 -Status ReceiveDisabled
         $currentQueue.Status = "ReceiveDisabled"
         AssertQueueUpdates $currentQueue $updatedQueue

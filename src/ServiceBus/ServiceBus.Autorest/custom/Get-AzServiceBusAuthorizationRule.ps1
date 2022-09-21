@@ -27,6 +27,7 @@ function Get-AzServiceBusAuthorizationRule{
         [Parameter(ParameterSetName = 'GetExpandedTopic', HelpMessage = "The name of the Authorization Rule")]
         [Parameter(ParameterSetName = 'GetExpandedNamespace', HelpMessage = "The name of the Authorization Rule")]
         [Parameter(ParameterSetName = 'GetExpandedAlias', HelpMessage = "The name of the Authorization Rule")]
+        [Alias('AuthorizationRuleName')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Authorization Rule.
@@ -39,14 +40,12 @@ function Get-AzServiceBusAuthorizationRule{
         ${AliasName},
 
         [Parameter(ParameterSetName = 'GetExpandedQueue', Mandatory, HelpMessage = "The name of the Service Bus queue.")]
-        [Alias('Queue')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Service Bus queue.
         ${QueueName},
 
         [Parameter(ParameterSetName = 'GetExpandedTopic', Mandatory, HelpMessage = "The name of the Service Bus topic.")]
-        [Alias('Topic')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Service Bus topic.
@@ -56,7 +55,6 @@ function Get-AzServiceBusAuthorizationRule{
         [Parameter(ParameterSetName = 'GetExpandedQueue', Mandatory, HelpMessage = "The name of the ServiceBus namespace.")]
         [Parameter(ParameterSetName = 'GetExpandedTopic', Mandatory, HelpMessage = "The name of the ServiceBus namespace.")]
         [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the ServiceBus namespace.")]
-        [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of ServiceBus namespace
@@ -169,11 +167,12 @@ function Get-AzServiceBusAuthorizationRule{
             }
 
             elseif ($PSCmdlet.ParameterSetName -eq 'GetExpandedAlias'){
+                $null = $PSBoundParameters.Remove('AliasName')
                 if (-not $PSBoundParameters.ContainsKey('Name')) {
-                    Az.ServiceBus.private\Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule_List @PSBoundParameters
+                    Az.ServiceBus.private\Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule_List -Alias $AliasName @PSBoundParameters
                 }
                 else {
-                    Az.ServiceBus.private\Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule_Get @PSBoundParameters
+                    Az.ServiceBus.private\Get-AzServiceBusDisasterRecoveryConfigAuthorizationRule_Get -Alias $AliasName @PSBoundParameters
                 }
             }
 

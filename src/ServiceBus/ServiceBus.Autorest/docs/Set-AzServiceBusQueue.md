@@ -17,9 +17,9 @@ Sets a ServiceBus Queue
 Set-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName <String>
  [-SubscriptionId <String>] [-AutoDeleteOnIdle <TimeSpan>] [-DeadLetteringOnMessageExpiration]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
- [-EnableBatchedOperation] [-EnableExpress] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
- [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-MaxMessageSizeInKilobyte <Int64>]
- [-MaxSizeInMegabyte <Int32>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-EnableBatchedOperations] [-EnableExpress] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>]
+ [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-MaxMessageSizeInKilobytes <Int64>]
+ [-MaxSizeInMegabytes <Int32>] [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -27,9 +27,9 @@ Set-AzServiceBusQueue -Name <String> -NamespaceName <String> -ResourceGroupName 
 ```
 Set-AzServiceBusQueue -InputObject <IServiceBusIdentity> [-AutoDeleteOnIdle <TimeSpan>]
  [-DeadLetteringOnMessageExpiration] [-DefaultMessageTimeToLive <TimeSpan>]
- [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperation] [-EnableExpress]
+ [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations] [-EnableExpress]
  [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-LockDuration <TimeSpan>]
- [-MaxDeliveryCount <Int32>] [-MaxMessageSizeInKilobyte <Int64>] [-MaxSizeInMegabyte <Int32>]
+ [-MaxDeliveryCount <Int32>] [-MaxMessageSizeInKilobytes <Int64>] [-MaxSizeInMegabytes <Int32>]
  [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -157,7 +157,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -EnableBatchedOperation
+### -EnableBatchedOperations
 Value that indicates whether server-side batched operations are enabled.
 
 ```yaml
@@ -267,7 +267,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxMessageSizeInKilobyte
+### -MaxMessageSizeInKilobytes
 Maximum size (in KB) of the message payload that can be accepted by the queue.
 This property is only used in Premium today and default is 1024.
 
@@ -283,7 +283,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MaxSizeInMegabyte
+### -MaxSizeInMegabytes
 The maximum delivery count.
 A message is automatically deadlettered after this number of deliveries.
 default value is 10.
@@ -443,7 +443,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
+`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[AuthorizationRuleName <String>]`: The authorization rule name.
   - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".

@@ -28,8 +28,8 @@ Describe 'New-AzServiceBusSubscription' {
         $sub.ForwardTo | Should -Be "queue1"
         $sub.ForwardDeadLetteredMessagesTo | Should -Be "queue1"
 
-        $sub = New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription3 -RequiresSession -AutoDeleteOnIdle (New-TimeSpan -Days 7) -DeadLetteringOnFilterEvaluationException -IsClientAffine -ClientId clientid -IsShared -IsDurable
-        $sub.Name | Should -Be "subscription3"
+        $sub = New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name 'subscription3$$D' -RequiresSession -AutoDeleteOnIdle (New-TimeSpan -Days 7) -DeadLetteringOnFilterEvaluationException -IsClientAffine -ClientId clientid -IsShared -IsDurable
+        $sub.Name | Should -Be 'subscription3$$D'
         $sub.ResourceGroupName | Should -Be $env.resourceGroup
         $sub.AutoDeleteOnIdle | Should -Be (New-TimeSpan -Days 7)
         $sub.DeadLetteringOnFilterEvaluationException | Should -Be $true

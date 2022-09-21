@@ -24,20 +24,19 @@ function New-AzServiceBusAuthorizationRule{
     [CmdletBinding(DefaultParameterSetName = 'NewExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
         [Parameter(Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Alias('AuthorizationRuleName')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Authorization Rule.
         ${Name},
 
         [Parameter(ParameterSetName = 'NewExpandedQueue', Mandatory, HelpMessage = "The name of the Service Bus Queue.")]
-        [Alias('Queue')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Service Bus Queue.
         ${QueueName},
 
         [Parameter(ParameterSetName = 'NewExpandedTopic', Mandatory, HelpMessage = "The name of the Service Bus Topic.")]
-        [Alias('Topic')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Service Bus Topic.
@@ -46,7 +45,6 @@ function New-AzServiceBusAuthorizationRule{
         [Parameter(ParameterSetName = 'NewExpandedQueue', Mandatory, HelpMessage = "The name of Service Bus namespace")]
         [Parameter(ParameterSetName = 'NewExpandedTopic', Mandatory, HelpMessage = "The name of Service Bus namespace")]
         [Parameter(ParameterSetName = 'NewExpandedNamespace', Mandatory, HelpMessage = "The name of Service Bus namespace")]
-        [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of Service Bus namespace

@@ -43,7 +43,7 @@ Describe 'Get-AzServiceBusAuthorizationRule' {
         $topicAuthRule.Rights.Count | Should -Be 3
 
         $listOfAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 
-        $listOfAuthRules.Count | Should -Be 1
+        $listOfAuthRules.Count | Should -Be 2
     }
 
     It 'GetViaIdentityExpanded' {

@@ -14,12 +14,11 @@ Creates a new rule and updates an existing rule
 
 ```
 New-AzServiceBusRule -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -SubscriptionName <String> -TopicName <String> [-SubscriptionId <String>] [-ActionCompatibilityLevel <Int32>]
- [-ActionRequiresPreprocessing] [-ActionSqlExpression <String>] [-ContentType <String>]
- [-CorrelationFilterProperty <Hashtable>] [-CorrelationFilterRequiresPreprocessing]
- [-CorrelationFilterSessionId <String>] [-CorrelationId <String>] [-FilterType <FilterType>] [-Label <String>]
- [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>] [-SqlExpression <String>]
- [-SqlFilterCompatibilityLevel <Int32>] [-SqlFilterRequiresPreprocessing] [-To <String>]
+ -SubscriptionName <String> -TopicName <String> [-SubscriptionId <String>] [-ActionRequiresPreprocessing]
+ [-ActionSqlExpression <String>] [-ContentType <String>] [-CorrelationFilterProperty <Hashtable>]
+ [-CorrelationFilterRequiresPreprocessing] [-CorrelationId <String>] [-FilterType <FilterType>]
+ [-Label <String>] [-MessageId <String>] [-ReplyTo <String>] [-ReplyToSessionId <String>]
+ [-SessionId <String>] [-SqlExpression <String>] [-SqlFilterRequiresPreprocessing] [-To <String>]
  [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
@@ -51,22 +50,6 @@ Creates a new rule and updates an existing rule
 {{ Add description here }}
 
 ## PARAMETERS
-
-### -ActionCompatibilityLevel
-This property is reserved for future use.
-An integer value showing the compatibility level, currently hard-coded to 20.
-
-```yaml
-Type: System.Int32
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -ActionRequiresPreprocessing
 Value that indicates whether the rule action requires preprocessing.
@@ -135,21 +118,6 @@ Value that indicates whether the rule action requires preprocessing.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -CorrelationFilterSessionId
-Session identifier.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -310,10 +278,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlExpression
-The SQL expression.
-e.g.
-MyProperty='ABC'
+### -SessionId
+Session identifier.
 
 ```yaml
 Type: System.String
@@ -327,12 +293,13 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SqlFilterCompatibilityLevel
-This property is reserved for future use.
-An integer value showing the compatibility level, currently hard-coded to 20.
+### -SqlExpression
+The SQL expression.
+e.g.
+MyProperty='ABC'
 
 ```yaml
-Type: System.Int32
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

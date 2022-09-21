@@ -30,25 +30,29 @@ Describe 'Set-AzServiceBusAuthorizationRule' {
     }
 
     It 'SetExpandedTopic' {
-        $authRule = Set-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule2 -Rights @("Listen")
-        $authRule.Name | Should -Be "topicAuthRule2"
+        $authRule = Set-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule1 -Rights @("Listen")
+        $authRule.Name | Should -Be "topicAuthRule1"
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
         $authRule.Rights.Count | Should -Be 1
     }
 
     It 'SetViaIdentityExpanded' {
-        $authRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule3 | Set-AzServiceBusAuthorizationRule -Rights @('Send')
-        $authRule.Name | Should -Be "namespaceAuthRule3"
+        $authRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule1
+        $authRule = Set-AzServiceBusAuthorizationRule -InputObject $authRule -Rights @('Send')
+        $authRule.Name | Should -Be "namespaceAuthRule1"
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
         $authRule.Rights.Count | Should -Be 1
 
-        $authRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule2 | Set-AzServiceBusAuthorizationRule -Rights @('Send','Listen','Manage')
-        $authRule.Name | Should -Be "queueAuthRule2"
+        $authRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule1
+        $authRule = Set-AzServiceBusAuthorizationRule -InputObject $authRule -Rights @('Listen','Manage','Send')
+        $authRule.Name | Should -Be "queueAuthRule1"
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
         $authRule.Rights.Count | Should -Be 3
 
-        $authRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name topicAuthRule2 | Set-AzServiceBusAuthorizationRule -Rights @('Send','Listen','Manage')
-        $authRule.Name | Should -Be "topicAuthRule2"
+        New-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule1 -Rights @('Send')
+        $authRule = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule1
+        $authRule = Set-AzServiceBusAuthorizationRule -InputObject $authRule -Rights @('Listen','Manage','Send')
+        $authRule.Name | Should -Be "topicAuthRule1"
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
         $authRule.Rights.Count | Should -Be 3
     }

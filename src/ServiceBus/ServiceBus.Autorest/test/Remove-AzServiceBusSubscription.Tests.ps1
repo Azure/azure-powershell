@@ -16,13 +16,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzServiceBusSubscripti
 
 Describe 'Remove-AzServiceBusSubscription' {
     It 'Delete' {
-        New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -SubscriptionName subscription1 -Name subToRemove
-        Remove-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -SubscriptionName subscription1 -Name subToRemove
-        { Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -SubscriptionName subscription1 -Name subToRemove } | Should -Throw
+        New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subToRemove
+        Remove-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subToRemove
+        { Get-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subToRemove } | Should -Throw
     }
 
     It 'DeleteViaIdentity' {
-        $sub = New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -SubscriptionName subscription1 -Name subToRemove
+        $sub = New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subToRemove
         Remove-AzServiceBusSubscription -InputObject $sub
         { Get-AzServiceBusSubscription -InputObject $sub } | Should -Throw
     }

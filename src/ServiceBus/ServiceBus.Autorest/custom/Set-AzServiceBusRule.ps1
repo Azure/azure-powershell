@@ -31,21 +31,18 @@ function Set-AzServiceBusRule{
         ${Name},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the Topic.")]
-        [Alias('Topic')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Topic.
         ${TopicName},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of the SubscriptionName.")]
-        [Alias('Subscription')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
-        # The name of the Topic.
+        # The name of the SubscriptionName.
         ${SubscriptionName},
 
         [Parameter(ParameterSetName = 'SetExpanded', Mandatory, HelpMessage = "The name of ServiceBus namespace")]
-        [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of ServiceBus namespace
@@ -140,7 +137,7 @@ function Set-AzServiceBusRule{
 
         [Parameter(HelpMessage = "Address to send to.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Body')]
-        [System.Management.Automation.SwitchParameter]
+        [System.String]
         # Address to send to.
         ${To},
 

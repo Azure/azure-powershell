@@ -14,13 +14,12 @@ Creates a topic subscription.
 
 ```
 New-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-AutoDeleteOnIdle <TimeSpan>] [-ClientAffinePropertyClientId <String>]
- [-ClientAffinePropertyIsDurable] [-ClientAffinePropertyIsShared] [-DeadLetteringOnFilterEvaluationException]
- [-DeadLetteringOnMessageExpiration] [-DefaultMessageTimeToLive <TimeSpan>]
- [-DuplicateDetectionHistoryTimeWindow <TimeSpan>] [-EnableBatchedOperations]
- [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine] [-LockDuration <TimeSpan>]
- [-MaxDeliveryCount <Int32>] [-RequiresSession] [-Status <EntityStatus>] [-DefaultProfile <PSObject>]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+ -TopicName <String> [-AutoDeleteOnIdle <TimeSpan>] [-ClientId <String>]
+ [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration]
+ [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
+ [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine]
+ [-IsDurable] [-IsShared] [-LockDuration <TimeSpan>] [-MaxDeliveryCount <Int32>] [-RequiresSession]
+ [-Status <EntityStatus>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -68,41 +67,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClientAffinePropertyClientId
+### -ClientId
 Indicates the Client ID of the application that created the client-affine subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClientAffinePropertyIsDurable
-For client-affine subscriptions, this value indicates whether the subscription is durable or not.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -ClientAffinePropertyIsShared
-For client-affine subscriptions, this value indicates whether the subscription is shared or not.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
 Aliases:
 
@@ -253,6 +222,36 @@ Accept wildcard characters: False
 
 ### -IsClientAffine
 Value that indicates whether the subscription has an affinity to the client id.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsDurable
+For client-affine subscriptions, this value indicates whether the subscription is durable or not.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -IsShared
+For client-affine subscriptions, this value indicates whether the subscription is shared or not.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

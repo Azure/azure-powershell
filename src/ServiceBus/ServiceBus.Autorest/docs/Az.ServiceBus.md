@@ -66,9 +66,6 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzService
 ### [New-AzServiceBusKey](New-AzServiceBusKey.md)
 Regenerates a ServiceBus SAS key
 
-### [New-AzServiceBusNetworkRuleSet](New-AzServiceBusNetworkRuleSet.md)
-Create or update NetworkRuleSet for a Namespace.
-
 ### [New-AzServiceBusQueue](New-AzServiceBusQueue.md)
 Creates or updates a Service Bus queue.
 This operation is idempotent.
@@ -138,4 +135,7 @@ Creates Migration configuration and starts migration of entities from Standard t
 
 ### [Stop-AzServiceBusMigration](Stop-AzServiceBusMigration.md)
 This operation reverts Migration
+
+### [Test-AzServiceBusName](Test-AzServiceBusName.md)
+Checks availability of a namespace name or disaster recovery alias.
 

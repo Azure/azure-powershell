@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the ServiceBus service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -180,6 +180,18 @@ directive:
   - where:
       verb: New
       subject: Rule
+      parameter-name: CorrelationFilterSessionId
+    set:
+      parameter-name: SessionId
+  - where:
+      model-name: Rule
+      property-name: CorrelationFilterSessionId
+    set:
+      property-name: SessionId
+
+  - where:
+      verb: New
+      subject: Rule
       parameter-name: CorrelationFilterTo
     set:
       parameter-name: To
@@ -212,6 +224,43 @@ directive:
       property-name: SqlFilterSqlExpression
     set:
       property-name: SqlExpression
+
+# Subscriptions
+  - where:
+      verb: New
+      subject: Subscription
+      parameter-name: ClientAffinePropertyClientId
+    set:
+      parameter-name: ClientId
+  - where:
+      model-name: SbSubscription
+      property-name: ClientAffinePropertyClientId
+    set:
+      property-name: ClientId
+
+  - where:
+      verb: New
+      subject: Subscription
+      parameter-name: ClientAffinePropertyIsDurable
+    set:
+      parameter-name: IsDurable
+  - where:
+      model-name: SbSubscription
+      property-name: ClientAffinePropertyIsDurable
+    set:
+      property-name: IsDurable
+
+  - where:
+      verb: New
+      subject: Subscription
+      parameter-name: ClientAffinePropertyIsShared
+    set:
+      parameter-name: IsShared
+  - where:
+      model-name: SbSubscription
+      property-name: ClientAffinePropertyIsShared
+    set:
+      property-name: IsShared
 
 # Authorization Rules
   - where:
@@ -255,16 +304,12 @@ directive:
   - where:
       verb: Invoke
       subject: BreakDisasterRecoveryConfigPairing
-    set:
-      verb: Set
-      subject: GeoDRConfigurationBreakPair
+    hide: true
 
   - where:
       verb: Invoke
       subject: FailDisasterRecoveryConfigOver
-    set:
-      verb: Set
-      subject: GeoDRConfigurationFailOver
+    hide: true
 
   - where:
       subject: DisasterRecoveryConfig
@@ -374,3 +419,14 @@ directive:
       subject: NamespaceNetworkRuleSet
     set:
       subject: NetworkRuleSet
+
+  - where:
+      verb: New
+      subject: NetworkRuleSet
+    hide: true
+
+# Suppress Table formats
+  - where:
+      model-name: (.*)
+    set:
+      suppress-format: true

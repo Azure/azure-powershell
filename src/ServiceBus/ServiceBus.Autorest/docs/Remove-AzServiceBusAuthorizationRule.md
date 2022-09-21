@@ -35,9 +35,8 @@ Remove-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -Res
 
 ### RemoveViaIdentityExpanded
 ```
-Remove-AzServiceBusAuthorizationRule -InputObject <IServiceBusIdentity> -Name <String>
- -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-Confirm] [-WhatIf] [<CommonParameters>]
+Remove-AzServiceBusAuthorizationRule -InputObject <IServiceBusIdentity> [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,8 +119,8 @@ The name of the Authorization Rule
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: RemoveExpandedNamespace, RemoveExpandedQueue, RemoveExpandedTopic
+Aliases: AuthorizationRuleName
 
 Required: True
 Position: Named
@@ -136,7 +135,7 @@ The name of Service Bus namespace
 ```yaml
 Type: System.String
 Parameter Sets: RemoveExpandedNamespace, RemoveExpandedQueue, RemoveExpandedTopic
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named
@@ -166,7 +165,7 @@ The name of the ServiceBus Queue entity.
 ```yaml
 Type: System.String
 Parameter Sets: RemoveExpandedQueue
-Aliases: Queue
+Aliases:
 
 Required: True
 Position: Named
@@ -181,7 +180,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveExpandedNamespace, RemoveExpandedQueue, RemoveExpandedTopic
 Aliases:
 
 Required: True
@@ -196,7 +195,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: RemoveExpandedNamespace, RemoveExpandedQueue, RemoveExpandedTopic
 Aliases:
 
 Required: False
@@ -212,7 +211,7 @@ The name of the ServiceBus Topic entity.
 ```yaml
 Type: System.String
 Parameter Sets: RemoveExpandedTopic
-Aliases: Topic
+Aliases:
 
 Required: True
 Position: Named
@@ -272,7 +271,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
+`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[AuthorizationRuleName <String>]`: The authorization rule name.
   - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".

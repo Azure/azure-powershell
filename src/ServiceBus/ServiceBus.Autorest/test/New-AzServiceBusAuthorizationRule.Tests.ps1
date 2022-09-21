@@ -36,12 +36,12 @@ Describe 'New-AzServiceBusAuthorizationRule' {
     }
 
     It 'NewExpandedTopic' {
-        $authRule = New-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name topicAuthRule3 -Rights @("Send")
+        $authRule = New-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule3 -Rights @("Send")
         $authRule.Name | Should -Be "topicAuthRule3"
         $authRule.ResourceGroupName | Should -Be $env.resourceGroup
         $authRule.Rights.Count | Should -Be 1
 
-        $listOfAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1
-        $listOfAuthRules.Count | Should -Be 2
+        $listOfAuthRules = Get-AzServiceBusAuthorizationRule -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1
+        $listOfAuthRules.Count | Should -Be 3
     }
 }

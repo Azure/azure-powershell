@@ -1,13 +1,13 @@
 {
-  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections?api-version=2022-01-01-preview+1": {
+  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+[NoScenario]+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "69" ],
-        "x-ms-client-request-id": [ "ce203f66-307e-4dc7-8b8b-513aa0624174" ],
+        "x-ms-unique-id": [ "126" ],
+        "x-ms-client-request-id": [ "027984bc-13e3-4ac4-9c38-560897215656" ],
         "CommandName": [ "Get-AzServiceBusPrivateEndpointConnection" ],
         "FullCommandName": [ "Get-AzServiceBusPrivateEndpointConnection_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,34 +22,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "8982ac1c-3399-4290-97c2-0ff13791640a_M9CH3_M9CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11951" ],
-        "x-ms-correlation-request-id": [ "98deae07-dd89-415f-be8a-cefeda51f088" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220915T080111Z:98deae07-dd89-415f-be8a-cefeda51f088" ],
+        "x-ms-request-id": [ "952c7f0e-45c1-4fe6-9a77-d14343eb3f2b_M7SN1_M7SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11915" ],
+        "x-ms-correlation-request-id": [ "c6224335-cf5a-476b-b09e-2cff85ed0cc9" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220921T155712Z:c6224335-cf5a-476b-b09e-2cff85ed0cc9" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 15 Sep 2022 08:01:11 GMT" ]
+        "Date": [ "Wed, 21 Sep 2022 15:57:12 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1392" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/96f7b44e-d4f7-4297-9451-694d2725c2da\",\"name\":\"96f7b44e-d4f7-4297-9451-694d2725c2da\",\"type\":\"Microsoft.ServiceBus/Namespaces/PrivateEndpointConnections\",\"location\":\"East US\",\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.Network/privateEndpoints/pe2v3jn14\"},\"privateLinkServiceConnectionState\":{\"status\":\"Rejected\",\"description\":\"\"},\"groupIds\":[\"namespace\"]}},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/02707073-c256-4c9d-a890-aab828b93315\",\"name\":\"02707073-c256-4c9d-a890-aab828b93315\",\"type\":\"Microsoft.ServiceBus/Namespaces/PrivateEndpointConnections\",\"location\":\"East US\",\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.Network/privateEndpoints/pe1b8l1s7\"},\"privateLinkServiceConnectionState\":{\"status\":\"Rejected\",\"description\":\"Bye\"},\"groupIds\":[\"namespace\"]}}]}",
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/e701766d-e3c0-421e-a790-1789dcf2db6b\",\"name\":\"e701766d-e3c0-421e-a790-1789dcf2db6b\",\"type\":\"Microsoft.ServiceBus/Namespaces/PrivateEndpointConnections\",\"location\":\"East US\",\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.Network/privateEndpoints/pe2kat9hu\"},\"privateLinkServiceConnectionState\":{\"status\":\"Rejected\",\"description\":\"\"},\"groupIds\":[\"namespace\"]}},{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/d8784ccd-0554-4dce-bd5b-183f0a9a302b\",\"name\":\"d8784ccd-0554-4dce-bd5b-183f0a9a302b\",\"type\":\"Microsoft.ServiceBus/Namespaces/PrivateEndpointConnections\",\"location\":\"East US\",\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.Network/privateEndpoints/pe1o1cvut\"},\"privateLinkServiceConnectionState\":{\"status\":\"Rejected\",\"description\":\"Bye\"},\"groupIds\":[\"namespace\"]}}]}",
       "isContentBase64": false
     }
   },
-  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/96f7b44e-d4f7-4297-9451-694d2725c2da?api-version=2022-01-01-preview+1": {
+  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/e701766d-e3c0-421e-a790-1789dcf2db6b?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/96f7b44e-d4f7-4297-9451-694d2725c2da?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/e701766d-e3c0-421e-a790-1789dcf2db6b?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "70" ],
-        "x-ms-client-request-id": [ "a0887589-ae22-4055-a59e-15a999c216b7" ],
+        "x-ms-unique-id": [ "127" ],
+        "x-ms-client-request-id": [ "7d4fc631-8422-4677-93e7-d72f877a39ae" ],
         "CommandName": [ "Remove-AzServiceBusPrivateEndpointConnection" ],
         "FullCommandName": [ "Remove-AzServiceBusPrivateEndpointConnection_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -64,16 +64,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "e2ccf2d3-0dff-4946-82a8-da55f18a4dc6_M9CH3_M9CH3" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com:443/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/96f7b44e-d4f7-4297-9451-694d2725c2da/operationStatus/96f7b44e-d4f7-4297-9451-694d2725c2da?api-version=2022-01-01-preview\u0026operationType=Delete" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
-        "x-ms-correlation-request-id": [ "cc5d891b-b426-4d92-8425-3492aea4fd1f" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220915T080112Z:cc5d891b-b426-4d92-8425-3492aea4fd1f" ],
+        "x-ms-request-id": [ "2cfebe39-212f-4f7a-a165-c9aaa877b394_M7SN1_M7SN1" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com:443/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/e701766d-e3c0-421e-a790-1789dcf2db6b/operationStatus/e701766d-e3c0-421e-a790-1789dcf2db6b?api-version=2022-01-01-preview\u0026operationType=Delete" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14993" ],
+        "x-ms-correlation-request-id": [ "85870242-d541-4d50-ad77-b1d6c056572c" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220921T155713Z:85870242-d541-4d50-ad77-b1d6c056572c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 15 Sep 2022 08:01:12 GMT" ]
+        "Date": [ "Wed, 21 Sep 2022 15:57:12 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -83,16 +83,16 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/96f7b44e-d4f7-4297-9451-694d2725c2da/operationStatus/96f7b44e-d4f7-4297-9451-694d2725c2da?api-version=2022-01-01-preview\u0026operationType=Delete+2": {
+  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/e701766d-e3c0-421e-a790-1789dcf2db6b/operationStatus/e701766d-e3c0-421e-a790-1789dcf2db6b?api-version=2022-01-01-preview\u0026operationType=Delete+2": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/96f7b44e-d4f7-4297-9451-694d2725c2da/operationStatus/96f7b44e-d4f7-4297-9451-694d2725c2da?api-version=2022-01-01-preview\u0026operationType=Delete",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/e701766d-e3c0-421e-a790-1789dcf2db6b/operationStatus/e701766d-e3c0-421e-a790-1789dcf2db6b?api-version=2022-01-01-preview\u0026operationType=Delete",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "71" ],
-        "x-ms-client-request-id": [ "a0887589-ae22-4055-a59e-15a999c216b7" ],
+        "x-ms-unique-id": [ "128" ],
+        "x-ms-client-request-id": [ "7d4fc631-8422-4677-93e7-d72f877a39ae" ],
         "CommandName": [ "Remove-AzServiceBusPrivateEndpointConnection" ],
         "FullCommandName": [ "Remove-AzServiceBusPrivateEndpointConnection_Delete" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -106,34 +106,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "f7f9d0bb-f1bb-4283-8451-e69f6587e17f_M9CH3_M9CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11950" ],
-        "x-ms-correlation-request-id": [ "0192c2b5-1b4f-43a8-ac5b-dab78ef14f1b" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220915T080142Z:0192c2b5-1b4f-43a8-ac5b-dab78ef14f1b" ],
+        "x-ms-request-id": [ "01a19e1f-92ba-45a5-b47b-e7f2fe5838b2_M7SN1_M7SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11914" ],
+        "x-ms-correlation-request-id": [ "3b2451d1-7feb-43c8-8f79-083eebff82ad" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220921T155743Z:3b2451d1-7feb-43c8-8f79-083eebff82ad" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 15 Sep 2022 08:01:41 GMT" ]
+        "Date": [ "Wed, 21 Sep 2022 15:57:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "470" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/96f7b44e-d4f7-4297-9451-694d2725c2da/operationStatus/96f7b44e-d4f7-4297-9451-694d2725c2da/operationStatus/96f7b44e-d4f7-4297-9451-694d2725c2da\",\"name\":\"96f7b44e-d4f7-4297-9451-694d2725c2da\",\"status\":\"Succeeded\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\"}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/e701766d-e3c0-421e-a790-1789dcf2db6b/operationStatus/e701766d-e3c0-421e-a790-1789dcf2db6b/operationStatus/e701766d-e3c0-421e-a790-1789dcf2db6b\",\"name\":\"e701766d-e3c0-421e-a790-1789dcf2db6b\",\"status\":\"Succeeded\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\"}",
       "isContentBase64": false
     }
   },
-  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/96f7b44e-d4f7-4297-9451-694d2725c2da?api-version=2022-01-01-preview+3": {
+  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/e701766d-e3c0-421e-a790-1789dcf2db6b?api-version=2022-01-01-preview+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/96f7b44e-d4f7-4297-9451-694d2725c2da?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/e701766d-e3c0-421e-a790-1789dcf2db6b?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "72" ],
-        "x-ms-client-request-id": [ "1acc5889-0357-4805-85c0-b44083cfc27b" ],
+        "x-ms-unique-id": [ "129" ],
+        "x-ms-client-request-id": [ "78727cda-501a-4e0a-9f2e-f5808e791fbe" ],
         "CommandName": [ "Get-AzServiceBusPrivateEndpointConnection" ],
         "FullCommandName": [ "Get-AzServiceBusPrivateEndpointConnection_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -148,34 +148,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "0f88a3ab-7032-43f5-b0eb-f04973dd9a25_M9CH3_M9CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11949" ],
-        "x-ms-correlation-request-id": [ "5bf13716-caaa-4a69-a0af-0b710e34c9a2" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220915T080143Z:5bf13716-caaa-4a69-a0af-0b710e34c9a2" ],
+        "x-ms-request-id": [ "e00a1750-b372-4d0a-a15a-cff722752189_M7SN1_M7SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11913" ],
+        "x-ms-correlation-request-id": [ "eacedbe8-09d2-4dda-9740-bbfa7e0e0bd6" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220921T155744Z:eacedbe8-09d2-4dda-9740-bbfa7e0e0bd6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 15 Sep 2022 08:01:42 GMT" ]
+        "Date": [ "Wed, 21 Sep 2022 15:57:43 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "169" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"message\":\"The requested resource 96f7b44e-d4f7-4297-9451-694d2725c2da does not exist. CorrelationId: 5bf13716-caaa-4a69-a0af-0b710e34c9a2\",\"code\":\"NotFound\"}}",
+      "Content": "{\"error\":{\"message\":\"The requested resource e701766d-e3c0-421e-a790-1789dcf2db6b does not exist. CorrelationId: eacedbe8-09d2-4dda-9740-bbfa7e0e0bd6\",\"code\":\"NotFound\"}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/02707073-c256-4c9d-a890-aab828b93315?api-version=2022-01-01-preview+1": {
+  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/d8784ccd-0554-4dce-bd5b-183f0a9a302b?api-version=2022-01-01-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/02707073-c256-4c9d-a890-aab828b93315?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/d8784ccd-0554-4dce-bd5b-183f0a9a302b?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "73" ],
-        "x-ms-client-request-id": [ "4cf069be-bbad-4f9e-8e06-34913c63e8d4" ],
+        "x-ms-unique-id": [ "130" ],
+        "x-ms-client-request-id": [ "22e72eb5-ff43-417e-b7f6-67fc09f0cac8" ],
         "CommandName": [ "Get-AzServiceBusPrivateEndpointConnection" ],
         "FullCommandName": [ "Get-AzServiceBusPrivateEndpointConnection_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -190,34 +190,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "49db6ae2-059f-4f72-9863-79218844e2fe_M9CH3_M9CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11948" ],
-        "x-ms-correlation-request-id": [ "4dd4fb7a-f714-4c87-bbcc-65cb6b1f7bba" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220915T080143Z:4dd4fb7a-f714-4c87-bbcc-65cb6b1f7bba" ],
+        "x-ms-request-id": [ "1feb5b40-64af-4aff-8c5a-8d58c13c6927_M7SN1_M7SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11912" ],
+        "x-ms-correlation-request-id": [ "2c40d9b4-cfed-43c9-b820-1d83dbb96b05" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220921T155744Z:2c40d9b4-cfed-43c9-b820-1d83dbb96b05" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 15 Sep 2022 08:01:43 GMT" ]
+        "Date": [ "Wed, 21 Sep 2022 15:57:44 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "691" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/02707073-c256-4c9d-a890-aab828b93315\",\"name\":\"02707073-c256-4c9d-a890-aab828b93315\",\"type\":\"Microsoft.ServiceBus/Namespaces/PrivateEndpointConnections\",\"location\":\"East US\",\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.Network/privateEndpoints/pe1b8l1s7\"},\"privateLinkServiceConnectionState\":{\"status\":\"Rejected\",\"description\":\"Bye\"},\"groupIds\":[\"namespace\"]}}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/d8784ccd-0554-4dce-bd5b-183f0a9a302b\",\"name\":\"d8784ccd-0554-4dce-bd5b-183f0a9a302b\",\"type\":\"Microsoft.ServiceBus/Namespaces/PrivateEndpointConnections\",\"location\":\"East US\",\"properties\":{\"provisioningState\":\"Succeeded\",\"privateEndpoint\":{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.Network/privateEndpoints/pe1o1cvut\"},\"privateLinkServiceConnectionState\":{\"status\":\"Rejected\",\"description\":\"Bye\"},\"groupIds\":[\"namespace\"]}}",
       "isContentBase64": false
     }
   },
-  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/02707073-c256-4c9d-a890-aab828b93315?api-version=2022-01-01-preview+2": {
+  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/d8784ccd-0554-4dce-bd5b-183f0a9a302b?api-version=2022-01-01-preview+2": {
     "Request": {
       "Method": "DELETE",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/02707073-c256-4c9d-a890-aab828b93315?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/d8784ccd-0554-4dce-bd5b-183f0a9a302b?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "74" ],
-        "x-ms-client-request-id": [ "cc51ceb5-7ee3-4813-8e3a-febe7c6ad2c8" ],
+        "x-ms-unique-id": [ "131" ],
+        "x-ms-client-request-id": [ "0b7fc386-3e91-4c0f-bfdf-f1f4201c9fa5" ],
         "CommandName": [ "Remove-AzServiceBusPrivateEndpointConnection" ],
         "FullCommandName": [ "Remove-AzServiceBusPrivateEndpointConnection_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -232,16 +232,16 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "e7d1aea9-b3d1-4e56-b5b2-684f5a43743f_M9CH3_M9CH3" ],
-        "Azure-AsyncOperation": [ "https://management.azure.com:443/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/02707073-c256-4c9d-a890-aab828b93315/operationStatus/02707073-c256-4c9d-a890-aab828b93315?api-version=2022-01-01-preview\u0026operationType=Delete" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-deletes": [ "14998" ],
-        "x-ms-correlation-request-id": [ "f73641d0-dd46-48df-a54e-67a2cfc78e31" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220915T080144Z:f73641d0-dd46-48df-a54e-67a2cfc78e31" ],
+        "x-ms-request-id": [ "aec709ae-a359-442a-88a8-05b5e33fc6fc_M7SN1_M7SN1" ],
+        "Azure-AsyncOperation": [ "https://management.azure.com:443/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/d8784ccd-0554-4dce-bd5b-183f0a9a302b/operationStatus/d8784ccd-0554-4dce-bd5b-183f0a9a302b?api-version=2022-01-01-preview\u0026operationType=Delete" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14992" ],
+        "x-ms-correlation-request-id": [ "997518e6-e9ce-45ab-8c8c-4e4f98a6a5e6" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220921T155745Z:997518e6-e9ce-45ab-8c8c-4e4f98a6a5e6" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 15 Sep 2022 08:01:43 GMT" ]
+        "Date": [ "Wed, 21 Sep 2022 15:57:44 GMT" ]
       },
       "ContentHeaders": {
         "Expires": [ "-1" ],
@@ -251,16 +251,16 @@
       "isContentBase64": false
     }
   },
-  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/02707073-c256-4c9d-a890-aab828b93315/operationStatus/02707073-c256-4c9d-a890-aab828b93315?api-version=2022-01-01-preview\u0026operationType=Delete+3": {
+  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/d8784ccd-0554-4dce-bd5b-183f0a9a302b/operationStatus/d8784ccd-0554-4dce-bd5b-183f0a9a302b?api-version=2022-01-01-preview\u0026operationType=Delete+3": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/02707073-c256-4c9d-a890-aab828b93315/operationStatus/02707073-c256-4c9d-a890-aab828b93315?api-version=2022-01-01-preview\u0026operationType=Delete",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/d8784ccd-0554-4dce-bd5b-183f0a9a302b/operationStatus/d8784ccd-0554-4dce-bd5b-183f0a9a302b?api-version=2022-01-01-preview\u0026operationType=Delete",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "Authorization": [ "[Filtered]" ],
-        "x-ms-unique-id": [ "75" ],
-        "x-ms-client-request-id": [ "cc51ceb5-7ee3-4813-8e3a-febe7c6ad2c8" ],
+        "x-ms-unique-id": [ "132" ],
+        "x-ms-client-request-id": [ "0b7fc386-3e91-4c0f-bfdf-f1f4201c9fa5" ],
         "CommandName": [ "Remove-AzServiceBusPrivateEndpointConnection" ],
         "FullCommandName": [ "Remove-AzServiceBusPrivateEndpointConnection_DeleteViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -274,34 +274,34 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "a45350c6-6fe3-4e29-9e43-7562b6ff5b21_M9CH3_M9CH3" ],
+        "x-ms-request-id": [ "dd1a8fe1-362e-4d04-8a9e-27a5b19576f1_M7CH3_M7CH3" ],
         "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
         "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11947" ],
-        "x-ms-correlation-request-id": [ "9c0fad8c-996a-4cac-bc93-ffc61584ef32" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220915T080215Z:9c0fad8c-996a-4cac-bc93-ffc61584ef32" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11911" ],
+        "x-ms-correlation-request-id": [ "f15f1231-b5c1-4751-8a9c-2f526e3bf986" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220921T155816Z:f15f1231-b5c1-4751-8a9c-2f526e3bf986" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 15 Sep 2022 08:02:15 GMT" ]
+        "Date": [ "Wed, 21 Sep 2022 15:58:15 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "470" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/02707073-c256-4c9d-a890-aab828b93315/operationStatus/02707073-c256-4c9d-a890-aab828b93315/operationStatus/02707073-c256-4c9d-a890-aab828b93315\",\"name\":\"02707073-c256-4c9d-a890-aab828b93315\",\"status\":\"Succeeded\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\"}",
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/d8784ccd-0554-4dce-bd5b-183f0a9a302b/operationStatus/d8784ccd-0554-4dce-bd5b-183f0a9a302b/operationStatus/d8784ccd-0554-4dce-bd5b-183f0a9a302b\",\"name\":\"d8784ccd-0554-4dce-bd5b-183f0a9a302b\",\"status\":\"Succeeded\",\"startTime\":\"0001-01-01T00:00:00Z\",\"endTime\":\"0001-01-01T00:00:00Z\"}",
       "isContentBase64": false
     }
   },
-  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/02707073-c256-4c9d-a890-aab828b93315?api-version=2022-01-01-preview+4": {
+  "Remove-AzServiceBusPrivateEndpointConnection+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/d8784ccd-0554-4dce-bd5b-183f0a9a302b?api-version=2022-01-01-preview+4": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestumakst/providers/Microsoft.ServiceBus/namespaces/namespaceNametrhm5e/privateEndpointConnections/02707073-c256-4c9d-a890-aab828b93315?api-version=2022-01-01-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorest5q9ygt/providers/Microsoft.ServiceBus/namespaces/namespaceNameeikfym/privateEndpointConnections/d8784ccd-0554-4dce-bd5b-183f0a9a302b?api-version=2022-01-01-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "76" ],
-        "x-ms-client-request-id": [ "74e91b3e-fe61-459e-833d-8c4f9a99a4f6" ],
+        "x-ms-unique-id": [ "133" ],
+        "x-ms-client-request-id": [ "f808f8c3-183f-47b8-ac48-895c3164b6e2" ],
         "CommandName": [ "Get-AzServiceBusPrivateEndpointConnection" ],
         "FullCommandName": [ "Get-AzServiceBusPrivateEndpointConnection_GetViaIdentity" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -316,22 +316,22 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "70f4d61d-062a-4308-acb8-dab596bcb6a1_M9CH3_M9CH3" ],
-        "Server-SB": [ "Service-Bus-Resource-Provider/CH3" ],
-        "Server": [ "Service-Bus-Resource-Provider/CH3", "Microsoft-HTTPAPI/2.0" ],
-        "x-ms-ratelimit-remaining-subscription-reads": [ "11946" ],
-        "x-ms-correlation-request-id": [ "0b77dd49-14a1-46db-8cd1-26df1c9f64bd" ],
-        "x-ms-routing-request-id": [ "KOREACENTRAL:20220915T080216Z:0b77dd49-14a1-46db-8cd1-26df1c9f64bd" ],
+        "x-ms-request-id": [ "21262f5b-621f-4556-896d-c4633e4176bc_M7SN1_M7SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11910" ],
+        "x-ms-correlation-request-id": [ "d86f6207-fce7-4af2-9c11-06becb3be65e" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220921T155817Z:d86f6207-fce7-4af2-9c11-06becb3be65e" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 15 Sep 2022 08:02:16 GMT" ]
+        "Date": [ "Wed, 21 Sep 2022 15:58:16 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "169" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"error\":{\"message\":\"The requested resource 02707073-c256-4c9d-a890-aab828b93315 does not exist. CorrelationId: 0b77dd49-14a1-46db-8cd1-26df1c9f64bd\",\"code\":\"NotFound\"}}",
+      "Content": "{\"error\":{\"message\":\"The requested resource d8784ccd-0554-4dce-bd5b-183f0a9a302b does not exist. CorrelationId: d86f6207-fce7-4af2-9c11-06becb3be65e\",\"code\":\"NotFound\"}}",
       "isContentBase64": false
     }
   }

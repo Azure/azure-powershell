@@ -35,9 +35,8 @@ Set-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -Resour
 
 ### SetViaIdentityExpanded
 ```
-Set-AzServiceBusAuthorizationRule -InputObject <IServiceBusIdentity> -Name <String> -NamespaceName <String>
- -ResourceGroupName <String> -Rights <AccessRights[]> [-SubscriptionId <String>] [-DefaultProfile <PSObject>]
- [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzServiceBusAuthorizationRule -InputObject <IServiceBusIdentity> -Rights <AccessRights[]>
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -120,8 +119,8 @@ The name of the Authorization Rule
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases:
+Parameter Sets: SetExpandedNamespace, SetExpandedQueue, SetExpandedTopic
+Aliases: AuthorizationRuleName
 
 Required: True
 Position: Named
@@ -135,8 +134,8 @@ The name of the ServiceBus namespace.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: Namespace
+Parameter Sets: SetExpandedNamespace, SetExpandedQueue, SetExpandedTopic
+Aliases:
 
 Required: True
 Position: Named
@@ -166,7 +165,7 @@ The name of the ServiceBus queue.
 ```yaml
 Type: System.String
 Parameter Sets: SetExpandedQueue
-Aliases: Queue
+Aliases:
 
 Required: True
 Position: Named
@@ -181,7 +180,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpandedNamespace, SetExpandedQueue, SetExpandedTopic
 Aliases:
 
 Required: True
@@ -211,7 +210,7 @@ The ID of the target subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: SetExpandedNamespace, SetExpandedQueue, SetExpandedTopic
 Aliases:
 
 Required: False
@@ -227,7 +226,7 @@ The name of the ServiceBus topic.
 ```yaml
 Type: System.String
 Parameter Sets: SetExpandedTopic
-Aliases: Topic
+Aliases:
 
 Required: True
 Position: Named
@@ -287,7 +286,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IServiceBusIdentity>: Identity parameter.
+`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
   - `[Alias <String>]`: The Disaster Recovery configuration name
   - `[AuthorizationRuleName <String>]`: The authorization rule name.
   - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".

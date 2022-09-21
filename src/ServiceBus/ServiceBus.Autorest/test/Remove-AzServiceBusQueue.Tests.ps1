@@ -18,12 +18,12 @@ Describe 'Remove-AzServiceBusQueue' {
     It 'Delete' {
         New-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queueToRemove
         Remove-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queueToRemove
-        { Get-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queueToRemove } | Should -Not -Throw
+        { Get-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queueToRemove } | Should -Throw
     }
 
     It 'DeleteViaIdentity' {
         $queue = New-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name queueToRemove
         Remove-AzServiceBusQueue -InputObject $queue
-        { Get-AzServiceBusQueue -InputObject $queue } | Should -Not -Throw
+        { Get-AzServiceBusQueue -InputObject $queue } | Should -Throw
     }
 }

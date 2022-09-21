@@ -23,21 +23,22 @@ function Remove-AzServiceBusAuthorizationRule{
 	[OutputType([Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.ISbAuthorizationRule])]
     [CmdletBinding(DefaultParameterSetName = 'RemoveExpandedNamespace', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
 	param(
-        [Parameter(Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Parameter(ParameterSetName = 'RemoveExpandedQueue', Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Parameter(ParameterSetName = 'RemoveExpandedTopic', Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Parameter(ParameterSetName = 'RemoveExpandedNamespace', Mandatory, HelpMessage = "The name of the Authorization Rule")]
+        [Alias('AuthorizationRuleName')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the Authorization Rule.
         ${Name},
 
         [Parameter(ParameterSetName = 'RemoveExpandedQueue', Mandatory, HelpMessage = "The name of the ServiceBus Queue entity.")]
-        [Alias('Queue')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the ServiceBus Queue entity.
         ${QueueName},
 
         [Parameter(ParameterSetName = 'RemoveExpandedTopic', Mandatory, HelpMessage = "The name of the ServiceBus Topic entity.")]
-        [Alias('Topic')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the ServiceBus Topic entity.
@@ -46,20 +47,23 @@ function Remove-AzServiceBusAuthorizationRule{
         [Parameter(ParameterSetName = 'RemoveExpandedQueue', Mandatory, HelpMessage = "The name of Service Bus namespace")]
         [Parameter(ParameterSetName = 'RemoveExpandedTopic', Mandatory, HelpMessage = "The name of Service Bus namespace")]
         [Parameter(ParameterSetName = 'RemoveExpandedNamespace', Mandatory, HelpMessage = "The name of Service Bus namespace")]
-        [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of ServiceBus namespace
         ${NamespaceName},
 
-        [Parameter(Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(ParameterSetName = 'RemoveExpandedQueue', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(ParameterSetName = 'RemoveExpandedTopic', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
+        [Parameter(ParameterSetName = 'RemoveExpandedNamespace', Mandatory, HelpMessage = "The name of the resource group. The name is case insensitive.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [System.String]
         # The name of the resource group.
         # The name is case insensitive.
         ${ResourceGroupName},
 
-        [Parameter(HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName = 'RemoveExpandedQueue', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName = 'RemoveExpandedTopic', HelpMessage = "The ID of the target subscription.")]
+        [Parameter(ParameterSetName = 'RemoveExpandedNamespace', HelpMessage = "The ID of the target subscription.")]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
