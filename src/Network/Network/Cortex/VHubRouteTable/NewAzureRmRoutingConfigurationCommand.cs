@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "Should we bypass NVA for destinations in spoke vnet. 'Contains' for no, 'Equal' for yes. Default is 'Contains'.")]
+            HelpMessage = "Should we bypass NVA for destinations in spoke vnet? 'Contains' for no, 'Equal' for yes. Default is 'Contains'.")]
         public string VnetLocalRouteOverrideCriteria { get; set; }
 
         public override void Execute()

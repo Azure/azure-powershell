@@ -139,7 +139,7 @@ Accept wildcard characters: False
 ```
 
 ### -VnetLocalRouteOverrideCriteria
-Should we bypass NVA for destinations in spoke vnet. 'Contains' for no, 'Equal' for yes. Default is 'Contains'.
+Should we bypass NVA for destinations in spoke vnet? 'Contains' for no, 'Equal' for yes. Default is 'Contains'.
 
 ```yaml
 Type: System.String
