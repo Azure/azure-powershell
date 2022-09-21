@@ -48,6 +48,7 @@ function GetDatasourceInfo
 
 	process
 	{
+
 		$manifest = LoadManifest -DatasourceType $DatasourceType.ToString()
 		$DataSourceInfo = [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.Datasource]::new()
 		$DataSourceInfo.ObjectType = "Datasource"
@@ -56,10 +57,12 @@ function GetDatasourceInfo
         $DataSourceInfo.ResourceName = $ResourceId.Split("/")[-1]
         $DataSourceInfo.ResourceType = $manifest.resourceType
         $DataSourceInfo.ResourceUri = ""
+
         if($manifest.isProxyResource -eq $false)
         {
             $DataSourceInfo.ResourceUri = $ResourceId
         }
+
         $DataSourceInfo.Type = $manifest.datasourceType
 
 		return $DataSourceInfo
