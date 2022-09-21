@@ -29,6 +29,9 @@
 * Updated commandlets to support specifying an ASN on VPN Gateway
     - `NewAzureRmVpnGatewayCommand.cs`
     - `UpdateAzureRmVpnGatewayCommand.cs`
+* Updated cmdlets to enable verification on client certificate revocation by using a new property VerifyClientRevocation in ApplicationGatewayClientAuthConfiguration
+    - `New-AzApplicationGatewayClientAuthConfiguration`
+    - `Set-AzApplicationGatewayClientAuthConfiguration`
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
@@ -287,9 +290,6 @@
     - `Update-AzVirtualHub`
 * Updated cmdlets to expose two read-only properties of client certificate.
     - `Get-AzApplicationGatewayTrustedClientCertificate`
-* Updated cmdlets to enable verification on client certificate revocation by using a new property VerifyClientRevocation in ApplicationGatewayClientAuthConfiguration
-    - `New-AzApplicationGatewayClientAuthConfiguration`
-    - `Set-AzApplicationGatewayClientAuthConfiguration`
 
 ## Version 4.8.0
 * Updated validation to allow passing zero value for saDataSizeKilobytes parameter
