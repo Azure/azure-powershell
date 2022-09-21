@@ -58,32 +58,32 @@ namespace Microsoft.Azure.Management.CosmosDB.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the metadata related to the Primary Read-Write Key for
-        /// the given Cosmos DB database account.
+        /// Gets the metadata related to the Primary Read-Write Key for the
+        /// given Cosmos DB database account.
         /// </summary>
         [JsonProperty(PropertyName = "primaryMasterKey")]
-        public AccountKeyMetadata PrimaryMasterKey { get; set; }
+        public AccountKeyMetadata PrimaryMasterKey { get; private set; }
 
         /// <summary>
-        /// Gets or sets the metadata related to the Secondary Read-Write Key
-        /// for the given Cosmos DB database account.
+        /// Gets the metadata related to the Secondary Read-Write Key for the
+        /// given Cosmos DB database account.
         /// </summary>
         [JsonProperty(PropertyName = "secondaryMasterKey")]
-        public AccountKeyMetadata SecondaryMasterKey { get; set; }
+        public AccountKeyMetadata SecondaryMasterKey { get; private set; }
 
         /// <summary>
-        /// Gets or sets the metadata related to the Primary Read-Only Key for
-        /// the given Cosmos DB database account.
+        /// Gets the metadata related to the Primary Read-Only Key for the
+        /// given Cosmos DB database account.
         /// </summary>
         [JsonProperty(PropertyName = "primaryReadonlyMasterKey")]
-        public AccountKeyMetadata PrimaryReadonlyMasterKey { get; set; }
+        public AccountKeyMetadata PrimaryReadonlyMasterKey { get; private set; }
 
         /// <summary>
-        /// Gets or sets the metadata related to the Secondary Read-Only Key
-        /// for the given Cosmos DB database account.
+        /// Gets the metadata related to the Secondary Read-Only Key for the
+        /// given Cosmos DB database account.
         /// </summary>
         [JsonProperty(PropertyName = "secondaryReadonlyMasterKey")]
-        public AccountKeyMetadata SecondaryReadonlyMasterKey { get; set; }
+        public AccountKeyMetadata SecondaryReadonlyMasterKey { get; private set; }
 
     }
 }
