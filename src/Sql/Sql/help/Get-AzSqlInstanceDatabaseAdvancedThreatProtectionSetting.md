@@ -1,52 +1,52 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-ms.assetid: 017EF522-ABC5-40EE-B8DC-369D097F49D0
-online version: https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseAdvancedThreatProtectionSetting
+online version: https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting
 schema: 2.0.0
 ---
 
-# Get-AzSqlDatabaseAdvancedThreatProtectionSetting
+# Get-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting
 
 ## SYNOPSIS
-Gets the Advanced Threat Protection settings for a database.
+Gets the Advanced Threat Protection settings for a managed database.
 
 ## SYNTAX
 
 ```
-Get-AzSqlDatabaseAdvancedThreatProtectionSetting [-ServerName] <String> [-DatabaseName] <String>
+Get-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting -InstanceName <String> [-DatabaseName] <String>
  [-ResourceGroupName] <String> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlDatabaseAdvancedThreatProtectionSetting** cmdlet gets the Advanced Threat Protection settings of an Azure SQL database.
-To use this cmdlet, specify the *ResourceGroupName*, *ServerName*, and *DatabaseName* parameters to identify the database for which this cmdlet gets the settings.
+The **Get-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting** cmdlet gets the Advanced Threat Protection settings of an Azure SQL managed database.
+To use this cmdlet, specify the *ResourceGroupName*, *InstanceName* and *DatabaseName* parameters to identify the managed database for which this cmdlet gets the settings.
+
 
 ## EXAMPLES
 
-### Example 1: Get the Advanced Threat Protection settings for a database
+### Example 1: Get the Advanced Threat Protection settings for a managed database
 ```powershell
-Get-AzSqlDatabaseAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01" -DatabaseName "Database01"
+Get-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -InstanceName "Instance01" -DatabaseName "Database01"
 ```
 
 ```output
 DatabaseName                  : Database01
 ResourceGroupName             : ResourceGroup11
-ServerName                    : Server01
+InstanceName                  : Instance01
 AdvancedThreatProtectionState : Enabled
 ```
 
-This command gets the Advanced Threat Protection settings for a database named Database01.
-The database is located on the server named Server01, which is assigned to the resource group ResourceGroup11.
+This command gets the Advanced Threat Protection settings for a managed database named Database01.
+The managed database is assigned to the resource group ResourceGroup11.
 
 ## PARAMETERS
 
 ### -DatabaseName
-Specifies the name of a database.
+SQL Managed Database name.
 
 ```yaml
-Type: System.String
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -58,10 +58,10 @@ Accept wildcard characters: False
 ```
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -72,11 +72,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specifies the name of the resource group to which the server is assigned.
+### -InstanceName
+SQL Managed Instance name.
 
 ```yaml
-Type: System.String
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -87,32 +102,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ServerName
-Specifies the name of a server.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -122,13 +122,13 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -142,10 +142,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DatabaseAdvancedThreatProtectionSettingsModel
+### Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model.ManagedDatabaseAdvancedThreatProtectionSettingsModel
 
 ## NOTES
 
 ## RELATED LINKS
-
-[Azure SQL Database cmdlets](/powershell/module/az.sql/)

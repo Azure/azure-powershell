@@ -12,27 +12,25 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
     /// <summary>
-    /// Disables the Advanced Data Security of a specific server.
+    /// Returns the Advanced Threat Protection settings of a specific managed instance.
     /// </summary>
-    [Cmdlet("Disable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SqlInstanceAdvancedDataSecurity", SupportsShouldProcess = true), OutputType(typeof(ManagedInstanceAdvancedDataSecurityPolicyModel))]
-    public class DisableAzureSqlManagedInstanceAdvancedDataSecurity : SqlManagedInstanceAdvancedDataSecurityCmdletBase
+    [Cmdlet("Get", AzureRMConstants.AzureRMPrefix + "SqlInstanceAdvancedThreatProtectionSetting", SupportsShouldProcess = true), OutputType(typeof(ManagedInstanceAdvancedThreatProtectionSettingsModel))]
+    public class GetAzureSqlManagedInstanceAdvancedThreatProtectionSettings : SqlManagedInstanceAdvancedThreatProtectionSettingsCmdletBase
     {
         /// <summary>
-        /// This method is responsible to call the right API in the communication layer that will eventually send the information in the 
-        /// object to the REST endpoint
+        /// No sending is needed as this is a Get cmdlet
         /// </summary>
         /// <param name="model">The model object with the data to be sent to the REST endpoints</param>
-        protected override ManagedInstanceAdvancedDataSecurityPolicyModel PersistChanges(ManagedInstanceAdvancedDataSecurityPolicyModel model)
+        protected override ManagedInstanceAdvancedThreatProtectionSettingsModel PersistChanges(ManagedInstanceAdvancedThreatProtectionSettingsModel model)
         {
-            model.IsEnabled = false;
-            ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model);
-            return model;
+            return null;
         }
     }
 }
