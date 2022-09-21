@@ -17,7 +17,7 @@ Updates a scalable VPN gateway.
 Update-AzVpnGateway -ResourceGroupName <String> -Name <String> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-BgpPeeringAddress <PSIpConfigurationBgpPeeringAddress[]>] [-EnableBgpRouteTranslationForNat <Boolean>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -26,7 +26,7 @@ Update-AzVpnGateway -ResourceGroupName <String> -Name <String> [-VpnConnection <
 Update-AzVpnGateway -InputObject <PSVpnGateway> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-BgpPeeringAddress <PSIpConfigurationBgpPeeringAddress[]>] [-EnableBgpRouteTranslationForNat <Boolean>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -35,7 +35,7 @@ Update-AzVpnGateway -InputObject <PSVpnGateway> [-VpnConnection <PSVpnConnection
 Update-AzVpnGateway -ResourceId <String> [-VpnConnection <PSVpnConnection[]>]
  [-VpnGatewayNatRule <PSVpnGatewayNatRule[]>] [-VpnGatewayScaleUnit <UInt32>]
  [-BgpPeeringAddress <PSIpConfigurationBgpPeeringAddress[]>] [-EnableBgpRouteTranslationForNat <Boolean>]
- [-Tag <Hashtable>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-Tag <Hashtable>] [-Asn <UInt32>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -116,6 +116,7 @@ $gw.BgpSettings.BgpPeeringAddresses[1].CustomBgpIpAddresses=$null
 $gw.BgpSettings.BgpPeeringAddresses
 Update-AzVpnGateway -InputObject $gw
 ```
+
 The above will update the Virtual WAN VPN Gateway to use the default BgpPeeringAddress.
 
 It uses Update-AzVpnGateway to update BgpPeeringAddress
@@ -127,6 +128,21 @@ Run cmdlet in the background
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Asn
+The vpn gateway's ASN for BGP over VPN
+
+```yaml
+Type: System.UInt32
 Parameter Sets: (All)
 Aliases:
 

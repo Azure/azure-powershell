@@ -130,5 +130,13 @@ namespace Commands.Network.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VpnSiteLinkConnectionGetIkeSa");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.brooklynft)]
+        public void TestVirtualHubAndVpnGatewayWithCustomAsn()
+        {
+            TestRunner.RunTestScript("Test-VirtualHubAndVpnGatewayWithCustomAsn");
+        }
     }
 }
