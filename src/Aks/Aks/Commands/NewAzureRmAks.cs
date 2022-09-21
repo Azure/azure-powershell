@@ -142,6 +142,9 @@ namespace Microsoft.Azure.Commands.Aks
             HelpMessage = "Availability zones for cluster. Must use VirtualMachineScaleSets AgentPoolType.")]
         public string[] AvailabilityZone { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The resource group containing agent pool.")]
+        public string NodeResourceGroup { get; set; }
+
         private AcsServicePrincipal acsServicePrincipal;
 
         public override void ExecuteCmdlet()
@@ -340,6 +343,10 @@ namespace Microsoft.Azure.Commands.Aks
 
             var apiServerAccessProfile = CreateOrUpdateApiServerAccessProfile(null);
 
+            var httpProxyConfig = CreateOrUpdateHttpProxyConfig(null);
+
+            var autoUpgradeProfile = CreateOrUpdateAutoUpgradeProfile(null);
+
             var addonProfiles = CreateAddonsProfiles();
 
             WriteVerbose(string.Format(Resources.DeployingYourManagedKubeCluster, AcsSpFilePath));
@@ -350,6 +357,7 @@ namespace Microsoft.Azure.Commands.Aks
                 tags: TagsConversionHelper.CreateTagDictionary(Tag, true),
                 dnsPrefix: DnsNamePrefix,
                 kubernetesVersion: KubernetesVersion,
+                nodeResourceGroup: NodeResourceGroup,
                 agentPoolProfiles: new List<ManagedClusterAgentPoolProfile> { defaultAgentPoolProfile },
                 linuxProfile: linuxProfile,
                 windowsProfile: windowsProfile,
@@ -357,7 +365,9 @@ namespace Microsoft.Azure.Commands.Aks
                 aadProfile: aadProfile,
                 addonProfiles: addonProfiles,
                 networkProfile: networkProfile,
-                apiServerAccessProfile: apiServerAccessProfile);
+                apiServerAccessProfile: apiServerAccessProfile,
+                httpProxyConfig: httpProxyConfig,
+                autoUpgradeProfile: autoUpgradeProfile);
 
             SetIdentity(managedCluster);
 
@@ -368,6 +378,14 @@ namespace Microsoft.Azure.Commands.Aks
             if (this.IsParameterBound(c => c.FqdnSubdomain))
             {
                 managedCluster.FqdnSubdomain = FqdnSubdomain;
+            }
+            if (this.IsParameterBound(c => c.DiskEncryptionSetID))
+            {
+                managedCluster.DiskEncryptionSetID = DiskEncryptionSetID;
+            }
+            if (DisableLocalAccount.IsPresent)
+            {
+                managedCluster.DisableLocalAccounts = DisableLocalAccount;
             }
             //if(EnablePodSecurityPolicy.IsPresent)
             //{

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
     /// <summary>
     /// Used to Update MSI for RSVault
     /// </summary>
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVault", DefaultParameterSetName = AzureRSVaultAddMSIdentity, SupportsShouldProcess = true), OutputType(typeof(ARSVault))]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "RecoveryServicesVault", DefaultParameterSetName = AzureRSVaultRemoveMSIdentity, SupportsShouldProcess = true), OutputType(typeof(ARSVault))]
     public class UpdateAzureRmRecoveryServicesVault : RecoveryServicesCmdletBase
     {
         #region parameters    
@@ -77,9 +77,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
         [ValidateNotNullOrEmpty]
         public SwitchParameter RemoveSystemAssigned { get; set; }
 
+        /// <summary>
+        /// Enables or disables Classic alerts for RS vault.
+        /// </summary>
+        [Parameter(Mandatory = false)]        
+        public bool? DisableClassicAlerts { get; set; }
+
+        /// <summary>
+        /// Enables or disables monitor alerts for RS vault.
+        /// </summary>
+        [Parameter(Mandatory = false)]        
+        public bool? DisableAzureMonitorAlertsForJobFailure { get; set; }       
+
         #endregion
 
-        public override void ExecuteCmdlet()
+    public override void ExecuteCmdlet()
         {
             if (ShouldProcess(Resources.VaultTarget, "set"))
             {
@@ -204,14 +216,40 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                                 }                                
                             }
                         }
-                        else
+                        else if (DisableAzureMonitorAlertsForJobFailure == null && DisableClassicAlerts == null)
                         {
                             throw new ArgumentException(Resources.InvalidParameterSet);
                         }
                     }
 
                     PatchVault patchVault = new PatchVault();
-                    patchVault.Identity = MSI;
+
+                    if(MSI != null && MSI.Type != null && (MSI.Type.ToLower().Contains("none") || MSI.Type.ToLower().Contains("assigned")))
+                    {
+                        patchVault.Identity = MSI;
+                    }
+
+                    // alerts V1 changes 
+                    if (DisableAzureMonitorAlertsForJobFailure != null || DisableClassicAlerts != null)
+                    {                        
+                        MonitoringSettings alerts = (vault.Properties!= null && vault.Properties.MonitoringSettings != null) ? vault.Properties.MonitoringSettings : new MonitoringSettings();
+
+                        if(DisableAzureMonitorAlertsForJobFailure != null)
+                        {
+                            alerts.AzureMonitorAlertSettings = new AzureMonitorAlertSettings();
+                            alerts.AzureMonitorAlertSettings.AlertsForAllJobFailures = (DisableAzureMonitorAlertsForJobFailure == true) ? "Disabled" : "Enabled";
+                        }
+
+                        if(DisableClassicAlerts != null)
+                        {
+                            alerts.ClassicAlertSettings = new ClassicAlertSettings();
+                            alerts.ClassicAlertSettings.AlertsForCriticalOperations = (DisableClassicAlerts == true) ? "Disabled" : "Enabled";
+                        }
+
+                        patchVault.Properties = new VaultProperties();
+                        patchVault.Properties.MonitoringSettings = alerts;  
+                    }
+
                     vault = RecoveryServicesClient.UpdateRSVault(this.ResourceGroupName, this.Name, patchVault);                                                         
                     WriteObject(new ARSVault(vault));
                 }

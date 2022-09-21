@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -66,21 +68,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfo = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskEncryptionInfo) content.GetValueForProperty("DiskEncryptionInfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfo, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskEncryptionInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryCloudServiceId = (string) content.GetValueForProperty("RecoveryCloudServiceId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryCloudServiceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryResourceGroupId = (string) content.GetValueForProperty("RecoveryResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryResourceGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).ManagedDiskUpdateDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AvmManagedDiskUpdateDetails[]) content.GetValueForProperty("ManagedDiskUpdateDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).ManagedDiskUpdateDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AvmManagedDiskUpdateDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.A2AvmManagedDiskUpdateDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryBootDiagStorageAccountId = (string) content.GetValueForProperty("RecoveryBootDiagStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryBootDiagStorageAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).TfoAzureVMName = (string) content.GetValueForProperty("TfoAzureVMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).TfoAzureVMName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryProximityPlacementGroupId = (string) content.GetValueForProperty("RecoveryProximityPlacementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryProximityPlacementGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryVirtualMachineScaleSetId = (string) content.GetValueForProperty("RecoveryVirtualMachineScaleSetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryVirtualMachineScaleSetId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoDiskEncryptionKeyInfo = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskEncryptionKeyInfo) content.GetValueForProperty("DiskEncryptionInfoDiskEncryptionKeyInfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoDiskEncryptionKeyInfo, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskEncryptionKeyInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoKeyEncryptionKeyInfo = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IKeyEncryptionKeyInfo) content.GetValueForProperty("DiskEncryptionInfoKeyEncryptionKeyInfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoKeyEncryptionKeyInfo, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.KeyEncryptionKeyInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoSecretIdentifier = (string) content.GetValueForProperty("DiskEncryptionKeyInfoSecretIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoSecretIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyIdentifier = (string) content.GetValueForProperty("KeyEncryptionKeyInfoKeyIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoKeyVaultResourceArmId = (string) content.GetValueForProperty("DiskEncryptionKeyInfoKeyVaultResourceArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoKeyVaultResourceArmId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyVaultResourceArmId = (string) content.GetValueForProperty("KeyEncryptionKeyInfoKeyVaultResourceArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyVaultResourceArmId, global::System.Convert.ToString);
+            if (content.Contains("DiskEncryptionInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfo = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskEncryptionInfo) content.GetValueForProperty("DiskEncryptionInfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfo, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskEncryptionInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RecoveryCloudServiceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryCloudServiceId = (string) content.GetValueForProperty("RecoveryCloudServiceId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryCloudServiceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryResourceGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryResourceGroupId = (string) content.GetValueForProperty("RecoveryResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryResourceGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagedDiskUpdateDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).ManagedDiskUpdateDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AvmManagedDiskUpdateDetails[]) content.GetValueForProperty("ManagedDiskUpdateDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).ManagedDiskUpdateDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AvmManagedDiskUpdateDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.A2AvmManagedDiskUpdateDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("RecoveryBootDiagStorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryBootDiagStorageAccountId = (string) content.GetValueForProperty("RecoveryBootDiagStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryBootDiagStorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoAzureVMName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).TfoAzureVMName = (string) content.GetValueForProperty("TfoAzureVMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).TfoAzureVMName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryProximityPlacementGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryProximityPlacementGroupId = (string) content.GetValueForProperty("RecoveryProximityPlacementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryProximityPlacementGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryVirtualMachineScaleSetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryVirtualMachineScaleSetId = (string) content.GetValueForProperty("RecoveryVirtualMachineScaleSetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryVirtualMachineScaleSetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskEncryptionInfoDiskEncryptionKeyInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoDiskEncryptionKeyInfo = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskEncryptionKeyInfo) content.GetValueForProperty("DiskEncryptionInfoDiskEncryptionKeyInfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoDiskEncryptionKeyInfo, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskEncryptionKeyInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DiskEncryptionInfoKeyEncryptionKeyInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoKeyEncryptionKeyInfo = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IKeyEncryptionKeyInfo) content.GetValueForProperty("DiskEncryptionInfoKeyEncryptionKeyInfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoKeyEncryptionKeyInfo, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.KeyEncryptionKeyInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DiskEncryptionKeyInfoSecretIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoSecretIdentifier = (string) content.GetValueForProperty("DiskEncryptionKeyInfoSecretIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoSecretIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyEncryptionKeyInfoKeyIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyIdentifier = (string) content.GetValueForProperty("KeyEncryptionKeyInfoKeyIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskEncryptionKeyInfoKeyVaultResourceArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoKeyVaultResourceArmId = (string) content.GetValueForProperty("DiskEncryptionKeyInfoKeyVaultResourceArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoKeyVaultResourceArmId, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyEncryptionKeyInfoKeyVaultResourceArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyVaultResourceArmId = (string) content.GetValueForProperty("KeyEncryptionKeyInfoKeyVaultResourceArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyVaultResourceArmId, global::System.Convert.ToString);
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -98,21 +145,66 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfo = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskEncryptionInfo) content.GetValueForProperty("DiskEncryptionInfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfo, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskEncryptionInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryCloudServiceId = (string) content.GetValueForProperty("RecoveryCloudServiceId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryCloudServiceId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryResourceGroupId = (string) content.GetValueForProperty("RecoveryResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryResourceGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).ManagedDiskUpdateDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AvmManagedDiskUpdateDetails[]) content.GetValueForProperty("ManagedDiskUpdateDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).ManagedDiskUpdateDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AvmManagedDiskUpdateDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.A2AvmManagedDiskUpdateDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryBootDiagStorageAccountId = (string) content.GetValueForProperty("RecoveryBootDiagStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryBootDiagStorageAccountId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).TfoAzureVMName = (string) content.GetValueForProperty("TfoAzureVMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).TfoAzureVMName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryProximityPlacementGroupId = (string) content.GetValueForProperty("RecoveryProximityPlacementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryProximityPlacementGroupId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryVirtualMachineScaleSetId = (string) content.GetValueForProperty("RecoveryVirtualMachineScaleSetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryVirtualMachineScaleSetId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoDiskEncryptionKeyInfo = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskEncryptionKeyInfo) content.GetValueForProperty("DiskEncryptionInfoDiskEncryptionKeyInfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoDiskEncryptionKeyInfo, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskEncryptionKeyInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoKeyEncryptionKeyInfo = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IKeyEncryptionKeyInfo) content.GetValueForProperty("DiskEncryptionInfoKeyEncryptionKeyInfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoKeyEncryptionKeyInfo, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.KeyEncryptionKeyInfoTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoSecretIdentifier = (string) content.GetValueForProperty("DiskEncryptionKeyInfoSecretIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoSecretIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyIdentifier = (string) content.GetValueForProperty("KeyEncryptionKeyInfoKeyIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyIdentifier, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoKeyVaultResourceArmId = (string) content.GetValueForProperty("DiskEncryptionKeyInfoKeyVaultResourceArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoKeyVaultResourceArmId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyVaultResourceArmId = (string) content.GetValueForProperty("KeyEncryptionKeyInfoKeyVaultResourceArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyVaultResourceArmId, global::System.Convert.ToString);
+            if (content.Contains("DiskEncryptionInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfo = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskEncryptionInfo) content.GetValueForProperty("DiskEncryptionInfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfo, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskEncryptionInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("RecoveryCloudServiceId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryCloudServiceId = (string) content.GetValueForProperty("RecoveryCloudServiceId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryCloudServiceId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryResourceGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryResourceGroupId = (string) content.GetValueForProperty("RecoveryResourceGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryResourceGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ManagedDiskUpdateDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).ManagedDiskUpdateDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AvmManagedDiskUpdateDetails[]) content.GetValueForProperty("ManagedDiskUpdateDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).ManagedDiskUpdateDetail, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AvmManagedDiskUpdateDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.A2AvmManagedDiskUpdateDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("RecoveryBootDiagStorageAccountId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryBootDiagStorageAccountId = (string) content.GetValueForProperty("RecoveryBootDiagStorageAccountId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryBootDiagStorageAccountId, global::System.Convert.ToString);
+            }
+            if (content.Contains("TfoAzureVMName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).TfoAzureVMName = (string) content.GetValueForProperty("TfoAzureVMName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).TfoAzureVMName, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryProximityPlacementGroupId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryProximityPlacementGroupId = (string) content.GetValueForProperty("RecoveryProximityPlacementGroupId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryProximityPlacementGroupId, global::System.Convert.ToString);
+            }
+            if (content.Contains("RecoveryVirtualMachineScaleSetId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryVirtualMachineScaleSetId = (string) content.GetValueForProperty("RecoveryVirtualMachineScaleSetId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).RecoveryVirtualMachineScaleSetId, global::System.Convert.ToString);
+            }
+            if (content.Contains("InstanceType"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType = (string) content.GetValueForProperty("InstanceType",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IUpdateReplicationProtectedItemProviderInputInternal)this).InstanceType, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskEncryptionInfoDiskEncryptionKeyInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoDiskEncryptionKeyInfo = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IDiskEncryptionKeyInfo) content.GetValueForProperty("DiskEncryptionInfoDiskEncryptionKeyInfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoDiskEncryptionKeyInfo, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.DiskEncryptionKeyInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DiskEncryptionInfoKeyEncryptionKeyInfo"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoKeyEncryptionKeyInfo = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IKeyEncryptionKeyInfo) content.GetValueForProperty("DiskEncryptionInfoKeyEncryptionKeyInfo",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionInfoKeyEncryptionKeyInfo, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.KeyEncryptionKeyInfoTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("DiskEncryptionKeyInfoSecretIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoSecretIdentifier = (string) content.GetValueForProperty("DiskEncryptionKeyInfoSecretIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoSecretIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyEncryptionKeyInfoKeyIdentifier"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyIdentifier = (string) content.GetValueForProperty("KeyEncryptionKeyInfoKeyIdentifier",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyIdentifier, global::System.Convert.ToString);
+            }
+            if (content.Contains("DiskEncryptionKeyInfoKeyVaultResourceArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoKeyVaultResourceArmId = (string) content.GetValueForProperty("DiskEncryptionKeyInfoKeyVaultResourceArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).DiskEncryptionKeyInfoKeyVaultResourceArmId, global::System.Convert.ToString);
+            }
+            if (content.Contains("KeyEncryptionKeyInfoKeyVaultResourceArmId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyVaultResourceArmId = (string) content.GetValueForProperty("KeyEncryptionKeyInfoKeyVaultResourceArmId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInputInternal)this).KeyEncryptionKeyInfoKeyVaultResourceArmId, global::System.Convert.ToString);
+            }
             AfterDeserializePSObject(content);
         }
 
@@ -149,7 +241,9 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>
+        /// an instance of the <see cref="A2AUpdateReplicationProtectedItemInput" /> model class.
+        /// </returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IA2AUpdateReplicationProtectedItemInput FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>Serializes this instance to a json string.</summary>

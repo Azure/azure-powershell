@@ -52,8 +52,17 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
         {
         }
 
+        public static string GetTenantDomainFromId(string id)
+        {
+            return id.Substring(3)+".com";
+        }
+
         public static string GetSubscriptionNameFromId(string id)
         {
+            if(id == "a11a11aa-aaaa-aaaa-aaaa-aaaa1111aaaa" || id == "aaaa11aa-aaaa-aaaa-aaaa-aaaa1111aaaa")
+            {
+                return "SameNameForGetSubscriptionByName";
+            }
             return "Sub-" + id;
         }
 

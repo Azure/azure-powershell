@@ -26,33 +26,13 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.SpringCloud.Support
         /// </returns>
         public global::System.Collections.Generic.IEnumerable<global::System.Management.Automation.CompletionResult> CompleteArgument(global::System.String commandName, global::System.String parameterName, global::System.String wordToComplete, global::System.Management.Automation.Language.CommandAst commandAst, global::System.Collections.IDictionary fakeBoundParameters)
         {
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Unknown".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Unknown", "Unknown", global::System.Management.Automation.CompletionResultType.ParameterValue, "Unknown");
-            }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Stopped".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Stopped", "Stopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopped");
+                yield return new global::System.Management.Automation.CompletionResult("'Stopped'", "Stopped", global::System.Management.Automation.CompletionResultType.ParameterValue, "Stopped");
             }
             if (global::System.String.IsNullOrEmpty(wordToComplete) || "Running".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
             {
-                yield return new global::System.Management.Automation.CompletionResult("Running", "Running", global::System.Management.Automation.CompletionResultType.ParameterValue, "Running");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Failed".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Failed", "Failed", global::System.Management.Automation.CompletionResultType.ParameterValue, "Failed");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Allocating".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Allocating", "Allocating", global::System.Management.Automation.CompletionResultType.ParameterValue, "Allocating");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Upgrading".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Upgrading", "Upgrading", global::System.Management.Automation.CompletionResultType.ParameterValue, "Upgrading");
-            }
-            if (global::System.String.IsNullOrEmpty(wordToComplete) || "Compiling".StartsWith(wordToComplete, global::System.StringComparison.InvariantCultureIgnoreCase))
-            {
-                yield return new global::System.Management.Automation.CompletionResult("Compiling", "Compiling", global::System.Management.Automation.CompletionResultType.ParameterValue, "Compiling");
+                yield return new global::System.Management.Automation.CompletionResult("'Running'", "Running", global::System.Management.Automation.CompletionResultType.ParameterValue, "Running");
             }
         }
     }

@@ -12,123 +12,110 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System.Reflection;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Microsoft.Azure.ServiceManagement.Common.Models;
 
 namespace Microsoft.Azure.Commands.Batch.Test.ScenarioTests
 {
-    public class TaskTests : WindowsAzure.Commands.Test.Utilities.Common.RMTestBase
+    public class TaskTests : BatchTestRunner
     {
-        public XunitTracingInterceptor _logger;
-
-        public TaskTests(Xunit.Abstractions.ITestOutputHelper output)
+        public TaskTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
-            _logger = new XunitTracingInterceptor(output);
-            XunitTracingInterceptor.AddToContext(_logger);
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTaskCRUD()
         {
-            BatchController controller = BatchController.NewInstance;
             string jobId = "taskCrudJob";
             BatchAccountContext context = null;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-TaskCRUD '{0}'", jobId) }; },
-                () =>
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
+                    ScenarioTestHelpers.CreateTestJob(this, context, jobId);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                    ScenarioTestHelpers.DeleteJob(this, context, jobId);
                 },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-TaskCRUD '{jobId}'"
+            );
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestCreateTaskCollection()
         {
-            BatchController controller = BatchController.NewInstance;
             string jobId = "createTaskCollectionJob";
             BatchAccountContext context = null;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-CreateTaskCollection '{0}'", jobId) }; },
-                () =>
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
+                    ScenarioTestHelpers.CreateTestJob(this, context, jobId);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                    ScenarioTestHelpers.DeleteJob(this, context, jobId);
                 },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-CreateTaskCollection '{jobId}'"
+            );
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestTerminateTask()
         {
-            BatchController controller = BatchController.NewInstance;
             BatchAccountContext context = null;
             string jobId = "testTerminateTaskJob";
             string taskId1 = "testTask1";
             string taskId2 = "testTask2";
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-TerminateTask '{0}' '{1}' '{2}'", jobId, taskId1, taskId2) }; },
-                () =>
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId);
+                    ScenarioTestHelpers.CreateTestJob(this, context, jobId);
                     // Make the tasks long running so they can be terminated before they finish execution
-                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId1, "ping -t localhost -w 60");
-                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId2, "ping -t localhost -w 60");
+                    ScenarioTestHelpers.CreateTestTask(this, context, jobId, taskId1, "ping -t localhost -w 60");
+                    ScenarioTestHelpers.CreateTestTask(this, context, jobId, taskId2, "ping -t localhost -w 60");
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                    ScenarioTestHelpers.DeleteJob(this, context, jobId);
                 },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-TerminateTask '{jobId}' '{taskId1}' '{taskId2}'"
+            );
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestListAllSubtasks()
         {
-            BatchController controller = BatchController.NewInstance;
             string jobId = "listSubtaskJob";
             string taskId = "testTask";
             int numInstances = 3;
             BatchAccountContext context = null;
-            controller.RunPsTestWorkflow(
-                _logger,
-                () => { return new string[] { string.Format("Test-ListAllSubtasks '{0}' '{1}' '{2}'", jobId, taskId, numInstances) }; },
-                () =>
+            TestRunner.RunTestScript(
+                null,
+                mockContext =>
                 {
                     context = new ScenarioTestContext();
-                    ScenarioTestHelpers.CreateMpiPoolIfNotExists(controller, context);
-                    ScenarioTestHelpers.CreateTestJob(controller, context, jobId, ScenarioTestHelpers.MpiPoolId);
-                    ScenarioTestHelpers.CreateTestTask(controller, context, jobId, taskId, "cmd /c hostname", numInstances);
-                    ScenarioTestHelpers.WaitForTaskCompletion(controller, context, jobId, taskId);
+                    ScenarioTestHelpers.CreateMpiPoolIfNotExists(this, context);
+                    ScenarioTestHelpers.CreateTestJob(this, context, jobId, ScenarioTestHelpers.MpiPoolId);
+                    ScenarioTestHelpers.CreateTestTask(this, context, jobId, taskId, "cmd /c hostname", numInstances);
+                    ScenarioTestHelpers.WaitForTaskCompletion(this, context, jobId, taskId);
                 },
                 () =>
                 {
-                    ScenarioTestHelpers.DeleteJob(controller, context, jobId);
+                    ScenarioTestHelpers.DeleteJob(this, context, jobId);
                 },
-                MethodBase.GetCurrentMethod().ReflectedType?.ToString(),
-                MethodBase.GetCurrentMethod().Name);
+                $"Test-ListAllSubtasks '{jobId}' '{taskId}' '{numInstances}'"
+            );
         }
     }
 }

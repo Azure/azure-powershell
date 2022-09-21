@@ -160,7 +160,7 @@ function Test-ConnectToSourceSqlServer
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -199,7 +199,7 @@ function Test-ConnectToTargetSqlDb
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -239,7 +239,7 @@ function Test-GetUserTableTask
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -302,7 +302,7 @@ function Test-MigrateSqlSqlDB
 
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -341,7 +341,7 @@ function Test-ConnectToTargetSqlDbMi
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -428,7 +428,7 @@ function Test-MigrateSqlSqlDBMi
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -501,7 +501,7 @@ function Test-ValidateMigrationInputSqlSqlDbMi
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -540,7 +540,7 @@ function Test-ConnectToSourceSqlServerSync
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -585,7 +585,7 @@ function Test-ConnectToTargetSqlDbSync
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -643,7 +643,7 @@ function Test-GetUserTableSyncTask
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -709,7 +709,7 @@ function Test-ValidateMigrationInputSqlSqlDbSync
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -792,7 +792,7 @@ function Test-MigrateSqlSqlDBSync
                 }
             }
 
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -893,7 +893,7 @@ function Test-MigrateMongoDb
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 
 			if($task.ProjectTask.Properties.State -eq "Running") {
@@ -934,7 +934,7 @@ function Test-ConnectToTargetSqlDbMiSync
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -1009,7 +1009,7 @@ function Test-ValidateMigrationInputSqlSqlDbMiSync
 		
 		while(($task.ProjectTask.Properties.State -eq "Running") -or ($task.ProjectTask.Properties.State -eq "Queued"))
 		{
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 
@@ -1107,7 +1107,7 @@ function Test-MigrateSqlSqlDbMiSync
 				}
 			}
 
-			SleepTask 15
+			Start-TestSleep -Seconds 15
 			$task = Get-AzDataMigrationTask -ResourceGroupName $rg.ResourceGroupName -ServiceName $service.Name -ProjectName $project.Name -TaskName $taskName -Expand
 		}
 

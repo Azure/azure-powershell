@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.RedisEnterpriseCache","Import-AzRedisEnterpriseCache","Import-AzRedisEnterpriseCache","0","2020","The cmdlet 'Import-AzRedisEnterpriseCache' no longer supports the type 'System.String' for parameter 'SasUri'.","Change the type for parameter 'SasUri' back to 'System.String'."

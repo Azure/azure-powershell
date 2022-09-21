@@ -444,7 +444,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-IDENTITYPROVIDER <IIdentityProviders>: The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
+IDENTITYPROVIDER `<IIdentityProviders>`: The configuration settings of each of the identity providers used to configure ContainerApp Service Authentication/Authorization.
   - `[AllowedPrincipalGroup <String[]>]`: The list of the allowed groups.
   - `[AllowedPrincipalIdentity <String[]>]`: The list of the allowed identities.
   - `[AppleEnabled <Boolean?>]`: <code>false</code> if the Apple provider should not be enabled despite the set registration; otherwise, <code>true</code>.
@@ -484,7 +484,7 @@ IDENTITYPROVIDER <IIdentityProviders>: The configuration settings of each of the
   - `[RegistrationClientSecretCertificateThumbprint <String>]`: An alternative to the client secret, that is the thumbprint of a certificate used for signing purposes. This property acts as         a replacement for the Client Secret. It is also optional.
   - `[RegistrationConsumerKey <String>]`: The OAuth 1.0a consumer key of the Twitter application used for sign-in.         This setting is required for enabling Twitter Sign-In.         Twitter Sign-In documentation: https://dev.twitter.com/web/sign-in
   - `[RegistrationConsumerSecretSettingName <String>]`: The app setting name that contains the OAuth 1.0a consumer secret of the Twitter         application used for sign-in.
-  - `[RegistrationOpenIdIssuer <String>]`: The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.         When using Azure Active Directory, this value is the URI of the directory tenant, e.g. https://login.microsoftonline.com/v2.0/{tenant-guid}/.         This URI is a case-sensitive identifier for the token issuer.         More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
+  - `[RegistrationOpenIdIssuer <String>]`: The OpenID Connect Issuer URI that represents the entity which issues access tokens for this application.         When using Azure Active Directory, this value is the URI of the directory tenant, e.g. `https://login.microsoftonline.com/v2.0/{tenant-guid}/`.         This URI is a case-sensitive identifier for the token issuer.         More information on OpenID Connect Discovery: http://openid.net/specs/openid-connect-discovery-1_0.html
   - `[TwitterEnabled <Boolean?>]`: <code>false</code> if the Twitter provider should not be enabled despite the set registration; otherwise, <code>true</code>.
 
 ## RELATED LINKS

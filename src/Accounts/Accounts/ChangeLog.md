@@ -19,6 +19,19 @@
 -->
 
 ## Upcoming Release
+* Supported tenant domain as input while using `Connect-AzAccount` with parameter `Tenant`. [#19471]
+
+## Version 2.10.1
+* Deduplicated subscriptions belonging to multiple tenants while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19427]
+
+## Version 2.10.0
+* Supported returning all subscriptions with specified name while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19295]
+* Fixed null reference exception when cmdlet uses AzureRestOperation [#18104]
+* Updated survey message and settings
+
+## Version 2.9.1
+* Implemented `SupportsShouldProcess` for `Invoke-AzRestMethod`
+* Supported giving suggestions if an Azure PowerShell command cannot be found, for example when there is a typo in command name.
 
 ## Version 2.9.0
 * Supported exporting and importing configurations by `Export-AzConfig` and `Import-AzConfig`.

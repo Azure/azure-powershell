@@ -65,6 +65,9 @@ Enable static website for the Azure Storage account.
 ### [Get-AzDataLakeGen2ChildItem](Get-AzDataLakeGen2ChildItem.md)
 Lists sub directorys and files from a directory or filesystem root.
 
+### [Get-AzDataLakeGen2DeletedItem](Get-AzDataLakeGen2DeletedItem.md)
+List all deleted files or directories from a directory or filesystem root.
+
 ### [Get-AzDataLakeGen2Item](Get-AzDataLakeGen2Item.md)
 Gets the details of a file or directory in a filesystem.
 
@@ -85,6 +88,12 @@ Gets a Storage account.
 
 ### [Get-AzStorageAccountKey](Get-AzStorageAccountKey.md)
 Gets the access keys for an Azure Storage account.
+
+### [Get-AzStorageLocalUser](Get-AzStorageLocalUser.md)
+Gets a specified local user or lists all local users in a storage account.
+
+### [Get-AzStorageLocalUserKey](Get-AzStorageLocalUserKey.md)
+Lists SSH authorized keys and shared key of a specified local user.
 
 ### [Get-AzStorageAccountManagementPolicy](Get-AzStorageAccountManagementPolicy.md)
 Gets the management policy of an Azure Storage account.
@@ -215,6 +224,15 @@ Regenerates a storage key for an Azure Storage account.
 ### [New-AzStorageAccountManagementPolicyBlobIndexMatchObject](New-AzStorageAccountManagementPolicyBlobIndexMatchObject.md)
 Creates a ManagementPolicy BlobIndexMatch object, which can be used in New-AzStorageAccountManagementPolicyFilter.
 
+### [New-AzStorageLocalUserPermissionScope](New-AzStorageLocalUserPermissionScope.md)
+Creates a permission scope object, which can be used in Set-AzStorageLocalUser.
+
+### [New-AzStorageLocalUserSshPassword](New-AzStorageLocalUserSshPassword.md)
+Regenerate SSH password of a specified local user in a storage account.
+
+### [New-AzStorageLocalUserSshPublicKey](New-AzStorageLocalUserSshPublicKey.md)
+Creates a SSH public key object, which can be used in Set-AzStorageLocalUser.
+
 ### [New-AzStorageAccountManagementPolicyFilter](New-AzStorageAccountManagementPolicyFilter.md)
 Creates a ManagementPolicy rule filter object, which can be used in New-AzStorageAccountManagementPolicyRule.
 
@@ -308,6 +326,9 @@ Removes a Storage file share.
 ### [Remove-AzStorageAccount](Remove-AzStorageAccount.md)
 Removes a Storage account from Azure.
 
+### [Remove-AzStorageLocalUser](Remove-AzStorageLocalUser.md)
+Removes a specified local user in a storage account.
+
 ### [Remove-AzStorageAccountManagementPolicy](Remove-AzStorageAccountManagementPolicy.md)
 Removes the management policy of an Azure Storage account.
 
@@ -359,6 +380,9 @@ Removes a storage table.
 ### [Remove-AzStorageTableStoredAccessPolicy](Remove-AzStorageTableStoredAccessPolicy.md)
 Removes a stored access policy from an Azure storage table.
 
+### [Restore-AzDataLakeGen2DeletedItem](Restore-AzDataLakeGen2DeletedItem.md)
+Restores a deleted file or directory in a filesystem.
+
 ### [Restore-AzRmStorageShare](Restore-AzRmStorageShare.md)
 Restores a deleted file share.
 
@@ -385,6 +409,9 @@ Creates or updates ImmutabilityPolicy of a Storage blob containers
 
 ### [Set-AzStorageAccount](Set-AzStorageAccount.md)
 Modifies a Storage account.
+
+### [Set-AzStorageLocalUser](Set-AzStorageLocalUser.md)
+Creates or updates a specified local user in a storage account.
 
 ### [Set-AzStorageAccountManagementPolicy](Set-AzStorageAccountManagementPolicy.md)
 Creates or modifies the management policy of an Azure Storage account.

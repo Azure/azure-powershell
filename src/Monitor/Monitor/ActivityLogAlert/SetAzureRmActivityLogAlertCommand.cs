@@ -19,12 +19,14 @@ using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
 {
     /// <summary>
     /// Create or update an Activity Log Alert
     /// </summary>
+    [CmdletDeprecation(ReplacementCmdletName = "Update-AzActivityLogAlert")]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(PSActivityLogAlertResource))]
     public class SetAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {

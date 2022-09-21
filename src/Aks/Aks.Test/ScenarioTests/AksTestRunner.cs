@@ -60,7 +60,7 @@ namespace Commands.Aks.Test.ScenarioTests
                         {"Microsoft.Features", null},
                         {"Microsoft.Authorization", null}
                     }
-                ).WithMockContextAction(() =>
+                ).WithMockContextAction(mockContext =>
                 {
                     if (HttpMockServer.GetCurrentMode() == HttpRecorderMode.Playback)
                     {

@@ -21,7 +21,7 @@ $ChangedFiles = Get-Content -Path "$PSScriptRoot\..\artifacts\FilesChanged.txt"
 
 $ALL_MODULE = "ALL_MODULE"
 
-$SKIP_MODULES = @()
+$SKIP_MODULES = @("lib", "shared") # lib and shared are special folders in src that should not trigger autorest. Do not remove them.
 
 #Region Detect which module should be processed
 $ModuleSet = New-Object System.Collections.Generic.HashSet[string]
@@ -46,7 +46,11 @@ foreach ($file in $ChangedFiles)
 }
 if ($ModuleSet.Contains($ALL_MODULE))
 {
-    $ModuleList = (Get-ChildItem "$PSScriptRoot\..\src\" -Directory -Exclude helpers,lib).Name | Where-Object { $SKIP_MODULES -notcontains $_ -and (Get-Item env:SELECTEDMODULELIST).Value.Split(';') -contains $_ }
+    $Null = $ModuleSet.Remove($ALL_MODULE)
+    $CIConfig = Get-Content "$PSScriptRoot\..\.ci-config.json" | ConvertFrom-Json
+    $SelectedModuleList = (Get-ChildItem "$PSScriptRoot\..\src\").Name | Where-Object { $CIConfig.selectModuleList -contains $_ }
+    $Null = $ModuleSet.Add($SelectedModuleList)
+    $ModuleList = $ModuleSet | Where-Object { $SKIP_MODULES -notcontains $_ }
 }
 else
 {
