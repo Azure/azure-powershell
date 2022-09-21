@@ -13,7 +13,7 @@ This command updates an azure databricks accessConnector.
 
 ### Example 2: Updates an azure databricks accessConnector by pipeline
 ```powershell
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac |Update-AzDatabricksAccessConnector  -Tag @{'key'='value'}
+Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac | Update-AzDatabricksAccessConnector  -Tag @{'key'='value'}
 ```
 
 ```output
