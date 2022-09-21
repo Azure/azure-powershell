@@ -189,7 +189,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 LastBackupName = parameters.LastBackupName,
                 CreateMode = CreateMode.RestoreExternalBackup,
                 StorageContainerUri = parameters.StorageContainerUri,
-                StorageContainerSasToken = parameters.StorageContainerSasToken
+                StorageContainerSasToken = parameters.StorageContainerSasToken,
+                StorageContainerIdentity = parameters.StorageContainerIdentity
             };
             var response = Communicator.StartLogReplay(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name, model);
             return CreateManagedDatabaseModelFromResponse(parameters.ResourceGroupName, parameters.ManagedInstanceName, response);
