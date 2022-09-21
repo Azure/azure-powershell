@@ -25,16 +25,28 @@ title: CosmosDBManagementClient
 ### 
 ``` yaml 
 input-file:
-  - https://github.com/Azure/azure-rest-api-specs/tree/9918d83b021f4abe956ca3be5df358482f50433a/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-05-15-preview/cosmos-db.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/9918d83b021f4abe956ca3be5df358482f50433a/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-05-15-preview/dataTransferService.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/9918d83b021f4abe956ca3be5df358482f50433a/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-05-15-preview/managedCassandra.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/9918d83b021f4abe956ca3be5df358482f50433a/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-05-15-preview/mongorbac.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/9918d83b021f4abe956ca3be5df358482f50433a/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-05-15-preview/notebook.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/9918d83b021f4abe956ca3be5df358482f50433a/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-05-15-preview/rbac.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/9918d83b021f4abe956ca3be5df358482f50433a/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-05-15-preview/restorable.json
-  - https://github.com/Azure/azure-rest-api-specs/tree/9918d83b021f4abe956ca3be5df358482f50433a/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-05-15-preview/services.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/cosmos-db.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/dataTransferService.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/managedCassandra.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/mongorbac.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/notebook.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/rbac.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/restorable.json
+  - https://github.com/Azure/azure-rest-api-specs/tree/main/specification/cosmos-db/resource-manager/Microsoft.DocumentDB/preview/2022-08-15-preview/services.json
+
+rename-mapping:
+  MongoRoleDefinitionGetResults: MongoDBRoleDefinition
+  MongoUserDefinitionGetResults: MongoDBUserDefinition
+  MongoRoleDefinitionType: MongoDBRoleDefinitionType
+  Privilege: MongoDBPrivilege
+  Role: MongoDBRole
+  MongoRoleDefinitionGetResults.properties.type: RoleDefinitionType
+  PrivilegeResourceInfo: PrivilegeResourceInfoResource
+  MongoRoleDefinitionListResult: MongoDBRoleDefinitionListResult
+  MongoUserDefinitionListResult: MongoDBUserDefinitionListResult
 
 output-folder: Generated
 
 namespace: Microsoft.Azure.Management.CosmosDB
+
 ```
