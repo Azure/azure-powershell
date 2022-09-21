@@ -178,5 +178,13 @@ namespace Commands.Network.Test.ScenarioTests
             TestRunner.RunTestScript("Test-AzureFirewallCRUDEnableUDPLogOptimization");
         }
 
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.azurefirewall)]
+        public void TestAzureFirewallCRUDRouteServerId()
+        {
+            TestRunner.RunTestScript("Test-AzureFirewallCRUDRouteServerId");
+        }
+
     }
 }
