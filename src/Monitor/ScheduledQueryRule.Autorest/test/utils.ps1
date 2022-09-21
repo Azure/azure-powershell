@@ -19,6 +19,24 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+
+    $resourceGroupName = 'scheduled-query-rule-group' + (RandomString -allChars $false -len 6)
+    write-host "start to create test group $resourceGroupName"
+    New-AzResourceGroup -Name $resourceGroupName -Location eastus
+    $null = $env.Add("resourceGroupName", $resourceGroupName)
+
+    $vmName = 'test-vm' + (RandomString -allChars $false -len 6)
+    $vmPassword = ConvertTo-SecureString "Testpassword001!" -AsPlainText -Force
+    $vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword)
+    write-host "start to create vm $vmName"
+    New-AzVM -Credential $vmCred -Name $vmName -ResourceGroup $resourceGroupName
+    $null = $env.Add("vmName", $vmName)
+    $vmId = (Get-AzVM -ResourceGroupName $resourceGroupName -Name $vmName).Id
+    $null = $env.Add("vmId", $vmId)
+
+    $scheduledQueryRuleName = 'test-rule' + (RandomString -allChars $false -len 6)
+    $null = $env.Add('scheduledQueryRuleName', $scheduledQueryRuleName)
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'

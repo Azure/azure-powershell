@@ -141,7 +141,7 @@ function Update-AzActivityLogAlert {
 
     process {
         # changed type of parameter "-Enabled" from switch parameter to boolean
-        . Az.Monitor.internal\Update-AzActivityLogAlert @PSBoundParameters
+        . Az.ActivityLogAlert.internal\Update-AzActivityLogAlert @PSBoundParameters
     }
 
 }
