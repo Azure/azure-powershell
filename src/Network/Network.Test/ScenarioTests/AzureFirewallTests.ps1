@@ -2010,3 +2010,48 @@ function Test-AzureFirewallCRUDEnableUDPLogOptimization {
         Clean-ResourceGroup $rgname
     }
 }
+<#
+.SYNOPSIS
+Tests AzureFirewall RouteServerId
+#>
+function Test-AzureFirewallCRUDRouteServerId {
+    $rgname = Get-ResourceGroupName
+    $azureFirewallName = Get-ResourceName
+    $resourceTypeParent = "Microsoft.Network/AzureFirewalls"
+    $location = Get-ProviderLocation $resourceTypeParent "eastus2euap"
+
+    $vnetName = Get-ResourceName
+    $subnetName = "AzureFirewallSubnet"
+    $publicIpName = Get-ResourceName
+    $routeServerId="/subscriptions/aeb5b02a-0f18-45a4-86d6-81808115cacf/resourceGroups/testRG/providers/Microsoft.Network/virtualHubs/TestRS"
+
+    try {
+        # Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $location
+
+        # Create the Virtual Network
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/24
+        $vnet = New-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname -Location $location -AddressPrefix 10.0.0.0/16 -Subnet $subnet
+
+        # Create public ip
+        $publicip = New-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName -location $location -AllocationMethod Static -Sku Standard
+
+        # Create AzureFirewall
+        $azureFirewall = New-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname -Location $location -RouteServerId $routeServerId
+
+        # Verify
+        $azFirewall = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        Assert-AreEqual $routeServerId $azFirewall.RouteServerId
+
+        # Reset the RouteServerId 
+        $azFirewall.RouteServerId = ""
+        Set-AzFirewall -AzureFirewall $azFirewall
+        $azfw = Get-AzFirewall -Name $azureFirewallName -ResourceGroupName $rgname
+        
+        Assert-AreEqual "" $azfw.RouteServerId
+    }
+    finally {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
