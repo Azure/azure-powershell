@@ -1861,6 +1861,10 @@
                 <PropertyName>VnetEncryptionSupported</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>DisableTcpStateTracking</Label>
+                <PropertyName>DisableTcpStateTracking</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>AuxiliaryMode</Label>
                 <PropertyName>AuxiliaryMode</PropertyName>
               </ListItem>

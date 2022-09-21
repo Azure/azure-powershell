@@ -985,7 +985,7 @@ function Test-NetworkInterfaceWithAcceleratedNetworking
 
 <#
 .SYNOPSIS
-Tests creating new simple public networkinterface with disableTcpStateTrackingProperty.
+Tests creating new simple public networkinterface with disableTcpStateTracking Property.
 #>
 function Test-NetworkInterfaceWithDisableTcpStateTracking
 {
@@ -1015,47 +1015,21 @@ function Test-NetworkInterfaceWithDisableTcpStateTracking
         $actualNic = New-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname -Location $location -Subnet $vnet.Subnets[0] -PublicIpAddress $publicip -DisableTcpStateTracking true
         $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
 
-        Assert-AreEqual $expectedNic.ResourceGroupName $actualNic.ResourceGroupName	
-        Assert-AreEqual $expectedNic.Name $actualNic.Name	
-        Assert-AreEqual $expectedNic.Location $actualNic.Location
         Assert-NotNull $expectedNic.ResourceGuid
         Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
-        Assert-AreEqual $expectedNic.IpConfigurations[0].Name $actualNic.IpConfigurations[0].Name
-        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $actualNic.IpConfigurations[0].PublicIpAddress.Id
-        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $actualNic.IpConfigurations[0].Subnet.Id
-        Assert-NotNull $expectedNic.IpConfigurations[0].PrivateIpAddress
-		Assert-AreEqual $expectedNic.DisableTcpStateTrackingProperty $true
-        Assert-AreEqual "Dynamic" $expectedNic.IpConfigurations[0].PrivateIpAllocationMethod
-        
-        # Check publicIp address reference
-        $publicip = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $publicIpName
-        Assert-AreEqual $expectedNic.IpConfigurations[0].PublicIpAddress.Id $publicip.Id
-        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $publicip.IpConfiguration.Id
+        Assert-AreEqual $expectedNic.DisableTcpStateTracking $true
 
-        # Check Subnet address reference
-        $vnet = Get-AzVirtualNetwork -Name $vnetName -ResourceGroupName $rgname
-        Assert-AreEqual $expectedNic.IpConfigurations[0].Subnet.Id $vnet.Subnets[0].Id
-        Assert-AreEqual $expectedNic.IpConfigurations[0].Id $vnet.Subnets[0].IpConfigurations[0].Id
+        # Update DisableTcpStateTracking Property to false 
+        $expectedNic.DisableTcpStateTracking = $false
+        $job = $expectedNic | Set-AzNetworkInterface -AsJob
+        $job | Wait-Job
 
-        # list
-        $list = Get-AzNetworkInterface -ResourceGroupName $rgname
-        Assert-AreEqual 1 @($list).Count
-        Assert-AreEqual $list[0].ResourceGroupName $actualNic.ResourceGroupName	
-        Assert-AreEqual $list[0].Name $actualNic.Name	
-        Assert-AreEqual $list[0].Location $actualNic.Location
-        Assert-AreEqual "Succeeded" $list[0].ProvisioningState
-        Assert-AreEqual $actualNic.Etag $list[0].Etag
+        $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
+        Assert-NotNull $expectedNic.ResourceGuid
+        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
+        Assert-AreEqual $expectedNic.DisableTcpStateTracking $false
 
-        $list = Get-AzNetworkInterface -ResourceGroupName "*" -Name "*"
-        Assert-True { $list.Count -ge 0 }
-
-        $list = Get-AzNetworkInterface -Name "*"
-        Assert-True { $list.Count -ge 0 }
-
-        $list = Get-AzNetworkInterface -ResourceGroupName "*"
-        Assert-True { $list.Count -ge 0 }
-
-        # Delete NetworkInterface
+        # Delete ResourceGroup
         $delete = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
         Assert-AreEqual true $delete
         

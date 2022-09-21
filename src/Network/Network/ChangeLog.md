@@ -23,6 +23,8 @@
     - `New-AzVirtualNetworkGatewayConnection`
 * Updated commandlet to support no-internet advertise CustomIpPrefix.
     - `Update-AzCustomIpPrefix`
+* Updated commandlet to support create/update nic with DisableTcpStateTracking property
+	- `New-AzNetworkInterface`
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
