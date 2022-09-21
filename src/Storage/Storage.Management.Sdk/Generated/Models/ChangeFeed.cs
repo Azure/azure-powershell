@@ -72,13 +72,16 @@ namespace Microsoft.Azure.Management.Storage.Models
         /// </exception>
         public virtual void Validate()
         {
-            if (RetentionInDays > 146000)
+            if (RetentionInDays != null)
             {
-                throw new ValidationException(ValidationRules.InclusiveMaximum, "RetentionInDays", 146000);
-            }
-            if (RetentionInDays < 1)
-            {
-                throw new ValidationException(ValidationRules.InclusiveMinimum, "RetentionInDays", 1);
+                if (RetentionInDays > 146000)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMaximum, "RetentionInDays", 146000);
+                }
+                if (RetentionInDays < 1)
+                {
+                    throw new ValidationException(ValidationRules.InclusiveMinimum, "RetentionInDays", 1);
+                }
             }
         }
     }
