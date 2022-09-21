@@ -26,7 +26,7 @@ The **Set-AzApplicationGatewayClientAuthConfiguration** cmdlet modifies the clie
 ```powershell
 $AppGw = Get-AzApplicationGateway -Name "ApplicationGateway01" -ResourceGroupName "ResourceGroup01"
 $profile  = Get-AzApplicationGatewaySslProfile -Name "SslProfile01" -ApplicationGateway $AppGw
-Set-AzApplicationGatewayClientAuthConfiguration -SslProfile $profile -VerifyClientCertIssuerDN -VerifyClientRevocation "OCSP"
+Set-AzApplicationGatewayClientAuthConfiguration -SslProfile $profile -VerifyClientCertIssuerDN -VerifyClientRevocation OCSP
 ```
 
 The first command gets the application gateway named ApplicationGateway01 in the resource group named ResourceGroup01 and stores it in the $AppGw variable. The second command gets the ssl profile named SslProfile01 for $AppGw and stores the settings in the $profile variable. The last command modifies the client auth configuration of the ssl profile object stored in $profile.
@@ -74,7 +74,7 @@ Accepted values: None, OCSP
 
 Required: False
 Position: Named
-Default value: "None"
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
