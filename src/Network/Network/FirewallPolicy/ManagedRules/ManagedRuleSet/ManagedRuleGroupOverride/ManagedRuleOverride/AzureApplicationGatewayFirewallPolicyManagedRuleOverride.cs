@@ -50,7 +50,8 @@ namespace Microsoft.Azure.Commands.Network
             return new PSApplicationGatewayFirewallPolicyManagedRuleOverride()
             {
                 RuleId = this.RuleId,
-                State = string.IsNullOrEmpty(State) ? "Disabled" : this.State 
+                State = string.IsNullOrEmpty(State) ? "Disabled" : this.State,
+                Action = this.Action
             };
         }
     }
