@@ -179,7 +179,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IOriginGroup
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IOriginGroup
 
 ## NOTES
 

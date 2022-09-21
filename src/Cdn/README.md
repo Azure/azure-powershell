@@ -35,8 +35,8 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/afdx.json
-  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/stable/2021-06-01/cdn.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2022-05-01-preview/afdx.json
+  - $(repo)/specification/cdn/resource-manager/Microsoft.Cdn/preview/2022-05-01-preview/cdn.json
 # If the swagger has not been put in the repo, you may uncomment the following line and refer to it locally
 # - (this-folder)/relative-path-to-your-swagger 
 
@@ -45,7 +45,7 @@ module-version: 0.1.0
 # Normally, title is the service name
 title: Cdn
 subject-prefix: $(service-name)
-branch: 1278b951080f769d400bb5d03090de8bc21dc355
+branch: 38ef3fb4703541a57df026311a603b52d859b1ab
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
 # uncomment following line to support viaIdentity for these post APIs
@@ -145,6 +145,7 @@ directive:
 
   # Hide Cdn profile
   - where:
+      verb: ^(?:(?!Move).*)$
       subject: Profile
     hide: true
   - where:

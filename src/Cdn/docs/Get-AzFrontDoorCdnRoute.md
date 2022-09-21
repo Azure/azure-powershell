@@ -180,7 +180,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IRoute
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IRoute
 
 ## NOTES
 

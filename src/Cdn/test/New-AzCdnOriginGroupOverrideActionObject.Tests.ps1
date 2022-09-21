@@ -16,6 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnOriginGroupOverrideA
 
 Describe 'New-AzCdnOriginGroupOverrideActionObject' {
     It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            # ignore
+        } | Should -Not -Throw
     }
 }

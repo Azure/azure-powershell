@@ -49,7 +49,7 @@ A list of actions that are executed when all the conditions of a rule are satisf
 To construct, see NOTES section for ACTION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeliveryRuleAction1[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IDeliveryRuleAction1[]
 Parameter Sets: (All)
 Aliases:
 
@@ -65,7 +65,7 @@ A list of conditions that must be matched for the actions to be executed.
 To construct, see NOTES section for CONDITION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IDeliveryRuleCondition[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IDeliveryRuleCondition[]
 Parameter Sets: (All)
 Aliases:
 
@@ -117,7 +117,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.DeliveryRule
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.DeliveryRule
 
 ## NOTES
 

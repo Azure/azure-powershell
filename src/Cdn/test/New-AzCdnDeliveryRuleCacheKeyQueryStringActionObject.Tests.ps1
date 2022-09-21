@@ -16,6 +16,8 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzCdnDeliveryRuleCacheKey
 
 Describe 'New-AzCdnDeliveryRuleCacheKeyQueryStringActionObject' {
     It '__AllParameterSets' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+        {
+            # ignore
+        } | Should -Not -Throw
     }
 }

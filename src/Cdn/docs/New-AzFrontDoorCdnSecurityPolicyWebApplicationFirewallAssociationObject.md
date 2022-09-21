@@ -43,7 +43,7 @@ List of domains.
 To construct, see NOTES section for DOMAIN properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.IActivatedResourceReference[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.IActivatedResourceReference[]
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20210601.SecurityPolicyWebApplicationFirewallAssociation
+### Microsoft.Azure.PowerShell.Cmdlets.Cdn.Models.Api20220501Preview.SecurityPolicyWebApplicationFirewallAssociation
 
 ## NOTES
 
