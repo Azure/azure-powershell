@@ -38,3 +38,7 @@ Create an in-memory object for WebhookNotification.
 ### [Remove-AzAutoscaleSetting](Remove-AzAutoscaleSetting.md)
 Deletes and autoscale setting
 
+### [Update-AzAutoscaleSetting](Update-AzAutoscaleSetting.md)
+Updates an existing AutoscaleSettingsResource.
+To update other fields use the CreateOrUpdate method.
+

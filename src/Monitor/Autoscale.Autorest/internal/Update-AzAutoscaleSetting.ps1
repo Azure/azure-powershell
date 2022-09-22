@@ -22,9 +22,7 @@ To update other fields use the CreateOrUpdate method.
 Updates an existing AutoscaleSettingsResource.
 To update other fields use the CreateOrUpdate method.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Update-AzAutoscaleSetting -ResourceGroupName test-group -Name test-autoscalesetting -Tag @{'key'='val'} -Enabled $true
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleIdentity
