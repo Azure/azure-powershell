@@ -26,20 +26,21 @@ AutoRest does not generate authentication code for the module. Authentication is
 For information on how to develop for `Az.ElasticSan`, see [how-to.md](how-to.md).
 <!-- endregion -->
 
+### AutoRest Configuration
+> see https://aka.ms/autorest
+
 ``` yaml
 # Please specify the commit id that includes your features to make sure generated codes stable.
 branch: ce6d86734f244e44e4ae39952f62c324d8fe6817
 require:
-# readme.azure.noprofile.md is the common configuration file
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
-# You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/main/specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2021-11-20-preview/elasticsan.json
+  - $(repo)/specification/elasticsan/resource-manager/Microsoft.ElasticSan/preview/2021-11-20-preview/elasticsan.json
 
-# For new RP, the version is 0.1.0
-module-version: 0.1.0
 # Normally, title is the service name
 title: ElasticSan
+# For new RP, the version is 0.1.0
+module-version: 0.1.0
 subject-prefix: $(service-name)
 
 # If there are post APIs for some kinds of actions in the RP, you may need to 
