@@ -58,13 +58,15 @@ New-AzVM [[-ResourceGroupName] <String>] [[-Location] <String>] [-EdgeZone <Stri
 ## DESCRIPTION
 The **New-AzVM** cmdlet creates a virtual machine in Azure.
 This cmdlet takes a virtual machine object as input.
-Use the [New-AzVMConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmconfig?view=azps-8.3.0) cmdlet to create a virtual machine object.
+Use the **[New-AzVMConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmconfig)** cmdlet to create a virtual machine object.
 The **New-AzVM** cmdlet will create a new storage account for boot diagnostics if one does not already exist. 
-Other cmdlets can be used to configure the virtual machine, such as Set-AzVMOperatingSystem, Set-AzVMSourceImage, Add-AzVMNetworkInterface, and Set-AzVMOSDisk.
-<br>
+Then use the following cmdlets to set other properties: <br>
+**[Add-AzVMNetworkInterface](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmnetworkinterface)** to set the network profile.<br>
+**[Set-AzVMOperatingSystem](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmoperatingsystem)** to set the OS profile. <br>
+**[Set-AzVMSourceImage](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmsourceimage)** to set the source image.<br>
+**[Set-AzVMOSDisk](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmosdisk)** to set the OS disk.<br>
+**[Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku)** can also be used to find out available sizes for your subscription and region.<br>
 The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.
-<br><br>
-[Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region.
 
 ## EXAMPLES
 
