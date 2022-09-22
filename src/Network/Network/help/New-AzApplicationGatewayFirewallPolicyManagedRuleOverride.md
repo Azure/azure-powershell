@@ -13,7 +13,7 @@ Creates a managedRuleOverride entry for RuleGroupOverrideGroup entry.
 ## SYNTAX
 
 ```
-New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId <String> [-State <String>]
+New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId <String> [-State <String>] [-Action <String>]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -36,8 +36,23 @@ $ruleOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -
 
 Creates a ruleOverride Entry with RuleId as $ruleId, State as Enabled and Action as Log.
 
-
 ## PARAMETERS
+
+### -Action
+Specify the Action in override rule entry.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+Accepted values: AnomalyScoring, Allow, Block, Log
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -81,22 +96,6 @@ Accepted values: Disabled, Enabled
 Required: False
 Position: Named
 Default value: Disabled
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Action
-Specify the Action in override rule entry.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-Accepted values: AnomalyScoring, Allow, Block, Log
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
