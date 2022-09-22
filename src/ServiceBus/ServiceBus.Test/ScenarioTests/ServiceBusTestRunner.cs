@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
                         {"Microsoft.Authorization", null},
                         {"Microsoft.KeyVault", null},
                         {"Microsoft.EventGrid", null },
-						{"Microsoft.Network", null }
+			{"Microsoft.Network", null }
                     }
                 )
                 .Build();
