@@ -45,7 +45,7 @@ Use the simple parameter set (`SimpleParameterSet`) to quickly create a pre-set 
 Use the default parameter set (`DefaultParameter`) for more advanced scenarios when you need to precisely configure each component of the VMSS and each associated resource before creation. 
 For default parameter set, first use the **[New-AzVmssConfig](https://docs.microsoft.com/en-us/powershell/module/az.compute/new-azvmss)** cmdlet to create a virtual machine scale set object. <br> <br>
 
-Then the following cmdlets can be used to set different properties of the virtual machine scale set object: <br>
+Then use the following cmdlets to set different properties of the virtual machine scale set object: <br>
 - **[Add-AzVmssNetworkInterfaceConfiguration](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmssnetworkinterfaceconfiguration)** to set the network profile.<br>
 - **[Set-AzVmssOsProfile](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmssosprofile)** to set the OS profile. <br>
 - **[Set-AzVmssStorageProfile](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmssstorageprofile)** to set the storage profile.<br>

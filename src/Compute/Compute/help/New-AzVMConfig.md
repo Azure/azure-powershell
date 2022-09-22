@@ -37,7 +37,7 @@ New-AzVMConfig [-VMName] <String> [-VMSize] <String> [[-AvailabilitySetId] <Stri
 ## DESCRIPTION
 The **New-AzVMConfig** cmdlet creates a configurable local virtual machine object for Azure. <br><br>
 
-The following cmdlets can be used to set different properties of the virtual machine object: <br>
+The following cmdlets are used to set different properties of the virtual machine object: <br>
 - **[Add-AzVMNetworkInterface](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmnetworkinterface)** to set the network profile.<br>
 - **[Set-AzVMOperatingSystem](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmoperatingsystem)** to set the OS profile. <br>
 - **[Set-AzVMSourceImage](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmsourceimage)** to set the source image.<br>
