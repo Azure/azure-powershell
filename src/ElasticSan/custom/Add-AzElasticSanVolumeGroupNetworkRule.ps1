@@ -44,7 +44,7 @@ https://docs.microsoft.com/powershell/module/az.elasticsan/update-azelasticsanvo
 #>
 function Add-AzElasticSanVolumeGroupNetworkRule {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]])]
-    [CmdletBinding(DefaultParameterSetName='NetworkRuleObject', PositionalBinding=$false, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='NetworkRuleObject', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='NetworkRuleObject', Mandatory)]
         [Parameter(ParameterSetName='NetworkRuleResourceId', Mandatory)]
@@ -203,7 +203,15 @@ function Add-AzElasticSanVolumeGroupNetworkRule {
 
         if ($updated) {
             try {
-                $updatedVolumeGroup = Update-AzElasticSanVolumeGroup -ElasticSanName $ElasticSanName -ResourceGroupName $ResourceGroupName -Name $VolumeGroupName -NetworkAclsVirtualNetworkRule $originalRules.ToArray() -ErrorAction Stop
+                if ($PSBoundParameters.ContainsKey('NetworkAclsVirtualNetworkResourceId')) {
+                    $null = $PSBoundParameters.Remove('NetworkAclsVirtualNetworkResourceId')
+                }
+                if ($PSBoundParameters.ContainsKey('NetworkAclsVirtualNetworkRule')) {
+                    $null = $PSBoundParameters.Remove('NetworkAclsVirtualNetworkRule')
+                }
+                $PSBoundParameters.Add('NetworkAclsVirtualNetworkRule', $originalRules.ToArray())
+                $PSBoundParameters.Add('ErrorAction', 'Stop')
+                $updatedVolumeGroup = Update-AzElasticSanVolumeGroup @PSBoundParameters
             } catch {
                 Write-Error $_.Exception
                 return
