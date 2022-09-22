@@ -31,6 +31,8 @@
     - `UpdateAzureRmVpnGatewayCommand.cs`
 * Updated commandlet to support new parameters: asn, geo, expressrouteadvertise.
     - `Update-AzCustomIpPrefix`
+* Updated commandlet to support IPv4 Parent/Child CustomIpPrefix creation.
+    - `New-AzCustomIpPrefix`
 * Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
 
 ## Version 4.20.1
