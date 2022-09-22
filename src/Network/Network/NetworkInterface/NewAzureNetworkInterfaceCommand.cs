@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.Network
                 networkInterface.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
             }
 
-            if (this.DisableTcpStateTracking != null)
+            if (!string.IsNullOrEmpty(DisableTcpStateTracking))
             {
                 networkInterface.DisableTcpStateTracking = this.DisableTcpStateTracking;
             }

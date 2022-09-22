@@ -2010,6 +2010,10 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>DisableTcpStateTracking</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>EnableIPForwarding</Label>
           </TableColumnHeader>
           <TableColumnHeader>
