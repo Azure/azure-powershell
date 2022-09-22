@@ -1,3 +1,4 @@
+### Example 1: Get an EventHub cluster
 ```powershell
 Get-AzEventHubCluster -ResourceGroupName myResourceGroup -Name DefaultCluster-11
 ```

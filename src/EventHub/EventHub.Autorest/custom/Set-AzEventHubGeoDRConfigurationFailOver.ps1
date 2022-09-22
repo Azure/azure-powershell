@@ -29,7 +29,6 @@ function Set-AzEventHubGeoDRConfigurationFailOver{
         ${Name},
 
         [Parameter(ParameterSetName = 'Fail', Mandatory, HelpMessage = "The name of EventHub namespace")]
-        [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of EventHub namespace
