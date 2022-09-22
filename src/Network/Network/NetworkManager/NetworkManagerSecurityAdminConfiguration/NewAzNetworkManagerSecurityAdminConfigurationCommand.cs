@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "ApplyOnNetworkIntentPolicyBasedServices. Valid values include 'None' and 'All'.")]
-        public string[] ApplyOnNetworkIntentPolicyBasedService { get; set; }
+        public NetworkIntentPolicyBasedServiceType[] ApplyOnNetworkIntentPolicyBasedService { get; set; }
 
         [Parameter(
            Mandatory = false,
@@ -81,6 +81,13 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        public enum NetworkIntentPolicyBasedServiceType
+        {
+            None,
+            All,
+            AllowRulesOnly,
+        }
 
         public override void Execute()
         {
@@ -103,7 +110,16 @@ namespace Microsoft.Azure.Commands.Network
         {
             var securityConfig = new PSNetworkManagerSecurityAdminConfiguration();
             securityConfig.Name = this.Name;
-            securityConfig.ApplyOnNetworkIntentPolicyBasedServices = this.ApplyOnNetworkIntentPolicyBasedService.ToList();
+
+            if (this.ApplyOnNetworkIntentPolicyBasedService != null)
+            {
+                securityConfig.ApplyOnNetworkIntentPolicyBasedServices = new List<string>();
+                foreach (NetworkIntentPolicyBasedServiceType nipType in this.ApplyOnNetworkIntentPolicyBasedService)
+                {
+                    securityConfig.ApplyOnNetworkIntentPolicyBasedServices.Add(nipType.ToString());
+                }
+            }
+
             if (!string.IsNullOrEmpty(this.Description))
             {
                 securityConfig.Description = this.Description;

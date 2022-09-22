@@ -90,6 +90,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Protocol of Rule. Valid values include 'Tcp', 'Udp', 'Icmp', 'Esp', 'Any', and 'Ah'.",
             ParameterSetName = "Custom")]
+        [ValidateSet("Tcp","Udp","Icmp","Esp","Any","Ah")]
         public string Protocol { get; set; }
 
         [Parameter(
@@ -97,6 +98,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Direction of Rule. Valid values include 'Inbound' and 'Outbound'.",
             ParameterSetName = "Custom")]
+        [ValidateSet("Inbound","Outbound")]
         public string Direction { get; set; }
 
         [Parameter(
@@ -104,6 +106,7 @@ namespace Microsoft.Azure.Commands.Network
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Access of Rule. Valid values include 'Allow', 'Deny', and 'AlwaysAllow'.",
             ParameterSetName = "Custom")]
+        [ValidateSet("Allow","Deny","AlwaysAllow")]
         public string Access { get; set; }
 
         [Parameter(

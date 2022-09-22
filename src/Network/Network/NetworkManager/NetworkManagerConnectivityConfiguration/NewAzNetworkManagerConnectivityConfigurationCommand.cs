@@ -64,6 +64,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Connectivity Topology. Valid values include 'HubAndSpoke' and 'Mesh'.")]
+        [ValidateSet("HubAndSpoke", "Mesh")]
         public string ConnectivityTopology { get; set; }
 
         [Parameter(

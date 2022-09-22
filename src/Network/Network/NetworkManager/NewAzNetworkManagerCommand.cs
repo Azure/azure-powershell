@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = "Network Manager Scope Access. Valid values include 'SecurityAdmin' and 'Connectivity'.")]
-        public string[] NetworkManagerScopeAccess { get; set; }
+        public NetworkManagerScopeAccessType[] NetworkManagerScopeAccess { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -84,6 +84,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
+
+        public enum NetworkManagerScopeAccessType
+        {
+            SecurityAdmin,
+            Connectivity,
+        }
 
         public override void Execute()
         {
@@ -108,7 +114,12 @@ namespace Microsoft.Azure.Commands.Network
             networkManager.Name = this.Name;
             networkManager.Location = this.Location;
             networkManager.NetworkManagerScopes = this.NetworkManagerScope;
-            networkManager.NetworkManagerScopeAccesses = this.NetworkManagerScopeAccess.ToList();
+
+            networkManager.NetworkManagerScopeAccesses = new List<string>();
+            foreach (NetworkManagerScopeAccessType accessType in this.NetworkManagerScopeAccess)
+            {
+                networkManager.NetworkManagerScopeAccesses.Add(accessType.ToString());
+            }
             if (!string.IsNullOrEmpty(this.Description))
             {
                 networkManager.Description = this.Description;

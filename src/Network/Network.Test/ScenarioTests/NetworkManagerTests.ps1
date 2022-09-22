@@ -369,7 +369,7 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
 
         $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName
 
-        $ApplyOnNetworkIntentPolicyBasedServices  = @("None")
+        $ApplyOnNetworkIntentPolicyBasedServices = @("None")
         New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName -Description "DESCription" -DeleteExistingNSG -ApplyOnNetworkIntentPolicyBasedService $ApplyOnNetworkIntentPolicyBasedServices
         
         $securityConfig = Get-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName
@@ -377,11 +377,14 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
         Assert-AreEqual $SecurityConfigurationName $securityConfig.Name;
         Assert-AreEqual $ApplyOnNetworkIntentPolicyBasedServices $securityConfig.ApplyOnNetworkIntentPolicyBasedServices;
 
+        $ApplyOnNetworkIntentPolicyBasedServices = @()
         $securityConfig.Description = "A different description."
+        $securityConfig.ApplyOnNetworkIntentPolicyBasedServices = $ApplyOnNetworkIntentPolicyBasedServices
         $securityConfig = Set-AzNetworkManagerSecurityAdminConfiguration -InputObject $securityConfig
         Assert-NotNull $securityConfig;
         Assert-AreEqual "A different description." $securityConfig.Description;
         Assert-AreEqual $SecurityConfigurationName $securityConfig.Name;
+        Assert-AreEqual $ApplyOnNetworkIntentPolicyBasedServices $securityConfig.ApplyOnNetworkIntentPolicyBasedServices;
 
         [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem]]$configGroup  = @() 
         $groupItem = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId $networkGroup.Id
@@ -468,26 +471,26 @@ function Test-NetworkManagerSecurityAdminRuleCRUD
                 break;
             }
         }
-        Assert-NotNull $effectiveSecurityAdminRuleList;
+        Assert-NotNull $effectiveSecurityAdminRule;
         #>
 
-        Assert-AreEqual  $newAdminRule.Id $effectiveSecurityAdminRuleList.Value[0].Id;
-        Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[0].RuleGroups[0].Id;
-        Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[0].RuleCollectionAppliesToGroups[0].NetworkGroupId;
+        Assert-AreEqual  $newAdminRule.Id $effectiveSecurityAdminRuleList.Value[3].Id;
+        Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[3].RuleGroups[0].Id;
+        Assert-AreEqual  $networkGroup.Id $effectiveSecurityAdminRuleList.Value[3].RuleCollectionAppliesToGroups[0].NetworkGroupId;
        
 
-        Assert-AreEqual $securityConfig.Description $effectiveSecurityAdminRuleList.Value[0].ConfigurationDescription;
-        Assert-AreEqual $ruleCollection.Description $effectiveSecurityAdminRuleList.Value[0].RuleCollectionDescription;
+        Assert-AreEqual $securityConfig.Description $effectiveSecurityAdminRuleList.Value[3].ConfigurationDescription;
+        Assert-AreEqual $ruleCollection.Description $effectiveSecurityAdminRuleList.Value[3].RuleCollectionDescription;
 
-        Assert-AreEqual "TCP" $effectiveSecurityAdminRuleList.Value[0].Protocol 
-        Assert-AreEqual "Inbound" $effectiveSecurityAdminRuleList.Value[0].Direction 
-        Assert-AreEqual "Allow" $effectiveSecurityAdminRuleList.Value[0].Access 
-        Assert-AreEqual 100 $effectiveSecurityAdminRuleList.Value[0].Priority
+        Assert-AreEqual "TCP" $effectiveSecurityAdminRuleList.Value[3].Protocol 
+        Assert-AreEqual "Inbound" $effectiveSecurityAdminRuleList.Value[3].Direction 
+        Assert-AreEqual "Allow" $effectiveSecurityAdminRuleList.Value[3].Access 
+        Assert-AreEqual 100 $effectiveSecurityAdminRuleList.Value[3].Priority
 
-        Assert-AreEqual "100" $effectiveSecurityAdminRuleList.Value[0].SourcePortRanges[0] 
-        Assert-AreEqual "99" $effectiveSecurityAdminRuleList.Value[0].DestinationPortRanges[0]
-        Assert-AreEqual "10.0.0.1" $effectiveSecurityAdminRuleList.Value[0].Destinations[0].AddressPrefix
-        Assert-AreEqual "Internet" $effectiveSecurityAdminRuleList.Value[0].Sources[0].AddressPrefix
+        Assert-AreEqual "100" $effectiveSecurityAdminRuleList.Value[3].SourcePortRanges[0] 
+        Assert-AreEqual "99" $effectiveSecurityAdminRuleList.Value[3].DestinationPortRanges[0]
+        Assert-AreEqual "10.0.0.1" $effectiveSecurityAdminRuleList.Value[3].Destinations[0].AddressPrefix
+        Assert-AreEqual "Internet" $effectiveSecurityAdminRuleList.Value[3].Sources[0].AddressPrefix
 
         Deploy-AzNetworkManagerCommit -ResourceGroupName $rgname -Name $networkManagerName -TargetLocation $regions -CommitType "SecurityAdmin" 
         Start-Sleep -Seconds 60
@@ -636,5 +639,73 @@ function Test-NetworkManagerManagementGroupConnectionCRUD
         $removeResult = $job | Receive-Job;
 	}
     finally{
+	}
+}
+
+<#
+.SYNOPSIS
+Tests minimum parameter input for each resource results in successful create
+#>
+function Test-NetworkManagerResourceMinimumParameterCreate
+{
+    # Setup
+    $rgName = Get-ResourceGroupName
+    $networkManagerName = Get-ResourceName
+    $networkGroupName = Get-ResourceName
+    $staticMemberName = Get-ResourceName
+    $connectivityConfigurationName = Get-ResourceName
+    $SecurityConfigurationName = Get-ResourceName
+    $RuleCollectionName = Get-ResourceName
+    $RuleName = Get-ResourceName
+    $scopeConnectionName = Get-ResourceName
+    $rglocation = "centraluseuap"
+    $subscriptionId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884"
+    $vnetId = "/subscriptions/0fd190fa-dd1c-4724-b7f6-c5cc3ba5c884/resourceGroups/jaredgorthy-PowerShellTestResources/providers/Microsoft.Network/virtualNetworks/powerShellTestVnet"
+
+    try{
+        #Create the resource group
+        $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+
+        # Create Scope
+        $subscriptions  = @($subscriptionId)
+        $managementGroups  = @($managementGroupId)
+        $scope = New-AzNetworkManagerScope -Subscription $subscriptions
+
+        # Define access
+        $access  = @("Connectivity", "SecurityAdmin")
+
+        # Create network manager
+        New-AzNetworkManager -ResourceGroupName $rgname -Name $networkManagerName -NetworkManagerScope $scope -NetworkManagerScopeAccess $access -Location $rglocation
+
+        # Create a network group
+        New-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName
+
+        # Create a static member
+        New-AzNetworkManagerStaticMember -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -NetworkGroupName $networkGroupName -Name $staticMemberName -ResourceId $vnetId
+
+        # Create connectivity group item and config
+        $networkGroup = Get-AzNetworkManagerGroup -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $networkGroupName 
+        $connectivityGroupItem = New-AzNetworkManagerConnectivityGroupItem -NetworkGroupId $networkGroup.Id
+        $connectivityGroup  = @($connectivityGroupItem)  
+        New-AzNetworkManagerConnectivityConfiguration -ResourceGroupName $rgname -Name $connectivityConfigurationName -NetworkManagerName $networkManagerName -ConnectivityTopology "Mesh" -AppliesToGroup $connectivityGroup -DeleteExistingPeering 
+
+        # Create a security admin config
+        New-AzNetworkManagerSecurityAdminConfiguration -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $SecurityConfigurationName
+
+        # Create a security admin rule collection
+        [System.Collections.Generic.List[Microsoft.Azure.Commands.Network.Models.NetworkManager.PSNetworkManagerSecurityGroupItem]]$configGroup  = @() 
+        $groupItem = New-AzNetworkManagerSecurityGroupItem -NetworkGroupId $networkGroup.Id
+        $configGroup.Add($groupItem)
+        New-AzNetworkManagerSecurityAdminRuleCollection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityConfigurationName -Name $RuleCollectionName -AppliesToGroup $configGroup 
+        
+        # Create a security admin rule
+        New-AzNetworkManagerSecurityAdminRule -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -ConfigName $SecurityConfigurationName  -RuleCollectionName $RuleCollectionName -Name $RuleName -Protocol "TCP" -Direction "Inbound" -Access "Allow" -Priority 100
+	    
+        # Create a scope connection
+        New-AzNetworkManagerScopeConnection -ResourceGroupName $rgname -NetworkManagerName $networkManagerName -Name $scopeConnectionName -TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47" -ResourceId $subscriptionId
+    }
+    finally{
+        # Cleanup
+        Clean-ResourceGroup $rgname
 	}
 }
