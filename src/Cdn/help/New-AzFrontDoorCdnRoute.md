@@ -441,10 +441,10 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-CUSTOMDOMAIN <IActivatedResourceReference[]>: Domains referenced by this endpoint.
+`CUSTOMDOMAIN <IActivatedResourceReference[]>`: Domains referenced by this endpoint.
   - `[Id <String>]`: Resource ID.
 
-RULESET <IResourceReference[]>: rule sets referenced by this endpoint.
+`RULESET <IResourceReference[]>`: rule sets referenced by this endpoint.
   - `[Id <String>]`: Resource ID.
 
 ## RELATED LINKS
