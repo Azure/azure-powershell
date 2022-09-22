@@ -107,7 +107,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     try
                     {
-                        restorableResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(
+                        restorableResources = (IEnumerable<DatabaseRestoreResource>)CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(
                             sourceAccountToRestore.Location,
                             sourceAccountToRestore.Name,
                             Location,
@@ -123,7 +123,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     try
                     {
-                        restorableResources = CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(
+                        restorableResources = (IEnumerable<DatabaseRestoreResource>)CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
                         Location,
