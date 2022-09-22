@@ -30,7 +30,7 @@
     - `NewAzureRmVpnGatewayCommand.cs`
     - `UpdateAzureRmVpnGatewayCommand.cs`
 * Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
-* Updated commandlet to support specifying an action for a managed rule override in Application Gateway WAF Policy
+* Updated commandlet to support specifying an action for a managed rule override in Application Gateway WAF Policy.
     - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
 
 ## Version 4.20.1
