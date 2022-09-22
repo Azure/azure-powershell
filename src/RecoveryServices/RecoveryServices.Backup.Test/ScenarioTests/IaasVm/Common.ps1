@@ -238,7 +238,7 @@ function Delete-VM(
 	[string] $rgName,
 	[string] $vmName)
 {
-	Remove-AzVM -ResourceGroupName $resourceGroupName -Name $targetVMName -Force
+	Remove-AzVM -ResourceGroupName $rgName -Name $vmName -Force
 }
 
 <# 

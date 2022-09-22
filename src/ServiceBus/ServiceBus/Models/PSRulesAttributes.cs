@@ -78,7 +78,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         /// BrokeredMessage. Possible values include: 'SqlFilter',
         /// 'CorrelationFilter'
         /// </summary>
-        public FilterType? FilterType { get; set; }
+        public string FilterType { get; set; }
 
         /// <summary>
         /// Gets or sets properties of sqlFilter

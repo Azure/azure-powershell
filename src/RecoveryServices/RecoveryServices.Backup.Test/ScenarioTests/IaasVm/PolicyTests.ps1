@@ -33,7 +33,6 @@ function Test-AzureVMEnhancedPolicy
 	$vaultName = "hiagaVault"
 	$newEnhPolicyName = "psTestEnhancedPolicy"
 	$scheduleRunTime = "2021-12-22T06:00:00.00+00:00"
-	$subscription = "38304e13-357e-405e-9e9a-220351dcce8c"  # remove
 	
 	try
 	{
@@ -96,7 +95,7 @@ function Test-AzureVMEnhancedPolicy
 
 function Test-AzureVMPolicy
 {
-	$location = "southeastasia"
+	$location = "eastasia"
 	$resourceGroupName = Create-ResourceGroup $location
 
 	try

@@ -164,6 +164,28 @@ namespace Microsoft.Azure.Commands.Aks
         [Parameter(Mandatory = false, HelpMessage = "ResourceId of user assign managed identity for cluster.")]
         public string AssignIdentity { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = "The upgrade channel for auto upgrade. For more information see https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel.")]
+        [PSArgumentCompleter("rapid", "stable", "patch", "node-image", "none")]
+        public string AutoUpgradeChannel { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The resource ID of the disk encryption set to use for enabling encryption.")]
+        public string DiskEncryptionSetID { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Local accounts should be disabled on the Managed Cluster.")]
+        public SwitchParameter DisableLocalAccount { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The HTTP proxy server endpoint to use.")]
+        public string HttpProxy { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The HTTPS proxy server endpoint to use")]
+        public string HttpsProxy { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "The endpoints that should not go through proxy.")]
+        public string[] HttpProxyConfigNoProxyEndpoint { get; set; }
+
+        [Parameter(Mandatory = false, HelpMessage = "Alternative CA cert to use for connecting to proxy servers.")]
+        public string HttpProxyConfigTrustedCa { get; set; }
+
         protected void BeforeBuildNewCluster()
         {
             if (!string.IsNullOrEmpty(ResourceGroupName) && string.IsNullOrEmpty(Location))
@@ -526,6 +548,49 @@ namespace Microsoft.Azure.Commands.Aks
             }
 
             return loadBalancerProfile;
+        }
+
+        protected ManagedClusterAutoUpgradeProfile CreateOrUpdateAutoUpgradeProfile(ManagedClusterAutoUpgradeProfile autoUpgradeProfile)
+        {
+            if (this.IsParameterBound(c => c.AutoUpgradeChannel) && autoUpgradeProfile == null)
+            {
+                autoUpgradeProfile = new ManagedClusterAutoUpgradeProfile();
+            }
+            if (this.IsParameterBound(c => c.AutoUpgradeChannel))
+            {
+                autoUpgradeProfile.UpgradeChannel = AutoUpgradeChannel;
+            }
+            return autoUpgradeProfile;
+        }
+
+        protected ManagedClusterHTTPProxyConfig CreateOrUpdateHttpProxyConfig(ManagedClusterHTTPProxyConfig httpProxyConfig)
+        {
+            if ((this.IsParameterBound(c => c.HttpProxy) ||
+                this.IsParameterBound(c => c.HttpsProxy) ||
+                this.IsParameterBound(c => c.HttpProxyConfigNoProxyEndpoint) ||
+                this.IsParameterBound(c => c.HttpProxyConfigTrustedCa)) &&
+                httpProxyConfig == null)
+            {
+                httpProxyConfig = new ManagedClusterHTTPProxyConfig();
+            }
+            if (this.IsParameterBound(c => c.HttpProxy))
+            {
+                httpProxyConfig.HttpProxy = HttpProxy;
+            }
+            if (this.IsParameterBound(c => c.HttpsProxy))
+            {
+                httpProxyConfig.HttpsProxy = HttpsProxy;
+            }
+            if (this.IsParameterBound(c => c.HttpProxyConfigNoProxyEndpoint))
+            {
+                httpProxyConfig.NoProxy = HttpProxyConfigNoProxyEndpoint;
+            }
+            if (this.IsParameterBound(c => c.HttpProxyConfigTrustedCa))
+            {
+                httpProxyConfig.TrustedCa = HttpProxyConfigTrustedCa;
+            }
+
+            return httpProxyConfig;
         }
 
         protected ManagedClusterAPIServerAccessProfile CreateOrUpdateApiServerAccessProfile(ManagedClusterAPIServerAccessProfile apiServerAccessProfile)

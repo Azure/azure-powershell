@@ -14,6 +14,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
 
         static ProviderConfiguration()
         {
+            RegisterConfiguration("Microsoft.AgFoodPlatform/farmBeats", "2021-09-01-preview", false, true);
             RegisterConfiguration("Microsoft.ApiManagement/service", "2021-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.AppConfiguration/configurationStores", "2020-06-01", true, true);
             RegisterConfiguration("Microsoft.Attestation/attestationProviders", "2020-10-01", true, true);
@@ -26,7 +27,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Compute/diskAccesses", "2020-09-30", true, false);
             RegisterConfiguration("Microsoft.ContainerRegistry/registries", "2019-12-01-preview", true, false);
             RegisterConfiguration("Microsoft.ContainerService/managedClusters", "2021-07-01", true, false);
-            RegisterConfiguration("Microsoft.Databricks/workspaces", "2021-04-01-preview", true, true);            
+            RegisterConfiguration("Microsoft.Databricks/workspaces", "2021-04-01-preview", true, true);
             RegisterConfiguration("Microsoft.DataFactory/factories", "2018-06-01", true, false);
             RegisterConfiguration("Microsoft.DBforMariaDB/servers", "2018-06-01", true, true);
             RegisterConfiguration("Microsoft.DBforMySQL/servers", "2018-06-01", true, true);
@@ -43,7 +44,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.EventHub/namespaces", "2018-01-01-preview", true, false);
             RegisterConfiguration("Microsoft.HealthcareApis/services", "2020-03-30", false, true);
             RegisterConfiguration("Microsoft.HDInsight/clusters", "2018-06-01-preview", true, true);
-            RegisterConfiguration("Microsoft.HybridCompute/privateLinkScopes", "2021-05-20",true, true);
+            RegisterConfiguration("Microsoft.HybridCompute/privateLinkScopes", "2021-05-20", true, true);
             RegisterConfiguration("Microsoft.Insights/privateLinkScopes", "2019-10-17-preview", true, true);
             RegisterConfiguration("Microsoft.KeyVault/vaults", "2018-02-14", false, false);
             RegisterConfiguration("Microsoft.Keyvault/managedHSMs", "2021-06-01-preview", true, false);
@@ -57,7 +58,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.OffAzure/masterSites", "2020-07-07", false, false);
             RegisterConfiguration("Microsoft.PowerBI/privateLinkServicesForPowerBI", "2020-06-01", false, true);
             RegisterConfiguration("Microsoft.Purview/accounts", "2020-12-01-preview", true, true);
-            RegisterConfiguration("Microsoft.RecoveryServices/vaults","2021-07-01", false, true);
+            RegisterConfiguration("Microsoft.RecoveryServices/vaults", "2021-07-01", false, true);
             RegisterConfiguration("Microsoft.Relay/namespaces", "2018-01-01-preview", true, false);
             RegisterConfiguration("Microsoft.Search/searchServices", "2020-08-01", true, false);
             RegisterConfiguration("Microsoft.ServiceBus/namespaces", "2018-01-01-preview", true, false);
@@ -72,6 +73,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Web/staticSites", "2021-02-01", true, false);
             RegisterConfiguration("Microsoft.Web/hostingEnvironments", "2020-10-01", true, false);
             RegisterConfiguration("Microsoft.BotService/botServices", "2021-05-01-preview", true, true);
+            RegisterConfiguration("Microsoft.OpenEnergyPlatform/energyServices", "2022-07-21-preview", true, true);
         }
         /// <summary>
         /// Register priavte endopoint connection and private link resource configuration

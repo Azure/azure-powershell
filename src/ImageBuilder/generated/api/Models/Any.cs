@@ -26,7 +26,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.ImageBuilder.Models
 
     }
     /// Any object
-    public partial interface IAnyInternal
+    internal partial interface IAnyInternal
 
     {
 

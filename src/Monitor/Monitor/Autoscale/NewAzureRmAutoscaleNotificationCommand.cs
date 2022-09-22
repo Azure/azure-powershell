@@ -15,12 +15,14 @@
 using Microsoft.Azure.Management.Monitor.Models;
 using System;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.Autoscale
 {
     /// <summary>
     /// Create an AutoscaleNotification
     /// </summary>
+    [CmdletDeprecation(ReplacementCmdletName = "New-AzAutoscaleNotificationObject")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutoscaleNotification"), OutputType(typeof(Management.Monitor.Management.Models.AutoscaleNotification))]
     public class NewAzureRmAutoscaleNotificationCommand : MonitorCmdletBase
     {
