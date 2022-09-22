@@ -15,14 +15,18 @@ parameters:
   displayName: Windows PowerShell Version
   type: string
   default: 5.1.14
-- name: ps6
-  displayName: PowerShell 6 Version
-  type: string 
-  default: 6.2.4
 - name: ps7
-  displayName: PowerShell 7 Version
+  displayName: PowerShell 7.0.x Version
   type: string
-  default: 7.0.3
+  default: 7.0.8
+- name: ps7_1
+  displayName: PowerShell 7.1.x Version
+  type: string
+  default: 7.1.5
+- name: ps7_2
+  displayName: PowerShell 7.2.x Version
+  type: string
+  default: 7.2.0
 - name: latest_ps
   displayName: PowerShell Latest Version
   type: string
@@ -40,15 +44,21 @@ jobs:
 
 - template: util/smoke-test-steps.yml
   parameters:
-    name: 'Win_PS6_2_4_SmokeTest'
+    name: 'Win_PS7_0_X_SmokeTest'
     vmImage: ${{ parameters.win_image }}
-    psVersion: ${{ parameters.ps6 }}
+    psVersion: ${{ parameters.ps7 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
-    name: 'Win_PS7_0_3_SmokeTest'
+    name: 'Win_PS7_1_X_SmokeTest'
     vmImage: ${{ parameters.win_image }}
-    psVersion: ${{ parameters.ps7 }}
+    psVersion: ${{ parameters.ps7_1 }}
+
+- template: util/smoke-test-steps.yml
+  parameters:
+    name: 'Win_PS7_2_X_SmokeTest'
+    vmImage: ${{ parameters.win_image }}
+    psVersion: ${{ parameters.ps7_2 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
@@ -58,15 +68,21 @@ jobs:
 
 - template: util/smoke-test-steps.yml
   parameters:
-    name: 'Linux_PS6_2_4_SmokeTest'
+    name: 'Linux_PS7_0_X_SmokeTest'
     vmImage: ${{ parameters.linux_image }}
-    psVersion: ${{ parameters.ps6 }}
+    psVersion: ${{ parameters.ps7 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
-    name: 'Linux_PS7_0_3_SmokeTest'
+    name: 'Linux_PS7_1_X_SmokeTest'
     vmImage: ${{ parameters.linux_image }}
-    psVersion: ${{ parameters.ps7 }}
+    psVersion: ${{ parameters.ps7_1 }}
+
+- template: util/smoke-test-steps.yml
+  parameters:
+    name: 'Linux_PS7_2_X_SmokeTest'
+    vmImage: ${{ parameters.linux_image }}
+    psVersion: ${{ parameters.ps7_2 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
@@ -76,15 +92,9 @@ jobs:
 
 - template: util/smoke-test-steps.yml
   parameters:
-    name: 'MacOS_PS6_2_4_SmokeTest'
+    name: 'MacOS_PS7_2_X_SmokeTest'
     vmImage: ${{ parameters.macOS_image }}
-    psVersion: ${{ parameters.ps6 }}
-
-- template: util/smoke-test-steps.yml
-  parameters:
-    name: 'MacOS_PS7_0_3_SmokeTest'
-    vmImage: ${{ parameters.macOS_image }}
-    psVersion: ${{ parameters.ps7 }}
+    psVersion: ${{ parameters.ps7_2 }}
 
 - template: util/smoke-test-steps.yml
   parameters:
