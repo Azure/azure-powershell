@@ -170,7 +170,7 @@ PrivateData = @{
 * Upgrade API version for Autoscale from 2015-04-01 to 2022-10-01'
 
         # Prerelease string of this module
-        Prerelease = 'preview'
+        #Prerelease = 'preview'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false
