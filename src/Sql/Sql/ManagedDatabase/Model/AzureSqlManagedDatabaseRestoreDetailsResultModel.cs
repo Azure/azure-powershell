@@ -92,9 +92,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Model
             LastRestoredFileName = result.LastRestoredFileName;
             LastRestoredFileTime = result.LastRestoredFileTime.ToString();
             PercentCompleted = result.PercentCompleted ?? -1;
-            UnrestorableFiles = result.UnrestorableFiles != null && result.UnrestorableFiles.Count > 0
-                ? result.UnrestorableFiles.Aggregate((f1, f2) => $"{f1}, {f2}")
-                : null;
             NumberOfFilesDetected = result.NumberOfFilesDetected ?? -1;
             LastUploadedFileName = result.LastUploadedFileName;
             LastUploadedFileTime = result.LastUploadedFileTime.ToString();
