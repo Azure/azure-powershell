@@ -46,3 +46,5 @@ ResourceGroupName                                          :
 SessionId                                                  : b0a96155-5f75-4138-b01f-443130f5516e
 ```
 
+Calculate reservations refund amount.
+The SessionId in the response is a required input parameter for cmdlet Invoke-AzReservationReturn

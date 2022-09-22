@@ -7,4 +7,3 @@ Invoke-AzReservationUnarchiveReservation -ReservationId "50000000-aaaa-bbbb-cccc
 200
 ```
 Unarchive Reservation which is in cancelled/expired/failed state
-

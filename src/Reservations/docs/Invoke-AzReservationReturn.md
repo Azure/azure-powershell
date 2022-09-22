@@ -91,6 +91,9 @@ Quantity                                                   : 1
 ResourceGroupName                                          :
 SessionId                                                  : 93fe5df2-d888-47c5-b00c-cd0ccb1f29b9
 ```
+
+Proceed reservations return with session ID obtained from Invoke-AzReservationCalculateRefund.
+
 ## PARAMETERS
 
 ### -Body
