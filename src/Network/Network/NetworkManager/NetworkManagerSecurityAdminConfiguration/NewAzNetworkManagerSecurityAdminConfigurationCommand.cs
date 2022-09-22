@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "How security admin rules are applied to virtual networks with services using network intent policies.. Valid values include 'None', 'All', and 'AllowRulesOnly'.")]
+           HelpMessage = "How security admin rules are applied to virtual networks with services using network intent policies. Valid values include 'None', 'All', and 'AllowRulesOnly'.")]
         public NetworkIntentPolicyBasedServiceType[] ApplyOnNetworkIntentPolicyBasedService { get; set; }
 
         [Parameter(
