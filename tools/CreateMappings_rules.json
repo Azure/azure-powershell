@@ -766,5 +766,9 @@
   {
     "module": "DeviceUpdate",
     "alias": "DeviceUpdate"
+  },
+  {
+    "module": "Nginx",
+    "alias": "Nginx"
   }
 ]
