@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Reservations.private.dll'
   FormatsToProcess = './Az.Reservations.format.ps1xml'
-  FunctionsToExport = 'Get-AzReservation', 'Get-AzReservationAvailableScope', 'Get-AzReservationCatalog', 'Get-AzReservationHistory', 'Get-AzReservationOrder', 'Get-AzReservationOrderId', 'Get-AzReservationQuote', 'Invoke-AzReservationCalculateExchange', 'Invoke-AzReservationExchange', 'Merge-AzReservation', 'Move-AzReservationDirectory', 'New-AzReservation', 'Split-AzReservation', 'Update-AzReservation', '*'
+  FunctionsToExport = 'Get-AzReservation', 'Get-AzReservationAvailableScope', 'Get-AzReservationCatalog', 'Get-AzReservationHistory', 'Get-AzReservationOrder', 'Get-AzReservationOrderId', 'Get-AzReservationQuote', 'Invoke-AzReservationArchiveReservation', 'Invoke-AzReservationCalculateExchange', 'Invoke-AzReservationCalculateRefund', 'Invoke-AzReservationExchange', 'Invoke-AzReservationReturn', 'Invoke-AzReservationUnarchiveReservation', 'Merge-AzReservation', 'Move-AzReservationDirectory', 'New-AzReservation', 'Split-AzReservation', 'Update-AzReservation', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

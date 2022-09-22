@@ -1,92 +1,45 @@
 ---
 external help file:
 Module Name: Az.Reservations
-online version: https://docs.microsoft.com/powershell/module/az.reservations/get-azreservationavailablescope
+online version: https://docs.microsoft.com/powershell/module/az.reservations/invoke-azreservationarchivereservation
 schema: 2.0.0
 ---
 
-# Get-AzReservationAvailableScope
+# Invoke-AzReservationArchiveReservation
 
 ## SYNOPSIS
-Get Available Scopes for `Reservation`.\n
+Archiving a `Reservation` moves it to `Archived` state.
 
 ## SYNTAX
 
-### AvailableExpanded (Default)
+### Archive (Default)
 ```
-Get-AzReservationAvailableScope -ReservationId <String> -ReservationOrderId <String> [-Scope <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### Available
-```
-Get-AzReservationAvailableScope -ReservationId <String> -ReservationOrderId <String>
- -Body <IAvailableScopeRequest> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Invoke-AzReservationArchiveReservation -ReservationId <String> -ReservationOrderId <String>
+ [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
-### AvailableViaIdentity
+### ArchiveViaIdentity
 ```
-Get-AzReservationAvailableScope -InputObject <IReservationsIdentity> -Body <IAvailableScopeRequest>
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
-```
-
-### AvailableViaIdentityExpanded
-```
-Get-AzReservationAvailableScope -InputObject <IReservationsIdentity> [-Scope <String[]>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Invoke-AzReservationArchiveReservation -InputObject <IReservationsIdentity> [-DefaultProfile <PSObject>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Get Available Scopes for `Reservation`.\n
+Archiving a `Reservation` moves it to `Archived` state.
 
 ## EXAMPLES
 
-### Example 1: List available reservation scope
+### Example 1: Archive Reservation which is in cancelled/expired/failed state
 ```powershell
-Get-AzReservationAvailableScope -ReservationId 2ef560a7-f469-4b62-87b7-5312d588ce2a  -ReservationOrderId 2b9b9372-24e1-4a07-a354-2078fe347cf9 -Scope "/subscriptions/3f0487ff-27ca-4b9c-2a23-000770724b1b"
+Invoke-AzReservationArchiveReservation -ReservationId "50000000-aaaa-bbbb-cccc-100000000003" -ReservationOrderId "30000000-aaaa-bbbb-cccc-100000000003"
 ```
 
 ```output
-Scope                                               Valid
------                                               -----
-/subscriptions/3f0487fd-27ca-4f9c-8a23-000770724b1b True
+200
 ```
-
-List available reservation scope
+Archive Reservation which is in cancelled/expired/failed state
 
 ## PARAMETERS
-
-### -AsJob
-Run the command as a job
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Body
-Available scope
-To construct, see NOTES section for BODY properties and create a hash table.
-
-```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAvailableScopeRequest
-Parameter Sets: Available, AvailableViaIdentity
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
@@ -109,7 +62,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
-Parameter Sets: AvailableViaIdentity, AvailableViaIdentityExpanded
+Parameter Sets: ArchiveViaIdentity
 Aliases:
 
 Required: True
@@ -119,8 +72,8 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -NoWait
-Run the command asynchronously
+### -PassThru
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -139,7 +92,7 @@ Id of the Reservation Item
 
 ```yaml
 Type: System.String
-Parameter Sets: Available, AvailableExpanded
+Parameter Sets: Archive
 Aliases:
 
 Required: True
@@ -154,25 +107,10 @@ Order Id of the reservation
 
 ```yaml
 Type: System.String
-Parameter Sets: Available, AvailableExpanded
+Parameter Sets: Archive
 Aliases:
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Scope
-.
-
-```yaml
-Type: System.String[]
-Parameter Sets: AvailableExpanded, AvailableViaIdentityExpanded
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -215,13 +153,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.IAvailableScopeRequest
-
 ### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.IReservationsIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Reservations.Models.Api20220301.ISubscriptionScopeProperties
+### System.Boolean
 
 ## NOTES
 
@@ -231,9 +167,6 @@ COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
-
-`BODY <IAvailableScopeRequest>`: Available scope
-  - `[Scope <String[]>]`: 
 
 `INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
