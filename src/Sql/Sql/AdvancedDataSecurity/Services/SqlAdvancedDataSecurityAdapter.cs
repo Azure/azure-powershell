@@ -98,6 +98,8 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         {
             ServerAdvancedThreatProtectionSettingsModel threatProtectionSettings = new ServerAdvancedThreatProtectionSettingsModel()
             {
+                ResourceGroupName = model.ResourceGroupName,
+                ServerName = model.ServerName,
                 AdvancedThreatProtectionState = model.IsEnabled ? AdvancedThreatProtectionStateType.Enabled : AdvancedThreatProtectionStateType.Disabled
             };
 
@@ -113,6 +115,8 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Services
         {
             ManagedInstanceAdvancedThreatProtectionSettingsModel threatProtectionSettings = new ManagedInstanceAdvancedThreatProtectionSettingsModel()
             {
+                ResourceGroupName = model.ResourceGroupName,
+                ManagedInstanceName = model.ManagedInstanceName,
                 AdvancedThreatProtectionState = model.IsEnabled ? AdvancedThreatProtectionStateType.Enabled : AdvancedThreatProtectionStateType.Disabled
             };
 
