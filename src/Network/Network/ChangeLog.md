@@ -31,6 +31,7 @@
     - `UpdateAzureRmVpnGatewayCommand.cs`
 * Updated commandlet to support bypassing NVA for spoke vNet traffic.
     - `NewAzureRmRoutingConfigurationCommand.cs`
+* Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
