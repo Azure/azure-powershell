@@ -60,7 +60,8 @@ namespace Microsoft.Azure.Commands.EventHub.Test.ScenarioTests
                         {"Microsoft.Authorization", null},
                         {"Microsoft.Storage", null},
                         {"Microsoft.KeyVault", null},
-                        {"Microsoft.ManagedServiceIdentity", null}
+                        {"Microsoft.ManagedServiceIdentity", null},
+						{"Microsoft.Network", null}
                     }
                 )
                 .Build();
