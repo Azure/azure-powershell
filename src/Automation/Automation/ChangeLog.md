@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 1.8.0
 * Added cmdlets "Remove-AzAutomationHybridRunbookWorker", "Remove-AzAutomationHybridRunbookWorkerGroup", "Set-AzAutomationHybridRunbookWorkerGroup", "Get-AzAutomationHybridRunbookWorker", "Get-AzAutomationHybridRunbookWorkerGroup", "Move-AzAutomationHybridRunbookWorker", "New-AzAutomationHybridRunbookWorker", "New-AzAutomationHybridRunbookWorkerGroup" for Hybrid Runbook Worker group management.
 
 ## Version 1.7.4

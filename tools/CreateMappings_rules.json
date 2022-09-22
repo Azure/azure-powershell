@@ -762,5 +762,9 @@
   {
     "module": "DynatraceObservability",
     "alias": "DynatraceObservability"
+  },
+  {
+    "module": "DeviceUpdate",
+    "alias": "DeviceUpdate"
   }
 ]
