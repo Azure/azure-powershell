@@ -140,6 +140,10 @@
     "alias": "Networking"
   },
   {
+    "module": "Nginx",
+    "alias": "Nginx"
+  },
+  {
     "regex": "FrontDoor",
     "alias": "Front Door"
   },
