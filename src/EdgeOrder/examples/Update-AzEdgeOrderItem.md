@@ -15,7 +15,7 @@ $DebugPreference = "Continue"
 # } 
 $updatedOrderItem = Update-AzEdgeOrderItem -Name "examplePowershell" -ResourceGroupName "resourceGroupName" -SubscriptionId SubscriptionId -ForwardAddressContactDetail $contactDetail
 
-$updatedOrderItem.ForwardAddressContactDetail | fl
+$updatedOrderItem.ForwardAddressContactDetail | Format-List
 ```
 
 ```output

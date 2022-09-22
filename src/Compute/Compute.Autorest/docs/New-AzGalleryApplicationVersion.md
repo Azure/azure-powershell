@@ -15,7 +15,8 @@ Create or update a gallery Application Version.
 ```
 New-AzGalleryApplicationVersion -GalleryApplicationName <String> -GalleryName <String> -Name <String>
  -ResourceGroupName <String> -Install <String> -Location <String> -Remove <String> [-SubscriptionId <String>]
- [-DefaultConfigFileLink <String>] [-PackageFileLink <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
+ [-ConfigFileName <String>] [-DefaultConfigFileLink <String>] [-PackageFileLink <String>]
+ [-PackageFileName <String>] [-PublishingProfileEndOfLifeDate <DateTime>]
  [-PublishingProfileExcludeFromLatest] [-ReplicaCount <Int32>] [-Tag <Hashtable>]
  [-TargetRegion <ITargetRegion[]>] [-Update <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -29,7 +30,7 @@ Create or update a gallery Application Version.
 ### Example 1: Create a gallery application version.
 ```powershell
 $ctx = New-AzStorageContext -StorageAccountName $storAccName
-$SASToken = new-azstorageblobsastoken -Context $ctx -Container $containerName -blob $blobName -Permission r
+$SASToken = New-AzStorageBlobSASToken -Context $ctx -Container $containerName -blob $blobName -Permission r
 $storAcc = Get-AzStorageAccount -ResourceGroupName $rgName -Name $storAccName
 $blob = Get-AzStorageBlob -Container $containerName -Blob $blobName -Context $storAcc.Context
 $SASToken = New-AzStorageBlobSASToken -Container $containerName -Blob $blobName -Permission rwd -Context $storAcc.Context
@@ -47,6 +48,24 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ConfigFileName
+Optional.
+The name to assign the downloaded config file on the VM.
+This is limited to 4096 characters.
+If not specified, the config file will be named the Gallery Application name appended with "_config".
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -199,6 +218,24 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PackageFileName
+Optional.
+The name to assign the downloaded package file on the VM.
+This is limited to 4096 characters.
+If not specified, the package file will be named the same as the Gallery Application name.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublishingProfileEndOfLifeDate
 The end of life date of the gallery image version.
 This property can be used for decommissioning purposes.
@@ -317,7 +354,7 @@ This property is updatable.
 To construct, see NOTES section for TARGETREGION properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.ITargetRegion[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.ITargetRegion[]
 Parameter Sets: (All)
 Aliases:
 
@@ -384,7 +421,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20210701.IGalleryApplicationVersion
+### Microsoft.Azure.PowerShell.Cmdlets.Compute.Models.Api20220103.IGalleryApplicationVersion
 
 ## NOTES
 
@@ -402,6 +439,8 @@ TARGETREGION <ITargetRegion[]>: The target regions where the Image Version is go
     - `[DiskEncryptionSetId <String>]`: A relative URI containing the resource ID of the disk encryption set.
   - `[OSDiskImageDiskEncryptionSetId <String>]`: A relative URI containing the resource ID of the disk encryption set.
   - `[RegionalReplicaCount <Int32?>]`: The number of replicas of the Image Version to be created per region. This property is updatable.
+  - `[SecurityProfileConfidentialVMEncryptionType <ConfidentialVMEncryptionType?>]`: confidential VM encryption types
+  - `[SecurityProfileSecureVMDiskEncryptionSetId <String>]`: secure VM disk encryption set id
   - `[StorageAccountType <StorageAccountType?>]`: Specifies the storage account type to be used to store the image. This property is not updatable.
 
 ## RELATED LINKS

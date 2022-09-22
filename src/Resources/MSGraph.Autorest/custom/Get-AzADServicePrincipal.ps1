@@ -18,17 +18,6 @@
 Lists entities from service principals or get entity from service principals by key
 .Description
 Lists entities from service principals or get entity from service principals by key
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
 .Link
 https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal
 #>

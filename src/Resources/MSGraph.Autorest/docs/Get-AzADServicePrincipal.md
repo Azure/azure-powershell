@@ -62,35 +62,35 @@ Lists entities from service principals or get entity from service principals by 
 
 ### Example 1: Get service principal by display name
 ```powershell
-PS C:\> Get-AzADServicePrincipal -DisplayName $name
+Get-AzADServicePrincipal -DisplayName $name
 ```
 
 Get service principal by display name
 
 ### Example 2: Search for service principal display name starts with
 ```powershell
-PS C:\> Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
+Get-AzADServicePrincipal -DisplayNameStartsWith $prefix
 ```
 
 Search for service principal display name starts with
 
 ### Example 3: List service principals
 ```powershell
-PS C:\> Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
+Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
 ```
 
 List first 10 service principals and append property 'Tags' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'ServicePrincipalNames', 'AppId'
 
 ### Example 4: Get service principal by application Id
 ```powershell
-PS C:\> Get-AzADServicePrincipal -ApplicationId $appId
+Get-AzADServicePrincipal -ApplicationId $appId
 ```
 
 Get service principal by application Id
 
 ### Example 5: Get service principal by pipeline input
 ```powershell
-PS C:\> Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
+Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 ```
 
 Get service principal by pipeline input
@@ -384,6 +384,12 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The service principal object, co
   - `[CreatedOnBehalfOfDisplayName <String>]`: The name displayed in directory
   - `[Description <String>]`: An optional description of the application. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
   - `[DisabledByMicrosoftStatus <String>]`: Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, NOT).
+  - `[FederatedIdentityCredentials <IMicrosoftGraphFederatedIdentityCredential[]>]`: Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
+    - `[Audience <String[]>]`: Lists the audiences that can appear in the external token. This field is mandatory, and defaults to 'api://AzureADTokenExchange'. It says what Microsoft identity platform should accept in the aud claim in the incoming token. This value represents Azure AD in your external identity provider and has no fixed value across identity providers - you may need to create a new application registration in your identity provider to serve as the audience of this token. Required.
+    - `[Description <String>]`: The un-validated, user-provided description of the federated identity credential. Optional.
+    - `[Issuer <String>]`: The URL of the external identity provider and must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app. Required.
+    - `[Name <String>]`: is the unique identifier for the federated identity credential, which has a character limit of 120 characters and must be URL friendly. It is immutable once created. Required. Not nullable. Supports $filter (eq).
+    - `[Subject <String>]`: Required. The identifier of the external software workload within the external identity provider. Like the audience value, it has no fixed format, as each identity provider uses their own - sometimes a GUID, sometimes a colon delimited identifier, sometimes arbitrary strings. The value here must match the sub claim within the token presented to Azure AD. The combination of issuer and subject must be unique on the app. Supports $filter (eq).
   - `[GroupMembershipClaim <String>]`: Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
   - `[HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]`: 
     - `[AppliesTo <IMicrosoftGraphDirectoryObject[]>]`: 

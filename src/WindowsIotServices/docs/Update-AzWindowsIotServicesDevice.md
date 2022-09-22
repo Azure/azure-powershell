@@ -49,7 +49,7 @@ This command updates a Windows IoT services by name.
 
 ### Example 2: Update a Windows IoT services by pipeline
 ```powershell
-Get-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test | Update-AzWindowsIotServicesDevice-Quantity 100 -Tag @{'oper'='update'}
+Get-AzWindowsIotServicesDevice -Name wsi-t03 -ResourceGroupName azure-rg-test | Update-AzWindowsIotServicesDevice -Quantity 100 -Tag @{'oper'='update'}
 ```
 ```output
 Location Name    Type                                Etag

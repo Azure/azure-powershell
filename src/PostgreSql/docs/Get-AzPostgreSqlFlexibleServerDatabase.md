@@ -37,7 +37,7 @@ Gets information about a database.
 
 ### Example 1: Get databases of a PostgreSql server
 ```powershell
- Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 ```
 
 ```output
@@ -53,7 +53,7 @@ Get databases of a flexible server
 
 ### Example 2: Get a database of a PostgreSql server
 ```powershell
- Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Name flexibleserverdb
+Get-AzPostgreSqlFlexibleServerDatabase -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test -Name flexibleserverdb
 ```
 
 ```output
@@ -66,7 +66,7 @@ Get a database of a flexible server by name
 
 ### Example 3: Get a database of a PostgreSql server
 ```powershell
- Get-AzPostgreSqlFlexibleServerDatabase -InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
+Get-AzPostgreSqlFlexibleServerDatabase -InputObject /subscriptions/0000000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.DBforPostgreSQL/flexibleServers/postgresql-test/databases/flexibleserverdb
 ```
 
 ```output

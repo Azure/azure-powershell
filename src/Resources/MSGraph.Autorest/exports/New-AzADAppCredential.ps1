@@ -20,14 +20,18 @@ Creates key credentials or password credentials for an application.
 .Description
 Creates key credentials or password credentials for an application.
 .Example
-PS C:\> $credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
-                                 -Property @{'Key' = $cert;
-                                 'Usage'       = 'Verify'; 
-                                 'Type'        = 'AsymmetricX509Cert'
+# ObjectId is the string representation of a GUID for directory object, application, in Azure AD.
+$Id = "00000000-0000-0000-0000-000000000000"
+# $cert is Base64 encoded content of certificate
+$credential = New-Object -TypeName "Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential" `
+                                 -Property @{'Key' = $cert; `
+                                 'Usage'       = 'Verify'; `
+                                 'Type'        = 'AsymmetricX509Cert' `
                                  }
-PS C:\> New-AzADAppCredential -ObjectId $Id -KeyCredentials $credential
+New-AzADAppCredential -ObjectId $Id -KeyCredentials $credential
 .Example
-
+# ApplicationId is AppId of Application object which is different from directory id in Azure AD.
+Get-AzADApplication -ApplicationId $appId | New-AzADAppCredential -StartDate $startDate -EndDate $endDate
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -192,7 +196,8 @@ function New-AzADAppCredential {
 [CmdletBinding(DefaultParameterSetName='ApplicationObjectIdWithPasswordParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='ApplicationObjectIdWithPasswordParameterSet', Mandatory)]
-    [Parameter(ParameterSetName='ApplicationObjectIdWithCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationObjectIdWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationObjectIdWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationObjectIdWithCertValueParameterSet', Mandatory)]
     [Alias('Id')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -235,25 +240,25 @@ param(
     [System.String]
     ${CustomKeyIdentifier},
 
-    [Parameter(ParameterSetName='ApplicationObjectIdWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationIdWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithCredentialParameterSet')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]]
-    # key credentials associated with the application.
-    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
-    ${KeyCredentials},
-
-    [Parameter(ParameterSetName='ApplicationObjectIdWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationIdWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='DisplayNameWithCredentialParameterSet')]
-    [Parameter(ParameterSetName='ApplicationObjectWithCredentialParameterSet')]
+    [Parameter(ParameterSetName='ApplicationObjectIdWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationIdWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationObjectWithPasswordCredentialParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphPasswordCredential[]]
     # Password credentials associated with the application.
     # To construct, see NOTES section for PASSWORDCREDENTIALS properties and create a hash table.
     ${PasswordCredentials},
+
+    [Parameter(ParameterSetName='ApplicationObjectIdWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationIdWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='DisplayNameWithKeyCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationObjectWithKeyCredentialParameterSet', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphKeyCredential[]]
+    # key credentials associated with the application.
+    # To construct, see NOTES section for KEYCREDENTIALS properties and create a hash table.
+    ${KeyCredentials},
 
     [Parameter(ParameterSetName='ApplicationObjectIdWithCertValueParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationIdWithCertValueParameterSet', Mandatory)]
@@ -265,7 +270,8 @@ param(
     # It represents the base 64 encoded certificate.
     ${CertValue},
 
-    [Parameter(ParameterSetName='ApplicationIdWithCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationIdWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='ApplicationIdWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationIdWithPasswordParameterSet', Mandatory)]
     [Parameter(ParameterSetName='ApplicationIdWithCertValueParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -273,7 +279,8 @@ param(
     # The application Id.
     ${ApplicationId},
 
-    [Parameter(ParameterSetName='DisplayNameWithCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='DisplayNameWithPasswordCredentialParameterSet', Mandatory)]
+    [Parameter(ParameterSetName='DisplayNameWithKeyCredentialParameterSet', Mandatory)]
     [Parameter(ParameterSetName='DisplayNameWithCertValueParameterSet', Mandatory)]
     [Parameter(ParameterSetName='DisplayNameWithPasswordParameterSet', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -281,7 +288,8 @@ param(
     # The display name of application.
     ${DisplayName},
 
-    [Parameter(ParameterSetName='ApplicationObjectWithCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ApplicationObjectWithPasswordCredentialParameterSet', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='ApplicationObjectWithKeyCredentialParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ApplicationObjectWithCertValueParameterSet', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='ApplicationObjectWithPasswordParameterSet', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -346,18 +354,22 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ApplicationObjectIdWithPasswordParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationObjectIdWithCredentialParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationObjectIdWithCertValueParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationIdWithCredentialParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationIdWithPasswordParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationIdWithCertValueParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            DisplayNameWithCredentialParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            DisplayNameWithCertValueParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            DisplayNameWithPasswordParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationObjectWithCredentialParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationObjectWithCertValueParameterSet = 'MSGraph.custom\New-AzADAppCredential';
-            ApplicationObjectWithPasswordParameterSet = 'MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectIdWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectIdWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectIdWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectIdWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationIdWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationIdWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationIdWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationIdWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            DisplayNameWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            DisplayNameWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            DisplayNameWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            DisplayNameWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectWithPasswordCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectWithKeyCredentialParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectWithCertValueParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
+            ApplicationObjectWithPasswordParameterSet = 'Az.MSGraph.custom\New-AzADAppCredential';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

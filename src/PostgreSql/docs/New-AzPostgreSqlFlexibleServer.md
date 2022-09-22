@@ -28,8 +28,7 @@ Creates a new server.
 
 ### Example 1: Create a new PostgreSql flexible server with arguments
 ```powershell
- New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest \
--Location eastus -AdministratorUserName postgresqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240 -PublicAccess none
+New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -Location eastus -AdministratorUserName postgresqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240 -PublicAccess none
 ```
 
 ```output
@@ -38,17 +37,14 @@ Resource group PowershellPostgreSqlTest exists ? : True
 Creating PostgreSQL server postgresql-test in group PostgreSqlTest...
 Your server postgresql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName       SkuTier        
-----          -------- ------------------ ------- ----------------------- -------       -------        
-postgresql-test eastus postgresqltest      12     10240                   Standard_B1ms Burstable 
-
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName       SkuTier
+----          -------- ------------------ ------- ----------------------- -------       -------
+postgresql-test eastus postgresqltest      12     10240                   Standard_B1ms Burstable
 ```
-
-
 
 ### Example 2: Create a new PostgreSql flexible server with default setting
 ```powershell
- New-AzPostgreSqlFlexibleServer
+New-AzPostgreSqlFlexibleServer
 ```
 
 ```output
@@ -56,9 +52,9 @@ Creating resource group group00000000...
 Creating PostgreSQL server server00000000 in group group00000000...
 Your server postgresql-test is using sku Standard_D2s_v3 (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- -------          -------        
-postgresql-test eastus postgresqltest      12     131072                   Standard_D2s_v3 GeneralPurpose 
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier
+----          -------- ------------------ ------- ----------------------- -------          -------
+postgresql-test eastus postgresqltest      12     131072                   Standard_D2s_v3 GeneralPurpose
 ```
 
 This cmdlet creates PostgreSql flexible server with default parameter values and provision the server with public access enabled.
@@ -70,8 +66,8 @@ If you want to find the auto-generated password for your server, use ConvertFrom
 
 ### Example 3: Create a new PostgreSql flexible server with existing Subnet
 ```powershell
- $Subnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnetname'
- New-AzPostgreSqlFlexibleServer  -ResourceGroupName postgresqltest -ServerName testserver -Subnet $Subnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/postgresqltest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
+$Subnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnetname'
+New-AzPostgreSqlFlexibleServer  -ResourceGroupName postgresqltest -ServerName testserver -Subnet $Subnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/postgresqltest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
 ```
 
 ```output
@@ -81,10 +77,9 @@ Creating PostgreSQL server testserver in group PowershellPostgreSqlTest...
 Your server server00000000 is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
 Creating database flexibleserverdb...
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- -------          -------        
-testserver     eastus   postgresqltest    12     131072                   Standard_D2s_v3 GeneralPurpose 
-
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier
+----          -------- ------------------ ------- ----------------------- -------          -------
+testserver     eastus   postgresqltest    12     131072                   Standard_D2s_v3 GeneralPurpose
 ```
 
 This cmdlet creates PostgreSql flexible server with an existing Subnet Id provided by a user.
@@ -93,13 +88,13 @@ You cannot use a subnet delegated to different services
 
 ### Example 4: Create a new PostgreSql flexible server with virtual network
 ```powershell
- $Vnet = 'vnetname'
- New-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
+$Vnet = 'vnetname'
+New-AzPostgreSqlFlexibleServer -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
 
-or
+# or
 
- $Vnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname'
- New-AzPostgreSqlFlexibleServer  -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
+$Vnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname'
+New-AzPostgreSqlFlexibleServer  -ResourceGroupName PowershellPostgreSqlTest -Vnet $Vnet -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/testserver.private.postgres.database.azure.com
 ```
 
 ```output
@@ -111,10 +106,9 @@ Creating PostgreSQL server server00000000 in group PowershellPostgreSqlTest...
 Your server server00000000 is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
 Creating database flexibleserverdb...
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- -------          -------        
-postgresql-test eastus postgresqltest      12     131072                   Standard_D2s_v3 GeneralPurpose 
-
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier
+----          -------- ------------------ ------- ----------------------- -------          -------
+postgresql-test eastus postgresqltest      12     131072                   Standard_D2s_v3 GeneralPurpose
 ```
 
 This cmdlet creates PostgreSql flexible server with vnet id or vnet name provided by a user.
@@ -122,7 +116,7 @@ If the virtual network doesn't exist, the cmdlet creates one.
 
 ### Example 5: Create a new PostgreSql flexible server with virtual network and subnet name
 ```powershell
- New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -Vnet postgresql-vnet -Subnet postgresql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24 -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/postgresql-test.private.postgres.database.azure.com
+New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -Vnet postgresql-vnet -Subnet postgresql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24 -PrivateDnsZone /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/privateDnsZones/postgresql-test.private.postgres.database.azure.com
 ```
 
 ```output
@@ -133,10 +127,9 @@ Creating PostgreSQL server postgresql-test in group PowershellPostgreSqlTest...
 Your server postgresql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
 Creating database flexibleserverdb...
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- -------          -------        
-postgresql-test eastus postgresqltest      12     131072                   Standard_D2s_v3 GeneralPurpose 
-
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier
+----          -------- ------------------ ------- ----------------------- -------          -------
+postgresql-test eastus postgresqltest      12     131072                   Standard_D2s_v3 GeneralPurpose
 ```
 
 This cmdlet creates PostgreSql flexible server with vnet name, subnet name, vnet prefix, and subnet prefix.
@@ -144,7 +137,7 @@ If the virtual network and subnet don't exist, the cmdlet creates one.
 
 ### Example 6: Create a new PostgreSql flexible server with public access to all IPs
 ```powershell
- New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -PublicAccess All
+New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -PublicAccess All
 ```
 
 ```output
@@ -154,16 +147,16 @@ Your server postgresql-test is using sku Standard_B1ms (Paid Tier). Please refer
 Creating database flexibleserverdb...
 Configuring server firewall rule to accept connections from 0.0.0.0 to 255.255.255.255
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- -------          -------        
-postgresql-test eastus postgresqltest      12     131072                   Standard_D2s_v3 GeneralPurpose 
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier
+----          -------- ------------------ ------- ----------------------- -------          -------
+postgresql-test eastus postgresqltest      12     131072                   Standard_D2s_v3 GeneralPurpose
 ```
 
 This cmdlet creates PostgreSql flexible server open to all IP addresses.
 
 ### Example 7: Create a new PostgreSql flexible server with firewall
 ```powershell
- New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -PublicAccess 10.10.10.10-10.10.10.12
+New-AzPostgreSqlFlexibleServer -Name postgresql-test -ResourceGroupName PowershellPostgreSqlTest -PublicAccess 10.10.10.10-10.10.10.12
 ```
 
 ```output
@@ -173,10 +166,9 @@ Your server postgresql-test is using sku Standard_B1ms (Paid Tier). Please refer
 Creating database flexibleserverdb...
 Configuring server firewall rule to accept connections from 10.10.10.10 to 10.10.10.12
 
-Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier        
-----          -------- ------------------ ------- ----------------------- -------          -------        
-postgresql-test eastus postgresqltest      12     131072                   Standard_D2s_v3 GeneralPurpose 
-
+Name          Location AdministratorLogin Version StorageProfileStorageMb SkuName          SkuTier
+----          -------- ------------------ ------- ----------------------- -------          -------
+postgresql-test eastus postgresqltest      12     131072                   Standard_D2s_v3 GeneralPurpose
 ```
 
 This cmdlet creates PostgreSql flexible server open to specified IP addresses.

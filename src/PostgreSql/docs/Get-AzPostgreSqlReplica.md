@@ -24,7 +24,7 @@ List all the replicas for a given server.
 
 ### Example 1: Get PostgreSql server replica by resource group and server name
 ```powershell
- Get-AzPostgreSqlReplica -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+Get-AzPostgreSqlReplica -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 ```
 
 ```output

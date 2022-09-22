@@ -25,7 +25,7 @@ Restore a MariaDB from a existing MariaDB.
 
 ### Example 1: Restore a PointInTime MariaDB by server name.
 ```powershell
-Restore-AzMariaDbServer -Name restore-db01 -ServerName mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
+Restore-AzMariaDbServer -Name restore-db01 -ServerName mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z -RestorePointInTime $(Get-Date) -Location eastus
 ```
 
 ```output
@@ -39,7 +39,7 @@ This command restore a PointInTime MariaDB by server name.
 ### Example 2: Restore a PointInTime MariaDB by server object
 ```powershell
 $db = Get-AzMariaDbServer -Name mariadb-test-usegeo -ResourceGroupName mariadb-test-4rih5z
-Restore-AzMariaDbServer -Name restore-db02 -InputObject $db -UsePointInTimeRestore -RestorePointInTime $(Get-Date) -Location eastus
+Restore-AzMariaDbServer -Name restore-db02 -InputObject $db -RestorePointInTime $(Get-Date) -Location eastus
 ```
 
 ```output

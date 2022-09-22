@@ -1,0 +1,196 @@
+{
+  "Remove-AzUserAssignedIdentity+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityw6movs?api-version=2022-01-31-preview+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityw6movs?api-version=2022-01-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "34" ],
+        "x-ms-client-request-id": [ "0141ddb8-be4a-44bc-ab9d-826a46f780e5" ],
+        "CommandName": [ "Remove-AzUserAssignedIdentity" ],
+        "FullCommandName": [ "Remove-AzUserAssignedIdentity_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ManagedServiceIdentity/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14997" ],
+        "x-ms-request-id": [ "14224610-cb95-4418-a2f2-053db61174e9" ],
+        "x-ms-correlation-request-id": [ "14224610-cb95-4418-a2f2-053db61174e9" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20220906T145346Z:14224610-cb95-4418-a2f2-053db61174e9" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Sep 2022 14:53:45 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzUserAssignedIdentity+[NoContext]+Delete+$GET+https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2022-01-31-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2022-01-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "35" ],
+        "x-ms-client-request-id": [ "821f9847-5ef4-47f0-85ad-56001f1bf0a1" ],
+        "CommandName": [ "Get-AzUserAssignedIdentity" ],
+        "FullCommandName": [ "Get-AzUserAssignedIdentity_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ManagedServiceIdentity/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "x-ms-request-id": [ "322b3b13-3eb3-47a1-ac93-d74c5238e592" ],
+        "x-ms-correlation-request-id": [ "322b3b13-3eb3-47a1-ac93-d74c5238e592" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20220906T145346Z:322b3b13-3eb3-47a1-ac93-d74c5238e592" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Sep 2022 14:53:46 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "462" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourcegroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityhknlo4\",\"name\":\"identityhknlo4\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"centralus\",\"tags\":{},\"properties\":{\"tenantId\":\"a66b4d27-b1b3-4b60-8b06-7fb4fd05bc3c\",\"principalId\":\"9da8a443-1b0d-4aec-97df-d0b13d0c1903\",\"clientId\":\"44f98dd3-e1f6-4fe6-9579-5fb55a0f4603\"}}]}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzUserAssignedIdentity+[NoContext]+DeleteViaIdentity+$PUT+https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity40avkf?api-version=2022-01-31-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity40avkf?api-version=2022-01-31-preview",
+      "Content": "{\n  \"location\": \"Central US\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "30" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourcegroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity40avkf" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-request-id": [ "91bb2555-2817-44bb-8533-ea25afeb3478" ],
+        "x-ms-correlation-request-id": [ "91bb2555-2817-44bb-8533-ea25afeb3478" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20220906T145348Z:91bb2555-2817-44bb-8533-ea25afeb3478" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Sep 2022 14:53:47 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "450" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourcegroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity40avkf\",\"name\":\"identity40avkf\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"centralus\",\"tags\":{},\"properties\":{\"tenantId\":\"a66b4d27-b1b3-4b60-8b06-7fb4fd05bc3c\",\"principalId\":\"c27dd8b3-fd1b-43c9-8f8c-57fbde9e39d0\",\"clientId\":\"91b05f18-ee1f-4372-a6da-6613f8b61190\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzUserAssignedIdentity+[NoContext]+DeleteViaIdentity+$DELETE+https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity40avkf?api-version=2022-01-31-preview+2": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity40avkf?api-version=2022-01-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "37" ],
+        "x-ms-client-request-id": [ "6c17fe59-a975-4782-9865-a3fd5f7b0dc7" ],
+        "CommandName": [ "Remove-AzUserAssignedIdentity" ],
+        "FullCommandName": [ "Remove-AzUserAssignedIdentity_DeleteViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ManagedServiceIdentity/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14996" ],
+        "x-ms-request-id": [ "5df19763-9d4f-4550-8017-434c28afc31f" ],
+        "x-ms-correlation-request-id": [ "5df19763-9d4f-4550-8017-434c28afc31f" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20220906T145350Z:5df19763-9d4f-4550-8017-434c28afc31f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Sep 2022 14:53:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "Remove-AzUserAssignedIdentity+[NoContext]+DeleteViaIdentity+$GET+https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2022-01-31-preview+3": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities?api-version=2022-01-31-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "38" ],
+        "x-ms-client-request-id": [ "2ccd7dc5-d8d8-4987-bdf4-eea171c324c9" ],
+        "CommandName": [ "Get-AzUserAssignedIdentity" ],
+        "FullCommandName": [ "Get-AzUserAssignedIdentity_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.3", "Az.ManagedServiceIdentity/0.2.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11985" ],
+        "x-ms-request-id": [ "32b1052a-1d1d-492d-867b-90a66e65430e" ],
+        "x-ms-correlation-request-id": [ "32b1052a-1d1d-492d-867b-90a66e65430e" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20220906T145350Z:32b1052a-1d1d-492d-867b-90a66e65430e" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Sep 2022 14:53:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "462" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"id\":\"/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourcegroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityhknlo4\",\"name\":\"identityhknlo4\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"centralus\",\"tags\":{},\"properties\":{\"tenantId\":\"a66b4d27-b1b3-4b60-8b06-7fb4fd05bc3c\",\"principalId\":\"9da8a443-1b0d-4aec-97df-d0b13d0c1903\",\"clientId\":\"44f98dd3-e1f6-4fe6-9579-5fb55a0f4603\"}}]}",
+      "isContentBase64": false
+    }
+  }
+}

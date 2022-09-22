@@ -77,7 +77,7 @@
         {
             "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
             "apiVersion": "2017-04-01",
-            "name": "[concat(parameters('namespaces_sdkpseventhubnsg_name'), '/', parameters('eventhubg_name'), '/$Default')]",
+            "name": "[concat(parameters('namespaces_sdkpseventhubnsg_name'), '/', parameters('eventhubg_name'), '/Default')]",
             "location": "East US",
             "dependsOn": [
                 "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespaces_sdkpseventhubnsg_name'), parameters('eventhubg_name'))]",

@@ -23,12 +23,15 @@ Describe 'Remove-AzKustoAttachedDatabaseConfiguration' {
         $databaseName = "testdatabase" + $env.rstr5
         $attachedDatabaseConfigurationName = "testdbconf" + $env.rstr5
         $followerClusterName = $env.followerClusterName
-        $defaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
+        $DefaultPrincipalsModificationKind = $env.defaultPrincipalsModificationKind
         $clusterResourceId = "/subscriptions/$subscriptionId/resourcegroups/$resourceGroupName/providers/Microsoft.Kusto/Clusters/$clusterName"
 
         New-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName -Kind ReadWrite -Location $location
-        New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $defaultPrincipalsModificationKind
+        Start-Sleep -Seconds 180
+        New-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName -Location $location -ClusterResourceId $clusterResourceId -DatabaseName $databaseName -DefaultPrincipalsModificationKind $DefaultPrincipalsModificationKind
+        Start-Sleep -Seconds 180
         { Remove-AzKustoAttachedDatabaseConfiguration -ResourceGroupName $resourceGroupName -ClusterName $followerClusterName -Name $attachedDatabaseConfigurationName } | Should -Not -Throw
+        Start-Sleep -Seconds 180
         Remove-AzKustoDatabase -ResourceGroupName $resourceGroupName -ClusterName $clusterName -Name $databaseName
     }
 }

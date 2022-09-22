@@ -44,7 +44,7 @@ The above command lists eligible SKUs.
 
 ### Example 2: Lists eligible SKUs for specific cluster
 ```powershell
-Get-AzKustoClusterSku -ResourceGroupName testrg -ClusterName testnewkustocluster
+ Get-AzKustoClusterSku -ResourceGroupName testrg -ClusterName testnewkustocluster
 ```
 
 ```output

@@ -71,6 +71,7 @@ Location Name    Zone ResourceGroupName
 -------- ----    ---- -----------------
 eastus   test-cg      test-rg
 ```
+
 Create a container group with a container instance
 
 ## PARAMETERS

@@ -43,6 +43,7 @@ Returns a BotService specified by the parameters.
 ```powershell
 Get-AzBotService
 ```
+
 ```output
 Etag                                   Kind Location Name             SkuName SkuTier Type
 ----                                   ---- -------- ----             ------- ------- ----
@@ -58,6 +59,7 @@ Get all BotServices
 ```powershell
 Get-AzBotService -Name 'youri-bot1' -ResourceGroupName 'youriBotTest'
 ```
+
 ```output
 Etag                                   Kind Location Name       SkuName SkuTier Type
 ----                                   ---- -------- ----       ------- ------- ----
@@ -70,6 +72,7 @@ Get the BotService by ResourceGroupName and Name
 ```powershell
 Get-AzBotService -ResourceGroupName 'youriBotTest'
 ```
+
 ```output
 Etag                                   Kind Location Name             SkuName SkuTier Type
 ----                                   ---- -------- ----             ------- ------- ----
@@ -86,6 +89,7 @@ Get all BotServices by ResourceGroupName
 $getAzbot = Get-AzBotService -Name 'youri-bot1' -ResourceGroupName 'youriBotTest'
 Get-AzBotService -InputObject $getAzbot
 ```
+
 ```output
 Etag                                   Kind Location Name       SkuName SkuTier Type
 ----                                   ---- -------- ----       ------- ------- ----

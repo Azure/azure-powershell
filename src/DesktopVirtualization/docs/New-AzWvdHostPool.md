@@ -49,7 +49,7 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -HostPoolType 'Pooled' `
                             -LoadBalancerType 'DepthFirst' `
                             -RegistrationTokenOperation 'Update' `
-                            -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+                            -ExpirationTime $((Get-Date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
                             -Description 'Description' `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 5 `
@@ -79,7 +79,7 @@ New-AzWvdHostPool -ResourceGroupName ResourceGroupName `
                             -HostPoolType 'Personal' `
                             -LoadBalancerType 'Persistent' `
                             -RegistrationTokenOperation 'Update' `
-                            -ExpirationTime $((get-date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
+                            -ExpirationTime $((Get-Date).ToUniversalTime().AddDays(1).ToString('yyyy-MM-ddTHH:mm:ss.fffffffZ')) `
                             -Description 'Description' `
                             -FriendlyName 'Friendly Name' `
                             -MaxSessionLimit 5 `

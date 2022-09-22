@@ -24,7 +24,7 @@ Get the available SKU information for the location
 
 ### Example 1: Get location capabilities by location name
 ```powershell
- Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
+Get-AzPostgreSqlFlexibleServerLocationBasedCapability -Location eastus
 ```
 
 ```output

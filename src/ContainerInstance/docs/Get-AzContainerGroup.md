@@ -58,7 +58,7 @@ This command gets all container groups in the current subscription.
 
 ### Example 2: Get a specific container group
 ```powershell
-Get-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg | fl
+Get-AzContainerGroup -Name test-cg1 -ResourceGroupName test-rg | Format-List
 ```
 
 ```output

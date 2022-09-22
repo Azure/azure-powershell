@@ -28,7 +28,7 @@ Creates a new server.
 
 ### Example 1: Create a new MySql server
 ```powershell
-New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUser mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
+New-AzMySqlServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysql_test -AdministratorLoginPassword $password -Sku GP_Gen5_4
 ```
 
 ```output

@@ -21,7 +21,7 @@ Name                Location      SkuName
 ----                --------      -------
 psdemo-wps          eastus        Standard_S1
 
-$wps | format-list
+$wps | Format-List
 
 DisableAadAuth               : False
 DisableLocalAuth             : False

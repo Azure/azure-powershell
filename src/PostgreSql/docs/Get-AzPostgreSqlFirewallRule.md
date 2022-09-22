@@ -37,7 +37,7 @@ Gets information about a server firewall rule.
 
 ### Example 1: Lists all the Firewall Rules in specified PostgreSql server
 ```powershell
- Get-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+Get-AzPostgreSqlFirewallRule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 ```
 
 ```output
@@ -50,7 +50,7 @@ This cmdlet lists all the Firewall Rule in specified PostgreSql server.
 
 ### Example 2: Get Firewall Rule by name
 ```powershell
- Get-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
+Get-AzPostgreSqlFirewallRule -Name rule -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer
 ```
 
 ```output
@@ -63,8 +63,8 @@ This cmdlet gets Firewall Rule by name.
 
 ### Example 3: Get Firewall Rule by identity
 ```powershell
- $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
- Get-AzPostgreSqlFirewallRule -InputObject $ID
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PostgreSqlTestRG/providers/Microsoft.DBforPostgreSQL/servers/PostgreSqlTestServer/firewallRules/rule"
+Get-AzPostgreSqlFirewallRule -InputObject $ID
 ```
 
 ```output

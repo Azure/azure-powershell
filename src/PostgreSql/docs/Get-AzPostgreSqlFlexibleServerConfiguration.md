@@ -37,7 +37,7 @@ Gets information about a configuration of server.
 
 ### Example 1: Get specified PostgreSql configuration by name
 ```powershell
- Get-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+Get-AzPostgreSqlFlexibleServerConfiguration -Name work_mem -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 ```
 
 ```output
@@ -50,7 +50,7 @@ This cmdlet gets specified PostgreSql configuration by name.
 
 ### Example 2: List all configurations in specified PostgreSql server
 ```powershell
- Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
+Get-AzPostgreSqlFlexibleServerConfiguration -ResourceGroupName PowershellPostgreSqlTest -ServerName postgresql-test
 ```
 
 ```output

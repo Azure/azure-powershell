@@ -1,5 +1,14 @@
 [
   {
+    "alias": "Container Apps",
+    "module": "App"
+  },
+  {
+    "alias": "Dashboard",
+    "module": "Dashboard",
+    "group": "Grafana"
+  },
+  {
     "alias": "Confidential Ledger",
     "module": "ConfidentialLedger"
   },
@@ -8,14 +17,13 @@
     "alias": "API Management"
   },
   {
-    "regex": "MachineLearning",
+    "module": "MachineLearning",
     "group": "ML Studio (Classic)",
     "alias": "ML Studio (Classic)"
   },
   {
-    "regex": "Ml",
-    "group": "ML Studio (Classic)",
-    "alias": "ML Studio (Classic)"
+    "module": "MachineLearningServices",
+    "alias": "Machine Learning"
   },
   {
     "regex": "ImageBuilder",
@@ -26,13 +34,21 @@
     "alias": "VMware"
   },
   {
-    "regex": "VMGuest",
+    "module": "GuestConfiguration",
     "alias": "Guest Configuration"
   },
   {
     "regex": "Snapshot",
     "group": "Virtual Machines",
     "alias": "VM Snapshots"
+  },
+  {
+    "module": "Orbital",
+    "alias": "Orbital"
+  },
+  {
+    "regex": "FluidRelay",
+    "alias": "Fluid Relay"
   },
   {
     "regex": "Image",
@@ -557,7 +573,7 @@
   },
   {
     "regex": "ImportExport",
-    "alias": "Import/Export"
+    "alias": "ImportExport"
   },
   {
     "regex": "Functions",
@@ -590,10 +606,6 @@
   {
     "regex": "Monitor",
     "alias": "Monitor"
-  },
-  {
-    "regex": "StackEdge",
-    "alias": "Stack Edge"
   },
   {
     "regex": "ConnectedKubernetes",
@@ -734,5 +746,25 @@
   {
     "alias": "ConnectedNetwork",
     "module": "ConnectedNetwork"
+  },
+  {
+    "alias": "ServiceLinker",
+    "module": "ServiceLinker"
+  },
+  {
+    "module": "StorageMover",
+    "alias": "Storage Mover"
+  },
+  {
+    "alias": "NetworkFunction",
+    "module": "NetworkFunction"
+  },
+  {
+    "module": "DynatraceObservability",
+    "alias": "DynatraceObservability"
+  },
+  {
+    "module": "DeviceUpdate",
+    "alias": "DeviceUpdate"
   }
 ]

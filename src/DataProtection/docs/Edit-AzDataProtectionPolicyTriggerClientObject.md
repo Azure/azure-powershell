@@ -24,7 +24,7 @@ Updates Backup schedule of an existing backup policy.
 
 ### Example 1: Add Daily schedule to Azure Backup rule.
 ```powershell
-$schedule = New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays (get-date) -IntervalType Daily -IntervalCount 1
+$schedule = New-AzDataProtectionPolicyTriggerScheduleClientObject -ScheduleDays (Get-Date) -IntervalType Daily -IntervalCount 1
 Edit-AzDataProtectionPolicyTriggerClientObject -Policy $pol -Schedule $schedule
 ```
 
@@ -43,7 +43,7 @@ Backup Policy object.
 To construct, see NOTES section for POLICY properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicy
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupPolicy
 Parameter Sets: (All)
 Aliases:
 
@@ -76,7 +76,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20210701.IBackupPolicy
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupPolicy
 
 ## NOTES
 

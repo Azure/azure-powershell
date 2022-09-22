@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzRedisEnterpriseCache
 
 ## SYNOPSIS
-Deletes a Redis Enterprise cache cluster.
+Deletes a RedisEnterprise cache cluster.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzRedisEnterpriseCache -InputObject <IRedisEnterpriseCacheIdentity> [-Def
 ```
 
 ## DESCRIPTION
-Deletes a Redis Enterprise cache cluster.
+Deletes a RedisEnterprise cache cluster.
 
 ## EXAMPLES
 
@@ -66,7 +66,7 @@ Accept wildcard characters: False
 ```
 
 ### -ClusterName
-The name of the Redis Enterprise cluster.
+The name of the RedisEnterprise cluster.
 
 ```yaml
 Type: System.String
@@ -223,8 +223,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IRedisEnterpriseCacheIdentity>: Identity Parameter
-  - `[ClusterName <String>]`: The name of the Redis Enterprise cluster.
+`INPUTOBJECT <IRedisEnterpriseCacheIdentity>`: Identity Parameter
+  - `[ClusterName <String>]`: The name of the RedisEnterprise cluster.
   - `[DatabaseName <String>]`: The name of the database.
   - `[Id <String>]`: Resource identity path
   - `[Location <String>]`: The region the operation is in.

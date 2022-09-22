@@ -1,0 +1,15 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "service_name": {
+      "value": "appServicegf62n9"
+    },
+    "servicePlan_id": {
+      "value": "/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.Web/serverfarms/appServicePlanhzstpn"
+    },
+    "ua_identity_id": {
+      "value": "/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/ar-rg-8or9dp5v/providers/Microsoft.ManagedIdentity/userAssignedIdentities/ar-identity6al5po"
+    }
+  }
+}

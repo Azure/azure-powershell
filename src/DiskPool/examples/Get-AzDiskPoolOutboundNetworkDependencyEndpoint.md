@@ -1,6 +1,6 @@
 ### Example 1: List network dependency endpoints for a Disk pool
 ```powershell
-Get-AzDiskPoolOutboundNetworkDependencyEndpoint -DiskPoolName disk-pool-1 -ResourceGroupName storagepool-rg-test | ft -Wrap
+Get-AzDiskPoolOutboundNetworkDependencyEndpoint -DiskPoolName disk-pool-1 -ResourceGroupName storagepool-rg-test | Format-Table -Wrap
 ```
 
 ```output

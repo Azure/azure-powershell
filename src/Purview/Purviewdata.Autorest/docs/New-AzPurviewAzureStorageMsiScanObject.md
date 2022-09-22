@@ -25,8 +25,10 @@ Create an in-memory object for AzureStorageMsiScan.
 
 ### Example 1: Create Azure Storage Msi scan object
 ```powershell
-PS C:\> New-AzPurviewAzureStorageMsiScanObject -Kind 'AzureStorageMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
+New-AzPurviewAzureStorageMsiScanObject -Kind 'AzureStorageMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -ScanRulesetName 'AzureStorage' -ScanRulesetType 'System'
+```
 
+```output
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference

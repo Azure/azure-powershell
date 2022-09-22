@@ -50,7 +50,7 @@ Please note some properties can be set only during cloud service creation.
 ### Example 1: Create new cloud service with single role
 ```powershell
 # Create role profile object
-$role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 $roleProfile = @{role = @($role)}
 
 # Create network profile object
@@ -80,7 +80,7 @@ Above set of commands creates a cloud service with single role
 ### Example 2: Create new cloud service with single role and RDP extension
 ```powershell
 # Create role profile object
-$role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 $roleProfile = @{role = @($role)}
 
 # Create network profile object
@@ -117,7 +117,7 @@ Above set of commands creates a cloud service with single role and RDP extension
 ### Example 3: Create new cloud service with single role and certificate from key vault
 ```powershell
 # Create role profile object
-$role = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 $roleProfile = @{role = @($role)}
 
 # Create OS profile object
@@ -154,8 +154,8 @@ Above set of commands creates a cloud service with single role and certificate f
 ### Example 4: Create new cloud service with multiple roles and extensions
 ```powershell
 # Create role profile object
-$role1 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
-$role2 = New-AzCloudServiceRoleProfilePropertiesObject-Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role1 = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoFrontend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
+$role2 = New-AzCloudServiceRoleProfilePropertiesObject -Name 'ContosoBackend' -SkuName 'Standard_D1_v2' -SkuTier 'Standard' -SkuCapacity 2
 $roleProfile = @{role = @($role1, $role2)}
 
 # Create network profile object

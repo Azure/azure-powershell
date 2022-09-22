@@ -55,7 +55,7 @@ The above command lists all Kusto clusters in the resource group "testrg".
 
 ### Example 2: Get a specific Kusto cluster by name
 ```powershell
-Get-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster
+ Get-AzKustoCluster -ResourceGroupName testrg -Name testnewkustocluster
 ```
 
 ```output
@@ -154,7 +154,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.ICluster
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.ICluster
 
 ## NOTES
 

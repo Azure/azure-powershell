@@ -46,7 +46,7 @@ Test out the connection to the database server
 
 ### Example 1: Test connection by name
 ```powershell
-Get-AzMySqlFlexibleServerConnect -ResourceGroupName PowershellMySqlTest -Name mysql-test -AdministratorLoginPassword $password
+Test-AzMySqlFlexibleServerConnect -ResourceGroupName PowershellMySqlTest -Name mysql-test -AdministratorLoginPassword $password
 ```
 
 ```output
@@ -57,7 +57,7 @@ Test connection by the resource group and the server name
 
 ### Example 2: Test connection by identity
 ```powershell
-Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Get-AzMySqlFlexibleServerConnect -AdministratorLoginPassword $password
+Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Test-AzMySqlFlexibleServerConnect -AdministratorLoginPassword $password
 ```
 
 ```output
@@ -68,7 +68,7 @@ Test connection by the identity
 
 ### Example 3: Test query by name
 ```powershell
-Get-AzMySqlFlexibleServerConnect -ResourceGroupName PowershellMySqlTest -Name mysql-test -AdministratorLoginPassword $password -Query "SELECT * FROM test"
+Test-AzMySqlFlexibleServerConnect -ResourceGroupName PowershellMySqlTest -Name mysql-test -AdministratorLoginPassword $password -QueryText "SELECT * FROM test"
 ```
 
 ```output
@@ -83,7 +83,7 @@ Test a query by the resource group and the server name
 
 ### Example 4: Test connection by identity
 ```powershell
-Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Get-AzMySqlFlexibleServerConnect -Query "SELECT * FROM test" -AdministratorLoginPassword $password
+Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Test-AzMySqlFlexibleServerConnect -QueryText "SELECT * FROM test" -AdministratorLoginPassword $password
 ```
 
 ```output

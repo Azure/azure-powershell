@@ -20,7 +20,7 @@ Removes an API permission.
 .Description
 Removes an API permission.
 .Example
-PS C:\> Remove-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
+Remove-AzADAppPermission -ObjectId 9cc74d5e-1162-4b90-8696-65f3d6a3f7d0 -PermissionId 5f8c59db-677d-491f-a6b8-5f174b11ec1d
 
 .Outputs
 System.Boolean
@@ -29,7 +29,7 @@ https://docs.microsoft.com/powershell/module/az.resources/remove-azadapppermissi
 #>
 function Remove-AzADAppPermission {
 [OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false)]
+[CmdletBinding(DefaultParameterSetName='ObjectIdParameterSet', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
     [ValidateNotNull()]
@@ -106,8 +106,8 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ObjectIdParameterSet = 'MSGraph.custom\Remove-AzADAppPermission';
-            AppIdParameterSet = 'MSGraph.custom\Remove-AzADAppPermission';
+            ObjectIdParameterSet = 'Az.MSGraph.custom\Remove-AzADAppPermission';
+            AppIdParameterSet = 'Az.MSGraph.custom\Remove-AzADAppPermission';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

@@ -15,8 +15,8 @@ Adds new entity to servicePrincipals
 ### SimpleParameterSet (Default)
 ```
 New-AzADServicePrincipal [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>]
- [-AppDescription <String>] [-ApplicationId <Guid>] [-AppOwnerOrganizationId <String>]
- [-AppRole <IMicrosoftGraphAppRole[]>] [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
+ [-AppDescription <String>] [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
+ [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
  [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
  [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
  [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
@@ -34,11 +34,10 @@ New-AzADServicePrincipal [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-A
  [<CommonParameters>]
 ```
 
-### ApplicationObjectWithKeyCredentialParameterSet
+### ApplicationIdParameterSet
 ```
-New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication>
- -KeyCredential <IMicrosoftGraphKeyCredential[]> [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>]
- [-AlternativeName <String[]>] [-AppDescription <String>] [-AppOwnerOrganizationId <String>]
+New-AzADServicePrincipal [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>]
+ [-AppDescription <String>] [-ApplicationId <Guid>] [-AppOwnerOrganizationId <String>]
  [-AppRole <IMicrosoftGraphAppRole[]>] [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
  [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
  [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
@@ -57,125 +56,10 @@ New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication>
  [<CommonParameters>]
 ```
 
-### ApplicationObjectWithKeyPlainParameterSet
-```
-New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication> -CertValue <String> [-AccountEnabled]
- [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
- [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
- [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-EndDate <DateTime>] [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationObjectWithPasswordCredentialParameterSet
-```
-New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication>
- -PasswordCredential <IMicrosoftGraphPasswordCredential[]> [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>]
- [-AlternativeName <String[]>] [-AppDescription <String>] [-AppOwnerOrganizationId <String>]
- [-AppRole <IMicrosoftGraphAppRole[]>] [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationObjectWithPasswordPlainParameterSet
+### ApplicationObjectParameterSet
 ```
 New-AzADServicePrincipal -ApplicationObject <IMicrosoftGraphApplication> [-AccountEnabled]
  [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
- [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
- [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-EndDate <DateTime>] [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationWithKeyCredentialParameterSet
-```
-New-AzADServicePrincipal -ApplicationId <Guid> -KeyCredential <IMicrosoftGraphKeyCredential[]>
- [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
- [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
- [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationWithKeyPlainParameterSet
-```
-New-AzADServicePrincipal -ApplicationId <Guid> -CertValue <String> [-AccountEnabled]
- [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
- [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
- [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
- [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
- [-ClaimsMappingPolicy <IMicrosoftGraphClaimsMappingPolicy[]>]
- [-DelegatedPermissionClassification <IMicrosoftGraphDelegatedPermissionClassification[]>]
- [-DeletedDateTime <DateTime>] [-Description <String>] [-DisabledByMicrosoftStatus <String>]
- [-EndDate <DateTime>] [-Endpoint <IMicrosoftGraphEndpoint[]>] [-Homepage <String>]
- [-HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]
- [-Info <IMicrosoftGraphInformationalUrl>] [-LoginUrl <String>] [-LogoutUrl <String>] [-Note <String>]
- [-NotificationEmailAddress <String[]>] [-Oauth2PermissionScope <IMicrosoftGraphPermissionScope[]>]
- [-PreferredSingleSignOnMode <String>] [-PreferredTokenSigningKeyThumbprint <String>] [-ReplyUrl <String[]>]
- [-Role <String>] [-SamlSingleSignOnSetting <IMicrosoftGraphSamlSingleSignOnSettings>] [-Scope <String>]
- [-ServicePrincipalName <String[]>] [-ServicePrincipalType <String>] [-StartDate <DateTime>] [-Tag <String[]>]
- [-TokenEncryptionKeyId <String>] [-TokenIssuancePolicy <IMicrosoftGraphTokenIssuancePolicy[]>]
- [-TokenLifetimePolicy <IMicrosoftGraphTokenLifetimePolicy[]>]
- [-TransitiveMemberOf <IMicrosoftGraphDirectoryObject[]>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf]
- [<CommonParameters>]
-```
-
-### ApplicationWithPasswordCredentialParameterSet
-```
-New-AzADServicePrincipal -ApplicationId <Guid> -PasswordCredential <IMicrosoftGraphPasswordCredential[]>
- [-AccountEnabled] [-AddIn <IMicrosoftGraphAddIn[]>] [-AlternativeName <String[]>] [-AppDescription <String>]
  [-AppOwnerOrganizationId <String>] [-AppRole <IMicrosoftGraphAppRole[]>]
  [-AppRoleAssignedTo <IMicrosoftGraphAppRoleAssignment[]>]
  [-AppRoleAssignment <IMicrosoftGraphAppRoleAssignment[]>] [-AppRoleAssignmentRequired]
@@ -269,23 +153,23 @@ Adds new entity to servicePrincipals
 
 ## EXAMPLES
 
-### Example 1: Create service princial without application or display name
+### Example 1: Create service principal without application or display name
 ```powershell
-PS C:\> New-AzADServicePrincipal
+New-AzADServicePrincipal
 ```
 
 Create application with display name "azure-powershell-MM-dd-yyyy-HH-mm-ss" and new service principal associate with it
 
-### Example 2: Create service princial with existing application
+### Example 2: Create service principal with existing application
 ```powershell
-PS C:\> New-AzADServicePrincipal -ApplicationId $appid
+New-AzADServicePrincipal -ApplicationId $appid
 ```
 
-Create service princial with existing application
+Create service principal with existing application
 
-### Example 3: Create application with display name and associated new service pincipal with it
+### Example 3: Create application with display name and associated new service principal with it
 ```powershell
-PS C:\> New-AzADServicePrincipal -DisplayName $name
+New-AzADServicePrincipal -DisplayName $name
 ```
 
 Create application with display name and associated new service pincipal with it
@@ -362,10 +246,10 @@ The unique identifier for the associated application (its appId property).
 
 ```yaml
 Type: System.Guid
-Parameter Sets: ApplicationWithKeyCredentialParameterSet, ApplicationWithKeyPlainParameterSet, ApplicationWithPasswordCredentialParameterSet, SimpleParameterSet
+Parameter Sets: ApplicationIdParameterSet
 Aliases: AppId
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -378,7 +262,7 @@ To construct, see NOTES section for APPLICATIONOBJECT properties and create a ha
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
-Parameter Sets: ApplicationObjectWithKeyCredentialParameterSet, ApplicationObjectWithKeyPlainParameterSet, ApplicationObjectWithPasswordCredentialParameterSet, ApplicationObjectWithPasswordPlainParameterSet
+Parameter Sets: ApplicationObjectParameterSet
 Aliases:
 
 Required: True
@@ -479,7 +363,7 @@ It represents the base 64 encoded certificate.
 
 ```yaml
 Type: System.String
-Parameter Sets: ApplicationObjectWithKeyPlainParameterSet, ApplicationWithKeyPlainParameterSet, DisplayNameWithKeyPlainParameterSet
+Parameter Sets: DisplayNameWithKeyPlainParameterSet
 Aliases:
 
 Required: True
@@ -611,7 +495,7 @@ For an 'asymmetric' type credential, this must be set to on or before the date t
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ApplicationObjectWithKeyPlainParameterSet, ApplicationObjectWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet, DisplayNameWithKeyPlainParameterSet, SimpleParameterSet
+Parameter Sets: DisplayNameWithKeyPlainParameterSet, SimpleParameterSet
 Aliases:
 
 Required: False
@@ -692,7 +576,7 @@ To construct, see NOTES section for KEYCREDENTIAL properties and create a hash t
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphKeyCredential[]
-Parameter Sets: ApplicationObjectWithKeyCredentialParameterSet, ApplicationWithKeyCredentialParameterSet, DisplayNameWithKeyCredentialParameterSet
+Parameter Sets: DisplayNameWithKeyCredentialParameterSet
 Aliases: KeyCredentials
 
 Required: True
@@ -791,7 +675,7 @@ To construct, see NOTES section for PASSWORDCREDENTIAL properties and create a h
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphPasswordCredential[]
-Parameter Sets: ApplicationObjectWithPasswordCredentialParameterSet, ApplicationWithPasswordCredentialParameterSet, DisplayNameWithPasswordCredentialParameterSet
+Parameter Sets: DisplayNameWithPasswordCredentialParameterSet
 Aliases: PasswordCredentials
 
 Required: True
@@ -942,7 +826,7 @@ For an 'asymmetric' type credential, this must be set to on or after the date th
 
 ```yaml
 Type: System.DateTime
-Parameter Sets: ApplicationObjectWithKeyPlainParameterSet, ApplicationObjectWithPasswordPlainParameterSet, ApplicationWithKeyPlainParameterSet, DisplayNameWithKeyPlainParameterSet, SimpleParameterSet
+Parameter Sets: DisplayNameWithKeyPlainParameterSet, SimpleParameterSet
 Aliases:
 
 Required: False
@@ -1134,6 +1018,12 @@ APPLICATIONOBJECT <IMicrosoftGraphApplication>: The application object, could be
   - `[CreatedOnBehalfOfDisplayName <String>]`: The name displayed in directory
   - `[Description <String>]`: An optional description of the application. Returned by default. Supports $filter (eq, ne, NOT, ge, le, startsWith) and $search.
   - `[DisabledByMicrosoftStatus <String>]`: Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, NOT).
+  - `[FederatedIdentityCredentials <IMicrosoftGraphFederatedIdentityCredential[]>]`: Federated identities for applications. Supports $expand and $filter (eq when counting empty collections).
+    - `[Audience <String[]>]`: Lists the audiences that can appear in the external token. This field is mandatory, and defaults to 'api://AzureADTokenExchange'. It says what Microsoft identity platform should accept in the aud claim in the incoming token. This value represents Azure AD in your external identity provider and has no fixed value across identity providers - you may need to create a new application registration in your identity provider to serve as the audience of this token. Required.
+    - `[Description <String>]`: The un-validated, user-provided description of the federated identity credential. Optional.
+    - `[Issuer <String>]`: The URL of the external identity provider and must match the issuer claim of the external token being exchanged. The combination of the values of issuer and subject must be unique on the app. Required.
+    - `[Name <String>]`: is the unique identifier for the federated identity credential, which has a character limit of 120 characters and must be URL friendly. It is immutable once created. Required. Not nullable. Supports $filter (eq).
+    - `[Subject <String>]`: Required. The identifier of the external software workload within the external identity provider. Like the audience value, it has no fixed format, as each identity provider uses their own - sometimes a GUID, sometimes a colon delimited identifier, sometimes arbitrary strings. The value here must match the sub claim within the token presented to Azure AD. The combination of issuer and subject must be unique on the app. Supports $filter (eq).
   - `[GroupMembershipClaim <String>]`: Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
   - `[HomeRealmDiscoveryPolicy <IMicrosoftGraphHomeRealmDiscoveryPolicy[]>]`: 
     - `[AppliesTo <IMicrosoftGraphDirectoryObject[]>]`: 

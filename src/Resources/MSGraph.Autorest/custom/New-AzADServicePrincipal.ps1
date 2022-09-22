@@ -18,19 +18,6 @@
 Adds new entity to servicePrincipals
 .Description
 Adds new entity to servicePrincipals
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-.Example
-PS C:\> {{ Add code here }}
-
-{{ Add output here }}
-
-.Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
-.Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -302,7 +289,7 @@ function New-AzADServicePrincipal {
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication]
     ${ApplicationObject},
 
-    [Parameter(ParameterSetName = 'SimpleParameterSet')]
+    [Parameter(ParameterSetName = 'ApplicationIdParameterSet')]
     [Alias('AppId')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
     [System.Guid]
@@ -761,15 +748,9 @@ function New-AzADServicePrincipal {
       if ($spScope) {
         $param['Scope'] = $spScope
       }
-      for ($i = 0; $i -lt 6; $i++) {
-        try {
-          $ra = New-AzRoleAssignment @param
-          Write-Verbose "Role assignment with role $($ra.RoleDefinitionName) and scope $($ra.Scope) successfully created for the created service principal."
-          break
-        } catch {
-
-        }
-      }
+      $param['ObjectType'] = "ServicePrincipal"
+      $ra = New-AzRoleAssignment @param
+      Write-Verbose "Role assignment with role $($ra.RoleDefinitionName) and scope $($ra.Scope) successfully created for the created service principal."
     }
   }
 }

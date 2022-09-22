@@ -25,7 +25,7 @@ Retrieve the registered Integration Runtime nodes and their monitoring data for 
 
 ### Example 1: Get the registered Integration Runtime nodes and their monitoring data for a given Sql Migration Service
 ```powershell
-Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" | Select *
+Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService" | Select-Object *
 ```
 
 ```output
@@ -38,7 +38,7 @@ This command gets the registered Integration Runtime nodes and their monitoring 
 
 ### Example 2: Print the monitoring data for each Integration Runtime node
 ```powershell
-$item = Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -ResourceGroupName "MyResourceGroup" -SqlMigrationService "MySqlMigrationService"
+$item = Get-AzDataMigrationSqlServiceIntegrationRuntimeMetric -ResourceGroupName "MyResourceGroup" -SqlMigrationServiceName "MySqlMigrationService"
 $item.Node[0] 
 ```
 
@@ -167,7 +167,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20211030Preview.IIntegrationRuntimeMonitoringData
+### Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Models.Api20220330Preview.IIntegrationRuntimeMonitoringData
 
 ## NOTES
 

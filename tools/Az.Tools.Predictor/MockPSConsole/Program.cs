@@ -73,7 +73,7 @@ namespace Microsoft.Azure.PoerShell.Tools.AzPredictor.MockPSConsole
             var iss = InitialSessionState.CreateDefault2();
             if (!args.Any())
             {
-                args = new string[] { "../Az.Tools.Predictor/Az.Tools.Predictor.ps1" };
+                args = new string[] { "../Az.Tools.Predictor/Az.Tools.Predictor.psd1" };
             }
 
             iss.ImportPSModule(args[0]);

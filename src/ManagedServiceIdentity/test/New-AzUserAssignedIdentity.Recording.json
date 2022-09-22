@@ -1,0 +1,38 @@
+{
+  "New-AzUserAssignedIdentity+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityw6movs?api-version=2022-01-31-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourceGroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityw6movs?api-version=2022-01-31-preview",
+      "Content": "{\n  \"location\": \"Central US\"\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "30" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 201,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourcegroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityw6movs" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1195" ],
+        "x-ms-request-id": [ "ef2824fc-ed97-4b88-9076-3fcb29f214d4" ],
+        "x-ms-correlation-request-id": [ "ef2824fc-ed97-4b88-9076-3fcb29f214d4" ],
+        "x-ms-routing-request-id": [ "NORTHEUROPE:20220906T145336Z:ef2824fc-ed97-4b88-9076-3fcb29f214d4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Tue, 06 Sep 2022 14:53:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "450" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/0336439f-0e9d-44ec-975e-62accb9b3901/resourcegroups/identity-jvsqdw9r/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identityw6movs\",\"name\":\"identityw6movs\",\"type\":\"Microsoft.ManagedIdentity/userAssignedIdentities\",\"location\":\"centralus\",\"tags\":{},\"properties\":{\"tenantId\":\"a66b4d27-b1b3-4b60-8b06-7fb4fd05bc3c\",\"principalId\":\"49c22ba4-0b28-4982-9ce7-4674b9424a80\",\"clientId\":\"0dec13fc-23b4-44f3-a6b7-55ba18aa9aed\"}}",
+      "isContentBase64": false
+    }
+  }
+}

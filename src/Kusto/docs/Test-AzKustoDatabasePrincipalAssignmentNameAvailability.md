@@ -32,7 +32,7 @@ Checks that the database principal assignment is valid and is not already in use
 
 ### Example 1: Check the availability of a database principalassignment name which is in use
 ```powershell
-Test-AzKustoClusterPrincipalAssignmentNameAvailability -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -Name "myprincipal" -Type "Microsoft.Kusto/Clusters/Database/principalAssignments" 
+Test-AzKustoDatabasePrincipalAssignmentNameAvailability -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -Name "myprincipal"
 ```
 
 ```output
@@ -45,7 +45,7 @@ The above command returns whether or not a PrincipalAssignment named "myprincipa
 
 ### Example 2: Check the availability of a database principalassignment name which is not in use
 ```powershell
-Test-AzKustoClusterPrincipalAssignmentNameAvailability -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -Name "newprincipal" -Type "Microsoft.Kusto/Clusters/Database/principalAssignments"
+Test-AzKustoDatabasePrincipalAssignmentNameAvailability -ResourceGroupName "testrg" -ClusterName "testnewkustocluster" -DatabaseName "mykustodatabase" -Name "newprincipal"
 ```
 
 ```output

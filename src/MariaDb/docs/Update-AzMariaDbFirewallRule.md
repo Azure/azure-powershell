@@ -73,7 +73,7 @@ The cmdlet updates MariaDB Firewall Rule by identity.
 ### Example 3: Update MariaDB Firewall Rule by -ClientIPAddress.
 ```powershell
 $ID = "/subscriptions/<SubscriptionId>/resourceGroups/mariadb-test-qu5ov0/providers/Microsoft.DBforMariaDB/servers/mariadb-test-4rmtig/firewallRules/fr-cfgl3y"
-Update-AzMariaDbFirewallRule -InputObject $ID --ClientIPAddress 0.0.0.2
+Update-AzMariaDbFirewallRule -InputObject $ID -ClientIPAddress 0.0.0.2
 ```
 
 ```output

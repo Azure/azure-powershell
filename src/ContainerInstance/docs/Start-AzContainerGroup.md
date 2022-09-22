@@ -33,7 +33,7 @@ Compute resources will be allocated and billing will start.
 
 ### Example 1: Start all containers in a container group
 ```powershell
-start-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
+Start-AzContainerGroup -Name test-cg -ResourceGroupName test-rg
 ```
 
 This command starts all containers in a container group.

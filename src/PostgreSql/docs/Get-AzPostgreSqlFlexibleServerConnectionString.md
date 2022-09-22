@@ -31,7 +31,7 @@ Get the connection string according to client connection provider.
 
 ### Example 1: Get connection string by name
 ```powershell
- Get-AzPostgreSqlFlexibleServerConnectionString -Client ADO.NET -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
+Get-AzPostgreSqlFlexibleServerConnectionString -Client ADO.NET -ResourceGroupName PowershellPostgreSqlTest -Name postgresql-test
 ```
 
 ```output
@@ -42,7 +42,7 @@ This cmdlet shows connection string of a client by server name.
 
 ### Example 2: Get PostgreSql server connection string by identity
 ```powershell
- Get-AzPostgreSqlFlexibleServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Get-AzPostgreSqlFlexibleServerConnectionString -Client PHP
+Get-AzPostgreSqlFlexibleServer -ResourceGroupName PostgreSqlTestRG -ServerName PostgreSqlTestServer | Get-AzPostgreSqlFlexibleServerConnectionString -Client PHP
 ```
 
 ```output

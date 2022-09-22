@@ -24,7 +24,7 @@ Returns a list of databases that are owned by this cluster and were followed by 
 
 ### Example 1: List all followed databases
 ```powershell
-Get-AzKustoClusterFollowerDatabase  -ResourceGroupName testrg -ClusterName testnewkustocluster
+ Get-AzKustoClusterFollowerDatabase  -ResourceGroupName testrg -ClusterName testnewkustocluster
 ```
 
 ```output
@@ -136,7 +136,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IFollowerDatabaseDefinition
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IFollowerDatabaseDefinition
 
 ## NOTES
 

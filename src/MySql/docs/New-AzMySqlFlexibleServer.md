@@ -28,8 +28,7 @@ Creates a new MySQL flexible server.
 
 ### Example 1: Create a new MySql flexible server with arguments
 ```powershell
-New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest \
--Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240 -PublicAccess none
+New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240 -PublicAccess none
 ```
 
 ```output
@@ -77,10 +76,10 @@ If you want to find the auto-generated password for your server, use ConvertFrom
 $Vnet = 'vnetname'
 New-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
 
-or
+# or
 
 $Vnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellMySqlTest/providers/Microsoft.Network/virtualNetworks/vnetname'
-New-AzMySqlFlexibleServer  -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
+New-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
 ```
 
 ```output
@@ -410,7 +409,7 @@ Accept wildcard characters: False
 
 ### -SubnetPrefix
 The subnet IP address prefix to use when creating a new vnet in CIDR format.
-Default value is 10.0.0.0/24.
+Default value is 10.0.0.0/24.
 
 ```yaml
 Type: System.String

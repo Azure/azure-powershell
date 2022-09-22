@@ -1,7 +1,9 @@
 ### Example 1: Create Azure Synapse Workspace Credential scan object
 ```powershell
-PS C:\> New-AzPurviewAzureSynapseWorkspaceCredentialScanObject -Kind 'AzureSynapseWorkspaceCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp' -ScanRulesetName 'AzureSynapseSQL' -ScanRulesetType 'System'
+New-AzPurviewAzureSynapseWorkspaceCredentialScanObject -Kind 'AzureSynapseWorkspaceCredential' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference' -CredentialType 'ServicePrincipal' -CredentialReferenceName 'svcp' -ScanRulesetName 'AzureSynapseSQL' -ScanRulesetType 'System'
+```
 
+```output
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference

@@ -51,7 +51,7 @@ Creates a function app.
 New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -ResourceGroupName MyResourceGroupName `
                   -Location centralUS `
-                  -StorageAccount MyStorageAccountName `
+                  -StorageAccountName MyStorageAccountName `
                   -Runtime PowerShell
 ```
 
@@ -62,7 +62,7 @@ This command creates a consumption PowerShell function app in Central US.
 New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -ResourceGroupName MyResourceGroupName `
                   -PlanName MyPlanName `
-                  -StorageAccount MyStorageAccountName `
+                  -StorageAccountName MyStorageAccountName `
                   -Runtime PowerShell
 ```
 
@@ -73,7 +73,7 @@ This command creates a PowerShell function app which will be hosted in a service
 New-AzFunctionApp -Name MyUniqueFunctionAppName `
                   -ResourceGroupName MyResourceGroupName `
                   -PlanName MyPlanName `
-                  -StorageAccount MyStorageAccountName `
+                  -StorageAccountName MyStorageAccountName `
                   -DockerImageName myacr.azurecr.io/myimage:tag
 ```
 

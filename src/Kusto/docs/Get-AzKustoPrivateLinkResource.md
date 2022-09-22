@@ -42,7 +42,7 @@ Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "test
 ```output
 Name                                                       Type
 ----                                                       ----
-mycluster/cluster                                		       Microsoft.Kusto/Clusters/PrivateLinkResources
+mycluster/cluster                                		   Microsoft.Kusto/Clusters/PrivateLinkResources
 ```
 
 The above command returns all PrivateLinkResource in the cluster "mycluster" found in the resource group "testrg".
@@ -55,7 +55,7 @@ Get-AzKustoPrivateLinkResource -ClusterName "mycluster" -ResourceGroupName "test
 ```output
 Name                                                       Type
 ----                                                       ----
-mycluster/cluster                                		       Microsoft.Kusto/Clusters/PrivateLinkResources
+mycluster/cluster                                		   Microsoft.Kusto/Clusters/PrivateLinkResources
 ```
 
 The above command returns the PrivateLinkResource named "mycluster/cluster" in the cluster "mycluster" found in the resource group "testrg".
@@ -163,7 +163,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20210827.IPrivateLinkResource
+### Microsoft.Azure.PowerShell.Cmdlets.Kusto.Models.Api20220201.IPrivateLinkResource
 
 ## NOTES
 

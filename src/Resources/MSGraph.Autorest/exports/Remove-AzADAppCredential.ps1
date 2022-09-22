@@ -20,9 +20,9 @@ Removes key credentials or password credentials for an application.
 .Description
 Removes key credentials or password credentials for an application.
 .Example
-PS C:\> Remove-AzADAppCredential -DisplayName $name -KeyId $keyid
+Remove-AzADAppCredential -DisplayName $name -KeyId $keyid
 .Example
-PS C:\> Get-AzADApplication -DisplayName $name | Remove-AzADAppCredential
+Get-AzADApplication -DisplayName $name | Remove-AzADAppCredential
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -261,10 +261,10 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
         $mapping = @{
-            ApplicationObjectIdWithKeyIdParameterSet = 'MSGraph.custom\Remove-AzADAppCredential';
-            ApplicationIdWithKeyIdParameterSet = 'MSGraph.custom\Remove-AzADAppCredential';
-            ApplicationDisplayNameParameterSet = 'MSGraph.custom\Remove-AzADAppCredential';
-            ApplicationObjectWithKeyIdParameterSet = 'MSGraph.custom\Remove-AzADAppCredential';
+            ApplicationObjectIdWithKeyIdParameterSet = 'Az.MSGraph.custom\Remove-AzADAppCredential';
+            ApplicationIdWithKeyIdParameterSet = 'Az.MSGraph.custom\Remove-AzADAppCredential';
+            ApplicationDisplayNameParameterSet = 'Az.MSGraph.custom\Remove-AzADAppCredential';
+            ApplicationObjectWithKeyIdParameterSet = 'Az.MSGraph.custom\Remove-AzADAppCredential';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

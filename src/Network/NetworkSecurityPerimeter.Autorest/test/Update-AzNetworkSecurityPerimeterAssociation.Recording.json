@@ -1,0 +1,238 @@
+{
+  "Update-AzNetworkSecurityPerimeterAssociation+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1?api-version=2021-02-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1?api-version=2021-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "43" ],
+        "x-ms-client-request-id": [ "5e11ee93-cf3b-48a9-90df-781a7d1f132b" ],
+        "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociation" ],
+        "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "bf56a47a-5dae-4b1e-a2bc-82c1a3974ac2" ],
+        "x-ms-correlation-request-id": [ "bf56a47a-5dae-4b1e-a2bc-82c1a3974ac2" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20220819T134950Z:bf56a47a-5dae-4b1e-a2bc-82c1a3974ac2" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 19 Aug 2022 13:49:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "759" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"psassociation1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/resourceAssociations\",\"properties\":{\"privateLinkResource\":{\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.KeyVault/vaults/tiywst-paas4Rp\"},\"profile\":{\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/profiles/t-profile2\"},\"accessMode\":\"Learning\",\"provisioningState\":\"Succeeded\",\"hasProvisioningIssues\":\"no\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkSecurityPerimeterAssociation+[NoContext]+UpdateExpanded+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1?api-version=2021-02-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1?api-version=2021-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "44" ],
+        "x-ms-client-request-id": [ "b77ffdca-cfe0-47c5-8839-2dd521e2ff2d" ],
+        "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociation" ],
+        "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "f4639566-71d0-46d0-9bd1-91876fb00ea4" ],
+        "x-ms-correlation-request-id": [ "f4639566-71d0-46d0-9bd1-91876fb00ea4" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20220819T134950Z:f4639566-71d0-46d0-9bd1-91876fb00ea4" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 19 Aug 2022 13:49:49 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "759" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"psassociation1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/resourceAssociations\",\"properties\":{\"privateLinkResource\":{\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.KeyVault/vaults/tiywst-paas4Rp\"},\"profile\":{\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/profiles/t-profile2\"},\"accessMode\":\"Learning\",\"provisioningState\":\"Succeeded\",\"hasProvisioningIssues\":\"no\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkSecurityPerimeterAssociation+[NoContext]+UpdateExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1?api-version=2021-02-01-preview+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1?api-version=2021-02-01-preview",
+      "Content": "{\r\n  \"id\": \"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1\",\r\n  \"properties\": {\r\n    \"privateLinkResource\": {\r\n      \"id\": \"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.KeyVault/vaults/tiywst-paas4Rp\"\r\n    },\r\n    \"profile\": {\r\n      \"id\": \"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/profiles/t-profile2\"\r\n    },\r\n    \"accessMode\": \"Enforced\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "667" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1191" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "59d3d35b-7f5c-468d-871e-7f967fa610c5" ],
+        "x-ms-correlation-request-id": [ "59d3d35b-7f5c-468d-871e-7f967fa610c5" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20220819T134951Z:59d3d35b-7f5c-468d-871e-7f967fa610c5" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 19 Aug 2022 13:49:50 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "758" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"psassociation1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/resourceAssociations\",\"properties\":{\"privateLinkResource\":{\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.KeyVault/vaults/tiywst-paas4Rp\"},\"profile\":{\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/profiles/t-profile2\"},\"accessMode\":\"Enforced\",\"provisioningState\":\"Accepted\",\"hasProvisioningIssues\":\"no\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkSecurityPerimeterAssociation+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1?api-version=2021-02-01-preview+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1?api-version=2021-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "46" ],
+        "x-ms-client-request-id": [ "3e33cd0c-cef1-4bea-8bb3-9a1c6245d037" ],
+        "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociation" ],
+        "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11972" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "7fd4d4a4-fb7b-4082-a447-3d4698f7fd54" ],
+        "x-ms-correlation-request-id": [ "7fd4d4a4-fb7b-4082-a447-3d4698f7fd54" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20220819T134952Z:7fd4d4a4-fb7b-4082-a447-3d4698f7fd54" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 19 Aug 2022 13:49:51 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "759" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"psassociation1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/resourceAssociations\",\"properties\":{\"privateLinkResource\":{\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.KeyVault/vaults/tiywst-paas4Rp\"},\"profile\":{\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/profiles/t-profile2\"},\"accessMode\":\"Enforced\",\"provisioningState\":\"Succeeded\",\"hasProvisioningIssues\":\"no\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkSecurityPerimeterAssociation+[NoContext]+UpdateViaIdentityExpanded+$GET+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1?api-version=2021-02-01-preview+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1?api-version=2021-02-01-preview",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "47" ],
+        "x-ms-client-request-id": [ "4aab2d60-fc28-498b-868f-528a0aca450e" ],
+        "CommandName": [ "Get-AzNetworkSecurityPerimeterAssociation" ],
+        "FullCommandName": [ "Get-AzNetworkSecurityPerimeterAssociation_GetViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v8.0.0", "PSVersion/v7.2.5", "Az.NetworkSecurityPerimeter/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11971" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "341fbc5b-6fee-42e8-82b2-482756b5f9dc" ],
+        "x-ms-correlation-request-id": [ "341fbc5b-6fee-42e8-82b2-482756b5f9dc" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20220819T134953Z:341fbc5b-6fee-42e8-82b2-482756b5f9dc" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 19 Aug 2022 13:49:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "759" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"psassociation1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/resourceAssociations\",\"properties\":{\"privateLinkResource\":{\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.KeyVault/vaults/tiywst-paas4Rp\"},\"profile\":{\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/profiles/t-profile2\"},\"accessMode\":\"Enforced\",\"provisioningState\":\"Succeeded\",\"hasProvisioningIssues\":\"no\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Update-AzNetworkSecurityPerimeterAssociation+[NoContext]+UpdateViaIdentityExpanded+$PUT+https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1?api-version=2021-02-01-preview+3": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1?api-version=2021-02-01-preview",
+      "Content": "{\r\n  \"id\": \"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1\",\r\n  \"properties\": {\r\n    \"privateLinkResource\": {\r\n      \"id\": \"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.KeyVault/vaults/tiywst-paas4Rp\"\r\n    },\r\n    \"profile\": {\r\n      \"id\": \"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/profiles/t-profile2\"\r\n    },\r\n    \"accessMode\": \"Learning\"\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "667" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1190" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Kestrel" ],
+        "x-ms-request-id": [ "b89b09cd-a07d-4a35-bd1d-013ec70669bf" ],
+        "x-ms-correlation-request-id": [ "b89b09cd-a07d-4a35-bd1d-013ec70669bf" ],
+        "x-ms-routing-request-id": [ "CENTRALINDIA:20220819T134953Z:b89b09cd-a07d-4a35-bd1d-013ec70669bf" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Fri, 19 Aug 2022 13:49:53 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "758" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"name\":\"psassociation1\",\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/resourceAssociations/psassociation1\",\"type\":\"Microsoft.Network/networkSecurityPerimeters/resourceAssociations\",\"properties\":{\"privateLinkResource\":{\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.KeyVault/vaults/tiywst-paas4Rp\"},\"profile\":{\"id\":\"/subscriptions/3846cb0f-4afa-47ee-8ea4-1c8449c8c8d9/resourceGroups/kumarkaushal-PS-RG-1/providers/Microsoft.Network/networkSecurityPerimeters/tiywst-nsp1/profiles/t-profile2\"},\"accessMode\":\"Learning\",\"provisioningState\":\"Accepted\",\"hasProvisioningIssues\":\"no\"}}",
+      "isContentBase64": false
+    }
+  }
+}

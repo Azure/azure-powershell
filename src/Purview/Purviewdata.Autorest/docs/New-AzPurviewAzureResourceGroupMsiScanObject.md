@@ -26,8 +26,10 @@ Create an in-memory object for AzureResourceGroupMsiScan.
 
 ### Example 1: Create Azure resource group Msi scan object
 ```powershell
-PS C:\> New-AzPurviewAzureResourceGroupMsiScanObject -Kind 'AzureResourceGroupMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference'
+New-AzPurviewAzureResourceGroupMsiScanObject -Kind 'AzureResourceGroupMsi' -CollectionReferenceName 'parv-brs-2' -CollectionType 'CollectionReference'
+```
 
+```output
 CollectionLastModifiedAt  :
 CollectionReferenceName   : parv-brs-2
 CollectionType            : CollectionReference
