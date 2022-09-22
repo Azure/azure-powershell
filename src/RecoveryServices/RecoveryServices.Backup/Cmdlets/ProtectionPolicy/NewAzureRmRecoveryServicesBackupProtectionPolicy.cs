@@ -138,7 +138,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 }
 
                 // check if smart tiering feature is enabled on this subscription                
-                bool isSmartTieringEnabled = ServiceClientAdapter.IsArchiveFeatureSupported();                
+                bool isSmartTieringEnabled = true;                
 
                 TieringPolicy tieringDetails = null;
                 if (MoveToArchiveTier != null)

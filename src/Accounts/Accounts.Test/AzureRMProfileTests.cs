@@ -151,6 +151,36 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void SpecifyTenantDomainAndSubscriptionIdSucceed()
+        {
+            var tenants = new List<string> { DefaultTenant.ToString() };
+            var firstList = new List<string> { DefaultSubscription.ToString(), Guid.NewGuid().ToString() };
+            var secondList = new List<string> { Guid.NewGuid().ToString() };
+            var client = SetupTestEnvironment(tenants, firstList, secondList);
+
+            ((MockTokenAuthenticationFactory)AzureSession.Instance.AuthenticationFactory).TokenProvider = (account, environment, tenant) =>
+            new MockAccessToken
+            {
+                UserId = "aaa@contoso.com",
+                LoginType = LoginType.OrgId,
+                AccessToken = "bbb",
+                TenantId = DefaultTenant.ToString()
+            };
+
+            var azureRmProfile = client.Login(
+                Context.Account,
+                Context.Environment,
+                MockSubscriptionClientFactory.GetTenantDomainFromId(DefaultTenant.ToString()),
+                DefaultSubscription.ToString(),
+                null,
+                null,
+                false,
+                null);
+            Assert.Equal("2021-01-01", client.SubscriptionAndTenantClient.ApiVersion);
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void SubscriptionIdNotExist()
         {
             var tenants = new List<string> { DefaultTenant.ToString() };
@@ -500,7 +530,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void GetSubscriptionListByNameCorrect()
+        public void GetSubscriptionListByNameSameIdCorrect()
         {
             var tenants = new List<string> { DefaultTenant.ToString() };
             var firstList = new List<string> { DefaultSubscription.ToString() };
@@ -513,6 +543,29 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             IEnumerable<IAzureSubscription> subValueList;
             client.TryGetSubscriptionListByName(DefaultTenant.ToString(),
                 MockSubscriptionClientFactory.GetSubscriptionNameFromId(DefaultSubscription.ToString()),
+                out subValueList);
+            Assert.Single(subValueList);
+        }
+
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void GetSubscriptionListByNameCorrect()
+        {
+            var subId1 = "a11a11aa-aaaa-aaaa-aaaa-aaaa1111aaaa";
+            var subId2 = "aaaa11aa-aaaa-aaaa-aaaa-aaaa1111aaaa";
+
+            var tenants = new List<string> { DefaultTenant.ToString() };
+            var firstList = new List<string> { subId1 };
+            var secondList = new List<string> { subId2 };
+            var thirdList = firstList;
+            var fourthList = firstList;
+            var client = SetupTestEnvironment(tenants, firstList, secondList, thirdList, fourthList);
+            var tenantResults = client.ListTenants();
+            Assert.Single(tenantResults);
+            IEnumerable<IAzureSubscription> subValueList;
+            client.TryGetSubscriptionListByName(DefaultTenant.ToString(),
+                "SameNameForGetSubscriptionByName",
                 out subValueList);
             Assert.Equal(2, subValueList.Count());
         }
