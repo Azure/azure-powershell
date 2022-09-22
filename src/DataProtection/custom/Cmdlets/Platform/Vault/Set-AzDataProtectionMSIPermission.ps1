@@ -53,7 +53,7 @@
 
                 if($KeyVaultId -eq "" -or $KeyVaultId -eq $null)
                 {
-                    Write-Error "KeyVaultId not provided. Please provide the KeyVaultId parameter to successfully assign the permissions on the keyvault."
+                    Write-Error "KeyVaultId not provided. Please provide the KeyVaultId parameter to successfully assign the permissions on the keyvault"
                 }
 
                 $KeyvaultName = GetResourceNameFromArmId -Id $KeyVaultId
@@ -157,18 +157,18 @@
               
                   if($CheckPermission -ne $null)
                   {
-                      Write-Host "Required keyvault permissions already assigned to the backup vault."
+                      Write-Host "Required keyvault permissions already assigned to the backup vault"
                   }
 
                   else
                   {
                       $MissingRolesInitially = $true
 
-                      Write-Host "Assigning $($Permission) permission to the backup vault."
+                      Write-Host "Assigning $($Permission) permission to the backup vault"
 
                       AssignMissingRoles -ObjectId $vault.IdentityPrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $KeyVaultId -ResourceGroup $KeyvaultRG -Subscription $KeyvaultSubscriptionName
 
-                      Write-Host "Assigned $($Permission) permission to the backup vault."
+                      Write-Host "Assigned $($Permission) permission to the backup vault"
                       
                   }
               }
@@ -181,17 +181,17 @@
               
               if($CheckPermission -ne $null)
               {
-                  Write-Host "Required $($DatasourceType) permissions already assigned."
+                  Write-Host "Required $($DatasourceType) permissions already assigned"
               }
 
               else
               {
                   $MissingRolesInitially = $true
-                  Write-Host "Assigning $($Permission) permission to the backup vault."
+                  Write-Host "Assigning $($Permission) permission to the backup vault"
 
                   AssignMissingRoles -ObjectId $vault.IdentityPrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $DataSourceId -ResourceGroup $ResourceRG -Subscription $SubscriptionName
 
-                  Write-Host "Assigned $($Permission) permission to the backup vault."
+                  Write-Host "Assigned $($Permission) permission to the backup vault"
               }
           }
               
@@ -205,14 +205,14 @@
 
               if($CheckPermission -ne $null)
               {
-                  Write-Host "Required snapshotRG permissions already assigned to the backup vault."
+                  Write-Host "Required snapshotRG permissions already assigned to the backup vault"
               }
 
               else
               {
                   $MissingRolesInitially = $true
 
-                  Write-Host "Assigning $($Permission) permission to the backup vault."
+                  Write-Host "Assigning $($Permission) permission to the backup vault"
 
                   AssignMissingRoles -ObjectId $vault.IdentityPrincipalId -Permission $Permission -PermissionsScope $PermissionsScope -Resource $SnapshotResourceGroupId -ResourceGroup $SnapshotResourceGroupId -Subscription $SubscriptionName
   
@@ -224,7 +224,7 @@
           
           if($MissingRolesInitially -eq $true)
           {
-              Write-Host "Waiting for 60 seconds for roles to propogate"
+              Write-Host "Waiting for 60 seconds for roles to propagate"
               Start-Sleep -Seconds 60
           }
           
