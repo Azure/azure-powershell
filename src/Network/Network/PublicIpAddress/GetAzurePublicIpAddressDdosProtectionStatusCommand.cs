@@ -18,18 +18,21 @@ using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Management.Network;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using System.Collections.Generic;
+using CNM = Microsoft.Azure.Commands.Network.Models;
+
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkDdosProtectionStatus"), OutputType(typeof(PSIPAddressAvailabilityResult))]
-    public class GetVirtualNetworkDdosProtectionStatusCommand : VirtualNetworkBaseCmdlet
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "PublicIpAddressDdosProtectionStatus"), OutputType(typeof(PSPublicIpDdosProtectionStatusResult))]
+    public class GetAzurePublicIpAddressDdosProtectionStatusCommand : PublicIpAddressBaseCmdlet
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipeline = true,
             ParameterSetName = "TestByResource",
-            HelpMessage = "The virtualNetwork")]
-        public PSVirtualNetwork VirtualNetwork { get; set; }
+            HelpMessage = "The PublicIpAddress")]
+        public PSPublicIpAddress PublicIpAddress { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -44,28 +47,35 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipeline = false,
             ParameterSetName = "TestByResourceId",
-            HelpMessage = "The virtualNetwork name")]
-        [ResourceNameCompleter("Microsoft.Network/virtualNetworks", "ResourceGroupName")]
+            HelpMessage = "The PublicIpAddress name")]
+        [ResourceNameCompleter("Microsoft.Network/publicIPAddresses", "ResourceGroupName")]
         [ValidateNotNullOrEmpty]
-        public string VirtualNetworkName { get; set; }
+        public string PublicIpAddressName { get; set; }
 
         public override void Execute()
         {
             base.Execute();
 
-            PSIPAddressAvailabilityResult result = null;
+            PSPublicIpDdosProtectionStatusResult result = null;
 
-            // result = this.TestIpAddressAvailability(this.VirtualNetwork.ResourceGroupName, this.VirtualNetwork.Name, this.IPAddress);
-           
-            WriteObject(result);
+            if (string.Equals(ParameterSetName, "TestByResource"))
+            {
+                result = this.ListDdosProtectionStatus(this.PublicIpAddress.ResourceGroupName, this.PublicIpAddress.Name);
+            }
+            else
+            {
+                result = this.ListDdosProtectionStatus(this.ResourceGroupName, this.PublicIpAddressName);
+            }
+
+            WriteObject(result, true);
         }
 
-        public PSIPAddressAvailabilityResult TestIpAddressAvailability(string resourceGroupName, string vnetName, string ipAddress)
+        public PSPublicIpDdosProtectionStatusResult ListDdosProtectionStatus(string resourceGroupName, string pipName)
         {
-            var result = this.NetworkClient.NetworkManagementClient.VirtualNetworks.CheckIPAddressAvailability(resourceGroupName, vnetName, ipAddress);
-            var psResult = NetworkResourceManagerProfile.Mapper.Map<PSIPAddressAvailabilityResult>(result);
+            var ddosProtectionSttausResult = this.NetworkClient.NetworkManagementClient.VirtualNetworks.ListDdosProtectionStatus(resourceGroupName, pipName);
+            var result = NetworkResourceManagerProfile.Mapper.Map<CNM.PSPublicIpDdosProtectionStatusResult>(ddosProtectionSttausResult);
 
-            return psResult;
+            return result;
         }
     }
 }

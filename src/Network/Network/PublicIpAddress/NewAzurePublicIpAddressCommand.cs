@@ -129,6 +129,18 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The DdosProtectionMode to use for Public IP address")]
+        public string DdosProtectionMode { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The DdosProtectionPlan to use for Public IP address")]
+        public PSDdosProtectionPlan DdosProtectionPlan { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Reverse FQDN.")]
         public string ReverseFqdn { get; set; }
 
@@ -203,7 +215,18 @@ namespace Microsoft.Azure.Commands.Network
                 publicIp.Sku.Name = this.Sku;
             }
 
-            if (!string.IsNullOrEmpty(this.Tier))
+            if (!string.IsNullOrEmpty(this.DdosProtectionMode))
+            {
+                publicIp.DdosSettings = new PSDdosSettings();
+                publicIp.DdosSettings.ProtectionMode = this.DdosProtectionMode;
+
+                if (this.DdosProtectionPlan != null)
+                {
+                    publicIp.DdosSettings.DdosProtectionPlan = this.DdosProtectionPlan;
+                }
+            }
+
+                if (!string.IsNullOrEmpty(this.Tier))
             {
                 if(publicIp.Sku == null)
                 {
