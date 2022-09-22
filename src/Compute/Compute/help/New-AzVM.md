@@ -68,7 +68,7 @@ Then use the following cmdlets to set different properties of the virtual machin
 <br>
 The `SimpleParameterSet` provides a convenient method to create a VM by making common VM creation arguments optional.<br>
 <br>
-See[Create a Windows virtual machine in Azure with PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-powershell) for tutorial. <br>
+See [Create a Windows virtual machine in Azure with PowerShell] (https://learn.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-powershell) for tutorial. <br>
 
 ## EXAMPLES
 
