@@ -54,7 +54,7 @@ New-AzVmssConfig [[-Overprovision] <Boolean>] [[-Location] <String>] [-EdgeZone 
 
 ## DESCRIPTION
 The **New-AzVmssConfig** cmdlet creates a configurable local Virtual Manager Scale Set (VMSS)
-object. <br><br>
+object. <br>
 
 Use the following cmdlets to configure the VMSS object:
 - **[Add-AzVmssNetworkInterfaceConfiguration](https://learn.microsoft.com/en-us/powershell/module/az.compute/add-azvmssnetworkinterfaceconfiguration)** to set the network profile.<br>
