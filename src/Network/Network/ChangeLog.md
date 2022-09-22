@@ -29,6 +29,7 @@
 * Updated commandlets to support specifying an ASN on VPN Gateway
     - `NewAzureRmVpnGatewayCommand.cs`
     - `UpdateAzureRmVpnGatewayCommand.cs`
+* Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
 * Updated commandlet to support specifying an action for a managed rule override in Application Gateway WAF Policy
     - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
 
