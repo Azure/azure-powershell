@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create or update the Nginx deployment
 ```powershell
-{{ Add code here }}
+New-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -Location westcentralus -NetworkProfile $networkProfile -SkuName preview_Monthly_gmz7xq9ge3py
 ```
 
 ```output
-{{ Add output here }}
+Location      Name
+--------      ----
+westcentralus nginx-test
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This command creates or updates the Nginx deployment.

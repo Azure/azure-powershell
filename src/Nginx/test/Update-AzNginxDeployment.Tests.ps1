@@ -15,11 +15,14 @@ if(($null -eq $TestName) -or ($TestName -contains 'Update-AzNginxDeployment'))
 }
 
 Describe 'Update-AzNginxDeployment' {
-    It 'UpdateExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateExpanded' {
+        $nginx = Update-AzNginxDeployment -DeploymentName $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup -EnableDiagnosticsSupport
+        $nginx.EnableDiagnosticsSupport | Should -Be True
     }
 
-    It 'UpdateViaIdentityExpanded' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'UpdateViaIdentityExpanded' {
+        $nginx = Get-AzNginxDeployment -Name $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup
+        $res = Update-AzNginxDeployment -InputObject $nginx -EnableDiagnosticsSupport:$false
+        $res.EnableDiagnosticsSupport | Should -Be False
     }
 }

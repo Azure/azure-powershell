@@ -1,22 +1,12 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create a certificate for a NGINX deployment
 ```powershell
-{{ Add code here }}
+New-AzNginxCertificate -DeploymentName nginx-test -Name cert-test -ResourceGroupName nginx-test-rg -CertificateVirtualPath /etc/nginx/test.cert -KeyVirtualPath /etc/nginx/test.key -KeyVaultSecretId https://tests-kv.vault.azure.net/secrets/newcert
 ```
 
 ```output
-{{ Add output here }}
+Location Name
+-------- ----
+         cert-test
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
+This commond creates a certificate for a NGINX deployment.
