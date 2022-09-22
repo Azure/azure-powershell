@@ -1017,17 +1017,7 @@ function Test-NetworkInterfaceWithDisableTcpStateTracking
 
         Assert-NotNull $expectedNic.ResourceGuid
         Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
-        Assert-AreEqual $expectedNic.DisableTcpStateTracking $true
-
-        # Update DisableTcpStateTracking Property to false 
-        $expectedNic.DisableTcpStateTracking = $false
-        $job = $expectedNic | Set-AzNetworkInterface -AsJob
-        $job | Wait-Job
-
-        $expectedNic = Get-AzNetworkInterface -Name $nicName -ResourceGroupName $rgname
-        Assert-NotNull $expectedNic.ResourceGuid
-        Assert-AreEqual "Succeeded" $expectedNic.ProvisioningState
-        Assert-AreEqual $expectedNic.DisableTcpStateTracking $false
+        Assert-AreEqual $true $expectedNic.DisableTcpStateTracking
 
         # Delete ResourceGroup
         $delete = Remove-AzNetworkInterface -ResourceGroupName $rgname -name $nicName -PassThru -Force
