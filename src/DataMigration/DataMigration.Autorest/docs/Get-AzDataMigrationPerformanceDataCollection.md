@@ -66,7 +66,7 @@ This command runs Performance Data Collection on given SQL Server using the conn
 
 ### Example 2: Run Performance Data Collection on given SQL Server using assessment config file
 ```powershell
-Get-AzDataMigrationAssessment -ConfigFilePath "C:\Users\user\document\config.json"
+Get-AzDataMigrationPerformanceDataCollection -ConfigFilePath "C:\Users\user\document\config.json"
 ```
 
 ```output
@@ -100,7 +100,7 @@ This command runs Performance Data Collection on given SQL Server using the conf
 
 ### Example 3: Run Performance Data Collection on given SQL Server that stops after a specified time
 ```powershell
-Get-AzDataMigrationAssessment -ConfigFilePath "C:\Users\user\document\config.json" -Time 120
+Get-AzDataMigrationPerformanceDataCollection -ConfigFilePath "C:\Users\user\document\config.json" -Time 120
 ```
 
 ```output

@@ -82,8 +82,6 @@ function New-AzDataMigrationLoginsMigration
             $BaseFolder = Join-Path -Path $DefaultOutputFolder -ChildPath Downloads;
             $ExePath = Join-Path -Path $BaseFolder -ChildPath Logins.Console.csproj\Logins.Console.exe;
 
-            Write-Host "ExePath: $ExePath"
-
             #Checking if BaseFolder Path is valid or not
             if(-Not (Test-Path $BaseFolder))
             {
@@ -92,8 +90,6 @@ function New-AzDataMigrationLoginsMigration
 
             #Testing Whether Console App is downloaded or not
             $TestExePath =  Test-Path -Path $ExePath;
-
-            Write-Host "TestExePath: $TestExePath"
 
             #Downloading and extracting LoginsMigration Zip file
             if(-Not $TestExePath)
