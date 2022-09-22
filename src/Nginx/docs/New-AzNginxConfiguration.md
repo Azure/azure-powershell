@@ -24,27 +24,18 @@ Create or update the Nginx configuration for given Nginx deployment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create or update the Nginx configuration for given Nginx deployment
 ```powershell
-{{ Add code here }}
+New-AzNginxConfiguration -DeploymentName nginx-test -Name default -ResourceGroupName nginx-test-rg -File $confFile -RootFile nginx.conf
 ```
 
 ```output
-{{ Add output here }}
+Location Name
+-------- ----
+         default
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command creates or updates the Nginx configuration for given Nginx deployment.
 
 ## PARAMETERS
 

@@ -29,27 +29,19 @@ Delete the Nginx deployment resource
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a NGINX deployment by name
 ```powershell
-{{ Add code here }}
+Remove-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg
 ```
 
-```output
-{{ Add output here }}
-```
+This command removes a deployment by name
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a NGINX deployment by object
 ```powershell
-{{ Add code here }}
+Get-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg | Remove-AzNginxDeployment
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command removes a NGINX deployment by object
 
 ## PARAMETERS
 

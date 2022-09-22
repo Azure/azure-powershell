@@ -30,27 +30,19 @@ Deletes a certificate from the nginx deployment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a certificate of NGINX deployment by name
 ```powershell
-{{ Add code here }}
+Remove-AzNginxCertificate -DeploymentName nginx-test -Name cert -ResourceGroupName nginx-test-rg
 ```
 
-```output
-{{ Add output here }}
-```
+This command removes a certificate of NGINX deployment by name
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a certificate of NGINX deployment by object
 ```powershell
-{{ Add code here }}
+Get-AzNginxCertificate -DeploymentName nginx-test -Name cert -ResourceGroupName nginx-test-rg | Remove-AzNginxCertificate
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command remove a certificate of NGINX deployment by object
 
 ## PARAMETERS
 

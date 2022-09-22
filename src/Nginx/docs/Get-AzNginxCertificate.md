@@ -34,27 +34,32 @@ Get a certificate of given Nginx deployment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: List all certificates under a NGINX deployment
 ```powershell
-{{ Add code here }}
+Get-AzNginxCertificate -DeploymentName nginx-test -ResourceGroupName nginx-test-rg
 ```
 
 ```output
-{{ Add output here }}
+Location      Name
+--------      ----
+westcentralus cert
+westcentralus cert1
 ```
 
-{{ Add description here }}
+This command lists all certificates under a NGINX deployment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Get a certificate
 ```powershell
-{{ Add code here }}
+Get-AzNginxCertificate -DeploymentName nginx-test -Name cert -ResourceGroupName nginx-test-rg
 ```
 
 ```output
-{{ Add output here }}
+Location      Name
+--------      ----
+westcentralus cert
 ```
 
-{{ Add description here }}
+This command gets a certificate.
 
 ## PARAMETERS
 

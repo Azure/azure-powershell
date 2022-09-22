@@ -34,27 +34,18 @@ Get the Nginx configuration of given Nginx deployment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the default configuration
 ```powershell
-{{ Add code here }}
+Get-AzNginxConfiguration -DeploymentName nginx-test -Name default -ResourceGroupName nginx-test-rg
 ```
 
 ```output
-{{ Add output here }}
+Location Name
+-------- ----
+         default
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Get a default configuration.
 
 ## PARAMETERS
 

@@ -22,27 +22,18 @@ Create an in-memory object for NginxNetworkProfile.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create an in-memory object for NginxNetworkProfile
 ```powershell
-{{ Add code here }}
+New-AzNginxNetworkProfileObject -FrontEndIPConfiguration @{PublicIPAddress=@($publicIp)} -NetworkInterfaceConfiguration @{SubnetId='/subscriptions/xxxxxxxxxx-xxxx-xxxxx-xxxxxxxxxxxx/resourceGroups/nginx-test-rg/providers/Microsoft.Network/virtualNetworks/nginx-test-vnet/subnets/default'}
 ```
 
 ```output
-{{ Add output here }}
+FrontEndIPConfiguration        NetworkInterfaceConfiguration
+-----------------------        -----------------------------
+{…                             {…
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Create an in-memory object for NginxNetworkProfile.
 
 ## PARAMETERS
 

@@ -30,27 +30,19 @@ Reset the Nginx configuration of given Nginx deployment to default
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a configuration of NGINX deployment by name
 ```powershell
-{{ Add code here }}
+Remove-AzNginxConfiguration -DeploymentName nginx-test -Name default -ResourceGroupName nginx-test-rg
 ```
 
-```output
-{{ Add output here }}
-```
+This command removes a configuration of NGINX deployment by name
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove a configuration of NGINX deployment by object
 ```powershell
-{{ Add code here }}
+Get-AzNginxConfiguration -DeploymentName nginx-test -Name default -ResourceGroupName nginx-test-rg | Remove-AzNginxConfiguration
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+This command removes a configuration of NGINX deployment by object
 
 ## PARAMETERS
 

@@ -34,27 +34,31 @@ Update the Nginx deployment
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Enable the diagnotics support for a NGINX deployment
 ```powershell
-{{ Add code here }}
+Update-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -EnableDiagnosticsSupport
 ```
 
 ```output
-{{ Add output here }}
+Location      Name
+--------      ----
+westcentralus nginx-test
 ```
 
-{{ Add description here }}
+This command enables the diagnotics support for a NGINX deployment.
 
-### Example 2: {{ Add title here }}
+### Example 2: Disable the diagnotics support for a NGINX deployment
 ```powershell
-{{ Add code here }}
+Update-AzNginxDeployment -Name nginx-test -ResourceGroupName nginx-test-rg -EnableDiagnosticsSupport:$false
 ```
 
 ```output
-{{ Add output here }}
+Location      Name
+--------      ----
+westcentralus nginx-test
 ```
 
-{{ Add description here }}
+This command disables the diagnotics support for a NGINX deployment.
 
 ## PARAMETERS
 
