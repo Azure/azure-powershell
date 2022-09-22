@@ -15,11 +15,16 @@ if(($null -eq $TestName) -or ($TestName -contains 'Remove-AzNginxCertificate'))
 }
 
 Describe 'Remove-AzNginxCertificate' {
-    It 'Delete' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Delete' {
+        Remove-AzNginxCertificate -DeploymentName $env.nginxDeployment1 -Name $env.nginxNewCert -ResourceGroupName $env.resourceGroup
+        $certList = Get-AzNginxCertificate -DeploymentName $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup
+        $certList.Name | Should -Not -Contain $env.nginxNewCert
     }
 
-    It 'DeleteViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'DeleteViaIdentity' {
+        $cert = New-AzNginxCertificate -DeploymentName $env.nginxDeployment1 -Name $env.nginxNewCert -ResourceGroupName $env.resourceGroup -CertificateVirtualPath test.cert -KeyVirtualPath test.key -KeyVaultSecretId https://integration-tests-kv.vault.azure.net/secrets/newcert
+        Remove-AzNginxCertificate -InputObject $cert
+        $certList = Get-AzNginxCertificate -DeploymentName $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup
+        $certList.Name | Should -Not -Contain $env.nginxNewCert
     }
 }

@@ -34,7 +34,7 @@ require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
 # You need to specify your swagger files here.
-  - https://github.com/Azure/azure-rest-api-specs/blob/450b1618259d8b170b5cfcb37866d3fc5747b564/specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2022-08-01/swagger.json
+  - https://github.com/Azure/azure-rest-api-specs/blob/5dd50f3a923888cae5b77a4d4a48cb57430ba9de/specification/nginx/resource-manager/NGINX.NGINXPLUS/stable/2022-08-01/swagger.json
 
 root-module-name: $(prefix).Nginx
 title: Nginx

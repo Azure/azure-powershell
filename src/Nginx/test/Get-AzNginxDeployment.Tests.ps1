@@ -15,19 +15,19 @@ if(($null -eq $TestName) -or ($TestName -contains 'Get-AzNginxDeployment'))
 }
 
 Describe 'Get-AzNginxDeployment' {
-    It 'List' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'List' {
+        $nginxList = Get-AzNginxDeployment -ResourceGroupName $env.resourceGroup
+        $nginxList.Count | Should -Be 1
     }
 
-    It 'Get' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'Get' {
+        $nginx = Get-AzNginxDeployment -Name $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup
+        $nginx.Name | Should -Be $env.nginxDeployment1
     }
 
-    It 'List1' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
-    }
-
-    It 'GetViaIdentity' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'GetViaIdentity' {
+        $nginx = Get-AzNginxDeployment -Name $env.nginxDeployment1 -ResourceGroupName $env.resourceGroup
+        $nginx = Get-AzNginxDeployment -InputObject  $nginx
+        $nginx.Name | Should -Be $env.nginxDeployment1
     }
 }
