@@ -937,7 +937,8 @@ Accept wildcard characters: False
 ```
 
 ### -Size
-The Virtual Machine Size. [Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region. The Default Value is: Standard_D2s_v3.
+The Virtual Machine Size. [Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku) can be used to find out available sizes for your subscription and region.<br>
+The Default Value is: Standard_D2s_v3.
 
 ```yaml
 Type: System.String
