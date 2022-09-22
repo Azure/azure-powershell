@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,10 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityAdminConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerSecurityAdminConfiguration))]
     public class NewAzNetworkManagerSecurityAdminConfigurationCommand : NetworkManagerSecurityAdminConfigurationBaseCmdlet
     {
+        // Breaking change 2022-05-01 release, plan to remove warning in 2022-07-01 release
+        public const string ApplyOnNetworkIntentPolicyBasedServiceChangeDesc = "Apply on network intent policy based service options are now restricted to 'None', 'All', and 'AllowRulesOnly'.";
+        [CmdletParameterBreakingChange("ApplyOnNetworkIntentPolicyBasedService", ChangeDescription = ApplyOnNetworkIntentPolicyBasedServiceChangeDesc)]
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
@@ -65,7 +70,7 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
            Mandatory = false,
            ValueFromPipelineByPropertyName = true,
-           HelpMessage = "ApplyOnNetworkIntentPolicyBasedServices. Valid values include 'None' and 'All'.")]
+           HelpMessage = "How security admin rules are applied to virtual networks with services using network intent policies.. Valid values include 'None', 'All', and 'AllowRulesOnly'.")]
         public NetworkIntentPolicyBasedServiceType[] ApplyOnNetworkIntentPolicyBasedService { get; set; }
 
         [Parameter(

@@ -18,6 +18,7 @@ using Microsoft.Azure.Commands.Network.Models.NetworkManager;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,6 +30,10 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManager", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManager))]
     public class NewAzNetworkManagerCommand : NetworkManagerBaseCmdlet
     {
+        // Breaking change 2022-05-01 release, plan to remove warning in 2022-07-01 release
+        public const string NetworkManagerScopeAccessChangeDesc = "Network manager scope access types are now restricted to 'SecurityAdmin' and 'Connectivity'.";
+        [CmdletParameterBreakingChange("NetworkManagerScopeAccess", ChangeDescription = NetworkManagerScopeAccessChangeDesc)]
+
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,

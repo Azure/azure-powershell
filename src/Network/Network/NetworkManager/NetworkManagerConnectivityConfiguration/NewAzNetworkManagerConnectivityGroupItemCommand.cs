@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.Network.Models.NetworkManager;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
@@ -21,6 +22,9 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerConnectivityGroupItem"), OutputType(typeof(PSNetworkManagerConnectivityGroupItem))]
     public class NewAzNetworkManagerConnectivityGroupItemCommand : NetworkManagerConnectivityConfigurationBaseCmdlet
     {
+        // Breaking change 2022-05-01 release, plan to remove warning in 2022-07-01 release
+        public const string GroupConnectivityChangeDesc = "Group connectivity options are now restricted to 'None' and 'DirectlyConnected'.";
+        [CmdletParameterBreakingChange("GroupConnectivity", ChangeDescription = GroupConnectivityChangeDesc)]
 
         [Parameter(
            Mandatory = true,
