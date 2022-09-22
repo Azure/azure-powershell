@@ -2405,6 +2405,7 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		$listener01 = Get-AzApplicationGatewayHttpListener -ApplicationGateway $appgw -Name $listener01Name
 		Set-AzApplicationGatewayAutoscaleConfiguration -ApplicationGateway $appgw -MinCapacity 2
 		Set-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus403 -CustomErrorPageUrl $customError403Url02
+		$appgw.Sku = $sku
 		Set-AzApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGateway $appgw -Enabled $true -FirewallMode Prevention -RuleSetType "OWASP" -RuleSetVersion "3.0" -RequestBodyCheck $true -MaxRequestBodySizeInKb 70 -FileUploadLimitInMb 70
 		Set-AzApplicationGatewayTrustedRootCertificate -ApplicationGateway $appgw -Name $trustedRootCertName -CertificateFile $certFilePath2
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
@@ -2423,7 +2424,6 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
 		$appgw.FirewallPolicy = $policy
-		$appgw.Sku = $sku
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 	
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
