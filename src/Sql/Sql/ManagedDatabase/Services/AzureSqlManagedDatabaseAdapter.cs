@@ -243,15 +243,23 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
         /// <param name="parameters">The parameters for log replay cancel action</param>
         public void StopManagedDatabaseLogReplay(AzureSqlManagedDatabaseModel parameters)
         {
-            // Check if the database provided by the caller is indeed created by Log Replay migration
-            var dbRestoreDetails = Communicator.GetLogReplayStatus(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
-            if (isLRSRestore(dbRestoreDetails))
+            try
             {
-                Communicator.Remove(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
-            }
-            else
+                // Check if the database provided by the caller is indeed created by Log Replay migration
+                var dbRestoreDetails = Communicator.GetLogReplayStatus(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
+                if (isLRSRestore(dbRestoreDetails))
+                {
+                    Communicator.Remove(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            } 
+            catch
             {
                 throw new PSArgumentException(string.Format(Properties.Resources.StopLogReplayErrorDatabaseOrigin, parameters.Name, parameters.ManagedInstanceName, parameters.ResourceGroupName), "InstanceDatabaseName");
+
             }
         }
 
