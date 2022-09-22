@@ -4916,8 +4916,14 @@ function Install-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-    Microsoft.AzureStack.Deployment.RemoteSupport\Install-RemoteSupport
+    
+    if(Get-AzStackHCIRemoteSupportServiceExists){
+        Write-Host "Install-AzStackHCIRemoteSupport is not available."
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Install-RemoteSupport
+    }
 }
 
 <#
@@ -4936,8 +4942,14 @@ function Remove-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-    Microsoft.AzureStack.Deployment.RemoteSupport\Remove-RemoteSupport
+    
+    if(Get-AzStackHCIRemoteSupportServiceExists){
+        Write-Host "Remove-AzStackHCIRemoteSupport is not available."
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Remove-RemoteSupport
+    }
 }
 
 <#
@@ -4988,9 +5000,14 @@ function Enable-AzStackHCIRemoteSupport{
         $AgreeToRemoteSupportConsent
     )
 
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-
-    Microsoft.AzureStack.Deployment.RemoteSupport\Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
+    if(Get-AzStackHCIRemoteSupportServiceExists){
+        Import-Module DiagnosticsInitializer -Verbose -Force
+        Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Enable-RemoteSupport -AccessLevel $AccessLevel -ExpireInMinutes $ExpireInMinutes -SasCredential $SasCredential -AgreeToRemoteSupportConsent:$AgreeToRemoteSupportConsent
+    }
 }
 
 <#
@@ -5011,9 +5028,15 @@ function Disable-AzStackHCIRemoteSupport{
     [CmdletBinding(SupportsShouldProcess)]
     [OutputType([Boolean])]
     param()
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
 
-    Microsoft.AzureStack.Deployment.RemoteSupport\Disable-RemoteSupport
+    if(Get-AzStackHCIRemoteSupportServiceExists){
+        Import-Module DiagnosticsInitializer -Verbose -Force
+        Disable-RemoteSupport
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Disable-RemoteSupport
+    }
 }
 
 <#
@@ -5048,9 +5071,50 @@ function Get-AzStackHCIRemoteSupportAccess{
         $IncludeExpired
     )
 
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+    if(Get-AzStackHCIRemoteSupportServiceExists){
+        Import-Module DiagnosticsInitializer -Verbose -Force
+        Get-RemoteSupportAccess -IncludeExpired:$IncludeExpired
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportAccess -Cluster:$Cluster -IncludeExpired:$IncludeExpired
+    }
+}
 
-    Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportAccess -Cluster:$Cluster -IncludeExpired:$IncludeExpired
+<#
+.SYNOPSIS
+    Gets if Observability Remote Support Service exists. 
+
+.DESCRIPTION
+    Gets if Observability Remote Support Service exists to determine module to import.
+
+.PARAMETER 
+
+.EXAMPLE
+    The example below returns whether environment is HCI or not.
+    PS C:\> Get-AzStackHCIRemoteSupportServiceExists
+
+.NOTES
+#>
+function Get-AzStackHCIRemoteSupportServiceExists{
+    [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([Boolean])]
+    param()
+
+    try{
+        $obsService = Get-Service -Name "*Observability RemoteSupportAgent*" -ErrorAction SilentlyContinue
+        if($null -eq $obsService){
+            Write-Host "No service matching *Observability RemoteSupportAgent* found."
+            return $false
+        }
+        else{
+            Write-Host "Service matching *Observability RemoteSupportAgent* found."
+            return $true
+        }
+    }
+    catch{
+        Write-Error "Failed while getting Observability Remote Support service."
+    }
 }
 
 <#
@@ -5096,9 +5160,14 @@ function Get-AzStackHCIRemoteSupportSessionHistory{
         $FromDate = (Get-Date).AddDays(-7)
     )
 
-    Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
-
-    Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
+    if(Get-AzStackHCIRemoteSupportServiceExists){
+        Import-Module DiagnosticsInitializer -Verbose -Force
+        Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
+    }
+    else{
+        Install-DeployModule -ModuleName "Microsoft.AzureStack.Deployment.RemoteSupport"
+        Microsoft.AzureStack.Deployment.RemoteSupport\Get-RemoteSupportSessionHistory -SessionId $SessionId -FromDate $FromDate -IncludeSessionTranscript:$IncludeSessionTranscript
+    }
 }
 
 # Export-ModuleMember -Function Register-AzStackHCI
