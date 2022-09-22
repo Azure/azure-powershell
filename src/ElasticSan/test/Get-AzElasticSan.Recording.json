@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "33" ],
-        "x-ms-client-request-id": [ "84a93a0b-beb1-4759-91d3-eb46968b1e9e" ],
+        "x-ms-client-request-id": [ "d938a14f-60fb-42e2-bfef-2f8fd1d5e787" ],
         "CommandName": [ "Get-AzElasticSan" ],
         "FullCommandName": [ "Get-AzElasticSan_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -22,33 +22,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-original-request-ids": [ "a647f8a2-c8d9-44a9-9955-515c504a5120", "123a3786-5edb-46dc-a5ef-e11f031fb2f7" ],
+        "x-ms-original-request-ids": [ "2327ae8e-6897-48e7-b012-382721389c99", "36515666-d46d-4dfb-ad7e-3f70de6ef292" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11976" ],
-        "x-ms-request-id": [ "df919b0d-f431-49ff-8519-4cea72cad9e6" ],
-        "x-ms-correlation-request-id": [ "df919b0d-f431-49ff-8519-4cea72cad9e6" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T091830Z:df919b0d-f431-49ff-8519-4cea72cad9e6" ],
+        "x-ms-request-id": [ "4798cd76-cb0a-4e7f-9837-3bed080b18d5" ],
+        "x-ms-correlation-request-id": [ "4798cd76-cb0a-4e7f-9837-3bed080b18d5" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T102604Z:4798cd76-cb0a-4e7f-9837-3bed080b18d5" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 22 Sep 2022 09:18:29 GMT" ]
+        "Date": [ "Thu, 22 Sep 2022 10:26:04 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ],
         "Content-Length": [ "3843" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":64,\"extendedCapacitySizeTiB\":128,\"totalIops\":320000,\"totalMBps\":5120,\"totalSizeTiB\":192,\"volumeGroupCount\":4,\"totalVolumeSizeGiB\":0},\"location\":\"eastus2stage\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.ElasticSan/elasticSans/weitestsan1\",\"name\":\"weitestsan1\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"systemData\":{\"createdAt\":\"2022-08-15T03:26:52.9586463Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-08-16T03:43:14.9948046Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}},{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":64,\"extendedCapacitySizeTiB\":128,\"totalIops\":320000,\"totalMBps\":5120,\"totalSizeTiB\":192,\"volumeGroupCount\":0,\"totalVolumeSizeGiB\":0},\"location\":\"eastus2stage\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.ElasticSan/elasticSans/weitestsan2\",\"name\":\"weitestsan2\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"systemData\":{\"createdAt\":\"2022-08-16T04:59:54.5809601Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-08-16T04:59:54.5809601Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}},{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":1,\"totalVolumeSizeGiB\":100},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrger30ipcd/providers/Microsoft.ElasticSan/elasticSans/testelasticsan1er30ipcd\",\"name\":\"testelasticsan1er30ipcd\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"systemData\":{\"createdAt\":\"2022-09-22T09:14:55.4930266Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T09:14:55.4930266Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}},{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":0,\"totalVolumeSizeGiB\":0},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrger30ipcd/providers/Microsoft.ElasticSan/elasticSans/testelasticsan2er30ipcd\",\"name\":\"testelasticsan2er30ipcd\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"systemData\":{\"createdAt\":\"2022-09-22T09:15:36.1335837Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T09:15:36.1335837Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}},{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":7,\"totalVolumeSizeGiB\":100},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.ElasticSan/elasticSans/weitestsan\",\"name\":\"weitestsan\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2022-08-18T08:42:21.4464338Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-08-18T08:42:21.4464338Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":64,\"extendedCapacitySizeTiB\":128,\"totalIops\":320000,\"totalMBps\":5120,\"totalSizeTiB\":192,\"volumeGroupCount\":4,\"totalVolumeSizeGiB\":0},\"location\":\"eastus2stage\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.ElasticSan/elasticSans/weitestsan1\",\"name\":\"weitestsan1\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"systemData\":{\"createdAt\":\"2022-08-15T03:26:52.9586463Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-08-16T03:43:14.9948046Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}},{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":64,\"extendedCapacitySizeTiB\":128,\"totalIops\":320000,\"totalMBps\":5120,\"totalSizeTiB\":192,\"volumeGroupCount\":0,\"totalVolumeSizeGiB\":0},\"location\":\"eastus2stage\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.ElasticSan/elasticSans/weitestsan2\",\"name\":\"weitestsan2\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"systemData\":{\"createdAt\":\"2022-08-16T04:59:54.5809601Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-08-16T04:59:54.5809601Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}},{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":1,\"totalVolumeSizeGiB\":100},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan12jxnvboh\",\"name\":\"testelasticsan12jxnvboh\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2022-09-22T10:22:09.5938653Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T10:22:09.5938653Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}},{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":0,\"totalVolumeSizeGiB\":0},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan22jxnvboh\",\"name\":\"testelasticsan22jxnvboh\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2022-09-22T10:22:49.6098553Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T10:22:49.6098553Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}},{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":7,\"totalVolumeSizeGiB\":100},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/weitry/providers/Microsoft.ElasticSan/elasticSans/weitestsan\",\"name\":\"weitestsan\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2022-08-18T08:42:21.4464338Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-08-18T08:42:21.4464338Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}]}",
       "isContentBase64": false
     }
   },
-  "Get-AzElasticSan+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrger30ipcd/providers/Microsoft.ElasticSan/elasticSans/testelasticsan1er30ipcd?api-version=2021-11-20-preview+1": {
+  "Get-AzElasticSan+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan12jxnvboh?api-version=2021-11-20-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrger30ipcd/providers/Microsoft.ElasticSan/elasticSans/testelasticsan1er30ipcd?api-version=2021-11-20-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan12jxnvboh?api-version=2021-11-20-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "34" ],
-        "x-ms-client-request-id": [ "f10f64a8-5260-420d-b969-3a05cb21237c" ],
+        "x-ms-client-request-id": [ "fde9eafc-dde4-4691-8d27-0fcd7b9bfad8" ],
         "CommandName": [ "Get-AzElasticSan" ],
         "FullCommandName": [ "Get-AzElasticSan_Get" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -63,33 +63,33 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "1004ebd1-2394-456c-9754-addc1937005c" ],
+        "x-ms-request-id": [ "1aadad53-a086-4948-a9ea-b3d9289288ac" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
-        "Server": [ "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11975" ],
-        "x-ms-correlation-request-id": [ "92903c9d-718c-4e1d-a8eb-685215404d05" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T091831Z:92903c9d-718c-4e1d-a8eb-685215404d05" ],
+        "Server": [ "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
+        "x-ms-correlation-request-id": [ "d016b2a6-8a17-440c-81ce-f7a77cb4bc86" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T102605Z:d016b2a6-8a17-440c-81ce-f7a77cb4bc86" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 22 Sep 2022 09:18:30 GMT" ]
+        "Date": [ "Thu, 22 Sep 2022 10:26:05 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "807" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":1,\"totalVolumeSizeGiB\":100},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrger30ipcd/providers/Microsoft.ElasticSan/elasticSans/testelasticsan1er30ipcd\",\"name\":\"testelasticsan1er30ipcd\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"systemData\":{\"createdAt\":\"2022-09-22T09:14:55.4930266Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T09:14:55.4930266Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}",
+      "Content": "{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":1,\"totalVolumeSizeGiB\":100},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan12jxnvboh\",\"name\":\"testelasticsan12jxnvboh\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2022-09-22T10:22:09.5938653Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T10:22:09.5938653Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}",
       "isContentBase64": false
     }
   },
-  "Get-AzElasticSan+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrger30ipcd/providers/Microsoft.ElasticSan/elasticSans?api-version=2021-11-20-preview+1": {
+  "Get-AzElasticSan+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans?api-version=2021-11-20-preview+1": {
     "Request": {
       "Method": "GET",
-      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrger30ipcd/providers/Microsoft.ElasticSan/elasticSans?api-version=2021-11-20-preview",
+      "RequestUri": "https://management.azure.com/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans?api-version=2021-11-20-preview",
       "Content": null,
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "35" ],
-        "x-ms-client-request-id": [ "c4778866-4639-40d5-a5e5-fb0cea3be6d2" ],
+        "x-ms-client-request-id": [ "b8c8a48b-732f-4d6a-a962-1840c1224fd0" ],
         "CommandName": [ "Get-AzElasticSan" ],
         "FullCommandName": [ "Get-AzElasticSan_List1" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -104,21 +104,21 @@
       "Headers": {
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
-        "x-ms-request-id": [ "d34449ab-7c78-435e-8326-cfe3a0e6fdf4" ],
+        "x-ms-request-id": [ "a2c8fb28-add4-46a6-83f6-58c864aa5d9c" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "Server": [ "Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11974" ],
-        "x-ms-correlation-request-id": [ "abf20855-d389-4970-bc95-bf11b35896fa" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T091831Z:abf20855-d389-4970-bc95-bf11b35896fa" ],
+        "x-ms-correlation-request-id": [ "fe1aa23a-871e-43f3-9dfc-4b047acec72e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T102606Z:fe1aa23a-871e-43f3-9dfc-4b047acec72e" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 22 Sep 2022 09:18:30 GMT" ]
+        "Date": [ "Thu, 22 Sep 2022 10:26:06 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "1625" ],
         "Content-Type": [ "application/json" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":1,\"totalVolumeSizeGiB\":100},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrger30ipcd/providers/Microsoft.ElasticSan/elasticSans/testelasticsan1er30ipcd\",\"name\":\"testelasticsan1er30ipcd\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"systemData\":{\"createdAt\":\"2022-09-22T09:14:55.4930266Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T09:14:55.4930266Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}},{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":0,\"totalVolumeSizeGiB\":0},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrger30ipcd/providers/Microsoft.ElasticSan/elasticSans/testelasticsan2er30ipcd\",\"name\":\"testelasticsan2er30ipcd\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag1\":\"value1\",\"tag2\":\"value2\"},\"systemData\":{\"createdAt\":\"2022-09-22T09:15:36.1335837Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T09:15:36.1335837Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}]}",
+      "Content": "{\"value\":[{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":1,\"totalVolumeSizeGiB\":100},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan12jxnvboh\",\"name\":\"testelasticsan12jxnvboh\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2022-09-22T10:22:09.5938653Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T10:22:09.5938653Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}},{\"properties\":{\"sku\":{\"name\":\"Premium_LRS\"},\"provisioningState\":\"Succeeded\",\"baseSizeTiB\":1,\"extendedCapacitySizeTiB\":6,\"totalIops\":5000,\"totalMBps\":80,\"totalSizeTiB\":7,\"volumeGroupCount\":0,\"totalVolumeSizeGiB\":0},\"location\":\"southcentralusstg\",\"id\":\"/subscriptions/45b60d85-fd72-427a-a708-f994d26e593e/resourceGroups/testelasticsanrg2jxnvboh/providers/Microsoft.ElasticSan/elasticSans/testelasticsan22jxnvboh\",\"name\":\"testelasticsan22jxnvboh\",\"type\":\"Microsoft.ElasticSan/ElasticSans\",\"tags\":{\"tag2\":\"value2\",\"tag1\":\"value1\"},\"systemData\":{\"createdAt\":\"2022-09-22T10:22:49.6098553Z\",\"createdBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"createdByType\":\"Application\",\"lastModifiedAt\":\"2022-09-22T10:22:49.6098553Z\",\"lastModifiedBy\":\"a000255f-5f09-45e0-a970-9d9ed9cc6453\",\"lastModifiedByType\":\"Application\"}}]}",
       "isContentBase64": false
     }
   }

@@ -153,9 +153,19 @@ function Add-AzElasticSanVolumeGroupNetworkRule {
     process {
         $NetworkRuleObjectParameterSet = "NetworkRuleObject"
         $updated = $false 
+        $rules = $PSBoundParameters.NetworkAclsVirtualNetworkRule
+        $resourceIds = $PSBoundParameters.NetworkAclsVirtualNetworkResourceId
+        
+        if ($PSBoundParameters.ContainsKey('NetworkAclsVirtualNetworkResourceId')) {
+            $null = $PSBoundParameters.Remove('NetworkAclsVirtualNetworkResourceId')
+        }
+        if ($PSBoundParameters.ContainsKey('NetworkAclsVirtualNetworkRule')) {
+            $null = $PSBoundParameters.Remove('NetworkAclsVirtualNetworkRule')
+        }
+        $PSBoundParameters.Add('ErrorAction', 'Stop')
 
         try {
-            $volumeGroup = Get-AzElasticSanVolumeGroup -ResourceGroupName $ResourceGroupName -ElasticSanName $ElasticSanName -Name $VolumeGroupName -ErrorAction Stop
+            $volumeGroup = Get-AzElasticSanVolumeGroup @PSBoundParameters
         } catch {
             Write-Error $_.Exception
             return
@@ -168,7 +178,6 @@ function Add-AzElasticSanVolumeGroupNetworkRule {
         
         switch ($PScmdlet.ParameterSetName) {
             $NetworkRuleObjectParameterSet {
-                $rules = $PSBoundParameters.NetworkAclsVirtualNetworkRule
                 foreach ($rule in $rules) {
                     $existed = $false 
                     foreach ($originalRule in $originalRules) {
@@ -184,7 +193,6 @@ function Add-AzElasticSanVolumeGroupNetworkRule {
                 break
             }
             Default {
-                $resourceIds = $PSBoundParameters.NetworkAclsVirtualNetworkResourceId
                 foreach ($resourceId in $resourceIds) {
                     $existed = $false 
                     foreach ($originalRule in $originalRules) {
@@ -203,15 +211,8 @@ function Add-AzElasticSanVolumeGroupNetworkRule {
 
         if ($updated) {
             try {
-                if ($PSBoundParameters.ContainsKey('NetworkAclsVirtualNetworkResourceId')) {
-                    $null = $PSBoundParameters.Remove('NetworkAclsVirtualNetworkResourceId')
-                }
-                if ($PSBoundParameters.ContainsKey('NetworkAclsVirtualNetworkRule')) {
-                    $null = $PSBoundParameters.Remove('NetworkAclsVirtualNetworkRule')
-                }
                 $PSBoundParameters.Add('NetworkAclsVirtualNetworkRule', $originalRules.ToArray())
-                $PSBoundParameters.Add('ErrorAction', 'Stop')
-                $updatedVolumeGroup = Update-AzElasticSanVolumeGroup @PSBoundParameters
+                $updatedVolumeGroup = Az.ElasticSan\Update-AzElasticSanVolumeGroup @PSBoundParameters
             } catch {
                 Write-Error $_.Exception
                 return

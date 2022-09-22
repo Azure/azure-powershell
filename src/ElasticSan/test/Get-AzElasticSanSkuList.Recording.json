@@ -7,7 +7,7 @@
       "isContentBase64": false,
       "Headers": {
         "x-ms-unique-id": [ "36" ],
-        "x-ms-client-request-id": [ "b01277fa-8fb9-4419-8fa7-f6fd4bcc8d5a" ],
+        "x-ms-client-request-id": [ "dd76cbb6-d8da-4276-9dd9-84893a24066a" ],
         "CommandName": [ "Get-AzElasticSanSkuList" ],
         "FullCommandName": [ "Get-AzElasticSanSkuList_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -23,12 +23,12 @@
         "Cache-Control": [ "no-cache" ],
         "Pragma": [ "no-cache" ],
         "x-ms-ratelimit-remaining-subscription-reads": [ "11973" ],
-        "x-ms-request-id": [ "68fc6d02-beba-459e-8cc0-4ea2444a1252" ],
-        "x-ms-correlation-request-id": [ "68fc6d02-beba-459e-8cc0-4ea2444a1252" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T091832Z:68fc6d02-beba-459e-8cc0-4ea2444a1252" ],
+        "x-ms-request-id": [ "93faec1e-567d-4c2d-8168-2dac0dd6453a" ],
+        "x-ms-correlation-request-id": [ "93faec1e-567d-4c2d-8168-2dac0dd6453a" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220922T102607Z:93faec1e-567d-4c2d-8168-2dac0dd6453a" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "Date": [ "Thu, 22 Sep 2022 09:18:31 GMT" ]
+        "Date": [ "Thu, 22 Sep 2022 10:26:07 GMT" ]
       },
       "ContentHeaders": {
         "Content-Type": [ "application/json; charset=utf-8" ],
