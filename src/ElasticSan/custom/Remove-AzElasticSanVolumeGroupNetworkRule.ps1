@@ -40,7 +40,7 @@ https://docs.microsoft.com/powershell/module/az.elasticsan/add-azelasticsanvolum
 #>
 function Remove-AzElasticSanVolumeGroupNetworkRule {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.ElasticSan.Models.Api20211120Preview.VirtualNetworkRule[]])]
-    [CmdletBinding(DefaultParameterSetName='NetworkRuleObject', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='NetworkRuleObject', PositionalBinding=$false, ConfirmImpact='Medium')]
     param(
         [Parameter(ParameterSetName='NetworkRuleObject', Mandatory)]
         [Parameter(ParameterSetName='NetworkRuleResourceId', Mandatory)]
