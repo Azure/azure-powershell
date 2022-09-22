@@ -21,7 +21,13 @@ New-AzEventHubVirtualNetworkRuleConfig -SubnetId <String> [-IgnoreMissingVnetSer
 Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
 
 ## EXAMPLES
-Please refer https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubnetworkruleset for examples.
+
+### Example 1: Constructs an INwRuleSetVirtualNetworkRules object 
+```powershell
+New-AzEventHubVirtualNetworkRuleConfig -SubnetId /subscriptions/{subscriptionId}/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default
+```
+
+Please refer examples for Set-AzEventHubNetworkRuleSet to know more.
 
 ## PARAMETERS
 

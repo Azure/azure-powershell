@@ -11,7 +11,7 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.EventHub.private.dll'
   FormatsToProcess = './Az.EventHub.format.ps1xml'
-  FunctionsToExport = '*'
+  FunctionsToExport = 'Approve-AzEventHubPrivateEndpointConnection', 'Deny-AzEventHubPrivateEndpointConnection', 'Get-AzEventHub', 'Get-AzEventHubApplicationGroup', 'Get-AzEventHubAuthorizationRule', 'Get-AzEventHubCluster', 'Get-AzEventHubClusterNamespace', 'Get-AzEventHubClustersAvailableRegion', 'Get-AzEventHubConsumerGroup', 'Get-AzEventHubGeoDRConfiguration', 'Get-AzEventHubKey', 'Get-AzEventHubNetworkRuleSet', 'Get-AzEventHubPrivateEndpointConnection', 'Get-AzEventHubPrivateLink', 'Get-AzEventHubSchemaGroup', 'New-AzEventHub', 'New-AzEventHubApplicationGroup', 'New-AzEventHubAuthorizationRule', 'New-AzEventHubCluster', 'New-AzEventHubConsumerGroup', 'New-AzEventHubGeoDRConfiguration', 'New-AzEventHubIPRuleConfig', 'New-AzEventHubKey', 'New-AzEventHubSchemaGroup', 'New-AzEventHubThrottlingPolicyConfig', 'New-AzEventHubVirtualNetworkRuleConfig', 'Remove-AzEventHub', 'Remove-AzEventHubApplicationGroup', 'Remove-AzEventHubAuthorizationRule', 'Remove-AzEventHubCluster', 'Remove-AzEventHubConsumerGroup', 'Remove-AzEventHubGeoDRConfiguration', 'Remove-AzEventHubPrivateEndpointConnection', 'Remove-AzEventHubSchemaGroup', 'Set-AzEventHub', 'Set-AzEventHubApplicationGroup', 'Set-AzEventHubAuthorizationRule', 'Set-AzEventHubCluster', 'Set-AzEventHubConsumerGroup', 'Set-AzEventHubGeoDRConfigurationBreakPair', 'Set-AzEventHubGeoDRConfigurationFailOver', 'Set-AzEventHubNetworkRuleSet', 'Test-AzEventHubName', '*'
   AliasesToExport = '*'
   PrivateData = @{
     PSData = @{

@@ -111,7 +111,7 @@ The name of the EventHub entity.
 ```yaml
 Type: System.String
 Parameter Sets: GetExpandedEntity
-Aliases: EventHub
+Aliases:
 
 Required: True
 Position: Named
@@ -157,7 +157,7 @@ The name of EventHub namespace
 ```yaml
 Type: System.String
 Parameter Sets: GetExpandedAlias, GetExpandedEntity, GetExpandedNamespace
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

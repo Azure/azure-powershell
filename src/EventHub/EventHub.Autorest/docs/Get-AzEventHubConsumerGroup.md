@@ -82,7 +82,7 @@ The Event Hub name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases: EventHub
+Aliases:
 
 Required: True
 Position: Named
@@ -128,7 +128,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

@@ -21,7 +21,12 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHu
 
 ## EXAMPLES
 
-Please refer https://docs.microsoft.com/powershell/module/az.eventhub/set-azeventhubnetworkruleset for examples.
+### Example 1: Constructs an INwRuleSetIPRules object 
+```powershell
+New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
+```
+
+Please refer examples for Set-AzEventHubNetworkRuleSet to know more.
 
 ## PARAMETERS
 

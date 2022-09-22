@@ -105,7 +105,7 @@ The name of EventHub
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded
-Aliases: EventHub
+Aliases:
 
 Required: True
 Position: Named
@@ -151,7 +151,7 @@ The name of EventHub namespace
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

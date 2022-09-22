@@ -153,7 +153,7 @@ The name of EventHub namespace
 ```yaml
 Type: System.String
 Parameter Sets: SetExpanded
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

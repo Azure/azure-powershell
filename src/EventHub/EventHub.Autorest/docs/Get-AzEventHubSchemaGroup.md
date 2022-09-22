@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventHubSchemaGroup
 
 ## SYNOPSIS
-Gets the details of an EventHub Schema group
+Gets details of an EventHub schema group
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzEventHubSchemaGroup -InputObject <IEventHubIdentity> [-DefaultProfile <PSO
 ```
 
 ## DESCRIPTION
-Gets the details of an EventHub Schema group
+Gets details of an EventHub schema group
 
 ## EXAMPLES
 
@@ -100,7 +100,7 @@ The Schema Group name
 ```yaml
 Type: System.String
 Parameter Sets: Get
-Aliases: SchemaGroupName
+Aliases:
 
 Required: True
 Position: Named
@@ -115,7 +115,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

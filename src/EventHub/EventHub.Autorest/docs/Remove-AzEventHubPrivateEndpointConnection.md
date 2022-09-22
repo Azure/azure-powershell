@@ -39,7 +39,6 @@ Remove-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -N
 
 Deletes private endpoint connection `00000000000` from an event hub namespace `myNamespace`.
 
-
 ## PARAMETERS
 
 ### -AsJob
@@ -109,7 +108,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

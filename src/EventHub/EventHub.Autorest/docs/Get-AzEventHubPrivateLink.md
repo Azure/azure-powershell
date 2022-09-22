@@ -61,7 +61,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

@@ -36,7 +36,6 @@ Remove-AzEventHubApplicationGroup -NamespaceName myNamespace -ResourceGroupName 
 
 Deletes application group `myAppGroup` from namespace `myNamespace`.
 
-
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -91,7 +90,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named
