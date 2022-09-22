@@ -16,46 +16,35 @@ using Microsoft.Azure.Commands.ScenarioTest.SqlTests;
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
 using Xunit.Abstractions;
-using RestTestFramework = Microsoft.Rest.ClientRuntime.Azure.TestFramework;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class AdvancedThreatProtectionTests : SqlTestsBase
+    public class AdvancedThreatProtectionTests : SqlTestRunner
     {
-        protected override void SetupManagementClients(RestTestFramework.MockContext context)
-        {
-            var sqlClient = GetSqlClient(context);
-            var storageV2Client = GetStorageManagementClient(context);
-            var newResourcesClient = GetResourcesClient(context);
-            Helper.SetupSomeOfManagementClients(sqlClient, storageV2Client, newResourcesClient);
-        }
-
         public AdvancedThreatProtectionTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
+
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AdvancedThreatProtectionGetDefaultSettings()
         {
-            RunPowerShellTest("Test-AdvancedThreatProtectionGetDefaultSettings");
+            TestRunner.RunTestScript("Test-AdvancedThreatProtectionGetDefaultSettings");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AdvancedThreatProtectionDatabaseUpdateSettings()
         {
-            RunPowerShellTest("Test-AdvancedThreatProtectionDatabaseUpdateSettings");
+            TestRunner.RunTestScript("Test-AdvancedThreatProtectionDatabaseUpdateSettings");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void AdvancedThreatProtectionServerUpdateSettings()
         {
-            RunPowerShellTest("Test-AdvancedThreatProtectionServerUpdateSettings");
+            TestRunner.RunTestScript("Test-AdvancedThreatProtectionServerUpdateSettings");
         }
     }
 }
