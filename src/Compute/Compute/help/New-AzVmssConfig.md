@@ -62,7 +62,9 @@ Use the following cmdlets to configure the VMSS object:
 - **[Set-AzVmssStorageProfile](https://learn.microsoft.com/en-us/powershell/module/az.compute/set-azvmssstorageprofile)** to set the storage profile.<br>
 - **[Get-AzComputeResourceSku](https://docs.microsoft.com/en-us/powershell/module/az.compute/get-azcomputeresourcesku)** can also be used to find out available virtual machine sizes for your subscription and region.<br><br>
 
-See other cmdlets for virtual machine scale set [here](https://learn.microsoft.com/en-us/powershell/module/az.compute/#vm-scale-sets).
+See other cmdlets for virtual machine scale set [here](https://learn.microsoft.com/en-us/powershell/module/az.compute/#vm-scale-sets).<br>
+<br>
+See [Quickstart: Create a virtual machine scale set with Azure PowerShell](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/quick-create-powershell) for tutorial.
 
 ## EXAMPLES
 
