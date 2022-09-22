@@ -2331,6 +2331,7 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		$rule01 = New-AzApplicationGatewayRequestRoutingRule -Name $rule01Name -RuleType basic -Priority 100 -BackendHttpSettings $poolSetting01 -HttpListener $listener01 -BackendAddressPool $pool
 
 		# sku
+		$standardSku = New-AzApplicationGatewaySku -Name Standard_v2 -Tier Standard_v2
 		$sku = New-AzApplicationGatewaySku -Name WAF_v2 -Tier WAF_v2
 
 		$autoscaleConfig = New-AzApplicationGatewayAutoscaleConfiguration -MinCapacity 3
@@ -2357,7 +2358,7 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		$sslCert = New-AzApplicationGatewaySslCertificate -Name $sslCert01Name -CertificateFile $sslCert01Path -Password $pw01
 
 		# Create Application Gateway
-		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01,$fp02 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $sku -AutoscaleConfiguration $autoscaleConfig -UrlPathMap $urlPathMap,$urlPathMap2 -RedirectConfiguration $redirectConfig -Probe $probe -SslCertificate $sslCert -RewriteRuleSet $rewriteRuleSet -ForceFirewallPolicyAssociation
+		$appgw = New-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname -Location $location -BackendAddressPools $pool -BackendHttpSettingsCollection $poolSetting01 -FrontendIpConfigurations $fipconfig -GatewayIpConfigurations $gipconfig -FrontendPorts $fp01,$fp02 -HttpListeners $listener01 -RequestRoutingRules $rule01 -Sku $standardSku -AutoscaleConfiguration $autoscaleConfig -UrlPathMap $urlPathMap,$urlPathMap2 -RedirectConfiguration $redirectConfig -Probe $probe -SslCertificate $sslCert -RewriteRuleSet $rewriteRuleSet -ForceFirewallPolicyAssociation
 
 		$certFilePath = $basedir + "/ScenarioTests/Data/ApplicationGatewayAuthCert.cer"
 		$certFilePath2 = $basedir + "/ScenarioTests/Data/TrustedRootCertificate.cer"
@@ -2422,6 +2423,7 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		$appgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
 		$appgw.FirewallPolicy = $policy
+		$appgw.Sku = $sku
 		$appgw = Set-AzApplicationGateway -ApplicationGateway $appgw
 	
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
@@ -2459,7 +2461,7 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		$ruleOverrideEntry4 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 941100
 		$xssRuleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName REQUEST-941-APPLICATION-ATTACK-XSS -Rule $ruleOverrideEntry4
 		
-		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.0" -RuleGroupOverride $sqlRuleGroupOverrideEntry,$xssRuleGroupOverrideEntry
+		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2" -RuleGroupOverride $sqlRuleGroupOverrideEntry,$xssRuleGroupOverrideEntry
 		$managedRules = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet -Exclusion $exclusionEntry
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
 		$policySettings = New-AzApplicationGatewayFirewallPolicySetting -Mode Prevention -State Enabled -MaxFileUploadInMb 750 -MaxRequestBodySizeInKb 128
@@ -2470,8 +2472,8 @@ function Test-ApplicationGatewayTopLevelFirewallPolicy
 		# Get firewall policy
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicyName -ResourceGroupName $rgname
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets.Count 1
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides.Count 3
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides[2].Action Block
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides.Count 2
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides[0].Rules[2].Action Block
 		Assert-AreEqual $policy.ManagedRules.Exclusions.Count 1
 		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
 		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
@@ -3371,8 +3373,8 @@ function Test-ApplicationGatewayFirewallPolicyExclusions
 		# Get firewall policy
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets.Count 1
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides.Count 3
-		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides[2].Action Log
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides.Count 2
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides[0].Rules[2].Action Log
 		Assert-AreEqual $policy.ManagedRules.Exclusions.Count 9
 		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
 		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
