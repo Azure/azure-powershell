@@ -30,6 +30,7 @@
     - `NewAzureRmVpnGatewayCommand.cs`
     - `UpdateAzureRmVpnGatewayCommand.cs`
 * Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
+* Added ProbeThreshold parameter to Load Balancer Probe 
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
