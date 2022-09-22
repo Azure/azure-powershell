@@ -30,6 +30,14 @@
     - `NewAzureRmVpnGatewayCommand.cs`
     - `UpdateAzureRmVpnGatewayCommand.cs`
 * Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
+* Add breaking change enum values/notification for the following network manager cmdlets
+    - `DeployAzNetworkManagerCommit.cs`
+    - `NewAzNetworkManagerConnectivityConfigurationCommand.cs`
+    - `NewAzNetworkManagerConnectivityGroupItemCommand.cs`
+    - `NewAzNetworkManagerSecurityAdminRuleCommand.cs`
+    - `NewAzNetworkManagerSecurityAdminConfigurationCommand.cs`
+    - `NewAzNetworkManagerAddressPrefixItemCommand.cs`
+    - `NewAzNetworkManagerCommand.cs`
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
