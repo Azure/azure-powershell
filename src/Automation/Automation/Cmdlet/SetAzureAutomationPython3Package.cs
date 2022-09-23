@@ -12,6 +12,7 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
+using Microsoft.Azure.Commands.Automation.Common;
 using Microsoft.Azure.Commands.Automation.Model;
 using System;
 using System.Management.Automation;
@@ -20,28 +21,34 @@ using System.Security.Permissions;
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
     /// <summary>
-    /// Create a new python3 package for automation.
+    /// Sets a Module for automation.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationPython3Package")]
+    [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationPython3Package", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
     [OutputType(typeof(Module))]
-    public class NewAzureAutomationPython3Package : AzureAutomationBaseCmdlet
+    public class SetAzureAutomationPython3Package : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the module name.
         /// </summary>
-        [Parameter(Position = 2, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The Python3Package name.")]
+        [Parameter(ParameterSetName = AutomationCmdletParameterSets.ByName, Mandatory = true, Position = 2, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The module name.")]
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the contentLink
         /// </summary>
-        [Parameter(Position = 3, Mandatory = true, ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The url to a Python3Package.")]
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The url to module zip file package.")]
         [Alias("ContentLink")]
-        [ValidateNotNullOrEmpty]
         public Uri ContentLinkUri { get; set; }
+
+        /// <summary>
+        /// Gets or sets the contentLinkVersion
+        /// </summary>
+        [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true,
+            HelpMessage = "The ContentLink version.")]
+        public string ContentLinkVersion { get; set; }
 
         /// <summary>
         /// Execute this cmdlet.
@@ -49,8 +56,10 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         protected override void AutomationProcessRecord()
         {
-            var createdModule = this.AutomationClient.CreatePython3Package(this.ResourceGroupName, this.AutomationAccountName, ContentLinkUri, Name);
-            this.WriteObject(createdModule);
+            var updatedModule = this.AutomationClient.UpdatePython3Package(this.ResourceGroupName, this.AutomationAccountName, Name, ContentLinkUri, ContentLinkVersion);
+
+            this.WriteObject(updatedModule);
         }
     }
 }
+

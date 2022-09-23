@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Automation.Common;
+using Microsoft.Azure.Commands.Automation.Model;
 using Microsoft.Azure.Commands.Automation.Properties;
 using System.Management.Automation;
 using System.Security.Permissions;
@@ -20,7 +21,12 @@ using System.Security.Permissions;
 
 namespace Microsoft.Azure.Commands.Automation.Cmdlet
 {
-    class RemoveAzureAutomationPython3Package : AzureAutomationBaseCmdlet
+    /// <summary>
+    /// Gets a Module for automation.
+    /// </summary>
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationPython3Package")]
+    [OutputType(typeof(Module))]
+    public class RemoveAzureAutomationPython3Package : AzureAutomationBaseCmdlet
     {
         /// <summary>
         /// Gets or sets the module name.
@@ -45,7 +51,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
                        Name,
                        () =>
                        {
-                           this.AutomationClient.DeleteModule(this.ResourceGroupName, this.AutomationAccountName, Name);
+                           this.AutomationClient.DeletePython3Package(this.ResourceGroupName, this.AutomationAccountName, Name);
                        });
         }
     }

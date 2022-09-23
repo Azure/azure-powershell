@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// associated with the resource. The user identity dictionary key
         /// references will be ARM resource ids in the form:
         /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.</param>
-        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), IDictionary<string, UserAssignedIdentitiesProperties> userAssignedIdentities = default(IDictionary<string, UserAssignedIdentitiesProperties>))
+        public Identity(string principalId = default(string), string tenantId = default(string), ResourceIdentityType? type = default(ResourceIdentityType?), IDictionary<string, IdentityUserAssignedIdentitiesValue> userAssignedIdentities = default(IDictionary<string, IdentityUserAssignedIdentitiesValue>))
         {
             PrincipalId = principalId;
             TenantId = tenantId;
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Management.Automation.Models
         /// '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
         /// </summary>
         [JsonProperty(PropertyName = "userAssignedIdentities")]
-        public IDictionary<string, UserAssignedIdentitiesProperties> UserAssignedIdentities { get; set; }
+        public IDictionary<string, IdentityUserAssignedIdentitiesValue> UserAssignedIdentities { get; set; }
 
     }
 }

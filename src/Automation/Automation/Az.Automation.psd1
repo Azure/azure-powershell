@@ -74,7 +74,7 @@ NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Automation.dll')
 FunctionsToExport = @()
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-CmdletsToExport = 'Get-AzAutomationPython3Packages','Move-AzAutomationHybridRunbookWorker','Remove-AzAutomationHybridRunbookWorker','New-AzAutomationHybridRunbookWorker','Get-AzAutomationHybridRunbookWorker',
+CmdletsToExport = 'Set-AzAutomationPython3Package','New-AzAutomationPython3Package','Remove-AzAutomationPython3Package','Get-AzAutomationPython3Package','Move-AzAutomationHybridRunbookWorker','Remove-AzAutomationHybridRunbookWorker','New-AzAutomationHybridRunbookWorker','Get-AzAutomationHybridRunbookWorker',
                 'Remove-AzAutomationHybridRunbookWorkerGroup', 'Set-AzAutomationHybridRunbookWorkerGroup',
                 'New-AzAutomationHybridRunbookWorkerGroup',
                 'Get-AzAutomationHybridRunbookWorkerGroup',
@@ -89,7 +89,7 @@ CmdletsToExport = 'Get-AzAutomationPython3Packages','Move-AzAutomationHybridRunb
                'Get-AzAutomationDscCompilationJobOutput', 
                'Get-AzAutomationDscNodeConfiguration', 
                'Get-AzAutomationDscNodeReport', 'Get-AzAutomationJob', 
-               'Get-AzAutomationJobOutput', 'Get-AzAutomationModule', 
+               'Get-AzAutomationJobOutput', 
                'Get-AzAutomationRunbook', 'Export-AzAutomationRunbook', 
                'Get-AzAutomationSchedule', 'Get-AzAutomationScheduledRunbook', 
                'Get-AzAutomationVariable', 'Get-AzAutomationWebhook', 
