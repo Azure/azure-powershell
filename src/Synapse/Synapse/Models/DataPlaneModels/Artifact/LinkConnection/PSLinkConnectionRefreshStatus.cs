@@ -16,28 +16,16 @@ using Azure.Analytics.Synapse.Artifacts.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSLinkConnectionResource
+    public class PSLinkConnectionRefreshStatus
     {
-        public PSLinkConnectionResource(LinkConnectionResource linkConnectionResource, string workspaceName)
+        public PSLinkConnectionRefreshStatus(LinkConnectionRefreshStatus refreshStatus)
         {
-            this.WorkspaceName = workspaceName;
-            this.Id = linkConnectionResource?.Id;
-            this.Name = linkConnectionResource?.Name;
-            this.Type = linkConnectionResource?.Type;
-            this.Properties = linkConnectionResource?.Properties != null? new PSLinkConnection(linkConnectionResource?.Properties) : null;
-            this.Description = linkConnectionResource?.Description;
+            this.RefreshStatus = refreshStatus?.RefreshStatus;
+            this.ErrorMessage = refreshStatus?.ErrorMessage;
         }
 
-        public string WorkspaceName { get; set; }
+        public string RefreshStatus { get; }
 
-        public string Id { get; set; }
-
-        public string Name { get; set; }   
-
-        public string Type { get; set; }
-
-        public PSLinkConnection Properties { get; set; }
-
-        public string Description { get; set; }
+        public string ErrorMessage { get; }
     }
 }
