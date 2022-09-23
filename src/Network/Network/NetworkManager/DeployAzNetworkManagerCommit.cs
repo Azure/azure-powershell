@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Commands.Network
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [SupportsWildcards]
-        [ValidateSet("SecurityAdmin", "Connectivity")]
+        [ValidateSet("SecurityAdmin", "Connectivity", IgnoreCase = true)]
         public virtual string CommitType { get; set; }
 
         public override void Execute()
