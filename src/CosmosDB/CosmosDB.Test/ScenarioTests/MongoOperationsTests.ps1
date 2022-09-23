@@ -158,12 +158,11 @@ function Test-MongoInAccountRestoreOperationsSharedRUResourcesCmdlets
   $ttlInSeconds = 604800
   $ttlInSeconds = 1204800
   $ThroughputValue = 500
-  $location = "eastus2euap"
+  $location = "West US"
   $apiKind = "MongoDB"
-  $serverVersion = "3.6" #3.2 or 3.6
   $consistencyLevel = "Session"
   $locations = @()
-  $locations += New-AzCosmosDBLocationObject -LocationName "eastus2euap" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
 Try {
 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
@@ -285,12 +284,11 @@ function Test-MongoInAccountRestoreOperationsCmdlets
   $rgName = "CosmosDBResourceGroup48"
   $DatabaseName = "dbName"
   $CollectionName = "collection1"
-  $location = "eastus2euap"
+  $location = "West US"
   $apiKind = "MongoDB"
-  $serverVersion = "3.6" #3.2 or 3.6
   $consistencyLevel = "Session"
   $locations = @()
-  $locations += New-AzCosmosDBLocationObject -LocationName "eastus2euap" -FailoverPriority 0 -IsZoneRedundant 0
+  $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
 Try {
 
       $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
