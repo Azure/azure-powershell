@@ -140,6 +140,10 @@
     "alias": "Networking"
   },
   {
+    "module": "Nginx",
+    "alias": "Nginx"
+  },
+  {
     "regex": "FrontDoor",
     "alias": "Front Door"
   },
@@ -766,5 +770,9 @@
   {
     "module": "DeviceUpdate",
     "alias": "DeviceUpdate"
+  },
+  {
+    "module": "Nginx",
+    "alias": "Nginx"
   }
 ]
