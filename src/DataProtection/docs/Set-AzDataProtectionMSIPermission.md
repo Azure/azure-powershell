@@ -1,87 +1,79 @@
 ---
 external help file:
 Module Name: Az.DataProtection
-online version: https://docs.microsoft.com/powershell/module/az.dataprotection/new-azdataprotectionbackupinstance
+online version: https://docs.microsoft.com/powershell/module/az.dataprotection/set-azdataprotectionmsipermission
 schema: 2.0.0
 ---
 
-# New-AzDataProtectionBackupInstance
+# Set-AzDataProtectionMSIPermission
 
 ## SYNOPSIS
-Configures Backup for supported azure resources
+Grants required permissions to the backup vault to configure backup
 
 ## SYNTAX
 
 ```
-New-AzDataProtectionBackupInstance -BackupInstance <IBackupInstanceResource> -ResourceGroupName <String>
- -VaultName <String> [-AsJob] [-DefaultProfile <PSObject>] [-NoWait] [-SubscriptionId <String>]
- [-Tag <Hashtable>] [-Confirm] [-WhatIf] [<CommonParameters>]
+Set-AzDataProtectionMSIPermission -BackupInstance <IBackupInstanceResource> -PermissionsScope <String>
+ -VaultName <String> -VaultResourceGroup <String> [-KeyVaultId <String>] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Configures Backup for supported azure resources
+Grants required permissions to the backup vault to configure backup
 
 ## EXAMPLES
 
-### Example 1: Configure backup of an azure disk in a backup vault.
+### Example 1: Grant Permissions for Azure Disks
 ```powershell
-$sub = "xxxx-xxx-xx"
-$DiskId = "/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Compute/disks/{diskname}"
-$policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName sarath-vault -Name "MyPolicy"
-$instance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDisk -DatasourceLocation $vault.Location -PolicyId $policy.Id -DatasourceId $DiskId 
-$instance.Property.PolicyInfo.PolicyParameter.DataStoreParametersList[0].ResourceGroupId = "/subscriptions/{subscription}/resourceGroups/{resourceGroup}"
-New-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName sarath-rg -VaultName sarath-vault -BackupInstance $instance
+Set-AzDataProtectionMSIPermission -BackupInstance $instance -VaultResourceGroup "VaultRG" -VaultName "Vaultname" -PermissionsScope "ResourceGroup"
+
 ```
 
 ```output
-Name                                                       Type                                                  BackupInstanceName
-----                                                       ----                                                  ------------------
-sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166 Microsoft.DataProtection/backupVaults/backupInstances sarathdisk-sarathdisk-3df6ac08-9496-4839-8fb5-8b78e594f166
+Assigning Disk Backup Reader permission to the backup vault
+Assigned Disk Backup Reader permission to the backup vault
+Assigning Disk Snapshot Contributor permission to the backup vault
+Assigned Disk Snapshot Contributor permission to the backup vault
+Waiting for 60 seconds for roles to propagate
 ```
 
-The third command gets the policy with which disk will be backed up.
-The fourth command initializes the backup instance request.
-The last command configures backup of the given azure disk in the backup vault.
+The above command is used to assign permissions to the backup vault "Vaultname" under resource group "VaultRG" at the "Resource Group" scope of the disk.
 
-### Example 2: Configure protection for AzureDatabaseForPostgreSQL database in a backup vault (using secret store authentication).
+### Example 2: Grant Permissions for Azure Blobs
 ```powershell
-$sub = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-$dataSourceId = "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/ResourceGroupName/providers/Microsoft.DBforPostgreSQL/servers/OssServerName/databases/DBName"
-$secretURI = "https://oss-keyvault.vault.azure.net/secrets/oss-secret"
-$vault = Get-AzDataProtectionBackupVault -SubscriptionId $sub -ResourceGroupName "ResourceGroupName"  -VaultName  $vaultName
-$policy = Get-AzDataProtectionBackupPolicy -SubscriptionId $sub -ResourceGroupName "ResourceGroupName" -VaultName "vaultName" -Name "MyPolicy"
-$instance = Initialize-AzDataProtectionBackupInstance -DatasourceType AzureDatabaseForPostgreSQL -DatasourceLocation $vault.Location -PolicyId $policy.Id -DatasourceId $dataSourceId -SecretStoreURI $secretURI -SecretStoreType AzureKeyVault
-New-AzDataProtectionBackupInstance -SubscriptionId $sub -ResourceGroupName "ResourceGroupName" -VaultName "vaultName" -BackupInstance $instance
+Set-AzDataProtectionMSIPermission -BackupInstance $instance -VaultResourceGroup "VaultRG" -VaultName "Vaultname" -PermissionsScope "Subscription"
 ```
 
 ```output
-Name                                                                Type                                                  BackupInstanceName
-----                                                                ----                                                  ------------------
-xyz-postgresql-wus-empdb10-xxxxxxxx-xxxx-xxxx-a3ba-be75108d8b21 Microsoft.DataProtection/backupVaults/backupInstances xyz-postgresql-wus-empdb10-xxxxxxxx-xxxx-xxxx-a3ba-be75108d8b21
+Assigning Storage Account Backup Contributor permission to the backup vault
+Assigned Storage Account Backup Contributor permission to the backup vault
+Waiting for 60 seconds for roles to propagate
 ```
 
-The third command initializes the secretURI for secret store authentication.
+The above command is used to assign permissions to the backup vault "Vaultname" under resource group "VaultRG" at the "Subscription" scope of the blob.
 
-The fifth command gets the policy with which database will be protected.
-The sixth command initializes the backup instance request object.
-The last command configures backup of the given $dataSourceId in the backup vault.
+### Example 3: Grant Permissions for Azure Database For PostgreSQL
+```powershell
+Set-AzDataProtectionMSIPermission -KeyVaultId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/testkeyvault"  -BackupInstance $instance -VaultResourceGroup "VaultRG" -VaultName "Vaultname" -PermissionsScope "Resource"
+
+```
+
+```output
+Confirm
+Are you sure you want to perform this action?
+Performing the operation "
+                            1.'Allow All Azure services' under network connectivity in the Postgres Server
+                            2.'Allow Trusted Azure services' under network connectivity in the Key vault" on target "KeyVault: oss-pstest-keyvault and PostgreSQLServer: oss-pstest-server".
+[Y] Yes  [A] Yes to All  [N] No  [L] No to All  [S] Suspend  [?] Help (default is "Y"): A
+Assigning Reader permission to the backup vault
+Assigned Reader permission to the backup vault
+Waiting for 60 seconds for roles to propogate
+```
+
+The above command is used to assign permissions to the backup vault "Vaultname" under resource group "VaultRG" at the "Resource" scope of the Azure Database For PostgreSQL.
+It takes an additional KeyVaultId parameter to assign the necessary permissions to the backup vault on the keyvault.
 
 ## PARAMETERS
-
-### -AsJob
-
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
 
 ### -BackupInstance
 Backup instance request object which will be used to configure backup
@@ -99,26 +91,11 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-
-
-```yaml
-Type: System.Management.Automation.PSObject
-Parameter Sets: (All)
-Aliases: AzureRMContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-
+### -KeyVaultId
+ID of the keyvault
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -129,8 +106,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Resource Group of the backup vault
+### -PermissionsScope
+Scope at which the permissions need to be granted
 
 ```yaml
 Type: System.String
@@ -144,38 +121,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SubscriptionId
-Subscription Id of the vault
+### -VaultName
+Name of the backup vault
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Tag
-Resource tags
-
-```yaml
-Type: System.Collections.Hashtable
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -VaultName
-Name of the backup vault
+### -VaultResourceGroup
+Resource group of the backup vault
 
 ```yaml
 Type: System.String
@@ -226,6 +188,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## INPUTS
 
 ## OUTPUTS
+
+### System.Object
 
 ## NOTES
 

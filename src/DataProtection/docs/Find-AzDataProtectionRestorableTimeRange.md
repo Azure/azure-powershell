@@ -10,6 +10,7 @@ schema: 2.0.0
 ## SYNOPSIS
 Finds the valid recovery point in time ranges for the restore.
 
+
 ## SYNTAX
 
 ```
@@ -206,7 +207,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupFindRestorableTimeRangesResponseResource
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupFindRestorableTimeRangesResponseResource
 
 ## NOTES
 
