@@ -616,16 +616,6 @@ function Test-PublicIpAddressCRUD-DdosProtection
     $rglocation = Get-ProviderLocation ResourceManagement
     $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
     $location = Get-ProviderLocation $resourceTypeParent
-
-    $DNSNameLabel = "mydnsname"
-    $NetworkName = "MyNet"
-    $NICName = "MyNIC"
-    $PublicIPAddressName = "ddosTempPIP"
-    $SubnetName = "MySubnet"
-    $SubnetAddressPrefix = "10.0.0.0/24"
-    $VnetAddressPrefix = "10.0.0.0/16"
-    $VMName = "MyVM"
-    $VMSize = "ExtraSmall"
    
     try 
      {
@@ -655,19 +645,6 @@ function Test-PublicIpAddressCRUD-DdosProtection
       Assert-NotNull $list[0].IpAddress
       Assert-AreEqual "Succeeded" $list[0].ProvisioningState
       Assert-AreEqual "Enabled" $expected.DdosSettings.ProtectionMode
-
-      # Create Backend for Pip
-      $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
-      $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $rgname -Location $location -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
-      $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $location -SubnetId $Vnet.Subnets[0].Id -PublicIpAddressId $expected.Id
-      
-      $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
-      $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
-      New-AzVM -ResourceGroupName $rgname -Location $location -VM $VirtualMachine -Verbose
-
-      # Get DDoS Protection Status
-      $result = Get-AzPublicIpAddressDdosProtectionStatus -PublicIpAddress $expected
-      Assert-AreEqual "true" $result.IsWorkloadProtected
 
       # delete
       $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force

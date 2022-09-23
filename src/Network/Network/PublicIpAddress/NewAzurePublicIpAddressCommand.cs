@@ -219,11 +219,6 @@ namespace Microsoft.Azure.Commands.Network
             {
                 publicIp.DdosSettings = new PSDdosSettings();
                 publicIp.DdosSettings.ProtectionMode = this.DdosProtectionMode;
-
-                if (this.DdosProtectionPlan != null)
-                {
-                    publicIp.DdosSettings.DdosProtectionPlan = this.DdosProtectionPlan;
-                }
             }
 
                 if (!string.IsNullOrEmpty(this.Tier))

@@ -17,8 +17,5 @@ namespace Microsoft.Azure.Commands.Network.Models
     public partial class PSDdosSettings
     {
         public string ProtectionMode;
-
-        public PSResourceId DdosProtectionPlan { get; set; }
-
     }
 }
