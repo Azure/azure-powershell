@@ -43,11 +43,11 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         public PSVirtualMachineScaleSet VirtualMachineScaleSet { get; set; }
 
         [Parameter(
-            HelpMessage = "Parameter to set the SecurityType on the VMs of the scale set. Possible values are TrustedLaunch, ConfidentialVM",
+            HelpMessage = "Parameter to set the SecurityType on the VMs of the scale set. Possible values are TrustedLaunch",
             Mandatory = false,
             Position = 1,
             ValueFromPipelineByPropertyName = true)]
-        [PSArgumentCompleter("TrustedLaunch", "ConfidentialVM")]
+        [PSArgumentCompleter("TrustedLaunch")]
         public string SecurityType { get; set; }
 
         protected override void ProcessRecord()

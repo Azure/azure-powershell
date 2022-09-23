@@ -276,20 +276,5 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetGuestAttestation");
         }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetConfidentialVMSecurityType()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMSecurityType");
-        }
-
-        [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
-        public void TestVirtualMachineScaleSetConfidentialVMSecurityTypeDisk()
-        {
-            TestRunner.RunTestScript("Test-VirtualMachineScaleSetConfidentialVMDiskwithVMGuestState");
-        }
-
     }
 }
