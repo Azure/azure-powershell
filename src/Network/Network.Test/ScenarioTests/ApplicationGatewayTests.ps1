@@ -4111,7 +4111,7 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		$getgw = Add-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert02Name -ApplicationGateway $getgw -CertificateFile $clientCertFilePath
 		$trustedClient02 =  Get-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert02Name -ApplicationGateway $getgw
 		$getgw = Add-AzApplicationGatewaySslProfile -Name $sslProfile02Name -ApplicationGateway $getgw -TrustedClientCertificates $trustedClient01,$trustedClient02
-		$sslProfile01 = Set-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile01 -VerifyClientRevocation None
+		$sslProfile01 = Set-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile01
 		Assert-AreEqual "None" $sslProfile01.ClientAuthConfiguration.VerifyClientRevocation
 
 		$sslProfile01 = Set-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile01 -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"

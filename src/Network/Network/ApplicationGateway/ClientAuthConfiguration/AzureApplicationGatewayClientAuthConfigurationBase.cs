@@ -28,7 +28,6 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             HelpMessage = "Verify client certificate revocation status.")]
         [ValidateSet("None", "OCSP", IgnoreCase = true)]
-        [ValidateNotNullOrEmpty]
         public string VerifyClientRevocation { get; set; }
 
         public override void ExecuteCmdlet()
@@ -45,7 +44,14 @@ namespace Microsoft.Azure.Commands.Network
                 config.VerifyClientCertIssuerDN = true;
             }
 
-            config.VerifyClientRevocation = this.VerifyClientRevocation;
+            if (!string.IsNullOrEmpty(this.VerifyClientRevocation))
+            {
+                config.VerifyClientRevocation = this.VerifyClientRevocation;
+            }
+            else
+            {
+                config.VerifyClientRevocation = "None";
+            }
 
             return config;
         }
