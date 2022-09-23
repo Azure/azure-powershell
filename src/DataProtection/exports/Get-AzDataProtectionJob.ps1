@@ -27,7 +27,7 @@ Get-AzDataProtectionjob -SubscriptionId "xxxx-xxx-xxx" -ResourceGroupName sarath
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupJobResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupJobResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -50,7 +50,7 @@ INPUTOBJECT <IDataProtectionIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.dataprotection/get-azdataprotectionjob
 #>
 function Get-AzDataProtectionJob {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupJobResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupJobResource])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
