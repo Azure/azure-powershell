@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Commands.Network
 
         public PSPublicIpDdosProtectionStatusResult ListDdosProtectionStatus(string resourceGroupName, string pipName)
         {
-            var ddosProtectionSttausResult = this.NetworkClient.NetworkManagementClient.VirtualNetworks.ListDdosProtectionStatus(resourceGroupName, pipName);
+            var ddosProtectionSttausResult = this.NetworkClient.NetworkManagementClient.PublicIPAddresses.DdosProtectionStatus(resourceGroupName, pipName);
             var result = NetworkResourceManagerProfile.Mapper.Map<CNM.PSPublicIpDdosProtectionStatusResult>(ddosProtectionSttausResult);
 
             return result;
