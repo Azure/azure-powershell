@@ -20,32 +20,29 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.EventGrid.Models
 {
-    public class PSVerifiedPartner
+    public class PSPartnerConfiguration
     {
-        public PSVerifiedPartner(VerifiedPartner verifiedPartner)
+        public PSPartnerConfiguration(PartnerConfiguration partnerConfiguration)
         {
-            this.PartnerRegistrationImmutableId = verifiedPartner.PartnerRegistrationImmutableId;
-            this.OrganizationName = verifiedPartner.OrganizationName;
-            this.PartnerDisplayName = verifiedPartner.PartnerDisplayName;
-            this.PartnerTopicDetails = verifiedPartner.PartnerTopicDetails;
-            this.ProvisioningState = verifiedPartner.ProvisioningState;
-            this.SystemData = verifiedPartner.SystemData;
+            this.PartnerAuthorization = partnerConfiguration.PartnerAuthorization;
+            this.ProvisioningState = partnerConfiguration.ProvisioningState;
+            this.SystemData = partnerConfiguration.SystemData;
+            this.Location = partnerConfiguration.Location;
+            this.Tags = partnerConfiguration.Tags;
         }
 
-        public Guid? PartnerRegistrationImmutableId { get; set; }
-
-        public string OrganizationName { get; set; }
-
-        public string PartnerDisplayName { get; set; }
-
-        public PartnerDetails PartnerTopicDetails { get; set; }
+        public PartnerAuthorization PartnerAuthorization { get; set; }
 
         public string ProvisioningState { get; set; }
 
         public SystemData SystemData { get; private set; }
 
+        public string Location { get; set; }
+
+        public IDictionary<string, string> Tags { get; set; }
+
         /// <summary>
-        /// Return a string representation of this verified partner
+        /// Return a string representation of this partner configuration
         /// </summary>
         /// <returns>null</returns>
         public override string ToString()

@@ -86,6 +86,17 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string DomainResourceIdHelp = "Resource Identifier representing the Event Grid Domain.";
         public const string DomainTopicResourceIdHelp = "Resource Identifier representing the Event Grid Domain Topic.";
         public const string DomainOrDomainTopicResourceIdHelp = "Resource Identifier representing the Event Grid Domain or Grid Domain Topic.";
+        public const string VerifiedPartnerResourceIdHelp = "Resource Idenitifier representing the Event Grid Verified Partner.";
+        public const string PartnerConfigurationResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Configuration.";
+        public const string PartnerRegistrationResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Registration.";
+        public const string PartnerTopicResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Topic.";
+        public const string PartnerNamespaceResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Namespace.";
+        public const string PartnerDestinationResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Destination.";
+        public const string ChannelResourceIdHelp = "Resource Idenitifier representing the Event Grid Channel.";
+
+        public const string MaxExpirationTimeInDaysHelp = "Expiration time in days used to validate the authorization expiration time for each authorized partner. If this parameter is not specified, the default is 7 days. Otherwise, allowed values are between 1 and 365 days.";
+        public const string AuthorizedPartnersHelp = "Array of HashTables where each HashTable is the details of an authorized partner. Each HashTable has the following key-value info: partnerName, partnerRegistrationImmutableId, and authorizationExpirationTimeInUtc. " +
+                                                     "At least one key is required. The partnerName is a String, partnerRegistrationImmutableId  is a Guid, and authorizationExpirationTimeInUtc is a DateTime.";
 
         public const string EventSubscriptionFullUrlHelp = "Include the full endpoint URL of the event subscription destination.";
         public const string EventSubscriptionFullUrlInResponseHelp = "If specified, include the full endpoint URL of the event subscription destination in the response.";

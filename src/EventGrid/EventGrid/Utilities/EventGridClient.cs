@@ -1021,6 +1021,89 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #endregion
 
+        #region PartnerConfiguration
+
+        public PartnerConfiguration CreatePartnerConfiguration(
+            string resourceGroupName,
+            Hashtable[] authorizedPartners,
+            int? defaultMaxExpirationTimeInDays,
+            Dictionary<string, string> tags)
+        {
+            PartnerConfiguration partnerConfigurationInfo = new PartnerConfiguration(location: "global");
+            
+            if (tags != null)
+            {
+                partnerConfigurationInfo.Tags = tags;
+            }
+    
+            PartnerAuthorization partnerAuthorization = new PartnerAuthorization();
+            if (defaultMaxExpirationTimeInDays != null)
+            {
+                partnerAuthorization.DefaultMaximumExpirationTimeInDays = defaultMaxExpirationTimeInDays;
+            }
+
+            if (authorizedPartners != null)
+            {
+                List<Partner> authorizedPartnersList = new List<Partner>();
+                this.UpdateAuthorizedPartnerParameters(authorizedPartners, authorizedPartnersList);
+                partnerAuthorization.AuthorizedPartnersList = authorizedPartnersList;
+            }
+
+            return this.Client.PartnerConfigurations.CreateOrUpdate(resourceGroupName, partnerConfigurationInfo);
+        }
+
+        public PartnerConfiguration GetPartnerConfiguration(string resourceGroupName)
+        {
+            var partnerConfiguration = this.Client.PartnerConfigurations.Get(resourceGroupName);
+            return partnerConfiguration;
+        }
+
+        //public (IEnumerable<PartnerConfiguration>, string) ListPartnerConfigurationsByResourceGroup(string resourceGroupName)
+        //{
+        //    List<PartnerConfiguration> partnerConfigurationsList = new List<PartnerConfiguration>();
+        //    IEnumerable<PartnerConfiguration> partnerConfigurationsEnumerable = this.Client.PartnerConfigurations.ListByResourceGroup(resourceGroupName);
+        //    partnerConfigurationsList.AddRange(partnerConfigurationsEnumerable);
+
+        //    return (partnerConfigurationsList, null);
+        //}
+
+        public (IEnumerable<PartnerConfiguration>, string) ListPartnerConfigurationsBySubscription(string oDataQuery, int? top)
+        {
+            List<PartnerConfiguration> partnerConfigurationsList = new List<PartnerConfiguration>();
+            IPage<PartnerConfiguration> partnerConfigurationPage = this.Client.PartnerConfigurations.ListBySubscription(oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (partnerConfigurationPage != null)
+            {
+                partnerConfigurationsList.AddRange(partnerConfigurationPage);
+                nextLink = partnerConfigurationPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<PartnerConfiguration> newPartnerConfigurationsList;
+                    (newPartnerConfigurationsList, nextLink) = this.ListPartnerConfigurationNext(nextLink);
+                    partnerConfigurationsList.AddRange(newPartnerConfigurationsList);
+                }
+            }
+
+            return (partnerConfigurationsList, nextLink);
+        }
+
+        public (IEnumerable<PartnerConfiguration>, string) ListPartnerConfigurationNext(string nextLink)
+        {
+            List<PartnerConfiguration> partnerConfigurationsList = new List<PartnerConfiguration>();
+            string newNextLink = null;
+            IPage<PartnerConfiguration> partnerConfigurationsPage = this.Client.PartnerConfigurations.ListBySubscriptionNext(nextLink);
+            if (partnerConfigurationsPage != null)
+            {
+                partnerConfigurationsList.AddRange(partnerConfigurationsPage);
+                newNextLink = partnerConfigurationsPage.NextPageLink;
+            }
+
+            return (partnerConfigurationsList, newNextLink);
+        }
+
+        #endregion
+
         public EventSubscription CreateEventSubscription(
             string scope,
             string eventSubscriptionName,
@@ -1895,6 +1978,46 @@ namespace Microsoft.Azure.Commands.EventGrid
         bool IsValueRequired(string operatorValue)
         {
             return !NoValueOperators.Exists(o => string.Equals(o, operatorValue, StringComparison.OrdinalIgnoreCase));
+        }
+
+        void UpdateAuthorizedPartnerParameters(Hashtable[] authorizedPartners, List<Partner> authorizedPartnersList)
+        {
+            for (int i = 0; i < authorizedPartners.Count(); i++)
+            {
+                // Validate entries
+                int validatedEntries = 0;
+                Partner authorizedPartner = new Partner();
+                if (authorizedPartners[i].Count < 1 || authorizedPartners[i].Count > 3)
+                {
+                    throw new Exception($"Invalid Authorized Partner parameter: Unexpected number of entries for authorized partner #{i + 1}");
+                }
+
+                if (authorizedPartners[i].ContainsKey("partnerName"))
+                {
+                    authorizedPartner.PartnerName = (string)authorizedPartners[i]["partnerName"];
+                    validatedEntries++;
+                }
+
+                if (authorizedPartners[i].ContainsKey("partnerRegistrationImmutableId"))
+                {
+                    authorizedPartner.PartnerRegistrationImmutableId = (Guid)authorizedPartners[i]["partnerRegistrationImmutableId"];
+                    validatedEntries++;
+                }
+
+                if (authorizedPartners[i].ContainsKey("authorizationExpirationTimeInUtc"))
+                {
+                    authorizedPartner.AuthorizationExpirationTimeInUtc = (DateTime)authorizedPartners[i]["authorizationExpirationTimeInUtc"];
+                    validatedEntries++;
+                }
+
+                // Check for any hashtable entries that didn't match what we were looking for
+                if (validatedEntries != authorizedPartners[i].Count)
+                {
+                    throw new Exception($"Invalid Authorized Partner parameter: unsupported entry for authorized partner #{i + 1}");
+                }
+
+                authorizedPartnersList.Add(authorizedPartner);
+            }
         }
 
         void UpdatedAdvancedFilterParameters(Hashtable[] advancedFilter, EventSubscriptionFilter filter)

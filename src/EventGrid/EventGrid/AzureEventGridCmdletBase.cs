@@ -73,6 +73,14 @@ namespace Microsoft.Azure.Commands.EventGrid
         protected const string DomainNameParameterSet = "DomainNameParameterSet";
         protected const string DomainTopicNameParameterSet = "DomainTopicNameParameterSet";
 
+        protected const string VerifiedPartnerNameParameterSet = "VerifiedPartnerNameParameterSet";
+        protected const string PartnerConfigurationListBySubscriptionParameterSet = "PartnerConfigurationNameParameterSet";
+        protected const string PartnerRegistrationNameParameterSet = "PartnerRegistrationNameParameterSet";
+        protected const string PartnerDestinationNameParameterSet = "PartnerDestinationNameParameterSet";
+        protected const string PartnerNamespaceNameParameterSet = "PartnerNamespaceNameParameterSet";
+        protected const string ChannelNameParameterSet = "ChannelNameParameterSet";
+        protected const string PartnerTopicNameParameterSet = "PartnerTopicNameParameterSet";
+
         EventGridClient client;
 
         public EventGridClient Client

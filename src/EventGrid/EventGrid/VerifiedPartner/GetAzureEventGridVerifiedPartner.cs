@@ -19,7 +19,6 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -40,33 +39,15 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "EventGrid Verified Partner Name.")]
+            HelpMessage = "EventGrid Verified Partner Name.",
+            ParameterSetName = VerifiedPartnerNameParameterSet)]
         public string Name { get; set; }
 
         [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.DomainResourceIdHelp,
-            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
-        [ValidateNotNullOrEmpty]
-        public string ResourceId { get; set; }
-
-        [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ODataQueryHelp,
-            ParameterSetName = DomainNameParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.ODataQueryHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.ODataQueryHelp,
-            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+            ParameterSetName = VerifiedPartnerNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ODataQuery { get; set; }
 
@@ -74,17 +55,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TopHelp,
-            ParameterSetName = DomainNameParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TopHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TopHelp,
-            ParameterSetName = ResourceIdEventSubscriptionParameterSet)]
+            ParameterSetName = VerifiedPartnerNameParameterSet)]
         [ValidateRange(1, 100)]
         public int Top { get; set; }
 
@@ -134,8 +105,8 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 // List all verified partners in the current tenant
                 (verifiedPartnersList, newNextLink) = this.Client.ListVerifiedPartners(this.ODataQuery, providedTop);
-                PSVerifiedPartnerListPagedInstance psVerifiedPartnerListPagedInstane = new PSVerifiedPartnerListPagedInstance(verifiedPartnersList, newNextLink);
-                this.WriteObject(psVerifiedPartnerListPagedInstane, true);
+                PSVerifiedPartnerListPagedInstance psVerifiedPartnerListPagedInstance = new PSVerifiedPartnerListPagedInstance(verifiedPartnersList, newNextLink);
+                this.WriteObject(psVerifiedPartnerListPagedInstance, true);
             }
         }
     }
