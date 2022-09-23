@@ -42,7 +42,7 @@ PowerShellVersion = '7.2'
 
 # Modules that must be imported into the global environment prior to importing this module
 RequiredModules = @(@{ModuleName = 'PSReadLine'; ModuleVersion = '2.2.2'; },
-                    @{ModuleName = 'Az.Accounts'; ModuleVersion = '2.6.2';})
+                    @{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.1';})
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @("Enable-AzPredictor", "Disable-AzPredictor", "Open-AzPredictorSurvey", "Send-AzPredictorRating")
