@@ -31,7 +31,6 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
-    [GenericBreakingChange("The returned file properties will be moved from CloudFile to FileProperties in a future release.")]
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileContent", SupportsShouldProcess = true, DefaultParameterSetName = LocalConstants.ShareNameParameterSetName)]
     [OutputType(typeof(AzureStorageFile))]
     public class GetAzureStorageFileContent : StorageFileDataManagementCmdletBase, IDynamicParameters
