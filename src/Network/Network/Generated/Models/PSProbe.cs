@@ -47,7 +47,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public int NumberOfProbes { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
-        public int ProbeThreshold { get; set; }
+        public int? ProbeThreshold { get; set; }
         [JsonProperty(Order = 1)]
         [Ps1Xml(Target = ViewControl.Table)]
         public string RequestPath { get; set; }

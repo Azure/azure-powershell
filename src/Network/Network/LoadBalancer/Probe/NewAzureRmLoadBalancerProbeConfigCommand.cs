@@ -64,7 +64,8 @@ namespace Microsoft.Azure.Commands.Network
            Mandatory = false,
            HelpMessage = "The number of consecutive successful or failed probes in order to allow or deny traffic from being delivered to this endpoint. After failing the number of consecutive probes equal to this value, the endpoint will be taken out of rotation and require the same number of successful consecutive probes to be placed back in rotation.",
            ValueFromPipelineByPropertyName = true)]
-        public int ProbeThreshold { get; set; }
+        [AllowNull]
+        public int? ProbeThreshold { get; set; }
 
         [Parameter(
             Mandatory = false,
