@@ -766,5 +766,9 @@
   {
     "module": "DeviceUpdate",
     "alias": "DeviceUpdate"
+  },
+  {
+    "alias": "ElasticSan",
+    "module": "ElasticSan"
   }
 ]
