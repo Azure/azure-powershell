@@ -605,6 +605,86 @@ function Test-PublicIpAddressCRUD-StandardSku
 
 <#
 .SYNOPSIS
+Tests creating new simple publicIpAddress with Ddos Protection
+#>
+function Test-PublicIpAddressCRUD-DdosProtection
+{
+    # Setup
+    $rgname = Get-ResourceGroupName
+    $rname = Get-ResourceName
+    $domainNameLabel = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement
+    $resourceTypeParent = "Microsoft.Network/publicIpAddresses"
+    $location = Get-ProviderLocation $resourceTypeParent
+
+    $DNSNameLabel = "mydnsname"
+    $NetworkName = "MyNet"
+    $NICName = "MyNIC"
+    $PublicIPAddressName = "ddosTempPIP"
+    $SubnetName = "MySubnet"
+    $SubnetAddressPrefix = "10.0.0.0/24"
+    $VnetAddressPrefix = "10.0.0.0/16"
+    $VMName = "MyVM"
+    $VMSize = "ExtraSmall"
+   
+    try 
+     {
+      # Create the resource group
+      $resourceGroup = New-AzResourceGroup -Name $rgname -Location $rglocation -Tags @{ testtag = "testval" } 
+      
+      # Create publicIpAddres
+      $actual = New-AzPublicIpAddress -ResourceGroupName $rgname -name $rname -location $location -AllocationMethod Static -Sku Standard -DomainNameLabel $domainNameLabel -DdosProtectionMode "Enabled"
+      $expected = Get-AzPublicIpAddress -ResourceGroupName $rgname -name $rname
+      Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $expected.Name $actual.Name
+      Assert-AreEqual $expected.Location $actual.Location
+      Assert-AreEqualObjectProperties $expected.Sku $actual.Sku
+      Assert-AreEqual "Static" $expected.PublicIpAllocationMethod
+      Assert-NotNull $expected.IpAddress
+      Assert-AreEqual "Succeeded" $expected.ProvisioningState
+      Assert-AreEqual "Enabled" $expected.DdosSettings.ProtectionMode
+
+      # list
+      $list = Get-AzPublicIpAddress -ResourceGroupName $rgname
+      Assert-AreEqual 1 @($list).Count
+      Assert-AreEqual $list[0].ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual $list[0].Name $actual.Name
+      Assert-AreEqual $list[0].Location $actual.Location
+      Assert-AreEqualObjectProperties $list[0].Sku $actual.Sku
+      Assert-AreEqual "Static" $list[0].PublicIpAllocationMethod
+      Assert-NotNull $list[0].IpAddress
+      Assert-AreEqual "Succeeded" $list[0].ProvisioningState
+      Assert-AreEqual "Enabled" $expected.DdosSettings.ProtectionMode
+
+      # Create Backend for Pip
+      $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix
+      $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $rgname -Location $location -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet
+      $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $rgname -Location $location -SubnetId $Vnet.Subnets[0].Id -PublicIpAddressId $expected.Id
+      
+      $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize
+      $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id
+      New-AzVM -ResourceGroupName $rgname -Location $location -VM $VirtualMachine -Verbose
+
+      # Get DDoS Protection Status
+      $result = Get-AzPublicIpAddressDdosProtectionStatus -PublicIpAddress $expected
+      Assert-AreEqual "true" $result.IsWorkloadProtected
+
+      # delete
+      $delete = Remove-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName -name $rname -PassThru -Force
+      Assert-AreEqual true $delete
+      
+      $list = Get-AzPublicIpAddress -ResourceGroupName $actual.ResourceGroupName
+      Assert-AreEqual 0 @($list).Count
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
 Tests creating new simple publicIpAddress with Static allocation and global tier.
 #>
 function Test-PublicIpAddressCRUD-StandardSkuGlobalTier

@@ -400,6 +400,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSPublicIpTag, MNM.IpTag>();
                 cfg.CreateMap<CNM.PSPublicIpAddressSku, MNM.PublicIPAddressSku>();
                 cfg.CreateMap<CNM.PSPublicIpAddressDnsSettings, MNM.PublicIPAddressDnsSettings>();
+                cfg.CreateMap<CNM.PSDdosSettings, MNM.DdosSettings>();
+                cfg.CreateMap<CNM.PSPublicIpDdosProtectionStatusResult, MNM.PublicIpDdosProtectionStatusResult>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.PublicIPAddress, CNM.PSPublicIpAddress>()
@@ -411,6 +413,8 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.IpTag, CNM.PSPublicIpTag>();
                 cfg.CreateMap<MNM.PublicIPAddressSku, CNM.PSPublicIpAddressSku>();
                 cfg.CreateMap<MNM.PublicIPAddressDnsSettings, CNM.PSPublicIpAddressDnsSettings>();
+                cfg.CreateMap<MNM.DdosSettings, CNM.PSDdosSettings>();
+                cfg.CreateMap<MNM.PublicIpDdosProtectionStatusResult, CNM.PSPublicIpDdosProtectionStatusResult>();
 
                 // PublicIpPrefix
                 // CNM to MNM
