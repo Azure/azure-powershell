@@ -135,12 +135,6 @@ namespace Microsoft.Azure.Commands.Network
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = "The DdosProtectionPlan to use for Public IP address")]
-        public PSDdosProtectionPlan DdosProtectionPlan { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
             HelpMessage = "The Reverse FQDN.")]
         public string ReverseFqdn { get; set; }
 
