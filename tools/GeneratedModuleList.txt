@@ -23,6 +23,7 @@ Az.DigitalTwins
 Az.DiskPool
 Az.EdgeOrder
 Az.Elastic
+Az.ElasticSan
 Az.FluidRelay
 Az.Functions
 Az.HanaOnAzure

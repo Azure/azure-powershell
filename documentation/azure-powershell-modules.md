@@ -70,6 +70,7 @@ DnsResolver                           | `Az.DnsResolver`                        
 DynatraceObservability                | `Az.DynatraceObservability`             | [![DynatraceObservability]][DynatraceObservabilityGallery]
 Stack Edge Order                      | `Az.EdgeOrder`                          | [![EdgeOrder]][EdgeOrderGallery]
 Elastic on Azure                      | `Az.Elastic`                            | [![Elastic]][ElasticGallery]
+ElasticSan on Azure                   | `Az.ElasticSan`                         | [![ElasticSan]][ElasticSanGallery]
 Event Grid                            | `Az.EventGrid`                          | [![EventGrid]][EventGridGallery]
 Event Hubs                            | `Az.EventHub`                           | [![EventHub]][EventHubGallery]
 Fluid Relay                           | `Az.FluidRelay`                         | [![FluidRelay]][FluidRelayGallery]
@@ -217,6 +218,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [DynatraceObservability]:     https://img.shields.io/powershellgallery/v/Az.DynatraceObservability.svg?style=flat-square&label=Az.DynatraceObservability
 [EdgeOrder]:                  https://img.shields.io/powershellgallery/v/Az.EdgeOrder.svg?style=flat-square&label=Az.EdgeOrder
 [Elastic]:                    https://img.shields.io/powershellgallery/v/Az.Elastic.svg?style=flat-square&label=Az.Elastic
+[ElasticSan]:                 https://img.shields.io/powershellgallery/v/Az.ElasticSan.svg?style=flat-square&label=Az.ElasticSan
 [EventGrid]:                  https://img.shields.io/powershellgallery/v/Az.EventGrid.svg?style=flat-square&label=Az.EventGrid
 [EventHub]:                   https://img.shields.io/powershellgallery/v/Az.EventHub.svg?style=flat-square&label=Az.EventHub
 [FluidRelay]:                 https://img.shields.io/powershellgallery/v/Az.FluidRelay.svg?style=flat-square&label=Az.FluidRelay
@@ -362,6 +364,7 @@ Machine Learning Services             | `Az.MachineLearningServices`            
 [DynatraceObservabilityGallery]:     https://www.powershellgallery.com/packages/Az.DynatraceObservability/
 [EdgeOrderGallery]:                  https://www.powershellgallery.com/packages/Az.EdgeOrder/
 [ElasticGallery]:                    https://www.powershellgallery.com/packages/Az.Elastic/
+[ElasticSanGallery]:                 https://www.powershellgallery.com/packages/Az.ElasticSan/
 [EventGridGallery]:                  https://www.powershellgallery.com/packages/Az.EventGrid/
 [EventHubGallery]:                   https://www.powershellgallery.com/packages/Az.EventHub/
 [FluidRelayGallery]:                 https://www.powershellgallery.com/packages/Az.FluidRelay/
