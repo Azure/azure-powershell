@@ -236,6 +236,10 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false)]
+        public bool ScaleInPolicyForceDeletion { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string PauseTimeBetweenBatches { get; set; }
 
@@ -529,13 +533,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSetUpdate.Identity = new VirtualMachineScaleSetIdentity();
                 }
 
-                this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>();
+                this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
 
                 foreach (var id in this.IdentityId)
                 {
                     if (!this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities.ContainsKey(id))
                     {
-                        this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities.Add(id, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue());
+                        this.VirtualMachineScaleSetUpdate.Identity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
                     }
                 }
             }
@@ -956,6 +960,19 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 this.VirtualMachineScaleSetUpdate.ScaleInPolicy.Rules = this.ScaleInPolicy;
             }
 
+            if (this.IsParameterBound(c => c.ScaleInPolicyForceDeletion))
+            {
+                if (this.VirtualMachineScaleSetUpdate == null)
+                {
+                    this.VirtualMachineScaleSetUpdate = new VirtualMachineScaleSetUpdate();
+                }
+                if (this.VirtualMachineScaleSetUpdate.ScaleInPolicy == null)
+                {
+                    this.VirtualMachineScaleSetUpdate.ScaleInPolicy = new ScaleInPolicy();
+                }
+                this.VirtualMachineScaleSetUpdate.ScaleInPolicy.ForceDeletion = this.ScaleInPolicyForceDeletion;
+            }
+
             if (this.IsParameterBound(c => c.SinglePlacementGroup))
             {
                 if (this.VirtualMachineScaleSetUpdate == null)
@@ -1346,13 +1363,13 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.Identity = new VirtualMachineScaleSetIdentity();
                 }
 
-                this.VirtualMachineScaleSet.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue>();
+                this.VirtualMachineScaleSet.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
 
                 foreach (var id in this.IdentityId)
                 {
                     if (!this.VirtualMachineScaleSet.Identity.UserAssignedIdentities.ContainsKey(id))
                     {
-                        this.VirtualMachineScaleSet.Identity.UserAssignedIdentities.Add(id, new VirtualMachineScaleSetIdentityUserAssignedIdentitiesValue());
+                        this.VirtualMachineScaleSet.Identity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
                     }
                 }
             }
@@ -1675,6 +1692,15 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.ScaleInPolicy = new ScaleInPolicy();
                 }
                 this.VirtualMachineScaleSet.ScaleInPolicy.Rules = this.ScaleInPolicy;
+            }
+
+            if (this.IsParameterBound(c => c.ScaleInPolicyForceDeletion))
+            {
+                if (this.VirtualMachineScaleSet.ScaleInPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.ScaleInPolicy = new ScaleInPolicy();
+                }
+                this.VirtualMachineScaleSet.ScaleInPolicy.ForceDeletion = this.ScaleInPolicyForceDeletion;
             }
 
             if (this.IsParameterBound(c => c.SinglePlacementGroup))

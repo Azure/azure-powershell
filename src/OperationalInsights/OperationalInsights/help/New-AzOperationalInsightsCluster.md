@@ -28,7 +28,7 @@ Create cluster
 
 ### Example 1
 ```powershell
-New-AzOperationalInsightsCluster -ResourceGroupName {rg-name} -ClusterName {cluster-name} -Location eastus -IdentityType SystemAssigned -SkuName CapacityReservation -SkuCapacity 1000
+New-AzOperationalInsightsCluster -ResourceGroupName "rg-name" -ClusterName "cluster-name" -Location eastus -IdentityType SystemAssigned -SkuName CapacityReservation -SkuCapacity 1000
 ```
 
 ```output
@@ -117,7 +117,7 @@ Accept wildcard characters: False
 ```
 
 ### -IdentityType
-the identity type, value can be 'SystemAssigned', 'None'.
+the identity type, value can be 'SystemAssigned', 'None', 'UserAssigned'.
 
 ```yaml
 Type: System.String
@@ -238,7 +238,7 @@ Accept wildcard characters: False
 ```
 
 ### -SkuCapacity
-Sku Capacity, value need to be multiple of 100 and in the range of 1000-2000.
+Sku Capacity, value need to be multiple of 100 and at least 1000.
 
 ```yaml
 Type: System.Int64

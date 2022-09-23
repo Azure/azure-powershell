@@ -84,6 +84,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
             AzureVmItem item = (AzureVmItem)ProviderData[ItemParams.Item];
 
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;
+
+            ProtectionPolicyResource oldPolicy = null;
+            ProtectionPolicyResource newPolicy = null;
+            if (parameterSetName.Contains("Modify") && item.PolicyId != null && item.PolicyId != "")
+            {                
+                Dictionary<UriEnums, string> keyValueDict = HelperUtils.ParseUri(item.PolicyId);
+                string oldPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, item.PolicyId);
+
+                keyValueDict = HelperUtils.ParseUri(policy.Id);
+                string newPolicyName = HelperUtils.GetPolicyNameFromPolicyId(keyValueDict, policy.Id);
+
+                // fetch old and new Policy 
+                oldPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                    oldPolicyName,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
+
+                newPolicy = ServiceClientAdapter.GetProtectionPolicy(
+                    newPolicyName,
+                    vaultName: vaultName,
+                    resourceGroupName: resourceGroupName);
+            }
+
             bool isDiskExclusionParamPresent = ValidateDiskExclusionParameters(
                 inclusionDisksList, exclusionDisksList, resetDiskExclusionSetting, excludeAllDataDisks);            
 
@@ -217,12 +242,21 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Properties = properties
             };
 
+            // check for MUA
+            bool isMUAProtected = false;
+            if (parameterSetName.Contains("Modify") && oldPolicy != null && newPolicy != null)
+            {
+                isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(oldPolicy, newPolicy, isMUAOperation);
+            }
+
             return ServiceClientAdapter.CreateOrUpdateProtectedItem(
                 containerUri,
                 protectedItemUri,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
+                resourceGroupName: resourceGroupName,
+                auxiliaryAccessToken,
+                isMUAProtected);
         }
 
         /// <summary>
@@ -283,7 +317,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
             bool deleteBackupData = (bool)ProviderData[ItemParams.DeleteBackupData];
-
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
             ItemBase itemBase = (ItemBase)ProviderData[ItemParams.Item];
 
             AzureVmItem item = (AzureVmItem)ProviderData[ItemParams.Item];
@@ -299,9 +333,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                                 containerUri,
                                 protectedItemUri,
                                 vaultName: vaultName,
-                                resourceGroupName: resourceGroupName);
+                                resourceGroupName: resourceGroupName,
+                                auxiliaryAccessToken,
+                                item.Id);
         }
-
 
         /// <summary>
         /// Triggers the backup operation for the given item
@@ -407,11 +442,14 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             string targetVNetName = (string)ProviderData[RestoreVMBackupItemParams.TargetVNetName];
             string targetVNetResourceGroup = (string)ProviderData[RestoreVMBackupItemParams.TargetVNetResourceGroup];
             string targetSubnetName = (string)ProviderData[RestoreVMBackupItemParams.TargetSubnetName];
-
+            string targetSubscriptionId = (string)ProviderData[RestoreVMBackupItemParams.TargetSubscriptionId];
+            
             Dictionary<UriEnums, string> uriDict = HelperUtils.ParseUri(rp.Id);
             string containerUri = HelperUtils.GetContainerUri(uriDict, rp.Id);
 
-            GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(storageAccountName);
+            if (targetSubscriptionId == null || targetSubscriptionId == "") targetSubscriptionId = ServiceClientAdapter.SubscriptionId;
+
+            GenericResource storageAccountResource = ServiceClientAdapter.GetStorageAccountResource(storageAccountName, targetSubscriptionId);
 
             var useOsa = ShouldUseOsa(rp, osaOption);
 
@@ -460,7 +498,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 {
                     identityInfo = new IdentityInfo();
                     if (useSystemAssignedIdentity)
-                    {   
+                    {
                         identityInfo.IsSystemAssignedIdentity = true;
                     }
                     else
@@ -475,12 +513,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
                 else
                 {
-                    throw new NotSupportedException(Resources.MSIRestoreNotSupportedForUnmanagedVM);                    
+                    throw new NotSupportedException(Resources.MSIRestoreNotSupportedForUnmanagedVM);
                 }
             }
-            
-            string targetSubscription = ServiceClientAdapter.SubscriptionId;
-            
+
             IaasVMRestoreRequest restoreRequest = new IaasVMRestoreRequest()
             {
                 CreateNewCloudService = false,
@@ -489,7 +525,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 Region = vaultLocation ?? ServiceClientAdapter.BmsAdapter.GetResourceLocation(),
                 StorageAccountId = storageAccountResource.Id,
                 SourceResourceId = rp.SourceResourceId,
-                TargetResourceGroupId = targetResourceGroupName != null ? "/subscriptions/" + targetSubscription + "/resourceGroups/" + targetResourceGroupName : null,
+                TargetResourceGroupId = targetResourceGroupName != null ? "/subscriptions/" + targetSubscriptionId + "/resourceGroups/" + targetResourceGroupName : null,
                 OriginalStorageAccountOption = useOsa,
                 RestoreDiskLunList = restoreDiskLUNS,
                 DiskEncryptionSetId = DiskEncryptionSetId,
@@ -526,8 +562,8 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
 
                 restoreRequest.RecoveryType = RecoveryType.AlternateLocation;
-                restoreRequest.TargetVirtualMachineId = "/subscriptions/" + targetSubscription + "/resourceGroups/" + targetResourceGroupName + "/providers/Microsoft.Compute/virtualMachines/" + targetVMName;
-                restoreRequest.VirtualNetworkId = "/subscriptions/" + targetSubscription + "/resourceGroups/" + targetVNetResourceGroup + "/providers/Microsoft.Network/virtualNetworks/" + targetVNetName;
+                restoreRequest.TargetVirtualMachineId = "/subscriptions/" + targetSubscriptionId + "/resourceGroups/" + targetResourceGroupName + "/providers/Microsoft.Compute/virtualMachines/" + targetVMName;
+                restoreRequest.VirtualNetworkId = "/subscriptions/" + targetSubscriptionId + "/resourceGroups/" + targetVNetResourceGroup + "/providers/Microsoft.Network/virtualNetworks/" + targetVNetName;
                 restoreRequest.SubnetId = restoreRequest.VirtualNetworkId + "/subnets/" + targetSubnetName;
             }
 
@@ -770,7 +806,10 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ?
                 (SchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] :
                 null;
-            
+
+            CmdletModel.TieringPolicy tieringDetails = ProviderData.ContainsKey(PolicyParams.TieringPolicy) ? (CmdletModel.TieringPolicy)ProviderData[PolicyParams.TieringPolicy] : null;
+            bool isSmartTieringEnabled = ProviderData.ContainsKey(PolicyParams.IsSmartTieringEnabled) ? (bool)ProviderData[PolicyParams.IsSmartTieringEnabled] : false;
+
             // do validations
             ValidateAzureVMWorkloadType(workloadType);                       
 
@@ -791,19 +830,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // Now validate both RetentionPolicy and SchedulePolicy together
             if (schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicy))
             {
-                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
                                 (CmdletModel.LongTermRetentionPolicy)retentionPolicy,
                                 (CmdletModel.SimpleSchedulePolicy)schedulePolicy); 
             }
             else if (schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2))
             {
-                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
                                 (CmdletModel.LongTermRetentionPolicy)retentionPolicy,
                                 (CmdletModel.SimpleSchedulePolicyV2)schedulePolicy);
             }
                 
             Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
-            
+                        
+            PolicyHelpers.ValidateLongTermRetentionPolicyWithTieringPolicy((CmdletModel.LongTermRetentionPolicy)retentionPolicy, tieringDetails);            
+            Logger.Instance.WriteDebug("Validation of Retention policy with Tiering policy is successful");
+
             int snapshotRetentionInDays = 2;
             if (schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicy) && ((CmdletModel.SimpleSchedulePolicy)schedulePolicy).ScheduleRunFrequency == CmdletModel.ScheduleRunType.Weekly)
             {
@@ -825,7 +867,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     timeZone = timeZoneInput;
                 }                
             }
-
+            
             // construct Service Client policy request            
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource()
             {
@@ -834,6 +876,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
                                                 (CmdletModel.LongTermRetentionPolicy)retentionPolicy),
                     SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(schedulePolicy),
+                    TieringPolicy = PolicyHelpers.GetServiceClientTieringPolicy(tieringDetails, isSmartTieringEnabled),
                     PolicyType = (schedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)) ? "V2" : null,
                     TimeZone = timeZone,
                     InstantRpRetentionRangeInDays = snapshotRetentionInDays
@@ -855,19 +898,17 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         {
             string vaultName = (string)ProviderData[VaultParams.VaultName];
             string resourceGroupName = (string)ProviderData[VaultParams.ResourceGroupName];
-            RetentionPolicyBase retentionPolicy =
-               ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ?
-               (RetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] :
-               null;
-            SchedulePolicyBase schedulePolicy =
-                ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ?
-                (SchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] :
-                null;
 
-            PolicyBase policy =
-                ProviderData.ContainsKey(PolicyParams.ProtectionPolicy) ?
-                (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy] :
-                null;
+            string auxiliaryAccessToken = ProviderData.ContainsKey(ResourceGuardParams.Token) ? (string)ProviderData[ResourceGuardParams.Token] : null;
+            bool isMUAOperation = ProviderData.ContainsKey(ResourceGuardParams.IsMUAOperation) ? (bool)ProviderData[ResourceGuardParams.IsMUAOperation] : false;            
+            ProtectionPolicyResource existingPolicy = ProviderData.ContainsKey(PolicyParams.ExistingPolicy) ? (ProtectionPolicyResource)ProviderData[PolicyParams.ExistingPolicy] : null;
+
+            RetentionPolicyBase retentionPolicy = ProviderData.ContainsKey(PolicyParams.RetentionPolicy) ? (RetentionPolicyBase)ProviderData[PolicyParams.RetentionPolicy] : null;
+            SchedulePolicyBase schedulePolicy = ProviderData.ContainsKey(PolicyParams.SchedulePolicy) ? (SchedulePolicyBase)ProviderData[PolicyParams.SchedulePolicy] : null;
+            PolicyBase policy = ProviderData.ContainsKey(PolicyParams.ProtectionPolicy) ? (PolicyBase)ProviderData[PolicyParams.ProtectionPolicy] : null;
+
+            CmdletModel.TieringPolicy tieringDetails = ProviderData.ContainsKey(PolicyParams.TieringPolicy) ? (CmdletModel.TieringPolicy)ProviderData[PolicyParams.TieringPolicy] : null;
+            bool isSmartTieringEnabled = ProviderData.ContainsKey(PolicyParams.IsSmartTieringEnabled) ? (bool)ProviderData[PolicyParams.IsSmartTieringEnabled] : false;
 
             // do validations
             ValidateAzureVMProtectionPolicy(policy);
@@ -896,18 +937,31 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
             // Now validate both RetentionPolicy and SchedulePolicy matches or not
             if (((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicy))
             {
-                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
                                 (CmdletModel.LongTermRetentionPolicy)((AzureVmPolicy)policy).RetentionPolicy,
                                 (CmdletModel.SimpleSchedulePolicy)((AzureVmPolicy)policy).SchedulePolicy);
             }
             else if (((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2))
             {
-                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleRetentionPolicy(
+                PolicyHelpers.ValidateLongTermRetentionPolicyWithSimpleSchedulePolicy(
                                 (CmdletModel.LongTermRetentionPolicy)((AzureVmPolicy)policy).RetentionPolicy,
                                 (CmdletModel.SimpleSchedulePolicyV2)((AzureVmPolicy)policy).SchedulePolicy);
             }
 
             Logger.Instance.WriteDebug("Validation of Retention policy with Schedule policy is successful");
+
+
+            if (tieringDetails != null)
+            {                
+                PolicyHelpers.ValidateLongTermRetentionPolicyWithTieringPolicy((CmdletModel.LongTermRetentionPolicy)((AzureVmPolicy)policy).RetentionPolicy, tieringDetails);
+
+                ((AzureVmPolicy)policy).TieringPolicy = tieringDetails;
+                Logger.Instance.WriteDebug("Validation of Retention policy with Tiering policy is successful");
+            }
+            else if(((AzureVmPolicy)policy).TieringPolicy != null)
+            {
+                PolicyHelpers.ValidateLongTermRetentionPolicyWithTieringPolicy((CmdletModel.LongTermRetentionPolicy)((AzureVmPolicy)policy).RetentionPolicy, ((AzureVmPolicy)policy).TieringPolicy, true);
+            }
 
             //Validate instant RP retention days
             ValidateInstantRPRetentionDays(((AzureVmPolicy)policy));
@@ -923,7 +977,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     timeZone = timeZoneInput;
                 }
             }
-
+                        
             // construct Service Client policy request            
             ProtectionPolicyResource serviceClientRequest = new ProtectionPolicyResource()
             {
@@ -932,6 +986,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                     RetentionPolicy = PolicyHelpers.GetServiceClientLongTermRetentionPolicy(
                                   (CmdletModel.LongTermRetentionPolicy)((AzureVmPolicy)policy).RetentionPolicy),
                     SchedulePolicy = PolicyHelpers.GetServiceClientSimpleSchedulePolicy(((AzureVmPolicy)policy).SchedulePolicy),
+                    TieringPolicy = PolicyHelpers.GetServiceClientTieringPolicy(((AzureVmPolicy)policy).TieringPolicy, isSmartTieringEnabled),
                     TimeZone = timeZone,
                     PolicyType = (((AzureVmPolicy)policy).SchedulePolicy.GetType() == typeof(CmdletModel.SimpleSchedulePolicyV2)) ? "V2" : null,
                     InstantRpRetentionRangeInDays = ((AzureVmPolicy)policy).SnapshotRetentionInDays,
@@ -941,11 +996,20 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
                 }
             };
 
+            // check for MUA
+            bool isMUAProtected = false;
+            if (existingPolicy != null)
+            {
+                isMUAProtected = AzureWorkloadProviderHelper.checkMUAForModifyPolicy(existingPolicy, serviceClientRequest, isMUAOperation);
+            }
+
             return ServiceClientAdapter.CreateOrUpdateProtectionPolicy(
                 policy.Name,
                 serviceClientRequest,
                 vaultName: vaultName,
-                resourceGroupName: resourceGroupName);
+                resourceGroupName: resourceGroupName,
+                auxiliaryAccessToken, 
+                isMUAProtected);
         }
 
         /// <summary>
@@ -1595,6 +1659,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// Generates ILR Response object for Windows VMs
         /// </summary>
         /// <param name="clientScriptForConnection"></param>
+        /// <param name="content"></param>
         /// <returns></returns>
         private AzureVmRPMountScriptDetails GenerateILRResponseForWindowsVMs(
             ClientScriptForConnect clientScriptForConnection, out string content)
@@ -1646,6 +1711,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.ProviderModel
         /// <param name="clientScriptForConnection"></param>
         /// <param name="protectedItemName"></param>
         /// <param name="recoveryPointTime"></param>
+        /// <param name="content"></param>
         /// <returns></returns>
         private AzureVmRPMountScriptDetails GenerateILRResponseForLinuxVMs(
             ClientScriptForConnect clientScriptForConnection,

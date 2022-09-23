@@ -29,12 +29,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
     using System.Threading;
     using global::Azure.Storage.Blobs;
     using global::Azure.Storage;
+    using global::Azure.Storage.Files.DataLake;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Files.Shares.Models;
 
     internal class SasTokenHelper
     {
         /// <summary>
         /// Validate the container access policy
         /// </summary>
+        /// <param name="channel">IStorageBlobManagement channel object</param>
+        /// <param name="containerName">Container name</param>
         /// <param name="policy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
         public static bool ValidateContainerAccessPolicy(IStorageBlobManagement channel, string containerName,
@@ -66,8 +71,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Validate the file share access policy
         /// </summary>
-        /// <param name="policy">SharedAccessFilePolicy object</param>
+        /// <param name="channel">IStorageFileManagement channel object</param>
+        /// <param name="shareName">A string containing the name of the share.</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
+        /// <param name="shouldNoPermission"></param>
+        /// <param name="shouldNoStartTime"></param>
+        /// <param name="shouldNoExpiryTime"></param>
         public static bool ValidateShareAccessPolicy(IStorageFileManagement channel, string shareName,
              string policyIdentifier, bool shouldNoPermission, bool shouldNoStartTime, bool shouldNoExpiryTime)
         {
@@ -108,6 +117,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Validate the queue access policy
         /// </summary>
+        /// <param name="channel">IStorageQueueManagement channel object</param>
+        /// <param name="queueName">Queue name</param>
         /// <param name="policy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
         public static bool ValidateQueueAccessPolicy(IStorageQueueManagement channel, string queueName,
@@ -138,6 +149,8 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
         /// <summary>
         /// Validate the table access policy
         /// </summary>
+        /// <param name="channel">IStorageTableManagement channel object</param>
+        /// <param name="tableName">Table name</param>
         /// <param name="policy">SharedAccessBlobPolicy object</param>
         /// <param name="policyIdentifier">The policy identifier which need to be checked.</param>
         internal static bool ValidateTableAccessPolicy(IStorageTableManagement channel,
@@ -228,7 +241,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 // There is already a query string in the URI,
                 // remove "?" from sas token.
-                return absoluteUri + sasToken.Substring(1);
+                return absoluteUri + "&" + sasToken.Substring(1);
             }
             else
             {
@@ -251,6 +264,200 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             }
             throw new ArgumentException(string.Format(Resources.InvalidAccessPolicy, identifierId));
         }
+
+        /// <summary>
+        /// Get a ShareSignedIdentifier from contaienr with a specific Id
+        /// </summary>
+        public static ShareSignedIdentifier GetShareSignedIdentifier(ShareClient share, string identifierId, CancellationToken cancellationToken)
+        {
+            IEnumerable<ShareSignedIdentifier> signedIdentifiers = share.GetAccessPolicy(cancellationToken: cancellationToken).Value;
+            foreach (ShareSignedIdentifier identifier in signedIdentifiers)
+            {
+                if (identifier.Id == identifierId)
+                {
+                    return identifier;
+                }
+            }
+            throw new ArgumentException(string.Format(Resources.InvalidAccessPolicy, identifierId));
+        }
+
+
+
+        /// <summary>
+        /// Create a blob SAS build from Blob Object
+        /// </summary>
+        public static ShareSasBuilder SetShareSasBuilder_FromFile(ShareFileClient file,
+            ShareSignedIdentifier signedIdentifier = null,
+            string Permission = null,
+            DateTime? StartTime = null,
+            DateTime? ExpiryTime = null,
+            string iPAddressOrRange = null,
+            SharedAccessProtocol? Protocol = null)
+        {
+            ShareSasBuilder sasBuilder = SetShareSasBuilder(file.ShareName,
+                file.Path,
+                signedIdentifier,
+                Permission,
+                StartTime,
+                ExpiryTime,
+                iPAddressOrRange,
+                Protocol);
+            return sasBuilder;
+        }
+
+        /// <summary>
+        /// Create a blob SAS build from container Object
+        /// </summary>
+        public static ShareSasBuilder SetShareSasBuilder_FromShare(ShareClient share,
+            ShareSignedIdentifier signedIdentifier = null,
+            string Permission = null,
+            DateTime? StartTime = null,
+            DateTime? ExpiryTime = null,
+            string iPAddressOrRange = null,
+            SharedAccessProtocol? Protocol = null)
+        {
+            ShareSasBuilder sasBuilder = SetShareSasBuilder(share.Name,
+                null,
+                signedIdentifier,
+                Permission,
+                StartTime,
+                ExpiryTime,
+                iPAddressOrRange,
+                Protocol);
+            return sasBuilder;
+        }
+
+        /// <summary>
+        /// Create a blob SAS build from Blob Object
+        /// </summary>
+        public static ShareSasBuilder SetShareSasBuilder(string shareName,
+            string filePath = null,
+            ShareSignedIdentifier signedIdentifier = null,
+            string Permission = null,
+            DateTime? StartTime = null,
+            DateTime? ExpiryTime = null,
+            string iPAddressOrRange = null,
+            SharedAccessProtocol? Protocol = null,
+            string EncryptionScope = null)
+        {
+            ShareSasBuilder sasBuilder;
+            if (signedIdentifier != null) // Use save access policy
+            {
+                sasBuilder = new ShareSasBuilder
+                {
+                    ShareName = shareName,
+                    FilePath = filePath,
+                    Identifier = signedIdentifier.Id
+                };
+
+                if (StartTime != null)
+                {
+                    if (signedIdentifier.AccessPolicy.StartsOn != DateTimeOffset.MinValue && signedIdentifier.AccessPolicy.StartsOn != null)
+                    {
+                        throw new InvalidOperationException(Resources.SignedStartTimeMustBeOmitted);
+                    }
+                    else
+                    {
+                        sasBuilder.StartsOn = StartTime.Value.ToUniversalTime();
+                    }
+                }
+
+                if (ExpiryTime != null)
+                {
+                    if (signedIdentifier.AccessPolicy.PolicyExpiresOn != DateTimeOffset.MinValue && signedIdentifier.AccessPolicy.PolicyExpiresOn != null)
+                    {
+                        throw new ArgumentException(Resources.SignedExpiryTimeMustBeOmitted);
+                    }
+                    else
+                    {
+                        sasBuilder.ExpiresOn = ExpiryTime.Value.ToUniversalTime();
+                    }
+                }
+                else if (signedIdentifier.AccessPolicy.PolicyExpiresOn == DateTimeOffset.MinValue && signedIdentifier.AccessPolicy.PolicyExpiresOn != null)
+                {
+                    if (sasBuilder.StartsOn != DateTimeOffset.MinValue && sasBuilder.StartsOn != null)
+                    {
+                        sasBuilder.ExpiresOn = sasBuilder.StartsOn.ToUniversalTime().AddHours(1);
+                    }
+                    else
+                    {
+                        sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(1);
+                    }
+                }
+
+                if (Permission != null)
+                {
+                    if (signedIdentifier.AccessPolicy.Permissions != null)
+                    {
+                        throw new ArgumentException(Resources.SignedPermissionsMustBeOmitted);
+                    }
+                    else
+                    {
+                        sasBuilder.SetPermissions(Permission, true);
+                    }
+                }
+            }
+            else // use user input permission, starton, expireon
+            {
+                sasBuilder = new ShareSasBuilder
+                {
+                    ShareName = shareName,
+                    FilePath = filePath,
+                };
+                sasBuilder.SetPermissions(Permission, true);
+                if (StartTime != null)
+                {
+                    sasBuilder.StartsOn = StartTime.Value.ToUniversalTime();
+                }
+                if (ExpiryTime != null)
+                {
+                    sasBuilder.ExpiresOn = ExpiryTime.Value.ToUniversalTime();
+                }
+                else
+                {
+                    if (sasBuilder.StartsOn != DateTimeOffset.MinValue)
+                    {
+                        sasBuilder.ExpiresOn = sasBuilder.StartsOn.AddHours(1).ToUniversalTime();
+                    }
+                    else
+                    {
+                        sasBuilder.ExpiresOn = DateTimeOffset.UtcNow.AddHours(1);
+                    }
+                }
+            }
+            if (iPAddressOrRange != null)
+            {
+                sasBuilder.IPRange = Util.SetupIPAddressOrRangeForSASTrack2(iPAddressOrRange);
+            }
+            if (Protocol != null)
+            {
+                if (Protocol.Value == SharedAccessProtocol.HttpsOrHttp)
+                {
+                    sasBuilder.Protocol = SasProtocol.HttpsAndHttp;
+                }
+                else //HttpsOnly
+                {
+                    sasBuilder.Protocol = SasProtocol.Https;
+                }
+            }
+            return sasBuilder;
+        }
+
+        /// <summary>
+        /// Get SAS string
+        /// </summary>
+        public static string GetFileSharedAccessSignature(AzureStorageContext context, ShareSasBuilder sasBuilder, CancellationToken cancelToken)
+        {
+            if (context != null && context.StorageAccount.Credentials.IsSharedKey)
+            {
+                return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+            }
+            else
+            {
+                throw new InvalidOperationException("Create File service SAS only supported with SharedKey credentail.");
+            }
+        }
+
 
         /// <summary>
         /// Create a blob SAS build from Blob Object
@@ -277,9 +484,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 sasBuilder.BlobVersionId = Util.GetVersionIdFromBlobUri(blobClient.Uri);
             }
-            if (Util.GetSnapshotTimeFromBlobUri(blobClient.Uri) != null)
+            if (Util.GetSnapshotTimeFromUri(blobClient.Uri) != null)
             {
-                sasBuilder.Snapshot = Util.GetSnapshotTimeFromBlobUri(blobClient.Uri).Value.UtcDateTime.ToString("o");
+                sasBuilder.Snapshot = Util.GetSnapshotTimeStringFromUri(blobClient.Uri);
             }
             return sasBuilder;
         }
@@ -488,6 +695,35 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Common
             {
                 global::Azure.Storage.Blobs.Models.UserDelegationKey userDelegationKey = null;
                 BlobServiceClient oauthService = new BlobServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, ClientOptions);
+
+                Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
+
+                userDelegationKey = oauthService.GetUserDelegationKey(
+                    startsOn: sasBuilder.StartsOn == DateTimeOffset.MinValue || sasBuilder.StartsOn == null ? DateTimeOffset.UtcNow : sasBuilder.StartsOn.ToUniversalTime(),
+                    expiresOn: sasBuilder.ExpiresOn.ToUniversalTime(),
+                    cancellationToken: cancelToken);
+
+                return sasBuilder.ToSasQueryParameters(userDelegationKey, context.StorageAccountName).ToString();
+            }
+            else
+            {
+                throw new InvalidOperationException("Create SAS only supported with SharedKey or Oauth credentail.");
+            }
+        }
+
+        /// <summary>
+        /// Get SAS string for DatalakeGen2
+        /// </summary>
+        public static string GetDatalakeGen2SharedAccessSignature(AzureStorageContext context, DataLakeSasBuilder sasBuilder, bool generateUserDelegationSas, DataLakeClientOptions clientOptions, CancellationToken cancelToken)
+        {
+            if (context != null && context.StorageAccount.Credentials.IsSharedKey)
+            {
+                return sasBuilder.ToSasQueryParameters(new StorageSharedKeyCredential(context.StorageAccountName, context.StorageAccount.Credentials.ExportBase64EncodedKey())).ToString();
+            }
+            if (generateUserDelegationSas)
+            {
+                global::Azure.Storage.Files.DataLake.Models.UserDelegationKey userDelegationKey = null;
+                DataLakeServiceClient oauthService = new DataLakeServiceClient(context.StorageAccount.BlobEndpoint, context.Track2OauthToken, clientOptions);
 
                 Util.ValidateUserDelegationKeyStartEndTime(sasBuilder.StartsOn, sasBuilder.ExpiresOn);
 

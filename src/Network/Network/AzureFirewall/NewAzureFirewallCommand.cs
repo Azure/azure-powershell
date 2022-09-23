@@ -205,6 +205,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
                 MNM.AzureFirewallSkuTier.Standard,
                 MNM.AzureFirewallSkuTier.Premium,
+                MNM.FirewallPolicySkuTier.Basic,
                 IgnoreCase = false)]
         public string SkuTier { get; set; }
 
@@ -230,6 +231,18 @@ namespace Microsoft.Azure.Commands.Network
             HelpMessage = "Allow Active FTP. By default it is false."
         )]
         public SwitchParameter AllowActiveFTP { get; set; }
+
+        [Parameter(
+           Mandatory = false,
+           HelpMessage = "Enable Fat Flow Logging. By default it is false."
+       )]
+        public SwitchParameter EnableFatFlowLogging { get; set; }
+
+        [Parameter(
+             Mandatory = false,
+             HelpMessage = "Enable UDP Log Optimization. By default it is false."
+       )]
+        public SwitchParameter EnableUDPLogOptimization { get; set; }
 
         public override void Execute()
         {
@@ -299,7 +312,9 @@ namespace Microsoft.Azure.Commands.Network
                     VirtualHub = VirtualHubId != null ? new MNM.SubResource(VirtualHubId) : null,
                     FirewallPolicy = FirewallPolicyId != null ? new MNM.SubResource(FirewallPolicyId) : null,
                     HubIPAddresses = this.HubIPAddress,
-                    Zones = this.Zone == null ? null : this.Zone.ToList()
+                    Zones = this.Zone == null ? null : this.Zone.ToList(),
+                    EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
+                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
                 };
             }
             else
@@ -319,7 +334,9 @@ namespace Microsoft.Azure.Commands.Network
                     DNSEnableProxy = (this.EnableDnsProxy.IsPresent ? "true" : null),
                     DNSServer = this.DnsServer,
                     AllowActiveFTP = (this.AllowActiveFTP.IsPresent ? "true" : null),
-                    Sku = sku
+                    Sku = sku,
+                    EnableFatFlowLogging = (this.EnableFatFlowLogging.IsPresent ? "True" : null),
+                    EnableUDPLogOptimization = (this.EnableUDPLogOptimization.IsPresent ? "True" : null)
                 };
 
                 if (this.Zone != null)
@@ -329,9 +346,15 @@ namespace Microsoft.Azure.Commands.Network
 
                 if (this.virtualNetwork != null)
                 {
-                    firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                    if (firewall.Sku != null && firewall.Sku.Tier.Equals(MNM.AzureFirewallSkuTier.Basic))
+                    {
+                        firewall.AllocateBasicSku(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                    }
+                    else
+                    {
+                        firewall.Allocate(this.virtualNetwork, this.publicIpAddresses, this.ManagementPublicIpAddress);
+                    }
                 }
-
                 firewall.ValidateDNSProxyRequirements();
             }
 

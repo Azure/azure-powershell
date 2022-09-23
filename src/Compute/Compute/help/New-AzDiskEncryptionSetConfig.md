@@ -15,7 +15,8 @@ Creates a configurable disk encryption set object.
 ```
 New-AzDiskEncryptionSetConfig [-Location] <String> [[-Tag] <Hashtable>] [[-IdentityType] <String>]
  [[-SourceVaultId] <String>] [-KeyUrl <String>] [-EncryptionType <String>]
- [-RotationToLatestKeyVersionEnabled <Boolean>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [-RotationToLatestKeyVersionEnabled <Boolean>] [-FederatedClientId <String>]
+ [-UserAssignedIdentity <Hashtable>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
@@ -31,6 +32,15 @@ $config | New-AzDiskEncryptionSet -ResourceGroupName 'rg1' -Name 'enc1'
 ```
 
 Creates disk encryption set using the given active key in the key vault.
+
+### Example 2
+```powershell
+$userAssignedIdentities = @{ "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}" = @{}};
+$config = New-AzDiskEncryptionSetConfig -Location 'westcentralus' -KeyUrl "https://valut1.vault.azure.net:443/keys/key1/mykey" -SourceVaultId '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg1/providers/Microsoft.KeyVault/vaults/vault1' -IdentityType 'UserAssigned' -RotationToLatestKeyVersionEnabled $True -UserAssignedIdentity $userAssignedIdentities -FederatedClientId "13ebe945-1314-41b4-8b58-f3784e0dd278"
+$config | New-AzDiskEncryptionSet -ResourceGroupName 'rg1' -Name 'enc1'
+```
+
+Using UserAssignedIdentity and FederatedClientId
 
 ## PARAMETERS
 
@@ -51,6 +61,21 @@ Accept wildcard characters: False
 
 ### -EncryptionType
 Use this to set the encryption type of the disk encryption set. Available values are: 'EncryptionAtRestWithPlatformKey', 'EncryptionAtRestWithCustomerKey'.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -FederatedClientId
+Multi-tenant application client id to access key vault in a different tenant.
 
 ```yaml
 Type: System.String
@@ -150,6 +175,21 @@ Aliases:
 
 Required: False
 Position: 1
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -UserAssignedIdentity
+The list of user identities associated with the disk encryption set. The user identity dictionary key references will be ARM resource ids in the form: '/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{identityName}'.
+
+```yaml
+Type: System.Collections.Hashtable
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False

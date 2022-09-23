@@ -30,7 +30,7 @@ $item = Get-AzRecoveryServicesBackupItem -BackupManagementType "AzureVM" -Worklo
 $rpGroup = Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup -Item $item[3] -VaultId $vault.ID
 ```
 
-Here we use **Get-AzRecoveryServicesRecommendedArchivableRPGroup** cmdlet to fetch the recommended RPs list to be moved to VaultArchive tier
+Here we use **Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup** cmdlet to fetch the recommended RPs list to be moved to VaultArchive tier
 and assign to $rpGroup. 
 
 ## PARAMETERS

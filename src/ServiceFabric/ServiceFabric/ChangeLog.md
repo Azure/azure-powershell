@@ -19,6 +19,10 @@
 -->
 ## Upcoming Release
 
+## Version 3.1.0
+* Fixed typo in verbose log message.
+* Added Tag support for managed cluster create and update
+
 ## Version 3.0.2
 * Added support for Ubuntu 20.04 vm image. 
     - This enables cluster operations with Ubuntu 20.04 vm image using AZ powershell. 

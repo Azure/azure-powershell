@@ -24,8 +24,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
+ [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### KeyvaultEncryption
@@ -40,8 +41,26 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
  [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
+ [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
+```
+
+### AzureActiveDirectoryKerberosForFile
+```
+Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-SkuName <String>]
+ [-AccessTier <String>] [-CustomDomainName <String>] [-UseSubDomain <Boolean>] [-Tag <Hashtable>]
+ [-EnableHttpsTrafficOnly <Boolean>] [-AssignIdentity] [-UserAssignedIdentityId <String>]
+ [-KeyVaultUserAssignedIdentityId <String>] [-IdentityType <String>] [-NetworkRuleSet <PSNetworkRuleSet>]
+ [-UpgradeToStorageV2] [-EnableLargeFileShare] [-PublishMicrosoftEndpoint <Boolean>]
+ [-PublishInternetEndpoint <Boolean>] [-EnableAzureActiveDirectoryKerberosForFile <Boolean>]
+ [-ActiveDirectoryDomainName <String>] [-ActiveDirectoryDomainGuid <String>] [-AllowBlobPublicAccess <Boolean>]
+ [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>] [-SasExpirationPeriod <TimeSpan>]
+ [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
+ [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
+ [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
+ [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ActiveDirectoryDomainServicesForFile
@@ -59,8 +78,9 @@ Set-AzStorageAccount [-ResourceGroupName] <String> [-Name] <String> [-Force] [-S
  [-AllowBlobPublicAccess <Boolean>] [-MinimumTlsVersion <String>] [-AllowSharedKeyAccess <Boolean>]
  [-SasExpirationPeriod <TimeSpan>] [-KeyExpirationPeriodInDay <Int32>] [-AllowCrossTenantReplication <Boolean>]
  [-DefaultSharePermission <String>] [-PublicNetworkAccess <String>] [-ImmutabilityPeriod <Int32>]
- [-ImmutabilityPolicyState <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>]
- [-RoutingChoice <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ImmutabilityPolicyState <String>] [-EnableSftp <Boolean>] [-EnableLocalUser <Boolean>]
+ [-AllowedCopyScope <String>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-RoutingChoice <String>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -71,14 +91,14 @@ You can use this cmdlet to modify the account type, update a customer domain, or
 
 ### Example 1: Set the Storage account type
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -Type "Standard_RAGRS"
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -SkuName "Standard_RAGRS"
 ```
 
 This command sets the Storage account type to Standard_RAGRS.
 
 ### Example 2: Set a custom domain for a Storage account
 ```
-PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -CustomDomainName "www.contoso.com" -UseSubDomain $True
+PS C:\>Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -CustomDomainName "www.contoso.com" -UseSubDomain $true
 ```
 
 This command sets a custom domain for a Storage account.
@@ -151,6 +171,9 @@ PS C:\> Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystora
 The command upgrade a Storage account with Kind "Storage" or "BlobStorage" to "StorageV2" kind Storage account.
 
 ### Example 10: Update a Storage account by enable Azure Files AAD DS Authentication and set DefaultSharePermission.
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -EnableAzureActiveDirectoryDomainServicesForFile $true -DefaultSharePermission StorageFileDataSmbShareOwner
 
@@ -164,6 +187,9 @@ AADDS                   Microsoft.Azure.Commands.Management.Storage.Models.PSAct
 The command update a Storage account by enable Azure Files AAD DS Authentication.
 
 ### Example 11: Update a Storage account by enable Files Active Directory Domain Service Authentication, and then show the File Identity Based authentication setting
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -EnableActiveDirectoryDomainServicesForFile $true `
         -ActiveDirectoryDomainName "mydomain.com" `
@@ -193,6 +219,9 @@ AccountType       : Computer
 The command updates a Storage account by enable Azure Files Active Directory Domain Service Authentication, and then shows the File Identity Based authentication setting
 
 ### Example 12: Set MinimumTlsVersion, AllowBlobPublicAccess and AllowSharedKeyAccess
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -MinimumTlsVersion TLS1_1 -AllowBlobPublicAccess $false -AllowSharedKeyAccess $true
 
@@ -209,6 +238,9 @@ True
 The command sets MinimumTlsVersion, AllowBlobPublicAccess and AllowSharedKeyAccess, and then show the the 3 properties of the account 
 
 ### Example 13: Update a Storage account with RoutingPreference setting
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 PS C:\>$account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -PublishMicrosoftEndpoint $false -PublishInternetEndpoint $true -RoutingChoice InternetRouting
 
@@ -234,6 +266,9 @@ InternetEndpoints  : {"Blob":"https://mystorageaccount-internetrouting.blob.core
 This command updates a Storage account with RoutingPreference setting: PublishMicrosoftEndpoint as false, PublishInternetEndpoint as true, and RoutingChoice as MicrosoftRouting.
 
 ### Example 14: Update a Storage account with KeyExpirationPeriod and SasExpirationPeriod
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -KeyExpirationPeriodInDay 5 -SasExpirationPeriod "1.12:05:06" -EnableHttpsTrafficOnly $true
 
@@ -247,6 +282,9 @@ PS C:\> $account.SasPolicy.SasExpirationPeriod
 This command updates a Storage account with KeyExpirationPeriod and SasExpirationPeriod, then show the updated account related properties.
 
 ### Example 15: Update a Storage account to Keyvault encryption, and access Keyvault with user assigned identity
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 # Create KeyVault (no need if using exist keyvault)
 PS C:\> $keyVault = New-AzKeyVault -VaultName $keyvaultName -ResourceGroupName $resourceGroupName -Location eastus2euap -EnablePurgeProtection
@@ -277,6 +315,9 @@ LastKeyRotationTimestamp      : 4/12/2021 8:17:57 AM
 This command first creates a keyvault and a user assigned identity, then updates a storage account with keyvault encryption, the storage access access keyvault with the user assigned identity.
 
 ### Example 16: Update a Keyvault encrypted Storage account, from access Keyvault with user assigned identity, to access Keyvault with system assigned identity
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 # Assign System identity to the account, and give the system assigned identity acces to the keyvault
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName  -IdentityType SystemAssignedUserAssigned
@@ -303,6 +344,9 @@ LastKeyRotationTimestamp      : 4/12/2021 8:17:57 AM
 This command first assigns System identity to the account, and give the system assigned identity access to the keyvault; then updates the Storage account to access Keyvault with system assigned identity.
 
 ### Example 17: Update both Keyvault and the user assigned identity to access keyvault
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 # Update to another user assigned identity
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -IdentityType SystemAssignedUserAssigned -UserAssignedIdentityId $useridentity2 -KeyVaultUserAssignedIdentityId $useridentity2
@@ -315,6 +359,9 @@ This command first update the user assigned identity to access keyvault, then up
 To update both both Keyvault and the user assigned identity, we need update with the above 2 steps. 
 
 ### Example 18: Update a Storage account with AllowCrossTenantReplication
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -AllowCrossTenantReplication $false -EnableHttpsTrafficOnly $true
 
@@ -325,6 +372,9 @@ False
 This command updates a Storage account by set AllowCrossTenantReplication to false, then show the updated account related properties.
 
 ### Example 18: Update a Storage account by enable PublicNetworkAccess
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -PublicNetworkAccess Enabled
 
@@ -335,6 +385,9 @@ Enabled
 This command updates a Storage account by set PublicNetworkAccess as enabled.
 
 ### Example 19: Update account level  mmutability policy
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```
 PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "MyResourceGroup" -Name "mystorageaccount" -ImmutabilityPeriod 2 -ImmutabilityPolicyState Unlocked
 
@@ -345,12 +398,29 @@ PS C:\> $account.ImmutableStorageWithVersioning.ImmutabilityPolicy
 
 ImmutabilityPeriodSinceCreationInDays State    
 ------------------------------------- -----    
-                                    2 Unlocked 
+                                    2 Unlocked
 ```
 
 The command updates account-level immutability policy properties on an existing storage account, and show the result. 
 The storage account must be created with enable account level immutability with versioning.
 The account-level immutability policy will be inherited and applied to objects that do not possess an explicit immutability policy at the object level.
+
+### Example 20: Update a Storage account by enable Sftp and localuser
+<!-- Skip: Output cannot be splitted from code -->
+
+
+```powershell
+PS C:\> $account = Set-AzStorageAccount -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" -EnableSftp $true -EnableLocalUser $true 
+
+PS C:\> $account.EnableSftp
+True
+
+PS C:\> $account.EnableLocalUser
+True
+```
+
+This command updates a Storage account by enable Sftp and localuser. 
+To run the command succssfully, the Storage account should already enable Hierarchical Namespace.
 
 ## PARAMETERS
 
@@ -410,7 +480,7 @@ Specifies the domain GUID. This parameter must be set when -EnableActiveDirector
 
 ```yaml
 Type: System.String
-Parameter Sets: ActiveDirectoryDomainServicesForFile
+Parameter Sets: AzureActiveDirectoryKerberosForFile, ActiveDirectoryDomainServicesForFile
 Aliases:
 
 Required: False
@@ -425,7 +495,7 @@ Specifies the primary domain that the AD DNS server is authoritative for. This p
 
 ```yaml
 Type: System.String
-Parameter Sets: ActiveDirectoryDomainServicesForFile
+Parameter Sets: AzureActiveDirectoryKerberosForFile, ActiveDirectoryDomainServicesForFile
 Aliases:
 
 Required: False
@@ -515,6 +585,21 @@ Gets or sets allow or disallow cross AAD tenant object replication. The default 
 
 ```yaml
 Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -AllowedCopyScope
+Set restrict copy to and from Storage Accounts within an AAD tenant or with Private Links to the same VNet. Possible values include: 'PrivateLink', 'AAD'
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -646,6 +731,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -EnableAzureActiveDirectoryKerberosForFile
+Enable Azure Files Active Directory Domain Service Kerberos Authentication for the storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: AzureActiveDirectoryKerberosForFile
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -EnableHttpsTrafficOnly
 Indicates whether or not the Storage account only enables HTTPS traffic.
 
@@ -669,6 +769,36 @@ Learn more in https://go.microsoft.com/fwlink/?linkid=2086047
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableLocalUser
+Enable local users feature for the Storage account.
+
+```yaml
+Type: System.Boolean
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -EnableSftp
+Enable Secure File Transfer Protocol for the Storage account.
+
+```yaml
+Type: System.Boolean
 Parameter Sets: (All)
 Aliases:
 

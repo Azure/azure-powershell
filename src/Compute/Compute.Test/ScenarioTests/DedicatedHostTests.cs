@@ -37,5 +37,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-DedicatedHostVirtualMachine");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestDedicatedHostRestart()
+        {
+            TestRunner.RunTestScript("Test-DedicatedHostRestart");
+        }
     }
 }

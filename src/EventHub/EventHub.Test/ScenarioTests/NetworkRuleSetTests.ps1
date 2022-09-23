@@ -105,6 +105,54 @@ function NetworkRuleSetTests
     Assert-AreEqual $setResult2.PublicNetworkAccess "Disabled"
     Assert-AreEqual $setResult2.DefaultAction "Allow"
 
+	$setResult2 = Set-AzEventHubNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -PublicNetworkAccess "Enabled"
+	Assert-AreEqual $setResult2.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
+    Assert-AreEqual $setResult2.IpRules.Count 3 "Set - IPRules count did not matched"
+    Assert-AreEqual $setResult2.PublicNetworkAccess "Enabled"
+    Assert-AreEqual $setResult2.DefaultAction "Allow"
+
+	$setResult2 = Set-AzEventHubNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -TrustedServiceAccessEnabled
+	Assert-AreEqual $setResult2.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
+    Assert-AreEqual $setResult2.IpRules.Count 3 "Set - IPRules count did not matched"
+    Assert-AreEqual $setResult2.PublicNetworkAccess "Enabled"
+    Assert-AreEqual $setResult2.DefaultAction "Allow"
+	Assert-True {$setResult2.TrustedServiceAccessEnabled}
+
+	$setResult2 = Set-AzEventHubNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -PublicNetworkAccess "Disabled"
+	Assert-AreEqual $setResult2.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
+    Assert-AreEqual $setResult2.IpRules.Count 3 "Set - IPRules count did not matched"
+    Assert-AreEqual $setResult2.PublicNetworkAccess "Disabled"
+    Assert-AreEqual $setResult2.DefaultAction "Allow"
+
+	$setResult2 = Set-AzEventHubNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -PublicNetworkAccess "Enabled"
+	Assert-AreEqual $setResult2.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
+    Assert-AreEqual $setResult2.IpRules.Count 3 "Set - IPRules count did not matched"
+    Assert-AreEqual $setResult2.PublicNetworkAccess "Enabled"
+    Assert-AreEqual $setResult2.DefaultAction "Allow"
+
+	$setResult2 = Set-AzEventHubNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -TrustedServiceAccessEnabled
+	Assert-AreEqual $setResult2.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
+    Assert-AreEqual $setResult2.IpRules.Count 3 "Set - IPRules count did not matched"
+    Assert-AreEqual $setResult2.PublicNetworkAccess "Enabled"
+    Assert-AreEqual $setResult2.DefaultAction "Allow"
+	Assert-True {$setResult2.TrustedServiceAccessEnabled}
+
+	$setResult2 = Set-AzEventHubNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -TrustedServiceAccessEnabled:$false
+	Assert-AreEqual $setResult2.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
+    Assert-AreEqual $setResult2.IpRules.Count 3 "Set - IPRules count did not matched"
+    Assert-AreEqual $setResult2.PublicNetworkAccess "Enabled"
+    Assert-AreEqual $setResult2.DefaultAction "Allow"
+	Assert-AreEqual $setResult2.TrustedServiceAccessEnabled $null
+
+	$a, $b, $c = $setResult2.IpRules
+	$setResult2.IpRules = [Microsoft.Azure.Commands.EventHub.Models.PSNWRuleSetIpRulesAttributes[]]@($a, $b)
+
+	$setResult2 = Set-AzEventHubNetworkRuleSet -ResourceGroup $resourceGroupName -Name $namespaceName2 -IPRule $setResult2.IpRules
+	Assert-AreEqual $setResult2.VirtualNetworkRules.Count 3 "Set -VirtualNetworkRules count did not matched"
+    Assert-AreEqual $setResult2.IpRules.Count 2 "Set - IPRules count did not matched"
+    Assert-AreEqual $setResult2.PublicNetworkAccess "Enabled"
+    Assert-AreEqual $setResult2.DefaultAction "Allow"
+	Assert-AreEqual $setResult2.TrustedServiceAccessEnabled $null
 
 	Write-Debug "Add a new VirtualNetworkRule to the default NetworkRuleSet"
     $result =  Remove-AzEventHubVirtualNetworkRule -ResourceGroup $resourceGroupName -Name $namespaceName -SubnetId "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourcegroups/v-ajnavtest/providers/Microsoft.Network/virtualNetworks/sbehvnettest1/subnets/default"

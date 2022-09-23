@@ -50,10 +50,12 @@ using CM = Microsoft.Azure.Management.Compute.Models;
 using SM = Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Storage.Models;
 using Microsoft.Azure.Commands.Compute;
 using Microsoft.Azure.PowerShell.Cmdlets.Compute.Helpers.Network.Models;
-
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Compute
 {
+    [GenericBreakingChange("Starting in May 2023 the \"New-AzVM\" cmdlet will deploy with the Trusted Launch configuration by default. To know more about Trusted Launch, please visit https://docs.microsoft.com/en-us/azure/virtual-machines/trusted-launch")]
+    [GenericBreakingChange("It is recommended to use parameter \"-PublicIpSku Standard\" in order to create a new VM with a Standard public IP.Specifying zone(s) using the \"-Zone\" parameter will also result in a Standard public IP.If \"-Zone\" and \"-PublicIpSku\" are not specified, the VM will be created with a Basic public IP instead.Please note that the Standard SKU IPs will become the default behavior for VM creation in the future")]
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VM", SupportsShouldProcess = true, DefaultParameterSetName = "SimpleParameterSet")]
     [OutputType(typeof(PSAzureOperationResponse), typeof(PSVirtualMachine))]
     public class NewAzureVMCommand : VirtualMachineBaseCmdlet
@@ -116,6 +118,17 @@ namespace Microsoft.Azure.Commands.Compute
         [Parameter(ParameterSetName = SimpleParameterSet, Mandatory = false)]
         [ValidateNotNullOrEmpty]
         public string[] Zone { get; set; }
+
+        [Parameter(
+            ParameterSetName = SimpleParameterSet, 
+            Mandatory = false,
+            HelpMessage = "Specify public IP sku name")]
+        [Parameter(
+            ParameterSetName = DiskFileParameterSet,
+            Mandatory = false,
+            HelpMessage = "Specify public IP sku name")]
+        [PSArgumentCompleter("Basic","Standard")]
+        public string PublicIpSku { get; set; }
 
         [Parameter(
             ParameterSetName = DefaultParameterSet,
@@ -203,12 +216,13 @@ namespace Microsoft.Azure.Commands.Compute
             "RHEL",
             "SLES",
             "UbuntuLTS",
+            "Win2022AzureEditionCore",
+            "Win2019Datacenter",
             "Win2016Datacenter",
             "Win2012R2Datacenter",
             "Win2012Datacenter",
             "Win2008R2SP1",
-            "Win10",
-            "Win2019Datacenter")]
+            "Win10")]
         [Alias("ImageName")]
         public string Image { get; set; } = "Win2016Datacenter";
 
@@ -386,6 +400,13 @@ namespace Microsoft.Azure.Commands.Compute
             HelpMessage = "Specifies the vCPU to physical core ratio. When this property is not specified in the request body the default behavior is set to the value of vCPUsPerCore for the VM Size exposed in api response of [List all available virtual machine sizes in a region](https://docs.microsoft.com/en-us/rest/api/compute/resource-skus/list). Setting this property to 1 also means that hyper-threading is disabled.")]
         public int vCPUCountPerCore { get; set; }
 
+        [Parameter(
+           ParameterSetName = DefaultParameterSet,
+           Mandatory = false,
+           ValueFromPipelineByPropertyName = true,
+           HelpMessage = "This flag disables the default behavior to install the Guest Attestation extension to the virtual machine if: 1) SecurityType is TrustedLaunch, 2) SecureBootEnabled on the SecurityProfile is true, 3) VTpmEnabled on the SecurityProfile is true.")]
+        public SwitchParameter DisableIntegrityMonitoring { get; set; }
+
         public override void ExecuteCmdlet()
         {
             if (this.IsParameterBound(c => c.UserData))
@@ -502,6 +523,19 @@ namespace Microsoft.Azure.Commands.Compute
                     }
                 }
 
+                //Override Zone logic if PublicIpSku is explicitly provided
+                PublicIPAddressStrategy.Sku publicIpSku;
+                if (_cmdlet.PublicIpSku != null) {
+                    if (_cmdlet.PublicIpSku != "Basic" && _cmdlet.PublicIpSku != "Standard")
+                    {
+                        throw new InvalidDataException("Invalid PublicIpSku parameter entry. Acceptable values for PublicIpSku parameter are \"Basic\" or \"Standard\" only");
+                    }
+                    publicIpSku = _cmdlet.PublicIpSku == "Basic" ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
+                }
+                else {
+                    publicIpSku = _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard;
+                }
+
                 var resourceGroup = ResourceGroupStrategy.CreateResourceGroupConfig(_cmdlet.ResourceGroupName);
                 var virtualNetwork = resourceGroup.CreateVirtualNetworkConfig(
                     name: _cmdlet.VirtualNetworkName, edgeZone: _cmdlet.EdgeZone, addressPrefix: _cmdlet.AddressPrefix);
@@ -511,7 +545,7 @@ namespace Microsoft.Azure.Commands.Compute
                     edgeZone: _cmdlet.EdgeZone,
                     domainNameLabel: _cmdlet.DomainNameLabel,
                     allocationMethod: _cmdlet.AllocationMethod,
-                    sku: _cmdlet.Zone == null ? PublicIPAddressStrategy.Sku.Basic : PublicIPAddressStrategy.Sku.Standard,
+                    sku: publicIpSku,
                     zones: _cmdlet.Zone);
 
                 _cmdlet.OpenPorts = ImageAndOsType.UpdatePorts(_cmdlet.OpenPorts);
@@ -664,7 +698,6 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 WriteInformation("No Size value has been provided. The VM will be created with the default size Standard_D2s_v3.", new string[] { "PSHOST" });
             }
-
             if (DiskFile != null)
             {
                 if (!resourceClient.ResourceGroups.CheckExistence(ResourceGroupName))
@@ -793,6 +826,16 @@ namespace Microsoft.Azure.Commands.Compute
                 ExtendedLocation = new CM.ExtendedLocation { Name = this.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
             }
 
+            // Guest Attestation extension defaulting scenario check.
+            // Check if Identity can be defaulted in. 
+            if (shouldGuestAttestationExtBeInstalled() &&
+                this.VM != null &&
+                this.VM.Identity == null)
+            {
+                this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
+            }
+
+
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
@@ -882,9 +925,9 @@ namespace Microsoft.Azure.Commands.Compute
                                 AutoUpgradeMinorVersion = true,
                             };
 
-                            typeof(CM.Resource).GetRuntimeProperty("Name")
+                            typeof(CM.ResourceWithOptionalLocation).GetRuntimeProperty("Name")
                                 .SetValue(extensionParameters, VirtualMachineBGInfoExtensionContext.ExtensionDefaultName);
-                            typeof(CM.Resource).GetRuntimeProperty("Type")
+                            typeof(CM.ResourceWithOptionalLocation).GetRuntimeProperty("Type")
                                 .SetValue(extensionParameters, VirtualMachineExtensionType);
 
                             var op2 = ComputeClient.ComputeManagementClient.VirtualMachineExtensions.CreateOrUpdateWithHttpMessagesAsync(
@@ -896,8 +939,73 @@ namespace Microsoft.Azure.Commands.Compute
                         }
                     }
 
+                    // Guest Attestation extension defaulting scenario check.
+                    // Default behavior for Trusted Launch VM with SecureBootEnabled and VTpmEnabled is to install the Guest Attestation esxtension.
+                    // If DisableIntegrityMonitoring is true, then this extension will not be installed. 
+                    if (shouldGuestAttestationExtBeInstalled())
+                    {
+                        var extensionParams = new VirtualMachineExtension { };
+
+                        if (IsLinuxOs()) //linux
+                        {
+                            extensionParams = new VirtualMachineExtension
+                            {
+                                Location = this.Location,
+                                Publisher = "Microsoft.Azure.Security.LinuxAttestation",
+                                VirtualMachineExtensionType = "GuestAttestation",
+                                TypeHandlerVersion = "1.0",
+                            };
+                        }
+                        else //windows
+                        {
+                            extensionParams = new VirtualMachineExtension
+                            {
+                                Location = this.Location,
+                                Publisher = "Microsoft.Azure.Security.WindowsAttestation",
+                                VirtualMachineExtensionType = "GuestAttestation",
+                                TypeHandlerVersion = "1.0",
+                            };
+                        }
+
+                        var extClient = ComputeClient.ComputeManagementClient.VirtualMachineExtensions;
+                        var op = extClient.BeginCreateOrUpdateWithHttpMessagesAsync
+                            (
+                                this.ResourceGroupName,
+                                this.VM.Name,
+                                "GuestAttestation",
+                                extensionParams
+                            ).GetAwaiter().GetResult();
+                    }
+
                     WriteObject(psResult);
                 });
+            }
+        }
+
+        /// <summary>
+        /// Check to see if the Guest Attestation extension should be installed and Identity set to SystemAssigned.
+        /// Requirements for this scenario to be true:
+        /// 1) DisableIntegrityMonitoring is not true.
+        /// 2) SecurityType is TrustedLaunch.
+        /// 3) SecureBootEnabled is true.
+        /// 4) VTpmEnabled is true.
+        /// </summary>
+        /// <returns></returns>
+        private bool shouldGuestAttestationExtBeInstalled()
+        {
+            if (this.DisableIntegrityMonitoring != true &&
+                    this.VM != null &&
+                    this.VM.SecurityProfile != null &&
+                    this.VM.SecurityProfile.SecurityType == "TrustedLaunch" &&
+                    this.VM.SecurityProfile.UefiSettings != null &&
+                    this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == true &&
+                    this.VM.SecurityProfile.UefiSettings.VTpmEnabled == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
@@ -921,9 +1029,9 @@ namespace Microsoft.Azure.Commands.Compute
                            (SystemAssignedIdentity.IsPresent ? CM.ResourceIdentityType.SystemAssignedUserAssigned : CM.ResourceIdentityType.UserAssigned),
 
                     UserAssignedIdentities = isUserAssignedEnabled
-                                             ? new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>()
+                                             ? new Dictionary<string, UserAssignedIdentitiesValue>()
                                              {
-                                                 { UserAssignedIdentity, new VirtualMachineIdentityUserAssignedIdentitiesValue() }
+                                                 { UserAssignedIdentity, new UserAssignedIdentitiesValue() }
                                              }
                                              : null,
                 }

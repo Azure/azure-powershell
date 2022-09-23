@@ -1,6 +1,6 @@
 ### Example 1: Send a message to UserSession
 ```powershell
-PS C:\> Send-AzWvdUserSessionMessage -ResourceGroupName ResourceGroupName `
+Send-AzWvdUserSessionMessage -ResourceGroupName ResourceGroupName `
                                      -HostPoolName HostPoolName `
                                      -SessionHostName SessionHostName `
                                      -UserSessionId 4 `

@@ -14,6 +14,7 @@
 
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
@@ -21,6 +22,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// <summary>
     /// 'Set-AzEventHub' Cmdlet updates the specified EventHub
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHub", SupportsShouldProcess = true), OutputType(typeof(PSEventHubAttributes))]
     public class SetAzureEventHub : AzureEventHubsCmdletBase
     {
@@ -34,11 +36,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [Alias(AliasNamespaceName)]
         public string Namespace { get; set; }
 
-        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "Namespace Name")]
+        [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 2, HelpMessage = "EventHub Name")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSEventHubAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventHub", ChangeDescription = EventhubInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.\n- InputObject would no longer support alias -EventHubObj.")]
         [Parameter(Mandatory = false, ParameterSetName = EventhubInputObjectParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "EventHub object")]
         [ValidateNotNullOrEmpty]
         [Alias(AliasEventHubObj)]
@@ -77,7 +80,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
             {
                 try
                 {
-                    WriteObject(Client.CreateOrUpdateEventHub(ResourceGroupName, Namespace, Name, eventHub));
+                    WriteObject(UtilityClient.CreateOrUpdateEventHub(ResourceGroupName, Namespace, Name, eventHub));
                 }
                 catch (Management.EventHub.Models.ErrorResponseException ex)
                 {

@@ -19,7 +19,8 @@ New-AzFirewallPolicy -Name <String> -ResourceGroupName <String> -Location <Strin
  [-Tag <Hashtable>] [-Force] [-AsJob] [-IntrusionDetection <PSAzureFirewallPolicyIntrusionDetection>]
  [-TransportSecurityName <String>] [-TransportSecurityKeyVaultSecretId <String>] [-SkuTier <String>]
  [-UserAssignedIdentityId <String>] [-Identity <PSManagedServiceIdentity>] [-PrivateRange <String[]>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ExplicitProxy <PSAzureFirewallPolicyExplicitProxy>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -51,11 +52,11 @@ This example creates an azure firewall policy with a threat intel whitelist
 
 ### Example 4: Create policy with intrusion detection, identity and transport security
 ```powershell
-$bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress
+$bypass = New-AzFirewallPolicyIntrusionDetectionBypassTraffic -Name "bypass-setting" -Protocol "TCP" -DestinationPort "80" -SourceAddress "10.0.0.0" -DestinationAddress "*"
 $signatureOverride = New-AzFirewallPolicyIntrusionDetectionSignatureOverride -Id "123456798" -Mode "Deny"
 $intrusionDetection = New-AzFirewallPolicyIntrusionDetection -Mode "Alert" -SignatureOverride $signatureOverride -BypassTraffic $bypass
 $userAssignedIdentity = '/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/TestRg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/user-assign-identity'
-New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroup TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection -TransportSecurityName tsName -TransportSecurityKeyVaultSecretId "https://<keyvaultname>.vault.azure.net/secrets/cacert"  -UserAssignedIdentityId $userAssignedIdentity
+New-AzFirewallPolicy -Name fp1 -Location "westus2" -ResourceGroupName TestRg -SkuTier "Premium" -IntrusionDetection $intrusionDetection -TransportSecurityName tsName -TransportSecurityKeyVaultSecretId "https://<keyvaultname>.vault.azure.net/secrets/cacert"  -UserAssignedIdentityId $userAssignedIdentity
 ```
 
 This example creates an azure firewall policy with a intrusion detection in mode alert, user assigned identity and transport security
@@ -66,6 +67,48 @@ New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -PrivateRange @("99.99.
 ```
 
 This example creates a Firewall that treats "99.99.99.0/24" and "66.66.0.0/16" as private ip ranges and won't snat traffic to those addresses
+
+### Example 6: Create an empty Firewall Policy with Explicit Proxy Settings
+```powershell
+$exProxy = New-AzFirewallPolicyExplicitProxy -EnableExplicitProxy  -HttpPort 100 -HttpsPort 101 -EnablePacFile  -PacFilePort 130 -PacFile "sampleurlfortesting.blob.core.windowsnet/nothing"
+New-AzFirewallPolicy -Name fp1 -ResourceGroupName TestRg -ExplicitProxy $exProxy
+```
+```output
+		BasePolicy	                : null	
+		DnsSettings  	            : null	
+		Etag	                    : null	
+		ExplicitProxy	
+			EnableExplicitProxy	    : true	
+			EnablePacFile	        : true	
+			HttpPort	            : 100	
+			HttpsPort	            : 101	
+			PacFile                 : "sampleurlfortesting.blob.core.windowsnet/nothing"
+			PacFilePort	            : 130	
+		Id	                        : null	
+		Identity	                : null	
+		IntrusionDetection	        : null	
+		Location	                : "westus2"	
+		Name	                    : "fp1"	
+		PrivateRange	            : null
+		PrivateRangeText	        : "[]"
+		ProvisioningState	        : null	
+		ResourceGroupName	        : "TestRg"	
+		ResourceGuid	            : null	
+		RuleCollectionGroups	    : null	
+		Sku	
+			Tier	                : "Standard"	
+		Snat	
+			AutoLearnPrivateRanges	: null	
+			PrivateRanges	        : null	
+		SqlSetting	                : null	
+		Tag	                        : null	
+		TagsTable	                : null	
+		ThreatIntelMode	            : "Alert"	
+		ThreatIntelWhitelist	    : null	
+		TransportSecurity	        : null	
+		Type	                    : null	
+```
+This example creates a firewall policy with explicit proxy settings
 
 ## PARAMETERS
 
@@ -119,6 +162,21 @@ The DNS Setting
 
 ```yaml
 Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyDnsSettings
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ExplicitProxy
+The Explicit Proxy Settings
+
+```yaml
+Type: Microsoft.Azure.Commands.Network.Models.PSAzureFirewallPolicyExplicitProxy
 Parameter Sets: (All)
 Aliases:
 
@@ -241,7 +299,7 @@ Firewall policy sku tier
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: Standard, Premium
+Accepted values: Standard, Premium, Basic
 
 Required: False
 Position: Named
@@ -403,3 +461,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ## RELATED LINKS
+[New-AzFirewallPolicyExplicitProxy](./New-AzFirewallPolicyExplicitProxy.md)

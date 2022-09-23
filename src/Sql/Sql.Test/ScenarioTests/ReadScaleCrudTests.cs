@@ -19,34 +19,31 @@ using Xunit.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
 {
-    public class ReadScaleCrudTests : SqlTestsBase
+    public class ReadScaleCrudTests : SqlTestRunner
     {
         public ReadScaleCrudTests(ITestOutputHelper output) : base(output)
         {
-            base.resourceTypesToIgnoreApiVersion = new string[] {
-                "Microsoft.Sql/servers"
-            };
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseReadScaleCreateUpdate()
         {
-            RunPowerShellTest("Test-CreateUpdateDatabaseReadScale");
+            TestRunner.RunTestScript("Test-CreateUpdateDatabaseReadScale");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseReadScaleGet()
         {
-            RunPowerShellTest("Test-GetDatabaseReadScale");
+            TestRunner.RunTestScript("Test-GetDatabaseReadScale");
         }
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestDatabaseReadReplicaCount()
         {
-            RunPowerShellTest("Test-DatabaseReadReplicaCount");
+            TestRunner.RunTestScript("Test-DatabaseReadReplicaCount");
         }
     }
 }

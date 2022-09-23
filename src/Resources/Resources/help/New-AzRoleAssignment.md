@@ -131,6 +131,9 @@ New-AzRoleAssignment -ResourceGroupName rg1 -SignInName allen.young@live.com -Ro
 Grant Reader role access to a user at a resource group scope with the Role Assignment being available for delegation
 
 ### Example 2
+<!-- Skip: Output cannot be splitted from code -->
+
+
 ```powershell
 Get-AzADGroup -SearchString "Christine Koch Team"
 

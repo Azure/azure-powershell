@@ -33,7 +33,7 @@ The **New-AzSqlSyncAgent** cmdlet creates an Azure SQL Sync Agent.
 
 ### Example 1: Create a sync agent for an Azure SQL server.
 ```powershell
-New-AzSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "SyncAgent01" -SyncDatabaseServerName "syncDatabaseServer01" 
+New-AzSqlSyncAgent -ResourceGroupName "ResourceGroup01" -ServerName "Server01" -Name "SyncAgent01" -SyncDatabaseServerName "syncDatabaseServer01" `
 -SyncDatabaseName "syncDatabaseName01" -SyncDatabaseResourceGroupName "syncDatabaseResourceGroup01" | Format-List
 ```
 

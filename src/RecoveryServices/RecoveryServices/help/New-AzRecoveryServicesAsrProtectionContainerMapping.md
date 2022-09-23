@@ -132,7 +132,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryProtectionContainer
-Specifies the ASR protection container object for the  primary protection container to be used in the mapping.
+Specifies the ASR protection container object for the  primary protection container to be used in the mapping. To get the ASR protection container in the Recovery Service Container run the [Get-AzRecoveryServicesAsrProtectionContainer](/powershell/module/az.recoveryservices/get-azrecoveryservicesasrprotectioncontainer) cmdlet.
 
 ```yaml
 Type: Microsoft.Azure.Commands.RecoveryServices.SiteRecovery.ASRProtectionContainer

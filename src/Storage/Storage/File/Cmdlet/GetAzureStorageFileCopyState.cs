@@ -22,11 +22,15 @@ using System.Security.Permissions;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
+using Azure.Storage.Files.Shares;
+using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
+using Microsoft.WindowsAzure.Commands.Storage.Common;
+using Azure.Storage.Files.Shares.Models;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
     [Cmdlet("Get", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageFileCopyState")]
-    [OutputType(typeof(CopyState))]
+    [OutputType(typeof(PSCopyState))]
     public class GetAzureStorageFileCopyStateCommand : AzureStorageFileCmdletBase
     {
         [Parameter(
@@ -61,7 +65,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         /// <summary>
         /// CloudFile objects which need to mointor until copy complete
         /// </summary>
-        private ConcurrentQueue<Tuple<long, CloudFile>> jobList = new ConcurrentQueue<Tuple<long, CloudFile>>();
+        private ConcurrentQueue<Tuple<long, ShareFileClient>> jobList = new ConcurrentQueue<Tuple<long, ShareFileClient>>();
         private ConcurrentDictionary<long, bool> TaskStatus = new ConcurrentDictionary<long, bool>();
 
         /// <summary>
@@ -89,20 +93,23 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
-            CloudFile file = null;
+
+            ShareFileClient file = null;
 
             if (null != this.File)
             {
-                file = this.File;
+                file = AzureStorageFile.GetTrack2FileClient(this.File);
             }
             else
             {
-                string[] path = NamingUtil.ValidatePath(this.FilePath, true);
-                file = this.BuildFileShareObjectFromName(this.ShareName).GetRootDirectoryReference().GetFileReferenceByPath(path);
+                file = Util.GetTrack2ShareReference(this.ShareName,
+                    (AzureStorageContext)this.Context,
+                    snapshotTime: null,
+                    ClientOptions).GetRootDirectoryClient().GetFileClient(this.FilePath);
             }
 
             long taskId = InternalTotalTaskCount;
-            jobList.Enqueue(new Tuple<long, CloudFile>(taskId, file));
+            jobList.Enqueue(new Tuple<long, ShareFileClient>(taskId, file));
             InternalTotalTaskCount++;
         }
 
@@ -125,18 +132,17 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         /// Update failed/finished task count
         /// </summary>
         /// <param name="status">Copy status</param>
-        private void UpdateTaskCount(XFile.CopyStatus status)
+        private void UpdateTaskCount(global::Azure.Storage.Files.Shares.Models.CopyStatus status)
         {
             switch (status)
             {
-                case XFile.CopyStatus.Invalid:
-                case XFile.CopyStatus.Failed:
-                case XFile.CopyStatus.Aborted:
+                case global::Azure.Storage.Files.Shares.Models.CopyStatus.Failed:
+                case global::Azure.Storage.Files.Shares.Models.CopyStatus.Aborted:
                     Interlocked.Increment(ref InternalFailedCount);
                     break;
-                case XFile.CopyStatus.Pending:
+                case global::Azure.Storage.Files.Shares.Models.CopyStatus.Pending:
                     break;
-                case XFile.CopyStatus.Success:
+                case global::Azure.Storage.Files.Shares.Models.CopyStatus.Success:
                 default:
                     Interlocked.Increment(ref InternalFinishedCount);
                     break;
@@ -146,13 +152,14 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         /// <summary>
         /// Write copy progress
         /// </summary>
-        /// <param name="file">CloudFile instance</param>
+        /// <param name="file">file client object </param>
+        /// <param name="fileProperties">File Properties</param>
         /// <param name="progress">Progress record</param>
-        internal void WriteCopyProgress(CloudFile file, ProgressRecord progress)
+        internal void WriteCopyProgress(ShareFileClient file, ShareFileProperties fileProperties, ProgressRecord progress)
         {
-            if (file.CopyState == null) return;
-            long bytesCopied = file.CopyState.BytesCopied ?? 0;
-            long totalBytes = file.CopyState.TotalBytes ?? 0;
+            if (fileProperties.CopyId == null) return;
+            long bytesCopied = string.IsNullOrEmpty(fileProperties.CopyProgress) ? 0 : Convert.ToInt64(fileProperties.CopyProgress.Split(new char[] { '/' })[0]);
+            long totalBytes = string.IsNullOrEmpty(fileProperties.CopyProgress) ? 0 : Convert.ToInt64(fileProperties.CopyProgress.Split(new char[] { '/' })[1]);
             int percent = 0;
 
             if (totalBytes != 0)
@@ -161,9 +168,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 progress.PercentComplete = percent;
             }
 
-            string activity = String.Format(Resources.CopyFileStatus, file.CopyState.Status.ToString(), file.GetFullPath(), file.Share.Name, file.CopyState.Source.ToString());
+            string activity = String.Format(Resources.CopyFileStatus, fileProperties.CopyStatus, file.Path, file.ShareName, fileProperties.CopySource);
             progress.Activity = activity;
-            string message = String.Format(Resources.CopyPendingStatus, percent, file.CopyState.BytesCopied, file.CopyState.TotalBytes);
+            string message = String.Format(Resources.CopyPendingStatus, percent, bytesCopied, totalBytes);
             progress.StatusDescription = message;
             OutputStream.WriteProgress(progress);
         }
@@ -189,10 +196,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         protected async Task MonitorFileCopyStatusAsync(long taskId)
         {
             ProgressRecord records = new ProgressRecord(OutputStream.GetProgressId(taskId), Resources.CopyFileActivity, Resources.CopyFileActivity);
-            Tuple<long, CloudFile> monitorRequest = null;
-            FileRequestOptions requestOptions = RequestOptions;
-            AccessCondition accessCondition = null;
-            OperationContext context = OperationContext;
+            Tuple<long, ShareFileClient> monitorRequest = null;
 
             while (!jobList.IsEmpty)
             {
@@ -201,30 +205,30 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 if (monitorRequest != null)
                 {
                     long internalTaskId = monitorRequest.Item1;
-                    CloudFile file = monitorRequest.Item2;
+                    ShareFileClient file = monitorRequest.Item2;
                     //Just use the last file management channel since the following operation is context insensitive
-                    await Channel.FetchFileAttributesAsync(file, accessCondition, requestOptions, context, CmdletCancellationToken).ConfigureAwait(false);
+                    ShareFileProperties fileProperties = (await file.GetPropertiesAsync(this.CmdletCancellationToken).ConfigureAwait(false)).Value;
                     bool taskDone = false;
 
-                    if (file.CopyState == null)
+                    if (fileProperties.CopyId == null)
                     {
-                        ArgumentException e = new ArgumentException(String.Format(Resources.FileCopyTaskNotFound, file.SnapshotQualifiedUri.ToString()));
+                        ArgumentException e = new ArgumentException(String.Format(Resources.FileCopyTaskNotFound, file.Uri.ToString().Replace(file.Uri.Query, "")));
                         OutputStream.WriteError(internalTaskId, e);
                         Interlocked.Increment(ref InternalFailedCount);
                         taskDone = true;
                     }
                     else
                     {
-                        WriteCopyProgress(file, records);
-                        UpdateTaskCount(file.CopyState.Status);
+                        WriteCopyProgress(file, fileProperties, records);
+                        UpdateTaskCount(fileProperties.CopyStatus);
 
-                        if (file.CopyState.Status == XFile.CopyStatus.Pending && this.WaitForComplete)
+                        if (fileProperties.CopyStatus == global::Azure.Storage.Files.Shares.Models.CopyStatus.Pending && this.WaitForComplete)
                         {
                             jobList.Enqueue(monitorRequest);
                         }
                         else
                         {
-                            OutputStream.WriteObject(internalTaskId, file.CopyState);
+                            OutputStream.WriteObject(internalTaskId, new PSCopyState(fileProperties));
                             taskDone = true;
                         }
                     }

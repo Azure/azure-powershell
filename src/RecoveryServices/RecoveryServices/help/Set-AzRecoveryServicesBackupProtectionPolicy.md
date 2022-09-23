@@ -16,8 +16,9 @@ Modifies a Backup protection policy.
 ### ModifyPolicyParamSet
 ```
 Set-AzRecoveryServicesBackupProtectionPolicy [-Policy] <PolicyBase> [[-RetentionPolicy] <RetentionPolicyBase>]
- [[-SchedulePolicy] <SchedulePolicyBase>] [-VaultId <String>] [-DefaultProfile <IAzureContextContainer>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+ [[-SchedulePolicy] <SchedulePolicyBase>] [-MoveToArchiveTier <Boolean>] [-TieringMode <TieringMode>]
+ [-TierAfterDuration <Int32>] [-TierAfterDurationType <String>] [-VaultId <String>]
+ [-DefaultProfile <IAzureContextContainer>] [-Token <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### FixPolicyParamSet
@@ -84,6 +85,20 @@ Here is the high-level description of the steps to be followed for modifying a f
 3.	Get the backup protection policy that you want to modify and store it in a variable. In the above example, we retrieved the backup policy with the name "TestPolicy" that we wanted to modify.
 4.	Modify the backup protection policy retrieved in step 3 using the modified schedule policy object and retention policy object.
 
+### Example 3: Modify AzureWorkload policy to enable Archive smart tiering
+```powershell
+$pol = Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -MoveToArchiveTier $true -TieringMode TierAllEligible -TierAfterDuration 60 -TierAfterDurationType Days
+```
+
+This command is used to modify policy to enable archive smart tiering for the policy $policy, we set -MoveToArchiveTier parameter to $true to enable tiering. We choose TieringMode to be TierAllEligible to move all eligible recovery points to archive after certain duration given by TierAfterDuration and TierAfterDurationType parameters. In order to move recommended recovery points to Archive for AzureVM use TieringMode TierRecommended.
+
+### Example 4: Disable smart tiering on an existing policy
+```powershell
+$pol = Set-AzRecoveryServicesBackupProtectionPolicy -VaultId $vault.ID -Policy $policy -MoveToArchiveTier $false
+```
+
+This command is used to disable archive smart tiering for the policy $policy, we set -MoveToArchiveTier parameter to $false. Please note that disabling archive smart tiering might have cost implications.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -110,6 +125,21 @@ Parameter Sets: FixPolicyParamSet
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -MoveToArchiveTier
+Specifies whether recovery points should be moved to archive storage by the policy or not. Allowed values are $true, $false
+
+```yaml
+Type: System.Nullable`1[System.Boolean]
+Parameter Sets: ModifyPolicyParamSet
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -159,6 +189,68 @@ Aliases:
 
 Required: False
 Position: 3
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TierAfterDuration
+Specifies the duration after which recovery points should start moving to the archive tier, value can be in days or months. Applicable only when TieringMode is TierAllEligible
+
+```yaml
+Type: System.Nullable`1[System.Int32]
+Parameter Sets: ModifyPolicyParamSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TierAfterDurationType
+Specifies whether the TierAfterDuration is in Days or Months
+
+```yaml
+Type: System.String
+Parameter Sets: ModifyPolicyParamSet
+Aliases:
+Accepted values: Days, Months
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -TieringMode
+Specifies whether to move recommended or all eligible recovery points to archive
+
+```yaml
+Type: Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.TieringMode
+Parameter Sets: ModifyPolicyParamSet
+Aliases:
+Accepted values: TierRecommended, TierAllEligible
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Token
+Auxiliary access token for authenticating critical operation to resource guard subscription
+
+```yaml
+Type: System.String
+Parameter Sets: ModifyPolicyParamSet
+Aliases:
+
+Required: False
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False

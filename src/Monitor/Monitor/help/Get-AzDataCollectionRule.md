@@ -74,7 +74,7 @@ This command lists all the data collection rules for the current subscription.
 
 ### Example 2: Get data collection rules for the given resource group
 ```powershell
-Get-AzDataCollectionRule -ResourceGroup "testgroup"
+Get-AzDataCollectionRule -ResourceGroupName "testgroup"
 ```
 
 ```output
@@ -95,7 +95,7 @@ This command lists data collection rules for the given resource group.
 
 ### Example 3: Get a data collection rule
 ```powershell
-Get-AzDataCollectionRule -ResourceGroup "testgroup" -RuleName "testDcr"
+Get-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr"
 ```
 
 ```output

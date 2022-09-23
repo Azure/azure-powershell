@@ -46,6 +46,7 @@ The **New-AzStorageEncryptionScope** cmdlet creates an encryption scope for a St
 ## EXAMPLES
 
 ### Example 1: Create an encryption scope with Storage Encryption
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> New-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount"  -EncryptionScopeName testscope -StorageEncryption
 
@@ -59,6 +60,7 @@ testscope Enabled  Microsoft.Storage
 This command creates an encryption scope with Storage Encryption.
 
 ### Example 2: Create an encryption scope with Keyvault Encryption, and RequireInfrastructureEncryption
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> New-AzStorageEncryptionScope -ResourceGroupName "myresourcegroup" -AccountName "mystorageaccount" `
 	-EncryptionScopeName testscope -KeyvaultEncryption -KeyUri "https://keyvalutname.vault.azure.net:443/keys/keyname/34a0ba563b4243d9a0ef2b1d3c0c7d57" `

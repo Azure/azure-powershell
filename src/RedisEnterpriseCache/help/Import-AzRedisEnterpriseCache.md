@@ -13,7 +13,7 @@ Imports a database file to target database.
 ## SYNTAX
 
 ```
-Import-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -SasUri <String>
+Import-AzRedisEnterpriseCache -ClusterName <String> -ResourceGroupName <String> -SasUri <String[]>
  [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
@@ -25,7 +25,7 @@ Imports a database file to target database.
 
 ### Example 1: Import database from file
 ```powershell
-Import-AzRedisEnterpriseCache -Name "MyCache" -ResourceGroupName "MyGroup" -SasUri "https://mystorageaccount.blob.core.windows.net/mycontainer/myfilename?sp=signedPermissions&se=signedExpiry&sv=signedVersion&sr=signedResource&sig=signature;mystoragekey"
+Import-AzRedisEnterpriseCache -ClusterName "MyCache1" -ResourceGroupName "MyGroup" -SasUri @("<sas-uri>")
 ```
 
 This command imports data from a database file into the database of the Redis Enterprise cache named MyCache.
@@ -124,10 +124,10 @@ Accept wildcard characters: False
 ```
 
 ### -SasUri
-SAS URI for the target blob to import from
+SAS URIs for the target blobs to import from
 
 ```yaml
-Type: System.String
+Type: System.String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -196,6 +196,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## NOTES
 
 ALIASES
+
+Import-AzRedisEnterpriseCacheDatabase
 
 ## RELATED LINKS
 

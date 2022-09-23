@@ -942,7 +942,7 @@ function Get-DNSNameBasedOnEnvironment ()
 {
      $connectingString = [System.Environment]::GetEnvironmentVariable("TEST_CSM_ORGID_AUTHENTICATION")
      $parsedString = [Microsoft.Rest.ClientRuntime.Azure.TestFramework.TestUtilities]::ParseConnectionString($connectingString)
-     $environment = $parsedString[[Microsoft.Rest.ClientRuntime.Azure.TestFramework.ConnectionStringKeys]::EnvironmentKey]
+     $environment = $parsedString[[Microsoft.Azure.Commands.TestFx.ConnectionStringKeys]::EnvironmentKey]
      if ($environment -eq "Dogfood"){
          return ".sqltest-eg1.mscds.com"
      }
@@ -1006,9 +1006,7 @@ function Create-ManagedInstanceForTest ($resourceGroup, $vCore, $subnetId)
 
 	# The previous command keeps polling until managed instance becomes ready. However, it can happen that the managed instance
 	# becomes ready but the create operation is still in progress. Because of that, we should wait until the operation is completed.
-	if([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq "Record"){
-		Start-Sleep -s 30
-	}
+	Start-TestSleep -Seconds 30
 
 	return $managedInstance
 }

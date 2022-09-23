@@ -1057,7 +1057,7 @@ function Test-StorageAccountManagementPolicy
         Assert-AreEqual $kind $sto.Kind;        
                     
 		# create Rule1
-		$action1 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
+		$action1 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -DaysAfterCreationGreaterThan 100
 		$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToArchive -daysAfterModificationGreaterThan 50 -DaysAfterLastTierChangeGreaterThan 40
 		$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -BaseBlobAction TierToCool -daysAfterModificationGreaterThan 30
 		$action1 = Add-AzStorageAccountManagementPolicyAction -InputObject $action1 -SnapshotAction Delete -daysAfterCreationGreaterThan 100
@@ -1066,7 +1066,9 @@ function Test-StorageAccountManagementPolicy
 
 		# create Rule2
 		$action2 = Add-AzStorageAccountManagementPolicyAction -BaseBlobAction Delete -daysAfterModificationGreaterThan 100
-		$filter2 = New-AzStorageAccountManagementPolicyFilter -BlobType appendBlob,blockBlob
+		$blobindexmatch1 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag1" -Value "value1"
+		$blobindexmatch2 = New-AzStorageAccountManagementPolicyBlobIndexMatchObject -Name "tag2" -Value "value2"
+		$filter2 = New-AzStorageAccountManagementPolicyFilter -BlobType appendBlob,blockBlob -BlobIndexMatch $blobindexmatch1,$blobindexmatch2
 		$rule2 = New-AzStorageAccountManagementPolicyRule -Name Test2 -Action $action2 -Filter $filter2 -Disabled
 		
 		# create Rule3
@@ -1084,7 +1086,7 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual 3 $policy.Rules.Count
 		Assert-AreEqual $rule1.Enabled $policy.Rules[0].Enabled
 		Assert-AreEqual $rule1.Name $policy.Rules[0].Name
-		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterCreationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterCreationGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan
@@ -1102,6 +1104,10 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[0] $policy.Rules[1].Definition.Filters.BlobTypes[0]
 		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[1] $policy.Rules[1].Definition.Filters.BlobTypes[1]
 		Assert-AreEqual $rule2.Definition.Filters.PrefixMatch $policy.Rules[1].Definition.Filters.PrefixMatch
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[0].Name $policy.Rules[1].Definition.Filters.BlobIndexMatch[0].Name
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[0].Value $policy.Rules[1].Definition.Filters.BlobIndexMatch[0].Value
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[1].Name $policy.Rules[1].Definition.Filters.BlobIndexMatch[1].Name
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[1].Value $policy.Rules[1].Definition.Filters.BlobIndexMatch[1].Value
 		Assert-AreEqual $rule3.Enabled $policy.Rules[2].Enabled
 		Assert-AreEqual $rule3.Name $policy.Rules[2].Name
 		Assert-AreEqual $rule3.Definition.Actions.BaseBlob $policy.Rules[2].Definition.Actions.BaseBlob
@@ -1120,7 +1126,7 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual 3 $policy.Rules.Count
 		Assert-AreEqual $rule1.Enabled $policy.Rules[0].Enabled
 		Assert-AreEqual $rule1.Name $policy.Rules[0].Name
-		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterCreationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterCreationGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan
@@ -1138,6 +1144,10 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[0] $policy.Rules[1].Definition.Filters.BlobTypes[0]
 		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[1] $policy.Rules[1].Definition.Filters.BlobTypes[1]
 		Assert-AreEqual $rule2.Definition.Filters.PrefixMatch $policy.Rules[1].Definition.Filters.PrefixMatch
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[0].Name $policy.Rules[1].Definition.Filters.BlobIndexMatch[0].Name
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[0].Value $policy.Rules[1].Definition.Filters.BlobIndexMatch[0].Value
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[1].Name $policy.Rules[1].Definition.Filters.BlobIndexMatch[1].Name
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[1].Value $policy.Rules[1].Definition.Filters.BlobIndexMatch[1].Value
 		Assert-AreEqual $rule3.Enabled $policy.Rules[2].Enabled
 		Assert-AreEqual $rule3.Name $policy.Rules[2].Name
 		Assert-AreEqual $rule3.Definition.Actions.BaseBlob $policy.Rules[2].Definition.Actions.BaseBlob
@@ -1160,7 +1170,7 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual 3 $policy.Rules.Count
 		Assert-AreEqual $rule1.Enabled $policy.Rules[0].Enabled
 		Assert-AreEqual $rule1.Name $policy.Rules[0].Name
-		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterModificationGreaterThan
+		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.Delete.DaysAfterCreationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.Delete.DaysAfterCreationGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterModificationGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToArchive.DaysAfterLastTierChangeGreaterThan
 		Assert-AreEqual $rule1.Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan $policy.Rules[0].Definition.Actions.BaseBlob.TierToCool.DaysAfterModificationGreaterThan
@@ -1178,6 +1188,10 @@ function Test-StorageAccountManagementPolicy
 		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[0] $policy.Rules[1].Definition.Filters.BlobTypes[0]
 		Assert-AreEqual $rule2.Definition.Filters.BlobTypes[1] $policy.Rules[1].Definition.Filters.BlobTypes[1]
 		Assert-AreEqual $rule2.Definition.Filters.PrefixMatch $policy.Rules[1].Definition.Filters.PrefixMatch
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[0].Name $policy.Rules[1].Definition.Filters.BlobIndexMatch[0].Name
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[0].Value $policy.Rules[1].Definition.Filters.BlobIndexMatch[0].Value
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[1].Name $policy.Rules[1].Definition.Filters.BlobIndexMatch[1].Name
+		Assert-AreEqual $rule2.Definition.Filters.BlobIndexMatch[1].Value $policy.Rules[1].Definition.Filters.BlobIndexMatch[1].Value
 		Assert-AreEqual $rule3.Enabled $policy.Rules[2].Enabled
 		Assert-AreEqual $rule3.Name $policy.Rules[2].Name
 		Assert-AreEqual $rule3.Definition.Actions.BaseBlob $policy.Rules[2].Definition.Actions.BaseBlob
@@ -2191,4 +2205,265 @@ function Test-NewAzStorageContext
         Clean-ResourceGroup $rgname
     }
 }
-  
+
+<#
+.SYNOPSIS
+Test NewSet-AzStorageAccountFileAADKERB
+.DESCRIPTION
+Smoke[Broken]Test
+#>
+function Test-NewSetAzStorageAccountFileAADKERB
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $kind = 'StorageV2'
+
+        $loc = Get-ProviderLocation ResourceManagement;
+        New-AzureRmResourceGroup -Name $rgname -Location $loc;
+        $loc = Get-ProviderLocation_Stage ResourceManagement;
+
+        $DomainName = "testaadkerb.com"
+        $DomainGuid = "aebfc118-1111-1111-1111-d98e41a77cd5"
+		
+        # new account with AADKERB
+        $sto = New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableAzureActiveDirectoryKerberosForFile $true ;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'AADKERB' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 		
+
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'AADKERB' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 	
+		
+        # update account with AADKERB disabled
+        $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableAzureActiveDirectoryKerberosForFile $false 
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'None' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
+
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'None' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
+		
+        # update account with AADKERB enabled
+        $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableAzureActiveDirectoryKerberosForFile $true 
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'AADKERB' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
+
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'AADKERB' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
+		
+        # update account with AADKERB enabled with domainName and domainGUID
+        $sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableAzureActiveDirectoryKerberosForFile $true -ActiveDirectoryDomainName $DomainName -ActiveDirectoryDomainGuid $DomainGuid
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual $DomainName $sto.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties.domainName; 
+        Assert-AreEqual $DomainGuid $sto.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties.domainGUID; 
+
+        $sto = Get-AzStorageAccount -ResourceGroupName $rgname  -Name $stoname;
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind; 
+        Assert-AreEqual 'AADKERB' $sto.AzureFilesIdentityBasedAuth.DirectoryServiceOptions; 
+        Assert-AreEqual $DomainName $sto.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties.domainName; 
+        Assert-AreEqual $DomainGuid $sto.AzureFilesIdentityBasedAuth.ActiveDirectoryProperties.domainGUID; 
+        
+        Retry-IfException { Remove-AzureRmStorageAccount -Force -ResourceGroupName $rgname -Name $stoname; }
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}
+
+<#
+.SYNOPSIS
+Test AzureStorageLocalUserSftp
+.DESCRIPTION
+SmokeTest
+#>
+function Test-AzureStorageLocalUserSftp
+{
+    # Setup
+    $rgname = Get-StorageManagementTestResourceName;
+
+    try
+    {
+        # Test
+        $stoname = 'sto' + $rgname;
+        $stotype = 'Standard_LRS';
+        $loc = Get-ProviderLocation_Canary ResourceManagement;
+        $kind = 'StorageV2'
+
+        New-AzResourceGroup -Name $rgname -Location $loc;
+        New-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -Location $loc -Type $stotype -Kind $kind -EnableSftp $true -EnableHierarchicalNamespace $true -EnableNfsV3 $false -EnableLocalUser $true
+
+        Retry-IfException { $global:sto = Get-AzStorageAccount -ResourceGroupName $rgname -Name $stoname; }
+        Assert-AreEqual $stoname $sto.StorageAccountName;
+        Assert-AreEqual $stotype $sto.Sku.Name;
+        Assert-AreEqual $loc.ToLower().Replace(" ", "") $sto.Location;
+        Assert-AreEqual $kind $sto.Kind;
+        Assert-AreEqual $true $sto.EnableSftp;
+        Assert-AreEqual $true $sto.EnableLocalUser;
+        
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableSftp $false }
+        Assert-AreEqual $false $sto.EnableSftp;
+        Assert-AreEqual $true $sto.EnableLocalUser;
+        
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableLocalUser $false }
+        Assert-AreEqual $false $sto.EnableSftp;
+        Assert-AreEqual $false $sto.EnableLocalUser;
+        
+        Retry-IfException { $global:sto = Set-AzStorageAccount -ResourceGroupName $rgname -Name $stoname -EnableLocalUser $true -EnableSftp $true }
+        Assert-AreEqual $true $sto.EnableSftp;
+        Assert-AreEqual $true $sto.EnableLocalUser;
+        
+        # create local user
+        $userName1 = "testuser1"
+        $userName2 = "testuser2"
+        $sshkey1 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykey=" -Description "sshpulickey name1"
+        $sshkey2 = New-AzStorageLocalUserSshPublicKey -Key "ssh-rsa keykeykeykeykew=" -Description "sshpulickey name2"
+        $permissionScope1 = New-AzStorageLocalUserPermissionScope -Permission rwd -Service blob -ResourceName container1 
+        $permissionScope2 = New-AzStorageLocalUserPermissionScope -Permission rw -Service file -ResourceName share2
+        $localuser1 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1 -HomeDirectory "/" -SshAuthorizedKey $sshkey1,$sshkey2 -PermissionScope $permissionScope1,$permissionScope2 -HasSharedKey $true -HasSshKey $true -HasSshPassword $true
+        Assert-AreEqual $userName1 $localuser1.Name;
+        Assert-AreEqual $true $localuser1.HasSharedKey;
+        Assert-AreEqual $true $localuser1.HasSshKey;
+        Assert-AreEqual $true $localuser1.HasSshPassword;
+        Assert-AreEqual "/" $localuser1.HomeDirectory;
+        Assert-AreEqual 2 $localuser1.PermissionScopes.Count;
+        Assert-AreEqual "rwd" $localuser1.PermissionScopes[0].Permissions;
+        Assert-AreEqual "blob" $localuser1.PermissionScopes[0].Service;
+        Assert-AreEqual "container1" $localuser1.PermissionScopes[0].ResourceName;
+        Assert-AreEqual "rw" $localuser1.PermissionScopes[1].Permissions;
+        Assert-AreEqual "file" $localuser1.PermissionScopes[1].Service;
+        Assert-AreEqual "share2" $localuser1.PermissionScopes[1].ResourceName;
+        Assert-AreEqual 2 $localuser1.SshAuthorizedKeys.Count;
+        Assert-AreEqual "ssh-rsa keykeykeykeykey="  $localuser1.SshAuthorizedKeys[0].Key;
+        Assert-AreEqual "sshpulickey name1"  $localuser1.SshAuthorizedKeys[0].Description;
+        Assert-AreEqual "ssh-rsa keykeykeykeykew="  $localuser1.SshAuthorizedKeys[1].Key;
+        Assert-AreEqual "sshpulickey name2"  $localuser1.SshAuthorizedKeys[1].Description;
+        $localuser2 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName2 -HomeDirectory "/dir1" 
+        Assert-AreEqual $userName2 $localuser2.Name;
+        Assert-Null $localuser2.HasSharedKey;
+        Assert-Null $localuser2.HasSshKey;
+        Assert-Null $localuser2.HasSshPassword;
+        Assert-AreEqual "/dir1" $localuser2.HomeDirectory;
+        Assert-Null $localuser2.PermissionScopes;
+        Assert-Null $localuser2.SshAuthorizedKeys;
+
+        # update local user
+        $localuser2 = Set-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName2 -HomeDirectory "/dir2" -HasSharedKey $true -HasSshKey $true -HasSshPassword $true `
+            -SshAuthorizedKey (@{
+                Description="sshpulickey name3";
+                Key="ssh-rsa keykeykeykeykew=";                
+            },
+            @{
+                Description="sshpulickey name4";
+                Key="ssh-rsa keykeykeykeykew="; 
+            }) `
+            -PermissionScope (@{
+                Permissions="rw";
+                Service="blob"; 
+                ResourceName="container1";                
+            },
+            @{
+                Permissions="rwd";
+                Service="file"; 
+                ResourceName="share1";
+            }) 
+        Assert-AreEqual $userName2 $localuser2.Name;
+        Assert-AreEqual $true $localuser2.HasSharedKey;
+        Assert-AreEqual $true $localuser2.HasSshKey;
+        Assert-AreEqual $true $localuser2.HasSshPassword;
+        Assert-AreEqual "/dir2" $localuser2.HomeDirectory;
+        Assert-AreEqual 2 $localuser2.PermissionScopes.Count;
+        Assert-AreEqual "rw" $localuser2.PermissionScopes[0].Permissions;
+        Assert-AreEqual "blob" $localuser2.PermissionScopes[0].Service;
+        Assert-AreEqual "container1" $localuser2.PermissionScopes[0].ResourceName;
+        Assert-AreEqual "rwd" $localuser2.PermissionScopes[1].Permissions;
+        Assert-AreEqual "file" $localuser2.PermissionScopes[1].Service;
+        Assert-AreEqual "share1" $localuser2.PermissionScopes[1].ResourceName;
+        Assert-AreEqual 2 $localuser2.SshAuthorizedKeys.Count;
+        Assert-AreEqual "ssh-rsa keykeykeykeykew="  $localuser2.SshAuthorizedKeys[0].Key;
+        Assert-AreEqual "sshpulickey name3"  $localuser2.SshAuthorizedKeys[0].Description;
+        Assert-AreEqual "ssh-rsa keykeykeykeykew="  $localuser2.SshAuthorizedKeys[1].Key;
+        Assert-AreEqual "sshpulickey name4"  $localuser2.SshAuthorizedKeys[1].Description;
+
+        # get single local user
+        $localuser1 = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+        Assert-AreEqual $userName1 $localuser1.Name;
+        Assert-AreEqual $true $localuser1.HasSharedKey;
+        Assert-AreEqual $true $localuser1.HasSshKey;
+        Assert-AreEqual $true $localuser1.HasSshPassword;
+        Assert-AreEqual "/" $localuser1.HomeDirectory;
+        Assert-AreEqual 2 $localuser1.PermissionScopes.Count;
+        Assert-AreEqual "rwd" $localuser1.PermissionScopes[0].Permissions;
+        Assert-AreEqual "blob" $localuser1.PermissionScopes[0].Service;
+        Assert-AreEqual "container1" $localuser1.PermissionScopes[0].ResourceName;
+        Assert-AreEqual "rw" $localuser1.PermissionScopes[1].Permissions;
+        Assert-AreEqual "file" $localuser1.PermissionScopes[1].Service;
+        Assert-AreEqual "share2" $localuser1.PermissionScopes[1].ResourceName;
+        Assert-Null $localuser1.SshAuthorizedKeys;
+
+        #list all local users
+        $localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
+        Assert-AreEqual 2 $localusers.Count;
+        Assert-AreEqual $userName1 $localusers[0].Name;
+        Assert-AreEqual $userName2 $localusers[1].Name;
+
+        # get public key
+        $key = Get-AzStorageLocalUserKey -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+        Assert-NotNull $key.SharedKey
+        Assert-AreEqual 2 $key.SshAuthorizedKeys.Count;
+        #Assert-AreEqual "ssh-rsa keykeykeykeykey="  $key.SshAuthorizedKeys[0].Key;
+        Assert-AreEqual "sshpulickey name1"  $key.SshAuthorizedKeys[0].Description;
+        Assert-AreEqual "ssh-rsa keykeykeykeykew="  $key.SshAuthorizedKeys[1].Key;
+        Assert-AreEqual "sshpulickey name2"  $key.SshAuthorizedKeys[1].Description;
+
+        # regenerate ssh password
+        $password = New-AzStorageLocalUserSshPassword -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+        Assert-NotNull $password.SshPassword
+
+        # remove local user
+        Remove-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname -UserName $userName1
+        $localusers = Get-AzStorageLocalUser -ResourceGroupName $rgname -StorageAccountName $stoname 
+        Assert-AreEqual 1 $localusers.Count;
+        Assert-AreEqual $userName2 $localusers[0].Name;
+
+        #clean up
+        Remove-AzStorageAccount -Force -ResourceGroupName $rgname -Name $stoname;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname
+    }
+}

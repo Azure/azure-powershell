@@ -26,6 +26,7 @@ The input ACL will replace original ACL completely.
 ## EXAMPLES
 
 ### Example 1: Set ACL recursively on a directory
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx 
 PS C:\>$acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
@@ -42,6 +43,7 @@ ContinuationToken               :
 This command first creates an ACL object with 3 acl entries, then sets ACL recursively on a directory.
 
 ### Example 2: Set ACL recursively on a root directory of filesystem
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Acl $acl  -Context $ctx
 
@@ -75,6 +77,7 @@ ContinuationToken               :
 This command first sets ACL recursively to a root directory and failed, then resume with ContinuationToken after user fix the failed file.
 
 ### Example 3: Set ACL recursively chunk by chunk
+<!-- Skip: Output cannot be splitted from code -->
 ```
 $token = $null
 $TotalDirectoriesSuccess = 0
@@ -104,6 +107,7 @@ echo "FailedEntries:"$($FailedEntries | ft)
 This script sets ACL rescursively on directory chunk by chunk, with chunk size as BatchSize * MaxBatchCount. Chunk size is 200 in this script.
 
 ### Example 4: Set ACL recursively on a directory and ContinueOnFailure, then resume from failures one by one
+<!-- Skip: Output cannot be splitted from code -->
 ```
 PS C:\> $result = Set-AzDataLakeGen2AclRecursive -FileSystem "filesystem1" -Path "dir1" -Acl $acl -ContinueOnFailure -Context $ctx
 

@@ -14,17 +14,14 @@
 
 namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
 {
-    using Microsoft.Azure.Commands.EventHub.Test.ScenarioTests;
+    using Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests;
     using Microsoft.WindowsAzure.Commands.ScenarioTest;
-    using Microsoft.WindowsAzure.Commands.Test.Utilities.Common;
-    using ServiceManagement.Common.Models;
     using Xunit;
     using Xunit.Abstractions;
     public class ServiceBusServiceTests : ServiceBusTestRunner
     {
         public ServiceBusServiceTests(ITestOutputHelper output) : base(output)
         {
-
         }
 
         [Fact]
@@ -35,20 +32,20 @@ namespace Microsoft.Azure.Commands.ServiceBus.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void ServiceBusNameSpaceAuth_CURD_Tests()
         {
             TestRunner.RunTestScript("ServiceBusNameSpaceAuthTests");
         }
 
-        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void ServiceBusNameSpaceEncryption_CRUD()
         {
             TestRunner.RunTestScript("EncryptionTest");
         }
 
-        [Fact(Skip = "Skip as current test framework does not support recording generated cmdlets.")]
+        [Fact]
         [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void ServiceBusNameSpaceMSI()
         {

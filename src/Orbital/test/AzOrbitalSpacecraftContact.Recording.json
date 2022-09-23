@@ -1,0 +1,160 @@
+{
+  "AzOrbitalSpacecraftContact+[NoContext]+Get+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/spacecrafts/AQUA/contacts/azps-orbital-contact?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/spacecrafts/AQUA/contacts/azps-orbital-contact?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "17" ],
+        "x-ms-client-request-id": [ "9e7a824a-77cd-4dc4-bcb4-303d7bd64222" ],
+        "CommandName": [ "Get-AzOrbitalSpacecraftContact" ],
+        "FullCommandName": [ "Get-AzOrbitalSpacecraftContact_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Orbital/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11987" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-request-id": [ "c11379c0-123e-45f5-a99b-814463d86f87" ],
+        "x-ms-correlation-request-id": [ "c11379c0-123e-45f5-a99b-814463d86f87" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T111037Z:c11379c0-123e-45f5-a99b-814463d86f87" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 21 Jul 2022 11:10:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "873" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/spacecrafts/AQUA/contacts/azps-orbital-contact\",\"name\":\"azps-orbital-contact\",\"type\":\"Microsoft.Orbital/spacecrafts/contacts\",\"properties\":{\"status\":\"scheduled\",\"provisioningState\":\"failed\",\"reservationStartTime\":\"2022-07-22T11:08:18.140273Z\",\"reservationEndTime\":\"2022-07-23T11:08:18.1646408Z\",\"errorMessage\":null,\"groundStationName\":\"WESTUS2_1\",\"contactProfile\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\"},\"antennaConfiguration\":null,\"maximumElevationDegrees\":0.0,\"txStartTime\":null,\"txEndTime\":null,\"rxStartTime\":null,\"rxEndTime\":null,\"startAzimuthDegrees\":0.0,\"endAzimuthDegrees\":0.0,\"startElevationDegrees\":0.0,\"endElevationDegrees\":0.0}}",
+      "isContentBase64": false
+    }
+  },
+  "AzOrbitalSpacecraftContact+[NoContext]+AzOrbitalAvailableSpacecraftContact-ListExpanded+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/spacecrafts/AQUA/listAvailableContacts?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/spacecrafts/AQUA/listAvailableContacts?api-version=2022-03-01",
+      "Content": "{\r\n  \"contactProfile\": {\r\n    \"id\": \"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/contactProfiles/azps-orbital-contactprofile\"\r\n  },\r\n  \"groundStationName\": \"WESTUS2_1\",\r\n  \"startTime\": \"2022-07-22T19:10:39.1935054+08:00\",\r\n  \"endTime\": \"2022-07-23T19:10:39.1944081+08:00\"\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "337" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 202,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Location": [ "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Orbital/locations/westus2/operationResults/ef8e6d2c-5728-4fdd-8747-544ea1bfd841?api-version=2022-03-01" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1199" ],
+        "x-ms-request-id": [ "c66f0fcf-e164-4ec7-a79f-a2224a85570f" ],
+        "x-ms-correlation-request-id": [ "c66f0fcf-e164-4ec7-a79f-a2224a85570f" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T111037Z:c66f0fcf-e164-4ec7-a79f-a2224a85570f" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 21 Jul 2022 11:10:37 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  },
+  "AzOrbitalSpacecraftContact+[NoContext]+AzOrbitalAvailableSpacecraftContact-ListExpanded+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Orbital/locations/westus2/operationResults/ef8e6d2c-5728-4fdd-8747-544ea1bfd841?api-version=2022-03-01+2": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Orbital/locations/westus2/operationResults/ef8e6d2c-5728-4fdd-8747-544ea1bfd841?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "Authorization": [ "[Filtered]" ],
+        "x-ms-unique-id": [ "19" ],
+        "x-ms-client-request-id": [ "0cc81f10-e301-4f33-9d38-99c377eda298" ],
+        "CommandName": [ "Get-AzOrbitalAvailableSpacecraftContact" ],
+        "FullCommandName": [ "Get-AzOrbitalAvailableSpacecraftContact_ListExpanded" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Orbital/0.1.0" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11986" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-request-id": [ "2e775b76-a09f-479e-a4f8-1e9853ae8dd1" ],
+        "x-ms-correlation-request-id": [ "2e775b76-a09f-479e-a4f8-1e9853ae8dd1" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T111108Z:2e775b76-a09f-479e-a4f8-1e9853ae8dd1" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 21 Jul 2022 11:11:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1613" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"nextLink\":null,\"value\":[{\"spacecraft\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/spacecrafts/AQUA\"},\"groundStationName\":\"WESTUS2_1\",\"location\":\"westus2\",\"properties\":{\"maximumElevationDegrees\":46.502,\"txStartTime\":\"2022-07-22T20:23:26.374Z\",\"txEndTime\":\"2022-07-22T20:32:32.928Z\",\"rxStartTime\":\"2022-07-22T20:23:26.374Z\",\"rxEndTime\":\"2022-07-22T20:32:32.928Z\",\"startAzimuthDegrees\":141.858721,\"endAzimuthDegrees\":357.099952,\"startElevationDegrees\":10.0,\"endElevationDegrees\":10.0}},{\"spacecraft\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/spacecrafts/AQUA\"},\"groundStationName\":\"WESTUS2_1\",\"location\":\"westus2\",\"properties\":{\"maximumElevationDegrees\":22.735,\"txStartTime\":\"2022-07-22T22:02:11.931Z\",\"txEndTime\":\"2022-07-22T22:09:42.557Z\",\"rxStartTime\":\"2022-07-22T22:02:11.931Z\",\"rxEndTime\":\"2022-07-22T22:09:42.557Z\",\"startAzimuthDegrees\":215.222497,\"endAzimuthDegrees\":319.576567,\"startElevationDegrees\":10.0,\"endElevationDegrees\":10.0}},{\"spacecraft\":{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/spacecrafts/AQUA\"},\"groundStationName\":\"WESTUS2_1\",\"location\":\"westus2\",\"properties\":{\"maximumElevationDegrees\":74.561,\"txStartTime\":\"2022-07-23T09:57:03.263Z\",\"txEndTime\":\"2022-07-23T10:06:34.581Z\",\"rxStartTime\":\"2022-07-23T09:57:03.263Z\",\"rxEndTime\":\"2022-07-23T10:06:34.581Z\",\"startAzimuthDegrees\":17.000686,\"endAzimuthDegrees\":188.788016,\"startElevationDegrees\":10.0,\"endElevationDegrees\":10.0}}]}",
+      "isContentBase64": false
+    }
+  },
+  "AzOrbitalSpacecraftContact+[NoContext]+Delete+$DELETE+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/spacecrafts/AQUA/contacts/azps-orbital-contact?api-version=2022-03-01+1": {
+    "Request": {
+      "Method": "DELETE",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/azpstest-gp/providers/Microsoft.Orbital/spacecrafts/AQUA/contacts/azps-orbital-contact?api-version=2022-03-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "20" ],
+        "x-ms-client-request-id": [ "a499756d-526c-440b-b0df-d3f007eee094" ],
+        "CommandName": [ "Remove-AzOrbitalSpacecraftContact" ],
+        "FullCommandName": [ "Remove-AzOrbitalSpacecraftContact_Delete" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.2", "Az.Orbital/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-ratelimit-remaining-subscription-deletes": [ "14999" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-request-id": [ "3895d4d5-391d-46bb-85eb-30cfb412b995" ],
+        "x-ms-correlation-request-id": [ "3895d4d5-391d-46bb-85eb-30cfb412b995" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220721T111109Z:3895d4d5-391d-46bb-85eb-30cfb412b995" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 21 Jul 2022 11:11:08 GMT" ]
+      },
+      "ContentHeaders": {
+        "Expires": [ "-1" ],
+        "Content-Length": [ "0" ]
+      },
+      "Content": null,
+      "isContentBase64": false
+    }
+  }
+}

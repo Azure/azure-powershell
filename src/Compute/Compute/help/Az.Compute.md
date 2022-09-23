@@ -204,7 +204,7 @@ Gets the VMImage publishers.
 Gets VMImage SKUs.
 
 ### [Get-AzVMRunCommand](Get-AzVMRunCommand.md)
-Gets specific run command for a subscription in a location.
+Gets a specific Run Command or a list of Run Commands for a Virtual Machine
 
 ### [Get-AzVMRunCommandDocument](Get-AzVMRunCommandDocument.md)
 Get a run command document.
@@ -517,6 +517,9 @@ The operation to delete the VMSS VM run command.
 
 ### [Repair-AzVmssServiceFabricUpdateDomain](Repair-AzVmssServiceFabricUpdateDomain.md)
 Manual platform update domain walk to update virtual machines in a service fabric virtual machine scale set.
+
+### [Restart-AzHost](Restart-AzHost.md)
+Restart the dedicated host.
 
 ### [Restart-AzVM](Restart-AzVM.md)
 Restarts an Azure virtual machine.

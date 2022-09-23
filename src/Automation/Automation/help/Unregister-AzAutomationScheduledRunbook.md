@@ -35,7 +35,7 @@ The schedule no longer starts the runbook.
 
 ### Example 1: Remove the association between a runbook and a schedule
 ```powershell
-Unregister-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -Name "Runbk01" -ResourceGroupName "ResourceGroup01" -ScheduleName "Runbk01Sched"
+Unregister-AzAutomationScheduledRunbook -AutomationAccountName "Contoso17" -RunbookName "Runbk01" -ResourceGroupName "ResourceGroup01" -ScheduleName "Runbk01Sched"
 ```
 
 This command removes the association between the runbook named Runbk01 and the schedule named Runbk01Sched.
@@ -179,7 +179,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

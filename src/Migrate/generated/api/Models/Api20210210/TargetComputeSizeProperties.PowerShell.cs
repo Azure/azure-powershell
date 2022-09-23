@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -84,7 +86,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="TargetComputeSizeProperties" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="TargetComputeSizeProperties" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizeProperties FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -101,16 +103,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).CpuCoresCount = (int?) content.GetValueForProperty("CpuCoresCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).CpuCoresCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).VCpUsAvailable = (int?) content.GetValueForProperty("VCpUsAvailable",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).VCpUsAvailable, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MemoryInGb = (double?) content.GetValueForProperty("MemoryInGb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MemoryInGb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxDataDiskCount = (int?) content.GetValueForProperty("MaxDataDiskCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxDataDiskCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxNicsCount = (int?) content.GetValueForProperty("MaxNicsCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxNicsCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IComputeSizeErrorDetails[]) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Error, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IComputeSizeErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ComputeSizeErrorDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HighIopsSupported = (string) content.GetValueForProperty("HighIopsSupported",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HighIopsSupported, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HyperVGeneration = (string[]) content.GetValueForProperty("HyperVGeneration",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HyperVGeneration, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CpuCoresCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).CpuCoresCount = (int?) content.GetValueForProperty("CpuCoresCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).CpuCoresCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("VCpUsAvailable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).VCpUsAvailable = (int?) content.GetValueForProperty("VCpUsAvailable",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).VCpUsAvailable, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MemoryInGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MemoryInGb = (double?) content.GetValueForProperty("MemoryInGb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MemoryInGb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("MaxDataDiskCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxDataDiskCount = (int?) content.GetValueForProperty("MaxDataDiskCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxDataDiskCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MaxNicsCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxNicsCount = (int?) content.GetValueForProperty("MaxNicsCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxNicsCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IComputeSizeErrorDetails[]) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Error, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IComputeSizeErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ComputeSizeErrorDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HighIopsSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HighIopsSupported = (string) content.GetValueForProperty("HighIopsSupported",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HighIopsSupported, global::System.Convert.ToString);
+            }
+            if (content.Contains("HyperVGeneration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HyperVGeneration = (string[]) content.GetValueForProperty("HyperVGeneration",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HyperVGeneration, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -128,16 +160,46 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).FriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).CpuCoresCount = (int?) content.GetValueForProperty("CpuCoresCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).CpuCoresCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).VCpUsAvailable = (int?) content.GetValueForProperty("VCpUsAvailable",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).VCpUsAvailable, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MemoryInGb = (double?) content.GetValueForProperty("MemoryInGb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MemoryInGb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxDataDiskCount = (int?) content.GetValueForProperty("MaxDataDiskCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxDataDiskCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxNicsCount = (int?) content.GetValueForProperty("MaxNicsCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxNicsCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IComputeSizeErrorDetails[]) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Error, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IComputeSizeErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ComputeSizeErrorDetailsTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HighIopsSupported = (string) content.GetValueForProperty("HighIopsSupported",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HighIopsSupported, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HyperVGeneration = (string[]) content.GetValueForProperty("HyperVGeneration",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HyperVGeneration, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("FriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).FriendlyName = (string) content.GetValueForProperty("FriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).FriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CpuCoresCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).CpuCoresCount = (int?) content.GetValueForProperty("CpuCoresCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).CpuCoresCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("VCpUsAvailable"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).VCpUsAvailable = (int?) content.GetValueForProperty("VCpUsAvailable",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).VCpUsAvailable, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MemoryInGb"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MemoryInGb = (double?) content.GetValueForProperty("MemoryInGb",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MemoryInGb, (__y)=> (double) global::System.Convert.ChangeType(__y, typeof(double)));
+            }
+            if (content.Contains("MaxDataDiskCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxDataDiskCount = (int?) content.GetValueForProperty("MaxDataDiskCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxDataDiskCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("MaxNicsCount"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxNicsCount = (int?) content.GetValueForProperty("MaxNicsCount",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).MaxNicsCount, (__y)=> (int) global::System.Convert.ChangeType(__y, typeof(int)));
+            }
+            if (content.Contains("Error"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Error = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IComputeSizeErrorDetails[]) content.GetValueForProperty("Error",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).Error, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IComputeSizeErrorDetails>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ComputeSizeErrorDetailsTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("HighIopsSupported"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HighIopsSupported = (string) content.GetValueForProperty("HighIopsSupported",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HighIopsSupported, global::System.Convert.ToString);
+            }
+            if (content.Contains("HyperVGeneration"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HyperVGeneration = (string[]) content.GetValueForProperty("HyperVGeneration",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ITargetComputeSizePropertiesInternal)this).HyperVGeneration, __y => TypeConverterExtensions.SelectToArray<string>(__y, global::System.Convert.ToString));
+            }
             AfterDeserializePSObject(content);
         }
 

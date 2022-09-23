@@ -13,6 +13,7 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands
@@ -44,6 +45,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
         [Alias(AliasAuthorizationRuleName)]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("Force", ChangeDescription = "Parameter -Force would be removed without being replaced")]
         [Parameter(Mandatory = false, HelpMessage = "Do not ask for confirmation")]
         public SwitchParameter Force { get; set; }
 
@@ -63,7 +65,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     Name,
                     () =>
                     {
-                        Client.DeleteNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
+                        UtilityClient.DeleteNamespaceAuthorizationRules(ResourceGroupName, Namespace, Name);
                         if (PassThru)
                         {
                             WriteObject(true);
@@ -79,7 +81,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
                     Name,
                     () =>
                     {
-                        Client.DeleteEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name);
+                        UtilityClient.DeleteEventHubAuthorizationRules(ResourceGroupName, Namespace, EventHub, Name);
                         if (PassThru)
                         {
                             WriteObject(true);

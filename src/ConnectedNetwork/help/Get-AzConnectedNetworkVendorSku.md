@@ -37,8 +37,10 @@ Gets information about the specified sku.
 
 ### Example 1: Get-AzConnectedNetworkVendorSku using Vendor name and Subscription Id
 ```powershell
-PS C:\> Get-AzConnectedNetworkVendorSku -VendorName myVendor -SubscriptionId xxxxx-22222-xxxxx-22222
+Get-AzConnectedNetworkVendorSku -VendorName myVendor -SubscriptionId xxxxx-22222-xxxxx-22222
+```
 
+```output
 DeploymentMode                                          : PrivateEdgeZone
 Id                                                      : /subscriptions/xxxxx-22222-xxxxx-22222/providers/Microsoft.HybridNetwork/vendors/myVendor/VendorSkus/mySku
 ManagedApplicationParameter                             : Microsoft.Azure.PowerShell.Cmdlets.ConnectedNetwork.Models.Api20210501.VendorSkuPropertiesFormatManagedApplicationParameters
@@ -178,7 +180,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IConnectedNetworkIdentity>: Identity Parameter
+INPUTOBJECT `<IConnectedNetworkIdentity>`: Identity Parameter
   - `[DeviceName <String>]`: The name of the device resource.
   - `[Id <String>]`: Resource identity path
   - `[LocationName <String>]`: The Azure region where the network function resource was created by the customer.

@@ -31,7 +31,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializeDictionary</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Collections.IDictionary content that should be used.</param>
@@ -43,7 +44,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// <summary>
         /// <c>BeforeDeserializePSObject</c> will be called before the deserialization has commenced, allowing complete customization
         /// of the object before it is deserialized.
-        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <see "returnNow" /> output parameter.
+        /// If you wish to disable the default deserialization entirely, return <c>true</c> in the <paramref name="returnNow" /> output
+        /// parameter.
         /// Implement this method in a partial class to enable this behavior.
         /// </summary>
         /// <param name="content">The global::System.Management.Automation.PSObject content that should be used.</param>
@@ -82,7 +84,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
         /// Creates a new instance of <see cref="MigrationItem" />, deserializing the content from a json string.
         /// </summary>
         /// <param name="jsonText">a string containing a JSON serialized instance of this model.</param>
-        /// <returns>an instance of the <see cref="className" /> model class.</returns>
+        /// <returns>an instance of the <see cref="MigrationItem" /> model class.</returns>
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem FromJsonString(string jsonText) => FromJson(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.Json.JsonNode.Parse(jsonText));
 
         /// <summary>
@@ -99,29 +101,98 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.MigrationItemPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState?) content.GetValueForProperty("MigrationState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJob = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ICurrentJobDetails) content.GetValueForProperty("CurrentJob",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJob, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.CurrentJobDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MachineName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyFriendlyName = (string) content.GetValueForProperty("PolicyFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationStateDescription = (string) content.GetValueForProperty("MigrationStateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationStateDescription, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationTime = (global::System.DateTime?) content.GetValueForProperty("LastTestMigrationTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationStatus = (string) content.GetValueForProperty("LastTestMigrationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState?) content.GetValueForProperty("TestMigrateState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateStateDescription = (string) content.GetValueForProperty("TestMigrateStateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateStateDescription, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Health = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth?) content.GetValueForProperty("Health",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Health, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).HealthError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).HealthError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).AllowedOperation = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation[]) content.GetValueForProperty("AllowedOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).AllowedOperation, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).EventCorrelationId = (string) content.GetValueForProperty("EventCorrelationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).EventCorrelationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).ProviderSpecificDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationProviderSpecificSettings) content.GetValueForProperty("ProviderSpecificDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).ProviderSpecificDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.MigrationProviderSpecificSettingsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobName = (string) content.GetValueForProperty("CurrentJobName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobId = (string) content.GetValueForProperty("CurrentJobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobStartTime = (global::System.DateTime?) content.GetValueForProperty("CurrentJobStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.MigrationItemPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("MigrationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState?) content.GetValueForProperty("MigrationState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState.CreateFrom);
+            }
+            if (content.Contains("CurrentJob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJob = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ICurrentJobDetails) content.GetValueForProperty("CurrentJob",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJob, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.CurrentJobDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MachineName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PolicyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PolicyFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyFriendlyName = (string) content.GetValueForProperty("PolicyFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MigrationStateDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationStateDescription = (string) content.GetValueForProperty("MigrationStateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationStateDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastTestMigrationTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationTime = (global::System.DateTime?) content.GetValueForProperty("LastTestMigrationTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastTestMigrationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationStatus = (string) content.GetValueForProperty("LastTestMigrationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestMigrateState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState?) content.GetValueForProperty("TestMigrateState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState.CreateFrom);
+            }
+            if (content.Contains("TestMigrateStateDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateStateDescription = (string) content.GetValueForProperty("TestMigrateStateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateStateDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("Health"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Health = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth?) content.GetValueForProperty("Health",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Health, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth.CreateFrom);
+            }
+            if (content.Contains("HealthError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).HealthError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).HealthError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AllowedOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).AllowedOperation = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation[]) content.GetValueForProperty("AllowedOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).AllowedOperation, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation.CreateFrom));
+            }
+            if (content.Contains("EventCorrelationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).EventCorrelationId = (string) content.GetValueForProperty("EventCorrelationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).EventCorrelationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderSpecificDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).ProviderSpecificDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationProviderSpecificSettings) content.GetValueForProperty("ProviderSpecificDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).ProviderSpecificDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.MigrationProviderSpecificSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CurrentJobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobName = (string) content.GetValueForProperty("CurrentJobName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CurrentJobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobId = (string) content.GetValueForProperty("CurrentJobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobId, global::System.Convert.ToString);
+            }
+            if (content.Contains("CurrentJobStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobStartTime = (global::System.DateTime?) content.GetValueForProperty("CurrentJobStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializeDictionary(content);
         }
 
@@ -139,29 +210,98 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210
                 return;
             }
             // actually deserialize
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.MigrationItemPropertiesTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState?) content.GetValueForProperty("MigrationState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJob = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ICurrentJobDetails) content.GetValueForProperty("CurrentJob",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJob, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.CurrentJobDetailsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MachineName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyFriendlyName = (string) content.GetValueForProperty("PolicyFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyFriendlyName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationStateDescription = (string) content.GetValueForProperty("MigrationStateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationStateDescription, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationTime = (global::System.DateTime?) content.GetValueForProperty("LastTestMigrationTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationStatus = (string) content.GetValueForProperty("LastTestMigrationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationStatus, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState?) content.GetValueForProperty("TestMigrateState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateStateDescription = (string) content.GetValueForProperty("TestMigrateStateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateStateDescription, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Health = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth?) content.GetValueForProperty("Health",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Health, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth.CreateFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).HealthError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).HealthError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).AllowedOperation = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation[]) content.GetValueForProperty("AllowedOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).AllowedOperation, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation.CreateFrom));
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).EventCorrelationId = (string) content.GetValueForProperty("EventCorrelationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).EventCorrelationId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).ProviderSpecificDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationProviderSpecificSettings) content.GetValueForProperty("ProviderSpecificDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).ProviderSpecificDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.MigrationProviderSpecificSettingsTypeConverter.ConvertFrom);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobName = (string) content.GetValueForProperty("CurrentJobName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobName, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobId = (string) content.GetValueForProperty("CurrentJobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobId, global::System.Convert.ToString);
-            ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobStartTime = (global::System.DateTime?) content.GetValueForProperty("CurrentJobStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            if (content.Contains("Property"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Property = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemProperties) content.GetValueForProperty("Property",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Property, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.MigrationItemPropertiesTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("Id"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id = (string) content.GetValueForProperty("Id",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Id, global::System.Convert.ToString);
+            }
+            if (content.Contains("Name"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name = (string) content.GetValueForProperty("Name",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Name, global::System.Convert.ToString);
+            }
+            if (content.Contains("Type"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type = (string) content.GetValueForProperty("Type",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Type, global::System.Convert.ToString);
+            }
+            if (content.Contains("Location"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location = (string) content.GetValueForProperty("Location",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IResourceInternal)this).Location, global::System.Convert.ToString);
+            }
+            if (content.Contains("MigrationState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState?) content.GetValueForProperty("MigrationState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationState.CreateFrom);
+            }
+            if (content.Contains("CurrentJob"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJob = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ICurrentJobDetails) content.GetValueForProperty("CurrentJob",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJob, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.CurrentJobDetailsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("MachineName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MachineName = (string) content.GetValueForProperty("MachineName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MachineName, global::System.Convert.ToString);
+            }
+            if (content.Contains("PolicyId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyId = (string) content.GetValueForProperty("PolicyId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyId, global::System.Convert.ToString);
+            }
+            if (content.Contains("PolicyFriendlyName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyFriendlyName = (string) content.GetValueForProperty("PolicyFriendlyName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).PolicyFriendlyName, global::System.Convert.ToString);
+            }
+            if (content.Contains("MigrationStateDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationStateDescription = (string) content.GetValueForProperty("MigrationStateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).MigrationStateDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("LastTestMigrationTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationTime = (global::System.DateTime?) content.GetValueForProperty("LastTestMigrationTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
+            if (content.Contains("LastTestMigrationStatus"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationStatus = (string) content.GetValueForProperty("LastTestMigrationStatus",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).LastTestMigrationStatus, global::System.Convert.ToString);
+            }
+            if (content.Contains("TestMigrateState"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateState = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState?) content.GetValueForProperty("TestMigrateState",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateState, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.TestMigrationState.CreateFrom);
+            }
+            if (content.Contains("TestMigrateStateDescription"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateStateDescription = (string) content.GetValueForProperty("TestMigrateStateDescription",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).TestMigrateStateDescription, global::System.Convert.ToString);
+            }
+            if (content.Contains("Health"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Health = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth?) content.GetValueForProperty("Health",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).Health, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.ProtectionHealth.CreateFrom);
+            }
+            if (content.Contains("HealthError"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).HealthError = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError[]) content.GetValueForProperty("HealthError",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).HealthError, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IHealthError>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.HealthErrorTypeConverter.ConvertFrom));
+            }
+            if (content.Contains("AllowedOperation"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).AllowedOperation = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation[]) content.GetValueForProperty("AllowedOperation",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).AllowedOperation, __y => TypeConverterExtensions.SelectToArray<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation>(__y, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation.CreateFrom));
+            }
+            if (content.Contains("EventCorrelationId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).EventCorrelationId = (string) content.GetValueForProperty("EventCorrelationId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).EventCorrelationId, global::System.Convert.ToString);
+            }
+            if (content.Contains("ProviderSpecificDetail"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).ProviderSpecificDetail = (Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationProviderSpecificSettings) content.GetValueForProperty("ProviderSpecificDetail",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).ProviderSpecificDetail, Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.MigrationProviderSpecificSettingsTypeConverter.ConvertFrom);
+            }
+            if (content.Contains("CurrentJobName"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobName = (string) content.GetValueForProperty("CurrentJobName",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobName, global::System.Convert.ToString);
+            }
+            if (content.Contains("CurrentJobId"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobId = (string) content.GetValueForProperty("CurrentJobId",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobId, global::System.Convert.ToString);
+            }
+            if (content.Contains("CurrentJobStartTime"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobStartTime = (global::System.DateTime?) content.GetValueForProperty("CurrentJobStartTime",((Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItemInternal)this).CurrentJobStartTime, (v) => v is global::System.DateTime _v ? _v : global::System.Xml.XmlConvert.ToDateTime( v.ToString() , global::System.Xml.XmlDateTimeSerializationMode.Unspecified));
+            }
             AfterDeserializePSObject(content);
         }
 

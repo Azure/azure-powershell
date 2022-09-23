@@ -332,7 +332,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <ISite>: 
+INPUTOBJECT `<ISite>`: 
   - `Location <String>`: Resource Location.
   - `[Kind <String>]`: Kind of resource.
   - `[Tag <IResourceTags>]`: Resource tags.
@@ -353,6 +353,8 @@ INPUTOBJECT <ISite>:
   - `[CloningInfoTrafficManagerProfileId <String>]`: ARM resource ID of the Traffic Manager profile to use, if it exists. Traffic Manager resource ID is of the form         /subscriptions/{subId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/trafficManagerProfiles/{profileName}.
   - `[CloningInfoTrafficManagerProfileName <String>]`: Name of Traffic Manager profile to create. This is only needed if Traffic Manager profile does not already exist.
   - `[Config <ISiteConfig>]`: Configuration of the app.
+    - `[AcrUseManagedIdentityCred <Boolean?>]`: Flag to use Managed Identity Creds for ACR pull
+    - `[AcrUserManagedIdentityId <String>]`: If using user managed identity, the user managed identity ClientId
     - `[ActionMinProcessExecutionTime <String>]`: Minimum time the process must execute         before taking the action
     - `[ActionType <AutoHealActionType?>]`: Predefined action to be taken.
     - `[AlwaysOn <Boolean?>]`: <code>true</code> if Always On is enabled; otherwise, <code>false</code>.
@@ -368,7 +370,7 @@ INPUTOBJECT <ISite>:
       - `[ConnectionString <String>]`: Connection string value.
       - `[Name <String>]`: Name of connection string.
       - `[Type <ConnectionStringType?>]`: Type of database.
-    - `[CorAllowedOrigin <String[]>]`: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: http://example.com:12345). Use "*" to allow all.
+    - `[CorAllowedOrigin <String[]>]`: Gets or sets the list of origins that should be allowed to make cross-origin         calls (for example: `http://example.com:12345`). Use "*" to allow all.
     - `[CorSupportCredentials <Boolean?>]`: Gets or sets whether CORS requests with credentials are allowed. See         https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#Requests_with_credentials         for more details.
     - `[CustomActionExe <String>]`: Executable to be run.
     - `[CustomActionParameter <String>]`: Parameters for the executable.
@@ -378,7 +380,7 @@ INPUTOBJECT <ISite>:
     - `[DynamicTagsJson <String>]`: Gets or sets a JSON string containing a list of dynamic tags that will be evaluated from user claims in the push registration endpoint.
     - `[ExperimentRampUpRule <IRampUpRule[]>]`: List of ramp-up rules.
       - `[ActionHostName <String>]`: Hostname of a slot to which the traffic will be redirected if decided to. E.g. myapp-stage.azurewebsites.net.
-      - `[ChangeDecisionCallbackUrl <String>]`: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         https://www.siteextensions.net/packages/TiPCallback/
+      - `[ChangeDecisionCallbackUrl <String>]`: Custom decision algorithm can be provided in TiPCallback site extension which URL can be specified. See TiPCallback site extension for the scaffold and contracts.         `https://www.siteextensions.net/packages/TiPCallback/`
       - `[ChangeIntervalInMinute <Int32?>]`: Specifies interval in minutes to reevaluate ReroutePercentage.
       - `[ChangeStep <Double?>]`: In auto ramp up scenario this is the step to add/remove from <code>ReroutePercentage</code> until it reaches \n<code>MinReroutePercentage</code> or         <code>MaxReroutePercentage</code>. Site metrics are checked every N minutes specified in <code>ChangeIntervalInMinutes</code>.\nCustom decision algorithm         can be provided in TiPCallback site extension which URL can be specified in <code>ChangeDecisionCallbackUrl</code>.
       - `[MaxReroutePercentage <Double?>]`: Specifies upper boundary below which ReroutePercentage will stay.

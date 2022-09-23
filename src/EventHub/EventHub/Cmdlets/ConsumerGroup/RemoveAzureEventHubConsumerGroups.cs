@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventHub.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
 {
@@ -44,10 +45,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
         [Alias(AliasConsumerGroupName)]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSConsumerGroupAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IConsumerGroup", ChangeDescription = ConsumergroupInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ParameterSetName = ConsumergroupInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "ConsumerGroup Object")]
         [ValidateNotNullOrEmpty]
         public PSConsumerGroupAttributes InputObject { get; set; }
 
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = ConsumergroupResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "ConsumerGroup Resource Id")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
@@ -85,7 +88,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.ConsumerGroup
             {
                 try
                 {
-                    Client.DeletConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
+                    UtilityClient.DeletConsumerGroup(ResourceGroupName, Namespace, EventHub, Name);
                     if (PassThru)
                     {
                         WriteObject(true);

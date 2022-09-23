@@ -15,6 +15,7 @@
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Management.ServiceBus.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
@@ -22,6 +23,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
     /// <summary>
     /// 'Set-AzServiceBusRule' Cmdlet updates the specified ServiceBus Rule
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ServiceBusRule", SupportsShouldProcess = true), OutputType(typeof(PSRulesAttributes))]
     public class SetAzureRmServiceBusRule : AzureServiceBusCmdletBase
     {
@@ -50,6 +52,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Rule
         [ValidateNotNullOrEmpty]
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSRulesAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IRule", ChangeDescription = "InputObject parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ValueFromPipelineByPropertyName = true, Position = 5, HelpMessage = "ServiceBus Rules definition")]
         [ValidateNotNullOrEmpty]
         public PSRulesAttributes InputObject { get; set; }

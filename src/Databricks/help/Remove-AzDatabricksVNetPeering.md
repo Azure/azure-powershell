@@ -39,7 +39,7 @@ This command removes a vnet peering of databricks by name
 
 ### Example 2: Remove a vnet peering of databricks by object
 ```powershell
-Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -Name vnetpeering-t01 | Remove-AzDatabricksVNetPeering
+Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -Name MyPeering-test01 | Remove-AzDatabricksVNetPeering
 ```
 
 This command removes a vnet peering of databricks by object
@@ -234,7 +234,8 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+`INPUTOBJECT <IDatabricksIdentity>`: Identity Parameter
+  - `[ConnectorName <String>]`: The name of the azure databricks accessConnector.
   - `[GroupId <String>]`: The name of the private link resource
   - `[Id <String>]`: Resource identity path
   - `[PeeringName <String>]`: The name of the workspace vNet peering.

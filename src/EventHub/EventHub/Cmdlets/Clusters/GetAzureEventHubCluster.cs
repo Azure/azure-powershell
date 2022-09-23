@@ -14,6 +14,8 @@
 
 using Microsoft.Azure.Commands.EventHub.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using Microsoft.Azure.Management.EventHub.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,6 +28,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// <para> If Cluster name provided, a single Cluster detials will be returned</para>
     /// <para> If Cluster name not provided, list of Cluster will be returned</para>
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubCluster"), OutputType(typeof(PSEventHubAttributes))]
     public class GetAzureRmEventHubCluster : AzureEventHubsCmdletBase
     {
@@ -34,6 +37,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [ValidateNotNullOrEmpty]
          public string ResourceGroupName { get; set; }
 
+        [CmdletParameterBreakingChange("Name", ChangeDescription = "The alias of this parameter would change to 'ClusterName'")]
         [Parameter(Mandatory = false, ValueFromPipelineByPropertyName = true, HelpMessage = "Cluster Name")]
         [Alias(AliasEventHubName)]
         public string Name { get; set; }
@@ -49,13 +53,13 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
                 if (this.IsParameterBound(c => c.Name))
                 {
                     // Get a Cluster
-                    PSEventHubClusterAttributes cluster = Client.GetEventHubCluster(ResourceGroupName, Name);
-                    WriteObject(cluster);
+                    Cluster cluster = UtilityClient.GetEventHubCluster(ResourceGroupName, Name);
+                    WriteObject(new PSEventHubClusterAttributes(cluster));
                 }
                 else
                 {
                     // Get all Clusters
-                    IEnumerable<PSEventHubClusterAttributes> clusterList = Client.ListEventHubCluster(ResourceGroupName);
+                    IEnumerable<PSEventHubClusterAttributes> clusterList = UtilityClient.ListEventHubCluster(ResourceGroupName);
                     WriteObject(clusterList.ToList(), true);
                 }
             }

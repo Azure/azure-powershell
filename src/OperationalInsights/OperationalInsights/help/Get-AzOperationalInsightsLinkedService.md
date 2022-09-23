@@ -24,7 +24,7 @@ Get or list linked service for workspace, list when "-LinkedServiceName" was not
 
 ### Example 1
 ```powershell
-Get-AzOperationalInsightsLinkedService -ResourceGroupName {rg-name} -WorkspaceName {workspace-name} -LinkedServiceName cluster
+Get-AzOperationalInsightsLinkedService -ResourceGroupName "rg-name" -WorkspaceName "workspace-name" -LinkedServiceName cluster
 ```
 
 ```output

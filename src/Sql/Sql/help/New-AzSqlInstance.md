@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzSqlInstance
 
 ## SYNOPSIS
-Creates an Azure SQL Database Managed Instance.
+Creates an Azure SQL Managed Instance.
 
 ## SYNTAX
 
@@ -68,7 +68,7 @@ New-AzSqlInstance [-Name] <String> [-ResourceGroupName] <String> [-Administrator
 ```
 
 ## DESCRIPTION
-The **New-AzSqlInstance** cmdlet creates an Azure SQL Database Managed instance.
+The **New-AzSqlInstance** cmdlet creates an Azure SQL Managed instance.
 
 ## EXAMPLES
 
@@ -153,7 +153,7 @@ This command creates a new instance in an instance pool using an instance pool o
 
 ### Example 4: Create a new instance in an instance pool using an instance pool resource identifier
 ```powershell
-$instancePool | New-AzSqlInstance -Name managedInstance2 -AdministratorCredential (Get-Credential) -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 2 -InstancePoolResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0"
+New-AzSqlInstance -Name managedInstance2 -AdministratorCredential (Get-Credential) -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 2 -InstancePoolResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Sql/instancePools/instancePool0"
 ```
 
 ```output
@@ -239,6 +239,7 @@ MaintenanceConfigurationId			: /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxx
 This command creates a new instance with maintenance configuration MI_2
 
 ### Example 7: Create a new instance with External(Azure Active Directory) Administrator, Azure Active Directory Only Authentication and no SqlAdministratorCredentials
+<!-- Skip: Output cannot be splitted from code -->
 ```powershell
 New-AzSqlInstance -Name managedInstance2 -ResourceGroupName ResourceGroup01 -ExternalAdminName DummyLogin -EnableActiveDirectoryOnlyAuthentication -Location westcentralus -SubnetId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/resourcegroup01/providers/Microsoft.Network/virtualNetworks/vnet_name/subnets/subnet_name" -LicenseType LicenseIncluded -StorageSizeInGB 1024 -VCore 16 -Edition "GeneralPurpose" -ComputeGeneration Gen4
 
@@ -936,5 +937,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ### Microsoft.Azure.Commands.Sql.ManagedInstance.Model.AzureSqlManagedInstanceModel
 
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS
