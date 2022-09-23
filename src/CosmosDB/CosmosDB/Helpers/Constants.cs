@@ -234,5 +234,27 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string ManagedCassandraDiskSku = "Disk SKU used for data centers. Default value is P30.";
         public const string ManagedCassandraDiskCapacity = "Number of disk used for data centers. Default value is 4.";
         public const string ManagedCassandraUseAvailabilityZone = "Deploy nodes across availability zones if they are available in this location.";
+
+        // MongoDB Role cmdlets help messages
+        public const string MongoDBRoleDefinitionHelpMessage = "A MongoDB Role Definition For Mongo DB.";
+        public const string MongoDBRoleDefinitionDatabaseName = "Database Name for the MongoDB Role Definition.";
+        public const string MongoRoleDefinitionPrivilegesHelpMessage = "MongoDB Role Definition Privileges define allowed actions for corresponding resources.";
+        public const string MongoDBRoleDefinitionIdHelpMessage = "Unique ID (<Databasename>.<RoleName>) for the MongoDB Role Definition.";
+        public const string MongoDBTypeHelpMessage = "Type of the MongoDB Role Definition, either CustomRole or BuiltInRole.";
+        public const string MongoDBRoleDefinitionNameHelpMessage = "Unique display name(per database) for the MongoDB Role Definition.";
+        public const string MongoDBRoleNameHelpMessage = "Unique display name(per database) for the Role Definition.";
+        public const string MongoDBInheritedRolesHelpMessage = "List of Inherited roles for MongoDB Role Definition.";
+        public const string MongoDBRoleDefinitionRoleDatabaseName = "Database Name for the MongoDB Role Definition Inherited Role.";
+        public const string MongoDBInheritedRoleNameHelpMessage = "Role Name for the MongoDB Role Definition Inherited Role.";
+        public const string MongoRoleDefinitionPrivilegeResourcHelpMessage = "MongoDB Role Definition Resource(Database and Collection name) for the Privilege.";
+        public const string MongoRoleDefinitionPrivilegeActionsHelpMessage = "MongoDB Role Definition list of actions(insert/update/delete) for the Privilege.";
+
+        // MongoDB User Definition cmdlets help messages
+        public const string MongoDBUserDefinitionHelpMessage = "A MongoDB User Definition for MongoDB.";
+        public const string MongoDBUserDefinitionIdHelpMessage = "Unique ID (<Databasename>.<UserName>) for the MongoDB User Definition.";
+        public const string MongoDBUserDefinitionUserNameHelpMessage = "Unique username(per database) for the user Definition.";
+        public const string MongoDBUserDefinitionPasswordHelpMessage = "Password for the user Definition.";
+        public const string MongoDBUserDefinitionMechanismsHelpMessage = "Mechanisms(e.g. SCRAM-SHA-256) for the user Definition.";
+        public const string MongoDBUserDefinitionCustomDataHelpMessage = "Additional information about the user Definition.";
     }
 }

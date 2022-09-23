@@ -184,7 +184,18 @@ CmdletsToExport = 'Get-AzCosmosDBSqlContainer',
                'Update-AzManagedCassandraDataCenter', 
                'Get-AzCosmosDbClientEncryptionKey', 
                'New-AzCosmosDbClientEncryptionKey', 
-               'Update-AzCosmosDbClientEncryptionKey'
+               'Update-AzCosmosDbClientEncryptionKey',
+               'New-AzCosmosDBMongoDBRoleDefinition',
+               'New-AzCosmosDBMongoDBPrivilegeResource',
+               'New-AzCosmosDBMongoDBPrivilege',
+               'New-AzCosmosDBMongoDBRole',
+               'Remove-AzCosmosDBMongoDBRoleDefinition',
+               'Update-AzCosmosDBMongoDBRoleDefinition',
+               'Get-AzCosmosDBMongoDBRoleDefinition',
+               'New-AzCosmosDBMongoDBUserDefinition',
+               'Update-AzCosmosDBMongoDBUserDefinition',
+               'Get-AzCosmosDBMongoDBUserDefinition',
+               'Remove-AzCosmosDBMongoDBUserDefinition'
 
 # Variables to export from this module
 # VariablesToExport = @()
