@@ -30,6 +30,8 @@
 * Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
     - `New-AzLoadBalancer`
 
+* Onboard Project AzureML Registries to Private Link Common Cmdlets
+
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
 
