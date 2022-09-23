@@ -19,6 +19,9 @@
 -->
 ## Upcoming Release
 
+## Version 3.2.1
+* Fixed a bug wherein creating a new JobSchedule does not properly submit Output Files.
+
 ## Version 3.2.0
 
 * Updated Az.Batch to use `Microsoft.Azure.Batch` SDK version 15.3.0

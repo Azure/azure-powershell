@@ -20,6 +20,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System.Globalization;
     using System.Management.Automation;
 
+    [GenericBreakingChange("The returned Directory properties will be moved from CloudFileDirectory to ShareDirectoryProperties in a future release.")]
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageDirectory", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFileDirectory))]
     public class NewAzureStorageDirectory : AzureStorageFileCmdletBase
     {

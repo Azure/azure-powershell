@@ -28,6 +28,7 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
     /// <summary>
     /// 'Set-AzEventHubCluster' Cmdlet updates the specified Cluster details
     /// </summary>
+    [GenericBreakingChange(message: BreakingChangeNotification + "\n- Output type of the cmdlet would change to 'Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster'", deprecateByVersion: DeprecateByVersion, changeInEfectByDate: ChangeInEffectByDate)]
     [Cmdlet("Set", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubCluster", DefaultParameterSetName = ClusterPropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSEventHubClusterAttributes))]
     public class SetAzureEventHubCluster : AzureEventHubsCmdletBase
     {
@@ -53,12 +54,12 @@ namespace Microsoft.Azure.Commands.EventHub.Commands.EventHub
         [Parameter(Mandatory = false, ParameterSetName = ClusterResourceIdParameterSet, ValueFromPipelineByPropertyName = true, HelpMessage = "Cluster Capacity (CU), curerntrly, allowed value = 1")]
         public int? Capacity { get; set; }
 
-
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSEventHubClusterAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster", ChangeDescription = ClusterInputObjectParameterSet + " parameter set is changing. Please refer the migration guide for examples.")]
         [Parameter(Mandatory = true, ParameterSetName = ClusterInputObjectParameterSet, ValueFromPipelineByPropertyName = true, Position = 0, HelpMessage = "Cluster Name")]
         [ValidateNotNullOrEmpty]
         public PSEventHubClusterAttributes InputObject { get; set; }
 
-
+        [CmdletParameterBreakingChange("ResourceId", ReplaceMentCmdletParameterName = "InputObject")]
         [Parameter(Mandatory = true, ParameterSetName = ClusterResourceIdParameterSet, ValueFromPipelineByPropertyName = true, Position = 1, HelpMessage = "Resource ID of Cluster")]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }

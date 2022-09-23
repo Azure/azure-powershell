@@ -15,9 +15,11 @@
 using System.Linq;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Network
 {
+    [CmdletOutputBreakingChange(typeof(PSAzureFirewallHubIpAddresses), DeprecatedOutputProperties = new[] { "publicIPAddresses" })]
     [Cmdlet(VerbsCommon.New, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "FirewallHubIpAddress"), OutputType(typeof(PSAzureFirewallHubIpAddresses))]
     public class NewAzureFirewallHubIpAddress : AzureFirewallBaseCmdlet
     {

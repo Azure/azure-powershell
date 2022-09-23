@@ -169,6 +169,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).EmployeeId = (string) content.GetValueForProperty("EmployeeId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).EmployeeId, global::System.Convert.ToString);
             }
+            if (content.Contains("EmployeeOrgData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).EmployeeOrgData = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEmployeeOrgData) content.GetValueForProperty("EmployeeOrgData",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).EmployeeOrgData, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphEmployeeOrgDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("EmployeeType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).EmployeeType = (string) content.GetValueForProperty("EmployeeType",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).EmployeeType, global::System.Convert.ToString);
@@ -212,6 +216,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             if (content.Contains("LegalAgeGroupClassification"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).LegalAgeGroupClassification = (string) content.GetValueForProperty("LegalAgeGroupClassification",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).LegalAgeGroupClassification, global::System.Convert.ToString);
+            }
+            if (content.Contains("Manager"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).Manager = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject) content.GetValueForProperty("Manager",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).Manager, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphDirectoryObjectTypeConverter.ConvertFrom);
             }
             if (content.Contains("Mail"))
             {
@@ -412,6 +420,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).EmployeeId = (string) content.GetValueForProperty("EmployeeId",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).EmployeeId, global::System.Convert.ToString);
             }
+            if (content.Contains("EmployeeOrgData"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).EmployeeOrgData = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphEmployeeOrgData) content.GetValueForProperty("EmployeeOrgData",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).EmployeeOrgData, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphEmployeeOrgDataTypeConverter.ConvertFrom);
+            }
             if (content.Contains("EmployeeType"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).EmployeeType = (string) content.GetValueForProperty("EmployeeType",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).EmployeeType, global::System.Convert.ToString);
@@ -455,6 +467,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10
             if (content.Contains("LegalAgeGroupClassification"))
             {
                 ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).LegalAgeGroupClassification = (string) content.GetValueForProperty("LegalAgeGroupClassification",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).LegalAgeGroupClassification, global::System.Convert.ToString);
+            }
+            if (content.Contains("Manager"))
+            {
+                ((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).Manager = (Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphDirectoryObject) content.GetValueForProperty("Manager",((Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUserInternal)this).Manager, Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.MicrosoftGraphDirectoryObjectTypeConverter.ConvertFrom);
             }
             if (content.Contains("Mail"))
             {

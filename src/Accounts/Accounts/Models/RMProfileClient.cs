@@ -421,6 +421,34 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             return subscription != null;
         }
 
+        public bool TryGetSubscriptionListByName(string tenantId, string subscriptionName, out IEnumerable<IAzureSubscription> subscriptions)
+        {
+            subscriptions = ListSubscriptions(tenantId).Where(s => s.Name.Equals(subscriptionName, StringComparison.OrdinalIgnoreCase));
+            List<IAzureSubscription>  subscriptionList = new List<IAzureSubscription>();
+            HashSet<Guid> existedSubscriptionIds = new HashSet<Guid>();
+
+            // Consider subscription in Home tenant first, exclude duplicate subscriptions by id.
+            foreach(IAzureSubscription subscription in subscriptions)
+            {
+                if (subscription is PSAzureSubscription && subscription.GetTenant() != null 
+                    && subscription.GetHomeTenant().Equals(subscription.GetTenant()) && existedSubscriptionIds.Add(subscription.GetId()))
+                {
+                    subscriptionList.Add(subscription);
+                }
+                
+            }
+            // Consider other subscriptions.
+            foreach (IAzureSubscription subscription in subscriptions)
+            {
+                if (existedSubscriptionIds.Add(subscription.GetId()))
+                {
+                    subscriptionList.Add(subscription);
+                }
+            }
+            subscriptions = subscriptionList;
+            return subscriptions.Any();
+        }
+
         private IAzureSubscription GetFirstSubscription(string tenantId)
         {
             IEnumerable<IAzureSubscription> subscriptionList = ListSubscriptions(tenantId);

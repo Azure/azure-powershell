@@ -209,20 +209,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (this.DiskEncryptionSetUpdate.Identity.UserAssignedIdentities == null)
                 {
-                    this.DiskEncryptionSetUpdate.Identity.UserAssignedIdentities = new Dictionary<string, EncryptionSetIdentityUserAssignedIdentitiesValue>();
+                    this.DiskEncryptionSetUpdate.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
                 }
 
                 foreach (DictionaryEntry de in this.UserAssignedIdentity)
                 {
                     if (((Hashtable)de.Value).Count == 0)
                     {
-                        this.DiskEncryptionSetUpdate.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue());
+                        this.DiskEncryptionSetUpdate.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new UserAssignedIdentitiesValue());
                     }
                     else
                     {
                         string principalId = ((Hashtable)de.Value)["principalId"]?.ToString();
                         string clientId = ((Hashtable)de.Value)["clientId"]?.ToString();
-                        this.DiskEncryptionSetUpdate.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue(principalId, clientId));
+                        this.DiskEncryptionSetUpdate.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new UserAssignedIdentitiesValue(principalId, clientId));
                     }
                 }
             }
@@ -275,20 +275,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 }
                 if (this.InputObject.Identity.UserAssignedIdentities == null)
                 {
-                    this.InputObject.Identity.UserAssignedIdentities = new Dictionary<string, EncryptionSetIdentityUserAssignedIdentitiesValue>();
+                    this.InputObject.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
                 }
 
                 foreach (DictionaryEntry de in this.UserAssignedIdentity)
                 {
                     if (((Hashtable)de.Value).Count == 0)
                     {
-                        this.InputObject.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue());
+                        this.InputObject.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new UserAssignedIdentitiesValue());
                     }
                     else
                     {
                         string principalId = ((Hashtable)de.Value)["principalId"]?.ToString();
                         string clientId = ((Hashtable)de.Value)["clientId"]?.ToString();
-                        this.InputObject.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new EncryptionSetIdentityUserAssignedIdentitiesValue(principalId, clientId));
+                        this.InputObject.Identity.UserAssignedIdentities.Add(de.Key.ToString(), new UserAssignedIdentitiesValue(principalId, clientId));
                     }
                 }
             }

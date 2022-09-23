@@ -20,9 +20,8 @@ Deny-AzPrivateEndpointConnection -ResourceId <String> [-Description <String>]
 
 ### ByResource
 ```
-Deny-AzPrivateEndpointConnection -Name <String> -ServiceName <String> -ResourceGroupName <String>
-[-PrivateLinkResourceType <string>] [-Description <String>]
-[-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Deny-AzPrivateEndpointConnection -Name <String> -ResourceGroupName <String> -ServiceName <String> -PrivateLinkResourceType <String>
+ [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -32,7 +31,7 @@ The **Deny-AzPrivateEndpointConnection** cmdlet denies a private endpoint connec
 
 ### Example 1
 ```powershell
-Deny-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService
+Deny-AzPrivateEndpointConnection -Name TestPrivateEndpointConnection -ResourceGroupName TestResourceGroup -ServiceName TestPrivateLinkService -PrivateLinkResourceType Microsoft.Network/privateLinkServices
 ```
 
 This example denies a private endpoint connection.
@@ -92,10 +91,10 @@ Type: System.String
 Parameter Sets: ByResource
 Aliases:
 
-Required: False
+Required: True
 Position: Named
-Default value: 'Microsoft.Network/privateLinkServices'
-Accept pipeline input: True (ByPropertyName)
+Default value: None
+Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 

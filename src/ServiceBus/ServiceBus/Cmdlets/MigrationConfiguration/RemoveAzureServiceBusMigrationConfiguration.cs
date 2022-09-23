@@ -16,6 +16,7 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.ServiceBus.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
 {
@@ -34,6 +35,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Commands.Migration
         [ValidateNotNullOrEmpty]   
         public string Name { get; set; }
 
+        [CmdletParameterBreakingChange("InputObject", OldParamaterType = typeof(PSServiceBusDRConfigurationAttributes), NewParameterTypeName = "Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IMigrationConfigProperties")]
         [Parameter(Mandatory = true, ParameterSetName = NamespaceInputObjectParameterSet, ValueFromPipeline = true, Position = 0, HelpMessage = "Service Bus Migration Standard Namespace Object")]
         [ValidateNotNullOrEmpty]
         public PSServiceBusDRConfigurationAttributes InputObject { get; set; }

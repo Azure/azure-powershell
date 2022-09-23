@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 3.11.0
 * Removed the warning messages for MSGraph migration [#18856] 
 * Moved SQL Server and SQL Instance from ActiveDirectoryClient to MicrosoftGraphClient
 * Supported cross-subscription Failover Group creation using `PartnerSubscriptionId` parameter in `New-AzSqlDatabaseFailoverGroup` cmdlet

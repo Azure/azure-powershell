@@ -19,6 +19,14 @@
 -->
 
 ## Upcoming Release
+* Deduplicated subscriptions belonging to multiple tenants while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19427]
+
+## Version 2.10.0
+* Supported returning all subscriptions with specified name while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19295]
+* Fixed null reference exception when cmdlet uses AzureRestOperation [#18104]
+* Updated survey message and settings
+
+## Version 2.9.1
 * Implemented `SupportsShouldProcess` for `Invoke-AzRestMethod`
 * Supported giving suggestions if an Azure PowerShell command cannot be found, for example when there is a typo in command name.
 
