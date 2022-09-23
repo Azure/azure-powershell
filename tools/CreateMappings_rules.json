@@ -772,6 +772,10 @@
     "alias": "DeviceUpdate"
   },
   {
+    "alias": "ElasticSan",
+    "module": "ElasticSan"
+  },
+  {
     "module": "Nginx",
     "alias": "Nginx"
   }
