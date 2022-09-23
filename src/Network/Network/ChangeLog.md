@@ -34,6 +34,8 @@
     - `AddAzureRmLoadBalancerProbeConfigCommmand.cs`
     - `NewAzureRmLoadBalancerProbeConfigCommand.cs`
     - `SetAzureRmLoadBalancerProbeConfigCommand.cs`
+* Updated commandlet to support specifying an action for a managed rule override in Application Gateway WAF Policy.
+    - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`
