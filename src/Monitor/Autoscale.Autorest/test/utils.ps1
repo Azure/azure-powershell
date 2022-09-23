@@ -19,6 +19,23 @@ function setupEnv() {
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
     # For any resources you created for test, you should add it to $env here.
+    $resourceGroupName = 'autoscale-group' + (RandomString -allChars $false -len 6)
+    write-host "start to create test group $resourceGroupName"
+    New-AzResourceGroup -Name $resourceGroupName -Location eastus
+    $null = $env.Add("resourceGroupName", $resourceGroupName)
+
+    $vmssName = 'test-vmss' + (RandomString -allChars $false -len 6)
+    $vmPassword = ConvertTo-SecureString "Testpassword001!" -AsPlainText -Force
+    $vmCred = New-Object System.Management.Automation.PSCredential('USERNAME', $vmPassword)
+    write-host "start to create vm scale set $vmssName"
+    New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName -ResourceGroup $resourceGroupName
+    $null = $env.Add("vmssName", $vmssName)
+    $vmssId = (Get-AzVmss -ResourceGroupName $resourceGroupName -VMScaleSetName $vmssName).Id
+    $null = $env.Add("vmssId", $vmssId)
+
+    $autoscaleSettingName = 'test-autoscalesetting' + (RandomString -allChars $false -len 6)
+    $env.Add('autoscaleSettingName', $autoscaleSettingName)
+
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {
         $envFile = 'localEnv.json'
@@ -27,5 +44,6 @@ function setupEnv() {
 }
 function cleanupEnv() {
     # Clean resources you create for testing
+    Remove-AzResourceGroup -Name $env.resourceGroupName
 }
 

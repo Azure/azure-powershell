@@ -22,7 +22,9 @@ To update other fields use the CreateOrUpdate method.
 Updates an existing AutoscaleSettingsResource.
 To update other fields use the CreateOrUpdate method.
 .Example
-Update-AzAutoscaleSetting -ResourceGroupName test-group -Name test-autoscalesetting -Tag @{'key'='val'} -Enabled $true
+{{ Add code here }}
+.Example
+{{ Add code here }}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleIdentity
@@ -82,193 +84,199 @@ PROFILE <IAutoscaleProfile[]>: the collection of automatic scaling profiles that
   [ScheduleMinute <Int32[]>]: A collection of minutes at which the profile takes effect at.
   [ScheduleTimeZone <String>]: the timezone for the hours of the profile. Some examples of valid time zones are: Dateline Standard Time, UTC-11, Hawaiian Standard Time, Alaskan Standard Time, Pacific Standard Time (Mexico), Pacific Standard Time, US Mountain Standard Time, Mountain Standard Time (Mexico), Mountain Standard Time, Central America Standard Time, Central Standard Time, Central Standard Time (Mexico), Canada Central Standard Time, SA Pacific Standard Time, Eastern Standard Time, US Eastern Standard Time, Venezuela Standard Time, Paraguay Standard Time, Atlantic Standard Time, Central Brazilian Standard Time, SA Western Standard Time, Pacific SA Standard Time, Newfoundland Standard Time, E. South America Standard Time, Argentina Standard Time, SA Eastern Standard Time, Greenland Standard Time, Montevideo Standard Time, Bahia Standard Time, UTC-02, Mid-Atlantic Standard Time, Azores Standard Time, Cape Verde Standard Time, Morocco Standard Time, UTC, GMT Standard Time, Greenwich Standard Time, W. Europe Standard Time, Central Europe Standard Time, Romance Standard Time, Central European Standard Time, W. Central Africa Standard Time, Namibia Standard Time, Jordan Standard Time, GTB Standard Time, Middle East Standard Time, Egypt Standard Time, Syria Standard Time, E. Europe Standard Time, South Africa Standard Time, FLE Standard Time, Turkey Standard Time, Israel Standard Time, Kaliningrad Standard Time, Libya Standard Time, Arabic Standard Time, Arab Standard Time, Belarus Standard Time, Russian Standard Time, E. Africa Standard Time, Iran Standard Time, Arabian Standard Time, Azerbaijan Standard Time, Russia Time Zone 3, Mauritius Standard Time, Georgian Standard Time, Caucasus Standard Time, Afghanistan Standard Time, West Asia Standard Time, Ekaterinburg Standard Time, Pakistan Standard Time, India Standard Time, Sri Lanka Standard Time, Nepal Standard Time, Central Asia Standard Time, Bangladesh Standard Time, N. Central Asia Standard Time, Myanmar Standard Time, SE Asia Standard Time, North Asia Standard Time, China Standard Time, North Asia East Standard Time, Singapore Standard Time, W. Australia Standard Time, Taipei Standard Time, Ulaanbaatar Standard Time, Tokyo Standard Time, Korea Standard Time, Yakutsk Standard Time, Cen. Australia Standard Time, AUS Central Standard Time, E. Australia Standard Time, AUS Eastern Standard Time, West Pacific Standard Time, Tasmania Standard Time, Magadan Standard Time, Vladivostok Standard Time, Russia Time Zone 10, Central Pacific Standard Time, Russia Time Zone 11, New Zealand Standard Time, UTC+12, Fiji Standard Time, Kamchatka Standard Time, Tonga Standard Time, Samoa Standard Time, Line Islands Standard Time
 .Link
-https://docs.microsoft.com/powershell/module/az.monitor/update-azautoscalesetting
+https://docs.microsoft.com/powershell/module/az.monitor/update-azAutoscaleSetting
 #>
 function Update-AzAutoscaleSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource])]
-[CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-param(
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Path')]
-    [System.String]
-    # The autoscale setting name.
-    ${AutoscaleSettingName},
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResource])]
+    [CmdletBinding(DefaultParameterSetName='UpdateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+    param(
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Path')]
+        [System.String]
+        [Alias("AutoscaleSettingName")]
+        # The autoscale setting name.
+        ${Name},
+    
+        [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Path')]
+        [System.String]
+        # The name of the resource group.
+        # The name is case insensitive.
+        ${ResourceGroupName},
+    
+        [Parameter(ParameterSetName='UpdateExpanded')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
+        [System.String]
+        # The ID of the target subscription.
+        ${SubscriptionId},
+    
+        [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Path')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleIdentity]
+        # Identity Parameter
+        # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+        ${InputObject},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
+        [System.Boolean]
+        # the enabled flag.
+        # Specifies whether automatic scaling is enabled for the resource.
+        # The default value is 'false'.
+        ${Enabled},
+    
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleNotification[]]
+        # the collection of notifications.
+        # To construct, see NOTES section for NOTIFICATION properties and create a hash table.
+        ${Notification},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
+        [System.TimeSpan]
+        # the amount of time to specify by which instances are launched in advance.
+        # It must be between 1 minute and 60 minutes in ISO 8601 format.
+        ${PredictiveAutoscalePolicyScaleLookAheadTime},
+    
+        [Parameter()]
+        [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode])]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode]
+        # the predictive autoscale mode
+        ${PredictiveAutoscalePolicyScaleMode},
+    
+        [Parameter()]
+        [AllowEmptyCollection()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfile[]]
+        # the collection of automatic scaling profiles that specify different scaling parameters for different time periods.
+        # A maximum of 20 profiles can be specified.
+        # To construct, see NOTES section for PROFILE properties and create a hash table.
+        ${Profile},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResourcePatchTags]))]
+        [System.Collections.Hashtable]
+        # Resource tags
+        ${Tag},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
+        [System.String]
+        # the location of the resource that the autoscale setting should be added to.
+        ${TargetResourceLocation},
+    
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
+        [System.String]
+        # the resource identifier of the resource that the autoscale setting should be added to.
+        ${TargetResourceUri},
+    
+        [Parameter()]
+        [Alias('AzureRMContext', 'AzureCredential')]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Azure')]
+        [System.Management.Automation.PSObject]
+        # The credentials, account, tenant, and subscription used for communication with Azure.
+        ${DefaultProfile},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Wait for .NET debugger to attach
+        ${Break},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be appended to the front of the pipeline
+        ${HttpPipelineAppend},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Runtime')]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.SendAsyncStep[]]
+        # SendAsync Pipeline Steps to be prepended to the front of the pipeline
+        ${HttpPipelinePrepend},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Runtime')]
+        [System.Uri]
+        # The URI for the proxy server to use
+        ${Proxy},
+    
+        [Parameter(DontShow)]
+        [ValidateNotNull()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Runtime')]
+        [System.Management.Automation.PSCredential]
+        # Credentials for a proxy server to use for the remote call
+        ${ProxyCredential},
+    
+        [Parameter(DontShow)]
+        [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Runtime')]
+        [System.Management.Automation.SwitchParameter]
+        # Use the default credentials for the proxy
+        ${ProxyUseDefaultCredentials}
+    )
+    process {
+      try {        
+        $hasEnabled = $PSBoundParameters.Remove("Enabled")
+        $hasNotification = $PSBoundParameters.Remove("Notification")
+        $hasPredictiveAutoscalePolicyScaleLookAheadTime = $PSBoundParameters.Remove("PredictiveAutoscalePolicyScaleLookAheadTime")
+        $hasPredictiveAutoscalePolicyScaleMode = $PSBoundParameters.Remove("PredictiveAutoscalePolicyScaleMode")
+        $hasProfile = $PSBoundParameters.Remove("Profile")
+        $hasTag = $PSBoundParameters.Remove("Tag")
+        $hasTargetResourceLocation = $PSBoundParameters.Remove("TargetResourceLocation")
+        $hasTargetResourceUri = $PSBoundParameters.Remove("TargetResourceUri")
+        $hasAsJob = $PSBoundParameters.Remove('AsJob')
+        $null = $PSBoundParameters.Remove('WhatIf')
+        $null = $PSBoundParameters.Remove('Confirm')
+        
+        $AutoscaleSetting = Get-AzAutoscaleSetting @PSBoundParameters
 
-    [Parameter(ParameterSetName='UpdateExpanded', Mandatory)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Path')]
-    [System.String]
-    # The name of the resource group.
-    # The name is case insensitive.
-    ${ResourceGroupName},
+        $null = $PSBoundParameters.Remove("InputObject")
+        $null = $PSBoundParameters.Remove('ResourceGroupName')
+        $null = $PSBoundParameters.Remove('Name')
+        $null = $PSBoundParameters.Remove('SubscriptionId')
 
-    [Parameter(ParameterSetName='UpdateExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
-    # The ID of the target subscription.
-    ${SubscriptionId},
-
-    [Parameter(ParameterSetName='UpdateViaIdentityExpanded', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Path')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.IAutoscaleIdentity]
-    # Identity Parameter
-    # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
-    ${InputObject},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [System.Management.Automation.SwitchParameter]
-    # the enabled flag.
-    # Specifies whether automatic scaling is enabled for the resource.
-    # The default value is 'false'.
-    ${Enabled},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [System.String]
-    # the name of the autoscale setting.
-    ${Name},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleNotification[]]
-    # the collection of notifications.
-    # To construct, see NOTES section for NOTIFICATION properties and create a hash table.
-    ${Notification},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [System.TimeSpan]
-    # the amount of time to specify by which instances are launched in advance.
-    # It must be between 1 minute and 60 minutes in ISO 8601 format.
-    ${PredictiveAutoscalePolicyScaleLookAheadTime},
-
-    [Parameter()]
-    [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode])]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Support.PredictiveAutoscalePolicyScaleMode]
-    # the predictive autoscale mode
-    ${PredictiveAutoscalePolicyScaleMode},
-
-    [Parameter()]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleProfile[]]
-    # the collection of automatic scaling profiles that specify different scaling parameters for different time periods.
-    # A maximum of 20 profiles can be specified.
-    # To construct, see NOTES section for PROFILE properties and create a hash table.
-    ${Profile},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.Info(PossibleTypes=([Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Models.Api20221001.IAutoscaleSettingResourcePatchTags]))]
-    [System.Collections.Hashtable]
-    # Resource tags
-    ${Tag},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [System.String]
-    # the location of the resource that the autoscale setting should be added to.
-    ${TargetResourceLocation},
-
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Body')]
-    [System.String]
-    # the resource identifier of the resource that the autoscale setting should be added to.
-    ${TargetResourceUri},
-
-    [Parameter()]
-    [Alias('AzureRMContext', 'AzureCredential')]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Azure')]
-    [System.Management.Automation.PSObject]
-    # The credentials, account, tenant, and subscription used for communication with Azure.
-    ${DefaultProfile},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Wait for .NET debugger to attach
-    ${Break},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be appended to the front of the pipeline
-    ${HttpPipelineAppend},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Runtime')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Runtime.SendAsyncStep[]]
-    # SendAsync Pipeline Steps to be prepended to the front of the pipeline
-    ${HttpPipelinePrepend},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Runtime')]
-    [System.Uri]
-    # The URI for the proxy server to use
-    ${Proxy},
-
-    [Parameter(DontShow)]
-    [ValidateNotNull()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Runtime')]
-    [System.Management.Automation.PSCredential]
-    # Credentials for a proxy server to use for the remote call
-    ${ProxyCredential},
-
-    [Parameter(DontShow)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Monitor.Autoscale.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Use the default credentials for the proxy
-    ${ProxyUseDefaultCredentials}
-)
-
-begin {
-    try {
-        $outBuffer = $null
-        if ($PSBoundParameters.TryGetValue('OutBuffer', [ref]$outBuffer)) {
-            $PSBoundParameters['OutBuffer'] = 1
+        if ($hasEnabled) {
+          $AutoscaleSetting.Enabled = $Enabled
         }
-        $parameterSet = $PSCmdlet.ParameterSetName
-
-        $mapping = @{
-            UpdateExpanded = 'Az.Autoscale.private\Update-AzAutoscaleSetting_UpdateExpanded';
-            UpdateViaIdentityExpanded = 'Az.Autoscale.private\Update-AzAutoscaleSetting_UpdateViaIdentityExpanded';
+        if ($hasNotification) {
+          $AutoscaleSetting.Notification = $Notification
         }
-        if (('UpdateExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
-            $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
+        if ($hasPredictiveAutoscalePolicyScaleLookAheadTime) {
+          $AutoscaleSetting.PredictiveAutoscalePolicyScaleLookAheadTime = $PredictiveAutoscalePolicyScaleLookAheadTime
+        }
+        if ($hasPredictiveAutoscalePolicyScaleMode) {
+          $AutoscaleSetting.PredictiveAutoscalePolicyScaleMode = $PredictiveAutoscalePolicyScaleMode
+        }
+        if ($hasProfile) {
+          $AutoscaleSetting.Profile = $Profile
+        }
+        if ($hasTag) {
+          $AutoscaleSetting.Tag = $Tag
+        }
+        if ($hasTargetResourceLocation) {
+          $AutoscaleSetting.TargetResourceLocation = $TargetResourceLocation
+        }
+        if ($hasTargetResourceUri) {
+          $AutoscaleSetting.TargetResourceUri = $TargetResourceUri
+        }
+        if ($hasAsJob) {
+          $PSBoundParameters.Add("AsJob", $AsJob)
         }
 
-        $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
-        $scriptCmd = {& $wrappedCmd @PSBoundParameters}
-        $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
-        $steppablePipeline.Begin($PSCmdlet)
-    } catch {
+        if ($PSCmdlet.ShouldProcess("AutoscaleSetting $($AutoscaleSetting.Name)", "Create or update")) {
+          Az.Autoscale.private\New-AzAutoscaleSetting_CreateViaIdentity @PSBoundParameters -InputObject $AutoscaleSetting -Parameter $AutoscaleSetting
+        }
+      } catch {
 
-        throw
+      }
     }
-}
-
-process {
-    try {
-        $steppablePipeline.Process($_)
-    } catch {
-
-        throw
-    }
-
-}
-end {
-    try {
-        $steppablePipeline.End()
-
-    } catch {
-
-        throw
-    }
-} 
 }
