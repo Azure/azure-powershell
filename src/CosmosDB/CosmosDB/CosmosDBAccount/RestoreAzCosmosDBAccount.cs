@@ -102,12 +102,13 @@ namespace Microsoft.Azure.Commands.CosmosDB
             // Validate if source account is empty if the source account is a live account.
             if (!isSourceRestorableAccountDeleted)
             {
-                IEnumerable<DatabaseRestoreResource> restorableResources = null;
+                IEnumerable<RestorableSqlResourcesGetResult> restorableSQLResources = null;
+                IEnumerable<RestorableMongodbResourcesGetResult> restorableMongoResources = null;
                 if (sourceAccountToRestore.ApiType.Equals("Sql", StringComparison.OrdinalIgnoreCase))
                 {
                     try
                     {
-                        restorableResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(
+                        restorableSQLResources = CosmosDBManagementClient.RestorableSqlResources.ListWithHttpMessagesAsync(
                             sourceAccountToRestore.Location,
                             sourceAccountToRestore.Name,
                             Location,
@@ -123,7 +124,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 {
                     try
                     {
-                        restorableResources = CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(
+                        restorableMongoResources = CosmosDBManagementClient.RestorableMongodbResources.ListWithHttpMessagesAsync(
                         sourceAccountToRestore.Location,
                         sourceAccountToRestore.Name,
                         Location,
@@ -141,7 +142,7 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     return;
                 }
 
-                if (restorableResources == null || !restorableResources.Any())
+                if (restorableSQLResources == null || !restorableSQLResources.Any() || restorableMongoResources == null || !restorableMongoResources.Any())
                 {
                     WriteWarning($"Database account {SourceDatabaseAccountName} contains no restorable resources in location {Location} at given restore timestamp {utcRestoreDateTime} in location {Location}");
                     return;
