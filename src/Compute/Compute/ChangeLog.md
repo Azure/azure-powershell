@@ -21,6 +21,7 @@
 -->
 ## Upcoming Release
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
+* Bumped Azure.Storage.Blobs from 12.1.0 to 12.13.0
 
 ## Version 4.31.0
 * Added Trusted Launch Generic Breaking Change warning for `New-AzVM`, `New-AzDisk` and `New-AzVMSS` cmdlets.
