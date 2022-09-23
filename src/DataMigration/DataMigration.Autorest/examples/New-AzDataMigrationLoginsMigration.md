@@ -1,6 +1,6 @@
 ### Example 1: Run Migrate logins from the source Sql Servers to the target Azure Sql Servers using Parameters
 ```powershell
-New-AzDataMigrationLoginsMigration -SourceSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -TargetSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -CSVFilePath "C:\CSVFile" -ListOfLogins "loginname1" "loginname2" -OutputFolder "C:\OutputFolder" -AADDomainName "AADDomainName" 
+New-AzDataMigrationLoginsMigration -SourceSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -TargetSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -CSVFilePath "C:\CSVFile" -ListOfLogin "loginname1" "loginname2" -OutputFolder "C:\OutputFolder" -AADDomainName "AADDomainName" 
 ```
 
 ```output

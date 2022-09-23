@@ -23,7 +23,7 @@ Migrate logins from the source Sql Servers to the target Azure Sql Servers.
 function New-AzDataMigrationLoginsMigration
 {
     [OutputType([System.Boolean])]
-    [CmdletBinding(PositionalBinding=$false)]
+    [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
     [Microsoft.Azure.PowerShell.Cmdlets.DataMigration.Description('Migrate logins from the source Sql Servers to the target Azure Sql Servers.')]
 
     param(
@@ -36,13 +36,13 @@ function New-AzDataMigrationLoginsMigration
         [System.String]
         ${TargetSqlConnectionString},
 
-        [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Location of CSV file of logins. Use only one parameter between this and listOfLogins.')]
+        [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Location of CSV file of logins. Use only one parameter between this and listOfLogin.')]
         [System.String]
         ${CSVFilePath},
 
         [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. List of logins in string format. If large number of logins need to be migrated, use CSV file option.')]
         [System.String[]]
-        ${ListOfLogins},
+        ${ListOfLogin},
 
         [Parameter(ParameterSetName='CommandLine', HelpMessage='Optional. Default: %LocalAppData%/Microsoft/SqlLoginMigrations) Folder where logs will be written.')]
         [System.String]
@@ -106,12 +106,12 @@ function New-AzDataMigrationLoginsMigration
             {
                 # The array list $splat contains all the parameters that will be passed to '.\Logins.Console.exe LoginsMigration'
 
-                $LoginsListArray = $($ListOfLogins -split " ")
+                $LoginsListArray = $($ListOfLogin -split " ")
                 [System.Collections.ArrayList] $splat = @(
                     '--sourceSqlConnectionString', $SourceSqlConnectionString
                     '--targetSqlConnectionString', $TargetSqlConnectionString
                     '--csvFilePath', $CSVFilePath
-                    '--listOfLogins', $LoginsListArray
+                    '--listOfLogin', $LoginsListArray
                     '--outputFolder', $OutputFolder
                     '--aadDomainName', $AADDomainName
                 )

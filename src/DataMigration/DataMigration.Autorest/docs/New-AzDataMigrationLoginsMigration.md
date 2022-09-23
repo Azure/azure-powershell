@@ -14,14 +14,15 @@ Migrate logins from the source Sql Servers to the target Azure Sql Servers.
 
 ### ConfigFile (Default)
 ```
-New-AzDataMigrationLoginsMigration -ConfigFilePath <String> [-PassThru] [<CommonParameters>]
+New-AzDataMigrationLoginsMigration -ConfigFilePath <String> [-PassThru] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ### CommandLine
 ```
 New-AzDataMigrationLoginsMigration -SourceSqlConnectionString <String[]> -TargetSqlConnectionString <String>
- [-AADDomainName <String>] [-CSVFilePath <String>] [-ListOfLogins <String[]>] [-OutputFolder <String>]
- [-PassThru] [<CommonParameters>]
+ [-AADDomainName <String>] [-CSVFilePath <String>] [-ListOfLogin <String[]>] [-OutputFolder <String>]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -31,7 +32,7 @@ Migrate logins from the source Sql Servers to the target Azure Sql Servers.
 
 ### Example 1: Run Migrate logins from the source Sql Servers to the target Azure Sql Servers using Parameters
 ```powershell
-New-AzDataMigrationLoginsMigration -SourceSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -TargetSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -CSVFilePath "C:\CSVFile" -ListOfLogins "loginname1" "loginname2" -OutputFolder "C:\OutputFolder" -AADDomainName "AADDomainName" 
+New-AzDataMigrationLoginsMigration -SourceSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -TargetSqlConnectionString "data source=servername;user id=userid;password=;initial catalog=master;TrustServerCertificate=True" -CSVFilePath "C:\CSVFile" -ListOfLogin "loginname1" "loginname2" -OutputFolder "C:\OutputFolder" -AADDomainName "AADDomainName" 
 ```
 
 ```output
@@ -100,7 +101,7 @@ Accept wildcard characters: False
 ### -CSVFilePath
 Optional.
 Location of CSV file of logins.
-Use only one parameter between this and listOfLogins.
+Use only one parameter between this and listOfLogin.
 
 ```yaml
 Type: System.String
@@ -114,7 +115,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ListOfLogins
+### -ListOfLogin
 Optional.
 List of logins in string format.
 If large number of logins need to be migrated, use CSV file option.
@@ -188,6 +189,37 @@ Parameter Sets: CommandLine
 Aliases:
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Confirm
+Prompts you for confirmation before running the cmdlet.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: cf
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -WhatIf
+Shows what would happen if the cmdlet runs.
+The cmdlet is not run.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases: wi
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
