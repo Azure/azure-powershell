@@ -29,6 +29,9 @@
 * Updated commandlets to support specifying an ASN on VPN Gateway
     - `NewAzureRmVpnGatewayCommand.cs`
     - `UpdateAzureRmVpnGatewayCommand.cs`
+* Updated cmdlets to enable verification on client certificate revocation by using a new property VerifyClientRevocation in ApplicationGatewayClientAuthConfiguration
+    - `New-AzApplicationGatewayClientAuthConfiguration`
+    - `Set-AzApplicationGatewayClientAuthConfiguration`
 * Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
 * Updated commandlet to support specifying an action for a managed rule override in Application Gateway WAF Policy.
     - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
