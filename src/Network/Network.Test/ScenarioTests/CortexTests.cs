@@ -38,6 +38,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
+        public void TestStaticRoutesConfigCRUD()
+        {
+            TestRunner.RunTestScript("Test-StaticRoutesConfigCRUD");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.virtualwan)]
         public void TestRoutingIntentCRUD()
         {
             TestRunner.RunTestScript("Test-RoutingIntentCRUD");

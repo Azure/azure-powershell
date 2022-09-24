@@ -85,6 +85,10 @@ namespace Microsoft.Azure.Commands.Network
             }
 
             propagatedRouteTable.Ids = resolvedIds;
+            if (true)
+            {
+                propagatedRouteTable.Ids = resolvedIds;
+            }
 
             var routingConfig = new PSRoutingConfiguration
             {
