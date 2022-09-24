@@ -3352,10 +3352,11 @@ function Test-ApplicationGatewayFirewallPolicyExclusions
 
 		$ruleOverrideEntry1 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 942100
 		$ruleOverrideEntry2 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 942110
-		$sqlRuleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName REQUEST-942-APPLICATION-ATTACK-SQLI -Rule $ruleOverrideEntry1,$ruleOverrideEntry2
+		$ruleOverrideEntry3 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 942160  -State Enabled -Action Log
+		$sqlRuleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName REQUEST-942-APPLICATION-ATTACK-SQLI -Rule $ruleOverrideEntry1,$ruleOverrideEntry2, $ruleOverrideEntry3
 
-		$ruleOverrideEntry3 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 941100
-		$xssRuleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName REQUEST-941-APPLICATION-ATTACK-XSS -Rule $ruleOverrideEntry3
+		$ruleOverrideEntry4 = New-AzApplicationGatewayFirewallPolicyManagedRuleOverride -RuleId 941100
+		$xssRuleGroupOverrideEntry = New-AzApplicationGatewayFirewallPolicyManagedRuleGroupOverride -RuleGroupName REQUEST-941-APPLICATION-ATTACK-XSS -Rule $ruleOverrideEntry4
 
 		$managedRuleSet = New-AzApplicationGatewayFirewallPolicyManagedRuleSet -RuleSetType "OWASP" -RuleSetVersion "3.2" -RuleGroupOverride $sqlRuleGroupOverrideEntry,$xssRuleGroupOverrideEntry
 		$managedRules = New-AzApplicationGatewayFirewallPolicyManagedRule -ManagedRuleSet $managedRuleSet -Exclusion $exclusionEntry1,$exclusionEntry2,$exclusionEntry3,$exclusionEntry4,$exclusionEntry5,$exclusionEntry6,$exclusionEntry7,$exclusionEntry8,$exclusionEntry9
@@ -3369,6 +3370,7 @@ function Test-ApplicationGatewayFirewallPolicyExclusions
 		$policy = Get-AzApplicationGatewayFirewallPolicy -Name $wafPolicy -ResourceGroupName $rgname
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets.Count 1
 		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides.Count 2
+		Assert-AreEqual $policy.ManagedRules.ManagedRuleSets[0].RuleGroupOverrides[0].Rules[2].Action Log
 		Assert-AreEqual $policy.ManagedRules.Exclusions.Count 9
 		Assert-AreEqual $policy.PolicySettings.FileUploadLimitInMb $policySettings.FileUploadLimitInMb
 		Assert-AreEqual $policy.PolicySettings.MaxRequestBodySizeInKb $policySettings.MaxRequestBodySizeInKb
@@ -4053,9 +4055,14 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		$clientCertFilePath = $basedir + "/ScenarioTests/Data/TrustedClientCertificate.cer"
 		$trustedClient01 = New-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert01Name -CertificateFile $clientCertFilePath
 		$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_0 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
-		$clientAuthConfig = New-AzApplicationGatewayClientAuthConfiguration -VerifyClientCertIssuerDN
+
+		$clientAuthConfig = New-AzApplicationGatewayClientAuthConfiguration -VerifyClientCertIssuerDN -VerifyClientRevocation OCSP
+		Assert-AreEqual $True $clientAuthConfig.VerifyClientCertIssuerDN
+		Assert-AreEqual "OCSP" $clientAuthConfig.VerifyClientRevocation
+
 		$sslProfile01 = New-AzApplicationGatewaySslProfile -Name $sslProfile01Name -SslPolicy $sslPolicy -ClientAuthConfiguration $clientAuthConfig -TrustedClientCertificates $trustedClient01
-		
+		Assert-AreEqual "OCSP" $sslProfile01.ClientAuthConfiguration.VerifyClientRevocation
+
 		$listener = New-AzApplicationGatewayHttpListener -Name $listenerName -Protocol Https -SslCertificate $sslCert -FrontendIPConfiguration $fipconfig -FrontendPort $port -SslProfile $sslProfile01
 
 		# backend part
@@ -4092,6 +4099,7 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		$clientAuthConfig = Get-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile01
 		Assert-NotNull $clientAuthConfig
 		Assert-AreEqual $True $clientAuthConfig.VerifyClientCertIssuerDN
+		Assert-AreEqual "OCSP" $clientAuthConfig.VerifyClientRevocation
 
 		$getpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile01
 		Assert-AreEqual $sslPolicy.MinProtocolVersion $getpolicy.MinProtocolVersion
@@ -4107,6 +4115,8 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		$trustedClient02 =  Get-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert02Name -ApplicationGateway $getgw
 		$getgw = Add-AzApplicationGatewaySslProfile -Name $sslProfile02Name -ApplicationGateway $getgw -TrustedClientCertificates $trustedClient01,$trustedClient02
 		$sslProfile01 = Set-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile01
+		Assert-AreEqual "None" $sslProfile01.ClientAuthConfiguration.VerifyClientRevocation
+
 		$sslProfile01 = Set-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile01 -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 		$sslPolicy02 = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 		$getgw = Set-AzApplicationGatewaySslProfile -Name $sslProfile02Name -ApplicationGateway $getgw -SslPolicy $sslPolicy02 -TrustedClientCertificates $trustedClient01,$trustedClient02 -ClientAuthConfiguration $clientAuthConfig 
@@ -4132,7 +4142,8 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 
 		$clientAuthConfig = Get-AzApplicationGatewayClientAuthConfiguration -SslProfile $getgw.SslProfiles[0]
 		Assert-AreEqual $False $clientAuthConfig.VerifyClientCertIssuerDN
-		
+		Assert-AreEqual "None" $clientAuthConfig.VerifyClientRevocation
+
 		# Remove operations.
 		$sslProfile02 = Remove-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile02
 		$getpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile02
