@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
                 Assert.Equal(Guid.Empty.ToString(), subscription.Id);
                 Assert.NotNull(context.Environment);
                 Assert.Equal("testCloud", context.Environment.Name);
-                Assert.Equal(5, profile.EnvironmentTable.Count);
+                Assert.Equal(4, profile.EnvironmentTable.Count);
             }
             finally
             {
