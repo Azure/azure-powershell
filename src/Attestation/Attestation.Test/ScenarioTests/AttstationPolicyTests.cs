@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestGetAttestationPolicy()
         {
             TestRunner.RunTestScript("Test-GetAttestationPolicy");
@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.Attestation.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestResetAttestationPolicy()
         {
             TestRunner.RunTestScript("Test-ResetAttestationPolicy");

@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed the exception content swallowed issue when exception.Response is null [#19531]
 * Added the existing parameters `Exportable`, `Immutable`, `UseDefaultCVMPolicy`, and `ReleasePolicyPath`
   to the parameter sets `InteractiveCreate`, `InputObjectCreate`, and `ResourceIdCreate`.
 

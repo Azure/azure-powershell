@@ -200,5 +200,3 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 [New-AzNetworkManagerStaticMember](./New-AzNetworkManagerStaticMember.md)
 
 [Get-AzNetworkManagerStaticMember](./Get-AzNetworkManagerStaticMember.md)
-
-[Set-AzNetworkManagerStaticMember](./Set-AzNetworkManagerStaticMember.md)

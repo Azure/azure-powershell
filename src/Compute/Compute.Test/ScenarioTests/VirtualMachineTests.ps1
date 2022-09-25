@@ -1,4 +1,4 @@
-﻿# ----------------------------------------------------------------------------------
+# ----------------------------------------------------------------------------------
 #
 # Copyright Microsoft Corporation
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -1884,7 +1884,7 @@ function Test-VirtualMachineWithVMAgentAutoUpdate
         $vhdContainer = "https://$stoname.blob.core.windows.net/test";
         $imgRef = Get-DefaultCRPWindowsImageOffline;
 
-        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
+        $p = Set-AzVMOperatingSystem -VM $p -Windows -ComputerName $computerName -Credential $cred -ProvisionVMAgent -EnableAutoUpdate;
         $p = ($imgRef | Set-AzVMSourceImage -VM $p);
 
         Assert-AreEqual $p.OSProfile.AdminUsername $user;
@@ -5872,6 +5872,60 @@ function Test-VirtualMachineGuestAttestation
         New-AzVM -ResourceGroupName $RGName -Location $loc -VM $vmConfig -DisableIntegrityMonitoring;
         Assert-ThrowsContains {
             $vmExtError = Get-AzVMExtension -ResourceGroupName $rgname -VMName $vmName -Name $extDefaultName; } "For more details please go to https://aka.ms/ARMResourceNotFoundFix";
+    }
+    finally 
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+Test to ensure the TimeCreated property is returned in the VM and VMSS models.
+#>
+function Test-VMandVMSSTimeCreated
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        # VM Profile & Hardware
+        $vnetname = "myVnet";
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "slb" + $rgname;
+        $subnetAddress = "10.0.2.0/24";
+        $vmssName = "vmss" + $rgname;
+        $FaultDomainNumber = 2;
+        $vmssFaultDomain = 3;
+
+        # Creating a new vmss
+        $VmSku = "Standard_E2s_v3"
+        $domainNameLabel = "d1"+ $rgname;
+        $vmssname = "MyVmss"
+        $username = "admin01"
+        $password = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force
+        $cred = new-object -typename System.Management.Automation.PSCredential -argumentlist $username, $password
+        New-AzVmss -Name $vmssname -ResourceGroup $rgname -Credential $cred -HostGroupId $hostGroup.Id -Zone $zone -VmSize $VmSku -DomainNameLabel $domainNameLabel
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssname;
+        Assert-NotNull $vmss.TimeCreated;
+        
+
+        # Creating a VM using Simple parameterset
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "admin01";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        # Create VM using Default Parameter set
+        $domainNameLabel = "d2" + $rgname;
+        $vmname = "vmnam";
+        New-AzVM -ResourceGroupName $rgname -Name $vmname -Credential $cred -DomainNameLabel $domainNameLabel;
+        $vm = Get-AzVm -ResourceGroupName $rgname -Name $vmname;
+        Assert-NotNull $vm.TimeCreated;
     }
     finally 
     {
