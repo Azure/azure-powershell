@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzEventHubSchemaGroup
 
 ## SYNOPSIS
-
+Remove an EventHub schema group.
 
 ## SYNTAX
 
@@ -25,7 +25,7 @@ Remove-AzEventHubSchemaGroup -InputObject <IEventHubIdentity> [-DefaultProfile <
 ```
 
 ## DESCRIPTION
-
+Remove an EventHub schema group.
 
 ## EXAMPLES
 
