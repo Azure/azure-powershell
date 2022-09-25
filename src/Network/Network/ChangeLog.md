@@ -30,8 +30,17 @@
     - `NewAzureRmVpnGatewayCommand.cs`
     - `UpdateAzureRmVpnGatewayCommand.cs`
 * Updated commandlet to support new parameters: asn, geo, expressrouteadvertise.
-    - `Update-AzCustomIpPrefix`
+    - `Update-AzCustomIpPrefix
+* Updated cmdlets to enable verification on client certificate revocation by using a new property VerifyClientRevocation in ApplicationGatewayClientAuthConfiguration
+    - `New-AzApplicationGatewayClientAuthConfiguration`
+    - `Set-AzApplicationGatewayClientAuthConfiguration`
 * Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
+* Added ProbeThreshold parameter to Load Balancer Probe 
+    - `AddAzureRmLoadBalancerProbeConfigCommmand.cs`
+    - `NewAzureRmLoadBalancerProbeConfigCommand.cs`
+    - `SetAzureRmLoadBalancerProbeConfigCommand.cs`
+* Updated commandlet to support specifying an action for a managed rule override in Application Gateway WAF Policy.
+    - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`

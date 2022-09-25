@@ -2851,6 +2851,10 @@
                 <PropertyName>NumberOfProbes</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>ProbeThreshold</Label>
+                <PropertyName>ProbeThreshold</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>RequestPath</Label>
                 <PropertyName>RequestPath</PropertyName>
               </ListItem>
