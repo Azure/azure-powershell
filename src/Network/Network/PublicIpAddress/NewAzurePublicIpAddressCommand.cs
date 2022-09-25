@@ -130,6 +130,12 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "The DdosProtectionMode to use for Public IP address")]
+        [ValidateSet(
+            MNM.DdosSettingsProtectionMode.VirtualNetworkInherited,
+            MNM.DdosSettingsProtectionMode.Enabled,
+            MNM.DdosSettingsProtectionMode.Disabled,
+            IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
         public string DdosProtectionMode { get; set; }
 
         [Parameter(

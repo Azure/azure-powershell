@@ -135,6 +135,7 @@ The DdosProtectionMode to use for Public IP address
 Type: System.String
 Parameter Sets: (All)
 Aliases:
+Accepted values: VirtualNetworkInherited, Enabled, Disabled
 
 Required: False
 Position: Named
