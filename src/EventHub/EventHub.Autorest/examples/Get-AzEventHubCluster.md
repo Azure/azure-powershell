@@ -6,7 +6,7 @@ Get-AzEventHubCluster -ResourceGroupName myResourceGroup -Name DefaultCluster-11
 ```output
 Capacity                     : 1
 CreatedAt                    : 2022-08-29T09:38:30.453Z
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/DefaultCluster-11
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/clusters/DefaultCluster-11
 Location                     : australiaeast
 MetricId                     : PROD-00-000
 Name                         : DefaultCluster-11

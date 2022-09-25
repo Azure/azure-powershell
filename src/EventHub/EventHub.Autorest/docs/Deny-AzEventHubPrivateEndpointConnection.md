@@ -38,11 +38,11 @@ Deny-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -Nam
 ```output
 ConnectionState              : Rejected
 Description                  :
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateEndpointC
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateEndpointC
                                onnections/00000000000
 Location                     : Australia East
 Name                         : 00000000000
-PrivateEndpointId            : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
+PrivateEndpointId            : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
 ProvisioningState            : Succeeded
 ResourceGroupName            : myResourceGroup
 ```
@@ -58,11 +58,11 @@ Deny-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint
 ```output
 ConnectionState              : Rejected
 Description                  :
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateEndpointC
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateEndpointC
                                onnections/00000000000
 Location                     : Australia East
 Name                         : 00000000000
-PrivateEndpointId            : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
+PrivateEndpointId            : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
 ProvisioningState            : Succeeded
 ResourceGroupName            : myResourceGroup
 ```

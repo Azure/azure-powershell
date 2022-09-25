@@ -40,7 +40,7 @@ DataLakeFolderPath           :
 DataLakeSubscriptionId       :
 DestinationName              :
 Encoding                     :
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub
 IntervalInSeconds            :
 Location                     : centralus
 MessageRetentionInDays       : 6
@@ -70,7 +70,7 @@ DataLakeFolderPath           :
 DataLakeSubscriptionId       :
 DestinationName              :
 Encoding                     : Avro
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myFirstEventHub
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myFirstEventHub
 IntervalInSeconds            : 600
 Location                     : centralus
 MessageRetentionInDays       : 6

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzEventHubSchemaGroup
 
 ## SYNOPSIS
-Gets details of an EventHub schema group
+
 
 ## SYNTAX
 
@@ -30,7 +30,7 @@ Get-AzEventHubSchemaGroup -InputObject <IEventHubIdentity> [-DefaultProfile <PSO
 ```
 
 ## DESCRIPTION
-Gets details of an EventHub schema group
+
 
 ## EXAMPLES
 
@@ -44,7 +44,7 @@ CreatedAtUtc                 : 9/14/2022 6:05:47 AM
 ETag                         : {etag}
 GroupProperty                : {
                                }
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/schemagroups/mySchemaGroup
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/schemagroups/mySchemaGroup
 Location                     : Central US
 Name                         : mySchemaGroup
 ResourceGroupName            : myResourceGroup

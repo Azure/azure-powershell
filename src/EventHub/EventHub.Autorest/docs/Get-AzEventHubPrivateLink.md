@@ -29,7 +29,7 @@ Get-AzEventHubPrivateLink -ResourceGroupName myResourceGroup -NamespaceName myNa
 
 ```output
 GroupId          : namespace
-Id               : subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateLinkResources/namespace
+Id               : subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateLinkResources/namespace
 Name             : namespace
 RequiredMember   : {namespace}
 RequiredZoneName : {privatelink.servicebus.windows.net}

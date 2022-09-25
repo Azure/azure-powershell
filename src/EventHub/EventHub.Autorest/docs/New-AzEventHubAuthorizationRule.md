@@ -37,7 +37,7 @@ New-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceNam
 ```
 
 ```output
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/authorizationRules/myAuthRule
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/authorizationRules/myAuthRule
 Location                     : Central US
 Name                         : myAuthRule
 ResourceGroupName            : myResourceGroup
@@ -52,7 +52,7 @@ New-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceNam
 ```
 
 ```output
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub/authorizationRules/myAuthRule
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub/authorizationRules/myAuthRule
 Location                     : Central US
 Name                         : myAuthRule
 ResourceGroupName            : myResourceGroup

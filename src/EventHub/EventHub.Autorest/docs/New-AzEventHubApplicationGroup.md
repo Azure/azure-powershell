@@ -32,7 +32,7 @@ New-AzEventHubApplicationGroup -NamespaceName myNamespace -ResourceGroupName myR
 
 ```output
 ClientAppGroupIdentifier     : SASKeyName=a
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/applicationGroups/
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/applicationGroups/
                                myAppGroup
 IsEnabled                    : True
 Location                     : Central US
