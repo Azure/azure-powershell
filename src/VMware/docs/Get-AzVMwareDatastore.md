@@ -1,62 +1,77 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareauthorization
+online version: https://docs.microsoft.com/powershell/module/az.vmware/get-azvmwaredatastore
 schema: 2.0.0
 ---
 
-# Remove-AzVMwareAuthorization
+# Get-AzVMwareDatastore
 
 ## SYNOPSIS
-Delete an ExpressRoute Circuit Authorization in a private cloud
+Get a datastore in a private cloud cluster
 
 ## SYNTAX
 
-### Delete (Default)
+### List (Default)
 ```
-Remove-AzVMwareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Get-AzVMwareDatastore -ClusterName <String> -PrivateCloudName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
-### DeleteViaIdentity
+### Get
 ```
-Remove-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
- [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+Get-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### GetViaIdentity
+```
+Get-AzVMwareDatastore -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete an ExpressRoute Circuit Authorization in a private cloud
+Get a datastore in a private cloud cluster
 
 ## EXAMPLES
 
-### Example 1: Delete authorization in private cloud
+### Example 1: List datastores in a private cloud cluster.
 ```powershell
-Remove-AzVMwareAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Name azps_test_authorization
-
+Get-AzVMwareDatastore -ClusterName azps_test_cluster -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 ```
 
-Delete authorization in private cloud
-
-### Example 2: Delete authorization in private cloud
-```powershell
-Get-AzVMwareAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Name azps_test_authorization | Remove-AzVMwareAuthorization
-
+```output
+Name                 Status     ProvisioningState ResourceGroupName
+----                 ------     ----------------- -----------------
+azps_test_datastore  Accessible Succeeded         azps_test_group
+azps_test_datastore1 Accessible Succeeded         azps_test_group
 ```
 
-Delete authorization in private cloud
+List datastores in a private cloud cluster.
+
+### Example 2: Get a datastore in a data store name.
+```powershell
+Get-AzVMwareDatastore -ClusterName azps_test_cluster -Name azps_test_datastore -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
+```
+
+```output
+Name                Status     ProvisioningState ResourceGroupName
+----                ------     ----------------- -----------------
+azps_test_datastore Accessible Succeeded         azps_test_group
+```
+
+Get a datastore in a data store name.
 
 ## PARAMETERS
 
-### -AsJob
-Run the command as a job
+### -ClusterName
+Name of the cluster in the private cloud
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
+Type: System.String
+Parameter Sets: Get, List
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -84,7 +99,7 @@ To construct, see NOTES section for INPUTOBJECT properties and create a hash tab
 
 ```yaml
 Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.IVMwareIdentity
-Parameter Sets: DeleteViaIdentity
+Parameter Sets: GetViaIdentity
 Aliases:
 
 Required: True
@@ -95,44 +110,14 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the ExpressRoute Circuit Authorization in the private cloud
+Name of the datastore in the private cloud cluster
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
-Aliases: AuthorizationName
+Parameter Sets: Get
+Aliases: DatastoreName
 
 Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -NoWait
-Run the command asynchronously
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -PassThru
-Returns true when the command succeeds
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -144,7 +129,7 @@ Name of the private cloud
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -160,7 +145,7 @@ The name is case insensitive.
 
 ```yaml
 Type: System.String
-Parameter Sets: Delete
+Parameter Sets: Get, List
 Aliases:
 
 Required: True
@@ -174,44 +159,13 @@ Accept wildcard characters: False
 The ID of the target subscription.
 
 ```yaml
-Type: System.String
-Parameter Sets: Delete
+Type: System.String[]
+Parameter Sets: Get, List
 Aliases:
 
 Required: False
 Position: Named
 Default value: (Get-AzContext).Subscription.Id
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -225,7 +179,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### System.Boolean
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore
 
 ## NOTES
 
