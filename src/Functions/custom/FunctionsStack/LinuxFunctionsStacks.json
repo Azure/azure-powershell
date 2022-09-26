@@ -277,6 +277,26 @@
                         "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
+                    },
+                    {
+                        "displayVersion": "17",
+                        "runtimeVersion": "Java|17",
+                        "supportedFunctionsExtensionVersions": [
+                            "~4"
+                        ],
+                        "isDefault": false,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "java"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "use32BitWorkerProcess": false,
+                            "linuxFxVersion": "Java|17"
+                        },
+                        "isPreview": true,
+                        "isDeprecated": false,
+                        "isHidden": false
                     }
                 ],
                 "frameworks": [],
