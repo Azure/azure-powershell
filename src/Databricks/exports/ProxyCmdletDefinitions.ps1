@@ -385,7 +385,7 @@ Gets the workspace vNet Peering.
 .Example
 Get-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test
 .Example
-Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -PeeringName MyPeering-test01
+Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -Name MyPeering-test01
 .Example
 New-AzDatabricksVNetPeering -Name vnetpeering-t02 -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -RemoteVirtualNetworkId '/subscriptions/xxxxx-xxxx-xxx-xxxxx/resourceGroups/azure-manual-test/providers/Microsoft.Network/virtualNetworks/vnet-test02' | Get-AzDatabricksVNetPeering
 
@@ -1421,7 +1421,7 @@ Deletes the workspace vNetPeering.
 .Example
 Remove-AzDatabricksVNetPeering -WorkspaceName databricks-test01 -ResourceGroupName lucas-manual-test -Name vnetpeering-t01
 .Example
-Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -PeeringName MyPeering-test01 | Remove-AzDatabricksVNetPeering
+Get-AzDatabricksVNetPeering -ResourceGroupName lucas-manual-test -WorkspaceName databricks-test01 -Name MyPeering-test01 | Remove-AzDatabricksVNetPeering
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -1841,7 +1841,7 @@ Updates an azure databricks accessConnector.
 .Example
 Update-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac -Tag @{'key'='value'}
 .Example
-Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac |Update-AzDatabricksAccessConnector  -Tag @{'key'='value'}
+Get-AzDatabricksAccessConnector -ResourceGroupName databricks-rg-xyv4k5 -Name databricks-ac | Update-AzDatabricksAccessConnector  -Tag @{'key'='value'}
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
@@ -2116,7 +2116,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Databricks.Category('Body')]
     [System.Management.Automation.SwitchParameter]
-    # The value which should be used for this field.
+    # Should the Public IP be Disabled?
     ${EnableNoPublicIP},
 
     [Parameter()]
@@ -2634,7 +2634,7 @@ Updates a workspace.
 .Description
 Updates a workspace.
 .Example
-$dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46 -Tag @{'key'=1}
+$dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46
 Update-AzDatabricksWorkspace -InputObject $dbr -Tag @{key="value"}
 .Example
 Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -PrepareEncryption

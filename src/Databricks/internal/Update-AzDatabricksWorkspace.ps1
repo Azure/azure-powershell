@@ -20,7 +20,7 @@ Updates a workspace.
 .Description
 Updates a workspace.
 .Example
-$dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46 -Tag @{'key'=1}
+$dbr = Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspaceopsc46
 Update-AzDatabricksWorkspace -InputObject $dbr -Tag @{key="value"}
 .Example
 Update-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo -Name workspace3miaeb -PrepareEncryption
