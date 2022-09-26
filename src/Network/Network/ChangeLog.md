@@ -29,6 +29,8 @@
 * Updated commandlets to support specifying an ASN on VPN Gateway
     - `NewAzureRmVpnGatewayCommand.cs`
     - `UpdateAzureRmVpnGatewayCommand.cs`
+* Updated commandlet to support new parameters: asn, geo, expressrouteadvertise.
+    - `Update-AzCustomIpPrefix
 * Updated cmdlets to enable verification on client certificate revocation by using a new property VerifyClientRevocation in ApplicationGatewayClientAuthConfiguration
     - `New-AzApplicationGatewayClientAuthConfiguration`
     - `Set-AzApplicationGatewayClientAuthConfiguration`
