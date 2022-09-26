@@ -18,3 +18,10 @@ Get-AzADUser -DisplayName $name
 ```
 
 Get user by display name
+
+ ### Example 4: Get user with filter
+```powershell
+Get-AzADUser -Filter "startsWith(DisplayName,'some-name')"
+```
+
+ Get user with filter

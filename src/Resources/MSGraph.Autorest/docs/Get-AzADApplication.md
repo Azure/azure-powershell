@@ -95,6 +95,13 @@ Get-AzADapplication -OwnedApplication
 
 Get applications owned by current user
 
+ ### Example 5: Get applications with filter
+```powershell
+Get-AzADApplication -Filter "startsWith(DisplayName,'some-name')"
+```
+
+ Get applications with filter
+
 ## PARAMETERS
 
 ### -AppendSelected
@@ -189,7 +196,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
-Filter items by property values
+Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
 
 ```yaml
 Type: System.String

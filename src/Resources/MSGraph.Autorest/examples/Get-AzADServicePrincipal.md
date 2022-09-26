@@ -32,3 +32,10 @@ Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 ```
 
 Get service principal by pipeline input
+
+ ### Example 6: Get service principal with filter
+```powershell
+Get-AzADServicePrincipal -Filter "startsWith(DisplayName,'some-name')"
+```
+
+ Get service principal with filter

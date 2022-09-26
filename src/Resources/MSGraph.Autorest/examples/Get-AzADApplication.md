@@ -32,3 +32,10 @@ Get-AzADapplication -OwnedApplication
 ```
 
  Get applications owned by current user
+
+ ### Example 5: Get applications with filter
+```powershell
+Get-AzADApplication -Filter "startsWith(DisplayName,'some-name')"
+```
+
+ Get applications with filter
