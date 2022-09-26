@@ -20,7 +20,7 @@
 
 ## Upcoming Release
 * Supported tenant domain as input while using `Connect-AzAccount` with parameter `Tenant`. [#19471]
-* Upgraded Azure.Core to 1.25 and Azure.Identity to 1.6.1
+* Upgraded Azure.Core to 1.25.0 and Azure.Identity to 1.6.1
 * Upgraded Microsoft.ApplicationInsights to 2.13.1
 * Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp3.1.
 * Removed built-in environment of Azure Germany
