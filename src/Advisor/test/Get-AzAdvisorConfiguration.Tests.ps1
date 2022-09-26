@@ -20,7 +20,7 @@ Describe 'Get-AzAdvisorConfiguration' {
         $config.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'List1' -skip {
+    It 'List1' {
         $config = Get-AzAdvisorConfiguration -resourceGroup $env.resourceGroup
         $config.Count | Should -BeGreaterOrEqual 1
     }

@@ -15,13 +15,13 @@ if(($null -eq $TestName) -or ($TestName -contains 'Enable-AzAdvisorRecommendatio
 }
 
 Describe 'Enable-AzAdvisorRecommendation' {
-    It 'IdParameterSet' -skip {
+    It 'IdParameterSet' {
         $Advisor =  Enable-AzAdvisorRecommendation -ResourceId $env.recommendationId
         $Advisor.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'NameParameterSet' -skip {
-        $Advisor =  Enable-AzAdvisorRecommendation -ResourceId $env.recommendationName
+    It 'NameParameterSet' {
+        $Advisor =  Enable-AzAdvisorRecommendation -RecommendationName $env.recommendationName
         $Advisor.Count | Should -BeGreaterOrEqual 1
     }
 

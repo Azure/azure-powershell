@@ -20,7 +20,7 @@ Describe 'Set-AzAdvisorConfiguration' {
         $Advisor.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'CreateByRG' -skip {
+    It 'CreateByRG' {
         $Advisor = Set-AzAdvisorConfiguration -ResourceGroupName $env.resourceGroup
         $Advisor.Count | Should -BeGreaterOrEqual 1
     }

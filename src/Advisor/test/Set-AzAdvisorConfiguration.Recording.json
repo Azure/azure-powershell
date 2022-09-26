@@ -19,12 +19,12 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "3ea62174-d55a-49c5-8d3f-7f1dffc372fa" ],
+        "x-ms-request-id": [ "74b39274-5758-4b93-9842-1810a69ded80" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "199" ],
-        "x-ms-correlation-request-id": [ "346db8d6-9a36-43bd-adec-304af543e7d8" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220926T165445Z:346db8d6-9a36-43bd-adec-304af543e7d8" ],
-        "Date": [ "Mon, 26 Sep 2022 16:54:44 GMT" ]
+        "x-ms-correlation-request-id": [ "67d32062-b3cf-4eb5-9d53-7ba4dc1bfa5b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220926T175036Z:67d32062-b3cf-4eb5-9d53-7ba4dc1bfa5b" ],
+        "Date": [ "Mon, 26 Sep 2022 17:50:35 GMT" ]
       },
       "ContentHeaders": {
         "Content-Length": [ "224" ],
@@ -32,6 +32,42 @@
         "Expires": [ "-1" ]
       },
       "Content": "{\"properties\":{\"exclude\":false,\"lowCpuThreshold\":\"15\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/configurations/default\",\"type\":\"Microsoft.Advisor/Configurations\",\"name\":\"default\"}",
+      "isContentBase64": false
+    }
+  },
+  "Set-AzAdvisorConfiguration+[NoContext]+CreateByRG+$PUT+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automanagehcrprg/providers/Microsoft.Advisor/configurations/default?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automanagehcrprg/providers/Microsoft.Advisor/configurations/default?api-version=2020-01-01",
+      "Content": "{\r\n  \"properties\": {\r\n    \"exclude\": false\r\n  }\r\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "50" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "a0130654-d0d2-4b9f-b1c8-871d19889263" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "198" ],
+        "x-ms-correlation-request-id": [ "e66b0d8d-03f2-4b8b-8a2b-325b6a2f4e0b" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220926T175036Z:e66b0d8d-03f2-4b8b-8a2b-325b6a2f4e0b" ],
+        "Date": [ "Mon, 26 Sep 2022 17:50:36 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "233" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"exclude\":false},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automanagehcrprg/providers/Microsoft.Advisor/configurations/default\",\"type\":\"Microsoft.Advisor/Configurations\",\"name\":\"default\"}",
       "isContentBase64": false
     }
   }

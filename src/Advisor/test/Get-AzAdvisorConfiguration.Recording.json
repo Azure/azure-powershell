@@ -6,8 +6,8 @@
       "Content": null,
       "isContentBase64": false,
       "Headers": {
-        "x-ms-unique-id": [ "4" ],
-        "x-ms-client-request-id": [ "70ce39ce-c36c-4426-9bdb-f3b90db7bb48" ],
+        "x-ms-unique-id": [ "10" ],
+        "x-ms-client-request-id": [ "f169e48c-3a3f-477b-b7be-db8c2d18aa4e" ],
         "CommandName": [ "Get-AzAdvisorConfiguration" ],
         "FullCommandName": [ "Get-AzAdvisorConfiguration_List" ],
         "ParameterSetName": [ "__AllParameterSets" ],
@@ -24,19 +24,60 @@
         "Pragma": [ "no-cache" ],
         "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
         "X-Content-Type-Options": [ "nosniff" ],
-        "x-ms-request-id": [ "70ce39ce-c36c-4426-9bdb-f3b90db7bb48" ],
+        "x-ms-request-id": [ "f169e48c-3a3f-477b-b7be-db8c2d18aa4e" ],
         "Server": [ "Microsoft-HTTPAPI/2.0" ],
         "x-ms-ratelimit-remaining-subscription-resource-requests": [ "599" ],
-        "x-ms-correlation-request-id": [ "876b5aec-a3d6-471e-ad18-25c3c00e02cf" ],
-        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220926T165441Z:876b5aec-a3d6-471e-ad18-25c3c00e02cf" ],
-        "Date": [ "Mon, 26 Sep 2022 16:54:41 GMT" ]
+        "x-ms-correlation-request-id": [ "35847a01-1aed-4947-9fa6-08f3a591adb8" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220926T175030Z:35847a01-1aed-4947-9fa6-08f3a591adb8" ],
+        "Date": [ "Mon, 26 Sep 2022 17:50:30 GMT" ]
       },
       "ContentHeaders": {
-        "Content-Length": [ "236" ],
+        "Content-Length": [ "470" ],
         "Content-Type": [ "application/json; charset=utf-8" ],
         "Expires": [ "-1" ]
       },
-      "Content": "{\"value\":[{\"properties\":{\"exclude\":false,\"lowCpuThreshold\":\"15\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/configurations/default\",\"type\":\"Microsoft.Advisor/Configurations\",\"name\":\"default\"}]}",
+      "Content": "{\"value\":[{\"properties\":{\"exclude\":false,\"lowCpuThreshold\":\"15\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/configurations/default\",\"type\":\"Microsoft.Advisor/Configurations\",\"name\":\"default\"},{\"properties\":{\"exclude\":false},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automanagehcrprg/providers/Microsoft.Advisor/configurations/default\",\"type\":\"Microsoft.Advisor/Configurations\",\"name\":\"default\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAdvisorConfiguration+[NoContext]+List1+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automanagehcrprg/providers/Microsoft.Advisor/configurations?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automanagehcrprg/providers/Microsoft.Advisor/configurations?api-version=2020-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "11" ],
+        "x-ms-client-request-id": [ "7d6da508-f82c-400c-a459-08a0ccc3c185" ],
+        "CommandName": [ "Get-AzAdvisorConfiguration" ],
+        "FullCommandName": [ "Get-AzAdvisorConfiguration_List1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Advisor/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "7d6da508-f82c-400c-a459-08a0ccc3c185" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "598" ],
+        "x-ms-correlation-request-id": [ "12f3c984-1959-4f1a-b038-40a7beb05d23" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220926T175030Z:12f3c984-1959-4f1a-b038-40a7beb05d23" ],
+        "Date": [ "Mon, 26 Sep 2022 17:50:30 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "245" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"exclude\":false},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/automanagehcrprg/providers/Microsoft.Advisor/configurations/default\",\"type\":\"Microsoft.Advisor/Configurations\",\"name\":\"default\"}]}",
       "isContentBase64": false
     }
   }
