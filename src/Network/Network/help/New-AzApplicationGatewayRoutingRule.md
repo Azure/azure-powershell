@@ -208,7 +208,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Add-AzApplicationGatewayRoutingRule](./Add-AzApplicationGatewayRoutingRule.md)
-																
+
 [Get-AzApplicationGatewayRoutingRule](./Get-AzApplicationGatewayRoutingRule.md)
 
 [Remove-AzApplicationGatewayRoutingRule](./Remove-AzApplicationGatewayRoutingRule.md)

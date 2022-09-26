@@ -95,9 +95,9 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Add-AzApplicationGatewayBackendSetting](./Add-AzApplicationGatewayBackendSetting.md)
-																		  
+
 [New-AzApplicationGatewayBackendSetting](./New-AzApplicationGatewayBackendSetting.md)
-																		  
+
 [Get-AzApplicationGatewayBackendSetting](./Get-AzApplicationGatewayBackendSetting.md)
-																		  
+
 [Set-AzApplicationGatewayBackendSetting](./Set-AzApplicationGatewayBackendSetting.md)

@@ -218,7 +218,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 ## RELATED LINKS
 
 [Get-AzApplicationGatewayBackendSetting](./Get-AzApplicationGatewayBackendSetting.md)
-																		  
+
 [New-AzApplicationGatewayBackendSetting](./New-AzApplicationGatewayBackendSetting.md)
 
 [Remove-AzApplicationGatewayBackendSetting](./Remove-AzApplicationGatewayBackendSetting.md)
