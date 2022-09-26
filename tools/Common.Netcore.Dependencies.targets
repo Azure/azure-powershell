@@ -24,7 +24,7 @@
     <PackageReference Include="Azure.Core" Version="1.25.0"/>
   </ItemGroup>
   <ItemGroup Condition="'$(IsTestProject)' != 'true'">
-    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.12.0">
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.13.1">
       <PrivateAssets Condition="'$(HideReferenceDependencies)' == 'true'">All</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Azure.Common" Version="2.2.1">
