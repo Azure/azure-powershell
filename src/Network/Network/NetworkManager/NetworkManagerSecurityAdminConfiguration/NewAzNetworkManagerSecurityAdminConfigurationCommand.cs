@@ -30,10 +30,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityAdminConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerSecurityAdminConfiguration))]
     public class NewAzNetworkManagerSecurityAdminConfigurationCommand : NetworkManagerSecurityAdminConfigurationBaseCmdlet
     {
-        // Breaking change 2022-05-01 release, plan to remove warning in 2022-07-01 release
-        public const string ApplyOnNetworkIntentPolicyBasedServiceChangeDesc = "Apply on network intent policy based service options are now restricted to 'None', 'All', and 'AllowRulesOnly'.";
-        [CmdletParameterBreakingChange("ApplyOnNetworkIntentPolicyBasedService", ChangeDescription = ApplyOnNetworkIntentPolicyBasedServiceChangeDesc)]
-
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,

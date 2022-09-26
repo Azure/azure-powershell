@@ -30,10 +30,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerAddressPrefixItem"), OutputType(typeof(PSNetworkManagerAddressPrefixItem))]
     public class NewAzNetworkManagerAddressPrefixItemCommand: NetworkManagerBaseCmdlet
     {
-        // Breaking change 2022-05-01 release, plan to remove warning in 2022-07-01 release
-        public const string AddressPrefixTypeChangeDesc = "Address prefix types are now restricted to 'IPPrefix' and 'ServiceTag'.";
-        [CmdletParameterBreakingChange("AddressPrefixType", ChangeDescription = AddressPrefixTypeChangeDesc)]
-
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,

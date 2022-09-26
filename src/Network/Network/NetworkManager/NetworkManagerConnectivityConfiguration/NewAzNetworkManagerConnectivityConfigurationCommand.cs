@@ -31,10 +31,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerConnectivityConfiguration", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerConnectivityConfiguration))]
     public class NewAzNetworkManagerConnectivityConfigurationCommand : NetworkManagerConnectivityConfigurationBaseCmdlet
     {
-        // Breaking change 2022-05-01 release, plan to remove warning in 2022-07-01 release
-        public const string ConnectivityTopologyChangeDesc = "Connectivity topologies are now restricted to 'HubAndSpoke' and 'Mesh'.";
-        [CmdletParameterBreakingChange("ConnectivityTopology", ChangeDescription = ConnectivityTopologyChangeDesc)]
-
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,

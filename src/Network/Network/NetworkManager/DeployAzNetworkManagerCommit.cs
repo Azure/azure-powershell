@@ -28,10 +28,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("Deploy", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerCommit", SupportsShouldProcess = true), OutputType(typeof(PSNetworkManagerCommit))]
     public class PostAzNetworkManagerCommitCommand : NetworkManagerBaseCmdlet
     {
-        // Breaking change 2022-05-01 release, plan to remove warning in 2022-07-01 release
-        public const string CommitTypeChangeDesc = "Commit types are now restricted to 'SecurityAdmin' and 'Connectivity'.";
-        [CmdletParameterBreakingChange("CommitType", ChangeDescription = CommitTypeChangeDesc)]
-
         [Alias("ResourceName")]
         [Parameter(
            Mandatory = true,

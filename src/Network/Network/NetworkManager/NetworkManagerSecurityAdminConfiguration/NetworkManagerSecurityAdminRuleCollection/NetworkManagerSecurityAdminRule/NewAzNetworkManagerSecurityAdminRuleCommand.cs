@@ -30,18 +30,6 @@ namespace Microsoft.Azure.Commands.Network
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "NetworkManagerSecurityAdminRule", SupportsShouldProcess = true, DefaultParameterSetName = "Custom"), OutputType(typeof(PSNetworkManagerSecurityBaseAdminRule))]
     public class NewAzNetworkManagerSecurityAdminRuleCommand : NetworkManagerSecurityAdminRuleBaseCmdlet
     {
-        // Breaking change 2022-05-01 release, plan to remove warning in 2022-07-01 release
-        public const string ProtocolChangeDesc = "Protocol options are now restricted to 'Tcp', 'Udp', 'Icmp', 'Esp', 'Any', and 'Ah'.";
-        [CmdletParameterBreakingChange("Protocol", ChangeDescription = ProtocolChangeDesc)]
-
-        // Breaking change 2022-05-01 release, plan to remove warning in 2022-07-01 release
-        public const string DirectionChangeDesc = "Direction options are now restricted to 'Inbound' and 'Outbound'.";
-        [CmdletParameterBreakingChange("Direction", ChangeDescription = DirectionChangeDesc)]
-
-        // Breaking change 2022-05-01 release, plan to remove warning in 2022-07-01 release
-        public const string AccessChangeDesc = "Group connectivity options are now restricted to 'Allow', 'Deny', and 'AlwaysAllow'.";
-        [CmdletParameterBreakingChange("Access", ChangeDescription = AccessChangeDesc)]
-
         [Alias("ResourceName")]
         [Parameter(
             Mandatory = true,
