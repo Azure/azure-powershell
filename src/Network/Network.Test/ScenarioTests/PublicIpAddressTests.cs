@@ -115,6 +115,14 @@ namespace Commands.Network.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.ddos)]
+        public void TestPublicIpDdosProtection()
+        {
+            TestRunner.RunTestScript("Test-PublicIpAddressCRUD-DdosProtection");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestPublicIpStandardSkuGlobalTier()
         {

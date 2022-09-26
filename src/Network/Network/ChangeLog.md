@@ -35,6 +35,7 @@
     - `New-AzApplicationGatewayClientAuthConfiguration`
     - `Set-AzApplicationGatewayClientAuthConfiguration`
 * Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
+* Added DdosProtectionMode parameter in New-AzPublicIpAddress
 * Added ProbeThreshold parameter to Load Balancer Probe 
     - `AddAzureRmLoadBalancerProbeConfigCommmand.cs`
     - `NewAzureRmLoadBalancerProbeConfigCommand.cs`

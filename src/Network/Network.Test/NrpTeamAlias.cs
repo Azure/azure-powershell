@@ -70,5 +70,8 @@ namespace Commands.Network.Test
 
         // Virtual WAN team
         public const string virtualwan = "routeservicedev";
+
+        // Ddos team
+        public const string ddos = "ddosdev";
     }
 }
