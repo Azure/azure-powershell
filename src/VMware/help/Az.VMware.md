@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.VMware Module
 ## Description
-Microsoft Azure PowerShell: VMware cmdlets
+Microsoft Azure PowerShell: Azure VMware Solution cmdlets
 
 ## Az.VMware Cmdlets
 ### [Get-AzVMwareAddon](Get-AzVMwareAddon.md)
