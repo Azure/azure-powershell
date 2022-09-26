@@ -1,41 +1,41 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwareglobalreachconnection
+online version: https://docs.microsoft.com/powershell/module/az.vmware/new-azvmwaredatastore
 schema: 2.0.0
 ---
 
-# New-AzVMwareGlobalReachConnection
+# New-AzVMwareDatastore
 
 ## SYNOPSIS
-Create or update a global reach connection in a private cloud
+Create or update a datastore in a private cloud cluster
 
 ## SYNTAX
 
 ```
-New-AzVMwareGlobalReachConnection -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-AuthorizationKey <String>] [-ExpressRouteId <String>]
- [-PeerExpressRouteResourceId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+New-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DiskPoolVolumeLunName <String>]
+ [-DiskPoolVolumeMountOption <MountOptionEnum>] [-DiskPoolVolumeTargetId <String>] [-NetAppVolumeId <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Create or update a global reach connection in a private cloud
+Create or update a datastore in a private cloud cluster
 
 ## EXAMPLES
 
-### Example 1: Create a global reach connection in a private cloud
+### Example 1: Create or update a datastore in a private cloud cluster.
 ```powershell
-New-AzVMwareGlobalReachConnection -Name azps_test_grc -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -AuthorizationKey "df530ffb-5a57-4437-a3eb-08e4c73ce011" -PeerExpressRouteResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/tnt16-cust-mp01-mock01/providers/Microsoft.Network/expressRouteCircuits/tnt16-cust-mp01-mock01-er"
+New-AzVMwareDatastore -ClusterName azps_test_cluster -Name azps_test_datastore -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -NetAppVolumeId "/subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/azps_test_group/providers/Microsoft.NetApp/netAppAccounts/NetAppAccount1/capacityPools/CapacityPool1/volumes/NFSVol1"
 ```
 
 ```output
-Name          Type                                               ResourceGroupName
-----          ----                                               -----------------
-azps_test_grc Microsoft.AVS/privateClouds/globalReachConnections azps_test_group
+Name                Status     ProvisioningState ResourceGroupName
+----                ------     ----------------- -----------------
+azps_test_datastore Accessible Succeeded         azps_test_group
 ```
 
-Create a global reach connection in a private cloud
+Create or update a datastore in a private cloud cluster.
 
 ## PARAMETERS
 
@@ -54,15 +54,15 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -AuthorizationKey
-Authorization key from the peer express route used for the global reach connection
+### -ClusterName
+Name of the cluster in the private cloud
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -84,8 +84,38 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ExpressRouteId
-The ID of the Private Cloud's ExpressRoute Circuit that is participating in the global reach connection
+### -DiskPoolVolumeLunName
+Name of the LUN to be used for datastore
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskPoolVolumeMountOption
+Mode that describes whether the LUN has to be mounted as a datastore or attached as a LUN
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.VMware.Support.MountOptionEnum
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DiskPoolVolumeTargetId
+Azure resource ID of the iSCSI target
 
 ```yaml
 Type: System.String
@@ -100,14 +130,29 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the global reach connection in the private cloud
+Name of the datastore in the private cloud cluster
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: GlobalReachConnectionName
+Aliases: DatastoreName
 
 Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NetAppVolumeId
+Azure resource ID of the NetApp volume
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -129,23 +174,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -PeerExpressRouteResourceId
-Identifier of the ExpressRoute Circuit to peer with in the global reach connection
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -PrivateCloudName
-The name of the private cloud.
+Name of the private cloud
 
 ```yaml
 Type: System.String
@@ -228,7 +258,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IGlobalReachConnection
+### Microsoft.Azure.PowerShell.Cmdlets.VMware.Models.Api20211201.IDatastore
 
 ## NOTES
 

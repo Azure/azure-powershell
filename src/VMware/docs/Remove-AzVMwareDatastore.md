@@ -1,50 +1,48 @@
 ---
 external help file:
 Module Name: Az.VMware
-online version: https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwareauthorization
+online version: https://docs.microsoft.com/powershell/module/az.vmware/remove-azvmwaredatastore
 schema: 2.0.0
 ---
 
-# Remove-AzVMwareAuthorization
+# Remove-AzVMwareDatastore
 
 ## SYNOPSIS
-Delete an ExpressRoute Circuit Authorization in a private cloud
+Delete a datastore in a private cloud cluster
 
 ## SYNTAX
 
 ### Delete (Default)
 ```
-Remove-AzVMwareAuthorization -Name <String> -PrivateCloudName <String> -ResourceGroupName <String>
- [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf]
- [<CommonParameters>]
+Remove-AzVMwareDatastore -ClusterName <String> -Name <String> -PrivateCloudName <String>
+ -ResourceGroupName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### DeleteViaIdentity
 ```
-Remove-AzVMwareAuthorization -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+Remove-AzVMwareDatastore -InputObject <IVMwareIdentity> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Delete an ExpressRoute Circuit Authorization in a private cloud
+Delete a datastore in a private cloud cluster
 
 ## EXAMPLES
 
-### Example 1: Delete authorization in private cloud
+### Example 1: Delete a datastore in a private cloud cluster.
 ```powershell
-Remove-AzVMwareAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Name azps_test_authorization
-
+Remove-AzVMwareDatastore -ClusterName azps_test_cluster -Name azps_test_datastore -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 ```
 
-Delete authorization in private cloud
+Delete a datastore in a private cloud cluster.
 
-### Example 2: Delete authorization in private cloud
+### Example 2: Delete a datastore in a private cloud cluster.
 ```powershell
-Get-AzVMwareAuthorization -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group -Name azps_test_authorization | Remove-AzVMwareAuthorization
-
+Get-AzVMwareDatastore -ClusterName azps_test_cluster -Name azps_test_datastore -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group | Remove-AzVMwareDatastore
 ```
 
-Delete authorization in private cloud
+Delete a datastore in a private cloud cluster.
 
 ## PARAMETERS
 
@@ -57,6 +55,21 @@ Parameter Sets: (All)
 Aliases:
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ClusterName
+Name of the cluster in the private cloud
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -95,12 +108,12 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-Name of the ExpressRoute Circuit Authorization in the private cloud
+Name of the datastore in the private cloud cluster
 
 ```yaml
 Type: System.String
 Parameter Sets: Delete
-Aliases: AuthorizationName
+Aliases: DatastoreName
 
 Required: True
 Position: Named

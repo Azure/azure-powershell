@@ -17,7 +17,7 @@ This directory contains the PowerShell module for the VMware service.
 This module was primarily generated via [AutoRest](https://github.com/Azure/autorest) using the [PowerShell](https://github.com/Azure/autorest.powershell) extension.
 
 ## Module Requirements
-- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.2.3 or greater
+- [Az.Accounts module](https://www.powershellgallery.com/packages/Az.Accounts/), version 2.7.5 or greater
 
 ## Authentication
 AutoRest does not generate authentication code for the module. Authentication is handled via Az.Accounts by altering the HTTP payload before it is sent.
@@ -47,7 +47,7 @@ In this directory, run AutoRest:
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 69e98508ef71f09851b2a79971d2d8e12560adc5
+branch: 2e665b044670074d91e8a9e6d04f23fbe3c8a06e
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file: 
@@ -105,7 +105,7 @@ directive:
     hide: true
   - where:
       verb: Get|New|Remove
-      subject: ScriptExecution|WorkloadNetworkPublicIP|Datastore
+      subject: ScriptExecution|WorkloadNetworkPublicIP
     hide: true
   - where:
       verb: Lock
@@ -217,4 +217,13 @@ directive:
       parameter-name: PeerExpressRouteCircuit
     set:
       parameter-name: PeerExpressRouteResourceId
+  - where:
+      model-name: Datastore
+    set:
+      format-table:
+        properties:
+          - Name
+          - Status
+          - ProvisioningState
+          - ResourceGroupName
 ```
