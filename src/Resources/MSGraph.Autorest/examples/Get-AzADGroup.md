@@ -19,9 +19,9 @@ Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
 
 Get group by object id and append property 'groupTypes' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'SecurityEnabled', 'MailEnabled', 'MailNickname', 'Description'
 
- ### Example 4: Get group with filter
+### Example 4: Get group with filter
 ```powershell
 Get-AzADGroup -Filter "startsWith(DisplayName,'some-name')"
 ```
 
- Get group with filter
+Get group with filter
