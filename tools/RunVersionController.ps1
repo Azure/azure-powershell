@@ -18,10 +18,7 @@ Param(
     [string]$ModuleName,
 
     [Parameter()]
-    [string]$GalleryName = "PSGallery",
-
-    [Parameter()]
-    [switch]$SkipAzInstall
+    [string]$GalleryName = "PSGallery"
 )
 
 enum PSVersion
@@ -193,7 +190,7 @@ function Get-ExistSerializedCmdletJsonFile
 function Bump-AzVersion
 {
     Write-Host "Getting local Az information..." -ForegroundColor Yellow
-    $localAz = Test-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1"
+    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1"
 
     Write-Host "Getting gallery Az information..." -ForegroundColor Yellow
     $galleryAz = Find-Module -Name Az -Repository $GalleryName
@@ -202,15 +199,15 @@ function Bump-AzVersion
     $updatedModules = @()
     foreach ($localDependency in $localAz.RequiredModules)
     {
-        $galleryDependency = $galleryAz.Dependencies | where { $_.Name -eq $localDependency.Name }
-        if ($galleryDependency -eq $null)
+        $galleryDependency = $galleryAz.Dependencies | where { $_.Name -eq $localDependency.ModuleName }
+        if ($null -eq $galleryDependency)
         {
-            $updatedModules += $localDependency.Name
+            $updatedModules += $localDependency.ModuleName
             if ($versionBump -ne [PSVersion]::MAJOR)
             {
                 $versionBump = [PSVersion]::MINOR
             }
-            Write-Host "Found new added module $($localDependency.Name)"
+            Write-Host "Found new added module $($localDependency.ModuleName)"
             continue
         }
 
@@ -219,12 +216,19 @@ function Bump-AzVersion
         {
             $galleryVersion = $galleryDependency.MinimumVersion
         }
-        $localVersion = $localDependency.Version.ToString()
+
+        $localVersion = $localDependency.RequiredVersion
+        # Az.Accounts uses ModuleVersion to annote Version
+        if ([string]::IsNullOrEmpty($localVersion))
+        {
+            $localVersion = $localDependency.ModuleVersion
+        }
+
         if ($galleryVersion.ToString() -ne $localVersion)
         {
-            $updatedModules += $galleryDependency.Name
+            $updatedModules += $localDependency.ModuleName
             $currBump = Get-VersionBump -GalleryVersion $galleryVersion.ToString() -LocalVersion $localVersion
-            Write-Host "Found $currBump version bump for $($localDependency.NAME)"
+            Write-Host "Found $currBump version bump for $($localDependency.ModuleName)"
             if ($currBump -eq [PSVersion]::MAJOR)
             {
                 $versionBump = [PSVersion]::MAJOR
@@ -246,7 +250,7 @@ function Bump-AzVersion
         return
     }
 
-    $newVersion = Get-BumpedVersion -Version $localAz.Version -VersionBump $versionBump
+    $newVersion = Get-BumpedVersion -Version $localAz.ModuleVersion -VersionBump $versionBump
 
     Write-Host "New version of Az: $newVersion" -ForegroundColor Green
 
@@ -277,7 +281,7 @@ function Bump-AzVersion
     return $versionBump
 }
 
-function Generate-AzPreview
+function Update-AzPreview
 {
     # The version of AzPrview aligns with Az
     $AzPrviewVersion = (Import-PowerShellDataFile "$PSScriptRoot\Az\Az.psd1").ModuleVersion
@@ -407,18 +411,7 @@ switch ($PSCmdlet.ParameterSetName)
                 Write-Host "Module ${ModuleName} is not GA yet. The json file: ${JsonFile} is for reference"
             }
         }
-        try
-        {
-            if(!$SkipAzInstall.IsPresent)
-            {
-                Install-Module Az -Repository $GalleryName -Force -AllowClobber
-            }
-        }
-        catch
-        {
-            throw "Please rerun in Administrator mode."
-        }
-
+        
         Write-Host executing dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
         dotnet $PSScriptRoot/../artifacts/VersionController/VersionController.Netcore.dll
 
@@ -435,7 +428,7 @@ switch ($PSCmdlet.ParameterSetName)
 
 # Each release needs to update AzPreview.psd1 and dotnet csv
 # Refresh AzPreview.psd1
-Generate-AzPreview
+Update-AzPreview
 
 New-CommandMappingFile
 
