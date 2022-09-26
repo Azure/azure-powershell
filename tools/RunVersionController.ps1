@@ -18,7 +18,10 @@ Param(
     [string]$ModuleName,
 
     [Parameter()]
-    [string]$GalleryName = "PSGallery"
+    [string]$GalleryName = "PSGallery",
+
+    [Parameter()]
+    [string]$ArtifactsOutputPath = "$PSScriptRoot/../artifacts/Release/"
 )
 
 enum PSVersion
@@ -190,7 +193,7 @@ function Get-ExistSerializedCmdletJsonFile
 function Bump-AzVersion
 {
     Write-Host "Getting local Az information..." -ForegroundColor Yellow
-    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1" -SkipLimitCheck
+    $localAz = Import-PowerShellDataFile -Path "$PSScriptRoot\Az\Az.psd1"
 
     Write-Host "Getting gallery Az information..." -ForegroundColor Yellow
     $galleryAz = Find-Module -Name Az -Repository $GalleryName
@@ -275,7 +278,20 @@ function Bump-AzVersion
         $changeLog += "#### $updatedModule"
         $changeLog += $(Get-ReleaseNotes -Module $updatedModule -RootPath $rootPath) + "`n"
     }
-
+    
+    $resolvedArtifactsOutputPath = (Resolve-Path $ArtifactsOutputPath).Path
+    if(!(Test-Path $resolvedArtifactsOutputPath))
+    {
+        throw "Please check artifacts output path: $resolvedArtifactsOutputPath whether exists."
+    }
+    
+    # Update-ModuleManifest requires all required modules in Az.psd1 installed in local
+    # Add artifacts as PSModulePath to skip installation
+    if(!($env:PSModulePath.Split(";").Contains($resolvedArtifactsOutputPath)))
+    {
+        $env:PSModulePath += ";$resolvedArtifactsOutputPath"
+    }
+    
     Update-ModuleManifest -Path "$PSScriptRoot\Az\Az.psd1" -ModuleVersion $newVersion -ReleaseNotes $releaseNotes
     Update-ChangeLog -Content $changeLog -RootPath $rootPath
     return $versionBump

@@ -604,7 +604,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Runtime.PowerShell
                 return ni.IsComplexInterface
                     ? ni.ToNoteOutput(nestedIndent, includeDashes, includeBackticks, false)
                     : RenderProperty(ni, nestedIndent, includeDashes, includeBackticks);
-            }).Prepend(RenderProperty(complexInterfaceInfo, currentIndent, !isFirst && includeDashes, !isFirst && includeBackticks));
+            }).Prepend(RenderProperty(complexInterfaceInfo, currentIndent, !isFirst && includeDashes, includeBackticks));
             return String.Join(Environment.NewLine, nested);
         }
     }

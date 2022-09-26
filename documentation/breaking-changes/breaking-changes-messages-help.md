@@ -6,13 +6,13 @@ Breaking change warnings are a means for the cmdlet authors to communicate with 
 
 ## How do I get rid of the warnings?
 
-To suppress these warning messages, set the environment variable 'SuppressAzurePowerShellBreakingChangeWarnings' to 'true'.
+To suppress these warning messages, set the config 'DisplayBreakingChangeWarning' to '$false'.
 
-```
-Set-Item Env:\SuppressAzurePowerShellBreakingChangeWarnings "true"
+```powershell
+Update-AzConfig -DisplayBreakingChangeWarning $false
 ```
 
-More details on breaking change message suppression can be found [here](https://github.com/Azure/azure-powershell/blob/preview/documentation/breaking-changes/breaking-changes-attribute-help.md#suppress-the-breaking-change-messages-at-runtime).
+More details on breaking change message suppression can be found [here](https://github.com/Azure/azure-powershell/blob/main/documentation/breaking-changes/breaking-changes-attribute-help.md#suppress-the-breaking-change-messages-at-runtime).
 
 ## Further reading
 

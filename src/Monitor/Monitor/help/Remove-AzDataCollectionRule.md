@@ -14,36 +14,20 @@ Delete a data collection rule.
 
 ### ByName (Default)
 ```
-Remove-AzDataCollectionRule
-   -ResourceGroupName <string>
-   -RuleName <string>
-   [-PassThru]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+Remove-AzDataCollectionRule -ResourceGroupName <String> -RuleName <String> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Remove-AzDataCollectionRule
-   -InputObject <PSDataCollectionRuleResource>
-   [-PassThru]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+Remove-AzDataCollectionRule -InputObject <PSDataCollectionRuleResource> [-PassThru]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Remove-AzDataCollectionRule
-   -RuleId <string>
-   [-PassThru]
-   [-DefaultProfile <IAzureContextContainer>]
-   [-WhatIf]
-   [-Confirm]
-   [<CommonParameters>]
+Remove-AzDataCollectionRule -RuleId <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
+ [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -58,6 +42,8 @@ Data Collection Rules (DCR) define data coming into Azure Monitor and specify wh
 Remove-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr"
 ```
 
+Delete data collection rule with name and resource group parameters
+
 ### Example 2: Delete data collection rule with name and resource group return bool
 ```powershell
 Remove-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr" -PassThru
@@ -67,15 +53,21 @@ Remove-AzDataCollectionRule -ResourceGroupName "testgroup" -RuleName "testDcr" -
 True
 ```
 
+Delete data collection rule with name and resource group return bool
+
 ### Example 3: Delete data collection rule from InputObject
 ```powershell
 Get-AzDataCollectionRule -ResourceGroupName "testdcr" -RuleName "dcrFromPipe95" | Remove-AzDataCollectionRule
 ```
 
+Delete data collection rule from InputObject
+
 ### Example 4: Delete data collection rule from resource id
 ```powershell
 Remove-AzDataCollectionRule -RuleId "/subscriptions/{subId}/resourceGroups/testdcr/providers/Microsoft.Insights/dataCollectionRules/{dcrName}"
 ```
+
+Delete data collection rule from resource id
 
 ## PARAMETERS
 
@@ -94,40 +86,43 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+The data collection rule resource from the pipe
+
+```yaml
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -PassThru
+Return true upon successful removal.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name
 
 ```yaml
 Type: System.String
-Parameter Sets: ByResourceGroup
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-```yaml
-Type: System.String
 Parameter Sets: ByName
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -RuleName
-The resource name.
-
-```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases: Name
 
 Required: True
 Position: Named
@@ -143,6 +138,21 @@ The resource identifier.
 Type: System.String
 Parameter Sets: ByResourceId
 Aliases: ResourceId
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -RuleName
+The resource name.
+
+```yaml
+Type: System.String
+Parameter Sets: ByName
+Aliases: Name
 
 Required: True
 Position: Named

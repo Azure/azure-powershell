@@ -379,7 +379,7 @@ Accept wildcard characters: False
 ```
 
 ### -DomainNameLabel
-The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assigned to the Scale Set. Automatically assigned Domain names use the form (<DomainNameLabel>.<Location>.cloudapp.azure.com). If no value is supplied, the default domain name label will be the concatenation of `<ScaleSetName>` and `<ResourceGroupName>`.
+The domain name label for the public Fully-Qualified domain name (FQDN) for this Scale Set. This is the first component of the domain name that is automatically assigned to the Scale Set. Automatically assigned Domain names use the form (`<DomainNameLabel>.<Location>.cloudapp.azure.com`). If no value is supplied, the default domain name label will be the concatenation of `<ScaleSetName>` and `<ResourceGroupName>`.
 
 ```yaml
 Type: System.String
