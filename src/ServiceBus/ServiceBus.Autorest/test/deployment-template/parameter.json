@@ -1,0 +1,21 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "namespace_name": {
+      "value": "namespaceNamemf3sz9"
+    },
+    "standard_namespace_name": {
+      "value": "namespaceName5gbmw7"
+    },
+    "namespaceResourceId": {
+      "value": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutorestnhrimd/providers/Microsoft.ServiceBus/namespaces/namespaceNamemf3sz9"
+    },
+    "peName1": {
+      "value": "pe17kwhue"
+    },
+    "peName2": {
+      "value": "pe2bceuk4"
+    }
+  }
+}
