@@ -23,6 +23,7 @@ Az.DigitalTwins
 Az.DiskPool
 Az.EdgeOrder
 Az.Elastic
+Az.ElasticSan
 Az.FluidRelay
 Az.Functions
 Az.HanaOnAzure
@@ -39,6 +40,7 @@ Az.Migrate
 Az.MonitoringSolutions
 Az.MySql
 Az.NetworkFunction
+Az.Nginx
 Az.Portal
 Az.PostgreSql
 Az.ProviderHub

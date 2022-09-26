@@ -46,6 +46,18 @@ namespace Microsoft.Azure.Commands.Synapse.Common
 
         public const string GitRepository = "Git Repository Settings. Connect workspace to the repository for source control and collaboration for work on your workspace pipelines";
 
+        public const string PublicNetworkAccess = "Enable or Disable public network access to workspace. Possible values include: 'Enabled', 'Disabled'";
+
+        public const string UserAssignedIdentityAction = 
+@"Action must be specified when you add/remove/set user assigned managed identities for workspace. 
+The supported actions are:
+Add
+Remove
+Set
+Add means to add user assigned managed identities for workspace, Remove means to remove user assigned managed identities from workspace, Set can be used when you want to add and remove user assigned managed identities at the same time, current identities will be coverd by specified ones.";
+
+        public const string UserAssignedIdentityId = "User assigned managed identity Id for workspace.";
+
         public const string RepositoryType = "Select the repository type that you want to use to store your artifacts for this Synapse Analytics workspace, the type include DevOps and GitHub.";
 
         public const string HostName = "GitHub Enterprise host name. For example: https://github.mydomain.com";

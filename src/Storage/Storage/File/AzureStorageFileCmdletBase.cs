@@ -30,6 +30,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
     using global::Azure.Storage.Files.Shares.Models;
     using System.Linq;
     using Microsoft.Azure.Cosmos.Table;
+    using Microsoft.Azure.Storage.Blob;
 
     public abstract class AzureStorageFileCmdletBase : StorageCloudCmdletBase<IStorageFileManagement>
     {
@@ -68,17 +69,25 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
             return this.Channel.GetShareReference(name);
         }
 
-        protected bool ShareIsEmpty(CloudFileShare share)
+        protected bool ShareIsEmpty(ShareClient share)
         {
             try
             {
-                FileContinuationToken fileToken = new FileContinuationToken();
-                using (IEnumerator<IListFileItem> listedFiles = share.GetRootDirectoryReference()
-                    .ListFilesAndDirectoriesSegmentedAsync(1, fileToken, RequestOptions, OperationContext).Result
-                    .Results.GetEnumerator())
+                ShareDirectoryGetFilesAndDirectoriesOptions listFileOptions = new ShareDirectoryGetFilesAndDirectoriesOptions();
+                listFileOptions.Traits = ShareFileTraits.All;
+
+                Pageable<ShareFileItem> fileItems = share.GetRootDirectoryClient().GetFilesAndDirectories(listFileOptions, this.CmdletCancellationToken);
+                IEnumerable<Page<ShareFileItem>> fileitempages = fileItems.AsPages(null, 1);
+
+                foreach (var page in fileitempages)
                 {
-                    return !(listedFiles.MoveNext() && listedFiles.Current != null);
+                    foreach (var file in page.Values)
+                    {
+                        return false;
+
+                    }
                 }
+                return true;
             }
             catch (Exception)
             {
@@ -169,6 +178,18 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File
                 fileServiceClient.BaseUri); //file Uri
             return new AzureStorageContext(account, 
                 fileServiceClient.Credentials.AccountName, 
+                DefaultContext);
+        }
+        public static AzureStorageContext GetStorageContextFromTrack1BlobServiceClient(CloudBlobClient blobServiceClient, IAzureContext DefaultContext = null)
+        {
+            Microsoft.Azure.Storage.CloudStorageAccount account = new Microsoft.Azure.Storage.CloudStorageAccount(
+                blobServiceClient.Credentials,
+                blobServiceClient.BaseUri, //blob Uri
+                null, //queue Uri
+                null, //talbe Uri
+                null); //file Uri
+            return new AzureStorageContext(account,
+                blobServiceClient.Credentials.AccountName,
                 DefaultContext);
         }
     }

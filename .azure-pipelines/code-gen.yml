@@ -1,7 +1,15 @@
-# Variable 'BaseBranch' was defined in the Variables tab
 # Variable 'BotAccessToken' was defined in the Variables tab
-# Variable 'ServiceName' was defined in the Variables tab
 # Multi-job configuration must be converted to matrix strategy: https://docs.microsoft.com/en-us/azure/devops/pipelines/process/phases?view=azure-devops&tabs=yaml#multi-job-configuration
+parameters:
+- name: TargetBranch
+  displayName: Branch this module will generated to
+  type: string
+  default: main
+- name: ServiceName
+  displayName: Service to generate
+  type: string
+  default: null
+
 resources:
   repositories:
   - repository: self
@@ -9,7 +17,7 @@ resources:
     ref: refs/heads/generation
 jobs:
 - job: Job_1
-  displayName: 'Service: '
+  displayName: "Service: ${{ parameters.ServiceName }}"
   timeoutInMinutes: 90
   pool:
     name: pool-windows-2019
@@ -30,67 +38,93 @@ jobs:
     inputs:
       targetType: inline
       script: >-
-        $subModuleFolders =  Get-ChildItem -Directory -Filter *.Autorest
+        $subModuleFolders =  Get-ChildItem -Directory -Filter *.Autorest;
 
         if ($subModuleFolders -eq $null) {
-          autorest --max-memory-size=8192
+          autorest --max-memory-size=8192;
         } else {
-          $subModuleFolders | foreach-object { cd $_.FullName; autorest --max-memory-size=8192}
+          $subModuleFolders | foreach-object { cd $_.FullName; autorest --max-memory-size=8192};
         }
-      pwsh: true
-      workingDirectory: src/$(ServiceName)/
+      workingDirectory: src/${{ parameters.ServiceName }}
+
   - task: PowerShell@2
     displayName: Build
-    condition: eq(variables.ServiceSubmoduleName, '')
     inputs:
       targetType: inline
       script: >-
-        $subModuleFolders =  Get-ChildItem -Directory -Filter *.Autorest
+        $subModuleFolders =  Get-ChildItem -Directory -Filter *.Autorest;
 
         if ($subModuleFolders -eq $null) {
-          ./build-module.ps1
+          ./build-module.ps1;
         } else {
           $subModuleFolders | foreach-object { cd $_.FullName; ./build-module.ps1; cd ..}
         }
 
-        mkdir ../../artifacts/src/$env:SERVICENAME
+        mkdir ../../artifacts/src/${{ parameters.ServiceName }};
 
-        cp -r ./* ../../artifacts/src/$env:SERVICENAME
+        cp -r ./* ../../artifacts/src/${{ parameters.ServiceName }};
       pwsh: true
-      workingDirectory: src/$(ServiceName)
+      workingDirectory: src/${{ parameters.ServiceName }}
   - task: PowerShell@2
     displayName: Checkout main branch
     inputs:
       targetType: inline
-      script: >
-        mkdir src/$env:SERVICENAME
-        git checkout src/$env:SERVICENAME
-        git checkout -b codegen/$env:SERVICENAME origin/$env:BaseBranch
-  - task: PowerShell@2
-    displayName: Move code to main
-    condition: eq(variables.ServiceSubmoduleName, '')
-    inputs:
-      targetType: inline
       script: >-
-        #Uninstall-Module -Name PackageManagement -AllVersions
-        Install-Module -Name PowerShellGet -RequiredVersion 2.2.3 -Force
-        Install-Module -Name platyPS -RequiredVersion 0.14.2 -Force
-        Install-Module -Name Az.Accounts -Force
-        Import-Module .\tools\Gen2Master\MoveFromGeneration2Master.ps1
-
-        $subModuleFolders = Get-ChildItem .\artifacts\src\$env:SERVICENAME -Directory -Filter *.Autorest
-        if ($subModuleFolders -eq $null) {
-          Move-Generation2Master -SourcePath .\artifacts\src\$env:SERVICENAME -DestPath .\src\$env:SERVICENAME
-        } else {
-          Move-Generation2MasterHybrid -SourcePath .\artifacts\src\$env:SERVICENAME -DestPath .\src\$env:SERVICENAME
+        if ((Test-Path src/${{ parameters.ServiceName }}))
+        {
+          rm -r src/${{ parameters.ServiceName }};
         }
+        git checkout src/${{ parameters.ServiceName }};
+        git checkout -b codegen/${{ parameters.ServiceName }} origin/${{ parameters.TargetBranch }};
+  - pwsh: |
+      #Uninstall-Module -Name PackageManagement -AllVersions
+      Install-Module -Name PowerShellGet -RequiredVersion 2.2.3 -Force;
+      Install-Module -Name platyPS -RequiredVersion 0.14.2 -Force;
+      Install-Module -Name Az.Accounts -Force;
+      Import-Module .\tools\Gen2Master\MoveFromGeneration2Master.ps1;
+      $subModuleFolders = Get-ChildItem .\artifacts\src\${{ parameters.ServiceName }} -Directory -Filter *.Autorest;
+      if ($subModuleFolders -eq $null) {
+        Move-Generation2Master -SourcePath .\artifacts\src\${{ parameters.ServiceName }} -DestPath .\src\${{ parameters.ServiceName }};
+      } else {
+        Move-Generation2MasterHybrid -SourcePath .\artifacts\src\${{ parameters.ServiceName }} -DestPath .\src\${{ parameters.ServiceName }};
+      }
+      git config user.email "65331932+azure-powershell-bot@users.noreply.github.com";
+      git config user.name "azure-powershell-bot";
+      git add ./src;
+      git add tools/CreateMappings_rules.json;
+      git commit -m "Move ${{ parameters.ServiceName }} to ${{ parameters.TargetBranch }}";
+      git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git;
+      git push origin codegen/${{ parameters.ServiceName }} --force;
+    displayName: Create codegen/${{ parameters.ServiceName }} branch
+  - pwsh: |
+      $Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $(BotAccessToken)"}
+      $PrBody = @'
+      <!-- DO NOT DELETE THIS TEMPLATE -->
 
-        git config user.email "65331932+azure-powershell-bot@users.noreply.github.com"
-        git config user.name "azure-powershell-bot"
-        git add ./src
-        git add tools/CreateMappings_rules.json
-        git commit -m "Move $env:SERVICENAME to $env:BaseBranch"
-        git remote set-url origin https://azure-powershell-bot:$(BotAccessToken)@github.com/Azure/azure-powershell.git
-        git push origin codegen/$env:SERVICENAME
-      pwsh: true
+      ## Description
 
+      <!-- Please add a brief description of the changes made in this PR. If you have an ongoing or finished cmdlet design, please paste the link below. -->
+
+      ## Checklist
+
+      - [x] Check this box to confirm: **I have read the [_Submitting Changes_](../blob/main/CONTRIBUTING.md#submitting-changes) section of [`CONTRIBUTING.md`](../blob/main/CONTRIBUTING.md) and reviewed the following information:**
+
+      * **SHOULD** select appropriate branch. Cmdlets from Autorest.PowerShell should go to [`generation`](https://github.com/Azure/azure-powershell/tree/generation) branch. 
+      * **SHOULD** make the title of PR clear and informative, and in the present imperative tense. 
+      * **SHOULD** update `ChangeLog.md` file(s) appropriately
+          * For any service, the `ChangeLog.md` file can be found at `src/{{SERVICE}}/{{SERVICE}}/ChangeLog.md`
+          * A snippet outlining the change(s) made in the PR should be written under the `## Upcoming Release` header in the past tense. Add changelog in description section if PR goes into [`generation`](https://github.com/Azure/azure-powershell/tree/generation) branch.
+          * Should **not** change `ChangeLog.md` if no new release is required, such as fixing test case only.
+      * **SHOULD** have approved design review for the changes in [this repository](https://github.com/Azure/azure-powershell-cmdlet-review-pr) ([_Microsoft internal only_](../blob/main/CONTRIBUTING.md#onboarding)) with following situations
+          * Create new module from scratch
+          * Create new resource types which are not easy to conform to [Azure PowerShell Design Guidelines](../blob/main/documentation/development-docs/design-guidelines)
+          * Create new resource type which name doesn't use module name as prefix
+          * Have design question before implementation
+      * **SHOULD** regenerate markdown help files if there is cmdlet API change. [Instruction](../blob/main/documentation/development-docs/help-generation.md#updating-all-markdown-files-in-a-module)
+      * **SHOULD** have proper test coverage for changes in pull request.
+      * **SHOULD NOT** introduce [breaking changes](../blob/main/documentation/breaking-changes/breaking-changes-definition.md) in Az minor release except preview version.
+      * **SHOULD NOT** adjust version of module manually in pull request
+      '@
+      $RequestBody = @{"title" = "Migrate ${{ parameters.ServiceName }} from generation to ${{ parameters.TargetBranch }}"; "body" = $PrBody; "head" = "codegen/${{ parameters.ServiceName }}"; "base" = "${{ parameters.TargetBranch }}" }
+      Invoke-WebRequest -Uri https://api.github.com/repos/Azure/azure-powershell/pulls -method POST -Headers $Headers -Body ($RequestBody | ConvertTo-Json)
+    displayName: Create PR to main branch
