@@ -134,7 +134,7 @@ New-AzResourceGroup -Name $ResourceGroupName -Location $Location;
 $vmname = <Virtual Machine Name>;
 $vmSize = "Standard_DC2as_v5";         
 $domainNameLabel = <Domain Name Label>;
-$computerName = "<Computer Name>;
+$computerName = <Computer Name>;
 $identityType = "SystemAssigned";
 $subnetPrefix = <Subnet Prefix>;
 $vnetPrefix = <Virtual Network Prefix>;
