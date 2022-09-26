@@ -1,0 +1,43 @@
+{
+  "Get-AzAdvisorConfiguration+[NoContext]+List+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/configurations?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/configurations?api-version=2020-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "4" ],
+        "x-ms-client-request-id": [ "70ce39ce-c36c-4426-9bdb-f3b90db7bb48" ],
+        "CommandName": [ "Get-AzAdvisorConfiguration" ],
+        "FullCommandName": [ "Get-AzAdvisorConfiguration_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Advisor/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "x-ms-request-id": [ "70ce39ce-c36c-4426-9bdb-f3b90db7bb48" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "599" ],
+        "x-ms-correlation-request-id": [ "876b5aec-a3d6-471e-ad18-25c3c00e02cf" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220926T165441Z:876b5aec-a3d6-471e-ad18-25c3c00e02cf" ],
+        "Date": [ "Mon, 26 Sep 2022 16:54:41 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "236" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"exclude\":false,\"lowCpuThreshold\":\"15\"},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/configurations/default\",\"type\":\"Microsoft.Advisor/Configurations\",\"name\":\"default\"}]}",
+      "isContentBase64": false
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "Get-AzAdvisorRecommendation+[NoContext]+ListByName+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/recommendations?api-version=2020-01-01\u0026$filter=ResourceGroup eq %27automanagehcrprg%27 and Category eq %27Security%27+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/recommendations?api-version=2020-01-01\u0026$filter=ResourceGroup%20eq%20%27automanagehcrprg%27%20and%20Category%20eq%20%27Security%27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "5" ],
+        "x-ms-client-request-id": [ "3854ce1c-6968-4511-83c2-642c04d97b2c" ],
+        "CommandName": [ "." ],
+        "FullCommandName": [ "Get-AzAdvisorRecommendation_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Advisor/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "598" ],
+        "x-ms-request-id": [ "71e393e7-ee4e-4a82-9368-122981132365" ],
+        "x-ms-correlation-request-id": [ "71e393e7-ee4e-4a82-9368-122981132365" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220926T165442Z:71e393e7-ee4e-4a82-9368-122981132365" ],
+        "Date": [ "Mon, 26 Sep 2022 16:54:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "2569" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"category\":\"Security\",\"impact\":\"High\",\"impactedField\":\"Microsoft.Compute/virtualMachines\",\"impactedValue\":\"arcbox-capi-mgmt\",\"lastUpdated\":\"2022-09-26T14:26:03.680092Z\",\"recommendationTypeId\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"shortDescription\":{\"problem\":\"File integrity monitoring should be enabled on machines\",\"solution\":\"File integrity monitoring should be enabled on machines\"},\"suppressionIds\":[\"5b931ff3-42a3-5f80-797f-8e018a6dfaf5\"],\"extendedProperties\":{\"assessmentKey\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"score\":\"0\"},\"resourceMetadata\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-capi-mgmt\",\"source\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AUTOMANAGEHCRPRG/providers/Microsoft.Compute/virtualMachines/ArcBox-CAPI-MGMT/providers/Microsoft.Security/assessments/9b7d740f-c271-4bfd-88fb-515680c33440\"}},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-capi-mgmt/providers/Microsoft.Advisor/recommendations/42963553-61de-5334-2d2e-47f3a0099d41\",\"type\":\"Microsoft.Advisor/recommendations\",\"name\":\"42963553-61de-5334-2d2e-47f3a0099d41\"},{\"properties\":{\"category\":\"Security\",\"impact\":\"High\",\"impactedField\":\"Microsoft.Compute/virtualMachines\",\"impactedValue\":\"arcbox-k3s\",\"lastUpdated\":\"2022-09-26T14:26:03.680092Z\",\"recommendationTypeId\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"shortDescription\":{\"problem\":\"File integrity monitoring should be enabled on machines\",\"solution\":\"File integrity monitoring should be enabled on machines\"},\"suppressionIds\":[\"a6844374-1c87-343d-6e7c-d2db4dad94cb\"],\"extendedProperties\":{\"assessmentKey\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"score\":\"0\"},\"resourceMetadata\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s\",\"source\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AUTOMANAGEHCRPRG/providers/Microsoft.Compute/virtualMachines/ArcBox-K3s/providers/Microsoft.Security/assessments/9b7d740f-c271-4bfd-88fb-515680c33440\"}},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9\",\"type\":\"Microsoft.Advisor/recommendations\",\"name\":\"c50a2e0a-26e6-4c21-f796-3fd64569b4d9\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAdvisorRecommendation+[NoContext]+ListById+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/recommendations?api-version=2020-01-01\u0026$filter=ResourceId eq %27%2Fsubscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f%2Fresourcegroups%2Fautomanagehcrprg%2Fproviders%2Fmicrosoft.compute%2Fvirtualmachines%2Farcbox-k3s%27 and Category eq %27Security%27+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/recommendations?api-version=2020-01-01\u0026$filter=ResourceId%20eq%20%27%2Fsubscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f%2Fresourcegroups%2Fautomanagehcrprg%2Fproviders%2Fmicrosoft.compute%2Fvirtualmachines%2Farcbox-k3s%27%20and%20Category%20eq%20%27Security%27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "6" ],
+        "x-ms-client-request-id": [ "6e41375a-d704-420a-a027-126ddbb3f8bc" ],
+        "CommandName": [ "." ],
+        "FullCommandName": [ "Get-AzAdvisorRecommendation_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Advisor/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "597" ],
+        "x-ms-request-id": [ "6d1b99c6-7239-49aa-86b5-cacfa37516af" ],
+        "x-ms-correlation-request-id": [ "6d1b99c6-7239-49aa-86b5-cacfa37516af" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220926T165442Z:6d1b99c6-7239-49aa-86b5-cacfa37516af" ],
+        "Date": [ "Mon, 26 Sep 2022 16:54:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1278" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"category\":\"Security\",\"impact\":\"High\",\"impactedField\":\"Microsoft.Compute/virtualMachines\",\"impactedValue\":\"arcbox-k3s\",\"lastUpdated\":\"2022-09-26T14:26:03.680092Z\",\"recommendationTypeId\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"shortDescription\":{\"problem\":\"File integrity monitoring should be enabled on machines\",\"solution\":\"File integrity monitoring should be enabled on machines\"},\"suppressionIds\":[\"a6844374-1c87-343d-6e7c-d2db4dad94cb\"],\"extendedProperties\":{\"assessmentKey\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"score\":\"0\"},\"resourceMetadata\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s\",\"source\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AUTOMANAGEHCRPRG/providers/Microsoft.Compute/virtualMachines/ArcBox-K3s/providers/Microsoft.Security/assessments/9b7d740f-c271-4bfd-88fb-515680c33440\"}},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9\",\"type\":\"Microsoft.Advisor/recommendations\",\"name\":\"c50a2e0a-26e6-4c21-f796-3fd64569b4d9\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAdvisorRecommendation+[NoContext]+ListByFilter+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/recommendations?api-version=2020-01-01\u0026$filter=Category eq %27Security%27+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/recommendations?api-version=2020-01-01\u0026$filter=Category%20eq%20%27Security%27",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "7" ],
+        "x-ms-client-request-id": [ "bfb5c3aa-6b76-4a71-8fdb-4cd28715985b" ],
+        "CommandName": [ "." ],
+        "FullCommandName": [ "Get-AzAdvisorRecommendation_List" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Advisor/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "596" ],
+        "x-ms-request-id": [ "2c58c941-4c45-4aec-a2a8-ddf004be046e" ],
+        "x-ms-correlation-request-id": [ "2c58c941-4c45-4aec-a2a8-ddf004be046e" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220926T165443Z:2c58c941-4c45-4aec-a2a8-ddf004be046e" ],
+        "Date": [ "Mon, 26 Sep 2022 16:54:42 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "3759" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"value\":[{\"properties\":{\"category\":\"Security\",\"impact\":\"High\",\"impactedField\":\"Microsoft.Compute/virtualMachines\",\"impactedValue\":\"arcbox-capi-mgmt\",\"lastUpdated\":\"2022-09-26T14:26:03.680092Z\",\"recommendationTypeId\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"shortDescription\":{\"problem\":\"File integrity monitoring should be enabled on machines\",\"solution\":\"File integrity monitoring should be enabled on machines\"},\"suppressionIds\":[\"5b931ff3-42a3-5f80-797f-8e018a6dfaf5\"],\"extendedProperties\":{\"assessmentKey\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"score\":\"0\"},\"resourceMetadata\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-capi-mgmt\",\"source\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AUTOMANAGEHCRPRG/providers/Microsoft.Compute/virtualMachines/ArcBox-CAPI-MGMT/providers/Microsoft.Security/assessments/9b7d740f-c271-4bfd-88fb-515680c33440\"}},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-capi-mgmt/providers/Microsoft.Advisor/recommendations/42963553-61de-5334-2d2e-47f3a0099d41\",\"type\":\"Microsoft.Advisor/recommendations\",\"name\":\"42963553-61de-5334-2d2e-47f3a0099d41\"},{\"properties\":{\"category\":\"Security\",\"impact\":\"High\",\"impactedField\":\"Microsoft.Compute/virtualMachines\",\"impactedValue\":\"arcbox-k3s\",\"lastUpdated\":\"2022-09-26T14:26:03.680092Z\",\"recommendationTypeId\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"shortDescription\":{\"problem\":\"File integrity monitoring should be enabled on machines\",\"solution\":\"File integrity monitoring should be enabled on machines\"},\"suppressionIds\":[\"a6844374-1c87-343d-6e7c-d2db4dad94cb\"],\"extendedProperties\":{\"assessmentKey\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"score\":\"0\"},\"resourceMetadata\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s\",\"source\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AUTOMANAGEHCRPRG/providers/Microsoft.Compute/virtualMachines/ArcBox-K3s/providers/Microsoft.Security/assessments/9b7d740f-c271-4bfd-88fb-515680c33440\"}},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9\",\"type\":\"Microsoft.Advisor/recommendations\",\"name\":\"c50a2e0a-26e6-4c21-f796-3fd64569b4d9\"},{\"properties\":{\"category\":\"Security\",\"impact\":\"High\",\"impactedField\":\"Microsoft.Compute/virtualMachines\",\"impactedValue\":\"aglinuxvm\",\"lastUpdated\":\"2022-09-26T14:26:03.680092Z\",\"recommendationTypeId\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"shortDescription\":{\"problem\":\"File integrity monitoring should be enabled on machines\",\"solution\":\"File integrity monitoring should be enabled on machines\"},\"extendedProperties\":{\"assessmentKey\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"score\":\"0\"},\"resourceMetadata\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automangerg/providers/microsoft.compute/virtualmachines/aglinuxvm\",\"source\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AUTOMANGERG/providers/Microsoft.Compute/virtualMachines/aglinuxvm/providers/Microsoft.Security/assessments/9b7d740f-c271-4bfd-88fb-515680c33440\"}},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automangerg/providers/microsoft.compute/virtualmachines/aglinuxvm/providers/Microsoft.Advisor/recommendations/c183cc20-f62b-772d-fd52-a665825a192d\",\"type\":\"Microsoft.Advisor/recommendations\",\"name\":\"c183cc20-f62b-772d-fd52-a665825a192d\"}]}",
+      "isContentBase64": false
+    }
+  },
+  "Get-AzAdvisorRecommendation+[NoContext]+GetById+$GET+https://management.azure.com/%2Fsubscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9?api-version=2020-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/%2Fsubscriptions%2F9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9?api-version=2020-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "8" ],
+        "x-ms-client-request-id": [ "0bc868ee-22db-4b49-8183-19ac01786a83" ],
+        "CommandName": [ "." ],
+        "FullCommandName": [ "Get-AzAdvisorRecommendation_Get" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.2.6", "Az.Advisor/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Server": [ "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-resource-requests": [ "595" ],
+        "x-ms-request-id": [ "230fc45c-21b3-4bee-800e-3c344c13ad90" ],
+        "x-ms-correlation-request-id": [ "230fc45c-21b3-4bee-800e-3c344c13ad90" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220926T165443Z:230fc45c-21b3-4bee-800e-3c344c13ad90" ],
+        "Date": [ "Mon, 26 Sep 2022 16:54:43 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "1266" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"properties\":{\"category\":\"Security\",\"impact\":\"High\",\"impactedField\":\"Microsoft.Compute/virtualMachines\",\"impactedValue\":\"arcbox-k3s\",\"lastUpdated\":\"2022-09-26T14:26:03.680092Z\",\"recommendationTypeId\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"shortDescription\":{\"problem\":\"File integrity monitoring should be enabled on machines\",\"solution\":\"File integrity monitoring should be enabled on machines\"},\"suppressionIds\":[\"a6844374-1c87-343d-6e7c-d2db4dad94cb\"],\"extendedProperties\":{\"assessmentKey\":\"9b7d740f-c271-4bfd-88fb-515680c33440\",\"score\":\"0\"},\"resourceMetadata\":{\"resourceId\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s\",\"source\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourceGroups/AUTOMANAGEHCRPRG/providers/Microsoft.Compute/virtualMachines/ArcBox-K3s/providers/Microsoft.Security/assessments/9b7d740f-c271-4bfd-88fb-515680c33440\"}},\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/resourcegroups/automanagehcrprg/providers/microsoft.compute/virtualmachines/arcbox-k3s/providers/Microsoft.Advisor/recommendations/c50a2e0a-26e6-4c21-f796-3fd64569b4d9\",\"type\":\"Microsoft.Advisor/recommendations\",\"name\":\"c50a2e0a-26e6-4c21-f796-3fd64569b4d9\"}",
+      "isContentBase64": false
+    }
+  }
+}
