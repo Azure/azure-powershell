@@ -6,6 +6,10 @@
       "defaultValue": "testSBARMTemplate",
       "type": "String"
     },
+    "standard_namespace_name": {
+      "defaultValue": "testSBARMTemplate",
+      "type": "String"
+    },
     "namespaceResourceId": {
       "defaultValue": "/",
       "type": "String"
@@ -29,6 +33,22 @@
       "sku": {
         "name": "Premium",
         "tier": "Premium"
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": false
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('standard_namespace_name')]",
+      "location": "East US",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard"
       },
       "properties": {
         "minimumTlsVersion": "1.2",

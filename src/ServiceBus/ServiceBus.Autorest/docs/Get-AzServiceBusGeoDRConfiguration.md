@@ -35,27 +35,24 @@ Retrieves Alias(Disaster Recovery configuration) for primary or secondary namesp
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get the disaster recovery configuration details of a ServiceBus namespace
 ```powershell
-{{ Add code here }}
+Get-AzServiceBusGeoDRConfiguration -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAlias
 ```
 
 ```output
-{{ Add output here }}
+AlternateName                     :
+Id                                : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/disasterRecoveryConfigs/myAlias
+Location                          :
+Name                              : myalias
+PartnerNamespace                  : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySecondaryNamespace
+PendingReplicationOperationsCount : 0
+ProvisioningState                 : Succeeded
+ResourceGroupName                 : myResourceGroup
+Role                              : Primary
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Gets disaster recovery configuration details of alias `myAlias` created for namespace `myNamespace`.
 
 ## PARAMETERS
 

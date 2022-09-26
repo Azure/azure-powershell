@@ -34,27 +34,32 @@ Retrieves Migration Config
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets the migration configuration of a ServiceBus namespace
 ```powershell
-{{ Add code here }}
+Get-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
 ```output
-{{ Add output here }}
+Id                                : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces
+                                    /myNamespace/migrationConfigurations/$default
+Location                          :
+MigrationState                    : Active
+Name                              : myNamespace
+PendingReplicationOperationsCount :
+PostMigrationName                 : myPremiumNamespace
+ProvisioningState                 : Succeeded
+ResourceGroupName                 : myResourceGroup
+SystemDataCreatedAt               :
+SystemDataCreatedBy               :
+SystemDataCreatedByType           :
+SystemDataLastModifiedAt          :
+SystemDataLastModifiedBy          :
+SystemDataLastModifiedByType      :
+TargetNamespace                   : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces
+                                    /myPremiumNamespace
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Gets the details of migration configuration related to namespace `myNamespace`.
 
 ## PARAMETERS
 

@@ -131,5 +131,18 @@ Describe 'Set-AzServiceBusQueue' {
         $currentQueue.Status = "SendDisabled"
         AssertQueueUpdates $currentQueue $updatedQueue
         $currentQueue = $updatedQueue
+
+        $currentQueue = Get-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.standardNamespace -Name queue1
+        $updatedQueue = Set-AzServiceBusQueue -InputObject $currentQueue -EnableExpress:$false
+        $currentQueue.EnableExpress = $false
+        AssertQueueUpdates $currentQueue $updatedQueue
+        $currentQueue = $updatedQueue
+
+        $updatedQueue = Set-AzServiceBusQueue -InputObject $currentQueue -EnableExpress
+        $currentQueue.EnableExpress = $true
+        AssertQueueUpdates $currentQueue $updatedQueue
+        $currentQueue = $updatedQueue
+
+        { Set-AzServiceBusQueue -InputObject $currentQueue } | Should -Throw 'Please specify the property you want to update on the -InputObject'
     }
 }

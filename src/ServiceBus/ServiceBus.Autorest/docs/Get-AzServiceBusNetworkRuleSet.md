@@ -35,27 +35,23 @@ Gets NetworkRuleSet for a Namespace.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Gets the network rule set of a ServiceBus namespace
 ```powershell
-{{ Add code here }}
+Get-AzServiceBusNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
 ```output
-{{ Add output here }}
+DefaultAction                : Allow
+IPRule                       : {}
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/networkRuleSets/default
+Location                     : Central US
+Name                         : default
+PublicNetworkAccess          : Enabled
+ResourceGroupName            : myResourceGroup
+VirtualNetworkRule           :
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Gets the network rule set of ServiceBus namespace `myNamespace`.
 
 ## PARAMETERS
 

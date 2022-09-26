@@ -30,27 +30,12 @@ Deletes an existing Private Endpoint Connection.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a private endpoint connection from an ServiceBus namespace
 ```powershell
-{{ Add code here }}
+Remove-AzServiceBusPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes private endpoint connection `00000000000` from an ServiceBus namespace `myNamespace`.
 
 ## PARAMETERS
 

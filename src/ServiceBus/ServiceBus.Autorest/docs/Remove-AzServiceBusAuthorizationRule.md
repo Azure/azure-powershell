@@ -44,27 +44,19 @@ Removes an ServiceBus Namespace, Queue or Topic Authorization Rule
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove authorization rule from an a ServiceBus namespace
 ```powershell
-{{ Add code here }}
+Remove-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule
 ```
 
-```output
-{{ Add output here }}
-```
+Deletes authorization rule `myAuthRule` from EventHub namespace `myNamespace`.
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
+### Example 2: Remove authorization rule from a ServiceBus queue
 ```powershell
-{{ Add code here }}
+Remove-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -QueueName myQueue -Name myAuthRule
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes authorization rule `myAuthRule` from ServiceBus `myQueue` on namespace `myNamespace`.
 
 ## PARAMETERS
 

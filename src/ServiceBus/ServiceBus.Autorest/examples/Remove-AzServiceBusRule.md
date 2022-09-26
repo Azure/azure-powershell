@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove a rule from a ServiceBus subscription
 ```powershell
-{{ Add code here }}
+Remove-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name myRule
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes a ServiceBus rule `myRule` from ServiceBus subscription `mySubscription`.
 

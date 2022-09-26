@@ -1,22 +1,30 @@
-### Example 1: {{ Add title here }}
+### Example 1: Regenerate Primary Key of an ServiceBus Namespace
 ```powershell
-{{ Add code here }}
+New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name rootmanagesharedaccesskey -KeyType PrimaryKey
 ```
 
 ```output
-{{ Add output here }}
+KeyName                        : RootManageSharedAccessKey
+PrimaryConnectionString        : {primaryConnectionString}
+PrimaryKey                     : {primaryKey}
+SecondaryConnectionString      : {secondaryConnectionString}
+SecondaryKey                   : {secondaryKey}
 ```
 
-{{ Add description here }}
+Regenerate primary key of authorization rule `rootmanagesharedaccesskey` on ServiceBus Namespace `myNamespace`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Regenerate Secondary Key of an ServiceBus queue
 ```powershell
-{{ Add code here }}
+New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -QueueName myQueue -Name rootmanagesharedaccesskey -KeyType SecondaryKey
 ```
 
 ```output
-{{ Add output here }}
+KeyName                        : RootManageSharedAccessKey
+PrimaryConnectionString        : {primaryConnectionString}
+PrimaryKey                     : {primaryKey}
+SecondaryConnectionString      : {secondaryConnectionString}
+SecondaryKey                   : {secondaryKey}
 ```
 
-{{ Add description here }}
+Regenerate primary key of authorization rule `rootmanagesharedaccesskey` on ServiceBus queue `myQueue` on ServiceBus Namespace `myNamespace`.
 

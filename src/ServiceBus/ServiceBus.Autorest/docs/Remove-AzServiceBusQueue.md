@@ -29,27 +29,12 @@ Deletes a queue from the specified namespace in a resource group.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a queue from a ServiceBus namespace
 ```powershell
-{{ Add code here }}
+Remove-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myQueue
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes a ServiceBus queue `myQueue` from ServiceBus namespace `myNamespace`.
 
 ## PARAMETERS
 

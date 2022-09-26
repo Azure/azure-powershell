@@ -14,8 +14,8 @@ Deletes a subscription from the specified topic.
 
 ### Delete (Default)
 ```
-Remove-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String>
- -ResourceGroupName <String> -TopicName <String> [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
+Remove-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ -TopicName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-Confirm] [-WhatIf]
  [<CommonParameters>]
 ```
 
@@ -30,27 +30,12 @@ Deletes a subscription from the specified topic.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Remove a subscription from a ServiceBus topic
 ```powershell
-{{ Add code here }}
+Remove-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes a ServiceBus subscription `mySubscription` from ServiceBus topic `myTopic`.
 
 ## PARAMETERS
 
@@ -63,22 +48,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: Delete
-Aliases: SubscriptionId
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -157,6 +126,22 @@ Aliases:
 Required: True
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: Delete
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

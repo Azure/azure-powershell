@@ -14,14 +14,14 @@ Returns a subscription description for the specified topic.
 
 ### List (Default)
 ```
-Get-AzServiceBusSubscription -Id <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceBusSubscription -NamespaceName <String> -ResourceGroupName <String> -TopicName <String>
+ [-SubscriptionId <String[]>] [-Skip <Int32>] [-Top <Int32>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### Get
 ```
-Get-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-DefaultProfile <PSObject>] [<CommonParameters>]
+Get-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ -TopicName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
 ### GetViaIdentity
@@ -35,27 +35,51 @@ Returns a subscription description for the specified topic.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get details of the ServiceBus subscription
 ```powershell
-{{ Add code here }}
+Get-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name 'sub$$D' 
 ```
 
 ```output
-{{ Add output here }}
+AccessedAt                                : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                          : 1.00:03:04
+ClientId                                  :
+CountDetailActiveMessageCount             : 0
+CountDetailDeadLetterMessageCount         : 0
+CountDetailScheduledMessageCount          : 0
+CountDetailTransferDeadLetterMessageCount : 0
+CountDetailTransferMessageCount           : 0
+CreatedAt                                 : 9/22/2022 6:17:32 AM
+DeadLetteringOnFilterEvaluationException  : False
+DeadLetteringOnMessageExpiration          : False
+DefaultMessageTimeToLive                  : 14.00:00:00
+DuplicateDetectionHistoryTimeWindow       :
+EnableBatchedOperations                   : True
+ForwardDeadLetteredMessagesTo             :
+ForwardTo                                 :
+Id                                        : /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/damorg/providers/Microsoft.ServiceBus/namespaces/testlatestS
+                                            BMSI/topics/myTopic/subscriptions/sub$$D
+IsClientAffine                            : True
+IsDurable                                 : True
+IsShared                                  : True
+Location                                  : westus
+LockDuration                              : 00:00:30
+MaxDeliveryCount                          : 10
+MessageCount                              : 0
+Name                                      : sub$$D
+RequiresSession                           : False
+ResourceGroupName                         : damorg
+Status                                    : Active
 ```
 
-{{ Add description here }}
+Get details of subcription `sub$$D` from ServiceBus topic `myTopic`.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all subscriptions in a topic
 ```powershell
-{{ Add code here }}
+Get-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+List all subscriptions in ServiceBus topic `myTopic`.
 
 ## PARAMETERS
 
@@ -68,22 +92,6 @@ Parameter Sets: (All)
 Aliases: AzureRMContext, AzureCredential
 
 Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Id
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: Get, List
-Aliases: SubscriptionId
-
-Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -163,6 +171,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: Get, List
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

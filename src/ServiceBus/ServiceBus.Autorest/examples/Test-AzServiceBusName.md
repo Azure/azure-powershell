@@ -1,22 +1,25 @@
-### Example 1: {{ Add title here }}
+### Example 1: Check the availability of a ServiceBus namespace name
 ```powershell
-{{ Add code here }}
+Test-AzServiceBusName -NamespaceName myNamespace
 ```
 
 ```output
-{{ Add output here }}
+Message                                                                                                NameAvailable Reason
+-------                                                                                                ------------- ------
+The specified name is not available. For more information visit https://aka.ms/eventhubsarmexceptions.         False NameInUse
 ```
 
-{{ Add description here }}
+Checks the availability of namespace name `myNamespace`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Check the availability of a ServiceBus Geo Disaster Recovery Alias
 ```powershell
-{{ Add code here }}
+Test-AzServiceBusName -NamespaceName myNamespace -ResourceGroupName myResourceGroup -AliasName myAlias
 ```
 
 ```output
-{{ Add output here }}
+Message                                                                                                NameAvailable Reason
+-------                                                                                                ------------- ------
+The specified name is not available. For more information visit https://aka.ms/eventhubsarmexceptions.         False NameInUse
 ```
 
-{{ Add description here }}
-
+Checks the availability of alias name `myAlias` on namespace `myNamepace`.

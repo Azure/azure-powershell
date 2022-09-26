@@ -34,5 +34,8 @@ Describe 'New-AzServiceBusTopic' {
 
         $listOfTopics = Get-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $listOfTopics.Count | Should -Be 3
+
+        $topic3 = New-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.standardNamespace -Name topic1 -EnableExpress
+        $topic3.EnableExpress | Should -Be $true
     }
 }

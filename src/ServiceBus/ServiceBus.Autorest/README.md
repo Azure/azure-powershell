@@ -430,3 +430,10 @@ directive:
       model-name: (.*)
     set:
       suppress-format: true
+
+  - where:
+      subject: Subscription
+      parameter-name: Id
+    set:
+      parameter-name: SubscriptionId
+    clear-alias: true

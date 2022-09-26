@@ -39,5 +39,9 @@ Describe 'New-AzServiceBusQueue' {
 
         $listOfQueues = Get-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace
         $listOfQueues.Count | Should -Be 3
+
+        # Create a queue with express enabled 
+        $queue1 = New-AzServiceBusQueue -ResourceGroupName $env.resourceGroup -NamespaceName $env.standardNamespace -Name queue1 -EnableExpress
+        $queue1.EnableExpress | Should -Be $true
     }
 }

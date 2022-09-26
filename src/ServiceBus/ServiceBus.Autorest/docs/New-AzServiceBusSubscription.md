@@ -13,8 +13,8 @@ Creates a topic subscription.
 ## SYNTAX
 
 ```
-New-AzServiceBusSubscription -Id <String> -Name <String> -NamespaceName <String> -ResourceGroupName <String>
- -TopicName <String> [-AutoDeleteOnIdle <TimeSpan>] [-ClientId <String>]
+New-AzServiceBusSubscription -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ -TopicName <String> [-SubscriptionId <String>] [-AutoDeleteOnIdle <TimeSpan>] [-ClientId <String>]
  [-DeadLetteringOnFilterEvaluationException] [-DeadLetteringOnMessageExpiration]
  [-DefaultMessageTimeToLive <TimeSpan>] [-DuplicateDetectionHistoryTimeWindow <TimeSpan>]
  [-EnableBatchedOperations] [-ForwardDeadLetteredMessagesTo <String>] [-ForwardTo <String>] [-IsClientAffine]
@@ -27,27 +27,44 @@ Creates a topic subscription.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a new ServiceBus subscription
 ```powershell
-{{ Add code here }}
+New-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription -DefaultMessageTimeToLive (New-TimeSpan -Days 6) -EnableBatchedOperations
 ```
 
 ```output
-{{ Add output here }}
+AccessedAt                                : 1/1/0001 12:00:00 AM
+AutoDeleteOnIdle                          : 10675199.02:48:05.4775807
+ClientId                                  :
+CountDetailActiveMessageCount             : 0
+CountDetailDeadLetterMessageCount         : 0
+CountDetailScheduledMessageCount          : 0
+CountDetailTransferDeadLetterMessageCount : 0
+CountDetailTransferMessageCount           : 0
+CreatedAt                                 : 9/23/2022 2:37:46 PM
+DeadLetteringOnFilterEvaluationException  : True
+DeadLetteringOnMessageExpiration          : False
+DefaultMessageTimeToLive                  : 6.00:00:00
+DuplicateDetectionHistoryTimeWindow       :
+EnableBatchedOperations                   : True
+ForwardDeadLetteredMessagesTo             :
+ForwardTo                                 :
+Id                                        : /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/damorg/providers/Microsoft.ServiceBus/namespaces/testlatests
+                                            bmsi/topics/a/subscriptions/testsub
+IsClientAffine                            : False
+IsDurable                                 :
+IsShared                                  :
+Location                                  : westus
+LockDuration                              : 00:01:00
+MaxDeliveryCount                          : 10
+MessageCount                              : 0
+Name                                      : testsub
+RequiresSession                           : False
+ResourceGroupName                         : damorg
+Status                                    : Active
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates a new ServiceBus subscription `mySubscription` under topic `myTopic`.
 
 ## PARAMETERS
 
@@ -204,22 +221,6 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Id
-Subscription credentials that uniquely identify a Microsoft Azure subscription.
-The subscription ID forms part of the URI for every service call.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases: SubscriptionId
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -IsClientAffine
 Value that indicates whether the subscription has an affinity to the client id.
 
@@ -367,6 +368,22 @@ Aliases:
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

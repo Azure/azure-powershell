@@ -1,22 +1,36 @@
-### Example 1: {{ Add title here }}
+### Example 1: Get the details of the ServiceBus topic
 ```powershell
-{{ Add code here }}
+Get-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic
 ```
 
 ```output
-{{ Add output here }}
+AccessedAt                                : 9/21/2022 2:30:14 PM
+AutoDeleteOnIdle                          : 3.00:00:00
+CreatedAt                                 : 9/7/2022 10:05:52 AM
+DefaultMessageTimeToLive                  : 10675197.00:00:00
+DuplicateDetectionHistoryTimeWindow       : 00:10:00
+EnableBatchedOperations                   : True
+EnableExpress                             : False
+EnablePartitioning                        : False
+Id                                        : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/topics/myTopic
+Location                                  : westus
+MaxMessageSizeInKilobytes                 : 1024
+MaxSizeInMegabytes                        : 1024
+Name                                      : a
+RequiresDuplicateDetection                : False
+ResourceGroupName                         : damorg
+SizeInByte                                : 0
+Status                                    : Active
+SubscriptionCount                         : 2
+SupportOrdering                           : True
 ```
 
-{{ Add description here }}
+Get the details of ServiceBus topic `myTopic` from namespace `myNamespace`.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all topics in a ServiceBus namespace
 ```powershell
-{{ Add code here }}
+Get-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Lists all topics in ServiceBus namespace `myNamespace`.
 

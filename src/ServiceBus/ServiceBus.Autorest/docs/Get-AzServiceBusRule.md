@@ -36,27 +36,42 @@ Retrieves the description for the specified rule.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get details of a ServiceBus Rule
 ```powershell
-{{ Add code here }}
+Get-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name '$Default' -TopicName myTopic -SubscriptionName mySubscription
 ```
 
 ```output
-{{ Add output here }}
+ActionCompatibilityLevel               :
+ActionRequiresPreprocessing            :
+ActionSqlExpression                    :
+ContentType                            :
+CorrelationFilterProperty              : {
+                                         }
+CorrelationFilterRequiresPreprocessing :
+CorrelationId                          :
+FilterType                             : SqlFilter
+Id                                     : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/topics/myTopic/subscriptions/mySubscription/rules/$Default
+Label                                  :
+Location                               : westus
+MessageId                              :
+Name                                   : $Default
+ReplyTo                                :
+ReplyToSessionId                       :
+ResourceGroupName                      : myResourceGroup
+SessionId                              :
+SqlExpression                          : 1=1
+SqlFilterCompatibilityLevel            : 20
 ```
 
-{{ Add description here }}
+Gets the details of `$Default` rule from subscription `mySubscription` of topic `myTopic`.
 
-### Example 2: {{ Add title here }}
+### Example 2: List all rules in a ServiceBus subscription
 ```powershell
-{{ Add code here }}
+Get-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Lists all rules in ServiceBus subscription `mySubscription`.
 
 ## PARAMETERS
 

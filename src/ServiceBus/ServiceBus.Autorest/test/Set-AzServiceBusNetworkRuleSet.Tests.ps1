@@ -61,5 +61,7 @@ Describe 'Set-AzServiceBusNetworkRuleSet' {
         $networkRuleSet.IPRule.Count | Should -Be 2
         $networkRuleSet.PublicNetworkAccess | Should -Be "Disabled"
         $networkRuleSet.TrustedServiceAccessEnabled | Should -Be $null
+
+        { Set-AzServiceBusNetworkRuleSet -InputObject $networkRuleSet } | Should -Throw 'Please specify the property you want to update on the -InputObject'
     }
 }

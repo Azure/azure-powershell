@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Complete migration from standard to premium servicebus namespace
 ```powershell
-{{ Add code here }}
+Complete-AzServiceBusMigration -ResourceGroupName myResourceGroup myNamespace
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Completes migration to premium namespace. Start-AzServiceBusMigration must be used to configure migration before completing it.
 

@@ -21,6 +21,7 @@ function setupEnv() {
     # For any resources you created for test, you should add it to $env here.
     $resourceGroup = "resourceGroupAutorest" + (RandomString -allChars $false -len 6)
     $namespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
+    $standardNamespaceName = "namespaceName" + (RandomString -allChars $false -len 6)
     $namespaceResourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.ServiceBus/namespaces/" + $namespaceName
     $primaryNamespaceName = "primaryNS" + (RandomString -allChars $false -len 6)
     $primaryNamespaceResourceId = "/subscriptions/" + $env.SubscriptionId + "/resourceGroups/" + $resourceGroup + "/providers/Microsoft.ServiceBus/namespaces/" + $primaryNamespaceName
@@ -37,6 +38,7 @@ function setupEnv() {
 
     $env.Add('resourceGroup', $resourceGroup)
     $env.Add('namespace', $namespaceName)
+    $env.Add('standardNamespace', $standardNamespaceName)
     $env.Add('namespaceResourceId', $namespaceResourceId)
     $env.Add('primaryNamespace', $primaryNamespaceName)
     $env.Add('secondaryNamespace', $secondaryNamespaceName)
@@ -55,6 +57,7 @@ function setupEnv() {
 
     $serviceBusTemplate = Get-Content .\test\deployment-template\parameter.json | ConvertFrom-Json
     $serviceBusTemplate.parameters.namespace_name.value = $namespaceName
+    $serviceBusTemplate.parameters.standard_namespace_name.value = $standardNamespaceName
     $serviceBusTemplate.parameters.namespaceResourceId.value = $namespaceResourceId
     $serviceBusTemplate.parameters.peName1.value = $peName1
     $serviceBusTemplate.parameters.peName2.value = $peName2

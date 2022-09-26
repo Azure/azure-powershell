@@ -100,5 +100,18 @@ Describe 'Set-AzServiceBusTopic' {
         $currentTopic.DuplicateDetectionHistoryTimeWindow = (New-TimeSpan -Minutes 3)
         AssertTopicUpdates $currentTopic $updatedTopic
         $currentTopic = $updatedTopic
+
+        $currentTopic = Get-AzServiceBusTopic -ResourceGroupName $env.resourceGroup -NamespaceName $env.standardNamespace -Name topic1
+        $updatedTopic = Set-AzServiceBusTopic -InputObject $currentTopic -EnableExpress:$false
+        $currentTopic.EnableExpress = $false
+        AssertTopicUpdates $currentTopic $updatedTopic
+        $currentTopic = $updatedTopic
+
+        $updatedTopic = Set-AzServiceBusTopic -InputObject $currentTopic -EnableExpress
+        $currentTopic.EnableExpress = $true
+        AssertTopicUpdates $currentTopic $updatedTopic
+        $currentTopic = $updatedTopic
+
+        { Set-AzServiceBusTopic -InputObject $currentTopic } | Should -Throw 'Please specify the property you want to update on the -InputObject'
     }
 }

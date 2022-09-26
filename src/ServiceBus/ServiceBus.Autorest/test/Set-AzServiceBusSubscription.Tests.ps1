@@ -115,11 +115,12 @@ Describe 'Set-AzServiceBusSubscription' {
         AssertSubscriptionUpdates $currentSub $updatedSub
         $currentSub = $updatedSub
 
-
         $currentSub = New-AzServiceBusSubscription -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name subscription4
         $updatedSub = Set-AzServiceBusSubscription -InputObject $currentSub -AutoDeleteOnIdle (New-TimeSpan -Days 5)
         $currentSub.AutoDeleteOnIdle = (New-TimeSpan -Days 5)
         AssertSubscriptionUpdates $currentSub $updatedSub
         $currentSub = $updatedSub
+
+        { Set-AzServiceBusSubscription -InputObject $currentSub } | Should -Throw 'Please specify the property you want to update on the -InputObject'
     }
 }

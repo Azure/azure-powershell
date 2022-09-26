@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove Standard to Premium migration configuration from a Standard namespace
 ```powershell
-{{ Add code here }}
+Remove-AzServiceBusMigration -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Removes migration configuration of namespace `myNamespace`.
 

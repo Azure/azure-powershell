@@ -21,27 +21,18 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzService
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Constructs an INwRuleSetIPRules object 
 ```powershell
-{{ Add code here }}
+New-AzServiceBusIPRuleConfig -IPMask 3.3.3.3 -Action Allow
 ```
 
 ```output
-{{ Add output here }}
+Action IPMask
+------ ------
+Allow  1.1.1.1
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Please refer examples for Set-AzServiceBusNetworkRuleSet to know more.
 
 ## PARAMETERS
 

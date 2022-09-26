@@ -22,27 +22,21 @@ Gets lists of resources that supports Privatelinks.
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Get private links associated with a ServiceBus namespace
 ```powershell
-{{ Add code here }}
+Get-AzServiceBusPrivateLink -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 ```
 
 ```output
-{{ Add output here }}
+GroupId          : namespace
+Id               : subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/privateLinkResources/namespace
+Name             : namespace
+RequiredMember   : {namespace}
+RequiredZoneName : {privatelink.servicebus.windows.net}
+Type             : Microsoft.ServiceBus/namespaces/privateLinkResources
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Gets private link resources available on ServiceBus namespace `myNamespace`.
 
 ## PARAMETERS
 

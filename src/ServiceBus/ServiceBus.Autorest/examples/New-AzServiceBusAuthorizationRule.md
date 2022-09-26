@@ -1,22 +1,29 @@
-### Example 1: {{ Add title here }}
+### Example 1: Create an authorization rule for a ServiceBus namespace
 ```powershell
-{{ Add code here }}
+New-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule -Rights @('Manage','Send','Listen')
 ```
 
 ```output
-{{ Add output here }}
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/authorizationRules/myAuthRule
+Location                     : Central US
+Name                         : myAuthRule
+ResourceGroupName            : myResourceGroup
+Rights                       : {Listen, Manage, Send}
 ```
 
-{{ Add description here }}
+Creates a new authorization rule `myAuthRule` on namespace `myNamespace`.
 
-### Example 2: {{ Add title here }}
+### Example 2: Create an authorization rule for a ServiceBus queue
 ```powershell
-{{ Add code here }}
+New-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -QueueName myQueue -Name myAuthRule -Rights @('Manage', 'Send', 'Listen')
 ```
 
 ```output
-{{ Add output here }}
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/queues/myQueue/authorizationRules/myAuthRule
+Location                     : Central US
+Name                         : myAuthRule
+ResourceGroupName            : myResourceGroup
+Rights                       : {Listen, Manage, Send}
 ```
 
-{{ Add description here }}
-
+Creates a new authorization rule `myAuthRule` on ServiceBus queue `myQueue` from namespace `myNamespace`.

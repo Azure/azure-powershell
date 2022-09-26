@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Fail Over to secondary namespace of an alias
 ```powershell
-{{ Add code here }}
+Set-AzServiceBusGeoDRConfigurationFailOver -ResourceGroupName myResourceGroup -NamespaceName mySecondaryNamespace -Name myAlias
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Fails over to `mySecondaryNamespace` which is secondary namespace of alias `myAlias`.
 

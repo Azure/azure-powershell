@@ -1,22 +1,7 @@
-### Example 1: {{ Add title here }}
+### Example 1: Remove Disaster Recovery Config from a ServiceBus namespace
 ```powershell
-{{ Add code here }}
+Remove-AzServiceBusGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace
 ```
 
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Deletes alias `myAlias` from ServiceBus namespace `myPrimaryNamespace`.
 

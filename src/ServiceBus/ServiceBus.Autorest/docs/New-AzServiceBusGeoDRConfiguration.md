@@ -23,27 +23,25 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Create a disaster recovery Alias
 ```powershell
-{{ Add code here }}
+New-AzServiceBusGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySecondaryNamespace
 ```
 
 ```output
-{{ Add output here }}
+AlternateName                     :
+Id                                : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myPrimaryNamespace/disasterRecoveryCon
+                                    figs/myAlias
+Location                          :
+Name                              : myAlias
+PartnerNamespace                  : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/mySecondaryNamespace
+PendingReplicationOperationsCount :
+ProvisioningState                 : Succeeded
+ResourceGroupName                 : myResourceGroup
+Role                              : Primary
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Creates a Disaster Recovery configuration which sets `mySecondaryNamespace` as secondary to `myPrimaryNamespace`.
 
 ## PARAMETERS
 

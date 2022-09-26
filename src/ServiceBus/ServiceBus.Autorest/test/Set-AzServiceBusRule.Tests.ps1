@@ -88,5 +88,7 @@ Describe 'Set-AzServiceBusRule' {
         $currentRule.To = "secondto"
         AssertCorrelationFilterUpdates $currentRule $updatedRule
         $currentRule = $updatedRule
+
+        { Set-AzServiceBusRule -InputObject $currentRule } | Should -Throw 'Please specify the property you want to update on the -InputObject'
     }
 }
