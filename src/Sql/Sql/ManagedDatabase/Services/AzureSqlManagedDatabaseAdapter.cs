@@ -17,6 +17,7 @@ using Microsoft.Azure.Commands.Sql.ManagedDatabase.Model;
 using Microsoft.Azure.Commands.Sql.ManagedDatabaseBackup.Services;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 using Microsoft.Azure.Management.Sql.Models;
+using Microsoft.Rest.Azure;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -229,14 +230,6 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
                 parameters.LastBackupName);
         }
 
-        private bool isLRSRestore(ManagedDatabaseRestoreDetailsResult restoreDetails)
-        {
-            var restoreType = restoreDetails.GetType().GetProperty("ManagedDatabaseRestoreDetailsResultType");
-            // 1) no property => old api => it's log replay as the API only works for such dbs
-            // 2) property is there => new api => property value will tell us if its LRS
-            return (restoreType == null) || ((string)restoreType.GetValue(restoreDetails)).Equals("lrsrestore", StringComparison.OrdinalIgnoreCase);
-        }
-
         /// <summary>
         /// Removes managed database in order to stop log replay service
         /// </summary>
@@ -247,19 +240,20 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Services
             {
                 // Check if the database provided by the caller is indeed created by Log Replay migration
                 var dbRestoreDetails = Communicator.GetLogReplayStatus(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
-                if (isLRSRestore(dbRestoreDetails))
+                if (dbRestoreDetails.ManagedDatabaseRestoreDetailsResultType.Equals("lrsrestore", StringComparison.OrdinalIgnoreCase))
                 {
                     Communicator.Remove(parameters.ResourceGroupName, parameters.ManagedInstanceName, parameters.Name);
                 }
-                else
-                {
-                    throw new Exception();
-                }
+                else throw new PSArgumentException(string.Format(Properties.Resources.StopLogReplayErrorDatabaseOrigin, parameters.Name, parameters.ManagedInstanceName, parameters.ResourceGroupName), "InstanceDatabaseName");
             } 
-            catch
+            catch (CloudException ex)
             {
-                throw new PSArgumentException(string.Format(Properties.Resources.StopLogReplayErrorDatabaseOrigin, parameters.Name, parameters.ManagedInstanceName, parameters.ResourceGroupName), "InstanceDatabaseName");
-
+                // This err is returned when we call GetLogReplayStatus (ManagedDatabaseRestoreDetails API) for a DB that wasn't created with LRS - so we map it to a more friendly err in the context of Stop-LRS cmd
+                if (ex.Body.Code == "RestoreDetailsNotAvailableOrExpired")
+                {
+                    throw new PSArgumentException(string.Format(Properties.Resources.StopLogReplayErrorDatabaseOrigin, parameters.Name, parameters.ManagedInstanceName, parameters.ResourceGroupName), "InstanceDatabaseName");
+                }
+                throw ex;
             }
         }
 
