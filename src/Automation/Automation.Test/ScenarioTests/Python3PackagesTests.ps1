@@ -37,20 +37,12 @@ function Test-E2EPython3Packages
                                                      -AutomationAccountName $automationAccountName  `
                                                      -Name $py3PackageName 
 
-    # Validate the py3 package properties
-    $propertiesToValidate = @("Name")
-
     Assert-AreEqual $py3Package.name $expectedPython3Package.Name
-    foreach ($property in $propertiesToValidate)
-    {
-        Assert-AreEqual $group.$property $expectedPython3Package.$property `
-            "'$property' of py3 package does not match. Expected:$($expectedPython3Package.$property) Actual: $($py3Package.$property)"
-    }
 
 	# Remove the py3 package
 	Remove-AzAutomationPython3Package -ResourceGroupName $resourceGroupName `
                                               -AutomationAccountName $automationAccountName  `
-                                              -Name $py3PackageName
+                                              -Name $py3PackageName -Force 
 	
 	# Make sure it was the py3 package was deleted
 	$group = Get-AzAutomationPython3Package -ResourceGroupName $resourceGroupName `
