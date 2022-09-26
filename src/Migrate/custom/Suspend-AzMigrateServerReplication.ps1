@@ -41,7 +41,6 @@ function Suspend-AzMigrateServerReplication {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.DefaultInfo(Script = '(Get-AzContext).Subscription.Id')]
         [System.String]
-
         # Azure Subscription ID.
         ${SubscriptionId},
 
