@@ -13,8 +13,8 @@ Creates a CustomIpPrefix resource
 ## SYNTAX
 
 ```
-New-AzCustomIpPrefix -Name <String> -ResourceGroupName <String> -Location <String> -Cidr <String>
- [-Zone <String[]>] [-Tag <Hashtable>] [-SignedMessage <String>] [-AuthorizationMessage <String>]
+New-AzCustomIpPrefix -Name <String> -ResourceGroupName <String> -Location <String> -Cidr <String> [-Geo <String>] 
+ [-Asn <String>] [-ExpressRouteAdvertise] [-Zone <String[]>] [-Tag <Hashtable>] [-SignedMessage <String>] [-AuthorizationMessage <String>]
  [-CustomIpPrefixParent <CustomIpPrefix>] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -60,6 +60,51 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Geo
+The CustomIpPrefix Geo code.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -Asn
+The CustomIpPrefix Geo code.
+
+```yaml
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ExpressRouteAdvertise
+Need to use ExpressRoute to advertise the CustomIpPrefix
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

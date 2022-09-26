@@ -400,6 +400,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSPublicIpTag, MNM.IpTag>();
                 cfg.CreateMap<CNM.PSPublicIpAddressSku, MNM.PublicIPAddressSku>();
                 cfg.CreateMap<CNM.PSPublicIpAddressDnsSettings, MNM.PublicIPAddressDnsSettings>();
+                cfg.CreateMap<CNM.PSDdosSettings, MNM.DdosSettings>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.PublicIPAddress, CNM.PSPublicIpAddress>()
@@ -411,6 +412,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.IpTag, CNM.PSPublicIpTag>();
                 cfg.CreateMap<MNM.PublicIPAddressSku, CNM.PSPublicIpAddressSku>();
                 cfg.CreateMap<MNM.PublicIPAddressDnsSettings, CNM.PSPublicIpAddressDnsSettings>();
+                cfg.CreateMap<MNM.DdosSettings, CNM.PSDdosSettings>();
 
                 // PublicIpPrefix
                 // CNM to MNM
@@ -1244,6 +1246,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<CNM.PSPropagatedRouteTable, MNM.PropagatedRouteTable>();
                 cfg.CreateMap<CNM.PSVnetRoute, MNM.VnetRoute>();
                 cfg.CreateMap<CNM.PSStaticRoute, MNM.StaticRoute>();
+                cfg.CreateMap<CNM.PSStaticRoutesConfig, MNM.StaticRoutesConfig>();
 
                 // MNM to CNM
                 cfg.CreateMap<MNM.HubRouteTable, CNM.PSVHubRouteTable>();
@@ -1251,6 +1254,7 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.RoutingConfiguration, CNM.PSRoutingConfiguration>();
                 cfg.CreateMap<MNM.PropagatedRouteTable, CNM.PSPropagatedRouteTable>();
                 cfg.CreateMap<MNM.StaticRoute, CNM.PSStaticRoute>();
+                cfg.CreateMap<MNM.StaticRoutesConfig, CNM.PSStaticRoutesConfig>();
 
                 //// Virtual Hub Routing Intent
                 // CNM to MNM

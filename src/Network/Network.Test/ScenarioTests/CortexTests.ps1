@@ -341,6 +341,59 @@ function Test-CortexCRUD
 	}
 }
 
+function Test-StaticRoutesConfigCRUD
+{
+	$rgName = Get-ResourceName
+    $rglocation = Get-ProviderLocation ResourceManagement "centraluseuap"
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+	$route1 = New-AzStaticRoute -Name "route1" -AddressPrefix @("10.20.0.0/16", "10.30.0.0/16") -NextHopIpAddress "10.90.0.5"
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+
+		# Create the Virtual Hub
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -AddressPrefix "192.168.1.0/24" -VirtualWan $virtualWan -HubRoutingPreference "ASPath"
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+
+		$rt1 = Get-AzVHubRouteTable -ResourceGroupName $rgName -VirtualHubName $virtualHubName -Name "defaultRouteTable"
+		$RoutingConfig1 = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -StaticRoute @($route1) -Label @("default") -Id @($rt1.Id) -VnetLocalRouteOverrideCriteria "Equal"
+		$RoutingConfig2 = New-AzRoutingConfiguration -AssociatedRouteTable $rt1.Id -StaticRoute @($route1) -Label @("default") -Id @($rt1.Id)
+
+		Assert-AreEqual ($RoutingConfig1.PropagatedRouteTables.Labels.Count -gt 0) $true
+		Assert-AreEqual ($RoutingConfig1.VnetRoutes.StaticRoutes.Count -gt 0) $true
+		
+		Assert-AreEqual $RoutingConfig1.VnetRoutes.StaticRoutesConfig.VnetLocalRouteOverrideCriteria "Equal"
+		Assert-AreEqual $RoutingConfig2.VnetRoutes.StaticRoutesConfig.VnetLocalRouteOverrideCriteria "Contains"
+
+		$besubnet = New-AzVirtualNetworkSubnetConfig -Name 'default' -AddressPrefix '10.1.0.0/16'
+		$vnet = New-AzVirtualNetwork -ResourceGroupName $rgName -Name 'MyVnet' -AddressPrefix '10.1.0.0/16' `
+		-Location $rglocation -Subnet $besubnet
+
+		New-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHub.Name -Name "TestConn" -RemoteVirtualNetwork $vnet -RoutingConfiguration $RoutingConfig1
+		$hubVnetConn = Get-AzVirtualHubVnetConnection -ResourceGroupName $rgName -ParentResourceName $virtualHub.Name -Name "TestConn"
+
+		# check if the specified value is programmed on connection
+		Assert-AreEqual $hubVnetConn.RoutingConfiguration.VnetRoutes.StaticRoutesConfig.VnetLocalRouteOverrideCriteria "Equal"
+
+	}
+
+	finally
+	{
+		Clean-ResourceGroup $rgName
+	}
+}
+
 function Test-RoutingIntentCRUD
 {
  # Setup
@@ -1803,3 +1856,78 @@ function Test-VpnSiteLinkConnectionGetIkeSa
 		Clean-ResourceGroup $rgname
 	}
 }
+
+<#
+.SYNOPSIS
+Create a virtual hub and vpn gateway with custom asn and update them
+#>
+function Test-VirtualHubAndVpnGatewayWithCustomAsn
+{
+	# Setup
+	$rgName = Get-ResourceName
+	$rglocation = Get-ProviderLocation ResourceManagement "West Central US"
+	$virtualWanName = Get-ResourceName
+	$virtualHubName = Get-ResourceName
+	$vpnGatewayName = Get-ResourceName
+
+	try
+	{
+		# Create the resource group
+		$resourceGroup = New-AzResourceGroup -Name $rgName -Location $rglocation
+
+		# Create the Virtual Wan
+		$createdVirtualWan = New-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName -Location $rglocation -AllowVnetToVnetTraffic -AllowBranchToBranchTraffic
+		$virtualWan = Get-AzVirtualWan -ResourceGroupName $rgName -Name $virtualWanName
+		Assert-AreEqual $rgName $virtualWan.ResourceGroupName
+		Assert-AreEqual $virtualWanName $virtualWan.Name
+		Assert-AreEqual $true $virtualWan.AllowVnetToVnetTraffic
+		Assert-AreEqual $true $virtualWan.AllowBranchToBranchTraffic
+
+		# Create the Virtual Hub
+		$createdVirtualHub = New-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -Location $rglocation -VirtualWan $virtualWan -AddressPrefix "192.168.1.0/24" -VirtualRouterAsn 65000
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual "192.168.1.0/24" $virtualHub.AddressPrefix
+		Assert-AreEqual 65000 $virtualHub.VirtualRouterAsn
+
+		# Create the VpnGateway
+		$createdVpnGateway = New-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -VirtualHub $virtualHub -VpnGatewayScaleUnit 3 -Asn 65100
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
+		Assert-AreEqual $vpnGatewayName $vpnGateway.Name
+		Assert-AreEqual 65100 $vpnGateway.BgpSettings.Asn
+
+		# Update Virtual Hub
+		$updatedVirtualHub = Update-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName -VirtualRouterAsn 65001
+		$virtualHub = Get-AzVirtualHub -ResourceGroupName $rgName -Name $virtualHubName
+		Assert-AreEqual $rgName $virtualHub.ResourceGroupName
+		Assert-AreEqual $virtualHubName $virtualHub.Name
+		Assert-AreEqual 65001 $virtualHub.VirtualRouterAsn
+
+		# Update the VpnGateway
+		$updatedVpnGateway = Update-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Asn 65101
+		$vpnGateway = Get-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName
+		Assert-AreEqual $rgName $vpnGateway.ResourceGroupName
+		Assert-AreEqual $vpnGatewayName $vpnGateway.Name
+		Assert-AreEqual 65101 $vpnGateway.BgpSettings.Asn
+
+		# Delete Vpn Gateway
+		$delete = Remove-AzVpnGateway -ResourceGroupName $rgName -Name $vpnGatewayName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		# Delete Virtual hub
+		$delete = Remove-AzVirtualHub -ResourceGroupName $rgname -Name $virtualHubName -Force -PassThru
+		Assert-AreEqual $True $delete
+
+		# Delete Virtual wan
+		$delete = Remove-AzVirtualWan -InputObject $virtualWan -Force -PassThru
+		Assert-AreEqual $True $delete
+	}
+	finally
+	{
+		Clean-ResourceGroup $rgname
+	}
+}
+
+
