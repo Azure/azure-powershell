@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added a new endpoint swtich `AzureArcVM` in Networkwatcher ConnectionMonitor
+    - `New-AzNetworkWatcherConnectionMonitor`
 * Updated commandlet to support bypassing the ExpressRoute gateway when accessing private-links.
     - `New-AzVirtualNetworkGatewayConnection`
 * Updated commandlet to support no-internet advertise CustomIpPrefix.
