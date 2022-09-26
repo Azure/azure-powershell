@@ -20,6 +20,8 @@
 
 ## Upcoming Release
 
+* Added a new endpoint swtich `AzureArcVM` in Networkwatcher ConnectionMonitor
+    - `New-AzNetworkWatcherConnectionMonitor`
 * Added `EnableUDPLogOptimization` parameter to `AzureFirewall`
     - `New-AzFirewall`
 * Fixed a bug that does not return HubIPAddresses' PrivateIPAddress during a Get-AzFirewall command 
