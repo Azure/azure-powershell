@@ -199,6 +199,27 @@
                             "use32BitWorkerProcess": true,
                             "netFrameworkVersion": "v6.0"
                         },
+                        "isPreview": true,
+                        "isDeprecated": false,
+                        "isHidden": false
+                    },
+                    {
+                        "displayVersion": "17",
+                        "runtimeVersion": "17",
+                        "supportedFunctionsExtensionVersions": [
+                            "~4"
+                        ],
+                        "isDefault": false,
+                        "minorVersions": [],
+                        "applicationInsights": true,
+                        "appSettingsDictionary": {
+                            "FUNCTIONS_WORKER_RUNTIME": "java"
+                        },
+                        "siteConfigPropertiesDictionary": {
+                            "javaVersion": "17",
+                            "use32BitWorkerProcess": true,
+                            "netFrameworkVersion": "v6.0"
+                        },
                         "isPreview": false,
                         "isDeprecated": false,
                         "isHidden": false
