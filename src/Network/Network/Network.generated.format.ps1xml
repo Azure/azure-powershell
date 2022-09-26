@@ -2048,6 +2048,10 @@
                 <Alignment>Left</Alignment>
                 <PropertyName>EnableAcceleratedNetworking</PropertyName>
               </TableColumnItem>
+			  <TableColumnItem>
+                <Alignment>Left</Alignment>
+                <PropertyName>DisableTcpStateTracking</PropertyName>
+              </TableColumnItem>
               <TableColumnItem>
                 <Alignment>Left</Alignment>
                 <PropertyName>EnableIPForwarding</PropertyName>
