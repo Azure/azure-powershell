@@ -1,7 +1,8 @@
 ### Example 1: Check quota availability
 ```powershell
-PS C:\> Test-AzVMwareLocationQuotaAvailability -Location centralus
-
+Test-AzVMwareLocationQuotaAvailability -Location centralus
+```
+```output
 Enabled
 -------
 Enabled

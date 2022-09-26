@@ -55,6 +55,12 @@ function Test-AzureFirewallPolicyCRUD {
     $appRule2ProtocolType1 = "http"
     $appRule2SourceAddress1 = "192.168.0.0/16"
 
+    # AzureFirewallPolicyApplicationRule 3
+    $appRule3Name = "appRule3"
+    $appRule3Fqdn1 = "www.ssllabs.com"
+    $appRule3Protocol1 = "mssql:1433"
+    $appRule3SourceAddress1 = "192.168.0.0/16"
+
     # AzureFirewallPolicyNetworkRuleCollection
     $networkRcName = "networkRc"
     $networkRcPriority = 200
@@ -108,13 +114,14 @@ function Test-AzureFirewallPolicyCRUD {
         #Create Application Rules
         $appRule = New-AzFirewallPolicyApplicationRule -Name $appRule1Name -Description $appRule1Desc -Protocol $appRule1Protocol1, $appRule1Protocol2 -TargetFqdn $appRule1Fqdn1, $appRule1Fqdn2 -SourceAddress $appRule1SourceAddress1
         $appRule2 = New-AzFirewallPolicyApplicationRule -Name $appRule2Name -Description $appRule1Desc -Protocol $appRule2Protocol1, $appRule2Protocol2 -TargetFqdn $appRule2Fqdn1 -SourceAddress $appRule2SourceAddress1
+        $appRule3 = New-AzFirewallPolicyApplicationRule -Name $appRule3Name -Protocol $appRule3Protocol1 -TargetFqdn $appRule3Fqdn1 -SourceAddress $appRule3SourceAddress1
 
         # Create Network Rule
         $networkRule = New-AzFirewallPolicyNetworkRule -Name $networkRule1Name -Description $networkRule1Desc -Protocol $networkRule1Protocol1, $networkRule1Protocol2 -SourceAddress $networkRule1SourceAddress1, $networkRule1SourceAddress2 -DestinationAddress $networkRule1DestinationAddress1 -DestinationPort $networkRule1DestinationPort1
 
 
-        # Create Filter Rule with 2 application rules
-        $appRc = New-AzFirewallPolicyFilterRuleCollection -Name $appRcName -Priority $appRcPriority -Rule $appRule, $appRule2 -ActionType $appRcActionType
+        # Create Filter Rule with 3 application rules
+        $appRc = New-AzFirewallPolicyFilterRuleCollection -Name $appRcName -Priority $appRcPriority -Rule $appRule, $appRule2, $appRule3 -ActionType $appRcActionType
         
         # Create a second Filter Rule Collection with 1 network rule
         $appRc2 = New-AzFirewallPolicyFilterRuleCollection -Name $networkRcName -Priority $networkRcPriority -Rule $networkRule -ActionType $networkRcActionType
@@ -158,7 +165,7 @@ function Test-AzureFirewallPolicyCRUD {
         Assert-AreEqual $appRcName $filterRuleCollection1.Name
         Assert-AreEqual $appRcPriority $filterRuleCollection1.Priority
         Assert-AreEqual $appRcActionType $filterRuleCollection1.Action.Type
-        Assert-AreEqual 2 $filterRuleCollection1.Rules.Count
+        Assert-AreEqual 3 $filterRuleCollection1.Rules.Count
 
         $appRule = $filterRuleCollection1.GetRuleByName($appRule1Name)
         # Verify application rule 1
@@ -176,6 +183,20 @@ function Test-AzureFirewallPolicyCRUD {
         Assert-AreEqual 2 $appRule.TargetFqdns.Count 
         Assert-AreEqual $appRule1Fqdn1 $appRule.TargetFqdns[0]
         Assert-AreEqual $appRule1Fqdn2 $appRule.TargetFqdns[1]
+
+        # Verify mssql application rule 
+        $mssqlRule = $filterRuleCollection1.GetRuleByName($appRule3Name)
+        Assert-AreEqual $appRule3Name $mssqlRule.Name
+
+        Assert-AreEqual 1 $mssqlRule.SourceAddresses.Count
+        Assert-AreEqual $appRule3SourceAddress1 $mssqlRule.SourceAddresses[0]
+
+        Assert-AreEqual 1 $mssqlRule.Protocols.Count 
+        Assert-AreEqual "mssql" $mssqlRule.Protocols[0].ProtocolType
+        Assert-AreEqual 1433 $mssqlRule.Protocols[0].Port
+
+        Assert-AreEqual 1 $mssqlRule.TargetFqdns.Count 
+        Assert-AreEqual $appRule3Fqdn1 $mssqlRule.TargetFqdns[0]
 
         # Verify Filter Rule Collection2 
         Assert-AreEqual $networkRcName $filterRuleCollection2.Name

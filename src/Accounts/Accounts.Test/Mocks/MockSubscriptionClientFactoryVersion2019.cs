@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                         {
                             return ListTenantQueueDequeueVerLatest();
                         }
-                        var tenants = _tenants.Select((k) => new TenantIdDescription(id: k, tenantId: k));
+                        var tenants = _tenants.Select((k) => new TenantIdDescription(id: k, tenantId: k, domains: new List<string>{GetTenantDomainFromId(k)}));
                         var mockPage = new MockPage<TenantIdDescription>(tenants.ToList());
 
                         AzureOperationResponse<IPage<TenantIdDescription>> r = new AzureOperationResponse<IPage<TenantIdDescription>>

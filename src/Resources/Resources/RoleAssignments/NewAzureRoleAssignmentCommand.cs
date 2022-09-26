@@ -318,14 +318,6 @@ namespace Microsoft.Azure.Commands.Resources
                     Id = ObjectId,
                     ObjectType = ObjectType,
                 },
-                ResourceIdentifier = new ResourceIdentifier()
-                {
-                    ParentResource = ParentResource,
-                    ResourceGroupName = ResourceGroupName,
-                    ResourceName = ResourceName,
-                    ResourceType = ResourceType,
-                    Subscription = DefaultProfile.DefaultContext.Subscription.Id,
-                },
                 CanDelegate = AllowDelegation.IsPresent ? true : false,
                 Description = Description,
                 Condition = Condition,

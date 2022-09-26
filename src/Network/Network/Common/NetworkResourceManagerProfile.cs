@@ -1311,7 +1311,8 @@ namespace Microsoft.Azure.Commands.Network
                         { "Network.FTP.AllowActiveFTP", src.AllowActiveFTP },
                         { "Network.DNS.EnableProxy", src.DNSEnableProxy },
                         { "Network.DNS.Servers", src.DNSServer?.Aggregate((result, item) => result + "," + item) },
-                        { "Network.AdditionalLogs.EnableFatFlowLogging", src.IdentifyTopFatFlow },
+                        { "Network.AdditionalLogs.EnableFatFlowLogging", src.EnableFatFlowLogging },
+                        { "Network.Logging.EnableUDPLogOptimization", src.EnableUDPLogOptimization },
                     }.Where(kvp => kvp.Value != null).ToDictionary(key => key.Key, val => val.Value);   // TODO: remove after backend code is refactored
                 });
                 cfg.CreateMap<CNM.PSAzureFirewallSku, MNM.AzureFirewallSku>();
@@ -1358,7 +1359,8 @@ namespace Microsoft.Azure.Commands.Network
                     }
                     dest.AllowActiveFTP = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.FTP.AllowActiveFTP", StringComparison.OrdinalIgnoreCase)).Value;
                     dest.DNSEnableProxy = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.EnableProxy", StringComparison.OrdinalIgnoreCase)).Value;
-                    dest.IdentifyTopFatFlow = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.AdditionalLogs.EnableFatFlowLogging", StringComparison.OrdinalIgnoreCase)).Value;
+                    dest.EnableFatFlowLogging = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.AdditionalLogs.EnableFatFlowLogging", StringComparison.OrdinalIgnoreCase)).Value;
+                    dest.EnableUDPLogOptimization = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.Logging.EnableUDPLogOptimization", StringComparison.OrdinalIgnoreCase)).Value;
                     try
                     {
                         dest.DNSServer = src.AdditionalProperties?.SingleOrDefault(kvp => kvp.Key.Equals("Network.DNS.Servers", StringComparison.OrdinalIgnoreCase)).Value?.Split(',').Select(str => str.Trim()).ToArray();
