@@ -18,7 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Added SubTasks Duration for IaasVM job 
+* [Breaking Change] Removed status filter from Get-AzRecoveryServicesBackupContainer command
+* Added SubTasks Duration for IaasVM job
 
 ## Version 5.6.1
 * Removed AFEC feature check for Archive smart tiering
