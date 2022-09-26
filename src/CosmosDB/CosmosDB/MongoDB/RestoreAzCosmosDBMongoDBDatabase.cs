@@ -93,24 +93,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 return;
             }
 
-            MongoDBDatabaseGetResults readMongoDatabaseGetResults = null;
-            try
-            {
-                readMongoDatabaseGetResults = this.CosmosDBManagementClient.MongoDBResources.GetMongoDBDatabase(this.ResourceGroupName, this.AccountName, this.Name);
-            }
-            catch (CloudException e)
-            {
-                if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    throw;
-                }
-            }
-
-            if (readMongoDatabaseGetResults != null)
-            {
-                throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, this.Name));
-            }
-
             MongoDBDatabaseCreateUpdateParameters mongoDBDatabaseCreateUpdateParameters = new MongoDBDatabaseCreateUpdateParameters
             {
                 Resource = new MongoDBDatabaseResource

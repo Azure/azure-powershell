@@ -99,24 +99,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 return;
             }
 
-            MongoDBCollectionGetResults readMongoDBCollectionGetResults = null;
-            try
-            {
-                readMongoDBCollectionGetResults = CosmosDBManagementClient.MongoDBResources.GetMongoDBCollection(ResourceGroupName, AccountName, DatabaseName, Name);
-            }
-            catch (CloudException e)
-            {
-                if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    throw;
-                }
-            }
-
-            if (readMongoDBCollectionGetResults != null)
-            {
-                throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, Name));
-            }
-
             MongoDBCollectionResource mongoDBCollectionResource = new MongoDBCollectionResource
             {
                 Id = Name,

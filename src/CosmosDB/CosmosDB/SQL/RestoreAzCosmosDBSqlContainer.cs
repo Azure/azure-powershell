@@ -97,24 +97,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 return;
             }
 
-            SqlContainerGetResults readSqlContainerGetResults = null;
-            try
-            {
-                readSqlContainerGetResults = this.CosmosDBManagementClient.SqlResources.GetSqlContainer(this.ResourceGroupName, this.AccountName, this.DatabaseName, this.Name);
-            }
-            catch (CloudException e)
-            {
-                if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    throw;
-                }
-            }
-
-            if (readSqlContainerGetResults != null)
-            {
-                throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, this.Name));
-            }
-
             SqlContainerResource sqlContainerResource = new SqlContainerResource
             {
                 Id = Name,

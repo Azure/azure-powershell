@@ -93,24 +93,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 return;
             }
 
-            SqlDatabaseGetResults readSqlDatabaseGetResults = null;
-            try
-            {
-                readSqlDatabaseGetResults = this.CosmosDBManagementClient.SqlResources.GetSqlDatabase(this.ResourceGroupName, this.AccountName, this.Name);
-            }
-            catch (CloudException e)
-            {
-                if (e.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
-                {
-                    throw;
-                }
-            }
-
-            if (readSqlDatabaseGetResults != null)
-            {
-                throw new ConflictingResourceException(message: string.Format(ExceptionMessage.Conflict, this.Name));
-            }
-
             SqlDatabaseCreateUpdateParameters sqlDatabaseCreateUpdateParameters = new SqlDatabaseCreateUpdateParameters
             {
                 Resource = new SqlDatabaseResource
