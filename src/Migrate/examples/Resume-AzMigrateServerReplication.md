@@ -26,7 +26,9 @@ Task                             : {}
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 ```
 
-### Example 2: {{ Add title here }}
+By machine id.
+
+### Example 2: By input object
 ```powershell
 PS C:\> $obj= Get-AzMigrateServerReplication -ProjectName "signoffccyproj" -ResourceGroupName "cbtsignoff2201rg" -MachineName "Win2k16"
 PS C:\> Resume-AzMigrateServerReplication -InputObject $obj
@@ -53,3 +55,4 @@ TargetObjectName                 :
 Task                             : {}
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 ```
+By input object.

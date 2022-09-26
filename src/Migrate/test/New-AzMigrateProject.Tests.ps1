@@ -12,8 +12,8 @@ while(-not $mockingPath) {
 . ($mockingPath | Select-Object -First 1).FullName
 
 Describe 'New-AzMigrateProject' {
-    It 'PutExpandedCustom' -skip {
-        $projName = "AzMigratePwshTestProj123"
+    It 'PutExpandedCustom' {
+        $projName = "AzMigratePwshTestProj1234"
         $project = New-AzMigrateProject -Name $projName -ResourceGroupName $env.migResourceGroup -SubscriptionId $env.migSubscriptionId -Location "centralus"
         $project.Name | Should -Be $projName
     }

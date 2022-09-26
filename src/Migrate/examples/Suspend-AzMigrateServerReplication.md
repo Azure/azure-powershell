@@ -26,7 +26,9 @@ Task                             : {PauseReplicationPreflightChecksTask, PauseRe
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 ```
 
-### Example 2: {{ Add title here }}
+By machine id.
+
+### Example 2: By input object
 ```powershell
 PS C:\> $obj= Get-AzMigrateServerReplication -ProjectName "signoffccyproj" -ResourceGroupName "cbtsignoff2201rg" -MachineName "Win2k16"
 PS C:\> Suspend-AzMigrateServerReplication -InputObject $obj
@@ -53,3 +55,4 @@ TargetObjectName                 : Win2k16
 Task                             : {PauseReplicationPreflightChecksTask, PauseReplicationTask}
 Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
 ```
+By input object.

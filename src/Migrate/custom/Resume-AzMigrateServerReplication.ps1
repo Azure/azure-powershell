@@ -15,15 +15,15 @@
 
 <#
 .Synopsis
-Starts the replication that has been resumeed..
+Starts the replication that has been suspended.
 .Description
-The Resume-AzMigrateServerReplication starts the replication that has been resumeed..
+The Resume-AzMigrateServerReplication starts the replication that has been suspended.
 .Link
 https://docs.microsoft.com/powershell/module/az.migrate/resume-azmigrateserverreplication
 #>
 function Resume-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
-    [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'High')]
+    [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -143,14 +143,15 @@ function Resume-AzMigrateServerReplication {
             if ($PerformDeleteResource -eq "true") {
                 if (($ReplicationMigrationItem.MigrationState -ne "MigrationSucceeded") -and `
                     ($ReplicationMigrationItem.MigrationState -ne "MigrationCompletedWithInformation") `
-                    -and ($ReplicationMigrationItem.MigrationState -ne "MigrationPartiallySucceeded")) {
+                    -and ($ReplicationMigrationItem.MigrationState -ne "MigrationPartiallySucceeded") `
+                    -and !$Force.IsPresent) {
                         throw "Cannot delete migration resources as the VM has not been migrated."
                 }
-                else{
+                else {
                     $data = @()
                     $data += [PSCustomObject]@{
                         ResourceName = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVMName
-                        ResourceType = "Virtual machine"
+                        ResourceType = "Virtual Machine"
                     }
 
                     $Disks = $ReplicationMigrationItem.ProviderSpecificDetail.ProtectedDisk
@@ -169,20 +170,38 @@ function Resume-AzMigrateServerReplication {
                         }
                     }
 
-                    if (!$Force.IsPresent) {
-                        Write-Host "The following resources will be deleted and it cannot be reverted."
-                        $data | ft -AutoSize
-                        $title = 'Confirm'
-                        $question = 'Are you sure you want to perform this action?'
-                        $choices  = '&Yes', '&No'
+                    Write-Host "The following resources will be deleted and it cannot be reverted."
+                    $data | ft -AutoSize
+                    $title = 'Confirm'
+                    $question = 'Are you sure you want to perform this action?'
+                    $choices  = '&Yes', '&No'
 
-                        $decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+                    $decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
 
-                        if ($decision -eq 1) {
-                            return
-                        }
+                    if ($decision -eq 1) {
+                        return
                     }
                 }
+            }
+            else
+            {
+                if ((($ReplicationMigrationItem.MigrationState -eq "MigrationSucceeded") -or `
+                    ($ReplicationMigrationItem.MigrationState -eq "MigrationCompletedWithInformation") `
+                    -or ($ReplicationMigrationItem.MigrationState -eq "MigrationPartiallySucceeded")) `
+                    -and !$Force.IsPresent) {
+                     Write-Host "The previously migrated resources (virtual machines, disks, and NICs) will not be deleted."
+                     Write-Host "To avoid resource name conflicts, you can update the resource names before retrying migration."
+                     $title = 'Confirm'
+                     $question = 'Are you sure you want to continue?'
+                     $choices  = '&Yes', '&No'
+
+                     $decision = $Host.UI.PromptForChoice($title, $question, $choices, 1)
+
+                     if ($decision -eq 1) {
+                            return
+                     }
+                }
+
             }
 
             $ProviderSpecificDetailInput = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtResumeReplicationInput]::new()
