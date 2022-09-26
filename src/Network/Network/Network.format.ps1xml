@@ -1655,6 +1655,22 @@
                 <PropertyName>Cidr</PropertyName>
               </ListItem>
               <ListItem>
+                <Label>Asn</Label>
+                <PropertyName>Asn</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Geo</Label>
+                <PropertyName>Geo</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExpressrouteAdvertise</Label>
+                <PropertyName>ExpressrouteAdvertise</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>NoInternetAdvertise</Label>
+                <PropertyName>NoInternetAdvertise</PropertyName>
+              </ListItem>
+              <ListItem>
                 <Label>CommissionedState</Label>
                 <PropertyName>CommissionedState</PropertyName>
               </ListItem>
@@ -2833,6 +2849,10 @@
               <ListItem>
                 <Label>NumberOfProbes</Label>
                 <PropertyName>NumberOfProbes</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProbeThreshold</Label>
+                <PropertyName>ProbeThreshold</PropertyName>
               </ListItem>
               <ListItem>
                 <Label>RequestPath</Label>

@@ -90,12 +90,13 @@ Creates a security admin configuration that will apply on NIP based services.
 ## PARAMETERS
 
 ### -ApplyOnNetworkIntentPolicyBasedService
-ApplyOnNetworkIntentPolicyBasedServices. Valid values include 'None' and 'All'.
+ApplyOnNetworkIntentPolicyBasedServices.
 
 ```yaml
 Type: System.String[]	
 Parameter Sets: (All)
 Aliases:
+Accepted values: None, All, and AllowRulesOnly
 
 Required: False
 Position: Named
