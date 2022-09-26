@@ -29,7 +29,29 @@
 * Updated commandlets to support specifying an ASN on VPN Gateway
     - `NewAzureRmVpnGatewayCommand.cs`
     - `UpdateAzureRmVpnGatewayCommand.cs`
+* Updated commandlet to support bypassing NVA for spoke vNet traffic.
+    - `NewAzureRmRoutingConfigurationCommand.cs`
+* Updated commandlet to support new parameters: asn, geo, expressrouteadvertise.
+    - `Update-AzCustomIpPrefix
+* Updated cmdlets to enable verification on client certificate revocation by using a new property VerifyClientRevocation in ApplicationGatewayClientAuthConfiguration
+    - `New-AzApplicationGatewayClientAuthConfiguration`
+    - `Set-AzApplicationGatewayClientAuthConfiguration`
 * Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
+* Added DdosProtectionMode parameter in New-AzPublicIpAddress
+* Added ProbeThreshold parameter to Load Balancer Probe 
+    - `AddAzureRmLoadBalancerProbeConfigCommmand.cs`
+    - `NewAzureRmLoadBalancerProbeConfigCommand.cs`
+    - `SetAzureRmLoadBalancerProbeConfigCommand.cs`
+* Updated commandlet to support specifying an action for a managed rule override in Application Gateway WAF Policy.
+    - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
+* Add breaking change enum values/notification for the following network manager cmdlets
+    - `DeployAzNetworkManagerCommit.cs`
+    - `NewAzNetworkManagerConnectivityConfigurationCommand.cs`
+    - `NewAzNetworkManagerConnectivityGroupItemCommand.cs`
+    - `NewAzNetworkManagerSecurityAdminRuleCommand.cs`
+    - `NewAzNetworkManagerSecurityAdminConfigurationCommand.cs`
+    - `NewAzNetworkManagerAddressPrefixItemCommand.cs`
+    - `NewAzNetworkManagerCommand.cs`
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`

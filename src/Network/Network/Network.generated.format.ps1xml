@@ -4094,6 +4094,10 @@
           </TableColumnHeader>
           <TableColumnHeader>
             <Alignment>Left</Alignment>
+            <Label>ProbeThreshold</Label>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Alignment>Left</Alignment>
             <Label>RequestPath</Label>
           </TableColumnHeader>
           <TableColumnHeader>
