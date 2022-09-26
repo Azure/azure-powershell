@@ -133,7 +133,7 @@ CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile
                'Remove-AzDataCollectionRuleAssociation'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = @()
 
 # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
 AliasesToExport = 'Get-AzLog'
@@ -165,12 +165,14 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = '* Upgraded API version for DiagnosticSetting from 2017-05-01-preview to 2021-05-01-preview
-* Upgraded API version for ScheduledQueryRule from 2018-04-16 to 2021-08-01
-* Upgrade API version for Autoscale from 2015-04-01 to 2022-10-01'
+        ReleaseNotes = '* Added breaking change warning messages for 
+        - ''ActivityLogAlert''
+        - ''DiagnosticSetting''
+        - ''ScheduledQueryRule''
+        - ''Autoscale'''
 
         # Prerelease string of this module
-        #Prerelease = 'preview'
+        # Prerelease = ''
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

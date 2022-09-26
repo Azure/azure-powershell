@@ -35,7 +35,7 @@
     - `Set-AzDiagnosticSetting`
     - `New-AzDiagnosticDetailSetting` replaced by `New-AzDiagnosticSettingLogSettingsObject` and `New-AzDiagnosticSettingMetricSettingsObject`
     - `Get-AzSubscriptionDiagnosticSettingCategory` replaced by `Get-AzEventCategory`
-* [BreakingChange] Upgrade API version for Autoscale from 2015-04-01 to 2022-10-01
+* [BreakingChange] Upgraded API version for Autoscale from 2015-04-01 to 2022-10-01
     - `Get-AzAutoscaleSetting` 
     - `Remove-AzAutoscaleSetting`
     - `Add-AzAutoscaleSetting` replaced by `New-AzAutoscaleSetting`
