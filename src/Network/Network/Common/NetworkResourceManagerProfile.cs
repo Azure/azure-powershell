@@ -22,6 +22,7 @@ namespace Microsoft.Azure.Commands.Network
     using WindowsAzure.Commands.Common;
     using CNM = Microsoft.Azure.Commands.Network.Models;
     using MNM = Microsoft.Azure.Management.Network.Models;
+    using ANM = Microsoft.Azure.Commands.Network.Models.NetworkManager;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
     using Microsoft.Azure.Commands.Network.Models;
 
@@ -1511,6 +1512,86 @@ namespace Microsoft.Azure.Commands.Network
                 cfg.CreateMap<MNM.VirtualApplianceNicProperties, CNM.PSVirtualApplianceNicProperties>();
                 cfg.CreateMap<MNM.VirtualApplianceSite, CNM.PSVirtualApplianceSite>();
                 cfg.CreateMap<MNM.VirtualApplianceSkuProperties, CNM.PSVirtualApplianceSkuProperties>();
+
+                // NetworkManager
+                // CNM to MNMs
+                cfg.CreateMap<ANM.PSNetworkManager, MNM.NetworkManager>();
+                cfg.CreateMap<ANM.PSNetworkManagerScopes, MNM.NetworkManagerPropertiesNetworkManagerScopes>();
+                cfg.CreateMap<ANM.PSNetworkManagerCrossTenantScopes, MNM.CrossTenantScopes>();
+                cfg.CreateMap<ANM.PSSystemData, MNM.SystemData>();
+                cfg.CreateMap<ANM.PSNetworkManagerActiveBaseSecurityAdminRule, MNM.ActiveBaseSecurityAdminRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerActiveConfigurationParameter, MNM.ActiveConfigurationParameter>();
+                cfg.CreateMap<ANM.PSNetworkManagerActiveConfigurationParameter, MNM.ActiveConfigurationParameter>();
+                cfg.CreateMap<ANM.PSNetworkManagerActiveConnectivityConfiguration, MNM.ActiveConnectivityConfiguration>();
+                cfg.CreateMap<ANM.PSNetworkManagerActiveConnectivityConfigurationResult, MNM.ActiveConnectivityConfigurationsListResult>();
+                cfg.CreateMap<ANM.PSNetworkManagerActiveDefaultSecurityAdminRule, MNM.ActiveDefaultSecurityAdminRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerActiveSecurityAdminRule, MNM.ActiveSecurityAdminRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerActiveSecurityAdminRuleResult, MNM.ActiveSecurityAdminRulesListResult>();
+                cfg.CreateMap<ANM.PSNetworkManagerAddressPrefixItem, MNM.AddressPrefixItem>();
+                cfg.CreateMap<ANM.PSNetworkManagerCommit, MNM.NetworkManagerCommit>();
+                cfg.CreateMap<ANM.PSNetworkManagerConfigurationGroup, MNM.ConfigurationGroup>();
+                cfg.CreateMap<ANM.PSNetworkManagerConnectivityConfiguration, MNM.ConnectivityConfiguration>();
+                cfg.CreateMap<ANM.PSNetworkManagerConnectivityGroupItem, MNM.ConnectivityGroupItem>();
+                cfg.CreateMap<ANM.PSNetworkManagerDeploymentStatus, MNM.NetworkManagerDeploymentStatus>();
+                cfg.CreateMap<ANM.PSNetworkManagerDeploymentStatusResult, MNM.NetworkManagerDeploymentStatusListResult>();
+                cfg.CreateMap<ANM.PSNetworkManagerEffectiveBaseSecurityAdminRule, MNM.EffectiveBaseSecurityAdminRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerEffectiveConnectivityConfiguration, MNM.EffectiveConnectivityConfiguration>();
+                cfg.CreateMap<ANM.PSNetworkManagerEffectiveConnectivityConfigurationResult, MNM.NetworkManagerEffectiveConnectivityConfigurationListResult>();
+                cfg.CreateMap<ANM.PSNetworkManagerEffectiveDefaultSecurityAdminRule, MNM.EffectiveDefaultSecurityAdminRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerEffectiveSecurityAdminRule, MNM.EffectiveSecurityAdminRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerEffectiveSecurityAdminRuleResult, MNM.NetworkManagerEffectiveSecurityAdminRulesListResult>();
+                cfg.CreateMap<ANM.PSNetworkManagerGroup, MNM.NetworkGroup>();
+                cfg.CreateMap<ANM.PSNetworkManagerStaticMember, MNM.StaticMember>();
+                cfg.CreateMap<ANM.PSNetworkManagerHub, MNM.Hub>();
+                cfg.CreateMap<ANM.PSNetworkManagerQueryRequestOptions, MNM.QueryRequestOptions>();
+                cfg.CreateMap<ANM.PSNetworkManagerScopes, MNM.NetworkManagerPropertiesNetworkManagerScopes>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityAdminRule, MNM.AdminRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityBaseAdminRule, MNM.BaseAdminRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityAdminConfiguration, MNM.SecurityAdminConfiguration>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityDefaultAdminRule, MNM.DefaultAdminRule>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityGroupItem, MNM.NetworkManagerSecurityGroupItem>();
+                cfg.CreateMap<ANM.PSNetworkManagerSecurityAdminRuleCollection, MNM.AdminRuleCollection>();
+                cfg.CreateMap<ANM.PSNetworkManagerScopeConnection, MNM.ScopeConnection>();
+                cfg.CreateMap<ANM.PSNetworkManagerConnection, MNM.NetworkManagerConnection>();
+
+                // MNM to CNM
+                cfg.CreateMap<MNM.NetworkManager, ANM.PSNetworkManager>();
+                cfg.CreateMap<MNM.NetworkManagerPropertiesNetworkManagerScopes, ANM.PSNetworkManagerScopes>();
+                cfg.CreateMap<MNM.CrossTenantScopes, ANM.PSNetworkManagerCrossTenantScopes>();
+                cfg.CreateMap<MNM.SystemData, ANM.PSSystemData>();
+                cfg.CreateMap<MNM.ActiveBaseSecurityAdminRule, ANM.PSNetworkManagerActiveBaseSecurityAdminRule>();
+                cfg.CreateMap<MNM.ActiveConfigurationParameter, ANM.PSNetworkManagerActiveConfigurationParameter>();
+                cfg.CreateMap<MNM.ActiveConnectivityConfiguration, ANM.PSNetworkManagerActiveConnectivityConfiguration>();
+                cfg.CreateMap<MNM.ActiveConnectivityConfigurationsListResult, ANM.PSNetworkManagerActiveConnectivityConfigurationResult>();
+                cfg.CreateMap<MNM.ActiveDefaultSecurityAdminRule, ANM.PSNetworkManagerActiveDefaultSecurityAdminRule>();
+                cfg.CreateMap<MNM.ActiveSecurityAdminRule, ANM.PSNetworkManagerActiveSecurityAdminRule>();
+                cfg.CreateMap<MNM.ActiveSecurityAdminRulesListResult, ANM.PSNetworkManagerActiveSecurityAdminRuleResult>();
+                cfg.CreateMap<MNM.AddressPrefixItem, ANM.PSNetworkManagerAddressPrefixItem>();
+                cfg.CreateMap<MNM.NetworkManagerCommit, ANM.PSNetworkManagerCommit>();
+                cfg.CreateMap<MNM.ConfigurationGroup, ANM.PSNetworkManagerConfigurationGroup>();
+                cfg.CreateMap<MNM.ConnectivityConfiguration, ANM.PSNetworkManagerConnectivityConfiguration>();
+                cfg.CreateMap<MNM.ConnectivityGroupItem, ANM.PSNetworkManagerConnectivityGroupItem>();
+                cfg.CreateMap<MNM.NetworkManagerDeploymentStatus, ANM.PSNetworkManagerDeploymentStatus>();
+                cfg.CreateMap<MNM.NetworkManagerDeploymentStatusListResult, ANM.PSNetworkManagerDeploymentStatusResult>();
+                cfg.CreateMap<MNM.EffectiveBaseSecurityAdminRule, ANM.PSNetworkManagerEffectiveBaseSecurityAdminRule>();
+                cfg.CreateMap<MNM.EffectiveConnectivityConfiguration, ANM.PSNetworkManagerEffectiveConnectivityConfiguration>();
+                cfg.CreateMap<MNM.NetworkManagerEffectiveConnectivityConfigurationListResult, ANM.PSNetworkManagerEffectiveConnectivityConfigurationResult>();
+                cfg.CreateMap<MNM.EffectiveDefaultSecurityAdminRule, ANM.PSNetworkManagerEffectiveDefaultSecurityAdminRule>();
+                cfg.CreateMap<MNM.EffectiveSecurityAdminRule, ANM.PSNetworkManagerEffectiveSecurityAdminRule>();
+                cfg.CreateMap<MNM.NetworkManagerEffectiveSecurityAdminRulesListResult, ANM.PSNetworkManagerEffectiveSecurityAdminRuleResult>();
+                cfg.CreateMap<MNM.NetworkGroup, ANM.PSNetworkManagerGroup>();
+                cfg.CreateMap<MNM.StaticMember, ANM.PSNetworkManagerStaticMember>();
+                cfg.CreateMap<MNM.Hub, ANM.PSNetworkManagerHub>();
+                cfg.CreateMap<MNM.QueryRequestOptions, ANM.PSNetworkManagerQueryRequestOptions>();
+                cfg.CreateMap<MNM.NetworkManagerPropertiesNetworkManagerScopes, ANM.PSNetworkManagerScopes>();
+                cfg.CreateMap<MNM.AdminRule, ANM.PSNetworkManagerSecurityAdminRule>();
+                cfg.CreateMap<MNM.BaseAdminRule, ANM.PSNetworkManagerSecurityBaseAdminRule>();
+                cfg.CreateMap<MNM.SecurityAdminConfiguration, ANM.PSNetworkManagerSecurityAdminConfiguration>();
+                cfg.CreateMap<MNM.DefaultAdminRule, ANM.PSNetworkManagerSecurityDefaultAdminRule>();
+                cfg.CreateMap<MNM.NetworkManagerSecurityGroupItem, ANM.PSNetworkManagerSecurityGroupItem>();
+                cfg.CreateMap<MNM.AdminRuleCollection, ANM.PSNetworkManagerSecurityAdminRuleCollection>();
+                cfg.CreateMap<MNM.ScopeConnection, ANM.PSNetworkManagerScopeConnection>();
+                cfg.CreateMap<MNM.NetworkManagerConnection, ANM.PSNetworkManagerConnection>();
 
             });
             _mapper = config.CreateMapper();

@@ -18,6 +18,9 @@ Get the properties of a specific workspace for Grafana resource.
 Create or update a workspace for Grafana resource.
 This API is idempotent, so user can either create a new grafana or update an existing grafana.
 
+### [New-AzGrafanaMonitorWorkspaceIntegrationObject](New-AzGrafanaMonitorWorkspaceIntegrationObject.md)
+Create an in-memory object for AzureMonitorWorkspaceIntegration.
+
 ### [Remove-AzGrafana](Remove-AzGrafana.md)
 Delete a workspace for Grafana resource.
 

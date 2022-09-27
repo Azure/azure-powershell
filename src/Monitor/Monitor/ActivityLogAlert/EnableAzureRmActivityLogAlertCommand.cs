@@ -18,12 +18,14 @@ using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
 using System.Collections.Generic;
 using System.Management.Automation;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.ActivityLogAlert
 {
     /// <summary>
     /// Enable an activity log alert
     /// </summary>
+    [CmdletDeprecation(ReplacementCmdletName = "Update-AzActivityLogAlert")]
     [Cmdlet("Enable", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ActivityLogAlert", SupportsShouldProcess = true), OutputType(typeof(PSActivityLogAlertResource))]
     public class EnableAzureRmActivityLogAlertCommand : ManagementCmdletBase
     {

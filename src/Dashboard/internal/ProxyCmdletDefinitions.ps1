@@ -135,6 +135,13 @@ New-AzGrafana -Name azpstest-grafana -ResourceGroupName azpstest-gp -ApiKey Enab
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IManagedGrafana
+.Notes
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+MONITORWORKSPACEINTEGRATION <IAzureMonitorWorkspaceIntegration[]>: The MonitorWorkspaceIntegration of Azure Managed Grafana.
+  [AzureMonitorWorkspaceResourceId <String>]: The resource Id of the connected Azure Monitor Workspace.
 .Link
 https://docs.microsoft.com/powershell/module/az.dashboard/new-azgrafana
 #>
@@ -207,6 +214,14 @@ param(
     ${Location},
 
     [Parameter()]
+    [AllowEmptyCollection()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Models.Api20220801.IAzureMonitorWorkspaceIntegration[]]
+    # The MonitorWorkspaceIntegration of Azure Managed Grafana.
+    # To construct, see NOTES section for MONITORWORKSPACEINTEGRATION properties and create a hash table.
+    ${MonitorWorkspaceIntegration},
+
+    [Parameter()]
     [ArgumentCompleter([Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess])]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Support.PublicNetworkAccess]
@@ -216,7 +231,7 @@ param(
     [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Dashboard.Category('Body')]
     [System.String]
-    # .
+    # The Sku of the grafana resource.
     ${SkuName},
 
     [Parameter()]

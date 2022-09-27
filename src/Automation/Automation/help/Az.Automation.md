@@ -59,6 +59,12 @@ Gets reports sent from a DSC node to Automation.
 ### [Get-AzAutomationDscOnboardingMetaconfig](Get-AzAutomationDscOnboardingMetaconfig.md)
 Creates meta-configuration .mof files.
 
+### [Get-AzAutomationHybridRunbookWorker](Get-AzAutomationHybridRunbookWorker.md)
+Gets a Hybrid Runbook Worker.
+
+### [Get-AzAutomationHybridRunbookWorkerGroup](Get-AzAutomationHybridRunbookWorkerGroup.md)
+Gets a Hybrid Runbook Worker Group.
+
 ### [Get-AzAutomationHybridWorkerGroup](Get-AzAutomationHybridWorkerGroup.md)
 Gets hybrid runbook worker groups.
 
@@ -119,6 +125,9 @@ Imports a MOF document as a DSC node configuration in Automation.
 ### [Import-AzAutomationRunbook](Import-AzAutomationRunbook.md)
 Imports an Automation runbook.
 
+### [Move-AzAutomationHybridRunbookWorker](Move-AzAutomationHybridRunbookWorker.md)
+Moves a runbook worker from one runbook worker group to the other.
+
 ### [New-AzAutomationAccount](New-AzAutomationAccount.md)
 Creates an Automation account.
 
@@ -130,6 +139,12 @@ Creates an Automation connection.
 
 ### [New-AzAutomationCredential](New-AzAutomationCredential.md)
 Creates an Automation credential.
+
+### [New-AzAutomationHybridRunbookWorker](New-AzAutomationHybridRunbookWorker.md)
+Create a Runbook Worker.
+
+### [New-AzAutomationHybridRunbookWorkerGroup](New-AzAutomationHybridRunbookWorkerGroup.md)
+Creates a Runbook Worker Group.
 
 ### [New-AzAutomationKey](New-AzAutomationKey.md)
 Regenerates registration keys for an Automation account.
@@ -147,7 +162,10 @@ Creates an Automation schedule.
 Creates a scheduled azure automation software update configuration.
 
 ### [New-AzAutomationSourceControl](New-AzAutomationSourceControl.md)
-Creates an A Automation source control.
+Creates an Azure Automation source control.
+
+### [New-AzAutomationUpdateManagementAzureQuery](New-AzAutomationUpdateManagementAzureQuery.md)
+Creates an Update Management Azure Query object.
 
 ### [New-AzAutomationVariable](New-AzAutomationVariable.md)
 Creates an Automation variable.
@@ -159,7 +177,7 @@ Creates a webhook for an Automation runbook.
 Publishes a runbook.
 
 ### [Register-AzAutomationDscNode](Register-AzAutomationDscNode.md)
-Registers an Azure virtual machine as a DSC node for an Automation account.
+Registers an Azure virtual machine running Windows OS as a DSC node for an Automation account.
 
 ### [Register-AzAutomationScheduledRunbook](Register-AzAutomationScheduledRunbook.md)
 Associates a runbook to a schedule.
@@ -184,6 +202,12 @@ Removes DSC configurations from Automation.
 
 ### [Remove-AzAutomationDscNodeConfiguration](Remove-AzAutomationDscNodeConfiguration.md)
 Removes metadata from DSC node configurations in Automation.
+
+### [Remove-AzAutomationHybridRunbookWorker](Remove-AzAutomationHybridRunbookWorker.md)
+Removes a hybrid runbook worker.
+
+### [Remove-AzAutomationHybridRunbookWorkerGroup](Remove-AzAutomationHybridRunbookWorkerGroup.md)
+Removes a hybrid runbook worker group.
 
 ### [Remove-AzAutomationHybridWorkerGroup](Remove-AzAutomationHybridWorkerGroup.md)
 Removes hybrid worker group from Automation.
@@ -226,6 +250,9 @@ Modifies an Automation credential.
 
 ### [Set-AzAutomationDscNode](Set-AzAutomationDscNode.md)
 Modifies the node configuration that a DSC node is mapped to.
+
+### [Set-AzAutomationHybridRunbookWorkerGroup](Set-AzAutomationHybridRunbookWorkerGroup.md)
+Updates a hybrid runbook worker group.
 
 ### [Set-AzAutomationModule](Set-AzAutomationModule.md)
 Updates a module in Automation.

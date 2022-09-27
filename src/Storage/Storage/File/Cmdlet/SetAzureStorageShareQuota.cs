@@ -22,6 +22,7 @@ using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
 
 namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
 {
+    [GenericBreakingChange("The returned share properties will be moved from CloudFileShare.Properties to ShareProperties.")]
     [Cmdlet("Set", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareQuota", DefaultParameterSetName = Constants.ShareNameParameterSetName), OutputType(typeof(AzureStorageFileShare))]
     public class SetAzureStorageShareQuota : AzureStorageFileCmdletBase
     {

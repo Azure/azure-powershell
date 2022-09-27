@@ -30,7 +30,7 @@ For information on how to develop for `Az.Dashboard`, see [how-to.md](how-to.md)
 > see https://aka.ms/autorest
 
 ``` yaml
-branch: 8c3029730778c35b597aa6d1afe69e78872bf03c
+branch: 02ed6d4aac29881364f8698b4fdac9c76cd0f538
 require:
   - $(this-folder)/../readme.azure.noprofile.md
 input-file:
@@ -45,6 +45,26 @@ resourcegroup-append: true
 nested-object-to-string: true
 
 directive:
+  - from: swagger-document 
+    where: $.definitions.ResourceSku.properties
+    transform: >-
+      return {
+          "name": {
+            "description": "The Sku of the grafana resource.",
+            "type": "string"
+          }
+      }
+  - from: swagger-document 
+    where: $.definitions.GrafanaIntegrations.properties.azureMonitorWorkspaceIntegrations
+    transform: >-
+      return {
+          "type": "array",
+          "x-ms-identifiers": [],
+          "description": "The MonitorWorkspaceIntegration of Azure Managed Grafana.",
+          "items": {
+            "$ref": "#/definitions/AzureMonitorWorkspaceIntegration"
+          }
+      }
   - where:
       variant: ^Create$|^CreateViaIdentity$|^CreateViaIdentityExpanded$|^Update$|^UpdateViaIdentity$
     remove: true
@@ -63,4 +83,11 @@ directive:
       verb: New
       subject: Grafana
     hide: true
+  - where:
+      parameter-name: GrafanaIntegrationAzureMonitorWorkspaceIntegration
+    set:
+      parameter-name: MonitorWorkspaceIntegration 
+  # The cmdlet's name to long, Re-name it
+  # - model-cmdlet:
+  #     - AzureMonitorWorkspaceIntegration
 ```

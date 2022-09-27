@@ -76,8 +76,8 @@ function Test-SynapseSparkPool
         Assert-NotNull $sparkPoolUpdated.Tags "Tags do not exists"
         Assert-NotNull $sparkPoolUpdated.Tags["TestTag"] "The updated tag 'TestTag' does not exist"
 
-        # Enable Auto-scale and Auto-pause
-        $sparkPoolUpdated = Update-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -EnableAutoScale $true -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 10 -EnableAutoPause $true -AutoPauseDelayInMinute 15
+        # Enable Auto-scale and Auto-pause, DynamicExecutorAllocation
+        $sparkPoolUpdated = Update-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -EnableAutoScale $true -AutoScaleMinNodeCount 3 -AutoScaleMaxNodeCount 10 -EnableAutoPause $true -AutoPauseDelayInMinute 15 -EnableDynamicExecutorAllocation $true -MinExecutorCount 1 -MaxExecutorCount 5
 
         Assert-AreEqual $sparkPoolName $sparkPoolUpdated.Name
         Assert-AreEqual $location $sparkPoolUpdated.Location
@@ -91,8 +91,12 @@ function Test-SynapseSparkPool
         Assert-True {$sparkPoolUpdated.AutoPause.Enabled}
         Assert-AreEqual 15 $sparkPoolUpdated.AutoPause.DelayInMinutes
 
-        # Disable Auto-scale and Auto-pause
-        $sparkPoolUpdated = Update-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -EnableAutoScale $false -EnableAutoPause $false
+        Assert-True {$sparkPoolUpdated.DynamicExecutorAllocation.Enabled}
+        Assert-AreEqual 1 $sparkPoolUpdated.DynamicExecutorAllocation.MinExecutors
+        Assert-AreEqual 5 $sparkPoolUpdated.DynamicExecutorAllocation.MaxExecutors
+
+        # Disable Auto-scale and Auto-pause, DynamicExecutorAllocation
+        $sparkPoolUpdated = Update-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName -Name $sparkPoolName -EnableAutoScale $false -EnableAutoPause $false -EnableDynamicExecutorAllocation $false
 
         Assert-AreEqual $sparkPoolName $sparkPoolUpdated.Name
         Assert-AreEqual $location $sparkPoolUpdated.Location
@@ -105,6 +109,8 @@ function Test-SynapseSparkPool
 
         Assert-False {$sparkPoolUpdated.AutoPause.Enabled}
         Assert-AreEqual 15 $sparkPoolUpdated.AutoPause.DelayInMinutes
+
+        Assert-False {$sparkPoolUpdated.DynamicExecutorAllocation.Enabled}
 
         # List all SparkPools in workspace
         [array]$sparkPoolsInWorkspace = Get-AzSynapseSparkPool -ResourceGroupName $resourceGroupName -WorkspaceName $workspaceName
@@ -172,7 +178,7 @@ function Get-WorkspaceTestEnvironmentParameters ($testSuffix)
 			  fileSystemName = "wscmdletfs" + $testSuffix;
 			  loginName = "testlogin";
 			  pwd = "testp@ssMakingIt1007Longer";
-              location = "canadacentral";
+              location = "eastus";
               sparkPoolName = "spool" + $testSuffix;
 		}
 }

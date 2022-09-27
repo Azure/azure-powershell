@@ -65,6 +65,11 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets
                 " policy, then this command will expect a policyID.";
             public const string SchedulePolicySubType = "Type of schedule policy to be fetched: Standard, Enhanced";
             public const string PolicySubType = "Type of policy to be fetched: Standard, Enhanced";
+            public const string MoveToArchiveTier = "Specifies whether recovery points should be moved to archive storage by the policy or not. Allowed values are $true, $false";
+            public const string IsSmartTieringEnabled = "Parameter to list policies for which smart tiering is Enabled/Disabled. Allowed values are $true, $false.";
+            public const string TieringMode = "Specifies whether to move recommended or all eligible recovery points to archive";
+            public const string TierAfterDuration = "Specifies the duration after which recovery points should start moving to the archive tier, value can be in days or months. Applicable only when TieringMode is TierAllEligible";
+            public const string TierAfterDurationType = "Specifies whether the TierAfterDuration is in Days or Months";
         }
 
         internal static class Job

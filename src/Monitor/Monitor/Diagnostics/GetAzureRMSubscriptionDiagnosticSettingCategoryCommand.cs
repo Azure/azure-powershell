@@ -18,9 +18,11 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Insights.OutputClasses;
 using Microsoft.Azure.Management.Monitor;
 using Microsoft.Azure.Management.Monitor.Models;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.Insights.Diagnostics
 {
+    [CmdletDeprecation(ReplacementCmdletName = "Get-AzEventCategory")]
     [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SubscriptionDiagnosticSettingCategory"), OutputType(typeof(PSSubscriptionDiagnosticSettingCategory))]
     public class GetAzureRmSubscriptionDiagnosticSettingCategoryCommand : ManagementCmdletBase
     {

@@ -82,6 +82,22 @@ namespace Microsoft.Azure.Commands.RecoveryServices
             this.Properties.ProvisioningState = vault.Properties.ProvisioningState;
             this.Properties.PrivateEndpointStateForBackup = vault.Properties.PrivateEndpointStateForBackup;
             this.Properties.PrivateEndpointStateForSiteRecovery = vault.Properties.PrivateEndpointStateForSiteRecovery;
+
+            if(vault.Properties != null && vault.Properties.MonitoringSettings != null)
+            {
+                this.Properties.AlertSettings = new AlertSettings();
+
+                if (vault.Properties.MonitoringSettings.AzureMonitorAlertSettings != null)
+                {
+                    this.Properties.AlertSettings.AzureMonitorAlertsForAllJobFailure = vault.Properties.MonitoringSettings.AzureMonitorAlertSettings.AlertsForAllJobFailures;
+                }
+
+                if (vault.Properties.MonitoringSettings.ClassicAlertSettings != null)
+                {
+                    this.Properties.AlertSettings.ClassicAlertsForCriticalOperations = vault.Properties.MonitoringSettings.ClassicAlertSettings.AlertsForCriticalOperations;
+                }                
+            }
+
             this.Identity = vault.Identity;
         }
 
@@ -153,7 +169,48 @@ namespace Microsoft.Azure.Commands.RecoveryServices
         /// </summary>
         public string PrivateEndpointStateForSiteRecovery { get; set; }
 
+        /// <summary>
+        /// Gets or sets MonitoringSettings.
+        /// </summary>
+        public AlertSettings AlertSettings { get; set; }
+
         #endregion
+    }
+
+    public class AlertSettings
+    {
+        #region Properties
+
+        /// <summary>
+        /// Gets or sets the monitor alerts.
+        /// </summary>
+        public string AzureMonitorAlertsForAllJobFailure { get; set; }
+
+        /// <summary>
+        /// Gets or sets AlertsForCriticalOperations.
+        /// </summary>
+        public string ClassicAlertsForCriticalOperations { get; set; }
+
+        #endregion
+
+        public override string ToString()
+        {            
+            if(AzureMonitorAlertsForAllJobFailure != null)
+            {
+                string alerts = string.Format("AzureMonitorAlertsForAllJobFailure: {0}", AzureMonitorAlertsForAllJobFailure.ToString());
+                if (ClassicAlertsForCriticalOperations != null)
+                {
+                    alerts += string.Format(", ClassicAlertsForCriticalOperations: {0}", ClassicAlertsForCriticalOperations.ToString());
+                }
+                return alerts;
+            }
+            else if (ClassicAlertsForCriticalOperations != null)
+            {
+                return string.Format("ClassicAlertsForCriticalOperations: {0}", ClassicAlertsForCriticalOperations.ToString());
+            }
+            
+            return null;
+        }
     }
 
     public class ASRVaultBackupProperties
