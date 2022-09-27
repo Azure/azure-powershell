@@ -18,6 +18,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System;
     using System.Management.Automation;
     using Microsoft.Azure.Commands.ApiManagement.Models;
+    using Microsoft.Azure.Management.ApiManagement.Models;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using ResourceManager.Common.ArgumentCompleters;
 
