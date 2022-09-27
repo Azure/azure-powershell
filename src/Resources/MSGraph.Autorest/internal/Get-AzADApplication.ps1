@@ -31,6 +31,8 @@ Get-AzADApplication -DisplayNameStartsWith $prefix
 Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
 .Example
 Get-AzADapplication -OwnedApplication
+.Example
+Get-AzADApplication -Filter "startsWith(DisplayName,'some-name')"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
