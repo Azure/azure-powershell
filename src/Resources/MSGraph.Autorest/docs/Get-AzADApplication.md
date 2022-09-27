@@ -83,14 +83,14 @@ Search for application display name starts with
 
 ### Example 4: Get application by object Id
 ```powershell
-Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
+Get-AzADApplication -ObjectId $id -Select Tags -AppendSelected
 ```
 
 Get application by object Id and append property 'Tags' after default properties: 'DisplayName', 'Id', 'DeletedDateTime', 'IdentifierUris', 'Web', 'AppId', 'SignInAudience'
 
 ### Example 5: Get applications owned by current user
 ```powershell
-Get-AzADapplication -OwnedApplication
+Get-AzADApplication -OwnedApplication
 ```
 
 Get applications owned by current user
