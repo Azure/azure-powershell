@@ -75,6 +75,41 @@ Type                             : Microsoft.RecoveryServices/vaults/replication
 
 By id.
 
+### Example 2: Update multiple disk names by id
+```powershell
+$OSDisk = Set-AzMigrateDiskMapping -DiskID "6000C294-1217-dec3-bc18-81f117220424" -DiskName "ContosoDisk_1"
+$DataDisk = Set-AzMigrateDiskMapping -DiskID "6000C292-79b9-bbdc-fb8a-f1fa8dbeff84" -DiskName "ContosoDisk_2"
+$DiskMapping = $OSDisk, $DataDisk
+Set-AzMigrateServerReplication -TargetObjectId "/Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105srcrg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationFabrics/signoff2105app1c36replicationfabric/replicationProtectionContainers/signoff2105app1c36replicationcontainer/replicationMigrationItems/idclab-vcen67-fareast-corp-micr-6f5e3b29-29ad-4e62-abbd-6cd33c4183ef_5015f6d8-fc84-afdf-de47-1eab79330f00" -DiskToUpdate $DiskMapping
+```
+
+```output
+ActivityId                       : c533d88d-2211-43c6-b615-7b46876d8882 ActivityId: de18df8b-8d43-4249-8989-846d33a124f6
+AllowedAction                    : {}
+CustomDetailAffectedObjectDetail : Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.JobDetailsAffectedObje
+                                   ctDetails
+CustomDetailInstanceType         : AsrJobDetails
+EndTime                          :
+Error                            : {}
+FriendlyName                     : Update the virtual machine
+Id                               : /Subscriptions/7c943c1b-5122-4097-90c8-861411bdd574/resourceGroups/cbtsignoff2105src
+                                   rg/providers/Microsoft.RecoveryServices/vaults/signoff2105app1452vault/replicationJo
+                                   bs/6ec1cca6-87c7-4f14-9657-bd0469c02fcd
+Location                         :
+Name                             : 6ec1cca6-87c7-4f14-9657-bd0469c02fcd
+ScenarioName                     : UpdateVmProperties
+StartTime                        : 8/30/2021 7:08:51 AM
+State                            : InProgress
+StateDescription                 : InProgress
+TargetInstanceType               : ProtectionEntity
+TargetObjectId                   : f3aa6bd4-1b60-52bb-b12d-e850f8d8f13c
+TargetObjectName                 : Win2k16
+Task                             : {UpdateVmPropertiesTask}
+Type                             : Microsoft.RecoveryServices/vaults/replicationJobs
+```
+
+Updating disk name by id.
+
 ## PARAMETERS
 
 ### -DefaultProfile
@@ -97,7 +132,7 @@ Updates the disk for the Azure VM to be created.
 To construct, see NOTES section for DISKTOUPDATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtUpdateDiskInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtUpdateDiskInput[]
 Parameter Sets: (All)
 Aliases:
 
@@ -114,7 +149,7 @@ The server object can be retrieved using the Get-AzMigrateServerReplication cmdl
 To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IMigrationItem
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem
 Parameter Sets: ByInputObjectVMwareCbt
 Aliases:
 
@@ -130,7 +165,7 @@ Updates the NIC for the Azure VM to be created.
 To construct, see NOTES section for NICTOUPDATE properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtNicInput[]
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtNicInput[]
 Parameter Sets: (All)
 Aliases:
 
@@ -313,7 +348,7 @@ Specifies the tag to be used for disk creation.
 To construct, see NOTES section for UPDATEDISKTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetDiskTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtEnableMigrationInputTargetDiskTags
 Parameter Sets: (All)
 Aliases:
 
@@ -344,7 +379,7 @@ Specifies the tag to be used for NIC creation.
 To construct, see NOTES section for UPDATENICTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetNicTags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtEnableMigrationInputTargetNicTags
 Parameter Sets: (All)
 Aliases:
 
@@ -405,7 +440,7 @@ Specifies the tag to be used for VM creation.
 To construct, see NOTES section for UPDATEVMTAG properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtEnableMigrationInputTargetVmtags
+Type: Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtEnableMigrationInputTargetVmtags
 Parameter Sets: (All)
 Aliases:
 
@@ -438,7 +473,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob
 
 ## NOTES
 
@@ -449,29 +484,33 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DISKTOUPDATE <IVMwareCbtUpdateDiskInput[]>: Updates the disk for the Azure VM to be created.
+`DISKTOUPDATE <IVMwareCbtUpdateDiskInput[]>`: Updates the disk for the Azure VM to be created.
   - `DiskId <String>`: The disk Id.
+  - `[IsOSDisk <String>]`: A value indicating whether the disk is the OS disk.
   - `[TargetDiskName <String>]`: The target disk name.
 
-INPUTOBJECT <IMigrationItem>: Specifies the replicating server for which the properties need to be updated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
+`INPUTOBJECT <IMigrationItem>`: Specifies the replicating server for which the properties need to be updated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet.
   - `[Location <String>]`: Resource Location
   - `[ProviderSpecificDetail <IMigrationProviderSpecificSettings>]`: The migration provider custom settings.
+    - `InstanceType <String>`: Gets the instance type.
 
-NICTOUPDATE <IVMwareCbtNicInput[]>: Updates the NIC for the Azure VM to be created.
+`NICTOUPDATE <IVMwareCbtNicInput[]>`: Updates the NIC for the Azure VM to be created.
   - `IsPrimaryNic <String>`: A value indicating whether this is the primary NIC.
   - `NicId <String>`: The NIC Id.
   - `[IsSelectedForMigration <String>]`: A value indicating whether this NIC is selected for migration.
   - `[TargetNicName <String>]`: Target NIC name.
   - `[TargetStaticIPAddress <String>]`: The static IP address.
   - `[TargetSubnetName <String>]`: Target subnet name.
+  - `[TestStaticIPAddress <String>]`: The test static IP address.
+  - `[TestSubnetName <String>]`: The test subnet name.
 
-UPDATEDISKTAG <IVMwareCbtEnableMigrationInputTargetDiskTags>: Specifies the tag to be used for disk creation.
+`UPDATEDISKTAG <IVMwareCbtEnableMigrationInputTargetDiskTags>`: Specifies the tag to be used for disk creation.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-UPDATENICTAG <IVMwareCbtEnableMigrationInputTargetNicTags>: Specifies the tag to be used for NIC creation.
+`UPDATENICTAG <IVMwareCbtEnableMigrationInputTargetNicTags>`: Specifies the tag to be used for NIC creation.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
-UPDATEVMTAG <IVMwareCbtEnableMigrationInputTargetVmtags>: Specifies the tag to be used for VM creation.
+`UPDATEVMTAG <IVMwareCbtEnableMigrationInputTargetVmtags>`: Specifies the tag to be used for VM creation.
   - `[(Any) <String>]`: This indicates any property can be added to this object.
 
 ## RELATED LINKS
