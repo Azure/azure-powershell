@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new commands to CalculateRefund and Return reservation
+* Added new commands to Archive/Unarchive cancelled/expired/failed reservation 
 
 ## Version 0.10.0
 * Converted Az.Reservations to autorest-based module

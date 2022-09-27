@@ -1,7 +1,6 @@
 ### Example 1: Fetch a resource guard with a particular Name
 ```powershell
-PS C:\> $resGuard = Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "RGName" -Name "ResourceGuardName"
-PS C:\> $resGuard
+Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "RGName" -Name "ResourceGuardName"
 ```
 
 ```output
@@ -14,8 +13,7 @@ Gets a resource guard under a resource group with name "ResourceGuardName"
 
 ### Example 2: Fetch all the resource guards under a resource group
 ```powershell
-PS C:\> $resGuardList = Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "RGName"
-PS C:\> $resGuardList
+Get-AzDataProtectionResourceGuard -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "RGName"
 ```
 
 ```output

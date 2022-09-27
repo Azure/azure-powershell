@@ -1,0 +1,39 @@
+{
+  "New-AzEventHubApplicationGroup+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutoreste94b8d/providers/Microsoft.EventHub/namespaces/namespaceNametdu4ri/applicationGroups/appGroupjxbl43?api-version=2022-01-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutoreste94b8d/providers/Microsoft.EventHub/namespaces/namespaceNametdu4ri/applicationGroups/appGroupjxbl43?api-version=2022-01-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"clientAppGroupIdentifier\": \"SASKeyName=a\",\n    \"policies\": [\n      {\n        \"name\": \"t1\",\n        \"type\": \"ThrottlingPolicy\",\n        \"rateLimitThreshold\": 10000,\n        \"metricId\": \"IncomingMessages\"\n      },\n      {\n        \"name\": \"t2\",\n        \"type\": \"ThrottlingPolicy\",\n        \"rateLimitThreshold\": 20000,\n        \"metricId\": \"OutgoingBytes\"\n      }\n    ]\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "395" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "d55a7139-ea3b-4451-8e60-2c8b9ffa40d4_M11SN1_M11SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1193" ],
+        "x-ms-correlation-request-id": [ "09832687-effe-48ef-ab9e-0e084ff45a14" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220918T104045Z:09832687-effe-48ef-ab9e-0e084ff45a14" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 18 Sep 2022 10:40:44 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "576" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutoreste94b8d/providers/Microsoft.EventHub/namespaces/namespaceNametdu4ri/applicationGroups/appGroupjxbl43\",\"name\":\"appGroupjxbl43\",\"type\":\"Microsoft.EventHub/Namespaces/ApplicationGroups\",\"location\":\"East US\",\"properties\":{\"clientAppGroupIdentifier\":\"SASKeyName=a\",\"policies\":[{\"type\":\"ThrottlingPolicy\",\"name\":\"t1\",\"metricId\":\"IncomingMessages\",\"rateLimitThreshold\":10000},{\"type\":\"ThrottlingPolicy\",\"name\":\"t2\",\"metricId\":\"OutgoingBytes\",\"rateLimitThreshold\":20000}],\"isEnabled\":true}}",
+      "isContentBase64": false
+    }
+  }
+}

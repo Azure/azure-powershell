@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+
+## Version 5.6.1
 * Removed AFEC feature check for Archive smart tiering
 
 ## Version 5.6.0
