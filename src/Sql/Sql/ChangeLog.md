@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added new fields to the `Get-AzSqlInstanceDatabaseLogReplay` cmdlet
+* Improved error handling in the `Stop-AzSqlInstanceDatabaseLogReplay` cmdlet
 
 ## Version 3.11.0
 * Removed the warning messages for MSGraph migration [#18856] 
