@@ -8,7 +8,7 @@ parameters:
 - name: ServiceName
   displayName: Service to generate
   type: string
-  default: null
+  default: Databricks
 
 resources:
   repositories:
