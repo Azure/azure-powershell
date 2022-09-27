@@ -103,6 +103,11 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            HelpMessage = "The vpn gateway's ASN for BGP over VPN")]
+        public uint Asn { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "Run cmdlet in the background")]
         public SwitchParameter AsJob { get; set; }
 
@@ -178,7 +183,14 @@ namespace Microsoft.Azure.Commands.Network
 
             vpnGateway.BgpSettings = null;
 
-            ConfirmAction(
+            if (this.Asn > 0)
+            {
+                vpnGateway.BgpSettings = new PSBgpSettings();
+                vpnGateway.BgpSettings.BgpPeeringAddress = null; // We block modifying the gateway's BgpPeeringAddress (CA)
+                vpnGateway.BgpSettings.Asn = this.Asn;
+            }
+
+                ConfirmAction(
                 Properties.Resources.CreatingResourceMessage,
                 this.Name,
                 () =>
