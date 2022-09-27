@@ -40,7 +40,7 @@ jobs:
       pwsh: true
 
   - pwsh: |
-      $Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $(GITHUB_TOKEN)"}
+      $Headers = @{"Accept" = "application/vnd.github+json"; "Authorization" = "Bearer $(GithubToken)"}
       $PrBody = @'
       <!-- DO NOT DELETE THIS TEMPLATE -->
 
