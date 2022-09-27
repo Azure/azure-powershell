@@ -52,7 +52,7 @@ Connect-AzAccount
 Connect-AzAccount -ServicePrincipal -ApplicationId 'http://my-app' -Credential $PSCredential -TenantId $TenantId
 ```
 
-To log into a specific cloud (_AzureChinaCloud_, _AzureCloud_, _AzureGermanCloud_, _AzureUSGovernment_), use the `-Environment` parameter:
+To log into a specific cloud (_AzureChinaCloud_, _AzureCloud_, _AzureUSGovernment_), use the `-Environment` parameter:
 
 ```powershell
 # Specific cloud login - Logs into the Azure China cloud
