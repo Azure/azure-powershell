@@ -39,6 +39,7 @@ namespace Microsoft.Azure.Commands.Profile
         [Parameter(Position = 0, Mandatory = false, HelpMessage = "The name of the context", ParameterSetName = GetSingleParameterSet)]
         [ContextNameCompleter]
         public string Name { get; set; }
+
         /// <summary>
         /// Gets the current default context.
         /// </summary>

@@ -22,6 +22,7 @@
 * Supported tenant domain as input while using `Connect-AzAccount` with parameter `Tenant`. [#19471]
 * Upgraded Azure.Identity to 1.6.1
 * Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp3.1.
+* Use the ArgumentCompleter attribute to replace the dynamic parameters of `Get-AzContext`. [#18041]
 
 ## Version 2.10.1
 * Deduplicated subscriptions belonging to multiple tenants while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19427]
