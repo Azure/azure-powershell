@@ -107,6 +107,12 @@ function Update-AzMySqlServer {
         [System.Collections.Hashtable]
         ${Tag},
 
+        [Parameter(HelpMessage="Whether or not public network access is allowed for this server. Value is optional but if passed in, must be 'Enabled' or 'Disabled'")]
+        [Validateset('Enabled', 'Disabled')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Category('Body')]
+        [Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.PublicNetworkAccessEnum]
+        ${PublicAccess},
+
         [Parameter(HelpMessage = 'The credentials, account, tenant, and subscription used for communication with Azure.')]
         [Alias('AzureRMContext', 'AzureCredential')]
         [ValidateNotNull()]
@@ -183,6 +189,11 @@ function Update-AzMySqlServer {
             if ($PSBoundParameters.ContainsKey('StorageAutogrow')) {
                 $PSBoundParameters.Add('StorageProfileStorageAutogrow', $PSBoundParameters['StorageAutogrow'])
                 $null = $PSBoundParameters.Remove('StorageAutogrow')
+            }
+
+            if ($PSBoundParameters.ContainsKey('PublicAccess')) {
+                $PSBoundParameters.Add('PublicNetworkAccess', $PSBoundParameters['PublicAccess'])
+                $null = $PSBoundParameters.Remove('PublicAccess')
             }
 
             Az.MySql.internal\Update-AzMySqlServer @PSBoundParameters
