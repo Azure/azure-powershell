@@ -460,7 +460,7 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
     $zones = @("1", "2")
     $firstAdditionalRegionLocation = "East US"
     $secondAdditionalRegionLocation = "South Central US"
-    $userIdentity = "/subscriptions/dbdbebc3-1f15-4e74-9ef2-7db25483cb15/resourceGroups/powershelltest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/powershellTestUserIdentity"
+    $userIdentity = "/subscriptions/a200340d-6b82-494d-9dbf-687ba6e33f9e/resourceGroups/powershelltest/providers/Microsoft.ManagedIdentity/userAssignedIdentities/powershellTestUserIdentity"
 		
     try {
         # Create Resource Group
@@ -488,7 +488,7 @@ function Test-ApiManagementWithAdditionalRegionsCRUD {
         Assert-AreEqual "None" $result.VpnType
         Assert-AreEqual 2 $result.Zone.Count
         Assert-AreEqual $false $result.DisableGateway
-
+		
         Assert-AreEqual 2 $result.AdditionalRegions.Count
         $found = 0
         for ($i = 0; $i -lt $result.AdditionalRegions.Count; $i++) {
