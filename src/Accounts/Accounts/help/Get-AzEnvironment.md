@@ -30,7 +30,6 @@ Get-AzEnvironment
 Name              Resource Manager Url                  ActiveDirectory Authority          Type
 ----              --------------------                  -------------------------          ----
 AzureUSGovernment https://management.usgovcloudapi.net/ https://login.microsoftonline.us/  Built-in
-AzureGermanCloud  https://management.microsoftazure.de/ https://login.microsoftonline.de/  Built-in
 AzureCloud        https://management.azure.com/         https://login.microsoftonline.com/ Built-in
 AzureChinaCloud   https://management.chinacloudapi.cn/  https://login.chinacloudapi.cn/    Built-in
 ```
