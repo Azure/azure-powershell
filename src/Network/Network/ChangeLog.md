@@ -19,6 +19,8 @@
 --->
 
 ## Upcoming Release
+* Added a new endpoint swtich `AzureArcVM` in Networkwatcher ConnectionMonitor
+    - `New-AzNetworkWatcherConnectionMonitor`
 * Updated commandlet to support bypassing the ExpressRoute gateway when accessing private-links.
     - `New-AzVirtualNetworkGatewayConnection`
 * Updated commandlet to support no-internet advertise CustomIpPrefix.
@@ -32,10 +34,12 @@
 * Updated commandlet to support bypassing NVA for spoke vNet traffic.
     - `NewAzureRmRoutingConfigurationCommand.cs`
 * Updated commandlet to support new parameters: asn, geo, expressrouteadvertise.
-    - `Update-AzCustomIpPrefix
+    - `Update-AzCustomIpPrefix`
 * Updated cmdlets to enable verification on client certificate revocation by using a new property VerifyClientRevocation in ApplicationGatewayClientAuthConfiguration
     - `New-AzApplicationGatewayClientAuthConfiguration`
     - `Set-AzApplicationGatewayClientAuthConfiguration`
+* Updated commandlet to support IPv4 Parent/Child CustomIpPrefix creation.
+    - `New-AzCustomIpPrefix`
 * Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
 * Added DdosProtectionMode parameter in New-AzPublicIpAddress
 * Added ProbeThreshold parameter to Load Balancer Probe 
