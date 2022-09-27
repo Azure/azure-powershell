@@ -12,16 +12,13 @@ Microsoft Azure PowerShell: Migrate cmdlets
 
 ## Az.Migrate Cmdlets
 ### [Get-AzMigrateDiscoveredServer](Get-AzMigrateDiscoveredServer.md)
-Get All discovered servers in a migrate project.
+Get Azure migrate server commandlet fetches all servers in a migrate project.
 
 ### [Get-AzMigrateJob](Get-AzMigrateJob.md)
-Retrieves the status of an Azure Migrate job.
+The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
 
 ### [Get-AzMigrateProject](Get-AzMigrateProject.md)
 Method to get a migrate project.
-
-### [Get-AzMigrateReplicationAppliance](Get-AzMigrateReplicationAppliance.md)
-Gets the list of Azure Site Recovery appliances for the vault.
 
 ### [Get-AzMigrateReplicationEligibilityResult](Get-AzMigrateReplicationEligibilityResult.md)
 Validates whether a given VM can be protected or not in which case returns list of errors.
@@ -52,7 +49,7 @@ This includes the Migration Hub connection settings.
 Method to get run as account.
 
 ### [Get-AzMigrateServerReplication](Get-AzMigrateServerReplication.md)
-Retrieves the details of the replicating server.
+The Get-AzMigrateServerReplication cmdlet retrieves the object for the replicating server.
 
 ### [Get-AzMigrateSite](Get-AzMigrateSite.md)
 Method to get a site.
@@ -64,13 +61,14 @@ Gets a solution in the migrate project.
 Gets the data of supported operating systems by SRS.
 
 ### [Initialize-AzMigrateReplicationInfrastructure](Initialize-AzMigrateReplicationInfrastructure.md)
-Initialises the infrastructure for the migrate project.
+The Initialize-AzMigrateReplicationInfrastructure cmdlet initialises the infrastructure for the migrate project.
 
 ### [New-AzMigrateDiskMapping](New-AzMigrateDiskMapping.md)
-Creates a new disk mapping
+The New-AzMigrateDiskMapping cmdlet creates a mapping of the source disk attached to the server to be migrated
 
 ### [New-AzMigrateNicMapping](New-AzMigrateNicMapping.md)
-Creates an object to update NIC properties of a replicating server.
+The New-AzMigrateNicMapping cmdlet creates a mapping of the source NIC attached to the server to be migrated.
+This object is provided as an input to the Set-AzMigrateServerReplication cmdlet to update the NIC and its properties for a replicating server.
 
 ### [New-AzMigrateProject](New-AzMigrateProject.md)
 Creates a new Migrate project.
@@ -88,7 +86,7 @@ The operation to create an ASR replication protection intent item.
 The operation to configure vault setting.
 
 ### [New-AzMigrateServerReplication](New-AzMigrateServerReplication.md)
-Starts replication for the specified server.
+The New-AzMigrateServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
 
 ### [Register-AzMigrateProjectTool](Register-AzMigrateProjectTool.md)
 Registers a tool with the migrate project.
@@ -98,29 +96,23 @@ Delete the migrate project.
 Deleting non-existent project is a no-operation.
 
 ### [Remove-AzMigrateServerReplication](Remove-AzMigrateServerReplication.md)
-Stops replication for the migrated server.
+The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrated server.
 
 ### [Restart-AzMigrateServerReplication](Restart-AzMigrateServerReplication.md)
-Restarts the replication for specified server.
-
-### [Resume-AzMigrateServerReplication](Resume-AzMigrateServerReplication.md)
-Starts the replication that has been suspended.
+The Restart-AzMigrateServerReplication cmdlet repairs the replication for the specified server.
 
 ### [Set-AzMigrateDiskMapping](Set-AzMigrateDiskMapping.md)
-Updates disk mapping
+The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attached to the server to be migrated
 
 ### [Set-AzMigrateServerReplication](Set-AzMigrateServerReplication.md)
-Updates the target properties for the replicating server.
+The Set-AzMigrateServerReplication cmdlet updates the target properties for the replicating server.
 
 ### [Start-AzMigrateServerMigration](Start-AzMigrateServerMigration.md)
 Starts the migration for the replicating server.
 
 ### [Start-AzMigrateTestMigration](Start-AzMigrateTestMigration.md)
-Starts the test migration for the replicating server.
+The Start-AzMigrateTestMigration cmdlet initiates the test migration for the replicating server.
 
 ### [Start-AzMigrateTestMigrationCleanup](Start-AzMigrateTestMigrationCleanup.md)
-Cleans up the test migration for the replicating server.
-
-### [Suspend-AzMigrateServerReplication](Suspend-AzMigrateServerReplication.md)
-Suspends the ongoing replication.
+The Start-AzMigrateTestMigrationCleanup cmdlet initiates the clean up of the test migration for the replicating server.
 
