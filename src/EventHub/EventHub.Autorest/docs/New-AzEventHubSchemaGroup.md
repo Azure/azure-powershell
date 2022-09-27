@@ -81,7 +81,7 @@ The Schema Group name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases:
+Aliases: SchemaGroupName
 
 Required: True
 Position: Named
