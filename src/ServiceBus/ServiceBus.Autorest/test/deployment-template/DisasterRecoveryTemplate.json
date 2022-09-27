@@ -1,0 +1,90 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "primarynamespace_name": {
+      "defaultValue": "AutomatedPSTesting",
+      "type": "String"
+    },
+    "secondarynamespace_name": {
+      "defaultValue": "testnamespace",
+      "type": "String"
+    },
+    "migrationPrimaryNamespace": {
+      "defaultValue": "testnamespace",
+      "type": "String"
+    },
+    "migrationSecondaryNamespace": {
+      "defaultValue": "testnamespace",
+      "type": "String"
+    }
+  },
+  "variables": {
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('primarynamespace_name')]",
+      "location": "East US",
+      "sku": {
+        "name": "Premium",
+        "tier": "Premium"
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": false
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('secondarynamespace_name')]",
+      "location": "West US",
+      "sku": {
+        "name": "Premium",
+        "tier": "Premium"
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": false
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('migrationPrimaryNamespace')]",
+      "location": "East US",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard"
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": false
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('migrationSecondaryNamespace')]",
+      "location": "West US",
+      "sku": {
+        "name": "Premium",
+        "tier": "Premium"
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": false
+      }
+    }
+  ]
+}
