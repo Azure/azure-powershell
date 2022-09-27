@@ -50,6 +50,7 @@ namespace Microsoft.Azure.Commands.Profile
             SupportedResourceNames.AadGraph,
             SupportedResourceNames.MSGraph,
             SupportedResourceNames.AnalysisServices,
+            SupportedResourceNames.AppConfiguration,
             SupportedResourceNames.Arm,
             SupportedResourceNames.Attestation,
             SupportedResourceNames.Batch,
@@ -59,8 +60,7 @@ namespace Microsoft.Azure.Commands.Profile
             SupportedResourceNames.OperationalInsights,
             SupportedResourceNames.ResourceManager,
             SupportedResourceNames.Storage,
-            SupportedResourceNames.Synapse,
-            SupportedResourceNames.AppConfiguration
+            SupportedResourceNames.Synapse
             )]
         public string ResourceTypeName { get; set; }
 
