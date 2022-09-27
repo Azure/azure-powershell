@@ -41,7 +41,7 @@ Since the *Force* parameter is specified, the command does not prompt you before
 
 ### Example 3: Force delete workspace (cannot be recovered)
 ```powershell
-$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName $rgname -Name $wsname -Location $wslocation
+$workspace = New-AzOperationalInsightsWorkspace -ResourceGroupName "RG-NAME" -Name "WORKSPACE-NAME" -Location "REGION-VALUE"
 $workspace | Remove-AzOperationalInsightsWorkspace -ForceDelete
 ```
 

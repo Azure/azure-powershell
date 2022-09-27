@@ -208,7 +208,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnDatabase()
         {
@@ -216,7 +216,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestAuditOnServer()
         {
@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         [Trait(Category.RunType, Category.LiveOnly)]
         public void TestMSSupportAuditOnServer()
         {
@@ -232,63 +232,63 @@ namespace Microsoft.Azure.Commands.Sql.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewDatabaseAuditDiagnosticsAreCreatedOnNeed()
         {
             TestRunner.RunTestScript("Test-NewDatabaseAuditDiagnosticsAreCreatedOnNeed");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestNewServerAuditDiagnosticsAreCreatedOnNeed()
         {
             TestRunner.RunTestScript("Test-NewServerAuditDiagnosticsAreCreatedOnNeed");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestMSSupportNewServerAuditDiagnosticsAreCreatedOnNeed()
         {
             TestRunner.RunTestScript("Test-MSSupportNewServerAuditDiagnosticsAreCreatedOnNeed");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveAuditOnServer()
         {
             TestRunner.RunTestScript("Test-RemoveAuditOnServer");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestMSSupportRemoveAuditOnServer()
         {
             TestRunner.RunTestScript("Test-MSSupportRemoveAuditOnServer");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveAuditOnDatabase()
         {
             TestRunner.RunTestScript("Test-RemoveAuditOnDatabase");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveDatabaseAuditingSettingsMultipleDiagnosticSettings()
         {
             TestRunner.RunTestScript("Test-RemoveDatabaseAuditingSettingsMultipleDiagnosticSettings");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestRemoveServerAuditingSettingsMultipleDiagnosticSettings()
         {
             TestRunner.RunTestScript("Test-RemoveServerAuditingSettingsMultipleDiagnosticSettings");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestMSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings()
         {
             TestRunner.RunTestScript("Test-MSSupportRemoveServerAuditingSettingsMultipleDiagnosticSettings");

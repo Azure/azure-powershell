@@ -11,23 +11,26 @@ Locale: en-US
 Microsoft Azure PowerShell: ImageBuilder cmdlets
 
 ## Az.ImageBuilder Cmdlets
-### [Get-AzImageBuilderRunOutput](Get-AzImageBuilderRunOutput.md)
-Get the specified run output for the specified image template resource
-
 ### [Get-AzImageBuilderTemplate](Get-AzImageBuilderTemplate.md)
 Get information about a virtual machine image template
 
-### [New-AzImageBuilderCustomizerObject](New-AzImageBuilderCustomizerObject.md)
-Describes a unit of image customization
-
-### [New-AzImageBuilderDistributorObject](New-AzImageBuilderDistributorObject.md)
-Generic distribution object
-
-### [New-AzImageBuilderSourceObject](New-AzImageBuilderSourceObject.md)
-Describes a virtual machine image source for building, customizing and distributing.
+### [Get-AzImageBuilderTemplateRunOutput](Get-AzImageBuilderTemplateRunOutput.md)
+Get the specified run output for the specified image template resource
 
 ### [New-AzImageBuilderTemplate](New-AzImageBuilderTemplate.md)
-Create a virtual machine image template
+Create or update a virtual machine image template
+
+### [New-AzImageBuilderTemplateCustomizerObject](New-AzImageBuilderTemplateCustomizerObject.md)
+Create an in-memory object for ImageTemplateCustomizer.
+
+### [New-AzImageBuilderTemplateDistributorObject](New-AzImageBuilderTemplateDistributorObject.md)
+Create an in-memory object for ImageTemplateDistributor.
+
+### [New-AzImageBuilderTemplateSourceObject](New-AzImageBuilderTemplateSourceObject.md)
+Create an in-memory object for ImageTemplateSource.
+
+### [New-AzImageBuilderTemplateValidatorObject](New-AzImageBuilderTemplateValidatorObject.md)
+Create an in-memory object for ImageTemplateValidator.
 
 ### [Remove-AzImageBuilderTemplate](Remove-AzImageBuilderTemplate.md)
 Delete a virtual machine image template

@@ -29,6 +29,12 @@ Get-AzGallery [-GalleryUniqueName <String>] [-Scope <String>] -Location <String>
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
+### CommunityGalleryParameterSet
+```
+Get-AzGallery [-GalleryPublicName <String>] -Location <String> [-Community]
+ [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Get or list galleries.
 
@@ -178,6 +184,21 @@ Get a gallery's sharing profile.
 
 ## PARAMETERS
 
+### -Community
+List community galleries.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: CommunityGalleryParameterSet
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
@@ -208,6 +229,21 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
+### -GalleryPublicName
+The public name of the Shared Image Gallery.
+
+```yaml
+Type: System.String
+Parameter Sets: CommunityGalleryParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
 ### -GalleryUniqueName
 The unique name of the Shared Image Gallery.
 
@@ -228,7 +264,7 @@ Location of the Shared Image Gallery.
 
 ```yaml
 Type: System.String
-Parameter Sets: SharedGalleryParameterSet
+Parameter Sets: SharedGalleryParameterSet, CommunityGalleryParameterSet
 Aliases:
 
 Required: True

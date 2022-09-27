@@ -14,7 +14,7 @@ Updates existing deployment region in PsApiManagement instance.
 ## SYNTAX
 
 ```
-Update-AzApiManagementRegion -ApiManagement <PsApiManagement> -Location <String> -Sku <PsApiManagementSku>
+Update-AzApiManagementRegion -ApiManagement <PsApiManagement> -Location <String> -Sku <string>
  -Capacity <Int32> [-VirtualNetwork <PsApiManagementVirtualNetwork>] [-Zone <String[]>]
  [-DisableGateway <Boolean>] [-PublicIpAddressId <String>] [-DefaultProfile <IAzureContextContainer>]
  [<CommonParameters>]

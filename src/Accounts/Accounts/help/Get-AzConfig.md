@@ -14,7 +14,8 @@ Gets the configs of Azure PowerShell.
 
 ```
 Get-AzConfig [-AppliesTo <String>] [-Scope <ConfigScope>] [-DefaultProfile <IAzureContextContainer>]
- [-DefaultSubscriptionForLogin] [-DisplayBreakingChangeWarning] [-EnableDataCollection] [<CommonParameters>]
+ [-DefaultSubscriptionForLogin] [-DisplayBreakingChangeWarning] [-DisplaySurveyMessage] [-EnableDataCollection]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -112,6 +113,21 @@ Accept wildcard characters: False
 
 ### -DisplayBreakingChangeWarning
 Controls if warning messages for breaking changes are displayed or suppressed. When enabled, a breaking change warning is displayed when executing cmdlets with breaking changes in a future release.
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DisplaySurveyMessage
+When enabled, you are prompted infrequently to participate in user experience surveys for Azure PowerShell.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter

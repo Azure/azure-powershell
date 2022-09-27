@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
 online version: https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubcluster
 schema: 2.0.0
@@ -8,42 +8,58 @@ schema: 2.0.0
 # Get-AzEventHubCluster
 
 ## SYNOPSIS
-Gets the details of a single Event Hub Cluster , or gets a list of Event Hub Clusters.
+Gets the resource description of the specified Event Hubs Cluster.
 
 ## SYNTAX
 
+### List (Default)
 ```
-Get-AzEventHubCluster [-ResourceGroupName] <String> [-Name <String>] [-DefaultProfile <IAzureContextContainer>]
+Get-AzEventHubCluster [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### Get
+```
+Get-AzEventHubCluster -Name <String> -ResourceGroupName <String> [-SubscriptionId <String[]>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
+### List1
+```
+Get-AzEventHubCluster -ResourceGroupName <String> [-SubscriptionId <String[]>] [-DefaultProfile <PSObject>]
  [<CommonParameters>]
 ```
 
+### GetViaIdentity
+```
+Get-AzEventHubCluster -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
-The Get-AzEventHubCluster cmdlet returns either the details of an Event Hub Cluster, or a list of all Event Hub Clusters in given resource group.
-If the cluster name is provided, the details of a single cluster are returned.
-If an cluster name is not provided, a list of all clusters in the specified resource group is returned.
+Gets the resource description of the specified Event Hubs Cluster.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: {{ Add title here }}
 ```powershell
-Get-AzEventHubCluster -ResourceGroupName RSG-Cluster27651 -Name Eventhub-Cluster-5557
+{{ Add code here }}
 ```
 
 ```output
-Id        : /subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/RSG-Cluster27651/providers/Microsoft.Eve
-            ntHub/clusters/Eventhub-Cluster-5557
-Name      : Eventhub-Cluster-5557
-Location  : southcentralus
-CreatedAt : 09/10/2020 22:09:57
-UpdatedAt : 09/10/2020 23:02:48
-MetricId  :
-Status    :
-Sku       : Microsoft.Azure.Commands.EventHub.Models.PSEventHubsClusterSkuAttributes
-Tags      : {[ClusterTag2, Tag4], [ClusterTag1, Tag3]}
-
+{{ Add output here }}
 ```
 
-Returns the detials of cluster 'Eventhub-Cluster-5557' from the resource group 'RSG-Cluster27651'
+{{ Add description here }}
+
+### Example 2: {{ Add title here }}
+```powershell
+{{ Add code here }}
+```
+
+```output
+{{ Add output here }}
+```
+
+{{ Add description here }}
 
 ## PARAMETERS
 
@@ -51,9 +67,9 @@ Returns the detials of cluster 'Eventhub-Cluster-5557' from the resource group '
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -62,33 +78,65 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: GetViaIdentity
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -Name
-Cluster Name
+The name of the Event Hubs Cluster.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
-Aliases: EventHubName
+Parameter Sets: Get
+Aliases: ClusterName
 
-Required: False
+Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: (All)
+Parameter Sets: Get, List1
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
+
+```yaml
+Type: System.String[]
+Parameter Sets: List, Get, List1
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -97,12 +145,34 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICluster
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IEventHubIdentity>`: Identity Parameter
+  - `[Alias <String>]`: The Disaster Recovery configuration name
+  - `[ApplicationGroupName <String>]`: The Application Group name 
+  - `[AuthorizationRuleName <String>]`: The authorization rule name.
+  - `[ClusterName <String>]`: The name of the Event Hubs Cluster.
+  - `[ConsumerGroupName <String>]`: The consumer group name
+  - `[EventHubName <String>]`: The Event Hub name
+  - `[Id <String>]`: Resource identity path
+  - `[NamespaceName <String>]`: The Namespace name
+  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
+  - `[ResourceAssociationName <String>]`: The ResourceAssociation Name
+  - `[ResourceGroupName <String>]`: Name of the resource group within the azure subscription.
+  - `[SchemaGroupName <String>]`: The Schema Group name 
+  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS

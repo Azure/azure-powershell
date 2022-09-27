@@ -208,11 +208,11 @@ namespace Microsoft.Azure.Commands.Compute
                     vm.Identity = new VirtualMachineIdentity();
                 }
 
-                vm.Identity.UserAssignedIdentities = new Dictionary<string, VirtualMachineIdentityUserAssignedIdentitiesValue>();
+                vm.Identity.UserAssignedIdentities = new Dictionary<string, UserAssignedIdentitiesValue>();
 
                 foreach (var id in this.IdentityId)
                 {
-                    vm.Identity.UserAssignedIdentities.Add(id, new VirtualMachineIdentityUserAssignedIdentitiesValue());
+                    vm.Identity.UserAssignedIdentities.Add(id, new UserAssignedIdentitiesValue());
                 }
             }
 

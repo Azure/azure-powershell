@@ -9,6 +9,7 @@ Our StaticAnalysis tools help us ensure our modules follow PowerShell guidelines
     - [Signature Issues](#signature-issues)
     - [Help Issues](#help-issues)
     - [Example Issues](#example-issues)
+- [Troubleshotting Example Issues](#troubleshotting-example-issues)
 
 ## How to know if you have a StaticAnalysis Error
 If your build is failing, click on the Jenkins job inside the PR (marked as "Default" within checks).  Then check the Console Output within the Jenkins job.  If you have this error, then you have failed StaticAnalysis:
@@ -63,4 +64,39 @@ Example issues occur when your changed markdown files in the `help` folder (_e.g
 - Copy each of the errors you would like to suppress directly from the ExampleIssues.csv file output in the CI pipeline artifacts
 - Push the changes to the .csv file and ensure the errors no longer show up in the `ExampleIssues.csv` file output from the CI pipeline artifacts.
 
-If you have unexpected errors, please check whether you have splitted outputs from codes. If outputs cannot be separated from codes, then please add the tag `<!-- Skip: Output cannot be splitted from code -->` to the next line of the example title and in front of the code block.
+## Troubleshotting Example Issues
+### Scenario 1: Unexpected errors caused by the mixture of outputs and codes 
+PowerShell code and output are required to be in sepreated code blocks (```). If you have put outputs in the code block, then the outputs will be recognized as invalid PowerShell syntax. Please make sure you have splitted outputs from codes. The following shows the correct scene. Note that if the example has no output, you don't need to add an output block.
+### Example: Codes and outputs are split correctly
+````
+```powershell
+Get-AzConfig -EnableDataCollection
+```
+
+```output
+Key                           Value Applies To Scope       Help Message
+---                           ----- ---------- -----       ------------
+EnableDataCollection          False Az         CurrentUser When enabled, Azure PowerShell cmdlets send telemetry data to Microsoft to improve the custom…
+```
+````
+If outputs cannot be separated from codes, then please add the tag `<!-- Skip: Output cannot be splitted from code -->` to the next line of the example title and in front of the code block. The following is an example. 
+### Example: Add skip tag to the example whose outputs cannot be separated from codes
+````
+<!-- Skip: Output cannot be splitted from code -->
+```powershell
+$Context = Get-AzBatchAccountKey -AccountName myaccount
+$Context.PrimaryAccountKey
+ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMN==
+$Context.SecondaryAccountKey
+ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMN==
+```
+````
+
+### Scenario 2: Unexpected errors caused by unpaired quotes or brackets
+Please check whether you have matched the correct number of **quotes** and **brackets**. The common error messages in this scenario are as follows.
+- MissingEndParenthesisInExpression: Missing closing ')' in expression.
+- MissingEndCurlyBrace: Missing closing '}' in statement block or type definition.
+- MissingArrayIndexExpression: Array index expression is missing or not valid.
+- UnexpectedToken: Unexpected token xxx. (Check whether you have missed or added extra quote)
+
+In this scenario, many other unreasonable errors will occur. Leave them alone. Just make sure you have correct the number of **quotes** and **brackets** and rerun the CI verification. 

@@ -14,42 +14,26 @@ Updates a data collection rule tags property.
 
 ### ByName (Default)
 ```
-Update-AzDataCollectionRule 
-      -ResourceGroupName <string> 
-      -RuleName <string> 
-      [-Tag <hashtable>] 
-      [-DefaultProfile <IAzureContextContainer>] 
-      [-WhatIf] 
-      [-Confirm]
-      [<CommonParameters>]
+Update-AzDataCollectionRule -ResourceGroupName <String> -RuleName <String> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByResourceId
 ```
-Update-AzDataCollectionRule 
-      -RuleId <string> 
-      [-Tag <hashtable>] 
-      [-DefaultProfile <IAzureContextContainer>] 
-      [-WhatIf] 
-      [-Confirm]
-      [<CommonParameters>]
+Update-AzDataCollectionRule -RuleId <String> [-Tag <Hashtable>] [-DefaultProfile <IAzureContextContainer>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByInputObject
 ```
-Update-AzDataCollectionRule 
-      -InputObject <PSDataCollectionRuleResource> 
-      [-Tag <hashtable>] 
-      [-DefaultProfile <IAzureContextContainer>]
-      [-WhatIf]
-      [-Confirm]
-      [<CommonParameters>]
+Update-AzDataCollectionRule -InputObject <PSDataCollectionRuleResource> [-Tag <Hashtable>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
 The **Update-AzDataCollectionRule** cmdlet updates a data collection rule Tags property.
 
-Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/azure/azure-monitor/platform/data-collection-rule-overview).
+Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
 
 ## EXAMPLES
 
@@ -61,7 +45,7 @@ Update-AzDataCollectionRule -RuleName 'newDcr' `
 ```
 
 ```output
-Description       : 
+Description       :
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
 DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
@@ -83,7 +67,7 @@ Update-AzDataCollectionRule -RuleId '/subscriptions/{subId}/resourceGroups/testd
 ```
 
 ```output
-Description       : 
+Description       :
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
 DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
@@ -105,7 +89,7 @@ $dcr | Update-AzDataCollectionRule -Tag @{"tag1"="value1"; "tag2"="value2"}
 ```
 
 ```output
-Description       : 
+Description       :
 DataSources       : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDataSources
 Destinations      : Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleDestinations
 DataFlows         : {Microsoft.Azure.Commands.Insights.OutputClasses.PSDataFlow}
@@ -137,6 +121,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -InputObject
+PSDataCollectionRuleResource Object
+
+```yaml
+Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
+Parameter Sets: ByInputObject
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
 ### -ResourceGroupName
 The resource group name
 
@@ -144,21 +143,6 @@ The resource group name
 Type: System.String
 Parameter Sets: ByName
 Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -RuleName
-The resource name
-
-```yaml
-Type: System.String
-Parameter Sets: ByName
-Aliases: Name
 
 Required: True
 Position: Named
@@ -178,22 +162,22 @@ Aliases: ResourceId
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True
+Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -InputObject
-PSDataCollectionRuleResource Object
+### -RuleName
+The resource name
 
 ```yaml
-Type: Microsoft.Azure.Commands.Insights.OutputClasses.PSDataCollectionRuleResource
-Parameter Sets: ByInputObject
-Aliases:
+Type: System.String
+Parameter Sets: ByName
+Aliases: Name
 
 Required: True
 Position: Named
 Default value: None
-Accept pipeline input: True
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -205,7 +189,7 @@ Type: System.Collections.Hashtable
 Parameter Sets: (All)
 Aliases:
 
-Required: Falose
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False

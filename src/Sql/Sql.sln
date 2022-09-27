@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30711.63
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql", "Sql\Sql.csproj", "{69ED499E-6F3C-488F-86B8-B74CFDA4D47E}"
 EndProject
@@ -31,6 +31,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor", "..\Monitor\Monitor\Monitor.csproj", "{DEA446A1-84E2-46CC-B780-EB4AFDE2460E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KeyVault", "..\KeyVault\KeyVault\KeyVault.csproj", "{9BDC0965-CC31-4767-9D8C-BAF4C0DB3C06}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sql.Sdk", "Sql.Sdk\Sql.Sdk.csproj", "{EEFA7E00-46FE-445B-8CE9-10DBDB46CA05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,10 @@ Global
 		{9BDC0965-CC31-4767-9D8C-BAF4C0DB3C06}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BDC0965-CC31-4767-9D8C-BAF4C0DB3C06}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BDC0965-CC31-4767-9D8C-BAF4C0DB3C06}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEFA7E00-46FE-445B-8CE9-10DBDB46CA05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEFA7E00-46FE-445B-8CE9-10DBDB46CA05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEFA7E00-46FE-445B-8CE9-10DBDB46CA05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEFA7E00-46FE-445B-8CE9-10DBDB46CA05}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

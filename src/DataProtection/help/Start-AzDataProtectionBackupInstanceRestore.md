@@ -40,6 +40,8 @@ $restoreRequest = Initialize-AzDataProtectionRestoreRequest -DatasourceType Azur
 Start-AzDataProtectionBackupInstanceRestore -BackupInstanceName $instance.BackupInstanceName -ResourceGroupName sarath-rg -VaultName sarath-vault -SubscriptionId "xxx-xxx-xxx" -Parameter $restorerequest
 ```
 
+
+
 ### Example 2: Trigger restore as DB for protected AzureDatabaseForPostgreSQL using secret store.
 ```powershell
 $instance = Get-AzDataProtectionBackupInstance -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" -ResourceGroupName "resourceGroupName" -VaultName "vaultName"
@@ -170,7 +172,7 @@ Azure backup restore request
 To construct, see NOTES section for PARAMETER properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupRestoreRequest
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupRestoreRequest
 Parameter Sets: Trigger
 Aliases:
 
@@ -201,7 +203,7 @@ Gets or sets the restore target information.
 To construct, see NOTES section for RESTORETARGETINFO properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IRestoreTargetInfoBase
+Type: Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IRestoreTargetInfoBase
 Parameter Sets: TriggerExpanded
 Aliases:
 
@@ -308,11 +310,11 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IAzureBackupRestoreRequest
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IAzureBackupRestoreRequest
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IOperationJobExtendedInfo
+### Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IOperationJobExtendedInfo
 
 ## NOTES
 
@@ -323,7 +325,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-PARAMETER `<IAzureBackupRestoreRequest>`: Azure backup restore request
+`PARAMETER <IAzureBackupRestoreRequest>`: Azure backup restore request
   - `ObjectType <String>`: 
   - `RestoreTargetInfo <IRestoreTargetInfoBase>`: Gets or sets the restore target information.
     - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
@@ -331,7 +333,7 @@ PARAMETER `<IAzureBackupRestoreRequest>`: Azure backup restore request
   - `SourceDataStoreType <SourceDataStoreType>`: Gets or sets the type of the source data store.
   - `[SourceResourceId <String>]`: Fully qualified Azure Resource Manager ID of the datasource which is being recovered.
 
-RESTORETARGETINFO `<IRestoreTargetInfoBase>`: Gets or sets the restore target information.
+`RESTORETARGETINFO <IRestoreTargetInfoBase>`: Gets or sets the restore target information.
   - `ObjectType <String>`: Type of Datasource object, used to initialize the right inherited type
   - `[RestoreLocation <String>]`: Target Restore region
 

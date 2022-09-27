@@ -1756,7 +1756,7 @@ function Test-VpnSiteLinkConnectionGetIkeSa
 		Update-AzVpnSite -InputObject $vpnSite1 -VpnSiteLink $vpnSiteLink1
 		$vpnSite1 = Get-AzVpnSite -ResourceGroupName $rgName -Name $vpnSite1Name
 
-		Start-Sleep -Seconds 350
+		Start-TestSleep -Seconds 350
 
 		# Get IKE Security Associations for VPN Site Link Connections
 		$ikesa1 = Get-AzVpnSiteLinkConnectionIkeSa -ResourceGroupName $rgName -VpnGatewayName $vpnGateway1Name -VpnConnectionName $vpnConnection1Name -Name $vpnSiteLinkConnection1Name

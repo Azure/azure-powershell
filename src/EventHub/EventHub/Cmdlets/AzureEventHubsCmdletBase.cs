@@ -144,28 +144,6 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
             internal const string Premium = "Premium";
         }
 
-        protected struct MetricIdValues
-        {
-            internal const string IncomingBytes = "IncomingBytes";
-            internal const string OutgoingBytes = "OutgoingBytes";
-            internal const string IncomingMessages = "IncomingMessages";
-            internal const string OutgoingMessages = "OutgoingMessages";
-        }
-
-        protected struct PrivateEndpointConnectionState
-        {
-            internal const string Pending = "Pending";
-            internal const string Approved = "Approved";
-            internal const string Rejected = "Rejected";
-            internal const string Disconnected = "Disconnected";
-        }
-
-        protected struct RegeneKeys
-        {
-            internal const string PrimaryKey = "PrimaryKey";
-            internal const string SecondaryKey = "SecondaryKey";
-        }
-
         protected const string NamespaceURL = "Microsoft.EventHub/namespaces";
         protected const string SchemaGroupURL = "Microsoft.EventHub/namespaces/schemagroups";
         protected const string ApplicationGroupURL = "Microsoft.EventHub/namespaces/applicationgroups";
@@ -174,6 +152,10 @@ namespace Microsoft.Azure.Commands.EventHub.Commands
 
         protected static TimeSpan LongRunningOperationDefaultTimeout = TimeSpan.FromMinutes(1);
         private EventHubsClient  _client;
+
+        public const string BreakingChangeNotification = "- PLEASE REFER OUR MIGRATION GUIDE https://go.microsoft.com/fwlink/?linkid=2204690 TO KNOW MORE ABOUT BREAKING CHANGES.";
+        public const string DeprecateByVersion = "Az 9.0";
+        public const string ChangeInEffectByDate = "12th October, 2022";
         
         public EventHubsClient UtilityClient
         {

@@ -1,0 +1,258 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "namespace_name": {
+      "defaultValue": "AutomatedPSTesting",
+      "type": "String"
+    },
+    "namespace_auth_rule_name": {
+      "defaultValue": "namespaceAuthRule",
+      "type": "String"
+    },
+    "eventhub_auth_rule_name": {
+      "defaultValue": "eventHubAuthRule",
+      "type": "String"
+    },
+    "eventhub_name": {
+      "defaultValue": "eventHub",
+      "type": "String"
+    },
+    "schema_group_name": {
+      "defaultValue": "schemaGroup",
+      "type": "String"
+    },
+    "appgroup_name": {
+      "defaultValue": "appGroup",
+      "type": "String"
+    },
+    "namespaceResourceId": {
+      "defaultValue": "id",
+      "type": "String"
+    },
+    "peName1": {
+      "defaultValue": "pe1",
+      "type": "String"
+    },
+    "peName2": {
+      "defaultValue": "pe2",
+      "type": "String"
+    }
+  },
+  "variables": {
+    "appGroupResourceName": "[concat(parameters('namespace_name'), '/', parameters('appgroup_name'))]",
+    "eventHubResourceName": "[concat(parameters('namespace_name'), '/', parameters('eventhub_name'))]",
+    "authRuleResourceName": "[concat(parameters('namespace_name'), '/', parameters('namespace_auth_rule_name'))]",
+    "eventHubAuthRuleResourceName": "[concat(parameters('namespace_name'), '/', parameters('eventhub_name'), '/', parameters('eventhub_auth_rule_name'))]",
+    "schemaGroupResourceName": "[concat(parameters('namespace_name'), '/', parameters('schema_group_name'))]",
+    "rootAuthRuleResourceName": "[concat(parameters('namespace_name'), '/RootManageSharedAccessKey')]",
+    "defaultNetworkRuleResourceName": "[concat(parameters('namespace_name'), '/default')]",
+    "consumerGroupResourceName": "[concat(parameters('namespace_name'), '/', parameters('eventhub_name'),'/$Default')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.EventHub/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('namespace_name')]",
+      "location": "eastus",
+      "sku": {
+        "name": "Premium",
+        "tier": "Premium",
+        "capacity": 1
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": true,
+        "isAutoInflateEnabled": false,
+        "maximumThroughputUnits": 0,
+        "kafkaEnabled": true
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/applicationGroups",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[variables('appGroupResourceName')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "clientAppGroupIdentifier": "SASKeyName=RootManageSharedAccessKey",
+        "policies": [
+          {
+            "type": "ThrottlingPolicy",
+            "name": "t1",
+            "metricId": "IncomingBytes",
+            "rateLimitThreshold": 10234
+          }
+        ],
+        "isEnabled": true
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[variables('authRuleResourceName')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Manage",
+          "Listen",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/AuthorizationRules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[variables('rootAuthRuleResourceName')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Listen",
+          "Manage",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[variables('eventHubResourceName')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "messageRetentionInDays": 1,
+        "partitionCount": 1,
+        "status": "Active"
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/networkRuleSets",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[variables('defaultNetworkRuleResourceName')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "publicNetworkAccess": "Enabled",
+        "defaultAction": "Allow",
+        "virtualNetworkRules": [],
+        "ipRules": []
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/schemagroups",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[variables('schemaGroupResourceName')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "groupProperties": {},
+        "schemaCompatibility": "None",
+        "schemaType": "Avro"
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/authorizationrules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[variables('eventHubAuthRuleResourceName')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespace_name'), parameters('eventhub_name'))]",
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Manage",
+          "Listen",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.EventHub/namespaces/eventhubs/consumergroups",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[variables('consumerGroupResourceName')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces/eventhubs', parameters('namespace_name'), parameters('eventhub_name'))]",
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.Network/privateEndpoints",
+      "apiVersion": "2020-11-01",
+      "name": "[parameters('peName1')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "privateLinkServiceConnections": [],
+        "manualPrivateLinkServiceConnections": [
+          {
+            "name": "connection1",
+            "properties": {
+              "privateLinkServiceId": "[parameters('namespaceResourceId')]",
+              "groupIds": [
+                "namespace"
+              ],
+              "privateLinkServiceConnectionState": {
+                "status": "Pending"
+              },
+              "requestMessage": "Hello"
+            }
+          }
+        ],
+        "subnet": {
+          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/privateEndpoints",
+      "apiVersion": "2020-11-01",
+      "name": "[parameters('peName2')]",
+      "location": "eastus",
+      "dependsOn": [
+        "[resourceId('Microsoft.EventHub/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "privateLinkServiceConnections": [],
+        "manualPrivateLinkServiceConnections": [
+          {
+            "name": "connection2",
+            "properties": {
+              "privateLinkServiceId": "[parameters('namespaceResourceId')]",
+              "groupIds": [
+                "namespace"
+              ],
+              "privateLinkServiceConnectionState": {
+                "status": "Pending"
+              },
+              "requestMessage": "Hello"
+            }
+          }
+        ],
+        "subnet": {
+          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default"
+        }
+      }
+    }
+  ]
+}
