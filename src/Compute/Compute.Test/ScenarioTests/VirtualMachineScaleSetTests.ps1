@@ -2771,7 +2771,6 @@ function Test-VirtualMachineScaleSetSpotRestorePolicy
     $rgname = Get-ComputeTestResourceName
     try
     {
-        
         # Common
         [string]$loc = "eastus";
 
@@ -3451,6 +3450,256 @@ function Test-VirtualMachineScaleSetGuestAttestation
         Assert-AreEqual $extDefaultName $vmssvm.Resources[2].Name;
 
 
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
+A helper function to validate the PriorityMix split between Spot and Regular priority VMs in a VMSS with Flexible OrchestrationMode
+#>
+function ValidatePriorityMixSplit($vmssVMList, $expectedRegularPriorityCount, $expectedSpotPriorityCount)
+{
+    $regularCountActual = 0;
+    $spotCountActual = 0; 
+
+    # we need to do an individual call on each vm since the Get-AzVmssVM cmdlet returns a limited list of VM properties
+    Foreach($vm in $vmssVMList)
+    {
+        $vmName = $vm.Name;
+        $vmResponse = Get-AzVM -ResourceGroupName $rgname -Name $vmName; 
+
+        Assert-NotNull $vmResponse;
+
+        $vmPriority = $vmResponse.Priority;
+
+        if($vmPriority -eq "Regular"){ $regularCountActual += 1 }
+        elseif($vmPriority -eq "Spot"){ $spotCountActual += 1 }
+    }
+
+    Assert-AreEqual $expectedRegularPriorityCount $regularCountActual;
+    Assert-AreEqual $expectedSpotPriorityCount $spotCountActual;
+}
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set PriorityMixPolicy for VMSS with Flexible OrchestrationMode  
+#>
+function Test-VirtualMachineScaleSetPriorityMixPolicy
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+
+    try
+    {
+        $loc = "eastus";
+        $vmssName = "PriMixPol";
+        $vmNamePrefix = "VMPriMix";
+        $vmssInstanceCount = 2;
+        $vmssSku = "Standard_DS1_v2";
+
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $securePassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;  
+        $cred = New-Object System.Management.Automation.PSCredential ("azureuser", $securePassword);
+
+        $vnetname = "myVnet";
+        $vnetAddress = "10.0.0.0/16";
+        $subnetname = "default-slb";
+        $subnetAddress = "10.0.2.0/24";
+
+        # set up networking
+        # VMSS Flex requires explicit outbound access
+        $frontendSubnet = New-AzVirtualNetworkSubnetConfig -Name $subnetname -AddressPrefix $subnetAddress;
+        $virtualNetwork = New-AzVirtualNetwork -Name $vnetname -ResourceGroupName $rgname -Location $loc -AddressPrefix $vnetAddress -Subnet $frontendSubnet;
+
+        # # Create a public IP address
+        $publicIP = New-AzPublicIpAddress `
+            -ResourceGroupName $rgname `
+            -Location $loc `
+            -AllocationMethod Static `
+            -Sku "Standard" `
+            -IpAddressVersion "IPv4" `
+            -Name "myLBPublicIP";
+
+        # Create a frontend and backend IP pool
+        $frontendIP = New-AzLoadBalancerFrontendIpConfig `
+            -Name "myFrontEndPool" `
+            -PublicIpAddress $publicIP;
+
+        $backendPool = New-AzLoadBalancerBackendAddressPoolConfig `
+            -Name "myBackEndPool" ;
+
+        # Create the load balancer
+        $lb = New-AzLoadBalancer `
+            -ResourceGroupName $rgname `
+            -Name "myLoadBalancer" `
+            -Sku "Standard" `
+            -Tier "Regional" `
+            -Location $loc `
+            -FrontendIpConfiguration $frontendIP `
+            -BackendAddressPool $backendPool ;
+
+        # # Create a load balancer health probe for TCP port 80
+        Add-AzLoadBalancerProbeConfig -Name "myHealthProbe" `
+            -LoadBalancer $lb `
+            -Protocol TCP `
+            -Port 80 `
+            -IntervalInSeconds 15 `
+            -ProbeCount 2;
+
+        # # Create a load balancer rule to distribute traffic on port TCP 80
+        # # The health probe from the previous step is used to make sure that traffic is
+        # # only directed to healthy VM instances
+        Add-AzLoadBalancerRuleConfig `
+            -Name "myLoadBalancerRule" `
+            -LoadBalancer $lb `
+            -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
+            -BackendAddressPool $lb.BackendAddressPools[0] `
+            -Protocol TCP `
+            -FrontendPort 80 `
+            -BackendPort 80 `
+            -DisableOutboundSNAT `
+            -Probe (Get-AzLoadBalancerProbeConfig -Name "myHealthProbe" -LoadBalancer $lb);
+
+        # Add outbound connectivity rule
+        Add-AzLoadBalancerOutboundRuleConfig `
+            -Name "outboundrule" `
+            -LoadBalancer $lb `
+            -AllocatedOutboundPort '9000' `
+            -Protocol 'All' `
+            -IdleTimeoutInMinutes '15' `
+            -FrontendIpConfiguration $lb.FrontendIpConfigurations[0] `
+            -BackendAddressPool $lb.BackendAddressPools[0] ;
+
+        # Update the load balancer configuration
+        Set-AzLoadBalancer -LoadBalancer $lb;
+
+        # Create IP address configurations
+        # Instances will require explicit outbound connectivity, for example
+        # - NAT Gateway on the subnet (recommended)
+        # - Instances in backend pool of Standard LB with outbound connectivity rules
+        # - Public IP address on each instance
+        # See aka.ms/defaultoutboundaccess for more info
+        $ipConfig = New-AzVmssIpConfig `
+            -Name "myIPConfig" `
+            -SubnetId $virtualNetwork.Subnets[0].Id `
+            -LoadBalancerBackendAddressPoolsId $lb.BackendAddressPools[0].Id `
+            -Primary;
+
+        $baseRegularPriorityVMCount = 0;
+        $regularPriorityVMPercentage = 50;
+
+        # Create a config object
+        # The VMSS config object stores the core information for creating a scale set
+        $vmssConfig = New-AzVmssConfig `
+            -Location $loc `
+            -SkuCapacity $vmssInstanceCount `
+            -SkuName $vmssSku `
+            -OrchestrationMode 'Flexible' `
+            -EvictionPolicy 'Delete' `
+            -PlatformFaultDomainCount 1 `
+            -Priority 'Spot' `
+            -RegularPriorityCount $baseRegularPriorityVMCount `
+            -RegularPriorityPercentage $regularPriorityVMPercentage;
+
+        # Reference a virtual machine image from the gallery
+        Set-AzVmssStorageProfile $vmssConfig `
+            -OsDiskCreateOption "FromImage" `
+            -ImageReferencePublisher "MicrosoftWindowsServer" `
+            -ImageReferenceOffer "WindowsServer" `
+            -ImageReferenceSku "2022-datacenter-azure-edition-core-smalldisk" `
+            -ImageReferenceVersion "latest";    
+
+        # Set up information for authenticating with the virtual machine
+        Set-AzVmssOsProfile $vmssConfig `
+            -AdminUsername $cred.UserName `
+            -AdminPassword $cred.Password `
+            -ComputerNamePrefix $vmNamePrefix `
+            -WindowsConfigurationProvisionVMAgent $true `
+            -WindowsConfigurationPatchMode "AutomaticByPlatform" `
+            -EnableHotpatching;
+
+        # Attach the virtual network to the config object
+        Add-AzVmssNetworkInterfaceConfiguration `
+            -VirtualMachineScaleSet $vmssConfig `
+            -Name "network-config" `
+            -Primary $true `
+            -IPConfiguration $ipConfig `
+            -NetworkApiVersion '2020-11-01' ;
+
+        # Define the Application Health extension properties
+        $publicConfig = @{"protocol" = "http"; "port" = 80; "requestPath" = "/healthEndpoint"};
+        $extensionName = "myHealthExtension";
+        $extensionType = "ApplicationHealthWindows";
+        $publisher = "Microsoft.ManagedServices";
+
+        # Add the Application Health extension to the scale set model
+        Add-AzVmssExtension -VirtualMachineScaleSet $vmssConfig `
+            -Name $extensionName `
+            -Publisher $publisher `
+            -Setting $publicConfig `
+            -Type $extensionType `
+            -TypeHandlerVersion "1.0" `
+            -AutoUpgradeMinorVersion $True;
+
+        # Create the scale set with the config object
+        New-AzVmss `
+            -ResourceGroupName $rgname `
+            -Name $vmssName `
+            -VirtualMachineScaleSet $vmssConfig;   
+            
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
+      
+        Assert-AreEqual $baseRegularPriorityVMCount $vmss.PriorityMixPolicy.BaseRegularPriorityCount;
+        Assert-AreEqual $regularPriorityVMPercentage $vmss.PriorityMixPolicy.RegularPriorityPercentageAboveBase;
+
+        # validate priority mix split after create 
+        $vmssVMsAfterCreate = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName 
+        $expectedRegularCount = 1; 
+        $expectedSpotCount = 1; 
+
+        ValidatePriorityMixSplit $vmssVMsAfterCreate $expectedRegularCount $expectedSpotCount;
+
+        # perform a scale out with updated priority mix policy 
+        $scaleOutCapacity = $vmssInstanceCount + 4; 
+        $updatedRegularPriorityCount = 2;
+        $updatedRegularPriorityPercentage = 33;
+
+        $vmss.sku.Capacity = $scaleOutCapacity;
+        $vmss.PriorityMixPolicy.BaseRegularPriorityCount = $updatedRegularPriorityCount;
+        $vmss.PriorityMixPolicy.RegularPriorityPercentageAboveBase = $updatedRegularPriorityPercentage;
+    
+        Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
+
+        # validate the vmss with updated priority mix parameters
+        Assert-AreEqual $updatedRegularPriorityCount $vmss.PriorityMixPolicy.BaseRegularPriorityCount;
+        Assert-AreEqual $updatedRegularPriorityPercentage $vmss.PriorityMixPolicy.RegularPriorityPercentageAboveBase;
+
+        $vmssVMsAfterScaleOut = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $expectedRegularCount = 3; 
+        $expectedSpotCount = 3; 
+
+        ValidatePriorityMixSplit $vmssVMsAfterScaleOut $expectedRegularCount $expectedSpotCount;
+
+        # perform a scale in while keeping priority mix policy the same 
+        $scaleInCapacity = $scaleOutCapacity - 4
+        $vmss.sku.capacity = $scaleInCapacity;
+
+        Update-AzVmss -ResourceGroupName $rgname -Name $vmssName -VirtualMachineScaleSet $vmss;
+        $vmss = Get-AzVmss -ResourceGroupName $rgname -Name $vmssName;
+
+        # validate the VMSS after scale in
+        $vmssVMsAfterScaleIn = Get-AzVmssVM -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        $expectedRegularCount = 2;
+        $expectedSpotCount = 0;  
+
+        ValidatePriorityMixSplit $vmssVMsAfterScaleIn $expectedRegularCount $expectedSpotCount;
     }
     finally
     {
