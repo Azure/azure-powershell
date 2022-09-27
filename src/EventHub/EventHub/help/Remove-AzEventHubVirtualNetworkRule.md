@@ -15,13 +15,13 @@ Removes the single given VirtualNetworkRule for the NetworkRuleSet of the Namesp
 ### VirtualNetworkRulePropertiesParameterSet (Default)
 ```
 Remove-AzEventHubVirtualNetworkRule [-ResourceGroupName] <String> [-Name] <String> [-SubnetId] <String>
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-PassThru] [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### VirtualNetworkRuleInputObjectParameterSet
 ```
 Remove-AzEventHubVirtualNetworkRule [-ResourceGroupName] <String> [-Name] <String>
- [-VirtualNetworkRuleObject] <PSNWRuleSetVirtualNetworkRulesAttributes>
+ [-VirtualNetworkRuleObject] <PSNWRuleSetVirtualNetworkRulesAttributes> [-PassThru] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,7 +43,6 @@ Remove-AzEventHubVirtualNetworkRule -ResourceGroupName v-ajnavtest -Name Eventhu
 ```
 
 Remove the $virtualruleset1 of NetworkRuleSet for the given Namespace
-
 
 ## PARAMETERS
 
@@ -184,8 +183,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
@@ -198,5 +196,7 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ### Microsoft.Azure.Commands.EventHub.Models.PSNetworkRuleSetAttributes
 
 ## NOTES
+
+## RELATED LINKS
 
 ## RELATED LINKS
