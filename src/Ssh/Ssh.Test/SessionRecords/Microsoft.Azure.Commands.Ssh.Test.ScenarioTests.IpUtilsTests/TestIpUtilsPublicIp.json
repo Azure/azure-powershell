@@ -1,0 +1,213 @@
+{
+  "Entries": [
+    {
+      "RequestUri": "/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Compute/virtualMachines/public-ip-rhel8?api-version=2022-03-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGEzNjNlOGMtYTcyOC00OTcwLTgxMDgtZDEwNGI2M2NiNzRmL3Jlc291cmNlR3JvdXBzL2F6c3NoX3Bvd2Vyc2hlbGxfaXB1dGlsc190ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuQ29tcHV0ZS92aXJ0dWFsTWFjaGluZXMvcHVibGljLWlwLXJoZWw4P2FwaS12ZXJzaW9uPTIwMjItMDMtMDE=",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "1bc8eae9-4540-48b7-bae0-15a3a4064a03"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.ComputeManagementClient/0.1.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-ratelimit-remaining-resource": [
+          "Microsoft.Compute/LowCostGet3Min;3996,Microsoft.Compute/LowCostGet30Min;31984"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "x-ms-request-id": [
+          "c0d13f3e-50ca-4530-b3e4-ddb7ba29ce68"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-correlation-request-id": [
+          "8d5da9a2-7322-49f0-893f-5ee25b4ed843"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20220831T204741Z:8d5da9a2-7322-49f0-893f-5ee25b4ed843"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 20:47:41 GMT"
+        ],
+        "Content-Length": [
+          "3524"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"public-ip-rhel8\",\r\n  \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Compute/virtualMachines/public-ip-rhel8\",\r\n  \"type\": \"Microsoft.Compute/virtualMachines\",\r\n  \"location\": \"southcentralus\",\r\n  \"tags\": {\r\n    \"platformsettings.host_environment.service.platform_optedin_for_rootcerts\": \"true\"\r\n  },\r\n  \"identity\": {\r\n    \"type\": \"UserAssigned\",\r\n    \"userAssignedIdentities\": {\r\n      \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/AzSecPackAutoConfigRG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/AzSecPackAutoConfigUA-southcentralus\": {\r\n        \"principalId\": \"a06281a0-0e93-402d-8d61-4e71c82bc209\",\r\n        \"clientId\": \"05b76287-d407-4fcf-879e-642d40ec6da0\"\r\n      }\r\n    }\r\n  },\r\n  \"properties\": {\r\n    \"vmId\": \"d1a3b3bb-b8da-49df-a25d-5a12087f4d94\",\r\n    \"hardwareProfile\": {\r\n      \"vmSize\": \"Standard_DS1_v2\"\r\n    },\r\n    \"storageProfile\": {\r\n      \"imageReference\": {\r\n        \"publisher\": \"RedHat\",\r\n        \"offer\": \"RHEL\",\r\n        \"sku\": \"82gen2\",\r\n        \"version\": \"latest\",\r\n        \"exactVersion\": \"8.2.2022031402\"\r\n      },\r\n      \"osDisk\": {\r\n        \"osType\": \"Linux\",\r\n        \"name\": \"public-ip-rhel8_OsDisk_1_63aad6afe9784a78b1a6b59d2d755412\",\r\n        \"createOption\": \"FromImage\",\r\n        \"caching\": \"ReadWrite\",\r\n        \"managedDisk\": {\r\n          \"storageAccountType\": \"Premium_LRS\",\r\n          \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Compute/disks/public-ip-rhel8_OsDisk_1_63aad6afe9784a78b1a6b59d2d755412\"\r\n        },\r\n        \"deleteOption\": \"Delete\",\r\n        \"diskSizeGB\": 64\r\n      },\r\n      \"dataDisks\": []\r\n    },\r\n    \"osProfile\": {\r\n      \"computerName\": \"public-ip-rhel8\",\r\n      \"adminUsername\": \"azureuser\",\r\n      \"linuxConfiguration\": {\r\n        \"disablePasswordAuthentication\": true,\r\n        \"ssh\": {\r\n          \"publicKeys\": [\r\n            {\r\n              \"path\": \"/home/azureuser/.ssh/authorized_keys\",\r\n              \"keyData\": \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQD4gacxtEvRovf95mYZBQUtukc0Kx4WRX9WFq8wDPTUlvayE+5ddGsQGwznT80Qa/VqJSWbo24+X5YkM+IOSNV+6YE6Yo9oTCe8PDNAdRUk01k0hURNcQ9lO48+pSf2vWMDFEYuR8N9d28x0mcizlERMAnlEkCWFF/7xYRDtA+CITfBd4lnAx+585HtJC1r3+UpKnSYTHIiCXWZKypcaEc2bEourjfZA2+ANNjbBw0VQLUARwHXHywMUmzb/nCSrObLOPJrcYo38l3L8WDhnUP4cvMk1fuwMBqtUkAnGeXjZ6+7XHvyxJ7Wdlhby9LwZAjb936oTvTSRDx6LE+xH4Zs6HS1XU0m/j1MGq2b8P0PjkJeZEl4PgIyvC0ttp8d4tKu+o6vD0KbIORfPiy41KBzvzKGiHr10fy9Jv0KI6nzK9ITEZJlwL3ddp3QnjbKUZWhrIKF5ryUP30BCED4Z6rH0EsUB127JZV/82OvQlFLNdwLxPb24vytRnDDD7m20nU= generated-by-azure\"\r\n            }\r\n          ]\r\n        },\r\n        \"provisionVMAgent\": true,\r\n        \"patchSettings\": {\r\n          \"patchMode\": \"ImageDefault\",\r\n          \"assessmentMode\": \"ImageDefault\"\r\n        },\r\n        \"enableVMAgentPlatformUpdates\": false\r\n      },\r\n      \"secrets\": [],\r\n      \"allowExtensionOperations\": true,\r\n      \"requireGuestProvisionSignal\": true\r\n    },\r\n    \"networkProfile\": {\r\n      \"networkInterfaces\": [\r\n        {\r\n          \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Network/networkInterfaces/public-ip-rhel8618_z1\",\r\n          \"properties\": {\r\n            \"deleteOption\": \"Detach\"\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"diagnosticsProfile\": {\r\n      \"bootDiagnostics\": {\r\n        \"enabled\": true\r\n      }\r\n    },\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"timeCreated\": \"2022-08-31T16:36:03.8986922-04:00\"\r\n  },\r\n  \"zones\": [\r\n    \"1\"\r\n  ]\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Network/networkInterfaces/public-ip-rhel8618_z1?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGEzNjNlOGMtYTcyOC00OTcwLTgxMDgtZDEwNGI2M2NiNzRmL3Jlc291cmNlR3JvdXBzL2F6c3NoX3Bvd2Vyc2hlbGxfaXB1dGlsc190ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9uZXR3b3JrSW50ZXJmYWNlcy9wdWJsaWMtaXAtcmhlbDg2MThfejE/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "f266ddcb-2359-48d6-a4b8-7e5b8147cbbf"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.PowerShell.Ssh.Helpers.Network.NetworkManagementClient/0.1.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"28f0392e-433a-46da-91f3-ddedbd704a86\""
+        ],
+        "x-ms-request-id": [
+          "f52a14a6-4a3a-461c-97b3-e23f08405b17"
+        ],
+        "x-ms-correlation-request-id": [
+          "5031951d-12cd-4329-90a1-b4101a23eee0"
+        ],
+        "x-ms-arm-service-request-id": [
+          "00d3fa3c-0d88-43f2-9723-4b91f0be4aab"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11999"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20220831T204741Z:5031951d-12cd-4329-90a1-b4101a23eee0"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 20:47:41 GMT"
+        ],
+        "Content-Length": [
+          "3382"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"public-ip-rhel8618_z1\",\r\n  \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Network/networkInterfaces/public-ip-rhel8618_z1\",\r\n  \"etag\": \"W/\\\"28f0392e-433a-46da-91f3-ddedbd704a86\\\"\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"15f3bf77-cf47-4246-864c-0f29a7d7619e\",\r\n    \"ipConfigurations\": [\r\n      {\r\n        \"name\": \"ipconfig1\",\r\n        \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Network/networkInterfaces/public-ip-rhel8618_z1/ipConfigurations/ipconfig1\",\r\n        \"etag\": \"W/\\\"28f0392e-433a-46da-91f3-ddedbd704a86\\\"\",\r\n        \"type\": \"Microsoft.Network/networkInterfaces/ipConfigurations\",\r\n        \"properties\": {\r\n          \"provisioningState\": \"Succeeded\",\r\n          \"privateIPAddress\": \"10.2.0.4\",\r\n          \"privateIPAllocationMethod\": \"Dynamic\",\r\n          \"publicIPAddress\": {\r\n            \"name\": \"public-ip-rhel8-ip\",\r\n            \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Network/publicIPAddresses/public-ip-rhel8-ip\",\r\n            \"properties\": {\r\n              \"provisioningState\": \"Succeeded\",\r\n              \"resourceGuid\": \"6e1cb6bc-7b8a-441c-ae8b-2015d7e70fbb\",\r\n              \"publicIPAddressVersion\": \"IPv4\",\r\n              \"publicIPAllocationMethod\": \"Dynamic\",\r\n              \"idleTimeoutInMinutes\": 4,\r\n              \"ipTags\": [],\r\n              \"ipConfiguration\": {\r\n                \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Network/networkInterfaces/public-ip-rhel8618_z1/ipConfigurations/ipconfig1\"\r\n              },\r\n              \"deleteOption\": \"Detach\"\r\n            },\r\n            \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n            \"sku\": {\r\n              \"name\": \"Basic\",\r\n              \"tier\": \"Regional\"\r\n            }\r\n          },\r\n          \"subnet\": {\r\n            \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Network/virtualNetworks/azssh_powershell_iputils_testvnet884/subnets/default\"\r\n          },\r\n          \"primary\": true,\r\n          \"privateIPAddressVersion\": \"IPv4\"\r\n        }\r\n      }\r\n    ],\r\n    \"dnsSettings\": {\r\n      \"dnsServers\": [],\r\n      \"appliedDnsServers\": [],\r\n      \"internalDomainNameSuffix\": \"0u5gkewnprxenkgncfwpyex4dd.jx.internal.cloudapp.net\"\r\n    },\r\n    \"macAddress\": \"00-0D-3A-63-23-C0\",\r\n    \"enableAcceleratedNetworking\": true,\r\n    \"vnetEncryptionSupported\": false,\r\n    \"enableIPForwarding\": false,\r\n    \"networkSecurityGroup\": {\r\n      \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Network/networkSecurityGroups/public-ip-rhel8-nsg\"\r\n    },\r\n    \"primary\": true,\r\n    \"virtualMachine\": {\r\n      \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Compute/virtualMachines/public-ip-rhel8\"\r\n    },\r\n    \"hostedWorkloads\": [],\r\n    \"tapConfigurations\": [],\r\n    \"nicType\": \"Standard\"\r\n  },\r\n  \"type\": \"Microsoft.Network/networkInterfaces\",\r\n  \"location\": \"southcentralus\",\r\n  \"kind\": \"Regular\"\r\n}",
+      "StatusCode": 200
+    },
+    {
+      "RequestUri": "/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Network/publicIPAddresses/public-ip-rhel8-ip?api-version=2021-08-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGEzNjNlOGMtYTcyOC00OTcwLTgxMDgtZDEwNGI2M2NiNzRmL3Jlc291cmNlR3JvdXBzL2F6c3NoX3Bvd2Vyc2hlbGxfaXB1dGlsc190ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuTmV0d29yay9wdWJsaWNJUEFkZHJlc3Nlcy9wdWJsaWMtaXAtcmhlbDgtaXA/YXBpLXZlcnNpb249MjAyMS0wOC0wMQ==",
+      "RequestMethod": "GET",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "438f06ec-f2ea-48c2-89cd-a27e8b07c995"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.36202",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.PowerShell.Ssh.Helpers.Network.NetworkManagementClient/0.1.0"
+        ]
+      },
+      "RequestBody": "",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "ETag": [
+          "W/\"532e45b2-eecd-48ee-8225-14905b6504e2\""
+        ],
+        "x-ms-request-id": [
+          "f196e703-4d86-41f1-afbf-6a2d08646097"
+        ],
+        "x-ms-correlation-request-id": [
+          "088a404b-2e95-4d25-a41c-273698eafedf"
+        ],
+        "x-ms-arm-service-request-id": [
+          "6790a6fa-cc8e-40c3-b895-be92159e35ff"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "Server": [
+          "Microsoft-HTTPAPI/2.0",
+          "Microsoft-HTTPAPI/2.0"
+        ],
+        "x-ms-ratelimit-remaining-subscription-reads": [
+          "11998"
+        ],
+        "x-ms-routing-request-id": [
+          "CENTRALUS:20220831T204741Z:088a404b-2e95-4d25-a41c-273698eafedf"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Wed, 31 Aug 2022 20:47:41 GMT"
+        ],
+        "Content-Length": [
+          "979"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"name\": \"public-ip-rhel8-ip\",\r\n  \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Network/publicIPAddresses/public-ip-rhel8-ip\",\r\n  \"etag\": \"W/\\\"532e45b2-eecd-48ee-8225-14905b6504e2\\\"\",\r\n  \"location\": \"southcentralus\",\r\n  \"zones\": [\r\n    \"1\"\r\n  ],\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\",\r\n    \"resourceGuid\": \"402507d0-2944-4c07-a4c6-6d6fb0f01ed7\",\r\n    \"ipAddress\": \"40.124.136.94\",\r\n    \"publicIPAddressVersion\": \"IPv4\",\r\n    \"publicIPAllocationMethod\": \"Static\",\r\n    \"idleTimeoutInMinutes\": 4,\r\n    \"ipTags\": [],\r\n    \"ipConfiguration\": {\r\n      \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_iputils_test/providers/Microsoft.Network/networkInterfaces/public-ip-rhel8618_z1/ipConfigurations/ipconfig1\"\r\n    }\r\n  },\r\n  \"type\": \"Microsoft.Network/publicIPAddresses\",\r\n  \"sku\": {\r\n    \"name\": \"Standard\",\r\n    \"tier\": \"Regional\"\r\n  }\r\n}",
+      "StatusCode": 200
+    }
+  ],
+  "Names": {},
+  "Variables": {}
+}
