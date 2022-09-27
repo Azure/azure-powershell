@@ -509,7 +509,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DELIVERYPOLICYRULE <IDeliveryRule[]>: A list of the delivery rules.
+`DELIVERYPOLICYRULE <IDeliveryRule[]>`: A list of the delivery rules.
   - `Action <IDeliveryRuleAction1[]>`: A list of actions that are executed when all the conditions of a rule are satisfied.
     - `Name <DeliveryRuleAction>`: The name of the action for the delivery rule.
   - `Order <Int32>`: The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
@@ -517,12 +517,12 @@ DELIVERYPOLICYRULE <IDeliveryRule[]>: A list of the delivery rules.
     - `Name <MatchVariable>`: The name of the condition for the delivery rule.
   - `[Name <String>]`: Name of the rule
 
-GEOFILTER <IGeoFilter[]>: List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
+`GEOFILTER <IGeoFilter[]>`: List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
   - `Action <GeoFilterActions>`: Action of the geo filter, i.e. allow or block access.
   - `CountryCode <String[]>`: Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US.
   - `RelativePath <String>`: Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)
 
-ORIGIN <IDeepCreatedOrigin[]>: The source of the content being delivered via CDN.
+`ORIGIN <IDeepCreatedOrigin[]>`: The source of the content being delivered via CDN.
   - `Name <String>`: Origin name which must be unique within the endpoint. 
   - `[Enabled <Boolean?>]`: Origin is enabled for load balancing or not. By default, origin is always enabled.
   - `[HostName <String>]`: The address of the origin. It can be a domain name, IPv4 address, or IPv6 address. This should be unique across all origins in an endpoint.
@@ -536,7 +536,7 @@ ORIGIN <IDeepCreatedOrigin[]>: The source of the content being delivered via CDN
   - `[PrivateLinkResourceId <String>]`: The Resource Id of the Private Link resource. Populating this optional field indicates that this backend is 'Private'
   - `[Weight <Int32?>]`: Weight of the origin in given origin group for load balancing. Must be between 1 and 1000
 
-ORIGINGROUP <IDeepCreatedOriginGroup[]>: The origin groups comprising of origins that are used for load balancing the traffic based on availability.
+`ORIGINGROUP <IDeepCreatedOriginGroup[]>`: The origin groups comprising of origins that are used for load balancing the traffic based on availability.
   - `Name <String>`: Origin group name which must be unique within the endpoint.
   - `[HealthProbeSetting <IHealthProbeParameters>]`: Health probe settings to the origin that is used to determine the health of the origin.
     - `[ProbeIntervalInSecond <Int32?>]`: The number of seconds between health probes.Default is 240sec.
@@ -553,7 +553,7 @@ ORIGINGROUP <IDeepCreatedOriginGroup[]>: The origin groups comprising of origins
     - `[ResponseBasedFailoverThresholdPercentage <Int32?>]`: The percentage of failed requests in the sample where failover should trigger.
   - `[TrafficRestorationTimeToHealedOrNewEndpointsInMinute <Int32?>]`: Time in minutes to shift the traffic to the endpoint gradually when an unhealthy endpoint comes healthy or a new endpoint is added. Default is 10 mins. This property is currently not supported.
 
-URLSIGNINGKEY <IUrlSigningKey[]>: List of keys used to validate the signed URL hashes.
+`URLSIGNINGKEY <IUrlSigningKey[]>`: List of keys used to validate the signed URL hashes.
   - `KeyId <String>`: Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.
   - `KeySourceParameterResourceGroupName <String>`: Resource group of the user's Key Vault containing the secret
   - `KeySourceParameterSecretName <String>`: The name of secret in Key Vault.

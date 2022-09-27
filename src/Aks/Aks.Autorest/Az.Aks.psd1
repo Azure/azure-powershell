@@ -11,8 +11,8 @@
   DotNetFrameworkVersion = '4.7.2'
   RequiredAssemblies = './bin/Az.Aks.private.dll'
   FormatsToProcess = './Az.Aks.format.ps1xml'
-  FunctionsToExport = 'Get-AzAksNodePoolUpgradeProfile', 'Get-AzAksUpgradeProfile', 'Get-AzAksVersion', 'Start-AzAksCluster', 'Stop-AzAksCluster', '*'
-  AliasesToExport = 'Get-AzAksClusterUpgradeProfile', '*'
+  FunctionsToExport = 'Get-AzAksNodePoolUpgradeProfile', 'Get-AzAksUpgradeProfile', 'Get-AzAksVersion', 'Install-AzAksCliTool', 'Start-AzAksCluster', 'Stop-AzAksCluster', '*'
+  AliasesToExport = 'Get-AzAksClusterUpgradeProfile', 'Install-AzAksKubectl', '*'
   PrivateData = @{
     PSData = @{
       Tags = 'Azure', 'ResourceManager', 'ARM', 'PSModule', 'Aks'
