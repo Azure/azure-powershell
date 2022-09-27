@@ -55,6 +55,12 @@ Get-AzADApplication [-Select <String[]>] -IdentifierUri <String> [-First <UInt64
  [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzADApplication [-Select <String[]>] [-Count] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Lists entities from applications or get entity from applications by key
 
@@ -141,6 +147,21 @@ Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-
 ```yaml
 Type: System.String
 Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Count
+Include count of items
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
 Aliases:
 
 Required: False

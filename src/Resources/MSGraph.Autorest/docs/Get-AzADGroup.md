@@ -25,6 +25,12 @@ Get-AzADGroup -DisplayName <String> [-AppendSelected] [-ConsistencyLevel <String
  [-First <UInt64>] [-Select <String[]>] [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzADGroup [-Count] [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>]
+ [-Select <String[]>] [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### ObjectIdParameterSet
 ```
 Get-AzADGroup -ObjectId <Guid> [-AppendSelected] [-ConsistencyLevel <String>] [-Expand <String[]>]
@@ -95,6 +101,21 @@ Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-
 ```yaml
 Type: System.String
 Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Count
+Include count of items
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
 Aliases:
 
 Required: False
