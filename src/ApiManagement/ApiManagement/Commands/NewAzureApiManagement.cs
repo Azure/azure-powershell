@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = false,
             HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Basic, Standard, Premium and Consumption. The default value is Developer. ")]
         [ValidateSet("Developer", "Basic", "Standard", "Premium", "Consumption"), PSDefaultValue(Value = "Developer")]
-        public PsApiManagementSku? Sku { get; set; }
+        public string? Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,
@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
                     AdminEmail,
                     Tag,
                     EnableClientCertificate.IsPresent,
-                    Sku ?? PsApiManagementSku.Developer,
+                    Sku ?? SkuType.Developer,
                     Capacity,
                     VpnType,
                     VirtualNetwork,
