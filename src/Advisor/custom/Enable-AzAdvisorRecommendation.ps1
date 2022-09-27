@@ -13,7 +13,7 @@ param(
 
     ${RecommendationName},
 
-    [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory, HelpMessage='The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.')]
+    [Parameter(ParameterSetName='InputObjectParameterSet', Mandatory, ValueFromPipeline, HelpMessage='The powershell object type PsAzureAdvisorResourceRecommendationBase returned by Get-AzAdvisorRecommendation call.')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Advisor.Models.IAdvisorIdentity]
 

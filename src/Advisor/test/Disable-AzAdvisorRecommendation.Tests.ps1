@@ -24,4 +24,10 @@ Describe 'Disable-AzAdvisorRecommendation' {
         $Advisor =  Disable-AzAdvisorRecommendation -RecommendationName $env.recommendationName -Day 3
         $Advisor.Count | Should -BeGreaterOrEqual 1
     }
+
+    It 'InputObjectParameterSet' {
+        $recommendations = Get-AzAdvisorRecommendation -Id $env.recommendationName -ResourceUri $env.ResourceUri
+        $Advisor =  $recommendations | Disable-AzAdvisorRecommendation
+        $Advisor.Count | Should -BeGreaterOrEqual 1
+    }
 }

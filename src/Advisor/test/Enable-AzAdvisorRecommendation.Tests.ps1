@@ -25,7 +25,9 @@ Describe 'Enable-AzAdvisorRecommendation' {
         $Advisor.Count | Should -BeGreaterOrEqual 1
     }
 
-    It 'InputObjectParameterSet' -skip {
-        { throw [System.NotImplementedException] } | Should -Not -Throw
+    It 'InputObjectParameterSet' {
+        $recommendations = Get-AzAdvisorRecommendation -Id $env.recommendationName -ResourceUri $env.ResourceUri
+        $Advisor =  $recommendations | Enable-AzAdvisorRecommendation
+        $Advisor.Count | Should -BeGreaterOrEqual 1
     }
 }
