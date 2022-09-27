@@ -33,8 +33,8 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-TerminateScheduledEventNotBeforeTimeoutInMinutes <Int32>] [-TerminateScheduledEvents <Boolean>]
  [-TimeZone <String>] [-UltraSSDEnabled <Boolean>] [-UpgradePolicyMode <UpgradeMode>]
  [-CapacityReservationGroupId <String>] [-VhdContainer <String[]>] [-AsJob] [-EncryptionAtHost <Boolean>]
- [-UserData <String>] [-AutomaticRepairAction <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf]
- [-Confirm] [<CommonParameters>]
+ [-UserData <String>] [-AutomaticRepairAction <String>] [-DefaultProfile <IAzureContextContainer>] 
+ [-RegularPriorityCount <Int32>] [-RegularPriorityPercentage <Int32>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ExplicitIdentityParameterSet
@@ -58,7 +58,8 @@ Update-AzVmss [-ResourceGroupName] <String> [-VMScaleSetName] <String>
  [-TerminateScheduledEvents <Boolean>] [-TimeZone <String>] [-UltraSSDEnabled <Boolean>]
  [-UpgradePolicyMode <UpgradeMode>] [-CapacityReservationGroupId <String>] [-VhdContainer <String[]>] [-AsJob]
  [-EncryptionAtHost <Boolean>] [-UserData <String>] [-AutomaticRepairAction <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-RegularPriorityCount <Int32>] 
+ [-RegularPriorityPercentage <Int32>] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -691,6 +692,36 @@ Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
+```
+
+### -RegularPriorityCount
+Specifies the minimum number of VMs that must be of Regular priority as a VMSS Flex instance scales out. This parameter is only valid for VMSS instances with Flexible OrchestrationMode. 
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default Value: None
+Accept pipeline input: False 
+Accept wildcard characters: False 
+```
+
+### -RegularPriorityPercentage
+Specifies the desired percentage of VMs, after the BaseRegularCount has been met, that are of Regular priority as the VMSS Flex instance scales out. This property is only valid for VMSS instances with Flexible OrchestrationMode.
+
+```yaml
+Type: System.Int32
+Parameter Sets: (All)
+Aliases: 
+
+Required: False
+Position: Named
+Default Value: None
+Accept pipeline input: False 
+Accept wildcard characters: False 
 ```
 
 ### -ResourceGroupName
