@@ -19,7 +19,7 @@
 -->
 
 ## Upcoming Release
-* Introduced Restore-AzCosmosDBSqlDatabase, Restore-AzCosmosDBSqlContainer  to restore deleted database and containers in the same account for SQL.
+* Introduced Restore-AzCosmosDBSqlDatabase, Restore-AzCosmosDBSqlContainer to restore deleted database and containers in the same account for SQL.
 * Introduced Restore-AzCosmosDBMongoDBDatabase, Restore-AzCosmosDBMongoDBCollection to restore deleted database and collections in the same account for MongoDB.
 * Introduced support for CosmosDB partition Merge and ThroughputRedistribution APIs by adding the following cmdlets:
 `Get-AzCosmosDBSqlContainerPerPartitionThroughput`, `Update-AzCosmosDBSqlContainerPerPartitionThroughput`, `Invoke-AzCosmosDBSqlContainerMerge`

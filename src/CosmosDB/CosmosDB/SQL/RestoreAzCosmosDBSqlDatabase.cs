@@ -66,7 +66,6 @@ namespace Microsoft.Azure.Commands.CosmosDB
                 return;
             }
 
-            bool isSourceRestorableAccountDeleted = false;
             RestorableDatabaseAccountGetResult sourceAccountToRestore = null;
             List<RestorableDatabaseAccountGetResult> restorableDatabaseAccounts = this.CosmosDBManagementClient.RestorableDatabaseAccounts.ListWithHttpMessagesAsync().GetAwaiter().GetResult().Body.ToList();
             List<RestorableDatabaseAccountGetResult> accountsWithMatchingName = restorableDatabaseAccounts.Where(databaseAccount => databaseAccount.AccountName.Equals(this.AccountName, StringComparison.OrdinalIgnoreCase)).ToList();
@@ -77,17 +76,16 @@ namespace Microsoft.Azure.Commands.CosmosDB
                     if (restorableAccount.CreationTime.HasValue &&
                         restorableAccount.CreationTime < utcRestoreDateTime)
                     {
-                        if (!restorableAccount.DeletionTime.HasValue || restorableAccount.DeletionTime > utcRestoreDateTime)
+                        if (!restorableAccount.DeletionTime.HasValue)
                         {
                             sourceAccountToRestore = restorableAccount;
-                            isSourceRestorableAccountDeleted = true;
                             break;
                         }
                     }
                 }
             }
 
-            if (sourceAccountToRestore == null || isSourceRestorableAccountDeleted == false)
+            if (sourceAccountToRestore == null)
             {
                 this.WriteWarning($"No database accounts found with matching account name {this.AccountName} that was alive at given utc-timestamp {utcRestoreDateTime}");
                 return;
