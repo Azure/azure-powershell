@@ -95,6 +95,13 @@ Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
 
 Get service principal by pipeline input
 
+### Example 6: Get service principal with filter
+```powershell
+Get-AzADServicePrincipal -Filter "startsWith(DisplayName,'some-name')"
+```
+
+Get service principal with filter
+
 ## PARAMETERS
 
 ### -AppendSelected
@@ -205,7 +212,7 @@ Accept wildcard characters: False
 ```
 
 ### -Filter
-Filter items by property values
+Filter items by property values, for more detail about filter query please see: https://learn.microsoft.com/en-us/graph/filter-query-parameter
 
 ```yaml
 Type: System.String
@@ -344,7 +351,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-APPLICATIONOBJECT <IMicrosoftGraphApplication>: The service principal object, could be used as pipeline input.
+`APPLICATIONOBJECT <IMicrosoftGraphApplication>`: The service principal object, could be used as pipeline input.
   - `[(Any) <Object>]`: This indicates any property can be added to this object.
   - `[DeletedDateTime <DateTime?>]`: 
   - `[DisplayName <String>]`: The name displayed in directory

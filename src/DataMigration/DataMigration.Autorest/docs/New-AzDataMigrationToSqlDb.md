@@ -14,15 +14,16 @@ Create a new database migration to a given SQL Db.
 
 ```
 New-AzDataMigrationToSqlDb -ResourceGroupName <String> -SqlDbInstanceName <String> -TargetDbName <String>
- [-SubscriptionId <String>] [-Kind <ResourceType>] [-MigrationService <String>] [-Scope <String>]
- [-SourceDatabaseName <String>] [-SourceSqlConnectionAuthentication <String>]
- [-SourceSqlConnectionDataSource <String>] [-SourceSqlConnectionEncryptConnection]
- [-SourceSqlConnectionPassword <SecureString>] [-SourceSqlConnectionTrustServerCertificate]
- [-SourceSqlConnectionUserName <String>] [-TableList <String[]>] [-TargetDatabaseCollation <String>]
- [-TargetSqlConnectionAuthentication <String>] [-TargetSqlConnectionDataSource <String>]
- [-TargetSqlConnectionEncryptConnection] [-TargetSqlConnectionPassword <SecureString>]
- [-TargetSqlConnectionTrustServerCertificate] [-TargetSqlConnectionUserName <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru] [-Confirm] [-WhatIf] [<CommonParameters>]
+ [-SubscriptionId <String>] [-Kind <ResourceType>] [-MigrationOperationId <String>]
+ [-MigrationService <String>] [-ProvisioningError <String>] [-Scope <String>] [-SourceDatabaseName <String>]
+ [-SourceSqlConnectionAuthentication <String>] [-SourceSqlConnectionDataSource <String>]
+ [-SourceSqlConnectionEncryptConnection] [-SourceSqlConnectionPassword <String>]
+ [-SourceSqlConnectionTrustServerCertificate] [-SourceSqlConnectionUserName <String>] [-TableList <String[]>]
+ [-TargetDatabaseCollation <String>] [-TargetSqlConnectionAuthentication <String>]
+ [-TargetSqlConnectionDataSource <String>] [-TargetSqlConnectionEncryptConnection]
+ [-TargetSqlConnectionPassword <String>] [-TargetSqlConnectionTrustServerCertificate]
+ [-TargetSqlConnectionUserName <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-PassThru]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -107,6 +108,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -MigrationOperationId
+ID tracking current migration operation.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -MigrationService
 Resource Id of the Migration Service.
 
@@ -142,6 +158,21 @@ Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ProvisioningError
+Error message for migration provisioning failure, if any.
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -247,7 +278,7 @@ Accept wildcard characters: False
 Password to connect to source SQL.
 
 ```yaml
-Type: System.Security.SecureString
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -412,7 +443,7 @@ Accept wildcard characters: False
 Password to connect to source SQL.
 
 ```yaml
-Type: System.Security.SecureString
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 

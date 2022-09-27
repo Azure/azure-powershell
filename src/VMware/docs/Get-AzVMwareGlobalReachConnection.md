@@ -39,6 +39,7 @@ Get a global reach connection by name in a private cloud
 ```powershell
 Get-AzVMwareGlobalReachConnection -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 ```
+
 ```output
 Name          Type                                               ResourceGroupName
 ----          ----                                               -----------------
@@ -51,6 +52,7 @@ List global reach connection in a private cloud
 ```powershell
 Get-AzVMwareGlobalReachConnection -Name azps_test_grc -PrivateCloudName azps_test_cloud -ResourceGroupName azps_test_group
 ```
+
 ```output
 Name          Type                                               ResourceGroupName
 ----          ----                                               -----------------
@@ -173,7 +175,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IVMwareIdentity>: Identity Parameter
+`INPUTOBJECT <IVMwareIdentity>`: Identity Parameter
   - `[AddonName <String>]`: Name of the addon for the private cloud
   - `[AuthorizationName <String>]`: Name of the ExpressRoute Circuit Authorization in the private cloud
   - `[CloudLinkName <String>]`: Name of the cloud link resource

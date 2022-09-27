@@ -384,7 +384,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-BODY <IPurchaseRequest>: .
+`BODY <IPurchaseRequest>`: .
   - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
   - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
   - `[BillingPlan <ReservationBillingPlan?>]`: Represent the billing plans.

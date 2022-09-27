@@ -333,13 +333,13 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IReservationsIdentity>: Identity Parameter
+`INPUTOBJECT <IReservationsIdentity>`: Identity Parameter
   - `[Id <String>]`: Resource identity path
   - `[ReservationId <String>]`: Id of the Reservation Item
   - `[ReservationOrderId <String>]`: Order Id of the reservation
   - `[SubscriptionId <String>]`: Id of the subscription
 
-RENEWPROPERTY <IPatchPropertiesRenewProperties>: .
+`RENEWPROPERTY <IPatchPropertiesRenewProperties>`: .
   - `[PurchaseProperty <IPurchaseRequest>]`: 
     - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
     - `[AppliedScopes <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
@@ -354,7 +354,7 @@ RENEWPROPERTY <IPatchPropertiesRenewProperties>: .
     - `[Sku <String>]`: 
     - `[Term <ReservationTerm?>]`: Represent the term of Reservation.
 
-RESERVATION <IPatch>: .
+`RESERVATION <IPatch>`: .
   - `[AppliedScope <String[]>]`: List of the subscriptions that the benefit will be applied. Do not specify if AppliedScopeType is Shared.
   - `[AppliedScopeType <AppliedScopeType?>]`: Type of the Applied Scope.
   - `[InstanceFlexibility <InstanceFlexibility?>]`: Turning this on will apply the reservation discount to other VMs in the same VM size group. Only specify for VirtualMachines reserved resource type.
