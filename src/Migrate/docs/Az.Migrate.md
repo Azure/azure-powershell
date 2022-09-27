@@ -101,9 +101,6 @@ The Remove-AzMigrateServerReplication cmdlet stops the replication for a migrate
 ### [Restart-AzMigrateServerReplication](Restart-AzMigrateServerReplication.md)
 The Restart-AzMigrateServerReplication cmdlet repairs the replication for the specified server.
 
-### [Resume-AzMigrateServerReplication](Resume-AzMigrateServerReplication.md)
-Starts the replication that has been suspended.
-
 ### [Set-AzMigrateDiskMapping](Set-AzMigrateDiskMapping.md)
 The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attached to the server to be migrated
 
@@ -119,5 +116,3 @@ The Start-AzMigrateTestMigration cmdlet initiates the test migration for the rep
 ### [Start-AzMigrateTestMigrationCleanup](Start-AzMigrateTestMigrationCleanup.md)
 The Start-AzMigrateTestMigrationCleanup cmdlet initiates the clean up of the test migration for the replicating server.
 
-### [Suspend-AzMigrateServerReplication](Suspend-AzMigrateServerReplication.md)
-Suspends the ongoing replication.
