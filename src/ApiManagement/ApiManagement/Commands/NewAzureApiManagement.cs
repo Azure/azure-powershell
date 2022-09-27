@@ -20,6 +20,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
     using System.Management.Automation;
     using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using System;
+    using Microsoft.Azure.Management.ApiManagement.Models;
 
     [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "ApiManagement"), OutputType(typeof(PsApiManagement))]
     public class NewAzureApiManagement : AzureApiManagementCmdletBase
@@ -66,7 +67,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             Mandatory = false,
             HelpMessage = "The tier of the Azure API Management service. Valid values are Developer, Basic, Standard, Premium and Consumption. The default value is Developer. ")]
         [ValidateSet("Developer", "Basic", "Standard", "Premium", "Consumption"), PSDefaultValue(Value = "Developer")]
-        public string? Sku { get; set; }
+        [Parameter(Mandatory = false)]
+        public string Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = true,

@@ -44,7 +44,8 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
             ValueFromPipelineByPropertyName = false,
             Mandatory = false,
             HelpMessage = "Tier of the deployment region. Valid and Default value is Premium.")]
-        public string? Sku { get; set; }
+        [Parameter(Mandatory = false)]
+        public string Sku { get; set; }
 
         [Parameter(
             ValueFromPipelineByPropertyName = false,
