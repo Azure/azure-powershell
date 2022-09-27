@@ -22,7 +22,12 @@
 
 * Added `EnableUDPLogOptimization` parameter to `AzureFirewall`
     - `New-AzFirewall`
+* Replaced `IdentifyTopFatFlow` parameter with 'EnableFatFlowLogging' parameter  to `AzureFirewall`
+    - `New-AzFirewall`
 * Fixed a bug not able to add MSSQL application rules to an AZURE FIREWALL POLICY
+
+* Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
+    - `New-AzLoadBalancer`
 
 ## Version 4.20.1
 * Added breaking change notification for `Get-AzFirewall`, `New-AzFirewall`, `Set-AzFirewall` and `New-AzFirewallHubIpAddress`

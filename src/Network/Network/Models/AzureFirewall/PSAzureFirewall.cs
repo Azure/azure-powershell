@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Commands.Network.Models
 
         public string AllowActiveFTP { get; set; }
 
-        public string IdentifyTopFatFlow { get; set; }
+        public string EnableFatFlowLogging { get; set; }
 
         public string EnableUDPLogOptimization { get; set; }
 
