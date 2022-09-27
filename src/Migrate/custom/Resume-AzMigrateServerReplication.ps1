@@ -23,7 +23,7 @@ https://docs.microsoft.com/powershell/module/az.migrate/resume-azmigrateserverre
 #>
 function Resume-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
-    [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false)]
+    [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -41,7 +41,7 @@ function Resume-AzMigrateServerReplication {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.Management.Automation.SwitchParameter]
         # Specifies whether the migrated resources needs to be deleted.
-        ${DeleteMigratedResources},
+        ${DeleteMigratedResource},
 
         [Parameter()]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -105,7 +105,7 @@ function Resume-AzMigrateServerReplication {
     )
     
     process {
-        if ($DeleteMigratedResources.IsPresent) {
+        if ($DeleteMigratedResource.IsPresent) {
             $PerformDeleteResource = "true"
         }
         else {
@@ -113,7 +113,7 @@ function Resume-AzMigrateServerReplication {
         }
 
         $null = $PSBoundParameters.Remove('Force')
-        $null = $PSBoundParameters.Remove('DeleteMigratedResources')
+        $null = $PSBoundParameters.Remove('DeleteMigratedResource')
         $null = $PSBoundParameters.Remove('TargetObjectID')
         $null = $PSBoundParameters.Remove('ResourceGroupName')
         $null = $PSBoundParameters.Remove('ProjectName')
