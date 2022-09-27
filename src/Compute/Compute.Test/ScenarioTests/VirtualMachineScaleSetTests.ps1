@@ -3604,7 +3604,7 @@ function Test-VirtualMachineScaleSetPriorityMixPolicy
             -EvictionPolicy 'Delete' `
             -PlatformFaultDomainCount 1 `
             -Priority 'Spot' `
-            -RegularPriorityCount $baseRegularPriorityVMCount `
+            -BaseRegularPriorityCount $baseRegularPriorityVMCount `
             -RegularPriorityPercentage $regularPriorityVMPercentage;
 
         # Reference a virtual machine image from the gallery

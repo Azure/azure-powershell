@@ -21,7 +21,7 @@
 -->
 ## Upcoming Release
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
-* Added the 'RegularPriorityCount' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
+* Added the 'BaseRegularPriorityCount' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
 * Added the 'RegularPriorityPercentage' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
 
 ## Version 4.31.0

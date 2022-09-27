@@ -294,9 +294,9 @@ namespace Microsoft.Azure.Commands.Compute.Automation
 
         [Parameter(
             Mandatory = false,
-            HelpMessage = "The number of VMs that should be regular priority VM's before adding any Spot VM's",
+            HelpMessage = "The number of VMs that should be regular priority VMs before adding any Spot VMs",
             ValueFromPipelineByPropertyName = true)]
-        public int RegularPriorityCount { get; set; }
+        public int BaseRegularPriorityCount { get; set; }
 
         [Parameter(
             Mandatory = false,
@@ -726,18 +726,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                 vAutomaticRepairsPolicy.RepairAction = this.AutomaticRepairAction;
             }
 
-            if(this.IsParameterBound(c => c.RegularPriorityCount))
+            if (this.IsParameterBound(c => c.BaseRegularPriorityCount))
             {
-                if(vPriorityMixPolicy == null)
+                if (vPriorityMixPolicy == null)
                 {
                     vPriorityMixPolicy = new PriorityMixPolicy();
                 }
-                vPriorityMixPolicy.BaseRegularPriorityCount = this.RegularPriorityCount;
+                vPriorityMixPolicy.BaseRegularPriorityCount = this.BaseRegularPriorityCount;
             }
 
-            if(this.IsParameterBound(c => c.RegularPriorityPercentage))
+            if (this.IsParameterBound(c => c.RegularPriorityPercentage))
             {
-                if(vPriorityMixPolicy == null)
+                if (vPriorityMixPolicy == null)
                 {
                     vPriorityMixPolicy = new PriorityMixPolicy();
                 }
