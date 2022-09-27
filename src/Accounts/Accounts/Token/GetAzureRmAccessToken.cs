@@ -59,7 +59,8 @@ namespace Microsoft.Azure.Commands.Profile
             SupportedResourceNames.OperationalInsights,
             SupportedResourceNames.ResourceManager,
             SupportedResourceNames.Storage,
-            SupportedResourceNames.Synapse
+            SupportedResourceNames.Synapse,
+            SupportedResourceNames.AppConfiguration
             )]
         public string ResourceTypeName { get; set; }
 
