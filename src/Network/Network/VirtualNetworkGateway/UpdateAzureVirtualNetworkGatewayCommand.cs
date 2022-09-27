@@ -217,14 +217,14 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "P2S policy group added to this gateway")]
-        public PSVirtualNetworkGatewayPolicyGroup[] VirtualNetworkGatewayPolicyGroups { get; set; }
+        public PSVirtualNetworkGatewayPolicyGroup[] VirtualNetworkGatewayPolicyGroup { get; set; }
 
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "P2S Client Connection Configuration that assiociate between address and policy group")]
-        public PSClientConnectionConfiguration[] ClientConnectionConfigurations { get; set; }
+        public PSClientConnectionConfiguration[] ClientConnectionConfiguration { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -264,9 +264,9 @@ namespace Microsoft.Azure.Commands.Network
                 this.VirtualNetworkGateway.EnablePrivateIpAddress = this.EnablePrivateIpAddress.Value;
             }
 
-            if (this.VirtualNetworkGatewayPolicyGroups != null && this.VirtualNetworkGatewayPolicyGroups.Length > 0)
+            if (this.VirtualNetworkGatewayPolicyGroup != null && this.VirtualNetworkGatewayPolicyGroup.Length > 0)
             {
-                this.VirtualNetworkGateway.VirtualNetworkGatewayPolicyGroups = this.VirtualNetworkGatewayPolicyGroups.ToList();
+                this.VirtualNetworkGateway.VirtualNetworkGatewayPolicyGroups = this.VirtualNetworkGatewayPolicyGroup.ToList();
             }
 
             if (!string.IsNullOrEmpty(GatewaySku))
@@ -296,7 +296,7 @@ namespace Microsoft.Azure.Commands.Network
                  this.RadiusServerList != null ||
                  (this.VpnClientIpsecPolicy != null && this.VpnClientIpsecPolicy.Length != 0) ||
                  this.AadTenantUri != null || 
-                 this.ClientConnectionConfigurations != null && this.ClientConnectionConfigurations.Count() > 0) &&
+                 this.ClientConnectionConfiguration != null && this.ClientConnectionConfiguration.Count() > 0) &&
                 this.VirtualNetworkGateway.VpnClientConfiguration == null)
             {
                 this.VirtualNetworkGateway.VpnClientConfiguration = new PSVpnClientConfiguration();
@@ -372,16 +372,16 @@ namespace Microsoft.Azure.Commands.Network
                     throw new ArgumentException("Virtual Network Gateway VpnClientProtocol should be :" + MNM.VpnClientProtocol.OpenVPN + " when P2S AAD authentication is being configured.");
                 }
             }
-            if (this.ClientConnectionConfigurations != null && this.ClientConnectionConfigurations.Count() > 0)
+            if (this.ClientConnectionConfiguration != null && this.ClientConnectionConfiguration.Count() > 0)
             {
-                foreach (var config in this.ClientConnectionConfigurations)
+                foreach (var config in this.ClientConnectionConfiguration)
                 {
                     foreach (var policyGroup in config.VirtualNetworkGatewayPolicyGroups)
                     {
                         policyGroup.Id = string.Format("/subscriptions/{0}/resourceGroups/{1}/providers/Microsoft.Network/virtualNetworkGateways/{2}/virtualNetworkGatewayPolicyGroups/{3}", this.NetworkClient.NetworkManagementClient.SubscriptionId, this.VirtualNetworkGateway.ResourceGroupName, this.VirtualNetworkGateway.Name, policyGroup.Id);
                     }
                 }
-                this.VirtualNetworkGateway.VpnClientConfiguration.ClientConnectionConfigurations = this.ClientConnectionConfigurations.ToList();
+                this.VirtualNetworkGateway.VpnClientConfiguration.ClientConnectionConfigurations = this.ClientConnectionConfiguration.ToList();
             }
 
             if (this.RemoveAadAuthentication.IsPresent)

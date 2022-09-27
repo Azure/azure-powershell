@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayPolicyGroup"), OutputType(typeof(PSVpnClientRootCertificate))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayPolicyGroup"), OutputType(typeof(PSVirtualNetworkGatewayPolicyGroup))]
     public class NewAzureVirtualNetworkGatewayPolicyGroupCommand : NetworkBaseCmdlet
     {
         [Parameter(

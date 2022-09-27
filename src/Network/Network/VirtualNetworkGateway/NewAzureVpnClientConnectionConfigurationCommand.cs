@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientConnectionConfiguration"), OutputType(typeof(PSVpnClientRootCertificate))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VpnClientConnectionConfiguration"), OutputType(typeof(PSClientConnectionConfiguration))]
     public class NewAzureVpnClientConnectionConfigurationCommand : NetworkBaseCmdlet
     {
         [Parameter(
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Commands.Network
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = "Virtual Network Gateway Policy Groups")]
-        public PSVirtualNetworkGatewayPolicyGroup[] VirtualNetworkGatewayPolicyGroups { get; set; }
+        public PSVirtualNetworkGatewayPolicyGroup[] VirtualNetworkGatewayPolicyGroup { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.Network
             base.Execute();
             var policyGroup = new PSClientConnectionConfiguration();
             policyGroup.Name = this.Name;
-            policyGroup.VirtualNetworkGatewayPolicyGroups = this.VirtualNetworkGatewayPolicyGroups.ToList().ConvertAll( x => new PSResourceId() { Id =  x.Name} );
+            policyGroup.VirtualNetworkGatewayPolicyGroups = this.VirtualNetworkGatewayPolicyGroup.ToList().ConvertAll( x => new PSResourceId() { Id =  x.Name} );
             policyGroup.VpnClientAddressPool =  new PSAddressSpace() { AddressPrefixes = this.VpnClientAddressPool.ToList() } ;
             WriteObject(policyGroup);
         }
