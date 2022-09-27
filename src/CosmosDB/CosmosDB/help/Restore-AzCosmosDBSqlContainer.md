@@ -26,16 +26,15 @@ Restores the deleted sql container in the same account with the given name and t
 ### Example 1
 ```powershell
 PS C:\> Restore-AzCosmosDBSqlContainer -AccountName “my-pitr-sql-account” -ResourceGroupName “my-rg” -DatabaseName “my-database” -Name “my-container” -RestoreTimestampInUtc “2022-08-25T07:16:20Z”  
-
-Name     : my-container 
-Id       : /subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/my-rg/providers/Microsoft.DocumentDB/datab aseAccounts/my-pitr-sql-account/sqlDatabases/my-database/containers/my-container 
-Location : 
-Tags     : 
-Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetPropertiesResource
-
 ```
 
-{{ Restores the deleted sql container in the same account with the given name and timestamp. }}
+```output
+Name     : my-container 
+Id       : /subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/my-rg/providers/Microsoft.DocumentDB/databaseAccounts/my-pitr-sql-account/sqlDatabases/my-database/containers/my-container 
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetPropertiesResource
+```
 
 ## PARAMETERS
 
@@ -165,7 +164,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlContainerGetResults
 
 ## OUTPUTS
 

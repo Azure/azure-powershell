@@ -26,16 +26,15 @@ Restores the deleted mongodb database in the same account with the given name an
 ### Example 1
 ```powershell
 PS C:\> Restore-AzCosmosDBMongoDBDatabase  -AccountName “my-pitr-mongodb-account” -ResourceGroupName “my-rg” -Name “my-database” -RestoreTimestampInUtc “2022-08-25T07:16:20Z” 
-
-Name     : my-database 
-Id       : /subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/my-rg/providers/Microsoft.DocumentDB/datab aseAccounts/my-pitr-mongodb-account/mongoDBDatabases/my-database 
-Location : 
-Tags     : 
-Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBDatabaseGetPropertiesResource
-
 ```
 
-{{ Restores the deleted mongodb database in the same account with the given name and timestamp. }}
+```output
+Name     : my-database 
+Id       : /subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/my-rg/providers/Microsoft.DocumentDB/databaseAccounts/my-pitr-mongodb-account/mongoDBDatabases/my-database 
+Location :
+Tags     :
+Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBDatabaseGetPropertiesResource
+```
 
 ## PARAMETERS
 
@@ -150,7 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.CosmosDB.Models.PSMongoDBDatabaseGetResults
 
 ## OUTPUTS
 

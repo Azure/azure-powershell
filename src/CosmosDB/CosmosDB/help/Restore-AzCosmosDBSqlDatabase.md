@@ -26,16 +26,15 @@ Restores the deleted sql database in the same account with the given name and ti
 ### Example 1
 ```powershell
 PS C:\> Restore-AzCosmosDBSqlDatabase -AccountName “my-pitr-sql-account” -ResourceGroupName “my-rg” -Name “my-database” -RestoreTimestampInUtc “2022-08-25T07:16:20Z”  
+```
 
+```output
 Name     : my-database
-Id       : /subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/my-rg/providers/Microsoft.DocumentDB/datab aseAccounts/my-pitr-sql-account/sqlDatabases/my-database 
+Id       : /subscriptions/23587e98-b6ac-4328-a753-03bcd3c8e744/resourceGroups/my-rg/providers/Microsoft.DocumentDB/databaseAccounts/my-pitr-sql-account/sqlDatabases/my-database 
 Location :
 Tags     :
 Resource : Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetPropertiesResource
-
 ```
-
-{{ Restores the deleted sql database in the same account with the given name and timestamp. }}
 
 ## PARAMETERS
 
@@ -150,7 +149,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
+### Microsoft.Azure.Commands.CosmosDB.Models.PSSqlDatabaseGetResults
 
 ## OUTPUTS
 
