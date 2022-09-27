@@ -14,7 +14,8 @@ Creates or updates a new Event Hub as a nested resource within a Namespace.
 
 ```
 New-AzEventHub -Name <String> -NamespaceName <String> -ResourceGroupName <String> [-SubscriptionId <String>]
- [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DestinationName <String>]
+ [-ArchiveNameFormat <String>] [-BlobContainer <String>] [-CaptureEnabled] [-DataLakeAccountName <String>]
+ [-DataLakeFolderPath <String>] [-DataLakeSubscriptionId <String>] [-DestinationName <String>]
  [-Encoding <EncodingCaptureDescription>] [-IntervalInSeconds <Int32>] [-MessageRetentionInDays <Int64>]
  [-PartitionCount <Int64>] [-SizeLimitInBytes <Int32>] [-SkipEmptyArchive] [-Status <EntityStatus>]
  [-StorageAccountResourceId <String>] [-DefaultProfile <PSObject>] [-Confirm] [-WhatIf] [<CommonParameters>]
@@ -52,6 +53,7 @@ SizeLimitInBytes             :
 SkipEmptyArchive             :
 Status                       : Active
 ```
+
 
 Creates a new eventhub entity `myEventHub` on namespace `myNamespace`.
 
@@ -125,6 +127,51 @@ A value that indicates whether capture description is enabled.
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataLakeAccountName
+The Azure Data Lake Store name for the captured events
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataLakeFolderPath
+The destination folder path for the captured events
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -DataLakeSubscriptionId
+Subscription Id of Azure Data Lake Store
+
+```yaml
+Type: System.String
 Parameter Sets: (All)
 Aliases:
 
