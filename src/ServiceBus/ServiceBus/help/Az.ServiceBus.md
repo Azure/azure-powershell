@@ -70,7 +70,7 @@ Returns a description for the specified topic.
 Creates an Service Bus Namespace, Queue, Topic Authorization Rule
 
 ### [New-AzServiceBusAuthorizationRuleSASToken](New-AzServiceBusAuthorizationRuleSASToken.md)
-Generates a SAS tolen for Azure servicebus authorization rule of namespace/queue/topic. 
+Generates a SAS token for Azure servicebus authorization rule of namespace/queue/topic. 
 
 ### [New-AzServiceBusEncryptionConfig](New-AzServiceBusEncryptionConfig.md)
 Creates an in memory object instance of PSEncryptionConfigAttributes which can then be given as input to New-AzServiceBusNamespace and Set-AzServiceBusNamespace to enable encryption 
