@@ -33,8 +33,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the URI of the storage container to use.
         /// </summary>
-        [Parameter(Mandatory = true,
-            HelpMessage = "The storage container URI.")]
+        [Parameter(ParameterSetName = LogReplayByNameAndResourceGroupParameterSet, Mandatory = true, HelpMessage = "The storage container URI.")]
+        [Parameter(ParameterSetName = LogReplayAutocompleteParameterSet, Mandatory = true, HelpMessage = "The storage container URI.")]
+        [Parameter(ParameterSetName = LogReplayWithIdentityParameterSet, Mandatory = true, HelpMessage = "The storage container URI.")]
+        [Parameter(ParameterSetName = LogReplayByInputObjectParameterSet, Mandatory = true, HelpMessage = "The storage container URI.")]
         [Alias("Storage")]
         [ValidateNotNullOrEmpty]
         public string StorageContainerUri { get; set; }
@@ -42,8 +44,10 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the Sas token of the storage container.
         /// </summary>
-        [Parameter(Mandatory = true,
-            HelpMessage = "The storage container Sas token.")]
+        [Parameter(ParameterSetName = LogReplayByNameAndResourceGroupParameterSet, Mandatory = true, HelpMessage = "The storage container Sas token.")]
+        [Parameter(ParameterSetName = LogReplayAutocompleteParameterSet, Mandatory = true, HelpMessage = "The storage container Sas token.")]
+        [Parameter(ParameterSetName = LogReplayWithIdentityParameterSet, Mandatory = true, HelpMessage = "The storage container Sas token.")]
+        [Parameter(ParameterSetName = LogReplayByInputObjectParameterSet, Mandatory = true, HelpMessage = "The storage container Sas token.")]
         [Alias("SasToken")]
         [ValidateNotNullOrEmpty]
         public string StorageContainerSasToken { get; set; }
@@ -51,14 +55,14 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets whether or not to automatically complete restore upon completion.
         /// </summary>
-        [Parameter(Mandatory = false, HelpMessage = "The indicator whether or not to auto-complete restore upon completion.")]
+        [Parameter(ParameterSetName = LogReplayAutocompleteParameterSet, Mandatory = true, HelpMessage = "The indicator whether or not to auto-complete restore upon completion.")]
         public SwitchParameter AutoCompleteRestore { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the last backup.
         /// </summary>
-        [Parameter(Mandatory = false)]
-        public string LastBackupName { get; set; }
+        [Parameter(ParameterSetName = LogReplayAutocompleteParameterSet, Mandatory = true, HelpMessage = "The bakup name after which auto completion will happen.")]
+       public string LastBackupName { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the instance database collation to use
@@ -72,8 +76,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the identity
         /// </summary>
-        [Parameter(Mandatory = false,
-            HelpMessage = "The identity type to use for storage container.")]
+        [Parameter(ParameterSetName = LogReplayWithIdentityParameterSet, Mandatory = true, HelpMessage = "The identity type to use for storage container.")]
         [ValidateNotNullOrEmpty]
         [PSArgumentCompleter("SharedAccessSignature", "ManagedIdentity")]
         [PSDefaultValue(Value = "SharedAccessSignature")]

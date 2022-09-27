@@ -25,18 +25,23 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
     {
         protected const string LogReplayByNameAndResourceGroupParameterSet =
             "LogReplayInstanceDatabaseFromInputParameters";
-
+        
+        protected const string LogReplayAutocompleteParameterSet =
+            "LogReplayInstanceDatabaseAutocompleteInputParameters";
+        
+        protected const string LogReplayWithIdentityParameterSet =
+            "LogReplayInstanceDatabaseWithIdentityInputParameters";
+        
         protected const string LogReplayByInputObjectParameterSet =
             "LogReplayInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition";
 
         /// <summary>
         /// Gets or sets the name of the instance database.
         /// </summary>
-        [Parameter(ParameterSetName = LogReplayByNameAndResourceGroupParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
-            Position = 0,
-            HelpMessage = "The name of the instance database.")]
+        [Parameter(ParameterSetName = LogReplayByNameAndResourceGroupParameterSet, Mandatory = true, HelpMessage = "The name of the instance database.")]
+        [Parameter(ParameterSetName = LogReplayAutocompleteParameterSet, Mandatory = true, HelpMessage = "The name of the instance database.")]
+        [Parameter(ParameterSetName = LogReplayWithIdentityParameterSet, Mandatory = true, HelpMessage = "The name of the instance database.")]
+        [Parameter(ParameterSetName = LogReplayByInputObjectParameterSet, Mandatory = true, HelpMessage = "The name of the instance database.")]
         [Alias("InstanceDatabaseName")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances/databases", "ResourceGroupName", "InstanceName")]
         [ValidateNotNullOrEmpty]
@@ -45,11 +50,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the name of the instance
         /// </summary>
-        [Parameter(ParameterSetName = LogReplayByNameAndResourceGroupParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
-            Position = 1,
-            HelpMessage = "The name of the instance.")]
+        [Parameter(ParameterSetName = LogReplayByNameAndResourceGroupParameterSet, Mandatory = true, HelpMessage = "The name of the instance.")]
+        [Parameter(ParameterSetName = LogReplayWithIdentityParameterSet, Mandatory = true, HelpMessage = "The name of the instance.")]
+        [Parameter(ParameterSetName = LogReplayAutocompleteParameterSet, Mandatory = true, HelpMessage = "The name of the instance.")]
         [ResourceNameCompleter("Microsoft.Sql/managedInstances", "ResourceGroupName")]
         [Alias("ManagedInstanceName")]
         [ValidateNotNullOrEmpty]
@@ -58,11 +61,9 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Gets or sets the name of the resource group to use.
         /// </summary>
-        [Parameter(ParameterSetName = LogReplayByNameAndResourceGroupParameterSet,
-            ValueFromPipelineByPropertyName = true,
-            Mandatory = true,
-            Position = 2,
-            HelpMessage = "The name of the resource group.")]
+        [Parameter(ParameterSetName = LogReplayByNameAndResourceGroupParameterSet,Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(ParameterSetName = LogReplayAutocompleteParameterSet, Mandatory = true, HelpMessage = "The name of the resource group.")]
+        [Parameter(ParameterSetName = LogReplayWithIdentityParameterSet, Mandatory = true, HelpMessage = "The name of the resource group.")]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         public override string ResourceGroupName { get; set; }
@@ -73,11 +74,7 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         /// <summary>
         /// Instance database object.
         /// </summary>
-        [Parameter(ParameterSetName = LogReplayByInputObjectParameterSet,
-            Mandatory = true,
-            Position = 0,
-            ValueFromPipeline = true,
-            HelpMessage = "The instance database object.")]
+        [Parameter(ParameterSetName = LogReplayByInputObjectParameterSet, Mandatory = true, Position = 0, ValueFromPipeline = true, HelpMessage = "The instance database object.")]
         [ValidateNotNullOrEmpty]
         [Alias("InstanceDatabase")]
         public AzureSqlManagedDatabaseModel InputObject { get; set; }
