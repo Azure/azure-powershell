@@ -20,6 +20,11 @@
 ## Upcoming Release
 * Added new fields to the `Get-AzSqlInstanceDatabaseLogReplay` cmdlet
 * Improved error handling in the `Stop-AzSqlInstanceDatabaseLogReplay` cmdlet
+* Removed the following cmdlets: `Clear-AzSqlServerAdvancedThreatProtectionSetting` and `Clear-AzSqlDatabaseAdvancedThreatProtectionSetting`
+* Added the following cmdlets: `Get-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting`, `Get-AzSqlInstanceAdvancedThreatProtectionSetting`, `Update-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting` and `Update-AzSqlInstanceAdvancedThreatProtectionSetting`
+* Removed the following aliases: `Enable-AzSqlServerAdvancedThreatProtection`, `Disable-AzSqlServerAdvancedThreatProtection`, `Get-AzSqlServerThreatDetectionSetting`, `Remove-AzSqlServerThreatDetectionSetting`, `Set-AzSqlServerThreatDetectionSetting`, `Get-AzSqlDatabaseThreatDetectionSetting`, `Set-AzSqlDatabaseThreatDetectionSetting` and `Remove-AzSqlDatabaseThreatDetectionSetting`
+* Changed the returned object for the following cmdlets: `Get-AzSqlServerAdvancedThreatProtectionSetting` and `Get-AzSqlDatabaseAdvancedThreatProtectionSetting`
+* Changed the parameters for the following cmdlets: `Update-AzSqlServerAdvancedThreatProtectionSetting` and `Update-AzSqlDatabaseAdvancedThreatProtectionSetting`. Only `Enable` parameter is now supported.
 
 ## Version 3.11.0
 * Removed the warning messages for MSGraph migration [#18856] 
