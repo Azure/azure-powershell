@@ -1932,6 +1932,12 @@ param(
     # application identifier uri
     ${IdentifierUri},
 
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Include count of items
+    ${Count},
+
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Header')]
     [System.String]
@@ -2038,6 +2044,7 @@ begin {
             ApplicationIdParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
             ApplicationIdentifierUriParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
             OwnedApplicationParameterSet = 'Az.MSGraph.custom\Get-AzADApplication';
+            List = 'Az.MSGraph.custom\Get-AzADApplication';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2260,6 +2267,12 @@ function Get-AzADGroup {
 [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup])]
 [CmdletBinding(DefaultParameterSetName='EmptyParameterSet', PositionalBinding=$false)]
 param(
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Include count of items
+    ${Count},
+
     [Parameter()]
     [AllowEmptyCollection()]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Body')]
@@ -2419,6 +2432,7 @@ begin {
             ObjectIdParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
             SearchStringParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
             DisplayNameParameterSet = 'Az.MSGraph.custom\Get-AzADGroup';
+            List = 'Az.MSGraph.custom\Get-AzADGroup';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
@@ -2956,6 +2970,12 @@ param(
     # serviceprincipal name
     ${ServicePrincipalName},
 
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Include count of items
+    ${Count},
+
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Header')]
     [System.String]
@@ -3062,6 +3082,7 @@ begin {
             ApplicationIdParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
             ApplicationObjectParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
             SPNParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
+            List = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)

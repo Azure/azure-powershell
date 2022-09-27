@@ -37,6 +37,12 @@ Get-AzADServicePrincipal -DisplayName <String> [-Select <String[]>] [-AppendSele
  [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzADServicePrincipal [-Count] [-Select <String[]>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### ObjectIdParameterSet
 ```
 Get-AzADServicePrincipal -ObjectId <String> [-Select <String[]>] [-AppendSelected] [-First <UInt64>]
@@ -157,6 +163,21 @@ Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-
 ```yaml
 Type: System.String
 Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Count
+Include count of items
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
 Aliases:
 
 Required: False

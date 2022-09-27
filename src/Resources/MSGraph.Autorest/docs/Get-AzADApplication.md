@@ -43,6 +43,12 @@ Get-AzADApplication -DisplayName <String> [-Select <String[]>] [-AppendSelected]
  [-Skip <UInt64>] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzADApplication [-Count] [-Select <String[]>] [-AppendSelected] [-First <UInt64>] [-Skip <UInt64>]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ### OwnedApplicationParameterSet
 ```
 Get-AzADApplication -OwnedApplication [-Orderby <String[]>] [-Select <String[]>] [-AppendSelected]
@@ -141,6 +147,21 @@ Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-
 ```yaml
 Type: System.String
 Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Count
+Include count of items
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
 Aliases:
 
 Required: False

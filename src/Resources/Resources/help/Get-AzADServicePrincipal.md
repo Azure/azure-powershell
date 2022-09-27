@@ -55,6 +55,12 @@ Get-AzADServicePrincipal [-Select <String[]>] -ServicePrincipalName <String> [-F
  [-AppendSelected] [-DefaultProfile <PSObject>] [<CommonParameters>]
 ```
 
+### List
+```
+Get-AzADServicePrincipal [-Select <String[]>] [-Count] [-First <UInt64>] [-Skip <UInt64>] [-AppendSelected]
+ [-DefaultProfile <PSObject>] [<CommonParameters>]
+```
+
 ## DESCRIPTION
 Lists entities from service principals or get entity from service principals by key
 
@@ -157,6 +163,21 @@ Documentation URL: https://developer.microsoft.com/en-us/office/blogs/microsoft-
 ```yaml
 Type: System.String
 Parameter Sets: EmptyParameterSet
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Count
+Include count of items
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: List
 Aliases:
 
 Required: False

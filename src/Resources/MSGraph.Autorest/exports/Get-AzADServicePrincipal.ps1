@@ -248,6 +248,12 @@ param(
     # serviceprincipal name
     ${ServicePrincipalName},
 
+    [Parameter(ParameterSetName='List')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Query')]
+    [System.Management.Automation.SwitchParameter]
+    # Include count of items
+    ${Count},
+
     [Parameter(ParameterSetName='EmptyParameterSet')]
     [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Category('Header')]
     [System.String]
@@ -354,6 +360,7 @@ begin {
             ApplicationIdParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
             ApplicationObjectParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
             SPNParameterSet = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
+            List = 'Az.MSGraph.custom\Get-AzADServicePrincipal';
         }
         $cmdInfo = Get-Command -Name $mapping[$parameterSet]
         [Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
