@@ -23,7 +23,7 @@ The **New-AzRouteServer** cmdlet creates an Azure RouteServer
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Create a new router server
 ```powershell
 New-AzResourceGroup -Name myResourceGroup -Location eastus
 
