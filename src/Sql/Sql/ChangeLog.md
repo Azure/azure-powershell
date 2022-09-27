@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Added new fields to the `Get-AzSqlInstanceDatabaseLogReplay` cmdlet
 * Improved error handling in the `Stop-AzSqlInstanceDatabaseLogReplay` cmdlet
+* Added StorageContainerIdentity parameter in the `Start-AzSqlInstanceDatabaseLogReplay` cmdlet
 
 ## Version 3.11.0
 * Removed the warning messages for MSGraph migration [#18856] 
