@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             HelpMessage = EventGridConstants.TopHelp,
             ParameterSetName = PartnerConfigurationListBySubscriptionParameterSet)]
         [ValidateRange(1, 100)]
-        public int Top { get; set; }
+        public int? Top { get; set; }
 
         [Parameter(
             Mandatory = false,

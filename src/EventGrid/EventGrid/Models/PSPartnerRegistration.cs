@@ -21,35 +21,29 @@ using System.Text;
 
 namespace Microsoft.Azure.Commands.EventGrid.Models
 {
-    public class PSPartnerConfiguration
+    public class PSPartnerRegistration
     {
-        public PSPartnerConfiguration(PartnerConfiguration partnerConfiguration)
+        public PSPartnerRegistration(PartnerRegistration partnerRegistration)
         {
-            this.ResourceGroupName = EventGridUtils.ParseResourceGroupFromId(partnerConfiguration.Id);
-            this.Id = partnerConfiguration.Id;
-            this.PartnerAuthorization = partnerConfiguration.PartnerAuthorization;
-            this.ProvisioningState = partnerConfiguration.ProvisioningState;
-            this.SystemData = partnerConfiguration.SystemData;
-            this.Location = partnerConfiguration.Location;
-            this.Tags = partnerConfiguration.Tags;
+            this.ResourceGroupName = EventGridUtils.ParseResourceGroupFromId(partnerRegistration.Id);
+            this.PartnerRegistrationName = partnerRegistration.Name;
+            this.Id = partnerRegistration.Id;
+            this.ProvisioningState = partnerRegistration.ProvisioningState;
+            this.PartnerRegistrationImmutableId = partnerRegistration.PartnerRegistrationImmutableId;
         }
 
         public string ResourceGroupName { get; set; }
 
+        public string PartnerRegistrationName { get; set; }
+
         public string Id { get; set; }
 
-        public PartnerAuthorization PartnerAuthorization { get; set; }
+        public Guid? PartnerRegistrationImmutableId { get; set; }
 
         public string ProvisioningState { get; set; }
 
-        public SystemData SystemData { get; private set; }
-
-        public string Location { get; set; }
-
-        public IDictionary<string, string> Tags { get; set; }
-
         /// <summary>
-        /// Return a string representation of this partner configuration
+        /// Return a string representation of this partner Registration
         /// </summary>
         /// <returns>null</returns>
         public override string ToString()

@@ -25,13 +25,13 @@ using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
-        VerbsCommon.New,
+        "Update",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerConfiguration",
         SupportsShouldProcess = true,
         DefaultParameterSetName = ResourceGroupNameParameterSet),
     OutputType(typeof(PSPartnerConfiguration))]
 
-    public class NewAzureEventGridPartnerConfiguration : AzureEventGridCmdletBase
+    public class UpdateAzureEventGridPartnerConfiguration : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -44,6 +44,14 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.PartnerConfigurationInputObjectHelp,
+            ParameterSetName = PartnerConfigurationInputObjectParameterSet)]
+        public PSPartnerConfiguration InputObject { get; set; }
+
         /// <summary>
         /// Hashtable which represents resource Tags.
         /// </summary>
@@ -52,6 +60,11 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TagsHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.TagsHelp,
+            ParameterSetName = PartnerConfigurationInputObjectParameterSet)]
         public Hashtable Tag { get; set; }
 
         [Parameter(
@@ -59,25 +72,31 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.MaxExpirationTimeInDaysHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
-        public int? MaxExpirationTimeInDays { get; set; }
-
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.AuthorizedPartnersHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
-        public Hashtable[] AuthorizedPartners { get; set; }
+            HelpMessage = EventGridConstants.MaxExpirationTimeInDaysHelp,
+            ParameterSetName = PartnerConfigurationInputObjectParameterSet)]
+        public int? MaxExpirationTimeInDays { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            // Create a new Event Grid Partner Configuration
+            // Update an Event Grid Partner Configuration
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
-
-            if (this.ShouldProcess(this.ResourceGroupName, $"Create a new EventGrid partner configuration in Resource Group {this.ResourceGroupName}"))
+            string resourceGroupName = string.Empty;
+            if (this.InputObject != null)
             {
-                PartnerConfiguration partnerConfiguration = this.Client.CreatePartnerConfiguration(
-                    this.ResourceGroupName,
-                    this.AuthorizedPartners,
+                resourceGroupName = this.InputObject.ResourceGroupName;
+            }
+            else
+            {
+                resourceGroupName = this.ResourceGroupName;
+            }
+
+            if (this.ShouldProcess(resourceGroupName, $"Update an EventGrid partner configuration in Resource Group {resourceGroupName}"))
+            {      
+                PartnerConfiguration partnerConfiguration = this.Client.UpdatePartnerConfiguration(
+                    resourceGroupName,
                     this.MaxExpirationTimeInDays,
                     tagDictionary);
 

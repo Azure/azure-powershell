@@ -1021,8 +1021,117 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #endregion
 
-        #region PartnerConfiguration
 
+        #region PartnerRegistration
+        public PartnerRegistration CreatePartnerRegistration(
+            string resourceGroupName,
+            string partnerRegistrationName,
+            Dictionary<string, string> tags)
+        {
+            PartnerRegistration partnerRegistrationInfo = new PartnerRegistration(
+                location: "global");
+
+            if (tags != null)
+            {
+                partnerRegistrationInfo.Tags = tags;
+            }
+
+            return this.Client.PartnerRegistrations.CreateOrUpdate(resourceGroupName, partnerRegistrationName, partnerRegistrationInfo);
+        }
+
+        public PartnerRegistration UpdatePartnerRegistration(
+            string resourceGroupName,
+            string partnerRegistrationName,
+            Dictionary<string, string> tags)
+        {
+            return this.Client.PartnerRegistrations.Update(resourceGroupName, partnerRegistrationName, tags);
+        }
+
+        public PartnerRegistration GetPartnerRegistration(
+            string resourceGroupName,
+            string partnerRegistrationName)
+        {
+            return this.Client.PartnerRegistrations.Get(resourceGroupName, partnerRegistrationName);
+        }
+
+        public (IEnumerable<PartnerRegistration>, string) ListPartnerRegistrationsBySubscription(string oDataQuery, int? top)
+        {
+            List<PartnerRegistration> partnerRegistrationsList = new List<PartnerRegistration>();
+            IPage<PartnerRegistration> partnerRegistrationPage = this.Client.PartnerRegistrations.ListBySubscription(oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (partnerRegistrationPage != null)
+            {
+                partnerRegistrationsList.AddRange(partnerRegistrationPage);
+                nextLink = partnerRegistrationPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<PartnerRegistration> newPartnerRegistrationsList;
+                    (newPartnerRegistrationsList, nextLink) = this.ListPartnerRegistrationsBySubscriptionNext(nextLink);
+                    partnerRegistrationsList.AddRange(newPartnerRegistrationsList);
+                }
+            }
+
+            return (partnerRegistrationsList, nextLink);
+        }
+
+        public (IEnumerable<PartnerRegistration>, string) ListPartnerRegistrationsBySubscriptionNext(string nextLink)
+        {
+            List<PartnerRegistration> partnerRegistrationsList = new List<PartnerRegistration>();
+            string newNextLink = null;
+            IPage<PartnerRegistration> partnerRegistrationsPage = this.Client.PartnerRegistrations.ListBySubscriptionNext(nextLink);
+            if (partnerRegistrationsPage != null)
+            {
+                partnerRegistrationsList.AddRange(partnerRegistrationsPage);
+                newNextLink = partnerRegistrationsPage.NextPageLink;
+            }
+
+            return (partnerRegistrationsList, newNextLink);
+        }
+
+        public (IEnumerable<PartnerRegistration>, string) ListPartnerRegistrationsByResourceGroup(string resourceGroupNanme, string oDataQuery, int? top)
+        {
+            List<PartnerRegistration> partnerRegistrationsList = new List<PartnerRegistration>();
+            IPage<PartnerRegistration> partnerRegistrationPage = this.Client.PartnerRegistrations.ListByResourceGroup(resourceGroupNanme, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (partnerRegistrationPage != null)
+            {
+                partnerRegistrationsList.AddRange(partnerRegistrationPage);
+                nextLink = partnerRegistrationPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<PartnerRegistration> newPartnerRegistrationsList;
+                    (newPartnerRegistrationsList, nextLink) = this.ListPartnerRegistrationsByResourceGroupNext(nextLink);
+                    partnerRegistrationsList.AddRange(newPartnerRegistrationsList);
+                }
+            }
+
+            return (partnerRegistrationsList, nextLink);
+        }
+
+        public (IEnumerable<PartnerRegistration>, string) ListPartnerRegistrationsByResourceGroupNext(string nextLink)
+        {
+            List<PartnerRegistration> partnerRegistrationsList = new List<PartnerRegistration>();
+            string newNextLink = null;
+            IPage<PartnerRegistration> partnerRegistrationsPage = this.Client.PartnerRegistrations.ListByResourceGroupNext(nextLink);
+            if (partnerRegistrationsPage != null)
+            {
+                partnerRegistrationsList.AddRange(partnerRegistrationsPage);
+                newNextLink = partnerRegistrationsPage.NextPageLink;
+            }
+
+            return (partnerRegistrationsList, newNextLink);
+        }
+
+        public void DeletePartnerRegistration(string resourceGroupName, string partnerRegistrationName)
+        {
+            this.Client.PartnerRegistrations.Delete(resourceGroupName, partnerRegistrationName);
+        }
+
+        #endregion
+
+        #region PartnerConfiguration
         public PartnerConfiguration CreatePartnerConfiguration(
             string resourceGroupName,
             Hashtable[] authorizedPartners,
@@ -1052,10 +1161,34 @@ namespace Microsoft.Azure.Commands.EventGrid
             return this.Client.PartnerConfigurations.CreateOrUpdate(resourceGroupName, partnerConfigurationInfo);
         }
 
+        public PartnerConfiguration UpdatePartnerConfiguration(
+            string resourceGroupName,
+            int? defaultMaxExpirationTimeInDays,
+            Dictionary<string, string> tags)
+        {
+            PartnerConfigurationUpdateParameters partnerConfigurationUpdateParameters = new PartnerConfigurationUpdateParameters();
+
+            if (defaultMaxExpirationTimeInDays != null)
+            {
+                partnerConfigurationUpdateParameters.DefaultMaximumExpirationTimeInDays = defaultMaxExpirationTimeInDays;
+            }
+
+            if (tags != null)
+            {
+                partnerConfigurationUpdateParameters.Tags = tags;
+            }
+
+            return this.Client.PartnerConfigurations.Update(resourceGroupName, partnerConfigurationUpdateParameters);
+        }
+
         public PartnerConfiguration GetPartnerConfiguration(string resourceGroupName)
         {
-            var partnerConfiguration = this.Client.PartnerConfigurations.Get(resourceGroupName);
-            return partnerConfiguration;
+            return this.Client.PartnerConfigurations.Get(resourceGroupName);
+        }
+
+        public void DeletePartnerConfiguration(string resourceGroupName)
+        {
+            this.Client.PartnerConfigurations.Delete(resourceGroupName);
         }
 
         //public (IEnumerable<PartnerConfiguration>, string) ListPartnerConfigurationsByResourceGroup(string resourceGroupName)

@@ -94,6 +94,11 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string PartnerDestinationResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Destination.";
         public const string ChannelResourceIdHelp = "Resource Idenitifier representing the Event Grid Channel.";
 
+        public const string PartnerConfigurationInputObjectHelp = "PartnerConfiguration object.";
+        public const string PartnerRegistrationInputObjectHelp = "PartnerRegistration object";
+
+        public const string PartnerRegistrationNameHelp = "Event Grid partner registration name.";
+
         public const string MaxExpirationTimeInDaysHelp = "Expiration time in days used to validate the authorization expiration time for each authorized partner. If this parameter is not specified, the default is 7 days. Otherwise, allowed values are between 1 and 365 days.";
         public const string AuthorizedPartnersHelp = "Array of HashTables where each HashTable is the details of an authorized partner. Each HashTable has the following key-value info: partnerName, partnerRegistrationImmutableId, and authorizationExpirationTimeInUtc. " +
                                                      "At least one key is required. The partnerName is a String, partnerRegistrationImmutableId  is a Guid, and authorizationExpirationTimeInUtc is a DateTime.";

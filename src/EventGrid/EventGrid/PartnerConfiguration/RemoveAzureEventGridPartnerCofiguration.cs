@@ -25,13 +25,13 @@ using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
-        VerbsCommon.New,
+        VerbsCommon.Remove,
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerConfiguration",
         SupportsShouldProcess = true,
         DefaultParameterSetName = ResourceGroupNameParameterSet),
-    OutputType(typeof(PSPartnerConfiguration))]
+    OutputType(typeof(bool))]
 
-    public class NewAzureEventGridPartnerConfiguration : AzureEventGridCmdletBase
+    public class RemoveAzureEventGridPartnerConfiguration : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
@@ -44,45 +44,37 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
-        /// <summary>
-        /// Hashtable which represents resource Tags.
-        /// </summary>
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TagsHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
-        public Hashtable Tag { get; set; }
+            Position = 0,
+            HelpMessage = EventGridConstants.PartnerConfigurationInputObjectHelp,
+            ParameterSetName = PartnerConfigurationInputObjectParameterSet)]
+        public PSPartnerConfiguration InputObject { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.MaxExpirationTimeInDaysHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
-        public int? MaxExpirationTimeInDays { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.AuthorizedPartnersHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
-        public Hashtable[] AuthorizedPartners { get; set; }
+        [Parameter(Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            // Create a new Event Grid Partner Configuration
-            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
-
-            if (this.ShouldProcess(this.ResourceGroupName, $"Create a new EventGrid partner configuration in Resource Group {this.ResourceGroupName}"))
+            string resourceGroupName = string.Empty;
+            if (this.InputObject != null)
             {
-                PartnerConfiguration partnerConfiguration = this.Client.CreatePartnerConfiguration(
-                    this.ResourceGroupName,
-                    this.AuthorizedPartners,
-                    this.MaxExpirationTimeInDays,
-                    tagDictionary);
+                resourceGroupName = this.InputObject.ResourceGroupName;
+            }
+            else
+            {
+                resourceGroupName = this.ResourceGroupName;
+            }
 
-                PSPartnerConfiguration psPartnerConfiguration = new PSPartnerConfiguration(partnerConfiguration);
-                this.WriteObject(psPartnerConfiguration);
+            if (this.ShouldProcess(resourceGroupName, $"Remove an EventGrid partner configuration in Resource Group {resourceGroupName}"))
+            {   
+                this.Client.DeletePartnerConfiguration(resourceGroupName);
+
+                if (this.PassThru)
+                {
+                    this.WriteObject(true);
+                }
             }
         }
     }

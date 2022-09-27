@@ -21,28 +21,40 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         VerbsCommon.New,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerConfiguration",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerRegistration",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = ResourceGroupNameParameterSet),
-    OutputType(typeof(PSPartnerConfiguration))]
+        DefaultParameterSetName = PartnerRegistrationNameParameterSet),
+    OutputType(typeof(PSPartnerRegistration))]
 
-    public class NewAzureEventGridPartnerConfiguration : AzureEventGridCmdletBase
+    public class NewAzureEventGridPartnerRegistration : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
+            ParameterSetName = PartnerRegistrationNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 1,
+            HelpMessage = EventGridConstants.PartnerRegistrationNameHelp,
+            ParameterSetName = PartnerRegistrationNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/partnerRegistrations", nameof(ResourceGroupName))]
+        [ValidateNotNullOrEmpty]
+        [Alias("PartnerRegistrationName")]
+        public string Name { get; set; }
 
         /// <summary>
         /// Hashtable which represents resource Tags.
@@ -51,38 +63,23 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TagsHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
+            ParameterSetName = PartnerRegistrationNameParameterSet)]
         public Hashtable Tag { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.MaxExpirationTimeInDaysHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
-        public int? MaxExpirationTimeInDays { get; set; }
-
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.AuthorizedPartnersHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
-        public Hashtable[] AuthorizedPartners { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            // Create a new Event Grid Partner Configuration
+            // Create a new Event Grid Partner Registration
             Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
 
-            if (this.ShouldProcess(this.ResourceGroupName, $"Create a new EventGrid partner configuration in Resource Group {this.ResourceGroupName}"))
+            if (this.ShouldProcess(this.ResourceGroupName, $"Create a new EventGrid partner registration {this.Name} in Resource Group {this.ResourceGroupName}"))
             {
-                PartnerConfiguration partnerConfiguration = this.Client.CreatePartnerConfiguration(
+                PartnerRegistration partnerRegistration = this.Client.CreatePartnerRegistration(
                     this.ResourceGroupName,
-                    this.AuthorizedPartners,
-                    this.MaxExpirationTimeInDays,
+                    this.Name,
                     tagDictionary);
 
-                PSPartnerConfiguration psPartnerConfiguration = new PSPartnerConfiguration(partnerConfiguration);
-                this.WriteObject(psPartnerConfiguration);
+                PSPartnerRegistration psPartnerRegistration = new PSPartnerRegistration(partnerRegistration);
+                this.WriteObject(psPartnerRegistration);
             }
         }
     }
