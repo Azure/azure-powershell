@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.VMware Module
 ## Description
-Microsoft Azure PowerShell: VMware cmdlets
+Microsoft Azure PowerShell: Azure VMware Solution cmdlets
 
 ## Az.VMware Cmdlets
 ### [Get-AzVMwareAddon](Get-AzVMwareAddon.md)
@@ -130,4 +130,3 @@ Update a placement policy in a private cloud cluster
 
 ### [Update-AzVMwarePrivateCloud](Update-AzVMwarePrivateCloud.md)
 Update a private cloud
-
