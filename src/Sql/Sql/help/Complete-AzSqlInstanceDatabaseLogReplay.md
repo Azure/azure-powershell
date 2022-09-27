@@ -14,14 +14,28 @@ Completes Log Replay service for the given database.
 
 ### LogReplayInstanceDatabaseFromInputParameters (Default)
 ```
-Complete-AzSqlInstanceDatabaseLogReplay -LastBackupName <String> [-Name] <String> [-InstanceName] <String>
- [-ResourceGroupName] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Complete-AzSqlInstanceDatabaseLogReplay -LastBackupName <String> -Name <String> -InstanceName <String>
+ -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### LogReplayInstanceDatabaseAutocompleteInputParameters
+```
+Complete-AzSqlInstanceDatabaseLogReplay -LastBackupName <String> -Name <String> -InstanceName <String>
+ -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+ [<CommonParameters>]
+```
+
+### LogReplayInstanceDatabaseWithIdentityInputParameters
+```
+Complete-AzSqlInstanceDatabaseLogReplay -LastBackupName <String> -Name <String> -InstanceName <String>
+ -ResourceGroupName <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
 
 ### LogReplayInstanceDatabaseFromAzureSqlManagedDatabaseModelInstanceDefinition
 ```
-Complete-AzSqlInstanceDatabaseLogReplay -LastBackupName <String> [-PassThru]
+Complete-AzSqlInstanceDatabaseLogReplay -LastBackupName <String> -Name <String> [-PassThru]
  [-InputObject] <AzureSqlManagedDatabaseModel> [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -75,13 +89,13 @@ The name of the instance.
 
 ```yaml
 Type: System.String
-Parameter Sets: LogReplayInstanceDatabaseFromInputParameters
+Parameter Sets: LogReplayInstanceDatabaseFromInputParameters, LogReplayInstanceDatabaseAutocompleteInputParameters, LogReplayInstanceDatabaseWithIdentityInputParameters
 Aliases: ManagedInstanceName
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -105,13 +119,13 @@ The name of the instance database.
 
 ```yaml
 Type: System.String
-Parameter Sets: LogReplayInstanceDatabaseFromInputParameters
+Parameter Sets: (All)
 Aliases: InstanceDatabaseName
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -135,13 +149,13 @@ The name of the resource group.
 
 ```yaml
 Type: System.String
-Parameter Sets: LogReplayInstanceDatabaseFromInputParameters
+Parameter Sets: LogReplayInstanceDatabaseFromInputParameters, LogReplayInstanceDatabaseAutocompleteInputParameters, LogReplayInstanceDatabaseWithIdentityInputParameters
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
