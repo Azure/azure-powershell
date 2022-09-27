@@ -2687,7 +2687,7 @@ Describe "Management plan test" {
         $accountName = "weiaadkerb"
     
         $DomainName = "onpremaadstg.com"
-        $DomainGuid = $config.asadKerb.domainGuid
+        $DomainGuid = $config.aadKerb.domainGuid
         
         New-AzStorageAccount -ResourceGroupName $rgname -Name $accountName -SkuName Standard_LRS -Location "centraluseuap" -EnableAzureActiveDirectoryKerberosForFile $true -ActiveDirectoryDomainName $DomainName -ActiveDirectoryDomainGuid $DomainGuid 
         $a = get-AzStorageAccount -ResourceGroupName $rgname -Name $accountName
