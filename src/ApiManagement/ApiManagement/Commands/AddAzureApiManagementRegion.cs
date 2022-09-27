@@ -40,13 +40,7 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
         [ValidateNotNullOrEmpty]
         public string Location { get; set; }
 
-        [CmdletParameterBreakingChange("Sku", OldParamaterType = typeof(PsApiManagementSku), NewParameterTypeName = nameof(String))]
-        [Parameter(
-            ValueFromPipelineByPropertyName = false,
-            Mandatory = false,
-            HelpMessage = "Tier of the deployment region. Valid and Default value is Premium.")]
-        [Parameter(Mandatory = false)]
-        public string Sku { get; set; }
+
 
         [Parameter(
             ValueFromPipelineByPropertyName = false,
@@ -77,6 +71,12 @@ namespace Microsoft.Azure.Commands.ApiManagement.Commands
 
         [Parameter(Mandatory = false, HelpMessage = "Standard SKU PublicIpAddress ResoureId for integration into stv2 Virtual Network Deployments")]
         public string PublicIpAddressId { get; set; }
+
+        [Parameter(
+        ValueFromPipelineByPropertyName = false,
+        Mandatory = false,
+        HelpMessage = "Tier of the deployment region. Valid and Default value is Premium.")]
+        public string Sku { get; set; }
 
         public override void ExecuteCmdlet()
         {
