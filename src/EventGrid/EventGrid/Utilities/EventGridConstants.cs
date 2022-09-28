@@ -96,9 +96,16 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
 
         public const string PartnerConfigurationInputObjectHelp = "PartnerConfiguration object.";
         public const string PartnerRegistrationInputObjectHelp = "PartnerRegistration object";
+        public const string PartnerTopicInputObjectHelp = "PartnerTopic object.";
 
         public const string PartnerRegistrationNameHelp = "Event Grid partner registration name.";
+        public const string PartnerTopicNameHelp = "Event Grid partner topic name.";
+        public const string PartnerNameHelp = "Parter name.";
 
+        public const string PartnerRegistrationImmutableIdHelp = "Immutable id of the corresponding partner registration";
+        public const string AuthorizationExpirationTimeHelp = "Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's context will fail. " +
+                                                              "If specified, the allowed values are between 1 to the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration. " + 
+                                                              "If not specified, the default value will be the value of defaultMaximumExpirationTimeInDays specified in PartnerConfiguration or 7 if this value is not specified.";
         public const string MaxExpirationTimeInDaysHelp = "Expiration time in days used to validate the authorization expiration time for each authorized partner. If this parameter is not specified, the default is 7 days. Otherwise, allowed values are between 1 and 365 days.";
         public const string AuthorizedPartnersHelp = "Array of HashTables where each HashTable is the details of an authorized partner. Each HashTable has the following key-value info: partnerName, partnerRegistrationImmutableId, and authorizationExpirationTimeInUtc. " +
                                                      "At least one key is required. The partnerName is a String, partnerRegistrationImmutableId  is a Guid, and authorizationExpirationTimeInUtc is a DateTime.";

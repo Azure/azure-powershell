@@ -359,12 +359,17 @@ namespace Microsoft.Azure.Commands.EventGrid
             systemTopic.Location = location;
             systemTopic.Source = source;
             systemTopic.TopicType = topicType;
-            if(identityType != null)
+            if (identityType != null)
             {
                 IdentityInfo identityInfo = new IdentityInfo();
                 identityInfo.Type = identityType;
                 identityInfo.UserAssignedIdentities = userAssignedIdentities;
                 systemTopic.Identity = identityInfo;
+            }
+
+            if (tags != null)
+            {
+                systemTopic.Tags = tags;
             }
             
             return this.Client.SystemTopics.CreateOrUpdate(resourceGroupName, systemTopicName, systemTopic);
@@ -1021,7 +1026,6 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #endregion
 
-
         #region PartnerRegistration
         public PartnerRegistration CreatePartnerRegistration(
             string resourceGroupName,
@@ -1132,6 +1136,45 @@ namespace Microsoft.Azure.Commands.EventGrid
         #endregion
 
         #region PartnerConfiguration
+        public PartnerConfiguration AuthorizePartnerConfiguration(
+            string resourceGroupName,
+            Guid? partnerRegistrationImmutableId,
+            string partnerName,
+            DateTime? authorizationExpirationTimeInUtc)
+        {
+            if (partnerRegistrationImmutableId == null && string.IsNullOrEmpty(partnerName))
+            {
+                throw new ArgumentException("At least one of PartnerRegistrationImmutableId and PartnerName must be provided");
+            }
+
+            Partner partnerInfo = new Partner(
+                partnerRegistrationImmutableId: partnerRegistrationImmutableId,
+                partnerName: partnerName,
+                authorizationExpirationTimeInUtc: authorizationExpirationTimeInUtc);
+
+            return this.Client.PartnerConfigurations.AuthorizePartner(resourceGroupName, partnerInfo);
+        }
+
+        public PartnerConfiguration UnauthorizePartnerConfiguration(
+            string resourceGroupName,
+            Guid? partnerRegistrationImmutableId,
+            string partnerName,
+            DateTime? authorizationExpirationTimeInUtc)
+        {
+            if (partnerRegistrationImmutableId == null && string.IsNullOrEmpty(partnerName))
+            {
+                throw new ArgumentException("At least one of PartnerRegistrationImmutableId and PartnerName must be provided");
+            }
+
+            Partner partnerInfo = new Partner(
+                partnerRegistrationImmutableId: partnerRegistrationImmutableId,
+                partnerName: partnerName,
+                authorizationExpirationTimeInUtc: authorizationExpirationTimeInUtc);
+
+            return this.Client.PartnerConfigurations.UnauthorizePartner(resourceGroupName, partnerInfo);
+        }
+
+
         public PartnerConfiguration CreatePartnerConfiguration(
             string resourceGroupName,
             Hashtable[] authorizedPartners,
@@ -1233,6 +1276,162 @@ namespace Microsoft.Azure.Commands.EventGrid
             }
 
             return (partnerConfigurationsList, newNextLink);
+        }
+
+        #endregion
+
+        #region PartnerTopic
+        public PartnerTopic CreatePartnerTopic(
+            string resourceGroupName,
+            string partnerTopicName,
+            string location,
+            string source,
+            string identityType,
+            IDictionary<string, UserIdentityProperties> userAssignedIdentities,
+            Dictionary<string, string> tags,
+            Guid? partnerRegistrationImmutableId,
+            DateTime? expirationTimeIfNotActivated,
+            string partnerTopicFriendlyDescription,
+            string messageForActivation,
+            EventTypeInfo eventTypeInfo)
+        {
+            PartnerTopic partnerTopicInfo = new PartnerTopic(location);
+
+            partnerTopicInfo.Source = source;
+            partnerTopicInfo.PartnerTopicFriendlyDescription = partnerTopicFriendlyDescription;
+            partnerTopicInfo.MessageForActivation = messageForActivation;
+            if (identityType != null)
+            {
+                IdentityInfo identityInfo = new IdentityInfo();
+                identityInfo.Type = identityType;
+                identityInfo.UserAssignedIdentities = userAssignedIdentities;
+                partnerTopicInfo.Identity = identityInfo;
+            }
+
+            if (tags != null)
+            {
+                partnerTopicInfo.Tags = tags;
+            }
+
+            if (partnerRegistrationImmutableId != null)
+            {
+                partnerTopicInfo.PartnerRegistrationImmutableId = partnerRegistrationImmutableId;
+            }
+
+            if (expirationTimeIfNotActivated != null)
+            {
+                partnerTopicInfo.ExpirationTimeIfNotActivatedUtc = expirationTimeIfNotActivated;
+            }
+
+            if (eventTypeInfo != null)
+            {
+                partnerTopicInfo.EventTypeInfo = eventTypeInfo;
+            }
+
+            return this.Client.PartnerTopics.CreateOrUpdate(resourceGroupName, partnerTopicName, partnerTopicInfo);
+        }
+
+        public PartnerTopic UpdatePartnerTopic(
+            string resourceGroupName,
+            string partnerTopicName,
+            string identityType,
+            IDictionary<string, UserIdentityProperties> userAssignedIdentities,
+            Dictionary<string, string> tags)
+        {
+            IdentityInfo identityInfo = null;
+            if (identityType != null)
+            {
+                identityInfo.Type = identityType;
+                identityInfo.UserAssignedIdentities = userAssignedIdentities;
+            }
+
+            PartnerTopicUpdateParameters partnerTopicUpdateParameters = new PartnerTopicUpdateParameters(tags, identityInfo);
+            return this.Client.PartnerTopics.Update(resourceGroupName, partnerTopicName, partnerTopicUpdateParameters);
+        }
+
+        public PartnerTopic GetPartnerTopic(string resourceGroupName, string partnerTopicName)
+        {
+            return this.Client.PartnerTopics.Get(resourceGroupName, partnerTopicName);
+        }
+
+        public PartnerTopic ActivatePartnerTopic(string resourceGroupName, string partnerTopicName)
+        {
+            return this.Client.PartnerTopics.Activate(resourceGroupName, partnerTopicName);
+        }
+
+        public void DeletePartnerTopic(string resourceGroupName, string partnerTopicName)
+        {
+            this.Client.PartnerTopics.Delete(resourceGroupName, partnerTopicName);
+        }
+
+        public (IEnumerable<PartnerTopic>, string) ListPartnerTopicBySubscription(string oDataQuery, int? top)
+        {
+            List<PartnerTopic> partnerTopicsList = new List<PartnerTopic>();
+            IPage<PartnerTopic> partnerTopicPage = this.Client.PartnerTopics.ListBySubscription(oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (partnerTopicPage != null)
+            {
+                partnerTopicsList.AddRange(partnerTopicPage);
+                nextLink = partnerTopicPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<PartnerTopic> newPartnerTopicsList;
+                    (newPartnerTopicsList, nextLink) = this.ListPartnerTopicBySubscriptionNext(nextLink);
+                    partnerTopicsList.AddRange(newPartnerTopicsList);
+                }
+            }
+
+            return (partnerTopicsList, nextLink);
+        }
+
+        public (IEnumerable<PartnerTopic>, string) ListPartnerTopicByResourceGroup(string resourceGroupName, string oDataQuery, int? top)
+        {
+            List<PartnerTopic> partnerTopicsList = new List<PartnerTopic>();
+            IPage<PartnerTopic> partnerTopicPage = this.Client.PartnerTopics.ListByResourceGroup(resourceGroupName, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (partnerTopicPage != null)
+            {
+                partnerTopicsList.AddRange(partnerTopicPage);
+                nextLink = partnerTopicPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<PartnerTopic> newPartnerTopicsList;
+                    (newPartnerTopicsList, nextLink) = this.ListPartnerTopicBySubscriptionNext(nextLink);
+                    partnerTopicsList.AddRange(newPartnerTopicsList);
+                }
+            }
+
+            return (partnerTopicsList, nextLink);
+        }
+
+        public (IEnumerable<PartnerTopic>, string) ListPartnerTopicBySubscriptionNext(string nextLink)
+        {
+            List<PartnerTopic> partnerTopicsList = new List<PartnerTopic>();
+            string newNextLink = null;
+            IPage<PartnerTopic> partnerTopicsPage = this.Client.PartnerTopics.ListBySubscriptionNext(nextLink);
+            if (partnerTopicsPage != null)
+            {
+                partnerTopicsList.AddRange(partnerTopicsPage);
+                newNextLink = partnerTopicsPage.NextPageLink;
+            }
+
+            return (partnerTopicsList, newNextLink);
+        }
+
+        public (IEnumerable<PartnerTopic>, string) ListPartnerTopicByResourceGroupNext(string nextLink)
+        {
+            List<PartnerTopic> partnerTopicsList = new List<PartnerTopic>();
+            string newNextLink = null;
+            IPage<PartnerTopic> partnerTopicsPage = this.Client.PartnerTopics.ListByResourceGroupNext(nextLink);
+            if (partnerTopicsPage != null)
+            {
+                partnerTopicsList.AddRange(partnerTopicsPage);
+                newNextLink = partnerTopicsPage.NextPageLink;
+            }
+
+            return (partnerTopicsList, newNextLink);
         }
 
         #endregion

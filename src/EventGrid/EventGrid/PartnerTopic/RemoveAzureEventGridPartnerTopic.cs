@@ -26,19 +26,19 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerRegistration",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerTopic",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = PartnerRegistrationNameParameterSet),
+        DefaultParameterSetName = PartnerTopicNameParameterSet),
     OutputType(typeof(bool))]
 
-    public class RemoveAzureEventGridPartnerRegistration : AzureEventGridCmdletBase
+    public class RemoveAzureEventGridPartnerTopic : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = PartnerRegistrationNameParameterSet)]
+            ParameterSetName = PartnerTopicNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
@@ -48,20 +48,20 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.PartnerRegistrationNameHelp,
-            ParameterSetName = PartnerRegistrationNameParameterSet)]
-        [ResourceNameCompleter("Microsoft.EventGrid/partnerRegistrations", nameof(ResourceGroupName))]
+            HelpMessage = EventGridConstants.PartnerTopicNameHelp,
+            ParameterSetName = PartnerTopicNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/partnerTopics", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
-        [Alias("PartnerRegistrationName")]
+        [Alias("PartnerTopicName")]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.PartnerRegistrationInputObjectHelp,
-            ParameterSetName = PartnerRegistrationInputObjectParameterSet)]
-        public PSPartnerRegistration InputObject { get; set; }
+            HelpMessage = EventGridConstants.PartnerTopicInputObjectHelp,
+            ParameterSetName = PartnerTopicInputObjectParameterSet)]
+        public PSPartnerTopic InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -69,22 +69,22 @@ namespace Microsoft.Azure.Commands.EventGrid
         public override void ExecuteCmdlet()
         {
             string resourceGroupName = string.Empty;
-            string partnerRegistrationName = string.Empty;
+            string partnerTopicName = string.Empty;
 
             if (this.InputObject != null)
             {
                 resourceGroupName = this.InputObject.ResourceGroupName;
-                partnerRegistrationName = this.InputObject.PartnerRegistrationName;
+                partnerTopicName = this.InputObject.PartnerTopicName;
             }
             else
             {
                 resourceGroupName = this.ResourceGroupName;
-                partnerRegistrationName = this.Name;
+                partnerTopicName = this.Name;
             }
 
-            if (this.ShouldProcess(this.ResourceGroupName, $"Remove EventGrid partner registration {partnerRegistrationName} in Resource Group {resourceGroupName}"))
+            if (this.ShouldProcess(this.ResourceGroupName, $"Remove EventGrid partner topic {partnerTopicName} in Resource Group {resourceGroupName}"))
             {
-                this.Client.DeletePartnerRegistration(resourceGroupName, partnerRegistrationName);
+                this.Client.DeletePartnerTopic(resourceGroupName, partnerTopicName);
 
                 if (this.PassThru)
                 {
