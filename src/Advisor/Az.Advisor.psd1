@@ -8,14 +8,14 @@
 
 @{
 
-    # Script module or binary module file associated with this manifest.
-    # RootModule = ''
-    
-    # Version number of this module.
-    ModuleVersion = '1.1.2'
-    
-    # Supported PSEditions
-    CompatiblePSEditions = 'Core', 'Desktop'
+# Script module or binary module file associated with this manifest.
+RootModule = './Az.Advisor.psm1'
+
+# Version number of this module.
+ModuleVersion = '1.1.2'
+
+# Supported PSEditions
+CompatiblePSEditions = 'Core', 'Desktop'
     
 # ID used to uniquely identify this module
 GUID = '860b550a-20ce-4fb1-bae7-ef10e9221bce'
