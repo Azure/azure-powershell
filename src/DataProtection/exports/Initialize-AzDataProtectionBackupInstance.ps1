@@ -27,12 +27,12 @@ $instance.Property.PolicyInfo.PolicyParameter.DataStoreParametersList[0].Resourc
 $instance
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupInstanceResource
+Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupInstanceResource
 .Link
 https://docs.microsoft.com/powershell/module/az.dataprotection/initialize-azdataprotectionbackupinstance
 #>
 function Initialize-AzDataProtectionBackupInstance {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220401.IBackupInstanceResource])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.Api20220501.IBackupInstanceResource])]
 [CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
@@ -71,7 +71,13 @@ param(
     [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Support.SecretStoreTypes]
     # Secret store type for secret store authentication of data source.
     # This parameter is only supported for AzureDatabaseForPostgreSQL currently.
-    ${SecretStoreType}
+    ${SecretStoreType},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Category('Body')]
+    [System.String]
+    # Sanpshot Resource Group
+    ${SnapshotResourceGroupId}
 )
 
 begin {

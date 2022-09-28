@@ -163,4 +163,4 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## RELATED LINKS
 
-[Get-AzNetworkManagerEffectiveConnectivityConfigurationList](./Get-AzNetworkManagerEffectiveConnectivityConfigurationList.md)
+[Get-AzNetworkManagerEffectiveConnectivityConfiguration](./Get-AzNetworkManagerEffectiveConnectivityConfiguration.md)

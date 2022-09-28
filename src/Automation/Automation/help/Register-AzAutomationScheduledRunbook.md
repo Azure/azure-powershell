@@ -87,6 +87,7 @@ Specifies a hash table of key/value pairs.
 The keys are runbook parameter names.
 The values are runbook parameter values.
 When the runbook starts in response to the associated schedule, these parameters are passed to the runbook.
+Example: -Parameters @{"Key1"="Value1";"Key2"="Value2"}
 
 ```yaml
 Type: System.Collections.IDictionary

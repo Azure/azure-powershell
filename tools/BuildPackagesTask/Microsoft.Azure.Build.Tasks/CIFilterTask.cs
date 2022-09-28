@@ -120,20 +120,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private List<string> GetBuildCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)
         {
-            if (moduleName.Equals(AllModule))
-            {
-                HashSet<string> csprojSet = new HashSet<string>();
-                foreach (string m in GetSelectedModuleList())
-                {
-                    csprojSet.UnionWith(GetBuildCsprojList(m, csprojMap));
-                }
-                return csprojSet.ToList();
-            }
-            else
-            {
-                return GetRelatedCsprojList(moduleName, csprojMap)
-                    .Where(x => !x.Contains("Test")).ToList();
-            }
+            return GetRelatedCsprojList(moduleName, csprojMap)
+                .Where(x => !x.Contains("Test")).ToList();
         }
 
         private string GetModuleNameFromCsprojPath(string csprojPath)
@@ -172,22 +160,10 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private List<string> GetDependentModuleList(string moduleName, Dictionary<string, string[]> csprojMap)
         {
-            if (moduleName.Equals(AllModule))
-            {
-                HashSet<string> csprojSet = new HashSet<string>();
-                foreach (string m in GetSelectedModuleList())
-                {
-                    csprojSet.UnionWith(GetDependentModuleList(m, csprojMap));
-                }
-                return csprojSet.ToList();
-            }
-            else
-            {
-                return GetRelatedCsprojList(moduleName, csprojMap)
-                    .Select(GetModuleNameFromCsprojPath)
-                    .Distinct()
-                    .ToList();
-            }
+            return GetRelatedCsprojList(moduleName, csprojMap)
+                .Select(GetModuleNameFromCsprojPath)
+                .Distinct()
+                .ToList();
         }
 
         // Run a selected module list instead of run all the modules to speed up the CI process.
@@ -199,20 +175,8 @@ namespace Microsoft.WindowsAzure.Build.Tasks
 
         private List<string> GetTestCsprojList(string moduleName, Dictionary<string, string[]> csprojMap)
         {
-            if (moduleName.Equals(AllModule))
-            {
-                HashSet<string> csprojSet = new HashSet<string>();
-                foreach (string m in GetSelectedModuleList())
-                {
-                    csprojSet.UnionWith(GetTestCsprojList(m, csprojMap));
-                }
-                return csprojSet.ToList();
-            }
-            else
-            {
-                return GetRelatedCsprojList(moduleName, csprojMap)
-                    .Where(x => x.Contains("Test")).ToList();;
-            }
+            return GetRelatedCsprojList(moduleName, csprojMap)
+                .Where(x => x.Contains("Test")).ToList();;
         }
 
         private bool ProcessTargetModule(Dictionary<string, string[]> csprojMap)
@@ -286,40 +250,36 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                     string phaseName = phase.Split(':')[0];
                     string scope = phase.Split(':')[1];
                     HashSet<string> scopes = influencedModuleInfo.ContainsKey(phaseName) ? influencedModuleInfo[phaseName] : new HashSet<string>();
-                    if (!scopes.Contains(AllModule))
+                    if (scope.Equals(AllModule))
                     {
-                        if (scope.Equals(AllModule))
+                        scopes.UnionWith(GetSelectedModuleList());
+                    }
+                    else
+                    {
+                        string moduleName = matchedModuleName == "" ? filePath.Split('/')[1] : matchedModuleName;
+                        if (scope.Equals(SingleModule))
                         {
-                            scopes.Clear();
-                            scopes.Add(AllModule);
+                            scopes.Add(moduleName);
+                        }
+                        else if (scope.Equals(DependenceModule))
+                        {
+                            scopes.UnionWith(GetDependenceModuleList(moduleName, csprojMap));
+                        }
+                        else if (scope.Equals(DependentModule))
+                        {
+                            scopes.UnionWith(GetDependentModuleList(moduleName, csprojMap));
+                        }
+                        else if (scope.Equals(RelatedModule))
+                        {
+                            scopes.UnionWith(GetDependenceModuleList(moduleName, csprojMap));
+                            scopes.UnionWith(GetDependentModuleList(moduleName, csprojMap));
                         }
                         else
                         {
-                            string moduleName = matchedModuleName == "" ? filePath.Split('/')[1] : matchedModuleName;
-                            if (scope.Equals(SingleModule))
-                            {
-                                scopes.Add(moduleName);
-                            }
-                            else if (scope.Equals(DependenceModule))
-                            {
-                                scopes.UnionWith(GetDependenceModuleList(moduleName, csprojMap));
-                            }
-                            else if (scope.Equals(DependentModule))
-                            {
-                                scopes.UnionWith(GetDependentModuleList(moduleName, csprojMap));
-                            }
-                            else if (scope.Equals(RelatedModule))
-                            {
-                                scopes.UnionWith(GetDependenceModuleList(moduleName, csprojMap));
-                                scopes.UnionWith(GetDependentModuleList(moduleName, csprojMap));
-                            }
-                            else
-                            {
-                                scopes.Add(scope);
-                            }
+                            scopes.Add(scope);
                         }
-                        influencedModuleInfo[phaseName] = scopes;
                     }
+                    influencedModuleInfo[phaseName] = scopes;
                 }
             }
             List<string> expectedKeyList = new List<string>()
@@ -336,10 +296,6 @@ namespace Microsoft.WindowsAzure.Build.Tasks
                 if (!influencedModuleInfo.ContainsKey(phaseName))
                 {
                     influencedModuleInfo[phaseName] = new HashSet<string>();
-                }
-                else if (influencedModuleInfo[phaseName].Contains(AllModule))
-                {
-                    influencedModuleInfo[phaseName] = new HashSet<string>(GetDependenceModuleList(ACCOUNT_MODULE_NAME, csprojMap));
                 }
             }
 

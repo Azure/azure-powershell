@@ -25,7 +25,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Helpers
     public partial class PolicyHelpers
     {
         
-        public static void ValidateLongTermRetentionPolicyWithTieringPolicy(LongTermRetentionPolicy ltrPolicy, TieringPolicy tieringPolicy, bool isPreviousTieringPolicy = false) // check resx messages 
+        public static void ValidateLongTermRetentionPolicyWithTieringPolicy(LongTermRetentionPolicy ltrPolicy, TieringPolicy tieringPolicy, bool isPreviousTieringPolicy = false) 
         {
             // To enable Archive(either TierRecommended or TierAfter), Monthly or Yearly retention needs to be set
             if(tieringPolicy != null && tieringPolicy.TieringMode != TieringMode.DoNotTier )
