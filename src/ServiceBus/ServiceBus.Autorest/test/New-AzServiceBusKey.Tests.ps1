@@ -14,20 +14,6 @@ if(($null -eq $TestName) -or ($TestName -contains 'New-AzServiceBusKey'))
   . ($mockingPath | Select-Object -First 1).FullName
 }
 
-function GenerateSASKey {
-    [Reflection.Assembly]::LoadWithPartialName("System.Web")| out-null
-    $URI="myNamespace.servicebus.windows.net/myEventHub"
-    $Access_Policy_Name="RootManageSharedAccessKey"
-    $Access_Policy_Key="myPrimaryKey"
-    #Token expires now+300
-    $Expires=([DateTimeOffset]::Now.ToUnixTimeSeconds())+300
-    $SignatureString=[System.Web.HttpUtility]::UrlEncode($URI)+ "`n" + [string]$Expires
-    $HMAC = New-Object System.Security.Cryptography.HMACSHA256
-    $HMAC.key = [Text.Encoding]::ASCII.GetBytes($Access_Policy_Key)
-    $Signature = $HMAC.ComputeHash([Text.Encoding]::ASCII.GetBytes($SignatureString))
-    $Signature = [Convert]::ToBase64String($Signature)
-    $Signature
-}
 
 Describe 'New-AzServiceBusKey' {
     It 'NewExpandedNamespace' {
@@ -44,18 +30,16 @@ Describe 'New-AzServiceBusKey' {
         $newKeys.SecondaryKey | Should -Not -Be $currentKeys.SecondaryKey
 
         $currentKeys = $newKeys
-        $newPrimaryKey = GenerateSASKey
 
-        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule1 -KeyType PrimaryKey -KeyValue $newPrimaryKey
-        $newKeys.PrimaryKey | Should -Be $newPrimaryKey
+        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule1 -KeyType PrimaryKey -KeyValue $env.namespacePrimaryKey
+        $newKeys.PrimaryKey | Should -Be $env.namespacePrimaryKey
         $newKeys.SecondaryKey | Should -Be $currentKeys.SecondaryKey
 
         $currentKeys = $newKeys
-        $newSecondaryKey = GenerateSASKey
 
-        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule1 -KeyType SecondaryKey -KeyValue $newSecondaryKey
-        $newKeys.PrimaryKey | Should -Be $newPrimaryKey
-        $newKeys.SecondaryKey | Should -Be $newSecondaryKey
+        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -Name namespaceAuthRule1 -KeyType SecondaryKey -KeyValue $env.namespaceSecondaryKey
+        $newKeys.PrimaryKey | Should -Be $env.namespacePrimaryKey
+        $newKeys.SecondaryKey | Should -Be $env.namespaceSecondaryKey
     }
 
     It 'NewExpandedQueue' {
@@ -72,18 +56,16 @@ Describe 'New-AzServiceBusKey' {
         $newKeys.SecondaryKey | Should -Not -Be $currentKeys.SecondaryKey
 
         $currentKeys = $newKeys
-        $newPrimaryKey = GenerateSASKey
 
-        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule1 -KeyType PrimaryKey -KeyValue $newPrimaryKey
-        $newKeys.PrimaryKey | Should -Be $newPrimaryKey
+        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule1 -KeyType PrimaryKey -KeyValue $env.queuePrimaryKey
+        $newKeys.PrimaryKey | Should -Be $env.queuePrimaryKey
         $newKeys.SecondaryKey | Should -Be $currentKeys.SecondaryKey
 
         $currentKeys = $newKeys
-        $newSecondaryKey = GenerateSASKey
 
-        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule1 -KeyType SecondaryKey -KeyValue $newSecondaryKey
-        $newKeys.PrimaryKey | Should -Be $newPrimaryKey
-        $newKeys.SecondaryKey | Should -Be $newSecondaryKey
+        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -QueueName queue1 -Name queueAuthRule1 -KeyType SecondaryKey -KeyValue $env.queueSecondaryKey
+        $newKeys.PrimaryKey | Should -Be $env.queuePrimaryKey
+        $newKeys.SecondaryKey | Should -Be $env.queueSecondaryKey
     }
 
     It 'NewExpandedTopic' {
@@ -100,17 +82,15 @@ Describe 'New-AzServiceBusKey' {
         $newKeys.SecondaryKey | Should -Not -Be $currentKeys.SecondaryKey
 
         $currentKeys = $newKeys
-        $newPrimaryKey = GenerateSASKey
 
-        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule1 -KeyType PrimaryKey -KeyValue $newPrimaryKey
-        $newKeys.PrimaryKey | Should -Be $newPrimaryKey
+        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule1 -KeyType PrimaryKey -KeyValue $env.topicPrimaryKey
+        $newKeys.PrimaryKey | Should -Be $env.topicPrimaryKey
         $newKeys.SecondaryKey | Should -Be $currentKeys.SecondaryKey
 
         $currentKeys = $newKeys
-        $newSecondaryKey = GenerateSASKey
 
-        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule1 -KeyType SecondaryKey -KeyValue $newSecondaryKey
-        $newKeys.PrimaryKey | Should -Be $newPrimaryKey
-        $newKeys.SecondaryKey | Should -Be $newSecondaryKey
+        $newKeys = New-AzServiceBusKey -ResourceGroupName $env.resourceGroup -NamespaceName $env.namespace -TopicName topic1 -Name topicAuthRule1 -KeyType SecondaryKey -KeyValue $env.topicSecondaryKey
+        $newKeys.PrimaryKey | Should -Be $env.topicPrimaryKey
+        $newKeys.SecondaryKey | Should -Be $env.topicSecondaryKey
     }
 }
