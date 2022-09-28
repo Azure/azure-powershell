@@ -63,14 +63,12 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
     ${NamespaceName},
 
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub

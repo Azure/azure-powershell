@@ -56,7 +56,6 @@ function Set-AzEventHubAuthorizationRule {
 param(
     [Parameter(ParameterSetName='SetExpandedNamespace', Mandatory)]
     [Parameter(ParameterSetName='SetExpandedEntity', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -87,7 +86,6 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='SetExpandedEntity', Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of the EventHub entity.
