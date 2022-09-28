@@ -1,7 +1,7 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/new-azmysqlflexibleserver
+online version: https://docs.microsoft.com/powershell/module/az.mysql/new-azmysqlflexibleserver
 schema: 2.0.0
 ---
 
@@ -15,8 +15,9 @@ Creates a new MySQL flexible server.
 ```
 New-AzMySqlFlexibleServer [-Name <String>] [-ResourceGroupName <String>] [-SubscriptionId <String>]
  [-AdministratorLoginPassword <SecureString>] [-AdministratorUserName <String>] [-BackupRetentionDay <Int32>]
- [-HighAvailability <Object>] [-Location <String>] [-PublicAccess <String>] [-Sku <String>]
- [-SkuTier <String>] [-StorageInMb <Int32>] [-Subnet <String>] [-SubnetPrefix <String>] [-Tag <Hashtable>]
+ [-HighAvailability <String>] [-Iops <Int32>] [-Location <String>] [-PrivateDnsZone <String>]
+ [-PublicAccess <String>] [-Sku <String>] [-SkuTier <String>] [-StorageAutogrow <StorageAutogrow>]
+ [-StorageInMb <Int32>] [-Subnet <String>] [-SubnetPrefix <String>] [-Tag <Hashtable>]
  [-Version <ServerVersion>] [-Vnet <String>] [-VnetPrefix <String>] [-Zone <String>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
@@ -28,7 +29,7 @@ Creates a new MySQL flexible server.
 
 ### Example 1: Create a new MySql flexible server with arguments
 ```powershell
-New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_B1ms -SkuTier Burstable -Version 12 -StorageInMb 10240 -PublicAccess none
+New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Location eastus -AdministratorUserName mysqltest -AdministratorLoginPassword $password -Sku Standard_D2ds_v4 -SkuTier Burstable -Version 12 -StorageInMb 20480 -PublicAccess none -Zone 1 -BackupRetentionDay 10 -StorageAutogrow Enabled -Iops 500 -HighAvailability ZoneRedundant
 ```
 
 ```output
@@ -37,9 +38,9 @@ Resource group PowershellMySqlTest exists ? : True
 Creating MySQL server mysql-test in group MySqlTest...
 Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
 
-Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
-----             --------  -------       -------   ------------------ ------- -----------------------
-mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+Name         Location  SkuName             SkuTier           AdministratorLogin  Version StorageSizeGb
+----         --------  -------             -------           ------------------  ------- -------------
+mysql-test   East US   Standard_D2ds_v4    GeneralPurpose    admin                5.7     20
 
 ```
 
@@ -58,9 +59,9 @@ Creating MySQL server server00000000 in group group00000000...
 Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
 Creating database flexibleserverdb...
 
-Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
-----             --------  -------       -------   ------------------ ------- -----------------------
-mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
+----         --------  -------          -------        ------------------ ------- -------------
+mysql-test   West US 2 Standard_B1ms    Burstable      admin              5.7     32
 ```
 
 This cmdlet creates MySql flexible server with default parameter values and provision the server inside a new virtual network and have a subnet delegated to the server.
@@ -71,15 +72,63 @@ If you want to find the auto-generated password for your server, use ConvertFrom
 
 (E.g., $server.SecuredPassword | ConvertFrom-SecureString -AsPlainText)
 
-### Example 3: Create a new MySql flexible server with virtual network
+### Example 3: Create a new MySql flexible server with existing Subnet
+```powershell
+$Subnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellPostgreSqlTest/providers/Microsoft.Network/virtualNetworks/vnetname/subnets/subnetname'
+$DnsZone = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/postgresqltest/providers/Microsoft.Network/privateDnsZones/testserver.private.mysql.database.azure.com'
+New-AzMySqlFlexibleServer  -ResourceGroupName postgresqltest -ServerName testserver -Subnet $Subnet -PrivateDnsZone $DnsZone
+```
+
+```output
+Resource group PowershellPostgreSqlTest exists ? : True
+You have supplied a subnet Id. Verifying its existence...
+Creating PostgreSQL server testserver in group PowershellPostgreSqlTest...
+Your server server00000000 is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/postgresql-pricing for pricing details
+Creating database flexibleserverdb...
+
+Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
+----         --------  -------          -------        ------------------ ------- -------------
+mysql-test   West US 2 Standard_B1ms    Burstable      admin              5.7     32
+
+```
+
+This cmdlet creates PostgreSql flexible server with an existing Subnet Id provided by a user.
+The subnet will be delegated to PostgreSQL flexible server if not already delegated.
+You cannot use a subnet delegated to different services.
+
+### Example 4: Create a new MySql flexible server with virtual network and subnet name
+```powershell
+$DnsZone = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/postgresqltest/providers/Microsoft.Network/privateDnsZones/testserver.private.mysql.database.azure.com'
+New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Vnet mysql-vnet -Subnet mysql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24 -PrivateDnsZone $DnsZone
+```
+
+```output
+Resource group PowershellMySqlTest exists ? : True
+Creating new vnet mysql-vnet in resource group PowershellMySqlTest
+Creating new subnet mysql-subnet in resource group PowershellMySqlTest and delegating it to Microsoft.DBforMySQL/flexibleServers
+Creating MySQL server mysql-test in group PowershellMySqlTest...
+Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
+Creating database flexibleserverdb...
+
+Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
+----         --------  -------          -------        ------------------ ------- -------------
+mysql-test   West US 2 Standard_B1ms    Burstable      admin              5.7     32
+
+```
+
+This cmdlet creates MySql flexible server with vnet name, subnet name, vnet prefix, and subnet prefix.
+If the virtual network and subnet don't exist, the cmdlet creates one.
+
+### Example 5: Create a new MySql flexible server with virtual network
 ```powershell
 $Vnet = 'vnetname'
-New-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
+$DnsZone = '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/postgresqltest/providers/Microsoft.Network/privateDnsZones/testserver.private.mysql.database.azure.com'
+New-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Vnet $Vnet -PrivateDnsZone $DnsZone
 
 # or
 
 $Vnet = '/subscriptions/00000000-0000-0000-0000-0000000000/resourceGroups/PowershellMySqlTest/providers/Microsoft.Network/virtualNetworks/vnetname'
-New-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Vnet $Vnet
+New-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Vnet $Vnet -PrivateDnsZone $DnsZone
 ```
 
 ```output
@@ -91,38 +140,16 @@ Creating MySQL server server00000000 in group PowershellMySqlTest...
 Your server server00000000 is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
 Creating database flexibleserverdb...
 
-Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
-----             --------  -------       -------   ------------------ ------- -----------------------
-mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
+----         --------  -------          -------        ------------------ ------- -------------
+mysql-test   West US 2 Standard_B1ms    Burstable      admin              5.7     32
 
 ```
 
 This cmdlet creates MySql flexible server with vnet id or vnet name provided by a user.
 If the virtual network doesn't exist, the cmdlet creates one.
 
-### Example 4: Create a new MySql flexible server with virtual network and subnet name
-```powershell
-New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -Vnet mysql-vnet -Subnet mysql-subnet -VnetPrefix 10.0.0.0/16 -SubnetPrefix 10.0.0.0/24
-```
-
-```output
-Resource group PowershellMySqlTest exists ? : True
-Creating new vnet mysql-vnet in resource group PowershellMySqlTest
-Creating new subnet mysql-subnet in resource group PowershellMySqlTest and delegating it to Microsoft.DBforMySQL/flexibleServers
-Creating MySQL server mysql-test in group PowershellMySqlTest...
-Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to https://aka.ms/mysql-pricing for pricing details
-Creating database flexibleserverdb...
-
-Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
-----             --------  -------       -------   ------------------ ------- -----------------------
-mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
-
-```
-
-This cmdlet creates MySql flexible server with vnet name, subnet name, vnet prefix, and subnet prefix.
-If the virtual network and subnet don't exist, the cmdlet creates one.
-
-### Example 7: Create a new MySql flexible server with public access to all IPs
+### Example 6: Create a new MySql flexible server with public access to all IPs
 ```powershell
 New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -PublicAccess All
 ```
@@ -134,14 +161,14 @@ Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to h
 Creating database flexibleserverdb...
 Configuring server firewall rule to accept connections from 0.0.0.0 to 255.255.255.255
 
-Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
-----             --------  -------       -------   ------------------ ------- -----------------------
-mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
+----         --------  -------          -------        ------------------ ------- -------------
+mysql-test   West US 2 Standard_B1ms    Burstable      admin              5.7     32
 ```
 
 This cmdlet creates MySql flexible server open to all IP addresses.
 
-### Example 8: Create a new MySql flexible server with firewall
+### Example 7: Create a new MySql flexible server with firewall
 ```powershell
 New-AzMySqlFlexibleServer -Name mysql-test -ResourceGroupName PowershellMySqlTest -PublicAccess 10.10.10.10-10.10.10.12
 ```
@@ -153,9 +180,9 @@ Your server mysql-test is using sku Standard_B1ms (Paid Tier). Please refer to h
 Creating database flexibleserverdb...
 Configuring server firewall rule to accept connections from 10.10.10.10 to 10.10.10.12
 
-Name             Location  SkuName       SkuTier   AdministratorLogin Version StorageProfileStorageMb
-----             --------  -------       -------   ------------------ ------- -----------------------
-mysql-test       West US 2 Standard_B1ms Burstable mysqltest          5.7     10240
+Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
+----         --------  -------          -------        ------------------ ------- -------------
+mysql-test   West US 2 Standard_B1ms    Burstable      admin              5.7     32
 
 ```
 
@@ -213,7 +240,7 @@ Accept wildcard characters: False
 
 ### -BackupRetentionDay
 Backup retention days for the server.
-Day count is between 7 and 35.
+Day count is between 1 and 35.
 
 ```yaml
 Type: System.Int32
@@ -244,11 +271,28 @@ Accept wildcard characters: False
 
 ### -HighAvailability
 Enable or disable high availability feature.
+Allowed values are 'ZoneRedundant', 'SameZone', and 'Disabled'.
 Default value is Disabled.
-Default: Disabled.
 
 ```yaml
-Type: System.Object
+Type: System.String
+Parameter Sets: (All)
+Aliases: HaEnabled
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -Iops
+Number of IOPS to be allocated for this server.
+You will get certain amount of free IOPS based on compute and storage provisioned.
+The default value for IOPS is free IOPS.
+
+```yaml
+Type: System.Int32
 Parameter Sets: (All)
 Aliases:
 
@@ -304,16 +348,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -PrivateDnsZone
+The id of an existing private dns zone.
+The suffix of dns zone has to be same as that of fully qualified domain of the server.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -PublicAccess
 Determines the public access.
-Enter single or range of IP addresses to be 
-        included in the allowed list of IPs.
-IP address ranges must be dash-
-        separated and not contain any spaces.
-Specifying 0.0.0.0 allows public
-        access from any resources deployed within Azure to access your server.
-        Specifying no IP address sets the server in public access mode but does
-        not create a firewall rule.
+Allowed values: All, None, IP address range (e.g., 1.1.1.1-1.1.1.5, 1.1.1.1) Specifying 0.0.0.0 allows public access from any resources deployed within Azure to access your server.
+Specifying no IP address sets the server in public access mode but does not create a firewall rule.
 
 ```yaml
 Type: System.String
@@ -375,6 +429,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -StorageAutogrow
+Enable or disable Storage Auto Grow.
+The default value is Disabled
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Support.StorageAutogrow
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -StorageInMb
 Max storage allowed for a server.
 
@@ -392,6 +462,7 @@ Accept wildcard characters: False
 
 ### -Subnet
 The Name or Id of an existing Subnet or name of a new one to create.
+Use resource ID if you want to use a subnet from different resource group.
 Please note that the subnet will be delegated to Microsoft.DBforMySQL/flexibleServers.
 After delegation, this subnet cannot be used for any other type of Azure resources.
 
@@ -554,7 +625,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20200701Preview.IServerAutoGenerated
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20210501.IServerAutoGenerated
 
 ## NOTES
 

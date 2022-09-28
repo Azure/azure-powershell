@@ -1,61 +1,48 @@
 ---
 external help file:
 Module Name: Az.MySql
-online version: https://docs.microsoft.com/en-us/powershell/module/az.mysql/update-azmysqlflexibleserverdatabase
+online version: https://docs.microsoft.com/powershell/module/az.mysql/update-azmysqlserverconfigurationslist
 schema: 2.0.0
 ---
 
-# Update-AzMySqlFlexibleServerDatabase
+# Update-AzMySqlServerConfigurationsList
 
 ## SYNOPSIS
-Creates a new database or updates an existing database.
+Update a list of configurations in a given server.
 
 ## SYNTAX
 
 ### UpdateExpanded (Default)
 ```
-Update-AzMySqlFlexibleServerDatabase -Name <String> -ResourceGroupName <String> -ServerName <String>
- [-SubscriptionId <String>] [-Charset <String>] [-Collation <String>] [-DefaultProfile <PSObject>] [-AsJob]
- [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+Update-AzMySqlServerConfigurationsList -ResourceGroupName <String> -ServerName <String>
+ [-SubscriptionId <String>] [-Value <IConfiguration[]>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
+ [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ### UpdateViaIdentityExpanded
 ```
-Update-AzMySqlFlexibleServerDatabase -InputObject <IMySqlIdentity> [-Charset <String>] [-Collation <String>]
+Update-AzMySqlServerConfigurationsList -InputObject <IMySqlIdentity> [-Value <IConfiguration[]>]
  [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates a new database or updates an existing database.
+Update a list of configurations in a given server.
 
 ## EXAMPLES
 
-### Example 1: Update a MySql server database by name
+### Example 1: Update MySQL configurations list by name
 ```powershell
-Update-AzMySqlFlexibleServerDatabase -Name database-test -ResourceGroupName PowershellMySqlTest -ServerName mysql-test -Charset utf8
+Update-AzMySqlServerConfigurationsList -ResourceGroupName PowershellMySqlTest -ServerName mysql-test
 ```
 
-```output
-Name            Charset     Collation              
-----            -------- ------------------
-databasetest   utf8      latin1_swedish_ci  
-```
+Update MySQL configurations list by name.
 
-Update a database by resource name.
-
-### Example 2: Update MySql database by parameter.
+### Example 2: Update MySQL configurations list by identity
 ```powershell
-$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBForMySql/servers/mysql-test/databases/databasetest"
-Update-AzMySqlFlexibleServerDatabase -Parameter $ID -Charset utf8
+Get-AzMySqlServer -ResourceGroupName PowershellMySqlTest -ServerName mysql-test | Update-AzMySqlServerConfigurationsList
 ```
 
-```output
-Name            Charset     Collation              
-----            -------- ------------------
-databasetest   utf8      latin1_swedish_ci  
-```
-
-Update a database by parameter
+Update MySQL configurations list by ID.
 
 ## PARAMETERS
 
@@ -64,36 +51,6 @@ Run the command as a job
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Charset
-The charset of the database.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Collation
-The collation of the database.
-
-```yaml
-Type: System.String
 Parameter Sets: (All)
 Aliases:
 
@@ -132,21 +89,6 @@ Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
-Accept wildcard characters: False
-```
-
-### -Name
-The name of the database.
-
-```yaml
-Type: System.String
-Parameter Sets: UpdateExpanded
-Aliases: DatabaseName
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -211,6 +153,22 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -Value
+The list of server configurations.
+To construct, see NOTES section for VALUE properties and create a hash table.
+
+```yaml
+Type: Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration[]
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -251,7 +209,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IDatabase
+### Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.Api20171201.IConfiguration
 
 ## NOTES
 
@@ -262,18 +220,22 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-INPUTOBJECT <IMySqlIdentity>: Identity Parameter
+`INPUTOBJECT <IMySqlIdentity>`: Identity Parameter
+  - `[BackupName <String>]`: The name of the backup.
   - `[ConfigurationName <String>]`: The name of the server configuration.
   - `[DatabaseName <String>]`: The name of the database.
   - `[FirewallRuleName <String>]`: The name of the server firewall rule.
   - `[Id <String>]`: Resource identity path
-  - `[KeyName <String>]`: The name of the server key.
   - `[LocationName <String>]`: The name of the location.
   - `[ResourceGroupName <String>]`: The name of the resource group. The name is case insensitive.
   - `[SecurityAlertPolicyName <SecurityAlertPolicyName?>]`: The name of the security alert policy.
   - `[ServerName <String>]`: The name of the server.
   - `[SubscriptionId <String>]`: The ID of the target subscription.
   - `[VirtualNetworkRuleName <String>]`: The name of the virtual network rule.
+
+`VALUE <IConfiguration[]>`: The list of server configurations.
+  - `[Source <String>]`: Source of the configuration.
+  - `[Value <String>]`: Value of the configuration.
 
 ## RELATED LINKS
 
