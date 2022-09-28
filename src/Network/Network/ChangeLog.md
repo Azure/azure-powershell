@@ -25,6 +25,8 @@
     - `New-AzVirtualNetworkGatewayConnection`
 * Updated commandlet to support no-internet advertise CustomIpPrefix.
     - `Update-AzCustomIpPrefix`
+* Updated commandlet to support create/update nic with DisableTcpStateTracking property
+	- `New-AzNetworkInterface`
 * Updated commandlets to support specifying a VirtualRouterAsn on Virtual Hub
     - `NewAzureRmVirtualHubCommand.cs`
     - `UpdateAzureRmVirtualHubCommand.cs`
