@@ -18,7 +18,32 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Bumped API version to 2020-01-01
+
+## Version 1.1.2
+* Fixed the issue that `Az.Advisor.psd1` was not signed [#16226]
+
+## Version 1.1.1
+* Update references in .psd1 to use relative path
+
+## Version 1.1.0
+* Added new category "Operational Excellence" to Get-AzAdvisorRecommendation cmdlet.
+
+## Version 1.0.1
+* Fixed miscellaneous typos across module
+
+## Version 1.0.0
+* GA release of Az.Advisor
+
+## Version 0.1.1
+* Updated utils to be extensible for future changes
 
 ## Version 0.1.0
-* First preview release for module Az.Advisor
+* Added new cmdlets for Advisor Recommendation
+    - Get-AzAdvisorRecommendation
+    - Enable-AzAdvisorRecommendation
+    - Disable-AzAdvisorRecommendation
+* Added new cmdlets for Advisor Configuration
+    - Get-AzAdvisorConfiguration
+    - Set-AzAdvisorConfiguration
 
