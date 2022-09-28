@@ -106,7 +106,7 @@ The name of EventHub namespace
 ```yaml
 Type: System.String
 Parameter Sets: Break
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

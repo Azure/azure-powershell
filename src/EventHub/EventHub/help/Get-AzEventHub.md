@@ -49,7 +49,7 @@ DataLakeFolderPath           :
 DataLakeSubscriptionId       :
 DestinationName              :
 Encoding                     :
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub
 IntervalInSeconds            :
 Location                     : australiaeast
 MessageRetentionInDays       : 1
@@ -126,7 +126,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: List, Get
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

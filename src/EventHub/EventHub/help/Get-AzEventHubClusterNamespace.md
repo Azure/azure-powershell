@@ -30,8 +30,8 @@ Get-AzEventHubClusterNamespace -ResourceGroupName myResourceGroup -ClusterName D
 ```output
 Id
 --
-/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace1
-/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace2
+/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace1
+/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace2
 ```
 
 Lists ID's of all namespaces created in EventHubs dedicated cluster `DefaultCluster-11`.
