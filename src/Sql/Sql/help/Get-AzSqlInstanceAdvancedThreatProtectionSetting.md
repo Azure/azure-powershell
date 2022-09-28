@@ -1,50 +1,49 @@
 ---
 external help file: Microsoft.Azure.PowerShell.Cmdlets.Sql.dll-Help.xml
 Module Name: Az.Sql
-ms.assetid: F26CB715-D66A-4672-AA47-F3B316957FC8
-online version: https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlServerAdvancedThreatProtectionSetting
+online version: https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlInstanceAdvancedThreatProtectionSetting
 schema: 2.0.0
 ---
 
-# Get-AzSqlServerAdvancedThreatProtectionSetting
+# Get-AzSqlInstanceAdvancedThreatProtectionSetting
 
 ## SYNOPSIS
-Gets the Advanced Threat Protection settings for a server.
+Gets the Advanced Threat Protection settings for a managed instance.
 
 ## SYNTAX
 
 ```
-Get-AzSqlServerAdvancedThreatProtectionSetting -ServerName <String> [-ResourceGroupName] <String>
+Get-AzSqlInstanceAdvancedThreatProtectionSetting -InstanceName <String> [-ResourceGroupName] <String>
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Get-AzSqlServerAdvancedThreatProtectionSetting** cmdlet gets the Advanced Threat Protection settings of an Azure SQL server.
-To use this cmdlet, specify the *ResourceGroupName* and *ServerName* parameters to identify the server for which this cmdlet gets the settings.
+The **Get-AzSqlInstanceAdvancedThreatProtectionSetting** cmdlet gets the Advanced Threat Protection settings of an Azure SQL managed instance.
+To use this cmdlet, specify the *ResourceGroupName* and *InstanceName* parameters to identify the managed instance for which this cmdlet gets the settings.
 
 ## EXAMPLES
 
-### Example 1: Get the Advanced Threat Protection settings for a server
+### Example 1: Get the Advanced Threat Protection settings for a managed instance
 ```powershell
-Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -ServerName "Server01"
+Get-AzSqlInstanceAdvancedThreatProtectionSetting -ResourceGroupName "ResourceGroup11" -InstanceName "Instance01"
 ```
 
 ```output
 ResourceGroupName             : ResourceGroup11
-ServerName                    : Server01
+InstanceName                  : Instance01
 AdvancedThreatProtectionState : Enabled
 ```
 
-This command gets the Advanced Threat Protection settings for a server named Server01.
-The server is assigned to the resource group ResourceGroup11.
+This command gets the Advanced Threat Protection settings for a managed instance named Instance01.
+The managed instance is assigned to the resource group ResourceGroup11.
 
 ## PARAMETERS
 
 ### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with azure
+The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: IAzureContextContainer
 Parameter Sets: (All)
 Aliases: AzContext, AzureRmContext, AzureCredential
 
@@ -55,11 +54,26 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceGroupName
-Specifies the name of the resource group to which the server belongs.
+### -InstanceName
+SQL Managed Instance name.
 
 ```yaml
-Type: System.String
+Type: String
+Parameter Sets: (All)
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+
+```yaml
+Type: String
 Parameter Sets: (All)
 Aliases:
 
@@ -70,32 +84,17 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ServerName
-Specifies the name of the server.
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: True
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: cf
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -105,13 +104,13 @@ Shows what would happen if the cmdlet runs.
 The cmdlet is not run.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
+Type: SwitchParameter
 Parameter Sets: (All)
 Aliases: wi
 
 Required: False
 Position: Named
-Default value: False
+Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -125,10 +124,8 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.Sql.ThreatDetection.Model.ServerAdvancedThreatProtectionSettingsModel
+### Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model.ManagedInstanceAdvancedThreatProtectionSettingsModel
 
 ## NOTES
 
 ## RELATED LINKS
-
-[SQL Database Documentation](https://docs.microsoft.com/azure/sql-database/)
