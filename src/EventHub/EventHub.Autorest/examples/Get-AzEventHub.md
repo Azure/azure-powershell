@@ -13,7 +13,7 @@ DataLakeFolderPath           :
 DataLakeSubscriptionId       :
 DestinationName              :
 Encoding                     :
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub
 IntervalInSeconds            :
 Location                     : australiaeast
 MessageRetentionInDays       : 1
