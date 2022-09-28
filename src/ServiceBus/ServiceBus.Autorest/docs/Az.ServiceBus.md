@@ -55,7 +55,7 @@ Returns a subscription description for the specified topic.
 Returns a description for the specified topic.
 
 ### [New-AzServiceBusAuthorizationRule](New-AzServiceBusAuthorizationRule.md)
-Creates an Service Bus Namespace, Queue, Topic Authorization Rule
+Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 
 ### [New-AzServiceBusGeoDRConfiguration](New-AzServiceBusGeoDRConfiguration.md)
 Creates or updates a new Alias(Disaster Recovery configuration)
