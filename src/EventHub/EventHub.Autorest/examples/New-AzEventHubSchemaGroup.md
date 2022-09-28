@@ -8,7 +8,7 @@ CreatedAtUtc                 : 9/14/2022 6:05:47 AM
 ETag                         : {etag}
 GroupProperty                : {
                                }
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/schemagroups/mySchemaGroup
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/schemagroups/mySchemaGroup
 Location                     : Central US
 Name                         : mySchemaGroup
 ResourceGroupName            : myResourceGroup
