@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Sets a ServiceBus Topic
+Updates a ServiceBus Subscription
 .Description
-Sets a ServiceBus Topic
+Updates a ServiceBus Subscription
 #>
 
 function Set-AzServiceBusSubscription{
