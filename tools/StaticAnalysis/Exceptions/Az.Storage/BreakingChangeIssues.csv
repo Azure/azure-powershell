@@ -1,0 +1,2 @@
+"AssemblyFileName","ClassName","Target","Severity","ProblemId","Description","Remediation"
+"Az.Storage","Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet.GetAzureStorageFileCopyStateCommand","Get-AzStorageFileCopyState","0","1020","The cmdlet 'Get-AzStorageFileCopyState' no longer has output type 'Microsoft.Azure.Storage.File.CopyState'.","Make cmdlet 'Get-AzStorageFileCopyState' return type 'Microsoft.Azure.Storage.File.CopyState'."
