@@ -23,6 +23,7 @@
 * Upgraded Azure.Core to 1.25.0 and Azure.Identity to 1.6.1
 * Upgraded Microsoft.ApplicationInsights to 2.13.1
 * Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp3.1.
+* Used the ArgumentCompleter attribute to replace the dynamic parameters of `Get-AzContext`. [#18041]
 * Removed built-in environment of Azure Germany
 
 ## Version 2.10.1
