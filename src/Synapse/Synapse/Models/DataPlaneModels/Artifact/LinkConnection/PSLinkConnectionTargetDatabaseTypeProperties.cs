@@ -16,28 +16,16 @@ using Azure.Analytics.Synapse.Artifacts.Models;
 
 namespace Microsoft.Azure.Commands.Synapse.Models
 {
-    public class PSLinkConnectionResource
+    public class PSLinkConnectionTargetDatabaseTypeProperties
     {
-        public PSLinkConnectionResource(LinkConnectionResource linkConnectionResource, string workspaceName)
+        public PSLinkConnectionTargetDatabaseTypeProperties(LinkConnectionTargetDatabaseTypeProperties properties)
         {
-            this.WorkspaceName = workspaceName;
-            this.Id = linkConnectionResource?.Id;
-            this.Name = linkConnectionResource?.Name;
-            this.Type = linkConnectionResource?.Type;
-            this.Properties = linkConnectionResource?.Properties != null? new PSLinkConnection(linkConnectionResource?.Properties) : null;
-            this.Description = linkConnectionResource?.Description;
+            this.CrossTableTransaction = properties?.CrossTableTransaction;
+            this.DropExistingTargetTableOnStart = properties?.DropExistingTargetTableOnStart;
         }
 
-        public string WorkspaceName { get; set; }
+        public bool? CrossTableTransaction { get; set; }
 
-        public string Id { get; set; }
-
-        public string Name { get; set; }   
-
-        public string Type { get; set; }
-
-        public PSLinkConnection Properties { get; set; }
-
-        public string Description { get; set; }
+        public bool? DropExistingTargetTableOnStart { get; set; }
     }
 }
