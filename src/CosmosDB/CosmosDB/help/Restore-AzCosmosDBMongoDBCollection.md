@@ -25,7 +25,7 @@ Restores the deleted mongodb collection in the same account with the given name 
 
 ### Example 1
 ```powershell
-PS C:\> Restore-AzCosmosDBMongoDBCollection  -AccountName “my-pitr-mongodb-account” -ResourceGroupName “my-rg”  -DatabaseName “my-database” -Name “my-collection”  -RestoreTimestampInUtc “2022-08-25T07:16:20Z”  
+Restore-AzCosmosDBMongoDBCollection  -AccountName “my-pitr-mongodb-account” -ResourceGroupName “my-rg”  -DatabaseName “my-database” -Name “my-collection”  -RestoreTimestampInUtc “2022-08-25T07:16:20Z”  
 ```
 
 ```output

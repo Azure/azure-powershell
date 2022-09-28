@@ -25,7 +25,7 @@ Restores the deleted sql container in the same account with the given name and t
 
 ### Example 1
 ```powershell
-PS C:\> Restore-AzCosmosDBSqlContainer -AccountName “my-pitr-sql-account” -ResourceGroupName “my-rg” -DatabaseName “my-database” -Name “my-container” -RestoreTimestampInUtc “2022-08-25T07:16:20Z”  
+Restore-AzCosmosDBSqlContainer -AccountName “my-pitr-sql-account” -ResourceGroupName “my-rg” -DatabaseName “my-database” -Name “my-container” -RestoreTimestampInUtc “2022-08-25T07:16:20Z”  
 ```
 
 ```output
