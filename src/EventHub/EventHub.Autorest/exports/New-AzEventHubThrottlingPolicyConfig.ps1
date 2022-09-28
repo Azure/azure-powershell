@@ -20,9 +20,7 @@ Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHu
 .Description
 Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzEventHubThrottlingPolicyConfig -Name t1 -RateLimitThreshold 10000 -MetricId IncomingBytes
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy

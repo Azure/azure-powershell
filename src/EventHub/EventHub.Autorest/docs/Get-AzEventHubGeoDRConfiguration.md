@@ -42,10 +42,10 @@ Get-AzEventHubGeoDRConfiguration -ResourceGroupName myResourceGroup -NamespaceNa
 
 ```output
 AlternateName                     :
-Id                                : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/disasterRecoveryConfigs/myAlias
+Id                                : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/disasterRecoveryConfigs/myAlias
 Location                          :
 Name                              : myalias
-PartnerNamespace                  : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
+PartnerNamespace                  : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
 PendingReplicationOperationsCount : 0
 ProvisioningState                 : Succeeded
 ResourceGroupName                 : myResourceGroup
@@ -108,7 +108,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

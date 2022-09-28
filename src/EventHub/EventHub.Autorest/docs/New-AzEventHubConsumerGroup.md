@@ -30,7 +30,7 @@ New-AzEventHubConsumerGroup -Name myConsumerGroup -NamespaceName myNamespace -Re
 
 ```output
 CreatedAt                    : 9/13/2022 9:20:47 AM
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
                                /eventhubs/eh1/consumergroups/myConsumerGroup
 Location                     : australiaeast
 Name                         : myConsumerGroup
@@ -64,7 +64,7 @@ The Event Hub name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: EventHub
+Aliases:
 
 Required: True
 Position: Named
@@ -94,7 +94,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: (All)
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

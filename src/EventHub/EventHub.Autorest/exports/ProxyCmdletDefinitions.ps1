@@ -63,7 +63,6 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -537,9 +536,7 @@ Gets the resource description of the specified Event Hubs Cluster.
 .Description
 Gets the resource description of the specified Event Hubs Cluster.
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+Get-AzEventHubCluster -ResourceGroupName myResourceGroup -Name DefaultCluster-11
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
@@ -772,7 +769,6 @@ function Get-AzEventHubConsumerGroup {
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Event Hub name
@@ -787,7 +783,6 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -1002,7 +997,6 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -1200,7 +1194,6 @@ function Get-AzEventHubNetworkRuleSet {
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -1362,7 +1355,7 @@ Gets a description for the specified Private Endpoint Connection name.
 .Description
 Gets a description for the specified Private Endpoint Connection name.
 .Example
-Get-AzEventHubPrivateEndpointConnection -ResourceGroupName {resourceGroup} -NamespaceName {namespace} -Name 00000000000
+Get-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 .Example
 Get-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 
@@ -1405,7 +1398,6 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -1579,7 +1571,6 @@ function Get-AzEventHubPrivateLink {
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -1773,7 +1764,6 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -1991,7 +1981,6 @@ param(
 
     [Parameter(ParameterSetName='Get', Mandatory)]
     [Parameter(ParameterSetName='List', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -2194,7 +2183,6 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -2585,7 +2573,6 @@ function New-AzEventHubConsumerGroup {
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Event Hub name
@@ -2599,7 +2586,6 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -2758,7 +2744,7 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 .Description
 Creates or updates a new Alias(Disaster Recovery configuration)
 .Example
-New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
+New-AzEventHubGeoDRConfiguration -Name myAlias -ResourceGroupName myResourceGroup -NamespaceName myPrimaryNamespace -PartnerNamespace /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/mySecondaryNamespace
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IArmDisasterRecovery
@@ -2776,7 +2762,6 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -2964,7 +2949,6 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -3138,7 +3122,7 @@ Creates or updates a new Event Hub as a nested resource within a Namespace.
 .Example
 New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -MessageRetentionInDays 6 -PartitionCount 5
 .Example
-New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
+New-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IEventhub
@@ -3157,7 +3141,6 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -3426,7 +3409,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -3836,7 +3818,6 @@ function Remove-AzEventHubConsumerGroup {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Event Hub name
@@ -3850,7 +3831,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -4054,7 +4034,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -4261,7 +4240,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -4478,7 +4456,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -4683,7 +4660,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name
@@ -4850,7 +4826,7 @@ Approves an EventHub PrivateEndpointConnection
 .Example
 Approve-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 .Example
-$privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName {resourceGroup} -NamespaceName {namespace} -Name 00000000000
+$privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 Approve-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint
 
 .Inputs
@@ -4884,7 +4860,6 @@ function Approve-AzEventHubPrivateEndpointConnection {
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -5103,7 +5078,6 @@ function Deny-AzEventHubPrivateEndpointConnection {
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -5323,7 +5297,6 @@ param(
     [Parameter(ParameterSetName='GetExpandedNamespace', Mandatory)]
     [Parameter(ParameterSetName='GetExpandedAlias', Mandatory)]
     [Parameter(ParameterSetName='GetExpandedEntity', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -5363,7 +5336,6 @@ param(
     ${AliasName},
 
     [Parameter(ParameterSetName='GetExpandedEntity', Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of the EventHub entity.
@@ -5531,7 +5503,6 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -5558,7 +5529,6 @@ param(
     ${AliasName},
 
     [Parameter(ParameterSetName='GetExpandedEntity', Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of the EventHub entity.
@@ -5730,7 +5700,6 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -5751,7 +5720,6 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='NewExpandedEntity', Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of the EventHub entity.
@@ -5907,9 +5875,7 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHu
 .Description
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetIPRules
@@ -6034,7 +6000,6 @@ param(
     ${Name},
 
     [Parameter(Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -6055,7 +6020,6 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='NewExpandedEntity', Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of the EventHub entity.
@@ -6069,7 +6033,6 @@ param(
     ${KeyType},
 
     [Parameter()]
-    [Alias('Key')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Body')]
     [System.String]
     # Optional, if the key value provided, is set for KeyType or autogenerated Key value set for keyType
@@ -6219,9 +6182,7 @@ Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHu
 .Description
 Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzEventHubThrottlingPolicyConfig -Name t1 -RateLimitThreshold 10000 -MetricId IncomingBytes
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy
@@ -6331,9 +6292,7 @@ Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to S
 .Description
 Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzEventHubVirtualNetworkRuleConfig -SubnetId /subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetVirtualNetworkRules
@@ -6473,7 +6432,6 @@ function Remove-AzEventHubAuthorizationRule {
 param(
     [Parameter(ParameterSetName='RemoveExpandedNamespace', Mandatory)]
     [Parameter(ParameterSetName='RemoveExpandedEntity', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -6504,7 +6462,6 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='RemoveExpandedEntity', Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of the EventHub entity.
@@ -6662,7 +6619,7 @@ Updates an EventHub Entity
 .Description
 Updates an EventHub Entity
 .Example
-Set-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
+Set-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace -ArchiveNameFormat "{Namespace}/{EventHub}/{PartitionId}/{Year}/{Month}/{Day}/{Hour}/{Minute}/{Second}" -BlobContainer container -CaptureEnabled -DestinationName EventHubArchive.AzureBlockBlob -Encoding Avro -IntervalInSeconds 600 -SizeLimitInBytes 11000000 -SkipEmptyArchive -StorageAccountResourceId "/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/myStorageAccount"
 .Example
 $eventhub = Get-AzEventHub -Name myEventHub -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 Set-AzEventHub -InputObject $eventhub -MessageRetentionInDays 3
@@ -6705,7 +6662,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace.
@@ -7001,7 +6957,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -7229,7 +7184,6 @@ function Set-AzEventHubAuthorizationRule {
 param(
     [Parameter(ParameterSetName='SetExpandedNamespace', Mandatory)]
     [Parameter(ParameterSetName='SetExpandedEntity', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -7260,7 +7214,6 @@ param(
     ${SubscriptionId},
 
     [Parameter(ParameterSetName='SetExpandedEntity', Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of the EventHub entity.
@@ -7690,14 +7643,12 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
     ${NamespaceName},
 
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub
@@ -7915,7 +7866,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Break', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -8125,7 +8075,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Fail', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -8298,7 +8247,7 @@ Sets an EventHub Namespace Network Rule Set
 .Example
 $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
-$virtualNetworkRule1 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId /subscriptions/{subscriptionId}/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default
+$virtualNetworkRule1 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId '/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default'
 $networkRuleSet = Get-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 $networkRuleSet.IPRule += $ipRule1
 $networkRuleSet.IPRule += $ipRule2
@@ -8346,7 +8295,6 @@ function Set-AzEventHubNetworkRuleSet {
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
@@ -8565,7 +8513,6 @@ function Test-AzEventHubName {
 [CmdletBinding(DefaultParameterSetName='NamespaceAvailability', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
