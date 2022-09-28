@@ -24,7 +24,7 @@ The **New-AzCosmosDBPhysicalPartitionThroughputObject** cmdlet creates a new Phy
 
 ### Example 1
 ```powershell
-PS C:\> $partitionInfo = New-AzCosmosDBPhysicalPartitionThroughputObject -Id '1' -Throughput 200
+$partitionInfo = New-AzCosmosDBPhysicalPartitionThroughputObject -Id '1' -Throughput 200
 ```
 
 This creates a partition object with Id '1' and throughput 200.

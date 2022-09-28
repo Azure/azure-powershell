@@ -69,7 +69,7 @@ $partitions = Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGro
       $somePartitions = Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -PhysicalPartitionIds ('0', '1')
 ```
 
-{{ Add example description here }}
+This cmdlet can be used to redistribute the throughput across partitions in a MongoDB collection.
 
 ## PARAMETERS
 
