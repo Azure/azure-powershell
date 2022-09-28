@@ -15,26 +15,26 @@
 
 <#
 .Synopsis
-Restarts the replication for specified server.
+Suspends the ongoing replication.
 .Description
-The Restart-AzMigrateServerReplication cmdlet repairs the replication for the specified server.
+The Suspend-AzMigrateServerReplication suspends the ongoing replication.
 .Link
-https://docs.microsoft.com/powershell/module/az.migrate/restart-azmigrateserverreplication
+https://docs.microsoft.com/powershell/module/az.migrate/suspend-azmigrateserverreplication
 #>
-function Restart-AzMigrateServerReplication {
+function Suspend-AzMigrateServerReplication {
     [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
-    [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false)]
+    [CmdletBinding(DefaultParameterSetName = 'ByIDVMwareCbt', PositionalBinding = $false, SupportsShouldProcess, ConfirmImpact = 'Medium')]
     param(
         [Parameter(ParameterSetName = 'ByIDVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
-        # Specifies the replcating server for which the resync needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
+        # Specifies the replicating server for which the suspend replication needs to be initiated. The ID should be retrieved using the Get-AzMigrateServerReplication cmdlet.
         ${TargetObjectID},
 
         [Parameter(ParameterSetName = 'ByInputObjectVMwareCbt', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IMigrationItem]
-        # Specifies the machine object of the replicating server.
+        # Specifies the replicating server for which the suspend replication needs to be initiated. The server object can be retrieved using the Get-AzMigrateServerReplication cmdlet
         ${InputObject},
 
         [Parameter()]
@@ -51,7 +51,7 @@ function Restart-AzMigrateServerReplication {
         [System.Management.Automation.PSObject]
         # The credentials, account, tenant, and subscription used for communication with Azure.
         ${DefaultProfile},
-    
+
         [Parameter(DontShow)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Runtime')]
         [System.Management.Automation.SwitchParameter]
@@ -100,6 +100,7 @@ function Restart-AzMigrateServerReplication {
         $null = $PSBoundParameters.Remove('InputObject')
         $parameterSet = $PSCmdlet.ParameterSetName
 
+            
         if ($parameterSet -eq 'ByInputObjectVMwareCbt') {
             $TargetObjectID = $InputObject.Id
         }
@@ -110,21 +111,19 @@ function Restart-AzMigrateServerReplication {
         $ProtectionContainerName = $MachineIdArray[12]
         $MachineName = $MachineIdArray[14]
             
-        
+
         $null = $PSBoundParameters.Add("ResourceGroupName", $ResourceGroupName)
         $null = $PSBoundParameters.Add("ResourceName", $VaultName)
         $null = $PSBoundParameters.Add("FabricName", $FabricName)
         $null = $PSBoundParameters.Add("MigrationItemName", $MachineName)
         $null = $PSBoundParameters.Add("ProtectionContainerName", $ProtectionContainerName)
-            
+
         $ReplicationMigrationItem = Az.Migrate.internal\Get-AzMigrateReplicationMigrationItem @PSBoundParameters
-        if ($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt')) {
-            $ProviderSepcificDetail = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtResyncInput]::new()
-            $ProviderSepcificDetail.InstanceType = 'VMwareCbt'
-            $ProviderSepcificDetail.SkipCbtReset = 'true'
-            $null = $PSBoundParameters.Add('ProviderSpecificDetail', $ProviderSepcificDetail)
+        if ($ReplicationMigrationItem -and ($ReplicationMigrationItem.ProviderSpecificDetail.InstanceType -eq 'VMwarecbt') -and ($ReplicationMigrationItem.AllowedOperation -contains 'PauseReplication' )) {
+                
+            $null = $PSBoundParameters.Add('InstanceType', "VMwarecbt")
             $null = $PSBoundParameters.Add('NoWait', $true)
-            $output = Az.Migrate.internal\Invoke-AzMigrateResyncReplicationMigrationItem @PSBoundParameters
+            $output = Az.Migrate.internal\Suspend-AzMigrateReplicationMigrationItemReplication @PSBoundParameters
             $JobName = $output.Target.Split("/")[12].Split("?")[0]
             $null = $PSBoundParameters.Remove('NoWait')
             $null = $PSBoundParameters.Remove('ProviderSpecificDetail')
@@ -133,15 +132,16 @@ function Restart-AzMigrateServerReplication {
             $null = $PSBoundParameters.Remove("FabricName")
             $null = $PSBoundParameters.Remove("MigrationItemName")
             $null = $PSBoundParameters.Remove("ProtectionContainerName")
+            $null = $PSBoundParameters.Remove('InstanceType')
 
             $null = $PSBoundParameters.Add('JobName', $JobName)
             $null = $PSBoundParameters.Add('ResourceName', $VaultName)
             $null = $PSBoundParameters.Add('ResourceGroupName', $ResourceGroupName)
-            
+
             return Az.Migrate.internal\Get-AzMigrateReplicationJob @PSBoundParameters
         }
         else {
-            throw "Either machine doesn't exist or provider/action isn't supported for this machine"
+            throw "Operation Not supported"
         }
     }
-}   
+}
