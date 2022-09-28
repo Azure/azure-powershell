@@ -29,7 +29,6 @@ function Set-AzEventHubGeoDRConfigurationBreakPair{
         ${Name},
 
         [Parameter(ParameterSetName = 'Break', Mandatory, HelpMessage = "The name of EventHub namespace")]
-        [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of EventHub namespace
@@ -136,14 +135,36 @@ function Set-AzEventHubGeoDRConfigurationBreakPair{
                 }
             }
             elseif($PSCmdlet.ParameterSetName -eq 'BreakViaIdentity'){
+                $EnvPSBoundParameters = @{}
+
+                if ($PSBoundParameters.ContainsKey('Debug')) {
+                    $EnvPSBoundParameters['Debug'] = $Debug
+                }
+                if ($PSBoundParameters.ContainsKey('HttpPipelineAppend')) {
+                    $EnvPSBoundParameters['HttpPipelineAppend'] = $HttpPipelineAppend
+                }
+                if ($PSBoundParameters.ContainsKey('HttpPipelinePrepend')) {
+                    $EnvPSBoundParameters['HttpPipelinePrepend'] = $HttpPipelinePrepend
+                }
+                if ($PSBoundParameters.ContainsKey('Proxy')) {
+                    $EnvPSBoundParameters['Proxy'] = $Proxy
+                }
+                if ($PSBoundParameters.ContainsKey('ProxyCredential')) {
+                    $EnvPSBoundParameters['ProxyCredential'] = $ProxyCredential
+                }
+                if ($PSBoundParameters.ContainsKey('ProxyUseDefaultCredentials')) {
+                    $EnvPSBoundParameters['ProxyUseDefaultCredentials'] = $ProxyUseDefaultCredentials
+                }
+
                 if($InputObject.Id -ne $null){
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject.Id
                 }
                 else{
                     $ResourceHashTable = ParseResourceId -ResourceId $InputObject
                 }
+
                 if ($PSCmdlet.ShouldProcess("EventHub Disaster Recovery Alias $($InputObject.Name)", "Break Pair")) {
-                    Az.EventHub.private\Invoke-AzEventHubBreakDisasterRecoveryConfigPairing_Break -Name $ResourceHashTable['AliasName'] -NamespaceName $ResourceHashTable['NamespaceName'] -ResourceGroupName $ResourceHashTable['ResourceGroupName'] -SubscriptionId $ResourceHashTable['SubscriptionName']
+                    Az.EventHub.private\Invoke-AzEventHubBreakDisasterRecoveryConfigPairing_Break -Name $ResourceHashTable['AliasName'] -NamespaceName $ResourceHashTable['NamespaceName'] -ResourceGroupName $ResourceHashTable['ResourceGroupName'] -SubscriptionId $ResourceHashTable['SubscriptionName'] @EnvPSBoundParameters
                 }
             }
 		}

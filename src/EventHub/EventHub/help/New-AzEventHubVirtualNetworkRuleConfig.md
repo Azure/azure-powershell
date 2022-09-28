@@ -22,27 +22,18 @@ Constructs an INwRuleSetVirtualNetworkRules object that can be fed as input to S
 
 ## EXAMPLES
 
-### Example 1: {{ Add title here }}
+### Example 1: Constructs an INwRuleSetVirtualNetworkRules object
 ```powershell
-{{ Add code here }}
+New-AzEventHubVirtualNetworkRuleConfig -SubnetId /subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default
 ```
 
 ```output
-{{ Add output here }}
+IgnoreMissingVnetServiceEndpoint SubnetId
+-------------------------------- --------
+                                 /subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default
 ```
 
-{{ Add description here }}
-
-### Example 2: {{ Add title here }}
-```powershell
-{{ Add code here }}
-```
-
-```output
-{{ Add output here }}
-```
-
-{{ Add description here }}
+Please refer examples for Set-AzEventHubNetworkRuleSet to know more.
 
 ## PARAMETERS
 

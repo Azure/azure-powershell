@@ -5,7 +5,7 @@ Set-AzEventHubConsumerGroup -ResourceGroupName myResourceGroup -NamespaceName my
 
 ```output
 CreatedAt                    : 9/13/2022 9:20:47 AM
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
                                /eventhubs/eh1/consumergroups/myConsumerGroup
 Location                     : australiaeast
 Name                         : myConsumerGroup
@@ -24,7 +24,7 @@ Set-AzEventHubConsumerGroup -InputObject $consumerGroup -UserMetadata "Example M
 
 ```output
 CreatedAt                    : 9/13/2022 9:20:47 AM
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace
                                /eventhubs/eh1/consumergroups/myConsumerGroup
 Location                     : australiaeast
 Name                         : myConsumerGroup
@@ -34,3 +34,4 @@ UserMetadata                 : Example Metadata
 ```
 
 Updates consumer group `myConsumerGroup` created under EventHub entity `myEventHub`.
+

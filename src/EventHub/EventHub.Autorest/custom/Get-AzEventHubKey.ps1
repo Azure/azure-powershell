@@ -39,7 +39,6 @@ function Get-AzEventHubKey{
         ${AliasName},
 
         [Parameter(ParameterSetName = 'GetExpandedEntity', Mandatory, HelpMessage = "The name of the EventHub entity.")]
-        [Alias('EventHub')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of the EventHub entity.
@@ -48,7 +47,6 @@ function Get-AzEventHubKey{
         [Parameter(ParameterSetName = 'GetExpandedNamespace', Mandatory, HelpMessage = "The name of EventHub namespace")]
         [Parameter(ParameterSetName = 'GetExpandedEntity', Mandatory, HelpMessage = "The name of the EventHub namespace.")]
         [Parameter(ParameterSetName = 'GetExpandedAlias', Mandatory, HelpMessage = "The name of the EventHub namespace.")]
-        [Alias('Namespace')]
         [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
         [System.String]
         # The name of EventHub namespace
