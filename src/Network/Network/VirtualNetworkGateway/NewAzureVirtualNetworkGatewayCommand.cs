@@ -73,6 +73,7 @@ namespace Microsoft.Azure.Commands.Network
         [ValidateSet(
             MNM.VirtualNetworkGatewayType.Vpn,
             MNM.VirtualNetworkGatewayType.ExpressRoute,
+            MNM.VirtualNetworkGatewayType.LocalGateway,
             IgnoreCase = true)]
         public string GatewayType { get; set; }
 
