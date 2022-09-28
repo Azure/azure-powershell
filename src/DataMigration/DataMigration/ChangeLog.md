@@ -18,6 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added custom cmdlets for LoginsMigration:
+  - New-AzDataMigrationLoginsMigration
 
 ## Version 0.11.0
 * Added an optional `Time` parameter to `Get-AzDataMigrationPerformanceDataCollection` to stop the perf collection after the given time 
