@@ -143,11 +143,10 @@ function Resume-AzMigrateServerReplication {
             if ($PerformDeleteResource -eq "true") {
                 if (($ReplicationMigrationItem.MigrationState -ne "MigrationSucceeded") -and `
                     ($ReplicationMigrationItem.MigrationState -ne "MigrationCompletedWithInformation") `
-                    -and ($ReplicationMigrationItem.MigrationState -ne "MigrationPartiallySucceeded") `
-                    -and !$Force.IsPresent) {
+                    -and ($ReplicationMigrationItem.MigrationState -ne "MigrationPartiallySucceeded")) {
                         throw "Cannot delete migration resources as the VM has not been migrated."
                 }
-                else {
+                elseif (!$Force.IsPresent) {
                     $data = @()
                     $data += [PSCustomObject]@{
                         ResourceName = $ReplicationMigrationItem.ProviderSpecificDetail.TargetVMName
