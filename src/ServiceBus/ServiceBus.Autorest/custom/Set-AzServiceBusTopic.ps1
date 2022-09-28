@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Sets a ServiceBus Topic
+Updates a ServiceBus Topic
 .Description
-Sets a ServiceBus Topic
+Updates a ServiceBus Topic
 #>
 
 function Set-AzServiceBusTopic{
