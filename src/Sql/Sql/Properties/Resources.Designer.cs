@@ -637,15 +637,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cannot use the &apos;None&apos; option with other detection types.
-        /// </summary>
-        internal static string InvalidDetectionTypeList {
-            get {
-                return ResourceManager.GetString("InvalidDetectionTypeList", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Cannot use the None option with other event types..
         /// </summary>
         internal static string InvalidEventTypeSet {
@@ -815,15 +806,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string NoStorageAccountWhenConfiguringAuditingPolicy {
             get {
                 return ResourceManager.GetString("NoStorageAccountWhenConfiguringAuditingPolicy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Cannot set threat detection policy without a storage account name..
-        /// </summary>
-        internal static string NoStorageAccountWhenConfiguringThreatDetectionPolicy {
-            get {
-                return ResourceManager.GetString("NoStorageAccountWhenConfiguringThreatDetectionPolicy", resourceCulture);
             }
         }
         
@@ -1445,15 +1427,6 @@ namespace Microsoft.Azure.Commands.Sql.Properties {
         internal static string ServerNotApplicableForDataMasking {
             get {
                 return ResourceManager.GetString("ServerNotApplicableForDataMasking", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Threat detection is only available for the latest SQL Database Update (V12). Please upgrade to set it up on your database..
-        /// </summary>
-        internal static string ServerNotApplicableForThreatDetection {
-            get {
-                return ResourceManager.GetString("ServerNotApplicableForThreatDetection", resourceCulture);
             }
         }
         

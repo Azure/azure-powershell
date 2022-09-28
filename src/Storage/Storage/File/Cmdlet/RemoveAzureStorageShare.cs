@@ -103,12 +103,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     else
                     {
                         share = AzureStorageFileShare.GetTrack2FileShareClient(this.Share, (AzureStorageContext)this.Context, this.ClientOptions);
+                    }
 
-                        // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
-                        if (this.Context == null)
-                        {
-                            this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
-                        }
+                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                    if (this.Context == null)
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
                     }
                     break;
 

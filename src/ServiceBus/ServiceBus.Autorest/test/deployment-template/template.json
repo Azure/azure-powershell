@@ -29,7 +29,7 @@
       "type": "Microsoft.ServiceBus/namespaces",
       "apiVersion": "2022-01-01-preview",
       "name": "[parameters('namespace_name')]",
-      "location": "East US",
+      "location": "northeurope",
       "sku": {
         "name": "Premium",
         "tier": "Premium"
@@ -45,7 +45,7 @@
       "type": "Microsoft.ServiceBus/namespaces",
       "apiVersion": "2022-01-01-preview",
       "name": "[parameters('standard_namespace_name')]",
-      "location": "East US",
+      "location": "northeurope",
       "sku": {
         "name": "Standard",
         "tier": "Standard"
@@ -61,7 +61,7 @@
       "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/namespaceAuthRule1')]",
-      "location": "East US",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
       ],
@@ -77,7 +77,7 @@
       "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/namespaceAuthRule2')]",
-      "location": "East US",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
       ],
@@ -91,7 +91,7 @@
       "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/RootManageSharedAccessKey')]",
-      "location": "East US",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
       ],
@@ -107,7 +107,7 @@
       "type": "Microsoft.ServiceBus/namespaces/networkRuleSets",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/default')]",
-      "location": "East US",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
       ],
@@ -122,7 +122,7 @@
       "type": "Microsoft.ServiceBus/namespaces/queues",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/queue1')]",
-      "location": "East US",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
       ],
@@ -133,7 +133,7 @@
       "type": "Microsoft.ServiceBus/namespaces/topics",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/topic1')]",
-      "location": "East US",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
       ],
@@ -144,7 +144,7 @@
       "type": "Microsoft.ServiceBus/namespaces/queues/authorizationrules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/queue1/queueAuthRule1')]",
-      "location": "East US",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('namespace_name'), 'queue1')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
@@ -161,7 +161,7 @@
       "type": "Microsoft.ServiceBus/namespaces/queues/authorizationrules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/queue1/queueAuthRule2')]",
-      "location": "East US",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('namespace_name'), 'queue1')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
@@ -178,7 +178,7 @@
       "type": "Microsoft.ServiceBus/namespaces/topics/authorizationrules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/topic1/topicAuthRule1')]",
-      "location": "East US",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
@@ -195,7 +195,7 @@
       "type": "Microsoft.ServiceBus/namespaces/topics/authorizationrules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/topic1/topicAuthRule2')]",
-      "location": "East US",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
@@ -210,7 +210,7 @@
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/topic1/subscription1')]",
-      "location": "East US",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
@@ -222,7 +222,7 @@
       "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
       "apiVersion": "2022-01-01-preview",
       "name": "[concat(parameters('namespace_name'), '/topic1/subscription1/sqlRule1')]",
-      "location": "East US",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespace_name'), 'topic1', 'subscription1')]",
         "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
@@ -241,7 +241,7 @@
       "type": "Microsoft.Network/privateEndpoints",
       "apiVersion": "2020-11-01",
       "name": "[parameters('peName1')]",
-      "location": "eastus",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
       ],
@@ -263,7 +263,7 @@
           }
         ],
         "subnet": {
-          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default"
+          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/test-vn-northeurope/subnets/default"
         }
       }
     },
@@ -271,7 +271,7 @@
       "type": "Microsoft.Network/privateEndpoints",
       "apiVersion": "2020-11-01",
       "name": "[parameters('peName2')]",
-      "location": "eastus",
+      "location": "northeurope",
       "dependsOn": [
         "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
       ],
@@ -293,7 +293,7 @@
           }
         ],
         "subnet": {
-          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/testpsvn/subnets/default"
+          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/test-vn-northeurope/subnets/default"
         }
       }
     }

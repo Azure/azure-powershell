@@ -13,7 +13,6 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.Auditing.Model;
-using Microsoft.Azure.Commands.Sql.ThreatDetection.Model;
 using System.Collections.Generic;
 
 namespace Microsoft.Azure.Commands.Sql.Common
