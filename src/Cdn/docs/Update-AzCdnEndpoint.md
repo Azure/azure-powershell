@@ -500,7 +500,7 @@ COMPLEX PARAMETER PROPERTIES
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 
-DELIVERYPOLICYRULE <IDeliveryRule[]>: A list of the delivery rules.
+`DELIVERYPOLICYRULE <IDeliveryRule[]>`: A list of the delivery rules.
   - `Action <IDeliveryRuleAction1[]>`: A list of actions that are executed when all the conditions of a rule are satisfied.
     - `Name <DeliveryRuleAction>`: The name of the action for the delivery rule.
   - `Order <Int32>`: The order in which the rules are applied for the endpoint. Possible values {0,1,2,3,………}. A rule with a lesser order will be applied before a rule with a greater order. Rule with order 0 is a special rule. It does not require any condition and actions listed in it will always be applied.
@@ -508,12 +508,12 @@ DELIVERYPOLICYRULE <IDeliveryRule[]>: A list of the delivery rules.
     - `Name <MatchVariable>`: The name of the condition for the delivery rule.
   - `[Name <String>]`: Name of the rule
 
-GEOFILTER <IGeoFilter[]>: List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
+`GEOFILTER <IGeoFilter[]>`: List of rules defining the user's geo access within a CDN endpoint. Each geo filter defines an access rule to a specified path or content, e.g. block APAC for path /pictures/
   - `Action <GeoFilterActions>`: Action of the geo filter, i.e. allow or block access.
   - `CountryCode <String[]>`: Two letter country or region codes defining user country or region access in a geo filter, e.g. AU, MX, US.
   - `RelativePath <String>`: Relative path applicable to geo filter. (e.g. '/mypictures', '/mypicture/kitty.jpg', and etc.)
 
-INPUTOBJECT <ICdnIdentity>: Identity Parameter
+`INPUTOBJECT <ICdnIdentity>`: Identity Parameter
   - `[CustomDomainName <String>]`: Name of the domain under the profile which is unique globally.
   - `[EndpointName <String>]`: Name of the endpoint under the profile which is unique globally.
   - `[Id <String>]`: Resource identity path
@@ -528,7 +528,7 @@ INPUTOBJECT <ICdnIdentity>: Identity Parameter
   - `[SecurityPolicyName <String>]`: Name of the security policy under the profile.
   - `[SubscriptionId <String>]`: Azure Subscription ID.
 
-URLSIGNINGKEY <IUrlSigningKey[]>: List of keys used to validate the signed URL hashes.
+`URLSIGNINGKEY <IUrlSigningKey[]>`: List of keys used to validate the signed URL hashes.
   - `KeyId <String>`: Defines the customer defined key Id. This id will exist in the incoming request to indicate the key used to form the hash.
   - `KeySourceParameterResourceGroupName <String>`: Resource group of the user's Key Vault containing the secret
   - `KeySourceParameterSecretName <String>`: The name of secret in Key Vault.
