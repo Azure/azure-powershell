@@ -8,6 +8,7 @@ $GAOSBuildNumber = 17784
 $GAOSUBR = 1374
 $V2OSBuildNumber = 20348
 $V2OSUBR = 288
+$22H2OSBuildNumber = 20349
 
 #region User visible strings
 
@@ -44,6 +45,7 @@ $LoggingInToAzureMessage = "Logging in to Azure"
 $RegisterAzureStackRPMessage = "Registering Microsoft.AzureStackHCI provider to Subscription"
 $CreatingResourceGroupMessage = "Creating Azure Resource Group {0}"
 $CreatingCloudResourceMessage = "Creating Azure Resource {0} representing Azure Stack HCI by calling Microsoft.AzureStackHCI provider"
+$RepairingCloudResourceMessage = "Repairing Azure Resource {0} representing Azure Stack HCI by calling Microsoft.AzureStackHCI provider"
 $GettingCertificateMessage = "Getting new certificate from on-premises cluster to use as application credential"
 $AddAppCredentialMessage = "Adding certificate as application credential for the Azure AD application {0}"
 $RegisterAndSyncMetadataMessage = "Registering Azure Stack HCI cluster and syncing cluster census information from the on-premises cluster to the cloud"
@@ -103,6 +105,10 @@ $RemovingVmImdsFromNode = "Removing AzureStack HCI IMDS Attestation from guests 
 $AttestationNotEnabled = "The IMDS Service on {0} needs to be activated. This is required before guests can be configured. Run Enable-AzStackHCIAttestation cmdlet."
 $ErrorAddingAllVMs = "Did not add all guests. Try running Add-AzStackHCIVMAttestation on each node manually."
 $MaskString = "XXXXXXX"
+$SetupCloudManagementActivityName = "Cloud Management configuration..."
+$ConfiguringCloudManagementMessage = "Configuring Cloud Management agent."
+$ConfiguringCloudManagementClusterSvc = "Creating Cloud Management cluster resource."
+$StartingCloudManagementMessage = "Starting Cloud Management agent."
 #endregion
 
 #region Constants
@@ -129,9 +135,11 @@ $PortalCanarySuffix = '?feature.armendpointprefix={0}'
 $PortalHCIResourceUrl = '#@{0}/resource/subscriptions/{1}/resourceGroups/{2}/providers/Microsoft.AzureStackHCI/clusters/{3}/overview'
 
 $Region_EASTUSEUAP = 'eastus2euap'
+$Region_CENTRALUSEUAP = 'centraluseuap'
 
 [hashtable] $ServiceEndpointsAzureCloud = @{
-        $Region_EASTUSEUAP = 'https://canary.dp.stackhci.azure.com';
+    $Region_EASTUSEUAP = 'https://canary.dp.stackhci.azure.com'
+    $Region_CENTRALUSEUAP = 'https://canary.dp.stackhci.azure.com'
         }
 
 $ServiceEndpointAzureCloudFrontDoor = "https://dp.stackhci.azure.com"
@@ -161,7 +169,7 @@ $AuthorityAzureGermanCloud = "https://login.microsoftonline.de"
 $BillingServiceApiScopeAzureGermanCloud = "https://azurestackhci-usage.azurewebsites.de/.default"
 $GraphServiceApiScopeAzureGermanCloud = "https://graph.cloudapi.de/.default"
 
-$RPAPIVersion = "2022-03-01";
+$RPAPIVersion = "2022-10-01";
 $HCIArcAPIVersion = "2022-03-01"
 $HCIArcExtensionAPIVersion = "2021-09-01"
 $HCIArcInstanceName = "/arcSettings/default"
@@ -176,6 +184,8 @@ $OutputPropertyEndpointTested = "EndpointTested"
 $OutputPropertyIsRequired = "IsRequired"
 $OutputPropertyFailedNodes = "FailedNodes"
 $OutputPropertyErrorDetail = "ErrorDetail"
+$OutputPropertyClusterAgentStatus = "ClusterAgentStatus"
+$OutputPropertyClusterAgentError = "ClusterAgentError"
 
 $ConnectionTestToAzureHCIServiceName = "Connect to Azure Stack HCI Service"
 
@@ -200,7 +210,9 @@ $ClusterScheduledTaskReadyState = "Ready"
 
 $ArcSettingsDisableInProgressState = "DisableInProgress"
 
-
+# Cluster Agent Service Names
+$ClusterAgentServiceName = "HciClusterAgentSvc"
+$ClusterAgentGroupName = "Cloud Management"
 Function Write-Log {
     [Microsoft.Azure.PowerShell.Cmdlets.StackHCI.DoNotExportAttribute()]
     [CmdletBinding()]
@@ -1915,6 +1927,28 @@ param(
     return $disabled
 }
 
+class Identity {
+    [string] $type = "SystemAssigned"
+}
+
+class ResourceProperties {
+    [string] $location
+    [object] $properties
+    [System.Collections.Hashtable] $tags
+    [Identity] $identity = [Identity]::new()
+
+    ResourceProperties (
+        [string] $location,
+        [object] $properties,
+        [System.Collections.Hashtable] $tags
+    )
+    {
+        $this.location = $location
+        $this.properties = $properties
+        $this.tags = $tags
+    }
+}
+
 enum OperationStatus {
     Unused;
     Failed;
@@ -2369,12 +2403,22 @@ param(
                 return
             }
 
+            # Check if OS version is 22H2 or newer
+            $displayVersion = Invoke-Command -Session $clusterNodeSession -ScriptBlock { (Get-ItemProperty -path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion").DisplayVersion }
+            $buildNumber = Invoke-Command -Session $clusterNodeSession -ScriptBlock { (Get-CimInstance -ClassName CIM_OperatingSystem).BuildNumber }
+            Write-VerboseLog ("Display Version: {0}, Build Number: {1}" -f $displayVersion, $buildNumber)
+            
+            $Is22H2OrNewerOsVersion = $False
+            if(($displayVersion -eq "22H2") -or ($buildNumber -ge $22H2OSBuildNumber))
+            {
+                $Is22H2OrNewerOsVersion = $True
+            }
 
-            if($resource -eq $Null)
+            if($Null -eq $resource)
             {
                 # Create new HCI resource by calling RP
 
-                if($resGroup -eq $Null)
+                if($Null -eq $resGroup)
                 {
                      $CreatingResourceGroupMessageProgress = $CreatingResourceGroupMessage -f $ResourceGroupName
                      Write-VerboseLog ("$CreatingResourceGroupMessageProgress")
@@ -2384,15 +2428,50 @@ param(
 
                 $CreatingCloudResourceMessageProgress = $CreatingCloudResourceMessage -f $ResourceName
                 Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $CreatingCloudResourceMessageProgress -percentcomplete 60
-                $properties = @{}
-                Write-VerboseLog ("$CreatingCloudResourceMessageProgress with properties : {0}" -f ($properties | Out-String))
-                $resource = New-AzResource -ResourceId $resourceId -Location $Region -ApiVersion $RPAPIVersion -PropertyObject $properties -Tag $Tag -Force
+                $properties = [ResourceProperties]::new($Region, @{}, $Tag)
+                $payload = ConvertTo-Json -InputObject $properties
+                $resourceIdWithAPI = "{0}?api-version={1}" -f $resourceId, $RPAPIVersion
+                Write-VerboseLog ("$CreatingCloudResourceMessageProgress with properties : {0}" -f ($payload | Out-String))
+                Write-VerboseLog ("ResorceIdWithApi: $resourceIdWithAPI")
+                $response = Invoke-AzRestMethod -Path $resourceIdWithAPI -Method PUT -Payload $payload
+                if(-not(($response.StatusCode -ge 200) -and ($response.StatusCode -lt 300)))
+                {
+                    Write-ErrorLog -Message ("Failed to create ARM resource representing the cluster. Code: {0}, Details: {1}" -f $response.StatusCode, $response.Content)
+                    throw
+                }
+                $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
+            }
+            
+            if(($Null -ne $resource.Identity) -and ($resource.Identity.Type -ne "SystemAssigned"))
+            {
+                #we are here, if we are in repairregistration flow and resource might have been already created, we will check if MSI is not enabled, if it is not enabled, we will patch the resource again.
+                $RepairingCloudResourceMessageProgress = $RepairingCloudResourceMessage -f $ResourceName
+                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $RepairingCloudResourceMessageProgress -percentcomplete 60
+                Write-VerboseLog ("Enabling SystemAssignedIdentity on : $resourceId")
+                $properties = New-Object -TypeName PSObject
+                $properties | Add-Member -MemberType NoteProperty -Name "identity" -Value $([Identity]::new())
+                if ($Tag.Count -ne 0)
+                {
+                    $properties | Add-Member -MemberType NoteProperty -Name "tags" -Value $Tag
+                }
+
+                $payload = ConvertTo-Json -InputObject $properties
+                $resourceIdWithAPI = "{0}?api-version={1}" -f $resourceId, $RPAPIVersion
+                Write-VerboseLog ("$CloudResourceMessageProgress with properties : {0}" -f ($payload | Out-String))
+                Write-VerboseLog ("ResorceIdWithApi: $resourceIdWithAPI")
+                $response = Invoke-AzRestMethod -Path $resourceIdWithAPI -Method PATCH -Payload $payload
+                if(-not(($response.StatusCode -ge 200) -and ($response.StatusCode -lt 300)))
+                {
+                    Write-ErrorLog -Message ("Failed to repair ARM resource representing the cluster. Code: {0}, Details: {1}" -f $response.StatusCode, $response.Content)
+                    throw
+                }
+                $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
             }
 
             if($resource.Properties.aadApplicationObjectId -eq $Null)
             {
                 # create cluster identity by calling HCI RP
-                $clusterIdentity =  Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $resourceId -ApiVersion $RPAPIVersion -Action createClusterIdentity -Force }
+                $clusterIdentity = Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $resourceId -ApiVersion $RPAPIVersion -Action createClusterIdentity -Force }
                 # Get cluster again for identity details
                 $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
             }
@@ -2476,6 +2555,104 @@ param(
                                     }
 
             Invoke-Command -Session $clusterNodeSession -ScriptBlock { Set-AzureStackHCIRegistration @Using:RegistrationParams }
+            
+            if ($Is22H2OrNewerOsVersion)
+            {
+                Write-Progress -Id $MainProgressBarId -activity $RegisterProgressActivityName -status $ConfiguringCloudManagementMessage -percentcomplete 91
+                Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementMessage -percentcomplete 10
+                Write-VerboseLog ("$ConfiguringCloudManagementMessage")
+                # Start Cluster Agent Servce as Clustered Role
+                $service = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-Service -Name $using:ClusterAgentServiceName -ErrorAction Ignore }
+                
+                $serviceError = $null
+                if ($null -eq $service)
+                {
+                    $serviceError = "{0} service doesn't exist." -f $ClusterAgentServiceName
+                    Write-ErrorLog -Message $serviceError -ErrorAction Continue
+                    Write-NodeEventLog -Message $serviceError -EventID 9119 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                }
+                else
+                {
+                    # Run agent service as cluster resource
+                    Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 20
+
+                    $displayName = $service.DisplayName
+                    Write-VerboseLog ("Found Cloud Management Agent: $displayName")
+                    $group = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterGroup -Name $using:ClusterAgentGroupName -ErrorAction Ignore }
+                    if ($null -eq $group)
+                    {
+                        Write-VerboseLog ("Creating Cloud Management cluster group: $ClusterAgentGroupName")
+                        $group = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Add-ClusterGroup -Name $using:ClusterAgentGroupName -ErrorAction Ignore }
+                    }
+
+                    if ($null -ne $group)
+                    {
+                        Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 40
+                        Write-VerboseLog ("Cloud Management cluster group: $($group | Format-List | Out-String)")
+                        $svcResource = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterResource -Name $using:displayName -ErrorAction Ignore }
+                        Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 80
+                        Write-VerboseLog ("Cloud Management cluster resource: $($svcResource | Format-List | Out-String)")
+                        Write-VerboseLog ("Setting cluster resource parameter ServiceName = $ClusterAgentServiceName")
+                        if ($null -eq $svcResource)
+                        {
+                            Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 60
+                            Write-VerboseLog ("Creating cluster resource for Cloud Management agent")
+                            $svcResource = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Add-ClusterResource -Name $using:displayName -ResourceType "Generic Service" -Group $using:ClusterAgentGroupName -ErrorAction Ignore }
+                        }
+
+                        if ($null -ne $svcResource)
+                        {
+                            Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 80
+                            Write-VerboseLog ("Cloud Management cluster resource: $($svcResource | Format-List | Out-String)")
+                            Write-VerboseLog ("Setting cluster resource parameter ServiceName = $ClusterAgentServiceName")
+                            Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterResource -Name $using:displayName -ErrorAction Ignore | Set-ClusterParameter -Name ServiceName -Value $using:ClusterAgentServiceName -ErrorAction Ignore }
+                            $group = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterGroup -Name $using:ClusterAgentGroupName -ErrorAction Ignore }
+                        }
+                        else
+                        {
+                            $serviceError = "Failed to create cluster resource {0} in group {1}." -f $ClusterAgentServiceName, $ClusterAgentGroupName
+                            Write-ErrorLog -Message $serviceError -ErrorAction Continue
+                            Write-NodeEventLog -Message $serviceError -EventID 9120 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                        }
+                    }
+                    else
+                    {
+                        $serviceError = "Failed to create cluster group {0}." -f $ClusterAgentGroupName
+                        Write-ErrorLog -Message $serviceError -ErrorAction Continue
+                        Write-NodeEventLog -Message $serviceError -EventID 9120 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                    }
+
+                    Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $StartingCloudManagementMessage -percentcomplete 90
+                    if ($null -ne $group -and $group.State -ne "Online")
+                    {
+                        Write-VerboseLog ("Cloud Management cluster resource: $($svcResource | Format-List |Out-String)")
+                        Write-VerboseLog ("Starting Cluster Group $ClusterAgentGroupName")
+                        $group = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Start-ClusterGroup -Name $using:ClusterAgentGroupName -ErrorAction Ignore }
+                        if ($group.State -ne "Online")
+                        {
+                            $serviceError = "Failed to start {0} clustered role." -f $ClusterAgentGroupName
+                            Write-ErrorLog -Message $serviceError -ErrorAction Continue
+                            Write-NodeEventLog -Message $serviceError -EventID 9121 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName -Level Warning
+                        }
+                    }
+                }
+
+                Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -Completed
+                Write-VerboseLog ("Cloud Management group: $($group | Format-List | Out-String)")
+                Write-VerboseLog ("Cloud Management resource: $($svcResource | Format-List | Out-String)")
+                Write-VerboseLog ("Cloud Management agent setup complete")
+
+                if ($null -eq $serviceError)
+                {
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyClusterAgentStatus -Value ([OperationStatus]::Success)
+                }
+                else
+                {
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyClusterAgentStatus -Value ([OperationStatus]::Failed)
+                    $registrationOutput | Add-Member -MemberType NoteProperty -Name $OutputPropertyClusterAgentError -Value $serviceError
+                }
+            }
+
             $operationStatus = [OperationStatus]::Success
         }
 
@@ -2861,7 +3038,10 @@ param(
             }
 
             Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $UnregisterHCIUsageMessage -percentcomplete 45
-        
+            
+            # Stop cluster agent service
+            Invoke-Command -Session $clusterNodeSession -ScriptBlock { Remove-ClusterGroup -Name $using:ClusterAgentGroupName -RemoveResources -ErrorAction Ignore -Force | Out-Null }
+
             if($RegContext.RegistrationStatus -eq [RegistrationStatus]::Registered)
             {
 
@@ -3100,7 +3280,7 @@ param(
         {
             $Region = Normalize-RegionName -Region $Region
 
-            if($Region -eq $Region_EASTUSEUAP)
+            if(($Region -eq $Region_EASTUSEUAP) -or ($Region -eq $Region_CENTRALUSEUAP))
             {
                 $ServiceEndpointAzureCloud = $ServiceEndpointsAzureCloud[$Region]
             }
