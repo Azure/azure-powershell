@@ -19,6 +19,45 @@
 --->
 
 ## Upcoming Release
+* Added a new endpoint swtich `AzureArcVM` in Networkwatcher ConnectionMonitor
+    - `New-AzNetworkWatcherConnectionMonitor`
+* Updated commandlet to support bypassing the ExpressRoute gateway when accessing private-links.
+    - `New-AzVirtualNetworkGatewayConnection`
+* Updated commandlet to support no-internet advertise CustomIpPrefix.
+    - `Update-AzCustomIpPrefix`
+* Updated commandlet to support create/update nic with DisableTcpStateTracking property
+	- `New-AzNetworkInterface`
+* Updated commandlets to support specifying a VirtualRouterAsn on Virtual Hub
+    - `NewAzureRmVirtualHubCommand.cs`
+    - `UpdateAzureRmVirtualHubCommand.cs`
+* Updated commandlets to support specifying an ASN on VPN Gateway
+    - `NewAzureRmVpnGatewayCommand.cs`
+    - `UpdateAzureRmVpnGatewayCommand.cs`
+* Updated commandlet to support bypassing NVA for spoke vNet traffic.
+    - `NewAzureRmRoutingConfigurationCommand.cs`
+* Updated commandlet to support new parameters: asn, geo, expressrouteadvertise.
+    - `Update-AzCustomIpPrefix`
+* Updated cmdlets to enable verification on client certificate revocation by using a new property VerifyClientRevocation in ApplicationGatewayClientAuthConfiguration
+    - `New-AzApplicationGatewayClientAuthConfiguration`
+    - `Set-AzApplicationGatewayClientAuthConfiguration`
+* Updated commandlet to support IPv4 Parent/Child CustomIpPrefix creation.
+    - `New-AzCustomIpPrefix`
+* Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
+* Added DdosProtectionMode parameter in New-AzPublicIpAddress
+* Added ProbeThreshold parameter to Load Balancer Probe 
+    - `AddAzureRmLoadBalancerProbeConfigCommmand.cs`
+    - `NewAzureRmLoadBalancerProbeConfigCommand.cs`
+    - `SetAzureRmLoadBalancerProbeConfigCommand.cs`
+* Updated commandlet to support specifying an action for a managed rule override in Application Gateway WAF Policy.
+    - `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride`
+* Add breaking change enum values/notification for the following network manager cmdlets
+    - `DeployAzNetworkManagerCommit.cs`
+    - `NewAzNetworkManagerConnectivityConfigurationCommand.cs`
+    - `NewAzNetworkManagerConnectivityGroupItemCommand.cs`
+    - `NewAzNetworkManagerSecurityAdminRuleCommand.cs`
+    - `NewAzNetworkManagerSecurityAdminConfigurationCommand.cs`
+    - `NewAzNetworkManagerAddressPrefixItemCommand.cs`
+    - `NewAzNetworkManagerCommand.cs`
 
 * Added `EnableUDPLogOptimization` parameter to `AzureFirewall`
     - `New-AzFirewall`

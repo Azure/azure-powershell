@@ -118,6 +118,14 @@ namespace Commands.Network.Test.ScenarioTests
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
         [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
+        public void TestNetworkInterfaceWithDisableTcpStateTracking()
+        {
+            TestRunner.RunTestScript("Test-NetworkInterfaceWithDisableTcpStateTracking");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.Owner, NrpTeamAlias.sdnnrp)]
         public void TestNetworkInterfaceTapConfigurationCRUD()
         {
             TestRunner.RunTestScript(string.Format("Test-NetworkInterfaceTapConfigurationCRUD"));

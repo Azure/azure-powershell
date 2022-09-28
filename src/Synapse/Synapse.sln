@@ -28,7 +28,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OperationalInsights", "..\O
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EventHub", "..\EventHub\EventHub\EventHub.csproj", "{39DF2C19-8F6A-4B55-AC25-2AA07BDA53C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.EventHub", "EventHub.Autorest\Az.EventHub.csproj", "{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Monitor", "..\Monitor\Monitor\Monitor.csproj", "{84E78482-7C4B-4851-A21F-F4A6C3E1655B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ActivityLogAlert", "ActivityLogAlert.Autorest\Az.ActivityLogAlert.csproj", "{112CEC1D-DED4-4275-9456-A6B5A6B7FC6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.DiagnosticSetting", "DiagnosticSetting.Autorest\Az.DiagnosticSetting.csproj", "{6D7DADBB-815E-4A62-A90F-1521830325E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.ScheduledQueryRule", "ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.csproj", "{00A41C24-7BB2-46D1-892A-13B0844A61DB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Az.Autoscale", "Autoscale.Autorest\Az.Autoscale.csproj", "{201512D5-675A-40E1-A5BB-ACC091E98DE5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Az.Synapse", "Synapse.Autorest\Az.Synapse.csproj", "{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}"
 EndProject
@@ -94,6 +104,26 @@ Global
 		{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C271BA4-C9F6-4736-995F-3D606FBCFDCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{112CEC1D-DED4-4275-9456-A6B5A6B7FC6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{112CEC1D-DED4-4275-9456-A6B5A6B7FC6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{112CEC1D-DED4-4275-9456-A6B5A6B7FC6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{112CEC1D-DED4-4275-9456-A6B5A6B7FC6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D7DADBB-815E-4A62-A90F-1521830325E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D7DADBB-815E-4A62-A90F-1521830325E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D7DADBB-815E-4A62-A90F-1521830325E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D7DADBB-815E-4A62-A90F-1521830325E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A41C24-7BB2-46D1-892A-13B0844A61DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A41C24-7BB2-46D1-892A-13B0844A61DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A41C24-7BB2-46D1-892A-13B0844A61DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A41C24-7BB2-46D1-892A-13B0844A61DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{201512D5-675A-40E1-A5BB-ACC091E98DE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{201512D5-675A-40E1-A5BB-ACC091E98DE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{201512D5-675A-40E1-A5BB-ACC091E98DE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{201512D5-675A-40E1-A5BB-ACC091E98DE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE2E9E5-E25E-41C6-B186-4D38D6DD9201}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
