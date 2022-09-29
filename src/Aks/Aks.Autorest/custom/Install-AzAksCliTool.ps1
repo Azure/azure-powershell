@@ -23,9 +23,7 @@ Download and install kubectl and kubelogin.
 function Install-AzAksCliTool
 {
     [OutputType([System.Boolean])]
-    [Alias("Install-AzAksKubectl")]
     [CmdletBinding(PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Aks.Runtime.CmdletBreakingChangeAttribute("9.0.0", "2022/10/12", ReplacementCmdletName = 'Install-AzAksCliTool')]
     param(
         [Alias("KubectlInstallDestination")]
         [Parameter()]
