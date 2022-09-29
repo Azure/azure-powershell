@@ -21,9 +21,8 @@
 ## Upcoming Release
 * [BreakingChange] Upgraded API version for ActivityLogAlert from 2017-04-01 to 2020-10-01, affected cmdlets:
     - `Get-AzActivityLogAlert`
-    - `New-AzActivityLogAlert`
     - `Remove-AzActivityLogAlert`
-    - `Set-AzActivityLogAlert` replaced by `Update-AzActivityLogAlert`
+    - `Set-AzActivityLogAlert` replaced by `New-AzActivityLogAlert`
     - `Disable-AzActivityLogAlert` replaced by `Update-AzActivityLogAlert`
     - `Enable-AzActivityLogAlert` replaced by `Update-AzActivityLogAlert`
     - `New-AzActionGroup` replaced by `New-AzActivityLogAlertActionGroupObject`
@@ -32,7 +31,7 @@
     - `Get-AzDiagnosticSetting`
     - `New-AzDiagnosticSetting`
     - `Remove-AzDiagnosticSetting`
-    - `Set-AzDiagnosticSetting`
+    - `Set-AzDiagnosticSetting` replaced by `New-AzDiagnosticSetting`
     - `New-AzDiagnosticDetailSetting` replaced by `New-AzDiagnosticSettingLogSettingsObject` and `New-AzDiagnosticSettingMetricSettingsObject`
     - `Get-AzSubscriptionDiagnosticSettingCategory` replaced by `Get-AzEventCategory`
 * [BreakingChange] Upgraded API version for Autoscale from 2015-04-01 to 2022-10-01
