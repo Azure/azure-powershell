@@ -102,7 +102,7 @@ $DisablingIMDSOnNode = "Disabling AzureStack HCI IMDS Attestation on {0}"
 $RemovingVmImdsFromNode = "Removing AzureStack HCI IMDS Attestation from guests on {0}"
 $AttestationNotEnabled = "The IMDS Service on {0} needs to be activated. This is required before guests can be configured. Run Enable-AzStackHCIAttestation cmdlet."
 $ErrorAddingAllVMs = "Did not add all guests. Try running Add-AzStackHCIVMAttestation on each node manually."
-
+$MaskString = "XXXXXXX"
 #endregion
 
 #region Constants
@@ -364,9 +364,14 @@ Function Print-FunctionParameters{
         if ([System.Management.Automation.PSCmdlet]::CommonParameters -contains $param.key) {
             continue
         } 
-        if ($param.key -in @("ArmAccessToken","ArcSpnCredential","Credential","AccountId","GraphAccessToken")) { continue } 
-
-        $body.add($param.Key, $param.Value)
+        if ($param.key -in @("ArmAccessToken","ArcSpnCredential","Credential","AccountId","GraphAccessToken","AccessToken")) 
+        {
+            $body.add($param.Key, $MaskString) 
+        }
+        else
+        {
+            $body.add($param.Key, $param.Value)
+        }
     }    
     return "Parameters for {0} are: {1}" -f $Message, ($body | Out-String ) 
 }
@@ -854,7 +859,7 @@ param(
 
     Disconnect-AzAccount -ErrorAction Ignore | Out-Null
 
-    if([string]::IsNullOrEmpty($ArmAccessToken) -or [string]::IsNullOrEmpty($GraphAccessToken) -or [string]::IsNullOrEmpty($AccountId))
+    if([string]::IsNullOrEmpty($ArmAccessToken) -or [string]::IsNullOrEmpty($AccountId))
     {
         # Interactive login
 
@@ -865,12 +870,21 @@ param(
             Write-VerboseLog ("attempting login without TenantID")
             if(($UseDeviceAuthentication -eq $false) -and ($IsIEPresent))
             {
-                Connect-AzAccount -Environment $ConnectAzAccountEnvironmentName -SubscriptionId $SubscriptionId -Scope Process | Out-Null
+                $AZConnectParams = @{
+                    Environment = $ConnectAzAccountEnvironmentName
+                    SubscriptionId = $SubscriptionId
+                    Scope = "Process"
+                }
             }
             else # Use -UseDeviceAuthentication as IE Frame is not available to show Azure login popup
             {
                 Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -Completed # Hide progress activity as it blocks the console output
-                Connect-AzAccount -Environment $ConnectAzAccountEnvironmentName -SubscriptionId $SubscriptionId -UseDeviceAuthentication -Scope Process | Out-Null
+                $AZConnectParams = @{
+                    Environment = $ConnectAzAccountEnvironmentName
+                    SubscriptionId = $SubscriptionId
+                    Scope = "Process"
+                    UseDeviceAuthentication = $true
+                }
             }
         }
         else
@@ -878,14 +892,27 @@ param(
             Write-VerboseLog ("Attempting login with TenantID: $TenantId")
             if(($UseDeviceAuthentication -eq $false) -and ($IsIEPresent))
             {
-                Connect-AzAccount -Environment $ConnectAzAccountEnvironmentName -TenantId $TenantId -SubscriptionId $SubscriptionId -Scope Process | Out-Null
+                $AZConnectParams = @{
+                    Environment = $ConnectAzAccountEnvironmentName
+                    SubscriptionId = $SubscriptionId
+                    TenantId = $TenantId
+                    Scope = "Process"
+                }
             }
             else # Use -UseDeviceAuthentication as IE Frame is not available to show Azure login popup
             {
                 Write-Progress -Id $MainProgressBarId -activity $ProgressActivityName -Completed # Hide progress activity as it blocks the console output
-                Connect-AzAccount -Environment $ConnectAzAccountEnvironmentName -TenantId $TenantId -SubscriptionId $SubscriptionId -UseDeviceAuthentication -Scope Process | Out-Null
+                $AZConnectParams = @{
+                    Environment = $ConnectAzAccountEnvironmentName
+                    SubscriptionId = $SubscriptionId
+                    TenantId = $TenantId
+                    UseDeviceAuthentication = $true
+                    Scope = "Process"
+                }
             }
         }
+        Write-InfoLog $(Print-FunctionParameters -Message "Connect-AzAccount" -Parameters $AZConnectParams)
+        Connect-AzAccount @AZConnectParams | Out-Null
         $azContext = Get-AzContext
         $TenantId = $azContext.Tenant.Id
     }
@@ -896,13 +923,59 @@ param(
         if([string]::IsNullOrEmpty($TenantId))
         {
             Write-VerboseLog ("attempting login without TenantID")
-            Connect-AzAccount -Environment $ConnectAzAccountEnvironmentName -SubscriptionId $SubscriptionId -AccessToken $ArmAccessToken -AccountId $AccountId -GraphAccessToken $GraphAccessToken -Scope Process | Out-Null
+            if(-not [string]::IsNullOrEmpty($GraphAccessToken))
+            {
+                Write-VerboseLog ("Using Graph AccessToken")
+                $AZConnectParams = @{
+                    Environment = $ConnectAzAccountEnvironmentName
+                    SubscriptionId = $SubscriptionId
+                    AccessToken = $ArmAccessToken
+                    AccountId = $AccountId
+                    GraphAccessToken = $GraphAccessToken
+                    Scope = "Process"
+                }
+            }
+            else
+            {
+                $AZConnectParams = @{
+                    Environment = $ConnectAzAccountEnvironmentName
+                    SubscriptionId = $SubscriptionId
+                    AccessToken = $ArmAccessToken
+                    AccountId = $AccountId
+                    Scope = "Process"
+                }
+            }
         }
         else
         {
             Write-VerboseLog ("attempting login with TenantID")
-            Connect-AzAccount -Environment $ConnectAzAccountEnvironmentName -TenantId $TenantId -SubscriptionId $SubscriptionId -AccessToken $ArmAccessToken -AccountId $AccountId -GraphAccessToken $GraphAccessToken -Scope Process | Out-Null
+            if( -not [string]::IsNullOrEmpty($GraphAccessToken))
+            {
+                Write-VerboseLog ("Using Graph AccessToken")
+                $AZConnectParams = @{
+                    Environment = $ConnectAzAccountEnvironmentName
+                    TenantId = $TenantId
+                    SubscriptionId = $SubscriptionId
+                    AccessToken = $ArmAccessToken
+                    AccountId = $AccountId
+                    GraphAccessToken = $GraphAccessToken
+                    Scope = "Process"
+                }
+            }
+            else
+            {
+                $AZConnectParams = @{
+                    Environment = $ConnectAzAccountEnvironmentName
+                    TenantId = $TenantId
+                    SubscriptionId = $SubscriptionId
+                    AccessToken = $ArmAccessToken
+                    AccountId = $AccountId
+                    Scope = "Process"
+                }
+            }
         }
+        Write-InfoLog $(Print-FunctionParameters -Message "Connect-AzAccount" -Parameters $AZConnectParams)
+        Connect-AzAccount @AZConnectParams | Out-Null
         $azContext = Get-AzContext
         $TenantId = $azContext.Tenant.Id
     }
@@ -1491,7 +1564,7 @@ param(
             Write-VerboseLog ("Initiating Arc AAD App creation by HCI RP")
             Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $RegisterArcProgressActivityName -Status $ArcAADAppCreationMessage -PercentComplete 30
             $arcIdentity = Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Action createArcIdentity -Force }  
-            $ArcResource = Get-AzResource -ResourceId $arcResourceId -ErrorAction Ignore
+            $ArcResource = Get-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -ErrorAction Ignore
             Write-VerboseLog ("Created Arc AAD App by HCI service")
         }
         else
@@ -1794,31 +1867,38 @@ param(
     if ($disabled)
     {
         # Call HCI RP to clean up all Arc proxy resources
-        $arcResource = Get-AzResource -ResourceId $arcResourceId -ErrorAction Ignore
+        $arcResource = Get-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -ErrorAction Ignore
 
         if($arcResource -ne $Null)
         {
             $DeletingArcCloudResourceMessageProgress = $DeletingArcCloudResourceMessage -f $arcResourceId
             Write-Progress -Id $ArcProgressBarId -ParentId $MainProgressBarId -Activity $UnregisterArcProgressActivityName -Status $DeletingArcCloudResourceMessageProgress -PercentComplete 40
-            Execute-Without-ProgressBar -ScriptBlock {Remove-AzResource -ResourceId $arcResourceId -Force | Out-Null }
-            $arcAADApplication = Get-AzADApplication -ApplicationId $arcStatus.ApplicationId
-            if($arcAADApplication -ne $Null)
+            Execute-Without-ProgressBar -ScriptBlock {Remove-AzResource -ResourceId $arcResourceId -ApiVersion $HCIArcAPIVersion -Force | Out-Null } 
+            if(($Null -ne $arcStatus) -and ($Null -ne $arcStatus.ApplicationId))
             {
-                # when registration happens via older version of the registration script and unregistration happens via newever version
-                # service will  not be able to delete the app since it does not own it.
-                try 
+                $arcAADApplication = Get-AzADApplication -ApplicationId $arcStatus.ApplicationId -ErrorAction:SilentlyContinue
+                if($Null -ne $arcAADApplication)
                 {
-                    Write-VerboseLog ("Deleting ARC AAD application: $($arcStatus.ApplicationId)")
-                    Remove-AzADApplication -ApplicationId $arcStatus.ApplicationId -ErrorAction Stop | Out-Null
-                }
-                catch 
-                {
-                    #consume exception, this is best effort. Log warning and continue if it fails.
-                    $msg = "Deleting ARC AAD application Failed $($arcStatus.ApplicationId) . ErrorMessage : {0} .Please delete it manually." -f ($_.Exception.Message)
-                    Write-NodeEventLog -Message $msg  -EventID 9011 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
-                    Write-WarnLog ($msg)
+                    # when registration happens via older version of the registration script and unregistration happens via newever version
+                    # service will  not be able to delete the app since it does not own it.
+                    try 
+                    {
+                        Write-VerboseLog ("Deleting ARC AAD application: $($arcStatus.ApplicationId)")
+                        Remove-AzADApplication -ApplicationId $arcStatus.ApplicationId -ErrorAction Stop | Out-Null
+                    }
+                    catch 
+                    {
+                        #consume exception, this is best effort. Log warning and continue if it fails.
+                        $msg = "Deleting ARC AAD application Failed $($arcStatus.ApplicationId) . ErrorMessage : {0} .Please delete it manually." -f ($_.Exception.Message)
+                        Write-NodeEventLog -Message $msg  -EventID 9011 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+                        Write-WarnLog ($msg)
+                    }
                 }
                 
+            }
+            else
+            {
+                Write-VerboseLog ("ARC not enabled on the cluster, ignoring ARC application deletion check")
             }
         }
 
@@ -1975,8 +2055,8 @@ param(
     [Parameter(Mandatory = $false)]
     [string] $ArmAccessToken,
 
-    #TODO - Remove , this needs coordination with the WAC team
     [Parameter(Mandatory = $false)]
+    [Obsolete("Graph Access is no more required for Az.StackHCI module")]
     [string] $GraphAccessToken,
 
     [Parameter(Mandatory = $false)]
@@ -2148,7 +2228,11 @@ param(
             AccountId: $AccountId EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint `
             RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer IsWAC: $IsWAC"
         Write-VerboseLog ($registrationBeginMsg)
-        Write-NodeEventLog -Message $registrationBeginMsg -EventID 9001 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+        $registrationBeginMsgPIIScrubbed="Register-AzStackHCI triggered - Region: $Region ResourceName: $ResourceName `
+        SubscriptionId: $SubscriptionId Tenant: $TenantId ResourceGroupName: $ResourceGroupName `
+        EnvironmentName: $EnvironmentName CertificateThumbprint: $CertificateThumbprint `
+        RepairRegistration: $RepairRegistration EnableAzureArcServer: $EnableAzureArcServer IsWAC: $IsWAC"
+        Write-NodeEventLog -Message $registrationBeginMsgPIIScrubbed -EventID 9001 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
         if(($EnvironmentName -eq $AzureChinaCloud) -and ($EnableAzureArcServer -eq $true))
         {
             $ArcNotAvailableMessage = $ArcIntegrationNotAvailableForCloudError -f $EnvironmentName
@@ -2169,7 +2253,7 @@ param(
 
         $resourceId = Get-ResourceId -ResourceName $ResourceName -SubscriptionId $SubscriptionId -ResourceGroupName $ResourceGroupName
         Write-VerboseLog ("ResourceId of cluster resource: $resourceId")
-        $resource = Get-AzResource -ResourceId $resourceId -ErrorAction Ignore
+        $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore 
         $resGroup = Get-AzResourceGroup -Name $ResourceGroupName -ErrorAction Ignore
 
         if($resource -ne $null)
@@ -2310,7 +2394,7 @@ param(
                 # create cluster identity by calling HCI RP
                 $clusterIdentity =  Execute-Without-ProgressBar -ScriptBlock { Invoke-AzResourceAction -ResourceId $resourceId -ApiVersion $RPAPIVersion -Action createClusterIdentity -Force }
                 # Get cluster again for identity details
-                $resource = Get-AzResource -ResourceId $resourceId -ErrorAction Ignore
+                $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
             }
             $serviceEndpoint = $resource.properties.serviceEndpoint
             $appId = $resource.Properties.aadClientId
@@ -2509,7 +2593,9 @@ param(
         
 
         Write-Output $registrationOutput | Format-List
-        Write-NodeEventLog -Message $RegistrationSuccessDetailsMessage -EventID 9004 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
+        $RegistrationCompleteEvent = "Registration completed with status:  {0}" -f ($registrationOutput | Format-List | Out-String )
+        Write-InfoLog($RegistrationCompleteEvent)
+        Write-NodeEventLog -Message $RegistrationCompleteEvent -EventID 9004 -IsManagementNode $IsManagementNode -credentials $Credential -ComputerName $ComputerName
     }
     catch
     {
@@ -2621,6 +2707,7 @@ param(
     [string] $ArmAccessToken,
 
     [Parameter(Mandatory = $false)]
+    [Obsolete("Graph Access is no more required for Az.StackHCI module")]
     [string] $GraphAccessToken,
 
     [Parameter(Mandatory = $false)]
@@ -2816,15 +2903,15 @@ param(
                 }
             }
 
-            $resource = Get-AzResource -ResourceId $resourceId -ErrorAction Ignore
+            $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
 
             if($resource -ne $Null)
             {
                 $DeletingCloudResourceMessageProgress = $DeletingCloudResourceMessage -f $ResourceName
                 Write-Progress -Id $MainProgressBarId -activity $UnregisterProgressActivityName -status $DeletingCloudResourceMessageProgress -percentcomplete 80
                 Write-VerboseLog ("$DeletingCloudResourceMessageProgress")
-                $remResource =  Execute-Without-ProgressBar -ScriptBlock { Remove-AzResource -ResourceId $resourceId -Force }
-                $clusterAADApplication = Get-AzADApplication -ApplicationId $resource.Properties.aadClientId
+                $remResource =  Execute-Without-ProgressBar -ScriptBlock { Remove-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -Force } 
+                $clusterAADApplication = Get-AzADApplication -ApplicationId $resource.Properties.aadClientId -ErrorAction:SilentlyContinue
                 if($clusterAADApplication -ne $Null)
                 {
                     # when registration happens via older version of the registration script and unregistration happens via newever version
@@ -3176,6 +3263,7 @@ param(
     [string] $ArmAccessToken,
 
     [Parameter(Mandatory = $false)]
+    [Obsolete("Graph Access is no more required for Az.StackHCI module")]
     [string] $GraphAccessToken,
 
     [Parameter(Mandatory = $false)]
@@ -3354,7 +3442,7 @@ param(
             }    
         }
 
-        $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ErrorAction Stop
+        $armResource = Get-AzResource -ResourceId $armResourceId -ExpandProperties -ApiVersion $RPAPIVersion -ErrorAction Stop
 
         $properties  = $armResource.Properties
 

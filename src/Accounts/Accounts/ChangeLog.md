@@ -19,6 +19,20 @@
 -->
 
 ## Upcoming Release
+* Supported tenant domain as input while using `Connect-AzAccount` with parameter `Tenant`. [#19471]
+* Upgraded Azure.Core to 1.25.0 and Azure.Identity to 1.6.1
+* Upgraded Microsoft.ApplicationInsights to 2.13.1
+* Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp3.1.
+* Used the ArgumentCompleter attribute to replace the dynamic parameters of `Get-AzContext`. [#18041]
+* Removed built-in environment of Azure Germany
+
+## Version 2.10.1
+* Deduplicated subscriptions belonging to multiple tenants while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19427]
+
+## Version 2.10.0
+* Supported returning all subscriptions with specified name while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19295]
+* Fixed null reference exception when cmdlet uses AzureRestOperation [#18104]
+* Updated survey message and settings
 
 ## Version 2.9.1
 * Implemented `SupportsShouldProcess` for `Invoke-AzRestMethod`

@@ -21,6 +21,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using Microsoft.Azure.Storage.DataMovement;
     using Microsoft.Azure.Storage.File;
     using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Utilities.Common;
@@ -168,12 +169,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         ShareFileClient fileClient = AzureStorageFile.GetTrack2FileClient(cloudFileToBeUploaded, ClientOptions);
 
                         // confirm overwrite if file exist
-                        if(!this.Force.IsPresent && 
-                            fileClient.Exists(this.CmdletCancellationToken) && 
+                        if (!this.Force.IsPresent &&
+                            fileClient.Exists(this.CmdletCancellationToken) &&
                             !await this.OutputStream.ConfirmAsync(string.Format(CultureInfo.CurrentCulture, Resources.OverwriteConfirmation, Util.ConvertToString(cloudFileToBeUploaded))))
                         {
                             return;
-                        }                     
+                        }
 
                         await fileClient.CreateAsync(fileSize, cancellationToken: this.CmdletCancellationToken).ConfigureAwait(false);
 
@@ -207,7 +208,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                             for (long offset = 0; offset < fileSize; offset += blockSize)
                             {
                                 long currentBlockSize = offset + blockSize < fileSize ? blockSize : fileSize - offset;
-                                
+
                                 // Only need to create new buffer when chunk size change
                                 if (currentBlockSize != lastBlockSize)
                                 {

@@ -19,6 +19,8 @@
 -->
 ## Upcoming Release
 
+## Version 4.0.4
+* Made PowerShell 7.2 the default when creating a PowerShell function app
 ## Version 4.0.3
 * Fixed an issue that New-AzFunctionApp cmdlet should write a warning message when setting default values for parameters that are not provided.
 

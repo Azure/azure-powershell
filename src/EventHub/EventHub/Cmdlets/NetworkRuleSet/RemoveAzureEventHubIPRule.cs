@@ -16,12 +16,14 @@ using Microsoft.Azure.Commands.EventHub.Models;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using System.Collections.Generic;
+using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 
 namespace Microsoft.Azure.Commands.EventHub.Commands.NetworkruleSet
 {
     /// <summary>
     /// 'New-AzureRmEventHubIpfilterRule' Cmdlet creates a new IPFilterRule
     /// </summary>
+    [GenericBreakingChange("This cmdlet would be deprecated in a future release. Please use Set-AzEventHubNetworkRuleSet.")]
     [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventHubIPRule", DefaultParameterSetName = IPRulePropertiesParameterSet, SupportsShouldProcess = true), OutputType(typeof(PSNetworkRuleSetAttributes))]
     public class RemoveAzureEventHubIPRule : AzureEventHubsCmdletBase
     {

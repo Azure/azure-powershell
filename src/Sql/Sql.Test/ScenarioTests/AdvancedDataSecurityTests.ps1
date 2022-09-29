@@ -52,27 +52,17 @@ function Test-AdvancedDataSecurityPolicyTest
 		Assert-False { $policy.IsEnabled }
 
 		# See that ATP cmdlets don't mess up the Threat Detection policy - with enabling VA off
-		Update-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType Sql_Injection_Vulnerability
-
 		Disable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName 
 
 		# Assert
-		$policy = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
-		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
-		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
-		Assert-False {$policy.EmailAdmins}
-		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 1
-		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
+		$settings = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual $settings.AdvancedThreatProtectionState "Disabled"
 
 		Enable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName -DoNotConfigureVulnerabilityAssessment
 
 		# Assert
-		$policy = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
-		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
-		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
-		Assert-False {$policy.EmailAdmins}
-		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 1
-		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
+		$settings = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual $settings.AdvancedThreatProtectionState "Enabled"
 
 		# Check enabling ADS with VA
 		Disable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName 
@@ -95,27 +85,17 @@ function Test-AdvancedDataSecurityPolicyTest
 		Assert-AreEqualArray @() $settings.NotificationEmail
 
 		# See that ATP cmdlets don't mess up the Threat Detection policy - with enabling VA on
-		Update-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName -NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com" -EmailAdmins $false -ExcludedDetectionType Sql_Injection_Vulnerability
-
 		Disable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName 
 
 		# Assert
-		$policy = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
-		Assert-AreEqual $policy.ThreatDetectionState "Disabled"
-		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
-		Assert-False {$policy.EmailAdmins}
-		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 1
-		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
+		$settings = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual $settings.AdvancedThreatProtectionState "Disabled"
 
 		Enable-AzSqlServerAdvancedDataSecurity -ResourceGroupName $params.rgname -ServerName $params.serverName -DeploymentName "EnableVA_sql-ads-cmdlet-test-srv2"
 
 		# Assert
-		$policy = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
-		Assert-AreEqual $policy.ThreatDetectionState "Enabled"
-		Assert-AreEqual $policy.NotificationRecipientsEmails "koko@mailTest.com;koko1@mailTest.com"
-		Assert-False {$policy.EmailAdmins}
-		Assert-AreEqual $policy.ExcludedDetectionTypes.Count 1
-		Assert-True {$policy.ExcludedDetectionTypes.Contains([Microsoft.Azure.Commands.Sql.ThreatDetection.Model.DetectionType]::Sql_Injection_Vulnerability)}
+		$settings = Get-AzSqlServerAdvancedThreatProtectionSetting -ResourceGroupName $params.rgname -ServerName $params.serverName
+		Assert-AreEqual $settings.AdvancedThreatProtectionState "Enabled"
 	}
 	finally
 	{
@@ -128,7 +108,7 @@ function Test-AdvancedDataSecurityPolicyTest
 .SYNOPSIS
 Creates the test environment needed to perform the tests
 #>
-function Create-AdvancedDataSecurityTestEnvironment ($testSuffix, $location = "West Central US", $serverVersion = "12.0")
+function Create-AdvancedDataSecurityTestEnvironment ($testSuffix, $location = "West Europe", $serverVersion = "12.0")
 {
 	$params = Get-SqlAdvancedDataSecurityTestEnvironmentParameters $testSuffix
 	Create-BasicTestEnvironmentWithParams $params $location $serverVersion
@@ -140,8 +120,8 @@ Gets the values of the parameters used at the tests
 #>
 function Get-SqlAdvancedDataSecurityTestEnvironmentParameters ($testSuffix)
 {
-	return @{ rgname = "sql-ads-cmdlet-test-rg" +$testSuffix;
-			  serverName = "sql-ads-cmdlet-server" +$testSuffix;
+	return @{ rgname = "sql-ads-cmdlet-test-rg" + $testSuffix;
+			  serverName = "sql-ads-cmdlet-server" + $testSuffix;
 			  databaseName = "sql-ads-cmdlet-db" + $testSuffix;
 			  }
 }
