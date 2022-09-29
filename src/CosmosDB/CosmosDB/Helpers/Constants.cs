@@ -78,6 +78,7 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string BackupRetentionInHoursHelpMessage = "The time(in hours) for which each backup is retained (only for accounts with periodic mode backups)";
         public const string BackupTypeHelpMessage = "The type of backups on the Cosmos DB account. Accepted values: Periodic, Continuous";
         public const string BackupStorageRedundancyHelpMessage = "The redundancy type of the backup Storage account";
+        public const string ContinuousTierHelpMessage = "The continuous backup tier of the account";
 
         //Sql cmdlets help messages
         public const string DatabaseNameHelpMessage = "Database name.";
@@ -132,6 +133,15 @@ namespace Microsoft.Azure.Commands.CosmosDB.Helpers
         public const string CompositePathOrderTypeHelpMessage = " Gets or sets sort order for composite paths. Possible values include: 'Ascending', 'Descending'";
         public const string SqlContainerAnalyticalStorageTtlHelpMessage = "TTL for Analytical Storage (in Seconds).";
         public const string ClientEncryptionKeyObjectHelpMessage = "Client Encryption Key object.";
+        public const string IsPartitionMergeSimulationHelpMessage = "Boolean to indicate whether or not this is a simulated operation (true if not specified).";
+        public const string PhysicalPartitionIdHelpMessage = "Id of the physical partition.";
+        public const string PhysicalPartitionThroughputHelpMessage = "Throughput of the physical partition.";
+        public const string SourcePhysicalPartitionThroughputHelpMessage = "Source physical partitions";
+        public const string TargetPhysicalPartitionThroughputHelpMessage = "Target physical partitions";
+        public const string GetAllPhysicalPartitionsThroughputHelpMessage = "Set this switch to get the throughput for all physical partitions.";
+        public const string ResetPartitionThroughputLayoutHelpMessage = "Set this switch to reset the throughput layout for all partitions.";
+        public const string PhysicalPartitionThroughputInfosHelpMessage = "List of PhysicalPartitionInfo objects for which throughput needs to be retrieved..";
+        public const string PhysicalPartitionIdsHelpMessage = "List of PhysicalPartitionId for which throughput needs to be retrieved.";
 
         //SQL Client Side Encryption
         public const string ClientEncryptionKeyName = "Client Encryption Key name.";

@@ -99,6 +99,10 @@ namespace Microsoft.Azure.Commands.CosmosDB
         [PSArgumentCompleter("Periodic", "Continuous")]
         public string BackupPolicyType { get; set; }
 
+        [Parameter(Mandatory = false, HelpMessage = Constants.ContinuousTierHelpMessage)]
+        [PSArgumentCompleter("Continuous7Days", "Continuous30Days")]
+        public string ContinuousTier { get; set; }
+
         [Parameter(Mandatory = false, HelpMessage = Constants.AnalyticalStorageSchemaTypeHelpMessage)]
         [PSArgumentCompleter(SDKModel.AnalyticalStorageSchemaType.WellDefined, SDKModel.AnalyticalStorageSchemaType.FullFidelity)]
         public string AnalyticalStorageSchemaType { get; set; }

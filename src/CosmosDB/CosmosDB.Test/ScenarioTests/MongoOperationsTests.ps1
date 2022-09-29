@@ -146,6 +146,280 @@ Try {
 	}
 }
 
+function Test-MongoInAccountRestoreOperationsSharedRUResourcesCmdlets
+{
+  $AccountName = "mongo-db00045"
+  $rgName = "CosmosDBResourceGroup46"
+  $DatabaseName = "dbName"
+  $CollectionName = "collection"
+  $shardKey = "partitionkey1"
+  $partitionKeys = @("partitionkey1", "partitionkey2")
+  $ttlKeys = @("_ts")
+  $ttlInSeconds = 604800
+  $ttlInSeconds = 1204800
+  $ThroughputValue = 500
+  $location = "West US"
+  $apiKind = "MongoDB"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
+Try {
+
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+
+
+      # create a new database
+      $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -Throughput $ThroughputValue
+      Assert-AreEqual $NewDatabase.Name $DatabaseName
+
+      # create an existing database
+      Try {
+          $NewDuplicateDatabase = New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName + " already exists.")
+      }
+
+      #create index
+      $index0 = New-AzCosmosDBMongoDBIndex -Key "_id"
+      $index1 = New-AzCosmosDBMongoDBIndex -Key $partitionKeys -Unique 1
+      $index2 = New-AzCosmosDBMongoDBIndex -Key $ttlKeys -TtlInSeconds $ttlInSeconds
+
+      #create a new Collection
+      $NewCollection = New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -Index $index0,$index1,$index2 -Shard $shardKey
+      Assert-AreEqual $NewCollection.Name $CollectionName
+      Validate-EqualIndexes $NewCollection.Resource.Index ($index0, $index1, $index2)
+      Assert-AreEqual $NewCollection.Resource.Shard $ShardKey["Hash"]
+
+      #create an existing Collection
+      Try {
+          $NewDuplicateCollection = New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -Shard $shardKey
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $CollectionName + " already exists.")
+      }
+
+      #get an existing database
+      $Database = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Id $Database.Id
+      Assert-AreEqual $NewDatabase.Name $Database.Name
+      Assert-AreEqual $NewDatabase.Resource.Id $Database.Resource.Id
+      Assert-AreEqual $NewDatabase.Resource._rid $Database.Resource._rid
+      Assert-AreEqual $NewDatabase.Resource._ts $Database.Resource._ts
+      Assert-AreEqual $NewDatabase.Resource._etag $Database.Resource._etag
+
+      #get an existing Collection
+      $Collection = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      Assert-AreEqual $NewCollection.Id $Collection.Id
+      Assert-AreEqual $NewCollection.Name $Collection.Name
+      Assert-AreEqual $NewCollection.Resource.Id $Collection.Resource.Id
+      Assert-AreEqual $NewCollection.Resource._rid $Collection.Resource._rid
+      Assert-AreEqual $NewCollection.Resource._ts $Collection.Resource._ts
+      Assert-AreEqual $NewCollection.Resource._etag $Collection.Resource._etag
+      Validate-EqualIndexes $NewCollection.Resource.Index $Collection.Resource.Index
+
+      $restoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
+
+      #list all Collections under a database
+      $ListCollections = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($ListCollections)
+
+      #list all databases under the account
+      $Lists = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($Lists)
+
+      Start-Sleep -s 50
+
+      #delete a Collection
+      $IsCollectionRemoved =  Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -PassThru
+      Assert-AreEqual $IsCollectionRemoved true
+
+      Start-Sleep -s 100
+
+      Try {
+          $RestoredCollection = Restore-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -RestoreTimestampInUtc $restoreTimestampInUtc
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message.Contains("Partial restore of shared throughput data is not allowed. Please perform restore operation on a shared throughput database or a provisioned collection") true
+      }
+
+      #delete a database
+      $IsRemoved = Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
+      Assert-AreEqual $IsRemoved true
+
+      Start-Sleep -s 100
+
+      # restore deleted database
+      Restore-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $restoreTimestampInUtc
+
+      Start-Sleep -s 100
+
+      #list all Collections under a database
+      $ListCollections = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($ListCollections)
+
+      #list all databases under the account
+      $Lists = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($Lists)
+
+      #delete a Collection
+      $IsCollectionRemoved =  Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -PassThru
+      Assert-AreEqual $IsCollectionRemoved true
+
+      #delete a database
+      $IsRemoved = Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
+      Assert-AreEqual $IsRemoved true
+    }
+
+    Finally {
+        Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+        Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+	}
+}
+
+function Test-MongoInAccountRestoreOperationsCmdlets
+{
+  $AccountName = "mongo-db00048"
+  $rgName = "CosmosDBResourceGroup48"
+  $DatabaseName = "dbName"
+  $CollectionName = "collection1"
+  $location = "West US"
+  $apiKind = "MongoDB"
+  $consistencyLevel = "Session"
+  $locations = @()
+  $locations += New-AzCosmosDBLocationObject -LocationName "West US" -FailoverPriority 0 -IsZoneRedundant 0
+Try {
+
+      $resourceGroup = New-AzResourceGroup -ResourceGroupName $rgName  -Location   $location
+      New-AzCosmosDBAccount -ResourceGroupName $rgName -LocationObject $locations -Name $AccountName -ApiKind $apiKind -DefaultConsistencyLevel $consistencyLevel -BackupPolicyType Continuous
+
+
+      # create a new database
+      $NewDatabase =  New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Name $DatabaseName
+
+      # create an existing database
+      Try {
+          $NewDuplicateDatabase = New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName 
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $DatabaseName + " already exists.")
+      }
+
+      #create a new Collection
+      $NewCollection = New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      Assert-AreEqual $NewCollection.Name $CollectionName
+
+      #create an existing Collection
+      Try {
+          $NewDuplicateCollection = New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message ("Resource with Name " + $CollectionName + " already exists.")
+      }
+
+      #get an existing database
+      $Database = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      Assert-AreEqual $NewDatabase.Id $Database.Id
+      Assert-AreEqual $NewDatabase.Name $Database.Name
+      Assert-AreEqual $NewDatabase.Resource.Id $Database.Resource.Id
+      Assert-AreEqual $NewDatabase.Resource._rid $Database.Resource._rid
+      Assert-AreEqual $NewDatabase.Resource._ts $Database.Resource._ts
+      Assert-AreEqual $NewDatabase.Resource._etag $Database.Resource._etag
+
+      #get an existing Collection
+      $Collection = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      Assert-AreEqual $NewCollection.Id $Collection.Id
+      Assert-AreEqual $NewCollection.Name $Collection.Name
+      Assert-AreEqual $NewCollection.Resource.Id $Collection.Resource.Id
+      Assert-AreEqual $NewCollection.Resource._rid $Collection.Resource._rid
+      Assert-AreEqual $NewCollection.Resource._ts $Collection.Resource._ts
+      Assert-AreEqual $NewCollection.Resource._etag $Collection.Resource._etag
+
+      $restoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
+
+      #list all Collections under a database
+      $ListCollections = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($ListCollections)
+
+      #list all databases under the account
+      $Lists = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($Lists)
+
+      Start-Sleep -s 50
+
+      #delete a Collection
+      $IsCollectionRemoved =  Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -PassThru
+      Assert-AreEqual $IsCollectionRemoved true
+
+      Start-Sleep -s 50
+
+      # restore deleted collection
+      Restore-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -RestoreTimestampInUtc $restoreTimestampInUtc
+
+      Start-Sleep -s 100
+
+      #list all Collections under a database
+      $ListCollections = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($ListCollections)
+
+      #delete a database
+      $IsRemoved = Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
+      Assert-AreEqual $IsRemoved true
+
+      Start-Sleep -s 100
+
+      #Restore collection when database is deleted
+      Try {
+          $RestoredCollection = Restore-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -RestoreTimestampInUtc $restoreTimestampInUtc
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message.Contains("Could not find the database") true
+      }
+
+      $invalidRestoreTimestampInUtc = [DateTime]::UtcNow.ToString('u')
+      #Restore database with invalid timestamp
+      Try {
+          $RestoredDatabase = Restore-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $invalidRestoreTimestampInUtc
+      }
+      Catch {
+          Assert-AreEqual $_.Exception.Message.Contains("No databases or collections found in the source account at the restore timestamp provided") true
+      }
+
+      # restore deleted database
+      Restore-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -RestoreTimestampInUtc $restoreTimestampInUtc
+
+      Start-Sleep -s 100
+
+      # restore deleted collection
+      Restore-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -RestoreTimestampInUtc $restoreTimestampInUtc
+
+      Start-Sleep -s 50
+
+      #list all Collections under a database
+      $ListCollections = Get-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName
+      Assert-NotNull($ListCollections)
+
+      #list all databases under the account
+      $Lists = Get-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName
+      Assert-NotNull($Lists)
+
+      #delete a Collection
+      $IsCollectionRemoved =  Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName -PassThru
+      Assert-AreEqual $IsCollectionRemoved true
+
+      #delete a database
+      $IsRemoved = Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName -PassThru
+      Assert-AreEqual $IsRemoved true
+    }
+
+    Finally {
+        Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+        Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+	}
+}
+
 <#
 .SYNOPSIS
 Test MongoDB CRUD cmdlets using Parent Object and InputObject paramter set
@@ -443,6 +717,113 @@ function Test-MongoMigrateThroughputCmdlets
   }
   Finally{
       Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $CollectionName
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+<#
+.SYNOPSIS
+Test mongodb Throughput redistribution cmdlets
+#>
+function Test-MongoDBCollectionAdaptiveRUCmdlets
+{
+  $AccountName = "mongomergeaccount"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "adaptiverudatabase"
+  $ContainerName = "adaptiveruContainer"
+
+  $ShardKey = "shardKeyPath"
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -Shard $ShardKey
+      Update-AzCosmosDBMongoDBCollectionThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
+      $partitions = Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -AllPartitions
+      Assert-AreEqual $partitions.Count 4
+      $sources = @()
+      $targets = @()
+      Foreach($partition in $partitions)
+      {
+          Assert-AreEqual $partition.Throughput 500
+          if($partition.Id -lt 2)
+          {
+            $throughput = $partition.Throughput - 100
+            $sources += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+          }
+          else
+          {
+              $throughput = $partition.Throughput + 100
+              $targets += New-AzCosmosDBPhysicalPartitionThroughputObject -Id $partition.Id -Throughput $throughput
+          }
+      }
+      
+      $newPartitions = Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -SourcePhysicalPartitionThroughputObject $sources -TargetPhysicalPartitionThroughputObject $targets
+      Assert-AreEqual $newPartitions.Count 4
+      Foreach($partition in $newPartitions)
+      {
+          if($partition.Id -lt 2)
+          {
+            Assert-AreEqual $partition.Throughput 400
+          }
+          else
+          {
+              Assert-AreEqual $partition.Throughput 600              
+          }
+      }      
+
+      $resetPartitions = Update-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -EqualDistributionPolicy
+      
+      Assert-AreEqual $resetPartitions.Count 4
+
+      Foreach($partition in $resetPartitions)
+      {
+          Assert-AreEqual $partition.Throughput 500          
+      }
+
+      $somePartitions = Get-AzCosmosDBMongoDBCollectionPerPartitionThroughput -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -PhysicalPartitionIds ('0', '1')
+      Assert-AreEqual $somePartitions.Count 2
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
+      Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+  }
+}
+
+
+<#
+.SYNOPSIS
+Test mongodb merge cmdlet
+#>
+function Test-MongoDBCollectionMergeCmdlet
+{
+  $AccountName = "mongomergeaccount"
+  $rgName = "canary-sdk-test"
+  $DatabaseName = "mergedatabase"
+  $ContainerName = "mergecontainer"
+
+  $ShardKey = "shardKeyPath"
+
+  $ContainerThroughputValue = 24000
+  $UpdatedContainerThroughputValue = 2000
+
+  Try{
+
+      New-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
+      New-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Throughput  $ContainerThroughputValue -Name $ContainerName -Shard $ShardKey
+      Update-AzCosmosDBMongoDBCollectionThroughput -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName -Throughput $UpdatedContainerThroughputValue
+      $physicalPartitionStorageInfos = Invoke-AzCosmosDBMongoDBCollectionMerge -ResourceGroupName $rgName -AccountName $AccountName -DatabaseName $DatabaseName -Name $ContainerName -Force
+      Assert-AreEqual $physicalPartitionStorageInfos.Count 1
+      if($physicalPartitionStorageInfos[0].Id.contains("mergeTarget"))
+      {
+          throw "Name of partition: " + $physicalPartitionStorageInfos[0].Id + " Unexpected Id: mergeTarget"
+      }
+
+  }
+  Finally{
+      Remove-AzCosmosDBMongoDBCollection -AccountName $AccountName -ResourceGroupName $rgName -DatabaseName $DatabaseName -Name $ContainerName
       Remove-AzCosmosDBMongoDBDatabase -AccountName $AccountName -ResourceGroupName $rgName -Name $DatabaseName
   }
 }
