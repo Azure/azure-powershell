@@ -19,6 +19,12 @@
 -->
 ## Upcoming Release
 
+## Version 1.1.4
+* Updated ApiVersion to 2022-05-01.
+* Added support for pause and resume.
+    -  'Suspend-AzMigrateServerReplication'
+    -  'Resume-AzMigrateServerReplication'
+  
 ## Version 1.1.3
 * Fixed a cross-subscription issue
 
