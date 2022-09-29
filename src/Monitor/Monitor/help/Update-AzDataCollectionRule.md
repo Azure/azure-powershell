@@ -33,7 +33,7 @@ Update-AzDataCollectionRule -InputObject <PSDataCollectionRuleResource> [-Tag <H
 ## DESCRIPTION
 The **Update-AzDataCollectionRule** cmdlet updates a data collection rule Tags property.
 
-Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://docs.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
+Data Collection Rules (DCR) define data coming into Azure Monitor and specify where that data should be sent or stored. Here is the complete [DCR overview article](https://learn.microsoft.com/azure/azure-monitor/essentials/data-collection-rule-overview).
 
 ## EXAMPLES
 
