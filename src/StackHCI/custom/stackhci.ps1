@@ -2590,9 +2590,6 @@ param(
                         Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 40
                         Write-VerboseLog ("Cloud Management cluster group: $($group | Format-List | Out-String)")
                         $svcResource = Invoke-Command -Session $clusterNodeSession -ScriptBlock { Get-ClusterResource -Name $using:displayName -ErrorAction Ignore }
-                        Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 80
-                        Write-VerboseLog ("Cloud Management cluster resource: $($svcResource | Format-List | Out-String)")
-                        Write-VerboseLog ("Setting cluster resource parameter ServiceName = $ClusterAgentServiceName")
                         if ($null -eq $svcResource)
                         {
                             Write-Progress -Id $SecondaryProgressBarId -activity $SetupCloudManagementActivityName -status $ConfiguringCloudManagementClusterSvc -percentcomplete 60
