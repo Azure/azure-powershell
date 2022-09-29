@@ -78,12 +78,6 @@ for a better powershell experience and as a result would witness breaking change
 #### Az.MarketplaceOrdering
 * Added a warning message for an upcoming breaking change to 'Get-AzMarketplaceTerms'.
 
-#### Az.Migrate
-* Updated ApiVersion to 2022-05-01.
-* Added support for pause and resume.
-    -  'Suspend-AzMigrateServerReplication'
-    -  'Resume-AzMigrateServerReplication'
-
 #### Az.Monitor
 * Added breaking change warning messages for 
     - 'ActivityLogAlert'
