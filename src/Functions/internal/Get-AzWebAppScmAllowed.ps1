@@ -16,20 +16,18 @@
 
 <#
 .Synopsis
-Move resources between resource groups.
+Returns whether Scm basic auth is allowed on the site or not.
 .Description
-Move resources between resource groups.
+Returns whether Scm basic auth is allowed on the site or not.
 .Example
 {{ Add code here }}
 .Example
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmMoveResourceEnvelope
-.Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-System.Boolean
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -92,64 +90,40 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WebJobName <String>]: Name of Web Job.
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
-
-MOVERESOURCEENVELOPE <ICsmMoveResourceEnvelope>: Object with a list of the resources that need to be moved and the resource group they should be moved to.
-  [Resource <String[]>]: 
-  [TargetResourceGroup <String>]: 
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/move-az
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappscmallowed
 #>
-function Move-Az {
-[OutputType([System.Boolean])]
-[CmdletBinding(DefaultParameterSetName='MoveExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+function Get-AzWebAppScmAllowed {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity])]
+[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
-    [Parameter(ParameterSetName='Move', Mandatory)]
-    [Parameter(ParameterSetName='MoveExpanded', Mandatory)]
+    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the app.
+    ${Name},
+
+    [Parameter(ParameterSetName='Get', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Move')]
-    [Parameter(ParameterSetName='MoveExpanded')]
+    [Parameter(ParameterSetName='Get')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String]
+    [System.String[]]
     # Your Azure subscription ID.
     # This is a GUID-formatted string (e.g.
     # 00000000-0000-0000-0000-000000000000).
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='MoveViaIdentity', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='MoveViaIdentityExpanded', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
     # To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
     ${InputObject},
-
-    [Parameter(ParameterSetName='Move', Mandatory, ValueFromPipeline)]
-    [Parameter(ParameterSetName='MoveViaIdentity', Mandatory, ValueFromPipeline)]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmMoveResourceEnvelope]
-    # Object with a list of the resources that need to be moved and the resource group they should be moved to.
-    # To construct, see NOTES section for MOVERESOURCEENVELOPE properties and create a hash table.
-    ${MoveResourceEnvelope},
-
-    [Parameter(ParameterSetName='MoveExpanded')]
-    [Parameter(ParameterSetName='MoveViaIdentityExpanded')]
-    [AllowEmptyCollection()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String[]]
-    # .
-    ${Resource},
-
-    [Parameter(ParameterSetName='MoveExpanded')]
-    [Parameter(ParameterSetName='MoveViaIdentityExpanded')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Body')]
-    [System.String]
-    # .
-    ${TargetResourceGroup},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
@@ -179,12 +153,6 @@ param(
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
-    [Parameter()]
-    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
-    [System.Management.Automation.SwitchParameter]
-    # Returns true when the command succeeds
-    ${PassThru},
-
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
     [System.Uri]
@@ -213,40 +181,20 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
 
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Functions.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
         $mapping = @{
-            Move = 'Az.Functions.private\Move-Az_Move';
-            MoveExpanded = 'Az.Functions.private\Move-Az_MoveExpanded';
-            MoveViaIdentity = 'Az.Functions.private\Move-Az_MoveViaIdentity';
-            MoveViaIdentityExpanded = 'Az.Functions.private\Move-Az_MoveViaIdentityExpanded';
+            Get = 'Az.Functions.private\Get-AzWebAppScmAllowed_Get';
+            GetViaIdentity = 'Az.Functions.private\Get-AzWebAppScmAllowed_GetViaIdentity';
         }
-        if (('Move', 'MoveExpanded') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+
         throw
     }
 }
@@ -255,14 +203,8 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
 
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
     }
 
 }
@@ -270,16 +212,8 @@ end {
     try {
         $steppablePipeline.End()
 
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Functions.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
     } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+
         throw
     }
 } 

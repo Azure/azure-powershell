@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Returns whether FTP is allowed on the site or not.
+Syncs function trigger metadata to the management database
 .Description
-Returns whether FTP is allowed on the site or not.
+Syncs function trigger metadata to the management database
 .Example
 {{ Add code here }}
 .Example
@@ -27,7 +27,7 @@ Returns whether FTP is allowed on the site or not.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity
+System.Boolean
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -91,34 +91,40 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappftpallowed
+https://docs.microsoft.com/powershell/module/az.functions/sync-azwebappfunctionslot
 #>
-function Get-AzWebAppFtpAllowed {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesEntity])]
-[CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
+function Sync-AzWebAppFunctionSlot {
+[OutputType([System.Boolean])]
+[CmdletBinding(DefaultParameterSetName='Sync', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='Sync', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the app.
     ${Name},
 
-    [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='Sync', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
     ${ResourceGroupName},
 
-    [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='Sync', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # Name of the deployment slot.
+    ${Slot},
+
+    [Parameter(ParameterSetName='Sync')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
-    [System.String[]]
+    [System.String]
     # Your Azure subscription ID.
     # This is a GUID-formatted string (e.g.
     # 00000000-0000-0000-0000-000000000000).
     ${SubscriptionId},
 
-    [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='SyncViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
@@ -153,6 +159,12 @@ param(
     # SendAsync Pipeline Steps to be prepended to the front of the pipeline
     ${HttpPipelinePrepend},
 
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
+    [System.Management.Automation.SwitchParameter]
+    # Returns true when the command succeeds
+    ${PassThru},
+
     [Parameter(DontShow)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Runtime')]
     [System.Uri]
@@ -181,38 +193,20 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
 
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Functions.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
         $mapping = @{
-            Get = 'Az.Functions.private\Get-AzWebAppFtpAllowed_Get';
-            GetViaIdentity = 'Az.Functions.private\Get-AzWebAppFtpAllowed_GetViaIdentity';
+            Sync = 'Az.Functions.private\Sync-AzWebAppFunctionSlot_Sync';
+            SyncViaIdentity = 'Az.Functions.private\Sync-AzWebAppFunctionSlot_SyncViaIdentity';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Sync') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+
         throw
     }
 }
@@ -221,14 +215,8 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
 
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
     }
 
 }
@@ -236,16 +224,8 @@ end {
     try {
         $steppablePipeline.End()
 
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Functions.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
     } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+
         throw
     }
 } 
