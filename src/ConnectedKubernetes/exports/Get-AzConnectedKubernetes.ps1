@@ -20,34 +20,14 @@ Returns the properties of the specified connected cluster, including name, ident
 .Description
 Returns the properties of the specified connected cluster, including name, identity, properties, and additional cluster details.
 .Example
-PS C:\> Get-AzConnectedKubernetes
-
-Location Name               ResourceGroupName
--------- ----               -----------------
-eastus   azps_test_cluster  azps_test_group
-eastus   azps_test_cluster1 azps_test_group
-eastus   azps_test_cluster2 azps_test_group
+Get-AzConnectedKubernetes
 .Example
-PS C:\> Get-AzConnectedKubernetes -ResourceGroupName azps_test_group
-
-Location Name               ResourceGroupName
--------- ----               -----------------
-eastus   azps_test_cluster  azps_test_group
-eastus   azps_test_cluster1 azps_test_group
-eastus   azps_test_cluster2 azps_test_group
+Get-AzConnectedKubernetes -ResourceGroupName azps_test_group
 .Example
-PS C:\> Get-AzConnectedKubernetes -ResourceGroupName azps_test_group -Name azps_test_cluster
-
-Location Name              ResourceGroupName
--------- ----              -----------------
-eastus   azps_test_cluster azps_test_group
+Get-AzConnectedKubernetes -ResourceGroupName azps_test_group -Name azps_test_cluster
 .Example
-PS C:\> $conAks = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group -Location eastus
-PS C:\> Get-AzConnectedKubernetes -InputObject $conAks
-
-Location Name              ResourceGroupName
--------- ----              -----------------
-eastus   azps_test_cluster azps_test_group
+$conAks = Get-AzConnectedKubernetes -ClusterName azps_test_cluster -ResourceGroupName azps_test_group
+Get-AzConnectedKubernetes -InputObject $conAks
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.Models.IConnectedKubernetesIdentity
@@ -156,6 +136,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Get = 'Az.ConnectedKubernetes.private\Get-AzConnectedKubernetes_Get';
             GetViaIdentity = 'Az.ConnectedKubernetes.private\Get-AzConnectedKubernetes_GetViaIdentity';
@@ -172,6 +170,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -180,15 +179,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.ConnectedKubernetes.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

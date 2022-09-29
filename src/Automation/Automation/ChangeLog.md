@@ -18,6 +18,9 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Fixed bug: Export-AzAutomationRunbook no longer adds extra '\' to file names [#11101]
+* Fixed bug: Get-AzAutomationDscCompilationJobOutput returns complete summaries [#12322]
+* Fixed bug: Get-AzAutomationDscNode [#10404]
 
 ## Version *
 * Added logic of returning error if insufficient user permissions are there for `GetAgentRegistrationInfo`
