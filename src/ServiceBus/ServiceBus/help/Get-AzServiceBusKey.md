@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzServiceBusKey
 
 ## SYNOPSIS
-Gets a ServiceBus SAS key
+Gets the SASKey of a ServiceBus namespace, queue or topic.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Get-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <S
 ```
 
 ## DESCRIPTION
-Gets a ServiceBus SAS key
+Gets the SASKey of a ServiceBus namespace, queue or topic.
 
 ## EXAMPLES
 
