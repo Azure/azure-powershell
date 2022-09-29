@@ -18,9 +18,8 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Enabled support to create Node 18 Preview and Java 17 Preview function apps.
 
-## Version 4.0.4
-* Made PowerShell 7.2 the default when creating a PowerShell function app
 ## Version 4.0.3
 * Fixed an issue that New-AzFunctionApp cmdlet should write a warning message when setting default values for parameters that are not provided.
 

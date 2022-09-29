@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Returns whether Scm basic auth is allowed and whether Ftp is allowed for a given site.
+Gets the config reference app settings and status of an app
 .Description
-Returns whether Scm basic auth is allowed and whether Ftp is allowed for a given site.
+Gets the config reference app settings and status of an app
 .Example
 {{ Add code here }}
 .Example
@@ -27,7 +27,9 @@ Returns whether Scm basic auth is allowed and whether Ftp is allowed for a given
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesCollection
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollection
+.Outputs
+Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceResource
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -91,25 +93,28 @@ INPUTOBJECT <IFunctionsIdentity>: Identity Parameter
   [WorkerName <String>]: Name of worker machine, which typically starts with RD.
   [WorkerPoolName <String>]: Name of the worker pool.
 .Link
-https://docs.microsoft.com/powershell/module/az.functions/get-azwebappbasicpublishingcredentialspolicy
+https://docs.microsoft.com/powershell/module/az.functions/get-azwebappsettingkeyvaultreference
 #>
-function Get-AzWebAppBasicPublishingCredentialsPolicy {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.ICsmPublishingCredentialsPoliciesCollection])]
+function Get-AzWebAppSettingKeyVaultReference {
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceCollection], [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20190801.IKeyVaultReferenceResource])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='Get1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the app.
     ${Name},
 
     [Parameter(ParameterSetName='Get', Mandatory)]
+    [Parameter(ParameterSetName='Get1', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [System.String]
     # Name of the resource group to which the resource belongs.
     ${ResourceGroupName},
 
     [Parameter(ParameterSetName='Get')]
+    [Parameter(ParameterSetName='Get1')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.DefaultInfo(Script='(Get-AzContext).Subscription.Id')]
     [System.String[]]
@@ -118,7 +123,14 @@ param(
     # 00000000-0000-0000-0000-000000000000).
     ${SubscriptionId},
 
+    [Parameter(ParameterSetName='Get1', Mandatory)]
+    [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
+    [System.String]
+    # App Setting key name.
+    ${AppSettingKey},
+
     [Parameter(ParameterSetName='GetViaIdentity', Mandatory, ValueFromPipeline)]
+    [Parameter(ParameterSetName='GetViaIdentity1', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Category('Path')]
     [Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.IFunctionsIdentity]
     # Identity Parameter
@@ -181,38 +193,22 @@ begin {
         }
         $parameterSet = $PSCmdlet.ParameterSetName
 
-        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
-            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
-        }         
-        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        if ($preTelemetryId -eq '') {
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
-            [Microsoft.Azure.PowerShell.Cmdlets.Functions.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
-        } else {
-            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-            if ($internalCalledCmdlets -eq '') {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
-            } else {
-                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
-            }
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
-        }
-
         $mapping = @{
-            Get = 'Az.Functions.private\Get-AzWebAppBasicPublishingCredentialsPolicy_Get';
-            GetViaIdentity = 'Az.Functions.private\Get-AzWebAppBasicPublishingCredentialsPolicy_GetViaIdentity';
+            Get = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_Get';
+            Get1 = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_Get1';
+            GetViaIdentity = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_GetViaIdentity';
+            GetViaIdentity1 = 'Az.Functions.private\Get-AzWebAppSettingKeyVaultReference_GetViaIdentity1';
         }
-        if (('Get') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
+        if (('Get', 'Get1') -contains $parameterSet -and -not $PSBoundParameters.ContainsKey('SubscriptionId')) {
             $PSBoundParameters['SubscriptionId'] = (Get-AzContext).Subscription.Id
         }
-        $cmdInfo = Get-Command -Name $mapping[$parameterSet]
-        [Microsoft.Azure.PowerShell.Cmdlets.Functions.Runtime.MessageAttributeHelper]::ProcessCustomAttributesAtRuntime($cmdInfo, $MyInvocation, $parameterSet, $PSCmdlet)
+
         $wrappedCmd = $ExecutionContext.InvokeCommand.GetCommand(($mapping[$parameterSet]), [System.Management.Automation.CommandTypes]::Cmdlet)
         $scriptCmd = {& $wrappedCmd @PSBoundParameters}
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+
         throw
     }
 }
@@ -221,14 +217,8 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        throw
-    }
 
-    finally {
-        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
-        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        throw
     }
 
 }
@@ -236,16 +226,8 @@ end {
     try {
         $steppablePipeline.End()
 
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
-        if ($preTelemetryId -eq '') {
-            [Microsoft.Azure.PowerShell.Cmdlets.Functions.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
-            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
-        }
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
-
     } catch {
-        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+
         throw
     }
 } 
