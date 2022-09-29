@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusKey
 
 ## SYNOPSIS
-Regenerates a ServiceBus SAS key
+Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 
 ## SYNTAX
 
@@ -34,11 +34,11 @@ New-AzServiceBusKey -Name <String> -NamespaceName <String> -ResourceGroupName <S
 ```
 
 ## DESCRIPTION
-Regenerates a ServiceBus SAS key
+Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 
 ## EXAMPLES
 
-### Example 1: Regenerate Primary Key of an ServiceBus Namespace
+### Example 1: Regenerate Primary Key of a ServiceBus Namespace
 ```powershell
 New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name rootmanagesharedaccesskey -KeyType PrimaryKey
 ```
@@ -53,7 +53,7 @@ SecondaryKey                   : {secondaryKey}
 
 Regenerate primary key of authorization rule `rootmanagesharedaccesskey` on ServiceBus Namespace `myNamespace`.
 
-### Example 2: Regenerate Secondary Key of an ServiceBus queue
+### Example 2: Regenerate Secondary Key of a ServiceBus queue
 ```powershell
 New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -QueueName myQueue -Name rootmanagesharedaccesskey -KeyType SecondaryKey
 ```
@@ -66,7 +66,22 @@ SecondaryConnectionString      : {secondaryConnectionString}
 SecondaryKey                   : {secondaryKey}
 ```
 
-Regenerate primary key of authorization rule `rootmanagesharedaccesskey` on ServiceBus queue `myQueue` on ServiceBus Namespace `myNamespace`.
+Regenerate secondary key of authorization rule `rootmanagesharedaccesskey` on ServiceBus queue `myQueue` from ServiceBus Namespace `myNamespace`.
+
+### Example 3: Regenerate Secondary Key of a ServiceBus topic
+```powershell
+New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name rootmanagesharedaccesskey -KeyType SecondaryKey
+```
+
+```output
+KeyName                        : RootManageSharedAccessKey
+PrimaryConnectionString        : {primaryConnectionString}
+PrimaryKey                     : {primaryKey}
+SecondaryConnectionString      : {secondaryConnectionString}
+SecondaryKey                   : {secondaryKey}
+```
+
+Regenerate secondary key of authorization rule `rootmanagesharedaccesskey` on ServiceBus topic `myTopic` from ServiceBus Namespace `myNamespace`.
 
 ## PARAMETERS
 
@@ -146,7 +161,7 @@ Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-The name of EventHub namespace
+The name of the ServiceBus namespace
 
 ```yaml
 Type: System.String
