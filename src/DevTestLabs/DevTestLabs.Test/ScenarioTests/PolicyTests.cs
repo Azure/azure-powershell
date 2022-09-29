@@ -14,14 +14,13 @@
 
 using Microsoft.WindowsAzure.Commands.ScenarioTest;
 using Xunit;
-using Xunit.Sdk;
 
 namespace Microsoft.Azure.Commands.DevTestLabs.Test.ScenarioTests
 {
     public class PolicyTests : DevTestLabsTestRunner
     {
 
-        public PolicyTests(TestOutputHelper output) : base(output)
+        public PolicyTests(Xunit.Abstractions.ITestOutputHelper output) : base(output)
         {
             
         }
