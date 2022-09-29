@@ -24,6 +24,7 @@ using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Rest.Azure;
 using System.Security.Cryptography;
 using Microsoft.Azure.Commands.EventGrid.Models;
+using Microsoft.Azure.Commands.Common.Strategies;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -1136,6 +1137,136 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #endregion
 
+        #region PartnerNamespaceKey
+        public PartnerNamespaceSharedAccessKeys ListPartnerNamespaceKeys(string resourceGroupName, string partnerNamespaceName)
+        {
+            return this.Client.PartnerNamespaces.ListSharedAccessKeys(resourceGroupName, partnerNamespaceName);
+        }
+
+        public PartnerNamespaceSharedAccessKeys RegeneratePartnerNamespaceKey(string resourceGroupName, string partnerNamespaceName, string keyName)
+        {
+            return this.Client.PartnerNamespaces.RegenerateKey(resourceGroupName, partnerNamespaceName, keyName);
+        }
+
+        #endregion
+
+        #region Channel
+        public Channel CreateChannel(
+            string azureSubscriptionId,
+            string resourceGroupName,
+            string partnerNamespaceName,
+            string channelName,
+            string channelType,
+            string partnerTopicSource,
+            string messageForActivation,
+            string partnerTopicName,
+            string eventTypeKind,
+            Hashtable inlineEvents,
+            DateTime? expirationTimeIfNotActivatedUtc)
+        {
+            PartnerTopicInfo partnerTopicInfo = null;
+            if (string.Equals(channelType, "PartnerTopic", StringComparison.OrdinalIgnoreCase))
+            {
+                if (!string.IsNullOrEmpty(eventTypeKind) && inlineEvents != null)
+                {
+                    EventTypeInfo eventTypeInfo = new EventTypeInfo();
+                    this.UpdateEventTypeInfoParameters(eventTypeKind, inlineEvents, eventTypeInfo);
+                    partnerTopicInfo = new PartnerTopicInfo(
+                        azureSubscriptionId: azureSubscriptionId,
+                        resourceGroupName: resourceGroupName,
+                        name: partnerTopicName,
+                        eventTypeInfo: eventTypeInfo,
+                        source: partnerTopicSource);
+                }
+            }
+
+            Channel channelInfo = new Channel(
+                channelType: channelType,
+                partnerTopicInfo: partnerTopicInfo,
+                messageForActivation: messageForActivation,
+                expirationTimeIfNotActivatedUtc: expirationTimeIfNotActivatedUtc);
+
+            return this.Client.Channels.CreateOrUpdate(resourceGroupName, partnerNamespaceName, channelName, channelInfo);
+        }
+
+        public Channel UpdateChannel(
+            string resourceGroupName,
+            string partnerNamespaceName,
+            string channelName,
+            string eventTypeKind,
+            Hashtable inlineEvents,
+            DateTime? expirationTimeIfNotActivatedUtc)
+        {
+            // Get the existing channel to determine the channel type
+            Channel channel = Client.Channels.Get(resourceGroupName, partnerNamespaceName, channelName);
+            string channelType = channel.ChannelType;
+
+            PartnerUpdateTopicInfo partnerTopicInfoUpdateParameters = null;
+            if (string.Equals(channelType, "PartnerTopic", StringComparison.OrdinalIgnoreCase))
+            {
+                EventTypeInfo eventTypeInfo = new EventTypeInfo();
+                this.UpdateEventTypeInfoParameters(eventTypeKind, inlineEvents, eventTypeInfo);
+                partnerTopicInfoUpdateParameters = new PartnerUpdateTopicInfo(eventTypeInfo);
+            }
+
+            ChannelUpdateParameters channelUpdateParameters = new ChannelUpdateParameters(
+                partnerTopicInfo: partnerTopicInfoUpdateParameters,
+                expirationTimeIfNotActivatedUtc: expirationTimeIfNotActivatedUtc);
+
+            this.Client.Channels.Update(resourceGroupName, partnerNamespaceName, channelName, channelUpdateParameters);
+
+            // Channel PATCH does not return a response body, so we need to do a GET
+            // to return the object.
+            return this.Client.Channels.Get(resourceGroupName, partnerNamespaceName, channelName);
+        }
+
+        public Channel GetChannel(string resourceGroupName, string partnerNamespaceName, string channelName)
+        {
+            return this.Client.Channels.Get(resourceGroupName, partnerNamespaceName, channelName);
+        }
+
+        public (IEnumerable<Channel>, string) ListChannelByPartnerNamespace(string resourceGroupName, string partnerNamespaceName, string oDataQuery, int? top)
+        {
+            List<Channel> channelsList = new List<Channel>();
+            IPage<Channel> channelPage = this.Client.Channels.ListByPartnerNamespace(resourceGroupName, partnerNamespaceName, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (channelPage != null)
+            {
+                channelsList.AddRange(channelPage);
+                nextLink = channelPage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<Channel> newChannelsList;
+                    (newChannelsList, nextLink) = this.ListChannelByPartnerNamespaceNext(nextLink);
+                    channelsList.AddRange(newChannelsList);
+                }
+            }
+
+            return (channelsList, nextLink);
+        }
+
+        public (IEnumerable<Channel>, string) ListChannelByPartnerNamespaceNext(string nextLink)
+        {
+            List<Channel> channelsList = new List<Channel>();
+            string newNextLink = null;
+            IPage<Channel> channelsPage = this.Client.Channels.ListByPartnerNamespaceNext(nextLink);
+            if (channelsPage != null)
+            {
+                channelsList.AddRange(channelsPage);
+                newNextLink = channelsPage.NextPageLink;
+            }
+
+            return (channelsList, newNextLink);
+        }
+
+        public void DeleteChannel(string resourceGroupName, string partnerNamespaceName, string channelName)
+        {
+            this.Client.Channels.Delete(resourceGroupName, partnerNamespaceName, channelName);
+        }
+
+        #endregion
+
         #region PartnerConfiguration
         public PartnerConfiguration AuthorizePartnerConfiguration(
             string resourceGroupName,
@@ -1145,7 +1276,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             if (partnerRegistrationImmutableId == null && string.IsNullOrEmpty(partnerName))
             {
-                throw new ArgumentException("At least one of PartnerRegistrationImmutableId and PartnerName must be provided");
+                throw new ArgumentException("At least one of ChannelImmutableId and PartnerName must be provided");
             }
 
             Partner partnerInfo = new Partner(
@@ -2528,28 +2659,44 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 Hashtable propertiesHashtable = (Hashtable)inlineEvent.Value;
                 InlineEventProperties inlineEventProperties = new InlineEventProperties();
+                string inlineEventName = (string)inlineEvent.Key;
+                int validatedEntries = 0;
+
+                if (propertiesHashtable.Count > 4)
+                {
+                    throw new ArgumentException($"Invalid Inline Event parameter: too many entries for inline event {inlineEventName}");
+                }
 
                 if (propertiesHashtable.ContainsKey("description"))
                 {
                     inlineEventProperties.Description = (string)propertiesHashtable["description"];
+                    validatedEntries++;
                 }
 
                 if (propertiesHashtable.ContainsKey("displayName"))
                 {
                     inlineEventProperties.DisplayName = (string)propertiesHashtable["displayName"];
+                    validatedEntries++;
                 }
 
                 if (propertiesHashtable.ContainsKey("documentationUrl"))
                 {
                     inlineEventProperties.DocumentationUrl = (string)propertiesHashtable["documentationUrl"];
+                    validatedEntries++;
                 }
 
                 if (propertiesHashtable.ContainsKey("dataSchemaUrl"))
                 {
                     inlineEventProperties.DataSchemaUrl = (string)propertiesHashtable["dataSchemaUrl"];
+                    validatedEntries++;
                 }
 
-                eventTypeInfo.InlineEventTypes[(string)inlineEvent.Key] = inlineEventProperties;
+                if (propertiesHashtable.Count != validatedEntries)
+                {
+                    throw new ArgumentException($"Invalid Inline Event parameter: unsupported entry for inline event {inlineEventName}");
+                }
+
+                eventTypeInfo.InlineEventTypes[inlineEventName] = inlineEventProperties;
             }
         }
 
@@ -2562,7 +2709,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 Partner authorizedPartner = new Partner();
                 if (authorizedPartners[i].Count < 1 || authorizedPartners[i].Count > 3)
                 {
-                    throw new Exception($"Invalid Authorized Partner parameter: Unexpected number of entries for authorized partner #{i + 1}");
+                    throw new ArgumentException($"Invalid Authorized Partner parameter: Unexpected number of entries for authorized partner #{i + 1}");
                 }
 
                 if (authorizedPartners[i].ContainsKey("partnerName"))

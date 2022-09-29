@@ -104,6 +104,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string PartnerNameHelp = "Parter name.";
         public const string PartnerNamespaceNameHelp = "Event Grid partner namespace name.";
         public const string PartnerNamespaceLocationHelp = "Location of the partner namespace.";
+        public const string PartnerNamespaceKeyNameHelp = "The name of the shared access key for the partner namespace. Either key1 or key2.";
+        public const string ChannelNameHelp = "The name of the Event Grid channel.";
 
         public const string PartnerRegistrationImmutableIdHelp = "Immutable id of the corresponding partner registration";
         public const string AuthorizationExpirationTimeHelp = "Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's context will fail. " +

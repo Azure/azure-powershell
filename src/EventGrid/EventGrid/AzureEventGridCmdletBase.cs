@@ -81,6 +81,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         protected const string PartnerNamespaceNameParameterSet = "PartnerNamespaceNameParameterSet";
         protected const string PartnerNamespaceListBySubscriptionParameterSet = "PartnerConfigurationNameParameterSet";
         protected const string ChannelNameParameterSet = "ChannelNameParameterSet";
+        protected const string ChannelListByPartnerNamespaceParameterSet = "ChannelListByPartnerNamespaceParameterSet";
         protected const string PartnerTopicNameParameterSet = "PartnerTopicNameParameterSet";
 
         protected const string PartnerConfigurationInputObjectParameterSet = "PartnerConfigurationInputObjectParameterSet";
