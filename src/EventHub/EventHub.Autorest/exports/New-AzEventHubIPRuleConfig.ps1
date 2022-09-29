@@ -20,9 +20,7 @@ Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHu
 .Description
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzEventHubNetworkRuleSet
 .Example
-{{ Add code here }}
-.Example
-{{ Add code here }}
+New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.INwRuleSetIPRules

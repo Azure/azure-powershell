@@ -43,7 +43,7 @@ Get-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName m
 ```output
 DefaultAction                : Allow
 IPRule                       : {}
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/networkRuleSets/default
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/networkRuleSets/default
 Location                     : Central US
 Name                         : default
 PublicNetworkAccess          : Enabled
@@ -92,7 +92,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

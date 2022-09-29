@@ -22,7 +22,7 @@ Approves an EventHub PrivateEndpointConnection
 .Example
 Approve-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 .Example
-$privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName {resourceGroup} -NamespaceName {namespace} -Name 00000000000
+$privateEndpoint = Get-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 Approve-AzEventHubPrivateEndpointConnection -InputObject $privateEndpoint
 
 .Inputs
@@ -56,7 +56,6 @@ function Approve-AzEventHubPrivateEndpointConnection {
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace
