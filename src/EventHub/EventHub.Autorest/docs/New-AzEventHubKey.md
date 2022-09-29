@@ -59,7 +59,7 @@ SecondaryConnectionString      : {secondaryConnectionString}
 SecondaryKey                   : {secondaryKey}
 ```
 
-Regenerate primary key of authorization rule `rootmanagesharedaccesskey` on EventHub entity `myEventHub` on EventHub Namespace `myNamespace`.
+Regenerate secondary key of authorization rule `rootmanagesharedaccesskey` on EventHub entity `myEventHub` on EventHub Namespace `myNamespace`.
 
 ## PARAMETERS
 
