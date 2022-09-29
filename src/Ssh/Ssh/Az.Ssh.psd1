@@ -51,7 +51,7 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.7.1'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.9.1'; })
 
 # Assemblies that must be loaded prior to importing this module
 #RequiredAssemblies = '.\Microsoft.Azure.Management.Compute.dll', '.\Microsoft.Azure.Management.Network.dll', '.\Microsoft.Azure.Management.HybridCompute.dll'
@@ -109,7 +109,7 @@ PrivateData = @{
         ReleaseNotes = ''
 
         # Prerelease string of this module
-        # Prerelease = 'beta1'
+        Prerelease = 'beta1'
 
         # Flag to indicate whether the module requires explicit user acceptance for install/update/save
         # RequireLicenseAcceptance = $false

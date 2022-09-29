@@ -21,6 +21,11 @@ function Get-RandomResourceGroupName
     return 'rg-' + (RandomString -allChars $false -len 6)
 }
 
+function Get-PasswordForVM
+{
+    return (RandomString -allChars $false -len 4) + "-" + (RandomString -allChars $false -len 4) + (Get-Random -Minimum 100 -Maximum 999)
+}
+
 function IsLive
 {
 	return [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback

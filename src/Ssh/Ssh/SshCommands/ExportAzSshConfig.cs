@@ -65,7 +65,6 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 PrepareAadCredentials(GetKeysDestinationFolder());
                 UpdateProgressBar(record, "Generated Certificate File", 90);
-                // This is not exactly a warning. But I couldn't make WriteInformation or WriteObject work.
                 WriteWarning($"Generated AAD Certificate {CertificateFile} is valid until {GetCertificateExpirationTimes()} in local time.");
             }
 
@@ -137,8 +136,11 @@ namespace Microsoft.Azure.Commands.Ssh
             relaySW.WriteLine(relayInfo);
             relaySW.Close();
 
-            // This is not exactly a warning. But I couldn't make WriteInformation or WriteObject work.
-            WriteWarning($"Generated relay information file {RelayInfoPath} is valid until {relayInfoExpiration} in local time.");
+            string expiration = RelayInformationUtils.GetRelayInfoExpiration(relayInformationResource);
+            if (!string.IsNullOrEmpty(expiration))
+                WriteWarning($"Generated relay information file {RelayInfoPath} is valid until {expiration} in local time.");
+            else
+                WriteWarning($"Generated relay information file {RelayInfoPath}");
         }
 
         private string GetKeysDestinationFolder()

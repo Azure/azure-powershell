@@ -33,6 +33,7 @@ using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common;
+using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
 
 
 namespace Microsoft.Azure.Commands.Ssh
@@ -63,7 +64,7 @@ namespace Microsoft.Azure.Commands.Ssh
         protected internal bool deleteCert;
         protected internal string proxyPath;
         protected internal string relayInfo;
-        protected internal DateTime relayInfoExpiration;
+        protected internal EndpointAccessResource relayInformationResource;
         #endregion
 
         #region Properties
@@ -366,12 +367,14 @@ namespace Microsoft.Azure.Commands.Ssh
 
             if (ResourceId != null)
             {
-                relayInfo = RelayInformationUtils.GetRelayInformation(ResourceId, out _exception);
+                relayInformationResource = RelayInformationUtils.GetRelayInformation(ResourceId, out _exception);
             }
             else
             {
-                relayInfo = RelayInformationUtils.GetRelayInformation(ResourceGroupName, Name, out _exception);
+                relayInformationResource = RelayInformationUtils.GetRelayInformation(ResourceGroupName, Name, out _exception);
             }
+
+            relayInfo = RelayInformationUtils.ConvertEndpointAccessToBase64String(relayInformationResource);
 
             if (string.IsNullOrEmpty(relayInfo))
             {
@@ -400,7 +403,9 @@ namespace Microsoft.Azure.Commands.Ssh
         {
             deleteCert = true;
             deleteKeys = CheckOrCreatePublicAndPrivateKeyFile(credentialFolder);
+            WriteVerbose($"Created Keys {PublicKeyFile} and {PrivateKeyFile}.");
             CertificateFile = GetAndWriteCertificate(PublicKeyFile);
+            WriteVerbose($"Created Certificate {CertificateFile}.");
             LocalUser = GetSSHCertPrincipals(CertificateFile)[0];
         }
 
@@ -548,13 +553,19 @@ namespace Microsoft.Azure.Commands.Ssh
 
         private string GetAndWriteCertificate(string publicKeyFile)
         {
-            SshCredential certificate = GetAccessToken(publicKeyFile);
+            SshCredential certificate = GetAccessToken(publicKeyFile);        
             string token = certificate.Credential;
             string keyDir = Path.GetDirectoryName(publicKeyFile);
             string certpath = Path.Combine(keyDir, "id_rsa.pub-aadcert.pub");
             string cert_contents = "ssh-rsa-cert-v01@openssh.com " + token;
 
+            WriteVerbose($"AAD issued SSH certificate will be written to {certpath}.");
             File.WriteAllText(certpath, cert_contents);
+
+            if (!File.Exists(certpath) || !cert_contents.Equals(File.ReadAllText(certpath)))
+            {
+                throw new AzPSIOException($"Failed to write AAD issues config to {certpath}.");
+            }
 
             return certpath;
         }

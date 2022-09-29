@@ -16,5 +16,12 @@ namespace Microsoft.Azure.Commands.Ssh.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-GetArcConfig");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestGetVmConfig()
+        {
+            TestRunner.RunTestScript("Test-GetVmConfig");
+        }
     }
 }

@@ -4,9 +4,9 @@ using Microsoft.Azure.PowerShell.Ssh.Helpers.Compute;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.Models;
 using Microsoft.Rest.Azure;
-using Microsoft.Azure.Management.Internal.Resources;
+/*using Microsoft.Azure.Management.Internal.Resources;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Management.ResourceManager;
+using Microsoft.Azure.Management.ResourceManager;*/
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
 {

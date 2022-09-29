@@ -14,12 +14,10 @@
 
 using System;
 using System.IO;
-using System.Timers;
 using System.Diagnostics;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.Common.Exceptions;
 using System.Collections.Generic;
-using Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Text.RegularExpressions;
@@ -261,17 +259,24 @@ namespace Microsoft.Azure.Commands.Ssh
             {
                 DeleteFile(PrivateKeyFile, "Couldn't delete Private Key file " + PrivateKeyFile + ".");
             }
+            
             if (deleteKeys && PublicKeyFile != null)
             {
                 DeleteFile(PublicKeyFile, "Couldn't delete Public Key file " + PublicKeyFile + ".");
             }
+            
             if (deleteCert && CertificateFile != null)
             {
                 DeleteFile(CertificateFile, "Couldn't delete Certificate File " + CertificateFile + ".");
             }
-            if (deleteKeys)
+            
+            if (deleteKeys && !String.IsNullOrEmpty(CertificateFile))
             {
                 DeleteDirectory(Directory.GetParent(CertificateFile).ToString());
+            }
+            else if (deleteKeys && !String.IsNullOrEmpty(PrivateKeyFile))
+            {
+                DeleteDirectory(Directory.GetParent(PrivateKeyFile).ToString());
             }
         }
 

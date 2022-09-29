@@ -80,6 +80,7 @@ namespace Microsoft.Azure.Commands.Ssh.Models
             get
             {
                 StringBuilder builder = new StringBuilder();
+                builder.AppendLine(string.Empty);
                 if (LoginType.Equals("AAD")) { builder.AppendLine($"Host {this.Host}"); }
                 else { builder.AppendLine($"Host {this.Host}-{this.User}"); }
 

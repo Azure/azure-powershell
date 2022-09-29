@@ -42,14 +42,14 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
         }
 
         #region Internal Methods
-        public string GetRelayInformation(string rgName, string vmName, out string exceptionMessage)
+        public EndpointAccessResource GetRelayInformation(string rgName, string vmName, out string exceptionMessage)
         {
             // Make this not hardcoded in the future.
             string id = $"/subscriptions/{_context.Subscription.Id}/resourceGroups/{rgName}/providers/Microsoft.HybridCompute/machines/{vmName}";
             return GetRelayInformation(id, out exceptionMessage);
         }
         
-        internal string GetRelayInformation(string id, out string exceptionMessage)
+        internal EndpointAccessResource GetRelayInformation(string id, out string exceptionMessage)
         {
             exceptionMessage = "";
             System.Net.HttpStatusCode code;
@@ -68,7 +68,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
                 exceptionMessage = $"ListCredentials operation failed with error code '{code.ToString()}'.";
             }
 
-            return ConvertEndpointAccessToBase64String(cred);
+            return cred;
         }
         #endregion
 
@@ -115,7 +115,18 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
             return false;
         }
 
-        private string ConvertEndpointAccessToBase64String(EndpointAccessResource cred)
+        public string GetRelayInfoExpiration(EndpointAccessResource cred)
+        {
+            if (cred != null && cred.ExpiresOn != null)
+            {
+                long expiresOn = (long)cred.ExpiresOn;
+                string relayExpiration = DateTimeOffset.FromUnixTimeSeconds(expiresOn).DateTime.ToLocalTime().ToString();
+                return relayExpiration;
+            }
+            return null;
+        }
+
+        public string ConvertEndpointAccessToBase64String(EndpointAccessResource cred)
         {
             if (cred == null) { return null; }
 

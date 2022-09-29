@@ -1,12 +1,12 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourcegroups/rg-aq2wif?api-version=2016-09-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGEzNjNlOGMtYTcyOC00OTcwLTgxMDgtZDEwNGI2M2NiNzRmL3Jlc291cmNlZ3JvdXBzL3JnLWFxMndpZj9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
+      "RequestUri": "/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourcegroups/rg-6eqmwh?api-version=2016-09-01",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGEzNjNlOGMtYTcyOC00OTcwLTgxMDgtZDEwNGI2M2NiNzRmL3Jlc291cmNlZ3JvdXBzL3JnLTZlcW13aD9hcGktdmVyc2lvbj0yMDE2LTA5LTAx",
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "62737d43-4fed-4f98-8f64-6628656c3c90"
+          "c3c26caf-889f-4dfc-9785-151980da2b68"
         ],
         "Accept-Language": [
           "en-US"
@@ -36,13 +36,13 @@
           "1199"
         ],
         "x-ms-request-id": [
-          "71d7f089-47d3-4e97-aa88-c539b340892c"
+          "c6520146-7dfd-45c2-9b87-3719a3561ac8"
         ],
         "x-ms-correlation-request-id": [
-          "71d7f089-47d3-4e97-aa88-c539b340892c"
+          "c6520146-7dfd-45c2-9b87-3719a3561ac8"
         ],
         "x-ms-routing-request-id": [
-          "CENTRALUS:20220927T195808Z:71d7f089-47d3-4e97-aa88-c539b340892c"
+          "CENTRALUS:20220928T233003Z:c6520146-7dfd-45c2-9b87-3719a3561ac8"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -51,7 +51,7 @@
           "nosniff"
         ],
         "Date": [
-          "Tue, 27 Sep 2022 19:58:07 GMT"
+          "Wed, 28 Sep 2022 23:30:03 GMT"
         ],
         "Content-Length": [
           "171"
@@ -63,128 +63,8 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/rg-aq2wif\",\r\n  \"name\": \"rg-aq2wif\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/rg-6eqmwh\",\r\n  \"name\": \"rg-6eqmwh\",\r\n  \"location\": \"eastus\",\r\n  \"properties\": {\r\n    \"provisioningState\": \"Succeeded\"\r\n  }\r\n}",
       "StatusCode": 201
-    },
-    {
-      "RequestUri": "/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/rg-aq2wif/providers/Microsoft.HybridCompute/machines/arc-6m82ig?api-version=2020-08-02",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGEzNjNlOGMtYTcyOC00OTcwLTgxMDgtZDEwNGI2M2NiNzRmL3Jlc291cmNlR3JvdXBzL3JnLWFxMndpZi9wcm92aWRlcnMvTWljcm9zb2Z0Lkh5YnJpZENvbXB1dGUvbWFjaGluZXMvYXJjLTZtODJpZz9hcGktdmVyc2lvbj0yMDIwLTA4LTAy",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "efa9be41-afb5-488a-93ea-ba5e999a687f"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.41602",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.PowerShell.Ssh.Helpers.HybridCompute.HybridComputeManagementClient/0.1.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "e90d6a23-a177-4dd2-ba64-28020d372b82"
-        ],
-        "x-ms-correlation-request-id": [
-          "e90d6a23-a177-4dd2-ba64-28020d372b82"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20220927T195836Z:e90d6a23-a177-4dd2-ba64-28020d372b82"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 27 Sep 2022 19:58:35 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "224"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.HybridCompute/machines/arc-6m82ig' under resource group 'rg-aq2wif' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
-      "StatusCode": 404
-    },
-    {
-      "RequestUri": "/subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/rg-aq2wif/providers/Microsoft.Compute/virtualMachines/arc-6m82ig?api-version=2022-03-01",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvMGEzNjNlOGMtYTcyOC00OTcwLTgxMDgtZDEwNGI2M2NiNzRmL3Jlc291cmNlR3JvdXBzL3JnLWFxMndpZi9wcm92aWRlcnMvTWljcm9zb2Z0LkNvbXB1dGUvdmlydHVhbE1hY2hpbmVzL2FyYy02bTgyaWc/YXBpLXZlcnNpb249MjAyMi0wMy0wMQ==",
-      "RequestMethod": "GET",
-      "RequestHeaders": {
-        "x-ms-client-request-id": [
-          "efa9be41-afb5-488a-93ea-ba5e999a687f"
-        ],
-        "Accept-Language": [
-          "en-US"
-        ],
-        "User-Agent": [
-          "FxVersion/4.700.22.41602",
-          "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.22000",
-          "Microsoft.Azure.PowerShell.Ssh.Helpers.Compute.ComputeManagementClient/0.1.0"
-        ]
-      },
-      "RequestBody": "",
-      "ResponseHeaders": {
-        "Cache-Control": [
-          "no-cache"
-        ],
-        "Pragma": [
-          "no-cache"
-        ],
-        "x-ms-failure-cause": [
-          "gateway"
-        ],
-        "x-ms-request-id": [
-          "baf48582-12eb-4f34-bb2f-c249a2c086da"
-        ],
-        "x-ms-correlation-request-id": [
-          "baf48582-12eb-4f34-bb2f-c249a2c086da"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20220927T195836Z:baf48582-12eb-4f34-bb2f-c249a2c086da"
-        ],
-        "Strict-Transport-Security": [
-          "max-age=31536000; includeSubDomains"
-        ],
-        "X-Content-Type-Options": [
-          "nosniff"
-        ],
-        "Date": [
-          "Tue, 27 Sep 2022 19:58:36 GMT"
-        ],
-        "Content-Type": [
-          "application/json; charset=utf-8"
-        ],
-        "Expires": [
-          "-1"
-        ],
-        "Content-Length": [
-          "225"
-        ]
-      },
-      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceNotFound\",\r\n    \"message\": \"The Resource 'Microsoft.Compute/virtualMachines/arc-6m82ig' under resource group 'rg-aq2wif' was not found. For more details please go to https://aka.ms/ARMResourceNotFoundFix\"\r\n  }\r\n}",
-      "StatusCode": 404
     }
   ],
   "Names": {},
