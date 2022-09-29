@@ -64,7 +64,7 @@ A new CosmosDB Account with name databaseAccountName is created in the ResourceG
 
 ### Example 2
 ```powershell
-New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name -Location "West US" -FromPointInTimeBackup -SourceRestorableDatabaseAccountId "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/{instance-id}" -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
+New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name -Location "West US" -FromPointInTimeBackup -SourceRestorableDatabaseAccountId "/subscriptions/{subscriptionId}/providers/Microsoft.DocumentDB/restorableDatabaseAccounts/{instance-id}" -RestoreTimestampInUtc 2020-07-20T17:19:25+0000
 ```
 
 ```output
@@ -106,7 +106,7 @@ A new account with the name restoredDatabaseAccountName is created by restoring 
 
 ### Example 3
 ```powershell
-New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name -Location "West US" -FromPointInTimeBackup -SourceDatabaseAccountName source-database-account-name -RestoreTimesampInUtc 2020-07-20T17:19:25+0000
+New-AzCosmosDBAccount -ResourceGroupName resourceGroupName -Name restored-account-name -Location "West US" -FromPointInTimeBackup -SourceDatabaseAccountName source-database-account-name -RestoreTimestampInUtc 2020-07-20T17:19:25+0000
 ```
 
 ```output
@@ -578,6 +578,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -RestoreTimestampInUtc
+The timestamp to which the source account has to be restored to.
+
+```yaml
+Type: System.DateTime
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -ServerVersion
 ServerVersion, valid only in case of MongoDB Accounts.
 
@@ -592,6 +607,37 @@ Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
+
+### -SourceDatabaseAccountName
+The name of the source database account of the restore
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SourceRestorableDatabaseAccountId
+The restorable database account Id of the source account of the restore.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 
 ### -Tag
 Hashtable of tags as key-value pairs.
