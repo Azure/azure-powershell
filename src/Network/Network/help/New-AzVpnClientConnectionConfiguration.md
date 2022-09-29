@@ -14,7 +14,7 @@ schema: 2.0.0
 
 ```
 New-AzVpnClientConnectionConfiguration -Name <String>
- -VirtualNetworkGatewayPolicyGroups <PSVirtualNetworkGatewayPolicyGroup[]> -VpnClientAddressPool <String[]>
+ -VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]> -VpnClientAddressPool <String[]>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -77,7 +77,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -VirtualNetworkGatewayPolicyGroups
+### -VirtualNetworkGatewayPolicyGroup
 Virtual Network Gateway Policy Groups
 
 ```yaml

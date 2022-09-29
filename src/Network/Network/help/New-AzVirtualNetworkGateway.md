@@ -25,8 +25,8 @@ New-AzVirtualNetworkGateway -Name <String> -ResourceGroupName <String> -Location
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-EnableBgpRouteTranslationForNat] [-Tag <Hashtable>] [-Force]
  [-RadiusServerAddress <String>] [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>]
  [-AadTenantUri <String>] [-AadAudienceId <String>] [-AadIssuerUri <String>] [-CustomRoute <String[]>]
- [-VpnGatewayGeneration <String>] [-VirtualNetworkGatewayPolicyGroups <PSVirtualNetworkGatewayPolicyGroup[]>]
- [-ClientConnectionConfigurations <PSClientConnectionConfiguration[]>] [-AsJob]
+ [-VpnGatewayGeneration <String>] [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -244,7 +244,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -ClientConnectionConfigurations
+### -ClientConnectionConfiguration
 P2S Client Connection Configuration that assiociate between address and policy group
 
 ```yaml
@@ -591,7 +591,7 @@ Accept pipeline input: True (ByPropertyName)
 Accept wildcard characters: False
 ```
 
-### -VirtualNetworkGatewayPolicyGroups
+### -VirtualNetworkGatewayPolicyGroup
 P2S policy group added to this gateway
 
 ```yaml
