@@ -1086,7 +1086,7 @@
           "application/json; charset=utf-8"
         ],
         "Content-Length": [
-          "80"
+          "675"
         ]
       },
       "RequestBody": "{\r\n  \"properties\": {\r\n    \"resource\": {\r\n      \"throughput\": 1100\r\n    }\r\n  }\r\n}",
@@ -1206,7 +1206,7 @@
           "Fri, 15 Dec 2023 11:11:14 GMT"
         ],
         "Content-Length": [
-          "21"
+          "2324"
         ],
         "Content-Type": [
           "application/json"

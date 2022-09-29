@@ -280,6 +280,7 @@ function Test-RestoreFailuresAccountCmdlets {
   Assert-AreEqual $sourceRestorableAccount.DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
   Assert-NotNull $sourceRestorableAccount.DatabaseAccountName
   Assert-NotNull $sourceRestorableAccount.CreationTime
+  Assert-NotNull $sourceRestorableAccount.OldestRestorableTime
 
   $restorableSqlDatabases = Get-AzCosmosDBSqlRestorableDatabase -Location $sourceCosmosDBAccount.Location -DatabaseAccountInstanceId $sourceCosmosDBAccount.InstanceId
   Assert-NotNull $restorableSqlDatabases

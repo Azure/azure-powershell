@@ -1,0 +1,5 @@
+"Module","Cmdlet","Example","Line","RuleName","ProblemId","Severity","Description","Extent","Remediation"
+  "CosmosDB","New-AzCosmosDBAccount","2","1","Invalid_Parameter_Name","5011","1","New-AzCosmosDBAccount -SourceRestorableDatabaseAccountId is not a valid parameter name.","-SourceRestorableDatabaseAccountId","Check validity of the parameter -SourceRestorableDatabaseAccountId."
+  "CosmosDB","New-AzCosmosDBAccount","2","1","Invalid_Parameter_Name","5011","1","New-AzCosmosDBAccount -RestoreTimestampInUtc is not a valid parameter name.","-RestoreTimestampInUtc","Check validity of the parameter -RestoreTimestampInUtc."
+  "CosmosDB","New-AzCosmosDBAccount","3","1","Invalid_Parameter_Name","5011","1","New-AzCosmosDBAccount -SourceDatabaseAccountName is not a valid parameter name.","-SourceDatabaseAccountName","Check validity of the parameter -SourceDatabaseAccountName."
+  "CosmosDB","New-AzCosmosDBAccount","3","1","Invalid_Parameter_Name","5011","1","New-AzCosmosDBAccount -RestoreTimestampInUtc is not a valid parameter name.","-RestoreTimestampInUtc","Check validity of the parameter -RestoreTimestampInUtc."

@@ -618,7 +618,7 @@
           "Fri, 15 Dec 2023 10:40:20 GMT"
         ],
         "Content-Length": [
-          "160"
+          "22"
         ],
         "Content-Type": [
           "application/json"
@@ -737,8 +737,8 @@
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+        "x-ms-ratelimit-remaining-subscription-deletes": [
+          "14998"
         ],
         "x-ms-correlation-request-id": [
           "5a4c3cf6-b08d-41cd-97e3-f9cd0385d7d1"
@@ -2547,7 +2547,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11995"
         ],
         "x-ms-request-id": [
           "c0ced8ef-c53c-40a9-be38-785ad172629a"
@@ -2607,7 +2607,7 @@
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11998"
+          "11994"
         ],
         "x-ms-request-id": [
           "fc2b5629-5a45-4c78-bf92-4ab85234a568"

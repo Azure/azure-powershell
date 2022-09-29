@@ -79,5 +79,19 @@ namespace Microsoft.Azure.Commands.CosmosDB.Test.ScenarioTests.ScenarioTest
         {
             TestRunner.RunTestScript("Test-MongoRBACCmdlets");
         }
+        
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMongoDBCollectionThroughputRedistributionCmdlet()
+        {
+            TestRunner.RunTestScript("Test-MongoDBCollectionAdaptiveRUCmdlets");
+        }
+
+        [Fact(Skip = "Cannot acquire token credential for a specific audience. No support from test framework. I have verified the tests manually.")]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestMongoDBCollectionMergeCmdlet()
+        {
+            TestRunner.RunTestScript("Test-MongoDBCollectionMergeCmdlet");
+        }
     }
 }
