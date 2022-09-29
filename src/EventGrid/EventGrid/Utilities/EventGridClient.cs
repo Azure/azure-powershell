@@ -23,6 +23,7 @@ using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
 using Microsoft.Rest.Azure;
 using System.Security.Cryptography;
+using Microsoft.Azure.Commands.EventGrid.Models;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
@@ -1280,6 +1281,142 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #endregion
 
+        #region PartnerNamespace
+        public PartnerNamespace GetPartnerNamespace(string resourceGroupName, string partnerNamespaceName)
+        {
+            return this.Client.PartnerNamespaces.Get(resourceGroupName, partnerNamespaceName);
+        }
+
+        public void DeletePartnerNamespace(string resourceGroupName, string partnerNamespaceName)
+        {
+            this.Client.PartnerNamespaces.Delete(resourceGroupName, partnerNamespaceName);
+        }
+
+        public PartnerNamespace CreatePartnerNamespace(
+            string resourceGroupName,
+            string partnerNamespaceName,
+            string location,
+            Dictionary<string, string> tags,
+            List<PrivateEndpointConnection> privateEndpointConnections,
+            List<InboundIpRule> inboundIpRules,
+            string partnerRegistrationFullyQualifiedId,
+            string endpoint,
+            string publicNetworkAccess,
+            bool? disableLocalAuth,
+            string partnerTopicRoutingMode)
+        {
+            PartnerNamespace partnerNamespaceInfo = new PartnerNamespace(
+                location: location,
+                tags: tags,
+                privateEndpointConnections: privateEndpointConnections,
+                inboundIpRules: inboundIpRules,
+                partnerRegistrationFullyQualifiedId: partnerRegistrationFullyQualifiedId,
+                endpoint: endpoint,
+                publicNetworkAccess: publicNetworkAccess,
+                disableLocalAuth: disableLocalAuth,
+                partnerTopicRoutingMode: partnerTopicRoutingMode);
+
+            return this.Client.PartnerNamespaces.CreateOrUpdate(resourceGroupName, partnerNamespaceName, partnerNamespaceInfo);
+        }
+
+        public PartnerNamespace UpdatePartnerNamespace(
+            string resourceGroupName,
+            string partnerNamespaceName,
+            Dictionary<string, string> tags,
+            string publicNetworkAccess,
+            List<InboundIpRule> inboundIpRules,
+            bool? disableLocalAuth
+            )
+        {
+            PartnerNamespaceUpdateParameters partnerNamespaceUpdateParameters = new PartnerNamespaceUpdateParameters();
+            partnerNamespaceUpdateParameters.Tags = tags;
+            partnerNamespaceUpdateParameters.InboundIpRules = inboundIpRules;
+
+            if (!string.IsNullOrEmpty(publicNetworkAccess))
+            {
+                partnerNamespaceUpdateParameters.PublicNetworkAccess = publicNetworkAccess;
+            }
+
+            if (disableLocalAuth != null)
+            {
+                partnerNamespaceUpdateParameters.DisableLocalAuth = disableLocalAuth;
+            }
+
+            return this.Client.PartnerNamespaces.Update(resourceGroupName, partnerNamespaceName, partnerNamespaceUpdateParameters);
+        }
+
+        public (IEnumerable<PartnerNamespace>, string) ListPartnerNamespaceBySubscription(string oDataQuery, int? top)
+        {
+            List<PartnerNamespace> partnerNamespacesList = new List<PartnerNamespace>();
+            IPage<PartnerNamespace> partnerNamespacePage = this.Client.PartnerNamespaces.ListBySubscription(oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (partnerNamespacePage != null)
+            {
+                partnerNamespacesList.AddRange(partnerNamespacePage);
+                nextLink = partnerNamespacePage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<PartnerNamespace> newPartnerNamespacesList;
+                    (newPartnerNamespacesList, nextLink) = this.ListPartnerNamespaceBySubscriptionNext(nextLink);
+                    partnerNamespacesList.AddRange(newPartnerNamespacesList);
+                }
+            }
+
+            return (partnerNamespacesList, nextLink);
+        }
+
+        public (IEnumerable<PartnerNamespace>, string) ListPartnerNamespaceByResourceGroup(string resourceGroupName, string oDataQuery, int? top)
+        {
+            List<PartnerNamespace> partnerNamespacesList = new List<PartnerNamespace>();
+            IPage<PartnerNamespace> partnerNamespacePage = this.Client.PartnerNamespaces.ListByResourceGroup(resourceGroupName, oDataQuery, top);
+            bool isAllResultsNeeded = top == null;
+            string nextLink = null;
+            if (partnerNamespacePage != null)
+            {
+                partnerNamespacesList.AddRange(partnerNamespacePage);
+                nextLink = partnerNamespacePage.NextPageLink;
+                while (nextLink != null && isAllResultsNeeded)
+                {
+                    IEnumerable<PartnerNamespace> newPartnerNamespacesList;
+                    (newPartnerNamespacesList, nextLink) = this.ListPartnerNamespaceBySubscriptionNext(nextLink);
+                    partnerNamespacesList.AddRange(newPartnerNamespacesList);
+                }
+            }
+
+            return (partnerNamespacesList, nextLink);
+        }
+
+        public (IEnumerable<PartnerNamespace>, string) ListPartnerNamespaceBySubscriptionNext(string nextLink)
+        {
+            List<PartnerNamespace> partnerNamespacesList = new List<PartnerNamespace>();
+            string newNextLink = null;
+            IPage<PartnerNamespace> partnerNamespacesPage = this.Client.PartnerNamespaces.ListBySubscriptionNext(nextLink);
+            if (partnerNamespacesPage != null)
+            {
+                partnerNamespacesList.AddRange(partnerNamespacesPage);
+                newNextLink = partnerNamespacesPage.NextPageLink;
+            }
+
+            return (partnerNamespacesList, newNextLink);
+        }
+
+        public (IEnumerable<PartnerNamespace>, string) ListPartnerNamespaceByResourceGroupNext(string nextLink)
+        {
+            List<PartnerNamespace> partnerNamespacesList = new List<PartnerNamespace>();
+            string newNextLink = null;
+            IPage<PartnerNamespace> partnerNamespacesPage = this.Client.PartnerNamespaces.ListByResourceGroupNext(nextLink);
+            if (partnerNamespacesPage != null)
+            {
+                partnerNamespacesList.AddRange(partnerNamespacesPage);
+                newNextLink = partnerNamespacesPage.NextPageLink;
+            }
+
+            return (partnerNamespacesList, newNextLink);
+        }
+
+        #endregion
+
         #region PartnerTopic
         public PartnerTopic CreatePartnerTopic(
             string resourceGroupName,
@@ -1293,7 +1430,8 @@ namespace Microsoft.Azure.Commands.EventGrid
             DateTime? expirationTimeIfNotActivated,
             string partnerTopicFriendlyDescription,
             string messageForActivation,
-            EventTypeInfo eventTypeInfo)
+            string eventTypeKind,
+            Hashtable inlineEvents)
         {
             PartnerTopic partnerTopicInfo = new PartnerTopic(location);
 
@@ -1323,8 +1461,10 @@ namespace Microsoft.Azure.Commands.EventGrid
                 partnerTopicInfo.ExpirationTimeIfNotActivatedUtc = expirationTimeIfNotActivated;
             }
 
-            if (eventTypeInfo != null)
+            if (!string.IsNullOrEmpty(eventTypeKind))
             {
+                EventTypeInfo eventTypeInfo = new EventTypeInfo();
+                this.UpdateEventTypeInfoParameters(eventTypeKind, inlineEvents, eventTypeInfo);
                 partnerTopicInfo.EventTypeInfo = eventTypeInfo;
             }
 
@@ -2152,6 +2292,61 @@ namespace Microsoft.Azure.Commands.EventGrid
             }
         }
 
+        public List<InboundIpRule> CreateInboundIpRuleList(PSInboundIpRule[] psInboundIpRules)
+        {
+            List<InboundIpRule> inboundIpRulesList = null;
+
+            if (psInboundIpRules != null)
+            {
+                inboundIpRulesList = new List<InboundIpRule>();
+
+                foreach (PSInboundIpRule psInboundIpRule in psInboundIpRules)
+                {
+                    InboundIpRule inboundIpRule = new InboundIpRule(psInboundIpRule.IpMask, psInboundIpRule.Action);
+                    inboundIpRulesList.Add(inboundIpRule);
+                }
+            }
+
+            return inboundIpRulesList;
+        }
+
+        public List<PrivateEndpointConnection> CreatePrivateEndpointConnectionList(PSPrivateEndpointConnection[] psPrivateEndpointConnections)
+        {
+            List<PrivateEndpointConnection> privateEndpointConnectionsList = null;
+
+            if (psPrivateEndpointConnections != null)
+            {
+                privateEndpointConnectionsList = new List<PrivateEndpointConnection>();
+
+                foreach (PSPrivateEndpointConnection psPrivateEndpointConnection in psPrivateEndpointConnections)
+                {
+                    PrivateEndpoint privateEndpoint = null;
+                    ConnectionState connectionState = null;
+                    if (psPrivateEndpointConnection.PrivateEndpoint != null)
+                    {
+                        privateEndpoint = new PrivateEndpoint(psPrivateEndpointConnection.PrivateEndpoint.Id);
+                    }
+
+                    if (psPrivateEndpointConnection.PrivateLinkServiceConnectionState != null)
+                    {
+                        connectionState = new ConnectionState(
+                            psPrivateEndpointConnection.PrivateLinkServiceConnectionState.Status,
+                            psPrivateEndpointConnection.PrivateLinkServiceConnectionState.Description,
+                            psPrivateEndpointConnection.PrivateLinkServiceConnectionState.ActionsRequired);
+                    }
+
+                    PrivateEndpointConnection privateEndpointConnection = new PrivateEndpointConnection(
+                        privateEndpoint: privateEndpoint,
+                        groupIds: psPrivateEndpointConnection.GroupIds,
+                        privateLinkServiceConnectionState: connectionState);
+
+                    privateEndpointConnectionsList.Add(privateEndpointConnection);
+                }
+            }
+
+            return privateEndpointConnectionsList;
+        }
+
         void ValidateSubscription(string providedSubscriptionId, string subscriptionIdFromContext)
         {
             if (!string.Equals(subscriptionIdFromContext, providedSubscriptionId, StringComparison.OrdinalIgnoreCase))
@@ -2310,6 +2505,52 @@ namespace Microsoft.Azure.Commands.EventGrid
         bool IsValueRequired(string operatorValue)
         {
             return !NoValueOperators.Exists(o => string.Equals(o, operatorValue, StringComparison.OrdinalIgnoreCase));
+        }
+
+        void UpdatePrivateEndpointConnectionParameters(Hashtable[] privateEndpointConnections, List<PrivateEndpointConnection> privateEndpointConnectionsList)
+        {
+            for (int i = 0; i < privateEndpointConnections.Count(); i++)
+            {
+                // Validate entries
+                PrivateEndpointConnection privateEndpointConnection = new PrivateEndpointConnection();
+                if (privateEndpointConnections[i].ContainsKey("groupIds"))
+                {
+                    privateEndpointConnection.GroupIds = (List<string>)privateEndpointConnections[i]["groupIds"];
+                }
+
+            }
+        }
+
+        void UpdateEventTypeInfoParameters(string eventTypeKind, Hashtable InlineEvents, EventTypeInfo eventTypeInfo)
+        {
+            eventTypeInfo.Kind = eventTypeKind;
+            foreach (DictionaryEntry inlineEvent in InlineEvents)
+            {
+                Hashtable propertiesHashtable = (Hashtable)inlineEvent.Value;
+                InlineEventProperties inlineEventProperties = new InlineEventProperties();
+
+                if (propertiesHashtable.ContainsKey("description"))
+                {
+                    inlineEventProperties.Description = (string)propertiesHashtable["description"];
+                }
+
+                if (propertiesHashtable.ContainsKey("displayName"))
+                {
+                    inlineEventProperties.DisplayName = (string)propertiesHashtable["displayName"];
+                }
+
+                if (propertiesHashtable.ContainsKey("documentationUrl"))
+                {
+                    inlineEventProperties.DocumentationUrl = (string)propertiesHashtable["documentationUrl"];
+                }
+
+                if (propertiesHashtable.ContainsKey("dataSchemaUrl"))
+                {
+                    inlineEventProperties.DataSchemaUrl = (string)propertiesHashtable["dataSchemaUrl"];
+                }
+
+                eventTypeInfo.InlineEventTypes[(string)inlineEvent.Key] = inlineEventProperties;
+            }
         }
 
         void UpdateAuthorizedPartnerParameters(Hashtable[] authorizedPartners, List<Partner> authorizedPartnersList)

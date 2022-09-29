@@ -97,10 +97,13 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string PartnerConfigurationInputObjectHelp = "PartnerConfiguration object.";
         public const string PartnerRegistrationInputObjectHelp = "PartnerRegistration object";
         public const string PartnerTopicInputObjectHelp = "PartnerTopic object.";
+        public const string PartnerNamespaceInputObjectHelp = "PartnerNamespace object";
 
         public const string PartnerRegistrationNameHelp = "Event Grid partner registration name.";
         public const string PartnerTopicNameHelp = "Event Grid partner topic name.";
         public const string PartnerNameHelp = "Parter name.";
+        public const string PartnerNamespaceNameHelp = "Event Grid partner namespace name.";
+        public const string PartnerNamespaceLocationHelp = "Location of the partner namespace.";
 
         public const string PartnerRegistrationImmutableIdHelp = "Immutable id of the corresponding partner registration";
         public const string AuthorizationExpirationTimeHelp = "Expiration time of the partner authorization. If this timer expires, any request from this partner to create, update or delete resources in subscriber's context will fail. " +
@@ -109,6 +112,16 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string MaxExpirationTimeInDaysHelp = "Expiration time in days used to validate the authorization expiration time for each authorized partner. If this parameter is not specified, the default is 7 days. Otherwise, allowed values are between 1 and 365 days.";
         public const string AuthorizedPartnersHelp = "Array of HashTables where each HashTable is the details of an authorized partner. Each HashTable has the following key-value info: partnerName, partnerRegistrationImmutableId, and authorizationExpirationTimeInUtc. " +
                                                      "At least one key is required. The partnerName is a String, partnerRegistrationImmutableId  is a Guid, and authorizationExpirationTimeInUtc is a DateTime.";
+        public const string PrivateEndpointConnectionsHelp = "List of PSPrivateEndointConnection representing information about the private endpoint connections.";
+        public const string PSInboundIpRuleHelp = "Array of PSInboundIpRule which represents list of inbound IP rules. Each rule specifies the IP Address in CIDR notation e.g., 10.0.0.0/8 along with the corresponding Action to be performed based on the match or no match of the IpMask. Possible Action values include Allow only";
+        public const string PartnerNamespaceEndpointHelp = "Endpoint for the partner namespace";
+        public const string PartnerRegistrationFullyQualifiedIdHelp = "Fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.";
+        public const string PartnerTopicRoutingModeHelp = "Determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. Possible values include: 'SourceEventAttribute', 'ChannelNameHeader'";
+        public const string ExpirationTimeIfNotActivatedHelp = "expiration time of the partner topic. If this timer expires while the partner topic is still never activated, the partner topic and corresponding event channel are deleted.";
+        public const string MessageForActivationHelp = "Context or helpful message that can be used during the approval process by the subscriber.";
+        public const string EventTypeKindHelp = "The kind of event type used. Possible values include: 'Inline'";
+        public const string InlineEventHelp = "Hashtable representing information on inline events. The inline event keys are of type string which represents the name of the event." +
+                                              "The inline event values are Hashtables containing the optional keys description, displayName, documentationUrl, and dataSchemaUrl which define the information about the inline event.";
 
         public const string EventSubscriptionFullUrlHelp = "Include the full endpoint URL of the event subscription destination.";
         public const string EventSubscriptionFullUrlInResponseHelp = "If specified, include the full endpoint URL of the event subscription destination in the response.";
