@@ -20,6 +20,7 @@
 ## Upcoming Release
 * Added new fields to the `Get-AzSqlInstanceDatabaseLogReplay` cmdlet
 * Improved error handling in the `Stop-AzSqlInstanceDatabaseLogReplay` cmdlet
+* Added StorageContainerIdentity parameter in the `Start-AzSqlInstanceDatabaseLogReplay` cmdlet
 * Removed the following cmdlets: `Clear-AzSqlServerAdvancedThreatProtectionSetting` and `Clear-AzSqlDatabaseAdvancedThreatProtectionSetting`
 * Added the following cmdlets: `Get-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting`, `Get-AzSqlInstanceAdvancedThreatProtectionSetting`, `Update-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting` and `Update-AzSqlInstanceAdvancedThreatProtectionSetting`
 * Removed the following aliases: `Enable-AzSqlServerAdvancedThreatProtection`, `Disable-AzSqlServerAdvancedThreatProtection`, `Get-AzSqlServerThreatDetectionSetting`, `Remove-AzSqlServerThreatDetectionSetting`, `Set-AzSqlServerThreatDetectionSetting`, `Get-AzSqlDatabaseThreatDetectionSetting`, `Set-AzSqlDatabaseThreatDetectionSetting` and `Remove-AzSqlDatabaseThreatDetectionSetting`
