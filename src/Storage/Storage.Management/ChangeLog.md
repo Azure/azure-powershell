@@ -38,6 +38,8 @@
     -  `Stop-AzStorageFileCopy`
 * Migrated Get/List blob to always use 'Azure.Storage.Blobs'
     -  `Get-AzStorageBlob`
+* Fix create file sas failure with file object pipeline
+    -  `New-AzStorageFileSasToken`
 
 ## Version 4.9.0
 * Supported to create or update Storage account with Azure Files Active Directory Domain Service Kerberos Authentication
