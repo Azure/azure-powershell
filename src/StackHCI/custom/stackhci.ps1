@@ -2442,7 +2442,7 @@ param(
                 $resource = Get-AzResource -ResourceId $resourceId -ApiVersion $RPAPIVersion -ErrorAction Ignore
             }
             
-            if(($Null -ne $resource.Identity) -and ($resource.Identity.Type -ne "SystemAssigned"))
+            if(($Null -eq $resource.Identity) -or ($resource.Identity.Type -ne "SystemAssigned"))
             {
                 #we are here, if we are in repairregistration flow and resource might have been already created, we will check if MSI is not enabled, if it is not enabled, we will patch the resource again.
                 $RepairingCloudResourceMessageProgress = $RepairingCloudResourceMessage -f $ResourceName
