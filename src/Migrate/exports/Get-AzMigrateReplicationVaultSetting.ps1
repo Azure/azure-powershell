@@ -29,7 +29,7 @@ This includes the Migration Hub connection settings.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -78,7 +78,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationvaultsetting
 #>
 function Get-AzMigrateReplicationVaultSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

@@ -25,12 +25,12 @@ The operation to configure vault setting.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting
 .Link
 https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationvaultsetting
 #>
 function New-AzMigrateReplicationVaultSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]
@@ -58,11 +58,17 @@ param(
     # Azure Subscription Id in which migrate project was created.
     ${SubscriptionId},
 
-    [Parameter(Mandatory)]
+    [Parameter()]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [System.String]
     # The migration solution Id.
     ${MigrationSolutionId},
+
+    [Parameter()]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # VMware to Azure provider type.
+    ${VmwareToAzureProviderType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]

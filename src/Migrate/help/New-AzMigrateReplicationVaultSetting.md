@@ -14,8 +14,9 @@ The operation to configure vault setting.
 
 ```
 New-AzMigrateReplicationVaultSetting -ResourceGroupName <String> -ResourceName <String>
- -VaultSettingName <String> -MigrationSolutionId <String> [-SubscriptionId <String>]
- [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf] [<CommonParameters>]
+ -VaultSettingName <String> [-SubscriptionId <String>] [-MigrationSolutionId <String>]
+ [-VmwareToAzureProviderType <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [-Confirm] [-WhatIf]
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -85,7 +86,7 @@ Type: System.String
 Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: None
 Accept pipeline input: False
@@ -167,6 +168,21 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -VmwareToAzureProviderType
+VMware to Azure provider type.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 Prompts you for confirmation before running the cmdlet.
 
@@ -205,7 +221,7 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## OUTPUTS
 
-### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting
+### Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting
 
 ## NOTES
 

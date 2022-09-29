@@ -14,7 +14,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
     /// </remarks>
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.New, @"AzMigrateReplicationVaultSetting_Create", SupportsShouldProcess = true)]
-    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting))]
+    [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Description(@"The operation to configure vault setting.")]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Migrate.Generated]
     public partial class NewAzMigrateReplicationVaultSetting_Create : global::System.Management.Automation.PSCmdlet,
@@ -69,7 +69,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Runtime.SendAsyncStep[] HttpPipelinePrepend { get; set; }
 
         /// <summary>Backing field for <see cref="Input" /> property.</summary>
-        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSettingCreationInput _input;
+        private Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSettingCreationInput _input;
 
         /// <summary>Input to create vault setting.</summary>
         [global::System.Management.Automation.Parameter(Mandatory = true, HelpMessage = "Input to create vault setting.", ValueFromPipeline = true)]
@@ -78,8 +78,8 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         ReadOnly = false,
         Description = @"Input to create vault setting.",
         SerializedName = @"input",
-        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSettingCreationInput) })]
-        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSettingCreationInput Input { get => this._input; set => this._input = value; }
+        PossibleTypes = new [] { typeof(Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSettingCreationInput) })]
+        public Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSettingCreationInput Input { get => this._input; set => this._input = value; }
 
         /// <summary>Accessor for our copy of the InvocationInfo.</summary>
         public global::System.Management.Automation.InvocationInfo InvocationInformation { get => __invocationInfo = __invocationInfo ?? this.MyInvocation ; set { __invocationInfo = value; } }
@@ -186,12 +186,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
         /// on that response. Implement this method in a partial class to enable this behavior
         /// </summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting</see>
         /// from the remote call</param>
         /// <param name="returnNow">/// Determines if the rest of the onOk method should be processed, or if the method should return
         /// immediately (set to true to skip further processing )</param>
 
-        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
+        partial void overrideOnOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting> response, ref global::System.Threading.Tasks.Task<bool> returnNow);
 
         /// <summary>
         /// (overrides the default BeginProcessing method in global::System.Management.Automation.PSCmdlet)
@@ -420,12 +420,12 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
 
         /// <summary>a delegate that is called when the remote service returns 200 (OK).</summary>
         /// <param name="responseMessage">the raw response message as an global::System.Net.Http.HttpResponseMessage.</param>
-        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting</see>
+        /// <param name="response">the body result as a <see cref="Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting">Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting</see>
         /// from the remote call</param>
         /// <returns>
         /// A <see cref="global::System.Threading.Tasks.Task" /> that will be complete when handling of the method is completed.
         /// </returns>
-        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting> response)
+        private async global::System.Threading.Tasks.Task onOk(global::System.Net.Http.HttpResponseMessage responseMessage, global::System.Threading.Tasks.Task<Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting> response)
         {
             using( NoSynchronizationContext )
             {
@@ -437,7 +437,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Cmdlets
                     return ;
                 }
                 // onOk - response for 200 / application/json
-                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting
+                // (await response) // should be Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting
                 WriteObject((await response));
             }
         }

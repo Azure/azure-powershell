@@ -27,7 +27,7 @@ Gets the details of an ASR replication protection intent.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProtectionIntent
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -76,7 +76,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationprotectionintent
 #>
 function Get-AzMigrateReplicationProtectionIntent {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProtectionIntent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntent])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

@@ -25,12 +25,12 @@ Get-AzMigrateReplicationFabric -ResourceGroupName azmigratepwshtestasr13072020 -
 Get-AzMigrateReplicationFabric -ResourceGroupName azmigratepwshtestasr13072020 -ResourceName AzMigrateTestProjectPWSH02aarsvault
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabric
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric
 .Link
 https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationfabric
 #>
 function Get-AzMigrateReplicationFabric {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IFabric])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IFabric])]
 [CmdletBinding(DefaultParameterSetName='List', PositionalBinding=$false)]
 param(
     [Parameter(Mandatory)]

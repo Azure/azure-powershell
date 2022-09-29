@@ -27,7 +27,7 @@ Gets the data of supported operating systems by SRS.
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ISupportedOperatingSystems
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ISupportedOperatingSystems
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -76,7 +76,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratesupportedoperatingsystem
 #>
 function Get-AzMigrateSupportedOperatingSystem {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ISupportedOperatingSystems])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ISupportedOperatingSystems])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

@@ -27,7 +27,7 @@ Validates whether a given VM can be protected or not in which case returns list 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationEligibilityResults
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationEligibilityResults
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -76,7 +76,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratereplicationeligibilityresult
 #>
 function Get-AzMigrateReplicationEligibilityResult {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationEligibilityResults])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationEligibilityResults])]
 [CmdletBinding(DefaultParameterSetName='Get', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]

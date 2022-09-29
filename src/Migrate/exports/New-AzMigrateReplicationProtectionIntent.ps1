@@ -25,12 +25,12 @@ The operation to create an ASR replication protection intent item.
 {{ Add code here }}
 
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProtectionIntent
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntent
 .Link
 https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectionintent
 #>
 function New-AzMigrateReplicationProtectionIntent {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProtectionIntent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntent])]
 [CmdletBinding(DefaultParameterSetName='CreateExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(Mandatory)]

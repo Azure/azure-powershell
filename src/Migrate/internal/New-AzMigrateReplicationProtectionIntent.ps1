@@ -25,11 +25,11 @@ The operation to create an ASR replication protection intent item.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ICreateProtectionIntentInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateProtectionIntentInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProtectionIntent
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntent
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
@@ -81,7 +81,7 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationprotectionintent
 #>
 function New-AzMigrateReplicationProtectionIntent {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IReplicationProtectionIntent])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IReplicationProtectionIntent])]
 [CmdletBinding(DefaultParameterSetName='CreateViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
@@ -120,7 +120,7 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.ICreateProtectionIntentInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.ICreateProtectionIntentInput]
     # Create protection intent input.
     # To construct, see NOTES section for INPUT properties and create a hash table.
     ${Input},

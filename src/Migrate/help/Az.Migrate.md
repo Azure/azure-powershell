@@ -20,6 +20,9 @@ Retrieves the status of an Azure Migrate job.
 ### [Get-AzMigrateProject](Get-AzMigrateProject.md)
 Method to get a migrate project.
 
+### [Get-AzMigrateReplicationAppliance](Get-AzMigrateReplicationAppliance.md)
+Gets the list of Azure Site Recovery appliances for the vault.
+
 ### [Get-AzMigrateReplicationEligibilityResult](Get-AzMigrateReplicationEligibilityResult.md)
 Validates whether a given VM can be protected or not in which case returns list of errors.
 
@@ -100,6 +103,9 @@ Stops replication for the migrated server.
 ### [Restart-AzMigrateServerReplication](Restart-AzMigrateServerReplication.md)
 Restarts the replication for specified server.
 
+### [Resume-AzMigrateServerReplication](Resume-AzMigrateServerReplication.md)
+Starts the replication that has been suspended.
+
 ### [Set-AzMigrateDiskMapping](Set-AzMigrateDiskMapping.md)
 Updates disk mapping
 
@@ -114,4 +120,7 @@ Starts the test migration for the replicating server.
 
 ### [Start-AzMigrateTestMigrationCleanup](Start-AzMigrateTestMigrationCleanup.md)
 Cleans up the test migration for the replicating server.
+
+### [Suspend-AzMigrateServerReplication](Suspend-AzMigrateServerReplication.md)
+Suspends the ongoing replication.
 

@@ -25,18 +25,19 @@ The operation to configure vault setting.
 {{ Add code here }}
 
 .Inputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSettingCreationInput
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSettingCreationInput
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.IMigrateIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting
+Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUT <IVaultSettingCreationInput>: Input to create vault setting.
-  MigrationSolutionId <String>: The migration solution Id.
+  [MigrationSolutionId <String>]: The migration solution Id.
+  [VmwareToAzureProviderType <String>]: VMware to Azure provider type.
 
 INPUTOBJECT <IMigrateIdentity>: Identity Parameter
   [AccountName <String>]: Run as account ARM name.
@@ -81,8 +82,8 @@ INPUTOBJECT <IMigrateIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.migrate/new-azmigratereplicationvaultsetting
 #>
 function New-AzMigrateReplicationVaultSetting {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSetting])]
-[CmdletBinding(DefaultParameterSetName='CreateViaIdentity', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSetting])]
+[CmdletBinding(DefaultParameterSetName='CreateViaIdentityExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Create', Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
@@ -120,16 +121,22 @@ param(
     [Parameter(ParameterSetName='Create', Mandatory, ValueFromPipeline)]
     [Parameter(ParameterSetName='CreateViaIdentity', Mandatory, ValueFromPipeline)]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
-    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVaultSettingCreationInput]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVaultSettingCreationInput]
     # Input to create vault setting.
     # To construct, see NOTES section for INPUT properties and create a hash table.
     ${Input},
 
-    [Parameter(ParameterSetName='CreateViaIdentityExpanded', Mandatory)]
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
     [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
     [System.String]
     # The migration solution Id.
     ${MigrationSolutionId},
+
+    [Parameter(ParameterSetName='CreateViaIdentityExpanded')]
+    [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Body')]
+    [System.String]
+    # VMware to Azure provider type.
+    ${VmwareToAzureProviderType},
 
     [Parameter()]
     [Alias('AzureRMContext', 'AzureCredential')]
