@@ -25,8 +25,8 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
  [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
- [-VirtualNetworkGatewayPolicyGroups <PSVirtualNetworkGatewayPolicyGroup[]>]
- [-ClientConnectionConfigurations <PSClientConnectionConfiguration[]>] [-AsJob]
+ [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -43,8 +43,8 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway <PSVirtualNetworkGateway> [-G
  [-RadiusServerSecret <SecureString>] [-RadiusServerList <PSRadiusServer[]>] [-AadTenantUri <String>]
  [-AadAudienceId <String>] [-AadIssuerUri <String>] [-RemoveAadAuthentication] [-CustomRoute <String[]>]
  [-NatRule <PSVirtualNetworkGatewayNatRule[]>] [-BgpRouteTranslationForNat <Boolean>]
- [-VirtualNetworkGatewayPolicyGroups <PSVirtualNetworkGatewayPolicyGroup[]>]
- [-ClientConnectionConfigurations <PSClientConnectionConfiguration[]>] -Tag <Hashtable> [-AsJob]
+ [-VirtualNetworkGatewayPolicyGroup <PSVirtualNetworkGatewayPolicyGroup[]>]
+ [-ClientConnectionConfiguration <PSClientConnectionConfiguration[]>] -Tag <Hashtable> [-AsJob]
  [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -466,7 +466,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ClientConnectionConfigurations
+### -ClientConnectionConfiguration
 P2S Client Connection Configuration that assiociate between address and policy group
 
 ```yaml
@@ -724,7 +724,7 @@ Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
-### -VirtualNetworkGatewayPolicyGroups
+### -VirtualNetworkGatewayPolicyGroup
 P2S policy group added to this gateway
 
 ```yaml

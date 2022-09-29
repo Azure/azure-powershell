@@ -1447,15 +1447,15 @@ param
       $member2=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member2" -AttributeType "CertificateGroupId" -AttributeValue "cd"
       $policyGroup1=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup1" -Priority 0 -DefaultPolicyGroup  -PolicyMember $member1
       $policyGroup2=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup2" -Priority 10 -PolicyMember $member2
-      $vngconnectionConfig=New-AzVpnClientConnectionConfiguration -Name "coonfig1" -VirtualNetworkGatewayPolicyGroups $policyGroup1 -VpnClientAddressPool "192.168.10.0/24" 
-      $vngconnectionConfig2=New-AzVpnClientConnectionConfiguration -Name "coonfig2" -VirtualNetworkGatewayPolicyGroups $policyGroup2 -VpnClientAddressPool "192.168.20.0/24" 
+      $vngconnectionConfig=New-AzVpnClientConnectionConfiguration -Name "coonfig1" -VirtualNetworkGatewayPolicyGroup $policyGroup1 -VpnClientAddressPool "192.168.10.0/24" 
+      $vngconnectionConfig2=New-AzVpnClientConnectionConfiguration -Name "coonfig2" -VirtualNetworkGatewayPolicyGroup $policyGroup2 -VpnClientAddressPool "192.168.20.0/24" 
 
       #[SuppressMessage("Microsoft.Security", "CS002:SecretInNextLine")]
       $Secure_String_Pwd = ConvertTo-SecureString "radiuspd" -AsPlainText -Force
       $RadiusIP = "1.2.3.4"
       # Create & Get virtualnetworkgateway
       $vnetIpConfig = New-AzVirtualNetworkGatewayIpConfig -Name $vnetGatewayConfigName -PublicIpAddress $publicip -Subnet $subnet
-      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2 -VpnClientAddressPool 201.169.0.0/16 -VpnAuthenticationType Certificate,Radius,AAD -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd -VpnClientRootCertificates $rootCert -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer -VpnClientProtocol OpenVPN -VirtualNetworkGatewayPolicyGroups $policyGroup1,$policyGroup2 -ClientConnectionConfigurations $vngconnectionConfig,$vngconnectionConfig2
+      $actual = New-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname -location $location -IpConfigurations $vnetIpConfig -GatewayType Vpn -VpnType RouteBased -EnableBgp $false -GatewaySku VpnGw2 -VpnClientAddressPool 201.169.0.0/16 -VpnAuthenticationType Certificate,Radius,AAD -RadiusServerAddress "1.2.3.4" -RadiusServerSecret $Secure_String_Pwd -VpnClientRootCertificates $rootCert -AadTenantUri $aadTenant -AadAudienceId $aadAudience -AadIssuerUri $aadIssuer -VpnClientProtocol OpenVPN -VirtualNetworkGatewayPolicyGroup $policyGroup1,$policyGroup2 -ClientConnectionConfiguration $vngconnectionConfig,$vngconnectionConfig2
       $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual $expected.ResourceGroupName $actual.ResourceGroupName	
       Assert-AreEqual $expected.Name $actual.Name	
@@ -1472,10 +1472,10 @@ param
       $member2=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member2" -AttributeType "CertificateGroupId" -AttributeValue "cd"
       $policyGroup1=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup1" -Priority 0 -DefaultPolicyGroup  -PolicyMember $member1
       $policyGroup2=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup2" -Priority 10 -PolicyMember $member2
-      $vngconnectionConfig=New-AzVpnClientConnectionConfiguration -Name "coonfig1" -VirtualNetworkGatewayPolicyGroups $policyGroup1 -VpnClientAddressPool "192.168.10.0/24" 
-      $vngconnectionConfig2=New-AzVpnClientConnectionConfiguration -Name "coonfig2" -VirtualNetworkGatewayPolicyGroups $policyGroup2 -VpnClientAddressPool "192.168.20.0/24" 
+      $vngconnectionConfig=New-AzVpnClientConnectionConfiguration -Name "coonfig1" -VirtualNetworkGatewayPolicyGroup $policyGroup1 -VpnClientAddressPool "192.168.10.0/24" 
+      $vngconnectionConfig2=New-AzVpnClientConnectionConfiguration -Name "coonfig2" -VirtualNetworkGatewayPolicyGroup $policyGroup2 -VpnClientAddressPool "192.168.20.0/24" 
 
-      $actual = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $expected -VirtualNetworkGatewayPolicyGroups $policyGroup1,$policyGroup2 -ClientConnectionConfigurations $vngconnectionConfig,$vngconnectionConfig2
+      $actual = Set-AzVirtualNetworkGateway -VirtualNetworkGateway $expected -VirtualNetworkGatewayPolicyGroup $policyGroup1,$policyGroup2 -ClientConnectionConfiguration $vngconnectionConfig,$vngconnectionConfig2
       $expected = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $rname
       Assert-AreEqual "bj" $expected.VirtualNetworkGatewayPolicyGroups[0].PolicyMembers[0].AttributeValue
     }
