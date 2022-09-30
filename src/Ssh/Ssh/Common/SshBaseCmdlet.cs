@@ -34,6 +34,7 @@ using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
 using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
+using System.Linq;
 
 
 namespace Microsoft.Azure.Commands.Ssh
@@ -166,7 +167,6 @@ namespace Microsoft.Azure.Commands.Ssh
             ValueFromPipelineByPropertyName = true)]
         [ValidateNotNullOrEmpty]
         [SshResourceIdCompleter(new string[] { "Microsoft.HybridCompute/machines", "Microsoft.Compute/virtualMachines" })]
-        // add a validate script atribute
         public string ResourceId { get; set; }
 
         /// <summary>
@@ -182,7 +182,6 @@ namespace Microsoft.Azure.Commands.Ssh
             ParameterSetName = ResourceIdParameterSet,
             Mandatory = true)]
         [ValidateNotNullOrEmpty]
-        // add a validate script attribute
         public virtual string ConfigFilePath { get; set; }
 
         /// <summary>
@@ -279,6 +278,7 @@ namespace Microsoft.Azure.Commands.Ssh
         [ValidateNotNullOrEmpty]
         public virtual string KeysDestinationFolder { get; set; }
 
+
         [Parameter(Mandatory = false)]
         public virtual SwitchParameter PassThru { get; set; }
 
@@ -315,38 +315,45 @@ namespace Microsoft.Azure.Commands.Ssh
 
         protected internal void ValidateParameters()
         {
-            if (CertificateFile != null && LocalUser == null)
+            if (CertificateFile != null)
             {
-                WriteWarning("To authenticate with a cartificate you must provide a LocalUser. The certificate will be ignored.");
+                if (LocalUser == null)
+                    WriteWarning("To authenticate with a cartificate you must provide a LocalUser. The certificate will be ignored.");
+                else
+                    CertificateFile = GetResolvedPath(CertificateFile, nameof(CertificateFile));
             }
 
-            if (PrivateKeyFile != null && !File.Exists(PrivateKeyFile))
+            if (PrivateKeyFile != null)
             {
-                throw new AzPSArgumentException("Provided private key file doesn't exist.", nameof(PrivateKeyFile));
+                PrivateKeyFile = GetResolvedPath(PrivateKeyFile, nameof(PrivateKeyFile));
             }
 
-            if (PublicKeyFile != null && !File.Exists(PublicKeyFile))
+            if (PublicKeyFile != null)
             {
-                throw new AzPSArgumentException("Provided public key file doesn't exist.", nameof(PublicKeyFile));
-            }
-
-            if (CertificateFile != null && !File.Exists(CertificateFile))
-            {
-                throw new AzPSArgumentException("Provided SSH certificate file doesn't exist.", nameof(CertificateFile));
+                PublicKeyFile = GetResolvedPath(PublicKeyFile, nameof(PublicKeyFile));
             }
 
             if (ConfigFilePath != null)
             {
+                ConfigFilePath = GetUnresolvedPath(ConfigFilePath, nameof(ConfigFilePath));
+
+                if (Directory.Exists(ConfigFilePath))
+                {
+                    throw new AzPSArgumentException($"{ConfigFilePath} is a directory, unable to write config file in that path. Provide a valid path for a file.", ConfigFilePath);
+                }
+
                 string configFolder = Path.GetDirectoryName(ConfigFilePath);
                 if (!Directory.Exists(configFolder))
                 {
-                    throw new AzPSArgumentException("Config file destination folder " + configFolder + " does not exist.", nameof(ConfigFilePath));
+                    throw new AzPSArgumentException($"Config file destination folder {configFolder} does not exist.", nameof(ConfigFilePath));
                 }
             }
 
-            if (KeysDestinationFolder != null && (PrivateKeyFile != null || PublicKeyFile != null))
+            if (KeysDestinationFolder != null)
             {
-                throw new AzPSArgumentException("KeysDestinationFolder can't be used in conjunction with PublicKeyFile or PrivateKeyFile. All generated keys are saved in the same directory as provided keys.", nameof(KeysDestinationFolder));
+                if (PrivateKeyFile != null || PublicKeyFile != null)
+                    throw new AzPSArgumentException("KeysDestinationFolder can't be used in conjunction with PublicKeyFile or PrivateKeyFile. All generated keys are saved in the same directory as provided keys.", nameof(KeysDestinationFolder));
+                KeysDestinationFolder = GetUnresolvedPath(KeysDestinationFolder, nameof(KeysDestinationFolder));
             }
 
         }
@@ -546,10 +553,29 @@ namespace Microsoft.Azure.Commands.Ssh
             return false;
         }
 
-#endregion
+        #endregion
 
         #region Private Methods
 
+        /* This method gets the full path of items that already exist. It checks if the file exist and fails if it doesn't*/
+        private string GetResolvedPath(string path, string paramName)
+        {
+            if (WildcardPattern.ContainsWildcardCharacters(path))
+            {
+                throw new AzPSArgumentException($"Wildcard characters are not allowed in {paramName}.", paramName);
+            }
+            return SessionState.Path.GetResolvedPSPathFromPSPath(path).First().Path;
+        }
+
+        /* Gets the full path of files that might not exist yet.*/
+        private string GetUnresolvedPath(string path, string paramName)
+        {
+            if (WildcardPattern.ContainsWildcardCharacters(path))
+            {
+                throw new AzPSArgumentException($"Wildcard characters are not allowed in {paramName}.", paramName);
+            }
+            return SessionState.Path.GetUnresolvedProviderPathFromPSPath(path);
+        }
 
         private string GetAndWriteCertificate(string publicKeyFile)
         {

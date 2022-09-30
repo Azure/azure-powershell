@@ -55,14 +55,9 @@ namespace Microsoft.Azure.Commands.Ssh
         {
             base.ExecuteCmdlet();
 
-            foreach (string arg in SshArguments)
-            {
-                WriteWarning(arg);
-            }
-
-            SetResourceType();
             ValidateParameters();
-
+            SetResourceType();
+ 
             ProgressRecord record = new ProgressRecord(0, "Prepare for starting SSH connection", "Start Preparing");
             UpdateProgressBar(record, "Start preparing", 0);
 

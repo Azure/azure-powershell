@@ -8,7 +8,7 @@ Locale: en-US
 
 # Az.Ssh Module
 ## Description
-SSH into Azure Resources (Azure VMs, Arc Servers, etc) using AAD issued OpenSSH certificates. This module relies on OpenSSH client being installed and discoverable in the client machine. 
+This module allows you to create an interactive shell connection to Azure Resources, such as Azure VMs or Arc Servers, using SSH (Secure Shell). The connection can be established using AAD (Azure Active Directory) accounts, or local machine accounts. Note that this module requires that an SSH client application (such as OpenSSH) be installed and discoverable on the client machine.
 
 ## Az.Ssh Cmdlets
 ### [Enter-AzVM](Enter-AzVM.md)

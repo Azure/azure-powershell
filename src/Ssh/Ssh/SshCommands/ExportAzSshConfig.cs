@@ -39,10 +39,8 @@ namespace Microsoft.Azure.Commands.Ssh
         {
             base.ExecuteCmdlet();
 
-            SetResourceType();
             ValidateParameters();
-
-            ConfigFilePath = Path.GetFullPath(ConfigFilePath);
+            SetResourceType();
 
             ProgressRecord record = new ProgressRecord(0, "Export Azure SSH Config", "Initialize Setup");
             UpdateProgressBar(record, "Preparing to create SSH Config", 0);
@@ -83,7 +81,6 @@ namespace Microsoft.Azure.Commands.Ssh
                 WriteObject(entry);
                 throw new AzPSIOException($"Failed to write to file {ConfigFilePath} with error: {exception.Message}");
             }
-
 
             record.RecordType = ProgressRecordType.Completed;
             UpdateProgressBar(record, "Successfully wrote SSH config file", 100);
