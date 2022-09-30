@@ -130,8 +130,6 @@ namespace Microsoft.Azure.Commands.EventGrid
                 providedTop = this.Top;
             }
 
-            //this.DefaultContext.Subscription.Id
-
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
                 EventGridUtils.GetResourceGroupNameAndDomainName(this.ResourceId, out resourceGroupName, out domainName);

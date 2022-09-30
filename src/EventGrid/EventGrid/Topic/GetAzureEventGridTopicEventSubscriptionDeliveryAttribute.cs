@@ -28,39 +28,43 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridSystemTopicEventSubscriptionDeliveryAttribute",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridTopicEventSubscriptionDeliveryAttribute",
         DefaultParameterSetName = TopicNameParameterSet),
     OutputType(typeof(PsDeliveryAttribute))]
 
-    public class GetAzureEventGridSystemTopicEventSubscriptionDeliveryAttribute : AzureEventGridCmdletBase
+    public class GetAzureEventGridTopicEventSubscriptionDeliveryAttribute : AzureEventGridCmdletBase
     {
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
-           ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
+           ParameterSetName = TopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string EventSubscriptionName { get; set; }
+        [Alias("EventSubscriptionName")]
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
+            ParameterSetName = TopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
+        [Alias(AliasResourceGroup)]
+        [ResourceGroupCompleter]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TopicNameHelp,
-            ParameterSetName = SystemTopicEventSuscriptionParameterSet)]
+            ParameterSetName = TopicEventSuscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        public string SystemTopicName { get; set; }
+        [ResourceNameCompleter("Microsoft.EventGrid/topics", nameof(ResourceGroupName))]
+        public string TopicName { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            DeliveryAttributeListResult deliveryAttributeListResult = this.Client.GetAzSystemTopicEventSubscriptionsDeliveryAttribute(this.ResourceGroupName, this.SystemTopicName, this.EventSubscriptionName);
+            DeliveryAttributeListResult deliveryAttributeListResult = this.Client.GetAzTopicEventSubscriptionsDeliveryAttribute(this.ResourceGroupName, this.TopicName, this.Name);
             PsDeliveryAttribute PsDeliveryAttribute = new PsDeliveryAttribute(deliveryAttributeListResult);
             this.WriteObject(PsDeliveryAttribute, true);
         }
