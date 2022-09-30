@@ -20,15 +20,15 @@
 ## Upcoming Release
 
 ## Version 1.8.0
-* Added cmdlets for Hybrid Runbook Worker group management.
-    - `Remove-AzAutomationHybridRunbookWorker`
-    - `Remove-AzAutomationHybridRunbookWorkerGroup`
-    - `Set-AzAutomationHybridRunbookWorkerGroup`
-    - `Get-AzAutomationHybridRunbookWorker`
-    - `Get-AzAutomationHybridRunbookWorkerGroup`
-    - `Move-AzAutomationHybridRunbookWorker`
-    - `New-AzAutomationHybridRunbookWorker`
-    - `New-AzAutomationHybridRunbookWorkerGroup` 
+* Added cmdlets for Hybrid Runbook Worker group management
+  * `Remove-AzAutomationHybridRunbookWorker`
+  * `Remove-AzAutomationHybridRunbookWorkerGroup`
+  * `Set-AzAutomationHybridRunbookWorkerGroup`
+  * `Get-AzAutomationHybridRunbookWorker`
+  * `Get-AzAutomationHybridRunbookWorkerGroup`
+  * `Move-AzAutomationHybridRunbookWorker`
+  * `New-AzAutomationHybridRunbookWorker`
+  * `New-AzAutomationHybridRunbookWorkerGroup`
 
 ## Version 1.7.4
 * Fixed bug: Export-AzAutomationRunbook no longer adds extra '\' to file names [#11101]
