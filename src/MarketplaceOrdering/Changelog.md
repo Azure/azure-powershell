@@ -18,7 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Upgraded API version to Api 2021-01-01.
+* Upgraded API version to 2021-01-01.
 
 ## Version 1.0.3
 * Added a warning message for an upcoming breaking change to `Get-AzMarketplaceTerms`.
