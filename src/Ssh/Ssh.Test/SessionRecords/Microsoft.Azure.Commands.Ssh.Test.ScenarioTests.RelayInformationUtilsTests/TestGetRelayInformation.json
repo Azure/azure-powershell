@@ -1,18 +1,18 @@
 {
   "Entries": [
     {
-      "RequestUri": "//subscriptions/0a363e8c-a728-4970-8108-d104b63cb74f/resourceGroups/azssh_powershell_relayinformationutils_test/providers/Microsoft.HybridCompute/machines/relay-info-tests-u20/providers/Microsoft.HybridConnectivity/endpoints/default/listCredentials?api-version=2021-10-06-preview&expiresin=3600",
-      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzBhMzYzZThjLWE3MjgtNDk3MC04MTA4LWQxMDRiNjNjYjc0Zi9yZXNvdXJjZUdyb3Vwcy9henNzaF9wb3dlcnNoZWxsX3JlbGF5aW5mb3JtYXRpb251dGlsc190ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuSHlicmlkQ29tcHV0ZS9tYWNoaW5lcy9yZWxheS1pbmZvLXRlc3RzLXUyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lkh5YnJpZENvbm5lY3Rpdml0eS9lbmRwb2ludHMvZGVmYXVsdC9saXN0Q3JlZGVudGlhbHM/YXBpLXZlcnNpb249MjAyMS0xMC0wNi1wcmV2aWV3JmV4cGlyZXNpbj0zNjAw",
+      "RequestUri": "//subscriptions/8ac9b3ce-9c7e-43f4-ace6-137b961c1b09/resourceGroups/azssh_powershell_relayinformationutils_test/providers/Microsoft.HybridCompute/machines/relay-info-tests-u20/providers/Microsoft.HybridConnectivity/endpoints/default/listCredentials?api-version=2021-10-06-preview&expiresin=3600",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzhhYzliM2NlLTljN2UtNDNmNC1hY2U2LTEzN2I5NjFjMWIwOS9yZXNvdXJjZUdyb3Vwcy9henNzaF9wb3dlcnNoZWxsX3JlbGF5aW5mb3JtYXRpb251dGlsc190ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuSHlicmlkQ29tcHV0ZS9tYWNoaW5lcy9yZWxheS1pbmZvLXRlc3RzLXUyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lkh5YnJpZENvbm5lY3Rpdml0eS9lbmRwb2ludHMvZGVmYXVsdC9saXN0Q3JlZGVudGlhbHM/YXBpLXZlcnNpb249MjAyMS0xMC0wNi1wcmV2aWV3JmV4cGlyZXNpbj0zNjAw",
       "RequestMethod": "POST",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "3e8ed9a4-0459-429d-b86d-c4aab599b0e6"
+          "ee1afdca-6fbf-44b5-9f63-ccd8fbda42a1"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.700.22.36202",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
           "OSVersion/Microsoft.Windows.10.0.22000",
           "Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.HybridConnectivityManagementAPIClient/0.1.0"
@@ -26,49 +26,109 @@
         "Pragma": [
           "no-cache"
         ],
-        "x-ms-ratelimit-remaining-subscription-writes": [
-          "1199"
+        "x-ms-failure-cause": [
+          "gateway"
         ],
-        "x-ms-providerhub-traffic": [
-          "True"
+        "x-ms-request-id": [
+          "d882433c-a3a3-43d3-bcf8-9ee67b42163e"
         ],
-        "mise-correlation-id": [
-          "04433ef2-c2b6-4210-9d60-1fe6bc1408fc"
+        "x-ms-correlation-request-id": [
+          "d882433c-a3a3-43d3-bcf8-9ee67b42163e"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2:20220929T172635Z:d882433c-a3a3-43d3-bcf8-9ee67b42163e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "x-ms-request-id": [
-          "90635d38-4d62-4e72-829d-f360cf3350ef"
-        ],
-        "x-ms-correlation-request-id": [
-          "a461019c-8bb9-4ced-9352-01fc11a52e07"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALUS:20220831T221202Z:a461019c-8bb9-4ced-9352-01fc11a52e07"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Wed, 31 Aug 2022 22:12:02 GMT"
-        ],
-        "Content-Length": [
-          "602"
+          "Thu, 29 Sep 2022 17:26:35 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "135"
         ]
       },
-      "ResponseBody": "{\r\n  \"relay\": {\r\n    \"namespaceName\": \"azgn-eastasia-public-1p-seasg3-007\",\r\n    \"namespaceNameSuffix\": \"servicebus.windows.net\",\r\n    \"hybridConnectionName\": \"microsoft.hybridcompute/machines/c7945d582abb32c29ab53042bfd35ada5723b4d096bfb89ff50b9c7e3923c50c/1661983922725648640\",\r\n    \"accessKey\": \"SharedAccessSignature sr=http%3A%2F%2Fazgn-eastasia-public-1p-seasg3-007.servicebus.windows.net%2Fmicrosoft.hybridcompute%2Fmachines%2Fc7945d582abb32c29ab53042bfd35ada5723b4d096bfb89ff50b9c7e3923c50c%2F1661983922725648640%2F&sig=GqZUgO6GcEbKm6ZE2S78a9o461zA4QVJ2%2BXfof2bdb4%3D&se=1661988122&skn=sender20220831\",\r\n    \"expiresOn\": 1661987522\r\n  }\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'azssh_powershell_relayinformationutils_test' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
+    },
+    {
+      "RequestUri": "//subscriptions/8ac9b3ce-9c7e-43f4-ace6-137b961c1b09/resourceGroups/azssh_powershell_relayinformationutils_test/providers/Microsoft.HybridCompute/machines/relay-info-tests-u20/providers/Microsoft.HybridConnectivity/endpoints/default?api-version=2021-10-06-preview",
+      "EncodedRequestUri": "Ly9zdWJzY3JpcHRpb25zLzhhYzliM2NlLTljN2UtNDNmNC1hY2U2LTEzN2I5NjFjMWIwOS9yZXNvdXJjZUdyb3Vwcy9henNzaF9wb3dlcnNoZWxsX3JlbGF5aW5mb3JtYXRpb251dGlsc190ZXN0L3Byb3ZpZGVycy9NaWNyb3NvZnQuSHlicmlkQ29tcHV0ZS9tYWNoaW5lcy9yZWxheS1pbmZvLXRlc3RzLXUyMC9wcm92aWRlcnMvTWljcm9zb2Z0Lkh5YnJpZENvbm5lY3Rpdml0eS9lbmRwb2ludHMvZGVmYXVsdD9hcGktdmVyc2lvbj0yMDIxLTEwLTA2LXByZXZpZXc=",
+      "RequestMethod": "PUT",
+      "RequestHeaders": {
+        "x-ms-client-request-id": [
+          "68a5fbde-d8a0-4d32-a8d4-ba3459528c2a"
+        ],
+        "Accept-Language": [
+          "en-US"
+        ],
+        "User-Agent": [
+          "FxVersion/4.700.22.41602",
+          "OSName/Windows",
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.HybridConnectivityManagementAPIClient/0.1.0"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Content-Length": [
+          "51"
+        ]
+      },
+      "RequestBody": "{\r\n  \"properties\": {\r\n    \"type\": \"default\"\r\n  }\r\n}",
+      "ResponseHeaders": {
+        "Cache-Control": [
+          "no-cache"
+        ],
+        "Pragma": [
+          "no-cache"
+        ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
+        "x-ms-request-id": [
+          "5f64fb7e-d99e-4a21-be22-6a24ccd544cd"
+        ],
+        "x-ms-correlation-request-id": [
+          "5f64fb7e-d99e-4a21-be22-6a24ccd544cd"
+        ],
+        "x-ms-routing-request-id": [
+          "EASTUS2:20220929T172636Z:5f64fb7e-d99e-4a21-be22-6a24ccd544cd"
+        ],
+        "Strict-Transport-Security": [
+          "max-age=31536000; includeSubDomains"
+        ],
+        "X-Content-Type-Options": [
+          "nosniff"
+        ],
+        "Date": [
+          "Thu, 29 Sep 2022 17:26:36 GMT"
+        ],
+        "Content-Type": [
+          "application/json; charset=utf-8"
+        ],
+        "Expires": [
+          "-1"
+        ],
+        "Content-Length": [
+          "135"
+        ]
+      },
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'azssh_powershell_relayinformationutils_test' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
     }
   ],
   "Names": {},
   "Variables": {
-    "SubscriptionId": "0a363e8c-a728-4970-8108-d104b63cb74f"
+    "SubscriptionId": "8ac9b3ce-9c7e-43f4-ace6-137b961c1b09"
   }
 }

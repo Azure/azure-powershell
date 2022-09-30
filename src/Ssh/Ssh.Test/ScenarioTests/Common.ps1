@@ -33,16 +33,12 @@ function IsLive
 
 # 
 function Get-AzAccessToken {
-    if ($script:AZ_ACCESS_TOKEN) {
-        return $script:AZ_ACCESS_TOKEN
-    }
-
     $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
     $AzureEnv = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
     $TenantId = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Tenant.Id
     $PromptBehavior = [Microsoft.Azure.Commands.Common.Authentication.ShowDialog]::Never
     $Token = [Microsoft.Azure.Commands.Common.Authentication.AzureSession]::Instance.AuthenticationFactory.Authenticate($account, $AzureEnv, $tenantId, $null, $promptBehavior, $null)
-    $script:AZ_ACCESS_TOKEN = $Token.AccessToken
+    return $Token.AccessToken
 }
 
 function installArcAgent() {

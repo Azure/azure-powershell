@@ -9,12 +9,19 @@ function Test-GetArcConfig
     $SubscriptionId = (Get-AzContext).Subscription.Id
     $TenantId = (Get-AzContext).Tenant.Id
 
+    Assert-AreEqual $SubscriptionId "8ac9b3ce-9c7e-43f4-ace6-137b961c1b09"
+    Assert-AreEqual $TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47"
+
     New-AzResourceGroup -Name $ResourceGroupName -Location "eastus" | Out-Null
        
     $agent = installArcAgent
+
     Start-Agent -MachineName $MachineName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -TenantId $TenantId -Agent $agent 
 
-    #azcmagent connect --resource-group $ResourceGroupName --tenant-id $TenantId --location eastus --subscription-id $SubscriptionId --access-token (Get-AzAccessToken) --resource-name $MachineName
+    $accessToken = Get-AzAccessToken
+    Assert-NotNull $accessToken
+
+    #azcmagent connect --resource-group $ResourceGroupName --tenant-id $TenantId --location eastus --subscription-id $SubscriptionId --access-token $accessToken --resource-name $MachineName
     
     Remove-Item ./config -ErrorAction Ignore
 

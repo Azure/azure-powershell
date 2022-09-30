@@ -315,7 +315,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
         protected internal void ValidateParameters()
         {
-            if (CertificateFile != null && LocalUser != null)
+            if (CertificateFile != null && LocalUser == null)
             {
                 WriteWarning("To authenticate with a cartificate you must provide a LocalUser. The certificate will be ignored.");
             }

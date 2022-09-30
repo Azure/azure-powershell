@@ -55,6 +55,11 @@ namespace Microsoft.Azure.Commands.Ssh
         {
             base.ExecuteCmdlet();
 
+            foreach (string arg in SshArguments)
+            {
+                WriteWarning(arg);
+            }
+
             SetResourceType();
             ValidateParameters();
 
