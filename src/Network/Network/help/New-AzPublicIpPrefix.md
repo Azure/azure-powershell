@@ -13,7 +13,7 @@ Creates a Public IP Prefix
 ## SYNTAX
 
 ```
-New-AzPublicIpPrefix -Name <String> -ResourceGroupName <String> [-Location <String>] [-Sku <String>]
+New-AzPublicIpPrefix -Name <String> -ResourceGroupName <String> -Location <String> [-Sku <String>]
  [-Tier <String>] -PrefixLength <UInt16> [-IpAddressVersion <String>] [-IpTag <PSPublicIpPrefixTag[]>]
  [-Zone <String[]>] [-CustomIpPrefix <PSCustomIpPrefix>] [-EdgeZone <String>] [-Tag <Hashtable>] [-Force]
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]

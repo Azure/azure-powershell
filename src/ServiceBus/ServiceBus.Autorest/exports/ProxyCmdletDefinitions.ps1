@@ -808,7 +808,7 @@ Gets a description for the specified Private Endpoint Connection.
 .Example
 Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 .Example
-Get-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace
+Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -5573,9 +5573,9 @@ end {
 
 <#
 .Synopsis
-Gets an ServiceBus Authorization Rule
+Gets the Authorization Rule of a ServiceBus namespace, queue or topic.
 .Description
-Gets an ServiceBus Authorization Rule
+Gets the Authorization Rule of a ServiceBus namespace, queue or topic.
 .Example
 Get-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule
 .Example
@@ -5807,9 +5807,9 @@ end {
 
 <#
 .Synopsis
-Gets a ServiceBus SAS key
+Gets the SASKey of a ServiceBus namespace, queue or topic.
 .Description
-Gets a ServiceBus SAS key
+Gets the SASKey of a ServiceBus namespace, queue or topic.
 .Example
 Get-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name RootManageSharedAccessKey
 .Example
@@ -6013,9 +6013,9 @@ end {
 
 <#
 .Synopsis
-Creates an Service Bus Namespace, Queue, Topic Authorization Rule
+Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 .Description
-Creates an Service Bus Namespace, Queue, Topic Authorization Rule
+Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 .Example
 New-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule -Rights @('Manage','Send','Listen')
 .Example
@@ -6320,13 +6320,15 @@ end {
 
 <#
 .Synopsis
-Regenerates a ServiceBus SAS key
+Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 .Description
-Regenerates a ServiceBus SAS key
+Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 .Example
 New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name rootmanagesharedaccesskey -KeyType PrimaryKey
 .Example
 New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -QueueName myQueue -Name rootmanagesharedaccesskey -KeyType SecondaryKey
+.Example
+New-AzServiceBusKey -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name rootmanagesharedaccesskey -KeyType SecondaryKey
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IAccessKeys
@@ -6347,7 +6349,7 @@ param(
     [Parameter(Mandatory)]
     [Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Category('Path')]
     [System.String]
-    # The name of EventHub namespace
+    # The name of the ServiceBus namespace
     ${NamespaceName},
 
     [Parameter(Mandatory)]
@@ -6634,13 +6636,13 @@ end {
 
 <#
 .Synopsis
-Removes an ServiceBus Namespace, Queue or Topic Authorization Rule
+Removes the Authorization Rule of a ServiceBus Namespace, Queue or Topic
 .Description
-Removes an ServiceBus Namespace, Queue or Topic Authorization Rule
+Removes the Authorization Rule of a ServiceBus Namespace, Queue or Topic
 .Example
-Remove-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule
+Remove-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule
 .Example
-Remove-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -QueueName myQueue -Name myAuthRule
+Remove-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -QueueName myQueue -Name myAuthRule
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
@@ -6867,9 +6869,9 @@ end {
 
 <#
 .Synopsis
-Sets an ServiceBus Namespace, Queue and Topic Authorization Rule
+Updates the authorization rule of a ServiceBus namespace, queue or topic.
 .Description
-Sets an ServiceBus Namespace, Queue and Topic Authorization Rule
+Updates the authorization rule of a ServiceBus namespace, queue or topic.
 .Example
 Set-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule -Rights @('Manage','Send','Listen')
 .Example
@@ -7522,9 +7524,9 @@ end {
 
 <#
 .Synopsis
-Sets an ServiceBus Namespace Network Rule Set
+Updates the NetworkRuleSet of a ServiceBus namespace
 .Description
-Sets an ServiceBus Namespace Network Rule Set
+Updates the NetworkRuleSet of a ServiceBus namespace
 .Example
 $ipRule1 = New-AzServiceBusIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 $ipRule2 = New-AzServiceBusIPRuleConfig -IPMask 3.3.3.3 -Action Allow
@@ -7775,9 +7777,9 @@ end {
 
 <#
 .Synopsis
-Sets a ServiceBus Queue
+Updates a ServiceBus Queue
 .Description
-Sets a ServiceBus Queue
+Updates a ServiceBus Queue
 .Example
 Set-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myQueue -AutoDeleteOnIdle (New-TimeSpan -Days 4 -Minutes 3 -Seconds 4) -DefaultMessageTimeToLive (New-TimeSpan -Days 9)
 .Example
@@ -8077,9 +8079,9 @@ end {
 
 <#
 .Synopsis
-Sets a ServiceBus Rule
+Updates a ServiceBus Rule
 .Description
-Sets a ServiceBus Rule
+Updates a ServiceBus Rule
 .Example
 Set-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name myCorrelationRule -ContentType updatedContentType -ReplyToSessionId updatedReplyToSessionId
 .Example
@@ -8395,9 +8397,9 @@ end {
 
 <#
 .Synopsis
-Sets a ServiceBus Topic
+Updates a ServiceBus Subscription
 .Description
-Sets a ServiceBus Topic
+Updates a ServiceBus Subscription
 .Example
 Set-AzServiceBusSubscription -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -Name mySubscription -DefaultMessageTimeToLive (New-TimeSpan -Days 10) -EnableBatchedOperations
 .Example
@@ -8686,9 +8688,9 @@ end {
 
 <#
 .Synopsis
-Sets a ServiceBus Topic
+Updates a ServiceBus Topic
 .Description
-Sets a ServiceBus Topic
+Updates a ServiceBus Topic
 .Example
 Set-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myTopic -DefaultMessageTimeToLive (New-TimeSpan -Days 20) -MaxMessageSizeInKilobytes 102400
 .Example

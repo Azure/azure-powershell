@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzServiceBusAuthorizationRule
 
 ## SYNOPSIS
-Creates an Service Bus Namespace, Queue, Topic Authorization Rule
+Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 
 ## SYNTAX
 
@@ -34,7 +34,7 @@ New-AzServiceBusAuthorizationRule -Name <String> -NamespaceName <String> -Resour
 ```
 
 ## DESCRIPTION
-Creates an Service Bus Namespace, Queue, Topic Authorization Rule
+Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 
 ## EXAMPLES
 

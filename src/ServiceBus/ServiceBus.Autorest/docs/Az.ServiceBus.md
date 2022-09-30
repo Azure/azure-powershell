@@ -22,13 +22,13 @@ CompleteMigration operation will fail when entity migration is in-progress.
 Denies a ServiceBus PrivateEndpointConnection
 
 ### [Get-AzServiceBusAuthorizationRule](Get-AzServiceBusAuthorizationRule.md)
-Gets an ServiceBus Authorization Rule
+Gets the Authorization Rule of a ServiceBus namespace, queue or topic.
 
 ### [Get-AzServiceBusGeoDRConfiguration](Get-AzServiceBusGeoDRConfiguration.md)
 Retrieves Alias(Disaster Recovery configuration) for primary or secondary namespace
 
 ### [Get-AzServiceBusKey](Get-AzServiceBusKey.md)
-Gets a ServiceBus SAS key
+Gets the SASKey of a ServiceBus namespace, queue or topic.
 
 ### [Get-AzServiceBusMigration](Get-AzServiceBusMigration.md)
 Retrieves Migration Config
@@ -55,7 +55,7 @@ Returns a subscription description for the specified topic.
 Returns a description for the specified topic.
 
 ### [New-AzServiceBusAuthorizationRule](New-AzServiceBusAuthorizationRule.md)
-Creates an Service Bus Namespace, Queue, Topic Authorization Rule
+Creates a ServiceBus Namespace, Queue, Topic Authorization Rule
 
 ### [New-AzServiceBusGeoDRConfiguration](New-AzServiceBusGeoDRConfiguration.md)
 Creates or updates a new Alias(Disaster Recovery configuration)
@@ -64,7 +64,7 @@ Creates or updates a new Alias(Disaster Recovery configuration)
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzServiceBusNetworkRuleSet
 
 ### [New-AzServiceBusKey](New-AzServiceBusKey.md)
-Regenerates a ServiceBus SAS key
+Regenerates the SASKey of a ServiceBus namespace, queue or topic.
 
 ### [New-AzServiceBusQueue](New-AzServiceBusQueue.md)
 Creates or updates a Service Bus queue.
@@ -83,7 +83,7 @@ Creates a topic in the specified namespace.
 Constructs an INwRuleSetIPRules object that can be fed as input to Set-AzServiceBusNetworkRuleSet
 
 ### [Remove-AzServiceBusAuthorizationRule](Remove-AzServiceBusAuthorizationRule.md)
-Removes an ServiceBus Namespace, Queue or Topic Authorization Rule
+Removes the Authorization Rule of a ServiceBus Namespace, Queue or Topic
 
 ### [Remove-AzServiceBusGeoDRConfiguration](Remove-AzServiceBusGeoDRConfiguration.md)
 Deletes an Alias(Disaster Recovery configuration)
@@ -107,7 +107,7 @@ Deletes a subscription from the specified topic.
 Deletes a topic from the specified namespace and resource group.
 
 ### [Set-AzServiceBusAuthorizationRule](Set-AzServiceBusAuthorizationRule.md)
-Sets an ServiceBus Namespace, Queue and Topic Authorization Rule
+Updates the authorization rule of a ServiceBus namespace, queue or topic.
 
 ### [Set-AzServiceBusGeoDRConfigurationBreakPair](Set-AzServiceBusGeoDRConfigurationBreakPair.md)
 This operation disables the Disaster Recovery and stops replicating changes from primary to secondary namespaces
@@ -116,19 +116,19 @@ This operation disables the Disaster Recovery and stops replicating changes from
 Invokes GEO DR failover and reconfigure the alias to point to the secondary namespace
 
 ### [Set-AzServiceBusNetworkRuleSet](Set-AzServiceBusNetworkRuleSet.md)
-Sets an ServiceBus Namespace Network Rule Set
+Updates the NetworkRuleSet of a ServiceBus namespace
 
 ### [Set-AzServiceBusQueue](Set-AzServiceBusQueue.md)
-Sets a ServiceBus Queue
+Updates a ServiceBus Queue
 
 ### [Set-AzServiceBusRule](Set-AzServiceBusRule.md)
-Sets a ServiceBus Rule
+Updates a ServiceBus Rule
 
 ### [Set-AzServiceBusSubscription](Set-AzServiceBusSubscription.md)
-Sets a ServiceBus Topic
+Updates a ServiceBus Subscription
 
 ### [Set-AzServiceBusTopic](Set-AzServiceBusTopic.md)
-Sets a ServiceBus Topic
+Updates a ServiceBus Topic
 
 ### [Start-AzServiceBusMigration](Start-AzServiceBusMigration.md)
 Creates Migration configuration and starts migration of entities from Standard to Premium namespace
