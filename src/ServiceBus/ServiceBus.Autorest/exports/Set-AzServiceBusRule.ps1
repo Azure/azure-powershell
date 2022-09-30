@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Sets a ServiceBus Rule
+Updates a ServiceBus Rule
 .Description
-Sets a ServiceBus Rule
+Updates a ServiceBus Rule
 .Example
 Set-AzServiceBusRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -TopicName myTopic -SubscriptionName mySubscription -Name myCorrelationRule -ContentType updatedContentType -ReplyToSessionId updatedReplyToSessionId
 .Example
