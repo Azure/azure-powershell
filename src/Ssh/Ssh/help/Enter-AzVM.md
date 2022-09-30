@@ -45,10 +45,11 @@ Users can login using AAD issued certificates or using local user credentials. W
 ```powershell
 PS C:\> Enter-AzVM -ResourceGroupName myRg -Name myMachine
 ```
+When a -LocalUser is not supplied, the cmdlet will attempt to login using Azure AD. This is currently only supported for resources running Linux OS.
 
 ### Example 2: Connect to Azure Resource using a Local User credentials
 ```powershell
-PS C:\> Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -PrivateKeyFile ./id_rsa
+PS C:\> Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -PrivateKeyFile ./id_rsa -CertificateFile ./cert
 ```
 Provide an SSH certificate and private key to authenticate via certificate-based authentication.
 
@@ -65,10 +66,6 @@ If no credentials are provided, authenticate via interactive username and passwo
 ### Example 3: Connect to the Public Ip of an Azure Virtual Machine using AAD issued certificates
 ```powershell
 PS C:\> Enter-AzVM -Ip 1.2.3.4
-```
-
-```powershell
-PS C:\> Enter-AzVM -Hostname example.com
 ```
 
 ### Example 4: Provide the Resource Type of the target.
@@ -91,7 +88,7 @@ The name of some SSH arguments conflicts with the cmdlet parameters. In those ca
 ```powershell
 PS C:\> Enter-AzVM -ResourceGroupName myRg -Name myMachine -PrivateKeyFile ./id_rsa -PublicKeyFile ./id_rsa.pub
 ```
-If you don't provide the key files, the cmdlet will generate the key pair.
+If custom key files are not provided, the cmdlet will generate the key pair.
 
 ## PARAMETERS
 

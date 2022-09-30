@@ -47,6 +47,7 @@ PS C:\> Export-AzSshConfig -ResourceGroupName myRg -Name myMachine -ConfigFilePa
 ```powershell
 PS C:\> ssh -F ./sshconfig.config myRg-MyMachine
 ```
+When a -LocalUser is not supplied, the cmdlet will attempt to create a certificate to login using Azure AD. This is currently only supported for resources running Linux OS.
 
 ### Example 2: Export a SSH configuration file for connecting to the Public Ip of an Azure Virtual Machine using AAD issued certificates, and using it to sftp into that resource.
 ```powershell
