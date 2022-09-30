@@ -199,6 +199,7 @@ namespace Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models
         /// Represents the registered state of the container with the recovery services vault.
         /// </summary>
         Registered = 1,
+        NotRegistered = 2,
     }
 
     /// <summary>

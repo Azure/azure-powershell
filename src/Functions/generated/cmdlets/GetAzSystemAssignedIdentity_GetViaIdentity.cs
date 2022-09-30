@@ -12,6 +12,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Functions.Cmdlets
     /// <remarks>
     /// [OpenAPI] GetByScope=>GET:"/{scope}/providers/Microsoft.ManagedIdentity/identities/default"
     /// </remarks>
+    [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.InternalExport]
     [global::System.Management.Automation.Cmdlet(global::System.Management.Automation.VerbsCommon.Get, @"AzSystemAssignedIdentity_GetViaIdentity")]
     [global::System.Management.Automation.OutputType(typeof(Microsoft.Azure.PowerShell.Cmdlets.Functions.Models.Api20181130.ISystemAssignedIdentity))]
     [global::Microsoft.Azure.PowerShell.Cmdlets.Functions.Description(@"Gets the systemAssignedIdentity available under the specified RP scope.")]

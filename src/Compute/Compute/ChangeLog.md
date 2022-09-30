@@ -20,7 +20,7 @@
 
 -->
 ## Upcoming Release
-* Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
+* Added property `TimeCreated` to the Virtual Machine and Virtual Machine Scale Set models.
 
 ## Version 4.31.0
 * Added Trusted Launch Generic Breaking Change warning for `New-AzVM`, `New-AzDisk` and `New-AzVMSS` cmdlets.

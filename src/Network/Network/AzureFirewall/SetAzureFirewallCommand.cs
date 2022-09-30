@@ -17,13 +17,10 @@ using System.Management.Automation;
 using Microsoft.Azure.Commands.Network.Models;
 using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
 using Microsoft.Azure.Management.Network;
-using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
 using MNM = Microsoft.Azure.Management.Network.Models;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [CmdletOutputBreakingChange(typeof(PSAzureFirewallHubIpAddresses), DeprecatedOutputProperties = new[] { "publicIPAddresses" })]
-    [CmdletOutputBreakingChange(typeof(PSAzureFirewall), DeprecatedOutputProperties = new[] { "IdentifyTopFatFlow" })]
     [Cmdlet(VerbsCommon.Set, ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "Firewall", SupportsShouldProcess = true), OutputType(typeof(PSAzureFirewall))]
     public class SetAzureFirewallCommand : AzureFirewallBaseCmdlet
     {

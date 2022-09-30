@@ -397,7 +397,6 @@ function Test-AzureVMGetItems
 		$container = Get-AzRecoveryServicesBackupContainer `
 			-VaultId $vault.ID `
 			-ContainerType AzureVM `
-			-Status Registered `
 			-FriendlyName $vm.Name
 		
 		# VARIATION-1: Get all items for container
@@ -841,8 +840,7 @@ function Test-AzureVMSetVaultContext
 			-ResourceGroupName $vm.ResourceGroupName;
 
 		# $container = Get-AzRecoveryServicesBackupContainer `
-		# 	-ContainerType AzureVM `
-		# 	-Status Registered;
+		# 	-ContainerType AzureVM;
 		# 
 		# $item = Get-AzRecoveryServicesBackupItem `
 		# 	-Container $container `

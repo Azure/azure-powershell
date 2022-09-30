@@ -40,6 +40,10 @@ function setupEnv() {
 
     $env.PrivSubNet = "bricks-privsubnet"
     $env.PubSubNet = "bricks-pubsubnet"
+
+    # Generate some access connector name for use in the test.
+    $accessConnectorname01 = "accessconnector" + (RandomString -allChars $false -len 6)
+    $null = $env.Add("accessConnectorname01", $accessConnectorname01)
     # Create the test group
     write-host "start to create test group"
     $resourceGroup = 'databricks-rg-' + $rstr1
