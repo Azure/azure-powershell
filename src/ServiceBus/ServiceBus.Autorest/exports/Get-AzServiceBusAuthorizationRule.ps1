@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Gets an ServiceBus Authorization Rule
+Gets the Authorization Rule of a ServiceBus namespace, queue or topic.
 .Description
-Gets an ServiceBus Authorization Rule
+Gets the Authorization Rule of a ServiceBus namespace, queue or topic.
 .Example
 Get-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule
 .Example

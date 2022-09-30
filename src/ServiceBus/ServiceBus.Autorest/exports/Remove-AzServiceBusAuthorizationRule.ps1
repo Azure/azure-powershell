@@ -16,13 +16,13 @@
 
 <#
 .Synopsis
-Removes an ServiceBus Namespace, Queue or Topic Authorization Rule
+Removes the Authorization Rule of a ServiceBus Namespace, Queue or Topic
 .Description
-Removes an ServiceBus Namespace, Queue or Topic Authorization Rule
+Removes the Authorization Rule of a ServiceBus Namespace, Queue or Topic
 .Example
-Remove-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule
+Remove-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule
 .Example
-Remove-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -QueueName myQueue -Name myAuthRule
+Remove-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -QueueName myQueue -Name myAuthRule
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity

@@ -105,7 +105,6 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.EventHub.Cmdlets
         Description = @"The Namespace name",
         SerializedName = @"namespaceName",
         PossibleTypes = new [] { typeof(string) })]
-        [global::System.Management.Automation.Alias("Namespace")]
         [global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category(global::Microsoft.Azure.PowerShell.Cmdlets.EventHub.ParameterCategory.Path)]
         public string NamespaceName { get => this._namespaceName; set => this._namespaceName = value; }
 

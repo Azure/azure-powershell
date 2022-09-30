@@ -37,19 +37,19 @@ Gets a description for the specified Private Endpoint Connection name.
 
 ### Example 1: Get an Event Hub Namespace Private Endpoint Connection
 ```powershell
-Get-AzEventHubPrivateEndpointConnection -ResourceGroupName {resourceGroup} -NamespaceName {namespace} -Name 00000000000
+Get-AzEventHubPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 ```
 
 ```output
 ConnectionState              : Approved
 Description                  :
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.EventHub/namespaces/{namespace}/privateEndpointC
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/privateEndpointC
                                onnections/00000000000
 Location                     : Australia East
 Name                         : 00000000000
-PrivateEndpointId            : /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
+PrivateEndpointId            : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.Network/privateEndpoints/privateEndpointName
 ProvisioningState            : Succeeded
-ResourceGroupName            : {resourceGroup}
+ResourceGroupName            : myResourceGroup
 ```
 
 Gets details of private endpoint connection `00000000000` created under EventHub namespace `myNamespace`.
@@ -115,7 +115,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: Get, List
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

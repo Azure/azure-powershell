@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Sets a ServiceBus Queue
+Updates a ServiceBus Queue
 .Description
-Sets a ServiceBus Queue
+Updates a ServiceBus Queue
 .Example
 Set-AzServiceBusQueue -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myQueue -AutoDeleteOnIdle (New-TimeSpan -Days 4 -Minutes 3 -Seconds 4) -DefaultMessageTimeToLive (New-TimeSpan -Days 9)
 .Example

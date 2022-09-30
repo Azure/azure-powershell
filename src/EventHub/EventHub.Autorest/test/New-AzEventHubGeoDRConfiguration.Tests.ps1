@@ -24,7 +24,9 @@ Describe 'New-AzEventHubGeoDRConfiguration' {
 
         while($drConfig.ProvisioningState -ne "Succeeded"){
             $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.primaryNamespace
-            Start-Sleep 10
+            if ($TestMode -ne 'playback') {
+                Start-Sleep 10
+            }
         }
 
         $drConfig = Get-AzEventHubGeoDRConfiguration -Name $env.alias -ResourceGroupName $env.resourceGroup -NamespaceName $env.secondaryNamespace

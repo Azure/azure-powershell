@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzServiceBusAuthorizationRule
 
 ## SYNOPSIS
-Sets an ServiceBus Namespace, Queue and Topic Authorization Rule
+Updates the authorization rule of a ServiceBus namespace, queue or topic.
 
 ## SYNTAX
 
@@ -40,7 +40,7 @@ Set-AzServiceBusAuthorizationRule -InputObject <IServiceBusIdentity> -Rights <Ac
 ```
 
 ## DESCRIPTION
-Sets an ServiceBus Namespace, Queue and Topic Authorization Rule
+Updates the authorization rule of a ServiceBus namespace, queue or topic.
 
 ## EXAMPLES
 

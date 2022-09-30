@@ -42,7 +42,7 @@ Get-AzEventHubApplicationGroup -ResourceGroupName myResourceGroup -NamespaceName
 
 ```output
 ClientAppGroupIdentifier     : SASKeyName=RootManageSharedAccessKey
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/applicationGroups/
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/applicationGroups/
                                myAppGroup
 IsEnabled                    : True
 Location                     : Central US
@@ -124,7 +124,7 @@ The Namespace name
 ```yaml
 Type: System.String
 Parameter Sets: List, Get
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

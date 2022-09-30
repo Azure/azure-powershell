@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Sets an ServiceBus Namespace Network Rule Set
+Updates the NetworkRuleSet of a ServiceBus namespace
 .Description
-Sets an ServiceBus Namespace Network Rule Set
+Updates the NetworkRuleSet of a ServiceBus namespace
 #>
 
 function Set-AzServiceBusNetworkRuleSet{

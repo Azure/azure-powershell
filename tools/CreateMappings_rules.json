@@ -466,7 +466,7 @@
     "alias": "Kusto"
   },
   {
-    "regex": "Advisor",
+    "module": "Advisor",
     "alias": "Advisor"
   },
   {
