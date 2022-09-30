@@ -127,7 +127,8 @@ Function Download-PublishSettingsFileFromKv([string] $localFilePathToDownload)
     
     if([System.IO.Directory]::Exists($dirPath) -eq $true)
     {
-        [System.IO.File]::WriteAllText($localFilePathToDownload, $pubFileSecContents.SecretValueText)
+        $secretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($pubFileSecContents.SecretValue))	
+        [System.IO.File]::WriteAllText($localFilePathToDownload, $secretValueText)
     }
     else
     {
@@ -178,7 +179,8 @@ Function Download-TestCertificateFromKeyVault()
     #Once we create certificate and get it, we store it locally
     if($kvCertSecret -ne $null)
     {
-        $kvSecretBytes = [System.Convert]::FromBase64String($kvCertSecret.SecretValueText)
+        $kvSecretValueText = [System.Runtime.InteropServices.marshal]::PtrToStringAuto([System.Runtime.InteropServices.marshal]::SecureStringToBSTR($kvCertSecret.SecretValue))		
+        $kvSecretBytes = [System.Convert]::FromBase64String($kvSecretValueText)
         $certCollection2 = New-Object System.Security.Cryptography.X509Certificates.X509Certificate2Collection
         $certCollection2.Import($kvSecretBytes, $null, [System.Security.Cryptography.X509Certificates.X509KeyStorageFlags]::Exportable)
         

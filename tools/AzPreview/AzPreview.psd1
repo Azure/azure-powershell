@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '5.10.0'
+ModuleVersion = '8.3.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -30,8 +30,8 @@ CompanyName = 'Microsoft Corporation'
 Copyright = 'Microsoft Corporation. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Microsoft Azure PowerShell - Cmdlets to manage resources in Azure. This module is compatible with WindowsPowerShell and PowerShell Core.
-For more information about the Az module, please visit the following: https://docs.microsoft.com/en-us/powershell/azure/'
+Description = 'Microsoft Azure PowerShell - Including stable version and preview version of Azure PowerShell modules. This module is compatible with PowerShell and Windows PowerShell.
+For more information about the AzPreview module, please visit the following: https://docs.microsoft.com/powershell/azure/'
 
 # Minimum version of the PowerShell engine required by this module
 PowerShellVersion = '5.1'
@@ -52,19 +52,148 @@ DotNetFrameworkVersion = '4.7.2'
 # ProcessorArchitecture = ''
 
 # Modules that must be imported into the global environment prior to importing this module
-RequiredModules = @(@{ModuleName = 'Az.Accounts'; RequiredVersion = '2.2.8'; },
-               @{ModuleName = 'Az.Billing'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'Az.Compute'; RequiredVersion = '3.3.0'; }, 
-               @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.1.0'; }
-               @{ModuleName = 'Az.Dns'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'Az.EventHub'; RequiredVersion = '1.4.3'; }, 
-               @{ModuleName = 'Az.IotHub'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'Az.KeyVault'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'Az.Monitor'; RequiredVersion = '1.6.0'; }, 
-               @{ModuleName = 'Az.Network'; RequiredVersion = '1.2.0'; }, 
-               @{ModuleName = 'Az.Resources'; RequiredVersion = '0.11.0'; }, 
-               @{ModuleName = 'Az.Storage'; RequiredVersion = '2.6.2'; }, 
-               @{ModuleName = 'Az.Websites'; RequiredVersion = '0.11.0'; })
+RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.1'; }, 
+            @{ModuleName = 'Az.ADDomainServices'; RequiredVersion = '0.2.0'; }, 
+            @{ModuleName = 'Az.Advisor'; RequiredVersion = '1.1.2'; }, 
+            @{ModuleName = 'Az.Aks'; RequiredVersion = '4.3.0'; }, 
+            @{ModuleName = 'Az.AlertsManagement'; RequiredVersion = '0.4.1'; }, 
+            @{ModuleName = 'Az.AnalysisServices'; RequiredVersion = '1.1.4'; }, 
+            @{ModuleName = 'Az.ApiManagement'; RequiredVersion = '3.0.1'; }, 
+            @{ModuleName = 'Az.App'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.AppConfiguration'; RequiredVersion = '1.2.0'; }, 
+            @{ModuleName = 'Az.ApplicationInsights'; RequiredVersion = '2.1.0'; }, 
+            @{ModuleName = 'Az.Attestation'; RequiredVersion = '1.0.0'; }, 
+            @{ModuleName = 'Az.Automation'; RequiredVersion = '1.8.0'; }, 
+            @{ModuleName = 'Az.BareMetal'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.Batch'; RequiredVersion = '3.2.1'; }, 
+            @{ModuleName = 'Az.Billing'; RequiredVersion = '2.0.0'; }, 
+            @{ModuleName = 'Az.Blueprint'; RequiredVersion = '0.4.0'; }, 
+            @{ModuleName = 'Az.BotService'; RequiredVersion = '0.4.0'; }, 
+            @{ModuleName = 'Az.Cdn'; RequiredVersion = '2.1.0'; }, 
+            @{ModuleName = 'Az.ChangeAnalysis'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.CloudService'; RequiredVersion = '1.1.0'; }, 
+            @{ModuleName = 'Az.CognitiveServices'; RequiredVersion = '1.11.0'; }, 
+            @{ModuleName = 'Az.Communication'; RequiredVersion = '0.2.0'; }, 
+            @{ModuleName = 'Az.Compute'; RequiredVersion = '4.31.0'; }, 
+            @{ModuleName = 'Az.ConfidentialLedger'; RequiredVersion = '1.0.0'; }, 
+            @{ModuleName = 'Az.Confluent'; RequiredVersion = '0.2.0'; }, 
+            @{ModuleName = 'Az.ConnectedKubernetes'; RequiredVersion = '0.4.0'; }, 
+            @{ModuleName = 'Az.ConnectedMachine'; RequiredVersion = '0.4.0'; }, 
+            @{ModuleName = 'Az.ConnectedNetwork'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.ContainerInstance'; RequiredVersion = '3.1.0'; }, 
+            @{ModuleName = 'Az.ContainerRegistry'; RequiredVersion = '3.0.0'; }, 
+            @{ModuleName = 'Az.CosmosDB'; RequiredVersion = '1.8.2'; }, 
+            @{ModuleName = 'Az.CostManagement'; RequiredVersion = '0.2.0'; }, 
+            @{ModuleName = 'Az.CustomLocation'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.CustomProviders'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.Dashboard'; RequiredVersion = '0.1.1'; }, 
+            @{ModuleName = 'Az.DataBox'; RequiredVersion = '0.2.0'; }, 
+            @{ModuleName = 'Az.DataBoxEdge'; RequiredVersion = '1.1.0'; }, 
+            @{ModuleName = 'Az.Databricks'; RequiredVersion = '1.2.0'; }, 
+            @{ModuleName = 'Az.Datadog'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.DataFactory'; RequiredVersion = '1.16.8'; }, 
+            @{ModuleName = 'Az.DataLakeAnalytics'; RequiredVersion = '1.0.2'; }, 
+            @{ModuleName = 'Az.DataLakeStore'; RequiredVersion = '1.3.0'; }, 
+            @{ModuleName = 'Az.DataMigration'; RequiredVersion = '0.11.0'; }, 
+            @{ModuleName = 'Az.DataProtection'; RequiredVersion = '0.4.0'; }, 
+            @{ModuleName = 'Az.DataShare'; RequiredVersion = '1.0.1'; }, 
+            @{ModuleName = 'Az.DedicatedHsm'; RequiredVersion = '0.3.0'; }, 
+            @{ModuleName = 'Az.DeploymentManager'; RequiredVersion = '1.1.0'; }, 
+            @{ModuleName = 'Az.DesktopVirtualization'; RequiredVersion = '3.1.1'; }, 
+            @{ModuleName = 'Az.DeviceProvisioningServices'; RequiredVersion = '0.10.0'; }, 
+            @{ModuleName = 'Az.DeviceUpdate'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.DevSpaces'; RequiredVersion = '0.7.3'; }, 
+            @{ModuleName = 'Az.DevTestLabs'; RequiredVersion = '1.0.2'; }, 
+            @{ModuleName = 'Az.DigitalTwins'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.DiskPool'; RequiredVersion = '0.3.0'; }, 
+            @{ModuleName = 'Az.Dns'; RequiredVersion = '1.1.2'; }, 
+            @{ModuleName = 'Az.DnsResolver'; RequiredVersion = '0.2.1'; }, 
+            @{ModuleName = 'Az.DynatraceObservability'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.EdgeOrder'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.Elastic'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.EventGrid'; RequiredVersion = '1.4.0'; }, 
+            @{ModuleName = 'Az.EventHub'; RequiredVersion = '2.2.1'; }, 
+            @{ModuleName = 'Az.FluidRelay'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.FrontDoor'; RequiredVersion = '1.9.0'; }, 
+            @{ModuleName = 'Az.Functions'; RequiredVersion = '4.0.4'; }, 
+            @{ModuleName = 'Az.GuestConfiguration'; RequiredVersion = '0.11.0'; }, 
+            @{ModuleName = 'Az.HanaOnAzure'; RequiredVersion = '0.3.0'; }, 
+            @{ModuleName = 'Az.HDInsight'; RequiredVersion = '5.0.1'; }, 
+            @{ModuleName = 'Az.HealthBot'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.HealthcareApis'; RequiredVersion = '2.0.0'; }, 
+            @{ModuleName = 'Az.HPCCache'; RequiredVersion = '0.1.1'; }, 
+            @{ModuleName = 'Az.ImageBuilder'; RequiredVersion = '0.3.0'; }, 
+            @{ModuleName = 'Az.ImportExport'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.IotCentral'; RequiredVersion = '0.10.0'; }, 
+            @{ModuleName = 'Az.IotHub'; RequiredVersion = '2.7.4'; }, 
+            @{ModuleName = 'Az.KeyVault'; RequiredVersion = '4.7.0'; }, 
+            @{ModuleName = 'Az.KubernetesConfiguration'; RequiredVersion = '0.6.0'; }, 
+            @{ModuleName = 'Az.Kusto'; RequiredVersion = '2.1.0'; }, 
+            @{ModuleName = 'Az.LabServices'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.LogicApp'; RequiredVersion = '1.5.0'; }, 
+            @{ModuleName = 'Az.Logz'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.MachineLearning'; RequiredVersion = '1.1.3'; }, 
+            @{ModuleName = 'Az.MachineLearningServices'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.Maintenance'; RequiredVersion = '1.2.0'; }, 
+            @{ModuleName = 'Az.ManagedServiceIdentity'; RequiredVersion = '1.0.0'; }, 
+            @{ModuleName = 'Az.ManagedServices'; RequiredVersion = '3.0.0'; }, 
+            @{ModuleName = 'Az.ManagementPartner'; RequiredVersion = '0.7.2'; }, 
+            @{ModuleName = 'Az.Maps'; RequiredVersion = '0.8.0'; }, 
+            @{ModuleName = 'Az.MariaDb'; RequiredVersion = '0.2.0'; }, 
+            @{ModuleName = 'Az.Marketplace'; RequiredVersion = '0.3.0'; }, 
+            @{ModuleName = 'Az.MarketplaceOrdering'; RequiredVersion = '1.0.3'; }, 
+            @{ModuleName = 'Az.Media'; RequiredVersion = '1.1.1'; }, 
+            @{ModuleName = 'Az.Migrate'; RequiredVersion = '1.1.3'; }, 
+            @{ModuleName = 'Az.MixedReality'; RequiredVersion = '0.1.4'; }, 
+            @{ModuleName = 'Az.Monitor'; RequiredVersion = '3.1.0'; }, 
+            @{ModuleName = 'Az.MonitoringSolutions'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.MySql'; RequiredVersion = '1.0.0'; }, 
+            @{ModuleName = 'Az.NetAppFiles'; RequiredVersion = '0.10.0'; }, 
+            @{ModuleName = 'Az.Network'; RequiredVersion = '4.20.1'; }, 
+            @{ModuleName = 'Az.NetworkFunction'; RequiredVersion = '0.1.1'; }, 
+            @{ModuleName = 'Az.NotificationHubs'; RequiredVersion = '1.1.1'; }, 
+            @{ModuleName = 'Az.OperationalInsights'; RequiredVersion = '3.2.0'; }, 
+            @{ModuleName = 'Az.Orbital'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.Peering'; RequiredVersion = '0.3.0'; }, 
+            @{ModuleName = 'Az.PolicyInsights'; RequiredVersion = '1.5.1'; }, 
+            @{ModuleName = 'Az.Portal'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.PostgreSql'; RequiredVersion = '1.1.0'; }, 
+            @{ModuleName = 'Az.PowerBIEmbedded'; RequiredVersion = '1.2.0'; }, 
+            @{ModuleName = 'Az.PrivateDns'; RequiredVersion = '1.0.3'; }, 
+            @{ModuleName = 'Az.ProviderHub'; RequiredVersion = '0.2.0'; }, 
+            @{ModuleName = 'Az.Purview'; RequiredVersion = '0.2.0'; }, 
+            @{ModuleName = 'Az.Quota'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.RecoveryServices'; RequiredVersion = '5.6.0'; }, 
+            @{ModuleName = 'Az.RedisCache'; RequiredVersion = '1.6.0'; }, 
+            @{ModuleName = 'Az.RedisEnterpriseCache'; RequiredVersion = '1.1.0'; }, 
+            @{ModuleName = 'Az.Relay'; RequiredVersion = '1.0.3'; }, 
+            @{ModuleName = 'Az.Reservations'; RequiredVersion = '0.10.0'; }, 
+            @{ModuleName = 'Az.ResourceGraph'; RequiredVersion = '0.13.0'; }, 
+            @{ModuleName = 'Az.ResourceMover'; RequiredVersion = '1.1.0'; }, 
+            @{ModuleName = 'Az.Resources'; RequiredVersion = '6.2.0'; }, 
+            @{ModuleName = 'Az.Search'; RequiredVersion = '0.8.0'; }, 
+            @{ModuleName = 'Az.Security'; RequiredVersion = '1.3.0'; }, 
+            @{ModuleName = 'Az.SecurityInsights'; RequiredVersion = '1.1.0'; }, 
+            @{ModuleName = 'Az.ServiceBus'; RequiredVersion = '1.11.0'; }, 
+            @{ModuleName = 'Az.ServiceFabric'; RequiredVersion = '3.1.0'; }, 
+            @{ModuleName = 'Az.ServiceLinker'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.SignalR'; RequiredVersion = '1.4.1'; }, 
+            @{ModuleName = 'Az.SpringCloud'; RequiredVersion = '0.3.0'; }, 
+            @{ModuleName = 'Az.Sql'; RequiredVersion = '3.11.0'; }, 
+            @{ModuleName = 'Az.SqlVirtualMachine'; RequiredVersion = '1.1.0'; }, 
+            @{ModuleName = 'Az.StackHCI'; RequiredVersion = '1.3.1'; }, 
+            @{ModuleName = 'Az.Storage'; RequiredVersion = '4.9.0'; }, 
+            @{ModuleName = 'Az.StorageMover'; RequiredVersion = '0.1.0'; }, 
+            @{ModuleName = 'Az.StorageSync'; RequiredVersion = '1.7.0'; }, 
+            @{ModuleName = 'Az.StreamAnalytics'; RequiredVersion = '2.0.0'; }, 
+            @{ModuleName = 'Az.Subscription'; RequiredVersion = '0.8.1'; }, 
+            @{ModuleName = 'Az.Support'; RequiredVersion = '1.0.0'; }, 
+            @{ModuleName = 'Az.Synapse'; RequiredVersion = '1.6.0'; }, 
+            @{ModuleName = 'Az.TimeSeriesInsights'; RequiredVersion = '0.2.0'; }, 
+            @{ModuleName = 'Az.TrafficManager'; RequiredVersion = '1.1.0'; }, 
+            @{ModuleName = 'Az.VMware'; RequiredVersion = '0.4.0'; }, 
+            @{ModuleName = 'Az.Websites'; RequiredVersion = '2.11.4'; }, 
+            @{ModuleName = 'Az.WindowsIotServices'; RequiredVersion = '0.1.0'; })
 
 # Assemblies that must be loaded prior to importing this module
 # RequiredAssemblies = @()
@@ -120,7 +249,7 @@ PrivateData = @{
         # IconUri = ''
 
         # ReleaseNotes of this module
-        ReleaseNotes = ''
+        ReleaseNotes = 'https://aka.ms/azpspreview'
 
         # Prerelease string of this module
         # Prerelease = ''
