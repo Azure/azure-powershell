@@ -13,6 +13,9 @@
         public const int ParameterSetWithSpace = 8500;
         public const int MultipleParameterSetsWithNoDefault = 8510;
         public const int CmdletWithNoOutputType = 8600;
+        public const int ParameterSetWithStrictMandatoryEqual = 8700;
+        public const int ParameterSetWithLenientMandatoryEqual = 8710;
+        //public const int EmptyDefaultParameterSet = 8800;
         public const int CmdletWithDestructiveVerb = 98300;
         public const int CmdletWithForceParameter = 98310;
     }
@@ -70,5 +73,29 @@
         public const int ChangedGenericType = 3030;
         public const int ChangedGenericTypeArgument = 3040;
         public const int DifferentGenericTypeArgumentSize = 3050;
+    }
+    
+    //ExampleProblemId is also defined in tools\StaticAnalysis\ExampleAnalyzer, the range is 5000-5199
+    public static class ExampleProblemId
+    {
+        public const int Invalid_Cmdlet = 5000; 
+        public const int Unknown_Parameter_Set = 5010; 
+        public const int Invalid_Parameter_Name = 5011;
+        public const int Duplicate_Parameter_Name = 5012; 
+        public const int Unassigned_Parameter = 5013; 
+        public const int Unbinded_Parameter_Name = 5014;
+        public const int MissingSynopsis = 5040; 
+        public const int MissingDescription = 5041; 
+        public const int MissingExample = 5042; 
+        public const int MissingExampleTitle = 5043;
+        public const int MissingExampleCode = 5044; 
+        public const int MissingExampleOutput = 5045; 
+        public const int MissingExampleDescription = 5046;
+        public const int NeedDeleting = 5050; 
+        public const int NeedSplitting = 5051; 
+        public const int Is_Alias = 5100; 
+        public const int Capitalization_Conventions_Violated = 5101;
+        public const int Unassigned_Variable = 5110; 
+        public const int Mismatched_Parameter_Value_Type = 5111;
     }
 }

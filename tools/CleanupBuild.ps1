@@ -25,7 +25,7 @@ foreach ($path in $outputPaths)
 
     Write-Verbose "Removing markdown help files and folders"
     Get-ChildItem -Recurse -Path $path -Include *.md | Remove-Item -Force -Confirm:$false
-    Get-ChildItem -Directory -Include help -Recurse -Path $path | Remove-Item -Force -Confirm:$false -ErrorAction "Ignore"
+    Get-ChildItem -Directory -Include help -Recurse -Path $path | Remove-Item -Force -Recurse -Confirm:$false -ErrorAction "Ignore"
 
     Write-Verbose "Removing unneeded web deployment dependencies"
     $webdependencies = @("Microsoft.Web.Hosting.dll", "Microsoft.Web.Delegation.dll", "Microsoft.Web.Administration.dll", "Microsoft.Web.Deployment.Tracing.dll")
@@ -48,27 +48,48 @@ foreach($RMPath in $resourceManagerPaths)
 
         Import-LocalizedData -BindingVariable ModuleMetadata -BaseDirectory $psd1.DirectoryName -FileName $psd1.Name
 
-        $acceptedDlls = @()
+        $acceptedDlls = @(
+            # netcoreapp, can't be in RequiredAssemblies, but we need to pack it
+            "Microsoft.Azure.PowerShell.AuthenticationAssemblyLoadContext.dll"
+        )
 
         # NestedModule Assemblies may have a folder path, just getting the dll name alone
         foreach($cmdAssembly in $ModuleMetadata.NestedModules)
         {
-            $acceptedDlls += $cmdAssembly.Split("\")[-1]
+            # if the nested module is script module, we need to keep the dll behind the script module
+            if ($cmdAssembly.EndsWith(".psm1")) {
+                if (!$cmdAssembly.Contains("/") -and !$cmdAssembly.Contains("\")) {
+                    $acceptedDlls += "Microsoft.Azure.PowerShell.Cmdlets." + $cmdAssembly.Split(".")[-2] + ".dll"
+                }
+                continue
+            }
+            if($cmdAssembly.Contains("/")) {
+                $acceptedDlls += $cmdAssembly.Split("/")[-1]
+            } else {
+                $acceptedDlls += $cmdAssembly.Split("\")[-1]
+            }
         }
 
         # RequiredAssmeblies may have a folder path, just getting the dll name alone
         foreach($assembly in $ModuleMetadata.RequiredAssemblies)
         {
-            $acceptedDlls += $assembly.Split("\")[-1]
+            if($assembly.Contains("/")) {
+                $acceptedDlls += $assembly.Split("/")[-1]
+            } else {
+                $acceptedDlls += $assembly.Split("\")[-1]
+            }
         }
 
-        Write-Verbose "Removing redundant dlls in $($RMFolder.Name)"
+        Write-Host "Removing redundant dlls in $($RMFolder.Name)"
         $removedDlls = Get-ChildItem -Path $RMFolder.FullName -Filter "*.dll" -Recurse | where { $acceptedDlls -notcontains $_.Name -and !$_.FullName.Contains("Assemblies") }
-        $removedDlls | % { Write-Verbose "Removing $($_.Name)"; Remove-Item $_.FullName -Force }
+        $removedDlls | % { Write-Host "Removing $($_.Name)"; Remove-Item $_.FullName -Force }
 
-        Write-Verbose "Removing scripts and psd1 in $($RMFolder.FullName)"
-
-        $removedPsd1 = Get-ChildItem -Path "$($RMFolder.FullName)" -Include "*.psd1" -Exclude "PsSwaggerUtility*.psd1" -Recurse | where { $_.FullName -ne "$($RMFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($RMFolder.Name).psd1" }
-        $removedPsd1 | % { Write-Verbose "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
+        Write-Host "Removing scripts and psd1 in $($RMFolder.FullName)"
+        $exludedPsd1 = @(
+            "PsSwaggerUtility*.psd1",
+            "Az.KeyVault.Extension.psd1"
+            )
+        $removedPsd1 = Get-ChildItem -Path "$($RMFolder.FullName)" -Include "*.psd1" -Exclude $exludedPsd1 -Recurse | where { $_.FullName -ne "$($RMFolder.FullName)$([IO.Path]::DirectorySeparatorChar)$($RMFolder.Name).psd1" }
+        $removedPsd1 | % { Write-Host "Removing $($_.FullName)"; Remove-Item $_.FullName -Force }
     }
 }

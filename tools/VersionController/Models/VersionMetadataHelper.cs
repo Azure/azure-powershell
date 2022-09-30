@@ -1,4 +1,18 @@
-﻿using Newtonsoft.Json;
+﻿// ----------------------------------------------------------------------------------
+//
+// Copyright Microsoft Corporation
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+// http://www.apache.org/licenses/LICENSE-2.0
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+// ----------------------------------------------------------------------------------
+
+using Newtonsoft.Json;
 using StaticAnalysis.BreakingChangeAnalyzer;
 using System;
 using System.Collections.Generic;
@@ -7,7 +21,6 @@ using System.Linq;
 using System.Management.Automation;
 using System.Reflection;
 using System.Text.RegularExpressions;
-using Tools.Common.Helpers;
 using Tools.Common.Issues;
 using Tools.Common.Loaders;
 using Tools.Common.Loggers;
@@ -19,11 +32,15 @@ namespace VersionController.Models
     {
         private VersionFileHelper _fileHelper;
         private AnalysisLogger _logger;
+        private ModuleMetadata _newModuleMetadata;
+
+        public ModuleMetadata NewModuleMetadata { get { return _newModuleMetadata; } }
 
         public VersionMetadataHelper(VersionFileHelper fileHelper)
         {
             _fileHelper = fileHelper;
             _logger = new AnalysisLogger(_fileHelper.ArtifactsVersionControllerDirectory, _fileHelper.ExceptionsDirectory);
+            _newModuleMetadata = MetadataLoader.GetModuleMetadata(_fileHelper.ModuleName);
         }
 
         /// <summary>
@@ -33,7 +50,7 @@ namespace VersionController.Models
         /// <returns></returns>
         private ModuleMetadata DeserializeCmdlets(string fileName)
         {
-            return JsonConvert.DeserializeObject<ModuleMetadata>(File.ReadAllText(fileName));
+            return File.Exists(fileName) ? JsonConvert.DeserializeObject<ModuleMetadata>(File.ReadAllText(fileName)) : null;
         }
 
         /// <summary>
@@ -41,10 +58,16 @@ namespace VersionController.Models
         /// </summary>
         /// <param name="fileName">Name of the file cmdlets are being serialized to.</param>
         /// <param name="cmdlets">List of cmdlets that are to be serialized.</param>
-        private void SerializeCmdlets(string fileName, ModuleMetadata moduleMetadata)
+        public static string SerializeCmdlets(string fileName, ModuleMetadata moduleMetadata)
         {
-            string json = JsonConvert.SerializeObject(moduleMetadata, Formatting.Indented);
+            string json = JsonConvert.SerializeObject(moduleMetadata, new JsonSerializerSettings
+            {
+                Formatting = Formatting.Indented,
+                NullValueHandling = NullValueHandling.Ignore,
+                ContractResolver = VersionMetadataContractResolver.Instance
+            });
             File.WriteAllText(fileName, json);
+            return fileName;
         }
 
         /// <summary>
@@ -254,101 +277,52 @@ namespace VersionController.Models
         /// </summary>
         /// <param name="serialize">Whether or not the module metadata should be serialized.</param>
         /// <returns>Version enum representing the version bump to be applied.</returns>
-        public Version GetVersionBumpUsingSerialized(bool serialize = true)
+        public Version GetVersionBumpUsingSerialized()
         {
-            Console.WriteLine("Comparing the cmdlet assumblies with metadata from JSON file...");
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var outputDirectories = _fileHelper.OutputDirectories;
             var serializedCmdletsDirectory = _fileHelper.SerializedCmdletsDirectory;
             var moduleName = _fileHelper.ModuleName;
-            IEnumerable<string> nestedModules = null;
-            using (PowerShell powershell = PowerShell.Create())
-            {
-                powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").NestedModules");
-                var cmdletResult = powershell.Invoke();
-                nestedModules = cmdletResult.Select(c => c.ToString() + ".dll");
-            }
 
-            Version versionBump = Version.PATCH;
-            if (nestedModules.Any())
+            var tempVersionBump = Version.PATCH;
+            var issueLogger = _logger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
+
+            var newModuleMetadata = _newModuleMetadata;
+            var serializedCmdletName = $"{moduleName}.json";
+            var serializedCmdletFile = Directory.GetFiles(serializedCmdletsDirectory, serializedCmdletName).FirstOrDefault();
+            if (serializedCmdletFile == null)
             {
-                var tempVersionBump = Version.PATCH;
-                var issueLogger = _logger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
-                List<string> requiredModules = null;
-                using (PowerShell powershell = PowerShell.Create())
+                var currentColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"Warning: {moduleName} does not have a previously serialized cmdlet for comparison.");
+                Console.ForegroundColor = currentColor;
+                var newCmdletFile = Path.Join(serializedCmdletsDirectory, serializedCmdletName);
+                // Use newly build one, only bump PATCH version
+                serializedCmdletFile = SerializeCmdlets(newCmdletFile, newModuleMetadata);
+            }
+            var oldModuleMetadata = DeserializeCmdlets(serializedCmdletFile);
+            CmdletLoader.ModuleMetadata = oldModuleMetadata;
+            issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = moduleName, "AssemblyFileName");
+            CheckBreakingChangesInModules(oldModuleMetadata, newModuleMetadata, issueLogger);
+            if (issueLogger.Records.Any())
+            {
+                var currentColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"Detected below {issueLogger.Records.Count} breack change(s):");
+                foreach (IReportRecord record in issueLogger.Records)
                 {
-                    powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").RequiredModules");
-                    var cmdletResult = powershell.Invoke();
-                    requiredModules = cmdletResult.Select(c => c.ToString())
-                                                  .Join(outputDirectories,
-                                                        module => 1,
-                                                        directory => 1,
-                                                        (module, directory) => Path.Combine(directory, module))
-                                                  .Where(f => Directory.Exists(f))
-                                                  .ToList();
+                    Console.WriteLine(((BreakingChangeIssue)record).Target + " " + record.ProblemId + " " + record.Description);
                 }
-
-                requiredModules.Add(outputModuleDirectory);
-                foreach (var nestedModule in nestedModules)
-                {
-                    var assemblyPath = Directory.GetFiles(outputModuleDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
-                    var proxy = new CmdletLoader();
-                    var newModuleMetadata = proxy.GetModuleMetadata(assemblyPath, requiredModules);
-                    var serializedCmdletName = nestedModule + ".json";
-                    var serializedCmdletFile = Directory.GetFiles(serializedCmdletsDirectory, serializedCmdletName).FirstOrDefault();
-                    if (serializedCmdletFile == null)
-                    {
-                        var currentColor = Console.ForegroundColor;
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"Warning: {nestedModule} does not have a previously serialized cmdlet for comparison.");
-                        Console.ForegroundColor = currentColor;
-                        var newCmdletFile = Path.Join(serializedCmdletsDirectory, serializedCmdletName);
-                        SerializeCmdlets(newCmdletFile, newModuleMetadata);
-                        continue;
-                    }
-                    var oldModuleMetadata = DeserializeCmdlets(serializedCmdletFile);
-                    CmdletLoader.ModuleMetadata = oldModuleMetadata;
-                    issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyPath, "AssemblyFileName");
-                    CheckBreakingChangesInModules(oldModuleMetadata, newModuleMetadata, issueLogger);
-                    if (issueLogger.Records.Any())
-                    {
-                        var currentColor = Console.ForegroundColor;
-                        Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine($"Detected below {issueLogger.Records.Count} breack change(s):");
-                        foreach (IReportRecord record in issueLogger.Records)
-                        {
-                            Console.WriteLine(((BreakingChangeIssue)record).Target + " " + record.ProblemId + " " + record.Description);
-                        }
-                        Console.ForegroundColor = currentColor;
-                        tempVersionBump = Version.MAJOR;
-                    }
-                    else if (!oldModuleMetadata.Equals(newModuleMetadata))
-                    {
-                        tempVersionBump = Version.MINOR;
-                    }
-
-                    if (tempVersionBump != Version.PATCH && serialize)
-                    {
-                        SerializeCmdlets(serializedCmdletFile, newModuleMetadata);
-                    }
-
-                    if (tempVersionBump == Version.MAJOR)
-                    {
-                        versionBump = Version.MAJOR;
-                    }
-                    else if (tempVersionBump == Version.MINOR && versionBump == Version.PATCH)
-                    {
-                        versionBump = Version.MINOR;
-                    }
-                }
+                Console.ForegroundColor = currentColor;
+                tempVersionBump = Version.MAJOR;
             }
-            else
+            else if (!oldModuleMetadata.Equals(newModuleMetadata))
             {
-                return Version.PATCH;
+                tempVersionBump = Version.MINOR;
             }
 
-            return versionBump;
+            return tempVersionBump;
         }
 
         /// <summary>
@@ -359,80 +333,71 @@ namespace VersionController.Models
         /// <returns>Version enum representing the version bump to be applied.</returns>
         public Version GetVersionBumpUsingGallery()
         {
-            Console.WriteLine("Comparing the cmdlet assumblies with seemblies in the saved gallery folder...");
+            Console.WriteLine("Comparing the cmdlet assemblies with assemblies in the saved gallery folder...");
             var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
             var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
             var outputDirectories = _fileHelper.OutputDirectories;
             var serializedCmdletsDirectory = _fileHelper.SerializedCmdletsDirectory;
             var galleryModuleVersionDirectory = _fileHelper.GalleryModuleVersionDirectory;
             var moduleName = _fileHelper.ModuleName;
-            IEnumerable<string> nestedModules = null;
-            using (PowerShell powershell = PowerShell.Create())
-            {
-                powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").NestedModules");
-                var cmdletResult = powershell.Invoke();
-                nestedModules = cmdletResult.Select(c => c.ToString() + ".dll");
-            }
 
             Version versionBump = Version.PATCH;
-            if (nestedModules.Any())
+            var tempVersionBump = Version.PATCH;
+            var issueLogger = _logger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
+            List<string> requiredModules = null;
+            List<string> galleryRequiredModules = null;
+            using (PowerShell powershell = PowerShell.Create())
             {
-                var tempVersionBump = Version.PATCH;
-                var issueLogger = _logger.CreateLogger<BreakingChangeIssue>("BreakingChangeIssues.csv");
-                List<string> requiredModules = null;
-                List<string> galleryRequiredModules = null;
-                using (PowerShell powershell = PowerShell.Create())
-                {
-                    powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").RequiredModules");
-                    var cmdletResult = powershell.Invoke();
-                    requiredModules = cmdletResult.Select(c => c.ToString())
-                                                  .Join(outputDirectories,
-                                                        module => 1,
-                                                        directory => 1,
-                                                        (module, directory) => Path.Combine(directory, module))
-                                                  .Where(f => Directory.Exists(f))
-                                                  .ToList();
-                    galleryRequiredModules = cmdletResult.Select(c => c.ToString())
-                                                         .Select(f => Directory.GetDirectories(outputModuleDirectory, f).FirstOrDefault())
-                                                         .Select(f => Directory.GetDirectories(f).FirstOrDefault())
-                                                         .ToList();
-                }
-
-                requiredModules.Add(outputModuleDirectory);
-                galleryRequiredModules.Add(galleryModuleVersionDirectory);
-                foreach (var nestedModule in nestedModules)
-                {
-                    var assemblyPath = Directory.GetFiles(galleryModuleVersionDirectory, nestedModule).FirstOrDefault();
-                    var proxy = new CmdletLoader();
-                    var oldModuleMetadata = proxy.GetModuleMetadata(assemblyPath, galleryRequiredModules);
-                    assemblyPath = Directory.GetFiles(outputModuleDirectory, nestedModule).FirstOrDefault();
-                    proxy = new CmdletLoader();
-                    var newModuleMetadata = proxy.GetModuleMetadata(assemblyPath, requiredModules);
-                    CmdletLoader.ModuleMetadata = oldModuleMetadata;
-                    issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyPath, "AssemblyFileName");
-                    CheckBreakingChangesInModules(oldModuleMetadata, newModuleMetadata, issueLogger);
-                    if (issueLogger.Records.Any())
-                    {
-                        tempVersionBump = Version.MAJOR;
-                    }
-                    else if (!oldModuleMetadata.Equals(newModuleMetadata))
-                    {
-                        tempVersionBump = Version.MINOR;
-                    }
-
-                    if (tempVersionBump == Version.MAJOR)
-                    {
-                        versionBump = Version.MAJOR;
-                    }
-                    else if (tempVersionBump == Version.MINOR && versionBump == Version.PATCH)
-                    {
-                        versionBump = Version.MINOR;
-                    }
-                }
+                powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").RequiredModules");
+                var cmdletResult = powershell.Invoke();
+                requiredModules = cmdletResult.Select(c => c.ToString())
+                                                .Join(outputDirectories,
+                                                    module => 1,
+                                                    directory => 1,
+                                                    (module, directory) => Path.Combine(directory, module))
+                                                .Where(f => Directory.Exists(f))
+                                                .ToList();
+                galleryRequiredModules = cmdletResult.Select(c => c.ToString())
+                                                        .Select(f => Directory.GetDirectories(outputModuleDirectory, f).FirstOrDefault())
+                                                        .Select(f => Directory.GetDirectories(f).FirstOrDefault())
+                                                        .ToList();
             }
-            else
+
+            galleryRequiredModules.Add(galleryModuleVersionDirectory);
+            var galleryModulePsd1Path = Directory.EnumerateFiles(Path.Combine(outputModuleDirectory, $"{moduleName}"), "*.psd1", SearchOption.AllDirectories).FirstOrDefault();
+            var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
+            
+            var serializedCmdletName = $"{moduleName}.json";
+            var serializedCmdletFile = Directory.GetFiles(serializedCmdletsDirectory, serializedCmdletName).FirstOrDefault();
+            if (serializedCmdletFile == null)
             {
-                throw new NullReferenceException("No nested modules found for " + moduleName);
+                var currentColor = Console.ForegroundColor;
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"Warning: {moduleName} does not have a previously serialized cmdlet for comparison.");
+                Console.ForegroundColor = currentColor;
+                var newCmdletFile = Path.Join(serializedCmdletsDirectory, serializedCmdletName);
+                SerializeCmdlets(newCmdletFile, newModuleMetadata);
+            }
+            var oldModuleMetadata = DeserializeCmdlets(serializedCmdletFile);
+            CmdletLoader.ModuleMetadata = oldModuleMetadata;
+            issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = moduleName, "AssemblyFileName");
+            CheckBreakingChangesInModules(oldModuleMetadata, newModuleMetadata, issueLogger);
+            if (issueLogger.Records.Any())
+            {
+                tempVersionBump = Version.MAJOR;
+            }
+            else if (!oldModuleMetadata.Equals(newModuleMetadata))
+            {
+                tempVersionBump = Version.MINOR;
+            }
+
+            if (tempVersionBump == Version.MAJOR)
+            {
+                versionBump = Version.MAJOR;
+            }
+            else if (tempVersionBump == Version.MINOR && versionBump == Version.PATCH)
+            {
+                versionBump = Version.MINOR;
             }
 
             return versionBump;
@@ -443,50 +408,13 @@ namespace VersionController.Models
         /// </summary>
         public void SerializeModule()
         {
-            var outputModuleManifestPath = _fileHelper.OutputModuleManifestPath;
-            var outputModuleDirectory = _fileHelper.OutputModuleDirectory;
-            var outputDirectories = _fileHelper.OutputDirectories;
             var serializedCmdletsDirectory = _fileHelper.SerializedCmdletsDirectory;
             var moduleName = _fileHelper.ModuleName;
-            IEnumerable<string> nestedModules = null;
-            using (PowerShell powershell = PowerShell.Create())
-            {
-                powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").NestedModules");
-                var cmdletResult = powershell.Invoke();
-                nestedModules = cmdletResult.Select(c => c.ToString() + ".dll");
-            }
 
-            if (nestedModules.Any())
-            {
-                List<string> requiredModules = null;
-                using (PowerShell powershell = PowerShell.Create())
-                {
-                    powershell.AddScript("(Test-ModuleManifest -Path " + outputModuleManifestPath + ").RequiredModules");
-                    var cmdletResult = powershell.Invoke();
-                    requiredModules = cmdletResult.Select(c => c.ToString())
-                                                  .Join(outputDirectories,
-                                                        module => 1,
-                                                        directory => 1,
-                                                        (module, directory) => Path.Combine(directory, module))
-                                                  .Where(f => Directory.Exists(f))
-                                                  .ToList();
-                }
-
-                requiredModules.Add(outputModuleDirectory);
-                foreach (var nestedModule in nestedModules)
-                {
-                    var assemblyPath = Directory.GetFiles(outputModuleDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
-                    var proxy = new CmdletLoader();
-                    var newModuleMetadata = proxy.GetModuleMetadata(assemblyPath, requiredModules);
-                    var serializedCmdletName = nestedModule + ".json";
-                    var serializedCmdletFile = Path.Combine(serializedCmdletsDirectory, serializedCmdletName);
-                    SerializeCmdlets(serializedCmdletFile, newModuleMetadata);
-                }
-            }
-            else
-            {
-                Console.WriteLine("No nested module(s) found for " + moduleName + " -- skipping serialization step.");
-            }
+            var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
+            var serializedCmdletName = $"{moduleName}.json";
+            var serializedCmdletFile = Path.Combine(serializedCmdletsDirectory, serializedCmdletName);
+            SerializeCmdlets(serializedCmdletFile, newModuleMetadata);
         }
     }
 }
