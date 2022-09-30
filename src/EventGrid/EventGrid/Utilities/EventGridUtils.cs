@@ -135,6 +135,17 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
             return scope;
         }
 
+        public static string ParsePartnerNamespaceNameFromId(string resourceId)
+        {
+            if (!string.IsNullOrEmpty(resourceId))
+            {
+                string[] tokens = resourceId.Split(new[] { '/' }, StringSplitOptions.RemoveEmptyEntries);
+                return tokens[5];
+            }
+
+            return null;
+        }
+
         public static string ParseResourceGroupFromId(string resourceId)
         {
             if (!string.IsNullOrEmpty(resourceId))

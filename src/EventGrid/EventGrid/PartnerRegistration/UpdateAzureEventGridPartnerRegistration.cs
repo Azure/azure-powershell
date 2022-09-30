@@ -96,7 +96,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 partnerRegistrationName = this.Name;
             }
 
-            if (this.ShouldProcess(resourceGroupName, $"Update an EventGrid partner registration in Resource Group {resourceGroupName}"))
+            if (this.ShouldProcess(partnerRegistrationName, $"Update EventGrid partner registration {partnerRegistrationName} in Resource Group {resourceGroupName}"))
             {
                 PartnerRegistration partnerRegistration = this.Client.UpdatePartnerRegistration(
                     resourceGroupName,

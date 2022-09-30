@@ -27,19 +27,19 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         "Update",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerNamespace",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridChannel",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = PartnerNamespaceNameParameterSet),
-    OutputType(typeof(PSPartnerNamespace))]
+        DefaultParameterSetName = ChannelNameParameterSet),
+    OutputType(typeof(PSChannel))]
 
-    public class UpdateAzureEventGridPartnerNamespace : AzureEventGridCmdletBase
+    public class UpdateAzureEventGridChannel : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = PartnerNamespaceNameParameterSet)]
+            ParameterSetName = ChannelNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
@@ -50,102 +50,99 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             Position = 1,
             HelpMessage = EventGridConstants.PartnerNamespaceNameHelp,
-            ParameterSetName = PartnerNamespaceNameParameterSet)]
+            ParameterSetName = ChannelNameParameterSet)]
         [ResourceNameCompleter("Microsoft.EventGrid/partnerNamespaces", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
-        [Alias("PartnerNamespaceName")]
+        public string PartnerNamespaceName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = EventGridConstants.ChannelNameHelp,
+            ParameterSetName = ChannelNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/channels", nameof(ResourceGroupName), nameof(PartnerNamespaceName))]
+        [ValidateNotNullOrEmpty]
+        [Alias("ChannelName")]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.PartnerNamespaceInputObjectHelp,
-            ParameterSetName = PartnerNamespaceInputObjectParameterSet)]
-        public PSPartnerNamespace InputObject { get; set; }
-
-        /// <summary>
-        /// Hashtable which represents resource Tags.
-        /// </summary>
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TagsHelp,
-            ParameterSetName = PartnerNamespaceNameParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TagsHelp,
-            ParameterSetName = PartnerNamespaceInputObjectParameterSet)]
-        public Hashtable Tag { get; set; }
+            HelpMessage = EventGridConstants.ChannelInputObjectHelp,
+            ParameterSetName = ChannelInputObjectParameterSet)]
+        public PSChannel InputObject { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.PSInboundIpRuleHelp,
-            ParameterSetName = PartnerNamespaceNameParameterSet)]
+            HelpMessage = EventGridConstants.EventTypeKindHelp,
+            ParameterSetName = ChannelNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.PSInboundIpRuleHelp,
-            ParameterSetName = PartnerNamespaceInputObjectParameterSet)]
-        public PSInboundIpRule[] InboundIpRule { get; set; }
+            HelpMessage = EventGridConstants.EventTypeKindHelp,
+            ParameterSetName = ChannelInputObjectParameterSet)]
+        public string EventTypeKind { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.PublicNetworkAccessHelp,
-            ParameterSetName = PartnerNamespaceNameParameterSet)]
+            HelpMessage = EventGridConstants.InlineEventHelp,
+            ParameterSetName = ChannelNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.PublicNetworkAccessHelp,
-            ParameterSetName = PartnerNamespaceInputObjectParameterSet)]
-        public string PublicNetworkAccess { get; set; }
+            HelpMessage = EventGridConstants.InlineEventHelp,
+            ParameterSetName = ChannelInputObjectParameterSet)]
+        [ValidateSet("Inline", IgnoreCase = true)]
+        public Hashtable InlineEvent { get; set; }
 
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.DisableLocalAuthHelp,
-            ParameterSetName = PartnerNamespaceNameParameterSet)]
+            HelpMessage = EventGridConstants.ExpirationTimeIfNotActivatedHelp,
+            ParameterSetName = ChannelNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.DisableLocalAuthHelp,
-            ParameterSetName = PartnerNamespaceInputObjectParameterSet)]
-        public bool? DisableLocalAuth { get; set; }
+            HelpMessage = EventGridConstants.ExpirationTimeIfNotActivatedHelp,
+            ParameterSetName = ChannelInputObjectParameterSet)]
+        public DateTime? ExpirationTimeIfNotActivatedUtc { get; set; }
 
         public override void ExecuteCmdlet()
         {
-            // Update an Event Grid Partner Namespace
-            Dictionary<string, string> tagDictionary = TagsConversionHelper.CreateTagDictionary(this.Tag, true);
-            List<InboundIpRule> inboundIpRulesList = this.Client.CreateInboundIpRuleList(this.InboundIpRule);
+            // Update an Event Grid Channel
             string resourceGroupName = string.Empty;
             string partnerNamespaceName = string.Empty;
+            string channelName = string.Empty;
 
             if (this.InputObject != null)
             {
                 resourceGroupName = this.InputObject.ResourceGroupName;
                 partnerNamespaceName = this.InputObject.PartnerNamespaceName;
+                channelName = this.InputObject.ChannelName;
             }
             else
             {
                 resourceGroupName = this.ResourceGroupName;
-                partnerNamespaceName = this.Name;
+                partnerNamespaceName = this.PartnerNamespaceName;
+                channelName = this.Name;
             }
 
-            if (this.ShouldProcess(partnerNamespaceName, $"Update EventGrid partner namespace {partnerNamespaceName} in Resource Group {resourceGroupName}"))
+            if (this.ShouldProcess(channelName, $"Update EventGrid channel {channelName} under partner namespace {partnerNamespaceName} in Resource Group {resourceGroupName}"))
             {
-                PartnerNamespace partnerNamespace = this.Client.UpdatePartnerNamespace(
+                Channel channel = this.Client.UpdateChannel(
                     resourceGroupName,
                     partnerNamespaceName,
-                    tagDictionary,
-                    this.PublicNetworkAccess,
-                    inboundIpRulesList,
-                    this.DisableLocalAuth);
+                    channelName,
+                    this.EventTypeKind,
+                    this.InlineEvent,
+                    this.ExpirationTimeIfNotActivatedUtc);
 
-                PSPartnerNamespace psPartnerNamespace = new PSPartnerNamespace(partnerNamespace);
-                this.WriteObject(psPartnerNamespace);
+                PSChannel psChannel = new PSChannel(channel);
+                this.WriteObject(psChannel);
             }
         }
     }

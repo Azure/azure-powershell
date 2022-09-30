@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 partnerNamespaceName = this.PartnerNamespaceName;
             }
 
-            if (this.ShouldProcess(this.ResourceGroupName, $"Regenerate key {this.Name} for EventGrid partner namespace {partnerNamespaceName} in Resource Group {resourceGroupName}"))
+            if (this.ShouldProcess(this.Name, $"Regenerate key {this.Name} for EventGrid partner namespace {partnerNamespaceName} in Resource Group {resourceGroupName}"))
             {
                 PartnerNamespaceSharedAccessKeys partnerNamespaceSharedAccessKeys = this.Client.RegeneratePartnerNamespaceKey(resourceGroupName, partnerNamespaceName, this.Name);
                 PSPartnerNamespaceSharedAccessKeys psPartnerNamespaceSharedAccessKeys = new PSPartnerNamespaceSharedAccessKeys(partnerNamespaceSharedAccessKeys);

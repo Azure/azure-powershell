@@ -26,19 +26,19 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         VerbsCommon.Remove,
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerRegistration",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridChannel",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = PartnerRegistrationNameParameterSet),
+        DefaultParameterSetName = ChannelNameParameterSet),
     OutputType(typeof(bool))]
 
-    public class RemoveAzureEventGridPartnerRegistration : AzureEventGridCmdletBase
+    public class RemoveAzureEventGridChannel : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = PartnerRegistrationNameParameterSet)]
+            ParameterSetName = ChannelNameParameterSet)]
         [ResourceGroupCompleter]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
@@ -48,20 +48,30 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 1,
-            HelpMessage = EventGridConstants.PartnerRegistrationNameHelp,
-            ParameterSetName = PartnerRegistrationNameParameterSet)]
-        [ResourceNameCompleter("Microsoft.EventGrid/partnerRegistrations", nameof(ResourceGroupName))]
+            HelpMessage = EventGridConstants.PartnerNamespaceNameHelp,
+            ParameterSetName = ChannelNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/partnerNamespaces", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
-        [Alias("PartnerRegistrationName")]
+        public string PartnerNamespaceName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = EventGridConstants.ChannelNameHelp,
+            ParameterSetName = ChannelNameParameterSet)]
+        [ResourceNameCompleter("Microsoft.EventGrid/channels", nameof(ResourceGroupName), nameof(PartnerNamespaceName))]
+        [ValidateNotNullOrEmpty]
+        [Alias("ChannelName")]
         public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
-            HelpMessage = EventGridConstants.PartnerRegistrationInputObjectHelp,
-            ParameterSetName = PartnerRegistrationInputObjectParameterSet)]
-        public PSPartnerRegistration InputObject { get; set; }
+            HelpMessage = EventGridConstants.ChannelInputObjectHelp,
+            ParameterSetName = ChannelInputObjectParameterSet)]
+        public PSChannel InputObject { get; set; }
 
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
@@ -69,22 +79,25 @@ namespace Microsoft.Azure.Commands.EventGrid
         public override void ExecuteCmdlet()
         {
             string resourceGroupName = string.Empty;
-            string partnerRegistrationName = string.Empty;
+            string partnerNamespaceName = string.Empty;
+            string channelName = string.Empty;
 
             if (this.InputObject != null)
             {
                 resourceGroupName = this.InputObject.ResourceGroupName;
-                partnerRegistrationName = this.InputObject.PartnerRegistrationName;
+                partnerNamespaceName = this.InputObject.PartnerNamespaceName;
+                channelName = this.InputObject.ChannelName;
             }
             else
             {
                 resourceGroupName = this.ResourceGroupName;
-                partnerRegistrationName = this.Name;
+                partnerNamespaceName = this.PartnerNamespaceName;
+                channelName = this.Name;
             }
 
-            if (this.ShouldProcess(partnerRegistrationName, $"Remove EventGrid partner registration {partnerRegistrationName} in Resource Group {resourceGroupName}"))
+            if (this.ShouldProcess(channelName, $"Remove EventGrid channel {channelName} under partner namespace {partnerNamespaceName} in Resource Group {resourceGroupName}"))
             {
-                this.Client.DeletePartnerRegistration(resourceGroupName, partnerRegistrationName);
+                this.Client.DeleteChannel(resourceGroupName, partnerNamespaceName, channelName);
 
                 if (this.PassThru)
                 {

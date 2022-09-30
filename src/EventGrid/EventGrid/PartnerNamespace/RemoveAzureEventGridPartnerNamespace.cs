@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 partnerNamespaceName = this.Name;
             }
 
-            if (this.ShouldProcess(this.ResourceGroupName, $"Remove EventGrid partner namespace {partnerNamespaceName} in Resource Group {resourceGroupName}"))
+            if (this.ShouldProcess(partnerNamespaceName, $"Remove EventGrid partner namespace {partnerNamespaceName} in Resource Group {resourceGroupName}"))
             {
                 this.Client.DeletePartnerNamespace(resourceGroupName, partnerNamespaceName);
 

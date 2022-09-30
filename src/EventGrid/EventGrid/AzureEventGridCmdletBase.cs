@@ -88,6 +88,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         protected const string PartnerRegistrationInputObjectParameterSet = "PartnerRegistrationInputObjectParameterSet";
         protected const string PartnerTopicInputObjectParameterSet = "PartnerTopicInputObjectParameterSet";
         protected const string PartnerNamespaceInputObjectParameterSet = "PartnerNamespaceInputObjectParameterSet";
+        protected const string ChannelInputObjectParameterSet = "ChannelInputObjectParameterSet";
 
         EventGridClient client;
 

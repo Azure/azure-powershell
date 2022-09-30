@@ -26,6 +26,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         public PSChannel(Channel channel)
         {
             this.ResourceGroupName = EventGridUtils.ParseResourceGroupFromId(channel.Id);
+            this.PartnerNamespaceName = EventGridUtils.ParsePartnerNamespaceNameFromId(channel.Id);
             this.ChannelName = channel.Name;
             this.Id = channel.Id;
             this.ProvisioningState = channel.ProvisioningState;
@@ -37,6 +38,8 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
         }
 
         public string ResourceGroupName { get; set; }
+
+        public string PartnerNamespaceName { get; set; }
 
         public string ChannelName { get; set; }
 

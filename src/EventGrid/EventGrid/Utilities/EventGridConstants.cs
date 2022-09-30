@@ -98,6 +98,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string PartnerRegistrationInputObjectHelp = "PartnerRegistration object";
         public const string PartnerTopicInputObjectHelp = "PartnerTopic object.";
         public const string PartnerNamespaceInputObjectHelp = "PartnerNamespace object";
+        public const string ChannelInputObjectHelp = "Channel object";
 
         public const string PartnerRegistrationNameHelp = "Event Grid partner registration name.";
         public const string PartnerTopicNameHelp = "Event Grid partner topic name.";
@@ -119,12 +120,14 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string PartnerNamespaceEndpointHelp = "Endpoint for the partner namespace";
         public const string PartnerRegistrationFullyQualifiedIdHelp = "Fully qualified ARM Id of the partner registration that should be associated with this partner namespace. This takes the following format: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventGrid/partnerRegistrations/{partnerRegistrationName}.";
         public const string PartnerTopicRoutingModeHelp = "Determines if events published to this partner namespace should use the source attribute in the event payload or use the channel name in the header when matching to the partner topic. If none is specified, source attribute routing will be used to match the partner topic. Possible values include: 'SourceEventAttribute', 'ChannelNameHeader'";
-        public const string ExpirationTimeIfNotActivatedHelp = "expiration time of the partner topic. If this timer expires while the partner topic is still never activated, the partner topic and corresponding event channel are deleted.";
+        public const string ExpirationTimeIfNotActivatedHelp = "Expiration time of the partner topic. If this timer expires while the partner topic is still never activated, the partner topic and corresponding event channel are deleted.";
         public const string MessageForActivationHelp = "Context or helpful message that can be used during the approval process by the subscriber.";
         public const string EventTypeKindHelp = "The kind of event type used. Possible values include: 'Inline'";
         public const string InlineEventHelp = "Hashtable representing information on inline events. The inline event keys are of type string which represents the name of the event." +
                                               "The inline event values are Hashtables containing the optional keys description, displayName, documentationUrl, and dataSchemaUrl which define the information about the inline event.";
-
+        public const string ChannelTypeHelp = "The type of the event channel which represents the direction flow of events. Possible values include: 'PartnerTopic'";
+        public const string PartnerTopicSourceHelp = "Source information provided by the publisher to determine the scope or context from which the events are originating.";
+        
         public const string EventSubscriptionFullUrlHelp = "Include the full endpoint URL of the event subscription destination.";
         public const string EventSubscriptionFullUrlInResponseHelp = "If specified, include the full endpoint URL of the event subscription destination in the response.";
 

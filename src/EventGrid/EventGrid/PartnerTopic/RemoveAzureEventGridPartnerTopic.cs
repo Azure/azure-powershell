@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 partnerTopicName = this.Name;
             }
 
-            if (this.ShouldProcess(this.ResourceGroupName, $"Remove EventGrid partner topic {partnerTopicName} in Resource Group {resourceGroupName}"))
+            if (this.ShouldProcess(partnerTopicName, $"Remove EventGrid partner topic {partnerTopicName} in Resource Group {resourceGroupName}"))
             {
                 this.Client.DeletePartnerTopic(resourceGroupName, partnerTopicName);
 
