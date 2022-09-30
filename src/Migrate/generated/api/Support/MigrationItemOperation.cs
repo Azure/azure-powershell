@@ -13,6 +13,10 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation Migrate = @"Migrate";
 
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation PauseReplication = @"PauseReplication";
+
+        public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation ResumeReplication = @"ResumeReplication";
+
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation StartResync = @"StartResync";
 
         public static Microsoft.Azure.PowerShell.Cmdlets.Migrate.Support.MigrationItemOperation TestMigrate = @"TestMigrate";
