@@ -47,7 +47,7 @@ Get-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceNam
 ```
 
 ```output
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/authorizationRules
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/authorizationRules
                                /myAuthRule
 Location                     : Central US
 Name                         : myAuthRule
@@ -63,7 +63,7 @@ Get-AzEventHubAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceNam
 ```
 
 ```output
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub/authorizationRules
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/eventhubs/myEventHub/authorizationRules
                                /myAuthRule
 Location                     : Central US
 Name                         : myAuthRule
@@ -111,7 +111,7 @@ The name of the EventHub entity.
 ```yaml
 Type: System.String
 Parameter Sets: GetExpandedEntity
-Aliases: EventHub
+Aliases:
 
 Required: True
 Position: Named
@@ -157,7 +157,7 @@ The name of EventHub namespace
 ```yaml
 Type: System.String
 Parameter Sets: GetExpandedNamespace, GetExpandedEntity, GetExpandedAlias
-Aliases: Namespace
+Aliases:
 
 Required: True
 Position: Named

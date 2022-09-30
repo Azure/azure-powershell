@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzServiceBusNetworkRuleSet
 
 ## SYNOPSIS
-Sets an ServiceBus Namespace Network Rule Set
+Updates the NetworkRuleSet of a ServiceBus namespace
 
 ## SYNTAX
 
@@ -29,7 +29,7 @@ Set-AzServiceBusNetworkRuleSet -InputObject <IServiceBusIdentity> [-DefaultActio
 ```
 
 ## DESCRIPTION
-Sets an ServiceBus Namespace Network Rule Set
+Updates the NetworkRuleSet of a ServiceBus namespace
 
 ## EXAMPLES
 

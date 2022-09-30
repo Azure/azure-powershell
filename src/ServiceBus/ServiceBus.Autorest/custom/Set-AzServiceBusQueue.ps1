@@ -14,9 +14,9 @@
 
 <#
 .Synopsis
-Sets a ServiceBus Queue
+Updates a ServiceBus Queue
 .Description
-Sets a ServiceBus Queue
+Updates a ServiceBus Queue
 #>
 
 function Set-AzServiceBusQueue{

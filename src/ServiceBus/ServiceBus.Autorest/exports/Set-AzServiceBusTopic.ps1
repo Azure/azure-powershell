@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Sets a ServiceBus Topic
+Updates a ServiceBus Topic
 .Description
-Sets a ServiceBus Topic
+Updates a ServiceBus Topic
 .Example
 Set-AzServiceBusTopic -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myTopic -DefaultMessageTimeToLive (New-TimeSpan -Days 20) -MaxMessageSizeInKilobytes 102400
 .Example

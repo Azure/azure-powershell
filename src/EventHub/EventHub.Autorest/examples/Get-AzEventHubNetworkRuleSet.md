@@ -6,7 +6,7 @@ Get-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName m
 ```output
 DefaultAction                : Allow
 IPRule                       : {}
-Id                           : /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/networkRuleSets/default
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.EventHub/namespaces/myNamespace/networkRuleSets/default
 Location                     : Central US
 Name                         : default
 PublicNetworkAccess          : Enabled

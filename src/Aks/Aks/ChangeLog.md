@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking Change] Removed the alias `Install-AzAksKubectl` of `Install-AzAksCliTool`.
 
 ## Version 4.3.0
 * Added support of `FQDN` in `Import-AzAksCredential` [#17711]
