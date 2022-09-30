@@ -207,15 +207,5 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 WriteObject(sasToken);
             }
         }
-
-        protected override IStorageFileManagement CreateChannel()
-        {
-            if (this.Channel == null || !this.ShareChannel)
-            {
-                this.Channel = new StorageFileManagement(this.GetCmdletStorageContext());
-            }
-
-            return this.Channel;
-        }
     }
 }
