@@ -1,0 +1,76 @@
+{
+  "New-AzEventHubSchemaGroup+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutoreste94b8d/providers/Microsoft.EventHub/namespaces/namespaceNametdu4ri/schemagroups/schemaGroupf61v53?api-version=2022-01-01-preview+1": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutoreste94b8d/providers/Microsoft.EventHub/namespaces/namespaceNametdu4ri/schemagroups/schemaGroupf61v53?api-version=2022-01-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"groupProperties\": {\n      \"c\": \"d\",\n      \"a\": \"b\"\n    },\n    \"schemaCompatibility\": \"Forward\",\n    \"schemaType\": \"Avro\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "151" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "77f084a4-1895-4a28-83b3-afd6f99135e5_M10SN1_M10SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1185" ],
+        "x-ms-correlation-request-id": [ "184a090e-56ef-4864-8e5e-4da92137db10" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220918T113234Z:184a090e-56ef-4864-8e5e-4da92137db10" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 18 Sep 2022 11:32:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "535" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutoreste94b8d/providers/Microsoft.EventHub/namespaces/namespaceNametdu4ri/schemagroups/schemaGroupf61v53\",\"name\":\"schemaGroupf61v53\",\"type\":\"Microsoft.EventHub/Namespaces/SchemaGroups\",\"location\":\"East US\",\"properties\":{\"updatedAtUtc\":\"2022-09-18T11:32:33.8705898Z\",\"createdAtUtc\":\"2022-09-18T11:32:33.8705898Z\",\"eTag\":\"2d0d238c-dc2e-4880-945a-6fb9c2ea527c\",\"groupProperties\":{\"c\":\"d\",\"a\":\"b\"},\"schemaCompatibility\":\"Forward\",\"schemaType\":\"Avro\"}}",
+      "isContentBase64": false
+    }
+  },
+  "New-AzEventHubSchemaGroup+[NoContext]+CreateExpanded+$PUT+https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutoreste94b8d/providers/Microsoft.EventHub/namespaces/namespaceNametdu4ri/schemagroups/schemaGroupxcoiez?api-version=2022-01-01-preview+2": {
+    "Request": {
+      "Method": "PUT",
+      "RequestUri": "https://management.azure.com/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutoreste94b8d/providers/Microsoft.EventHub/namespaces/namespaceNametdu4ri/schemagroups/schemaGroupxcoiez?api-version=2022-01-01-preview",
+      "Content": "{\n  \"properties\": {\n    \"schemaCompatibility\": \"Backward\",\n    \"schemaType\": \"Avro\"\n  }\n}",
+      "isContentBase64": false,
+      "Headers": {
+      },
+      "ContentHeaders": {
+        "Content-Type": [ "application/json" ],
+        "Content-Length": [ "89" ]
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "x-ms-request-id": [ "ad1722f4-8479-4813-a64d-1e80ebdf8103_M10SN1_M10SN1" ],
+        "Server-SB": [ "Service-Bus-Resource-Provider/SN1" ],
+        "Server": [ "Service-Bus-Resource-Provider/SN1", "Microsoft-HTTPAPI/2.0" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1184" ],
+        "x-ms-correlation-request-id": [ "750ca20f-63a8-438c-889c-2d83c9076767" ],
+        "x-ms-routing-request-id": [ "KOREACENTRAL:20220918T113235Z:750ca20f-63a8-438c-889c-2d83c9076767" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Sun, 18 Sep 2022 11:32:35 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "521" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/resourceGroupAutoreste94b8d/providers/Microsoft.EventHub/namespaces/namespaceNametdu4ri/schemagroups/schemaGroupxcoiez\",\"name\":\"schemaGroupxcoiez\",\"type\":\"Microsoft.EventHub/Namespaces/SchemaGroups\",\"location\":\"East US\",\"properties\":{\"updatedAtUtc\":\"2022-09-18T11:32:35.5580808Z\",\"createdAtUtc\":\"2022-09-18T11:32:35.5580808Z\",\"eTag\":\"2dc817d6-2bfd-44a1-8c66-8af69f360568\",\"groupProperties\":{},\"schemaCompatibility\":\"Backward\",\"schemaType\":\"Avro\"}}",
+      "isContentBase64": false
+    }
+  }
+}

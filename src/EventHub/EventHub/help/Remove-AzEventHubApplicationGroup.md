@@ -1,46 +1,40 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/remove-azeventhubapplicationgroup
 schema: 2.0.0
 ---
 
 # Remove-AzEventHubApplicationGroup
 
 ## SYNOPSIS
-Removes an application group from a namespace.
+Deletes an ApplicationGroup for a Namespace.
 
 ## SYNTAX
 
-### ApplicationGroupPropertiesParameterSet (Default)
+### Delete (Default)
 ```
-Remove-AzEventHubApplicationGroup [-ResourceGroupName] <String> [-NamespaceName] <String> [-Name] <String>
- [-PassThru] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-AzEventHubApplicationGroup -Name <String> -NamespaceName <String> -ResourceGroupName <String>
+ [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ApplicationGroupResourceIdParameterSet
+### DeleteViaIdentity
 ```
-Remove-AzEventHubApplicationGroup [-ResourceId] <String> [-PassThru] [-DefaultProfile <IAzureContextContainer>]
+Remove-AzEventHubApplicationGroup -InputObject <IEventHubIdentity> [-DefaultProfile <PSObject>] [-PassThru]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
-### ApplicationGroupInputObjectParameterSet
-```
-Remove-AzEventHubApplicationGroup [-InputObject] <PSEventHubApplicationGroupAttributes> [-PassThru]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
-```
-
 ## DESCRIPTION
-Removes an application group from a namespace.
+Deletes an ApplicationGroup for a Namespace.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Remove an application group from an EventHub Namespace
 ```powershell
-Remove-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name myappgroup
+Remove-AzEventHubApplicationGroup -NamespaceName myNamespace -ResourceGroupName myResourceGroup -Name myAppGroup
 ```
 
-Removes application group myappgroup from namespace mynamespace.
+Deletes application group `myAppGroup` from namespace `myNamespace`.
 
 ## PARAMETERS
 
@@ -48,9 +42,9 @@ Removes application group myappgroup from namespace mynamespace.
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -60,52 +54,53 @@ Accept wildcard characters: False
 ```
 
 ### -InputObject
-Input Object of type PSEventHubApplicationGroupAttributes
+Identity Parameter
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: Microsoft.Azure.Commands.EventHub.Models.PSEventHubApplicationGroupAttributes
-Parameter Sets: ApplicationGroupInputObjectParameterSet
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
+Parameter Sets: DeleteViaIdentity
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: True (ByValue)
 Accept wildcard characters: False
 ```
 
 ### -Name
-Application Group Name
+The Application Group name
 
 ```yaml
 Type: System.String
-Parameter Sets: ApplicationGroupPropertiesParameterSet
-Aliases:
+Parameter Sets: Delete
+Aliases: ApplicationGroupName
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -NamespaceName
-Namespace Name
+The Namespace name
 
 ```yaml
 Type: System.String
-Parameter Sets: ApplicationGroupPropertiesParameterSet
-Aliases:
+Parameter Sets: Delete
+Aliases: Namespace
 
 Required: True
-Position: 1
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -PassThru
-{{ Fill PassThru Description }}
+Returns true when the command succeeds
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
@@ -120,32 +115,33 @@ Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+Name of the resource group within the azure subscription.
 
 ```yaml
 Type: System.String
-Parameter Sets: ApplicationGroupPropertiesParameterSet
+Parameter Sets: Delete
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -ResourceId
-ResourceId of application group
+### -SubscriptionId
+Subscription credentials that uniquely identify a Microsoft Azure subscription.
+The subscription ID forms part of the URI for every service call.
 
 ```yaml
 Type: System.String
-Parameter Sets: ApplicationGroupResourceIdParameterSet
+Parameter Sets: Delete
 Aliases:
 
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
@@ -185,14 +181,34 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
-
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubApplicationGroupAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.IEventHubIdentity
 
 ## OUTPUTS
 
-### System.Void
+### System.Boolean
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IEventHubIdentity>`: Identity Parameter
+  - `[Alias <String>]`: The Disaster Recovery configuration name
+  - `[ApplicationGroupName <String>]`: The Application Group name 
+  - `[AuthorizationRuleName <String>]`: The authorization rule name.
+  - `[ClusterName <String>]`: The name of the Event Hubs Cluster.
+  - `[ConsumerGroupName <String>]`: The consumer group name
+  - `[EventHubName <String>]`: The Event Hub name
+  - `[Id <String>]`: Resource identity path
+  - `[NamespaceName <String>]`: The Namespace name
+  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
+  - `[ResourceAssociationName <String>]`: The ResourceAssociation Name
+  - `[ResourceGroupName <String>]`: Name of the resource group within the azure subscription.
+  - `[SchemaGroupName <String>]`: The Schema Group name 
+  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
 
 ## RELATED LINKS
