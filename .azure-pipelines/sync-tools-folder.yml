@@ -44,5 +44,5 @@ jobs:
       $HeadBranch = "syncToolsFolder-$(BranchName)"
       $BaseBranch = "$(BranchName)"
       $Description = "Migrate Sync tools code from main branch to generation branch"
-      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(BotAccessToken) -Description $Description
+      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
     displayName: Create PR to generation branch
