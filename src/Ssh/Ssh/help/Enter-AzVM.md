@@ -8,8 +8,8 @@ schema: 2.0.0
 # Enter-AzVM
 
 ## SYNOPSIS
-Start interactive SSH session to an Azure Resource (currently supports Azure VMs and Arc Servers).
-Users can login using AAD issued certificates or using local user credentials. We recommend login using AAD issued certificates.
+Starts an interactive SSH session to an Azure Resource (such as Azure VMs or Arc Servers).
+Users can login using AAD accounts, or local user accounts via standard SSH authentication. Use AAD account login for the best security and convenience.
 
 ## SYNTAX
 

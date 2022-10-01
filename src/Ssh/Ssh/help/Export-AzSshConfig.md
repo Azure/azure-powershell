@@ -8,7 +8,7 @@ schema: 2.0.0
 # Export-AzSshConfig
 
 ## SYNOPSIS
-Exports SSH configuration file which can then be used by clients that support OpenSSH config and certificates to connect to Azure Resources.
+This cmdlet exports an SSH configuration file that can be used to connect to Azure Resources through client applications that support OpenSSH config and certificates. SSH config files can be created that use AAD issued certificates or local user credentials.
 
 ## SYNTAX
 
@@ -35,8 +35,10 @@ Export-AzSshConfig -ResourceId <String> -ConfigFilePath <String> [-PublicKeyFile
 ```
 
 ## DESCRIPTION
-Exports SSH configuration file which can then be used by clients that support OpenSSH config and certificates to connect to Azure Resources.
-Other software (git/rsync/etc) that support setting an SSH command can be set to use the config file by setting the command to 'ssh -F /path/to/config' e.g. rsync -e 'ssh -F /path/to/config'. Users can create ssh config files that use AAD issued certificates or local user credentials.
+The exported SSH configuration file can be used to connect to Azure Resources by client applications that support OpenSSH config and certificates. Applications such as git and rsync can use configuration file by setting the command to 'ssh -F /path/to/config'.
+For example:
+rsync -e 'ssh -F /path/to/config'.
+Users can create ssh config files that use AAD issued certificates or local user credentials.
 
 ## EXAMPLES
 
@@ -48,6 +50,7 @@ PS C:\> Export-AzSshConfig -ResourceGroupName myRg -Name myMachine -ConfigFilePa
 PS C:\> ssh -F ./sshconfig.config myRg-MyMachine
 ```
 When a -LocalUser is not supplied, the cmdlet will attempt to create a certificate to login using Azure AD. This is currently only supported for resources running Linux OS.
+When using Azure AD to login to resource, the Host name in the configuration entry will be "{resource group name}-{resource name}", or "{ip address}" for Azure VMs.
 
 ### Example 2: Export a SSH configuration file for connecting to the Public Ip of an Azure Virtual Machine using AAD issued certificates, and using it to sftp into that resource.
 ```powershell
@@ -72,6 +75,9 @@ Provide a private key file to authenticate via key-based authentication.
 PS C:\> Export-AzSshConfig -ResourceGroupName myRg -Name myVm -LocalUser azureuser -ConfigFilePath ./sshconfig.config
 ```
 If no credentials are provided, authenticate via interactive username and password.
+When using local user credentials to login, the host name in the configuration entry will be "{resource group name}-{resource name}-{username}", or "{ip address}-{username}" for Azure VMs.
+
+
 
 ### Example 4: Determine where generated keys and certificates for the certificate will the stored.
 ```powershell

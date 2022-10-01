@@ -109,7 +109,7 @@ function Start-Agent {
         '--tenant-id'
         $TenantId
         '--location'
-        "eastus2euap"
+        'eastus'
         '--subscription-id'
         $SubscriptionId
         '--access-token'

@@ -89,8 +89,8 @@ namespace Microsoft.Azure.Commands.Ssh.Models
                     builder.AppendLine($"\tHostName {this.HostName}");
                 }
                 builder.AppendLine(string.Format("\tUser {0}", this.User));
-                this.AppendKeyValuePairToStringBuilderIfNotValueNull("CertificateFile", this.CertificateFile, builder);
-                this.AppendKeyValuePairToStringBuilderIfNotValueNull("IdentityFile", this.IdentityFile, builder);
+                this.AppendKeyValuePairToStringBuilderIfNotValueNull("CertificateFile", $"\"{this.CertificateFile}\"", builder);
+                this.AppendKeyValuePairToStringBuilderIfNotValueNull("IdentityFile", $"\"{this.IdentityFile}\"", builder);
                 this.AppendKeyValuePairToStringBuilderIfNotValueNull("Port", this.Port, builder);
                 this.AppendKeyValuePairToStringBuilderIfNotValueNull("ProxyCommand", this.ProxyCommand, builder);
 
@@ -100,8 +100,8 @@ namespace Microsoft.Azure.Commands.Ssh.Models
                     else { builder.AppendLine($"\nHost {this.HostName}-{this.User}"); }
                     
                     builder.AppendLine(string.Format("\tUser {0}", this.User));
-                    this.AppendKeyValuePairToStringBuilderIfNotValueNull("CertificateFile", this.CertificateFile, builder);
-                    this.AppendKeyValuePairToStringBuilderIfNotValueNull("IdentityFile", this.IdentityFile, builder);
+                    this.AppendKeyValuePairToStringBuilderIfNotValueNull("CertificateFile", $"\"{this.CertificateFile}\"", builder);
+                    this.AppendKeyValuePairToStringBuilderIfNotValueNull("IdentityFile", $"\"{this.IdentityFile}\"", builder);
                     this.AppendKeyValuePairToStringBuilderIfNotValueNull("Port", this.Port, builder);
                 }
 
@@ -135,6 +135,7 @@ namespace Microsoft.Azure.Commands.Ssh.Models
         {
             if (value != null)
             {
+                if ((key.Equals("CertificateFile") || key.Equals("IdentityFile")) && value.Equals("\"\"")) { return; }
                 builder.AppendLine($"\t{key} {value}");
             }
         }

@@ -9,35 +9,59 @@ function Test-GetArcConfig
     $SubscriptionId = (Get-AzContext).Subscription.Id
     $TenantId = (Get-AzContext).Tenant.Id
 
-    Assert-AreEqual $SubscriptionId "8ac9b3ce-9c7e-43f4-ace6-137b961c1b09"
-    Assert-AreEqual $TenantId "72f988bf-86f1-41af-91ab-2d7cd011db47"
-
     New-AzResourceGroup -Name $ResourceGroupName -Location "eastus" | Out-Null
        
     $agent = installArcAgent
 
-    Start-Agent -MachineName $MachineName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -TenantId $TenantId -Agent $agent 
+    try 
+    {
+        Start-Agent -MachineName $MachineName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -TenantId $TenantId -Agent $agent 
 
-    $accessToken = Get-AzAccessToken
-    Assert-NotNull $accessToken
-
-    #azcmagent connect --resource-group $ResourceGroupName --tenant-id $TenantId --location eastus --subscription-id $SubscriptionId --access-token $accessToken --resource-name $MachineName
+        $accessToken = Get-AzAccessToken
+        Assert-NotNull $accessToken
     
-    Remove-Item ./config -ErrorAction Ignore
+        Remove-Item ./config -ErrorAction Ignore
 
-    $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $MachineName -ConfigFilePath ./config -LocalUser azureuser
+        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $MachineName -ConfigFilePath ./config -LocalUser azureuser -Port 35000
 
-    Assert-NotNull $configEntry
-    Assert-AreEqual $configEntry.Host "$ResourceGroupName-$MachineName"
-    Assert-AreEqual $configEntry.configString (Get-Content -Path ./config)
-    
-    Stop-Agent -AgentPath $agent
-    Remove-AzResourceGroup -Name $ResourceGroupName -Force
+        Assert-NotNull $configEntry
+        Assert-AreEqual $configEntry.Host "$ResourceGroupName-$MachineName"
+        Assert-AreEqual $configEntry.Hostname $MachineName
+
+        if ([intptr]::Size -eq 4) {
+            $arch = "386"
+        } else {
+            $arch = "amd64"
+        }
+
+        if ($IsWindows) {
+            $os = 'windows'
+        } elseif ($IsMacOS) {
+            $os = 'darwin'
+        } else {
+            $os = 'linux'
+        }
+
+        $proxyName = "sshProxy_" + $os + "_" + $arch +"_1_3_017634.exe"
+        $proxyPath = Join-Path $HOME ".clientsshproxy" $proxyName
+
+        $relayPath = Join-Path (Split-Path ((Resolve-Path ./config).Path)) "az_ssh_config" "$ResourceGroupName-$MachineName" "$ResourceGroupName-$MachineName-relay_info"
+
+        Assert-AreEqual $configEntry.ProxyCommand "`"$proxyPath`" -r `"$relayPath`" -p 35000"
+
+    }
+    finally {
+        Remove-Item ./config -ErrorAction Ignore -Force
+        Remove-Item ./az_ssh_config -ErrorAction Ignore -Force -Recurse
+        Remove-Item (Join-Path $HOME ".clientsshproxy") -ErrorAction Ignore -Force -Recurse
+        Stop-Agent -AgentPath $agent
+        Remove-AzResourceGroup -Name $ResourceGroupName -Force
+    }
 }
 
 <#
 .SYNOPSIS
-Test Exporting SSH Config File for an Azure VM using Local User Login
+Test Exporting SSH Config File for an Azure VM using Local User Login. Test overwriting and appending new entries to the same file.
 #>
 function Test-GetVmConfig
 {
@@ -52,16 +76,78 @@ function Test-GetVmConfig
 
     New-AzResourceGroup -Name $ResourceGroupName -Location "eastus" | Out-Null
 
-    New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Image UbuntuLTS -Credential $cred
+    try 
+    {
+        New-AzVM -ResourceGroupName $ResourceGroupName -Name $VmName -Location "eastus" -Image UbuntuLTS -Credential $cred
+        Remove-Item ./config -ErrorAction Ignore
 
-    Remove-Item ./config -ErrorAction Ignore
+        $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $VmName -ConfigFilePath ./config -LocalUser $username
 
-    $configEntry = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $VmName -ConfigFilePath ./config
+        Assert-NotNull $configEntry
+        Assert-AreEqual $configEntry.Host "$ResourceGroupName-$VmName"
+        Assert-AreEqual $configEntry.User $username
+        Assert-AreEqual $configEntry.ResourceType "Microsoft.Compute/virtualMachines"
+        Assert-AreEqual $configEntry.LoginType "LocalUser"
+        Assert-Null $configEntry.CertificateFile
+        Assert-Null $configEntry.IdentityFile
+        Assert-Null $configEntry.ProxyCommand
+        Assert-Null $configEntry.Port
+        Assert-NotNull $configEntry.HostName
 
-    Assert-NotNull $configEntry
-    Assert-AreEqual $configEntry.Host "$ResourceGroupName-$VmName"
-    Assert-AreEqual $configEntry.configString (Get-Content -Path ./config -Raw)
+        $configFileContent = (Get-Content -Path ./config)
+        Assert-AreEqual "Host $ResourceGroupName-$VmName-$username" $configFileContent[1]
 
-    Remove-AzResourceGroup -Name $ResourceGroupName -Force
+        #Create a new entry with a key, and append to config
+        Remove-Item ./tempprivkey -ErrorAction Ignore
+        New-Item -path . -name tempprivkey -ItemType file
+        $privkeypath = (Resolve-Path ./tempprivkey).Path
+        $configEntryKeyAuth = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $VmName -ConfigFilePath ./config -LocalUser $username -PrivateKeyFile ./tempprivkey -Port 35000
+
+        Assert-NotNull $configEntryKeyAuth
+        Assert-AreEqual $configEntryKeyAuth.Host "$ResourceGroupName-$VmName"
+        Assert-AreEqual $configEntryKeyAuth.User $username
+        Assert-AreEqual $configEntryKeyAuth.ResourceType "Microsoft.Compute/virtualMachines"
+        Assert-AreEqual $configEntryKeyAuth.LoginType "LocalUser"
+        Assert-AreEqual $configEntryKeyAuth.IdentityFile $privkeypath
+        Assert-AreEqual $configEntryKeyAuth.Port "35000"
+        Assert-Null $configEntryKeyAuth.CertificateFile
+        Assert-Null $configEntryKeyAuth.ProxyCommand
+        Assert-NotNull $configEntryKeyAuth.HostName
+
+        $len = $configFileContent.length
+        $configFileContent = (Get-Content -Path ./config)
+
+        Assert-AreEqual "Host $ResourceGroupName-$VmName-$username" $configFileContent[$len + 1]
+        Assert-AreEqual "IdentityFile `"$privkeypath`"" $configFileContent[$len + 4].Trim()
+
+        #Create a new entry with certificate, and overwrite Config
+        Remove-Item ./tempsshcert -ErrorAction Ignore
+        New-Item -path . -name tempsshcert -ItemType file
+        $certpath = (Resolve-Path ./tempsshcert).Path
+        $configEntryCertAuth = Export-AzSshConfig -ResourceGroupName $ResourceGroupName -Name $VmName -ConfigFilePath ./config -LocalUser $username -PrivateKeyFile ./tempprivkey -CertificateFile ./tempsshcert -Overwrite
+        $configFileContent = (Get-Content -Path ./config)
+
+        Assert-NotNull $configEntryCertAuth
+        Assert-AreEqual $configEntryCertAuth.Host "$ResourceGroupName-$VmName"
+        Assert-AreEqual $configEntryCertAuth.User $username
+        Assert-AreEqual $configEntryCertAuth.ResourceType "Microsoft.Compute/virtualMachines"
+        Assert-AreEqual $configEntryCertAuth.LoginType "LocalUser"
+        Assert-AreEqual $configEntryCertAuth.IdentityFile $privkeypath
+        Assert-AreEqual $configEntryCertAuth.CertificateFile $certpath
+        Assert-Null $configEntryCertAuth.Port
+        Assert-Null $configEntryCertAuth.ProxyCommand
+        Assert-NotNull $configEntryCertAuth.HostName
+        Assert-AreEqual $configFileContent.length 12
+
+        Assert-AreEqual "Host $ResourceGroupName-$VmName-$username" $configFileContent[1]
+        Assert-AreEqual "CertificateFile `"$certpath`"" $configFileContent[4].Trim()
+        Assert-AreEqual "IdentityFile `"$privkeypath`"" $configFileContent[5].Trim()
+        
+    }
+    finally {
+        Remove-Item ./config -ErrorAction Ignore -Force
+        Remove-AzResourceGroup -Name $ResourceGroupName -Force
+    }
 }
+
 
