@@ -43,50 +43,44 @@ Users can login using AAD issued certificates or using local user credentials. W
 
 ### Example 1: Connect to Azure Resource using AAD issued certificates
 ```powershell
-PS C:\> Enter-AzVM -ResourceGroupName myRg -Name myMachine
+Enter-AzVM -ResourceGroupName myRg -Name myMachine
 ```
 When a -LocalUser is not supplied, the cmdlet will attempt to login using Azure AD. This is currently only supported for resources running Linux OS.
 
-### Example 2: Connect to Azure Resource using a Local User credentials
+### Example 2: Connect to Local User on Azure Resource using SSH certificates for authentication
 ```powershell
-PS C:\> Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -PrivateKeyFile ./id_rsa -CertificateFile ./cert
+Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -PrivateKeyFile ./id_rsa -CertificateFile ./cert
 ```
-Provide an SSH certificate and private key to authenticate via certificate-based authentication.
+### Example 3: Connect to Local User on Azure Resource using SSH private key for authentication
 
 ```powershell
-PS C:\> Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -PrivateKeyFile ./id_rsa
+Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser -PrivateKeyFile ./id_rsa
 ```
-Provide a private key file to authenticate via key-based authentication.
+### Example 4: Connect to Local User on Azure Resource using interactive username and password authetication
 
 ```powershell
-PS C:\> Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser
+Enter-AzVM -ResourceGroupName myRg -Name myMachine -LocalUser azureuser
 ```
-If no credentials are provided, authenticate via interactive username and password.
-
-### Example 3: Connect to the Public Ip of an Azure Virtual Machine using AAD issued certificates
+### Example 5: Connect to the Public Ip of an Azure Virtual Machine using AAD issued certificates
 ```powershell
-PS C:\> Enter-AzVM -Ip 1.2.3.4
+Enter-AzVM -Ip 1.2.3.4
 ```
 
-### Example 4: Provide the Resource Type of the target.
+### Example 6: Provide the Resource Type of the target.
 ```powershell
-PS C:\> Enter-AzVM -ResourceGroupName myRg -Name myMachine -ResourceType Microsoft.HybridCompute/machines
-```
-
-```powershell
-PS C:\> Enter-AzVM -ResourceGroupName myRg -Name myMachine -ResourceType Microsoft.Compute/virtualMachines
+Enter-AzVM -ResourceGroupName myRg -Name myMachine -ResourceType Microsoft.HybridCompute/machines
 ```
 This parameter is useful when there is more than one supported resource with the same name in the Resource Group.
 
-### Example 5: Provide additional SSH arguments.
+### Example 7: Provide additional SSH arguments.
 ```powershell
-PS C:\> Enter-AzVM -ResourceGroupName myRg -Name myMachine -vvv "-o" FowardX11=yes
+Enter-AzVM -ResourceGroupName myRg -Name myMachine -vvv "-o" FowardX11=yes
 ```
 The name of some SSH arguments conflicts with the cmdlet parameters. In those cases, you can provide such SSH parameters in quotation marks. 
 
-### Example 6: Connect to Azure Resource using AAD certificate issued certificates and custom key files
+### Example 8: Connect to Azure Resource using AAD certificate issued certificates and custom key files
 ```powershell
-PS C:\> Enter-AzVM -ResourceGroupName myRg -Name myMachine -PrivateKeyFile ./id_rsa -PublicKeyFile ./id_rsa.pub
+Enter-AzVM -ResourceGroupName myRg -Name myMachine -PrivateKeyFile ./id_rsa -PublicKeyFile ./id_rsa.pub
 ```
 If custom key files are not provided, the cmdlet will generate the key pair.
 

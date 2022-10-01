@@ -4,6 +4,9 @@ Test Exporting SSH Config File for an Arc Server using Local User Login
 #>
 function Test-GetArcConfig
 {
+    if ($IsMacOS) {
+        return
+    }
     $MachineName = Get-RandomArcName
     $ResourceGroupName = Get-RandomResourceGroupName
     $SubscriptionId = (Get-AzContext).Subscription.Id
