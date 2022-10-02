@@ -22,7 +22,8 @@ using System.Collections.Generic;
 namespace Microsoft.Azure.Commands.Ssh
 {   
     [Cmdlet("Export",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SshConfig")]
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "SshConfig",
+        DefaultParameterSetName = InteractiveParameterSet)]
     [OutputType(typeof(PSSshConfigEntry))]
     public sealed class ExportAzSshConfig : SshBaseCmdlet
     {

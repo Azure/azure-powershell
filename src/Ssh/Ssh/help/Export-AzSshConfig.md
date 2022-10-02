@@ -42,7 +42,7 @@ Users can create ssh config files that use AAD issued certificates or local user
 
 ## EXAMPLES
 
-### Example 1: Export a SSH configuration file for connecting to a resource using AAD issued certificates for authentication, and using it to ssh into that resource. 
+### Example 1: Export a SSH configuration file for connecting to a resource using AAD issued certificates for authentication.
 ```powershell
 Export-AzSshConfig -ResourceGroupName myRg -Name myMachine -ConfigFilePath ./sshconfig.config
 ssh -F ./sshconfig.config myRg-MyMachine
@@ -50,10 +50,9 @@ ssh -F ./sshconfig.config myRg-MyMachine
 When a -LocalUser is not supplied, the cmdlet will attempt to create a certificate to login using Azure AD. This is currently only supported for resources running Linux OS.
 When using Azure AD to login to resource, the Host name in the configuration entry will be "{resource group name}-{resource name}", or "{ip address}" for Azure VMs.
 
-### Example 2: Export a SSH configuration file for connecting to the Public Ip of an Azure Virtual Machine using AAD issued certificates, and using it to sftp into that resource.
+### Example 2: Export a SSH configuration file for connecting to the Public Ip of an Azure Virtual Machine using AAD issued certificates.
 ```powershell
 Export-AzSshConfig -Ip 1.2.3.4 -ConfigFilePath ./sshconfig.config
-sftp -F ./sshconfig.config 
 ```
 
 ### Example 3: Export a SSH configuration file for connecting to Local User on Azure Resource using SSH certificates for authentication

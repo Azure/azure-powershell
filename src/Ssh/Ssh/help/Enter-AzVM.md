@@ -72,13 +72,7 @@ Enter-AzVM -ResourceGroupName myRg -Name myMachine -ResourceType Microsoft.Hybri
 ```
 This parameter is useful when there is more than one supported resource with the same name in the Resource Group.
 
-### Example 7: Provide additional SSH arguments.
-```powershell
-Enter-AzVM -ResourceGroupName myRg -Name myMachine -vvv "-o" FowardX11=yes
-```
-The name of some SSH arguments conflicts with the cmdlet parameters. In those cases, you can provide such SSH parameters in quotation marks. 
-
-### Example 8: Connect to Azure Resource using AAD certificate issued certificates and custom key files
+### Example 7: Connect to Azure Resource using AAD certificate issued certificates and custom key files
 ```powershell
 Enter-AzVM -ResourceGroupName myRg -Name myMachine -PrivateKeyFile ./id_rsa -PublicKeyFile ./id_rsa.pub
 ```
