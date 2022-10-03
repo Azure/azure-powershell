@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Sets an ServiceBus Namespace Network Rule Set
+Updates the NetworkRuleSet of a ServiceBus namespace
 .Description
-Sets an ServiceBus Namespace Network Rule Set
+Updates the NetworkRuleSet of a ServiceBus namespace
 .Example
 $ipRule1 = New-AzServiceBusIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 $ipRule2 = New-AzServiceBusIPRuleConfig -IPMask 3.3.3.3 -Action Allow

@@ -16,9 +16,9 @@
 
 <#
 .Synopsis
-Sets an ServiceBus Namespace, Queue and Topic Authorization Rule
+Updates the authorization rule of a ServiceBus namespace, queue or topic.
 .Description
-Sets an ServiceBus Namespace, Queue and Topic Authorization Rule
+Updates the authorization rule of a ServiceBus namespace, queue or topic.
 .Example
 Set-AzServiceBusAuthorizationRule -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name myAuthRule -Rights @('Manage','Send','Listen')
 .Example

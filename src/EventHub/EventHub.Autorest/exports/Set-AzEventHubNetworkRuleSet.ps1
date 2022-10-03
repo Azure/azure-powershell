@@ -22,7 +22,7 @@ Sets an EventHub Namespace Network Rule Set
 .Example
 $ipRule1 = New-AzEventHubIPRuleConfig -IPMask 2.2.2.2 -Action Allow
 $ipRule2 = New-AzEventHubIPRuleConfig -IPMask 3.3.3.3 -Action Allow
-$virtualNetworkRule1 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId /subscriptions/{subscriptionId}/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default
+$virtualNetworkRule1 = New-AzEventHubVirtualNetworkRuleConfig -SubnetId '/subscriptions/subscriptionId/resourcegroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVirtualNetwork/subnets/default'
 $networkRuleSet = Get-AzEventHubNetworkRuleSet -ResourceGroupName myResourceGroup -NamespaceName myNamespace
 $networkRuleSet.IPRule += $ipRule1
 $networkRuleSet.IPRule += $ipRule2
@@ -70,7 +70,6 @@ function Set-AzEventHubNetworkRuleSet {
 [CmdletBinding(DefaultParameterSetName='SetExpanded', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='SetExpanded', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The name of EventHub namespace

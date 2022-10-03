@@ -22,7 +22,7 @@ The Set-AzMigrateDiskMapping cmdlet updates a mapping of the source disk attache
 https://docs.microsoft.com/powershell/module/az.migrate/set-azmigratediskmapping
 #>
 function Set-AzMigrateDiskMapping {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IVMwareCbtUpdateDiskInput])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IVMwareCbtUpdateDiskInput])]
     [CmdletBinding(DefaultParameterSetName = 'VMwareCbt', PositionalBinding = $false)]
     param(
         [Parameter(Mandatory)]
@@ -39,7 +39,7 @@ function Set-AzMigrateDiskMapping {
     )
     
     process {
-        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.VMwareCbtUpdateDiskInput]::new()
+        $DiskObject = [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.VMwareCbtUpdateDiskInput]::new()
         $DiskObject.DiskId = $DiskID
 
         if ($DiskName.length -gt 80 -or $DiskName.length -eq 0) {

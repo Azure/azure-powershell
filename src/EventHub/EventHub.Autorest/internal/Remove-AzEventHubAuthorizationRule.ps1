@@ -55,7 +55,6 @@ function Remove-AzEventHubAuthorizationRule {
 [CmdletBinding(DefaultParameterSetName='Delete', PositionalBinding=$false, SupportsShouldProcess, ConfirmImpact='Medium')]
 param(
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('EventHub')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Event Hub name
@@ -68,7 +67,6 @@ param(
     ${Name},
 
     [Parameter(ParameterSetName='Delete', Mandatory)]
-    [Alias('Namespace')]
     [Microsoft.Azure.PowerShell.Cmdlets.EventHub.Category('Path')]
     [System.String]
     # The Namespace name

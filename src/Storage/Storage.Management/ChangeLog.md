@@ -18,27 +18,28 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
-* Replaced "Microsoft.Azure.Management.Storage" SDK reference to the generated SDK code
-* Migrated some Azure File dataplane cmdlets from v11 SDK to v12 SDK
-    -  `Get-AzStorageFile`
-    -  `Get-AzStorageFileCopyState`
-    -  `Get-AzStorageShare`
-    -  `Get-AzStorageShareStoredAccessPolicy`
-    -  `New-AzStorageDirectory`
-    -  `New-AzStorageFileSasToken`
-    -  `New-AzStorageShare`
-    -  `New-AzStorageShareSasToken`
-    -  `New-AzStorageShareStoredAccessPolicy`
-    -  `Remove-AzStorageDirectory`
-    -  `Remove-AzStorageFile`
-    -  `Remove-AzStorageShare`
-    -  `Remove-AzStorageShareStoredAccessPolicy`
-    -  `Set-AzStorageShareQuota`
-    -  `Set-AzStorageShareStoredAccessPolicy`
-    -  `Start-AzStorageFileCopy`
-    -  `Stop-AzStorageFileCopy`
-* Migrated Get/List blob to always using v12 SDK
-    -  `Get-AzStorageBlob`
+* Migrated following Azure File dataplane cmdlets from 'Microsoft.Azure.Storage.File 11.2.2' to 'Azure.Storage.Files.Shares 12.10.0'
+  * `Get-AzStorageFile`
+  * `Get-AzStorageFileCopyState`
+  * `Get-AzStorageShare`
+  * `Get-AzStorageShareStoredAccessPolicy`
+  * `New-AzStorageDirectory`
+  * `New-AzStorageFileSasToken`
+  * `New-AzStorageShare`
+  * `New-AzStorageShareSasToken`
+  * `New-AzStorageShareStoredAccessPolicy`
+  * `Remove-AzStorageDirectory`
+  * `Remove-AzStorageFile`
+  * `Remove-AzStorageShare`
+  * `Remove-AzStorageShareStoredAccessPolicy`
+  * `Set-AzStorageShareQuota`
+  * `Set-AzStorageShareStoredAccessPolicy`
+  * `Start-AzStorageFileCopy`
+  * `Stop-AzStorageFileCopy`
+* Migrated Get/List blob to always use 'Azure.Storage.Blobs'
+  * `Get-AzStorageBlob`
+* Fix create file sas failure with file object pipeline
+  * `New-AzStorageFileSasToken`
 
 ## Version 4.9.0
 * Supported to create or update Storage account with Azure Files Active Directory Domain Service Kerberos Authentication
