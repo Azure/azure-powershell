@@ -19,6 +19,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Most cmdlets in Az.ServiceBus module have been migrated to a new format and would witness breaking changes. Please refer our migration guide https://go.microsoft.com/fwlink/?linkid=2204584 to know breaking changes in detail.
 
 ## Version 1.11.0
 * In the upcoming major breaking change release in October 2022, Az.ServiceBus would be migrating most cmdlets to a new format

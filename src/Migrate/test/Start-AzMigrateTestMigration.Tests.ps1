@@ -13,7 +13,7 @@ while(-not $mockingPath) {
 
 Describe 'Start-AzMigrateTestMigration' {
     It 'ByIDVMwareCbt' {
-        $output = Start-AzMigrateTestMigration -TargetObjectID $env.srsMachinetmpx -TestNetworkId $env.srsTestNetworkId -SubscriptionId $env.srsSubscriptionId
+        $output = Start-AzMigrateTestMigration -TargetObjectID $env.srsMachinetmptest -TestNetworkId $env.srsTestNetworkId -SubscriptionId $env.srsSubscriptionId
         $output.Count | Should -BeGreaterOrEqual 1 
     }
 

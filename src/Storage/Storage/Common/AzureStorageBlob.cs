@@ -70,14 +70,14 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             {
                 if (privateBlobClient == null)
                 {
-                    if (this.ICloudBlob != null)
-                    {
-                        privateBlobClient = GetTrack2BlobClient(this.ICloudBlob, (AzureStorageContext)this.Context, this.privateClientOptions);
-                    }
-                    else if(this.privateBlobBaseClient != null)
+                    if(this.privateBlobBaseClient != null)
                     {
                         privateBlobClient = GetTrack2BlobClient(this.privateBlobBaseClient, (AzureStorageContext)this.Context, this.privateClientOptions);
                     }
+                    else if(this.ICloudBlob != null)
+                    {
+                        privateBlobClient = GetTrack2BlobClient(this.ICloudBlob, (AzureStorageContext)this.Context, this.privateClientOptions);
+                    }                    
                 }
                 return privateBlobClient;
             }
@@ -210,6 +210,11 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
         public Hashtable Tags { get; set; }
 
         /// <summary>
+        /// XSCL Track2 File List properties
+        /// </summary>
+        public BlobItem ListBlobProperties { get; private set; }
+
+        /// <summary>
         /// Azure storage blob constructor
         /// </summary>
         /// <param name="blob">ICloud blob object</param>
@@ -245,6 +250,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             if (listBlobItem == null)
             {
                 SetProperties(track2BlobClient, storageContext, track2BlobClient.GetProperties().Value, options);
+                this.ListBlobProperties = listBlobItem;
                 return;
             }
 
@@ -371,7 +377,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             }
             else // This code might should not be necessary, since currently only blob version will has Track1 Blob as null, and blob veresion won't have snapshot time
             {
-                SnapshotTime = Util.GetSnapshotTimeFromBlobUri(track2BlobClient.Uri);
+                SnapshotTime = Util.GetSnapshotTimeFromUri(track2BlobClient.Uri);
             }
 
             // Set the AzureStorageBlob Properties

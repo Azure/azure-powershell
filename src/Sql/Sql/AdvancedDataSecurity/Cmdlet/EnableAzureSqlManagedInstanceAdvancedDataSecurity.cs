@@ -13,11 +13,10 @@
 // ----------------------------------------------------------------------------------
 
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
-using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 using Microsoft.Azure.Commands.Sql.ManagedInstance.Adapter;
 using Microsoft.Azure.Commands.Sql.VulnerabilityAssessment.Model;
 using Microsoft.Azure.Commands.Sql.VulnerabilityAssessment.Services;
+using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
@@ -58,7 +57,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         {
             // Enable ADS
             model.IsEnabled = true;
-            ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
+            ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model);
 
             if (!DoNotConfigureVulnerabilityAssessment)
             {

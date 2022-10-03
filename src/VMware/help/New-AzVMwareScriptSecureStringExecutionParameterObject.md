@@ -26,6 +26,7 @@ Create a in-memory object for ScriptSecureStringExecutionParameter
 ```powershell
 New-AzVMwareScriptSecureStringExecutionParameterObject -Name azps_test_securevalue -SecureValue "passwordValue"
 ```
+
 ```output
 Name                  Type        SecureValue
 ----                  ----        -----------

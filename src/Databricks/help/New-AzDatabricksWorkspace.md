@@ -124,7 +124,7 @@ Accept wildcard characters: False
 ```
 
 ### -EnableNoPublicIP
-The value which should be used for this field.
+Should the Public IP be Disabled?
 
 ```yaml
 Type: System.Management.Automation.SwitchParameter
