@@ -56,7 +56,7 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.9.1'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Sql.dll', 
+RequiredAssemblies = 'Microsoft.Azure.PowerShell.Sql.Sdk.dll', 
                'Microsoft.Azure.PowerShell.Cmdlets.Sql.LegacySdk.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
@@ -221,12 +221,6 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Remove-AzSqlDatabaseInstanceFailoverGroup', 
                'Set-AzSqlDatabaseInstanceFailoverGroup', 
                'Switch-AzSqlDatabaseInstanceFailoverGroup', 
-               'Get-AzSqlServerAdvancedThreatProtectionSetting', 
-               'Clear-AzSqlServerAdvancedThreatProtectionSetting', 
-               'Update-AzSqlServerAdvancedThreatProtectionSetting', 
-               'Get-AzSqlDatabaseAdvancedThreatProtectionSetting', 
-               'Update-AzSqlDatabaseAdvancedThreatProtectionSetting', 
-               'Clear-AzSqlDatabaseAdvancedThreatProtectionSetting', 
                'Add-AzSqlInstanceKeyVaultKey', 'Get-AzSqlInstanceKeyVaultKey', 
                'Remove-AzSqlInstanceKeyVaultKey', 
                'Get-AzSqlInstanceTransparentDataEncryptionProtector', 
@@ -286,7 +280,16 @@ CmdletsToExport = 'Get-AzSqlDatabaseTransparentDataEncryption',
                'Remove-AzSqlInstanceServerTrustCertificate', 
                'New-AzSqlInstanceLink', 'Get-AzSqlInstanceLink', 
                'Remove-AzSqlInstanceLink', 'Update-AzSqlInstanceLink', 
-               'Get-AzSqlInstanceEndpointCertificate', 'Set-AzSqlInstanceDatabase'
+               'Get-AzSqlInstanceEndpointCertificate', 'Set-AzSqlInstanceDatabase',
+               'Get-AzSqlDatabaseAdvancedThreatProtectionSetting',
+               'Get-AzSqlServerAdvancedThreatProtectionSetting',
+               'Get-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting',
+               'Get-AzSqlInstanceAdvancedThreatProtectionSetting',
+               'Update-AzSqlDatabaseAdvancedThreatProtectionSetting',
+               'Update-AzSqlServerAdvancedThreatProtectionSetting',
+               'Update-AzSqlInstanceDatabaseAdvancedThreatProtectionSetting',
+               'Update-AzSqlInstanceAdvancedThreatProtectionSetting'
+
 
 # Variables to export from this module
 # VariablesToExport = @()
@@ -304,14 +307,6 @@ AliasesToExport = 'Get-AzSqlDatabaseServerAuditingPolicy',
                'Update-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting', 
                'Get-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting', 
                'Clear-AzSqlInstanceDatabaseVulnerabilityAssessmentSetting', 
-               'Enable-AzSqlServerAdvancedThreatProtection', 
-               'Disable-AzSqlServerAdvancedThreatProtection', 
-               'Get-AzSqlServerThreatDetectionSetting', 
-               'Remove-AzSqlServerThreatDetectionSetting', 
-               'Set-AzSqlServerThreatDetectionSetting', 
-               'Get-AzSqlDatabaseThreatDetectionSetting', 
-               'Set-AzSqlDatabaseThreatDetectionSetting', 
-               'Remove-AzSqlDatabaseThreatDetectionSetting', 
                'Set-AzSqlInstanceTDEProtector', 'Get-AzSqlInstanceTDEProtector', 
                'Set-AzSqlServerTrustGroup', 'Set-AzSqlInstanceLink'
 

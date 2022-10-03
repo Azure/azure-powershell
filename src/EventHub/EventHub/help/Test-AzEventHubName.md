@@ -1,5 +1,5 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
 online version: https://docs.microsoft.com/powershell/module/az.eventhub/test-azeventhubname
 schema: 2.0.0
@@ -8,71 +8,77 @@ schema: 2.0.0
 # Test-AzEventHubName
 
 ## SYNOPSIS
-Checks the Availability of the given NameSpace Name or Alias (DR Configuration Name)
+Checks availability of a namespace name or disaster recovery alias.
 
 ## SYNTAX
 
-### NamespaceCheckNameAvailabilitySet (Default)
+### NamespaceAvailability (Default)
 ```
-Test-AzEventHubName [-Namespace] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzEventHubName -NamespaceName <String> [-SubscriptionId <String>] [-DefaultProfile <PSObject>] [-AsJob]
+ [-NoWait] [<CommonParameters>]
 ```
 
-### AliasCheckNameAvailabilitySet
+### AliasAvailability
 ```
-Test-AzEventHubName [-ResourceGroupName] <String> [-Namespace] <String> [-AliasName] <String>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+Test-AzEventHubName -NamespaceName <String> [-SubscriptionId <String>] -AliasName <String>
+ -ResourceGroupName <String> [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-The **Test-AzEventhubName** Cmdlet Check Availability of the NameSpace Name or Alias (DR Configuration Name)
+Checks availability of a namespace name or disaster recovery alias.
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Check the availability of an EventHub namespace name
 ```powershell
-Test-AzEventhubName -Namespace MyNameSapceName
+Test-AzEventHubName -NamespaceName myNamespace
 ```
 
-Returns the status on availability of the namespace name 'MyNameSapceName' as True if available
-
-### Example 2
-```powershell
-Test-AzEventhubName -Namespace MyNameSapceName
+```output
+Message                                                                                                NameAvailable Reason
+-------                                                                                                ------------- ------
+The specified name is not available. For more information visit https://aka.ms/eventhubsarmexceptions.         False NameInUse
 ```
 
-Returns the status on availability of the namespace name 'MyNameSapceName' as False with Reason
+Checks the availability of namespace name `myNamespace`.
 
-### Example 3
+### Example 2: Check the availability of an EventHub Geo Disaster Recovery Alias
 ```powershell
-Test-AzEventhubName -ResourceGroupName MyResourceGroup -Namespace Test123 -AliasName myAliasName
+Test-AzEventHubName -NamespaceName myNamespace -ResourceGroupName myResourceGroup -AliasName myAlias
 ```
 
-Returns the status on availability of the alias name 'myAliasName' for namespace 'MyNameSapceName' as True if available
+```output
+Message                                                                                                NameAvailable Reason
+-------                                                                                                ------------- ------
+The specified name is not available. For more information visit https://aka.ms/eventhubsarmexceptions.         False NameInUse
+```
+
+Checks the availability of alias name `myAlias` on namespace `myNamepace`.
 
 ## PARAMETERS
 
 ### -AliasName
-DR Configuration Name - Alias Name
+The name of Disaster Recovery Config alias.
 
 ```yaml
 Type: System.String
-Parameter Sets: AliasCheckNameAvailabilitySet
+Parameter Sets: AliasAvailability
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -AsJob
+Run the command as a job
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.SwitchParameter
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
 Required: False
 Position: Named
@@ -81,8 +87,23 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Namespace
-Eventhub Namespace Name
+### -DefaultProfile
+The credentials, account, tenant, and subscription used for communication with Azure.
+
+```yaml
+Type: System.Management.Automation.PSObject
+Parameter Sets: (All)
+Aliases: AzureRMContext, AzureCredential
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+The name of EventHub namespace
 
 ```yaml
 Type: System.String
@@ -90,38 +111,68 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### -ResourceGroupName
-Resource Group Name
+The name of the resource
 
 ```yaml
 Type: System.String
-Parameter Sets: AliasCheckNameAvailabilitySet
+Parameter Sets: AliasAvailability
 Aliases:
 
 Required: True
-Position: 0
+Position: Named
 Default value: None
-Accept pipeline input: True (ByPropertyName)
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
+Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
-### System.String
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSCheckNameAvailabilityResultAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.ICheckNameAvailabilityResult
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS
