@@ -332,7 +332,7 @@ Accept wildcard characters: False
 ```
 
 ### -Credential
-The administrator credentials (username and password) for VMs in this Scale Set. <br>
+The administrator credentials (username and password) for VMs in this Scale Set. <br><br>
 **Username** <br>
 **Restriction:** <br>
 Windows: Cannot contain special characters \/""[]:|<>+=;,?*@& or end in \".\" <br>
