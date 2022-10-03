@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzVpnClientConnectionConfiguration
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Create Virtual Network Gateway Connection configuration
 
 ## SYNTAX
 
@@ -19,16 +19,21 @@ New-AzVpnClientConnectionConfiguration -Name <String>
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+Conneciton Configuration associate between the address space of the P2S client and the according virtual network gateway policy groups 
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\>$member1=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member1" -AttributeType "CertificateGroupId" -AttributeValue "ab"
+      $member2=New-AzVirtualNetworkGatewayPolicyGroupMember -Name "member2" -AttributeType "CertificateGroupId" -AttributeValue "cd"
+      $policyGroup1=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup1" -Priority 0 -DefaultPolicyGroup  -PolicyMember $member1
+      $policyGroup2=New-AzVirtualNetworkGatewayPolicyGroup -Name "policyGroup2" -Priority 10 -PolicyMember $member2
+      $vngconnectionConfig=New-AzVpnClientConnectionConfiguration -Name "coonfig1" -VirtualNetworkGatewayPolicyGroups $policyGroup1 -VpnClientAddressPool "192.168.10.0/24" 
+      $vngconnectionConfig2=New-AzVpnClientConnectionConfiguration -Name "coonfig2" -VirtualNetworkGatewayPolicyGroups $policyGroup2 -VpnClientAddressPool "192.168.20.0/24" 
 ```
 
-{{ Add example description here }}
+Create Client Connection configuration
 
 ## PARAMETERS
 
