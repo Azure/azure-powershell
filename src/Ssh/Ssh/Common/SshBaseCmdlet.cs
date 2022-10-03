@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Commands.Ssh
         [Parameter(ParameterSetName = IpAddressParameterSet, ValueFromRemainingArguments = true)]
         [Parameter(ParameterSetName = ResourceIdParameterSet, ValueFromRemainingArguments = true)]
         [ValidateNotNullOrEmpty]
-        public virtual string[] SshArguments { get; set; }
+        public virtual string[] SshArgument { get; set; }
 
         /// <summary>
         /// Overwrite existing ConfigFile

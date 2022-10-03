@@ -18,4 +18,8 @@
     <Folder Include="SessionRecords\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Management.Compute" Version="56.0.0" />
+  </ItemGroup>
+
 </Project>

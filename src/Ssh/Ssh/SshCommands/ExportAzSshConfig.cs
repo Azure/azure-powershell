@@ -28,7 +28,7 @@ namespace Microsoft.Azure.Commands.Ssh
     public sealed class ExportAzSshConfig : SshBaseCmdlet
     {
         #region Supress Enter-AzVM Parameters
-        public override string[] SshArguments
+        public override string[] SshArgument
         {
             get
             {

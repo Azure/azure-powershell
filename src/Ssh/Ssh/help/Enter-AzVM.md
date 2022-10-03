@@ -17,20 +17,20 @@ Users can login using AAD accounts, or local user accounts via standard SSH auth
 ```
 Enter-AzVM -ResourceGroupName <String> -Name <String> [-PublicKeyFile <String>] [-PrivateKeyFile <String>]
  [-UsePrivateIp] [-LocalUser <String>] [-Port <String>] [-ResourceType <String>] [-CertificateFile <String>]
- [-SshArguments <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-SshArgument <String[]>] [-PassThru] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### IpAddress
 ```
 Enter-AzVM -Ip <String> [-PublicKeyFile <String>] [-PrivateKeyFile <String>] [-LocalUser <String>]
- [-Port <String>] [-CertificateFile <String>] [-SshArguments <String[]>] [-PassThru]
+ [-Port <String>] [-CertificateFile <String>] [-SshArgument <String[]>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
 ### ResourceId
 ```
 Enter-AzVM -ResourceId <String> [-PublicKeyFile <String>] [-PrivateKeyFile <String>] [-UsePrivateIp]
- [-LocalUser <String>] [-Port <String>] [-CertificateFile <String>] [-SshArguments <String[]>] [-PassThru]
+ [-LocalUser <String>] [-Port <String>] [-CertificateFile <String>] [-SshArgument <String[]>] [-PassThru]
  [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
@@ -261,7 +261,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -SshArguments
+### -SshArgument
 Additional SSH arguments passed to OpenSSH.
 
 ```yaml

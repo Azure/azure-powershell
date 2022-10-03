@@ -234,9 +234,9 @@ namespace Microsoft.Azure.Commands.Ssh
                 }
             }
 
-            if (SshArguments != null)
+            if (SshArgument != null)
             {
-                Array.ForEach(SshArguments, item => argList.Add(item));
+                Array.ForEach(SshArgument, item => argList.Add(item));
             }
 
             return string.Join(" ", argList.ToArray());
@@ -244,11 +244,11 @@ namespace Microsoft.Azure.Commands.Ssh
 
         private bool SshLogsPrinted()
         {
-            if (SshArguments != null)
+            if (SshArgument != null)
             {
-                if (Array.Exists(SshArguments, x => x == "-v") &&
-                    Array.Exists(SshArguments, x => x == "-vv") &&
-                    Array.Exists(SshArguments, x => x == "-vvv")) { return true; }
+                if (Array.Exists(SshArgument, x => x == "-v") &&
+                    Array.Exists(SshArgument, x => x == "-vv") &&
+                    Array.Exists(SshArgument, x => x == "-vvv")) { return true; }
             }
             return false;
         }
