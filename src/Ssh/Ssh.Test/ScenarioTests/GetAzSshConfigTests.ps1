@@ -4,6 +4,9 @@ Test Exporting SSH Config File for an Arc Server using Local User Login
 #>
 function Test-GetArcConfig
 {
+
+    $isPlayback = IsPlayback
+
     if ($IsMacOS) {
         return
     }
@@ -13,12 +16,12 @@ function Test-GetArcConfig
     $TenantId = (Get-AzContext).Tenant.Id
 
     New-AzResourceGroup -Name $ResourceGroupName -Location "eastus" | Out-Null
-       
-    $agent = installArcAgent
+    
+    if (-not $isPlayback) { $agent = installArcAgent }   
 
     try 
     {
-        Start-Agent -MachineName $MachineName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -TenantId $TenantId -Agent $agent 
+        if (-not $isPlayback) { Start-Agent -MachineName $MachineName -ResourceGroupName $ResourceGroupName -SubscriptionId $SubscriptionId -TenantId $TenantId -Agent $agent }
 
         $accessToken = Get-AzAccessToken
         Assert-NotNull $accessToken
@@ -57,7 +60,7 @@ function Test-GetArcConfig
         Remove-Item ./config -ErrorAction Ignore -Force
         Remove-Item ./az_ssh_config -ErrorAction Ignore -Force -Recurse
         Remove-Item (Join-Path $HOME ".clientsshproxy") -ErrorAction Ignore -Force -Recurse
-        Stop-Agent -AgentPath $agent
+        if (-not $isPlayback) { Stop-Agent -AgentPath $agent }
         Remove-AzResourceGroup -Name $ResourceGroupName -Force
     }
 }

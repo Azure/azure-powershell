@@ -26,12 +26,12 @@ function Get-PasswordForVM
     return (RandomString -allChars $false -len 4) + "-" + (RandomString -allChars $false -len 4) + (Get-Random -Minimum 100 -Maximum 999)
 }
 
-function IsLive
+function IsPlayback
 {
-	return [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback
+	return [Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -eq [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback
 }
 
-# 
+
 function Get-AzAccessToken {
     $Account = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureRmProfileProvider]::Instance.Profile.DefaultContext.Account
     $AzureEnv = [Microsoft.Azure.Commands.Common.Authentication.Abstractions.AzureEnvironment]::PublicEnvironments[[Microsoft.Azure.Commands.Common.Authentication.Abstractions.EnvironmentName]::AzureCloud]
