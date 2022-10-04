@@ -18,7 +18,7 @@ using System.Management.Automation;
 
 namespace Microsoft.Azure.Commands.Network
 {
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayPolicyGroupmember"), OutputType(typeof(PSVirtualNetworkGatewayPolicyGroupMember))]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "VirtualNetworkGatewayPolicyGroupMember"), OutputType(typeof(PSVirtualNetworkGatewayPolicyGroupMember))]
     public class NewAzureVirtualNetworkGatewayPolicyGroupMemberCommand : NetworkBaseCmdlet
     {
         [Parameter(

@@ -5,7 +5,7 @@ online version: https://docs.microsoft.com/powershell/module/az.network/new-azvi
 schema: 2.0.0
 ---
 
-# New-AzVirtualNetworkGatewayPolicyGroupmember
+# New-AzVirtualNetworkGatewayPolicyGroupMember
 
 ## SYNOPSIS
 Create a Virtual Network Gateway Policy Group Member
@@ -13,7 +13,7 @@ Create a Virtual Network Gateway Policy Group Member
 ## SYNTAX
 
 ```
-New-AzVirtualNetworkGatewayPolicyGroupmember -Name <String> -AttributeType <String> -AttributeValue <String>
+New-AzVirtualNetworkGatewayPolicyGroupMember -Name <String> -AttributeType <String> -AttributeValue <String>
  [-AsJob] [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
 ```
 
