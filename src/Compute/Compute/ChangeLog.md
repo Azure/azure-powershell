@@ -20,7 +20,10 @@
 
 -->
 ## Upcoming Release
-* Added property `TimeCreated` to the Virtual Machine and Virtual Machine Scale Set models.
+* Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
+* Added the 'BaseRegularPriorityCount' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
+* Added the 'RegularPriorityPercentage' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
+* Added Breaking Changes for Add-AzVMAdditionalUnattendContent and Get-AzGallery cmdlets
 
 ## Version 4.31.0
 * Added Trusted Launch Generic Breaking Change warning for `New-AzVM`, `New-AzDisk` and `New-AzVMSS` cmdlets.
