@@ -11,14 +11,14 @@ namespace Microsoft.Azure.Commands.Ssh.Test.ScenarioTests
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestGetArcConfig()
         {
             TestRunner.RunTestScript("Test-GetArcConfig");
         }
 
         [Fact]
-        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        [Trait(Category.AcceptanceType, Category.LiveOnly)]
         public void TestGetVmConfig()
         {
             TestRunner.RunTestScript("Test-GetVmConfig");
