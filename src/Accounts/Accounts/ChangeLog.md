@@ -25,6 +25,7 @@
 * Changed target framework of AuthenticationAssemblyLoadContext to netcoreapp3.1.
 * Used the ArgumentCompleter attribute to replace the dynamic parameters of `Get-AzContext`. [#18041]
 * Removed built-in environment of Azure Germany
+* Fixed issue that module cannot be imported when required file is locked [#19624]
 
 ## Version 2.10.1
 * Deduplicated subscriptions belonging to multiple tenants while using `Get-AzSubscription` with parameter `SubscriptionName`. [#19427]
