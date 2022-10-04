@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.4.0'
+ModuleVersion = '1.5.0'
 
 # Supported PSEditions
 CompatiblePSEditions = 'Core', 'Desktop'
@@ -92,7 +92,27 @@ CmdletsToExport = 'New-AzEventGridTopic', 'Get-AzEventGridTopic',
                'Remove-AzEventGridSystemTopicEventSubscription', 
                'Get-AzEventGridSystemTopicEventSubscriptionDeliveryAttribute', 
                'Get-AzEventGridFullUrlForSystemTopicEventSubscription',
-               'Get-AzEventGridPartnerNamespace'
+               'Get-AzEventGridPartnerNamespace', 'AzEventGridPartnerRegistration',
+               'Get-AzEventGridPartnerConfiguration', 'Get-AzEventGridVerifiedPartner',
+               'Get-AzEventGridChannel', 'Get-AzEventGridPartnerNamespaceKey',
+               'Get-AzEventGridPartnerTopic', 'Get-AzEventGridPartnerTopicEventSubscription',
+               'Get-AzEventGridTopicEventSubscription', 'Get-AzEventGridDomainEventSubscription',
+               'Get-AzEventGridDomainTopicEventSubscription', 'New-AzEventGridPartnerRegistration',
+               'New-AzEventGridPartnerConfiguration', 'New-AzEventGridPartnerNamespace',
+               'New-AzEventGridPartnerTopic', 'New-AzEventGridChannel',
+               'New-AzEventGridTopicEventSubscription', 'New-AzEventGridDomainEventSubscription',
+               'New-AzEventGridDomainTopicEventSubscription', 'New-AzEventGridPartnerTopicEventSubscription',
+               'Update-AzEventGridPartnerConfiguration', 'Update-AzEventGridPartnerDestination',
+               'Update-AzEventGridChannel', 'Update-AzEventGridPartnerTopic',
+               'Update-AzEventGridTopicEventSubscription', 'Update-AzEventGridDomainEventSubscription',
+               'Update-AzEventGridDomainTopicEventSubscription', 'Update-AzEventGridPartnerTopicEventSubscription',
+               'Remove-AzEventGridPartnerRegistration', 'Remove-AzEventGridPartnerConfiguration',
+               'Remove-AzEventGridPartnerNamespace', 'Remove-AzEventGridChannel',
+               'Remove-AzEventGridPartnerTopic', 'Remove-AzEventGridTopicEventSubscription',
+               'Remove-AzEventGridDomainEventSubscription', 'Remove-AzEventGridDomainTopicEventSubscription',
+               'Remove-AzEventGridPartnerTopicEventSubscription', 'Grant-AzEventGridPartnerConfiguration',
+               'Enable-AzEventGridPartnerTopic', 'Revoke-AzEventGridPartnerConfiguration',
+               'New-AzEventGridPartnerNamespaceKey'
 
 # Variables to export from this module
 # VariablesToExport = @()
