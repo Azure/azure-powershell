@@ -8,7 +8,7 @@ schema: 2.0.0
 # New-AzAutomationPython3Package
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Add Python3 Package to Automation account
 
 ## SYNTAX
 
@@ -18,16 +18,15 @@ New-AzAutomationPython3Package [-Name] <String> [-ContentLinkUri] <Uri> [-Resour
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **New-AzAutomationPython3Package** cmdlet adds a Python3 Package to Automation Account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAutomationPython3Package -AutomationAccountName "Contoso17" -Name "RunbookWorkerName" -ResourceGroupName "ResourceGroup01" -Name "Python3PackageName" -ContentLinkUri "https://packageURI.com/package.whl"
 ```
 
-{{ Add example description here }}
 
 ## PARAMETERS
 

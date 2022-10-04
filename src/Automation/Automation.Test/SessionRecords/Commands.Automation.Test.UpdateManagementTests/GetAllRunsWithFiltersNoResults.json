@@ -1,27 +1,27 @@
 {
   "Entries": [
     {
-      "RequestUri": "/subscriptions/422b6c61-95b0-4213-b3be-7282315df71d/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationRuns?api-version=2019-06-01&$filter=properties%2FosType%20eq%20%27Windows%27%20and%20properties%2Fstatus%20eq%20%27Failed%27%20and%20properties%2FstartTime%20ge%202021-04-04T11%3A10%3A00.0000000Z",
-      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvNDIyYjZjNjEtOTViMC00MjEzLWIzYmUtNzI4MjMxNWRmNzFkL3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25SdW5zP2FwaS12ZXJzaW9uPTIwMTktMDYtMDEmJGZpbHRlcj1wcm9wZXJ0aWVzJTJGb3NUeXBlJTIwZXElMjAlMjdXaW5kb3dzJTI3JTIwYW5kJTIwcHJvcGVydGllcyUyRnN0YXR1cyUyMGVxJTIwJTI3RmFpbGVkJTI3JTIwYW5kJTIwcHJvcGVydGllcyUyRnN0YXJ0VGltZSUyMGdlJTIwMjAyMS0wNC0wNFQxMSUzQTEwJTNBMDAuMDAwMDAwMFo=",
+      "RequestUri": "/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/mo-resources-eus/providers/Microsoft.Automation/automationAccounts/mo-aaa-eus2/softwareUpdateConfigurationRuns?api-version=2022-08-08&$filter=properties%2FosType%20eq%20%27Windows%27%20and%20properties%2Fstatus%20eq%20%27Failed%27%20and%20properties%2FstartTime%20ge%202021-04-04T11%3A10%3A00.0000000Z",
+      "EncodedRequestUri": "L3N1YnNjcmlwdGlvbnMvY2Q0NWYyM2ItYjgzMi00ZmE0LWE0MzQtMWJmN2U2ZjE0YTVhL3Jlc291cmNlR3JvdXBzL21vLXJlc291cmNlcy1ldXMvcHJvdmlkZXJzL01pY3Jvc29mdC5BdXRvbWF0aW9uL2F1dG9tYXRpb25BY2NvdW50cy9tby1hYWEtZXVzMi9zb2Z0d2FyZVVwZGF0ZUNvbmZpZ3VyYXRpb25SdW5zP2FwaS12ZXJzaW9uPTIwMjItMDgtMDgmJGZpbHRlcj1wcm9wZXJ0aWVzJTJGb3NUeXBlJTIwZXElMjAlMjdXaW5kb3dzJTI3JTIwYW5kJTIwcHJvcGVydGllcyUyRnN0YXR1cyUyMGVxJTIwJTI3RmFpbGVkJTI3JTIwYW5kJTIwcHJvcGVydGllcyUyRnN0YXJ0VGltZSUyMGdlJTIwMjAyMS0wNC0wNFQxMSUzQTEwJTNBMDAuMDAwMDAwMFo=",
       "RequestMethod": "GET",
-      "RequestBody": "",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "2985420f-03c6-4358-a5aa-fd8d530e849e"
+          "250ede93-4249-4bc3-8ccc-0f207c3a56e0"
         ],
         "Accept-Language": [
           "en-US"
         ],
         "User-Agent": [
-          "FxVersion/4.6.29812.02",
+          "FxVersion/4.700.22.41602",
           "OSName/Windows",
-          "OSVersion/Microsoft.Windows.10.0.19042.",
-          "Microsoft.Azure.Management.Automation.AutomationClient/3.8.3.0"
+          "OSVersion/Microsoft.Windows.10.0.22000",
+          "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "x-ms-activity-id": [
-          "38735da3-c37a-4781-995f-fb825e2d9d4a"
+          "5b934fb1-ce01-4e47-bd90-cbc986ccae13"
         ]
       },
+      "RequestBody": "",
       "ResponseHeaders": {
         "Cache-Control": [
           "no-cache"
@@ -29,52 +29,41 @@
         "Pragma": [
           "no-cache"
         ],
+        "x-ms-failure-cause": [
+          "gateway"
+        ],
         "x-ms-request-id": [
-          "38735da3-c37a-4781-995f-fb825e2d9d4a"
+          "725eb4e9-8b3f-4aee-bf73-f087eced259f"
+        ],
+        "x-ms-correlation-request-id": [
+          "725eb4e9-8b3f-4aee-bf73-f087eced259f"
+        ],
+        "x-ms-routing-request-id": [
+          "WESTINDIA:20220928T093648Z:725eb4e9-8b3f-4aee-bf73-f087eced259f"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
-        ],
-        "Server": [
-          "Microsoft-IIS/10.0"
-        ],
-        "X-AspNet-Version": [
-          "4.0.30319"
-        ],
-        "X-Powered-By": [
-          "ASP.NET"
-        ],
-        "x-ms-ratelimit-remaining-subscription-reads": [
-          "11994"
-        ],
-        "x-ms-correlation-request-id": [
-          "a127b11e-64fa-4bd5-8020-1b143cb08302"
-        ],
-        "x-ms-routing-request-id": [
-          "CENTRALINDIA:20210405T040323Z:a127b11e-64fa-4bd5-8020-1b143cb08302"
         ],
         "X-Content-Type-Options": [
           "nosniff"
         ],
         "Date": [
-          "Mon, 05 Apr 2021 04:03:22 GMT"
-        ],
-        "Content-Length": [
-          "12"
+          "Wed, 28 Sep 2022 09:36:48 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
         ],
         "Expires": [
           "-1"
+        ],
+        "Content-Length": [
+          "108"
         ]
       },
-      "ResponseBody": "{\r\n  \"value\": []\r\n}",
-      "StatusCode": 200
+      "ResponseBody": "{\r\n  \"error\": {\r\n    \"code\": \"ResourceGroupNotFound\",\r\n    \"message\": \"Resource group 'mo-resources-eus' could not be found.\"\r\n  }\r\n}",
+      "StatusCode": 404
     }
   ],
   "Names": {},
-  "Variables": {
-    "SubscriptionId": "422b6c61-95b0-4213-b3be-7282315df71d"
-  }
+  "Variables": {}
 }

@@ -8,7 +8,7 @@ schema: 2.0.0
 # Get-AzAutomationPython3Package
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Gets a Python3 Package.
 
 ## SYNTAX
 
@@ -25,16 +25,14 @@ Get-AzAutomationPython3Package [-Name] <String> [-ResourceGroupName] <String> [-
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Get-AzAutomationPython3Package** cmdlet gets a Python3 Package or list of Python3 Packages in Automation Account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-AzAutomationPython3Package -AutomationAccountName "Contoso17" -Name "RunbookWorkerName" -ResourceGroupName "ResourceGroup01"  -ErrorAction SilentlyContinue
 ```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -69,7 +67,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The module name.
+The Python3 Package name.
 
 ```yaml
 Type: String

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets a Module for automation.
     /// </summary>
-    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationPython3Package")]
+    [Cmdlet("Remove", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationPython3Package", SupportsShouldProcess = true)]
     [OutputType(typeof(Module))]
     public class RemoveAzureAutomationPython3Package : AzureAutomationBaseCmdlet
     {

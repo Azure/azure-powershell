@@ -8,7 +8,7 @@ schema: 2.0.0
 # Remove-AzAutomationPython3Package
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Remove a Python3 Package from Automation Account
 
 ## SYNTAX
 
@@ -18,16 +18,15 @@ Remove-AzAutomationPython3Package [-Name] <String> [-Force] [-ResourceGroupName]
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Remove-AzAutomationPython3Package** cmdlet removes a Python3 Package from Automation Account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-AzAutomationPython3Package -AutomationAccountName "Contoso17"  -ResourceGroupName "ResourceGroup01" -Name "Python3PackageName"
 ```
 
-{{ Add example description here }}
 
 ## PARAMETERS
 
@@ -62,7 +61,7 @@ Accept wildcard characters: False
 ```
 
 ### -Force
-Confirm the removal of Python 3 pakcage
+Confirm the removal of Python 3 package
 
 ```yaml
 Type: SwitchParameter
@@ -77,7 +76,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-The Python 3 pakcage name.
+The Python 3 package name.
 
 ```yaml
 Type: String

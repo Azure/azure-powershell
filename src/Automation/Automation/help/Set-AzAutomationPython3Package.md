@@ -8,7 +8,7 @@ schema: 2.0.0
 # Set-AzAutomationPython3Package
 
 ## SYNOPSIS
-{{ Fill in the Synopsis }}
+Update Python3 Package in Automation account
 
 ## SYNTAX
 
@@ -19,16 +19,15 @@ Set-AzAutomationPython3Package [-Name] <String> [-ContentLinkUri <Uri>] [-Conten
 ```
 
 ## DESCRIPTION
-{{ Fill in the Description }}
+The **Set-AzAutomationPython3Package** cmdlet updates a Python3 Package in Automation Account.
 
 ## EXAMPLES
 
 ### Example 1
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-AzAutomationPython3Package -AutomationAccountName "Contoso17"  -ResourceGroupName "ResourceGroup01" -Name "Python3PackageName" -ContentLinkUri "https://packageURI.com/package.whl"
 ```
 
-{{ Add example description here }}
 
 ## PARAMETERS
 

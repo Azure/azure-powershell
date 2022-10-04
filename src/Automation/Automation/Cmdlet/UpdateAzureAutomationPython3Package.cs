@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Sets a Module for automation.
     /// </summary>
-    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationPython3package", DefaultParameterSetName = AutomationCmdletParameterSets.ByName)]
+    [Cmdlet("Update", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationPython3package", DefaultParameterSetName = AutomationCmdletParameterSets.ByNam, SupportsShouldProcess = truee)]
     [OutputType(typeof(Module))]
     public class UpdateAzureAutomationPython3Package : AzureAutomationBaseCmdlet
     {

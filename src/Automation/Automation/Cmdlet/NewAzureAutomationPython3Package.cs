@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Create a new python3 package for automation.
     /// </summary>
-    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationPython3Package")]
+    [Cmdlet("New", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationPython3Package", SupportsShouldProcess = true)]
     [OutputType(typeof(Module))]
     public class NewAzureAutomationPython3Package : AzureAutomationBaseCmdlet
     {

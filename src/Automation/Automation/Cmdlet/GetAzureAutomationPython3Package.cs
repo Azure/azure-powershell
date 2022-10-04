@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Commands.Automation.Cmdlet
     /// <summary>
     /// Gets a Module for automation.
     /// </summary>
-    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationPython3Package", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll)]
+    [Cmdlet("Get", ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "AutomationPython3Package", DefaultParameterSetName = AutomationCmdletParameterSets.ByAll, SupportsShouldProcess = true)]
     [OutputType(typeof(Module))]
     public class GetAzureAutomationPython3Package : AzureAutomationBaseCmdlet
     {
