@@ -23,6 +23,9 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
     using System;
     using System.Management.Automation;
     using System.Security.Permissions;
+    using global::Azure.Storage.Files.Shares;
+    using global::Azure.Storage.Sas;
+    using global::Azure.Storage.Files.Shares.Models;
 
     [Cmdlet("New", Azure.Commands.ResourceManager.Common.AzureRMConstants.AzurePrefix + "StorageShareSASToken"), OutputType(typeof(String))]
     public class NewAzureStorageShareSasToken : AzureStorageFileCmdletBase
@@ -98,56 +101,39 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         public override void ExecuteCmdlet()
         {
             if (String.IsNullOrEmpty(ShareName)) return;
-            CloudFileShare fileShare = Channel.GetShareReference(this.ShareName);
-            SharedAccessFilePolicy accessPolicy = new SharedAccessFilePolicy();
 
-            bool shouldSetExpiryTime = SasTokenHelper.ValidateShareAccessPolicy(
-                Channel,
-                this.ShareName,
-                accessPolicyIdentifier,
-                !string.IsNullOrEmpty(this.Permission),
-                this.StartTime.HasValue,
-                this.ExpiryTime.HasValue);
 
-            SetupAccessPolicy(accessPolicy, shouldSetExpiryTime);
-            string sasToken = fileShare.GetSharedAccessSignature(accessPolicy, accessPolicyIdentifier, Protocol, Util.SetupIPAddressOrRangeForSAS(IPAddressOrRange));
+            ShareClient share = Util.GetTrack2ShareReference(this.ShareName,
+                        (AzureStorageContext)this.Context,
+                        snapshotTime: null, 
+                        ClientOptions);
+
+            // Get share saved policy if any
+            ShareSignedIdentifier identifier = null;
+            if (ParameterSetName == SasPolicyParmeterSet)
+            {
+                identifier = SasTokenHelper.GetShareSignedIdentifier(share, this.Policy, CmdletCancellationToken);
+            }
+
+            //Create SAS builder
+            ShareSasBuilder sasBuilder = SasTokenHelper.SetShareSasBuilder_FromShare(share, identifier, this.Permission, this.StartTime, this.ExpiryTime, this.IPAddressOrRange, this.Protocol);
+
+            //Create SAS and output it
+            string sasToken = SasTokenHelper.GetFileSharedAccessSignature(Channel.StorageContext, sasBuilder, CmdletCancellationToken);
+            if (sasToken[0] != '?')
+            {
+                sasToken = "?" + sasToken;
+            }
 
             if (FullUri)
             {
-                string fullUri = SasTokenHelper.GetFullUriWithSASToken(fileShare.SnapshotQualifiedUri.AbsoluteUri.ToString(), sasToken);
-
+                string fullUri = SasTokenHelper.GetFullUriWithSASToken(share.Uri.AbsoluteUri.ToString(), sasToken);
                 WriteObject(fullUri);
             }
             else
             {
                 WriteObject(sasToken);
             }
-        }
-
-        protected override IStorageFileManagement CreateChannel()
-        {
-            if (this.Channel == null || !this.ShareChannel)
-            {
-                this.Channel = new StorageFileManagement(this.GetCmdletStorageContext());
-            }
-
-            return this.Channel;
-        }
-
-        /// <summary>
-        /// Update the access policy
-        /// </summary>
-        /// <param name="policy">Access policy object</param>
-        /// <param name="shouldSetExpiryTime">Should set the default expiry time</param>
-        private void SetupAccessPolicy(SharedAccessFilePolicy policy, bool shouldSetExpiryTime)
-        {
-            DateTimeOffset? accessStartTime;
-            DateTimeOffset? accessEndTime;
-            SasTokenHelper.SetupAccessPolicyLifeTime(StartTime, ExpiryTime,
-                out accessStartTime, out accessEndTime, shouldSetExpiryTime);
-            policy.SharedAccessStartTime = accessStartTime;
-            policy.SharedAccessExpiryTime = accessEndTime;
-            AccessPolicyHelper.SetupAccessPolicyPermission(policy, Permission);
         }
     }
 }

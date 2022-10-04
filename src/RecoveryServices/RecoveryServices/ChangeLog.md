@@ -18,6 +18,16 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* [Breaking Change] Removed status filter from Get-AzRecoveryServicesBackupContainer command
+* Added SubTasks Duration for IaasVM job
+
+## Version 5.6.1
+* Removed AFEC feature check for Archive smart tiering
+
+## Version 5.6.0
+* Added support for Archive smart tiering for AzureVM and MSSQL workloads.
+
+## Version 5.5.0
 * Fixed GetAzRecoveryServicesVaultSettingsFile cmdlet used for downloading vault credential file.
 * Fixed issue in Disable-AzRecoveryServicesBackupProtection cmdlet.
 * Fixed issue in Enable-AzRecoveryServicesBackupProtection cmdlet.

@@ -49,6 +49,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.KeyVault/vaults", "2018-02-14", false, false);
             RegisterConfiguration("Microsoft.Keyvault/managedHSMs", "2021-06-01-preview", true, false);
             RegisterConfiguration("Microsoft.MachineLearningServices/workspaces", "2021-07-01", true, false);
+            RegisterConfiguration("Microsoft.MachineLearningServices/registries", "2022-10-01-preview", true, false);
             RegisterConfiguration("Microsoft.Media/mediaservices", "2021-06-01", true, true);
             RegisterConfiguration("Microsoft.Media/videoanalyzers", "2021-11-01-preview", true, true);
             RegisterConfiguration("Microsoft.Migrate/assessmentProjects", "2020-05-01-preview", false, false);
@@ -73,6 +74,7 @@ namespace Microsoft.Azure.Commands.Network.PrivateLinkService.PrivateLinkService
             RegisterConfiguration("Microsoft.Web/staticSites", "2021-02-01", true, false);
             RegisterConfiguration("Microsoft.Web/hostingEnvironments", "2020-10-01", true, false);
             RegisterConfiguration("Microsoft.BotService/botServices", "2021-05-01-preview", true, true);
+            RegisterConfiguration("Microsoft.OpenEnergyPlatform/energyServices", "2022-07-21-preview", true, true);
         }
         /// <summary>
         /// Register priavte endopoint connection and private link resource configuration

@@ -20,40 +20,23 @@ Gets the workspace.
 .Description
 Gets the workspace.
 .Example
-PS C:\> Get-AzDatabricksWorkspace -Name databricks-test -ResourceGroupName databricks-rg-rqb2yo
-
-Name            ResourceGroupName    Location Managed Resource Group ID
-----            -----------------    -------- -------------------------
-workspace3miaeb databricks-rg-rqb2yo eastus   /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3miaeb-3c0s2mbgrqv9k
+Get-AzDatabricksWorkspace -Name databricks-test -ResourceGroupName databricks-rg-rqb2yo
 .Example
-PS C:\> Get-AzDatabricksWorkspace
-
-ame                ResourceGroupName    Location       Managed Resource Group ID
-----                -----------------    --------       -------------------------
-workspace1xfmkv     databricks-rg-13vdtb eastus         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace1xfmkv-s41tghmif7cle
-workspace-pwsh01    databricks-rg-13vdtb eastus         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace-pwsh01-sdenr3zv5tyh9
-workspacewqpya1     databricks-rg-13vdtb eastus         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspacewqpya1-mhsacdo0pb15e
-workspace2b8i61     databricks-rg-1jxsia eastus         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace2b8i61-xmkef5d6j7483
-workspace2rzshd     databricks-rg-1jxsia eastus         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace2rzshd-oql04khm89rx3
+Get-AzDatabricksWorkspace
 .Example
-PS C:\> Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo
-
-Name            ResourceGroupName    Location       Managed Resource Group ID
-----            -----------------    --------       -------------------------
-workspace3miaeb databricks-rg-rqb2yo eastus         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3miaeb-3c0s2mbgrqv9k
-workspacefnw9gd databricks-rg-rqb2yo eastus         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspacefnw9gd-ik7n2yfmzhuxq
-workspace3o1d60 databricks-rg-rqb2yo East US 2 EUAP /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/databricks-rg-workspace3o1d60-gancyx6kjmw71
+Get-AzDatabricksWorkspace -ResourceGroupName databricks-rg-rqb2yo
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.IDatabricksIdentity
 .Outputs
-Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace
+Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace
 .Notes
 COMPLEX PARAMETER PROPERTIES
 
 To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
 
 INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
+  [ConnectorName <String>]: The name of the azure databricks accessConnector.
   [GroupId <String>]: The name of the private link resource
   [Id <String>]: Resource identity path
   [PeeringName <String>]: The name of the workspace vNet peering.
@@ -65,7 +48,7 @@ INPUTOBJECT <IDatabricksIdentity>: Identity Parameter
 https://docs.microsoft.com/powershell/module/az.databricks/get-azdatabricksworkspace
 #>
 function Get-AzDatabricksWorkspace {
-[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20210401Preview.IWorkspace])]
+[OutputType([Microsoft.Azure.PowerShell.Cmdlets.Databricks.Models.Api20220401Preview.IWorkspace])]
 [CmdletBinding(DefaultParameterSetName='List1', PositionalBinding=$false)]
 param(
     [Parameter(ParameterSetName='Get', Mandatory)]
@@ -154,6 +137,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.Databricks.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Get = 'Az.Databricks.private\Get-AzDatabricksWorkspace_Get';
             GetViaIdentity = 'Az.Databricks.private\Get-AzDatabricksWorkspace_GetViaIdentity';
@@ -170,6 +171,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -178,15 +180,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.Databricks.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

@@ -22,6 +22,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
     using Microsoft.Azure.Storage;
     using Microsoft.Azure.Storage.Blob;
     using Microsoft.WindowsAzure.Commands.Common;
+    using Microsoft.WindowsAzure.Commands.Common.CustomAttributes;
     using Microsoft.WindowsAzure.Commands.Storage.Common;
     using Microsoft.WindowsAzure.Commands.Storage.Model.Contract;
     using System;
@@ -167,11 +168,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
 
         protected override bool UseTrack2Sdk()
         {
-            if (this.IncludeVersion.IsPresent || this.IncludeTag.IsPresent || this.VersionId != null)
-            {
-                return true;
-            }
-            return base.UseTrack2Sdk();
+            return true;
         }
 
         /// <summary>
@@ -237,7 +234,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                 BlobBaseClient blobClient = null;
                 if (UseTrack2Sdk()) // User Track2 SDK
                 {
-                    blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, false, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"), ClientOptions);
+                    blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, false, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"), ClientOptions);
                     global::Azure.Storage.Blobs.Models.BlobProperties blobProperties;
                     try
                     {
@@ -247,7 +244,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.Blob.Cmdlet
                     {
                         throw new ResourceNotFoundException(String.Format(Resources.BlobNotFound, blobName, containerName));
                     }
-                    blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, blobProperties.IsLatestVersion, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToString("o"), ClientOptions, blobProperties.BlobType);
+                    blobClient = Util.GetTrack2BlobClient(track2container, blobName, localChannel.StorageContext, this.VersionId, blobProperties.IsLatestVersion, this.SnapshotTime is null ? null : this.SnapshotTime.Value.ToUniversalTime().ToString("o").Replace("+00:00", "Z"), ClientOptions, blobProperties.BlobType);
 
                     AzureStorageBlob outputBlob = new AzureStorageBlob(blobClient, localChannel.StorageContext, blobProperties, ClientOptions);
                     if (this.IncludeTag.IsPresent)

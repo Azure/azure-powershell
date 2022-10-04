@@ -102,6 +102,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
                 if(evResource.ZoneRedundant!=null)
                 ZoneRedundant = evResource.ZoneRedundant;
                 DisableLocalAuth = evResource.DisableLocalAuth;
+                MinimumTlsVersion = evResource.MinimumTlsVersion;
             }
         }
 
@@ -180,5 +181,7 @@ namespace Microsoft.Azure.Commands.ServiceBus.Models
         public PSEncryptionConfigAttributes[] EncryptionConfig { get; set; }
 
         public PSServiceBusPrivateEndpointConnectionAttributes[] PrivateEndpointConnections { get; set; }
+
+        public string MinimumTlsVersion { get; set; }
     }
 }

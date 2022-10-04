@@ -34,28 +34,32 @@ Add a single IP rule to the NetworkRuleSet of the given Namespace
 ```powershell
 Add-AzServiceBusIPRule -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-2389 -IpMask "11.22.33.44" -Action Allow
 ```
+
 ```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/SubscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-2389/networkRuleSets/default
 Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
-VirtualNetworkRules : 
+VirtualNetworkRules :
 ```
+
 add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namespace.
 
 ### Example 2
 ```powershell
 Add-AzServiceBusIPRule -ResourceGroupName v-ajnavtest -Name ServiceBus-Namespace1-2389 -IpRuleObject $ipruleObject
 ```
+
 ```output
 Name                : default
 DefaultAction       : Allow
 Id                  : /subscriptions/SubscriptionId/resourceGroups/RSG-TestAzEventhub/providers/Microsoft.ServiceBus/namespaces/ServiceBus-Namespace-2389/networkRuleSets/default
 Type                : Microsoft.ServiceBus/Namespaces/NetworkRuleSet
 IpRules             : {11.22.33.44, Allow}
-VirtualNetworkRules : 
+VirtualNetworkRules :
 ```
+
 add the IPRule with IpMask "11.22.33.44" and Action Allow fro the given namespace.
 
 ## PARAMETERS
@@ -182,8 +186,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
