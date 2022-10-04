@@ -39,8 +39,9 @@ namespace Microsoft.Azure.Commands.EventGrid
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
-           ParameterSetName = TopicEventSuscriptionParameterSet)]
+           ParameterSetName = TopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.EventGrid/topics/eventSubscriptions", nameof(ResourceGroupName), nameof(TopicName))]
         [Alias("EventSubscriptionName")]
         public string Name { get; set; }
 
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = TopicEventSuscriptionParameterSet)]
+            ParameterSetName = TopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         [ResourceGroupCompleter]
@@ -58,10 +59,19 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TopicNameHelp,
-            ParameterSetName = TopicEventSuscriptionParameterSet)]
+            ParameterSetName = TopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.EventGrid/topics", nameof(ResourceGroupName))]
         public string TopicName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.EventSubscriptionResourceIdHelp,
+            ParameterSetName = ResourceIdTopicEventSubscriptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
 
         /// <summary>
         /// If present, do not ask for confirmation
@@ -76,13 +86,32 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         public override void ExecuteCmdlet()
         {
+            string resourceGroupName = string.Empty;
+            string topicName = string.Empty;
+            string eventSubscriptionName = string.Empty;
+
+            if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                EventGridUtils.GetResourceGroupNameAndTopicNameAndEventSubscriptionName(
+                    this.ResourceId,
+                    out resourceGroupName,
+                    out topicName,
+                    out eventSubscriptionName);
+            }
+            else
+            {
+                resourceGroupName = this.ResourceGroupName;
+                topicName = this.TopicName;
+                eventSubscriptionName = this.Name;
+            }
+
             ConfirmAction(Force.IsPresent,
-                $"Remove event subscription {this.Name}",
-                $"Removing event subscription {this.Name}",
-                this.Name,
+                $"Remove event subscription {eventSubscriptionName}",
+                $"Removing event subscription {eventSubscriptionName}",
+                eventSubscriptionName,
                 () =>
                 {
-                    this.Client.DeleteTopicEventSubscriptiion(this.ResourceGroupName, this.TopicName, this.Name);
+                    this.Client.DeleteTopicEventSubscription(resourceGroupName, topicName, eventSubscriptionName);
                     if (PassThru)
                     {
                         WriteObject(true);

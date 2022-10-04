@@ -28,19 +28,19 @@ namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridTopicEventSubscriptionDeliveryAttribute",
-        DefaultParameterSetName = TopicNameParameterSet),
-    OutputType(typeof(PsDeliveryAttribute))]
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridFullUrlForPartnerTopicEventSubscription",
+        DefaultParameterSetName = PartnerTopicEventSubscriptionParameterSet),
+    OutputType(typeof(string))]
 
-    public class GetAzureEventGridTopicEventSubscriptionDeliveryAttribute : AzureEventGridCmdletBase
+    public class GetAzureEventGridFullUrlForPartnerTopicEventSubscription : AzureEventGridCmdletBase
     {
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
-           ParameterSetName = TopicEventSubscriptionParameterSet)]
+           ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.EventGrid/topics/eventSubscriptions", nameof(ResourceGroupName), nameof(TopicName))]
+        [ResourceNameCompleter("Microsoft.EventGrid/partnerTopics/eventSubscriptions", nameof(ResourceGroupName), nameof(PartnerTopicName))]
         [Alias("EventSubscriptionName")]
         public string Name { get; set; }
 
@@ -48,7 +48,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = TopicEventSubscriptionParameterSet)]
+            ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         [ResourceGroupCompleter]
@@ -57,25 +57,25 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TopicNameHelp,
-            ParameterSetName = TopicEventSubscriptionParameterSet)]
+            HelpMessage = EventGridConstants.PartnerTopicNameHelp,
+            ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.EventGrid/topics", nameof(ResourceGroupName))]
-        public string TopicName { get; set; }
+        [ResourceNameCompleter("Microsoft.EventGrid/partnerTopics", nameof(ResourceGroupName))]
+        public string PartnerTopicName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.EventSubscriptionResourceIdHelp,
-            ParameterSetName = ResourceIdTopicEventSubscriptionParameterSet)]
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
 
         public override void ExecuteCmdlet()
         {
             string resourceGroupName = string.Empty;
-            string topicName = string.Empty;
+            string partnerTopicName = string.Empty;
             string eventSubscriptionName = string.Empty;
 
             if (!string.IsNullOrEmpty(this.ResourceId))
@@ -83,19 +83,18 @@ namespace Microsoft.Azure.Commands.EventGrid
                 EventGridUtils.GetResourceGroupNameAndTopicNameAndEventSubscriptionName(
                     this.ResourceId,
                     out resourceGroupName,
-                    out topicName,
+                    out partnerTopicName,
                     out eventSubscriptionName);
             }
             else
             {
                 resourceGroupName = this.ResourceGroupName;
-                topicName = this.TopicName;
+                partnerTopicName = this.PartnerTopicName;
                 eventSubscriptionName = this.Name;
             }
 
-            DeliveryAttributeListResult deliveryAttributeListResult = this.Client.GetAzTopicEventSubscriptionsDeliveryAttribute(resourceGroupName, topicName, eventSubscriptionName);
-            PsDeliveryAttribute PsDeliveryAttribute = new PsDeliveryAttribute(deliveryAttributeListResult);
-            this.WriteObject(PsDeliveryAttribute, true);
+            EventSubscriptionFullUrl eventSubscriptionFullUrl = this.Client.GetAzFullUrlForPartnerTopicEventSubscription(resourceGroupName, partnerTopicName, eventSubscriptionName);
+            this.WriteObject(eventSubscriptionFullUrl.EndpointUrl, true);
         }
     }
 }

@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.EventGrid
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridFullUrlForTopicEventSubscription",
-        DefaultParameterSetName = TopicNameParameterSet),
+        DefaultParameterSetName = TopicEventSubscriptionParameterSet),
     OutputType(typeof(string))]
 
     public class GetAzureEventGridFullUrlForTopicEventSubscription : AzureEventGridCmdletBase
@@ -38,8 +38,9 @@ namespace Microsoft.Azure.Commands.EventGrid
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
-           ParameterSetName = TopicEventSuscriptionParameterSet)]
+           ParameterSetName = TopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.EventGrid/topics/eventSubscriptions", nameof(ResourceGroupName), nameof(TopicName))]
         [Alias("EventSubscriptionName")]
         public string Name { get; set; }
 
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = TopicEventSuscriptionParameterSet)]
+            ParameterSetName = TopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         [ResourceGroupCompleter]
@@ -57,14 +58,42 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TopicNameHelp,
-            ParameterSetName = TopicEventSuscriptionParameterSet)]
+            ParameterSetName = TopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.EventGrid/topics", nameof(ResourceGroupName))]
         public string TopicName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.EventSubscriptionResourceIdHelp,
+            ParameterSetName = ResourceIdTopicEventSubscriptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        public string ResourceId { get; set; }
+
         public override void ExecuteCmdlet()
         {
-            EventSubscriptionFullUrl eventSubscriptionFullUrl = this.Client.GetAzFullUrlForTopicEventSubscription(this.ResourceGroupName, this.TopicName, this.Name);
+            string resourceGroupName = string.Empty;
+            string topicName = string.Empty;
+            string eventSubscriptionName = string.Empty;
+
+            if (!string.IsNullOrEmpty(this.ResourceId))
+            {
+                EventGridUtils.GetResourceGroupNameAndTopicNameAndEventSubscriptionName(
+                    this.ResourceId,
+                    out resourceGroupName,
+                    out topicName,
+                    out eventSubscriptionName);
+            }
+            else
+            {
+                resourceGroupName = this.ResourceGroupName;
+                topicName = this.TopicName;
+                eventSubscriptionName = this.Name;
+            }
+
+            EventSubscriptionFullUrl eventSubscriptionFullUrl = this.Client.GetAzFullUrlForTopicEventSubscription(resourceGroupName, topicName, eventSubscriptionName);
             this.WriteObject(eventSubscriptionFullUrl.EndpointUrl, true);
         }
     }

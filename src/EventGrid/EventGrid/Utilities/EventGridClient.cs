@@ -405,7 +405,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #region PartnerTopicEventSubscription
 
-        public EventSubscription CreatePartnerTopicEventSubscriptiion(
+        public EventSubscription CreatePartnerTopicEventSubscription(
             string eventSubscriptionName,
             string resourceGroupName,
             string partnerTopicName,
@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return partnerTopicEventSubscription;
         }
 
-        public EventSubscription UpdatePartnerTopicEventSubscriptiion(
+        public EventSubscription UpdatePartnerTopicEventSubscription(
             string eventSubscriptionName,
             string resourceGroupName,
             string partnerTopicName,
@@ -660,7 +660,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return partnerTopicEventSubscription;
         }
 
-        public EventSubscription GetPartnerTopicEventSubscriptiion(string resourceGroupName, string partnerTopicName, string eventSubscriptionName)
+        public EventSubscription GetPartnerTopicEventSubscription(string resourceGroupName, string partnerTopicName, string eventSubscriptionName)
         {
             var partnerTopicEventSubscription = this.Client.PartnerTopicEventSubscriptions.Get(resourceGroupName, partnerTopicName, eventSubscriptionName);
             return partnerTopicEventSubscription;
@@ -701,7 +701,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return (eventSubscriptionsList, newNextLink);
         }
 
-        public void DeletePartnerTopicEventSubscriptiion(string resourceGroupName, string partnerTopicName, string eventSubscriptionName)
+        public void DeletePartnerTopicEventSubscription(string resourceGroupName, string partnerTopicName, string eventSubscriptionName)
         {
             this.Client.PartnerTopicEventSubscriptions.Delete(resourceGroupName, partnerTopicName, eventSubscriptionName);
         }
@@ -720,7 +720,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #region DomainTopicEventSubscription
 
-        public EventSubscription CreateDomainTopicEventSubscriptiion(
+        public EventSubscription CreateDomainTopicEventSubscription(
             string eventSubscriptionName,
             string resourceGroupName,
             string domainName,
@@ -856,7 +856,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return domainTopicEventSubscription;
         }
 
-        public EventSubscription UpdateDomainTopicEventSubscriptiion(
+        public EventSubscription UpdateDomainTopicEventSubscription(
             string eventSubscriptionName,
             string resourceGroupName,
             string domainName,
@@ -977,7 +977,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return domainTopicEventSubscription;
         }
 
-        public EventSubscription GetDomainTopicEventSubscriptiion(string resourceGroupName, string domainName, string domainTopicName, string eventSubscriptionName)
+        public EventSubscription GetDomainTopicEventSubscription(string resourceGroupName, string domainName, string domainTopicName, string eventSubscriptionName)
         {
             var domainTopicEventSubscription = this.Client.DomainTopicEventSubscriptions.Get(resourceGroupName, domainName, domainTopicName, eventSubscriptionName);
             return domainTopicEventSubscription;
@@ -1018,7 +1018,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return (eventSubscriptionsList, newNextLink);
         }
 
-        public void DeleteDomainTopicEventSubscriptiion(string resourceGroupName, string domainName, string domainTopicName, string eventSubscriptionName)
+        public void DeleteDomainTopicEventSubscription(string resourceGroupName, string domainName, string domainTopicName, string eventSubscriptionName)
         {
             this.Client.DomainTopicEventSubscriptions.Delete(resourceGroupName, domainName, domainTopicName, eventSubscriptionName);
         }
@@ -1037,7 +1037,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #region DomainEventSubscription
 
-        public EventSubscription CreateDomainEventSubscriptiion(
+        public EventSubscription CreateDomainEventSubscription(
             string eventSubscriptionName,
             string resourceGroupName,
             string domainName,
@@ -1172,7 +1172,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return domainEventSubscription;
         }
 
-        public EventSubscription UpdateDomainEventSubscriptiion(
+        public EventSubscription UpdateDomainEventSubscription(
             string eventSubscriptionName,
             string resourceGroupName,
             string domainName,
@@ -1292,7 +1292,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return domainEventSubscription;
         }
 
-        public EventSubscription GetDomainEventSubscriptiion(string resourceGroupName, string domainName, string eventSubscriptionName)
+        public EventSubscription GetDomainEventSubscription(string resourceGroupName, string domainName, string eventSubscriptionName)
         {
             var domainEventSubscription = this.Client.DomainEventSubscriptions.Get(resourceGroupName, domainName, eventSubscriptionName);
             return domainEventSubscription;
@@ -1333,7 +1333,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return (eventSubscriptionsList, newNextLink);
         }
 
-        public void DeleteDomainEventSubscriptiion(string resourceGroupName, string domainName, string eventSubscriptionName)
+        public void DeleteDomainEventSubscription(string resourceGroupName, string domainName, string eventSubscriptionName)
         {
             this.Client.DomainEventSubscriptions.Delete(resourceGroupName, domainName, eventSubscriptionName);
         }
@@ -1351,7 +1351,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         #endregion
 
         #region TopicEventSubscription
-        public EventSubscription CreateTopicEventSubscriptiion(
+        public EventSubscription CreateTopicEventSubscription(
             string eventSubscriptionName,
             string resourceGroupName,
             string topicName,
@@ -1486,7 +1486,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return topicEventSubscription;
         }
 
-        public EventSubscription UpdateTopicEventSubscriptiion(
+        public EventSubscription UpdateTopicEventSubscription(
             string eventSubscriptionName,
             string resourceGroupName,
             string topicName,
@@ -1606,7 +1606,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return topicEventSubscription;
         }
 
-        public EventSubscription GetTopicEventSubscriptiion(string resourceGroupName, string topicName, string eventSubscriptionName)
+        public EventSubscription GetTopicEventSubscription(string resourceGroupName, string topicName, string eventSubscriptionName)
         {
             var topicEventSubscription = this.Client.TopicEventSubscriptions.Get(resourceGroupName, topicName, eventSubscriptionName);
             return topicEventSubscription;
@@ -1647,7 +1647,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return (eventSubscriptionsList, newNextLink);
         }
 
-        public void DeleteTopicEventSubscriptiion(string resourceGroupName, string topicName, string eventSubscriptionName)
+        public void DeleteTopicEventSubscription(string resourceGroupName, string topicName, string eventSubscriptionName)
         {
             this.Client.TopicEventSubscriptions.Delete(resourceGroupName, topicName, eventSubscriptionName);
         }
@@ -1666,7 +1666,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
         #region SystemTopicEventSubscription
 
-        public EventSubscription GetSystemTopicEventSubscriptiion(string resourceGroupName, string systemTopicName, string eventSubscriptionName)
+        public EventSubscription GetSystemTopicEventSubscription(string resourceGroupName, string systemTopicName, string eventSubscriptionName)
         {
             var systemTopicEventSubscription = this.Client.SystemTopicEventSubscriptions.Get(resourceGroupName, systemTopicName, eventSubscriptionName);
             return systemTopicEventSubscription;
@@ -1707,7 +1707,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return (eventSubscriptionsList, newNextLink);
         }
 
-        public EventSubscription createSystemTopicEventSubscriptiion(
+        public EventSubscription createSystemTopicEventSubscription(
             string eventSubscriptionName,
             string resourceGroupName,
             string systemTopicName,
@@ -1842,7 +1842,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return systemTopicEventSubscription;
         }
 
-        public EventSubscription UpdateSystemTopicEventSubscriptiion(
+        public EventSubscription UpdateSystemTopicEventSubscription(
             string eventSubscriptionName,
             string resourceGroupName,
             string systemTopicName,
@@ -1962,7 +1962,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             return systemTopicEventSubscription;
         }
 
-        public void DeleteSystemTopicEventSubscriptiion(string resourceGroupName, string systemTopicName, string eventSubscriptionName)
+        public void DeleteSystemTopicEventSubscription(string resourceGroupName, string systemTopicName, string eventSubscriptionName)
         {
             this.Client.SystemTopicEventSubscriptions.Delete(resourceGroupName, systemTopicName, eventSubscriptionName);
         }

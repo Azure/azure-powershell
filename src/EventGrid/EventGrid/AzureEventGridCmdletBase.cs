@@ -42,15 +42,20 @@ namespace Microsoft.Azure.Commands.EventGrid
         protected const string EventSubscriptionDomainTopicNameParameterSet = "EventSubscriptionDomainTopicNameParameterSet";
 
         protected const string TopicNameParameterSet = "TopicNameParameterSet";
-        protected const string TopicEventSuscriptionParameterSet = "TopicEventSuscriptionParameterSet";
+        protected const string TopicEventSubscriptionParameterSet = "TopicEventSubscriptionParameterSet";
         protected const string SystemTopicNameParameterSet = "SystemTopicNameParameterSet";
         protected const string SystemTopicEventSuscriptionParameterSet = "SystemTopicEventSuscriptionParameterSet";
         protected const string ResourceGroupNameParameterSet = "ResourceGroupNameParameterSet";
         protected const string CustomTopicEventSubscriptionParameterSet = "CustomTopicEventSubscriptionParameterSet";
         protected const string SubscriptionAndResourceGroupEventSubscriptionParameterSet = "SubscriptionAndResourceGroupEventSubscriptionParameterSet";
+        protected const string ResourceIdTopicParameterSet = "ResourceIdTopicParameterSet";
         protected const string ResourceIdDomainParameterSet = "ResourceIdDomainParameterSet";
         protected const string ResourceIdDomainTopicParameterSet = "ResourceIdDomainTopicParameterSet";
         protected const string ResourceIdEventSubscriptionParameterSet = "ResourceIdEventSubscriptionParameterSet";
+        protected const string ResourceIdTopicEventSubscriptionParameterSet = "ResourceIdTopicEventSubscriptionParameterSet";
+        protected const string ResourceIdDomainEventSubscriptionParameterSet = "ResourceIdDomainEventSubscriptionParameterSet";
+        protected const string ResourceIdDomainTopicEventSubscriptionParameterSet = "ResourceIdDomainTopicEventSubscriptionParameterSet";
+        protected const string ResourceIdPartnerTopicEventSubscriptionParameterSet = "ResourceIdPartnerTopicEventSubscriptionParameterSet";
         protected const string EventSubscriptionNameParameterSet = "EventSubscriptionNameParameterSet";
         protected const string NextLinkParameterSet = "NextLinkParameterSet";
 
@@ -84,6 +89,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         protected const string ChannelNameParameterSet = "ChannelNameParameterSet";
         protected const string ChannelListByPartnerNamespaceParameterSet = "ChannelListByPartnerNamespaceParameterSet";
         protected const string PartnerTopicNameParameterSet = "PartnerTopicNameParameterSet";
+        protected const string PartnerTopicEventSubscriptionParameterSet = "PartnerTopicEventSubscriptionParameterSet";
 
         protected const string PartnerConfigurationInputObjectParameterSet = "PartnerConfigurationInputObjectParameterSet";
         protected const string PartnerRegistrationInputObjectParameterSet = "PartnerRegistrationInputObjectParameterSet";

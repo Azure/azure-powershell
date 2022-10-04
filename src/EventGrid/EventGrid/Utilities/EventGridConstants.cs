@@ -93,6 +93,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Utilities
         public const string PartnerNamespaceResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Namespace.";
         public const string PartnerDestinationResourceIdHelp = "Resource Idenitifier representing the Event Grid Partner Destination.";
         public const string ChannelResourceIdHelp = "Resource Idenitifier representing the Event Grid Channel.";
+        public const string EventSubscriptionResourceIdHelp = "Resource Identifier representing the Event Grid Event Subscription.";
 
         public const string PartnerConfigurationInputObjectHelp = "PartnerConfiguration object.";
         public const string PartnerRegistrationInputObjectHelp = "PartnerRegistration object";

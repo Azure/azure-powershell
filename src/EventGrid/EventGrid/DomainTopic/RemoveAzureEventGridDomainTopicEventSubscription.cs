@@ -27,20 +27,21 @@ using Microsoft.WindowsAzure.Commands.Utilities.Common;
 namespace Microsoft.Azure.Commands.EventGrid
 {
     [Cmdlet(
-        "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridTopicEventSubscriptionDeliveryAttribute",
-        DefaultParameterSetName = TopicNameParameterSet),
-    OutputType(typeof(PsDeliveryAttribute))]
+        "Remove",
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridDomainTopicEventSubscription",
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = DomainTopicEventSubscriptionParameterSet),
+    OutputType(typeof(bool))]
 
-    public class GetAzureEventGridTopicEventSubscriptionDeliveryAttribute : AzureEventGridCmdletBase
+    public class RemoveAzureEventGridDomainTopicEventSubscription : AzureEventGridCmdletBase
     {
         [Parameter(
            Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
-           ParameterSetName = TopicEventSubscriptionParameterSet)]
+           ParameterSetName = DomainTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.EventGrid/topics/eventSubscriptions", nameof(ResourceGroupName), nameof(TopicName))]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains/topics/eventSubscriptions", nameof(ResourceGroupName), nameof(DomainName), nameof(DomainTopicName))]
         [Alias("EventSubscriptionName")]
         public string Name { get; set; }
 
@@ -48,7 +49,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = TopicEventSubscriptionParameterSet)]
+            ParameterSetName = DomainTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         [Alias(AliasResourceGroup)]
         [ResourceGroupCompleter]
@@ -57,45 +58,77 @@ namespace Microsoft.Azure.Commands.EventGrid
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TopicNameHelp,
-            ParameterSetName = TopicEventSubscriptionParameterSet)]
+            HelpMessage = EventGridConstants.DomainTopicNameHelp,
+            ParameterSetName = DomainTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
-        [ResourceNameCompleter("Microsoft.EventGrid/topics", nameof(ResourceGroupName))]
-        public string TopicName { get; set; }
+        [ResourceNameCompleter("Microsoft.EventGrid/domains", nameof(ResourceGroupName))]
+        public string DomainName { get; set; }
+
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.DomainTopicNameHelp,
+            ParameterSetName = DomainTopicEventSubscriptionParameterSet)]
+        [ValidateNotNullOrEmpty]
+        [ResourceNameCompleter("Microsoft.EventGrid/domains/topics", nameof(ResourceGroupName), nameof(DomainName))]
+        public string DomainTopicName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.EventSubscriptionResourceIdHelp,
-            ParameterSetName = ResourceIdTopicEventSubscriptionParameterSet)]
+            ParameterSetName = ResourceIdDomainTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ResourceId { get; set; }
+
+        /// <summary>
+        /// If present, do not ask for confirmation
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = EventGridConstants.ForceHelp)]
+        public SwitchParameter Force { get; set; }
+
+        [Parameter(
+            Mandatory = false)]
+        public SwitchParameter PassThru { get; set; }
 
         public override void ExecuteCmdlet()
         {
             string resourceGroupName = string.Empty;
-            string topicName = string.Empty;
+            string domainName = string.Empty;
+            string domainTopicName = string.Empty;
             string eventSubscriptionName = string.Empty;
 
             if (!string.IsNullOrEmpty(this.ResourceId))
             {
-                EventGridUtils.GetResourceGroupNameAndTopicNameAndEventSubscriptionName(
+                EventGridUtils.GetResourceGroupNameAndDomainNameAndDomainTopicNameAndEventSubscriptionName(
                     this.ResourceId,
                     out resourceGroupName,
-                    out topicName,
+                    out domainName,
+                    out domainTopicName,
                     out eventSubscriptionName);
             }
             else
             {
                 resourceGroupName = this.ResourceGroupName;
-                topicName = this.TopicName;
+                domainName = this.DomainName;
+                domainTopicName = this.DomainTopicName;
                 eventSubscriptionName = this.Name;
             }
 
-            DeliveryAttributeListResult deliveryAttributeListResult = this.Client.GetAzTopicEventSubscriptionsDeliveryAttribute(resourceGroupName, topicName, eventSubscriptionName);
-            PsDeliveryAttribute PsDeliveryAttribute = new PsDeliveryAttribute(deliveryAttributeListResult);
-            this.WriteObject(PsDeliveryAttribute, true);
+            ConfirmAction(Force.IsPresent,
+                $"Remove event subscription {eventSubscriptionName}",
+                $"Removing event subscription {eventSubscriptionName}",
+                eventSubscriptionName,
+                () =>
+                {
+                    this.Client.DeleteDomainTopicEventSubscription(resourceGroupName, domainName, domainTopicName, eventSubscriptionName);
+                    if (PassThru)
+                    {
+                        WriteObject(true);
+                    }
+                });
         }
     }
 }
