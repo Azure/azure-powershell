@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.AuthorizedPartnersHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
-        public Hashtable[] AuthorizedPartners { get; set; }
+        public Hashtable[] AuthorizedPartner { get; set; }
 
         public override void ExecuteCmdlet()
         {
@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 PartnerConfiguration partnerConfiguration = this.Client.CreatePartnerConfiguration(
                     this.ResourceGroupName,
-                    this.AuthorizedPartners,
+                    this.AuthorizedPartner,
                     this.MaxExpirationTimeInDays,
                     tagDictionary);
 

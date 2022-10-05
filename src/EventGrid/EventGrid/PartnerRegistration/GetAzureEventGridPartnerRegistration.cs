@@ -31,25 +31,29 @@ namespace Microsoft.Azure.Commands.EventGrid
 
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerRegistration"),
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerRegistration",
+        DefaultParameterSetName = ResourceGroupNameParameterSet),
     OutputType(typeof(PSPartnerRegistrationListInstance), typeof(PSPartnerRegistration))]
 
     public class GetAzureEventGridPartnerRegistration : AzureEventGridCmdletBase
     {
         [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
-        [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = PartnerRegistrationNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
+            ParameterSetName = ResourceGroupNameParameterSet)]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.PartnerRegistrationNameHelp,
             ParameterSetName = PartnerRegistrationNameParameterSet)]
@@ -62,11 +66,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ODataQueryHelp,
-            ParameterSetName = PartnerRegistrationListBySubscriptionParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ODataQuery { get; set; }
@@ -75,11 +74,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TopHelp,
-            ParameterSetName = PartnerRegistrationListBySubscriptionParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [ValidateRange(1, 100)]
         public int? Top { get; set; }

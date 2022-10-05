@@ -32,7 +32,7 @@
 * Added new features:
     - Partner topics
     - Partner topic event subscriptions
-    - Partner namesapces
+    - Partner namespaces
     - Partner namespace keys
     - Partner configurations
     - Partner registrations

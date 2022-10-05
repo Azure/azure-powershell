@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerConfiguration",
         SupportsShouldProcess = true,
         DefaultParameterSetName = ResourceGroupNameParameterSet),
-    OutputType(typeof(bool))]
+    OutputType(typeof(PSPartnerConfiguration))]
 
     public class GrantAzureEventGridPartnerConfiguration : AzureEventGridCmdletBase
     {
@@ -54,13 +54,13 @@ namespace Microsoft.Azure.Commands.EventGrid
         public PSPartnerConfiguration InputObject { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.PartnerRegistrationImmutableIdHelp,
             ParameterSetName = PartnerConfigurationInputObjectParameterSet)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.PartnerRegistrationImmutableIdHelp,
@@ -68,13 +68,13 @@ namespace Microsoft.Azure.Commands.EventGrid
         public Guid? PartnerRegistrationImmutableId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.PartnerNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.PartnerNameHelp,
@@ -82,13 +82,13 @@ namespace Microsoft.Azure.Commands.EventGrid
         public string PartnerName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.AuthorizationExpirationTimeHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             Position = 0,
             HelpMessage = EventGridConstants.AuthorizationExpirationTimeHelp,

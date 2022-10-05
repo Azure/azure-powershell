@@ -431,3 +431,39 @@ function Get-DomainTopicName
 {
     return "PSTestDomainTopic-" + (getAssetName)
 }
+
+<#
+.SYNOPSIS
+Get partner registration name
+#>
+function Get-PartnerRegistrationName
+{
+    return "PSTestPartnerRegistration-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get partner namespace name
+#>
+function Get-PartnerNamespaceName
+{
+    return "PSTestPartnerNamespace-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get channel name
+#>
+function Get-ChannelName
+{
+    return "PSTestChannel-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get partner topic name
+#>
+function Get-PartnerTopicName
+{
+    return "PSTestPartnerTopic-" + (getAssetName)
+}

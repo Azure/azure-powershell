@@ -35,7 +35,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
             this.DisableLocalAuth = partnerNamespace.DisableLocalAuth;
             this.PartnerTopicRoutingMode = partnerNamespace.PartnerTopicRoutingMode;
 
-            if (partnerNamespace.PartnerTopicRoutingMode != null)
+            if (partnerNamespace.PrivateEndpointConnections != null)
             {
                 foreach (PrivateEndpointConnection privateEndpointConnection in partnerNamespace.PrivateEndpointConnections)
                 {

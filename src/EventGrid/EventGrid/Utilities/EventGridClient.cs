@@ -2537,7 +2537,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         {
             if (partnerRegistrationImmutableId == null && string.IsNullOrEmpty(partnerName))
             {
-                throw new ArgumentException("At least one of ChannelImmutableId and PartnerName must be provided");
+                throw new ArgumentException("At least one of PartnerRegistrationImmutableId and PartnerName must be provided");
             }
 
             Partner partnerInfo = new Partner(
@@ -2594,6 +2594,7 @@ namespace Microsoft.Azure.Commands.EventGrid
                 partnerAuthorization.AuthorizedPartnersList = authorizedPartnersList;
             }
 
+            partnerConfigurationInfo.PartnerAuthorization = partnerAuthorization;
             return this.Client.PartnerConfigurations.CreateOrUpdate(resourceGroupName, partnerConfigurationInfo);
         }
 

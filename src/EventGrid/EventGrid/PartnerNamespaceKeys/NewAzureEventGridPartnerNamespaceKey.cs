@@ -12,46 +12,64 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.Management.Automation;
 using Microsoft.Azure.Commands.EventGrid.Models;
+using Microsoft.Azure.Commands.ResourceManager.Common.Tags;
+using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.EventGrid.Models;
 using Microsoft.Azure.Commands.EventGrid.Utilities;
-using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
+using EventGridModels = Microsoft.Azure.Management.EventGrid.Models;
+using System;
 
 namespace Microsoft.Azure.Commands.EventGrid
 {
-    /// <summary>
-    /// 'Get-AzureEventGridPartnerNamespace' Cmdlet gives the details of a / List of EventGrid partner registration(s)
-    /// <para> If PartnerNamespace name provided, a single PartnerNamespace details will be returned</para>
-    /// <para> If PartnerNamespace name not provided, list of PartnerNamespaces will be returned</para>
-    /// </summary>
-
     [Cmdlet(
-        "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerNamespaceKeys"),
-    OutputType(typeof(PSPartnerNamespaceListInstance), typeof(PSPartnerNamespace))]
+        VerbsCommon.New,
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerNamespaceKey",
+        SupportsShouldProcess = true,
+        DefaultParameterSetName = PartnerNamespaceNameParameterSet),
+    OutputType(typeof(PSPartnerNamespace))]
 
-    public class GetAzureEventGridPartnerNamespaceKeys : AzureEventGridCmdletBase
+    public class NewAzureEventGridPartnerNamespaceKey : AzureEventGridCmdletBase
     {
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            Position = 0,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = PartnerNamespaceNameParameterSet)]
+        [ResourceGroupCompleter]
+        [ValidateNotNullOrEmpty]
+        [Alias(AliasResourceGroup)]
         public string ResourceGroupName { get; set; }
 
         [Parameter(
             Mandatory = true,
             ValueFromPipelineByPropertyName = true,
+            Position = 1,
             HelpMessage = EventGridConstants.PartnerNamespaceNameHelp,
             ParameterSetName = PartnerNamespaceNameParameterSet)]
         [ResourceNameCompleter("Microsoft.EventGrid/partnerNamespaces", nameof(ResourceGroupName))]
         [ValidateNotNullOrEmpty]
         public string PartnerNamespaceName { get; set; }
 
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            Position = 2,
+            HelpMessage = EventGridConstants.PartnerNamespaceKeyNameHelp,
+            ParameterSetName = PartnerNamespaceNameParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.PartnerNamespaceKeyNameHelp,
+            ParameterSetName = PartnerNamespaceInputObjectParameterSet)]
+        [Alias("KeyName")]
+        [ValidateSet("key1", "key2", IgnoreCase = true)]
+        [ValidateNotNullOrEmpty]
+        public string Name { get; set; }
 
         [Parameter(
             Mandatory = true,
@@ -76,11 +94,12 @@ namespace Microsoft.Azure.Commands.EventGrid
                 partnerNamespaceName = this.PartnerNamespaceName;
             }
 
-            // Get details of a partner namespace shared access key
-            PartnerNamespaceSharedAccessKeys partnerNamespaceSharedAccessKeys = this.Client.ListPartnerNamespaceKeys(resourceGroupName, partnerNamespaceName);
-            PSPartnerNamespaceSharedAccessKeys psPartnerNamespaceSharedAccessKeys = new PSPartnerNamespaceSharedAccessKeys(partnerNamespaceSharedAccessKeys);
-            this.WriteObject(psPartnerNamespaceSharedAccessKeys);
+            if (this.ShouldProcess(this.Name, $"Regenerate key {this.Name} for EventGrid partner namespace {partnerNamespaceName} in Resource Group {resourceGroupName}"))
+            {
+                PartnerNamespaceSharedAccessKeys partnerNamespaceSharedAccessKeys = this.Client.RegeneratePartnerNamespaceKey(resourceGroupName, partnerNamespaceName, this.Name);
+                PSPartnerNamespaceSharedAccessKeys psPartnerNamespaceSharedAccessKeys = new PSPartnerNamespaceSharedAccessKeys(partnerNamespaceSharedAccessKeys);
+                this.WriteObject(psPartnerNamespaceSharedAccessKeys);
+            }
         }
     }
-
 }

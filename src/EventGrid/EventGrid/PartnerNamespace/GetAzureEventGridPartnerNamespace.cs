@@ -31,13 +31,14 @@ namespace Microsoft.Azure.Commands.EventGrid
 
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerNamespace"),
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerNamespace",
+        DefaultParameterSetName = PartnerNamespaceListBySubscriptionParameterSet),
     OutputType(typeof(PSPartnerNamespaceListInstance), typeof(PSPartnerNamespace))]
 
     public class GetAzureEventGridPartnerNamespace : AzureEventGridCmdletBase
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
@@ -52,7 +53,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.PartnerNamespaceNameHelp,
             ParameterSetName = PartnerNamespaceNameParameterSet)]
@@ -88,7 +89,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         public int? Top { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.NextLinkHelp,
             ParameterSetName = NextLinkParameterSet)]
