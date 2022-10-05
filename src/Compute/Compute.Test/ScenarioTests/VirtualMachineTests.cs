@@ -61,6 +61,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSecurityType()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineSecurityType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineSecurityTypeWithoutConfig()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineSecurityTypeWithoutConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestLinuxVirtualMachine()
         {
             TestRunner.RunTestScript("Test-LinuxVirtualMachine");

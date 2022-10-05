@@ -808,7 +808,6 @@ namespace Microsoft.Azure.Commands.Compute
                     var st2 = VhdUploaderModel.Upload(uploadParameters);
                 }
             }
-
             VirtualMachine result;
             try
             {
@@ -875,10 +874,19 @@ namespace Microsoft.Azure.Commands.Compute
 
             if (this.VM.SecurityProfile.SecurityType == "TrustedLaunch" || this.VM.SecurityProfile.SecurityType == "ConfidentialVM")
             {
-                this.VM.SecurityProfile.UefiSettings.VTpmEnabled = this.VM.SecurityProfile.UefiSettings.VTpmEnabled == null ? true : this.VM.SecurityProfile.UefiSettings.VTpmEnabled;
-                this.VM.SecurityProfile.UefiSettings.SecureBootEnabled = this.VM.SecurityProfile.UefiSettings.SecureBootEnabled == null ? true : this.VM.SecurityProfile.UefiSettings.SecureBootEnabled;
-            }
+                if (this.VM.SecurityProfile.UefiSettings != null)
+                {
+                    this.VM.SecurityProfile.UefiSettings.SecureBootEnabled = this.VM.SecurityProfile.UefiSettings.SecureBootEnabled != null ? this.VM.SecurityProfile.UefiSettings.SecureBootEnabled : true;
+                    this.VM.SecurityProfile.UefiSettings.VTpmEnabled = this.VM.SecurityProfile.UefiSettings.VTpmEnabled != null ? this.VM.SecurityProfile.UefiSettings.VTpmEnabled : true;
+                    
+                }
+                else
+                {
+                    this.VM.SecurityProfile.UefiSettings = new UefiSettings(true, true);
+                }
 
+            }
+            
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
             {
                 ExecuteClientAction(() =>
