@@ -1,8 +1,8 @@
 variables:
   WindowsName: windows
-  WindowsImage: windows-2019
+  WindowsImage: pool-windows-2019
   LinuxName: linux
-  LinuxImage: ubuntu-20.04
+  LinuxImage: pool-ubuntu-2004
   MacOSName: macOS
   MacOSImage: macOS-11
   TestFramework: netcoreapp3.1
@@ -35,7 +35,7 @@ jobs:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
   pool:
-    vmImage: $(ImageName)
+    name: $(ImageName)
 
   steps:
   - template: util/build-steps.yml
@@ -55,7 +55,7 @@ jobs:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
   pool:
-    vmImage: $(ImageName)
+    name: $(ImageName)
 
   steps:
   - template: util/analyze-steps.yml
@@ -81,7 +81,7 @@ jobs:
         OSName: ${{ variables.MacOSName }}
         ImageName: ${{ variables.MacOSImage }}
   pool:
-    vmImage: $(ImageName)
+    name: $(ImageName)
 
   steps:
   - template: util/test-steps.yml

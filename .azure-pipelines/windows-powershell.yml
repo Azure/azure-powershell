@@ -1,6 +1,6 @@
 variables:
   WindowsName: windows
-  WindowsImage: windows-2019
+  WindowsImage: pool-windows-2019
   TestFramework: netcoreapp3.1
   TestTarget: Test
   Configuration: Debug
@@ -24,7 +24,7 @@ jobs:
   condition: and(eq(variables.IsGenerateBased, false), succeeded())
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
   pool:
-    vmImage: ${{ variables.WindowsImage }}
+    name: ${{ variables.WindowsImage }}
 
   steps:
   - task: ms.vss-governance-buildtask.governance-build-task-component-detection.ComponentGovernanceComponentDetection@0
@@ -47,7 +47,7 @@ jobs:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
   pool:
-    vmImage: $(ImageName)
+    name: $(ImageName)
 
   steps:
   - template: util/analyze-steps.yml
@@ -67,7 +67,7 @@ jobs:
         OSName: ${{ variables.WindowsName }}
         ImageName: ${{ variables.WindowsImage }}
   pool:
-    vmImage: $(ImageName)
+    name: $(ImageName)
 
   steps:
   - template: util/test-steps.yml
