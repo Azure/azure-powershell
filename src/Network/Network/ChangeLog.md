@@ -56,9 +56,10 @@
 * Fixed a bug not able to add MSSQL application rules to an AZURE FIREWALL POLICY
 * Updated cmdlets to add new property of `VirtualNetworkGatewayPolicyGroup` and `VpnClientConnectionConfiguration` in Azure Virtual Network Gateway
     - `New-AzVirtualNetworkGateway`
-    - `Update-AzVirtualNetworkGateway`
+    - `Set-AzVirtualNetworkGateway`
 * Added new cmdlets to create 
     - `New-AzVirtualNetworkGatewayPolicyGroup`
+    - `New-AzVirtualNetworkGatewayPolicyGroupMember`
     - `New-AzVpnClientConnectionConfiguration`
 * Added message in breaking change attribute to notify that load balancer sku default behaviour will be changed
     - `New-AzLoadBalancer`
