@@ -24,7 +24,7 @@ using Microsoft.Rest.Azure;
 
 namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
 {
-    public class IpUtils
+    internal class IpUtils
     {
         #region Fields
         private NetworkClient _networkClient;
