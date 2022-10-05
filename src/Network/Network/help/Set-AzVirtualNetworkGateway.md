@@ -371,7 +371,7 @@ The fifth command set this new created PSVirtualNetworkGatewayNatRule to NatRule
 
 ### Example 7: Delete multiple expired VpnClientRootCertificates of an existing virtual network gateway
 ```powershell
-$Gateway=Get-AzvirtualnetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
+$Gateway=Get-AzVirtualNetworkGateway -ResourceGroupName "ResourceGroup001" -Name "Gateway001"
 
 $rootCerts=$Gateway.VpnClientConfiguration.VpnClientRootCertificates
 
