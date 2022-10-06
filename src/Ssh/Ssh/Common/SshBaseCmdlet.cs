@@ -447,7 +447,6 @@ namespace Microsoft.Azure.Commands.Ssh
             if (!File.Exists(proxyPath))
             {
                 string proxyDir = Path.GetDirectoryName(proxyPath);
-                Console.WriteLine(proxyDir);
 
                 if (!Directory.Exists(proxyDir))
                 {
