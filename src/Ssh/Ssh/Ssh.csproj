@@ -4,14 +4,20 @@
     <PsModuleName>Ssh</PsModuleName>
   </PropertyGroup> 
   
-  <ItemGroup>
-    <ProjectReference Include="..\..\Accounts\Accounts\Accounts.csproj" />
-  </ItemGroup>
+  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+
+  <PropertyGroup>
+    <RootNamespace>$(LegacyAssemblyPrefix)$(PsModuleName)</RootNamespace>
+  </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Ssh.Helpers\Ssh.Helpers.csproj" />
   </ItemGroup>
-  
-  <Import Project="$(MSBuildThisFileDirectory)..\..\Az.props" />
+
+  <ItemGroup>
+    <Folder Include="help\" />
+  </ItemGroup>
+
+  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory).., build.proj))\src\Az.Post.props" />
 
 </Project>
