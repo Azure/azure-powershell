@@ -27,6 +27,7 @@
 * Changed the returned object for the following cmdlets: `Get-AzSqlServerAdvancedThreatProtectionSetting` and `Get-AzSqlDatabaseAdvancedThreatProtectionSetting`
 * Changed the parameters for the following cmdlets: `Update-AzSqlServerAdvancedThreatProtectionSetting` and `Update-AzSqlDatabaseAdvancedThreatProtectionSetting`. Only `Enable` parameter is now supported.
 * Changed endpoint used in SQL Server and SQL Instance from AD Graph to MS Graph
+* Added `Standby` option to `SecondaryType` parameter to `New-AzSqlDatabaseSecondary`.
 
 ## Version 3.11.0
 * Removed the warning messages for MSGraph migration [#18856] 
