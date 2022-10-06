@@ -107,6 +107,15 @@ function Get-EventSubscriptionWebhookBaseEndpointWithCloudEvent
 
 <#
 .SYNOPSIS
+Get EventSubscription Storage QueueFunction Endpoint
+#>
+function Get-EventSubscriptionStorageQueueEndpoint
+{
+    return "/subscriptions/5b4b650e-28b9-4790-b3ab-ddbd88d727c4/resourceGroups/DevExpRg/providers/Microsoft.Storage/storageAccounts/devexpstg/queueServices/default/queues/stogqueuedestination"
+}
+
+<#
+.SYNOPSIS
 Get location
 #>
 function Get-LocationForEventGrid
@@ -466,4 +475,13 @@ Get partner topic name
 function Get-PartnerTopicName
 {
     return "PSTestPartnerTopic-" + (getAssetName)
+}
+
+<#
+.SYNOPSIS
+Get partner topic source
+#>
+function Get-PartnerTopicSource
+{
+    return "PSTestPartnerTopicSource" + (getAssetName) 
 }

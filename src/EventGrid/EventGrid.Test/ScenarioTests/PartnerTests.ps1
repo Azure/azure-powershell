@@ -32,13 +32,15 @@ function PartnerTests {
     $resourceGroupName = Get-ResourceGroupName
     $secondResourceGroup = Get-ResourceGroupName
     $subscriptionId = Get-SubscriptionId
+    $source = Get-PartnerTopicSource
 
     New-ResourceGroup $resourceGroupName $location
 
     New-ResourceGroup $secondResourceGroup $location
 
+    $eventSubscriptionStorageDestinationResourceId = Get-EventSubscriptionStorageQueueEndpoint
+
     $eventSubscriptionEndpoint = Get-EventSubscriptionWebhookEndpoint
-    $eventSubscriptionEndpointCloudEvent = Get-EventSubscriptionWebhookEndpointWithCloudEvent
 
     $storageAccountName = Get-StorageAccountName
     $storageContainerName = Get-StorageBlobName
@@ -115,14 +117,115 @@ function PartnerTests {
         Write-Debug "Getting the new EventGrid PartnerConfiguration"
         $createdPartnerConfiguration = Get-AzEventGridPartnerConfiguration -ResourceGroup $resourceGroupName
         Assert-True {$createdPartnerConfiguration.PartnerAuthorization.DefaultMaximumExpirationTimeInDays -eq 15}
+        Assert-True {$createdPartnerConfiguration.PartnerAuthorization.AuthorizedPartnersList[0].PartnerRegistrationImmutableId -eq $partnerRegistrationImmutableId}
 
-        Remove-AzEventGridPartnerConfiguration -ResourceGroup $resourceGroupName
-        Remove-AzEventGridPartnerRegistration -ResourceGroup $resourceGroupName -Name $partnerRegistrationName
-        Remove-AzEventGridPartnerNamespace -ResourceGroup $resourceGroupName -Name $partnerNamespaceName
+        Write-Debug "Getting EventGrid PartnerConfigurations within the subscription"
+        $allPartnerConfigurations = Get-AzEventGridPartnerConfiguration
+        $countOfPc = $allPartnerConfigurations.PsPartnerConfigurationsList.Count
+        $partnerConfigurationsType = $allPartnerConfigurations.GetType()
+        Write-Debug "PsPartnerCnfigurationsList count: $countOfPc, type: $partnerConfigurationsType"
+        Assert-True {$allPartnerConfigurations.PsPartnerConfigurationsList.Count -ge 0}
+
+        Write-Debug "Unauthorizing the EventGrid PartnerConfiguration"
+        $result = Revoke-AzEventGridPartnerConfiguration -ResourceGroup $resourceGroupName -PartnerRegistrationImmutableId $partnerRegistrationImmutableId
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+        Write-Debug "Authorizing the EventGrid PartnerConfiguration"
+        $result = Grant-AzEventGridPartnerConfiguration -ResourceGroup $resourceGroupName -PartnerRegistrationImmutableId $partnerRegistrationImmutableId
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+        Write-Debug "Creating EventGrid Channel: $channelName in resource group $resourceGroupName"
+        $createdChannel = New-AzEventGridChannel -ResourceGroup $resourceGroupName -PartnerNamespaceName $partnerNamespaceName -Name $channelName -ChannelType "partnerTopic" -PartnerTopicName $partnerTopicName -PartnerTopicSource $source
+        Assert-True {$createdChannel.ProvisioningState -eq "Succeeded"}
+
+        Write-Debug "Getting EventGrid Channel $channelName"
+        $createdChannel = Get-AzEventGridChannel -ResourceGroup $resourceGroupName -PartnerNamespaceName $partnerNamespaceName -Name $channelName
+        Assert-True {$createdChannel.Name -eq $channelName}
+
+        Write-Debug "Getting EventGrid Channels within the partner namespace"
+        $allCreatedChannels = Get-AzEventGridChannel -ResourceGroup $resourceGroupName -PartnerNamespaceName $partnerNamespaceName
+        Assert-True {$allCreatedChannels.PsChannelsList.Count -eq 1}
+
+        Write-Debug "Getting PartnerTopic: $partnerTopicName in resource group $resourceGroupName"
+        $createdPartnerTopic = Get-AzEventGridPartnerTopic -ResourceGroup $resourceGroupName -Name $partnerTopicName
+        Assert-True {$createdPartnerTopic.ProvisioningState -eq "Succeeded"}
+        Assert-True {$createdPartnerTopic.Name -eq $partnerTopicName}
+
+        Write-Debug "Getting all PartnerTopics in ResourceGroup"
+        $allPartnerTopics = Get-AzEventGridPartnerTopic -ResourceGroup $resourceGroupName
+        $partnerTopicsType = $allPartnerTopics.GetType()
+        Write-Debug "PartnerTopicsList type: $partnerTopicsType"
+        Assert-True {$allPartnerTopics.PsPartnerTopicsList.Count -eq 1}
+
+        Write-Debug "Getting all PartnerTopics in the subscription"
+        $allPartnerTopics = Get-AzEventGridPartnerTopic -ResourceGroup $resourceGroupName
+        Assert-True {$allPartnerTopics.PsPartnerTopicsList.Count -ge 1}
+
+        Write-Debug "Activating the PartnerTopic"
+        $result = Enable-AzEventGridPartnerTopic -ResourceGroup $resourceGroupName -Name $partnerTopicName
+        Assert-True {$result.ActivationState -eq "Activated"}
+        Assert-True {$result.PartnerRegistrationImmutableId -eq $partnerRegistrationImmutableId}
+
+        #Write-Debug "Updating PartnerTopic $partnerTopicName"
+        #$createdPartnerTopic = Update-AzEventGridPartnerTopic -ResourceGroup $resourceGroupName -Name $partnerTopicName -Tag @{ "Dept"="IT"; "Environment"="Test" }
+
+        Write-Debug "Creating PartnerTopic EventSubscription $eventSubscriptionName under partner topic $partnerTopicName"
+        $createdEventSub = New-AzEventGridPartnerTopicEventSubscription -ResourceGroup $resourceGroupName -PartnerTopicName $partnerTopicName -Name $eventSubscriptionName -EndpointType "storagequeue" -Endpoint $eventSubscriptionStorageDestinationResourceId
+        Assert-True {$createdEventSub.ProvisioningState -eq "Succeeded"}
+
+        Write-Debug "Get EventSubscription created for partner topic $partnerTopicName"
+        $createdEventSub = Get-AzEventGridPartnerTopicEventSubscription -ResourceGroup $resourceGroupName -PartnerTopicName $partnerTopicName -Name $eventSubscriptionName
+        Assert-True {$createdEventSub.EventSubscriptionName -eq $eventSubscriptionName}
+
+        Write-Debug "Creating 2nd EventSubscription $eventSubscriptionName2 to topic $partnerTopicName in resource group $resourceGroupName"
+        $result = New-AzEventGridPartnerTopicEventSubscription -ResourceGroup $resourceGroupName -PartnerTopicName $partnerTopicName -EndpointType "storagequeue" -Endpoint $eventSubscriptionStorageDestinationResourceId -EventSubscriptionName $eventSubscriptionName2
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+
+        Write-Debug "Get event subscription created for partner topic: $partnerTopicName"
+        $createdEventSubscription2 = Get-AzEventGridPartnerTopicEventSubscription -ResourceGroup $resourceGroupName -PartnerTopicName $partnerTopicName
+        Assert-True {$createdEventSubscription2.Count -ge 0} "Event subscription created earlier is not found in the list"
+
+        Write-Debug "Get event subscription created for partner topic: $partnerTopicName"
+        $createdEventSubscription = Get-AzEventGridPartnerTopicEventSubscription -ResourceGroup $resourceGroupName -PartnerTopicName $partnerTopicName -Top 1
+        Assert-True {$createdEventSubscription.NextLink -ne $null } "NextLink should not be null as more event subscription should be available under partner topic"
+
+        Write-Debug "Get event subscription created for partner topic: $partnerTopicName with nextlink"
+        $createdEventSubscription = Get-AzEventGridPartnerTopicEventSubscription -ResourceGroup $resourceGroupName -PartnerTopicName $partnerTopicName -NextLink $createdEventSubscription.NextLink
+        Assert-True {$createdEventSubscription -ne $null } "Event subscription should not be null as more event subscription should be available under partner topic"
+
+        $labels = "Finance", "HR"
+        Write-Debug "Updating a EventGrid PartnerTopic Eventsubscription with TopicName: $partnerTopicName in resource group $resourceGroupName and EventSubscriptionName: $eventSubscriptionName"
+        $result = Update-AzEventGridPartnerTopicEventSubscription -EventSubscriptionName $eventSubscriptionName -ResourceGroup $resourceGroupName -PartnerTopicName $partnerTopicName -Label $labels
+        Assert-True {$result.ProvisioningState -eq "Succeeded"}
+        $updatedLabels = $result.Labels
+        Assert-AreEqual 2 $updatedLabels.Count;
+        Assert-AreEqual "Finance" $updatedLabels[0];
+        Assert-AreEqual "HR" $updatedLabels[1];
+
+        #Write-Debug "Get Delivery attributes for partner topic: $partnerTopicName and Eventsubscription $eventSubscriptionName"
+        #$createdEventSubscriptionDa = Get-AzEventGridPartnerTopicEventSubscriptionDeliveryAttribute -ResourceGroup $resourceGroupName -PartnerTopicName $partnerTopicName -EventSubscriptionName $eventSubscriptionName
+
+        #Write-Debug "Get full url for partner topic: $partnerTopicName and Eventsubscription $eventSubscriptionName"
+        #$createdEventSubscriptionDa = Get-AzEventGridFullUrlForPartnerTopicEventSubscription -ResourceGroup $resourceGroupName -PartnerTopicName $partnerTopicName -EventSubscriptionName $eventSubscriptionName
+
+        Write-Debug "Deleting event subscription :  $eventSubscriptionName for partner topic : $partnerTopicName"
+        Remove-AzEventGridPartnerTopicEventSubscription -ResourceGroup $resourceGroupName -PartnerTopicName $partnerTopicName -EventSubscriptionName $eventSubscriptionName -Force
+
+        Write-Debug "Deleting event subscription :  $eventSubscriptionName for partner topic : $partnerTopicName"
+        Remove-AzEventGridPartnerTopicEventSubscription -ResourceGroup $resourceGroupName -PartnerTopicName $partnerTopicName -EventSubscriptionName $eventSubscriptionName2 -Force
+
+        $verifiedPartners = Get-AzEventGridVerifiedPartner
+
+        Remove-AzEventGridPartnerTopic -ResourceGroup $resourceGroupName -Name $partnerTopicName -Force
+        Remove-AzEventGridChannel -ResourceGroup $resourceGroupName -PartnerNamespaceName $partnerNamespaceName -Name $channelName -Force
+        Remove-AzEventGridPartnerConfiguration -ResourceGroup $resourceGroupName -Force
+        Remove-AzEventGridPartnerRegistration -ResourceGroup $resourceGroupName -Name $partnerRegistrationName -Force
+        Remove-AzEventGridPartnerNamespace -ResourceGroup $resourceGroupName -Name $partnerNamespaceName -Force
     }
     finally
     {
         Remove-ResourceGroup $resourceGroupName
+        Remove-ResourceGroup $secondResourceGroup
     }
 }
 
