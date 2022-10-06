@@ -30,7 +30,7 @@ $vnet = New-AzVirtualNetwork -Name vnet -ResourceGroupName rg1 -Location "West U
 
 $containerNicConfigIpConfig = New-AzContainerNicConfigIpConfig -Name ipconfigprofile1 -Subnet $vnet.Subnets[0]
 
-$containerNicConfig = New-AzContainerNicConfig -Name cnic -IpConfiguration containerNicConfigIpConfig
+$containerNicConfig = New-AzContainerNicConfig -Name cnic -IpConfiguration $containerNicConfigIpConfig
 
 $networkProfile = New-AzNetworkProfile -Name np1 -Location "West US" -ResourceGroupName rg1 -ContainerNetworkInterfaceConfiguration $containerNicConfig
 ```
