@@ -100,6 +100,20 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                                 checkFlexibleOrchestrationModeParamsDefaultParamSet(parameters);
                             }
 
+                            if (parameters.VirtualMachineProfile.SecurityProfile.SecurityType == "TrustedLaunch" || parameters.VirtualMachineProfile.SecurityProfile.SecurityType =="ConfidentialVM")
+                            {
+                                if (parameters.VirtualMachineProfile.SecurityProfile.UefiSettings != null)
+                                {
+                                    parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled = parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled != null ? parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled : true;
+                                    parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled = parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled != null ? parameters.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled : true;
+
+                                }
+                                else
+                                {
+                                    parameters.VirtualMachineProfile.SecurityProfile.UefiSettings = new UefiSettings(true, true);
+                                }
+                            }
+
                             // For Cross-tenant RBAC sharing
                             Dictionary<string, List<string>> auxAuthHeader = null;
                             if (!string.IsNullOrEmpty(parameters.VirtualMachineProfile?.StorageProfile?.ImageReference?.Id))

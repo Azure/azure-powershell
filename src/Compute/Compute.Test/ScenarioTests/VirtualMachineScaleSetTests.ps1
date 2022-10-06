@@ -3381,6 +3381,141 @@ function Test-VirtualMachineScaleSetRepairsAction
 
 <#
 .SYNOPSIS
+Test Virtual Machine Scale Set VtpmEabled and SecureBootEnabled 
+for the certain Trusted Launch feature setup. 
+#>
+function Test-VirtualMachineScaleSetSecurityType
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssSize = 'Standard_D4s_v3';
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2019-DATACENTER-GENSECOND";
+        $securityType = "TrustedLaunch";
+        $enable = $true;
+        $disable = $false;
+        $extDefaultName = "GuestAttestation";
+        $vmGADefaultIDentity = "SystemAssigned";
+
+        # NRP
+        $subnet = New-AzVirtualNetworkSubnetConfig -Name ('subnet' + $rgname) -AddressPrefix "10.0.0.0/24";
+        $vnet = New-AzVirtualNetwork -Force -Name ('vnet' + $rgname) -ResourceGroupName $rgname -Location $loc -AddressPrefix "10.0.0.0/16" -Subnet $subnet;
+        $vnet = Get-AzVirtualNetwork -Name ('vnet' + $rgname) -ResourceGroupName $rgname;
+        $subnetId = $vnet.Subnets[0].Id;
+
+        # New VMSS Parameters
+        $vmssName = 'vmss' + $rgname;
+        $vmssType = 'Microsoft.Compute/virtualMachineScaleSets';
+
+        $adminUsername = 'usertest';
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+
+        $imgRef = New-Object -TypeName 'Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage';
+        $imgRef.PublisherName = $PublisherName;
+        $imgRef.Offer = $Offer;
+        $imgRef.Skus = $SKU;
+        $imgRef.Version = "latest";
+
+
+        $ipCfg = New-AzVmssIPConfig -Name 'test' -SubnetId $subnetId;
+
+        $vmss = New-AzVmssConfig -Location $loc -SkuCapacity 2 -SkuName $vmssSize -UpgradePolicyMode 'Manual' `
+            | Add-AzVmssNetworkInterfaceConfiguration -Name 'test' -Primary $true -IPConfiguration $ipCfg `
+            | Set-AzVmssOSProfile -ComputerNamePrefix 'test' -AdminUsername $adminUsername -AdminPassword $adminPassword `
+            | Set-AzVmssStorageProfile -OsDiskCreateOption 'FromImage' -OsDiskCaching 'ReadOnly' `
+            -ImageReferenceOffer $imgRef.Offer -ImageReferenceSku $imgRef.Skus -ImageReferenceVersion $imgRef.Version `
+            -ImageReferencePublisher $imgRef.PublisherName ;
+
+        # Requirements for the TrustedLaunch default behavior.
+        #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
+        # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+        $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
+        $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss;
+        $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
+        Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+
+        #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
+        #$vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $vtpm -EnableSecureBoot $secureboot;;
+        #$result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName -VirtualMachineScaleSet $vmss;
+        #$vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName;
+        
+        #Assert-AreEqual $vmssGet.SecurityProfile.SecurityType $securityType;
+        #Assert-AreEqual $vmssGet.SecurityProfile.UefiSettings.VTpmEnabled $false;
+        #Assert-AreEqual $vmssGet.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+
+<#
+.SYNOPSIS
+Test Virtual Machine Scale Set VtpmEabled and SecureBootEnabled 
+for the certain Trusted Launch feature setup. 
+#>
+function Test-VirtualMachineScaleSetSecurityTypeWithoutConfig
+{
+    # Setup
+    $rgname = Get-ComputeTestResourceName;
+    $loc = Get-ComputeVMLocation;
+
+    try
+    {
+        # Common
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $vmssSize = 'Standard_D4s_v3';
+        $vmssName1 = 'vmss1' + $rgname;
+        $vmssName2 = 'vmss2' + $rgname;
+        $imageName = "Win2016DataCenterGenSecond";
+        $PublisherName = "MicrosoftWindowsServer";
+        $Offer = "WindowsServer";
+        $SKU = "2016-datacenter-gensecond";
+        $disable = $false;
+        $enable = $true;
+        $adminUsername = 'usertest';
+        $adminPassword = Get-PasswordForVM | ConvertTo-SecureString -AsPlainText -Force;
+        $vmCred = New-Object System.Management.Automation.PSCredential ($adminUsername, $adminPassword);
+
+        # Requirements for the TrustedLaunch default behavior.
+        #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
+        # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+        $res = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName1 -ImageName $imageName -SecurityType "TrustedLaunch";
+
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.SecurityType "TrustedLaunch";
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
+        Assert-AreEqual $res.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+
+        #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
+        $result = New-AzVmss -Credential $vmCred -VMScaleSetName $vmssName2 -ImageName $imageName -SecurityType "TrustedLaunch" -EnableVtpm $disable;
+                
+        Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.SecurityType "TrustedLaunch";
+        Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $false;
+        Assert-AreEqual $result.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $rgname;
+    }
+}
+
+<#
+.SYNOPSIS
 Test Virtual Machine Scale Set Guest Attestation and Identity SystemAssigned 
 for the certain Trusted Launch feature setup. 
 #>

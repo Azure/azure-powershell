@@ -85,6 +85,13 @@
                                   "offer":  "Windows",
                                   "sku":  "Windows-10-N-x64",
                                   "version":  "latest"
-                              }
+                              },
+
+                    "Win2016DataCenterGenSecond":  {
+                                  "publisher":  "MicrosoftWindowsServer",
+                                  "offer":  "WindowsServer",
+                                  "sku":  "2016-datacenter-gensecond",
+                                  "version":  "latest"
+                                },    
                 }
 }

@@ -386,7 +386,7 @@ function Test-VirtualMachineInEdgeZone
 
 <#
 .SYNOPSIS
-Test Virtual Machines
+Test Flags VTpmEnabled and SecureBootEnabled for TrustedLaunch SecurityType
 #>
 function Test-VirtualMachineSecurityType
 {
@@ -401,8 +401,7 @@ function Test-VirtualMachineSecurityType
         $domainNameLabel = "d1" + $rgname;
         $vmsize = 'Standard_D4s_v3';
         $vmname = $rgname + 'Vm';
-        $securityType_TL ="TrustedLaunch";
-        $securityType_CVM ="ConfidentialVM";
+        $securityType_TL = "TrustedLaunch";
         $vnetname = "myVnet";
         $vnetAddress = "10.0.0.0/16";
         $subnetname = "slb" + $rgname;
@@ -478,12 +477,12 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
     {
         New-AzResourceGroup -Name $rgname -Location $loc -Force;    
         
-        $domainNameLabel = "d1" + $rgname;
+        $domainNameLabel1 = "d1" + $rgname;
+        $domainNameLabel2 = "d2" + $rgname;
         $vmsize = 'Standard_D4s_v3';
-        $vmname = $rgname + 'Vm';
-        $securityType_TL ="TrustedLaunch";
-        $securityType_CVM ="ConfidentialVM";
-        $SKU = "2016-datacenter-gensecond";
+        $vmname1 = $rgname + 'V';
+        $vmname2 = $rgname + 'P';
+        $imageName = "Win2016DataCenterGenSecond";
         $disable = $false;
         $enable = $true;
 
@@ -493,9 +492,28 @@ function Test-VirtualMachineSecurityTypeWithoutConfig
         $user = "admin01";
         $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-        #NEW-AZVM
-        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname -Credential $cred -Size $vmsize -DomainNameLabel $domainNameLabel -SecurityType securityType_TL;
-        #Error:TL not suported for provided Image 
+        #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
+        # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
+        New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname1 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel1 -SecurityType "TrustedLaunch";
+        $vm1 = Get-AzVM -ResourceGroupName $rgname -Name $vmname1;
+
+        Assert-AreEqual $vm1.SecurityProfile.SecurityType "TrustedLaunch";
+        Assert-AreEqual $vm1.SecurityProfile.UefiSettings.VTpmEnabled $true;
+        Assert-AreEqual $vm1.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+
+        #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
+        $res= New-AzVM -ResourceGroupName $rgname -Location $loc -Name $vmname2 -Credential $cred -Size $vmsize -Image $imageName -DomainNameLabel $domainNameLabel2 -SecurityType "TrustedLaunch" -EnableVtpm $disable;
+        $vm2 = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
+
+        Assert-AreEqual $vm2.SecurityProfile.SecurityType "TrustedLaunch";
+        Assert-AreEqual $vm2.SecurityProfile.UefiSettings.VTpmEnabled $false;
+        Assert-AreEqual $vm2.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+
+        # Update AzVm test
+        Update-AzVm -ResourceGroupName $rgname -VM $res -EnableVtpm:$true;
+        $updated_vm = Get-AzVM -ResourceGroupName $rgname -Name $vmname2;
+
+        Assert-AreEqual $updated_vm.SecurityProfile.UefiSettings.VTpmEnabled $true;
     }
     finally
     {

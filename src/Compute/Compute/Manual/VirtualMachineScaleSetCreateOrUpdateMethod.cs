@@ -52,7 +52,8 @@ namespace Microsoft.Azure.Commands.Compute.Automation
             "Win2012R2Datacenter",
             "Win2012Datacenter",
             "Win2008R2SP1",
-            "Win10")]
+            "Win10",
+            "Win2016DataCenterGenSecond")]
         public string ImageName { get; set; } = "Win2016Datacenter";
 
         [Parameter(

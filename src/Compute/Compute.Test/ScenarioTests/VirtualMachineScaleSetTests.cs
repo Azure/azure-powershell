@@ -272,6 +272,20 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
 
         [Fact]
         [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityType()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityType");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtualMachineScaleSetSecurityTypeWithoutConfig()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetSecurityTypeWithoutConfig");
+        }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
         public void TestVirtualMachineScaleSetGuestAttestation()
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetGuestAttestation");
