@@ -911,9 +911,11 @@ Get-AzADApplication -First 10
 .Example
 Get-AzADApplication -DisplayNameStartsWith $prefix
 .Example
-Get-AzADapplication -ObjectId $id -Select Tags -AppendSelected
+Get-AzADApplication -ObjectId $id -Select Tags -AppendSelected
 .Example
-Get-AzADapplication -OwnedApplication
+Get-AzADApplication -OwnedApplication
+.Example
+Get-AzADApplication -Filter "startsWith(DisplayName,'some-name')"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphApplication
@@ -1267,6 +1269,8 @@ Get-AzADGroup -DisplayName $gname
 Get-AzADGroup -First 10
 .Example
 Get-AzADGroup -ObjectId $id -Select groupTypes -AppendSelected
+.Example
+Get-AzADGroup -Filter "startsWith(DisplayName,'some-name')"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphGroup
@@ -1450,6 +1454,8 @@ Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
 Get-AzADServicePrincipal -ApplicationId $appId
 .Example
 Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
+.Example
+Get-AzADServicePrincipal -Filter "startsWith(DisplayName,'some-name')"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal
@@ -2046,6 +2052,8 @@ Get-AzADUser -SignedIn
 Get-AzADUser -First 10 -Select 'City' -AppendSelected
 .Example
 Get-AzADUser -DisplayName $name
+.Example
+Get-AzADUser -Filter "startsWith(DisplayName,'some-name')"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphUser

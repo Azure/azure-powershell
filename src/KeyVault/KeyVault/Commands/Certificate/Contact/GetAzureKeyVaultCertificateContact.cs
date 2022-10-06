@@ -93,7 +93,7 @@ namespace Microsoft.Azure.Commands.KeyVault
             }
             catch (KeyVaultErrorException exception)
             {
-                if (exception.Response.StatusCode != System.Net.HttpStatusCode.NotFound)
+                if (exception.Response?.StatusCode != System.Net.HttpStatusCode.NotFound)
                 {
                     throw;
                 }

@@ -381,6 +381,18 @@ namespace Microsoft.Azure.Commands.Compute.Automation
         [PSArgumentCompleter("Replace", "Restart", "Reimage")]
         public string AutomaticRepairAction { get; set; }
 
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The number of VMs that should be regular priority VMs before adding any Spot VMs",
+            ValueFromPipelineByPropertyName = true)]
+        public int BaseRegularPriorityCount { get; set; }
+
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = "The percentage of VMs that should be regular priority after the base number of regular priority VMs has been reached",
+            ValueFromPipelineByPropertyName = true)]
+        public int RegularPriorityPercentage { get; set; }
+
         private void BuildPatchObject()
         {
             if (this.IsParameterBound(c => c.AutomaticOSUpgrade))
@@ -1954,6 +1966,24 @@ namespace Microsoft.Azure.Commands.Compute.Automation
                     this.VirtualMachineScaleSet.VirtualMachineProfile = new PSVirtualMachineScaleSetVMProfile();
                 }
                 this.VirtualMachineScaleSet.VirtualMachineProfile.UserData = this.UserData;
+            }
+
+            if (this.IsParameterBound(c => c.BaseRegularPriorityCount))
+            {
+                if (this.VirtualMachineScaleSet.PriorityMixPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.PriorityMixPolicy = new PriorityMixPolicy();
+                }
+                this.VirtualMachineScaleSet.PriorityMixPolicy.BaseRegularPriorityCount = this.BaseRegularPriorityCount;
+            }
+
+            if (this.IsParameterBound(c => c.RegularPriorityPercentage))
+            {
+                if (this.VirtualMachineScaleSet.PriorityMixPolicy == null)
+                {
+                    this.VirtualMachineScaleSet.PriorityMixPolicy = new PriorityMixPolicy();
+                }
+                this.VirtualMachineScaleSet.PriorityMixPolicy.RegularPriorityPercentageAboveBase = this.RegularPriorityPercentage;
             }
 
             if (this.VirtualMachineScaleSet != null

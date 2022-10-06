@@ -20,7 +20,7 @@ This operation will resume protection for a stopped backup instance
 .Description
 This operation will resume protection for a stopped backup instance
 .Example
-PS C:\> Resume-AzDataProtectionBackupInstanceProtection -BackupInstanceName $backupInstance.BackupInstanceName -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName"
+Resume-AzDataProtectionBackupInstanceProtection -BackupInstanceName $backupInstance.BackupInstanceName -ResourceGroupName "rgName" -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxxxxxxxxxx" -VaultName "vaultName"
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.DataProtection.Models.IDataProtectionIdentity

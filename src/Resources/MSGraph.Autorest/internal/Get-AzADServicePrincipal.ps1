@@ -31,6 +31,8 @@ Get-AzADServicePrincipal -First 10 -Select Tags -AppendSelected
 Get-AzADServicePrincipal -ApplicationId $appId
 .Example
 Get-AzADApplication -DisplayName $name | Get-AzADServicePrincipal
+.Example
+Get-AzADServicePrincipal -Filter "startsWith(DisplayName,'some-name')"
 
 .Outputs
 Microsoft.Azure.PowerShell.Cmdlets.Resources.MSGraph.Models.ApiV10.IMicrosoftGraphServicePrincipal

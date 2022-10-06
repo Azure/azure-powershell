@@ -18,6 +18,11 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+## Version 1.0.2
+* Updated survey message
+
+## Version 1.0.1
+* Updated dependencies
 
 ## Version 1.0.0
 * Added improved verification of dependency when importing the module

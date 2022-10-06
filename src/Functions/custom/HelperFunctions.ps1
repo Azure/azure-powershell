@@ -160,7 +160,6 @@ function GetEndpointSuffix
     {
         "AzureUSGovernment" { ';EndpointSuffix=core.usgovcloudapi.net' }
         "AzureChinaCloud"   { ';EndpointSuffix=core.chinacloudapi.cn' }
-        "AzureGermanCloud"  { ';EndpointSuffix=core.cloudapi.de' }
         "AzureCloud"        { ';EndpointSuffix=core.windows.net' }
         default { '' }
     }

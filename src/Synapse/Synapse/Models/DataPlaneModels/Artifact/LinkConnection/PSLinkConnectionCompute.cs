@@ -22,10 +22,13 @@ namespace Microsoft.Azure.Commands.Synapse.Models
         {
             this.CoreCount = linkConnectionCompute?.CoreCount;
             this.ComputeType = linkConnectionCompute?.ComputeType;
+            this.DataProcessIntervalMinutes = linkConnectionCompute?.DataProcessIntervalMinutes;
         }
-        
+
         public int? CoreCount { get; set; }
 
         public string ComputeType { get; set; }
+
+        public int? DataProcessIntervalMinutes { get; set; }
     }
 }

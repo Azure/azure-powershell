@@ -516,7 +516,7 @@ function Test-Rollout
 	# Wait for rollout to finish
 	while ($canceledRollout.Status -eq "Canceling")
 	{
-		Start-TestSleep 120000 
+		Start-TestSleep -Seconds 120
 		$canceledRollout = Get-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName -Name $rolloutName
 	}
 
@@ -533,7 +533,7 @@ function Test-Rollout
 	# Wait for the invalid rollout to fail
 	while ($failedRollout.Status -eq "Running")
 	{
-		Start-TestSleep 60000 
+		Start-TestSleep -Seconds 60
 		$failedRollout = Get-AzDeploymentManagerRollout -ResourceGroupName $resourceGroupName -Name $failedRolloutName 2>$null
 	}
 
@@ -722,7 +722,7 @@ function Set-ManagedIdentity
 		$identityScope = "/subscriptions/" + $subscriptionId
 
 		# Allow MSI to percolate
-		Start-TestSleep 120000 
+		Start-TestSleep -Seconds 120
 		$roleAssignment = $null
 		try
 		{
@@ -736,20 +736,8 @@ function Set-ManagedIdentity
 			Write-Verbose $errorString
 		}
 
-		Start-TestSleep 30000
+		Start-TestSleep -Seconds 30
 		Replace-String "__USER_ASSIGNED_IDENTITY__" $identity.Id $global:createRolloutTemplate
 		Replace-String "__USER_ASSIGNED_IDENTITY__" $identity.Id $global:failureCreateRolloutTemplate
 	}
-}
-
-<#
-.SYNOPSIS
-Sleeps but only during recording.
-#>
-function Start-TestSleep($milliseconds)
-{
-    if ([Microsoft.Azure.Test.HttpRecorder.HttpMockServer]::Mode -ne [Microsoft.Azure.Test.HttpRecorder.HttpRecorderMode]::Playback)
-    {
-        Start-Sleep -Milliseconds $milliseconds
-    }
 }

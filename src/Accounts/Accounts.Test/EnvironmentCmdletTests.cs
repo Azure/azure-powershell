@@ -521,7 +521,7 @@ namespace Microsoft.Azure.Commands.Profile.Test
             cmdlet.ExecuteCmdlet();
             cmdlet.InvokeEndProcessing();
 
-            Assert.Equal(4, environments.Count);
+            Assert.Equal(3, environments.Count);
         }
 
         [Fact]

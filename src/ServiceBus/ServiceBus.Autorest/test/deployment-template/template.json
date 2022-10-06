@@ -1,0 +1,301 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "namespace_name": {
+      "defaultValue": "testSBARMTemplate",
+      "type": "String"
+    },
+    "standard_namespace_name": {
+      "defaultValue": "testSBARMTemplate",
+      "type": "String"
+    },
+    "namespaceResourceId": {
+      "defaultValue": "/",
+      "type": "String"
+    },
+    "peName1": {
+      "defaultValue": "/",
+      "type": "String"
+    },
+    "peName2": {
+      "defaultValue": "/",
+      "type": "String"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('namespace_name')]",
+      "location": "northeurope",
+      "sku": {
+        "name": "Premium",
+        "tier": "Premium"
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": false
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[parameters('standard_namespace_name')]",
+      "location": "northeurope",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard"
+      },
+      "properties": {
+        "minimumTlsVersion": "1.2",
+        "publicNetworkAccess": "Enabled",
+        "disableLocalAuth": false,
+        "zoneRedundant": false
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/namespaceAuthRule1')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Manage",
+          "Listen",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/namespaceAuthRule2')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/AuthorizationRules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/RootManageSharedAccessKey')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Listen",
+          "Manage",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/networkRuleSets",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/default')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "publicNetworkAccess": "Enabled",
+        "defaultAction": "Allow",
+        "virtualNetworkRules": [],
+        "ipRules": []
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/queues",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/queue1')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/topic1')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/queues/authorizationrules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/queue1/queueAuthRule1')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('namespace_name'), 'queue1')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Manage",
+          "Listen",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/queues/authorizationrules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/queue1/queueAuthRule2')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/queues', parameters('namespace_name'), 'queue1')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Manage",
+          "Listen",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/authorizationrules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/topic1/topicAuthRule1')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Manage",
+          "Listen",
+          "Send"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/authorizationrules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/topic1/topicAuthRule2')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "rights": [
+          "Listen"
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/topic1/subscription1')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+      }
+    },
+    {
+      "type": "Microsoft.ServiceBus/namespaces/topics/subscriptions/rules",
+      "apiVersion": "2022-01-01-preview",
+      "name": "[concat(parameters('namespace_name'), '/topic1/subscription1/sqlRule1')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics/subscriptions', parameters('namespace_name'), 'topic1', 'subscription1')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces/topics', parameters('namespace_name'), 'topic1')]",
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "action": {},
+        "filterType": "SqlFilter",
+        "sqlFilter": {
+          "sqlExpression": "1=2",
+          "compatibilityLevel": 20
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/privateEndpoints",
+      "apiVersion": "2020-11-01",
+      "name": "[parameters('peName1')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "privateLinkServiceConnections": [],
+        "manualPrivateLinkServiceConnections": [
+          {
+            "name": "connection1",
+            "properties": {
+              "privateLinkServiceId": "[parameters('namespaceResourceId')]",
+              "groupIds": [
+                "namespace"
+              ],
+              "privateLinkServiceConnectionState": {
+                "status": "Pending"
+              },
+              "requestMessage": "Hello"
+            }
+          }
+        ],
+        "subnet": {
+          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/test-vn-northeurope/subnets/default"
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/privateEndpoints",
+      "apiVersion": "2020-11-01",
+      "name": "[parameters('peName2')]",
+      "location": "northeurope",
+      "dependsOn": [
+        "[resourceId('Microsoft.ServiceBus/namespaces', parameters('namespace_name'))]"
+      ],
+      "properties": {
+        "privateLinkServiceConnections": [],
+        "manualPrivateLinkServiceConnections": [
+          {
+            "name": "connection2",
+            "properties": {
+              "privateLinkServiceId": "[parameters('namespaceResourceId')]",
+              "groupIds": [
+                "namespace"
+              ],
+              "privateLinkServiceConnectionState": {
+                "status": "Pending"
+              },
+              "requestMessage": "Hello"
+            }
+          }
+        ],
+        "subnet": {
+          "id": "/subscriptions/326100e2-f69d-4268-8503-075374f62b6e/resourceGroups/AutomatedPowershellTesting/providers/Microsoft.Network/virtualNetworks/test-vn-northeurope/subnets/default"
+        }
+      }
+    }
+  ]
+}

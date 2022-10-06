@@ -1,0 +1,134 @@
+{
+  "Stop-AzMarketplaceTerms+[NoContext]+Cancel+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/agreements/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/cancel?api-version=2021-01-01+1": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/agreements/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/cancel?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "14" ],
+        "x-ms-client-request-id": [ "4bdf2d8b-dab0-45be-babf-72d18e918327" ],
+        "CommandName": [ "Stop-AzMarketplaceTerms" ],
+        "FullCommandName": [ "Stop-AzMarketplaceTerms_Cancel" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MarketplaceOrdering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1197" ],
+        "x-ms-request-id": [ "faf85b42-bed1-4179-943b-bb4b068016ff" ],
+        "x-ms-correlation-request-id": [ "faf85b42-bed1-4179-943b-bb4b068016ff" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220901T061932Z:faf85b42-bed1-4179-943b-bb4b068016ff" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 01 Sep 2022 06:19:31 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "385" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/agreements/microsoft-ads/offers/windows-data-science-vm/plans/windows2016\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/agreements\",\"properties\":{\"publisher\":\"microsoft-ads\",\"offer\":\"windows-data-science-vm\",\"cancelDate\":\"2022-09-01T06:19:30.1964175Z\",\"state\":\"Canceled\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzMarketplaceTerms+[NoContext]+CancelViaIdentity+$GET+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/agreements/microsoft-ads/offers/windows-data-science-vm/plans/windows2016?api-version=2021-01-01+1": {
+    "Request": {
+      "Method": "GET",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/agreements/microsoft-ads/offers/windows-data-science-vm/plans/windows2016?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "15" ],
+        "x-ms-client-request-id": [ "9e5d333e-dae7-4d95-9472-3a184e6892b0" ],
+        "CommandName": [ "Get-AzMarketplaceTerms" ],
+        "FullCommandName": [ "Get-AzMarketplaceTerms_Get1" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MarketplaceOrdering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-reads": [ "11992" ],
+        "x-ms-request-id": [ "f2aca1b3-536e-4604-8c3d-a6d6db96d250" ],
+        "x-ms-correlation-request-id": [ "f2aca1b3-536e-4604-8c3d-a6d6db96d250" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220901T061933Z:f2aca1b3-536e-4604-8c3d-a6d6db96d250" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 01 Sep 2022 06:19:33 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "385" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/agreements/microsoft-ads/offers/windows-data-science-vm/plans/windows2016\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/agreements\",\"properties\":{\"publisher\":\"microsoft-ads\",\"offer\":\"windows-data-science-vm\",\"cancelDate\":\"2022-09-01T06:19:30.1964175Z\",\"state\":\"Canceled\"}}",
+      "isContentBase64": false
+    }
+  },
+  "Stop-AzMarketplaceTerms+[NoContext]+CancelViaIdentity+$POST+https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/agreements/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/cancel?api-version=2021-01-01+2": {
+    "Request": {
+      "Method": "POST",
+      "RequestUri": "https://management.azure.com/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/agreements/microsoft-ads/offers/windows-data-science-vm/plans/windows2016/cancel?api-version=2021-01-01",
+      "Content": null,
+      "isContentBase64": false,
+      "Headers": {
+        "x-ms-unique-id": [ "16" ],
+        "x-ms-client-request-id": [ "7a5169ee-a378-4383-8a1b-a38e9098fe60" ],
+        "CommandName": [ "Stop-AzMarketplaceTerms" ],
+        "FullCommandName": [ "Stop-AzMarketplaceTerms_CancelViaIdentity" ],
+        "ParameterSetName": [ "__AllParameterSets" ],
+        "User-Agent": [ "AzurePowershell/v0.0.0", "PSVersion/v7.1.4", "Az.MarketplaceOrdering/0.1.0" ],
+        "Authorization": [ "[Filtered]" ]
+      },
+      "ContentHeaders": {
+      }
+    },
+    "Response": {
+      "StatusCode": 200,
+      "Headers": {
+        "Cache-Control": [ "no-cache" ],
+        "Pragma": [ "no-cache" ],
+        "Vary": [ "Accept-Encoding" ],
+        "X-Frame-Options": [ "SAMEORIGIN" ],
+        "Server": [ "Microsoft-IIS/10.0" ],
+        "X-Powered-By": [ "ASP.NET" ],
+        "x-ms-ratelimit-remaining-subscription-writes": [ "1196" ],
+        "x-ms-request-id": [ "40de5839-b471-40b3-afc6-b74b8e82f673" ],
+        "x-ms-correlation-request-id": [ "40de5839-b471-40b3-afc6-b74b8e82f673" ],
+        "x-ms-routing-request-id": [ "SOUTHEASTASIA:20220901T061935Z:40de5839-b471-40b3-afc6-b74b8e82f673" ],
+        "Strict-Transport-Security": [ "max-age=31536000; includeSubDomains" ],
+        "X-Content-Type-Options": [ "nosniff" ],
+        "Date": [ "Thu, 01 Sep 2022 06:19:34 GMT" ]
+      },
+      "ContentHeaders": {
+        "Content-Length": [ "385" ],
+        "Content-Type": [ "application/json; charset=utf-8" ],
+        "Expires": [ "-1" ]
+      },
+      "Content": "{\"id\":\"/subscriptions/9e223dbe-3399-4e19-88eb-0975f02ac87f/providers/Microsoft.MarketplaceOrdering/agreements/microsoft-ads/offers/windows-data-science-vm/plans/windows2016\",\"name\":\"windows2016\",\"type\":\"Microsoft.MarketplaceOrdering/agreements\",\"properties\":{\"publisher\":\"microsoft-ads\",\"offer\":\"windows-data-science-vm\",\"cancelDate\":\"2022-09-01T06:19:30.1964175Z\",\"state\":\"Canceled\"}}",
+      "isContentBase64": false
+    }
+  }
+}

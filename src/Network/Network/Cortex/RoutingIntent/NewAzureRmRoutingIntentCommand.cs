@@ -92,11 +92,6 @@ namespace Microsoft.Azure.Commands.Network
                 this.ParentResourceName = parsedResourceId.ResourceName;
             }
 
-            if (this.IsRoutingIntentPresent(this.ResourceGroupName, this.ParentResourceName))
-            {
-                throw new PSArgumentException(string.Format(Properties.Resources.SameTypeChildResourceAlreadyPresentInResourceGroup, this.Name, this.ResourceGroupName, this.ParentResourceName));
-            }
-
             // this will thorw if hub does not exist.
             IsParentVirtualHubPresent(this.ResourceGroupName, this.ParentResourceName);
 
