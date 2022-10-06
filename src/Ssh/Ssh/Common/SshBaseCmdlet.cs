@@ -111,19 +111,6 @@ namespace Microsoft.Azure.Commands.Ssh
         }
         private RelayInformationUtils _relayUtils;
 
-
-        internal RMProfileClient ProfileClient
-        {
-            get
-            {
-                if (_profileClient == null)
-                {
-                    _profileClient = new RMProfileClient(DefaultProfile as AzureRmProfile);
-                }
-                return _profileClient;
-            }
-        }
-        private RMProfileClient _profileClient;
         #endregion
 
         #region Parameters
