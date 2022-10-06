@@ -19,18 +19,18 @@
 --->
 
 ## Upcoming Release
-* Added a new endpoint swtich `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
+* Added a new endpoint switch `AzureArcVM` in `New-AzNetworkWatcherConnectionMonitor`
 * Updated `New-AzVirtualNetworkGatewayConnection` to support bypassing the ExpressRoute gateway when accessing private-links
 * Updated `Update-AzCustomIpPrefix` to support no-internet advertise CustomIpPrefix
 * Updated `New-AzNetworkInterface` to support create/update nic with DisableTcpStateTracking property
 * Updated cmdlet to support specifying a VirtualRouterAsn on Virtual Hub
-  * `NewAzureRmVirtualHubCommand.cs`
-  * `UpdateAzureRmVirtualHubCommand.cs`
+  * `New-AzVirtualHub`
+  * `Update-AzVirtualHub`
 * Updated cmdlet to support specifying an ASN on VPN Gateway
-  * `NewAzureRmVpnGatewayCommand.cs`
-  * `UpdateAzureRmVpnGatewayCommand.cs`
-* Updated `NewAzureRmRoutingConfigurationCommand.cs` to support bypassing NVA for spoke vNet traffic
-* Updated `Update-AzCustomIpPrefix` to support new parameters: asn, geo, expressrouteadvertise
+  * `New-AzVpnGateway`
+  * `Update-AzVpnGateway`
+* Updated `New-AzRoutingConfiguration` to support bypassing NVA for spoke vNet traffic
+* Updated `Update-AzCustomIpPrefix` to support new parameters: Asn, Geo, ExpressRouteAdvertise
 * Updated cmdlets to enable verification on client certificate revocation by using a new property VerifyClientRevocation in ApplicationGatewayClientAuthConfiguration
   * `New-AzApplicationGatewayClientAuthConfiguration`
   * `Set-AzApplicationGatewayClientAuthConfiguration`
@@ -38,18 +38,18 @@
 * Added Uppercase Transform in New-AzApplicationGatewayFirewallCondition
 * Added DdosProtectionMode parameter in New-AzPublicIpAddress
 * Added ProbeThreshold parameter to Load Balancer Probe
-  * `AddAzureRmLoadBalancerProbeConfigCommand.cs`
-  * `NewAzureRmLoadBalancerProbeConfigCommand.cs`
-  * `SetAzureRmLoadBalancerProbeConfigCommand.cs`
+  * `Add-AzLoadBalancerProbeConfig`
+  * `New-AzLoadBalancerProbeConfig`
+  * `Set-AzLoadBalancerProbeConfig`
 * Updated `New-AzApplicationGatewayFirewallPolicyManagedRuleOverride` to support specifying an action for a managed rule override in Application Gateway WAF Policy
 * Added breaking change enum values/notification for the following network manager cmdlets
-  * `DeployAzNetworkManagerCommit.cs`
-  * `NewAzNetworkManagerConnectivityConfigurationCommand.cs`
-  * `NewAzNetworkManagerConnectivityGroupItemCommand.cs`
-  * `NewAzNetworkManagerSecurityAdminRuleCommand.cs`
-  * `NewAzNetworkManagerSecurityAdminConfigurationCommand.cs`
-  * `NewAzNetworkManagerAddressPrefixItemCommand.cs`
-  * `NewAzNetworkManagerCommand.cs`
+  * `Deploy-AzNetworkManagerCommit`
+  * `New-AzNetworkManagerConnectivityConfiguration`
+  * `New-AzNetworkManagerConnectivityGroupItem`
+  * `New-AzNetworkManagerSecurityAdminRule`
+  * `New-AzNetworkManagerSecurityAdminConfiguration`
+  * `New-AzNetworkManagerAddressPrefixItem`
+  * `New-AzNetworkManager`
 * Added `EnableUDPLogOptimization` parameter to `New-AzFirewall`
 * Fixed a bug that does not return HubIPAddresses and PrivateIPAddress during a Get-AzFirewall command
 * Replaced `IdentifyTopFatFlow` parameter with 'EnableFatFlowLogging' parameter to `New-AzFirewall`
