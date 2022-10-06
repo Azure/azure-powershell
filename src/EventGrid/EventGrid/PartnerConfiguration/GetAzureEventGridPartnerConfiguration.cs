@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.EventGrid
 
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerConfiguration"),
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerConfiguration",
+        DefaultParameterSetName = ResourceGroupNameParameterSet),
     OutputType(typeof(PSPartnerConfigurationListInstance), typeof(PSPartnerConfiguration))]
 
     public class GetAzureEventGridPartnerConfiguration : AzureEventGridCmdletBase
@@ -47,7 +48,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ODataQueryHelp,
-            ParameterSetName = PartnerConfigurationListBySubscriptionParameterSet)]
+            ParameterSetName = ResourceGroupNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ODataQuery { get; set; }
 
@@ -55,12 +56,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TopHelp,
-            ParameterSetName = PartnerConfigurationListBySubscriptionParameterSet)]
+            ParameterSetName = ResourceGroupNameParameterSet)]
         [ValidateRange(1, 100)]
         public int? Top { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.NextLinkHelp,
             ParameterSetName = NextLinkParameterSet)]

@@ -31,7 +31,8 @@ namespace Microsoft.Azure.Commands.EventGrid
 
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridChannel"),
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridChannel",
+        DefaultParameterSetName = ChannelListByPartnerNamespaceParameterSet),
     OutputType(typeof(PSChannelListInstance), typeof(PSChannel))]
 
     public class GetAzureEventGridChannel : AzureEventGridCmdletBase
@@ -66,7 +67,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         public string PartnerNamespaceName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ChannelNameHelp,
             ParameterSetName = ChannelNameParameterSet)]
@@ -80,11 +81,6 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ODataQueryHelp,
             ParameterSetName = ChannelListByPartnerNamespaceParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ODataQuery { get; set; }
 
@@ -93,16 +89,11 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TopHelp,
             ParameterSetName = ChannelListByPartnerNamespaceParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
         [ValidateRange(1, 100)]
         public int? Top { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.NextLinkHelp,
             ParameterSetName = NextLinkParameterSet)]
@@ -135,7 +126,7 @@ namespace Microsoft.Azure.Commands.EventGrid
 
             if (!string.IsNullOrEmpty(this.Name))
             {
-                partnerNamespaceName = this.Name;
+                channelName = this.Name;
             }
 
             if (!string.IsNullOrEmpty(this.NextLink))
@@ -151,15 +142,15 @@ namespace Microsoft.Azure.Commands.EventGrid
             }
             else if (!string.IsNullOrEmpty(channelName))
             {
-                // Get details of a partner namespace
-                Channel partnerNamespace = this.Client.GetChannel(resourceGroupName, partnerNamespaceName, this.Name);
+                // Get details of a channel
+                Channel partnerNamespace = this.Client.GetChannel(resourceGroupName, partnerNamespaceName, channelName);
                 PSChannel psPartnerConfigutation = new PSChannel(partnerNamespace);
                 this.WriteObject(psPartnerConfigutation);
             }
             else if (string.IsNullOrEmpty(channelName))
             {
                 // List channels at partner namespace scope
-                (partnerNamespacesList, newNextLink) = this.Client.ListChannelByPartnerNamespace(resourceGroupName, PartnerNamespaceName, this.ODataQuery, providedTop);
+                (partnerNamespacesList, newNextLink) = this.Client.ListChannelByPartnerNamespace(resourceGroupName, partnerNamespaceName, this.ODataQuery, providedTop);
                 PSChannelListPagedInstance psChannelListPagedInstance = new PSChannelListPagedInstance(partnerNamespacesList, newNextLink);
                 this.WriteObject(psChannelListPagedInstance, true);
             }

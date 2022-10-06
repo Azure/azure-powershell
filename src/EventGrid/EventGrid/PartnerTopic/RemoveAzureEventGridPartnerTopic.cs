@@ -63,6 +63,13 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = PartnerTopicInputObjectParameterSet)]
         public PSPartnerTopic InputObject { get; set; }
 
+        /// <summary>
+        /// If present, do not ask for confirmation
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = EventGridConstants.ForceHelp)]
+        public SwitchParameter Force { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 
@@ -74,7 +81,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             if (this.InputObject != null)
             {
                 resourceGroupName = this.InputObject.ResourceGroupName;
-                partnerTopicName = this.InputObject.PartnerTopicName;
+                partnerTopicName = this.InputObject.Name;
             }
             else
             {

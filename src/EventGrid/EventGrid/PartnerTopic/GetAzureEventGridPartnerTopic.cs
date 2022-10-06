@@ -38,7 +38,7 @@ namespace Microsoft.Azure.Commands.EventGrid
     public class GetAzureRmEventGridPartnerTopic : AzureEventGridCmdletBase
     {
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ResourceGroupNameHelp,
             ParameterSetName = PartnerTopicNameParameterSet)]
@@ -53,7 +53,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         public string ResourceGroupName { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.PartnerTopicNameHelp,
             ParameterSetName = PartnerTopicNameParameterSet)]
@@ -66,20 +66,10 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.ODataQueryHelp,
-            ParameterSetName = PartnerTopicNameParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.ODataQueryHelp,
             ParameterSetName = ResourceGroupNameParameterSet)]
         [ValidateNotNullOrEmpty]
         public string ODataQuery { get; set; }
 
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TopHelp,
-            ParameterSetName = PartnerTopicNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -89,15 +79,10 @@ namespace Microsoft.Azure.Commands.EventGrid
         public int? Top { get; set; }
 
         [Parameter(
-            Mandatory = false,
+            Mandatory = true,
             ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TopHelp,
-            ParameterSetName = PartnerTopicNameParameterSet)]
-        [Parameter(
-            Mandatory = false,
-            ValueFromPipelineByPropertyName = true,
-            HelpMessage = EventGridConstants.TopHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
+            HelpMessage = EventGridConstants.NextLinkHelp,
+            ParameterSetName = NextLinkParameterSet)]
         [ValidateNotNullOrEmpty]
         public string NextLink { get; set; }
 

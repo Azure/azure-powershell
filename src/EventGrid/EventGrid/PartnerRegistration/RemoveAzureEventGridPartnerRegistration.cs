@@ -63,6 +63,13 @@ namespace Microsoft.Azure.Commands.EventGrid
             ParameterSetName = PartnerRegistrationInputObjectParameterSet)]
         public PSPartnerRegistration InputObject { get; set; }
 
+        /// <summary>
+        /// If present, do not ask for confirmation
+        /// </summary>
+        [Parameter(Mandatory = false,
+           HelpMessage = EventGridConstants.ForceHelp)]
+        public SwitchParameter Force { get; set; }
+
         [Parameter(Mandatory = false)]
         public SwitchParameter PassThru { get; set; }
 

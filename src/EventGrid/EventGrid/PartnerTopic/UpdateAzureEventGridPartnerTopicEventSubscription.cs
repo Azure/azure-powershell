@@ -78,6 +78,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.DeadletterEndpointHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.DeadletterEndpointHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string DeadLetterEndpoint { get; set; }
 
@@ -86,6 +92,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.DeliveryAttributeMappingHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.DeliveryAttributeMappingHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string[] DeliveryAttributeMapping { get; set; }
 
@@ -94,6 +106,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.EndpointHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.EndpointHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string Endpoint { get; set; }
 
@@ -102,6 +120,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.EndpointTypeHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.EndpointTypeHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string EndpointType { get; set; }
 
@@ -110,6 +134,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.LabelsHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.LabelsHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string[] Label { get; set; }
 
@@ -118,6 +148,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.StorageQueueMessageTtlHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.StorageQueueMessageTtlHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public long StorageQueueMessageTtl { get; set; }
 
@@ -126,6 +162,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.AdvancedFilterHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.AdvancedFilterHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public Hashtable[] AdvancedFilter { get; set; }
 
@@ -134,6 +176,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.AdvancedFilteringOnArraysHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.AdvancedFilteringOnArraysHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter AdvancedFilteringOnArray { get; set; }
 
@@ -142,6 +190,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.IncludedEventTypesHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.IncludedEventTypesHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string[] IncludedEventType { get; set; }
 
@@ -150,6 +204,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.SubjectBeginsWithHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.SubjectBeginsWithHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string SubjectBeginsWith { get; set; }
 
@@ -158,6 +218,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.SubjectEndsWithHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.SubjectEndsWithHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public string SubjectEndsWith { get; set; }
 
@@ -166,6 +232,12 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.SubjectCaseSensitiveHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            Position = 0,
+            HelpMessage = EventGridConstants.SubjectCaseSensitiveHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         [ValidateNotNullOrEmpty]
         public SwitchParameter SubjectCaseSensitive { get; set; }
 

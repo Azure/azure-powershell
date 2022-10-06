@@ -29,13 +29,13 @@ namespace Microsoft.Azure.Commands.EventGrid
     [Cmdlet(
         "Get",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerTopicEventSubscription",
-        DefaultParameterSetName = PartnerTopicEventSubscriptionParameterSet),
+        DefaultParameterSetName = PartnerTopicNameParameterSet),
     OutputType(typeof(PSEventSubscription), typeof(PSEventSubscriptionListInstance))]
 
     public class GetAzureEventGridPartnerTopicEventSubscription : AzureEventGridCmdletBase
     {
         [Parameter(
-           Mandatory = false,
+           Mandatory = true,
            ValueFromPipelineByPropertyName = true,
            HelpMessage = EventGridConstants.EventSubscriptionNameHelp,
            ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
@@ -64,6 +64,11 @@ namespace Microsoft.Azure.Commands.EventGrid
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.PartnerTopicNameHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = true,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = EventGridConstants.ResourceGroupNameHelp,
+            ParameterSetName = PartnerTopicNameParameterSet)]
         [ValidateNotNullOrEmpty]
         [ResourceNameCompleter("Microsoft.EventGrid/partnerTopics", nameof(ResourceGroupName))]
         public string PartnerTopicName { get; set; }
@@ -81,6 +86,14 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             HelpMessage = EventGridConstants.EventSubscriptionFullUrlInResponseHelp,
             ParameterSetName = PartnerTopicEventSubscriptionParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = EventGridConstants.EventSubscriptionFullUrlInResponseHelp,
+            ParameterSetName = PartnerTopicNameParameterSet)]
+        [Parameter(
+            Mandatory = false,
+            HelpMessage = EventGridConstants.EventSubscriptionFullUrlInResponseHelp,
+            ParameterSetName = ResourceIdPartnerTopicEventSubscriptionParameterSet)]
         public SwitchParameter IncludeFullEndpointUrl { get; set; }
 
         [Parameter(

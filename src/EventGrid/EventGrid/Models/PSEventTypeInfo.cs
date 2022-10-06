@@ -30,13 +30,16 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
 
         public PSEventTypeInfo(EventTypeInfo eventTypeInfo)
         {
-            this.Kind = eventTypeInfo.Kind;
             this.InlineEventTypes = new Dictionary<string, PSInlineEventProperties>();
-            if (eventTypeInfo.InlineEventTypes != null)
+            if (eventTypeInfo != null)
             {
-                foreach (var eventType in eventTypeInfo.InlineEventTypes)
+                this.Kind = eventTypeInfo.Kind;
+                if (eventTypeInfo.InlineEventTypes != null)
                 {
-                    this.InlineEventTypes[eventType.Key] = new PSInlineEventProperties(eventType.Value);
+                    foreach (var eventType in eventTypeInfo.InlineEventTypes)
+                    {
+                        this.InlineEventTypes[eventType.Key] = new PSInlineEventProperties((InlineEventProperties)eventType.Value);
+                    }
                 }
             }
         }

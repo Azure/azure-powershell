@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerConfiguration",
         SupportsShouldProcess = true,
         DefaultParameterSetName = ResourceGroupNameParameterSet),
-    OutputType(typeof(bool))]
+    OutputType(typeof(PSPartnerConfiguration))]
 
     public class RevokeAzureEventGridPartnerConfiguration : AzureEventGridCmdletBase
     {
@@ -54,45 +54,21 @@ namespace Microsoft.Azure.Commands.EventGrid
         public PSPartnerConfiguration InputObject { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.PartnerRegistrationImmutableIdHelp,
-            ParameterSetName = PartnerConfigurationInputObjectParameterSet)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.PartnerRegistrationImmutableIdHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
+            HelpMessage = EventGridConstants.PartnerRegistrationImmutableIdHelp)]
         public Guid? PartnerRegistrationImmutableId { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.PartnerNameHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.PartnerNameHelp,
-            ParameterSetName = PartnerConfigurationInputObjectParameterSet)]
+            HelpMessage = EventGridConstants.PartnerNameHelp)]
         public string PartnerName { get; set; }
 
         [Parameter(
-            Mandatory = true,
+            Mandatory = false,
             ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.AuthorizationExpirationTimeHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
-        [Parameter(
-            Mandatory = true,
-            ValueFromPipelineByPropertyName = true,
-            Position = 0,
-            HelpMessage = EventGridConstants.AuthorizationExpirationTimeHelp,
-            ParameterSetName = PartnerConfigurationInputObjectParameterSet)]
+            HelpMessage = EventGridConstants.AuthorizationExpirationTimeHelp)]
         public DateTime? AuthorizationExpirationTime { get; set; }
 
         public override void ExecuteCmdlet()

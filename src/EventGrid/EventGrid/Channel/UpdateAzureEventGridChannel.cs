@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             {
                 resourceGroupName = this.InputObject.ResourceGroupName;
                 partnerNamespaceName = this.InputObject.PartnerNamespaceName;
-                channelName = this.InputObject.ChannelName;
+                channelName = this.InputObject.Name;
             }
             else
             {

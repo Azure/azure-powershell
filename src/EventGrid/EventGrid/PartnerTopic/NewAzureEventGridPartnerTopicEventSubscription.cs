@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         "New",
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerTopicEventSubscription",
         SupportsShouldProcess = true,
-        DefaultParameterSetName = PartnerTopicNameParameterSet),
+        DefaultParameterSetName = PartnerTopicEventSubscriptionParameterSet),
     OutputType(typeof(PSEventSubscription))]
 
     public class NewAzureEventGridPartnerTopicEventSubscription : AzureEventGridCmdletBase

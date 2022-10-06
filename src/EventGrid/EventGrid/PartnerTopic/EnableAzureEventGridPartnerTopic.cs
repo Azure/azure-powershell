@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Commands.EventGrid
         ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridPartnerTopic",
         SupportsShouldProcess = true,
         DefaultParameterSetName = PartnerTopicNameParameterSet),
-    OutputType(typeof(bool))]
+    OutputType(typeof(PSPartnerTopic))]
 
     public class EnableAzureEventGridPartnerTopic : AzureEventGridCmdletBase
     {
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             if (this.InputObject != null)
             {
                 resourceGroupName = this.InputObject.ResourceGroupName;
-                partnerTopicName = this.InputObject.PartnerTopicName;
+                partnerTopicName = this.InputObject.Name;
             }
             else
             {

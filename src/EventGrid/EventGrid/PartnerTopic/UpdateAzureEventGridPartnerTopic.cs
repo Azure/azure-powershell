@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
             HelpMessage = EventGridConstants.TagsHelp,
-            ParameterSetName = ResourceGroupNameParameterSet)]
+            ParameterSetName = PartnerTopicNameParameterSet)]
         [Parameter(
             Mandatory = false,
             ValueFromPipelineByPropertyName = true,
@@ -116,10 +116,10 @@ namespace Microsoft.Azure.Commands.EventGrid
             string resourceGroupName = string.Empty;
             string partnerTopicName = string.Empty;
             Dictionary<string, UserIdentityProperties> userAssignedIdentities = null;
-            if (IdentityId != null && IdentityId.Length > 0)
+            if (this.IdentityId != null && this.IdentityId.Length > 0)
             {
                 userAssignedIdentities = new Dictionary<string, UserIdentityProperties>();
-                foreach (string identityId in IdentityId)
+                foreach (string identityId in this.IdentityId)
                 {
                     userAssignedIdentities.Add(identityId, new UserIdentityProperties());
                 }
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Commands.EventGrid
             if (this.InputObject != null)
             {
                 resourceGroupName = this.InputObject.ResourceGroupName;
-                partnerTopicName = this.InputObject.PartnerTopicName;
+                partnerTopicName = this.InputObject.Name;
             }
             else
             {

@@ -2428,16 +2428,17 @@ namespace Microsoft.Azure.Commands.EventGrid
             PartnerTopicInfo partnerTopicInfo = null;
             if (string.Equals(channelType, "PartnerTopic", StringComparison.OrdinalIgnoreCase))
             {
+                partnerTopicInfo = new PartnerTopicInfo(
+                    azureSubscriptionId: azureSubscriptionId,
+                    resourceGroupName: resourceGroupName,
+                    name: partnerTopicName,
+                    source: partnerTopicSource);
+
                 if (!string.IsNullOrEmpty(eventTypeKind) && inlineEvents != null)
                 {
                     EventTypeInfo eventTypeInfo = new EventTypeInfo();
                     this.UpdateEventTypeInfoParameters(eventTypeKind, inlineEvents, eventTypeInfo);
-                    partnerTopicInfo = new PartnerTopicInfo(
-                        azureSubscriptionId: azureSubscriptionId,
-                        resourceGroupName: resourceGroupName,
-                        name: partnerTopicName,
-                        eventTypeInfo: eventTypeInfo,
-                        source: partnerTopicSource);
+                    partnerTopicInfo.EventTypeInfo = eventTypeInfo;
                 }
             }
 

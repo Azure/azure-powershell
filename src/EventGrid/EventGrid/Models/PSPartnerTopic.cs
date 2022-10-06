@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
             this.Id = topic.Id;
             this.Identity = new PsIdentityInfo(topic.Identity);
             this.Location = topic.Location;
-            this.PartnerTopicName = topic.Name;
+            this.Name = topic.Name;
             this.ProvisioningState = topic.ProvisioningState;
             this.Source = topic.Source;
             this.Tags = topic.Tags;
@@ -43,7 +43,7 @@ namespace Microsoft.Azure.Commands.EventGrid.Models
 
         public string ResourceGroupName { get; set; }
 
-        public string PartnerTopicName { get; set; }
+        public string Name { get; set; }
 
         public string Id { get; set; }
 

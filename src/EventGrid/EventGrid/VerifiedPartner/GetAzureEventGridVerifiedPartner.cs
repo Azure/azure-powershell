@@ -30,7 +30,8 @@ namespace Microsoft.Azure.Commands.EventGrid
 
     [Cmdlet(
         "Get",
-        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridVerifiedPartner"),
+        ResourceManager.Common.AzureRMConstants.AzureRMPrefix + "EventGridVerifiedPartner",
+        DefaultParameterSetName = VerifiedPartnerNameParameterSet),
     OutputType(typeof(PSVerifiedPartnerListInstance), typeof(PSVerifiedPartner))]
 
 
