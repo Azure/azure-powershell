@@ -3438,8 +3438,8 @@ function Test-VirtualMachineScaleSetSecurityType
         # Requirements for the TrustedLaunch default behavior.
         #Case 1: -SecurityType = TrustedLaunch || ConfidentialVM
         # validate that for -SecurityType "TrustedLaunch" "-Vtpm" and -"SecureBoot" are "Enabled/true"
-        $vmss = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
-        $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmss;
+        $vmss1 = Set-AzVmssSecurityProfile -VirtualMachineScaleSet $vmss -SecurityType $securityType;
+        $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1 -VirtualMachineScaleSet $vmss1;
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName1;
 
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
@@ -3447,17 +3447,13 @@ function Test-VirtualMachineScaleSetSecurityType
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
 
         #Case 2: -SecurityType = "TrustedLaunch" || "ConfidentialVM" -EnableVtpm $false -EnableSecureBoot $true
-        $vmss = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $disable -EnableSecureBoot $enable;
-        $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -VirtualMachineScaleSet $vmss;
+        $vmss2 = Set-AzVmssUefi -VirtualMachineScaleSet $VMSS -EnableVtpm $disable -EnableSecureBoot $enable;
+        $result = New-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -VirtualMachineScaleSet $vmss2;
         $vmssGet = Get-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2;
         
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $false;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
-        #Update AzVmss Test
-        $ans = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -VirtualMachineScaleSet $vmssobj;
-
-        Assert-AreEqual $ans.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
     }
     finally
     {

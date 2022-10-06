@@ -22,6 +22,8 @@
 ## Upcoming Release
 
 ## Version 4.31.0
+* Added `-SecurityType`, `-EnableSecureBoot` and `-EnableVtpm` parameters to `New-AzVm`,`New-AzVmConfig`, `New-AzVmss`, `New-AzVmssConfig`, `Update-AzVm` and `Update-AzVmss` cmdlets.
+* Configured flags `-EnableSecureBoot` and `-EnableVtpm` to default to True for TrustedLaunch,ConfidentialVM SecurityType.
 * Added Trusted Launch Generic Breaking Change warning for `New-AzVM`, `New-AzDisk` and `New-AzVMSS` cmdlets.
 * `Get-AzVMRunCommand` now shows all the properties of VMRunCommand in a list format.
 * Added new Parameter `-PublicIpSku` to the `NewAzVM` cmdlet with acceptable values : "Basic" and "Standard". 
