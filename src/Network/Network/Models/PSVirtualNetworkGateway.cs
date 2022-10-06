@@ -57,7 +57,7 @@ namespace Microsoft.Azure.Commands.Network.Models
         public string VpnGatewayGeneration { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
-        public ExtendedLocation ExtendedLocation { get; set; }
+        public PSExtendedLocation ExtendedLocation { get; set; }
 
         [Ps1Xml(Target = ViewControl.Table)]
         public string VNetExtendedLocationResourceId { get; set; }
