@@ -91,7 +91,7 @@ function Test-AzMarkdownHelp
         $HelpFolder = Get-Item $HelpFolderPath
         $Exceptions = Import-Csv "$SuppressedExceptionsPath\ValidateHelpIssues.csv"
         [String[]]$errors = @()
-        $MarkdownFiles = Get-ChildItem -Path $HelpFolder
+        $MarkdownFiles = Get-ChildItem -Path $HelpFolder -Include "*.md"
         $ModuleName = ($MarkdownFiles | where { $_.Name -notlike "*-*" }).Name -replace ".md",""
         foreach ($file in $MarkdownFiles)
         {
@@ -180,7 +180,7 @@ function Test-AzMarkdownHelp
                     "## EXAMPLES"
                     {
                         # Move the index to the start of the PowerShell code
-                        while ($content[$idx] -notcontains "``````" -and $content[$idx] -notcontains "``````powershell")
+                        while (-not $content[$idx].StartsWith("``````"))
                         {
                             $idx++
                             if ($idx -ge $content.Length)

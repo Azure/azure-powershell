@@ -1,0 +1,2 @@
+"Target","AssemblyName","AssemblyVersion","Severity","ProblemId","Description","Remediation"
+"File version 12.0 in D:\a\1\s\artifacts\Debug\Az.IotHub\Newtonsoft.Json.dll, File version 10.0 in D:\a\1\s\artifacts\Debug\Az.Accounts\Newtonsoft.Json.dll","Newtonsoft.Json","12.0.0.0","0","7000","Shared assembly conflict, shared assemblies with the same assembly version have differing file versions","Update the assembly reference for Newtonsoft.Json in one of the referring assemblies"

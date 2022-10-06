@@ -1,0 +1,47 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Microsoft.Azure.PowerShell.Tools.AzPredictor</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Tools.AzPredictor</RootNamespace>
+    <RepoArtifacts>$(MSBuildThisFileDirectory)</RepoArtifacts>
+    <OutputPath>$(RepoArtifacts)..\..\..\artifacts\Tools\Az.Tools.Predictor\</OutputPath>
+    <DisableTransitiveProjectReferences>true</DisableTransitiveProjectReferences>
+    <ProduceReferenceAssemblyInOutDir>false</ProduceReferenceAssemblyInOutDir>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>Az.Tools.Predictor</PackageId>
+    <Description>Microsoft Azure PowerShell - Module providing recommendations to PSReadLine v2.2.2 or above for cmdlets comprised in the Az module - This module is compatible with PowerShell 7.2 or above.
+
+For more information on Az Predictor, please visit the following: https://aka.ms/azpredictordocs</Description>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DocumentationFile>$(OutputPath)\Microsoft.Azure.PowerShell.Tools.AzPredictor.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights" Version="2.18.0" />
+    <PackageReference Include="Microsoft.Azure.PowerShell.Common.Share" Version="1.3.62-preview" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.2.0">
+      <ExcludeAssets>contentFiles</ExcludeAssets>
+    </PackageReference>
+    <PackageReference Include="System.Management.Automation" Version="7.2.0">
+      <ExcludeAssets>contentFiles</ExcludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(RepoArtifacts)..\Az.Tools.Predictor.SourceGenerator\Az.Tools.Predictor.SourceGenerator.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+ </ItemGroup>
+
+ <ItemGroup>
+   <AdditionalFiles Include="AzPredictorSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Az.Tools.Predictor.psd1" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="Az.Tools.Predictor.psm1" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="command_param_to_resource_map.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

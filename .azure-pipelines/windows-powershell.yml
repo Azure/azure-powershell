@@ -1,18 +1,28 @@
 variables:
   WindowsName: windows
-  WindowsImage: VS2017-Win2016
-  TestFramework: netcoreapp2.1
+  WindowsImage: windows-2019
+  TestFramework: netcoreapp3.1
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
   IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
+  BuildTimeoutInMinutes: 120
+  AnalysisTimeoutInMinutes: 120
 
 trigger: none
+
+pr:
+  branches:
+    include:
+      - '*'
+    exclude:
+      - Azs-tzl
 
 jobs:
 - job: Build
   displayName: Build
   condition: and(eq(variables.IsGenerateBased, false), succeeded())
+  timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
   pool:
     vmImage: ${{ variables.WindowsImage }}
 
@@ -29,30 +39,40 @@ jobs:
 - job: Analyze
   displayName: Analyze
   dependsOn: Build
-  condition: and(eq(variables.IsGenerateBased, false), succeeded())
-  timeoutInMinutes: 90
+  condition: succeeded()
+  timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
+  strategy:
+    matrix:
+      windows:
+        OSName: ${{ variables.WindowsName }}
+        ImageName: ${{ variables.WindowsImage }}
   pool:
-    vmImage: ${{ variables.WindowsImage }}
+    vmImage: $(ImageName)
 
   steps:
   - template: util/analyze-steps.yml
     parameters:
-      osName: ${{ variables.WindowsName }}
+      osName: $(OSName)
       configuration: ${{ variables.Configuration }}
-  - task: PowerShell@2
-    displayName: 'Cleanup Build'
-    inputs:
-      targetType: filePath
-      filePath: tools/CleanupBuild.ps1
-      pwsh: true
-  - task: NuGetCommand@2
-    displayName: 'Download BinSkim'
-    inputs:
-      command: custom
-      arguments: 'install Microsoft.CodeAnalysis.BinSkim -OutputDirectory $(System.DefaultWorkingDirectory)/tools/SecurityTools -Version 1.7.0'
-  - task: PowerShell@2
-    displayName: 'Run BinSkim'
-    inputs:
-      targetType: filePath
-      filePath: tools/SecurityTools/RunBinSkim.ps1
-      pwsh: true
+      testFramework: ${{ variables.TestFramework }}
+
+- job: Test
+  displayName: Test
+  dependsOn: Build
+  condition: and(eq(variables.IsGenerateBased, false), succeeded())
+  timeoutInMinutes: 180
+  strategy:
+    matrix:
+      windows:
+        OSName: ${{ variables.WindowsName }}
+        ImageName: ${{ variables.WindowsImage }}
+  pool:
+    vmImage: $(ImageName)
+
+  steps:
+  - template: util/test-steps.yml
+    parameters:
+      osName: $(OSName)
+      testFramework: ${{ variables.TestFramework }}
+      testTarget: ${{ variables.TestTarget }}
+      configuration: ${{ variables.Configuration }}
