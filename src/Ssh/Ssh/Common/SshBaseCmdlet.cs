@@ -12,29 +12,27 @@
 // limitations under the License.
 // ----------------------------------------------------------------------------------
 
-using System;
-using System.IO;
-using System.Text;
-using System.Diagnostics;
-using System.Net;
-using System.Text.RegularExpressions;
-using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Management.Automation;
-using System.Collections.Generic;
-using Microsoft.Azure.Commands.Common.Authentication.Models;
 using Microsoft.Azure.Commands.Common.Authentication;
-using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
-using Microsoft.Azure.Commands.Common.Authentication.Factories;
 using Microsoft.Azure.Commands.Common.Authentication.Abstractions.Models;
+using Microsoft.Azure.Commands.Common.Exceptions;
 using Microsoft.Azure.Commands.ResourceManager.Common;
 using Microsoft.Azure.Commands.ResourceManager.Common.ArgumentCompleters;
 using Microsoft.Azure.Management.Internal.Resources.Utilities.Models;
-using Microsoft.WindowsAzure.Commands.Utilities.Common;
 using Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common;
 using Microsoft.Azure.PowerShell.Ssh.Helpers.HybridConnectivity.Models;
+using Microsoft.WindowsAzure.Commands.Utilities.Common;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Management.Automation;
+using System.Net;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
 
 
 namespace Microsoft.Azure.Commands.Ssh
@@ -111,19 +109,6 @@ namespace Microsoft.Azure.Commands.Ssh
         }
         private RelayInformationUtils _relayUtils;
 
-
-        internal RMProfileClient ProfileClient
-        {
-            get
-            {
-                if (_profileClient == null)
-                {
-                    _profileClient = new RMProfileClient(DefaultProfile as AzureRmProfile);
-                }
-                return _profileClient;
-            }
-        }
-        private RMProfileClient _profileClient;
         #endregion
 
         #region Parameters
@@ -606,8 +591,12 @@ namespace Microsoft.Azure.Commands.Ssh
                 Exponent = Base64UrlHelper.DecodeToBytes(parser.Exponent),
                 Modulus = Base64UrlHelper.DecodeToBytes(parser.Modulus)
             };
-            ISshCredentialFactory factory = new SshCredentialFactory();
+            ISshCredentialFactory factory = null;
             AzureSession.Instance.TryGetComponent<ISshCredentialFactory>(nameof(ISshCredentialFactory), out factory);
+            if(factory == null)
+            {
+                throw new AzPSApplicationException("Cannot load SshCredentialFactory instance from context.");
+            }
             var token = factory.GetSshCredential(context, parameters);
             return token;
         }

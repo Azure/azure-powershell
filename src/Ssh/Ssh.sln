@@ -20,8 +20,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssh.Helpers", "Ssh.Helpers\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ssh.Test", "Ssh.Test\Ssh.Test.csproj", "{D7433FFA-1008-4C8E-8E64-3419D20BDCCC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Compute", "..\Compute\Compute\Compute.csproj", "{6AE26FB9-96D6-4167-96ED-637DBA83DE4B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,10 +62,6 @@ Global
 		{D7433FFA-1008-4C8E-8E64-3419D20BDCCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7433FFA-1008-4C8E-8E64-3419D20BDCCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7433FFA-1008-4C8E-8E64-3419D20BDCCC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6AE26FB9-96D6-4167-96ED-637DBA83DE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6AE26FB9-96D6-4167-96ED-637DBA83DE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6AE26FB9-96D6-4167-96ED-637DBA83DE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6AE26FB9-96D6-4167-96ED-637DBA83DE4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
