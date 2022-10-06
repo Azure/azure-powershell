@@ -3454,6 +3454,10 @@ function Test-VirtualMachineScaleSetSecurityType
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.SecurityType $securityType;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $false;
         Assert-AreEqual $vmssGet.VirtualMachineProfile.SecurityProfile.UefiSettings.SecureBootEnabled $true;
+        #Update AzVmss Test
+        $ans = Update-AzVmss -ResourceGroupName $rgname -VMScaleSetName $vmssName2 -VirtualMachineScaleSet $vmssobj;
+
+        Assert-AreEqual $ans.VirtualMachineProfile.SecurityProfile.UefiSettings.VTpmEnabled $true;
     }
     finally
     {
