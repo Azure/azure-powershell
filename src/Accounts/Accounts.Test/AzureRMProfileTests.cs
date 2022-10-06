@@ -1163,7 +1163,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             AzureSession.Instance.DataStore = dataStore;
             dataStore.WriteFile(path, contents);
             var profile = new AzureRmProfile(path);
-            Assert.Equal(5, profile.Environments.Count());
+            Assert.Equal(4, profile.Environments.Count());
             Assert.Equal("3c0ff8a7-e8bb-40e8-ae66-271343379af6", profile.DefaultContext.Tenant.Id.ToString());
             Assert.Equal("00000000-0000-0000-0000-000000000000", profile.DefaultContext.Subscription.Id.ToString());
             Assert.Equal("testCloud", profile.DefaultContext.Environment.Name);

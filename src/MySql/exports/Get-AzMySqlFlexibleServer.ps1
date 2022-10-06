@@ -20,32 +20,14 @@ Gets information about a server.
 .Description
 Gets information about a server.
 .Example
-PS C:\> Get-AzMySqlFlexibleServer
-
-Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
-----         --------  -------          -------        ------------------ ------- -------------
-mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
-
+Get-AzMySqlFlexibleServer
 .Example
-PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
-
-Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
-----         --------  -------          -------        ------------------ ------- -------------
-mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
+Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest -Name mysql-test
 .Example
-PS C:\> Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest
-
-Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
-----         --------  -------          -------        ------------------ ------- -------------
-mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
-mysql-test2  West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
+Get-AzMySqlFlexibleServer -ResourceGroupName PowershellMySqlTest
 .Example
-PS C:\> $ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test"
-PS C:\> Get-AzMySqlFlexibleServer -InputObject $ID
-
-Name         Location  SkuName          SkuTier        AdministratorLogin Version StorageSizeGb
-----         --------  -------          -------        ------------------ ------- -------------
-mysql-test   West US 2 Standard_D2ds_v4 GeneralPurpose admin              5.7     32
+$ID = "/subscriptions/<SubscriptionId>/resourceGroups/PowershellMySqlTest/providers/Microsoft.DBforMySQL/flexibleServers/mysql-test"
+Get-AzMySqlFlexibleServer -InputObject $ID
 
 .Inputs
 Microsoft.Azure.PowerShell.Cmdlets.MySql.Models.IMySqlIdentity
@@ -161,6 +143,24 @@ begin {
             $PSBoundParameters['OutBuffer'] = 1
         }
         $parameterSet = $PSCmdlet.ParameterSetName
+
+        if ($null -eq [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion) {
+            [Microsoft.WindowsAzure.Commands.Utilities.Common.AzurePSCmdlet]::PowerShellVersion = $Host.Version.ToString()
+        }         
+        $preTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        if ($preTelemetryId -eq '') {
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId =(New-Guid).ToString()
+            [Microsoft.Azure.PowerShell.Cmdlets.MySql.module]::Instance.Telemetry.Invoke('Create', $MyInvocation, $parameterSet, $PSCmdlet)
+        } else {
+            $internalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+            if ($internalCalledCmdlets -eq '') {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $MyInvocation.MyCommand.Name
+            } else {
+                [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets += ',' + $MyInvocation.MyCommand.Name
+            }
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = 'internal'
+        }
+
         $mapping = @{
             Get = 'Az.MySql.private\Get-AzMySqlFlexibleServer_Get';
             GetViaIdentity = 'Az.MySql.private\Get-AzMySqlFlexibleServer_GetViaIdentity';
@@ -177,6 +177,7 @@ begin {
         $steppablePipeline = $scriptCmd.GetSteppablePipeline($MyInvocation.CommandOrigin)
         $steppablePipeline.Begin($PSCmdlet)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
 }
@@ -185,15 +186,32 @@ process {
     try {
         $steppablePipeline.Process($_)
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
 
+    finally {
+        $backupTelemetryId = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId
+        $backupInternalCalledCmdlets = [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+    }
+
+}
 end {
     try {
         $steppablePipeline.End()
+
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $backupTelemetryId
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::InternalCalledCmdlets = $backupInternalCalledCmdlets
+        if ($preTelemetryId -eq '') {
+            [Microsoft.Azure.PowerShell.Cmdlets.MySql.module]::Instance.Telemetry.Invoke('Send', $MyInvocation, $parameterSet, $PSCmdlet)
+            [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
+        }
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::TelemetryId = $preTelemetryId
+
     } catch {
+        [Microsoft.WindowsAzure.Commands.Common.MetricHelper]::ClearTelemetryContext()
         throw
     }
-}
+} 
 }

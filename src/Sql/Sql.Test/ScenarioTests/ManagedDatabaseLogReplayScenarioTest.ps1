@@ -371,7 +371,7 @@ function Test-CancelManagedDatabaseLogReplayFailForWrongDatabase
         $db = New-AzSqlInstanceDatabase -ResourceGroupName $rgName -InstanceName $managedInstance -Name $managedDatabaseName
 
         # Stop log replay on a DB that's not created with log replay should fail
-        Assert-ThrowsContains { $db | Stop-AzSqlInstanceDatabaseLogReplay -Force } "error"
+        Assert-Throws { $db | Stop-AzSqlInstanceDatabaseLogReplay -Force }
         $notDeletedDB = Get-AzSqlInstanceDatabase -ResourceGroupName $rgName -InstanceName $managedInstance -Name $managedDatabaseName
         Assert-NotNull $notDeletedDB
     }

@@ -71,7 +71,13 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                     break;
 
                 case Constants.ShareParameterSetName:
-                    share = AzureStorageFileShare.GetTrack2FileShareClient(this.Share, (AzureStorageContext)this.Context, this.ClientOptions);                    
+                    share = AzureStorageFileShare.GetTrack2FileShareClient(this.Share, (AzureStorageContext)this.Context, this.ClientOptions);
+
+                    // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                    if (this.Context == null)
+                    {
+                        this.Context = GetStorageContextFromTrack1FileServiceClient(this.Share.ServiceClient, DefaultContext);
+                    }
                     break;
 
                 default:
@@ -88,7 +94,7 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                 shareProperties = share.GetProperties(this.CmdletCancellationToken).Value;
             }
 
-            WriteObject( new AzureStorageFileShare(share, this.Channel.StorageContext, shareProperties, ClientOptions));
+            WriteObject( new AzureStorageFileShare(share, (AzureStorageContext)this.Context, shareProperties, ClientOptions));
         }
     }
 }

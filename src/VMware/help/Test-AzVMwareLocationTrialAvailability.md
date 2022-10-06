@@ -26,6 +26,7 @@ Return trial status for subscription by region
 ```powershell
 Test-AzVMwareLocationTrialAvailability -Location westcentralus
 ```
+
 ```output
 AvailableHost Status
 ------------- ------
