@@ -101,11 +101,7 @@ namespace Microsoft.Azure.PowerShell.Cmdlets.Ssh.Common
         /// <param name="vmName">Virtual Machine Name</param>
         /// <param name="rgName">Resource Group Name</param>
         /// <param name="usePrivateIp">Get a Private IP for the VM.</param>
-<<<<<<< HEAD
         /// <param name="message">Hint message when public IP is not available</param>
-=======
-        /// <param name="message">Error message.</param>
->>>>>>> 7becc5383b383d9df36f9b0b053b018d3ca649f9
         /// <returns>string containing the ip address</returns>
         public string GetIpAddress(
             string vmName, 
