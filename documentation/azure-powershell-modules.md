@@ -141,6 +141,7 @@ SignalR                               | `Az.SignalR`                            
 SpringCloud                           | `Az.SpringCloud`                        | [![SpringCloud]][SpringCloudGallery]
 SQL                                   | `Az.Sql`                                | [![Sql]][SqlGallery]
 SQL Server on Virtual Machines        | `Az.SqlVirtualMachine`                  | [![SqlVirtualMachine]][SqlVirtualMachineGallery]
+SSH                                   | `Az.Ssh`                                | [![Ssh]][SshGallery]
 Stack HCI                             | `Az.StackHCI`                           | [![StackHCI]][StackHCIGallery]
 Storage                               | `Az.Storage`                            | [![Storage]][StorageGallery]
 Storage Mover                         | `Az.StorageMover`                       | [![StorageMover]][StorageMoverGallery]
@@ -290,6 +291,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [SpringCloud]:                https://img.shields.io/powershellgallery/v/Az.SpringCloud.svg?style=flat-square&label=Az.SpringCloud
 [Sql]:                        https://img.shields.io/powershellgallery/v/Az.Sql.svg?style=flat-square&label=Az.Sql
 [SqlVirtualMachine]:          https://img.shields.io/powershellgallery/v/Az.SqlVirtualMachine.svg?style=flat-square&label=Az.SqlVirtualMachine
+[Ssh]:                        https://img.shields.io/powershellgallery/v/Az.Ssh.svg?style=flat-square&label=Az.Ssh
 [StackHCI]:                   https://img.shields.io/powershellgallery/v/Az.StackHCI.svg?style=flat-square&label=Az.StackHCI
 [Storage]:                    https://img.shields.io/powershellgallery/v/Az.Storage.svg?style=flat-square&label=Az.Storage
 [StorageMover]:               https://img.shields.io/powershellgallery/v/Az.StorageMover.svg?style=flat-square&label=Az.StorageMover
@@ -437,6 +439,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [SpringCloudGallery]:                https://www.powershellgallery.com/packages/Az.SpringCloud/
 [SqlGallery]:                        https://www.powershellgallery.com/packages/Az.Sql/
 [SqlVirtualMachineGallery]:          https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/
+[SshGallery]:                        https://www.powershellgallery.com/packages/Az.Ssh/
 [StackHCIGallery]:                   https://www.powershellgallery.com/packages/Az.StackHCI/
 [StorageGallery]:                    https://www.powershellgallery.com/packages/Az.Storage/
 [StorageMoverGallery]:               https://www.powershellgallery.com/packages/Az.StorageMover/
