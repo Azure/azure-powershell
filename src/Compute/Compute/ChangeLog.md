@@ -25,6 +25,7 @@
 * Added the 'BaseRegularPriorityCount' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
 * Added the 'RegularPriorityPercentage' integer property to the following cmdlets: `New-AzVmssConfig` and `Update-AzVmssConfig`
 * Added Breaking Changes for Add-AzVMAdditionalUnattendContent and Get-AzGallery cmdlets
+* Added `-DiskControllerType` property to the following cmdlets: `New-AzVm`, `New-AzVmss`, `New-AzVmConfig`, `Set-AzVmssStorageProfile`
 
 ## Version 4.31.0
 * Added Trusted Launch Generic Breaking Change warning for `New-AzVM`, `New-AzDisk` and `New-AzVMSS` cmdlets.
