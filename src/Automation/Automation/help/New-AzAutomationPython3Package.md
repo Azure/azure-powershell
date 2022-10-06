@@ -14,7 +14,7 @@ Add Python3 Package to Automation account
 
 ```
 New-AzAutomationPython3Package [-Name] <String> [-ContentLinkUri] <Uri> [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AutomationAccountName] <String> 
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ The **New-AzAutomationPython3Package** cmdlet adds a Python3 Package to Automati
 
 ### Example 1
 ```powershell
-PS C:\> New-AzAutomationPython3Package -AutomationAccountName "Contoso17" -Name "RunbookWorkerName" -ResourceGroupName "ResourceGroup01" -Name "Python3PackageName" -ContentLinkUri "https://packageURI.com/package.whl"
+New-AzAutomationPython3Package -AutomationAccountName "Contoso17"  -ResourceGroupName "ResourceGroup01" -Name "Python3PackageName" -ContentLinkUri "https://packageURI.com/package.whl"
 ```
 
 
@@ -57,21 +57,6 @@ Required: True
 Position: 3
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 

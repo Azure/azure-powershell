@@ -14,7 +14,7 @@ Remove a Python3 Package from Automation Account
 
 ```
 Remove-AzAutomationPython3Package [-Name] <String> [-Force] [-ResourceGroupName] <String>
- [-AutomationAccountName] <String> [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+ [-AutomationAccountName] <String>
 ```
 
 ## DESCRIPTION
@@ -24,7 +24,7 @@ The **Remove-AzAutomationPython3Package** cmdlet removes a Python3 Package from 
 
 ### Example 1
 ```powershell
-PS C:\> Remove-AzAutomationPython3Package -AutomationAccountName "Contoso17"  -ResourceGroupName "ResourceGroup01" -Name "Python3PackageName"
+Remove-AzAutomationPython3Package -AutomationAccountName "Contoso17"  -ResourceGroupName "ResourceGroup01" -Name "Python3PackageName"
 ```
 
 
@@ -42,21 +42,6 @@ Required: True
 Position: 1
 Default value: None
 Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
-
-```yaml
-Type: IAzureContextContainer
-Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
