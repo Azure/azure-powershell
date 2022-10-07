@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "8a5f90cc-de5d-4fc7-81eb-a9a0621255e8"
+          "776f94db-458d-410c-b1fb-52d0f0017157"
         ],
         "Accept-Language": [
           "en-US"
@@ -18,7 +18,7 @@
           "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "x-ms-activity-id": [
-          "c36a05b4-c005-433d-91ae-3f516123bad2"
+          "cb2d8ade-8cd4-4a93-8ab8-72be2a446c27"
         ]
       },
       "RequestBody": "",
@@ -33,13 +33,13 @@
           "gateway"
         ],
         "x-ms-request-id": [
-          "4b2a2f87-b179-4ec6-a088-2ce999b6d4af"
+          "9aceebd6-8a9f-47b9-bb0c-985ac6ab813e"
         ],
         "x-ms-correlation-request-id": [
-          "4b2a2f87-b179-4ec6-a088-2ce999b6d4af"
+          "9aceebd6-8a9f-47b9-bb0c-985ac6ab813e"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20221006T062141Z:4b2a2f87-b179-4ec6-a088-2ce999b6d4af"
+          "WESTINDIA:20221007T112319Z:9aceebd6-8a9f-47b9-bb0c-985ac6ab813e"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,7 +48,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 06 Oct 2022 06:21:40 GMT"
+          "Fri, 07 Oct 2022 11:23:19 GMT"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -69,7 +69,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "883deebb-271a-46e0-a8ba-0f249c4ef2a9"
+          "07e1acdd-2ff2-4583-9c4b-4b3e984721bb"
         ],
         "Accept-Language": [
           "en-US"
@@ -81,7 +81,7 @@
           "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "x-ms-activity-id": [
-          "dfb3da04-f30f-456d-9a53-207159043455"
+          "8e085c6f-44f1-4c87-90a6-2b65903cf5f1"
         ]
       },
       "RequestBody": "",
@@ -93,19 +93,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "dfb3da04-f30f-456d-9a53-207159043455"
+          "8e085c6f-44f1-4c87-90a6-2b65903cf5f1"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "40f45011-b6f8-48ea-80f7-e42035e2cf89"
+          "5a3bb44b-389e-4798-b041-e5397e72efd4"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20221006T062142Z:40f45011-b6f8-48ea-80f7-e42035e2cf89"
+          "WESTINDIA:20221007T112321Z:5a3bb44b-389e-4798-b041-e5397e72efd4"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -114,7 +114,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 06 Oct 2022 06:21:42 GMT"
+          "Fri, 07 Oct 2022 11:23:21 GMT"
         ],
         "Content-Length": [
           "18"
@@ -135,7 +135,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "12344f0a-f2b5-4987-b6f3-efd5f4b0b47c"
+          "d43c7f62-721b-4fad-9363-d0ac7fce04c7"
         ],
         "Accept-Language": [
           "en-US"
@@ -147,7 +147,7 @@
           "Microsoft.Azure.Management.Automation.AutomationClient/1.8.0"
         ],
         "x-ms-activity-id": [
-          "98b5a40b-8dce-4f62-a564-a7dc6bcaf329"
+          "5a73ca6a-ae76-4090-9dc3-9b8b27d46037"
         ]
       },
       "RequestBody": "",
@@ -159,19 +159,19 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "98b5a40b-8dce-4f62-a564-a7dc6bcaf329"
+          "5a73ca6a-ae76-4090-9dc3-9b8b27d46037"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
         ],
         "x-ms-ratelimit-remaining-subscription-reads": [
-          "11999"
+          "11997"
         ],
         "x-ms-correlation-request-id": [
-          "03e3cc16-13de-43d6-b4e4-028cc81afe83"
+          "8ed9dbbf-8750-4780-b36c-fac48e4b34e0"
         ],
         "x-ms-routing-request-id": [
-          "WESTINDIA:20221006T062143Z:03e3cc16-13de-43d6-b4e4-028cc81afe83"
+          "WESTINDIA:20221007T112325Z:8ed9dbbf-8750-4780-b36c-fac48e4b34e0"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -180,7 +180,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 06 Oct 2022 06:21:43 GMT"
+          "Fri, 07 Oct 2022 11:23:24 GMT"
         ],
         "Content-Length": [
           "12"
@@ -197,5 +197,7 @@
     }
   ],
   "Names": {},
-  "Variables": {}
+  "Variables": {
+    "SubscriptionId": "cd45f23b-b832-4fa4-a434-1bf7e6f14a5a"
+  }
 }

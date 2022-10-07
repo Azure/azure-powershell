@@ -6,7 +6,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "d9897c39-fb15-4c80-a16a-5591d6303850"
+          "95dd4986-0223-48b5-9293-e8332f394961"
         ],
         "Accept-Language": [
           "en-US"
@@ -27,7 +27,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "d9897c39-fb15-4c80-a16a-5591d6303850"
+          "95dd4986-0223-48b5-9293-e8332f394961"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -36,10 +36,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "b9fa2dbf-e65b-45d4-abb7-9b9037c30b2c"
+          "ca050afe-e392-4c90-a5b5-402bf372febb"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221006T062759Z:b9fa2dbf-e65b-45d4-abb7-9b9037c30b2c"
+          "JIOINDIAWEST:20221007T110657Z:ca050afe-e392-4c90-a5b5-402bf372febb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -48,7 +48,7 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 06 Oct 2022 06:27:58 GMT"
+          "Fri, 07 Oct 2022 11:06:57 GMT"
         ],
         "Content-Length": [
           "32"
@@ -69,7 +69,7 @@
       "RequestMethod": "GET",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b0833501-d124-460b-96ea-cf58229194b6"
+          "99007731-01c8-4b48-a562-c97f1f43e59b"
         ],
         "Accept-Language": [
           "en-US"
@@ -90,7 +90,7 @@
           "no-cache"
         ],
         "x-ms-request-id": [
-          "b0833501-d124-460b-96ea-cf58229194b6"
+          "99007731-01c8-4b48-a562-c97f1f43e59b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -99,10 +99,10 @@
           "11999"
         ],
         "x-ms-correlation-request-id": [
-          "841224f1-f56c-46fd-9679-d6a14bfc8fcb"
+          "37a679f4-1c4f-4e27-a9bd-eea5c77665bb"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221006T062803Z:841224f1-f56c-46fd-9679-d6a14bfc8fcb"
+          "JIOINDIAWEST:20221007T110702Z:37a679f4-1c4f-4e27-a9bd-eea5c77665bb"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -111,10 +111,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 06 Oct 2022 06:28:03 GMT"
+          "Fri, 07 Oct 2022 11:07:01 GMT"
         ],
         "Content-Length": [
-          "545"
+          "553"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -123,7 +123,7 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Pester\",\r\n  \"name\": \"Pester\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Modules\",\r\n  \"location\": \"japaneast\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2022-10-06T11:58:02.697+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-06T11:58:02.77+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": \"\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Pester\",\r\n  \"name\": \"Pester\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Modules\",\r\n  \"location\": \"centraluseuap\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2022-10-07T16:37:00.7733333+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-07T16:37:00.99+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": \"\"\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
       "StatusCode": 200
     },
     {
@@ -132,7 +132,7 @@
       "RequestMethod": "PUT",
       "RequestHeaders": {
         "x-ms-client-request-id": [
-          "b0833501-d124-460b-96ea-cf58229194b6"
+          "99007731-01c8-4b48-a562-c97f1f43e59b"
         ],
         "Accept-Language": [
           "en-US"
@@ -162,7 +162,7 @@
           "https://management.azure.com/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Pester?api-version=2022-08-08"
         ],
         "x-ms-request-id": [
-          "b0833501-d124-460b-96ea-cf58229194b6"
+          "99007731-01c8-4b48-a562-c97f1f43e59b"
         ],
         "Server": [
           "Microsoft-HTTPAPI/2.0"
@@ -171,10 +171,10 @@
           "1199"
         ],
         "x-ms-correlation-request-id": [
-          "82422ae1-5a23-4be3-b2c1-f4696006fc3a"
+          "ac316c8b-d240-4cc6-9ea1-8f29173760b1"
         ],
         "x-ms-routing-request-id": [
-          "JIOINDIAWEST:20221006T062803Z:82422ae1-5a23-4be3-b2c1-f4696006fc3a"
+          "JIOINDIAWEST:20221007T110701Z:ac316c8b-d240-4cc6-9ea1-8f29173760b1"
         ],
         "Strict-Transport-Security": [
           "max-age=31536000; includeSubDomains"
@@ -183,10 +183,10 @@
           "nosniff"
         ],
         "Date": [
-          "Thu, 06 Oct 2022 06:28:02 GMT"
+          "Fri, 07 Oct 2022 11:07:01 GMT"
         ],
         "Content-Length": [
-          "547"
+          "555"
         ],
         "Content-Type": [
           "application/json; charset=utf-8"
@@ -195,10 +195,12 @@
           "-1"
         ]
       },
-      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Pester\",\r\n  \"name\": \"Pester\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Modules\",\r\n  \"location\": \"japaneast\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2022-10-06T11:58:02.697+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-06T11:58:02.77+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": null\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
+      "ResponseBody": "{\r\n  \"id\": \"/subscriptions/cd45f23b-b832-4fa4-a434-1bf7e6f14a5a/resourceGroups/to-delete-01/providers/Microsoft.Automation/automationAccounts/fbs-aa-01/modules/Pester\",\r\n  \"name\": \"Pester\",\r\n  \"type\": \"Microsoft.Automation/AutomationAccounts/Modules\",\r\n  \"location\": \"centraluseuap\",\r\n  \"tags\": {},\r\n  \"etag\": null,\r\n  \"properties\": {\r\n    \"isGlobal\": false,\r\n    \"version\": null,\r\n    \"sizeInBytes\": 0,\r\n    \"activityCount\": 0,\r\n    \"creationTime\": \"2022-10-07T16:37:00.7733333+05:30\",\r\n    \"lastModifiedTime\": \"2022-10-07T16:37:00.99+05:30\",\r\n    \"error\": {\r\n      \"code\": null,\r\n      \"message\": null\r\n    },\r\n    \"provisioningState\": \"Creating\",\r\n    \"isComposite\": false\r\n  }\r\n}",
       "StatusCode": 201
     }
   ],
   "Names": {},
-  "Variables": {}
+  "Variables": {
+    "SubscriptionId": "cd45f23b-b832-4fa4-a434-1bf7e6f14a5a"
+  }
 }
