@@ -8,8 +8,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Microsoft.Azure.PowerShell.Ssh.Helpers</AssemblyName>
-    <RootNamespace>Microsoft.Azure.PowerShell.Ssh.Helpers</RootNamespace>
+    <AssemblyName>Microsoft.Azure.PowerShell.Cmdlets.Ssh.Helpers</AssemblyName>
+    <RootNamespace>Microsoft.Azure.PowerShell.Cmdlets.Ssh.Helpers</RootNamespace>
     <NoWarn>$(NoWarn);CS0108;CS1573</NoWarn>
   </PropertyGroup>
 
