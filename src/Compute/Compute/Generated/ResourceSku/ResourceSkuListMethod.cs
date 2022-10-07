@@ -50,12 +50,6 @@ namespace Microsoft.Azure.Commands.Compute.Automation
           HelpMessage = "Sets the edge zone name. If set, the query will be routed to the specified edgezone instead of the main region.")]
         public string EdgeZone { get; set; }
 
-        [Parameter(
-          Mandatory = false,
-          ValueFromPipelineByPropertyName = true,
-          HelpMessage = "Sets and Gets Resource Type")]
-        public string ResourceType { get; set; }
-
         public override void ExecuteCmdlet()
         {
             base.ExecuteCmdlet();
