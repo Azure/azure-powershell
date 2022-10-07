@@ -18,6 +18,7 @@
         - Additional information about change #1
 -->
 ## Upcoming Release
+* Added support for cross zonal restore for ZRS vaults for non-ZonePinned VM
 * Fixed bug with Update-AzRecoveryServicesAsrProtectionContainerMapping
 * Added new scenarios: EZ-to-AZ, EZ-to-AZ, EZ-to-EZ
 
