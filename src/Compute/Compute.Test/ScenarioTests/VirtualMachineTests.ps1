@@ -5879,3 +5879,71 @@ function Test-VirtualMachineGuestAttestation
         Clean-ResourceGroup $rgname;
     }
 }
+
+<#
+.SYNOPSIS
+Test Virtual Machines
+#>
+function Test-VirtualMachineEdgeZoneParameterSets
+{
+    $rgname = Get-ComputeTestResourceName;
+    $loc = "westus";
+    
+
+    try
+    {
+        New-AzResourceGroup -Name $rgname -Location $loc -Force;
+
+        $edgeZone = "microsoftlosangeles1";
+        $publisher = "MICROSOFTWINDOWSSERVER";
+        $sku = "WINDOWSSERVER";
+        $offer = "2019-DATACENTER-GENSECOND";
+        $version = "17763.3287.220806";
+        $VMName = "v" + $rgname;
+
+        $VMLocalAdminUser = "LocalAdminUser";
+        $VMLocalAdminSecurePassword = ConvertTo-SecureString "Testing1234567" -AsPlainText -Force;
+        # Get-AzComputeResourceSku | where {$_.Locations.Contains("westus") -and $_.ResourceType.Contains("virtualMachines")}
+        $vmSize = "Standard_D4_v3";
+        # "Standard_B1ls"
+        <#
+        $ComputerName = "c" + $rgname;
+        $NetworkName = "n" + $rgname;
+        $NICName = "nic" + $rgname;
+        $SubnetName = "s" + $rgname;
+        $SubnetAddressPrefix = "10.0.0.0/24";
+        $VnetAddressPrefix = "10.0.0.0/16";
+
+        $SingleSubnet = New-AzVirtualNetworkSubnetConfig -Name $SubnetName -AddressPrefix $SubnetAddressPrefix;
+        $Vnet = New-AzVirtualNetwork -Name $NetworkName -ResourceGroupName $ResourceGroup -Location $LocationName -EdgeZone $EdgeZone -AddressPrefix $VnetAddressPrefix -Subnet $SingleSubnet;
+        $NIC = New-AzNetworkInterface -Name $NICName -ResourceGroupName $ResourceGroup -Location $LocationName -EdgeZone $EdgeZone -SubnetId $Vnet.Subnets[0].Id;
+
+        $Credential = New-Object System.Management.Automation.PSCredential ($VMLocalAdminUser, $VMLocalAdminSecurePassword);
+
+        $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize;
+        $VirtualMachine = Set-AzVMOperatingSystem -VM $VirtualMachine -Windows -ComputerName $ComputerName -Credential $Credential -ProvisionVMAgent -EnableAutoUpdate;
+        $VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $NIC.Id;
+        $VirtualMachine = Set-AzVMSourceImage -VM $VirtualMachine -PublisherName 'MicrosoftWindowsServer' -Offer 'WindowsServer' -Skus '2016-DataCenter' -Version 'latest';
+        #>
+        #New-AzVM -ResourceGroupName $ResourceGroup -Location $LocationName -EdgeZone $EdgeZone -VM $VirtualMachine;
+
+        $password = "Testing1234567";
+        $securePassword = $password | ConvertTo-SecureString -AsPlainText -Force;  
+        $user = "usertest";
+        $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
+
+        New-AzVM -ResourceGroupName $rgname -Location $loc -name $vmname -edgezone $edgeZone -credential $cred -Size $vmSize;
+
+        $vm = Get-AzVm -ResourceGroupName $ResourceGroup -Name $VMName;
+
+        Assert-AreEqual $vm.ExtendedLocation.Name $EdgeZone;
+
+         # validate that extendedlocation is propagated correctly in this cmdlet
+        Update-AzVM -VM $vm -ResourceGroupName $ResourceGroup;
+    }
+    finally
+    {
+        # Cleanup
+        Clean-ResourceGroup $ResourceGroup;
+    }
+}

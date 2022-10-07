@@ -71,7 +71,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             int? vCPUsAvailable = null,
             int? vCPUsPerCore = null,
             string imageReferenceId = null,
-            Dictionary<string, List<string>> auxAuthHeader = null
+            Dictionary<string, List<string>> auxAuthHeader = null,
+            Microsoft.Azure.Management.Compute.Models.ExtendedLocation extendedLocation = null
             )
 
             => Strategy.CreateResourceConfig(
@@ -133,7 +134,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                             CapacityReservationGroup = new SubResource(capacityReservationGroupId)
                         },
                         UserData = userData,
-                        PlatformFaultDomain = platformFaultDomain
+                        PlatformFaultDomain = platformFaultDomain,
+                        ExtendedLocation = extendedLocation
                     };
                     if(auxAuthHeader != null)
                     {

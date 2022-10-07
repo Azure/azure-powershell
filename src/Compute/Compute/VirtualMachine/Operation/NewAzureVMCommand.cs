@@ -602,6 +602,13 @@ namespace Microsoft.Azure.Commands.Compute
 
                 _cmdlet.ConfigAsyncVisited = true;
 
+                // ExtendedLocation
+                CM.ExtendedLocation extLoc = null;//Microsoft.Azure.Management.Compute.Models.ExtendedLocation
+                if (_cmdlet.EdgeZone != null)
+                {
+                    extLoc  = new CM.ExtendedLocation { Name = _cmdlet.EdgeZone, Type = CM.ExtendedLocationTypes.EdgeZone };
+                }
+
                 if (_cmdlet.DiskFile == null)
                 {
                     return resourceGroup.CreateVirtualMachineConfig(
@@ -635,7 +642,8 @@ namespace Microsoft.Azure.Commands.Compute
                         vCPUsAvailable: _cmdlet.IsParameterBound(c => c.vCPUCountAvailable) ? _cmdlet.vCPUCountAvailable : (int?)null,
                         vCPUsPerCore: _cmdlet.IsParameterBound(c => c.vCPUCountPerCore) ? _cmdlet.vCPUCountPerCore : (int?)null,
                         imageReferenceId: _cmdlet.ImageReferenceId,
-                        auxAuthHeader: auxAuthHeader
+                        auxAuthHeader: auxAuthHeader,
+                        extendedLocation: extLoc
                         );
                 }
                 else
@@ -834,6 +842,7 @@ namespace Microsoft.Azure.Commands.Compute
             {
                 this.VM.Identity = new VirtualMachineIdentity(null, null, Microsoft.Azure.Management.Compute.Models.ResourceIdentityType.SystemAssigned);
             }
+
 
 
             if (ShouldProcess(this.VM.Name, VerbsCommon.New))
