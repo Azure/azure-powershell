@@ -38,8 +38,11 @@ namespace StaticAnalysis.DependencyAnalyzer
         private const int AssemblyVersionFileVersionMismatch = 7000;
         private const int CommonAuthenticationMismatch = 7010;
 
-        private static readonly List<string> FrameworkAssemblies = new List<string>
-        {
+        private const string ModuleAlcAssembliesDirectory = "ModuleAlcAssemblies";
+        //ALC wrapper assembly must contain AlcWrapper in its name
+        private const string AlcWrapperAssemblyKeyWord = "AlcWrapper";
+
+        private static readonly HashSet<string> FrameworkAssemblies = new HashSet<string>(new[]{
             "Microsoft.CSharp",
             "Microsoft.Management.Infrastructure",
             "Microsoft.Build",
@@ -183,8 +186,39 @@ namespace StaticAnalysis.DependencyAnalyzer
             "System.Security.Principal.Windows",
             "System.Data.SqlClient",
             "System.Security.Cryptography.ProtectedData",
-            "System.Text.Json"
-        };
+            "Microsoft.Bcl.AsyncInterfaces",
+            "System.Threading.Tasks.Extensions",
+            "System.Buffers",
+            "System.Text.Encodings.Web",
+            "System.Text.Json" //TODO: Compare Version along with Azure.Core
+        }, StringComparer.OrdinalIgnoreCase);
+
+        private HashSet<string> CommonAssemblySet = new HashSet<string>(new string[]
+        {
+            "Microsoft.Rest.ClientRuntime",
+            "Microsoft.Rest.ClientRuntime.Azure",
+            "Microsoft.Azure.PowerShell.Clients.Aks",
+            "Microsoft.Azure.PowerShell.Authentication.Abstractions",
+            "Microsoft.Azure.PowerShell.Clients.Authorization",
+            "Microsoft.Azure.PowerShell.Common",
+            "Microsoft.Azure.PowerShell.Clients.Compute",
+            "Microsoft.Azure.PowerShell.Clients.Graph.Rbac",
+            "Microsoft.Azure.PowerShell.Clients.KeyVault",
+            "Microsoft.Azure.PowerShell.Clients.Monitor",
+            "Microsoft.Azure.PowerShell.Clients.Network",
+            "Microsoft.Azure.PowerShell.Clients.PolicyInsights",
+            "Microsoft.Azure.PowerShell.Clients.ResourceManager",
+            "Microsoft.Azure.PowerShell.Storage",
+            "Microsoft.Azure.PowerShell.Clients.Storage.Management",
+            "Microsoft.Azure.PowerShell.Strategies",
+            "Microsoft.Azure.PowerShell.Clients.Websites",
+            "Microsoft.Azure.PowerShell.Common.Share",
+            "Azure.Core",
+            "Microsoft.ApplicationInsights",
+            "Microsoft.Azure.Common",
+            "Hyak.Common",
+            "PowerShellStandard.Library"
+        }, StringComparer.OrdinalIgnoreCase);
 
         private readonly Dictionary<string, AssemblyRecord> _assemblies =
             new Dictionary<string, AssemblyRecord>(StringComparer.OrdinalIgnoreCase);
@@ -192,7 +226,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             new Dictionary<AssemblyName, AssemblyRecord>(new AssemblyNameComparer());
         private readonly Dictionary<string, AssemblyRecord> _identicalSharedAssemblies =
             new Dictionary<string, AssemblyRecord>(StringComparer.OrdinalIgnoreCase);
-        private AssemblyLoader _loader;
+        private AssemblyMetadataLoader _loader;
         private ReportLogger<AssemblyVersionConflict> _versionConflictLogger;
         private ReportLogger<SharedAssemblyConflict> _sharedConflictLogger;
         private ReportLogger<MissingAssembly> _missingAssemblyLogger;
@@ -228,6 +262,7 @@ namespace StaticAnalysis.DependencyAnalyzer
             _dependencyMapLogger = Logger.CreateLogger<DependencyMap>("DependencyMap.csv");
             foreach (var baseDirectory in directories)
             {
+                SharedAssemblyLoader.Load(baseDirectory);
                 foreach (var directoryPath in Directory.EnumerateDirectories(baseDirectory))
                 {
                     if (modulesToAnalyze != null &&
@@ -244,6 +279,7 @@ namespace StaticAnalysis.DependencyAnalyzer
 
                     Logger.WriteMessage("Processing Directory {0}", directoryPath);
                     _assemblies.Clear();
+                    _loader = new AssemblyMetadataLoader();
                     _versionConflictLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
                     _missingAssemblyLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
                     _extraAssemblyLogger.Decorator.AddDecorator(r => { r.Directory = directoryPath; }, "Directory");
@@ -293,6 +329,9 @@ namespace StaticAnalysis.DependencyAnalyzer
             {
                 var stored = _sharedAssemblyReferences[assembly.AssemblyName];
                 if (assembly.Equals(stored) || IsFrameworkAssembly(assembly.AssemblyName) && assembly.Version.Major <= 4) return true;
+                //TODO: Compare Azure.Core version
+                if (string.Equals(assembly.AssemblyName.Name, "Azure.Core", StringComparison.InvariantCultureIgnoreCase))
+                    return true;
 
                 _sharedConflictLogger.LogRecord(new SharedAssemblyConflict
                 {
@@ -375,34 +414,49 @@ namespace StaticAnalysis.DependencyAnalyzer
 
         private static bool IsFrameworkAssembly(string name)
         {
-            return FrameworkAssemblies.Contains(name, StringComparer.OrdinalIgnoreCase);
+            return FrameworkAssemblies.Contains(name);
         }
 
         private void ProcessDirectory(string directoryPath)
         {
             var savedDirectory = Directory.GetCurrentDirectory();
             Directory.SetCurrentDirectory(directoryPath);
-            _loader = new AssemblyLoader();
+            var moduleAlcAssemblySet = LoadModuleAclAssembly(directoryPath);
+            var moduleAlcAssemblyNameSet = moduleAlcAssemblySet?.Select(a => Path.GetFileNameWithoutExtension(a))?.ToHashSet();
             foreach (var file in Directory.GetFiles(directoryPath).Where(file => file.EndsWith(".dll")))
             {
+                //Ignore ALC assemblies for special handle later
+                var fileName = Path.GetFileNameWithoutExtension(file);
+                if (moduleAlcAssemblyNameSet?.Contains(fileName) == true)
+                    continue;
+
                 var assembly = CreateAssemblyRecord(file);
                 if (assembly?.Name != null && !IsFrameworkAssembly(assembly.Name))
                 {
                     _assemblies[assembly.Name] = assembly;
                     AddSharedAssembly(assembly);
                 }
-
             }
 
             // Now check for assembly mismatches
+            bool alcWrapperIsReferenced = false;
             foreach (var assembly in _assemblies.Values)
             {
-
                 foreach (var reference in assembly.Children)
                 {
-                    CheckAssemblyReference(reference, assembly);
+                    if(reference.Name.Contains(AlcWrapperAssemblyKeyWord) ||
+                        moduleAlcAssemblyNameSet?.Contains(reference.Name) == true)
+                    {
+                        alcWrapperIsReferenced = CheckDirectReferenceToAlcWrapperAssembly(moduleAlcAssemblyNameSet, assembly, reference) || alcWrapperIsReferenced;
+                    }
+                    else
+                    {
+                        CheckAssemblyReference(reference, assembly);
+                    }
                 }
             }
+
+            CheckAlcAssemblyDependency(moduleAlcAssemblySet, alcWrapperIsReferenced);
 
             foreach (var assembly in _assemblies.Values)
             {
@@ -426,6 +480,120 @@ namespace StaticAnalysis.DependencyAnalyzer
 
             FindExtraAssemblies();
             Directory.SetCurrentDirectory(savedDirectory);
+        }
+
+        //Check 1: Cmdlets assembly must not reference assembly in directory ModuleAlcAssemblies other than AlcWrapper
+        //Check 2: AlcWrapper must be in directory ModuleAlcAssemblies
+        //Return : Whether it is AlcWrapper assemlby and be directly referenced
+        private bool CheckDirectReferenceToAlcWrapperAssembly(HashSet<string> moduleAlcAssemblyNameSet, AssemblyRecord parent, AssemblyName reference)
+        {
+            bool alcWrapperIsReferenced = false;
+            if (moduleAlcAssemblyNameSet?.Contains(reference.Name) == true)
+            {
+                if (!reference.Name.Contains(AlcWrapperAssemblyKeyWord))
+                {
+                    //Add one error record:module assembly must not reference assembly in directory ModuleAlcAssemblies other than AlcWrapper
+                    _dependencyMapLogger.LogRecord(
+                        new DependencyMap
+                        {
+                            AssemblyName = reference.Name,
+                            AssemblyVersion = reference.Version.ToString(),
+                            ReferencingAssembly = parent.Name,
+                            ReferencingAssemblyVersion = parent.Version.ToString(),
+                            Severity = 1,
+                            Description = $"Per ALC design guideline, module assembly {parent.Name} must not reference assemblies in directory ModuleAlcAssemblies other than AlcWrapper.",
+                        });
+                }
+                else
+                {
+                    alcWrapperIsReferenced = true;
+                }
+            }
+            else if (reference.Name.Contains(AlcWrapperAssemblyKeyWord))
+            {
+                //Add one error record, AlcWrapper is referenced by module assembly but not in directory ModuleAlcAssemblies
+                _dependencyMapLogger.LogRecord(
+                    new DependencyMap
+                    {
+                        AssemblyName = reference.Name,
+                        AssemblyVersion = reference.Version.ToString(),
+                        ReferencingAssembly = parent.Name,
+                        ReferencingAssemblyVersion = parent.Version.ToString(),
+                        Severity = 1,
+                        Description = $"Per ALC design guideline, ALC assembly {reference.Name} must be put in directory ModuleAlcAssemblies.",
+                    });
+            }
+            return alcWrapperIsReferenced;
+        }
+
+        private void CheckAlcAssemblyDependency(HashSet<string> moduleAlcAssemblySet, bool alcWrapperIsReferenced)
+        {
+            if (moduleAlcAssemblySet != null)
+            {
+                //Make sure all dependency assemblies except framework/common are available for ALC assemblies
+                if (alcWrapperIsReferenced)
+                {
+                    var alcAssemblyRecords = new Dictionary<string, AssemblyRecord>();
+                    foreach (var alcAssembly in moduleAlcAssemblySet)
+                    {
+                        var assemblyRecord = CreateAssemblyRecord(alcAssembly);
+                        alcAssemblyRecords[assemblyRecord.Name] = assemblyRecord;
+                    }
+                    foreach (var parent in alcAssemblyRecords.Values)
+                    {
+                        foreach (var reference in parent.Children)
+                        {
+                            if (!alcAssemblyRecords.ContainsKey(reference.Name) && !IsFrameworkAssembly(reference.Name)
+                                && !IsCommonAssembly(reference.Name))
+                            {
+                                _missingAssemblyLogger.LogRecord(new MissingAssembly
+                                {
+                                    AssemblyName = reference.Name,
+                                    AssemblyVersion = reference.Version.ToString(),
+                                    ReferencingAssembly = parent.Name,
+                                    Severity = 0,
+                                    ProblemId = MissingAssemblyRecord,
+                                    Description = string.Format("Missing ALC assembly {0} referenced from {1}", reference.Name,
+                                    parent.Name),
+                                    Remediation = "Ensure that the assembly is included in the Wix file or directory"
+                                });
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    //Add error record, ALC wrapper assembly is never referenced
+                    var alcAssemblyNames = string.Join(";", moduleAlcAssemblySet.ToArray());
+                    _extraAssemblyLogger.LogRecord(new ExtraAssembly
+                    {
+                        AssemblyName = alcAssemblyNames,
+                        Severity = 1,
+                        ProblemId = ExtraAssemblyRecord,
+                        Description = string.Format("ALC Assembly {0} is not referenced from any cmdlets assembly",
+                            alcAssemblyNames),
+                        Remediation = string.Format("Remove assembly {0} from the project and regenerate the Wix " +
+                                                    "file", alcAssemblyNames)
+                    });
+                }
+            }
+        }
+
+        private static HashSet<string> LoadModuleAclAssembly(string directoryPath)
+        {
+            var moduleAlcDirectory = Path.Combine(directoryPath, ModuleAlcAssembliesDirectory);
+            HashSet<string> moduleAlcAssemblySet = null;
+            if (Directory.Exists(moduleAlcDirectory))
+            {
+                moduleAlcAssemblySet = new HashSet<string>(Directory.GetFiles(moduleAlcDirectory).Where(file => file.EndsWith(".dll")), StringComparer.OrdinalIgnoreCase);
+            }
+
+            return moduleAlcAssemblySet;
+        }
+
+        private bool IsCommonAssembly(string name)
+        {
+            return CommonAssemblySet.Contains(name);
         }
 
         private static bool IsCommandAssembly(AssemblyRecord assembly)

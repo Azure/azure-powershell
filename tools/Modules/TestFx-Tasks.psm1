@@ -84,11 +84,11 @@
             }
             $Scope = "/subscriptions/" + $SubscriptionId
             $NewServicePrincipal = New-AzADServicePrincipal -DisplayName $ServicePrincipalDisplayName
-            Write-Host "New ServicePrincipal created: " + $NewServicePrincipal.ApplicationId
+            Write-Host "New ServicePrincipal created: " $NewServicePrincipal.ApplicationId
     
-            $NewRole = $null
+            $NewRole = Get-AzRoleAssignment -ObjectId $NewServicePrincipal.Id -RoleDefinitionName Contributor -ErrorAction SilentlyContinue
             $Retries = 0;
-            While ($NewRole -eq $null -and $Retries -le 6)
+            While (($NewRole.RoleDefinitionName -ne 'Contributor') -and ($Retries -le 6))
             {
                 # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
                 Start-Sleep 5

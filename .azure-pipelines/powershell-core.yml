@@ -1,25 +1,74 @@
 variables:
   WindowsName: windows
-  WindowsImage: vs2017-win2016
+  WindowsImage: windows-2019
   LinuxName: linux
   LinuxImage: ubuntu-20.04
   MacOSName: macOS
-  MacOSImage: macOS-10.14
-  TestFramework: netcoreapp2.1
+  MacOSImage: macOS-11
+  TestFramework: netcoreapp3.1
   TestTarget: Test
   Configuration: Debug
   DebugLocalBuildTasks: true
   IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
+  TestTimeoutInMinutes: 180
+  BuildAzPredictor: false
 
 trigger: none
+
+pr:
+  branches:
+    include:
+      - '*'
+    exclude:
+      - Azs-tzl
 
 jobs:
 - job: Build
   displayName: Build
   condition: succeeded()
   timeoutInMinutes: ${{ variables.BuildTimeoutInMinutes }}
+  strategy:
+    matrix:
+      windows:
+        OSName: ${{ variables.WindowsName }}
+        ImageName: ${{ variables.WindowsImage }}
+  pool:
+    vmImage: $(ImageName)
+
+  steps:
+  - template: util/build-steps.yml
+    parameters:
+      osName: $(OSName)
+      configuration: ${{ variables.Configuration }}
+      testFramework: ${{ variables.TestFramework }}
+
+- job: Analyze
+  displayName: Analyze
+  dependsOn: Build
+  condition: succeeded()
+  timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
+  strategy:
+    matrix:
+      windows:
+        OSName: ${{ variables.WindowsName }}
+        ImageName: ${{ variables.WindowsImage }}
+  pool:
+    vmImage: $(ImageName)
+
+  steps:
+  - template: util/analyze-steps.yml
+    parameters:
+      osName: $(OSName)
+      configuration: ${{ variables.Configuration }}
+      testFramework: ${{ variables.TestFramework }}
+
+- job: Test
+  displayName: Test
+  dependsOn: Build
+  condition: succeeded()
+  timeoutInMinutes: ${{ variables.TestTimeoutInMinutes }}
   strategy:
     matrix:
       windows:
@@ -35,33 +84,9 @@ jobs:
     vmImage: $(ImageName)
 
   steps:
-  - template: util/build-steps.yml
+  - template: util/test-steps.yml
     parameters:
       osName: $(OSName)
       testFramework: ${{ variables.TestFramework }}
-      configuration: ${{ variables.Configuration }}
-
-- job: Analyze
-  displayName: Analyze
-  dependsOn: Build
-  condition: succeeded()
-  timeoutInMinutes: ${{ variables.AnalysisTimeoutInMinutes }}
-  strategy:
-    matrix:
-      windows:
-        OSName: ${{ variables.WindowsName }}
-        ImageName: ${{ variables.WindowsImage }}
-      linux:
-        OSName: ${{ variables.LinuxName }}
-        ImageName: ${{ variables.LinuxImage }}
-      macOS:	
-        OSName: ${{ variables.MacOSName }}	
-        ImageName: ${{ variables.MacOSImage }}
-  pool:
-    vmImage: $(ImageName)
-
-  steps:
-  - template: util/analyze-steps.yml
-    parameters:
-      osName: $(OSName)
+      testTarget: ${{ variables.TestTarget }}
       configuration: ${{ variables.Configuration }}

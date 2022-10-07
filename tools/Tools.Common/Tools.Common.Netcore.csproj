@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>Tools.Common</AssemblyName>
     <RootNamespace>Tools.Common</RootNamespace>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -18,14 +18,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="log4net" Version="2.0.8" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="PowerShellStandard.Library" Version="5.1.0" PrivateAssets="All" />
+    <PackageReference Include="System.Reflection.MetadataLoadContext" Version="5.0.0" />
     <PackageReference Include="System.Runtime.Loader" Version="4.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="SerializedCmdlets\*.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="AllowList.csv" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>
