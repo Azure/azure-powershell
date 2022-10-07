@@ -303,7 +303,7 @@ namespace Microsoft.Azure.Commands.Ssh
             if (CertificateFile != null)
             {
                 if (LocalUser == null)
-                    WriteWarning("To authenticate with a cartificate you must provide a LocalUser. The certificate will be ignored.");
+                    WriteWarning("To authenticate with a certificate you must provide a LocalUser. The certificate will be ignored.");
                 else
                     CertificateFile = GetResolvedPath(CertificateFile, nameof(CertificateFile));
             }
@@ -447,7 +447,6 @@ namespace Microsoft.Azure.Commands.Ssh
             if (!File.Exists(proxyPath))
             {
                 string proxyDir = Path.GetDirectoryName(proxyPath);
-                Console.WriteLine(proxyDir);
 
                 if (!Directory.Exists(proxyDir))
                 {
@@ -629,7 +628,7 @@ namespace Microsoft.Azure.Commands.Ssh
         private string[] GetSSHCertInfo(string certFile)
         {
             string sshKeygenPath = GetSSHClientPath("ssh-keygen");
-            string args = "-L -f " + certFile;
+            string args = $"-L -f \"{certFile}\"";
             WriteDebug("Runnung ssh-keygen command: " + sshKeygenPath + " " + args);
             Process keygen = new Process();
             keygen.StartInfo.FileName = sshKeygenPath;
@@ -694,7 +693,7 @@ namespace Microsoft.Azure.Commands.Ssh
 
         private void CreateSSHKeyfile(string privateKeyFile)
         {
-            string args = "-f " + privateKeyFile + " -t rsa -q -N \"\"";
+            string args = $"-f \"{privateKeyFile}\" -t rsa -q -N \"\"";
             Process keygen = Process.Start(GetSSHClientPath("ssh-keygen"), args);
             keygen.WaitForExit();
         }
