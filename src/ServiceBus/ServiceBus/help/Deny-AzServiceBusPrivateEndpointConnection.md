@@ -1,52 +1,97 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.dll-Help.xml
+external help file: Az.ServiceBus-help.xml
 Module Name: Az.ServiceBus
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.servicebus/deny-azservicebusprivateendpointconnection
 schema: 2.0.0
 ---
 
 # Deny-AzServiceBusPrivateEndpointConnection
 
 ## SYNOPSIS
-Rejects a private endpoint connection for an Service Bus namespace.
+Denies a ServiceBus PrivateEndpointConnection
 
 ## SYNTAX
 
-### PrivateEndpointPropertiesSet (Default)
+### SetExpanded (Default)
 ```
-Deny-AzServiceBusPrivateEndpointConnection [-ResourceGroupName] <String> [-NamespaceName] <String>
- [-Name] <String> [-Description <String>] [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm]
+Deny-AzServiceBusPrivateEndpointConnection -NamespaceName <String> -ResourceGroupName <String> [-Name <String>]
+ [-SubscriptionId <String>] [-Description <String>] [-DefaultProfile <PSObject>] [-AsJob] [-NoWait]
  [<CommonParameters>]
 ```
 
-### PrivateEndpointResourceIdParameterSet
+### SetViaIdentityExpanded
 ```
-Deny-AzServiceBusPrivateEndpointConnection [-ResourceId] <String> [-Description <String>]
- [-DefaultProfile <IAzureContextContainer>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Deny-AzServiceBusPrivateEndpointConnection -InputObject <IServiceBusIdentity> [-Description <String>]
+ [-DefaultProfile <PSObject>] [-AsJob] [-NoWait] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Rejects a private endpoint connection for an Service Bus namespace.
+Denies a ServiceBus PrivateEndpointConnection
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Rejects a ServiceBus Namespace Private Endpoint Connection
 ```powershell
-Deny-AzServiceBusPrivateEndpointConnection -ResourceGroupName myresourcegroup -NamespaceName mynamespace -Name 00000000000
+Deny-AzServiceBusPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
 ```
 
-Denies a private endpoint connection `00000000000` to connect to Service Bus namespace `mynamespace`. 
-Note that connection name is NOT the same as Private Endpoint Name.
+```output
+ConnectionState              : Rejected
+Description                  :
+Id                           : /subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.ServiceBus/namespaces/myNamespace/privateEndpointConnections/00000000000
+Location                     : Australia East
+Name                         : 00000000000
+PrivateEndpointId            : /subscriptions/subscriptionId/resourceGroups/{resourceGroup}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
+ProvisioningState            : Succeeded
+ResourceGroupName            : myResourceGroup
+```
+
+Rejects private endpoint connection `00000000000` on ServiceBus namespace `myNamespace`.
+
+### Example 2: Rejects a ServiceBus Namespace Private Endpoint Connection using InputObject
+```powershell
+$privateEndpoint = Get-AzServiceBusPrivateEndpointConnection -ResourceGroupName myResourceGroup -NamespaceName myNamespace -Name 00000000000
+Deny-AzServiceBusPrivateEndpointConnection -InputObject $privateEndpoint
+```
+
+```output
+ConnectionState              : Rejected
+Description                  :
+Id                           : /subscriptions/subscriptionId/resourceGroups/{resourceGroup}/providers/Microsoft.ServiceBus/namespaces/{namespace}/privateEndpointC
+                               onnections/00000000000
+Location                     : Australia East
+Name                         : 00000000000
+PrivateEndpointId            : /subscriptions/subscriptionId/resourceGroups/{resourceGroup}/providers/Microsoft.Network/privateEndpoints/{privateEndpointName}
+ProvisioningState            : Succeeded
+ResourceGroupName            : myResourceGroup
+```
+
+Rejects private endpoint connection `00000000000` on ServiceBus namespace `myNamespace` using InputObject parameter set.
 
 ## PARAMETERS
+
+### -AsJob
+Run the command as a job
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
 
 ### -DefaultProfile
 The credentials, account, tenant, and subscription used for communication with Azure.
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: System.Management.Automation.PSObject
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases: AzureRMContext, AzureCredential
 
 Required: False
 Position: Named
@@ -56,87 +101,12 @@ Accept wildcard characters: False
 ```
 
 ### -Description
-Description of the connection state.
+PrivateEndpoint information.
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Name
-Private Endpoint Connection Name.
-
-```yaml
-Type: System.String
-Parameter Sets: PrivateEndpointPropertiesSet
-Aliases:
-
-Required: True
-Position: 2
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -NamespaceName
-ServiceBus Namespace Name.
-
-```yaml
-Type: System.String
-Parameter Sets: PrivateEndpointPropertiesSet
-Aliases:
-
-Required: True
-Position: 1
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceGroupName
-Resource Group Name
-
-```yaml
-Type: System.String
-Parameter Sets: PrivateEndpointPropertiesSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -ResourceId
-Private Endpoint Connection ResourceId.
-
-```yaml
-Type: System.String
-Parameter Sets: PrivateEndpointResourceIdParameterSet
-Aliases:
-
-Required: True
-Position: 0
-Default value: None
-Accept pipeline input: True (ByPropertyName)
-Accept wildcard characters: False
-```
-
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
 
 Required: False
 Position: Named
@@ -145,18 +115,94 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
+### -InputObject
+Identity parameter.
+To construct, see NOTES section for INPUTOBJECT properties and create a hash table.
 
 ```yaml
-Type: System.Management.Automation.SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
+Type: Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
+Parameter Sets: SetViaIdentityExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -Name
+The name of the Private Endpoint Connection
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases: PrivateEndpointConnectionName
 
 Required: False
 Position: Named
 Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NamespaceName
+The name of ServiceBus namespace
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -NoWait
+Run the command asynchronously
+
+```yaml
+Type: System.Management.Automation.SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -ResourceGroupName
+The name of the resource group.
+The name is case insensitive.
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: True
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -SubscriptionId
+The ID of the target subscription.
+
+```yaml
+Type: System.String
+Parameter Sets: SetExpanded
+Aliases:
+
+Required: False
+Position: Named
+Default value: (Get-AzContext).Subscription.Id
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
@@ -166,12 +212,33 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### System.String
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.IServiceBusIdentity
 
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.ServiceBus.Models.PSServiceBusPrivateEndpointConnectionAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.ServiceBus.Models.Api202201Preview.IPrivateEndpointConnection
 
 ## NOTES
+
+ALIASES
+
+COMPLEX PARAMETER PROPERTIES
+
+To create the parameters described below, construct a hash table containing the appropriate properties. For information on hash tables, run Get-Help about_Hash_Tables.
+
+
+`INPUTOBJECT <IServiceBusIdentity>`: Identity parameter.
+  - `[Alias <String>]`: The Disaster Recovery configuration name
+  - `[AuthorizationRuleName <String>]`: The authorization rule name.
+  - `[ConfigName <MigrationConfigurationName?>]`: The configuration name. Should always be "$default".
+  - `[Id <String>]`: Resource identity path
+  - `[NamespaceName <String>]`: The namespace name
+  - `[PrivateEndpointConnectionName <String>]`: The PrivateEndpointConnection name
+  - `[QueueName <String>]`: The queue name.
+  - `[ResourceGroupName <String>]`: Name of the Resource group within the Azure subscription.
+  - `[RuleName <String>]`: The rule name.
+  - `[SubscriptionId <String>]`: Subscription credentials that uniquely identify a Microsoft Azure subscription. The subscription ID forms part of the URI for every service call.
+  - `[SubscriptionName <String>]`: The subscription name.
+  - `[TopicName <String>]`: The topic name.
 
 ## RELATED LINKS

@@ -140,6 +140,10 @@
     "alias": "Networking"
   },
   {
+    "module": "Nginx",
+    "alias": "Nginx"
+  },
+  {
     "regex": "FrontDoor",
     "alias": "Front Door"
   },
@@ -462,7 +466,7 @@
     "alias": "Kusto"
   },
   {
-    "regex": "Advisor",
+    "module": "Advisor",
     "alias": "Advisor"
   },
   {
@@ -762,5 +766,13 @@
   {
     "module": "DynatraceObservability",
     "alias": "DynatraceObservability"
+  },
+  {
+    "module": "DeviceUpdate",
+    "alias": "DeviceUpdate"
+  },
+  {
+    "alias": "ElasticSan",
+    "module": "ElasticSan"
   }
 ]

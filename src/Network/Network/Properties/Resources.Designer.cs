@@ -916,6 +916,15 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permitted values for VnetLocalRouteOverrideCriteria are Equal and Contains..
+        /// </summary>
+        internal static string InvalidVnetLocalRouteOverrideCriteriaValue {
+            get {
+                return ResourceManager.GetString("InvalidVnetLocalRouteOverrideCriteriaValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to TrafficAnalyticsWorkspaceResourceId specified in flow log is not a valid ID of LogAnalytics workspace..
         /// </summary>
         internal static string InvalidWorkspaceResourceId {
@@ -1636,7 +1645,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} doesn&apos;t register private endpoint connection..
+        ///   Looks up a localized string similar to {0} doesn&apos;t support private endpoint connection..
         /// </summary>
         internal static string UnsupportPrivateEndpointConnectionType {
             get {
@@ -1645,7 +1654,7 @@ namespace Microsoft.Azure.Commands.Network.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to The {0} doesn&apos;t register private link resource..
+        ///   Looks up a localized string similar to {0} doesn&apos;t support private link resource..
         /// </summary>
         internal static string UnsupportPrivateLinkResourceType {
             get {

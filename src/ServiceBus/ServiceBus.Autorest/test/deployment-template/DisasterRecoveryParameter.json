@@ -1,0 +1,18 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "primarynamespace_name": {
+      "value": "primaryNSf0j2h7"
+    },
+    "secondarynamespace_name": {
+      "value": "secondaryNStem26v"
+    },
+    "migrationPrimaryNamespace": {
+      "value": "primaryNSdh58np"
+    },
+    "migrationSecondaryNamespace": {
+      "value": "secondaryNShbi0fz"
+    }
+  }
+}

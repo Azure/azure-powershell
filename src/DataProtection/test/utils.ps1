@@ -11,7 +11,7 @@ function setupEnv() {
     # as default. You could change them if needed.
     $env.SubscriptionId = (Get-AzContext).Subscription.Id
     $env.Tenant = (Get-AzContext).Tenant.Id
-    $env.RecordDate = (Get-Date -Year 2022 -Month 06 -Day 09 -Hour 21 -Minute 01 -Second 11).ToString('dd-MM-yyyy-h-m-s')
+    $env.RecordDate = (Get-Date -Year 2022 -Month 06 -Day 29 -Hour 19 -Minute 01 -Second 11).ToString('dd-MM-yyyy-h-m-s')
     # For any resources you created for test, you should add it to $env here.
         
     $BackupInstanceTestVariables = @{
@@ -90,6 +90,28 @@ function setupEnv() {
         Location = "centraluseuap"
     }
 
+    $GrantPermissionVariables = @{
+        VaultName = "TestBkpVault"
+        VaultRG = "testBkpVaultRG"
+        SubscriptionId = "62b829ee-7936-40c9-a1c9-47a93f9f3965"
+       
+        DiskId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Diskrg/providers/Microsoft.Compute/disks/Mydisk2" 
+        Diskrg = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Diskrg"
+        Snapshotrg = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/testBkpVaultRG"
+        DiskPolicyName = "diskBkpPolicy"
+
+        BlobId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Blobrg/providers/Microsoft.Storage/storageAccounts/testblobacc4"
+        Blobrg = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourceGroups/Blobrg"
+        BlobPolicyName = "blobBkpPolicy"
+
+        OssPolicyName =  "TestOSSPolicy2"
+        OssId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Ossrg/providers/Microsoft.DBforPostgreSQL/servers/rishitserver3/databases/postgres"
+        Ossrg = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Ossrg"
+        KeyURI = "https://rishitkeyvault3.vault.azure.net/secrets/rishitnewsecret"
+        KeyVaultId = "/subscriptions/62b829ee-7936-40c9-a1c9-47a93f9f3965/resourcegroups/Sqlrg/providers/Microsoft.KeyVault/vaults/rishitkeyvault3"
+ 
+    }
+
     $env.add("TestBackupInstance", $BackupInstanceTestVariables) | Out-Null
     $env.add("TestBackupPolicy", $BackupPolicyTestVariables) | Out-Null
     $env.add("TestBackupVault", $BackupVaultTestVariables) | Out-Null
@@ -99,6 +121,8 @@ function setupEnv() {
     $env.add("TestBlobsRestore", $BlobsRestoreVariables) | Out-Null
     $env.add("TestOssBackupScenario", $OssVariables) | Out-Null
     $env.add("TestResourceGuard", $ResourceGuardVariables) | Out-Null
+    $env.add("TestGrantPermission", $GrantPermissionVariables) | Out-Null
+    
 
     $envFile = 'env.json'
     if ($TestMode -eq 'live') {

@@ -1448,7 +1448,7 @@ function Test-KeyVaultIntegrationTest
 			$certificate01 = Add-AzKeyVaultCertificate -VaultName $keyVaultName -Name $sslCert01Name -CertificatePolicy $policy
 			$certificate02 = Add-AzKeyVaultCertificate -VaultName $keyVaultName -Name $sslCert02Name -CertificatePolicy $policy
 
-			Start-Sleep 30
+			Start-TestSleep -Seconds 30
 
 			$certificate01 = Get-AzKeyVaultCertificate -VaultName $keyVaultName -Name $sslCert01Name
 			$secretId01 = $certificate01.SecretId.Replace($certificate01.Version, "")
@@ -3964,17 +3964,17 @@ function Test-ApplicationGatewayPrivateEndpointWorkFlows
 		$approve = Approve-AzPrivateEndpointConnection -ResourceId $connection.Id
 		Assert-NotNull $approve;
         Assert-AreEqual "Approved" $approve.PrivateLinkServiceConnectionState.Status
-		Start-TestSleep -s 30
+		Start-TestSleep -Seconds 30
 
 		# Deny Connection
 		$deny = Deny-AzPrivateEndpointConnection -ResourceId $connection.Id
 		Assert-NotNull $deny;
         Assert-AreEqual "Rejected" $deny.PrivateLinkServiceConnectionState.Status
-		Start-TestSleep -s 30
+		Start-TestSleep -Seconds 30
 
 		# Remove Connection
 		$remove = Remove-AzPrivateEndpointConnection -ResourceId $connection.Id -Force
-		Start-TestSleep -s 30
+		Start-TestSleep -Seconds 30
 
 		# Verify PrivateEndpointConnections on Application Gateway
 		$getgw = Get-AzApplicationGateway -Name $appgwName -ResourceGroupName $rgname
@@ -4055,9 +4055,14 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		$clientCertFilePath = $basedir + "/ScenarioTests/Data/TrustedClientCertificate.cer"
 		$trustedClient01 = New-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert01Name -CertificateFile $clientCertFilePath
 		$sslPolicy = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_0 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
-		$clientAuthConfig = New-AzApplicationGatewayClientAuthConfiguration -VerifyClientCertIssuerDN
+
+		$clientAuthConfig = New-AzApplicationGatewayClientAuthConfiguration -VerifyClientCertIssuerDN -VerifyClientRevocation OCSP
+		Assert-AreEqual $True $clientAuthConfig.VerifyClientCertIssuerDN
+		Assert-AreEqual "OCSP" $clientAuthConfig.VerifyClientRevocation
+
 		$sslProfile01 = New-AzApplicationGatewaySslProfile -Name $sslProfile01Name -SslPolicy $sslPolicy -ClientAuthConfiguration $clientAuthConfig -TrustedClientCertificates $trustedClient01
-		
+		Assert-AreEqual "OCSP" $sslProfile01.ClientAuthConfiguration.VerifyClientRevocation
+
 		$listener = New-AzApplicationGatewayHttpListener -Name $listenerName -Protocol Https -SslCertificate $sslCert -FrontendIPConfiguration $fipconfig -FrontendPort $port -SslProfile $sslProfile01
 
 		# backend part
@@ -4094,6 +4099,7 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		$clientAuthConfig = Get-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile01
 		Assert-NotNull $clientAuthConfig
 		Assert-AreEqual $True $clientAuthConfig.VerifyClientCertIssuerDN
+		Assert-AreEqual "OCSP" $clientAuthConfig.VerifyClientRevocation
 
 		$getpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile01
 		Assert-AreEqual $sslPolicy.MinProtocolVersion $getpolicy.MinProtocolVersion
@@ -4109,6 +4115,8 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 		$trustedClient02 =  Get-AzApplicationGatewayTrustedClientCertificate -Name $trustedClientCert02Name -ApplicationGateway $getgw
 		$getgw = Add-AzApplicationGatewaySslProfile -Name $sslProfile02Name -ApplicationGateway $getgw -TrustedClientCertificates $trustedClient01,$trustedClient02
 		$sslProfile01 = Set-AzApplicationGatewayClientAuthConfiguration -SslProfile $sslProfile01
+		Assert-AreEqual "None" $sslProfile01.ClientAuthConfiguration.VerifyClientRevocation
+
 		$sslProfile01 = Set-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile01 -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 		$sslPolicy02 = New-AzApplicationGatewaySslPolicy -PolicyType Custom -MinProtocolVersion TLSv1_1 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA", "TLS_RSA_WITH_AES_128_GCM_SHA256"
 		$getgw = Set-AzApplicationGatewaySslProfile -Name $sslProfile02Name -ApplicationGateway $getgw -SslPolicy $sslPolicy02 -TrustedClientCertificates $trustedClient01,$trustedClient02 -ClientAuthConfiguration $clientAuthConfig 
@@ -4134,7 +4142,8 @@ function Test-ApplicationGatewayCRUDWithMutualAuthentication
 
 		$clientAuthConfig = Get-AzApplicationGatewayClientAuthConfiguration -SslProfile $getgw.SslProfiles[0]
 		Assert-AreEqual $False $clientAuthConfig.VerifyClientCertIssuerDN
-		
+		Assert-AreEqual "None" $clientAuthConfig.VerifyClientRevocation
+
 		# Remove operations.
 		$sslProfile02 = Remove-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile02
 		$getpolicy = Get-AzApplicationGatewaySslProfilePolicy -SslProfile $sslProfile02
