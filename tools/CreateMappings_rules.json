@@ -774,5 +774,9 @@
   {
     "alias": "ElasticSan",
     "module": "ElasticSan"
+  },
+  {
+    "alias": "SSH",
+    "module": "Ssh"
   }
 ]
