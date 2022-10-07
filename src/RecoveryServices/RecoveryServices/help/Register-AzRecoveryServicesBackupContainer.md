@@ -40,11 +40,12 @@ The cmdlet registers an azure VM as a container for the workload MSSQL.
 
 ### Example 2 Re-register a backup container
 ```powershell
+$vault = Get-AzRecoveryServicesVault -ResourceGroupName "rgName"  -Name "vaultName"
 $container = Get-AzRecoveryServicesBackupContainer -ContainerType AzureVMAppContainer -VaultId $vault.ID 
 Register-AzRecoveryServicesBackupContainer -Container $container[-1] -BackupManagementType AzureWorkload -WorkloadType MSSQL -VaultId $vault.ID
 ```
 
-The first command fetches all the backup containers registered with the recovery services vault. The second command triggers a re-register operation for the container $container[-1], to re-register an already registered container we pass -Container parameter.
+The first command fetches the recovery services vault. The second command fetches all the backup containers registered with the recovery services vault. The third command triggers a re-register operation for the container $container[-1], to re-register an already registered container we pass -Container parameter.
 
 ## PARAMETERS
 
