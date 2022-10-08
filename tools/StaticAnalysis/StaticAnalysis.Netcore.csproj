@@ -4,7 +4,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -22,8 +22,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="Microsoft.PowerShell.SDK" Version="6.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Microsoft.PowerShell.SDK" Version="7.0.6" />
+    <PackageReference Include="System.Reflection.MetadataLoadContext" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -51,5 +52,11 @@
     <EmbeddedResource Remove="StaticAnalysis.Test\**" />
     <None Remove="StaticAnalysis.Test\**" />
     <Content Include="log4net.config" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Markdown.MAML">
+      <HintPath>lib\Markdown.MAML.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

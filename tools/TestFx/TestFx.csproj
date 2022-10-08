@@ -12,9 +12,30 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
+    <Content Include="Assert.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AzureRM.Resources.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="AzureRM.Storage.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Common.ps1">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="$(RepoSrc)Accounts\Authentication\Authentication.csproj" />
     <ProjectReference Include="$(RepoSrc)Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <!-- System.ServiceModel.Primitives is requried by Compute but version is not supported by PowerShellSDK 6.x -->
+    <!-- It should be removed after PowerShellSDK is upgraded to 7.x -->
+	<PackageReference Include="Moq" Version="4.7.145" />
+    <PackageReference Include="System.ServiceModel.Primitives" Version="4.7.0" />
   </ItemGroup>
 
 </Project>

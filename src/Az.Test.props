@@ -9,12 +9,20 @@
     <AzTestAssemblySuffix>.Test</AzTestAssemblySuffix>
   </PropertyGroup>
 
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>TestProjectPath</_Parameter1>
+      <_Parameter2>$(MSBuildProjectDirectory)</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
+
   <!-- Build -->
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.1;netstandard2.0</TargetFrameworks>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AssemblyName>$(AzAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</AssemblyName>
     <RootNamespace>$(AzAssemblyPrefix)$(PsModuleName)$(AzTestAssemblySuffix)</RootNamespace>
     <IsPackable>false</IsPackable>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -25,18 +33,12 @@
     <DefineConstants>TRACE;RELEASE;NETSTANDARD</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-  </PropertyGroup>
-
   <ItemGroup Condition="'$(IncludeCommonTestProject)' != 'false'">
-    <ProjectReference Include="$(RepoTools)ScenarioTest.ResourceManager\ScenarioTest.ResourceManager.csproj" />
     <ProjectReference Include="$(RepoTools)TestFx\TestFx.csproj" />
   </ItemGroup>
 
   <!-- Assets -->
   <ItemGroup>
-    <None Update="SessionRecords\**\*.json" CopyToOutputDirectory="PreserveNewest" />
     <None Update="ScenarioTests\*.ps1" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 

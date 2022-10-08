@@ -31,9 +31,6 @@ namespace Tools.Common.Loggers
         private readonly string _exceptionsDirectory;
         private static string _defaultLogName;
         private static Dictionary<string, AnalysisLogger> _logDictionary;
-
-        private log4net.ILog Log4NetLogger { get; set; }
-
         private static Dictionary<string, AnalysisLogger> LogDictionary
         {
             get { return _logDictionary ?? (_logDictionary = new Dictionary<string, AnalysisLogger>()); }
@@ -77,12 +74,6 @@ namespace Tools.Common.Loggers
             var assembly = Assembly.GetExecutingAssembly();
             var assemblyType = assembly.GetType();
             _defaultLogName = assembly.GetName().Name;
-// TODO: Remove IfDef
-#if NETSTANDARD
-            Log4NetLogger = log4net.LogManager.GetLogger(assemblyType);
-#else
-            Log4NetLogger = log4net.LogManager.GetLogger(_defaultLogName);
-#endif
         }
 
         /// <summary>
@@ -125,12 +116,10 @@ namespace Tools.Common.Loggers
             if (_exceptionsDirectory != null && Directory.Exists(_exceptionsDirectory))
             {
                 var exceptionsPath = Path.Combine(_exceptionsDirectory, fileName);
-                WriteWarning("Using exceptions file {0}", exceptionsPath);
                 logger = new ReportLogger<T>(filePath, exceptionsPath, this);
             }
             else
             {
-                WriteWarning("Using no exceptions file.");
                 logger = new ReportLogger<T>(filePath, this);
             }
 
@@ -235,7 +224,7 @@ namespace Tools.Common.Loggers
         #region Info methods
         public void Info(string info)
         {
-            Log4NetLogger.Info(info);
+            Console.WriteLine(info);
         }
 
         public void Info<T>(string info, IEnumerable<T> infoCollection)
@@ -268,17 +257,26 @@ namespace Tools.Common.Loggers
 
         private void Error(string errorInfo)
         {
-            Log4NetLogger.Error(errorInfo);
+            ConsoleColor previousColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(errorInfo);
+            Console.ForegroundColor = previousColor;
         }
 
         public void DebugInfo(string debugInfo)
         {
-            Log4NetLogger.Debug(debugInfo);
+            ConsoleColor previousColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Gray;
+            Console.WriteLine(debugInfo);
+            Console.ForegroundColor = previousColor;
         }
 
         private void Warning(string warningInfo)
         {
-            Log4NetLogger.Warn(warningInfo);
+            ConsoleColor previousColor = Console.ForegroundColor;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine(warningInfo);
+            Console.ForegroundColor = previousColor;
         }
 
         #endregion

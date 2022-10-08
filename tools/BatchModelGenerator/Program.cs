@@ -29,116 +29,21 @@ namespace PSModelGenerator
         private const string OmObject = "omObject";
         private static string AssemblyPath;
 
-        private static readonly Dictionary<string, Tuple<string, string>> OMToPSDictionaryConversionMappings = new Dictionary<string, Tuple<string, string>>()
+        private static readonly Dictionary<string, Tuple<string, string>> OMToPSDictionaryConversionMappings = new()
         {
             {  "Microsoft.Azure.Batch.EnvironmentSetting",  new Tuple<string, string>("Name", "Value") },
             {  "Microsoft.Azure.Batch.MetadataItem",  new Tuple<string, string>("Name", "Value") },
         };
 
-        private static readonly Dictionary<string, string> OMtoPSClassMappings = new Dictionary<string, string>()
+        private static readonly Dictionary<string, string> customMappings = new()
         {
-            {"Microsoft.Azure.Batch.AffinityInformation", "PSAffinityInformation"},
-            {"Microsoft.Azure.Batch.AuthenticationTokenSettings", "PSAuthenticationTokenSettings"},
-            {"Microsoft.Azure.Batch.AutoPoolSpecification", "PSAutoPoolSpecification"},
-            {"Microsoft.Azure.Batch.AutoScaleRun", "PSAutoScaleRun"},
-            {"Microsoft.Azure.Batch.AutoScaleRunError", "PSAutoScaleRunError"},
-            {"Microsoft.Azure.Batch.AutoUserSpecification", "PSAutoUserSpecification"},
-            {"Microsoft.Azure.Batch.ApplicationPackageReference", "PSApplicationPackageReference"},
-            {"Microsoft.Azure.Batch.AzureBlobFileSystemConfiguration", "PSAzureBlobFileSystemConfiguration"},
-            {"Microsoft.Azure.Batch.AzureFileShareConfiguration", "PSAzureFileShareConfiguration"},
-            {"Microsoft.Azure.Batch.Certificate", "PSCertificate"},
-            {"Microsoft.Azure.Batch.CertificateReference", "PSCertificateReference"},
-            {"Microsoft.Azure.Batch.CifsMountConfiguration", "PSCifsMountConfiguration"},
-            {"Microsoft.Azure.Batch.CloudJob", "PSCloudJob"},
-            {"Microsoft.Azure.Batch.CloudJobSchedule", "PSCloudJobSchedule"},
-            {"Microsoft.Azure.Batch.CloudPool", "PSCloudPool"},
-            {"Microsoft.Azure.Batch.CloudTask", "PSCloudTask"},
-            {"Microsoft.Azure.Batch.CloudServiceConfiguration", "PSCloudServiceConfiguration"},
-            {"Microsoft.Azure.Batch.ComputeNode", "PSComputeNode"},
-            {"Microsoft.Azure.Batch.ComputeNodeEndpointConfiguration", "PSComputeNodeEndpointConfiguration"},
-            {"Microsoft.Azure.Batch.ComputeNodeError", "PSComputeNodeError"},
-            {"Microsoft.Azure.Batch.ComputeNodeInformation", "PSComputeNodeInformation"},
-            {"Microsoft.Azure.Batch.ComputeNodeUser", "PSComputeNodeUser"},
-            {"Microsoft.Azure.Batch.ContainerConfiguration", "PSContainerConfiguration"},
-            {"Microsoft.Azure.Batch.ContainerRegistry", "PSContainerRegistry"},
-            {"Microsoft.Azure.Batch.DataDisk", "PSDataDisk"},
-            {"Microsoft.Azure.Batch.DeleteCertificateError", "PSDeleteCertificateError"},
-            {"Microsoft.Azure.Batch.EnvironmentSetting", "PSEnvironmentSetting"},
-            {"Microsoft.Azure.Batch.ExitConditions", "PSExitConditions"},
-            {"Microsoft.Azure.Batch.ExitCodeRangeMapping", "PSExitCodeRangeMapping"},
-            {"Microsoft.Azure.Batch.ExitCodeMapping", "PSExitCodeMapping"},
-            {"Microsoft.Azure.Batch.ExitOptions", "PSExitOptions"},
-            {"Microsoft.Azure.Batch.FileProperties", "PSFileProperties"},
-            {"Microsoft.Azure.Batch.ImageInformation", "PSImageInformation"},
-            {"Microsoft.Azure.Batch.ImageReference", "PSImageReference"},
-            {"Microsoft.Azure.Batch.InboundEndpoint", "PSInboundEndpoint"},
-            {"Microsoft.Azure.Batch.InboundNatPool", "PSInboundNatPool"},
-            {"Microsoft.Azure.Batch.RemoteLoginSettings", "PSRemoteLoginSettings"},
-            {"Microsoft.Azure.Batch.JobConstraints", "PSJobConstraints"},
-            {"Microsoft.Azure.Batch.JobExecutionInformation", "PSJobExecutionInformation"},
-            {"Microsoft.Azure.Batch.JobNetworkConfiguration", "PSJobNetworkConfiguration"},
-            {"Microsoft.Azure.Batch.JobManagerTask", "PSJobManagerTask"},
-            {"Microsoft.Azure.Batch.JobPreparationAndReleaseTaskExecutionInformation", "PSJobPreparationAndReleaseTaskExecutionInformation"},
-            {"Microsoft.Azure.Batch.JobPreparationTask", "PSJobPreparationTask"},
-            {"Microsoft.Azure.Batch.JobPreparationTaskExecutionInformation", "PSJobPreparationTaskExecutionInformation"},
-            {"Microsoft.Azure.Batch.JobReleaseTask", "PSJobReleaseTask"},
-            {"Microsoft.Azure.Batch.JobReleaseTaskExecutionInformation", "PSJobReleaseTaskExecutionInformation"},
-            {"Microsoft.Azure.Batch.JobScheduleExecutionInformation", "PSJobScheduleExecutionInformation"},
-            {"Microsoft.Azure.Batch.JobScheduleStatistics", "PSJobScheduleStatistics"},
-            {"Microsoft.Azure.Batch.JobSchedulingError", "PSJobSchedulingError"},
-            {"Microsoft.Azure.Batch.JobSpecification", "PSJobSpecification"},
-            {"Microsoft.Azure.Batch.JobStatistics", "PSJobStatistics"},
-            {"Microsoft.Azure.Batch.LinuxUserConfiguration", "PSLinuxUserConfiguration"},
-            {"Microsoft.Azure.Batch.MetadataItem", "PSMetadataItem"},
-            {"Microsoft.Azure.Batch.MountConfiguration", "PSMountConfiguration"},
-            {"Microsoft.Azure.Batch.MultiInstanceSettings", "PSMultiInstanceSettings"},
-            {"Microsoft.Azure.Batch.NameValuePair", "PSNameValuePair"},
-            {"Microsoft.Azure.Batch.NetworkConfiguration", "PSNetworkConfiguration"},
-            {"Microsoft.Azure.Batch.NfsMountConfiguration", "PSNfsMountConfiguration"},
-            {"Microsoft.Azure.Batch.NodeAgentInformation", "PSNodeAgentInformation"},
-            {"Microsoft.Azure.Batch.NetworkSecurityGroupRule", "PSNetworkSecurityGroupRule"},
-            {"Microsoft.Azure.Batch.NodeCounts", "PSNodeCounts"},
-            {"Microsoft.Azure.Batch.NodeFile", "PSNodeFile"},
-            {"Microsoft.Azure.Batch.OutputFile", "PSOutputFile"},
-            {"Microsoft.Azure.Batch.OutputFileDestination", "PSOutputFileDestination"},
-            {"Microsoft.Azure.Batch.OutputFileUploadOptions", "PSOutputFileUploadOptions"},
-            {"Microsoft.Azure.Batch.OutputFileBlobContainerDestination", "PSOutputFileBlobContainerDestination"},
-            {"Microsoft.Azure.Batch.PoolEndpointConfiguration", "PSPoolEndpointConfiguration"},
-            {"Microsoft.Azure.Batch.PoolInformation", "PSPoolInformation"},
-            {"Microsoft.Azure.Batch.PoolNodeCounts", "PSPoolNodeCounts"},
-            {"Microsoft.Azure.Batch.PoolSpecification", "PSPoolSpecification"},
-            {"Microsoft.Azure.Batch.PoolStatistics", "PSPoolStatistics"},
-            {"Microsoft.Azure.Batch.PoolUsageMetrics", "PSPoolUsageMetrics"},
-            {"Microsoft.Azure.Batch.RecentJob", "PSRecentJob"},
-            {"Microsoft.Azure.Batch.ResizeError", "PSResizeError"},
-            {"Microsoft.Azure.Batch.ResourceFile", "PSResourceFile"},
-            {"Microsoft.Azure.Batch.ResourceStatistics", "PSResourceStatistics"},
-            {"Microsoft.Azure.Batch.Schedule", "PSSchedule"},
-            {"Microsoft.Azure.Batch.StartTask", "PSStartTask"},
-            {"Microsoft.Azure.Batch.StartTaskInformation", "PSStartTaskInformation"},
-            {"Microsoft.Azure.Batch.SubtaskInformation", "PSSubtaskInformation"},
-            {"Microsoft.Azure.Batch.TaskConstraints", "PSTaskConstraints"},
-            {"Microsoft.Azure.Batch.TaskContainerExecutionInformation", "PSTaskContainerExecutionInformation"},
-            {"Microsoft.Azure.Batch.TaskContainerSettings", "PSTaskContainerSettings"},
-            {"Microsoft.Azure.Batch.TaskCounts", "PSTaskCounts"},
-            {"Microsoft.Azure.Batch.TaskDependencies", "PSTaskDependencies"},
-            {"Microsoft.Azure.Batch.TaskExecutionInformation", "PSTaskExecutionInformation"},
-            {"Microsoft.Azure.Batch.TaskInformation", "PSTaskInformation"},
-            {"Microsoft.Azure.Batch.TaskIdRange", "PSTaskIdRange"},
-            {"Microsoft.Azure.Batch.TaskFailureInformation", "PSTaskFailureInformation"},
-            {"Microsoft.Azure.Batch.TaskSchedulingPolicy", "PSTaskSchedulingPolicy"},
-            {"Microsoft.Azure.Batch.TaskStatistics", "PSTaskStatistics"},
-            {"Microsoft.Azure.Batch.UploadBatchServiceLogsResult", "PSStartComputeNodeServiceLogUploadResult"},
-            {"Microsoft.Azure.Batch.UsageStatistics", "PSUsageStatistics"},
-            {"Microsoft.Azure.Batch.UserAccount", "PSUserAccount"},
-            {"Microsoft.Azure.Batch.UserIdentity", "PSUserIdentity"},
-            {"Microsoft.Azure.Batch.VirtualMachineConfiguration", "PSVirtualMachineConfiguration"},
-            {"Microsoft.Azure.Batch.WindowsConfiguration", "PSWindowsConfiguration"},
-            {"Microsoft.Azure.Batch.WindowsUserConfiguration", "PSWindowsUserConfiguration"},
+            { "Microsoft.Azure.Batch.UploadBatchServiceLogsResult", "PSStartComputeNodeServiceLogUploadResult" },
+            { "Microsoft.Azure.Batch.Common.StatusLevelTypes", "PSStatusLevelTypes" }
         };
 
+        private static readonly Dictionary<string, string> OMtoPSClassMappings = new();
 
-        private static readonly Dictionary<string, string[]> OmittedProperties = new Dictionary<string, string[]>()
+        private static readonly Dictionary<string, string[]> OmittedProperties = new()
         {
             // Hide Custom Behaviors
             {"Microsoft.Azure.Batch.Certificate", new string[] {"CustomBehaviors"}},
@@ -160,9 +65,10 @@ namespace PSModelGenerator
                 return;
             }
 
+
             AssemblyPath = args[0];
             Assembly omAssembly = Assembly.LoadFile(AssemblyPath);
-
+            CreateMappings(omAssembly);
             if (Directory.Exists(GeneratedFileDir))
             {
                 Directory.Delete(GeneratedFileDir, true);
@@ -182,6 +88,26 @@ namespace PSModelGenerator
             }
         }
 
+        private static void CreateMappings(Assembly omAssembly)
+        {
+            foreach ((string key, string value) in customMappings)
+            {
+                OMtoPSClassMappings.Add(key, value);
+            }
+
+            Type[] allTypes = omAssembly.GetTypes();
+            List<(string FullName, string Name)> typeNames = allTypes
+                .Where(t => t.GetInterface("IPropertyMetadata") != null && t.Namespace == "Microsoft.Azure.Batch" && t.IsPublic).Select(t => (t.FullName, t.Name)).ToList();
+
+            foreach ((string fullName, string className) in typeNames)
+            {
+                if (OMtoPSClassMappings.ContainsKey(fullName) == false)
+                {
+                    OMtoPSClassMappings.Add(fullName, $"PS{className}");
+                }
+            }
+        }
+
         private static void ShowUsage()
         {
             Console.WriteLine("This executable automatically generates the PowerShell data model classes used by the Azure Batch PowerShell cmdlets.");
@@ -191,8 +117,8 @@ namespace PSModelGenerator
 
         private static void GenerateModel(string fileName, Type omType, string modelName)
         {
-            CodeCompileUnit compileUnit = new CodeCompileUnit();
-            CodeNamespace codeNamespace = new CodeNamespace(ModelNamespace);
+            CodeCompileUnit compileUnit = new();
+            CodeNamespace codeNamespace = new(ModelNamespace);
             GenerateUsingDirectives(codeNamespace);
 
             var codeType = new CodeTypeDeclaration(modelName)
@@ -206,10 +132,10 @@ namespace PSModelGenerator
             compileUnit.Namespaces.Add(codeNamespace);
 
             // The wrapped OM object
-            CodeMemberField wrappedField = new CodeMemberField();
+            CodeMemberField wrappedField = new();
             wrappedField.Attributes = MemberAttributes.Assembly;
             wrappedField.Name = OmObject;
-            wrappedField.Type = new CodeTypeReference(omType);
+            wrappedField.Type = new CodeTypeReference(omType.IsEnum ? $"{omType}?" : omType.FullName);
             codeType.Members.Add(wrappedField);
 
             GenerateConstructors(omType, codeType);
@@ -246,11 +172,11 @@ namespace PSModelGenerator
 
         private static void GenerateConstructors(Type t, CodeTypeDeclaration codeType)
         {
-            CodeFieldReferenceExpression omObjectFieldReference = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), OmObject);
+            CodeFieldReferenceExpression omObjectFieldReference = new(new CodeThisReferenceExpression(), OmObject);
 
             ConstructorInfo[] constructors = t.GetConstructors();
             ConstructorInfo publicParameterless = null;
-            List<ConstructorInfo> publicGeneralParams = new List<ConstructorInfo>();
+            List<ConstructorInfo> publicGeneralParams = new();
             foreach (ConstructorInfo con in constructors.Where(c => c.IsPublic || c.IsStatic))
             {
                 ParameterInfo[] parameters = con.GetParameters();
@@ -269,9 +195,9 @@ namespace PSModelGenerator
 
             if (publicParameterless != null)
             {
-                CodeConstructor constructor = new CodeConstructor();
+                CodeConstructor constructor = new();
                 constructor.Attributes = MemberAttributes.Public;
-                CodeObjectCreateExpression createExpression = new CodeObjectCreateExpression(t);
+                CodeObjectCreateExpression createExpression = new(t);
                 constructor.Statements.Add(new CodeAssignStatement(omObjectFieldReference, createExpression));
                 codeType.Members.Add(constructor);
             }
@@ -282,14 +208,14 @@ namespace PSModelGenerator
             }
 
             // Default internal constructor that accepts the OM object to wrap
-            CodeConstructor defaultConstructor = new CodeConstructor();
+            CodeConstructor defaultConstructor = new();
             defaultConstructor.Attributes = MemberAttributes.Assembly;
-            CodeParameterDeclarationExpression omObjectParameter = new CodeParameterDeclarationExpression(t, OmObject);
+            CodeParameterDeclarationExpression omObjectParameter = new(t.IsEnum ? $"{t.FullName}?" : t.FullName, OmObject);
             defaultConstructor.Parameters.Add(omObjectParameter);
-            CodeArgumentReferenceExpression omObjectArgumentReference = new CodeArgumentReferenceExpression(OmObject);
-            CodeObjectCreateExpression createException = new CodeObjectCreateExpression(typeof(ArgumentNullException), new CodePrimitiveExpression(OmObject));
-            CodeThrowExceptionStatement throwException = new CodeThrowExceptionStatement(createException);
-            CodeBinaryOperatorExpression nullCheck = new CodeBinaryOperatorExpression(omObjectArgumentReference, CodeBinaryOperatorType.IdentityEquality, new CodePrimitiveExpression(null));
+            CodeArgumentReferenceExpression omObjectArgumentReference = new(OmObject);
+            CodeObjectCreateExpression createException = new(typeof(ArgumentNullException), new CodePrimitiveExpression(OmObject));
+            CodeThrowExceptionStatement throwException = new(createException);
+            CodeBinaryOperatorExpression nullCheck = new(omObjectArgumentReference, CodeBinaryOperatorType.IdentityEquality, new CodePrimitiveExpression(null));
 
             // if the parameter is null, throw an exception
             defaultConstructor.Statements.Add(new CodeConditionStatement(nullCheck, throwException));
@@ -300,7 +226,7 @@ namespace PSModelGenerator
 
         private static void AddConstructorWithCopiedParameters(CodeTypeDeclaration codeType, Type implementationType, CodeFieldReferenceExpression omObjectFieldReference, ConstructorInfo constructorInfo)
         {
-            CodeConstructor constructor = new CodeConstructor();
+            CodeConstructor constructor = new();
             constructor.Attributes = MemberAttributes.Public;
 
             ParameterInfo[] parameters = constructorInfo.GetParameters();
@@ -308,58 +234,59 @@ namespace PSModelGenerator
             for (int i = 0; i < parameters.Length; i++)
             {
                 bool isOmTypeArg = false;
-
-                string paramType = parameters[i].ParameterType.FullName;
+                ParameterInfo parameter = parameters[i];
+                string paramName = parameter.Name;
+                string paramType = parameter.ParameterType.FullName;
+                //string paramType = GetFullName(parameter.ParameterType);
                 if (OMtoPSClassMappings.ContainsKey(paramType))
                 {
                     paramType = OMtoPSClassMappings[paramType];
                     isOmTypeArg = true;
                 }
 
-                string paramName = parameters[i].Name;
                 string passedInArg;
 
                 // Create the proper parameter for optional
-                if (parameters[i].IsOptional)
+                if (parameter.IsOptional)
                 {
                     paramName = paramType.Contains("System")
-                        ? string.Format("{0} = null", parameters[i].Name)
-                        : string.Format("{0} = default({1})", parameters[i].Name, paramType);
+                        ? string.Format("{0} = null", parameter.Name)
+                        : string.Format("{0} = default({1})", parameter.Name, paramType);
                 }
 
                 // Need to do a null check for calling an omObject from a PS wrapper class
-                if (isOmTypeArg && parameters[i].IsOptional)
+                if (isOmTypeArg && parameter.IsOptional)
                 {
-                    CodeVariableDeclarationStatement omObjectDeclaration = new CodeVariableDeclarationStatement(
-                        parameters[i].ParameterType,
-                        string.Format("{0}{1}", parameters[i].Name, "OmObject"),
+                    CodeVariableDeclarationStatement omObjectDeclaration = new(
+                        parameter.ParameterType,
+                        string.Format("{0}{1}", parameter.Name, "OmObject"),
                         new CodePrimitiveExpression(null));
 
                     constructor.Statements.Add(omObjectDeclaration);
 
-                    CodeArgumentReferenceExpression omObjectArgumentReference = new CodeArgumentReferenceExpression(parameters[i].Name);
-                    CodeAssignStatement omObjectAssignStatement = new CodeAssignStatement(new CodeVariableReferenceExpression(string.Format("{0}{1}", parameters[i].Name, "OmObject")), new CodeVariableReferenceExpression(string.Format("{0}.{1}", parameters[i].Name, OmObject)));
-                    CodeBinaryOperatorExpression nullCheck = new CodeBinaryOperatorExpression(omObjectArgumentReference, CodeBinaryOperatorType.IdentityInequality, new CodePrimitiveExpression(null));
+                    CodeArgumentReferenceExpression omObjectArgumentReference = new(parameter.Name);
+                    CodeAssignStatement omObjectAssignStatement = new(new CodeVariableReferenceExpression(string.Format("{0}{1}", parameter.Name, "OmObject")), new CodeVariableReferenceExpression(string.Format("{0}.{1}", parameter.Name, OmObject)));
+                    CodeBinaryOperatorExpression nullCheck = new(omObjectArgumentReference, CodeBinaryOperatorType.IdentityInequality, new CodePrimitiveExpression(null));
 
                     // if the parameter is not null, use the omObject of the PS Wrapper class
                     constructor.Statements.Add(new CodeConditionStatement(nullCheck, omObjectAssignStatement));
 
-                    passedInArg = string.Format("{0}{1}", parameters[i].Name, "OmObject");
+                    passedInArg = string.Format("{0}{1}", parameter.Name, "OmObject");
                 }
                 else if (isOmTypeArg)
                 {
-                    passedInArg = string.Format("{0}.{1}", parameters[i].Name, OmObject);
+                    passedInArg = string.Format("{0}.{1}", parameter.Name, OmObject);
                 }
                 else
                 {
-                    passedInArg = parameters[i].Name;
+                    passedInArg = parameter.Name;
                 }
 
                 codeArgumentReferences[i] = new CodeArgumentReferenceExpression(passedInArg);
                 constructor.Parameters.Add(new CodeParameterDeclarationExpression(paramType, paramName));
             }
 
-            CodeObjectCreateExpression createExpression = new CodeObjectCreateExpression(implementationType, codeArgumentReferences);
+            CodeObjectCreateExpression createExpression = new(implementationType, codeArgumentReferences);
             constructor.Statements.Add(new CodeAssignStatement(omObjectFieldReference, createExpression));
             codeType.Members.Add(constructor);
         }
@@ -368,6 +295,8 @@ namespace PSModelGenerator
         {
             foreach (PropertyInfo property in t.GetProperties())
             {
+                string propertyFullName = GetFullName(property.PropertyType);
+
                 if (OmittedProperties.ContainsKey(t.FullName) && OmittedProperties[t.FullName].Contains(property.Name))
                 {
                     continue;
@@ -380,18 +309,18 @@ namespace PSModelGenerator
 
                 string propertyType = GetPropertyType(property.PropertyType);
                 bool isGenericCollection = property.PropertyType.IsGenericType &&
-                    (property.PropertyType.GetGenericTypeDefinition() == typeof(IList<>) || 
+                    (property.PropertyType.GetGenericTypeDefinition() == typeof(IList<>) ||
                     property.PropertyType.GetGenericTypeDefinition() == typeof(IEnumerable<>) ||
                     property.PropertyType.GetGenericTypeDefinition() == typeof(IReadOnlyList<>));
 
-                CodeFieldReferenceExpression wrappedObject = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), OmObject);
-                CodePropertyReferenceExpression wrappedObjectProperty = new CodePropertyReferenceExpression(wrappedObject, property.Name);
+                CodeFieldReferenceExpression wrappedObject = new(new CodeThisReferenceExpression(), OmObject);
+                CodePropertyReferenceExpression wrappedObjectProperty = new(wrappedObject, property.Name);
                 CodeFieldReferenceExpression fieldReference = null;
-                if (isGenericCollection || OMtoPSClassMappings.ContainsKey(property.PropertyType.FullName))
+                if (isGenericCollection || OMtoPSClassMappings.ContainsKey(propertyFullName))
                 {
                     // Add a backing field for the property with the same name but using camel case.
-                    string fieldName = string.Format("{0}{1}", property.Name.ToLower()[0], property.Name.Substring(1, property.Name.Length - 1));
-                    CodeMemberField backingField = new CodeMemberField();
+                    string fieldName = $"{property.Name.ToLower()[0]}{property.Name[1..]}";
+                    CodeMemberField backingField = new();
                     backingField.Attributes = MemberAttributes.Private;
                     backingField.Name = fieldName;
                     backingField.Type = new CodeTypeReference(propertyType);
@@ -400,7 +329,7 @@ namespace PSModelGenerator
                     fieldReference = new CodeFieldReferenceExpression(new CodeThisReferenceExpression(), fieldName);
                 }
 
-                CodeMemberProperty codeProperty = new CodeMemberProperty();
+                CodeMemberProperty codeProperty = new();
                 codeProperty.Attributes = MemberAttributes.Public | MemberAttributes.Final;
                 codeProperty.Name = property.Name;
                 codeProperty.Type = new CodeTypeReference(propertyType);
@@ -411,106 +340,11 @@ namespace PSModelGenerator
 
                 if (isGenericCollection)
                 {
-                    // Special handling for dict
-                    Type argType = property.PropertyType.GetGenericArguments()[0];
-                    bool magicalDictConversion = propertyType == "IDictionary";
-                    string wrapperArgType = argType.FullName.StartsWith("System") ? argType.FullName : OMtoPSClassMappings[argType.FullName];
-                    string wrapperType = magicalDictConversion ? string.Format("Dictionary<string, string>") : string.Format("List<{0}>", wrapperArgType);
-                    string variableName = magicalDictConversion ? "dict" : "list";
-                    if (property.GetMethod != null && property.GetMethod.IsPublic)
-                    {
-                        // Collections are not kept in sync with the wrapped OM object. Cmdlets will need to sync them before sending
-                        // a request to the server.
-                        CodeVariableDeclarationStatement declaration = new CodeVariableDeclarationStatement(wrapperType, variableName);
-                        CodeVariableReferenceExpression reference = new CodeVariableReferenceExpression(variableName);
-                        CodeAssignStatement initialize = new CodeAssignStatement(reference, new CodeObjectCreateExpression(wrapperType));
-
-                        // CodeDom doesn't support foreach loops very well, so instead explicitly get the enumerator and loop on MoveNext() calls
-                        const string enumeratorVariableName = "enumerator";
-                        CodeVariableDeclarationStatement enumeratorDeclaration = new CodeVariableDeclarationStatement(string.Format("IEnumerator<{0}>", argType.FullName), enumeratorVariableName);
-                        CodeVariableReferenceExpression enumeratorReference = new CodeVariableReferenceExpression(enumeratorVariableName);
-                        CodeAssignStatement initializeEnumerator = new CodeAssignStatement(enumeratorReference, new CodeMethodInvokeExpression(wrappedObjectProperty, "GetEnumerator"));
-                        CodeIterationStatement loopStatement = new CodeIterationStatement();
-                        loopStatement.TestExpression = new CodeMethodInvokeExpression(enumeratorReference, "MoveNext");
-                        loopStatement.IncrementStatement = new CodeSnippetStatement(string.Empty);
-                        loopStatement.InitStatement = new CodeSnippetStatement(string.Empty);
-                        CodePropertyReferenceExpression enumeratorCurrent = new CodePropertyReferenceExpression(enumeratorReference, "Current");
-
-                        // Fill the list by individually wrapping each item in the loop
-                        if (magicalDictConversion)
-                        {
-                            var keyReference = new CodePropertyReferenceExpression(enumeratorCurrent, OMToPSDictionaryConversionMappings[argType.FullName].Item1);
-                            var valueReference = new CodePropertyReferenceExpression(enumeratorCurrent, OMToPSDictionaryConversionMappings[argType.FullName].Item2);
-                            CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(reference, "Add", keyReference, valueReference);
-                            loopStatement.Statements.Add(addToList);
-                        }
-                        else
-                        {
-                            // Fill the list by individually wrapping each item in the loop
-                            if (wrapperArgType.Contains("System"))
-                            {
-                                CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(reference, "Add", enumeratorCurrent);
-                                loopStatement.Statements.Add(addToList);
-                            }
-                            else
-                            {
-                                CodeObjectCreateExpression createListItem = new CodeObjectCreateExpression(wrapperArgType, enumeratorCurrent);
-                                CodeMethodInvokeExpression addToList = new CodeMethodInvokeExpression(reference, "Add", createListItem);
-                                loopStatement.Statements.Add(addToList);
-                            }
-                        }
-                        // Initialize the backing field with the built list on first access of the property
-                        CodeAssignStatement assignStatement = new CodeAssignStatement(fieldReference, reference);
-
-                        CodePrimitiveExpression nullExpression = new CodePrimitiveExpression(null);
-                        CodeBinaryOperatorExpression fieldNullCheck = new CodeBinaryOperatorExpression(fieldReference, CodeBinaryOperatorType.IdentityEquality, nullExpression);
-                        CodeBinaryOperatorExpression wrappedPropertyNullCheck = new CodeBinaryOperatorExpression(wrappedObjectProperty, CodeBinaryOperatorType.IdentityInequality, nullExpression);
-                        CodeBinaryOperatorExpression condition = new CodeBinaryOperatorExpression(fieldNullCheck, CodeBinaryOperatorType.BooleanAnd, wrappedPropertyNullCheck);
-                        CodeConditionStatement ifBlock = new CodeConditionStatement(condition, declaration, initialize, enumeratorDeclaration, initializeEnumerator, loopStatement, assignStatement);
-                        codeProperty.GetStatements.Add(ifBlock);
-                        codeProperty.GetStatements.Add(new CodeMethodReturnStatement(fieldReference));
-                    }
-
-                    if (property.SetMethod != null && property.SetMethod.IsPublic)
-                    {
-                        // Call the "set" on the OM object to ensure that constraints are enforced.
-                        codeProperty.HasSet = true;
-                        CodePropertySetValueReferenceExpression valueReference = new CodePropertySetValueReferenceExpression();
-                        CodeBinaryOperatorExpression nullCheck = new CodeBinaryOperatorExpression(valueReference, CodeBinaryOperatorType.IdentityEquality, new CodePrimitiveExpression(null));
-                        CodeAssignStatement nullAssignment = new CodeAssignStatement(wrappedObjectProperty, new CodePrimitiveExpression(null));
-                        CodeAssignStatement nonNullAssignment = new CodeAssignStatement(wrappedObjectProperty, new CodeObjectCreateExpression(string.Format("List<{0}>", argType.FullName)));
-                        CodeConditionStatement ifBlock = new CodeConditionStatement(nullCheck, new CodeStatement[] { nullAssignment }, new CodeStatement[] { nonNullAssignment });
-                        codeProperty.SetStatements.Add(ifBlock);
-                        codeProperty.SetStatements.Add(new CodeAssignStatement(fieldReference, valueReference));
-                    }
+                    GenerateGenericCollectionProperty(property, propertyType, fieldReference, wrappedObjectProperty, codeProperty);
                 }
-                else if (OMtoPSClassMappings.ContainsKey(property.PropertyType.FullName))
+                else if (OMtoPSClassMappings.ContainsKey(propertyFullName))
                 {
-                    if (property.GetMethod != null && property.GetMethod.IsPublic)
-                    {
-                        codeProperty.HasGet = true;
-                        CodeObjectCreateExpression createFieldObject = new CodeObjectCreateExpression(OMtoPSClassMappings[property.PropertyType.FullName], wrappedObjectProperty);
-                        CodeAssignStatement assignStatement = new CodeAssignStatement(fieldReference, createFieldObject);
-                        CodePrimitiveExpression nullExpression = new CodePrimitiveExpression(null);
-                        CodeBinaryOperatorExpression fieldNullCheck = new CodeBinaryOperatorExpression(fieldReference, CodeBinaryOperatorType.IdentityEquality, nullExpression);
-                        CodeBinaryOperatorExpression wrappedPropertyNullCheck = new CodeBinaryOperatorExpression(wrappedObjectProperty, CodeBinaryOperatorType.IdentityInequality, nullExpression);
-                        CodeBinaryOperatorExpression condition = new CodeBinaryOperatorExpression(fieldNullCheck, CodeBinaryOperatorType.BooleanAnd, wrappedPropertyNullCheck);
-                        CodeConditionStatement ifBlock = new CodeConditionStatement(condition, assignStatement);
-                        codeProperty.GetStatements.Add(ifBlock);
-                        codeProperty.GetStatements.Add(new CodeMethodReturnStatement(fieldReference));
-                    }
-                    if (property.SetMethod != null && property.SetMethod.IsPublic)
-                    {
-                        codeProperty.HasSet = true;
-                        CodePropertySetValueReferenceExpression valueReference = new CodePropertySetValueReferenceExpression();
-                        CodeBinaryOperatorExpression nullCheck = new CodeBinaryOperatorExpression(valueReference, CodeBinaryOperatorType.IdentityEquality, new CodePrimitiveExpression(null));
-                        CodeAssignStatement nullAssignment = new CodeAssignStatement(wrappedObjectProperty, new CodePrimitiveExpression(null));
-                        CodePropertyReferenceExpression valueProperty = new CodePropertyReferenceExpression(valueReference, OmObject);
-                        CodeAssignStatement nonNullAssignment = new CodeAssignStatement(wrappedObjectProperty, valueProperty);
-                        CodeConditionStatement ifBlock = new CodeConditionStatement(nullCheck, new CodeStatement[] { nullAssignment }, new CodeStatement[] { nonNullAssignment });
-                        codeProperty.SetStatements.Add(ifBlock);
-                        codeProperty.SetStatements.Add(new CodeAssignStatement(fieldReference, valueReference));
-                    }
+                    GenerateMappedProperty(property, propertyFullName, fieldReference, wrappedObjectProperty, codeProperty);
                 }
                 else
                 {
@@ -530,34 +364,163 @@ namespace PSModelGenerator
             }
         }
 
+        private static void GenerateGenericCollectionProperty(PropertyInfo property, string propertyType, CodeFieldReferenceExpression fieldReference, CodePropertyReferenceExpression wrappedObjectProperty, CodeMemberProperty codeProperty)
+        {
+            // Special handling for dict
+            Type argType = property.PropertyType.GetGenericArguments()[0];
+            bool magicalDictConversion = propertyType == "IDictionary";
+            string wrapperArgType = argType.FullName.StartsWith("System") || argType.FullName.StartsWith("Microsoft.Azure.Batch.Common") ? argType.FullName : OMtoPSClassMappings[argType.FullName];
+            string wrapperType = magicalDictConversion ? string.Format("Dictionary<string, string>") : string.Format("List<{0}>", wrapperArgType);
+            string variableName = magicalDictConversion ? "dict" : "list";
+            if (property.GetMethod != null && property.GetMethod.IsPublic)
+            {
+                // Collections are not kept in sync with the wrapped OM object. Cmdlets will need to sync them before sending
+                // a request to the server.
+                CodeVariableDeclarationStatement declaration = new(wrapperType, variableName);
+                CodeVariableReferenceExpression reference = new(variableName);
+                CodeAssignStatement initialize = new(reference, new CodeObjectCreateExpression(wrapperType));
+
+                // CodeDom doesn't support foreach loops very well, so instead explicitly get the enumerator and loop on MoveNext() calls
+                const string enumeratorVariableName = "enumerator";
+                CodeVariableDeclarationStatement enumeratorDeclaration = new(string.Format("IEnumerator<{0}>", argType.FullName), enumeratorVariableName);
+                CodeVariableReferenceExpression enumeratorReference = new(enumeratorVariableName);
+                CodeAssignStatement initializeEnumerator = new(enumeratorReference, new CodeMethodInvokeExpression(wrappedObjectProperty, "GetEnumerator"));
+                CodeIterationStatement loopStatement = new();
+                loopStatement.TestExpression = new CodeMethodInvokeExpression(enumeratorReference, "MoveNext");
+                loopStatement.IncrementStatement = new CodeSnippetStatement(string.Empty);
+                loopStatement.InitStatement = new CodeSnippetStatement(string.Empty);
+                CodePropertyReferenceExpression enumeratorCurrent = new(enumeratorReference, "Current");
+
+                // Fill the list by individually wrapping each item in the loop
+                if (magicalDictConversion)
+                {
+                    var keyReference = new CodePropertyReferenceExpression(enumeratorCurrent, OMToPSDictionaryConversionMappings[argType.FullName].Item1);
+                    var valueReference = new CodePropertyReferenceExpression(enumeratorCurrent, OMToPSDictionaryConversionMappings[argType.FullName].Item2);
+                    CodeMethodInvokeExpression addToList = new(reference, "Add", keyReference, valueReference);
+                    loopStatement.Statements.Add(addToList);
+                }
+                else
+                {
+                    // Fill the list by individually wrapping each item in the loop
+                    if (wrapperArgType.Contains("System") || wrapperArgType.StartsWith("Microsoft.Azure.Batch.Common"))
+                    {
+                        CodeMethodInvokeExpression addToList = new(reference, "Add", enumeratorCurrent);
+                        loopStatement.Statements.Add(addToList);
+                    }
+                    else
+                    {
+                        CodeObjectCreateExpression createListItem = new(wrapperArgType, enumeratorCurrent);
+                        CodeMethodInvokeExpression addToList = new(reference, "Add", createListItem);
+                        loopStatement.Statements.Add(addToList);
+                    }
+                }
+                // Initialize the backing field with the built list on first access of the property
+                CodeAssignStatement assignStatement = new(fieldReference, reference);
+
+                CodePrimitiveExpression nullExpression = new(null);
+                CodeBinaryOperatorExpression fieldNullCheck = new(fieldReference, CodeBinaryOperatorType.IdentityEquality, nullExpression);
+                CodeBinaryOperatorExpression wrappedPropertyNullCheck = new(wrappedObjectProperty, CodeBinaryOperatorType.IdentityInequality, nullExpression);
+                CodeBinaryOperatorExpression condition = new(fieldNullCheck, CodeBinaryOperatorType.BooleanAnd, wrappedPropertyNullCheck);
+                CodeConditionStatement ifBlock = new(condition, declaration, initialize, enumeratorDeclaration, initializeEnumerator, loopStatement, assignStatement);
+                codeProperty.GetStatements.Add(ifBlock);
+                codeProperty.GetStatements.Add(new CodeMethodReturnStatement(fieldReference));
+            }
+
+            if (property.SetMethod != null && property.SetMethod.IsPublic)
+            {
+                // Call the "set" on the OM object to ensure that constraints are enforced.
+                codeProperty.HasSet = true;
+                CodePropertySetValueReferenceExpression valueReference = new();
+                CodeBinaryOperatorExpression nullCheck = new(valueReference, CodeBinaryOperatorType.IdentityEquality, new CodePrimitiveExpression(null));
+                CodeAssignStatement nullAssignment = new(wrappedObjectProperty, new CodePrimitiveExpression(null));
+                CodeAssignStatement nonNullAssignment = new(wrappedObjectProperty, new CodeObjectCreateExpression(string.Format("List<{0}>", argType.FullName)));
+                CodeConditionStatement ifBlock = new(nullCheck, new CodeStatement[] { nullAssignment }, new CodeStatement[] { nonNullAssignment });
+                codeProperty.SetStatements.Add(ifBlock);
+                codeProperty.SetStatements.Add(new CodeAssignStatement(fieldReference, valueReference));
+            }
+
+        }
+
+        private static void GenerateMappedProperty(PropertyInfo property, string propertyFullName, CodeFieldReferenceExpression fieldReference, CodePropertyReferenceExpression wrappedObjectProperty, CodeMemberProperty codeProperty)
+        {
+            if (property.GetMethod != null && property.GetMethod.IsPublic)
+            {
+                codeProperty.HasGet = true;
+                CodeObjectCreateExpression createFieldObject = new(OMtoPSClassMappings[propertyFullName], wrappedObjectProperty);
+                CodeAssignStatement assignStatement = new(fieldReference, createFieldObject);
+                CodePrimitiveExpression nullExpression = new(null);
+                CodeBinaryOperatorExpression fieldNullCheck = new(fieldReference, CodeBinaryOperatorType.IdentityEquality, nullExpression);
+                CodeBinaryOperatorExpression wrappedPropertyNullCheck = new(wrappedObjectProperty, CodeBinaryOperatorType.IdentityInequality, nullExpression);
+                CodeBinaryOperatorExpression condition = new(fieldNullCheck, CodeBinaryOperatorType.BooleanAnd, wrappedPropertyNullCheck);
+                CodeConditionStatement ifBlock = new(condition, assignStatement);
+                codeProperty.GetStatements.Add(ifBlock);
+                codeProperty.GetStatements.Add(new CodeMethodReturnStatement(fieldReference));
+            }
+            if (property.SetMethod != null && property.SetMethod.IsPublic)
+            {
+                codeProperty.HasSet = true;
+                CodePropertySetValueReferenceExpression valueReference = new();
+                CodeBinaryOperatorExpression nullCheck = new(valueReference, CodeBinaryOperatorType.IdentityEquality, new CodePrimitiveExpression(null));
+                CodeAssignStatement nullAssignment = new(wrappedObjectProperty, new CodePrimitiveExpression(null));
+                CodePropertyReferenceExpression valueProperty = new(valueReference, OmObject);
+                CodeAssignStatement nonNullAssignment = new(wrappedObjectProperty, valueProperty);
+                CodeConditionStatement ifBlock = new(nullCheck, new CodeStatement[] { nullAssignment }, new CodeStatement[] { nonNullAssignment });
+                codeProperty.SetStatements.Add(ifBlock);
+                codeProperty.SetStatements.Add(new CodeAssignStatement(fieldReference, valueReference));
+            }
+        }
+
         private static void GenerateCodeFile(string fileName, CodeCompileUnit compileUnit)
         {
             CodeDomProvider provider = CodeDomProvider.CreateProvider("CSharp");
-            CodeGeneratorOptions options = new CodeGeneratorOptions();
+            CodeGeneratorOptions options = new();
             options.BracingStyle = "C";
-            using (StreamWriter sourceWriter = new StreamWriter(fileName))
+
+            using StreamWriter sourceWriter = new(fileName);
+            GenerateCopyrightText(sourceWriter);
+            provider.GenerateCodeFromCompileUnit(compileUnit, sourceWriter, options);
+        }
+
+        private static bool IsGenericNullable(Type t)
+        {
+            return t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Nullable<>);
+        }
+
+        private static string GetFullName(Type t)
+        {
+            if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Nullable<>))
             {
-                GenerateCopyrightText(sourceWriter);
-                provider.GenerateCodeFromCompileUnit(compileUnit, sourceWriter, options);
+                return t.GetGenericArguments()[0].FullName;
             }
+
+            return t.FullName;
         }
 
         private static string GetPropertyType(Type t)
         {
-            if (t.IsEnum || t == typeof(String) || t.IsPrimitive || t == typeof(DateTime) || t == typeof(TimeSpan))
+            if (t.IsEnum)
             {
                 return t.FullName;
             }
-            else if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Nullable<>))
+            else if (t == typeof(string) || t.IsPrimitive || t == typeof(DateTime) || t == typeof(TimeSpan) || t == typeof(object))
+            {
+                return t.FullName;
+            }
+            else if (IsGenericNullable(t))
             {
                 Type argType = t.GetGenericArguments()[0];
+                if (argType.IsEnum && OMtoPSClassMappings.ContainsKey(argType.FullName))
+                {
+                    return OMtoPSClassMappings[argType.FullName];
+                }
+
                 return string.Format("{0}?", GetPropertyType(argType));
             }
             else if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(IList<>))
             {
                 Type argType = t.GetGenericArguments()[0];
 
-                if(OMToPSDictionaryConversionMappings.ContainsKey(argType.FullName))
+                if (OMToPSDictionaryConversionMappings.ContainsKey(argType.FullName))
                 {
                     return "IDictionary";
                 }
@@ -595,7 +558,7 @@ namespace PSModelGenerator
             }
             else
             {
-                throw new InvalidOperationException(string.Format("Unexpected type. No mapping defined for type {0}", t.Name));
+                throw new InvalidOperationException(string.Format("Unexpected type. No mapping defined for type {0}", t.FullName));
             }
         }
     }

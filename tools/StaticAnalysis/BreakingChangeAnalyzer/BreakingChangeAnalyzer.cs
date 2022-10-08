@@ -30,6 +30,7 @@ using Tools.Common.Issues;
 using Tools.Common.Loaders;
 using Tools.Common.Loggers;
 using Tools.Common.Models;
+using Tools.Common.Utilities;
 
 namespace StaticAnalysis.BreakingChangeAnalyzer
 {
@@ -97,8 +98,9 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
             }
 
             foreach (var baseDirectory in cmdletProbingDirs.Where(s => !s.Contains("ServiceManagement") &&
-                                                                        !s.Contains("Stack") && Directory.Exists(Path.GetFullPath(s))))
+                                                                        !ModuleFilter.IsAzureStackModule(s) && Directory.Exists(Path.GetFullPath(s))))
             {
+                SharedAssemblyLoader.Load(baseDirectory);
                 var probingDirectories = new List<string> {baseDirectory};
 
                 // Add current directory for probing
@@ -128,97 +130,71 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
                     }
 
                     var psd1 = manifestFiles.FirstOrDefault();
-                    var parentDirectory = Directory.GetParent(psd1).FullName;
-                    var psd1FileName = Path.GetFileName(psd1);
-                    var powershell = PowerShell.Create();
 
-                    var script = $"Import-LocalizedData -BaseDirectory {parentDirectory} -FileName {psd1FileName} -BindingVariable ModuleMetadata;";
-                    powershell.AddScript($"{script} $ModuleMetadata.NestedModules;");
-                    var cmdletResult = powershell.Invoke();
-                    var nestedModules = cmdletResult.Select(c => c.ToString()).Select(c => (c.StartsWith(".") ? c.Substring(2) : c)).ToList();
-
-                    powershell.AddScript($"{script} $ModuleMetadata.RequiredModules | % {{ $_[\"ModuleName\"] }};");
-                    cmdletResult = powershell.Invoke();
-                    var requiredModules = cmdletResult.Where(c => !c.ToString().StartsWith(".")).Select(c => c.ToString()).ToList();
-
-                    if (!nestedModules.Any()) continue;
-
-                    Directory.SetCurrentDirectory(directory);
-
-                    requiredModules = requiredModules.Join(cmdletProbingDirs,
-                            module => 1,
-                            dir => 1,
-                            (module, dir) => Path.Combine(dir, module))
-                        .Where(Directory.Exists)
-                        .ToList();
-
-                    requiredModules.Add(directory);
-
-                    foreach (var nestedModule in nestedModules)
+                    // Skip the modules whoes version is less than 1.0.0
+                    using (var ps = PowerShell.Create())
                     {
-                        var assemblyFile = Directory.GetFiles(parentDirectory, nestedModule, SearchOption.AllDirectories).FirstOrDefault();
-                        var assemblyFileName = Path.GetFileName(assemblyFile);
-                        if (!File.Exists(assemblyFile)) continue;
-
-                        issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = assemblyFileName, "AssemblyFileName");
-                        processedHelpFiles.Add(assemblyFileName);
-// TODO: Remove IfDef
-#if NETSTANDARD
-                        var proxy = new CmdletLoader();
-#else
-                        var proxy = EnvironmentHelpers.CreateProxy<CmdletLoader>(directory, out _appDomain);
-#endif
-                        var newModuleMetadata = proxy.GetModuleMetadata(assemblyFile, requiredModules);
-
-                        var fileName = assemblyFileName + ".json";
-                        var executingPath =
-                            Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
-
-                        var filePath = executingPath + "\\SerializedCmdlets\\" + fileName;
-
-#if SERIALIZE
-                        SerializeCmdlets(filePath, newModuleMetadata);
-#endif
-
-                        if (!File.Exists(filePath))
+                        ps.AddCommand("Test-ModuleManifest").AddParameter("Path", psd1);
+                        var result = ps.Invoke();
+                        PSModuleInfo moduleInfo = result[0].BaseObject as PSModuleInfo;
+                        if (moduleInfo.Version.Major < 1)
                         {
                             continue;
                         }
+                    }
 
-                        var oldModuleMetadata = DeserializeCmdlets(filePath);
+                    var parentDirectory = Directory.GetParent(psd1).FullName;
+                    var psd1FileName = Path.GetFileName(psd1);
 
-                        if (cmdletFilter != null)
+                    string moduleName = psd1FileName.Replace(".psd1", "");
+
+                    Console.WriteLine(directory);
+                    Directory.SetCurrentDirectory(directory);
+
+                    issueLogger.Decorator.AddDecorator(a => a.AssemblyFileName = moduleName, "AssemblyFileName");
+                    processedHelpFiles.Add(moduleName);
+
+                    var newModuleMetadata = MetadataLoader.GetModuleMetadata(moduleName);
+                    var fileName = $"{moduleName}.json";
+                    var executingPath = Path.GetDirectoryName(new Uri(Assembly.GetExecutingAssembly().CodeBase).AbsolutePath);
+
+                    var filePath = Path.Combine(executingPath, "SerializedCmdlets", fileName);
+
+                    if (!File.Exists(filePath))
+                    {
+                        continue;
+                    }
+
+                    var oldModuleMetadata = ModuleMetadata.DeserializeCmdlets(filePath);
+
+                    if (cmdletFilter != null)
+                    {
+                        var output = string.Format("Before filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
+                            oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
+
+                        output += string.Format("\nCmdlet file: {0}", moduleName);
+
+                        oldModuleMetadata.FilterCmdlets(cmdletFilter);
+                        newModuleMetadata.FilterCmdlets(cmdletFilter);
+
+                        output += string.Format("After filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
+                            oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
+
+                        foreach (var cmdlet in oldModuleMetadata.Cmdlets)
                         {
-                            var output = string.Format("Before filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
-                                oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
-
-                            output += string.Format("\nCmdlet file: {0}", assemblyFileName);
-
-                            oldModuleMetadata.FilterCmdlets(cmdletFilter);
-                            newModuleMetadata.FilterCmdlets(cmdletFilter);
-
-                            output += string.Format("After filter\nOld module cmdlet count: {0}\nNew module cmdlet count: {1}",
-                                oldModuleMetadata.Cmdlets.Count, newModuleMetadata.Cmdlets.Count);
-
-                            foreach (var cmdlet in oldModuleMetadata.Cmdlets)
-                            {
-                                output += string.Format("\n\tOld cmdlet - {0}", cmdlet.Name);
-                            }
-
-                            foreach (var cmdlet in newModuleMetadata.Cmdlets)
-                            {
-                                output += string.Format("\n\tNew cmdlet - {0}", cmdlet.Name);
-                            }
-
-                            issueLogger.WriteMessage(output + Environment.NewLine);
+                            output += string.Format("\n\tOld cmdlet - {0}", cmdlet.Name);
                         }
 
-                        RunBreakingChangeChecks(oldModuleMetadata, newModuleMetadata, issueLogger);
-// TODO: Remove IfDef code
-#if !NETSTANDARD
-                        AppDomain.Unload(_appDomain);
-#endif
+                        foreach (var cmdlet in newModuleMetadata.Cmdlets)
+                        {
+                            output += string.Format("\n\tNew cmdlet - {0}", cmdlet.Name);
+                        }
+
+                        issueLogger.WriteMessage(output + Environment.NewLine);
                     }
+
+                    RunBreakingChangeChecks(oldModuleMetadata, newModuleMetadata, issueLogger);
+  
                 }
             }
         }
@@ -232,16 +208,6 @@ namespace StaticAnalysis.BreakingChangeAnalyzer
         {
             var json = JsonConvert.SerializeObject(moduleMetadata, Formatting.Indented);
             File.WriteAllText(fileName, json);
-        }
-
-        /// <summary>
-        /// Deserialize the cmdlets to compare them to the changed modules
-        /// </summary>
-        /// <param name="fileName">Name of the file we are to deserialize the cmdlets from.</param>
-        /// <returns></returns>
-        private static ModuleMetadata DeserializeCmdlets(string fileName)
-        {
-           return JsonConvert.DeserializeObject<ModuleMetadata>(File.ReadAllText(fileName));
         }
 
         /// <summary>
