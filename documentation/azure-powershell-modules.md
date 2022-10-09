@@ -22,6 +22,7 @@ Container Apps                        | `Az.App`                                
 App Configuration                     | `Az.AppConfiguration`                   | [![AppConfiguration]][AppConfigurationGallery]
 Application Insights                  | `Az.ApplicationInsights`                | [![ApplicationInsights]][ApplicationInsightsGallery]
 Attestation                           | `Az.Attestation`                        | [![Attestation]][AttestationGallery]
+Automanage                            | `Az.Automanage`                         | [![Automanage]][AutomanageGallery]
 Automation                            | `Az.Automation`                         | [![Automation]][AutomationGallery]
 BareMetal                             | `Az.BareMetal`                          | [![BareMetal]][BareMetalGallery]
 Batch                                 | `Az.Batch`                              | [![Batch]][BatchGallery]
@@ -172,6 +173,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [AppConfiguration]:           https://img.shields.io/powershellgallery/v/Az.AppConfiguration.svg?style=flat-square&label=Az.AppConfiguration
 [ApplicationInsights]:        https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights
 [Attestation]:                https://img.shields.io/powershellgallery/v/Az.Attestation.svg?style=flat-square&label=Az.Attestation
+[Automanage]:                 https://img.shields.io/powershellgallery/v/Az.Automanage.svg?style=flat-square&label=Az.Automanage
 [Automation]:                 https://img.shields.io/powershellgallery/v/Az.Automation.svg?style=flat-square&label=Az.Automation
 [BareMetal]:                  https://img.shields.io/powershellgallery/v/Az.BareMetal.svg?style=flat-square&label=Az.BareMetal
 [Batch]:                      https://img.shields.io/powershellgallery/v/Az.Batch.svg?style=flat-square&label=Az.Batch
@@ -320,6 +322,7 @@ Windows Iot Services                  | `Az.WindowsIotServices`                 
 [AppConfigurationGallery]:           https://www.powershellgallery.com/packages/Az.AppConfiguration/
 [ApplicationInsightsGallery]:        https://www.powershellgallery.com/packages/Az.ApplicationInsights/
 [AttestationGallery]:                https://www.powershellgallery.com/packages/Az.Attestation/
+[AutomanageGallery]:                 https://www.powershellgallery.com/packages/Az.Automanage/
 [AutomationGallery]:                 https://www.powershellgallery.com/packages/Az.Automation/
 [BareMetalGallery]:                  https://www.powershellgallery.com/packages/Az.BareMetal/
 [BatchGallery]:                      https://www.powershellgallery.com/packages/Az.Batch/
