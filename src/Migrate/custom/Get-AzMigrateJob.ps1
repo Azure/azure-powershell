@@ -22,7 +22,7 @@ The Get-AzMigrateJob cmdlet retrives the status of an Azure Migrate job.
 https://docs.microsoft.com/powershell/module/az.migrate/get-azmigratejob
 #>
 function Get-AzMigrateJob {
-    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob])]
+    [OutputType([Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob])]
     [CmdletBinding(DefaultParameterSetName = 'ListByName', PositionalBinding = $false)]
     param(
         [Parameter(ParameterSetName = 'GetById', Mandatory)]
@@ -53,7 +53,7 @@ function Get-AzMigrateJob {
 
         [Parameter(ParameterSetName = 'GetByInputObject', Mandatory)]
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
-        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20210210.IJob]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Models.Api20220501.IJob]
         # Specifies the job object of the replicating server.
         ${InputObject},
 

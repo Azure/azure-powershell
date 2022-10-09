@@ -276,5 +276,12 @@ namespace Microsoft.Azure.Commands.Compute.Test.ScenarioTests
         {
             TestRunner.RunTestScript("Test-VirtualMachineScaleSetGuestAttestation");
         }
+
+        [Fact]
+        [Trait(Category.AcceptanceType, Category.CheckIn)]
+        public void TestVirtuaMachineScaleSetPriorityMixPolicy()
+        {
+            TestRunner.RunTestScript("Test-VirtualMachineScaleSetPriorityMixPolicy");
+        }
     }
 }

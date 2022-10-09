@@ -1,84 +1,67 @@
 ---
-external help file: Microsoft.Azure.PowerShell.Cmdlets.EventHub.dll-Help.xml
+external help file: Az.EventHub-help.xml
 Module Name: Az.EventHub
-online version:
+online version: https://docs.microsoft.com/powershell/module/az.eventhub/new-azeventhubthrottlingpolicyconfig
 schema: 2.0.0
 ---
 
 # New-AzEventHubThrottlingPolicyConfig
 
 ## SYNOPSIS
-Creates an in memory object of type PSEventHubThrottlingPolicyConfigAttributes
+Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
 
 ## SYNTAX
 
 ```
-New-AzEventHubThrottlingPolicyConfig [[-Name] <String>] [-MetricId] <String> [-RateLimitThreshold] <Int64>
- [-DefaultProfile <IAzureContextContainer>] [<CommonParameters>]
+New-AzEventHubThrottlingPolicyConfig -Name <String> -RateLimitThreshold <Int64> -MetricId <MetricId>
+ [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-Creates an in memory object of type PSEventHubThrottlingPolicyConfigAttributes  that can be given as inputs to 
-New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup. This cmdlet DOES NOT make any REST call.
+Constructs an IThrottlingPolicy object that can be fed as input to New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup
 
 ## EXAMPLES
 
-### Example 1
+### Example 1: Constructs an IThrottlingPolicy object
 ```powershell
-$policy1 = New-AzEventHubThrottlingPolicyConfig -Name policy1 -MetricId IncomingBytes -RateLimitThreshold 12345
-
-$policy2 = New-AzEventHubThrottlingPolicyConfig -Name policy2 -MetricId IncomingMessages -RateLimitThreshold 12345
-
-New-AzEventHubApplicationGroup -ResourceGroupName myresourcegroup -NamespaceName mynamespace -ClientAppGroupIdentifier SASKeyName=myauthkey ` 
--ThrottlingPolicy $policy1, $policy2
+New-AzEventHubThrottlingPolicyConfig -Name t1 -RateLimitThreshold 10000 -MetricId IncomingBytes
 ```
 
-$policy1 and $policy2 are objects of type PSEventHubApplicationGroupAttributes. The objects can then be fed as input to
--ThrottlingPolicy parameter of cmdlets New-AzEventHubApplicationGroup or Set-AzEventHubApplicationGroup.
+```output
+MetricId      Name RateLimitThreshold Type
+--------      ---- ------------------ ----
+IncomingBytes t1                10000 ThrottlingPolicy
+```
+
+Please refer examples for Set-AzEventHubApplicationGroup to know more.
 
 ## PARAMETERS
 
-### -DefaultProfile
-The credentials, account, tenant, and subscription used for communication with Azure.
+### -MetricId
+Metric Id on which the throttle limit should be set, MetricId can be discovered by hovering over Metric in the Metrics section of Event Hub Namespace inside Azure Portal
 
 ```yaml
-Type: Microsoft.Azure.Commands.Common.Authentication.Abstractions.Core.IAzureContextContainer
+Type: Microsoft.Azure.PowerShell.Cmdlets.EventHub.Support.MetricId
 Parameter Sets: (All)
-Aliases: AzContext, AzureRmContext, AzureCredential
+Aliases:
 
-Required: False
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -MetricId
-Metric Id on which the throttle limit should be set, MetricId can be discovered by hovering over Metric in the Metrics section of Event Hub Namespace inside Azure Portal
+### -Name
+Name of Throttling Policy Config
 
 ```yaml
 Type: System.String
 Parameter Sets: (All)
 Aliases:
-Accepted values: IncomingBytes, IncomingMessages, OutgoingBytes, OutgoingMessages
 
 Required: True
-Position: 1
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -Name
-Name of Throttling Policy
-
-```yaml
-Type: System.String
-Parameter Sets: (All)
-Aliases:
-
-Required: False
-Position: 0
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -93,7 +76,7 @@ Parameter Sets: (All)
 Aliases:
 
 Required: True
-Position: 2
+Position: Named
 Default value: None
 Accept pipeline input: False
 Accept wildcard characters: False
@@ -104,12 +87,12 @@ This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable
 
 ## INPUTS
 
-### None
-
 ## OUTPUTS
 
-### Microsoft.Azure.Commands.EventHub.Models.PSEventHubThrottlingPolicyConfigAttributes
+### Microsoft.Azure.PowerShell.Cmdlets.EventHub.Models.Api202201Preview.IThrottlingPolicy
 
 ## NOTES
+
+ALIASES
 
 ## RELATED LINKS

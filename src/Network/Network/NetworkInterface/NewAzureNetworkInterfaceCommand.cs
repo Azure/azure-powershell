@@ -225,6 +225,12 @@ namespace Microsoft.Azure.Commands.Network
 
         [Parameter(
             Mandatory = false,
+            ValueFromPipelineByPropertyName = true,
+            HelpMessage = "DisableTcpStateTracking")]
+        public string DisableTcpStateTracking { get; set; }
+
+        [Parameter(
+            Mandatory = false,
             HelpMessage = "EnableIPForwarding")]
         public SwitchParameter EnableIPForwarding { get; set; }
         
@@ -288,6 +294,11 @@ namespace Microsoft.Azure.Commands.Network
             if (!string.IsNullOrEmpty(EdgeZone))
             {
                 networkInterface.ExtendedLocation = new PSExtendedLocation(this.EdgeZone);
+            }
+
+            if (!string.IsNullOrEmpty(DisableTcpStateTracking))
+            {
+                networkInterface.DisableTcpStateTracking = this.DisableTcpStateTracking;
             }
 
             networkInterface.EnableIPForwarding = this.EnableIPForwarding.IsPresent;

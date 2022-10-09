@@ -70,6 +70,16 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
         public string Collation { get; set; }
 
         /// <summary>
+        /// Gets or sets the identity
+        /// </summary>
+        [Parameter(Mandatory = false,
+            HelpMessage = "The identity type to use for storage container.")]
+        [ValidateNotNullOrEmpty]
+        [PSArgumentCompleter("SharedAccessSignature", "ManagedIdentity")]
+        [PSDefaultValue(Value = "SharedAccessSignature")]
+        public string StorageContainerIdentity { get; set; }
+
+        /// <summary>
         /// Gets or sets whether or not to run this cmdlet in the background as a job
         /// </summary>
         [Parameter(Mandatory = false, HelpMessage = "Run cmdlet in the background")]
@@ -118,7 +128,8 @@ namespace Microsoft.Azure.Commands.Sql.ManagedDatabase.Cmdlet
                 Name = Name,
                 StorageContainerUri = StorageContainerUri,
                 StorageContainerSasToken = StorageContainerSasToken,
-                Collation = Collation
+                Collation = Collation,
+                StorageContainerIdentity = StorageContainerIdentity,
             };
 
             if (AutoCompleteRestore.IsPresent && string.IsNullOrEmpty(LastBackupName))

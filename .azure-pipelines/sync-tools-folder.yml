@@ -38,3 +38,11 @@ jobs:
       script: >-
         ./tools/SyncFromMainBranch.ps1 -BranchName $(BranchName) -GithubToken $(GithubToken)
       pwsh: true
+
+  - pwsh: |
+      $Title = "Sync tools code from main branch to generation branch"
+      $HeadBranch = "syncToolsFolder-$(BranchName)"
+      $BaseBranch = "$(BranchName)"
+      $Description = "Migrate Sync tools code from main branch to $(BranchName) branch"
+      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
+    displayName: Create PR to generation branch

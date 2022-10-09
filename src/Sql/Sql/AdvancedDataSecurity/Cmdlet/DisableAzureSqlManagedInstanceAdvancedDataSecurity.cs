@@ -14,7 +14,6 @@
 
 using Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Model;
 using System.Management.Automation;
-using Microsoft.Azure.Commands.Common.Authentication.Abstractions;
 
 namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
 {
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Commands.Sql.AdvancedThreatProtection.Cmdlet
         protected override ManagedInstanceAdvancedDataSecurityPolicyModel PersistChanges(ManagedInstanceAdvancedDataSecurityPolicyModel model)
         {
             model.IsEnabled = false;
-            ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model, DefaultContext.Environment.GetEndpoint(AzureEnvironment.Endpoint.StorageEndpointSuffix));
+            ModelAdapter.SetManagedInstanceAdvancedDataSecurity(model);
             return model;
         }
     }

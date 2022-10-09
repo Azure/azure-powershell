@@ -56,7 +56,11 @@ DotNetFrameworkVersion = '4.7.2'
 RequiredModules = @(@{ModuleName = 'Az.Accounts'; ModuleVersion = '2.10.0'; })
 
 # Assemblies that must be loaded prior to importing this module
-RequiredAssemblies = 'Microsoft.Azure.Management.Monitor.dll', 'AutoMapper.dll'
+RequiredAssemblies = 'Microsoft.Azure.Management.Monitor.dll', 'AutoMapper.dll', 
+               'ActivityLogAlert.Autorest\bin\Az.ActivityLogAlert.private.dll', 
+               'DiagnosticSetting.Autorest\bin\Az.DiagnosticSetting.private.dll', 
+               'ScheduledQueryRule.Autorest\bin\Az.ScheduledQueryRule.private.dll', 
+               'Autoscale.Autorest\bin\Az.Autoscale.private.dll'
 
 # Script files (.ps1) that are run in the caller's environment prior to importing this module.
 # ScriptsToProcess = @()
@@ -65,47 +69,57 @@ RequiredAssemblies = 'Microsoft.Azure.Management.Monitor.dll', 'AutoMapper.dll'
 # TypesToProcess = @()
 
 # Format files (.ps1xml) to be loaded when importing this module
-FormatsToProcess = 'Monitor.format.ps1xml'
+FormatsToProcess = 'Monitor.format.ps1xml', 
+               'ActivityLogAlert.Autorest\Az.ActivityLogAlert.format.ps1xml', 
+               'DiagnosticSetting.Autorest\Az.DiagnosticSetting.format.ps1xml', 
+               'ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.format.ps1xml', 
+               'Autoscale.Autorest\Az.Autoscale.format.ps1xml'
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll')
+NestedModules = @('Microsoft.Azure.PowerShell.Cmdlets.Monitor.dll', 
+               'ActivityLogAlert.Autorest\Az.ActivityLogAlert.psm1', 
+               'DiagnosticSetting.Autorest\Az.DiagnosticSetting.psm1', 
+               'ScheduledQueryRule.Autorest\Az.ScheduledQueryRule.psm1', 
+               'Autoscale.Autorest\Az.Autoscale.psm1')
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @()
+FunctionsToExport = 'Get-AzActivityLogAlert', 'New-AzActivityLogAlert', 
+               'Remove-AzActivityLogAlert', 'Update-AzActivityLogAlert', 
+               'Get-AzDiagnosticSetting', 'Get-AzDiagnosticSettingCategory', 
+               'Get-AzEventCategory', 'Get-AzSubscriptionDiagnosticSetting', 
+               'New-AzDiagnosticSetting', 'New-AzSubscriptionDiagnosticSetting', 
+               'Remove-AzDiagnosticSetting', 
+               'Remove-AzSubscriptionDiagnosticSetting', 
+               'Get-AzScheduledQueryRule', 'New-AzScheduledQueryRule', 
+               'New-AzScheduledQueryRuleConditionObject', 
+               'New-AzScheduledQueryRuleDimensionObject', 
+               'Remove-AzScheduledQueryRule', 'Update-AzScheduledQueryRule', 
+               'New-AzActivityLogAlertActionGroupObject', 
+               'New-AzActivityLogAlertAlertRuleAnyOfOrLeafConditionObject', 
+               'New-AzActivityLogAlertAlertRuleLeafConditionObject', 
+               'New-AzDiagnosticSettingLogSettingsObject', 
+               'New-AzDiagnosticSettingMetricSettingsObject', 
+               'New-AzDiagnosticSettingSubscriptionLogSettingsObject', 
+               'Get-AzAutoscalePredictiveMetric', 'Get-AzAutoscaleSetting', 
+               'New-AzAutoscaleNotificationObject', 'New-AzAutoscaleProfileObject', 
+               'New-AzAutoscaleScaleRuleMetricDimensionObject', 
+               'New-AzAutoscaleScaleRuleObject', 'New-AzAutoscaleSetting', 
+               'New-AzAutoscaleWebhookNotificationObject', 
+               'Remove-AzAutoscaleSetting'
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = 'Get-AzMetricDefinition', 'Get-AzMetric', 'Remove-AzLogProfile', 
                'Get-AzLogProfile', 'Add-AzLogProfile', 'Get-AzActivityLog', 
-               'New-AzDiagnosticSetting', 'New-AzDiagnosticDetailSetting', 
-               'Set-AzDiagnosticSetting', 'Get-AzDiagnosticSetting', 
-               'Get-AzDiagnosticSettingCategory', 
-               'Get-AzSubscriptionDiagnosticSettingCategory', 
-               'Remove-AzDiagnosticSetting', 'New-AzAutoscaleNotification', 
-               'New-AzAutoscaleProfile', 'New-AzAutoscaleRule', 
-               'Add-AzAutoscaleSetting', 'Get-AzAutoscaleHistory', 
-               'Get-AzAutoscaleSetting', 'New-AzAutoscaleWebhook', 
-               'Remove-AzAutoscaleSetting', 'Add-AzMetricAlertRule', 
+               'Get-AzAutoscaleHistory', 'Add-AzMetricAlertRule', 
                'Add-AzWebtestAlertRule', 'Get-AzAlertHistory', 'Get-AzAlertRule', 
                'New-AzAlertRuleEmail', 'New-AzAlertRuleWebhook', 
-               'Remove-AzAlertRule', 'Set-AzActivityLogAlert', 
-               'Get-AzActivityLogAlert', 'New-AzActionGroup', 
-               'New-AzActivityLogAlertCondition', 'Enable-AzActivityLogAlert', 
-               'Disable-AzActivityLogAlert', 'Remove-AzActivityLogAlert', 
-               'New-AzActionGroupReceiver', 'Set-AzActionGroup', 'Get-AzActionGroup', 
-               'Remove-AzActionGroup', 'New-AzMetricFilter', 
-               'Add-AzMetricAlertRuleV2', 'Get-AzMetricAlertRuleV2', 
+               'Remove-AzAlertRule', 'New-AzActionGroupReceiver', 
+               'Set-AzActionGroup', 'Get-AzActionGroup', 'Remove-AzActionGroup', 
+               'New-AzMetricFilter', 'Add-AzMetricAlertRuleV2', 
+               'Get-AzMetricAlertRuleV2', 
                'New-AzMetricAlertRuleV2DimensionSelection', 
                'New-AzMetricAlertRuleV2Criteria', 'Remove-AzMetricAlertRuleV2', 
-               'New-AzScheduledQueryRuleSource', 
-               'New-AzScheduledQueryRuleSchedule', 
-               'New-AzScheduledQueryRuleTriggerCondition', 
-               'New-AzScheduledQueryRuleLogMetricTrigger', 
-               'New-AzScheduledQueryRuleAznsActionGroup', 
-               'New-AzScheduledQueryRuleAlertingAction', 
-               'New-AzScheduledQueryRule', 'Get-AzScheduledQueryRule', 
-               'Set-AzScheduledQueryRule', 'Update-AzScheduledQueryRule', 
-               'Remove-AzScheduledQueryRule', 'New-AzInsightsPrivateLinkScope', 
-               'Get-AzInsightsPrivateLinkScope', 
+               'New-AzInsightsPrivateLinkScope', 'Get-AzInsightsPrivateLinkScope', 
                'Update-AzInsightsPrivateLinkScope', 
                'Remove-AzInsightsPrivateLinkScope', 
                'New-AzInsightsPrivateLinkScopedResource', 
@@ -152,10 +166,10 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '* Added breaking change warning messages for 
-    - ''ActivityLogAlert''
-    - ''DiagnosticSetting''
-    - ''ScheduledQueryRule''
-    - ''Autoscale'''
+        - ''ActivityLogAlert''
+        - ''DiagnosticSetting''
+        - ''ScheduledQueryRule''
+        - ''Autoscale'''
 
         # Prerelease string of this module
         # Prerelease = ''

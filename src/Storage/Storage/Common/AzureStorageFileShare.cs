@@ -260,7 +260,7 @@ namespace Microsoft.WindowsAzure.Commands.Common.Storage.ResourceModel
             else if (cloudFileShare.ServiceClient.Credentials.IsSharedKey) //Shared Key
             {
                 fileShareClient = new ShareClient(cloudFileShare.SnapshotQualifiedUri,
-                    new StorageSharedKeyCredential(context.StorageAccountName, cloudFileShare.ServiceClient.Credentials.ExportBase64EncodedKey()), clientOptions);
+                    new StorageSharedKeyCredential(cloudFileShare.ServiceClient.Credentials.AccountName, cloudFileShare.ServiceClient.Credentials.ExportBase64EncodedKey()), clientOptions);
             }
             else //Anonymous
             {

@@ -69,7 +69,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
             string capacityReservationId,
             string userData,
             string imageReferenceId,
-            Dictionary<string, List<string>> auxAuthHeader
+            Dictionary<string, List<string>> auxAuthHeader,
+            string diskControllerType
             )
             => Strategy.CreateResourceConfig(
                 resourceGroup: resourceGroup,
@@ -110,7 +111,8 @@ namespace Microsoft.Azure.Commands.Compute.Strategies.ComputeRp
                                     Id = imageReferenceId
                                 },
                                 DataDisks = DataDiskStrategy.CreateVmssDataDisks(
-                                    imageAndOsType?.DataDiskLuns, dataDisks)
+                                    imageAndOsType?.DataDiskLuns, dataDisks),
+                                DiskControllerType = diskControllerType
                             },
                             NetworkProfile = new VirtualMachineScaleSetNetworkProfile
                             {

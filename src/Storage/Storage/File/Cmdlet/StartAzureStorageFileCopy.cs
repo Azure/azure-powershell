@@ -228,6 +228,12 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
                         destChannel = new StorageFileManagement(this.GetCmdletStorageContext(DestContext));
                     }
                 }
+                else if (BlobFileParameterSet == this.ParameterSetName ||
+                    FileFileParameterSet == this.ParameterSetName ||
+                    UriFileParameterSet == this.ParameterSetName)
+                {
+                    destChannel = new StorageFileManagement(this.GetCmdletStorageContext(DestContext));
+                }
                 else
                 {
                     destChannel = base.CreateChannel();
@@ -243,6 +249,15 @@ namespace Microsoft.WindowsAzure.Commands.Storage.File.Cmdlet
         [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public override void ExecuteCmdlet()
         {
+            if(this.DestFile != null)
+            {
+                // when only track1 object input, will miss storage context, so need to build storage context for prepare the output object.
+                if (this.DestContext == null)
+                {
+                    this.DestContext = GetStorageContextFromTrack1FileServiceClient(this.DestFile.ServiceClient, DefaultContext);
+                }
+            }
+
             blobChannel = this.GetBlobChannel();
             destChannel = GetDestinationChannel();
             IStorageFileManagement srcChannel = Channel;
