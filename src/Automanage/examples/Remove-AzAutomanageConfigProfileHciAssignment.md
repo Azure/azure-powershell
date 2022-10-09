@@ -1,6 +1,6 @@
 ### Example 1: Delete a configuration profile assignment by name
 ```powershell
-Remove-AzAutomanageConfigProfileHciAssignment-ResourceGroupName automangerg -ClusterName aglinuxcluster
+Remove-AzAutomanageConfigProfileHciAssignment -ResourceGroupName automangerg -ClusterName aglinuxcluster
 ```
 
 ```output

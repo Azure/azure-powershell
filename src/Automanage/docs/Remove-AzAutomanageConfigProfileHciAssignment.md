@@ -31,7 +31,7 @@ Delete a configuration profile assignment
 
 ### Example 1: Delete a configuration profile assignment by name
 ```powershell
-Remove-AzAutomanageConfigProfileHciAssignment-ResourceGroupName automangerg -ClusterName aglinuxcluster
+Remove-AzAutomanageConfigProfileHciAssignment -ResourceGroupName automangerg -ClusterName aglinuxcluster
 ```
 
 This command deletes a configuration profile assignment by name.

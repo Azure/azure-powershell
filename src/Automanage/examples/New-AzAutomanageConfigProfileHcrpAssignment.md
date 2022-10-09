@@ -1,6 +1,6 @@
 ### Example 1: Creates an association between a ARC machine and Automanage configuration profile
 ```powershell
-New-AzAutomanageConfigProfileHciAssignment -ResourceGroupName automangerg -MachineName aglinuxmachines -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
+New-AzAutomanageConfigProfileHcrpAssignment -ResourceGroupName automangerg -MachineName aglinuxmachines -ConfigurationProfile "/providers/Microsoft.Automanage/bestPractices/AzureBestPracticesProduction"
 ```
 
 ```output
