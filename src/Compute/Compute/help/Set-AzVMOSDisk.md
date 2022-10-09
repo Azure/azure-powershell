@@ -131,23 +131,12 @@ $ResourceGroupName = <Resource Group Name>;
 $Location = 'northeurope';
 New-AzResourceGroup -Name $ResourceGroupName -Location $Location;
 
-$vmname = <Virtual Machine Name>;
-$vmSize = "Standard_DC2as_v5";         
-$domainNameLabel = <Domain Name Label>;
-$computerName = <Computer Name>;
+$vmSize = "Standard_DC2as_v5";        
 $identityType = "SystemAssigned";
-$subnetPrefix = <Subnet Prefix>;
-$vnetPrefix = <Virtual Network Prefix>;
-$pubIpPrefix = <Public Ip Name>;
-$nicPrefix = <Network Interface Config Name>;
 $secureEncryptGuestState = "DiskWithVMGuestState";
 $vmSecurityType = "ConfidentialVM";
-$user = <User Name>;
-$securePassword = <Password> | ConvertTo-SecureString -AsPlainText -Force; 
+$securePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force; 
 $cred = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
-$keyVaultName = <Key Vault Name>;
-$keyname = <Key Name>;
-$desName= <Disk Encryption Set Name>;
 
 # Create Key Vault
 New-AzKeyVault -Name $keyVaultName -Location $Location -ResourceGroupName $ResourceGroupName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;

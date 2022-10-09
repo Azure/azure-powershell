@@ -34,24 +34,16 @@ The second command sets the SecurityType enum to "TrustedLaunch". Trusted launch
 
 ### Example 2: Create a ConfidentialVM Virtual Machine and the Disk encrypted with the VMGuestStateOnly type.
 ```powershell
-$ResourceGroupName = <Resource Group Name>;
 $vmSize = "Standard_DC2as_v5";         
 $DNSNameLabel = "cvm1" +$ResourceGroupName; 
-$NetworkName = <Network Name>;
-$NICName = <Network Interface Config Name>;
-$PublicIPAddressName = <Pub IP Name>;
-$SubnetName = <Subnet Name>;
 $SubnetAddressPrefix = "10.0.0.0/24";
 $VnetAddressPrefix = "10.0.0.0/16";
 
 # Credential setup.
-$user = <User Name>;
-$password = <Password> |ConvertTo-SecureString -AsPlainText -Force; 
+$password = "Password" |ConvertTo-SecureString -AsPlainText -Force; 
 $securePassword = ConvertTo-SecureString $password -AsPlainText -Force;
 $credential = New-Object System.Management.Automation.PSCredential ($user, $securePassword);
 
-$ComputerName = <Computer Name>;
-$VMName = <VM Name>;
 $SecurityType = "ConfidentialVM";
 $vmDiskSecurityEncryptionType = "VMGuestStateOnly";
 $VirtualMachine = New-AzVMConfig -VMName $VMName -VMSize $VMSize;

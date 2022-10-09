@@ -385,15 +385,10 @@ Create a secure key in managed hsm named testmhsm. Its name is test-key and type
 
 ### Example 10: Add a key for a Confidential VM to a key vault. 
 ```powershell
-$keyVaultName = <Key Vault Name>
-$location = <Azure Region>
-$resourceGroupName = <Resource Group Name>
-
 New-AzKeyVault -Name $keyVaultName -Location $location -ResourceGroupName $resourceGroupName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
 $cvmAgent = Get-AzADServicePrincipal -ApplicationId 'bf7b6499-ff71-4aa2-97a4-f372087be7f0';
 Set-AzKeyVaultAccessPolicy -VaultName $keyVaultName -ResourceGroupName $resourceGroupName -ObjectId $cvmAgent.id -PermissionsToKeys get,release;
 
-$keyName = <Key Name>
 $keySize = 3072;
 Add-AzKeyVaultKey -VaultName $keyVaultName -Name $keyName -Size $keySize -KeyOps wrapKey,unwrapKey -KeyType RSA -Destination HSM -Exportable -UseDefaultCVMPolicy;
         

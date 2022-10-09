@@ -36,15 +36,14 @@ Customers can set the SecurityType of managed Disks.
 
 ### Example 2: Create a Disk with a Disk Encrption Set with the encryption type of ConfidentialVM_DiskEncryptedWithCustomerKey
 ```powershell
-$ResourceGroupName = <Resource Group Name>;
 $Location = "northeurope";
 $KeyVaultName = "val" + $rgname;
 $KeyName = "key" + $rgname;
 $DesName= "des" + $rgname;
 $KeySize = 3072; 
 
-$SecurePassword = <Password> | ConvertTo-SecureString -AsPlainText -Force;  
-$User = <User Name>;
+$SecurePassword = "Password" | ConvertTo-SecureString -AsPlainText -Force;  
+$User = "Username";
 $Cred = New-Object System.Management.Automation.PSCredential ($User, $SecurePassword);
 
 New-AzKeyVault -Name $KeyVaultName -Location $Location -ResourceGroupName $ResourceGroupName -Sku Premium -EnablePurgeProtection -EnabledForDiskEncryption;
