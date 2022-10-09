@@ -22,6 +22,7 @@ Container Apps                        | `Az.App`                                
 App Configuration                     | `Az.AppConfiguration`                   | [![AppConfiguration]][AppConfigurationGallery]
 Application Insights                  | `Az.ApplicationInsights`                | [![ApplicationInsights]][ApplicationInsightsGallery]
 Attestation                           | `Az.Attestation`                        | [![Attestation]][AttestationGallery]
+Automanage                            | `Az.Automanage`                         | [![Automanage]][AutomanageGallery]
 Automation                            | `Az.Automation`                         | [![Automation]][AutomationGallery]
 BareMetal                             | `Az.BareMetal`                          | [![BareMetal]][BareMetalGallery]
 Batch                                 | `Az.Batch`                              | [![Batch]][BatchGallery]
@@ -155,7 +156,6 @@ Traffic Manager                       | `Az.TrafficManager`                     
 Azure VMware Solution                 | `Az.VMware`                             | [![VMware]][VMwareGallery]
 Web App Service                       | `Az.Websites`                           | [![Websites]][WebsitesGallery]
 Windows Iot Services                  | `Az.WindowsIotServices`                 | [![WindowsIotServices]][WindowsIotServicesGallery]
-Automanage                            | `Az.Automanage`                         | [![Automanage]][AutomanageGallery]
 
 <!-- References -->
 
@@ -173,6 +173,7 @@ Automanage                            | `Az.Automanage`                         
 [AppConfiguration]:           https://img.shields.io/powershellgallery/v/Az.AppConfiguration.svg?style=flat-square&label=Az.AppConfiguration
 [ApplicationInsights]:        https://img.shields.io/powershellgallery/v/Az.ApplicationInsights.svg?style=flat-square&label=Az.ApplicationInsights
 [Attestation]:                https://img.shields.io/powershellgallery/v/Az.Attestation.svg?style=flat-square&label=Az.Attestation
+[Automanage]:                 https://img.shields.io/powershellgallery/v/Az.Automanage.svg?style=flat-square&label=Az.Automanage
 [Automation]:                 https://img.shields.io/powershellgallery/v/Az.Automation.svg?style=flat-square&label=Az.Automation
 [BareMetal]:                  https://img.shields.io/powershellgallery/v/Az.BareMetal.svg?style=flat-square&label=Az.BareMetal
 [Batch]:                      https://img.shields.io/powershellgallery/v/Az.Batch.svg?style=flat-square&label=Az.Batch
@@ -306,7 +307,6 @@ Automanage                            | `Az.Automanage`                         
 [VMware]:                     https://img.shields.io/powershellgallery/v/Az.VMware.svg?style=flat-square&label=Az.VMware
 [Websites]:                   https://img.shields.io/powershellgallery/v/Az.Websites.svg?style=flat-square&label=Az.Websites
 [WindowsIotServices]:         https://img.shields.io/powershellgallery/v/Az.WindowsIotServices.svg?style=flat-square&label=Az.WindowsIotServices
-[Automanage]:                 https://img.shields.io/powershellgallery/v/Az.Automanage.svg?style=flat-square&label=Az.Automanage
 
 <!-- PS Gallery -->
 [AzGallery]:                         https://www.powershellgallery.com/packages/Az/
@@ -322,6 +322,7 @@ Automanage                            | `Az.Automanage`                         
 [AppConfigurationGallery]:           https://www.powershellgallery.com/packages/Az.AppConfiguration/
 [ApplicationInsightsGallery]:        https://www.powershellgallery.com/packages/Az.ApplicationInsights/
 [AttestationGallery]:                https://www.powershellgallery.com/packages/Az.Attestation/
+[AutomanageGallery]:                 https://www.powershellgallery.com/packages/Az.Automanage/
 [AutomationGallery]:                 https://www.powershellgallery.com/packages/Az.Automation/
 [BareMetalGallery]:                  https://www.powershellgallery.com/packages/Az.BareMetal/
 [BatchGallery]:                      https://www.powershellgallery.com/packages/Az.Batch/
@@ -455,4 +456,3 @@ Automanage                            | `Az.Automanage`                         
 [VMwareGallery]:                     https://www.powershellgallery.com/packages/Az.VMware/
 [WebsitesGallery]:                   https://www.powershellgallery.com/packages/Az.Websites/
 [WindowsIotServicesGallery]:         https://www.powershellgallery.com/packages/Az.WindowsIotServices/
-[AutomanageGallery]:                 https://www.powershellgallery.com/packages/Az.Automanage/
