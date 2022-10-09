@@ -778,5 +778,9 @@
   {
     "alias": "SSH",
     "module": "Ssh"
+  },
+  {
+    "alias": "Automanage",
+    "module": "Automanage"
   }
 ]
