@@ -445,9 +445,11 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(2, tenantResults.Count());
             tenantResults = client.ListTenants(DefaultTenant.ToString());
             Assert.Single(tenantResults);
-            IAzureSubscription subValue;
-            Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
-            Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
+            var subValues = client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString());
+            Assert.True(subValues != null && subValues.Count() > 0);
+            Assert.Equal(DefaultSubscription.ToString(), subValues.FirstOrDefault().Id.ToString());
+
+            IAzureSubscription subValue = null;
             Assert.True(client.TryGetSubscriptionByName(DefaultTenant.ToString(),
                 MockSubscriptionClientFactory.GetSubscriptionNameFromId(DefaultSubscription.ToString()),
                 out subValue));
@@ -474,14 +476,14 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Equal(2, tenantResults.Count());
             tenantResults = client.ListTenants(DefaultTenant.ToString());
             Assert.Single(tenantResults);
-            IAzureSubscription subValue;
             IEnumerable<IAzureSubscription> subValueList;
-            Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
-            Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
+            subValueList = client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString());
+            Assert.True(subValueList != null && subValueList.Count() > 0);
+            Assert.Equal(DefaultSubscription.ToString(), subValueList.FirstOrDefault().Id.ToString());
             Assert.True(client.TryGetSubscriptionListByName(DefaultTenant.ToString(),
                 MockSubscriptionClientFactory.GetSubscriptionNameFromId(DefaultSubscription.ToString()),
                 out subValueList));
-            Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
+            Assert.Equal(DefaultSubscription.ToString(), subValueList.FirstOrDefault().Id.ToString());
         }
 
         [Fact]
@@ -500,9 +502,10 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
             Assert.Single(tenantResults);
             tenantResults = client.ListTenants(DefaultTenant.ToString());
             Assert.Single(tenantResults);
+            var subValues = client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString());
+            Assert.True(subValues != null && subValues.Count() > 0);
+            Assert.Equal(DefaultSubscription.ToString(), subValues.FirstOrDefault().Id.ToString());
             IAzureSubscription subValue;
-            Assert.True(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
-            Assert.Equal(DefaultSubscription.ToString(), subValue.Id.ToString());
             Assert.True(client.TryGetSubscriptionByName(DefaultTenant.ToString(),
                 MockSubscriptionClientFactory.GetSubscriptionNameFromId(DefaultSubscription.ToString()),
                 out subValue));
@@ -585,9 +588,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                                                        thirdList, fourthList);
             var subResults = new List<IAzureSubscription>(client.ListSubscriptions());
             Assert.Equal(2, subResults.Count);
+            var subValues = client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString());
+            Assert.True(subValues == null || subValues.Count() == 0);
             IAzureSubscription subValue;
-
-            Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
             Assert.False(client.TryGetSubscriptionByName("random-tenant", "random-subscription", out subValue));
         }
 
@@ -629,8 +632,9 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common.Test
                                                        subscriptions, subscriptions,
                                                        subscriptions, subscriptions);
             Assert.Empty(client.ListSubscriptions());
-            IAzureSubscription subValue;
-            Assert.False(client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString(), out subValue));
+            var subValues = client.TryGetSubscriptionById(DefaultTenant.ToString(), DefaultSubscription.ToString());
+            Assert.True(subValues == null || subValues.Count() == 0);
+            IAzureSubscription subValue = null;
             Assert.False(client.TryGetSubscriptionByName(DefaultTenant.ToString(), "random-name", out subValue));
         }
 

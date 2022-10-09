@@ -361,7 +361,7 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
             {
                 if (Guid.TryParse(subscriptionNameOrId, out subscriptionId))
                 {
-                    TryGetSubscriptionById(tenantId, subscriptionNameOrId, out subscription);
+                    subscription = TryGetSubscriptionById(tenantId, subscriptionNameOrId)?.FirstOrDefault();
                 }
                 else
                 {
@@ -401,17 +401,44 @@ namespace Microsoft.Azure.Commands.ResourceManager.Common
                                  .ToList();
         }
 
-        public bool TryGetSubscriptionById(string tenantId, string subscriptionId, out IAzureSubscription subscription)
+        public IEnumerable<IAzureSubscription> TryGetSubscriptionById(string tenantId, string subscriptionId)
         {
             Guid subscriptionIdGuid;
-            subscription = null;
+            var subscriptions = new List<IAzureSubscription>();
             if (Guid.TryParse(subscriptionId, out subscriptionIdGuid))
             {
-                var subscriptionList = ListSubscriptions(tenantId).Where(s => s.GetId() == subscriptionIdGuid);
-                subscription = subscriptionList.FirstOrDefault(s => s.GetTenant() == s.GetHomeTenant()) ??
-                    subscriptionList.FirstOrDefault();
+                var tenants = string.IsNullOrEmpty(tenantId) ? ListTenants() : new List<AzureTenant>() { CreateTenant(tenantId) };
+
+                IAzureAccount account = _profile.DefaultContext.Account;
+                IAzureEnvironment environment = _profile.DefaultContext.Environment;
+                string promptBehavior = ShowDialog.Never;
+
+                foreach (var tenant in tenants)
+                {
+                    try
+                    {
+                        SecureString password = null;
+                        IAccessToken accessToken = null;
+                        try
+                        {
+                            accessToken = AcquireAccessToken(account, environment, tenant.Id, password, promptBehavior, null);
+                        }
+                        catch (Exception e)
+                        {
+                            WriteWarningMessage(string.Format(ProfileMessages.UnableToAqcuireToken, tenantId, e.Message));
+                            WriteDebugMessage(string.Format(ProfileMessages.UnableToAqcuireToken, tenantId, e.ToString()));
+                            continue;
+                        }
+                        subscriptions.Add(SubscriptionAndTenantClient?.GetSubscriptionById(subscriptionId, accessToken, account, environment));
+                        break;
+                    }
+                    catch (CloudException e)
+                    {
+                        WriteDebugMessage(e.ToString());
+                    }
+                }
             }
-            return subscription != null;
+            return subscriptions;
         }
 
         public bool TryGetSubscriptionByName(string tenantId, string subscriptionName, out IAzureSubscription subscription)
