@@ -143,6 +143,8 @@ namespace Microsoft.Azure.Commands.Common
                 CommandName = invocationInfo?.MyCommand?.Name,
                 ModuleVersion = TrimModuleVersion(invocationInfo?.MyCommand?.Module?.Version),
                 ModuleName = TrimModuleName(invocationInfo?.MyCommand?.ModuleName),
+                SourceScript = invocationInfo?.ScriptName,
+                ScriptLineNumber = invocationInfo?.ScriptLineNumber ?? 0,
                 SessionId = MetricHelper.SessionId,
                 ParameterSetName = parameterSetName,
                 InvocationName = invocationInfo?.InvocationName,

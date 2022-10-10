@@ -190,6 +190,14 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 true,
                 AzurePSDataCollectionProfile.EnvironmentVariableName,
                 new[] { AppliesTo.Az }));
+#if DEBUG || TESTCOVERAGE
+            configManager.RegisterConfig(new SimpleTypedConfig<bool>(
+                ConfigKeys.EnableTestCoverage,
+                "When enabled, the test framework will generate data during test run as a preliminary for the test coverage calculation",
+                false,
+                "Azure_PS_TestCoverage",
+                new[] { AppliesTo.Az }));
+#endif
 
             configManager.RegisterConfig(new EnableInterceptSurveyConfig());
             configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());

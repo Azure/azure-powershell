@@ -8,6 +8,7 @@ variables:
   IsGenerateBased: $[eq(variables['system.pullRequest.targetBranch'], 'generation')]
   BuildTimeoutInMinutes: 120
   AnalysisTimeoutInMinutes: 120
+  Azure_PS_TestCoverage: true
 
 trigger: none
 

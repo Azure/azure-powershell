@@ -580,7 +580,7 @@ namespace Microsoft.Azure.Commands.TestFx
                 }
             }
 
-            powershell.AddScript("Disable-AzureRmDataCollection -ErrorAction Ignore");
+            powershell.AddScript("Disable-AzDataCollection -ErrorAction Ignore");
             powershell.AddScript($"Set-Location \"{AppDomain.CurrentDomain.BaseDirectory}\"");
             powershell.AddScript($"$TestOutputRoot='{AppDomain.CurrentDomain.BaseDirectory}'");
             powershell.AddScript("$VerbosePreference='Continue'");
