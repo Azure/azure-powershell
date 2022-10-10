@@ -88,6 +88,9 @@ The operation to configure vault setting.
 ### [New-AzMigrateServerReplication](New-AzMigrateServerReplication.md)
 The New-AzMigrateServerReplication cmdlet starts the replication for a particular discovered server in the Azure Migrate project.
 
+### [New-AzTestMigrateNicMapping](New-AzTestMigrateNicMapping.md)
+Creates an object to update NIC properties of a test migrating server.
+
 ### [Register-AzMigrateProjectTool](Register-AzMigrateProjectTool.md)
 Registers a tool with the migrate project.
 

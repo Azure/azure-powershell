@@ -55,7 +55,19 @@ function New-AzMigrateNicMapping {
         [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
         [System.String]
         # Specifies the IP within the destination subnet to be used for the NIC.
-        ${TargetNicIP}
+        ${TargetNicIP},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the Subnet name for the NIC in the destination Virtual Network to which the server needs to be test migrated.
+        ${TestNicSubnet},
+
+        [Parameter()]
+        [Microsoft.Azure.PowerShell.Cmdlets.Migrate.Category('Path')]
+        [System.String]
+        # Specifies the IP within the destination test subnet to be used for the NIC.
+        ${TestNicIP}
     )
     
     process {
@@ -96,6 +108,19 @@ function New-AzMigrateNicMapping {
                 throw "The NIC name must begin with a letter or number, end with a letter, number or underscore, and may contain only letters, numbers, underscores, periods, or hyphens."
             }
             $NicObject.TargetNicName = $TargetNicName
+        }
+
+        
+        if ($PSBoundParameters.ContainsKey('TestNicSubnet')) {
+            $NicObject.TestSubnetName = $TestNicSubnet
+        }
+       
+        if ($PSBoundParameters.ContainsKey('TestNicIP')) {
+            $isValidIpAddress = [ipaddress]::TryParse($TestNicIP,[ref][ipaddress]::Loopback)
+            if(!$isValidIpAddress) {
+                throw "(InvalidPrivateIPAddressFormat) Static IP address value '$($TargetNicIP)' is invalid."
+            }
+            $NicObject.TestStaticIPAddress = $TestNicIP
         }
 
         return $NicObject
