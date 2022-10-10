@@ -127,7 +127,6 @@ This example sets the disk encryption settings on a virtual machine operating sy
 ### Example 5: Create a ConfidentialVM virtual machine with VM OS Disk encryption of DiskWithVMGuestState, and Disk Encryption Set encryption of ConfidentialVmEncryptedWithCustomerKey.
 ```powershell
 # Create Resource Group
-$ResourceGroupName = <Resource Group Name>;
 $Location = 'northeurope';
 New-AzResourceGroup -Name $ResourceGroupName -Location $Location;
 
