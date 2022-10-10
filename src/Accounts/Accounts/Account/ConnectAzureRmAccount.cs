@@ -750,6 +750,7 @@ namespace Microsoft.Azure.Commands.Profile
                 AzureSession.Instance.RegisterComponent(nameof(AzureCredentialFactory), () => new AzureCredentialFactory());
                 AzureSession.Instance.RegisterComponent(nameof(MsalAccessTokenAcquirerFactory), () => new MsalAccessTokenAcquirerFactory());
                 AzureSession.Instance.RegisterComponent<ISshCredentialFactory>(nameof(ISshCredentialFactory), () => new SshCredentialFactory());
+                AzureSession.Instance.RegisterComponent<IPSCmdletAction>(nameof(IPSCmdletAction), () => new PSCmdletAction());
 #if DEBUG
             }
             catch (Exception) when (TestMockSupport.RunningMocked)

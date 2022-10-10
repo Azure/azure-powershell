@@ -190,6 +190,12 @@ namespace Microsoft.Azure.Commands.Common.Authentication.Config
                 true,
                 AzurePSDataCollectionProfile.EnvironmentVariableName,
                 new[] { AppliesTo.Az }));
+            configManager.RegisterConfig(new SimpleTypedConfig<bool>(
+                ConfigKeys.EnableCmdletStats,
+                "N/A",
+                false,
+                "Azure_PS_Cmdlet_Stats",
+                new[] { AppliesTo.Az }));
 
             configManager.RegisterConfig(new EnableInterceptSurveyConfig());
             configManager.RegisterConfig(new DisplayBreakingChangeWarningsConfig());
