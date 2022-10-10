@@ -20,6 +20,8 @@
 
 -->
 ## Upcoming Release
+
+## Version 4.32.0
 * Added the `TimeCreated` property to the Virtual Machine and Virtual Machine Scale Set models.
 * Added Confidential VM functionality to multiple cmdlets.
   * Added new parameter `SecureVMDiskEncryptionSet` to cmdlet `Set-AzDiskSecurityProfile`.
