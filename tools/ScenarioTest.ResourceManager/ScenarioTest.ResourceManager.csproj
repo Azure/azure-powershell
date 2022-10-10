@@ -11,6 +11,152 @@
     <RootNamespace>$(LegacyAssemblyPrefix)ScenarioTest</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\Microsoft.CSharp.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\Microsoft.VisualBasic.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\Microsoft.Win32.Primitives.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\mscorlib.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\netstandard.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.AppContext.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Buffers.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Collections.Concurrent.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Collections.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Collections.Immutable.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Collections.NonGeneric.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Collections.Specialized.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.ComponentModel.Annotations.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.ComponentModel.DataAnnotations.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.ComponentModel.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.ComponentModel.EventBasedAsync.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.ComponentModel.Primitives.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.ComponentModel.TypeConverter.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Configuration.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Console.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Core.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Data.Common.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Data.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Diagnostics.Contracts.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Diagnostics.Debug.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Diagnostics.DiagnosticSource.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Diagnostics.FileVersionInfo.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Diagnostics.Process.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Diagnostics.StackTrace.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Diagnostics.TextWriterTraceListener.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Diagnostics.Tools.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Diagnostics.TraceSource.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Diagnostics.Tracing.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Drawing.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Drawing.Primitives.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Dynamic.Runtime.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Globalization.Calendars.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Globalization.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Globalization.Extensions.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.Compression.Brotli.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.Compression.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.Compression.FileSystem.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.Compression.ZipFile.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.FileSystem.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.FileSystem.DriveInfo.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.FileSystem.Primitives.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.FileSystem.Watcher.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.IsolatedStorage.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.MemoryMappedFiles.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.Pipes.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.IO.UnmanagedMemoryStream.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Linq.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Linq.Expressions.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Linq.Parallel.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Linq.Queryable.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Memory.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.Http.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.HttpListener.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.Mail.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.NameResolution.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.NetworkInformation.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.Ping.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.Primitives.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.Requests.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.Security.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.ServicePoint.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.Sockets.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.WebClient.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.WebHeaderCollection.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.WebProxy.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.WebSockets.Client.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Net.WebSockets.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Numerics.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Numerics.Vectors.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.ObjectModel.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Reflection.DispatchProxy.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Reflection.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Reflection.Emit.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Reflection.Emit.ILGeneration.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Reflection.Emit.Lightweight.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Reflection.Extensions.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Reflection.Metadata.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Reflection.Primitives.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Reflection.TypeExtensions.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Resources.Reader.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Resources.ResourceManager.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Resources.Writer.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.CompilerServices.VisualC.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.Extensions.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.Handles.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.InteropServices.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.InteropServices.RuntimeInformation.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.InteropServices.WindowsRuntime.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.Loader.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.Numerics.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.Serialization.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.Serialization.Formatters.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.Serialization.Json.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.Serialization.Primitives.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Runtime.Serialization.Xml.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Security.Claims.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Security.Cryptography.Algorithms.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Security.Cryptography.Csp.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Security.Cryptography.Encoding.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Security.Cryptography.Primitives.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Security.Cryptography.X509Certificates.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Security.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Security.Principal.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Security.SecureString.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.ServiceModel.Web.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.ServiceProcess.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Text.Encoding.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Text.Encoding.Extensions.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Text.RegularExpressions.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Threading.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Threading.Overlapped.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Threading.Tasks.Dataflow.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Threading.Tasks.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Threading.Tasks.Extensions.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Threading.Tasks.Parallel.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Threading.Thread.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Threading.ThreadPool.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Threading.Timer.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Transactions.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Transactions.Local.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.ValueTuple.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Web.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Web.HttpUtility.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Windows.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Xml.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Xml.Linq.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Xml.ReaderWriter.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Xml.Serialization.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Xml.XDocument.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Xml.XmlDocument.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Xml.XmlSerializer.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Xml.XPath.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\System.Xml.XPath.XDocument.dll" />
+    <None Remove="C:\Users\vidai\.nuget\packages\microsoft.powershell.sdk\6.2.4\contentFiles\any\any\ref\WindowsBase.dll" />
+  </ItemGroup>
+
   <ItemGroup>    
     <PackageReference Include="Moq" Version="4.7.145" />
   </ItemGroup>
@@ -18,25 +164,6 @@
   <ItemGroup>
     <ProjectReference Include="$(RepoSrc)Accounts\Authentication\Authentication.csproj" />
     <ProjectReference Include="$(RepoSrc)Accounts\Authentication.ResourceManager\Authentication.ResourceManager.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Assert.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <BuildAction>Content</BuildAction>
-    </Content>
-    <Content Include="Common.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <BuildAction>Content</BuildAction>
-    </Content>
-    <Content Include="AzureRM.Resources.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <BuildAction>Content</BuildAction>
-    </Content>
-    <Content Include="AzureRM.Storage.ps1">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <BuildAction>Content</BuildAction>
-    </Content>
   </ItemGroup>
 
 </Project>

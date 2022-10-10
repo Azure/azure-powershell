@@ -1,0 +1,48 @@
+resources:
+  repositories:
+  - repository: self
+    type: git
+    ref: main
+
+trigger:
+  branches:
+    include:
+      - main
+  paths:
+    include:
+      - .azure-pipelines
+      - tools
+      - src/lib
+      
+variables:
+  GenerationBranchName: generation
+  AzureStackBranchName: Azs-tzl
+  GithubToken: $(GITHUB_TOKEN)
+
+jobs:
+- job: Sync
+  displayName: Sync task
+  condition: succeeded()
+  strategy:
+    matrix:
+      Generation:
+        BranchName: ${{ variables.GenerationBranchName }}
+      AzureStack:
+        BranchName: ${{ variables.AzureStackBranchName }}
+
+  steps:
+  - task: PowerShell@2
+    displayName: Sync branch
+    inputs:
+      targetType: inline
+      script: >-
+        ./tools/SyncFromMainBranch.ps1 -BranchName $(BranchName) -GithubToken $(GithubToken)
+      pwsh: true
+
+  - pwsh: |
+      $Title = "Sync tools code from main branch to $(BranchName) branch"
+      $HeadBranch = "syncToolsFolder-$(BranchName)"
+      $BaseBranch = "$(BranchName)"
+      $Description = "Migrate Sync tools code from main branch to $(BranchName) branch"
+      ./tools/Github/CreatePR.ps1 -Title $Title -HeadBranch $HeadBranch -BaseBranch $BaseBranch -BotAccessToken $(GithubToken) -Description $Description
+    displayName: Create PR to $(BranchName) branch

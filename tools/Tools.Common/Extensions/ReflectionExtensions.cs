@@ -28,9 +28,9 @@ namespace Tools.Common.Extensions
             return decoratedType.GetTypeInfo().GetCustomAttribute(typeof(T), true) as T;
         }
 
-        public static T GetAttribute<T>(this PropertyInfo decoratedProperty) where T : Attribute
+        public static T GetAttribute<T>(this ParameterInfo decoratedParameter) where T : Attribute
         {
-            return decoratedProperty.GetCustomAttribute(typeof(T), true) as T;
+            return decoratedParameter.MemberInfo.GetCustomAttribute(typeof(T), true) as T;
         }
 
         public static IEnumerable<T> GetAttributes<T>(this Type decoratedType) where T : Attribute
@@ -38,26 +38,39 @@ namespace Tools.Common.Extensions
             return decoratedType.GetTypeInfo().GetCustomAttributes(typeof(T), false).Select(a => a as T);
         }
 
-        public static IEnumerable<T> GetAttributes<T>(this PropertyInfo decoratedProeprty) where T : Attribute
+        public static IEnumerable<T> GetAttributes<T>(this ParameterInfo decoratedParameter) where T : Attribute
         {
-            return decoratedProeprty.GetCustomAttributes(typeof(T), false).Select(a => a as T);
+            return decoratedParameter.MemberInfo.GetCustomAttributes(typeof(T), false).Select(a => a as T);
         }
 
         public static bool HasAttribute<T>(this Type decoratedType) where T : Attribute
         {
-            return decoratedType.GetTypeInfo().CustomAttributes.Any(d => d.AttributeType == typeof (T));
+            return decoratedType.GetTypeInfo().CustomAttributes.Any(d => d.AttributeType == typeof(T));
 
         }
 
-        public static bool HasAttribute<T>(this PropertyInfo decoratedProperty) where T : Attribute
+        public static bool HasAttribute<T>(this ParameterInfo decoratedParameter) where T : Attribute
         {
-            return decoratedProperty.CustomAttributes.Any(d => d.AttributeType == typeof(T));
+            return decoratedParameter.MemberInfo.CustomAttributes.Any(d => d.AttributeType == typeof(T));
 
         }
 
-        public static IEnumerable<PropertyInfo> GetParameters(this Type cmdletType)
+        public class ParameterInfo
         {
-            return cmdletType.GetProperties().Where(p => p.HasAttribute<ParameterAttribute>());
+            public ParameterInfo(MemberInfo memberInfo, Type parameterType)
+            {
+                MemberInfo = memberInfo;
+                ParameterType = parameterType;
+            }
+            public MemberInfo MemberInfo;
+            public Type ParameterType;
+        }
+
+        public static IEnumerable<ParameterInfo> GetParameters(this Type cmdletType)
+        {
+            var properties = cmdletType.GetProperties().Select(p => new ParameterInfo((MemberInfo)p, p.PropertyType)).Where(p => p.HasAttribute<ParameterAttribute>());
+            var fields = cmdletType.GetFields().Select(f => new ParameterInfo((MemberInfo)f, f.FieldType)).Where(f => f.HasAttribute<ParameterAttribute>());
+            return properties.Concat(fields);
         }
 
         public static IEnumerable<Type> GetCmdletTypes(this Assembly assembly)
